@@ -12,13 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-export class RectValue {
-  left: number = 0;
-  top: number = 0;
-  right: number = 0;
-  bottom: number = 0;
-}
+import RectValue from './Rect';
 
 export default class CommonFunc {
   static rect_left: number;
@@ -28,27 +22,45 @@ export default class CommonFunc {
   static rect_value: RectValue;
 
   static sleep(time: number) {
-    return new Promise<string>((resolve, reject) => {
+    return new Promise((resolve: (value: string) => void) => {
       setTimeout(() => {
-        resolve("ok");
-      }, time);
+        resolve("ok")
+      }, time)
     }).then(() => {
-      console.info(`sleep ${time} over...`);
-    });
+      console.info(`sleep ${time} over...`)
+    })
   }
 
   static getComponentRect(key: string) {
-    let strJson = getInspectorByKey(key);
-    let obj: Record<string, Object> = JSON.parse(strJson);
-    let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']');
-    CommonFunc.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0];
-    CommonFunc.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1];
-    CommonFunc.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0];
-    CommonFunc.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1];
-    CommonFunc.rect_value = {
+    let strJson: string = getInspectorByKey(key);
+    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
+    console.info("[getInspectorByKey] rectInfo is: " + JSON.parse('[' + JSON.parse(strJson).$rect + ']'));
+    CommonFunc.rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0]
+    CommonFunc.rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1]
+    CommonFunc.rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0]
+    CommonFunc.rect_bottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[1]
+    return CommonFunc.rect_value = {
       left: CommonFunc.rect_left, top: CommonFunc.rect_top, right: CommonFunc.rect_right, bottom: CommonFunc.rect_bottom
-    };
-    console.info(JSON.stringify(CommonFunc.rect_value));
-    return CommonFunc.rect_value;
+    }
+  }
+
+  static getComponentRectOnScreen(key: string) {
+    let strJson = getInspectorByKey(key);
+    let obj = JSON.parse(strJson);
+    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
+    let rectInfo = JSON.parse('[' + obj.$rect + ']');
+    console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
+    console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop );
+    this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;
+    this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1] + globalThis.winTop;
+    this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0] + globalThis.winLeft;
+    this.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1] + globalThis.winTop;
+    return this.rect_value = {
+      "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
+    }
   }
 }
+
+
+
+

@@ -1,6 +1,11 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/menuControl/BindMenu"
+        "MainAbility/pages/menuControl/BindMenu",
+        "MainAbility/pages/popupControl/customPopup",
+        "MainAbility/pages/popupControl/popup",
+        "MainAbility/pages/menu/menuBlurStyle",
+        "MainAbility/pages/menu/ModalBlurStyle",
+        "MainAbility/pages/popupControl/popupArrow"
     ]
 }

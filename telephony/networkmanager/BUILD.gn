@@ -16,5 +16,6 @@ group("networkmanager") {
   deps = [
     "fetch:fetch",
     "http:http",
+    "socket:socket",
   ]
 }

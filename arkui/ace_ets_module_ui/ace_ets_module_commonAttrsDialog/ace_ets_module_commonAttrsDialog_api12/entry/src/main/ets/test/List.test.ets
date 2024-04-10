@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import aboutToAppearFalse from './menuControlTest/bindContextMenuTest/aboutToAppearFalse.test.ets'
-import aboutToDisappearFalse from './menuControlTest/bindContextMenuTest/aboutToDisappearFalse.test.ets'
-import CloseContextMenu from './menuControlTest/bindContextMenuTest/CloseContextMenu.test.ets'
-import CloseEsc from './menuControlTest/bindContextMenuTest/CloseEsc.test.ets'
-import CloseFalse from './menuControlTest/bindContextMenuTest/CloseFalse.test.ets'
-import CloseMask from './menuControlTest/bindContextMenuTest/CloseMask.test.ets'
-import CloseMenu from './menuControlTest/bindContextMenuTest/CloseMenu.test.ets'
-import IsShowFalse from './menuControlTest/bindContextMenuTest/IsShowFalse.test.ets'
-import preview from './menuControlTest/bindContextMenuTest/preview.test.ets'
+import aboutToAppearFalse from './menuControlTest/bindContextMenuTest/aboutToAppearFalse.test'
+import aboutToDisappearFalse from './menuControlTest/bindContextMenuTest/aboutToDisappearFalse.test'
+import CloseContextMenu from './menuControlTest/bindContextMenuTest/CloseContextMenu.test'
+import CloseEsc from './menuControlTest/bindContextMenuTest/CloseEsc.test'
+import CloseFalse from './menuControlTest/bindContextMenuTest/CloseFalse.test'
+import CloseMask from './menuControlTest/bindContextMenuTest/CloseMask.test'
+import CloseMenu from './menuControlTest/bindContextMenuTest/CloseMenu.test'
+import IsShowFalse from './menuControlTest/bindContextMenuTest/IsShowFalse.test'
+import preview from './menuControlTest/bindContextMenuTest/preview.test'
 
 export default function testsuite() {
   aboutToAppearFalse();

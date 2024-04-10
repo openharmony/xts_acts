@@ -12,10 +12,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import stepperJsunit from './stepperTest/StepperJsunit.test';
 import NavigationParamTest from './NavigationTest/NavigationParam.test';
+import NavigationApi from './NavigationTest/NavigationApi.test';
+import NavigationApi2 from './NavigationTest/NavigationApi2.test';
+import NavigationApi3 from './NavigationTest/NavigationApi3.test';
+import NavPathStackApi1 from './NavigationTest/NavPathStackApi1.test';
+import NavPathStackApi2 from './NavigationTest/NavPathStackApi2.test';
+import NavPathStackApi3 from './NavigationTest/NavPathStackApi3.test';
+import NavDestinationInfoStateJsunit  from './NavDestinationTest/NavDestinationInfoStateJsunit.test'
+import QueryNavDestinationInfoNavDestinationJsunit from './NavDestinationTest/QueryNavDestinationInfoNavDestinationJsunit.test';
+import NavigationAttr from './NavigationTest/NavigationAttr.test'
+import navigationApi1 from './NavigationTest/navigationApi/navigationApi1.test'
+
 export default function testsuite() {
   stepperJsunit();
-  NavigationParamTest()
+  NavigationParamTest();
+  NavigationApi()
+  NavigationApi2()
+  NavigationApi3()
+  NavPathStackApi1()
+  NavPathStackApi2()
+  NavPathStackApi3()
+  NavDestinationInfoStateJsunit()
+  QueryNavDestinationInfoNavDestinationJsunit()
+  NavigationAttr()
+  navigationApi1()
 }

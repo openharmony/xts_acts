@@ -1200,6 +1200,38 @@ export default function abilityTest() {
     })
 
     /*
+     * @tc.number  : ACTS_UIExtension_StartAbilityByType004
+     * @tc.name    : test start UIExtensionAbility by type failed
+     * @tc.desc    : start UIExtensionAbility not configured in json
+     */
+    it('ACTS_UIExtension_StartAbilityByType004',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityByType004 == ';
+      console.log(TAG + "begin");
+      try {
+        let wantParam = {}
+        let abilityStartCallback = {
+          onError: (code, name, message) => {
+            console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
+            expect(code).assertEqual(16000050);
+            done();
+          },
+          onResult: (abilityResult: common.AbilityResult) => {
+            console.log(TAG + "abilityResult.resultCode:" + abilityResult.resultCode);
+            done();
+          }
+        }
+        context.startAbilityByType("shareerror", wantParam, abilityStartCallback).then(() => {
+            console.log(TAG + "startAbilityByType004 success");
+          }).catch((err)=> {
+            console.error(TAG + "startAbilityByType004 fail, err:" + JSON.stringify(err));
+          })
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
      * @tc.number  : ACTS_UIExtension_RequestModalUIExtension001
      * @tc.name    : test request Modal UIExtension
      * @tc.desc    : request Modal UIExtension by want

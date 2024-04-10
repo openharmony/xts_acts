@@ -54,6 +54,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/msdp:msdp",
   "${ACTS_ROOT}/arkcompiler:arkcompiler",
   "${ACTS_ROOT}/advertising:advertising",
+  "${ACTS_ROOT}/customization:customization",
 ]
 
 _all_test_packages_ivi = [

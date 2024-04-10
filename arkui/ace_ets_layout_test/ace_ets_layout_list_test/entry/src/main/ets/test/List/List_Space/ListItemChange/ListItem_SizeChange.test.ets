@@ -113,7 +113,7 @@ export default function listItem_SizeChange() {
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = Driver.create();
-      await driver.swipe(Math.round(left + (right -left)/2), Math.round((bottom-top)/2 + top), Math.round(left + (right -left)/2), Math.round(top));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + globalThis.winTop));
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest4');
       expect(locationText4.top).assertEqual(locationText4Again.top);
       console.info('new testListItemSizeChangeHeight120Width300 END');
@@ -169,7 +169,7 @@ export default function listItem_SizeChange() {
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = Driver.create();
-      await driver.swipe(Math.round(left + (right -left)/2), Math.round((bottom-top)/2 + top), Math.round(left + (right -left)/2), Math.round(top));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + globalThis.winTop));
       await CommonFunc.sleep(1000);
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest4');
       expect(locationText4Again.bottom).assertEqual(locationList.bottom);
@@ -227,7 +227,7 @@ export default function listItem_SizeChange() {
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = Driver.create();
-      await driver.swipe(Math.round(left + (right -left)/2), Math.round((bottom-top)/2 + top), Math.round(left + (right -left)/2), Math.round(top));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + globalThis.winTop));
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest4');
       expect(locationText4.top).assertEqual(locationText4Again.top);
       console.info('new testListItemSizeChangeHeight100Width100 END');
@@ -283,7 +283,7 @@ export default function listItem_SizeChange() {
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = Driver.create();
-      await driver.swipe(Math.round(left + (right -left)/2), Math.round((bottom-top)/2 + top), Math.round(left + (right -left)/2), Math.round(top));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + globalThis.winTop ));
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest4');
       expect(locationText4.top).assertEqual(locationText4Again.top);
       console.info('new testListItemSizeChangeHeight100Width380 END');
@@ -339,7 +339,7 @@ export default function listItem_SizeChange() {
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = Driver.create();
-      await driver.swipe(Math.round(left + (right -left)/2), Math.round((bottom-top)/2 + top), Math.round(left + (right -left)/2), Math.round(top));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop), Math.round( globalThis.winLeft + left + (right -left)/2), Math.round(top + globalThis.winTop ));
       await CommonFunc.sleep(1000);
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest4');
       expect(locationText4Again.bottom).assertEqual(locationList.bottom);

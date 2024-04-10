@@ -13,8 +13,14 @@
  * limitations under the License.
  */
 
+import HttpProtocolTest from './HttpProtocol.test';
+import HttpDataTypeTest from './HttpDataType.test';
+import HttpMultiFormDataListTest from './HttpMultiFormDataList.test';
 import HttpClientCertTest from './HttpClientCert.test';
 
 export default function testsuite() {
+  HttpProtocolTest();
+  HttpDataTypeTest();
+  HttpMultiFormDataListTest();
   HttpClientCertTest();
 }

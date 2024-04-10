@@ -58,7 +58,8 @@
         ],
         "deviceType": [
             "default",
-            "tablet"
+            "tablet",
+            "2in1"
         ],
         "mainAbility": ".MainAbility",
         "distro": {

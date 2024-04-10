@@ -12,14 +12,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import touchJsunit from './onTouchTest/TouchJsunit.test';
 import appearJsunit from './onAppearTest/AppearJsunit.test';
 import areaChangeJsunit from './onAreaChangeTest/AreaChangeJsunit.test';
 import ShortcutKeyTest from './keyboardShortcutTest/ShortcutKey.test'
+import aboutToAppearTest from './onAppearTest/ComAttr_aboutToAppear.test';
+import parentX_parentY_strategy_Test from './onChildTouchTestTest/ComAttr_parentX_parentY_strategy.test';
+import onGestureTest from './onGestureJudgeBeginTest/onGestureTest.test';
+import touchPoint from './DragController/touchPoint_Auto.test';
+import previewOptions from './DragController/touchPoint_Disable.test';
+import createDragAction from './DragController/createDragAction.test';
+import setForegroundColor from './DragController/setForegroundColor.test';
+import DragActionJsunit from './DragController/DragActionJsSuit.test';
+import dragPreviewJsSuit from './DragController/dragPreviewJsSuit.test';
+import dragPreviewOptionsJsSuit from './DragController/dragPreviewOptionsJsSuit.test';
+import GestureTagJsSuit from './TapGestureTest/GestureTagJsSuit.test';
+import freezeInactive from './freezeTest/freezeInactive.test'
+
 export default function testsuite() {
   touchJsunit();
   appearJsunit();
   areaChangeJsunit();
   ShortcutKeyTest();
+  aboutToAppearTest();
+  parentX_parentY_strategy_Test();
+  onGestureTest()
+  touchPoint()
+  previewOptions()
+  createDragAction()
+  setForegroundColor()
+  DragActionJsunit()
+  dragPreviewJsSuit()
+  dragPreviewOptionsJsSuit()
+  GestureTagJsSuit()
+  freezeInactive()
 }

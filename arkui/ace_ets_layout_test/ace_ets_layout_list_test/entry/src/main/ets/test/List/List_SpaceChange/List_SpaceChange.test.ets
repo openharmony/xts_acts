@@ -104,10 +104,10 @@ export default function list_SpaceChangeTest() {
 
       let driver = Driver.create();
       await driver.swipe(
-        Math.round(fourthListItem.left + ((fourthListItem.right - fourthListItem.left) / 2)),
-        Math.round(fourthListItem.bottom),
-        Math.round(thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
-        Math.round(thirdListItem.bottom));
+        Math.round(globalThis.winLeft + fourthListItem.left + ((fourthListItem.right - fourthListItem.left) / 2)),
+        Math.round(globalThis.winTop + fourthListItem.bottom),
+        Math.round(globalThis.winLeft + thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
+        Math.round(globalThis.winTop + thirdListItem.bottom));
 
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
@@ -160,10 +160,10 @@ export default function list_SpaceChangeTest() {
 
       let driver = Driver.create();
       await driver.swipe(
-        Math.round(fourthListItem.left + ((fourthListItem.right - fourthListItem.left) / 2)),
-        Math.round(fourthListItem.bottom - 10),
-        Math.round(thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
-        Math.round(thirdListItem.bottom));
+        Math.round(globalThis.winLeft + fourthListItem.left + ((fourthListItem.right - fourthListItem.left) / 2)),
+        Math.round(globalThis.winTop + fourthListItem.bottom - 10),
+        Math.round(globalThis.winLeft + thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
+        Math.round(globalThis.winTop + thirdListItem.bottom));
 
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
@@ -215,10 +215,10 @@ export default function list_SpaceChangeTest() {
       expect(Math.round(fourthListItem.bottom - listContainer.bottom)).assertEqual(Math.round(vp2px(60)));
       let driver = Driver.create();
       await driver.swipe(
-        Math.round(thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
-        Math.round(thirdListItem.bottom),
-        Math.round(secondListItem.left + ((secondListItem.right - secondListItem.left) / 2)),
-        Math.round(secondListItem.bottom));
+        Math.round(globalThis.winLeft + thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
+        Math.round(globalThis.winTop + thirdListItem.bottom),
+        Math.round(globalThis.winLeft + secondListItem.left + ((secondListItem.right - secondListItem.left) / 2)),
+        Math.round(globalThis.winTop + secondListItem.bottom));
       await CommonFunc.sleep(1000);
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
