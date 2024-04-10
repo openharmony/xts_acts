@@ -18,12 +18,10 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import commonEvent from '@ohos.commonEvent';
 
-const flag = '10000'
-const onDestroyEvent = `${flag}-onDestroyEvent`
-
-const onForegroundEvent_feature = '10000-onForegroundEvent_feature'
-
-let lifeCircle: Array<string> = new Array()
+const flag = '10000';
+const onDestroyEvent = `${flag}-onDestroyEvent`;
+const onForegroundEvent_feature = '10000-onForegroundEvent_feature';
+let lifeCircle: Array<string> = new Array();
 
 function publishEvent(event: string) {
   let commonEventPublishData = {
@@ -40,25 +38,25 @@ function publishEvent(event: string) {
 export default class MainAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', flag + '-Ability onCreate');
-    lifeCircle[0] = 'onCreate->'
+    lifeCircle[0] = 'onCreate->';
   }
 
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', flag + '-Ability onDestroy');
-    publishEvent(onDestroyEvent)
+    publishEvent(onDestroyEvent);
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    lifeCircle[1] = 'onWindowStageCreate->'
+    lifeCircle[1] = 'onWindowStageCreate->';
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
+    })
   }
 
   onWindowStageDestroy() {
@@ -69,8 +67,8 @@ export default class MainAbility extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', flag + '-Ability onForeground');
-    lifeCircle[2] = 'onForeground'
-    publishEvent(onForegroundEvent_feature)
+    lifeCircle[2] = 'onForeground';
+    publishEvent(onForegroundEvent_feature);
   }
 
   onBackground() {
