@@ -31,7 +31,7 @@ let isSim1Active: Boolean = false;
 let hasCard0: Boolean = false;
 let hasCard1: Boolean = false;
 
-const ExpectTrue: (n: boolean) => void = (n: boolean) => {
+const ExpectTrue = (n: boolean) => {
   try {
     expect(n).assertTrue();
   } catch (err) {
@@ -39,7 +39,7 @@ const ExpectTrue: (n: boolean) => void = (n: boolean) => {
   }
 }
 
-const ExpectFail: () => void = () => {
+const ExpectFail = () => {
   try {
     expect().assertFail();
   } catch (err) {
@@ -118,41 +118,6 @@ export default function telephonyRadioPublicTest() {
       sim.hasSimCard(SLOT_0, (err: BusinessError, data: boolean) => {
         if (data === true) {
           radio.getRadioTech(SLOT_0, (err: BusinessError, data: radio.NetworkRadioTech) => {
-            if (err) {
-              console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end`);
-              done();
-            } else {
-              console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end`);
-              done();
-            }
-          });
-        } else {
-          console.info(`${caseName}: No SIM card`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /*
-     * @tc.number: SUB_Telephony_Radio_GetRadioTech_0200
-     * @tc.name  : testTelephonyRadioGetRadioTech0200
-     * @tc.desc  : Obtain the wireless access technologies for the CS and PS domains currently accessed. Using callback for asynchronous callback
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 3
-     */
-    it('testTelephonyRadioGetRadioTech0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetRadioTech0200';
-      console.info(`${caseName} test start`);
-      sim.hasSimCard(SLOT_1, (err: BusinessError, data: boolean) => {
-        if (data === true) {
-          radio.getRadioTech(SLOT_1, (err: BusinessError, data: radio.NetworkRadioTech) => {
             if (err) {
               console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
               ExpectFail();
@@ -295,40 +260,6 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_GetRadioTech_0800
-     * @tc.name  : testTelephonyRadioGetRadioTech0800
-     * @tc.desc  : Obtain the wireless access technologies for the CS and PS domains currently accessed. Use Promise asynchronous callback.
-     * @tc.size  : SmallTest
-     * @tc.type  : Function
-     * @tc.level : Level 3
-     */
-    it('testTelephonyRadioGetRadioTech0800', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetRadioTech0800';
-      console.info(`${caseName} test start`);
-      sim.hasSimCard(SLOT_1, (err: BusinessError, data: boolean) => {
-        if (data === true) {
-          try {
-            let data = radio.getRadioTech(SLOT_1);
-            console.info(`${caseName} success, Promise: data->${JSON.stringify(data)}`);
-            ExpectTrue(true);
-            console.info(`${caseName} test end`);
-            done();
-          } catch (err) {
-            console.info(`${caseName} failed, Promise: err->${JSON.stringify(err)}`);
-            ExpectFail();
-            console.info(`${caseName} test end`);
-            done();
-          }
-        } else {
-          console.info(`${caseName}: No SIM card`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_GetRadioTech_0900
      * @tc.name  : testTelephonyRadioGetRadioTech0900
      * @tc.desc  : Obtain the wireless access technologies for the CS and PS domains currently accessed. Use Promise asynchronous callback.
@@ -406,7 +337,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0100
      * @tc.name  : testTelephonyRadioGetNetworkState0100
      * @tc.desc  : Get the current network status; callback
-     * @tc.size  : MediumTest
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level 3
      */
@@ -460,7 +391,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0200
      * @tc.name  : testTelephonyRadioGetNetworkState0200
      * @tc.desc  : Parameter 0 is used to obtain the network status; callback
-     * @tc.size  : MediumTest
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level 3
      */
@@ -510,63 +441,10 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_GetNetworkState_0300
-     * @tc.name  : testTelephonyRadioGetNetworkState0300
-     * @tc.desc  : Parameter 1 is used to obtain the network status; callback
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 3
-     */
-    it('testTelephonyRadioGetNetworkState0300', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetNetworkState0300';
-      console.info(`${caseName} test start`);
-      try {
-        sim.isSimActive(SLOT_1).then((data: boolean) => {
-          console.info(`${caseName} isSimActive success, promise: data->${JSON.stringify(data)}`);
-          if (data) {
-            radio.getNetworkState(SLOT_1, (err: BusinessError, data: radio.NetworkState) => {
-              if (err) {
-                console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-                ExpectTrue(false);
-                console.info(`${caseName} test end`);
-                done();
-              } else {
-                console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-                ExpectTrue(typeof data.longOperatorName === 'string'
-                  && typeof data.shortOperatorName === 'string'
-                  && typeof data.plmnNumeric === 'string'
-                  && typeof data.isRoaming === 'boolean'
-                  && typeof data.isCaActive === 'boolean'
-                  && typeof data.isEmergency === 'boolean');
-                console.info(`${caseName} test end`);
-                done();
-              }
-            });
-          } else {
-            ExpectTrue(data);
-            console.info(`${caseName} test end`);
-            done();
-            console.info(`${caseName} isSimCard unactivated`);
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} isSimActive failed, promise: err->${JSON.stringify(err)}`);
-          ExpectTrue(false);
-          console.info(`${caseName} test end`);
-          done();
-        });
-      } catch {
-        console.info(`${caseName} failed`);
-        ExpectTrue(false);
-        console.info(`${caseName} test end`);
-        done();
-      }
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0400
      * @tc.name  : testTelephonyRadioGetNetworkState0400
      * @tc.desc  : Parameter -1 is used to obtain the network status; callback
-     * @tc.size  : MediumTest
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level 2
      */
@@ -600,7 +478,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0500
      * @tc.name  : testTelephonyRadioGetNetworkState0500
      * @tc.desc  : Parameter null is used to obtain the network status; callback
-     * @tc.size  : MediumTest
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level 2
      */
@@ -633,7 +511,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0600
      * @tc.name  : testTelephonyRadioGetNetworkState0600
      * @tc.desc  : Parameter 0 is used to obtain the network status; promise
-     * @tc.size  : MediumTest
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level 3
      */
@@ -681,61 +559,10 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_GetNetworkState_0700
-     * @tc.name  : testTelephonyRadioGetNetworkState0700
-     * @tc.desc  : Parameter 1 is used to obtain the network status; promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 3
-     */
-    it('testTelephonyRadioGetNetworkState0700', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetNetworkState0700';
-      console.info(`${caseName} test start`);
-      try {
-        sim.isSimActive(SLOT_1).then((data: boolean) => {
-          console.info(`${caseName} isSimActive success, promise: data->${JSON.stringify(data)}`);
-          if (data) {
-            radio.getNetworkState(SLOT_1).then((data: radio.NetworkState) => {
-              console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-              ExpectTrue(typeof data.longOperatorName === 'string'
-                && typeof data.shortOperatorName === 'string'
-                && typeof data.plmnNumeric === 'string'
-                && typeof data.isRoaming === 'boolean'
-                && typeof data.isCaActive === 'boolean'
-                && typeof data.isEmergency === 'boolean');
-              console.info(`${caseName} test end`);
-              done();
-            }).catch((err: BusinessError) => {
-              console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-              ExpectTrue(false);
-              console.info(`${caseName} test end`);
-              done();
-            });
-          } else {
-            console.info(`${caseName} sim unactivated`);
-            ExpectTrue(false);
-            console.info(`${caseName} test end`);
-            done();
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} isSimActive failed, promise: err->${JSON.stringify(err)}`);
-          ExpectTrue(false);
-          console.info(`${caseName} test end`);
-          done();
-        });
-      } catch {
-        console.info(`${caseName} failed`);
-        ExpectTrue(false);
-        console.info(`${caseName} test end`);
-        done();
-      }
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0800
      * @tc.name  : testTelephonyRadioGetNetworkState0800
      * @tc.desc  : Parameter -1 is used to obtain the network status; promise
-     * @tc.size  : MediumTest
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level 2
      */
@@ -766,7 +593,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0900
      * @tc.name  : testTelephonyRadioGetNetworkState0900
      * @tc.desc  : Parameter null is used to obtain the network status; promise
-     * @tc.size  : MediumTest
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level 2
      */
@@ -802,7 +629,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_1000
      * @tc.name  : testTelephonyRadioGetNetworkState1000
      * @tc.desc  : Get network status without passing parameters; promise
-     * @tc.size  : MediumTest
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level 3
      */
@@ -867,40 +694,6 @@ export default function telephonyRadioPublicTest() {
       }
       else {
         radio.getNetworkSelectionMode(SLOT_0, (err: BusinessError, data: radio.NetworkSelectionMode) => {
-          if (err) {
-            console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
-            ExpectFail();
-            console.info(`${caseName} test end`);
-            done();
-          }
-          else {
-            console.info(`${caseName} success, data->${JSON.stringify(data)}`);
-            ExpectTrue(data >= 0);
-            console.info(`${caseName} test end`);
-            done();
-          }
-        });
-      }
-    });
-
-    /*
-     * @tc.number: SUB_Telephony_Radio_GetNetworkSelectionMode_Async_0300
-     * @tc.name  : testTelephonyRadioGetNetworkSelectionModeAsync0300
-     * @tc.desc  : slotId parameter input is 1,isSim1Active is true
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 1
-     */
-    it('testTelephonyRadioGetNetworkSelectionModeAsync0300', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetNetworkSelectionModeAsync0300';
-      console.info(`${caseName} test start`);
-      if (!isSim1Active) {
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      else {
-        radio.getNetworkSelectionMode(SLOT_1, (err: BusinessError, data: radio.NetworkSelectionMode) => {
           if (err) {
             console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
             ExpectFail();
@@ -1038,37 +831,6 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_GetNetworkSelectionMode_Promise_0300
-     * @tc.name  : testTelephonyRadioGetNetworkSelectionModePromise0300
-     * @tc.desc  : slotId parameter input is 1,isSim1Active is true
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 1
-     */
-    it('testTelephonyRadioGetNetworkSelectionModePromise0300', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetNetworkSelectionModePromise0300';
-      console.info(`${caseName} test start`);
-      if (!isSim1Active) {
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      else {
-        radio.getNetworkSelectionMode(SLOT_1).then((data: radio.NetworkSelectionMode) => {
-          console.info(`${caseName} success, data->${JSON.stringify(data)}`);
-          ExpectTrue(data >= 0);
-          console.info(`${caseName} test end`);
-          done();
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        });
-      }
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_GetNetworkSelectionMode_Promise_0500
      * @tc.name  : testTelephonyRadioGetNetworkSelectionModePromise0500
      * @tc.desc  : slotId parameter input is -1
@@ -1148,7 +910,6 @@ export default function telephonyRadioPublicTest() {
       }
     });
 
-
     /*
      * @tc.number: SUB_Telephony_Radio_GetISOCountryCodeForNetwork_Async_0100
      * @tc.name  : testTelephonyRadioGetISOCountryCodeForNetworkAsync0100
@@ -1167,40 +928,6 @@ export default function telephonyRadioPublicTest() {
       }
       else {
         radio.getISOCountryCodeForNetwork(SLOT_0, (err: BusinessError, data: string) => {
-          if (err) {
-            console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
-            ExpectFail();
-            console.info(`${caseName} test end`);
-            done();
-          }
-          else {
-            console.info(`${caseName} success, data->${JSON.stringify(data)}`);
-            ExpectTrue(typeof data === 'string');
-            console.info(`${caseName} test end`);
-            done();
-          }
-        });
-      }
-    });
-
-    /*
-     * @tc.number: SUB_Telephony_Radio_GetISOCountryCodeForNetwork_Async_0300
-     * @tc.name  : testTelephonyRadioGetISOCountryCodeForNetworkAsync0300
-     * @tc.desc  : slotId parameter input is 1,isSim1Active is true
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 1
-     */
-    it('testTelephonyRadioGetISOCountryCodeForNetworkAsync0300', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetISOCountryCodeForNetworkAsync0300';
-      console.info(`${caseName} test start`);
-      if (!isSim1Active) {
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      else {
-        radio.getISOCountryCodeForNetwork(SLOT_1, (err: BusinessError, data: string) => {
           if (err) {
             console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
             ExpectFail();
@@ -1338,37 +1065,6 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_GetISOCountryCodeForNetwork_Promise_0300
-     * @tc.name  : testTelephonyRadioGetISOCountryCodeForNetworkPromise0300
-     * @tc.desc  : slotId parameter input is 1,isSim1Active is true
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 1
-     */
-    it('testTelephonyRadioGetISOCountryCodeForNetworkPromise0300', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetISOCountryCodeForNetworkPromise0300';
-      console.info(`${caseName} test start`);
-      if (!isSim1Active) {
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      else {
-        radio.getISOCountryCodeForNetwork(SLOT_1).then((data: string) => {
-          console.info(`${caseName} success, data->${JSON.stringify(data)}`);
-          ExpectTrue(typeof data === 'string');
-          console.info(`${caseName} test end`);
-          done();
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        });
-      }
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_GetISOCountryCodeForNetwork_Promise_0500
      * @tc.name  : testTelephonyRadioGetISOCountryCodeForNetworkPromise0500
      * @tc.desc  : slotId parameter input is 0
@@ -1482,39 +1178,6 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_GetISOCountryCodeForNetwork_Sync_0300
-     * @tc.name  : testTelephonyRadioGetISOCountryCodeForNetworkSync0300
-     * @tc.desc  : slotId parameter input is 1,isSim1Active is true
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 1
-     */
-    it('testTelephonyRadioGetISOCountryCodeForNetworkSync0300', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetISOCountryCodeForNetworkSync0300';
-      console.info(`${caseName} test start`);
-      if (!isSim1Active) {
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      else {
-        try {
-          let data = radio.getISOCountryCodeForNetworkSync(SLOT_1);
-          console.info(`${caseName} success, data->${JSON.stringify(data)}`);
-          ExpectTrue(typeof data === 'string');
-          console.info(`${caseName} test end`);
-          done();
-        }
-        catch (err) {
-          console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      }
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_GetPrimarySlotId_0100
      * @tc.name  : testTelephonyRadioGetPrimarySlotId0100
      * @tc.desc  : Obtain the index number of the slot where the main card is located. Use callback for asynchronous callback.
@@ -1542,42 +1205,6 @@ export default function telephonyRadioPublicTest() {
             } else {
               console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
               ExpectTrue(data === SLOT_0);
-              console.info(`${caseName} test end`);
-              done();
-            }
-          });
-        }
-      });
-    });
-
-    /*
-     * @tc.number: SUB_Telephony_Radio_GetPrimarySlotId_0200
-     * @tc.name  : testTelephonyRadioGetPrimarySlotId0200
-     * @tc.desc  : Obtain the index number of the slot where the main card is located. Use callback for asynchronous callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 3
-     */
-    it('testTelephonyRadioGetPrimarySlotId0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetPrimarySlotId0200';
-      console.info(`${caseName} test start`);
-      radio.setPrimarySlotId(SLOT_1, (err: BusinessError) => {
-        if (err) {
-          console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }else {
-          console.info(`${caseName} success.`);
-          radio.getPrimarySlotId((err: BusinessError, data: number) => {
-            if (err) {
-              console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end`);
-              done();
-            } else {
-              console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-              ExpectTrue(true);
               console.info(`${caseName} test end`);
               done();
             }
@@ -1646,39 +1273,6 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_GetPrimarySlotId_0500
-     * @tc.name  : testTelephonyRadioGetPrimarySlotId0500
-     * @tc.desc  : Obtain the index number of the slot where the main card is located. Use Promise asynchronous callback.
-     * @tc.size  : SmallTest
-     * @tc.type  : Function
-     * @tc.level : Level 3
-     */
-    it('testTelephonyRadioGetPrimarySlotId0500', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetPrimarySlotId0500';
-      console.info(`${caseName} test start`);
-      radio.setPrimarySlotId(SLOT_1, (err: BusinessError) => {
-        if (err) {
-          console.info(`setPrimarySlotId failed, callback: err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }else {
-          console.info(`setPrimarySlotId success.`);
-          radio.getPrimarySlotId().then((data: number) => {
-            console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-            ExpectTrue(true);
-            done()
-          }).catch((err: BusinessError) => {
-            console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-            ExpectFail();
-            console.info(`${caseName} test end`);
-            done();
-          });
-        }
-      });
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_GetPrimarySlotId_0600
      * @tc.name  : testTelephonyRadioGetPrimarySlotId0600
      * @tc.desc  : Obtain the index number of the slot where the main card is located. Use Promise asynchronous callback.
@@ -1700,6 +1294,7 @@ export default function telephonyRadioPublicTest() {
         done();
       });
     });
+
     /*
        * @tc.number: SUB_Telephony_Radio_GetSignalInformation_0100
        * @tc.name  : testTelephonyRadioGetSignalInformation0100
@@ -1714,41 +1309,6 @@ export default function telephonyRadioPublicTest() {
       sim.hasSimCard(SLOT_0, (err: BusinessError, data: boolean) => {
         if (data === true) {
           radio.getSignalInformation(SLOT_0, (err: BusinessError, data: Array<radio.SignalInformation>) => {
-            if (err) {
-              console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end`);
-              done();
-            } else {
-              console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end`);
-              done();
-            }
-          });
-        } else {
-          console.info(`${caseName}: No SIM card`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /*
-     * @tc.number: SUB_Telephony_Radio_GetSignalInformation_0200
-     * @tc.name  : testTelephonyRadioGetSignalInformation0200
-     * @tc.desc  : Obtain a list of registered network signal strength information corresponding to the specified SIM card slot. Use callback for asynchronous callback.
-     * @tc.size  : SmallTest
-     * @tc.type  : Function
-     * @tc.level : Level 3
-     */
-    it('testTelephonyRadioGetSignalInformation0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetSignalInformation0200';
-      console.info(`${caseName} test start`);
-      sim.hasSimCard(SLOT_1, (err: BusinessError, data: boolean) => {
-        if (data === true) {
-          radio.getSignalInformation(SLOT_1, (err: BusinessError, data: Array<radio.SignalInformation>) => {
             if (err) {
               console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
               ExpectFail();
@@ -1890,39 +1450,6 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_GetSignalInformation_0800
-     * @tc.name  : testTelephonyRadioGetSignalInformation0800
-     * @tc.desc  : Obtain a list of registered network signal strength information corresponding to the specified SIM card slot. Use Promise for asynchronous callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 3
-     */
-    it('testTelephonyRadioGetSignalInformation0800', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetSignalInformation0800';
-      console.info(`${caseName} test start`);
-      sim.hasSimCard(SLOT_1, (err: BusinessError, data: boolean) => {
-        if (data === true) {
-          radio.getSignalInformation(SLOT_1).then((data: Array<radio.SignalInformation>) => {
-            console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-            ExpectTrue(true);
-            console.info(`${caseName} test end`);
-            done();
-          }).catch((err: BusinessError) => {
-            console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-            ExpectFail();
-            console.info(`${caseName} test end`);
-            done();
-          });
-        } else {
-          console.info(`${caseName}: No SIM card`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_GetSignalInformation_0900
      * @tc.name  : testTelephonyRadioGetSignalInformation0900
      * @tc.desc  : Obtain a list of registered network signal strength information corresponding to the specified SIM card slot. Use Promise for asynchronous callback.
@@ -2000,74 +1527,6 @@ export default function telephonyRadioPublicTest() {
         console.info(`${caseName} test end`);
         done();
       }
-    });
-
-    /*
-     * @tc.number: SUB_Telephony_Radio_GetSignalInformationSync_0100
-     * @tc.name  : testTelephonyRadioGetSignalInformationSync0100
-     * @tc.desc  : Obtain a list of registered network signal strength information corresponding to the specified SIM card slot.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 1
-     */
-    it('testTelephonyRadioGetSignalInformationSync0100', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetSignalInformationSync0100';
-      console.info(`${caseName} test start`);
-      sim.hasSimCard(SLOT_0, (err: BusinessError, data: boolean) => {
-        if (data === true) {
-          try {
-            let signalInfo: Array<radio.SignalInformation>= radio.getSignalInformationSync(SLOT_0);
-            console.info(`${caseName} information size is:` + signalInfo.length);
-            ExpectTrue(signalInfo.length > 0);
-            console.info(`${caseName} test end`);
-            done();
-          } catch (err) {
-            console.info(`${caseName} err: + ${err}`);
-            ExpectFail();
-            console.info(`${caseName} test end`);
-            done();
-          }
-        } else {
-          console.info(`${caseName}: No SIM card`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /*
-     * @tc.number: SUB_Telephony_Radio_GetSignalInformationSync_0200
-     * @tc.name  : testTelephonyRadioGetSignalInformationSync0200
-     * @tc.desc  : Obtain a list of registered network signal strength information corresponding to the specified SIM card slot.
-     * @tc.size  : SmallTest
-     * @tc.type  : Function
-     * @tc.level : Level 1
-     */
-    it('testTelephonyRadioGetSignalInformationSync0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioGetSignalInformationSync0200';
-      console.info(`${caseName} test start`);
-      sim.hasSimCard(SLOT_1, (err: BusinessError, data: boolean) => {
-        if (data === true) {
-          let signalInfo = radio.getSignalInformationSync(SLOT_1);
-          try {
-            console.info(`${caseName} information size is:` + signalInfo.length);
-            ExpectTrue(signalInfo.length > 0);
-            console.info(`${caseName} test end`);
-            done();
-          } catch (err) {
-            console.info(`${caseName} err: + ${err}`);
-            ExpectFail();
-            console.info(`${caseName} test end`);
-            done();
-          }
-        } else {
-          console.info(`${caseName}: No SIM card`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
     });
 
     /*
@@ -2282,42 +1741,6 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_IsRadioOn_0200
-     * @tc.name  : testTelephonyRadioIsRadioOn0200
-     * @tc.desc  : Check if the main card's Radio is turned on. Use callback for asynchronous callback.
-     * @tc.size  : SmallTest
-     * @tc.type  : Function
-     * @tc.level : Level 1
-     */
-    it('testTelephonyRadioIsRadioOn0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioIsRadioOn0200';
-      console.info(`${caseName} test start`);
-      radio.setPrimarySlotId(SLOT_1, (err: BusinessError) => {
-        if (err) {
-          console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }else {
-          console.info(`${caseName} success.`);
-          radio.isRadioOn((err: BusinessError, data: boolean) => {
-            if (err) {
-              console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end`);
-              done();
-            } else {
-              console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end`);
-              done();
-            }
-          });
-        }
-      });
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_IsRadioOn_0300
      * @tc.name  : testTelephonyRadioIsRadioOn0300
      * @tc.desc  : Check if the main card's Radio is turned on. Use callback for asynchronous callback.
@@ -2329,32 +1752,6 @@ export default function telephonyRadioPublicTest() {
       let caseName: string = 'testTelephonyRadioIsRadioOn0300';
       console.info(`${caseName} test start`);
       radio.isRadioOn(SLOT_0, (err: BusinessError, data: boolean) => {
-        if (err) {
-          console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        } else {
-          console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-          ExpectTrue(true);
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /*
-     * @tc.number: SUB_Telephony_Radio_IsRadioOn_0400
-     * @tc.name  : testTelephonyRadioIsRadioOn0400
-     * @tc.desc  : Check if the main card's Radio is turned on. Use callback for asynchronous callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 1
-     */
-    it('testTelephonyRadioIsRadioOn0400', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioIsRadioOn0400';
-      console.info(`${caseName} test start`);
-      radio.isRadioOn(SLOT_1, (err: BusinessError, data: boolean) => {
         if (err) {
           console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
           ExpectFail();
@@ -2487,38 +1884,6 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_IsRadioOn_1000
-     * @tc.name  : testTelephonyRadioIsRadioOn1000
-     * @tc.desc  : Check if the Radio is turned on. Use Promise asynchronous callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 1
-     */
-    it('testTelephonyRadioIsRadioOn1000', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioIsRadioOn1000';
-      console.info(`${caseName} test start`);
-      let isSimActive = sim.isSimActiveSync(SLOT_1);
-      if (isSimActive === true) {
-        radio.isRadioOn(SLOT_1).then((data: boolean) => {
-          console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-          ExpectTrue(true);
-          console.info(`${caseName} test end`);
-          done();
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        });
-      } else {
-        console.info(`${caseName} SIM not activated`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_IsRadioOn_1100
      * @tc.name  : testTelephonyRadioIsRadioOn1100
      * @tc.desc  : Check if the Radio is turned on. Use Promise asynchronous callback.
@@ -2570,7 +1935,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetOperatorName_1000
      * @tc.name  : testTelephonyRadioGetOperatorName1000
      * @tc.desc  : Pass the parameter null to get the carrier name; callback
-     * @tc.size  : MediumTest
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level 2
      */
@@ -2604,7 +1969,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetOperatorName_2000
      * @tc.name  : testTelephonyRadioGetOperatorName2000
      * @tc.desc  : Pass the parameter null to get the carrier name; promise
-     * @tc.size  : MediumTest
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level 2
      */

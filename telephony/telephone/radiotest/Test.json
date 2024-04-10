@@ -12,7 +12,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsRadioWithCardTest.hap"
+                "ActsTelephonyRadioWithCardTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
