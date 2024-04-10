@@ -16,5 +16,6 @@ group("telephone") {
   deps = [
     "contacttest:ActsTelephonyContactTest",
     "noCard:noCard",
+    "radiotest:ActsTelephonyRadioWithCardTest",
   ]
 }
