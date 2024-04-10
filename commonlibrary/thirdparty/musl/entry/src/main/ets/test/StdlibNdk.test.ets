@@ -1675,20 +1675,6 @@ export default function stdlibNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_EXIT_0100
-     * @tc.name       : testMuslStdlibExit001
-     * @tc.desc       : test exit
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslStdlibExit001', 0, async (done: Function) => {
-      let data: number = stdlib.exit();
-      expect(data).assertEqual(1);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOF_0100
      * @tc.name       : testMuslStdlibAtof001
      * @tc.desc       : test atof

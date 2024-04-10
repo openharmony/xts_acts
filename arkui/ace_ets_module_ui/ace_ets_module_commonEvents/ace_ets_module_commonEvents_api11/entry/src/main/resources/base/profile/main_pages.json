@@ -1,0 +1,21 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/onTouch/touch",
+        "MainAbility/pages/onAreaChange/areaChange",
+        "MainAbility/pages/onAppear/appear",
+        "MainAbility/pages/keyboardShortcut/ShortcutKey",
+        "MainAbility/pages/onAppear/aboutToAppear",
+        "MainAbility/pages/onChildTouchTest/parentX",
+        "MainAbility/pages/onGestureJudgeBegin/onGesture",
+        "MainAbility/pages/DragController/createDragAction",
+        "MainAbility/pages/DragController/setForegroundColor",
+        "MainAbility/pages/DragController/touchPoint_Auto",
+        "MainAbility/pages/DragController/touchPoint_Disable",
+        "MainAbility/pages/DragController/DragAction",
+        "MainAbility/pages/DragController/dragPreview",
+        "MainAbility/pages/DragController/dragPreviewOptions",
+        "MainAbility/pages/freeze/freezeInactive",
+        "MainAbility/pages/TapGesture/GestureTag"
+    ]
+}

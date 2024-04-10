@@ -25,8 +25,31 @@ const widgetParamDefault = {
   title: '使用密码验证',
 };
 
+let stepIndex = 1;
+
 export default function signNormalNotAccessBiometricExecute() {
   describe('signNormalNotAccessBiometricExecute', function () {
+    function userAuthPromise(...args){
+      return new Promise((resolve, reject) => {
+        try {
+          const userAuthInstance = userAuth.getUserAuthInstance(args[0], args[1]);
+          userAuthInstance.on('result', {
+            onResult: (onResult) => {
+              console.info(`${args[2]} onResult ${onResult}`);
+              console.info('onResult.token is ' + onResult.token);
+              console.info('onResult.authType is ' + onResult.authType);
+              expect(onResult.result).assertEqual(args[3]);
+              resolve();
+            }
+          });
+          userAuthInstance.start();
+        } catch (e) {
+          console.info(`${args[2]} fail ${e.code}`);
+          expect(null).assertFail();
+          reject();
+        }
+      })
+    }
     /*
         * @tc.number    : Security_IAM_UserAuthInstance_Func_0042
         * @tc.name      : execute_userAuthInstance_on_off_result
@@ -86,6 +109,264 @@ export default function signNormalNotAccessBiometricExecute() {
       } catch (e) {
         console.info("Security_IAM_UserAuthInstance_Func_0090 fail " + e.code);
         expect(e.code).assertEqual(userAuth.UserAuthResultCode.GENERAL_ERROR);
+      }
+      done();
+    });
+
+    /*
+        * @tc.number    : SUB_Security_IAM_authWidget_API_0130
+        * @tc.name      : reuseUnlockResultDuration Parameter transmission test.
+        * @tc.desc      : reuseUnlockResultDuration Parameter transmission test.
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level.LEVEL3
+    */
+    it('SUB_Security_IAM_authWidget_API_0130', Level.LEVEL2, async function (done) {
+      console.info("SUB_Security_IAM_authWidget_API_0130 start");
+      let reuseDuration1 = [-1, 300001, 0];
+      let reuseDuration2 = [1, 5, 300000];
+      const widgetParam = {
+        title: '请输入密码',
+      };
+      for (let idx0 = 0; idx0 <reuseDuration1.length; idx0++){
+        let reuseUnlockResult = {
+          reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
+          reuseDuration: reuseDuration1[idx0],
+        }
+        const authParam = {
+          challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+          authType: [userAuth.UserAuthType.PIN],
+          authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+          reuseUnlockResult: reuseUnlockResult,
+        };
+
+        try {
+          let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+          userAuthInstance.on('result', {
+            onResult (result) {
+              console.log('userAuthInstance callback result = ' + JSON.stringify(result));
+            }
+          });
+          expect(null).assertFail();
+        } catch (error) {
+          console.log('SUB_Security_IAM_authWidget_API_0130 catch error: ' + JSON.stringify(error));
+          console.log('SUB_Security_IAM_authWidget_API_0130 error.code: ' + error.code);
+          expect(error.code).assertEqual(401);
+        }
+      }
+
+      
+      for (let idx0 = 0; idx0 <reuseDuration2.length; idx0++){
+        let reuseUnlockResult1 = {
+          reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
+          reuseDuration: reuseDuration2[idx0],
+        }
+        const authParam1 = {
+          challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+          authType: [userAuth.UserAuthType.PIN],
+          authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+          reuseUnlockResult: reuseUnlockResult1,
+        };
+  
+        await userAuthPromise(authParam1, widgetParam, 
+          'SUB_Security_IAM_authWidget_API_0130 step' + stepIndex, 12500010);
+          stepIndex++;
+      }
+      done();
+    });
+
+    /*
+        * @tc.number    : SUB_Security_IAM_authWidget_API_0150
+        * @tc.name      : Excess parameter transfer test.
+        * @tc.desc      : Excess parameter transfer test.
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level.LEVEL3
+    */
+    it('SUB_Security_IAM_authWidget_API_0150', Level.LEVEL2, async function (done) {
+      console.info("SUB_Security_IAM_authWidget_API_0150 start");
+      let reuseUnlockResult = {
+        reuseMode: userAuth.ReuseMode.AUTH_TYPE_IRRELEVANT,
+        reuseDuration: 120000,
+        other: 5555,
+      }
+      const authParam = {
+        challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+        authType: [userAuth.UserAuthType.PIN],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+        reuseUnlockResult: reuseUnlockResult,
+      };
+      const widgetParam = {
+        title: '请输入密码',
+      };
+      await userAuthPromise(authParam, widgetParam, 
+        'SUB_Security_IAM_authWidget_API_0150 step' + stepIndex, 12500010);
+      done();
+    });
+
+    /*
+        * @tc.number    : SUB_Security_IAM_authWidget_API_0100
+        * @tc.name      : ReuseUnlockResultMode does not transmit.
+        * @tc.desc      : ReuseUnlockResultMode does not transmit.
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level.LEVEL3
+    */
+    it('SUB_Security_IAM_authWidget_API_0100', Level.LEVEL2, async function (done) {
+      console.info("SUB_Security_IAM_authWidget_API_0100 start");
+      let reuseUnlockResult = {
+        reuseMode: null,
+        reuseDuration: 120000,
+      }
+      const authParam = {
+        challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+        authType: [userAuth.UserAuthType.PIN],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+        reuseUnlockResult: reuseUnlockResult,
+      };
+      const widgetParam = {
+        title: '请输入密码',
+      };
+      try {
+        let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+        userAuthInstance.on('result', {
+          onResult (result) {
+            console.log('userAuthInstance callback result = ' + JSON.stringify(result));
+          }
+        });
+        expect(null).assertFail();
+      } catch (error) {
+        console.log('SUB_Security_IAM_authWidget_API_0100 catch error: ' + JSON.stringify(error));
+        console.log('SUB_Security_IAM_authWidget_API_0100 error.code: ' + error.code);
+        expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+
+    /*
+        * @tc.number    : SUB_Security_IAM_authWidget_API_0120
+        * @tc.name      : ReuseUnlockResultDuration: 120000. ReuseUnlockResultMode: 2.
+        * @tc.desc      : ReuseUnlockResultDuration: 120000. ReuseUnlockResultMode: 2.
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level.LEVEL3
+    */
+    it('SUB_Security_IAM_authWidget_API_0120', Level.LEVEL2, async function (done) {
+      console.info("SUB_Security_IAM_authWidget_API_0120 start");
+      let reuseUnlockResult = {
+        reuseMode: userAuth.ReuseMode.AUTH_TYPE_IRRELEVANT,
+        reuseDuration: 120000,
+      }
+      const authParam = {
+        challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+        authType: [userAuth.UserAuthType.PIN],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+        reuseUnlockResult: reuseUnlockResult,
+      };
+      const widgetParam = {
+        title: '请输入密码',
+      };
+      await userAuthPromise(authParam, widgetParam, 
+        'SUB_Security_IAM_authWidget_API_0150 step' + stepIndex, 12500010);
+      done();
+    });
+
+    /*
+        * @tc.number    : SUB_Security_IAM_authWidget_API_0140
+        * @tc.name      : reuseUnlockResultMode Parameter transmission test.
+        * @tc.desc      : reuseUnlockResultMode Parameter transmission test.
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level.LEVEL3
+    */
+    it('SUB_Security_IAM_authWidget_API_0140', Level.LEVEL2, async function (done) {
+      console.info("SUB_Security_IAM_authWidget_API_0140 start");
+      let reuseMode1 = [-1, 0, 3];
+      let reuseMode2 = [1, 2];
+      const widgetParam = {
+        title: '请输入密码',
+      };
+      for (let idx0 = 0; idx0 <reuseMode1.length; idx0++){
+        let reuseUnlockResult = {
+          reuseMode: reuseMode1[idx0],
+          reuseDuration: 120000,
+        }
+        const authParam = {
+          challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+          authType: [userAuth.UserAuthType.PIN],
+          authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+          reuseUnlockResult: reuseUnlockResult,
+        };
+  
+        try {
+          let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+          userAuthInstance.on('result', {
+            onResult (result) {
+              console.log('userAuthInstance callback result = ' + JSON.stringify(result));
+            }
+          });
+          expect(null).assertFail();
+        } catch (error) {
+          console.log('SUB_Security_IAM_authWidget_API_0140 catch error: ' + JSON.stringify(error));
+          console.log('SUB_Security_IAM_authWidget_API_0140 error.code: ' + error.code);
+          expect(error.code).assertEqual(401);
+        }
+      }
+
+      for (let idx0 = 0; idx0 <reuseMode2.length; idx0++){
+        let reuseUnlockResult1 = {
+          reuseMode: reuseMode2[idx0],
+          reuseDuration: 120000,
+        }
+        const authParam1 = {
+          challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+          authType: [userAuth.UserAuthType.PIN],
+          authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+          reuseUnlockResult: reuseUnlockResult1,
+        };
+  
+        await userAuthPromise(authParam1, widgetParam, 
+          'SUB_Security_IAM_authWidget_API_0150 step' + stepIndex, 12500010);
+        stepIndex++;
+      }
+      done();
+    });
+
+    /*
+        * @tc.number    : SUB_Security_IAM_authWidget_API_0110
+        * @tc.name      : reuseUnlockResultDuration does not transmit.
+        * @tc.desc      : reuseUnlockResultDuration does not transmit.
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level.LEVEL3
+    */
+    it('SUB_Security_IAM_authWidget_API_0110', Level.LEVEL2, async function (done) {
+      console.info("SUB_Security_IAM_authWidget_API_0110 start");
+      let reuseUnlockResult = {
+        reuseMode: userAuth.ReuseMode.AUTH_TYPE_IRRELEVANT,
+        reuseDuration: null,
+      }
+      const authParam = {
+        challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+        authType: [userAuth.UserAuthType.PIN],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+        reuseUnlockResult: reuseUnlockResult,
+      };
+      const widgetParam = {
+        title: '请输入密码',
+      };
+      try {
+        let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+        userAuthInstance.on('result', {
+          onResult (result) {
+            console.log('userAuthInstance callback result = ' + JSON.stringify(result));
+          }
+        });
+        expect(null).assertFail();
+      } catch (error) {
+        console.log('SUB_Security_IAM_authWidget_API_0110 catch error: ' + JSON.stringify(error));
+        console.log('SUB_Security_IAM_authWidget_API_0110 error.code: ' + error.code);
+        expect(error.code).assertEqual(401);
       }
       done();
     });

@@ -72,7 +72,7 @@ static napi_value Setlocale(napi_env env, napi_callback_info info)
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
-    valueFirst = setlocale(LC_ALL, "");
+    valueFirst = setlocale(LC_ALL, "C.UTF-8");
     napi_value result;
     napi_create_string_utf8(env, valueFirst, NAPI_AUTO_LENGTH, &result);
     return result;

@@ -16,5 +16,6 @@ group("noCard") {
   deps = [
     "data:ActsTelephonyDataNoCardTest",
     "observertest:ActsTelephonyObserverNoCardTest",
+    "simtest:ActsTelephonySimNoCardTest",
   ]
 }
