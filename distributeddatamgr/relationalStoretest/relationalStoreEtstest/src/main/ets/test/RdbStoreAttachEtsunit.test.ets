@@ -273,6 +273,7 @@ export default function rdbStoreAttachEtsunitTest() {
             }
             try {
                 await store.attach(context, STORE_CONFIG4, "attachDB");
+                expect().assertFail();
             } catch (e) {
                 console.log("catch err: failed, err: code=" + e.code + " message=" + e.message);
                 expect("401").assertEqual(e.code);
