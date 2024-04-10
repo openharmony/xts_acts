@@ -21,5 +21,6 @@ group("telephone") {
     "noPermission:noPermission",
     "observertest:ActsTelephonyObserverWithCardTest",
     "radiotest:ActsTelephonyRadioWithCardTest",
+    "smstest:ActsTelephonySmsWithCardTest",
   ]
 }
