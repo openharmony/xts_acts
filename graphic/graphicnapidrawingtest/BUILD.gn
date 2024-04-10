@@ -27,19 +27,19 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "NativeDrawingBitmapTest.cpp",
     "NativeDrawingBrushTest.cpp",
     "NativeDrawingCanvasTest.cpp",
+    "NativeDrawingColorSpaceTest.cpp",
     "NativeDrawingColorTest.cpp",
     "NativeDrawingMatrixTest.cpp",
     "NativeDrawingPathEffectTest.cpp",
     "NativeDrawingPathTest.cpp",
     "NativeDrawingPenTest.cpp",
+    "NativeDrawingRectTest.cpp",
+    "NativeDrawingRegionTest.cpp",
     "NativeFontTest.cpp",
     "NativeImageTest.cpp",
     "OH_Drawing_FontCollectionTest.cpp",
     "OH_Drawing_TypographyTest.cpp",
     "drawing_register_font_test.cpp",
-    "NativeDrawingColorSpaceTest.cpp",
-    "NativeDrawingRectTest.cpp",
-    "NativeDrawingRegionTest.cpp",
   ]
 
   cflags = [
