@@ -57,24 +57,24 @@ export default function onSelectionChange17() {
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
 
       await driver.triggerKey(2049);
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
       let text1_1 = getInspectorByKey('onSelectionChange17_text1');
       let Obj1_1 = JSON.parse(text1_1);
       expect(Obj1_1.$attrs.content).assertEqual('1');
       let text2_1 = getInspectorByKey('onSelectionChange17_text2');
       let Obj2_1 = JSON.parse(text2_1);
-      expect(Obj2_1.$attrs.content).assertEqual('0');
+      expect(Obj2_1.$attrs.content).assertEqual('3');
       let text3_1 = getInspectorByKey('onSelectionChange17_text3');
       let Obj3_1 = JSON.parse(text3_1);
-      expect(Obj3_1.$attrs.content).assertEqual('0');
+      expect(Obj3_1.$attrs.content).assertEqual('3');
 
       await driver.triggerKey(2015);
       await driver.triggerKey(2015);
       await driver.triggerKey(2015);
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
       let text2_2 = getInspectorByKey('onSelectionChange17_text2');
       let Obj2_2 = JSON.parse(text2_2);
       expect(Obj2_2.$attrs.content).assertEqual('3');

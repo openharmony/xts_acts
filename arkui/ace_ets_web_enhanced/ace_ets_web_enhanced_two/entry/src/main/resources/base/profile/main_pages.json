@@ -34,7 +34,8 @@
     "MainAbility/pages/WebDownloadEnumTest",
     "MainAbility/pages/WebSecureDnsModeEnumTest",
     "MainAbility/pages/WebViewControllerDownloadNetworkTest",
-    "MainAbility/pages/WebViewControllerDownloadFileTest"
+    "MainAbility/pages/WebViewControllerDownloadFileTest",
+    "MainAbility/pages/WebViewEnumAndFontLibraryTwo"
   ]
 }
 

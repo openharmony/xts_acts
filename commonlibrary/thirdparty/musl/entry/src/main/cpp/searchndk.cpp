@@ -184,7 +184,7 @@ static napi_value Hsearch(napi_env env, napi_callback_info info)
 
     for (i = PARAM_0; i < PARAM_24; i++) {
         e.key = data[i];
-        e.data = (void *)i;
+        e.data = (void *)&i;
         ep = hsearch(e, ENTER);
         if (ep == nullptr) {
             napi_create_int32(env, FAIL, &result);
@@ -219,7 +219,7 @@ static napi_value HsearchR(napi_env env, napi_callback_info info)
     for (i = PARAM_0; i < PARAM_3; i++) {
         ENTRY e, *ep;
         e.key = keys[i];
-        e.data = (void *)dataVal[i];
+        e.data = (void *)(&dataVal[i]);
         hsearch_r(e, ENTER, &ep, htab);
     }
     for (i = PARAM_0; i < PARAM_3; i++) {

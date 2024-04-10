@@ -14,7 +14,8 @@
 group("telephone") {
   testonly = true
   deps = [
-    "noCard:noCard",
     "smstest:ActsTelephonySmsWithCardTest",
+    "contacttest:ActsTelephonyContactTest",
+    "noCard:noCard",
   ]
 }

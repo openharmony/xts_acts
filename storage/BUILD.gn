@@ -20,6 +20,7 @@ group("storage") {
       "crossplatform/storagefsetstest:ActsCrossplatformFsTest",
       "storagedownloadcloudsyncjstest:storagedownloadcloudsync_js_test",
       "storageenvironmentjstest:storageenvironment_js_test",
+      "storageenvironmentndktest:storageenvironment_ndk_test",
       "storagefileioerrorjstest:storagefileioerror_js_test",
       "storagefileiojstest:storagefileio_js_test",
       "storagefileiov9jstest:storagefileiov9_js_test",

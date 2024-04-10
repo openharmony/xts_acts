@@ -41,7 +41,7 @@ constexpr uint32_t DEFAULT_WIDTH = 320;
 
 constexpr uint32_t DEFAULT_HEIGHT = 240;
 
-constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_YUVI420;
+constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
 
 static napi_value OHVideoDecoderCreateByMime(napi_env env, napi_callback_info info)
 {
@@ -180,7 +180,7 @@ static napi_value OHVideoDecoderConfigure(napi_env env, napi_callback_info info)
     format = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, DEFAULT_WIDTH);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV21);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, DEFAULT_PIXELFORMAT);
     videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     checkParam = OH_VideoDecoder_Configure(videoDec, format);
     if (checkParam == AV_ERR_OK) {

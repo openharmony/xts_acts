@@ -47,6 +47,7 @@ static napi_value SemGetvalue(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &first);
     sem_t semp = {PARAM_0};
     int ret = sem_getvalue(&semp, &first);
+    sem_destroy(&semp);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -76,10 +77,11 @@ static napi_value SemOpen(napi_env env, napi_callback_info info)
             ret = TWOHUNDRED;
         }
         sem_close(semSecond);
+        sem_destroy(semSecond);
     }
     sem_close(semFirst);
     sem_unlink(name);
-
+    sem_destroy(semFirst);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -103,6 +105,7 @@ static napi_value SemInit(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &first);
     sem_t bin_sem;
     int ret = sem_init(&bin_sem, PARAM_0, first);
+    sem_destroy(&bin_sem);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -154,6 +157,7 @@ static napi_value SemWait(napi_env env, napi_callback_info info)
     sem_t semp = {PARAM_0};
     sem_init(&semp, PARAM_0, first);
     int sem = sem_wait(&semp);
+    sem_destroy(&semp);
     napi_value result = nullptr;
     napi_create_double(env, sem, &result);
     return result;
@@ -169,6 +173,7 @@ static napi_value SemTrywait(napi_env env, napi_callback_info info)
     sem_t semp = {PARAM_0};
     sem_init(&semp, PARAM_0, first);
     int sem = sem_trywait(&semp);
+    sem_destroy(&semp);
     napi_value result = nullptr;
     napi_create_double(env, sem, &result);
     return result;
@@ -185,6 +190,7 @@ static napi_value SemTimedwait(napi_env env, napi_callback_info info)
     sem_init(&semp, PARAM_0, first);
     struct timespec spec = {PARAM_0};
     int sem = sem_timedwait(&semp, &spec);
+    sem_destroy(&semp);
     napi_value result = nullptr;
     napi_create_double(env, sem, &result);
     return result;
@@ -196,6 +202,7 @@ static napi_value SemClose(napi_env env, napi_callback_info info)
     sem_open(buf, PARAM_0);
     sem_unlink(buf);
     int semval = sem_close(sem);
+    sem_destroy(sem);
     napi_value result = nullptr;
     napi_create_int32(env, semval, &result);
     return result;
