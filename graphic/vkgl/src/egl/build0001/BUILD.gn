@@ -160,6 +160,7 @@ ohos_moduletest_suite("ActsEglTestSuite0001") {
     "../functional/Egl_reusable_syncTestCase.cpp",
     "../functional/Egl_robustnessTestCase.cpp",
     "../functional/Egl_sharingTestCase.cpp",
+    "../functional/Egl_sharingTestCase1.cpp",
     "../functional/Egl_surfaceless_contextTestCase.cpp",
     "../functional/Egl_swap_buffersTestCase.cpp",
     "../functional/Egl_swap_buffers_with_damageTestCase.cpp",
