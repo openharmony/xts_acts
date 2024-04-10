@@ -232,7 +232,7 @@ export default function verificationTest(){
           bundleName: 'ohos.acts.aafwk.test.stagesupplement',
           abilityName: 'MainAbility4'
         }
-        globalThis.abilityContext.startAbility(wantNum).then((data) => {
+        globalThis.abilityContext.startAbility(wantNum, {displayId: 0}).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));

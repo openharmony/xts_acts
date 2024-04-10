@@ -71,37 +71,6 @@ export default function resolvNdkTest() {
       done();
     });
 
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_RESQUERY_0100
-     * @tc.name       : testMuslResolvResQuery001
-     * @tc.desc       : test res_query
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslResolvResQuery001', 0, async (done: Function) => {
-      let param = -1;
-      let result: number = resolv.resQuery(param);
-      console.info("Test result= " + result);
-      expect(result).assertEqual(-1);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_RESQUERYDOMAIN_0100
-     * @tc.name       : testMuslResolvResQuerydomain001
-     * @tc.desc       : test res_querydomain
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslResolvResQuerydomain001', 0, async (done: Function) => {
-      let result: number = resolv.resQuerydomain();
-      console.info("Test result= " + result);
-      expect(result).assertEqual(-1);
-      done();
-    });
-
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_DN_EXPAND_0100

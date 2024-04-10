@@ -57,7 +57,7 @@ export default function onSelectionChange14() {
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
 
       let richEditor = await driver.findComponent(ON.id('onSelectionChange14_RichEditor'));
       await richEditor.longClick();

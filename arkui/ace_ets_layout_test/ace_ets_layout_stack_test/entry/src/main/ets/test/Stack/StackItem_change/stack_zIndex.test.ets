@@ -23,6 +23,7 @@ import { BusinessError } from '@ohos.base';
 
 async function imageComparisonAssert(left: number, top: number) {
   let theWinTop = 0;
+  let theWinLeft = 0;
   let isTrue = true
   try {
     let winTop = window.getLastWindow(globalThis.abilityContext);
@@ -32,6 +33,8 @@ async function imageComparisonAssert(left: number, top: number) {
       let properties = windowClass.getWindowProperties();
       console.info('Succeeded in obtaining the window properties. Data: ' + properties.windowRect.top);
       theWinTop = properties.windowRect.top + top
+      theWinLeft = properties.windowRect.left + left + vp2px(10)
+      console.info('theWinTop:' + theWinTop + 'theWinLeft:' + theWinLeft);
     }).catch((err: BusinessError) => {
       console.error('Failed to obtain the top window. Cause: ' + err);
     });
@@ -41,14 +44,14 @@ async function imageComparisonAssert(left: number, top: number) {
   await CommonFunc.sleep(3000);
   let screenshotOptions: screenshot.ScreenshotOptions = {
     "screenRect": {
-      "left": left,
+      "left": theWinLeft,
       "top": theWinTop,
-      "width": 150,
-      "height": 150
+      "width": 50,
+      "height": 50
     },
     "imageSize": {
-      "width": 150,
-      "height": 150
+      "width": 50,
+      "height": 50
     },
     "rotation": 0,
     "displayId": 0

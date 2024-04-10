@@ -1,0 +1,7 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/FolderStack/FolderStack3Api",
+        "MainAbility/pages/FolderStack/folder_stack"
+    ]
+}

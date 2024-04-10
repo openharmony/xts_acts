@@ -41,7 +41,7 @@ static napi_value FeTestExcept(napi_env env, napi_callback_info info)
 static napi_value FeUpdateEnv(napi_env env, napi_callback_info info)
 {
     int backParam;
-    const fenv_t *envp = nullptr;
+    const fenv_t *envp;
     backParam = feupdateenv(envp);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
@@ -78,8 +78,9 @@ static napi_value FeSetExceptFlag(napi_env env, napi_callback_info info)
 static napi_value FeSetEnv(napi_env env, napi_callback_info info)
 {
     int backParam;
-    const fenv_t *envp = nullptr;
+    const fenv_t *envp;
     backParam = fesetenv(envp);
+    feupdateenv(envp);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -101,8 +102,9 @@ static napi_value FeRaiseExcept(napi_env env, napi_callback_info info)
 static napi_value FeHoldExcept(napi_env env, napi_callback_info info)
 {
     int backParam;
-    fenv_t *envp = nullptr;
-    backParam = feholdexcept(envp);
+    fenv_t envp;
+    backParam = feholdexcept(&envp);
+    feupdateenv(&envp);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -134,8 +136,9 @@ static napi_value FeGetExceptFlag(napi_env env, napi_callback_info info)
 static napi_value FeGetEnv(napi_env env, napi_callback_info info)
 {
     int backParam;
-    fenv_t *fenv = nullptr;
-    backParam = fegetenv(fenv);
+    fenv_t fenv;
+    backParam = fegetenv(&fenv);
+    feupdateenv(&fenv);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;

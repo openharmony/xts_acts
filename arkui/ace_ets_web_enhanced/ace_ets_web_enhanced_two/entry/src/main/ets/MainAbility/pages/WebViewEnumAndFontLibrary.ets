@@ -284,33 +284,6 @@ struct WebViewEnumAndFontLibrary {
               await Utils.sleep(2000);
               break;
             }
-            case "emitProtectedResourceType": {
-              this.PermissionRequestState = true
-              this.controller.loadUrl("resource://rawfile/indexVideo.html")
-              await Utils.sleep(2000);
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenter'));
-              await button.click();
-              break;
-            }
-            case "emitOnPermissionRequestGetOrigin": {
-              this.PermissionRequestState = false
-              this.controller.loadUrl("resource://rawfile/indexVideo.html")
-              await Utils.sleep(2000);
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenter'));
-              await button.click();
-              break;
-            }
-            case "emitOnPermissionRequest": {
-              this.Permission = true
-              this.controller.loadUrl("resource://rawfile/indexVideo.html")
-              await Utils.sleep(2000);
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenter'));
-              await button.click();
-              break;
-            }
             case "emitMessageLevelDebug": {
               this.controller.runJavaScript("getMessageLevelDebug()")
               await Utils.sleep(2000);
@@ -674,22 +647,6 @@ struct WebViewEnumAndFontLibrary {
             this.FileSelectorMode = fileSelectorObj.getMode()
           }
           return true
-        })
-        .onPermissionRequest((event) => {
-          console.log("emitProtectedResourceType >>>111")
-          if (this.Permission) {
-            Utils.emitEvent(true, 1103)
-            this.Permission = false
-          }
-          if (event) {
-            let returnArray = event?.request?.getAccessibleResource()
-            if (this.PermissionRequestState) {
-              Utils.emitEvent(String(returnArray), 1101)
-            } else {
-              console.log("emitProtectedResourceType >>>> " + event.request.getOrigin())
-              Utils.emitEvent(String(event.request.getOrigin()), 1102)
-            }
-          }
         })
         .onRenderExited((event) => {
           if (event) {

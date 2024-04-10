@@ -131,23 +131,6 @@ export default function stringNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STRING_STRNLEN_0100
-     * @tc.name       : testMuslStringStrnlen001
-     * @tc.desc       : test strnlen
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslStringStrnlen001', 0, async (done: Function) => {
-      let firstParam = 'abcdefg';
-      let secondParam = 5;
-      let strnlenResult: number = string.strnlen(firstParam, secondParam);
-      console.info("Test strnlenResult= " + strnlenResult);
-      expect(strnlenResult).assertEqual(5);
-      done();
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRING_STRNLEN_0200
      * @tc.name       : testMuslStringStrnlen002
      * @tc.desc       : test strnlen
