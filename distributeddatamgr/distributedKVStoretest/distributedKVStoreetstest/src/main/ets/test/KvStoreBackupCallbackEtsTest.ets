@@ -841,7 +841,7 @@ export default function kvStoreBackupCallbackJsunittest(){
           done();
         }).catch((err) => {
           console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0300 Get fail 1 " + JSON.stringify(err));
-          expect(err.code).assertEqual("15100004");
+          expect(err.code).assertEqual(15100004);
           done();
         })
       } catch (e) {

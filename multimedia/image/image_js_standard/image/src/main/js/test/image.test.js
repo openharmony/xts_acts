@@ -3216,5 +3216,102 @@ export default function imageJsTest() {
                 done();
             }
         })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_SUB_GRAPHIC_IMAGE_SCALESYNC_0100
+         * @tc.name      : Test_ImageScaleSync
+         * @tc.desc      : Synchronous scaling of images based on input width and height
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('Test_ImageScaleSync', 0, async function (done) {
+            let color = new ArrayBuffer(96)
+            let opts = {
+                editable: false,
+                pixelFormat: 4,
+                size: { height: 4, width: 6 },
+                alphaType: 3
+            }
+            let msg = 'Test_ImageScaleSync'
+            let scaleX = 2.0;
+            let scaleY = 1.0;
+            image.createPixelMap(color, opts).then((pixelmap) => {
+                console.log(msg + ' Succeed in calling image.createPixelMap')
+                let pixelMap = pixelmap
+                try{
+                    pixelMap.scaleSync(scaleX, scaleY)
+                    console.log(msg + ' Succeed in calling pixelMap.scaleSync')
+                    expect(true).assertTrue()
+                    done()
+                } catch{
+                    console.error(msg + ' Failed in calling pixelMap.scaleSync ')
+                    expect().assertFail()
+                    done()
+                }
+            })
+        })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_SUB_GRAPHIC_IMAGE_GETIMAGEINFOSYNC_0100
+         * @tc.name      : Test_getImageInfoSync
+         * @tc.desc      : Obtaining Image Pixel Information by Synchronous Method
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('Test_getImageInfoSync', 0, async function (done) {
+            let color = new ArrayBuffer(96)
+            let opts = {
+                editable: false,
+                pixelFormat: 4,
+                size: { height: 4, width: 6 },
+                alphaType: 3
+            }
+            let msg = 'Test_getImageInfoSync'
+            image.createPixelMap(color, opts).then((pixelmap) => {
+                console.log(msg + ' Succeed in calling image.createPixelMap')
+                let pixelMap = pixelmap
+                try{
+                    pixelMap.getImageInfoSync()
+                    console.log(msg + ' Succeed in calling pixelMap.getImageInfoSync')
+                    expect(true).assertTrue()
+                    done()
+                } catch{
+                    console.log(msg + ' Failed in calling pixelMap.getImageInfoSync ')
+                    expect().assertFail()
+                    done()
+                }
+            })
+        })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_SUB_GRAPHIC_IMAGE_CREATEPIXELMAPSYNC_PIXELFORMAT_ALPHATYPE_0100
+         * @tc.name      : Test_CreatePixelMapSyncProperty_PixelFormat_AlphaType
+         * @tc.desc      : This new interface createPixelMapSync adds properties pixelFormat and alphaType
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('Test_CreatePixelMapSyncProperty_PixelFormat_AlphaType', 0, async function (done) {
+            let color = new ArrayBuffer(96)
+            let opts = {
+                editable: false,
+                pixelFormat: 4,
+                size: { height: 4, width: 6 },
+                alphaType: 3
+            }
+            let msg = 'Test_CreatePixelMapSyncProperty_PixelFormat_AlphaType'
+            try{
+              let pixelmap = image.createPixelMapSync(color, opts)
+              console.log(msg + ' Succeed in calling image.createPixelMapSync ')
+              expect(true).assertTrue()
+              done()
+            }catch(err) {
+              console.log(msg + ' Failed in calling image.createPixelMapSync' + JSON.stringify(err))
+              expect().assertFail()
+              done()
+            }
+        })
     })
 }
