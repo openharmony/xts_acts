@@ -32,7 +32,7 @@ def copy_files(sourcedir, targetdir):
             if os.path.isdir(source_f):
                 copy_files(source_f, target_f)
             continue
-        if f.endswith('.rsp'): 
+        if f.endswith('.rsp'):
             continue
         if os.path.exists(targetdir):
             copy_file_counts += 1
