@@ -25,7 +25,7 @@
 static napi_value FileShare_001(napi_env env, napi_callback_info info)
 {
     static const uint32_t POLICY_NUM = 1;
-    char path[] = 
+    char path[] =
     "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test1.txt";
     FileShare_PolicyInfo policy[POLICY_NUM] = {
         {path, sizeof(path) - 1, FileShare_OperationMode::READ_MODE}};
@@ -43,9 +43,9 @@ static napi_value FileShare_001(napi_env env, napi_callback_info info)
 static napi_value FileShare_002(napi_env env, napi_callback_info info)
 {
     static const uint32_t POLICY_NUM = 2;
-    char Path1[] = 
+    char Path1[] =
     "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test2.txt";
-    char Path2[] = 
+    char Path2[] =
     "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test201.txt";
     FileShare_PolicyInfo policy[POLICY_NUM] = {
         {Path1, sizeof(Path1) - 1, FileShare_OperationMode::READ_MODE},
@@ -64,7 +64,7 @@ static napi_value FileShare_002(napi_env env, napi_callback_info info)
 static napi_value FileShare_003(napi_env env, napi_callback_info info)
 {
     static const uint32_t POLICY_NUM = 1;
-    char Path[] = 
+    char Path[] =
     "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test3.txt";
     FileShare_PolicyInfo policy[POLICY_NUM] = {
         {Path, sizeof(Path) - 1, FileShare_OperationMode::READ_MODE}};
@@ -125,7 +125,7 @@ static napi_value FileShare_005(napi_env env, napi_callback_info info)
 
 static napi_value FileShare_006(napi_env env, napi_callback_info info)
 {
-    char policyUriCharA[] = 
+    char policyUriCharA[] =
     "file://com.example.filesharea/data/storage/el2/base/CheckPersistentPermission.txt";
     FileShare_PolicyInfo policyA = {.uri = policyUriCharA,
                                     .length = sizeof(policyUriCharA) - 1,
@@ -149,12 +149,12 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-      { "FileShare_001", nullptr, FileShare_001, nullptr, nullptr, nullptr, napi_default, nullptr },
-      { "FileShare_002", nullptr, FileShare_002, nullptr, nullptr, nullptr, napi_default, nullptr },
-      { "FileShare_003", nullptr, FileShare_003, nullptr, nullptr, nullptr, napi_default, nullptr },
-      { "FileShare_004", nullptr, FileShare_004, nullptr, nullptr, nullptr, napi_default, nullptr },
-      { "FileShare_005", nullptr, FileShare_005, nullptr, nullptr, nullptr, napi_default, nullptr },
-      { "FileShare_006", nullptr, FileShare_006, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "FileShare_001", nullptr, FileShare_001, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "FileShare_002", nullptr, FileShare_002, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "FileShare_003", nullptr, FileShare_003, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "FileShare_004", nullptr, FileShare_004, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "FileShare_005", nullptr, FileShare_005, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "FileShare_006", nullptr, FileShare_006, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
