@@ -2958,11 +2958,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         await sleep(1000)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-        expect(properties.windowRect.width).assertEqual(100)
-        expect(properties.windowRect.height).assertEqual(100)
+        expect(properties.windowRect.width!==100).assertEqual(true)
+        expect(properties.windowRect.height!==100).assertEqual(true)
         await win.destroyWindow();
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
     })
@@ -3011,11 +3012,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         await sleep(1000)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-        expect(properties.windowRect.width).assertEqual(205)
-        expect(properties.windowRect.height).assertEqual(10)
+        expect(properties.windowRect.width!==205).assertEqual(true)
+        expect(properties.windowRect.height!==10).assertEqual(true)
         await win.destroyWindow();
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
     })
@@ -3122,13 +3124,14 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           await sleep(1000)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-          expect(properties.windowRect.width).assertEqual(100)
-          expect(properties.windowRect.height).assertEqual(100)
+          expect(properties.windowRect.width!==100).assertEqual(true)
+          expect(properties.windowRect.height!==100).assertEqual(true)
           await win.destroyWindow();
           done();
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
         done();
       }
@@ -3185,13 +3188,14 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           await sleep(1000)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-          expect(properties.windowRect.width).assertEqual(205)
-          expect(properties.windowRect.height).assertEqual(10)
+          expect(properties.windowRect.width!==205).assertEqual(true)
+          expect(properties.windowRect.height!==10).assertEqual(true)
           await win.destroyWindow();
           done();
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
         done();
       }
