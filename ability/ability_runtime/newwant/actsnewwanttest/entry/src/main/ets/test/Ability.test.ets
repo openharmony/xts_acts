@@ -38,7 +38,6 @@ let flagNewWant = false;
 
 export default function abilityTest() {
   describe('ActsNewWantTest', function () {
-
     let TAG1 = 'ACTS_NewWant_Test : '
     let id = undefined;
     beforeAll(async (done) => {

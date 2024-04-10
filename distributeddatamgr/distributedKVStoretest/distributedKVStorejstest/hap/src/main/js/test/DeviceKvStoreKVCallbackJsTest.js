@@ -2250,7 +2250,7 @@ export default function deviceKvStoreCallbackTest(){
             }catch(e) {
                 console.error('SUB_DDM_DKV_DEVICESTORE_CLOSERESULTSET_0400 e ' + `, error code is ${e.code}, message is ${e.message}`);
                 errorInfo = e
-                expect(e.code).assertEqual("401");
+                expect(e.code).assertEqual(401);
             }
             expect(errorInfo != undefined).assertTrue();
             done();

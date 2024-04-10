@@ -53,35 +53,6 @@
 #define TEST_FIFO_MODE 0666
 #define BUFSIZE 128
 
-extern "C" int __fstat_time64(int, struct stat *);
-static napi_value FStat_time64(napi_env env, napi_callback_info info)
-{
-    struct stat stat {};
-    int ret = __fstat_time64(PARAM_UNNORMAL, &stat);
-    napi_value result = nullptr;
-    napi_create_int32(env, ret, &result);
-    return result;
-}
-
-extern "C" int __lstat_time64(const char *__restrict, struct stat *__restrict);
-static napi_value LStat_time64(napi_env env, napi_callback_info info)
-{
-    struct stat stat {};
-    int ret = __lstat_time64("teststat.txt", &stat);
-    napi_value result = nullptr;
-    napi_create_int32(env, ret, &result);
-    return result;
-}
-
-extern "C" int __stat_time64(const char *__restrict, struct stat *__restrict);
-static napi_value Stat_time64(napi_env env, napi_callback_info info)
-{
-    struct stat stat {};
-    int ret = __stat_time64("teststat.txt", &stat);
-    napi_value result = nullptr;
-    napi_create_int32(env, ret, &result);
-    return result;
-}
 
 static napi_value Chmod(napi_env env, napi_callback_info info)
 {
@@ -161,9 +132,6 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"__fstat_time64", nullptr, FStat_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__lstat_time64", nullptr, LStat_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__stat_time64", nullptr, Stat_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"chmod", nullptr, Chmod, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"fstatat", nullptr, Fstatat, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"fstatat64", nullptr, Fstatat64, nullptr, nullptr, nullptr, napi_default, nullptr},
