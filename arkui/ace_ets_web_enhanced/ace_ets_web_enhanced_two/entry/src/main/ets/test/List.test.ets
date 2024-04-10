@@ -25,6 +25,7 @@ import webMediaPlayGestureAccess from './WebMediaPlayGestureAccess.test'
 import webMediaOption from './WebMediaOption.test'
 import webOnLoadIntercept from './WebOnLoadIntercept.test'
 import WebViewEnumAndFontLibrary from './WebViewEnumAndFontLibrary.test'
+import WebViewEnumAndFontLibraryTwo from './WebViewEnumAndFontLibraryTwo.test'
 import WebViewEnumAndSetWebController from './WebViewEnumAndSetWebController.test'
 import WebViewJavaScriptProxyAndOnPageVisible from './WebViewJavaScriptProxyAndOnPageVisible.test'
 import WebViewOverviewModeAccessAndContextMenuMediaTypeImage
@@ -51,6 +52,7 @@ import webViewControllerDownloadFileTest from './WebViewControllerDownloadFileTe
 
 export default function testsuite() {
   webViewControllerPart3Test()
+  WebViewEnumAndFontLibraryTwo()
   webOnBeforeUnload()
   webOnInterceptRequestTest()
   webOnFullScreenEnter()

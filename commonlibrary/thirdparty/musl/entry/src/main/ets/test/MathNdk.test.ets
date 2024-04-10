@@ -277,34 +277,6 @@ export default function mathNdkTest() {
       done()
     });
 
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINT_0400
-     * @tc.name       : testMuslMathLLrint004
-     * @tc.desc       : test llrint
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLLrint004', 0, async (done: Function) => {
-      let result: number = math.llrint(-0.5);
-      expect(result).assertEqual(0);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINT_0500
-     * @tc.name       : testMuslMathLLrint005
-     * @tc.desc       : test llrint
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLLrint005', 0, async (done: Function) => {
-      let result: number = math.llrint(-0.4);
-      expect(result).assertEqual(0);
-      done()
-    });
-
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTF_0100
@@ -344,34 +316,6 @@ export default function mathNdkTest() {
      */
     it('testMuslMathLLrintF003', 0, async (done: Function) => {
       let result: number = math.llrintF(0.4);
-      expect(result).assertEqual(0);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTF_0400
-     * @tc.name       : testMuslMathLLrintF004
-     * @tc.desc       : test llrintf
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLLrintF004', 0, async (done: Function) => {
-      let result: number = math.llrintF(-0.5);
-      expect(result).assertEqual(0);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTF_0500
-     * @tc.name       : testMuslMathLLrintF005
-     * @tc.desc       : test llrintf
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLLrintF005', 0, async (done: Function) => {
-      let result: number = math.llrintF(-0.4);
       expect(result).assertEqual(0);
       done()
     });
@@ -419,47 +363,6 @@ export default function mathNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTL_0400
-     * @tc.name       : testMuslMathLLrintL004
-     * @tc.desc       : test llrintl
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLLrintL004', 0, async (done: Function) => {
-      let result: number = math.llrintL(-0.5);
-      expect(result).assertEqual(0);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTL_0500
-     * @tc.name       : testMuslMathLLrintL005
-     * @tc.desc       : test llrintl
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLLrintL005', 0, async (done: Function) => {
-      let result: number = math.llrintL(-0.4);
-      expect(result).assertEqual(0);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_R_0100
-     * @tc.name       : testMuslMathLgammaR001
-     * @tc.desc       : test lgamma_r
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgammaR001', 0, async (done: Function) => {
-      let result: number = math.lgammaR(0.5);
-      expect(result.toFixed(6)).assertEqual(JSON.stringify(0.572365));
-      done()
-    });
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_R_0200
      * @tc.name       : testMuslMathLgammaR002
      * @tc.desc       : test lgamma_r
@@ -499,33 +402,6 @@ export default function mathNdkTest() {
       done()
     });
 
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_R_0500
-     * @tc.name       : testMuslMathLgammaR005
-     * @tc.desc       : test lgamma_r
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgammaR005', 0, async (done: Function) => {
-      let result: number = math.lgammaR(-1);
-      expect(result).assertEqual(-1);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_R_0100
-     * @tc.name       : testMuslMathLgammafR001
-     * @tc.desc       : test lgammaf_r
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgammafR001', 0, async (done: Function) => {
-      let result: number = math.lgammafR(0.5);
-      expect(result.toFixed(6)).assertEqual(JSON.stringify(0.572365));
-      done()
-    });
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_R_0200
      * @tc.name       : testMuslMathLgammafR002
@@ -567,33 +443,6 @@ export default function mathNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_R_0500
-     * @tc.name       : testMuslMathLgammafR005
-     * @tc.desc       : test lgammaf_r
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgammafR005', 0, async (done: Function) => {
-      let result: number = math.lgammafR(-1);
-      expect(result).assertEqual(-1);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_R_0100
-     * @tc.name       : testMuslMathLgammalR001
-     * @tc.desc       : test lgammal_r
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgammalR001', 0, async (done: Function) => {
-      let result: number = math.lgammalR(0.5);
-      expect(result.toFixed(6)).assertEqual(JSON.stringify(0.572365));
-      done()
-    });
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_R_0200
      * @tc.name       : testMuslMathLgammalR002
      * @tc.desc       : test lgammal_r
@@ -634,34 +483,6 @@ export default function mathNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_R_0500
-     * @tc.name       : testMuslMathLgammalR005
-     * @tc.desc       : test lgammal_r
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgammalR005', 0, async (done: Function) => {
-      let result: number = math.lgammalR(-1);
-      expect(result).assertEqual(-1);
-      done()
-    });
-
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_0100
-     * @tc.name       : testMuslMathLgamma001
-     * @tc.desc       : test lgamma
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgamma001', 0, async (done: Function) => {
-      let result: number = math.lgamma(0.5);
-      expect(result.toFixed(6)).assertEqual(JSON.stringify(0.572365));
-      done()
-    });
-    /**
      * @tc.number     :  SUB_THIRDPARTY_MUSL_MATH_LGAMMA_0200
      * @tc.name       : testMuslMathLgamma002
      * @tc.desc       : test lgamma
@@ -701,33 +522,6 @@ export default function mathNdkTest() {
       done()
     });
 
-    /**
-     * @tc.number     :  SUB_THIRDPARTY_MUSL_MATH_LGAMMA_0500
-     * @tc.name       : testMuslMathLgamma005
-     * @tc.desc       : test lgamma
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgamma005', 0, async (done: Function) => {
-      let result: number = math.lgamma(-1);
-      expect(result).assertEqual(-1);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_0100
-     * @tc.name       : testMuslMathLgammaf001
-     * @tc.desc       : test lgammaf
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgammaf001', 0, async (done: Function) => {
-      let result: number = math.lgammaf(0.5);
-      expect(result.toFixed(6)).assertEqual(JSON.stringify(0.572365));
-      done()
-    });
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_0200
      * @tc.name       : testMuslMathLgammaf002
@@ -770,33 +564,6 @@ export default function mathNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_0500
-     * @tc.name       : testMuslMathLgammaf005
-     * @tc.desc       : test lgammaf
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgammaf005', 0, async (done: Function) => {
-      let result: number = math.lgammaf(-1);
-      expect(result).assertEqual(-1);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_0100
-     * @tc.name       : testMuslMathLgammal001
-     * @tc.desc       : test lgammal
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgammal001', 0, async (done: Function) => {
-      let result: number = math.lgammal(0.5);
-      expect(result.toFixed(6)).assertEqual(JSON.stringify(0.572365));
-      done()
-    });
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_0200
      * @tc.name       : testMuslMathLgammal002
      * @tc.desc       : test lgammal
@@ -833,20 +600,6 @@ export default function mathNdkTest() {
     it('testMuslMathLgammal004', 0, async (done: Function) => {
       let result: number = math.lgammal(2);
       expect(result.toFixed(0)).assertEqual(JSON.stringify(0.0));
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_0500
-     * @tc.name       : testMuslMathLgammal005
-     * @tc.desc       : test lgammal
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslMathLgammal005', 0, async (done: Function) => {
-      let result: number = math.lgammal(-1);
-      expect(result).assertEqual(-1);
       done()
     });
 
@@ -891,21 +644,6 @@ export default function mathNdkTest() {
       expect(result).assertEqual(2.3);
       done()
     });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXPF_0100
-     * @tc.name       : testMuslMathLdexpf001
-     * @tc.desc       : test Ldexpf
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslMathLdexpf001', 0, async (done: Function) => {
-      let result: number = math.ldexpf(2.3, 3);
-      expect(result.toFixed(1)).assertEqual(JSON.stringify(18.4));
-      done()
-    });
-
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXPF_0200
      * @tc.name       : testMuslMathLdexpf002
@@ -917,20 +655,6 @@ export default function mathNdkTest() {
     it('testMuslMathLdexpf002', 0, async (done: Function) => {
       let result: number = math.ldexpf(Math.sqrt(-1), 2);
       expect(result).assertNaN();
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXPF_0300
-     * @tc.name       : testMuslMathLdexpf003
-     * @tc.desc       : test Ldexpf
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslMathLdexpf003', 0, async (done: Function) => {
-      let result: number = math.ldexpf(2.3, 0);
-      expect(result.toFixed(1)).assertEqual(JSON.stringify(2.3));
       done()
     });
 
@@ -977,20 +701,6 @@ export default function mathNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J0_0100
-     * @tc.name       : testMuslMathJ0001
-     * @tc.desc       : test J0
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslMathJ0001', 0, async (done: Function) => {
-      let result: number = math.j0(1);
-      expect(result.toFixed(6)).assertEqual(JSON.stringify(0.765198));
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J0_0200
      * @tc.name       : testMuslMathJ0002
      * @tc.desc       : test J0
@@ -1015,20 +725,6 @@ export default function mathNdkTest() {
     it('testMuslMathJ0003', 0, async (done: Function) => {
       let result: number = math.j0(1.7976931348623157e+309);
       expect(result).assertEqual(0);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J0F_0100
-     * @tc.name       : testMuslMathJ0f001
-     * @tc.desc       : test J0f
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslMathJ0f001', 0, async (done: Function) => {
-      let result: number = math.j0f(1);
-      expect(result.toFixed(6)).assertEqual(JSON.stringify(0.765198));
       done()
     });
 

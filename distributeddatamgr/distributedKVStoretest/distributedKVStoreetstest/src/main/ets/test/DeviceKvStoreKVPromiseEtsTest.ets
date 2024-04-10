@@ -2469,7 +2469,7 @@ export default function deviceKvStorePromiseTest(){
       }catch(e) {
         console.error('SUB_DDM_DKV_DEVICEKVSTORE_CLOSERESULTSET_PROMISE_0400 e ' + `, error code is ${e.code}, message is ${e.message}`);
         errorInfo = e
-        expect(e.code).assertEqual("401");
+        expect(e.code).assertEqual(401);
       }
       expect(errorInfo != undefined).assertTrue();
       done();
