@@ -1,7 +1,0 @@
-{
-    "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/enabled/enable",
-        "MainAbility/pages/touchable/touchAble"
-    ]
-}

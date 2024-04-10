@@ -7584,5 +7584,162 @@ describe('DecodeEncodeTest', function () {
         expect(result.read).assertEqual(8)
         expect(result.written).assertEqual(8)
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0001
+     * @tc.name: testwrite001
+     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+
+     it("testwrite001", 0, function () {
+      let decoder = new util.StringDecoder('utf-8');
+      let input =  new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const decoded = decoder.write(input);
+      expect(decoded).assertEqual('你好');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0002
+     * @tc.name: testwrite002
+     * @tc.desc: Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testwrite002", 0, function () {
+      let decoder = new util.StringDecoder('utf-8');
+      const decoded = decoder.write("abc");
+      expect(decoded).assertEqual('abc');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00013
+     * @tc.name: testwrite003
+     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testwrite003", 0, function () {
+      let decoder = new util.StringDecoder('big5');
+      let input = new Uint8Array([167,65,166,110]);
+      const decoded = decoder.write(input);
+      expect(decoded).assertEqual('你好');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0012
+     * @tc.name: testwrite004
+     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testwrite004", 0, function () {
+      let decoder = new util.StringDecoder('iso-8859-2');
+      let input = new Uint8Array([0X61,0X62,0X63]);
+      const decoded = decoder.write(input);
+      expect(decoded).assertEqual('abc');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0010
+     * @tc.name: testwrite005
+     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testwrite005", 0, function () {
+      let decoder = new util.StringDecoder('koi8-r');
+      let input = new Uint8Array([97,98,99]);
+      const decoded = decoder.write(input);
+      expect(decoded).assertEqual('abc');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0011
+     * @tc.name: testwrite006
+     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testwrite006", 0, function () {
+      let decoder = new util.StringDecoder('windows-1250');
+      let input = new Uint8Array([0X61,0X62,0X63]);
+      const decoded = decoder.write(input);
+      expect(decoded).assertEqual('abc');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0003
+     * @tc.name: testend001
+     * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testend001", 0, function () {
+      let decoder = new util.StringDecoder('macintosh');
+      let input =  new Uint8Array([0X61]);
+      const decoded = decoder.end(input);
+      expect(decoded).assertEqual('a');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0004
+     * @tc.name: testend002
+     * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testend002", 0, function () {
+      let decoder = new util.StringDecoder('utf-8');
+      const decoded = decoder.end("abc");
+      expect(decoded).assertEqual('abc');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0005
+     * @tc.name: testend003
+     * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testend003", 0, function () {
+      let decoder = new util.StringDecoder('utf-8');
+      let input =  new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const decoded = decoder.end(input);
+      expect(decoded).assertEqual('你好');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01006
+     * @tc.name: testend004
+     * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testend004", 0, function () {
+      let decoder = new util.StringDecoder('utf-8');
+      let input =  new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const decoded = decoder.write(input.slice(0, 5));
+      const decodeend = decoder.end(input.slice(5));
+      expect(decoded).assertEqual('你');
+      expect(decodeend).assertEqual('好');
+    });
 })
 }

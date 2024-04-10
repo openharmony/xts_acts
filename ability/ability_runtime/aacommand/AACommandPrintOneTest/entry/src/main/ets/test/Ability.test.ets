@@ -98,6 +98,8 @@ export default function abilityTest() {
                 '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
                 '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
             let msgcopy = 'fffffffffff'
+            console.log("ACTS_AACommand_print_0300 --- msg ===" + globalThis.stdResult5.length)
+            console.log("ACTS_AACommand_print_0300 --- msg ===" + globalThis.stdResult5)
             expect(globalThis.stdResult5).assertContain(msg);
             expect(globalThis.stdResult5.indexOf(msgcopy) == -1).assertEqual(true);
             done()
@@ -177,6 +179,8 @@ export default function abilityTest() {
                 '9aaaaaaaaa'
             msgcopy = 'fffffffffff'
             expect(globalThis.stdResult9).assertContain(msg);
+            console.log("ACTS_AACommand_print_0700 --- msg ===" + globalThis.stdResult9.length)
+            console.log("ACTS_AACommand_print_0700 --- msg " + globalThis.stdResult9)
             expect(globalThis.stdResult9.indexOf(msgcopy) == -1).assertEqual(true);
             done()
         })
