@@ -13,9 +13,9 @@
 
 import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
-import("//foundation/filemanagement/file_api/file_api.gni")
-import("//foundation/filemanagement/app_file_service/app_file_service.gni")
 import("//foundation/arkui/napi/napi.gni")
+import("//foundation/filemanagement/app_file_service/app_file_service.gni")
+import("//foundation/filemanagement/file_api/file_api.gni")
 
 config("config") {
   visibility = [ ":*" ]
@@ -43,8 +43,8 @@ ohos_shared_library("fileshare") {
     "${app_file_service_path}/interfaces/innerkits/native/file_share/include/file_permisssion.h",
     "${app_file_service_path}/interfaces/innerkits/native/file_share/include/file_share.h",
     "${app_file_service_path}/interfaces/kits/ndk/fileshare/include/",
-     "./",
-    ]
+    "./",
+  ]
 
   configs = [ ":config" ]
 
