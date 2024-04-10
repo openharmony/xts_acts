@@ -18,8 +18,8 @@ group("telephone") {
     "contacttest:ActsTelephonyContactTest",
     "datatest:ActsTelephonyDataHasCardTest",
     "noCard:noCard",
-    "simtest:ActsTelephonySimHasCardTest",
     "noPermission:noPermission",
     "radiotest:ActsTelephonyRadioWithCardTest",
+    "simtest:ActsTelephonySimHasCardTest",
   ]
 }
