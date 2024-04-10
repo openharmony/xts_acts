@@ -465,10 +465,10 @@ static napi_value Fgetin_One(napi_env env, napi_callback_info info)
     rewind(fp);
     size_t plen = PARAM_0;
     char *ret = fgetln(fp, &plen);
-    fclose(fp);
-    remove(g_tempFile);
     napi_value result = nullptr;
     napi_create_int32(env, strcmp(ret, "helloworld") == PARAM_0 && strlen(ret) == plen, &result);
+    fclose(fp);
+    remove(g_tempFile);
     return result;
 }
 
