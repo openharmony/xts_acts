@@ -10,6 +10,7 @@
     "keepAlive" : true,
     "singleUser": true,
     "minAPIVersion": 12,
+    "debug": true,
     "targetAPIVersion": 12,
     "car": {
         "apiCompatibleVersion": 12,

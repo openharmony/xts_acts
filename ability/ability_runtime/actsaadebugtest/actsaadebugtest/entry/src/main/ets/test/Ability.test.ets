@@ -12,6 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError, Callback } from '@ohos.base';
@@ -24,15 +25,15 @@ let sleep = (time: number): Promise<number> => {
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
     /*
-     * @tc.number: ACTS_aaSupportDebugWithWaiting_0100
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1100
      * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
      * @tc.desc: Aa in developer mode supports temporarily setting DEBUG application waiting debugging mode and
      * can obtain setting information.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level1
+     * @tc.level: Level 1
      */
-    it('ACTS_aaDebug_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1100', 0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = ' aa appdebug -b com.acts.bundleNameA';
       let cmd2 = 'aa appdebug -g';
@@ -63,15 +64,15 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number: ACTS_aaSupportDebugWithWaiting_0300
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1200
      * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
      * @tc.desc: Aa supports persistent setting in developer mode. DEBUG application waits for debugging mode and
      * can obtain setting information.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level1
+     * @tc.level: Level 1
      */
-    it('ACTS_aaDebug_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1200', 0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = ' aa appdebug -b com.acts.bundleNameA -p';
       let cmd2 = 'aa appdebug -g';
@@ -102,16 +103,16 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number: ACTS_aaSupportDebugWithWaiting_0500
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1300
      * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
      * @tc.desc: Aa supports persistent setting in developer mode. DEBUG application waits for debugging mode
      * and the newly set data will overwrite the previous data (persistent setting data will overwrite the temporarily
      * set data).
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level1
+     * @tc.level: Level 1
      */
-    it('ACTS_aaDebug_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1300', 0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmdA = 'aa appdebug -b com.acts.bundleNameA';
       let cmdB = 'aa appdebug -b com.acts.bundleNameB -p';
@@ -149,16 +150,16 @@ export default function abilityTest() {
       })
     })
     /*
-     * @tc.number: ACTS_aaSupportDebugWithWaiting_0600
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1400
      * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
      * @tc.desc: Aa supports persistent setting in developer mode. DEBUG application waits for debugging mode
      * and the newly set data will overwrite the previous data (the temporarily set data will overwrite the persistent
      * set data).
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level1
+     * @tc.level: Level 1
      */
-    it('ACTS_aaDebug_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1400', 0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmdA = 'aa appdebug -b com.acts.bundleNameA -p';
       let cmdB = 'aa appdebug -b com.acts.bundleNameB';
@@ -196,15 +197,15 @@ export default function abilityTest() {
       })
     })
     /*
-     * @tc.number: ACTS_aaSupportDebugWithWaiting_0700
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1500
      * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
      * @tc.desc: Aa supports persistent setting in developer mode. DEBUG application waits for debugging mode
      * and the acquisition list is empty after cancellation (temporary setting).
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level1
+     * @tc.level: Level 1
      */
-    it('ACTS_aaDebug_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1500', 0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmdA = 'aa appdebug -b com.acts.bundleNameA';
       let cmdC = 'aa appdebug -c';
@@ -239,15 +240,15 @@ export default function abilityTest() {
       })
     })
     /*
-     * @tc.number: ACTS_aaSupportDebugWithWaiting_0800
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1600
      * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
      * @tc.desc: Aa supports persistent setting in developer mode. DEBUG application waits for debugging mode
      * and the acquisition list is empty after cancellation (persistent setting).
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level1
+     * @tc.level: Level 1
      */
-    it('ACTS_aaDebug_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1600', 0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmdA = 'aa appdebug -b com.acts.bundleNameA -p';
       let cmdC = 'aa appdebug -c';
@@ -279,6 +280,124 @@ export default function abilityTest() {
         console.info('====> [ACTS_aaDebug_0800] errGet: ' + JSON.stringify(err));
         expect().assertFail();
         done();
+      })
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1700
+     * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
+     * @tc.desc: Execute aa appdebug -h command in developer mode to get help information.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1700', 0, async (done: Function) => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let cmd = 'aa appdebug -h';
+      await abilityDelegator.executeShellCommand(cmd).then((d: abilityDelegatorRegistry.ShellCmdResult) => {
+        console.info('====> [ACTS_aaDebug_0900] data.stdResultA: ' + d.stdResult);
+        console.info('====> [ACTS_aaDebug_0900] data.exitCodeA: ' + d.exitCode);
+        let result = JSON.stringify(d.stdResult).split('\\n');
+        expect(result[0].split('"')[1]).assertEqual('usage: aa appdebug <options>');
+        expect(result[1]).assertEqual('options list:');
+        expect(result[2]).assertEqual('  -h, --help                                  list available commands');
+        expect(result[3]).assertEqual('  -b <bundle-name>                            let application set wait debug ' +
+        'mode by bundle name with options');
+        expect(result[4]).assertEqual('                  [-p, --persist]             option: persist flag');
+        expect(result[5]).assertEqual('  -c, --cancel                                let application cancel wait ' +
+        'debug');
+        expect(result[6]).assertEqual('  -g, --get                                   get wait debug mode ' +
+        'application bundle name and persist flag');
+        done();
+      }).catch((err: BusinessError) => {
+        console.info('====> errA: ' + JSON.stringify(err));
+        expect().assertFail();
+      })
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1800
+     * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
+     * @tc.desc: Execute aa appdebug --help command in developer mode to get help information.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1800', 0, async (done: Function) => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let cmd = 'aa appdebug --help';
+      await abilityDelegator.executeShellCommand(cmd).then((d: abilityDelegatorRegistry.ShellCmdResult) => {
+        console.info('====> [ACTS_aaDebug_1000] data.stdResultA: ' + d.stdResult);
+        console.info('====> [ACTS_aaDebug_1000] data.exitCodeA: ' + d.exitCode);
+        let result = JSON.stringify(d.stdResult).split('\\n');
+        expect(result[0].split('"')[1]).assertEqual('usage: aa appdebug <options>');
+        expect(result[1]).assertEqual('options list:');
+        expect(result[2]).assertEqual('  -h, --help                                  list available commands');
+        expect(result[3]).assertEqual('  -b <bundle-name>                            let application set wait debug ' +
+        'mode by bundle name with options');
+        expect(result[4]).assertEqual('                  [-p, --persist]             option: persist flag');
+        expect(result[5]).assertEqual('  -c, --cancel                                let application cancel ' +
+        'wait debug');
+        expect(result[6]).assertEqual('  -g, --get                                   get wait debug mode ' +
+        'application bundle name and persist flag');
+        done();
+      }).catch((err: BusinessError) => {
+        console.info('====> errA: ' + JSON.stringify(err));
+        expect().assertFail();
+      })
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1900
+     * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
+     * @tc.desc: Execute aa appdebug command in developer mode to get help information.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1900', 0, async (done: Function) => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let cmd = 'aa appdebug';
+      await abilityDelegator.executeShellCommand(cmd).then((d: abilityDelegatorRegistry.ShellCmdResult) => {
+        console.info('====> [ACTS_aaDebug_1100] data.stdResultA: ' + JSON.stringify(d.stdResult));
+        console.info('====> [ACTS_aaDebug_1100] data.exitCodeA: ' + d.exitCode);
+        expect(JSON.stringify(d.stdResult).split('"')[1]).assertEqual('error: you must specify an option at least.\\n');
+        done();
+      }).catch((err: BusinessError) => {
+        console.info('====> errA: ' + JSON.stringify(err));
+        expect().assertFail();
+      })
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2000
+     * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
+     * @tc.desc: Execute aa appdebug -p command in developer mode to get help information.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2000', 0, async (done: Function) => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let cmd = 'aa appdebug -p';
+      await abilityDelegator.executeShellCommand(cmd).then((d: abilityDelegatorRegistry.ShellCmdResult) => {
+        console.info('====> [ACTS_aaDebug_1200] data.stdResultA: ' + d.stdResult);
+        console.info('====> [ACTS_aaDebug_1200] data.exitCodeA: ' + d.exitCode);
+        let result = JSON.stringify(d.stdResult).split('\\n');
+        expect(result[0].split('"')[1]).assertEqual('usage: aa appdebug <options>');
+        expect(result[1]).assertEqual('options list:');
+        expect(result[2]).assertEqual('  -h, --help                                  list available commands');
+        expect(result[3]).assertEqual('  -b <bundle-name>                            let application set wait ' +
+        'debug mode by bundle name with options');
+        expect(result[4]).assertEqual('                  [-p, --persist]             option: persist flag');
+        expect(result[5]).assertEqual('  -c, --cancel                                let application cancel ' +
+        'wait debug');
+        expect(result[6]).assertEqual('  -g, --get                                   get wait debug mode ' +
+        'application bundle name and persist flag');
+        done();
+      }).catch((err: BusinessError) => {
+        console.info('====> errA: ' + JSON.stringify(err));
+        expect().assertFail();
       })
     })
   })
