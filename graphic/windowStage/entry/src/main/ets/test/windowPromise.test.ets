@@ -1915,7 +1915,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
         expect(wnd != null).assertTrue();
         try {
-          let promise = wnd.enableLandscapeMultiWindow() 
+          let promise = wnd.disableLandscapeMultiWindow() 
           promise.then(() => {
               console.info(msgStr + ' Succeeded in making multi-window become not landscape.');
               expect(true).assertTrue()

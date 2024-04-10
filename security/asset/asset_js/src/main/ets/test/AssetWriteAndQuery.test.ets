@@ -368,14 +368,14 @@ export default function AssetWriteAndQueryNewTest() {
     });
 
     /**
-     * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_1500
+     * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_1800
      * @tc.name 批量查询超过500条数据
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1500', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1800', 0, async () => {
       let testAlias1 = aw.aliasNameList[0];
       let times = 600;
       let attr: asset.AssetMap = new Map();
@@ -385,7 +385,6 @@ export default function AssetWriteAndQueryNewTest() {
       let attr2: asset.AssetMap = new Map();
       expect(await aw.assetQueryNum(attr2))
         .assertEqual(600);
-
     })
 
     /**

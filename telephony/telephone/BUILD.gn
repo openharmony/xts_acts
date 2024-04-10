@@ -17,5 +17,6 @@ group("telephone") {
     "contacttest:ActsTelephonyContactTest",
     "noCard:noCard",
     "smstest:ActsTelephonySmsWithCardTest",
+    "radiotest:ActsTelephonyRadioWithCardTest",
   ]
 }
