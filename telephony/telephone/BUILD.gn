@@ -16,6 +16,7 @@ group("telephone") {
   deps = [
     "calltest:ActsTelephonyCallHasCardTest",
     "contacttest:ActsTelephonyContactTest",
+    "datatest:ActsTelephonyDataHasCardTest",
     "noCard:noCard",
     "radiotest:ActsTelephonyRadioWithCardTest",
   ]
