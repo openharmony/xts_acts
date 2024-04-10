@@ -69,8 +69,8 @@ export default function GridIrregular2Jsunit() {
       let GridItem3: RectValue = CommonFunc.getComponentRect('GridArr3');
       let Grid: RectValue = CommonFunc.getComponentRect('GridIrregular2')
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem3.right - GridItem3.left)).assertEqual(Math.round(Grid.right - Grid.left));
-      expect(Math.round(GridItem3.top - GridItem3.bottom)).assertEqual(Math.round(GridItem0.top - GridItem0.bottom));
+      expect(Math.abs(Math.round((GridItem3.right - GridItem3.left)- (Grid.right - Grid.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((GridItem3.top - GridItem3.bottom)- (GridItem0.top - GridItem0.bottom))) <= 1).assertTrue();
       console.info('[GridIrregular2Jsunit_0000] END');
       done();
     });

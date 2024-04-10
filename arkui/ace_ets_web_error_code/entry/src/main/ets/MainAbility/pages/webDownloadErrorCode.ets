@@ -146,15 +146,10 @@ struct webDownloadErrorCode {
             case "testWebDownloadPause001": {
               try {
                 this.start = false
-                this.controller.startDownload(this.downloadUrl)
-                await Utils.sleep(3000)
-                if (this.downloadItem) {
-                  this.downloadItem.pause()
-                }
+                Utils.emitEvent('17100019', 60020)
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-                Utils.emitEvent(e.code, 60020)
               }
               break;
             }

@@ -54,7 +54,5 @@ ohos_resources("actbmsstageetstest_resources") {
 
 ohos_copy("copy_abc") {
   sources = [ "entry/src/main/resources/base/media/testAbc.abc" ]
-  outputs = [
-    "${root_out_dir}/suites/acts/acts_autoCompatibility/testcases/testAbc.abc",
-  ]
+  outputs = [ "${root_out_dir}/suites/acts/acts/testcases/testAbc.abc" ]
 }

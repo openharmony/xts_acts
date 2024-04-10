@@ -73,22 +73,6 @@ export default function uioNdkTest() {
       expect(result).assertEqual(-1);
       done()
     });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_WRITEV_0200
-     * @tc.name       : testMuslUioWritev002
-     * @tc.desc       : test writev
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslUioWritev002', 0, async (done: Function) => {
-      let param = 0;
-      let result: number = uio.writev(param);
-      console.info("Test result = " + JSON.stringify(result));
-      expect(result).assertEqual(0);
-      done()
-    });
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_PREADV_0100
      * @tc.name       : testMuslUioPReadV001

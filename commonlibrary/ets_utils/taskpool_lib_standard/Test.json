@@ -5,7 +5,8 @@
         "test-timeout": "800000",
         "bundle-name": "com.example.taskpool",
         "module-name": "entry",
-        "shell-timeout": "800000"
+        "shell-timeout": "800000",
+        "compile-mode": "esmodule"
     },
     "kits": [
         {
@@ -15,5 +16,5 @@
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
-    ] 
+    ]
 }

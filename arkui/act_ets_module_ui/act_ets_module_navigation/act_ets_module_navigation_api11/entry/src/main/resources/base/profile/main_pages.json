@@ -1,7 +1,0 @@
-{
-    "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/stepper/stepper",
-        "MainAbility/pages/Navigation/NavigationParam"
-    ]
-}

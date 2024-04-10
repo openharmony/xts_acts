@@ -58,4 +58,5 @@ function isOpenHarmonyDevice(): Boolean {
   }
 }
 
+
 export { getClientAppUid, installPrivateCertificates, isOpenHarmonyDevice }

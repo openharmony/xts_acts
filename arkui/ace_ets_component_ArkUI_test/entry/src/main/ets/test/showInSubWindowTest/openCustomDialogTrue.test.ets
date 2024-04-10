@@ -71,7 +71,7 @@ export default function openCustomDialogTrue() {
       expect(properties.type).assertEqual(0)//0表示应用子窗口TYPE_APP
 
       await CommonFunc.sleep(1000);
-      await driver.click(200,200);
+      await driver.triggerKey(2070);
       await CommonFunc.sleep(1000);
       console.info('[openCustomDialogTrue_0100] END');
       done();
