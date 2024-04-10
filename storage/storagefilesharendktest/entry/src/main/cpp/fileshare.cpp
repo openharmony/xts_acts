@@ -43,13 +43,13 @@ static napi_value FileShare_001(napi_env env, napi_callback_info info)
 static napi_value FileShare_002(napi_env env, napi_callback_info info)
 {
     static const uint32_t POLICY_NUM = 2;
-    char Path1[] =
+    char path1[] =
     "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test2.txt";
-    char Path2[] =
+    char path2[] =
     "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test201.txt";
     FileShare_PolicyInfo policy[POLICY_NUM] = {
-        {Path1, sizeof(Path1) - 1, FileShare_OperationMode::READ_MODE},
-        {Path2, sizeof(Path2) - 1, FileShare_OperationMode::WRITE_MODE}};
+        {path1, sizeof(path1) - 1, FileShare_OperationMode::READ_MODE},
+        {path2, sizeof(path2) - 1, FileShare_OperationMode::WRITE_MODE}};
     FileShare_PolicyErrorResult* result = nullptr;
     uint32_t resultNum = 0;
     auto ret = OH_FileShare_PersistPermission(policy, POLICY_NUM, &result, &resultNum);
@@ -64,10 +64,10 @@ static napi_value FileShare_002(napi_env env, napi_callback_info info)
 static napi_value FileShare_003(napi_env env, napi_callback_info info)
 {
     static const uint32_t POLICY_NUM = 1;
-    char Path[] =
+    char path[] =
     "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test3.txt";
     FileShare_PolicyInfo policy[POLICY_NUM] = {
-        {Path, sizeof(Path) - 1, FileShare_OperationMode::READ_MODE}};
+        {path, sizeof(path) - 1, FileShare_OperationMode::READ_MODE}};
     FileShare_PolicyErrorResult* result = nullptr;
     uint32_t resultNum = 0;
     OH_FileShare_PersistPermission(policy, POLICY_NUM, &result, &resultNum);
@@ -84,10 +84,10 @@ static napi_value FileShare_003(napi_env env, napi_callback_info info)
 static napi_value FileShare_004(napi_env env, napi_callback_info info)
 {
     static const uint32_t POLICY_NUM = 1;
-    char Path[] =
+    char path[] =
     "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test4.txt";
     FileShare_PolicyInfo policy[POLICY_NUM] = {
-        {Path, sizeof(Path) - 1, FileShare_OperationMode::READ_MODE}};
+        {path, sizeof(path) - 1, FileShare_OperationMode::READ_MODE}};
     FileShare_PolicyErrorResult* result = nullptr;
     uint32_t resultNum = 0;
     OH_FileShare_PersistPermission(policy, POLICY_NUM, &result, &resultNum);
@@ -106,10 +106,10 @@ static napi_value FileShare_004(napi_env env, napi_callback_info info)
 static napi_value FileShare_005(napi_env env, napi_callback_info info)
 {
     static const uint32_t POLICY_NUM = 1;
-    char Path[] =
+    char path[] =
     "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test5.txt";
     FileShare_PolicyInfo policy[POLICY_NUM] = {
-        {Path, sizeof(Path) - 1, FileShare_OperationMode::READ_MODE}};
+        {path, sizeof(path) - 1, FileShare_OperationMode::READ_MODE}};
     FileShare_PolicyErrorResult* result = nullptr;
     uint32_t resultNum = 0;
     OH_FileShare_PersistPermission(policy, POLICY_NUM, &result, &resultNum);
