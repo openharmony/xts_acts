@@ -7,6 +7,14 @@
     {
       "name": "color_world",
       "value": "#ff0000ff"
+    },
+    {
+      "name": "Divider_Color",
+      "value": "#FF121212"
+    },
+    {
+      "name": "Indicator_Color",
+      "value": "#FFFF0000"
     }
   ]
 }

@@ -41,6 +41,9 @@ import swiperRightScrollTest from './SwiperTest/swiper2/swiperightscroll.test'
 import tabsApi1 from './TabsTest/tabs/tabsApi1.test';
 import TouchTestStrategy from './ScrollTest/TouchTestStrategy.test';
 import ScrollTest from './ScrollTest/Scroll.test'
+import tabs from './TabsTest/Tabs'
+import tabsSec from './TabsTest/TabsSec'
+import tabsThird from './TabsTest/TabsThird'
 
 export default function testsuite() {
   listJsunit();
@@ -72,4 +75,7 @@ export default function testsuite() {
   tabsApi1()
   TouchTestStrategy()
   ScrollTest()
+  tabs()
+  tabsSec()
+  tabsThird()
 }
