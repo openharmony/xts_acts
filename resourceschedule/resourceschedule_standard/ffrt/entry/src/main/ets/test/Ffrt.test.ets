@@ -380,5 +380,30 @@ export default function ffrtTest() {
       var flag = ffrtndk.taskAttrSetQosTest();
       expect(flag).assertEqual(0);
     })
+    it('ffrt_timer_start_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_timer_start_0001();
+      expect(flag).assertEqual(0);
+    })
+    it('ffrt_timer_start_0002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_timer_start_0002();
+      expect(flag).assertEqual(0);
+    })
+    it('ffrt_timer_cancel_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_timer_cancel_0001();
+      expect(flag).assertEqual(0);
+    })
+    it('ffrt_loop_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_loop_0001();
+      expect(flag).assertEqual(0);
+    })
+    it('ffrt_loop_0002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_loop_0002();
+      expect(flag).assertEqual(0);
+    })
   })
 }
