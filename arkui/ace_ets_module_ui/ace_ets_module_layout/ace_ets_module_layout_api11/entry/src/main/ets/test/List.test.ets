@@ -14,8 +14,10 @@
  */
 import FolderStack3ApiJsunit from './FolderStackTest/FolderStack3ApiJsunit.test';
 import enumFolderTest from "./FolderStackTest/enumflodstack.test"
+import Stack_Text from './Stack_Text/Stack_Text.test';
 
 export default function testsuite() {
   FolderStack3ApiJsunit()
   enumFolderTest()
+  Stack_Text()
 }
