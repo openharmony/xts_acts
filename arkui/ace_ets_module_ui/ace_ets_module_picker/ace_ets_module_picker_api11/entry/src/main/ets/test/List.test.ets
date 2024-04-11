@@ -16,10 +16,12 @@ import SelectAttr from './SelectTest/SelectAttr.test'
 import TimePickerTest from './TimePickerTest/TimePicker.test';
 import selectoptionwithJsSuit from './SelectTest/selectoptionwithJsSuit.test';
 import SelectTest from './SelectTest/Select.test';
+import radioTest from './RadioTest/radio.test';
 
 export default function testsuite() {
   SelectAttr()
   TimePickerTest()
   selectoptionwithJsSuit()
   SelectTest()
+  radioTest()
 }
