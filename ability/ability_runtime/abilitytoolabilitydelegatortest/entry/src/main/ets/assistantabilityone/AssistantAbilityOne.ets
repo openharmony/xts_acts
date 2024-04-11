@@ -18,6 +18,9 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import commonEvent from '@ohos.commonEvent';
+
+const event = 'terminateSelf1000'
 
 export default class AssistantAbilityOne extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
