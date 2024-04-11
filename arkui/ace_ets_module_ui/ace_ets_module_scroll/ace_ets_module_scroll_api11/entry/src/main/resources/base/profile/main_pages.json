@@ -29,6 +29,7 @@
         "MainAbility/pages/Swiper/swiper2/siwpe_leftEdge",
         "MainAbility/pages/Swiper/swiper2/siwpe_leftscroll",
         "MainAbility/pages/Swiper/swiper2/siwpe_rightscroll",
-        "MainAbility/pages/Tabs/tabs/tabsApi1"
+        "MainAbility/pages/Tabs/tabs/tabsApi1",
+        "MainAbility/pages/AlphabetIndexer/Index"
     ]
 }
