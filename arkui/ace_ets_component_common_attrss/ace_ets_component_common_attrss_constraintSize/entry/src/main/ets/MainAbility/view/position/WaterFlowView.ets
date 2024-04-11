@@ -54,7 +54,7 @@ export struct WaterFlowView {
   }
 
   build() {
-    WaterFlow({ footer: this.itemFoot(), scroller: this.scroller }) {
+    WaterFlow({ footer: this.itemFoot.bind(this), scroller: this.scroller }) {
       ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
         FlowItem() {
           Column() {
