@@ -4,6 +4,7 @@
         "MainAbility/pages/Select/SelectAttr",
         "MainAbility/pages/Select/selectoptionwith",
         "MainAbility/pages/TimePicker/TimePicker",
-        "MainAbility/pages/Select/Select"
+        "MainAbility/pages/Select/Select",
+        "MainAbility/pages/Checkbox/Index"
     ]
 }
