@@ -548,6 +548,8 @@ export default function ApiCoverTest() {
       // expect('ohos.extra.param.key.form_rendering_mode').assertEqual(formInfoNew.FormParam.FORM_RENDERING_MODE_KEY)
       console.info("SUB_AA_Test_InsightIntent_0100:" + formInfoNew.FormParam.FORM_RENDERING_MODE_KEY);
       expect('ohos.extra.param.key.host_bg_inverse_color').assertEqual(formInfoNew.FormParam.HOST_BG_INVERSE_COLOR_KEY)
+      expect('ohos.extra.param.key.permission_name').assertEqual(formInfoNew.FormParam.FORM_PERMISSION_NAME_KEY)
+      expect('ohos.extra.param.key.permission_granted').assertEqual(formInfoNew.FormParam.FORM_PERMISSION_GRANTED_KEY)
       expect(1).assertEqual(formInfoNew.LaunchReason.FORM_DEFAULT);
       expect(2).assertEqual(formInfoNew.LaunchReason.FORM_SHARE);
       expect(0).assertEqual(formInfoNew.FormState.DEFAULT)
