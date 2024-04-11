@@ -16,10 +16,16 @@ import SelectAttr from './SelectTest/SelectAttr.test'
 import TimePickerTest from './TimePickerTest/TimePicker.test';
 import selectoptionwithJsSuit from './SelectTest/selectoptionwithJsSuit.test';
 import SelectTest from './SelectTest/Select.test';
+import textpicker from './TextPicker/TextPicker';
+import TextPickerSec from './TextPicker/TextPickerSec';
+import textpickermultiTest from './TextPicker/TextPickerMulti';
 
 export default function testsuite() {
   SelectAttr()
   TimePickerTest()
   selectoptionwithJsSuit()
   SelectTest()
+  textpicker()
+  TextPickerSec()
+  textpickermultiTest()
 }

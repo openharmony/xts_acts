@@ -4,6 +4,9 @@
         "MainAbility/pages/Select/SelectAttr",
         "MainAbility/pages/Select/selectoptionwith",
         "MainAbility/pages/TimePicker/TimePicker",
-        "MainAbility/pages/Select/Select"
+        "MainAbility/pages/Select/Select",
+        "MainAbility/pages/TextPicker/TextPickerSec",
+        "MainAbility/pages/TextPicker/Index",
+        "MainAbility/pages/TextPicker/TextPickerMulti"
     ]
 }
