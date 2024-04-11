@@ -139,7 +139,7 @@ static napi_value FileShare_006(napi_env env, napi_callback_info info)
     OH_FileShare_ReleasePolicyErrorResult(resultPersist, resultPersistNum);
     bool *result = nullptr;
     unsigned int resultNum;
-    FileManagement_ErrCode ret = OH_FileShare_CheckPersistentPermission(policiesA, policiesNumA, &result, &resultNum);
+    auto ret = OH_FileShare_CheckPersistentPermission(policiesA, policiesNumA, &result, &resultNum);
     napi_value result_1 = nullptr;
     napi_create_int32(env, ret, &result_1);
     return result_1;
