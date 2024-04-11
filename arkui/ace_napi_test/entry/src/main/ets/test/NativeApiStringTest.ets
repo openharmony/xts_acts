@@ -1855,5 +1855,44 @@ export default function nativeApiStringJsunit() {
       expect(value).assertEqual(0)
       done();
     });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0124
+     * @tc.name aceNapiTest0124
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0124', 0, async (done: Function) => {
+      console.info('aceNapiTest0124 START');
+      value = napitest.napiSerialize();
+      console.info('aceNapiTest0124 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(2000);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0125
+     * @tc.name aceNapiTest0125
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0125', 0, async (done: Function) => {
+      console.info('aceNapiTest0125 START');
+      value = napitest.napiDeSerialize();
+      console.info('aceNapiTest0125 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(2000);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0126
+     * @tc.name aceNapiTest0126
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0126', 0, async (done: Function) => {
+      console.info('aceNapiTest0126 START');
+      value = napitest.napiDeleteSerializationData();
+      console.info('aceNapiTest0126 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(2000);
+      done();
+    });
   })
 }

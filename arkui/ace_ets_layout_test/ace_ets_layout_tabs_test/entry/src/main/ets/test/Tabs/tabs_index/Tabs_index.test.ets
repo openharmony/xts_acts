@@ -86,27 +86,27 @@ export default function tabs_IndexTest() {
       console.info(`[testTabsIndexLessThanMin] vertical: ${JSON.stringify(JSON.parse(strJson).$attrs.vertical)}`);
       console.info(`[testTabsIndexLessThanMin] barMode: ${JSON.stringify(JSON.parse(strJson).$attrs.barMode)}`);
 
-      let Tabs_index_01: RectValue = CommonFunc.getComponentRect('Tabs_Index_01');
-      let Tabs_index_001: RectValue = CommonFunc.getComponentRect('Tabs_Index_001');
-      let Tabs_index_011: RectValue = CommonFunc.getComponentRect('Tabs_Index_011');
+      let Tabs_index_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_01');
+      let Tabs_index_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_001');
+      let Tabs_index_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_011');
       let driver = Driver.create();
       await driver.swipe(Math.round((Tabs_index_011.right - 30)),
         Math.round(Tabs_index_011.top + ((Tabs_index_011.bottom - Tabs_index_011.top) / 2)),
         Math.round(Tabs_index_011.left + 30),
         Math.round(Tabs_index_011.top + ((Tabs_index_011.bottom - Tabs_index_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_index_002: RectValue = CommonFunc.getComponentRect('Tabs_Index_002');
-      let Tabs_index_012: RectValue = CommonFunc.getComponentRect('Tabs_Index_012');
+      let Tabs_index_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_002');
+      let Tabs_index_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_012');
       await driver.swipe(Math.round(Tabs_index_012.right - 30),
         Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)),
         Math.round(Tabs_index_012.left + 30),
         Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_index_003: RectValue = CommonFunc.getComponentRect('Tabs_Index_003');
-      let Tabs_index_013: RectValue = CommonFunc.getComponentRect('Tabs_Index_013');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_Index_Green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_Index_Blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_Index_Yellow');
+      let Tabs_index_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_003');
+      let Tabs_index_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Yellow');
 
       console.info(`[testTabsIndexLessThanMin] Tabs_index_01.left = ${Tabs_index_01.left}`);
       expect(Tabs_index_01.left).assertEqual(Tabs_index_011.left);
@@ -180,26 +180,26 @@ export default function tabs_IndexTest() {
       console.info(`[testTabsIndexNormal] vertical: ${JSON.stringify(JSON.parse(strJson).$attrs.vertical)}`);
       console.info(`[testTabsIndexNormal] barMode: ${JSON.stringify(JSON.parse(strJson).$attrs.barMode)}`);
       let driver = Driver.create();
-      let Tabs_index_002: RectValue = CommonFunc.getComponentRect('Tabs_Index_002');
-      let Tabs_index_012: RectValue = CommonFunc.getComponentRect('Tabs_Index_012');
+      let Tabs_index_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_002');
+      let Tabs_index_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_012');
       await driver.swipe(Math.round(Tabs_index_012.right - 30),
         Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)),
         Math.round(Tabs_index_012.left + 30),
         Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_index_003: RectValue = CommonFunc.getComponentRect('Tabs_Index_003');
-      let Tabs_index_013: RectValue = CommonFunc.getComponentRect('Tabs_Index_013');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_Index_Green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_Index_Blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_Index_Yellow');
+      let Tabs_index_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_003');
+      let Tabs_index_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Yellow');
       globalThis.value.message.notify({
         name: 'index', value: 0
       });
       await CommonFunc.sleep(1000);
 
-      let Tabs_index_01: RectValue = CommonFunc.getComponentRect('Tabs_Index_01');
-      let Tabs_index_001: RectValue = CommonFunc.getComponentRect('Tabs_Index_001');
-      let Tabs_index_011: RectValue = CommonFunc.getComponentRect('Tabs_Index_011');
+      let Tabs_index_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_01');
+      let Tabs_index_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_001');
+      let Tabs_index_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_011');
 
       console.info(`[testTabsIndexNormal] Tabs_index_01.left = ${Tabs_index_01.left}`);
       expect(Tabs_index_01.left).assertEqual(Tabs_index_011.left);
@@ -272,27 +272,27 @@ export default function tabs_IndexTest() {
       console.info(`[testTabsIndexMoreThanMax] vertical: ${JSON.stringify(JSON.parse(strJson).$attrs.vertical)}`);
       console.info(`[testTabsIndexMoreThanMax] barMode: ${JSON.stringify(JSON.parse(strJson).$attrs.barMode)}`);
 
-      let Tabs_index_01: RectValue = CommonFunc.getComponentRect('Tabs_Index_01');
-      let Tabs_index_001: RectValue = CommonFunc.getComponentRect('Tabs_Index_001');
-      let Tabs_index_011: RectValue = CommonFunc.getComponentRect('Tabs_Index_011');
+      let Tabs_index_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_01');
+      let Tabs_index_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_001');
+      let Tabs_index_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_011');
       let driver = Driver.create();
       await driver.swipe(Math.round(Tabs_index_011.right - 30),
         Math.round(Tabs_index_011.top + ((Tabs_index_011.bottom - Tabs_index_011.top) / 2)),
         Math.round(Tabs_index_011.left + 30),
         Math.round(Tabs_index_011.top + ((Tabs_index_011.bottom - Tabs_index_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_index_002: RectValue = CommonFunc.getComponentRect('Tabs_Index_002');
-      let Tabs_index_012: RectValue = CommonFunc.getComponentRect('Tabs_Index_012');
+      let Tabs_index_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_002');
+      let Tabs_index_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_012');
       await driver.swipe(Math.round(Tabs_index_012.right - 30),
         Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)),
         Math.round(Tabs_index_012.left + 30),
         Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_index_003: RectValue = CommonFunc.getComponentRect('Tabs_Index_003');
-      let Tabs_index_013: RectValue = CommonFunc.getComponentRect('Tabs_Index_013');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_Index_Green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_Index_Blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_Index_Yellow');
+      let Tabs_index_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_003');
+      let Tabs_index_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Yellow');
 
       console.info(`[testTabsIndexMoreThanMax] Tabs_index_01.left = ${Tabs_index_01.left}`);
       expect(Tabs_index_01.left).assertEqual(Tabs_index_011.left);

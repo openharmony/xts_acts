@@ -67,7 +67,7 @@ export default function Grid_ReachStartAndEnd4() {
       let button1 = await driver.findComponent(ON.id('Grid_ReachStartAndEnd_changePadding'))
       await button1.click()
 
-      let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ReachStartAndEnd_grid')
+      let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ReachStartAndEnd_grid')
       await driver.swipe(
         Number.parseInt(`${`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`}`),
         Number.parseInt(`${`${(gridRect.bottom - gridRect.top) * 0.9 + gridRect.top}`}`),

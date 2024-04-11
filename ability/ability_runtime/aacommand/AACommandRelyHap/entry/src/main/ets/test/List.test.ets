@@ -13,10 +13,10 @@
 * limitations under the License.
 */
 
-import aaCommandTest from './AACommand.test';
-import aaCommandPrintOneTest from './AACommandPrintOne.test';
+import aaCommandTest from './AACommand.test'
+import aaCommandPrintOneTest from './AACommandPrintOne.test'
 
 export default function testsuite() {
-  aaCommandTest();
-  aaCommandPrintOneTest();
-};
+  aaCommandTest()
+  aaCommandPrintOneTest()
+}

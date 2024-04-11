@@ -59,14 +59,14 @@ export default function RichEditorApi2() {
 
       let driver = Driver.create();
       await Utils.sleep(1000);
-      let RichEditor1 = Utils.getComponentRect('RichEditorApi2_RichEditor1')
+      let RichEditor1 = Utils.getComponentRectOnScreen('RichEditorApi2_RichEditor1')
       await driver.mouseDrag({
-        x: (RichEditor1.right - RichEditor1.left) * 0.3 + RichEditor1.left,
-        y: (RichEditor1.bottom - RichEditor1.top) * 0.5 + RichEditor1.top
+        x: Math.round((RichEditor1.right - RichEditor1.left) * 0.3 + RichEditor1.left),
+        y: Math.round((RichEditor1.bottom - RichEditor1.top) * 0.5 + RichEditor1.top)
       },
         {
-          x: (RichEditor1.right - RichEditor1.left) * 0.5 + RichEditor1.left,
-          y: (RichEditor1.bottom - RichEditor1.top) * 0.5 + RichEditor1.top
+          x: Math.round((RichEditor1.right - RichEditor1.left) * 0.5 + RichEditor1.left),
+          y: Math.round((RichEditor1.bottom - RichEditor1.top) * 0.5 + RichEditor1.top)
         })
       await Utils.sleep(3000);
 

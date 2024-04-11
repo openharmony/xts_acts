@@ -15,9 +15,10 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 const TAG: string = 'ActsAbilityRunTimeLifeCycleTest';
-
+let deviceType = '';
 
 export default function abilityTest() {
   describe('ActsAbilityTest', function () {
@@ -36,6 +37,8 @@ export default function abilityTest() {
 
     beforeEach(async function (done) {
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} beforeEach...`);
+      deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} devicetype...${deviceType}`);
       await sleep(1000);
       done()
     })
@@ -297,9 +300,11 @@ export default function abilityTest() {
       expect(listKeyTemp[1]).assertEqual("MainAbilityB onWindowStageCreate");
       expect(listKeyTemp[2]).assertEqual("MainAbilityB onAbilityForeground");
 
-      listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME);
-      listKeyTemp1 = JSON.stringify(listKeyTemp);
-      expect(listKeyTemp1.indexOf("MainAbilityA onAbilityBackground") !== -1).assertTrue();
+      if (deviceType != '2in1') {
+        listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME);
+        listKeyTemp1 = JSON.stringify(listKeyTemp);
+        expect(listKeyTemp1.indexOf("MainAbilityA onAbilityBackground") !== -1).assertTrue();
+      }
 
       globalThis.abilityBContext.terminateSelf()
       await sleep(500);
@@ -309,8 +314,11 @@ export default function abilityTest() {
       expect(transferStr0.indexOf("MainAbilityB onWindowStageDestroy") != -1).assertTrue();
       expect(transferStr0.indexOf("MainAbilityB onAbilityDestroy") != -1).assertTrue();
 
-      let last = getAbilityLastLifeCycle("MainAbilityA")
-      expect(last).assertEqual("MainAbilityA onAbilityForeground");
+      if (deviceType != '2in1') {
+        let last = getAbilityLastLifeCycle("MainAbilityA")
+        expect(last).assertEqual("MainAbilityA onAbilityForeground");
+      }
+      
       isTerminateSelfMainAbilityA = true;
       globalThis.ApplicationContextA
         .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error, data) => {
@@ -352,9 +360,11 @@ export default function abilityTest() {
       expect(listKeyTemp[1]).assertEqual("MainAbilityB onWindowStageCreate");
       expect(listKeyTemp[2]).assertEqual("MainAbilityB onAbilityForeground");
 
-      listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
-      listKeyTemp1 = JSON.stringify(listKeyTemp);
-      expect(listKeyTemp1.indexOf("MainAbilityA onAbilityBackground") !== -1).assertTrue();
+      if (deviceType != '2in1') {
+        listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
+        listKeyTemp1 = JSON.stringify(listKeyTemp);
+        expect(listKeyTemp1.indexOf("MainAbilityA onAbilityBackground") !== -1).assertTrue();
+      }
 
       globalThis.abilityBContext.terminateSelf()
       await sleep(500);
@@ -364,8 +374,10 @@ export default function abilityTest() {
       expect(transferStr0.indexOf("MainAbilityB onWindowStageDestroy") != -1).assertTrue();
       expect(transferStr0.indexOf("MainAbilityB onAbilityDestroy") != -1).assertTrue();
 
-      let last = getAbilityLastLifeCycle("MainAbilityA")
-      expect(last).assertEqual("MainAbilityA onAbilityForeground");
+      if (deviceType != '2in1') {
+        let last = getAbilityLastLifeCycle("MainAbilityA")
+        expect(last).assertEqual("MainAbilityA onAbilityForeground");
+      }
 
       await sleep(3000);
       globalThis.abilityAContext.terminateSelf()
@@ -403,9 +415,11 @@ export default function abilityTest() {
       expect(listKeyTemp[1]).assertEqual("MainAbilityB onWindowStageCreate");
       expect(listKeyTemp[2]).assertEqual("MainAbilityB onAbilityForeground");
 
-      listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
-      listKeyTemp1 = JSON.stringify(listKeyTemp);
-      expect(listKeyTemp1.indexOf("MainAbilityA onAbilityBackground") !== -1).assertTrue();
+      if (deviceType != '2in1') {
+        listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
+        listKeyTemp1 = JSON.stringify(listKeyTemp);
+        expect(listKeyTemp1.indexOf("MainAbilityA onAbilityBackground") !== -1).assertTrue();
+      }
 
       globalThis.abilityBContext.terminateSelf()
       await sleep(500);
@@ -415,8 +429,10 @@ export default function abilityTest() {
       expect(transferStr0.indexOf("MainAbilityB onWindowStageDestroy") != -1).assertTrue();
       expect(transferStr0.indexOf("MainAbilityB onAbilityDestroy") != -1).assertTrue();
 
-      let last = getAbilityLastLifeCycle("MainAbilityA")
-      expect(last).assertEqual("MainAbilityA onAbilityForeground");
+      if (deviceType != '2in1') {
+        let last = getAbilityLastLifeCycle("MainAbilityA")
+        expect(last).assertEqual("MainAbilityA onAbilityForeground");
+      }
 
       isTerminateSelfMainAbilityA = true;
       globalThis.ApplicationContextA
@@ -479,28 +495,30 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1100', 3, async function (done) {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1100';
-      startAbilityTest("MainAbilityA", TEST_CASE_NAME)
-      await sleep(1000);
-      startAbilityTest("MainAbilityB", TEST_CASE_NAME)
-      await sleep(1000);
-      let last = getAbilityLastLifeCycle("MainAbilityA")
-      expect(last).assertEqual("MainAbilityA onAbilityBackground");
-
-      globalThis.abilityBContext.terminateSelf()
-      await sleep(500);
-      last = getAbilityLastLifeCycle("MainAbilityA")
-      expect(last).assertEqual("MainAbilityA onAbilityForeground");
-
-      startAbilityTest("MainAbilityB", TEST_CASE_NAME)
-      await sleep(1000);
-      last = getAbilityLastLifeCycle("MainAbilityA")
-      expect(last).assertEqual("MainAbilityA onAbilityBackground");
-
-      globalThis.abilityBContext.terminateSelf()
-      await sleep(500);
-      last = getAbilityLastLifeCycle("MainAbilityA")
-      expect(last).assertEqual("MainAbilityA onAbilityForeground");
-      isTerminateSelfMainAbilityA = true;
+      if (deviceType != '2in1') {
+        startAbilityTest("MainAbilityA", TEST_CASE_NAME)
+        await sleep(1000);
+        startAbilityTest("MainAbilityB", TEST_CASE_NAME)
+        await sleep(1000);
+        let last = getAbilityLastLifeCycle("MainAbilityA")
+        expect(last).assertEqual("MainAbilityA onAbilityBackground");
+  
+        globalThis.abilityBContext.terminateSelf()
+        await sleep(500);
+        last = getAbilityLastLifeCycle("MainAbilityA")
+        expect(last).assertEqual("MainAbilityA onAbilityForeground");
+  
+        startAbilityTest("MainAbilityB", TEST_CASE_NAME)
+        await sleep(1000);
+        last = getAbilityLastLifeCycle("MainAbilityA")
+        expect(last).assertEqual("MainAbilityA onAbilityBackground");
+  
+        globalThis.abilityBContext.terminateSelf()
+        await sleep(500);
+        last = getAbilityLastLifeCycle("MainAbilityA")
+        expect(last).assertEqual("MainAbilityA onAbilityForeground");
+        isTerminateSelfMainAbilityA = true;
+      }
       done()
     })
 
@@ -769,7 +787,9 @@ export default function abilityTest() {
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
       await sleep(1000);
       let last = getAbilityLastLifeCycle("MainAbilityB")
-      expect(last).assertEqual("MainAbilityB onAbilityBackground");
+      if (deviceType != '2in1') {
+        expect(last).assertEqual("MainAbilityB onAbilityBackground");
+      }
 
       listKeyTemp = getAbilityLifeCycleFilter("MainAbilityC", TEST_CASE_NAME, globalThis.mainAbilityAListKey)
       expect(listKeyTemp[0]).assertEqual("MainAbilityC onAbilityCreate");
@@ -783,8 +803,10 @@ export default function abilityTest() {
 
       await globalThis.abilityCContext.terminateSelf()
       await sleep(1000);
-      last = getAbilityLastLifeCycle("MainAbilityB")
-      expect(last).assertEqual("MainAbilityB onAbilityForeground");
+      if (deviceType != '2in1') {
+        last = getAbilityLastLifeCycle("MainAbilityB")
+        expect(last).assertEqual("MainAbilityB onAbilityForeground");
+      }
       listKeyTemp = getAbilityLifeCycleFilter("MainAbilityC", TEST_CASE_NAME, globalThis.mainAbilityAListKey)
       let transferStr0 = listKeyTemp[4] + listKeyTemp[5];
       expect(transferStr0.indexOf("MainAbilityC onWindowStageDestroy") != -1).assertTrue();

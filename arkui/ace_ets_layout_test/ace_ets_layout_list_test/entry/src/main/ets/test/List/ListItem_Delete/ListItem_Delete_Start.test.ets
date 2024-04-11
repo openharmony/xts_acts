@@ -66,7 +66,7 @@ export default function ListItem_Delete_Start() {
 
       let driver = Driver.create();
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(300)), Math.round(vp2px(50))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 
@@ -106,7 +106,7 @@ export default function ListItem_Delete_Start() {
       let ListItem_00:RectValue = CommonFunc.getComponentRect('ListItem_Delete_Start_ListItem_00');
       let ListItem_01:RectValue = CommonFunc.getComponentRect('ListItem_Delete_Start_ListItem_01');
       await driver.swipe(
-        Math.round(vp2px(30)), Math.round(vp2px(50)), Math.round(vp2px(110)), Math.round(vp2px(50))
+        Math.round(globalThis.winLeft + vp2px(30)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(110)), Math.round(globalThis.winTop + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 
@@ -147,7 +147,7 @@ export default function ListItem_Delete_Start() {
       let ListItem_00:RectValue = CommonFunc.getComponentRect('ListItem_Delete_Start_ListItem_00');
       let ListItem_01:RectValue = CommonFunc.getComponentRect('ListItem_Delete_Start_ListItem_01');
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(300)), Math.round(vp2px(50))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 
@@ -188,7 +188,7 @@ export default function ListItem_Delete_Start() {
       let ListItem_01:RectValue = CommonFunc.getComponentRect('ListItem_Delete_Start_ListItem_01');
 
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(300)), Math.round(vp2px(50))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 

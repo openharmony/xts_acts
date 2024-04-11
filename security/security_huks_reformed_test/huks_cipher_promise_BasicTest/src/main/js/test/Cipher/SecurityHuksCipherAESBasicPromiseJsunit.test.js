@@ -768,170 +768,244 @@ export default function SecurityHuksCipherAESBasicPromiseJsunit() {
       done();
     });
 
-        /**
-         * @tc.number SUB_Security_HUKS_isPwdSet_0010
-         * @tc.name Test generate key when password tag is true and password is not set;
-         * @tc.desc HuksOptions with AlgName AES
-         * @tc.desc Test generate key with Promise. Test fail
-         * @tc.size Medium
-         * @tc.type Func
-         * @tc.level Level2
-         */
-        it('SUB_Security_HUKS_isPwdSet_0010', 0, async function (done) {
-          const srcKeyAlies = 'SUB_Security_HUKS_isPwdSet_0010';
-          let huksProperties = new Array();
-          let index = 0;
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-              value: huks.HuksKeyAlg.HUKS_ALG_AES
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-              value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-              value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_PADDING,
-              value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-              value: huks.HuksCipherMode.HUKS_MODE_CBC
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_IS_DEVICE_PASSWORD_SET,
-              value: true
-          };
-          let huksOptions = {
-              properties: huksProperties
-          };
-          expect(12000016).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET);
-          expect(4).assertEqual(huks.HuksAuthAccessType.HUKS_AUTH_ACCESS_ALWAYS_VALID);
-          expect(536871228).assertEqual(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL);
-          let enum1 = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_DE;
-          let enum2 = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
-          let enum3 = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_ECE;
-          try {
-              await huks.generateKeyItem(srcKeyAlies, huksOptions);
-              console.error("SUB_Security_HUKS_isPwdSet_0020: fail");
-              expect(null).assertFail();
-          } catch (err) {
-              expect(err.code).assertEqual(12000016);
-              console.log("SUB_Security_HUKS_isPwdSet_0020: success");
-          }
-          done();
-      });
+    /**
+     * @tc.number SUB_Security_HUKS_isPwdSet_0010
+     * @tc.name Test generate key when password tag is true and password is not set;
+     * @tc.desc HuksOptions with AlgName AES
+     * @tc.desc Test generate key with Promise. Test fail
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level2
+     */
+    it('SUB_Security_HUKS_isPwdSet_0010', 0, async function (done) {
+      const srcKeyAlies = 'SUB_Security_HUKS_isPwdSet_0010';
+      let huksProperties = new Array();
+      let index = 0;
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+        value: huks.HuksKeyAlg.HUKS_ALG_AES
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+        value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_PADDING,
+        value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+        value: huks.HuksCipherMode.HUKS_MODE_CBC
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_IS_DEVICE_PASSWORD_SET,
+        value: true
+      };
+      let huksOptions = {
+        properties: huksProperties
+      };
+      expect(12000016).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET);
+      expect(4).assertEqual(huks.HuksAuthAccessType.HUKS_AUTH_ACCESS_ALWAYS_VALID);
+      expect(536871228).assertEqual(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL);
+      let enum1 = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_DE;
+      let enum2 = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+      let enum3 = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_ECE;
+      try {
+        await huks.generateKeyItem(srcKeyAlies, huksOptions);
+        console.error("SUB_Security_HUKS_isPwdSet_0020: fail");
+        expect(null).assertFail();
+      } catch (err) {
+        expect(err.code).assertEqual(12000016);
+        console.log("SUB_Security_HUKS_isPwdSet_0020: success");
+      }
+      done();
+    });
 
-      /**
-       * @tc.number SUB_Security_HUKS_isPwdSet_0020
-       * @tc.name Test generate key when password tag is false and password is not set;
-       * @tc.desc HuksOptions with AlgName AES
-       * @tc.desc Test generate key, encrypt with Promise. Test success
-       * @tc.size Medium
-       * @tc.type Func
-       * @tc.level Level2
-       */
-      it('SUB_Security_HUKS_isPwdSet_0020', 0, async function (done) {
-          const srcKeyAlies = 'SUB_Security_HUKS_isPwdSet_0020';
-          let huksProperties = new Array();
-          let index = 0;
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-              value: huks.HuksKeyAlg.HUKS_ALG_AES
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-              value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-              value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_PADDING,
-              value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-              value: huks.HuksCipherMode.HUKS_MODE_CBC
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_IS_DEVICE_PASSWORD_SET,
-              value: false
-          };
-          let huksOptions = {
-              properties: huksProperties
-          };
-          let cipherHuksOptions = {
-              properties: new Array(
-                  HuksCipherAES.HuksKeyAlgAES,
-                  HuksCipherAES.HuksKeyPurposeENCRYPT,
-                  HuksCipherAES.HuksKeyAESSize128,
-                  HuksCipherAES.HuksKeyAESPADDINGPKCS7,
-                  HuksCipherAES.HuksKeyAESBLOCKMODE,
-                  HuksCipherAES.HuksKeyAESDIGESTNONE,
-                  {
-                      tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV)
-                  }
-              ),
-              inData: srcData63Kb,
-          };
-          await publicCipherFunc(srcKeyAlies, huksOptions, cipherHuksOptions, 'abort', true);
-          done();
-      });
-
-        /**
-         * @tc.number SUB_Security_HUKS_hasKeyItem_0010
-         * @tc.name test has key by alias, Promise style, test success;
-         * @tc.desc HuksOptions with AlgName AES
-         * @tc.size Medium
-         * @tc.type Func
-         * @tc.level Level2
-         */
-        it('SUB_Security_HUKS_hasKeyItem_0010', 0, async function (done) {
-          const srcKeyAlias = 'SUB_Security_HUKS_hasKeyItem_0010';
-          let huksProperties = new Array();
-          let index = 0;
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-              value: huks.HuksKeyAlg.HUKS_ALG_AES
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-              value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-              value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_PADDING,
-              value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
-          };
-          huksProperties[index++] = {
-              tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-              value: huks.HuksCipherMode.HUKS_MODE_CBC
-          };
-          let huksOptions = {
-              properties: huksProperties
-          };
-          try {
-              await publicGenerateKeyFunc(srcKeyAlias, huksOptions);
-              let res = await huks.hasKeyItem(srcKeyAlias, huksOptions);
-              expect(res).assertTrue();
-              await publicDeleteKeyFunc(srcKeyAlias, huksOptions);
-              res = await huks.hasKeyItem(srcKeyAlias, huksOptions);
-              expect(!res).assertTrue();
-          } catch (err) {
-              console.error(srcKeyAlias + `: fail, code: ${err.code}, msg: ${err.message}`);
-              expect(null).assertFail();
+    /**
+     * @tc.number SUB_Security_HUKS_isPwdSet_0020
+     * @tc.name Test generate key when password tag is false and password is not set;
+     * @tc.desc HuksOptions with AlgName AES
+     * @tc.desc Test generate key, encrypt with Promise. Test success
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level2
+     */
+    it('SUB_Security_HUKS_isPwdSet_0020', 0, async function (done) {
+      const srcKeyAlies = 'SUB_Security_HUKS_isPwdSet_0020';
+      let huksProperties = new Array();
+      let index = 0;
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+        value: huks.HuksKeyAlg.HUKS_ALG_AES
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+        value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_PADDING,
+        value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+        value: huks.HuksCipherMode.HUKS_MODE_CBC
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_IS_DEVICE_PASSWORD_SET,
+        value: false
+      };
+      let huksOptions = {
+        properties: huksProperties
+      };
+      let cipherHuksOptions = {
+        properties: new Array(
+          HuksCipherAES.HuksKeyAlgAES,
+          HuksCipherAES.HuksKeyPurposeENCRYPT,
+          HuksCipherAES.HuksKeyAESSize128,
+          HuksCipherAES.HuksKeyAESPADDINGPKCS7,
+          HuksCipherAES.HuksKeyAESBLOCKMODE,
+          HuksCipherAES.HuksKeyAESDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV)
           }
-          console.log(srcKeyAlias + ": success");
-          done();
-      });
+        ),
+        inData: srcData63Kb,
+      };
+      await publicCipherFunc(srcKeyAlies, huksOptions, cipherHuksOptions, 'abort', true);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_HUKS_hasKeyItem_0010
+     * @tc.name test has key by alias, Promise style, test success;
+     * @tc.desc HuksOptions with AlgName AES
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level2
+     */
+    it('SUB_Security_HUKS_hasKeyItem_0010', 0, async function (done) {
+      const srcKeyAlias = 'SUB_Security_HUKS_hasKeyItem_0010';
+      let huksProperties = new Array();
+      let index = 0;
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+        value: huks.HuksKeyAlg.HUKS_ALG_AES
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+        value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_PADDING,
+        value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+        value: huks.HuksCipherMode.HUKS_MODE_CBC
+      };
+      let huksOptions = {
+        properties: huksProperties
+      };
+      try {
+        await publicGenerateKeyFunc(srcKeyAlias, huksOptions);
+        let res = await huks.hasKeyItem(srcKeyAlias, huksOptions);
+        expect(res).assertTrue();
+        await publicDeleteKeyFunc(srcKeyAlias, huksOptions);
+        res = await huks.hasKeyItem(srcKeyAlias, huksOptions);
+        expect(!res).assertTrue();
+      } catch (err) {
+        console.error(srcKeyAlias + `: fail, code: ${err.code}, msg: ${err.message}`);
+        expect(null).assertFail();
+      }
+      console.log(srcKeyAlias + ": success");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_HUKS_ECE_0010
+     * @tc.name generate key when pin is not set, key level down from A to D;
+     * @tc.desc HuksOptions with AlgName AES
+     * @tc.desc Test generate key, encrypt with Promise. Test success
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level2
+     */
+    it('SUB_Security_HUKS_ECE_0010', 0, async function (done) {
+      const srcKeyAlies = 'SUB_Security_HUKS_ECE_0010';
+      let huksProperties = new Array();
+      let index = 0;
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+        value: huks.HuksKeyAlg.HUKS_ALG_AES
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+        value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_PADDING,
+        value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+        value: huks.HuksCipherMode.HUKS_MODE_CBC
+      };
+      huksProperties[index++] = {
+        tag: huks.HuksTag.HUKS_TAG_IS_DEVICE_PASSWORD_SET,
+        value: false
+      };
+      let huksOptions = {
+        properties: huksProperties
+      };
+      let cipherHuksOptions = {
+        properties: new Array(
+          HuksCipherAES.HuksKeyAlgAES,
+          HuksCipherAES.HuksKeyPurposeENCRYPT,
+          HuksCipherAES.HuksKeyAESSize128,
+          HuksCipherAES.HuksKeyAESPADDINGPKCS7,
+          HuksCipherAES.HuksKeyAESBLOCKMODE,
+          HuksCipherAES.HuksKeyAESDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV)
+          }
+        ),
+        inData: srcData63Kb,
+      };
+      await publicCipherFunc(srcKeyAlies, huksOptions, cipherHuksOptions, 'abort', true);
+      cipherHuksOptions = {
+        properties: new Array(
+          HuksCipherAES.HuksKeyAlgAES,
+          HuksCipherAES.HuksKeyPurposeDECRYPT,
+          HuksCipherAES.HuksKeyAESSize128,
+          HuksCipherAES.HuksKeyAESPADDINGPKCS7,
+          HuksCipherAES.HuksKeyAESBLOCKMODE,
+          HuksCipherAES.HuksKeyAESDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV)
+          }
+        ),
+        inData: new Uint8Array(updateResult),
+      };
+      await publicCipherFunc(srcKeyAlies, huksOptions, cipherHuksOptions, 'abort', true);
+      done();
+    });
+
 
   });
 }

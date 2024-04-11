@@ -46,7 +46,12 @@ export default function inputMethodWindManageAbility() {
             let systemAndUpdate: Component = await settingList.scrollSearch(ON.text('系统和更新', MatchPattern.CONTAINS));
             console.info(`====>inputMethod_enable systemAndUpdate: ${systemAndUpdate}`);
             await systemAndUpdate.click();
-          }else{
+          } else if(deviceinfo.deviceType === 'tablet'){
+            console.info('====> tablet');
+            let systemAndUpdate: Component = await settingList.scrollSearch(ON.text('通用', MatchPattern.CONTAINS));
+            console.info(`====>inputMethod_enable systemAndUpdate: ${systemAndUpdate}`);
+            await systemAndUpdate.click();
+          } else {
             console.info('====> other');
             await driver.swipe(600, 2500, 600, 1000, 15000);
             let common_text: Component = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 3000);
@@ -997,6 +1002,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_showPromise_0140', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      await inputMethod.getController().attach(false, ATTRIBUTE);
       function unSubscriberCallback(err) {
         console.info('====>Sub_Misc_inputMethod_Panel_showPromise_0140 unSubscriberCallback start');
         if (err) {
@@ -1117,6 +1124,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_onShow_0170', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      await inputMethod.getController().attach(false, ATTRIBUTE);
       function unSubscriberCallback(err) {
         console.info('====>Sub_Misc_inputMethod_Panel_onShow_0170 unSubscriberCallback start');
         if (err) {
@@ -1177,6 +1186,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_onHide_0180', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      await inputMethod.getController().attach(false, ATTRIBUTE);
       function unSubscriberCallback(err) {
         console.info('====>Sub_Misc_inputMethod_Panel_onHide_0180 unSubscriberCallback start');
         if (err) {
@@ -1237,6 +1248,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_offShow_0190', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      await inputMethod.getController().attach(false, ATTRIBUTE);
       function unSubscriberCallback(err) {
         console.info('====>Sub_Misc_inputMethod_Panel_offShow_0190 unSubscriberCallback start');
         if (err) {
@@ -1297,6 +1310,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_offHide_0200', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      await inputMethod.getController().attach(false, ATTRIBUTE);
       function unSubscriberCallback(err) {
         console.info('====>Sub_Misc_inputMethod_Panel_offHide_0200 unSubscriberCallback start');
         if (err) {

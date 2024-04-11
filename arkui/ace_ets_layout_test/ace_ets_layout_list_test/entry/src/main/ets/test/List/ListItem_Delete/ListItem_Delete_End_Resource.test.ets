@@ -82,7 +82,7 @@ export default function ListItem_Delete_End_Resource() {
       let driver = Driver.create();
       await CommonFunc.sleep(500);
       await driver.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(50))
+        Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 
@@ -123,7 +123,7 @@ export default function ListItem_Delete_End_Resource() {
 
       console.log('slide ')
       await driver.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(50)), Math.round(vp2px(250)), Math.round(vp2px(50))
+        Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(250)), Math.round(globalThis.winTop + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 

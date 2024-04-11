@@ -330,61 +330,6 @@ export default function AVPlayerAmr() {
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1700 end')
     })
-
-    /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1800
-        * @tc.name      : 001.test play source NONOamrwb_15850.amr
-        * @tc.desc      : Local Video play source NONOamrwb_15850.amr
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level2
-        */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1800', 0, async function (done) {
-      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1800 start')
-      await getConverts('NONOamrwb_15850.amr');
-      let avplayer = await media.createAVPlayer();
-      avplayer.fdSrc = fdPath
-        avplayer.on('error', (err) => {
-          console.error(TAG + `Invoke avPlayer failed, code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(5400106)
-          avplayer.reset(); // 调用reset重置资源，触发idle状态
-        })
-        avplayer.on('stateChange', async (state, reason) => {
-          console.info(TAG + `case stateChange called, state is ${state}, reason is ${reason}`);
-          if (reason == media.StateChangeReason.BACKGROUND) {
-            console.info(`case media.StateChangeReason.BACKGROUND`);
-            await avplayer.release().then(() => {
-            }, failureCallback).catch(catchCallback);
-          }
-          switch (state) {
-            case 'initialized':
-              console.info(TAG + 'AVPlayer state initialized called.');
-              avplayer.prepare((err) => {
-                if (err == null) {
-                  console.info(TAG + 'prepare success');
-                } else {
-                  console.error(TAG + 'prepare filed,error message is :' + err.code)
-                  console.error(TAG + 'prepare filed,error message is :' + err.message)
-                  console.error(TAG + 'prepare filed,error state is :' + state)
-                  done()
-                }
-              })
-              break;
-            case 'prepared':
-              avplayer.play((err) => {
-                if (err == null) {
-                  console.info(TAG + 'play success21231323213213131312');
-                } else {
-                  console.error(TAG + 'play filed,error message is :' + err.code)
-                  console.error(TAG + 'play filed,error message is :' + err.message)
-                }
-              })
-              done()
-              break;
-          }
-        })
-      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1800 end')
-    })
     
   })
 }

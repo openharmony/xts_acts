@@ -233,7 +233,7 @@ export default function verificationTest() {
           bundleName: 'ohos.acts.aafwk.test.stagesupplement',
           abilityName: 'MainAbility4'
         }
-        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(wantNum)
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(wantNum,  {displayId: 0})
           .then((data) => {
             console.info(TAG + "startAbility data = " + JSON.stringify(data));
           })

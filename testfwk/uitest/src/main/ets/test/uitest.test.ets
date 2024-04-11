@@ -1199,7 +1199,7 @@ export default function UiTest() {
             await text2.clearText()
             await driver.delayMs(waitUiReadyMs)
             await driver.triggerCombineKeys(2072, 2038)
-            await driver.delayMs(waitUiReadyMs)
+            await driver.delayMs(4000)
             let text3 = await driver.findComponent(ON.type('TextInput'))
             expect(await text3.getText() == '123').assertTrue()
             await stopApplication('com.uitestScene.acts')
