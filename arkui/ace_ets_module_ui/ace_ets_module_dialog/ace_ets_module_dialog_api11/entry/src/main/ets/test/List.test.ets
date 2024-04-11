@@ -16,10 +16,12 @@ import CustomDialogMaskTest from './promptActionTest/CustomDialogMask.test'
 import menu from './MenuTest/menu.test'
 import ToastShowMode from './promptActionTest/ToastShowMode.test';
 import promptTest from './promptActionTest/promptTest.test';
+import DialogTest from './promptActionTest/Dialog.test';
 
 export default function testsuite() {
   CustomDialogMaskTest()
   menu()
   ToastShowMode()
   promptTest()
+  DialogTest();
 }
