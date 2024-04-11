@@ -22,7 +22,7 @@ export default function permissionNdkTest(){
 describe('permission_Ndk_test',async function(){
 
    /**
-   * @tc.number SUB_BASIC_FM_FileAPI_NDK_Fileshare_0100
+   * @tc.number SUB_BASIC_FM_FileAPI_Fileshare_0100
    * @tc.name FileShare_PersistPermission_001
    * @tc.desc function of API, Test State RUNNING
    * @tc.size MEDIUM
@@ -47,7 +47,7 @@ describe('permission_Ndk_test',async function(){
    });
 
    /**
-   * @tc.number SUB_BASIC_FM_FileAPI_NDK_Fileshare_0200
+   * @tc.number SUB_BASIC_FM_FileAPI_Fileshare_0200
    * @tc.name FileShare_PersistPermission_002
    * @tc.desc function of API, Test State RUNNING
    * @tc.size MEDIUM
@@ -75,7 +75,7 @@ describe('permission_Ndk_test',async function(){
    });
 
    /**
-    * @tc.number SUB_BASIC_FM_FileAPI_NDK_Fileshare_0300
+    * @tc.number SUB_BASIC_FM_FileAPI_Fileshare_0300
     * @tc.name FileShare_ActivatePermission_001
     * @tc.desc function of API, Test State RUNNING
     * @tc.size MEDIUM
@@ -100,7 +100,7 @@ describe('permission_Ndk_test',async function(){
    });
 
    /**
-    * @tc.number SUB_BASIC_FM_FileAPI_NDK_Fileshare_0400
+    * @tc.number SUB_BASIC_FM_FileAPI_Fileshare_0400
     * @tc.name FileShare_DeactivatePermission_001
     * @tc.desc function of API, Test State RUNNING
     * @tc.size MEDIUM
@@ -125,7 +125,7 @@ describe('permission_Ndk_test',async function(){
    });
 
    /**
-    * @tc.number SUB_BASIC_FM_FileAPI_NDK_Fileshare_0500
+    * @tc.number SUB_BASIC_FM_FileAPI_Fileshare_0500
     * @tc.name FileShare_RevokePermission_001
     * @tc.desc function of API, Test State RUNNING
     * @tc.size MEDIUM
@@ -150,7 +150,7 @@ describe('permission_Ndk_test',async function(){
    });
 
    /**
-    * @tc.number SUB_BASIC_FM_FileAPI_NDK_Fileshare_0600
+    * @tc.number SUB_BASIC_FM_FileAPI_Fileshare_0600
     * @tc.name FileShare_CheckPersistentPermission_001
     * @tc.desc function of API, Test State RUNNING
     * @tc.size MEDIUM
