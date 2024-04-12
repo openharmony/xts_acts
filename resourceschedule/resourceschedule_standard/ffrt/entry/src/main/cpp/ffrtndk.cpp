@@ -3345,7 +3345,7 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
     ffrt_task_attr_t task_attr[taskCnt];
     for (int i = 0; i < taskCnt; ++i) {
         (void)ffrt_task_attr_init(&task_attr[i]);
-        ffrt_task_attr_set_queue_priority(&task_attr[i], taskCnt - i);
+        ffrt_task_attr_set_queue_priority(&task_attr[i], (ffrt_queue_priority_t)(taskCnt - i));
     }
 
     double t;
