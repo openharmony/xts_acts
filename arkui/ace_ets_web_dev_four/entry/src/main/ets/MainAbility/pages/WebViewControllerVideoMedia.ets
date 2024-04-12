@@ -664,7 +664,7 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(true, 79018)
+                  Utils.emitEvent(true, 8001)
                 }else{
                   Utils.emitEvent(back_res, 8001)
                 }
