@@ -3048,6 +3048,307 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     return flag;
 }
 
+static napi_value ffrt_queue_parallel_api_0001(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_attr_set_max_concurrency(nullptr, 4);
+    int concurrency = ffrt_queue_attr_get_max_concurrency(&queue_attr);
+    if (concurrency != 1) {
+        result += 1;
+    }
+
+    ffrt_queue_attr_set_max_concurrency(&queue_attr, 0);
+    concurrency = ffrt_queue_attr_get_max_concurrency(&queue_attr);
+    if (concurrency != 1) {
+        result += 1;
+    }
+
+    ffrt_queue_attr_set_max_concurrency(&queue_attr, 100);
+    concurrency = ffrt_queue_attr_get_max_concurrency(&queue_attr);
+    if (concurrency != 100) {
+        result += 1;
+    }
+
+    // 销毁队列
+    ffrt_queue_attr_destroy(&queue_attr);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value ffrt_queue_parallel_api_0002(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_attr_set_max_concurrency(&queue_attr, 4);
+    int concurrency = ffrt_queue_attr_get_max_concurrency(nullptr);
+    if (concurrency != 0) {
+        result += 1;
+    }
+    concurrency = ffrt_queue_attr_get_max_concurrency(&queue_attr);
+    if (concurrency != 4) {
+        result += 1;
+    }
+
+    // 销毁队列
+    ffrt_queue_attr_destroy(&queue_attr);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value ffrt_queue_parallel_api_0003(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    ffrt_task_attr_t task_attr;
+    (void)ffrt_task_attr_init(&task_attr);
+    ffrt_task_attr_set_priority(nullptr, immediate);
+    int priority = ffrt_task_attr_get_priority(&task_attr);
+    if (priority != low) {
+        result += 1;
+    }
+
+    ffrt_task_attr_set_priority(&task_attr, immediate - 1);
+    priority = ffrt_task_attr_get_priority(&task_attr);
+    if (priority != low) {
+        result += 1;
+    }
+
+    ffrt_task_attr_set_priority(&task_attr, idle + 1);
+    priority = ffrt_task_attr_get_priority(&task_attr);
+    if (priority != low) {
+        result += 1;
+    }
+
+    ffrt_task_attr_set_priority(&task_attr, immediate);
+    priority = ffrt_task_attr_get_priority(&task_attr);
+    if (priority != immediate) {
+        result += 1;
+    }
+    // 销毁队列
+    ffrt_task_attr_destroy(&task_attr);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value ffrt_queue_parallel_api_0004(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    ffrt_task_attr_t task_attr;
+    (void)ffrt_task_attr_init(&task_attr);
+    ffrt_task_attr_set_priority(&task_attr, immediate);
+    int priority = ffrt_task_attr_get_priority(nullptr);
+    if (priority != 0) {
+        result += 1;
+    }
+
+    priority = ffrt_task_attr_get_priority(&task_attr);
+    if (priority != immediate) {
+        result += 1;
+    }
+    // 销毁队列
+    ffrt_queue_attr_destroy(&task_attr);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value queue_parallel_cancel_0001(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
+
+    int res = 0;
+    const uint32_t delayTime = 1000000;
+    ffrt_task_attr_t task_attr;
+    (void)ffrt_task_attr_init(&task_attr);
+    ffrt_task_attr_set_delay(&task_attr, delayTime);
+    std::function<void()> &&OnePlusFunc = [&res] () {OnePlusForTest((void *)(&res));};
+
+    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
+        ffrt_create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr);
+
+    int ret = ffrt_queue_cancel(task1);
+    if (res != 0) {
+        result += 1;
+    }
+
+    std::function<void()> &&MultipleFunc = [&res] () {MultipleForTest((void *)(&res));};
+    std::function<void()> &&OneSubFunc = [&res] () {SubForTest((void *)(&res));};
+    ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit_h(queue_handle, ffrt_create_function_wrapper(MultipleFunc, ffrt_function_kind_queue), nullptr);
+    ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle,
+        ffrt_create_function_wrapper(OneSubFunc, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_wait(task3);
+    if (res != 9) {
+        result += 1;
+    }
+
+    ffrt_task_attr_destroy(&task_attr);
+    ffrt_task_handle_destroy(task1);
+    ffrt_task_handle_destroy(task3);
+
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
+
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value queue_parallel_cancel_0002(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    const uint32_t delayTime = 2000;
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
+
+    int res = 0;
+    std::function<void()> &&OnePlusFfrtSleepFunc = [&res] () {OnePlusSleepForTest((void *)(&res));};
+    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
+        ffrt_create_function_wrapper(OnePlusFfrtSleepFunc, ffrt_function_kind_queue), nullptr);
+
+    usleep(delayTime);
+    int ret = 
+    
+    (task1);
+    if (res != 0) {
+        result += 1;
+    }
+    ffrt_queue_wait(task1);
+    if (res != 1) {
+        result += 1;
+    }
+
+    ffrt_task_handle_destroy(task1);
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
+
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value queue_parallel_0001(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
+
+    int res = 0;
+    const uint32_t delayTime = 2000;
+
+    std::function<void()> &&OnePlusFunc = [&res] () {OnePlusForTest((void *)(&res));};
+    std::function<void()> &&MultipleFunc = [&res] () {MultipleForTest((void *)(&res));};
+    std::function<void()> &&OneSubFunc = [&res] () {SubForTest((void *)(&res));};
+
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(MultipleFunc, ffrt_function_kind_queue), nullptr);
+    ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle,
+        ffrt_create_function_wrapper(OneSubFunc, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_wait(task3);
+    if (res != 9) {
+        result += 1;
+    }
+
+    uint32_t pid = getpid();
+    usleep(delayTime);
+    read_thread_list(pid);
+    int concurrency = ffrt_queue_attr_get_max_concurrency(&queue_attr);
+    if (concurrency != 1) {
+        result += 1;
+    }
+
+    ffrt_task_handle_destroy(task3);
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
+
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+inline void DivForTest(void *data)
+{
+    const int div = 3;
+    *(int *)data /= div;
+}
+
+inline void TwoPlusForTest(void *data)
+{
+    const int plus = 2;
+    *(int *)data += plus;
+}
+
+inline void TwoSubForTest(void *data)
+{
+    const int sub = 2;
+    *(int *)data -= sub;
+}
+
+static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    const int max_concurrency = 1;
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_attr_set_max_concurrency(&queue_attr, max_concurrency);
+    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
+
+    int temp = 0;
+    int res = 3;
+    ffrt_task_handle_t task;
+    std::function<void()> &&OnePlusFfrtSleepFunc = [&temp] () {OnePlusSleepForTest((void *)(&temp));};
+    std::function<void()> &&DivFunc = [&res] () {DivForTest((void *)(&res));};
+    std::function<void()> &&MultipleFunc = [&res] () {MultipleForTest((void *)(&res));};
+    std::function<void()> &&OnePlusFunc = [&res] () {OnePlusForTest((void *)(&res));};
+    std::function<void()> &&SubFunc = [&res] () {SubForTest((void *)(&res));};
+    std::function<void()> &&TwoPlusFunc = [&res] () {TwoPlusForTest((void *)(&res));};
+    std::function<void()> &&TwoSubFunc = [&res] () {TwoSubForTest((void *)(&res));};
+
+    ffrt_task_attr_t task_attr[6];
+    for (int i = 0; i < 6; ++i) {
+        (void)ffrt_task_attr_init(&task_attr[i]);
+        ffrt_task_attr_set_priority(&task_attr[i], 4 - i);       
+    }
+
+    double t;
+    auto start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < max_concurrency; ++i) {
+        ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusFfrtSleepFunc, ffrt_function_kind_queue), nullptr);
+    }
+    task = ffrt_queue_submit_h(queue_handle,
+        ffrt_create_function_wrapper(TwoSubFunc, ffrt_function_kind_queue), &task_attr[0]);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr[1]);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(DivFunc, ffrt_function_kind_queue), &task_attr[2]);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(SubFunc, ffrt_function_kind_queue), &task_attr[3]);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(MultipleFunc, ffrt_function_kind_queue), &task_attr[4]);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(TwoPlusFunc, ffrt_function_kind_queue), &task_attr[5]);
+
+    ffrt_queue_wait(task);
+    if (res != 5) {
+        result += 1;
+    }
+    for (int i = 0; i < 6; ++i) {
+        (void) ffrt_task_attr_destroy(&task_attr[i]);
+    }
+    ffrt_task_handle_destroy(task);
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
+
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -3146,7 +3447,18 @@ static napi_value Init(napi_env env, napi_value exports)
         { "ffrt_timer_start_0002", nullptr, ffrt_timer_start_0002, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ffrt_timer_cancel_0001", nullptr, ffrt_timer_cancel_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ffrt_loop_0001", nullptr, ffrt_loop_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "ffrt_loop_0002", nullptr, ffrt_loop_0002, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "ffrt_loop_0002", nullptr, ffrt_loop_0002, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ffrt_timer_start_abnormal_0001", nullptr, ffrt_timer_start_abnormal_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ffrt_loop_abnormal_0001", nullptr, ffrt_loop_abnormal_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ffrt_loop_abnormal_0002", nullptr, ffrt_loop_abnormal_0002, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ffrt_queue_parallel_api_0001", nullptr, ffrt_queue_parallel_api_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ffrt_queue_parallel_api_0002", nullptr, ffrt_queue_parallel_api_0002, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ffrt_queue_parallel_api_0003", nullptr, ffrt_queue_parallel_api_0003, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ffrt_queue_parallel_api_0004", nullptr, ffrt_queue_parallel_api_0004, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "queue_parallel_cancel_0001", nullptr, queue_parallel_cancel_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "queue_parallel_cancel_0002", nullptr, queue_parallel_cancel_0002, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "queue_parallel_0001", nullptr, queue_parallel_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "queue_parallel_0002", nullptr, queue_parallel_0002, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
