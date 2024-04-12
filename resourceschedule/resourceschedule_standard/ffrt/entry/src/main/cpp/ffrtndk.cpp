@@ -1730,8 +1730,6 @@ static napi_value QueueDfxTest004(napi_env env, napi_callback_info info)
 static napi_value QueueDfxTest005(napi_env env, napi_callback_info info)
 {
     int resultEnd = 0;
-    const int sleepTime = 500;
-    const int sleepMs = 1000;
     int x = 0;
     int end = 0;
     std::function<void()> cbOne = [&end]() {
@@ -1744,7 +1742,7 @@ static napi_value QueueDfxTest005(napi_env env, napi_callback_info info)
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     std::function<void()>&& basicFunc1 = [&] {
         x++;
-        usleep(sleepTime * sleepMs);
+        usleep(500 * 1000);
     };
     ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(basicFunc1, ffrt_function_kind_queue), nullptr);
@@ -1758,7 +1756,7 @@ static napi_value QueueDfxTest005(napi_env env, napi_callback_info info)
     
     std::function<void()>&& basicFunc2 = [&] {
         x++;
-        ffrt_usleep(sleepTime * sleepMs);
+        ffrt_usleep(500 * 1000);
     };
     ffrt_task_handle_t handle1 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(basicFunc2, ffrt_function_kind_queue), nullptr);
@@ -2652,12 +2650,11 @@ static napi_value SleepForTest000(napi_env env, napi_callback_info info)
 static napi_value SleepForTest001(napi_env env, napi_callback_info info)
 {
     int resultEnd = 0;
-    const uint32_t slpTime = 1000;
     // sleep 1ms，验证sleep时间的正确性
     double t;
     std::function<void()>&& func = [&]() {
         auto start = std::chrono::high_resolution_clock::now();
-        ffrt_usleep(slpTime);
+        ffrt_usleep(1000);
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double, std::milli> elapsed = end-start;
         t = elapsed.count();
