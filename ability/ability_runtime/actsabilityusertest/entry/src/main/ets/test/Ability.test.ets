@@ -12,13 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import commonEvent from '@ohos.commonEvent';
+import common from '@ohos.app.ability.common';
+import commonEventManager from '@ohos.commonEventManager';
+
+let subscriberInfo_MainAbility: commonEventManager.CommonEventSubscribeInfo = {
+  events: ["ACTS_StartAbility_CommonEvent"]
+}
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-var subscriberInfo_MainAbility = {
-    events: ["ACTS_StartAbility_CommonEvent"]
-};
 const START_ABILITY_TIMEOUT = 4000;
 
 export default function abilityTest() {
