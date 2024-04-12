@@ -15,6 +15,7 @@
         "MainAbility/pages/WebOnLargestContentfulPaint",
         "MainAbility/pages/WebViewControllerResumeAllTimers",
         "MainAbility/pages/WebViewControllerVideoMedia",
-        "MainAbility/pages/WebNetError"
+        "MainAbility/pages/WebNetError",
+        "MainAbility/pages/WebViewControllerAudioMedia"
     ]
 }

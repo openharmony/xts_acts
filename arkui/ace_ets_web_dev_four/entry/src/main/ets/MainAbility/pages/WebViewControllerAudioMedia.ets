@@ -13,17 +13,16 @@
  * limitations under the License.
  */
 
-
 import Utils from '../../test/Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
-struct WebViewControllerVideoMedia {
+struct WebViewControllerAudioMedia {
   @State str: string = ""
   @State userAgentPC:string = "";
-  controller: webView.WebviewController = new webView.WebviewController();
+  controller: webView.WebviewController = new webView.WebviewController(); 
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -50,15 +49,15 @@ struct WebViewControllerVideoMedia {
   build() {
     Column() {
       Row() {
-        Button("WebViewControllerVideoMedia").id('WebViewControllerVideoMedia').onClick(async () => {
+        Button("WebViewControllerAudioMedia").id('WebViewControllerAudioMedia').onClick(async () => {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "StopAllMedia0100": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(5000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(5000);
                 this.controller.stopAllMedia();
                 await Utils.sleep(2000);
@@ -70,9 +69,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 77011)
+                  Utils.emitEvent(3, 33301)
                 }else{
-                  Utils.emitEvent(res, 77011)
+                  Utils.emitEvent(res, 33301)
                 }
               }, 3000)
               break;
@@ -80,7 +79,7 @@ struct WebViewControllerVideoMedia {
             case "StopAllMedia0200": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
                 this.controller.stopAllMedia();
                 await Utils.sleep(2000);
@@ -92,9 +91,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(0, 77012)
+                  Utils.emitEvent(0, 33302)
                 }else{
-                  Utils.emitEvent(res, 77012)
+                  Utils.emitEvent(res, 33302)
                 }
               }, 3000)
               break;
@@ -102,9 +101,9 @@ struct WebViewControllerVideoMedia {
             case "StopAllMedia0300": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 this.controller.stopAllMedia();
                 await Utils.sleep(2000);
@@ -118,9 +117,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 77013)
+                  Utils.emitEvent(3, 33303)
                 }else{
-                  Utils.emitEvent(res, 77013)
+                  Utils.emitEvent(res, 33303)
                 }
               }, 3000)
               break;
@@ -128,11 +127,11 @@ struct WebViewControllerVideoMedia {
             case "StopAllMedia0400": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("pauseVideo()");
+                this.controller.runJavaScript("pauseAudio()");
                 await Utils.sleep(2000);
                 this.controller.stopAllMedia();
                 await Utils.sleep(2000);
@@ -144,9 +143,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 77014)
+                  Utils.emitEvent(2, 33304)
                 }else{
-                  Utils.emitEvent(res, 77014)
+                  Utils.emitEvent(res, 33304)
                 }
               }, 3000)
               break;
@@ -154,9 +153,9 @@ struct WebViewControllerVideoMedia {
             case "StopAllMedia0500": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -170,9 +169,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 77015)
+                  Utils.emitEvent(2, 33305)
                 }else{
-                  Utils.emitEvent(res, 77015)
+                  Utils.emitEvent(res, 33305)
                 }
               }, 3000)
               break;
@@ -180,10 +179,10 @@ struct WebViewControllerVideoMedia {
             case "StopAllMedia0600": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
                 await Utils.sleep(2000);
                 this.controller.stopAllMedia();
                 await Utils.sleep(2000);
@@ -195,9 +194,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 77016)
+                  Utils.emitEvent(3, 33306)
                 }else{
-                  Utils.emitEvent(res, 77016)
+                  Utils.emitEvent(res, 33306)
                 }
               }, 3000)
               break;
@@ -205,12 +204,12 @@ struct WebViewControllerVideoMedia {
             case "StopAllMedia0700": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("pauseVideo2()");
+                this.controller.runJavaScript("pauseAudio2()");
                 await Utils.sleep(2000);
                 this.controller.stopAllMedia();
                 await Utils.sleep(2000);
@@ -222,9 +221,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 77017)
+                  Utils.emitEvent(3, 33307)
                 }else{
-                  Utils.emitEvent(res, 77017)
+                  Utils.emitEvent(res, 33307)
                 }
               }, 3000)
               break;
@@ -232,12 +231,12 @@ struct WebViewControllerVideoMedia {
             case "StopAllMedia0800": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video3.html"))
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
-                this.controller.runJavaScript("playAudio()");
-                await Utils.sleep(2000);
+                this.controller.loadUrl($rawfile("audio3.html"))
+                await Utils.sleep(5000);
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
+                this.controller.runJavaScript("playVideo()");
+                await Utils.sleep(5000);
                 this.controller.stopAllMedia();
                 await Utils.sleep(2000);
                 res = this.controller.getMediaPlaybackState();
@@ -248,9 +247,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 77018)
+                  Utils.emitEvent(3, 33308)
                 }else{
-                  Utils.emitEvent(res, 77018)
+                  Utils.emitEvent(res, 33308)
                 }
               }, 3000)
               break;
@@ -258,9 +257,9 @@ struct WebViewControllerVideoMedia {
             case "ResumeAllMedia0100": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -274,9 +273,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 78011)
+                  Utils.emitEvent(1, 33309)
                 }else{
-                  Utils.emitEvent(res, 78011)
+                  Utils.emitEvent(res, 33309)
                 }
               }, 3000)
               break;
@@ -284,7 +283,7 @@ struct WebViewControllerVideoMedia {
             case "ResumeAllMedia0200": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
                 this.controller.resumeAllMedia();
                 await Utils.sleep(2000);
@@ -296,9 +295,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(0, 78012)
+                  Utils.emitEvent(0, 33310)
                 }else{
-                  Utils.emitEvent(res, 78012)
+                  Utils.emitEvent(res, 33310)
                 }
               }, 3000)
               break;
@@ -306,9 +305,9 @@ struct WebViewControllerVideoMedia {
             case "ResumeAllMedia0300": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 this.controller.resumeAllMedia();
                 await Utils.sleep(2000);
@@ -320,9 +319,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 78013)
+                  Utils.emitEvent(1, 33311)
                 }else{
-                  Utils.emitEvent(res, 78013)
+                  Utils.emitEvent(res, 33311)
                 }
               }, 3000)
               break;
@@ -330,11 +329,11 @@ struct WebViewControllerVideoMedia {
             case "ResumeAllMedia0400": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("pauseVideo()");
+                this.controller.runJavaScript("pauseAudio()");
                 await Utils.sleep(2000);
                 this.controller.resumeAllMedia();
                 await Utils.sleep(2000);
@@ -346,9 +345,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 78014)
+                  Utils.emitEvent(2, 33312)
                 }else{
-                  Utils.emitEvent(res, 78014)
+                  Utils.emitEvent(res, 33312)
                 }
               }, 3000)
               break;
@@ -356,9 +355,9 @@ struct WebViewControllerVideoMedia {
             case "ResumeAllMedia0500": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 this.controller.stopAllMedia();
                 await Utils.sleep(2000);
@@ -372,9 +371,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 78015)
+                  Utils.emitEvent(3, 33313)
                 }else{
-                  Utils.emitEvent(res, 78015)
+                  Utils.emitEvent(res, 33313)
                 }
               }, 3000)
               break;
@@ -382,10 +381,10 @@ struct WebViewControllerVideoMedia {
             case "ResumeAllMedia0600": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -399,9 +398,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 78016)
+                  Utils.emitEvent(1, 33314)
                 }else{
-                  Utils.emitEvent(res, 78016)
+                  Utils.emitEvent(res, 33314)
                 }
               }, 3000)
               break;
@@ -409,11 +408,11 @@ struct WebViewControllerVideoMedia {
             case "ResumeAllMedia0700": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video3.html"))
+                this.controller.loadUrl($rawfile("audio3.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
-                this.controller.runJavaScript("playAudio()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
+                this.controller.runJavaScript("playVideo()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -427,9 +426,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 78017)
+                  Utils.emitEvent(1, 33315)
                 }else{
-                  Utils.emitEvent(res, 78017)
+                  Utils.emitEvent(res, 33315)
                 }
               }, 3000)
               break;
@@ -437,9 +436,9 @@ struct WebViewControllerVideoMedia {
             case "PauseAllMedia0100": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -451,9 +450,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79011)
+                  Utils.emitEvent(2, 33316)
                 }else{
-                  Utils.emitEvent(res, 79011)
+                  Utils.emitEvent(res, 33316)
                 }
               }, 3000)
               break;
@@ -461,7 +460,7 @@ struct WebViewControllerVideoMedia {
             case "PauseAllMedia0200": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -473,9 +472,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79012)
+                  Utils.emitEvent(2, 33317)
                 }else{
-                  Utils.emitEvent(res, 79012)
+                  Utils.emitEvent(res, 33317)
                 }
               }, 3000)
               break;
@@ -483,9 +482,9 @@ struct WebViewControllerVideoMedia {
             case "PauseAllMedia0300": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 this.controller.stopAllMedia();
                 await Utils.sleep(2000);
@@ -499,9 +498,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79013)
+                  Utils.emitEvent(2, 33318)
                 }else{
-                  Utils.emitEvent(res, 79013)
+                  Utils.emitEvent(res, 33318)
                 }
               }, 3000)
               break;
@@ -509,11 +508,11 @@ struct WebViewControllerVideoMedia {
             case "PauseAllMedia0400": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("pauseVideo()");
+                this.controller.runJavaScript("pauseAudio()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -525,9 +524,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79014)
+                  Utils.emitEvent(2, 33319)
                 }else{
-                  Utils.emitEvent(res, 79014)
+                  Utils.emitEvent(res, 33319)
                 }
               }, 3000)
               break;
@@ -535,9 +534,9 @@ struct WebViewControllerVideoMedia {
             case "PauseAllMedia0500": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -551,9 +550,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79015)
+                  Utils.emitEvent(2, 33320)
                 }else{
-                  Utils.emitEvent(res, 79015)
+                  Utils.emitEvent(res, 33320)
                 }
               }, 3000)
               break;
@@ -561,10 +560,10 @@ struct WebViewControllerVideoMedia {
             case "PauseAllMedia0600": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -576,9 +575,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79016)
+                  Utils.emitEvent(2, 33321)
                 }else{
-                  Utils.emitEvent(res, 79016)
+                  Utils.emitEvent(res, 33321)
                 }
               }, 3000)
               break;
@@ -586,12 +585,12 @@ struct WebViewControllerVideoMedia {
             case "PauseAllMedia0700": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("pauseVideo2()");
+                this.controller.runJavaScript("pauseAudio2()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -603,9 +602,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79017)
+                  Utils.emitEvent(2, 33322)
                 }else{
-                  Utils.emitEvent(res, 79017)
+                  Utils.emitEvent(res, 33322)
                 }
               }, 3000)
               break;
@@ -613,11 +612,11 @@ struct WebViewControllerVideoMedia {
             case "PauseAllMedia0800": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video3.html"))
+                this.controller.loadUrl($rawfile("audio3.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
-                this.controller.runJavaScript("playAudio()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
+                this.controller.runJavaScript("playVideo()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -629,188 +628,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79018)
+                  Utils.emitEvent(2, 33323)
                 }else{
-                  Utils.emitEvent(res, 79018)
-                }
-              }, 3000)
-              break;
-            }
-            case "CloseAllMediaPresentations0100": {
-              let res: webView.MediaPlaybackState;
-              let back_res: boolean = false
-              let num1: number = 0;
-              try {
-                this.controller.loadUrl($rawfile("video1.html"))
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("enterFullScreen()");
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
-                await Utils.sleep(2000);
-                this.controller.closeAllMediaPresentations();
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("isVideoFullScreen()", (err, isFull) => {
-                  num1 = Number.parseInt(isFull);
-                  console.info("key==>isFull 1:" + isFull)
-                })
-                res = this.controller.getMediaPlaybackState();
-                console.log("CloseAllMediaPresentations0100 res: " + res);
-                if ((num1 == 0) && (res == 3)) {
-                  back_res = true;
-                }
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              }
-              setTimeout(() => {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(true, 8001)
-                }else{
-                  Utils.emitEvent(back_res, 8001)
-                }
-              }, 3000)
-              break;
-            }
-            case "CloseAllMediaPresentations0200": {
-              let res: webView.MediaPlaybackState;
-              let back_res: boolean = false;
-              let num1: number = 0;
-              try {
-                this.controller.loadUrl($rawfile("video1.html"))
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("enterFullScreen()");
-                await Utils.sleep(2000);
-                this.controller.closeAllMediaPresentations();
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("isVideoFullScreen()", (err, isFull) => {
-                  num1 = Number.parseInt(isFull);
-                  console.info("key==>isFull 2:" + isFull)
-                })
-                res = this.controller.getMediaPlaybackState();
-                console.log("CloseAllMediaPresentations0200 res: " + res);
-                if ((num1 == 0) && (res == 0)) {
-                  back_res = true;
-                }
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              }
-              setTimeout(() => {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(true, 8002)
-                }else{
-                  Utils.emitEvent(back_res, 8002)
-                }
-              }, 3000)
-              break;
-            }
-            case "CloseAllMediaPresentations0300": {
-              let res: webView.MediaPlaybackState;
-              let back_res: boolean = false;
-              let num1: number = 0;
-              try {
-                this.controller.loadUrl($rawfile("video1.html"))
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("enterFullScreen()");
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
-                await Utils.sleep(2000);
-                this.controller.stopAllMedia();
-                await Utils.sleep(2000);
-                this.controller.closeAllMediaPresentations();
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("isVideoFullScreen()", (err, isFull) => {
-                  num1 = Number.parseInt(isFull);
-                  console.info("key==>isFull 3:" + isFull)
-                })
-                res = this.controller.getMediaPlaybackState();
-                console.log("CloseAllMediaPresentations0300 res: " + res);
-                if ((num1 == 0) && (res == 3)) {
-                  back_res = true;
-                }
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              }
-              setTimeout(() => {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(true, 8003)
-                }else{
-                  Utils.emitEvent(back_res, 8003)
-                }
-              }, 3000)
-              break;
-            }
-            case "CloseAllMediaPresentations0400": {
-              let res: webView.MediaPlaybackState;
-              let back_res: boolean = false;
-              let num1: number = 0;
-              try {
-                this.controller.loadUrl($rawfile("video1.html"))
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("enterFullScreen()");
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("pauseVideo()");
-                await Utils.sleep(2000);
-                this.controller.closeAllMediaPresentations();
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("isVideoFullScreen()", (err, isFull) => {
-                  num1 = Number.parseInt(isFull);
-                  console.info("key==>isFull 4:" + isFull)
-                })
-                res = this.controller.getMediaPlaybackState();
-                console.log("CloseAllMediaPresentations0400 res: " + res);
-                if ((num1 == 0) && (res == 2)) {
-                  back_res = true;
-                }
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              }
-              setTimeout(() => {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(true, 8004)
-                }else{
-                  Utils.emitEvent(back_res, 8004)
-                }
-              }, 3000)
-              break;
-            }
-            case "CloseAllMediaPresentations0500": {
-              let res: webView.MediaPlaybackState;
-              let back_res: boolean = false;
-              let num1: number = 0;
-              try {
-                this.controller.loadUrl($rawfile("video1.html"))
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("enterFullScreen()");
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
-                await Utils.sleep(2000);
-                this.controller.closeAllMediaPresentations();
-                await Utils.sleep(2000);
-                this.controller.closeAllMediaPresentations();
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("isVideoFullScreen()", (err, isFull) => {
-                  num1 = Number.parseInt(isFull);
-                  console.info("key==>isFull 5:" + isFull)
-                })
-                res = this.controller.getMediaPlaybackState();
-                console.log("CloseAllMediaPresentations0500 res: " + res);
-                if ((num1 == 0) && (res == 3)) {
-                  back_res = true;
-                }
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              }
-              setTimeout(() => {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(true, 8005)
-                }else{
-                  Utils.emitEvent(back_res, 8005)
+                  Utils.emitEvent(res, 33323)
                 }
               }, 3000)
               break;
@@ -818,7 +638,7 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState0100": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0100 res: " + res);
@@ -828,9 +648,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(0, 8101)
+                  Utils.emitEvent(0, 33324)
                 }else{
-                  Utils.emitEvent(res, 8101)
+                  Utils.emitEvent(res, 33324)
                 }
               }, 3000)
               break;
@@ -838,9 +658,9 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState0200": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0200 res: " + res);
@@ -850,9 +670,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 8102)
+                  Utils.emitEvent(1, 33325)
                 }else{
-                  Utils.emitEvent(res, 8102)
+                  Utils.emitEvent(res, 33325)
                 }
               }, 3000)
               break;
@@ -860,9 +680,9 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState0300": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia()
                 await Utils.sleep(2000);
@@ -874,9 +694,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 8103)
+                  Utils.emitEvent(2, 33326)
                 }else{
-                  Utils.emitEvent(res, 8103)
+                  Utils.emitEvent(res, 33326)
                 }
               }, 3000)
               break;
@@ -884,11 +704,11 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState0400": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("pauseVideo()");
+                this.controller.runJavaScript("pauseAudio()");
                 await Utils.sleep(2000);
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0400 res: " + res);
@@ -898,9 +718,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 8104)
+                  Utils.emitEvent(2, 33327)
                 }else{
-                  Utils.emitEvent(res, 8104)
+                  Utils.emitEvent(res, 33327)
                 }
               }, 3000)
               break;
@@ -908,9 +728,9 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState0500": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
+                this.controller.runJavaScript("playAudio()");
                 await Utils.sleep(2000);
                 this.controller.stopAllMedia();
                 await Utils.sleep(2000);
@@ -922,45 +742,33 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 8105)
+                  Utils.emitEvent(3, 33328)
                 }else{
-                  Utils.emitEvent(res, 8105)
+                  Utils.emitEvent(res, 33328)
                 }
               }, 3000)
               break;
             }
             case "GetMediaPlaybackState0600": {
               let res: webView.MediaPlaybackState;
-              let back_res: boolean = false;
-              let num1: number = 0;
               try {
-                this.controller.loadUrl($rawfile("video1.html"))
+                this.controller.loadUrl($rawfile("audio1.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("enterFullScreen()");
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo()");
-                await Utils.sleep(2000);
-                this.controller.closeAllMediaPresentations();
+                this.controller.runJavaScript("playAudio()");
+                await Utils.sleep(5000);
+                this.controller.resumeAllMedia();
                 await Utils.sleep(2000);
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0600 res: " + res);
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("isVideoFullScreen()", (err, isFull) => {
-                  num1 = Number.parseInt(isFull);
-                  console.info("key==>isFull_8106):" + isFull)
-                  if ((num1 == 0) && (res == 3)) {
-                    back_res = true;
-                  }
-                })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(true, 8106)
+                  Utils.emitEvent(1, 33329)
                 }else{
-                  Utils.emitEvent(back_res, 8106)
+                  Utils.emitEvent(res, 33329)
                 }
               }, 3000)
               break;
@@ -968,7 +776,7 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState0700": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0700 res: " + res);
@@ -978,9 +786,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(0, 8107)
+                  Utils.emitEvent(0, 33330)
                 }else{
-                  Utils.emitEvent(res, 8107)
+                  Utils.emitEvent(res, 33330)
                 }
               }, 3000)
               break;
@@ -988,9 +796,9 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState0800": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
+                this.controller.runJavaScript("playAudio1()");
                 await Utils.sleep(2000);
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0800 res: " + res);
@@ -1000,9 +808,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 8108)
+                  Utils.emitEvent(1, 33331)
                 }else{
-                  Utils.emitEvent(res, 8108)
+                  Utils.emitEvent(res, 33331)
                 }
               }, 3000)
               break;
@@ -1010,10 +818,10 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState0900": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
                 await Utils.sleep(2000);
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState0900 res: " + res);
@@ -1023,9 +831,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 8109)
+                  Utils.emitEvent(1, 33332)
                 }else{
-                  Utils.emitEvent(res, 8109)
+                  Utils.emitEvent(res, 33332)
                 }
               }, 3000)
               break;
@@ -1033,12 +841,12 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState1000": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("pauseVideo1()");
+                this.controller.runJavaScript("pauseAudio1()");
                 await Utils.sleep(2000);
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState1000 res: " + res);
@@ -1048,9 +856,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 8110)
+                  Utils.emitEvent(1, 33333)
                 }else{
-                  Utils.emitEvent(res, 8110)
+                  Utils.emitEvent(res, 33333)
                 }
               }, 3000)
               break;
@@ -1058,13 +866,13 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState1100": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("pauseVideo1()");
-                this.controller.runJavaScript("pauseVideo2()");
+                this.controller.runJavaScript("pauseAudio1()");
+                this.controller.runJavaScript("pauseAudio2()");
                 await Utils.sleep(2000);
                 res = this.controller.getMediaPlaybackState();
                 console.log("GetMediaPlaybackState1100 res: " + res);
@@ -1074,9 +882,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 8111)
+                  Utils.emitEvent(2, 33334)
                 }else{
-                  Utils.emitEvent(res, 8111)
+                  Utils.emitEvent(res, 33334)
                 }
               }, 3000)
               break;
@@ -1084,10 +892,10 @@ struct WebViewControllerVideoMedia {
             case "GetMediaPlaybackState1200": {
               let res: webView.MediaPlaybackState;
               try {
-                this.controller.loadUrl($rawfile("video2.html"))
+                this.controller.loadUrl($rawfile("audio2.html"))
                 await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
+                this.controller.runJavaScript("playAudio1()");
+                this.controller.runJavaScript("playAudio2()");
                 await Utils.sleep(2000);
                 this.controller.pauseAllMedia();
                 await Utils.sleep(2000);
@@ -1099,36 +907,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 8112)
+                  Utils.emitEvent(2, 33335)
                 }else{
-                  Utils.emitEvent(res, 8112)
-                }
-              }, 3000)
-              break;
-            }
-            case "GetMediaPlaybackState1300": {
-              let res: webView.MediaPlaybackState;
-              try {
-                this.controller.loadUrl($rawfile("video2.html"))
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                this.controller.runJavaScript("playVideo2()");
-                await Utils.sleep(2000);
-                this.controller.stopAllMedia();
-                await Utils.sleep(2000);
-                this.controller.runJavaScript("playVideo1()");
-                await Utils.sleep(2000);
-                res = this.controller.getMediaPlaybackState();
-                console.log("GetMediaPlaybackState1300 res: " + res);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              }
-              setTimeout(() => {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 8113)
-                }else{
-                  Utils.emitEvent(res, 8113)
+                  Utils.emitEvent(res, 33335)
                 }
               }, 3000)
               break;
@@ -1137,7 +918,7 @@ struct WebViewControllerVideoMedia {
         })
       }
 
-      Web({ src: $rawfile("video1.html"), controller: this.controller })
+      Web({ src: $rawfile("audio1.html"), controller: this.controller })
     }
   }
 }
