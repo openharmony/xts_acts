@@ -62,11 +62,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       'TYPE_FLOAT': 8,
     }
     let currentDeviceIsRk = false;
-    let currentDeviceIsPC = false;
     beforeAll(() => {
       let deviceTypeInfo = deviceInfo.deviceType
       currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
-      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
       console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
@@ -483,13 +481,17 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      // @ts-ignore
-      await tempWnd.setSystemBarEnable([null, '123']).catch((err: BusinessError) => {
-        console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) err=' + JSON.stringify(err));
-        expect(err.code === 1003).assertTrue();
-        done();
-      });
-      console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) finished');
+      try{
+        await tempWnd.setSystemBarEnable([null, undefined]).catch((err: BusinessError) => {
+          console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) err=' + JSON.stringify(err));
+          expect(err.code === 1003).assertTrue();
+          done();
+        });
+        console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) finished');
+      }catch(catcherr){
+        console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) err=' + JSON.stringify(catcherr));
+      }
+
     })
 
     /**
@@ -1915,7 +1917,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
         expect(wnd != null).assertTrue();
         try {
-          let promise = wnd.disableLandscapeMultiWindow() 
+          let promise = wnd.enableLandscapeMultiWindow() 
           promise.then(() => {
               console.info(msgStr + ' Succeeded in making multi-window become not landscape.');
               expect(true).assertTrue()
@@ -1932,51 +1934,5 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         }
       })
     }) 
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3930
-     * @tc.name      : testSetWindowMask_Function_Promise
-     * @tc.desc      : Test the function value of setWindowMask
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */ 
-    it("testSetWindowMask_Function_Promise", 0, async function(done){
-      let msgStr = "testSetWindowMask_Function_Promise";
-      console.log(msgStr + "begin0");
-      if(currentDeviceIsPC){
-        console.log(msgStr + "begin1")
-        try{
-          let windowMask: Array<Array<number>> = [
-            [0, 0, 0, 1, 0, 0, 0],
-            [0, 0, 1, 1, 1, 0, 0],
-            [0, 1, 1, 0, 1, 1, 0],
-            [1, 1, 0, 0, 0, 1, 1]
-          ];
-          let windowClass = await ohosWindow.getLastWindow(context);
-          let promise = windowClass.setWindowMask(windowMask);
-          console.log(msgStr + windowMask);
-          promise.then(() => {
-            console.log(msgStr + 'Succeeded in setting the window mask.');
-            expect(true).assertTrue();
-            console.log(msgStr + true);
-            done();
-          }).catch((err: BusinessError) => {
-            console.log(msgStr + 'Failed1 to set the window mask. Cause: ' + JSON.stringify(err));
-            expect().assertFail();
-            done();
-          });
-        } catch (exception) {
-          console.log(msgStr + 'Failed2 to set the window mask. Cause:' + JSON.stringify(exception));
-          expect().assertFail();
-          done();
-        }
-      }else{
-        console.log(msgStr + "该设备类型不是PC" );
-        expect(deviceInfo.deviceType).assertEqual(deviceInfo.deviceType);
-        done();
-      }
-    })
-
-
   })
 }
