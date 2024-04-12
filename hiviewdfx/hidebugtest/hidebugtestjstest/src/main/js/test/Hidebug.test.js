@@ -497,8 +497,7 @@ describe('HidebugJsTest', function () {
                 hidebug.getSharedDirty();
             }
             hidebug.stopJsCpuProfiling();
-            var pid = process.pid;
-            let path = "/proc/" + pid + "/root/data/storage/el2/base/files/" + filename + ".json";
+            let path = "/proc/self/root/data/storage/el2/base/files/" + filename + ".json";
             let data = fileio.readTextSync(path);
             if (data.includes("napi")) {
                 expect(true).assertTrue();

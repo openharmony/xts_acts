@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+import common from '@ohos.app.ability.common';
+
 @Entry
 @Component
 struct Index {
@@ -23,6 +25,10 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
+          .onClick(async () => {
+            let context = getContext(this) as common.UIAbilityContext;
+            context.terminateSelf();
+          })
       }
       .width('100%')
     }

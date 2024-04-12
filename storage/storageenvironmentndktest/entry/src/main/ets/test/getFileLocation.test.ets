@@ -33,7 +33,7 @@ describe('getFileLocation_Ndk_test',async function(){
    it('getfilelocation_ndktest_001', 0,async function (done){
       let filepath = getContext().filesDir + '/fileio_location.txt';
       fs.openSync(filepath,0o102);
-      let uri = new fileuri.FileUri(filepath);
+      let uri = fileuri.getUriFromPath(filepath);
       console.info("getfilelocation_ndktest_001 Test uri= " + JSON.stringify(uri));
       let data = fileio.GetFileLocation();
       console.info("getfilelocation_ndktest_001 Test NAPI data= " + JSON.stringify(data));
