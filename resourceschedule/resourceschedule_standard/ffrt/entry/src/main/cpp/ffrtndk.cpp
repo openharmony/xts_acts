@@ -3151,6 +3151,12 @@ static napi_value ffrt_queue_parallel_api_0003(napi_env env, napi_callback_info 
     if (priority != low) {
         result += 1;
     }
+
+    ffrt_task_attr_set_priority(&task_attr, 100);
+    priority = ffrt_task_attr_get_priority(&task_attr);
+    if (priority != low) {
+        result += 1;
+    }
     // 销毁队列
     ffrt_task_attr_destroy(&task_attr);
     napi_value flag = nullptr;
