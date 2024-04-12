@@ -2879,8 +2879,9 @@ static void TimerCbCancel(void *data)
 
 static napi_value ffrt_timer_cancel_0001(napi_env env, napi_callback_info info)
 {
+    const uint32_t delayTime = 2000;
     TimerDataT timerData = { .finish = false, .result = 0};
-    int handle = ffrt_timer_start(ffrt_qos_default, 2000, reinterpret_cast<void *>(&timerData), TimerCbCancel, false);
+    int handle = ffrt_timer_start(ffrt_qos_default, delayTime, reinterpret_cast<void *>(&timerData), TimerCbCancel, false);
     int abnormalHandle = handle + 1;
     ffrt_timer_stop(ffrt_qos_default, abnormalHandle);
     ffrt_timer_stop(ffrt_qos_default, handle);
