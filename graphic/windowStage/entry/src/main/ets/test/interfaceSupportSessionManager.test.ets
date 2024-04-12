@@ -465,6 +465,38 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       });
     })
     /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4020
+     * @tc.name      : testSetSingleFrameComposerEnabled_Invalid_Parame_Null
+     * @tc.desc      : Disable/Enable the function of single frame compositing render node
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSetSingleFrameComposerEnabled_Invalid_Parame_Null', 0, async () => {
+      let caseName: string = 'testSetSingleFrameComposerEnabled_Invalid_Parame_Null';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetSingleFrameComposerEnabled_Invalid_Parame_Null",
+        windowType: ohosWindow.WindowType.TYPE_FLOAT,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      expect(!!win).assertTrue();
+      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(null).then(async () => {
+        console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
+        await (win as ohosWindow.Window).destroyWindow();
+        expect().assertFail();
+      }).catch(async (err: BusinessError) => {
+        console.error(msgStr + `Failed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
+        await (win as ohosWindow.Window).destroyWindow();
+        expect(err.code).assertEqual(401);
+      });
+    })
+    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3730
      * @tc.name      : testResize_MinLimits
      * @tc.desc      : Change the current window size
@@ -1268,6 +1300,78 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         expect(properties.windowRect.height).assertEqual(windowLimits.minHeight)
       }
       await subMin.destroyWindow();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4030
+     * @tc.name      : testGetAndSetWindowLimits
+     * @tc.desc      : Verify that get and set values are the same
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testGetAndSetWindowLimits', 0, async function () {
+      let caseName = 'testGetAndSetWindowLimits';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowId = 'testGetAndSetWindowLimits';
+      let windowConfig = {
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
+      };
+      let tempWnd = null;
+      let windowLimits = null;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'createWindow tempWnd failed');
+        expect().assertFail();
+      });
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
+        console.log(msgStr + 'tempWnd.loadContent failed');
+        expect().assertFail();
+      });
+      await tempWnd.moveWindowTo(0, 0).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await tempWnd.showWindow().catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      let winLimits: ohosWindow.WindowLimits = {
+        maxWidth: 3003,
+        maxHeight: 3003,
+        minWidth: 2002,
+        minHeight: 2002
+      };
+      await tempWnd.setWindowLimits(winLimits).then((data) => {
+        console.info(msgStr + 'Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        if (!currentDeviceIsRk) {
+          console.error(msgStr + 'Failed to change the window limits. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + +JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
+      });
+      try {
+        windowLimits = tempWnd.getWindowLimits();
+        console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
+        expect(windowLimits.maxWidth).assertEqual(3003);
+        expect(windowLimits.maxHeight).assertEqual(3003);
+        expect(windowLimits.minWidth).assertEqual(2002);
+        expect(windowLimits.minHeight).assertEqual(2002);
+      } catch (exception) {
+        if (!currentDeviceIsRk) {
+          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+      await tempWnd.destroyWindow();
     })
   })
 }
