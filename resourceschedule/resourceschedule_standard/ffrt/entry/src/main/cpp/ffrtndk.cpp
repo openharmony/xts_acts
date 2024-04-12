@@ -3049,23 +3049,23 @@ static napi_value ffrt_queue_parallel_api_0001(napi_env env, napi_callback_info 
     int result = 0;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
-    const int max_concurrency1 = 4;
-    ffrt_queue_attr_set_max_concurrency(nullptr, max_concurrency1);
+    const int maxConcurrency1 = 4;
+    ffrt_queue_attr_set_max_concurrency(nullptr, maxConcurrency1);
     int concurrency = ffrt_queue_attr_get_max_concurrency(&queue_attr);
     if (concurrency != 1) {
         result += 1;
     }
 
-    const int max_concurrency2 = 0;
-    ffrt_queue_attr_set_max_concurrency(&queue_attr, max_concurrency2);
+    const int maxConcurrency2 = 0;
+    ffrt_queue_attr_set_max_concurrency(&queue_attr, maxConcurrency2);
     concurrency = ffrt_queue_attr_get_max_concurrency(&queue_attr);
     if (concurrency != 1) {
         result += 1;
     }
-    const int max_concurrency3 = 100;
-    ffrt_queue_attr_set_max_concurrency(&queue_attr, max_concurrency3);
+    const int maxConcurrency3 = 100;
+    ffrt_queue_attr_set_max_concurrency(&queue_attr, maxConcurrency3);
     concurrency = ffrt_queue_attr_get_max_concurrency(&queue_attr);
-    if (concurrency != max_concurrency3) {
+    if (concurrency != maxConcurrency3) {
         result += 1;
     }
 
@@ -3185,7 +3185,7 @@ static napi_value ffrt_queue_parallel_api_0004(napi_env env, napi_callback_info 
 static napi_value queue_parallel_cancel_0001(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    const int task_res = 9
+    const int taskRes = 9;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
@@ -3216,7 +3216,7 @@ static napi_value queue_parallel_cancel_0001(napi_env env, napi_callback_info in
     ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle,
         ffrt_create_function_wrapper(OneSubFunc, ffrt_function_kind_queue), nullptr);
     ffrt_queue_wait(task3);
-    if (res != task_res) {
+    if (res != taskRes) {
         result += 1;
     }
 
@@ -3267,7 +3267,7 @@ static napi_value queue_parallel_cancel_0002(napi_env env, napi_callback_info in
 static napi_value queue_parallel_0001(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    const int task_res = 9;
+    const int taskRes = 9;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
@@ -3284,7 +3284,7 @@ static napi_value queue_parallel_0001(napi_env env, napi_callback_info info)
     ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle,
         ffrt_create_function_wrapper(OneSubFunc, ffrt_function_kind_queue), nullptr);
     ffrt_queue_wait(task3);
-    if (res != task_res) {
+    if (res != taskRes) {
         result += 1;
     }
 
@@ -3327,7 +3327,7 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
 {
     int result = 0;
     const int maxConcurrency = 1;
-    const int task_res = 5;
+    const int taskRes = 5;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
     ffrt_queue_attr_set_max_concurrency(&queue_attr, maxConcurrency);
@@ -3344,11 +3344,11 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
     std::function<void()> &&TwoPlusFunc = [&res] () {TwoPlusForTest((void *)(&res));};
     std::function<void()> &&TwoSubFunc = [&res] () {TwoSubForTest((void *)(&res));};
 
-    const int task_cnt = 6;
-    ffrt_task_attr_t task_attr[task_cnt];
-    for (int i = 0; i < task_cnt; ++i) {
+    const int taskCnt = 6;
+    ffrt_task_attr_t task_attr[taskCnt];
+    for (int i = 0; i < taskCnt; ++i) {
         (void)ffrt_task_attr_init(&task_attr[i]);
-        ffrt_task_attr_set_queue_priority(&task_attr[i], task_cnt - i);
+        ffrt_task_attr_set_queue_priority(&task_attr[i], taskCnt - i);
     }
 
     double t;
@@ -3365,10 +3365,10 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(TwoPlusFunc, ffrt_function_kind_queue), &task_attr[5]);
 
     ffrt_queue_wait(task);
-    if (res != task_res) {
+    if (res != taskRes) {
         result += 1;
     }
-    for (int i = 0; i < task_cnt; ++i) {
+    for (int i = 0; i < taskCnt; ++i) {
         (void) ffrt_task_attr_destroy(&task_attr[i]);
     }
     ffrt_task_handle_destroy(task);
@@ -3483,8 +3483,8 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, napi_default, nullptr },
         { "ffrt_loop_abnormal_0001", nullptr, ffrt_loop_abnormal_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ffrt_loop_abnormal_0002", nullptr, ffrt_loop_abnormal_0002, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "ffrt_queue_parallel_api_0001", nullptr, ffrt_queue_parallel_api_0001, nullptr, nullptr, 
-            nullptr, napi_default, nullptr },
+        { "ffrt_queue_parallel_api_0001", nullptr, ffrt_queue_parallel_api_0001, nullptr, nullptr, nullptr, napi_default, 
+            nullptr },
         { "ffrt_queue_parallel_api_0002", nullptr, ffrt_queue_parallel_api_0002, nullptr, nullptr, 
             nullptr, napi_default, nullptr },
         { "ffrt_queue_parallel_api_0003", nullptr, ffrt_queue_parallel_api_0003, nullptr, nullptr, 
