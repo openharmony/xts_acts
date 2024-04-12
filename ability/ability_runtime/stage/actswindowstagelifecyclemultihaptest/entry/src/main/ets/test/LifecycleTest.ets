@@ -117,7 +117,7 @@ export default function abilityTest() {
     });
 
     afterEach(async function (done) {
-      await sleep(500);
+      await sleep(1000);
       console.info('LifeCycleTest after each called');
       if (!("Multihap_WindowStageLifecycleTest_007" == TAG ||
         "Multihap_WindowStageLifecycleTest_010" == TAG || "Multihap_WindowStageLifecycleTest_006" == TAG)) {
