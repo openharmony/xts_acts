@@ -13,17 +13,16 @@
  * limitations under the License.
  */
 
-
 import hilog from '@ohos.hilog';
 
 @Entry
 @Component
 struct AssistantOneIndex {
+  @State message: string = 'Hello World -assistant';
+
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
   }
-
-  @State message: string = 'Hello World -assistant'
 
   build() {
     Row() {
@@ -37,9 +36,7 @@ struct AssistantOneIndex {
             .fontWeight(FontWeight.Bold)
         }
         .type(ButtonType.Capsule)
-        .margin({
-          top: 20
-        })
+        .margin({ top: 20 })
         .backgroundColor('#0D9FFB')
         .width('35%')
         .height('5%')
