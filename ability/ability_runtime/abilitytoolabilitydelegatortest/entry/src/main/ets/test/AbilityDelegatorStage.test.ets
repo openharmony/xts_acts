@@ -17,32 +17,31 @@ import hilog from '@ohos.hilog';
 import { describe, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { BusinessError } from '@ohos.base';
 
 const TAG: string = 'ActsAbilityDelegatorTest';
 const TEST_SUITE_NAME: string = 'ActsAbilityDelegatorStageTest';
 const CODE_ERROR = 401;
 
+function sleep(time: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, time));
+}
+
+async function executeShellCmd(cmd: string, abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator) {
+  abilityDelegator.executeShellCommand(cmd,
+    (err: BusinessError, d: AbilityDelegatorRegistry.ShellCmdResult) => {
+      hilog.info(0x0000, `${TAG}`, 'executeShellCommand : err : %{public}s', JSON.stringify(err) ?? '');
+      hilog.info(0x0000, `${TAG}`, 'executeShellCommand : data.stdResult : %{public}s', d.stdResult ?? '');
+      hilog.info(0x0000, `${TAG}`, 'executeShellCommand : d.exitCode : %{public}s', d.exitCode ?? '');
+    })
+}
+
+function isEmpty(info: string): boolean {
+  return info == null || info == undefined || info.length == 0 || info == '';
+}
+
 export default function AbilityDelegatorStageTest() {
-
-  function sleep(time) {
-    return new Promise((resolve) => setTimeout(resolve, time))
-  }
-
-  async function executeShellCmd(cmd: string, abilityDelegator) {
-    await abilityDelegator.executeShellCommand(cmd,
-      (err: any, d: any) => {
-        hilog.info(0x0000, `${TAG}`, 'executeShellCommand : err : %{public}s', JSON.stringify(err) ?? '');
-        hilog.info(0x0000, `${TAG}`, 'executeShellCommand : data.stdResult : %{public}s', d.stdResult ?? '');
-        hilog.info(0x0000, `${TAG}`, 'executeShellCommand : d.exitCode : %{public}s', d.exitCode ?? '');
-      })
-  }
-
-  function isEmpty(info: string): boolean {
-    return info == null || info == undefined || info.length == 0 || info == ''
-  }
-
-  describe('ActsAbilityTest', function () {
-
+  describe('ActsAbilityTest', () => {
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_23500
      * @tc.name      : Call the doAbilityBackground API to schedule ability from  foreground to background by promise
@@ -51,59 +50,55 @@ export default function AbilityDelegatorStageTest() {
      * @tc.level     : Level 3
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23500', 3, done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_23500'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23500', 3, (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_23500';
       try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         let monitor: AbilityDelegatorRegistry.AbilityMonitor = {
           abilityName: 'AssistantAbilityTwo',
           moduleName: AbilityDelegatorRegistry.getArguments().parameters['-m'],
           onAbilityForeground: (ability) => {
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ---onAbilityForegroundCallback`)
+            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ---onAbilityForegroundCallback`);
             abilityDelegator.getCurrentTopAbility((err, data) => {
-              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> getCurrentTopAbility_0200 err: ${JSON.stringify(err)} data:  ${JSON.stringify(data)}`)
-
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> getCurrentTopAbility_0200 err: ${JSON.stringify(err)} data:  ${JSON.stringify(data)}`);
               let state = abilityDelegator.getAbilityState(ability);
-              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state --in Foregroundcallback: ${state}`)
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state --in Foregroundcallback: ${state}`);
               expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
-
-              abilityDelegator.doAbilityBackground(ability).then(() => {
-                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`)
-              })
+              abilityDelegator.doAbilityBackground(ability)
+                .then(() => {
+                  console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`);
+                })
             })
-
           },
           onAbilityBackground: (ability) => {
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>onAbilityBackgroundCallback====`)
+            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>onAbilityBackgroundCallback====`);
             let state = abilityDelegator.getAbilityState(ability);
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 -- in background callback state: ${state}`)
+            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 -- in background callback state: ${state}`);
             expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.BACKGROUND);
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 end====`)
-            removeAbilityMonitor()
-            done()
+            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 end====`);
+            abilityDelegator.removeAbilityMonitor(monitor)
+              .then(() => {
+                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
+              })
+            done();
           }
         }
 
-        abilityDelegator.addAbilityMonitor(monitor).then(async () => {
-          await abilityDelegator.startAbility(
-            {
-              bundleName: AbilityDelegatorRegistry.getArguments().bundleName,
-              abilityName: 'AssistantAbilityTwo',
-            }).then(() => {
-              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>startAbility------}`)
-            })
-
-        })
-
-        function removeAbilityMonitor() {
-          abilityDelegator.removeAbilityMonitor(monitor).then(() => {
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
+        abilityDelegator.addAbilityMonitor(monitor)
+          .then(async () => {
+            await abilityDelegator.startAbility(
+              {
+                bundleName: AbilityDelegatorRegistry.getArguments().bundleName,
+                abilityName: 'AssistantAbilityTwo',
+              })
+              .then(() => {
+                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>startAbility------}`);
+              })
           })
-        }
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -115,56 +110,56 @@ export default function AbilityDelegatorStageTest() {
      * @tc.level     : Level 3
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600', 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600';
       try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         let monitor: AbilityDelegatorRegistry.AbilityMonitor = {
           abilityName: 'AssistantAbilityTwo',
           moduleName: AbilityDelegatorRegistry.getArguments().parameters['-m'],
           onAbilityForeground: (ability) => {
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ---onAbilityForegroundCallback`)
+            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ---onAbilityForegroundCallback`);
             abilityDelegator.getCurrentTopAbility((err, data) => {
-              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> getCurrentTopAbility_0200 err: ${JSON.stringify(err)} data:  ${JSON.stringify(data)}`)
-
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> getCurrentTopAbility_0200 err: ${JSON.stringify(err)} data:  ${JSON.stringify(data)}`);
               let state = abilityDelegator.getAbilityState(ability);
-              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state --in Foregroundcallback: ${state}`)
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state --in Foregroundcallback: ${state}`);
               expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
 
-              abilityDelegator.doAbilityBackground(ability).then(() => {
-                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`)
-              })
+              abilityDelegator.doAbilityBackground(ability)
+                .then(() => {
+                  console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`);
+                })
             })
           },
           onAbilityBackground: (ability) => {
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>onAbilityBackgroundCallback====`)
+            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>onAbilityBackgroundCallback====`);
             let state = abilityDelegator.getAbilityState(ability);
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state: ${state}`)
+            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state: ${state}`);
             expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.BACKGROUND);
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 end====`)
-            removeAbilityMonitor()
-            done()
+            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 end====`);
+            abilityDelegator.removeAbilityMonitor(monitor)
+              .then(() => {
+                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`);
+              })
+            done();
           }
         }
 
-        abilityDelegator.addAbilityMonitor(monitor).then(async () => {
-          await abilityDelegator.startAbility(
-            {
-              bundleName: AbilityDelegatorRegistry.getArguments().bundleName,
-              abilityName: 'AssistantAbilityTwo',
-            }).then(() => {
-              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>startAbility finish====`)
-            })
-        })
-        function removeAbilityMonitor() {
-          abilityDelegator.removeAbilityMonitor(monitor).then(() => {
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
+        abilityDelegator.addAbilityMonitor(monitor)
+          .then(async () => {
+            await abilityDelegator.startAbility(
+              {
+                bundleName: AbilityDelegatorRegistry.getArguments().bundleName,
+                abilityName: 'AssistantAbilityTwo',
+              })
+              .then(() => {
+                console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>startAbility finish====`);
+              })
           })
-        }
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -176,39 +171,39 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_14800', 3, async function (done) {
-
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_14800', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_14800';
       try {
-        let count = 0
-        function onWindowStageDestroy() {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onWindowStageDestroy ..`);
-          count++
-        }
+        let count = 0;
         let monitor: AbilityDelegatorRegistry.AbilityMonitor = {
           abilityName: 'AssistantAbilityOne',
-          onWindowStageDestroy: onWindowStageDestroy
-        };
+          onWindowStageDestroy: () => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onWindowStageDestroy ..`);
+            count++;
+          }
+        }
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-        abilityDelegator.addAbilityMonitor(monitor).then(() => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} addAbilityMonitor promise ..`);
-        });
+        abilityDelegator.addAbilityMonitor(monitor)
+          .then(() => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} addAbilityMonitor promise ..`);
+          })
 
-        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        let cmd = 'aa start -d 0 -a AssistantAbilityOne' + ' -b ' + abilityDelegatorArguments.bundleName
-        executeShellCmd(cmd, abilityDelegator)
-        await sleep(2000)
-        abilityDelegator.removeAbilityMonitor(monitor).then(() => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor promise ..`)
-        });
-        executeShellCmd(cmd, abilityDelegator)
-        await sleep(1000)
-        expect(count).assertEqual(1)
-        done()
+        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+        let cmd = 'aa start -d 0 -a AssistantAbilityOne' + ' -b ' + abilityDelegatorArguments.bundleName;
+        executeShellCmd(cmd, abilityDelegator);
+        await sleep(2000);
+        abilityDelegator.removeAbilityMonitor(monitor)
+          .then(() => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor promise ..`);
+          })
+        executeShellCmd(cmd, abilityDelegator);
+        await sleep(1000);
+        expect(count).assertEqual(1);
+        done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -220,25 +215,24 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16300', 3, async function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16300', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16300';
       try {
-        var cmd = 'aa help'
+        let cmd = 'aa help';
         let timeout = -1;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, timeout, (err, data) => {
-
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
           expect(data.exitCode).assertEqual(0);
-          expect(isEmpty(data.stdResult)).assertFalse()
+          expect(isEmpty(data.stdResult)).assertFalse();
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -250,29 +244,28 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16400', 3, async function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16400', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16400';
       try {
-        var cmd = 'aa help'
+        let cmd = 'aa help';
         let timeout = -1;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-
-        await abilityDelegator.executeShellCommand(cmd, timeout).then(data => {
-
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
-          expect(data.exitCode).assertEqual(0)
-          expect(isEmpty(data.stdResult)).assertFalse()
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
-        }).catch(err => {
-          expect().assertFail()
-          done()
-        })
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        await abilityDelegator.executeShellCommand(cmd, timeout)
+          .then(data => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
+            expect(data.exitCode).assertEqual(0);
+            expect(isEmpty(data.stdResult)).assertFalse();
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
+            done();
+          }).catch((err: BusinessError) => {
+            expect().assertFail();
+            done();
+          })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -284,25 +277,24 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16500', 3, async function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16500', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16500';
       try {
-        var cmd = 'aa help'
+        let cmd = 'aa help';
         let timeout = 0;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, timeout, (err, data) => {
-
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
           expect(data.exitCode).assertEqual(0);
-          expect(isEmpty(data.stdResult)).assertFalse()
+          expect(isEmpty(data.stdResult)).assertFalse();
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -314,27 +306,28 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16600', 3, async function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16600', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16600';
       try {
-        var cmd = 'aa help'
+        let cmd = 'aa help';
         let timeout = 0;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        await abilityDelegator.executeShellCommand(cmd, timeout).then(data => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
-          expect(data.exitCode).assertEqual(0);
-          expect(isEmpty(data.stdResult)).assertFalse()
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
-        }).catch(err => {
-          expect().assertFail()
-          done()
-        })
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        await abilityDelegator.executeShellCommand(cmd, timeout)
+          .then(data => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
+            expect(data.exitCode).assertEqual(0);
+            expect(isEmpty(data.stdResult)).assertFalse();
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
+            done();
+          }).catch((err: BusinessError) => {
+            expect().assertFail();
+            done();
+          })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -346,25 +339,24 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16700', 3, function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16700', 3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16700';
       try {
-        var cmd = 'ppwd -L'
+        let cmd = 'ppwd -L';
         let timeout = 1;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, timeout, (err, data) => {
-
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err} , data= ${JSON.stringify(data)}`);
-          expect(data.exitCode === 0).assertFalse()
-          expect(isEmpty(data.stdResult)).assertTrue()
+          expect(data.exitCode === 0).assertFalse();
+          expect(isEmpty(data.stdResult)).assertTrue();
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -376,27 +368,28 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16800', 3, async function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16800', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16800';
       try {
-        var cmd = 'ppwd -L'
+        let cmd = 'ppwd -L';
         let timeout = 1;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        await abilityDelegator.executeShellCommand(cmd, timeout).then(data => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
-          expect(data.exitCode === 0).assertFalse()
-          expect(isEmpty(data.stdResult)).assertTrue()
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
-        }).catch(err => {
-          expect().assertFail()
-          done()
-        })
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        await abilityDelegator.executeShellCommand(cmd, timeout)
+          .then(data => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
+            expect(data.exitCode === 0).assertFalse();
+            expect(isEmpty(data.stdResult)).assertTrue();
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
+            done();
+          }).catch((err: BusinessError) => {
+            expect().assertFail();
+            done();
+          })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -408,23 +401,23 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16900', 3, function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16900', 3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16900';
       try {
-        var cmd = 'aa help'
+        let cmd = 'aa help';
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err} , data= ${JSON.stringify(data)}`);
-          expect(data.exitCode === 0).assertTrue()
-          expect(data.stdResult).assertContain('aa')
+          expect(data.exitCode === 0).assertTrue();
+          expect(data.stdResult).assertContain('aa');
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -436,26 +429,27 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17000', 3, async function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17000', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17000';
       try {
-        let cmd = 'aa help'
+        let cmd = 'aa help';
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        await abilityDelegator.executeShellCommand(cmd).then(data => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
-          expect(data.exitCode === 0).assertTrue()
-          expect(data.stdResult).assertContain('aa')
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
-        }).catch(err => {
-          expect().assertFail()
-          done()
-        })
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        await abilityDelegator.executeShellCommand(cmd)
+          .then(data => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
+            expect(data.exitCode === 0).assertTrue();
+            expect(data.stdResult).assertContain('aa');
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
+            done();
+          }).catch((err: BusinessError) => {
+            expect().assertFail();
+            done();
+          })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -467,22 +461,22 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17100', 3, function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17100', 3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17100';
       try {
-        var cmd = 'xx - help'
+        let cmd = 'xx - help';
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err} , data= ${JSON.stringify(data)}`);
-          expect(data.exitCode).assertEqual(-1)
+          expect(data.exitCode).assertEqual(-1);
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -494,24 +488,25 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17200', 3, async function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17200', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17200';
       try {
-        let cmd = 'xx - help'
+        let cmd = 'xx - help';
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        await abilityDelegator.executeShellCommand(cmd).then(data => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`)
-          expect(data.exitCode).assertEqual(-1)
-          done()
-        }).catch(err => {
-          expect().assertFail()
-          done()
-        })
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        await abilityDelegator.executeShellCommand(cmd)
+          .then(data => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
+            expect(data.exitCode).assertEqual(-1);
+            done();
+          }).catch((err: BusinessError) => {
+            expect().assertFail();
+            done();
+          })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -524,25 +519,25 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17300', 3, function (done) {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17300'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17300', 3, (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17300';
       try {
-        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        let cmd = 'aa start -d 0 -a AssistantAbilityOne' + ' -b ' + abilityDelegatorArguments.bundleName
-        let timeout = 1
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+        let cmd = 'aa start -d 0 -a AssistantAbilityOne' + ' -b ' + abilityDelegatorArguments.bundleName;
+        let timeout = 1;
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, timeout, (err, data) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err} , data= ${JSON.stringify(data)}`);
-          expect(data.exitCode).assertEqual(0)
-          expect(data.stdResult).assertContain('start ability successfully')
+          expect(data.exitCode).assertEqual(0);
+          expect(data.stdResult).assertContain('start ability successfully');
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -555,27 +550,28 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17400', 3, function (done) {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17400'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17400', 3, (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17400';
       try {
-        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        let cmd = 'aa start -d 0 -a AssistantAbilityOne' + ' -b ' + abilityDelegatorArguments.bundleName
-        let timeout = 1
+        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+        let cmd = 'aa start -d 0 -a AssistantAbilityOne' + ' -b ' + abilityDelegatorArguments.bundleName;
+        let timeout = 1;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        abilityDelegator.executeShellCommand(cmd, timeout).then(data => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`)
-          expect(data.exitCode).assertEqual(0)
-          expect(data.stdResult).assertContain('start ability successfully')
-          done()
-        }).catch(err => {
-          expect().assertFail()
-          done()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        abilityDelegator.executeShellCommand(cmd, timeout)
+          .then(data => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
+            expect(data.exitCode).assertEqual(0);
+            expect(data.stdResult).assertContain('start ability successfully');
+            done();
+          }).catch((err: BusinessError) => {
+          expect().assertFail();
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -588,24 +584,23 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17500', 3, function (done) {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17500', 3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17500'
       try {
-        let cmd = 'xx start'
-        let timeout = 1
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let cmd = 'xx start';
+        let timeout = 1;
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, timeout, (err, data) => {
-
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err} , data= ${JSON.stringify(data)}`);
-          expect(data.exitCode).assertEqual(-1)
+          expect(data.exitCode).assertEqual(-1);
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -618,23 +613,23 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17600', 3, function (done) {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17600'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17600', 3, (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17600';
       try {
-        let cmd = 'null'
-        let timeout = 1
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let cmd = 'null';
+        let timeout = 1;
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, timeout, (err, data) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err} , data= ${JSON.stringify(data)}`);
-          expect(data.exitCode).assertEqual(-1)
+          expect(data.exitCode).assertEqual(-1);
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -647,25 +642,26 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17700', 3, function (done) {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17700'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17700', 3, (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17700';
       try {
-        let cmd = 'null'
-        let timeout = 1
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        abilityDelegator.executeShellCommand(cmd, timeout).then(data => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`)
-          expect(data.exitCode).assertEqual(-1)
-          done()
-        }).catch(err => {
-          expect().assertFail()
-          done()
+        let cmd = 'null';
+        let timeout = 1;
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        abilityDelegator.executeShellCommand(cmd, timeout)
+          .then(data => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} data ${JSON.stringify(data)}`);
+            expect(data.exitCode).assertEqual(-1);
+            done();
+          }).catch((err: BusinessError) => {
+          expect().assertFail();
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -679,24 +675,23 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17800', 3, function (done) {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17800'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17800', 3, (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17800';
       try {
-        let cmd = 'aa help'
-        let timeout = null
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let cmd = 'aa help';
+        let timeout: null = null;
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, timeout, (err, data) => {
-
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err} , data= ${JSON.stringify(data)}`);
-          expect(err).assertContain('Incorrect parameters')
+          expect(err).assertContain('Incorrect parameters');
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
-          done()
+          done();
         })
       } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err}`)
-        expect(err.message).assertContain('Incorrect parameters.')
-        done()
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err}`);
+        expect(err.message).assertContain('Incorrect parameters.');
+        done();
       }
     })
 
@@ -708,26 +703,26 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700', 3, async (done) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700';
       try {
         let cmd = 'aa test -b com.ohos.abilitydelegatorstagetest -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
-          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700 -s timeout 15000 -z test'
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-
-        await abilityDelegator.executeShellCommand(cmd).then(data => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , data= ${JSON.stringify(data)}`);
-          expect(data.stdResult).assertContain('error: unknown option')
-          done()
-        }).catch(err => {
-          expect().assertFail()
-          done()
-        })
+          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700 -s timeout 15000 -z test';
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        await abilityDelegator.executeShellCommand(cmd)
+          .then(data => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , data= ${JSON.stringify(data)}`);
+            expect(data.stdResult).assertContain('error: unknown option');
+            done();
+          }).catch((err: BusinessError) => {
+            expect().assertFail();
+            done();
+          })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -739,30 +734,32 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800', 3, async (done) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800';
       try {
         let cmd = 'aa test -b invalid -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
-          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800 -s timeout 15000'
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800 -s timeout 15000';
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-        await abilityDelegator.executeShellCommand(cmd).then(async data => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , data= ${JSON.stringify(data)}`);
-          let msg = null
-          await abilityDelegator.print(msg).then(() => {
-            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , print ------------`);
-            expect().assertFail()
-            done()
+        await abilityDelegator.executeShellCommand(cmd)
+          .then(async data => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , data= ${JSON.stringify(data)}`);
+            let msg: null = null;
+            await abilityDelegator.print(msg)
+              .then(() => {
+                hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , print ------------`);
+                expect().assertFail();
+                done();
+              })
+          }).catch((err: BusinessError) => {
+            expect(!isEmpty(err.message)).assertTrue();
+            done();
           })
-        }).catch(err => {
-          expect(!isEmpty(err)).assertTrue()
-          done()
-        })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -777,26 +774,27 @@ export default function AbilityDelegatorStageTest() {
      * @tc.type      : Function
      */
 
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19300', 3, async (done) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19300'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19300', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19300';
       try {
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let msg = null
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let msg: null = null;
         try {
-          await abilityDelegator.print(msg).then(() => {
-            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , print ------------19300`)
-            expect().assertFail()
-            done()
-          })
+          await abilityDelegator.print(msg)
+            .then(() => {
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , print ------------19300`);
+              expect().assertFail();
+              done();
+            })
         } catch (err) {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} ,err: ${err}`)
-          expect(err.message).assertContain('Incorrect parameters.')
-          done()
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} ,err: ${err}`);
+          expect(err.message).assertContain('Incorrect parameters.');
+          done();
         }
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -809,25 +807,26 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19400', 3, async (done) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19400'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19400', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19400';
       try {
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let result = -1
-        let msg = '!@#$%^&*()_+QWE{}|?><Fafq3146'
-        await abilityDelegator.print(msg).then(() => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , msg = ${msg}`)
-          result = 0
-        }).catch(err => {
-          expect().assertFail()
-          done()
-        })
-        expect(result).assertEqual(0)
-        done()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let result = -1;
+        let msg = '!@#$%^&*()_+QWE{}|?><Fafq3146';
+        await abilityDelegator.print(msg)
+          .then(() => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , msg = ${msg}`);
+            result = 0;
+          }).catch((err: BusinessError) => {
+            expect().assertFail();
+            done();
+          })
+        expect(result).assertEqual(0);
+        done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -851,25 +850,26 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19500', 3, async (done) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19500'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19500', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19500';
       try {
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let result = -1
-        let msg = length_1000
-        await abilityDelegator.print(msg).then(() => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , msg = ${msg} `)
-          result = 0
-        }).catch(err => {
-          expect().assertFail()
-          done()
-        })
-        expect(result).assertEqual(0)
-        done()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let result = -1;
+        let msg = length_1000;
+        await abilityDelegator.print(msg)
+          .then(() => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , msg = ${msg} `);
+            result = 0;
+          }).catch((err: BusinessError) => {
+            expect().assertFail();
+            done();
+          })
+        expect(result).assertEqual(0);
+        done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -883,26 +883,27 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19600', 3, async (done) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19600'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19600', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19600';
       try {
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let result = -1
-        let msg = length_1000 + '-----------///bbb'
-        await abilityDelegator.print(msg).then(() => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , msg = ${msg} `)
-          result = 0
-          console.log(TAG, msg)
-        }).catch(err => {
-          expect().assertFail()
-          done()
-        })
-        expect(result).assertEqual(0)
-        done()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let result = -1;
+        let msg = length_1000 + '-----------///bbb';
+        await abilityDelegator.print(msg)
+          .then(() => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , msg = ${msg} `);
+            result = 0;
+            console.log(TAG, msg);
+          }).catch((err: BusinessError) => {
+            expect().assertFail();
+            done();
+          })
+        expect(result).assertEqual(0);
+        done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -916,22 +917,22 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19700', 1, (done) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19700'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19700', 1, (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19700';
       try {
-        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        let bundleName = 'com.ohos.abilitydelegatorstagetest'
-        let testRunnerClassName = 'OpenHarmonyTestRunner'
-        let entryTest = 'entry_test'
-        hilog.info(0x000, `${TAG}${TEST_SUITE_NAME}#${TEST_CASE_NAME}`, 'abilityDelegatorArguments is : %{public}s', `${JSON.stringify(abilityDelegatorArguments)}`)
-        expect(abilityDelegatorArguments.bundleName).assertEqual(bundleName)
-        expect(abilityDelegatorArguments.testRunnerClassName).assertEqual(testRunnerClassName)
-        expect(abilityDelegatorArguments.parameters["-m"]).assertEqual(entryTest)
-        done()
+        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+        let bundleName = 'com.ohos.abilitydelegatorstagetest';
+        let testRunnerClassName = 'OpenHarmonyTestRunner';
+        let entryTest = 'entry_test';
+        hilog.info(0x000, `${TAG}${TEST_SUITE_NAME}#${TEST_CASE_NAME}`, 'abilityDelegatorArguments is : %{public}s', `${JSON.stringify(abilityDelegatorArguments)}`);
+        expect(abilityDelegatorArguments.bundleName).assertEqual(bundleName);
+        expect(abilityDelegatorArguments.testRunnerClassName).assertEqual(testRunnerClassName);
+        expect(abilityDelegatorArguments.parameters["-m"]).assertEqual(entryTest);
+        done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -944,33 +945,35 @@ export default function AbilityDelegatorStageTest() {
      * @tc.type      : Function
      */
 
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100', 3, (done) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100', 3, (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100';
       try {
         let cmd = 'aa test -b com.ohos.abilitydelegatorstagetest -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
-          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100 -s timeout invalid'
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let result = -1
+          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100 -s timeout invalid';
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let result = -1;
         try {
-          abilityDelegator.executeShellCommand(cmd).then(data => {
-            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , data= ${JSON.stringify(data)}`);
-            let msg = '11'
-            result = 0
-            abilityDelegator.print(msg).then(() => {
-              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , print 20100------------`);
-              result = 1
+          abilityDelegator.executeShellCommand(cmd)
+            .then(data => {
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , data= ${JSON.stringify(data)}`);
+              let msg = '11';
+              result = 0;
+              abilityDelegator.print(msg)
+                .then(() => {
+                  hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , print 20100------------`);
+                  result = 1;
+                })
             })
-          })
         } catch (err) {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err: ${err}`);
         }
-        expect(result).assertEqual(-1)
-        done()
+        expect(result).assertEqual(-1);
+        done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -982,30 +985,32 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200', 3, (done) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200', 3, (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200';
       try {
-        const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200'
+        const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200';
         let cmd = 'aa test -b com.ohos.abilitydelegatorstagetest -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
-          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200 -s timeout 15000 -w invalid'
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let result = -1
-        abilityDelegator.executeShellCommand(cmd).then(async data => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , data= ${JSON.stringify(data)}`);
-          let msg = '11'
-          result = 0
-          abilityDelegator.print(msg).then(() => {
-            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , print 20200------------`);
-            result = 1
+          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200 -s timeout 15000 -w invalid';
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let result = -1;
+        abilityDelegator.executeShellCommand(cmd)
+          .then(async data => {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , data= ${JSON.stringify(data)}`);
+            let msg = '11';
+            result = 0;
+            abilityDelegator.print(msg)
+              .then(() => {
+                hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , print 20200------------`);
+                result = 1;
+              })
           })
-        })
-        expect(result).assertEqual(-1)
-        done()
+        expect(result).assertEqual(-1);
+        done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -1018,19 +1023,19 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20300', 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20300'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20300', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20300';
       try {
-        let flag = true
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+        let flag = true;
+        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.finishTest(null, 1, (err, data) => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = false
-          expect().assertFail()
-          done()
+          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `);
+          flag = false;
+          expect().assertFail();
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err.code}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err.code}`);
         expect(err.code).assertEqual(CODE_ERROR);
         done();
       }
@@ -1045,17 +1050,17 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20400', 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20400'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20400', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20400';
       try {
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.finishTest(undefined, 1, (err, data) => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          expect().assertFail()
-          done()
+          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `);
+          expect().assertFail();
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err.code}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err.code}`);
         expect(err.code).assertEqual(CODE_ERROR);
         done();
       }
@@ -1070,18 +1075,18 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20500', 3, done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20500'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20500', 3, (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20500';
       try {
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
         abilityDelegator.finishTest(msg, Number.MAX_VALUE + 1, (err, data) => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          expect(true).assertTrue()
-          done()
+          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `);
+          expect(true).assertTrue();
+          done();
         })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         expect(err.code).assertEqual(CODE_ERROR);
         done();
       }

@@ -23,8 +23,11 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003631, "dEQP-EGL.functional.mutable_render_buffer.querySurface");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003631, "dEQP-EGL.functional.mutable_ren",
+    "der_buffer.querysur""face");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003632, "dEQP-EGL.functional.mutable_render_buffer.negativeConfigBit");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003632, "dEQP-EGL.functional.mutable_ren",
+    "der_buffer.negativeConfigBit");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003633, "dEQP-EGL.functional.mutable_render_buffer.basic");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003633, "dEQP-EGL.functional.mutable_rend",
+    "er_buffer.basic");

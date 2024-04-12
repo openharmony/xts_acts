@@ -483,13 +483,12 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      // @ts-ignore
-      await tempWnd.setSystemBarEnable([null, '123']).catch((err: BusinessError) => {
-        console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) err=' + JSON.stringify(err));
+      await tempWnd.setSystemBarEnable([null, undefined]).catch((err: BusinessError) => {
+        console.log(msgStr + 'tempWnd.setSystemBarEnable([null, undefined]) err=' + JSON.stringify(err));
         expect(err.code === 1003).assertTrue();
         done();
       });
-      console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) finished');
+      console.log(msgStr + 'tempWnd.setSystemBarEnable([null, undefined]) finished');
     })
 
     /**
@@ -1548,13 +1547,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
-    * @tc.name      : testSetSpecificSystemBarEnabled_2_Function_Promise
-    * @tc.desc      : Test the function of setSpecificSystemBarEnabled
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level3
-    */
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
+     * @tc.name      : testSetSpecificSystemBarEnabled_2_Function_Promise
+     * @tc.desc      : Test the function of setSpecificSystemBarEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
     it('testSetSpecificSystemBarEnabled_2_Function_Promise', 0, async function(done){
       let msgStr = 'testSetSpecificSystemBarEnabled_2';
       console.log(msgStr + 'begin')
@@ -1804,7 +1803,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
-     */ 
+     */
     it("testCreateSubWindowWithOptions_Function_Promise", 0, async function(done){
       let msgStr = "testCreateSubWindowWithOptions_Function_Promise";
       console.log(msgStr + " begin");
@@ -1839,9 +1838,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         } else {
           expect.assertFail();
           done();
-        }        
+        }
       }
-    })       
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3920
      * @tc.name      : testGetWindowSystemBarProperties_Function
@@ -1849,7 +1848,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
-     */ 
+     */
     it("testGetWindowSystemBarProperties_Function", 0, async function(done){
       let msgStr = "testGetWindowSystemBarProperties_Function";
       console.log(msgStr + " begin");
@@ -1875,7 +1874,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
-     */ 
+     */
     it("testEnableLandscapeMultiWindow_Function", 0, async function(done){
       let msgStr = "testEnableLandscapeMultiWindow_Function";
       console.log(msgStr + " begin");
@@ -1883,15 +1882,15 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
         expect(wnd != null).assertTrue();
         try {
-          let promise = wnd.enableLandscapeMultiWindow() 
+          let promise = wnd.enableLandscapeMultiWindow()
           promise.then(() => {
-              console.info(msgStr + ' Succeeded in making multi-window become landscape.');
-              expect(true).assertTrue()
-              done()
+            console.info(msgStr + ' Succeeded in making multi-window become landscape.');
+            expect(true).assertTrue()
+            done()
           }).catch((err: BusinessError) => {
-              console.error(msgStr + ' Failed to make multi-window become landscape. Cause: ' + JSON.stringify(err));
-              expect().assertFail()
-              done()
+            console.error(msgStr + ' Failed to make multi-window become landscape. Cause: ' + JSON.stringify(err));
+            expect().assertFail()
+            done()
           });
         } catch (exception) {
           console.error(msgStr + ' Failed to call enableLandscapeMultiWindow. Cause: ' + JSON.stringify(exception));
@@ -1899,7 +1898,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           done()
         }
       })
-    }) 
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4010
      * @tc.name      : testDisableLandscapeMultiWindow_Function
@@ -1907,7 +1906,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
-     */ 
+     */
     it("testDisableLandscapeMultiWindow_Function", 0, async function(done){
       let msgStr = "testDisableLandscapeMultiWindow_Function";
       console.log(msgStr + " begin");
@@ -1915,15 +1914,15 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
         expect(wnd != null).assertTrue();
         try {
-          let promise = wnd.disableLandscapeMultiWindow() 
+          let promise = wnd.disableLandscapeMultiWindow()
           promise.then(() => {
-              console.info(msgStr + ' Succeeded in making multi-window become not landscape.');
-              expect(true).assertTrue()
-              done()
+            console.info(msgStr + ' Succeeded in making multi-window become not landscape.');
+            expect(true).assertTrue()
+            done()
           }).catch((err: BusinessError) => {
-              console.error(msgStr + ' Failed to make multi-window become not landscape. Cause: ' + JSON.stringify(err));
-              expect().assertFail()
-              done()
+            console.error(msgStr + ' Failed to make multi-window become not landscape. Cause: ' + JSON.stringify(err));
+            expect().assertFail()
+            done()
           });
         } catch (exception) {
           console.error(msgStr + ' Failed to call enableLandscapeMultiWindow. Cause: ' + JSON.stringify(exception));
@@ -1931,7 +1930,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           done()
         }
       })
-    }) 
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3930
      * @tc.name      : testSetWindowMask_Function_Promise
@@ -1939,7 +1938,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
-     */ 
+     */
     it("testSetWindowMask_Function_Promise", 0, async function(done){
       let msgStr = "testSetWindowMask_Function_Promise";
       console.log(msgStr + "begin0");

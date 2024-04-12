@@ -23,14 +23,14 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003627, "dEQP-EGL.functional.thread_clean"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003627, "dEQP-EGL.functional.thread_clean",
     "up.single_context_single_sur""face");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003628, "dEQP-EGL.functional.thread_clea"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003628, "dEQP-EGL.functional.thread_clea",
     "nup.multi_context_single_sur""face");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003629, "dEQP-EGL.functional.thread_clea"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003629, "dEQP-EGL.functional.thread_clea",
     "nup.single_context_multi_sur""face");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003630, "dEQP-EGL.functional.thread_clea"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003630, "dEQP-EGL.functional.thread_clea",
     "nup.multi_context_multi_sur""face");

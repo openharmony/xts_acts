@@ -132,6 +132,11 @@ export default function testsuite() {
   richEditorApi6();
   richEditorApi7();
   richEditorApi8();
+import search from './SearchTest/SearchTest.test'
+
+
+export default function testsuite() {
+  search();
   textStyleJsunit();
   marqueeJsunit();
   ImageTextTest();
