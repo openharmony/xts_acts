@@ -4,6 +4,7 @@
     "MainAbility/pages/promptAction/CustomDialogMask",
     "MainAbility/pages/Menu/menu",
     "MainAbility/pages/promptAction/ToastShowMode",
-    "MainAbility/pages/promptAction/prompt"
+    "MainAbility/pages/promptAction/prompt",
+    "MainAbility/pages/promptAction/Index"
   ]
 }

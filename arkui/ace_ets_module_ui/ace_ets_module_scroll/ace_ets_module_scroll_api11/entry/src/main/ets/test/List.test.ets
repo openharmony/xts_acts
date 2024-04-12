@@ -42,6 +42,8 @@ import tabsApi1 from './TabsTest/tabs/tabsApi1.test';
 import TouchTestStrategy from './ScrollTest/TouchTestStrategy.test';
 import ScrollTest from './ScrollTest/Scroll.test'
 import AlphabetIndexer from './AlphabetIndexerTest/AlphabetIndexer'
+import RefreshTest from './RefreshTest/Refresh.test'
+import ScrollTest2 from './ScrollTest/Scroll2.test'
 
 export default function testsuite() {
   listJsunit();
@@ -74,4 +76,6 @@ export default function testsuite() {
   TouchTestStrategy()
   ScrollTest()
   AlphabetIndexer()
+  RefreshTest()
+  ScrollTest2()
 }
