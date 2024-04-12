@@ -28,11 +28,13 @@ import webOnLargestContentfulPaint from './WebOnLargestContentfulPaint.test';
 import webViewControllerResumeAllTimers from './WebViewControllerResumeAllTimers.test';
 import webViewControllerVideoMedia from './WebViewControllerVideoMedia.test';
 import WebNetError from './WebNetError.test';
+import webViewControllerAudioMedia from './WebViewControllerAudioMedia.test';
 
 
 export default function testsuite() {
        webJsunit()
        webTwoJsunit()
+       webViewControllerAudioMedia()
        webViewControllerResumeAllTimers()
        webOnFirstMeaningfulPaint()
        webOnLargestContentfulPaint()

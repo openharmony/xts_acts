@@ -23,64 +23,65 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003034, "dEQP-EGL.functional.sur""faceless_c"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003034, "dEQP-EGL.functional.sur""faceless_c",
     "ontext.rgb565_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003035, "dEQP-EGL.functional.sur""faceless"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003035, "dEQP-EGL.functional.sur""faceless",
     "_context.rgb565_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003036, "dEQP-EGL.functional.sur""faceless"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003036, "dEQP-EGL.functional.sur""faceless",
     "_context.rgb565_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003037, "dEQP-EGL.functional.sur""faceles"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003037, "dEQP-EGL.functional.sur""faceles",
     "s_context.rgb565_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003038, "dEQP-EGL.functional.sur""faceless_c"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003038, "dEQP-EGL.functional.sur""faceless_c",
     "ontext.rgb888_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003039, "dEQP-EGL.functional.sur""faceless"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003039, "dEQP-EGL.functional.sur""faceless",
     "_context.rgb888_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003040, "dEQP-EGL.functional.sur""faceless"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003040, "dEQP-EGL.functional.sur""faceless",
     "_context.rgb888_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003041, "dEQP-EGL.functional.sur""faceles"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003041, "dEQP-EGL.functional.sur""faceles",
     "s_context.rgb888_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003042, "dEQP-EGL.functional.sur""faceless_co"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003042, "dEQP-EGL.functional.sur""faceless_co",
     "ntext.rgba4444_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003043, "dEQP-EGL.functional.sur""faceless_"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003043, "dEQP-EGL.functional.sur""faceless_",
     "context.rgba4444_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003044, "dEQP-EGL.functional.sur""faceless_"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003044, "dEQP-EGL.functional.sur""faceless_",
     "context.rgba4444_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003045, "dEQP-EGL.functional.sur""faceless"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003045, "dEQP-EGL.functional.sur""faceless",
     "_context.rgba4444_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003046, "dEQP-EGL.functional.sur""faceless_co"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003046, "dEQP-EGL.functional.sur""faceless_co",
     "ntext.rgba5551_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003047, "dEQP-EGL.functional.sur""faceless_"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003047, "dEQP-EGL.functional.sur""faceless_",
     "context.rgba5551_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003048, "dEQP-EGL.functional.sur""faceless_"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003048, "dEQP-EGL.functional.sur""faceless_",
     "context.rgba5551_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003049, "dEQP-EGL.functional.sur""faceless"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003049, "dEQP-EGL.functional.sur""faceless",
     "_context.rgba5551_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003050, "dEQP-EGL.functional.sur""faceless_co"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003050, "dEQP-EGL.functional.sur""faceless_co",
     "ntext.rgba8888_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003051, "dEQP-EGL.functional.sur""faceless_"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003051, "dEQP-EGL.functional.sur""faceless_",
     "context.rgba8888_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003052, "dEQP-EGL.functional.sur""faceless_"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003052, "dEQP-EGL.functional.sur""faceless_",
     "context.rgba8888_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003053, "dEQP-EGL.functional.sur""faceless"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003053, "dEQP-EGL.functional.sur""faceless",
     "_context.rgba8888_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003054, "dEQP-EGL.functional.sur""faceless_context.other");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003054, "dEQP-EGL.functional.sur""faceless",
+    "_context.other");

@@ -95,6 +95,26 @@
     {
       "name": "BottomTabBarStyleLabelStyle_family_Test",
       "value": "HarmonyOS Sans"
+    },
+    {
+      "name": "popupSelectedColor",
+      "value": "#00C5CD"
+    },
+    {
+      "name": "popupUnselectedColor",
+      "value": "#4EEE94"
+    },
+    {
+      "name": "popupItemBackground",
+      "value": "#FFEC8B"
+    },
+    {
+      "name": "fontSize",
+      "value": "25px"
+    },
+    {
+      "name": "popupSpace",
+      "value": "10"
     }
   ]
 }

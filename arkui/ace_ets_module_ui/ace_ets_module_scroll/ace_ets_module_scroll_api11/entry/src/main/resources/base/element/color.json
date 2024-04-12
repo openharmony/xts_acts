@@ -15,6 +15,18 @@
     {
       "name": "Indicator_Color",
       "value": "#FFFF0000"
+    },
+    {
+      "name": "popupSelectedColor",
+      "value": "#00C5CD"
+    },
+    {
+      "name": "popupUnselectedColor",
+      "value": "#FFEC8B"
+    },
+    {
+      "name": "popupItemBackground",
+      "value": "#4EEE94"
     }
   ]
 }
