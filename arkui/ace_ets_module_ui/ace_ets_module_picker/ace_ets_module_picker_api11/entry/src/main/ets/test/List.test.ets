@@ -17,6 +17,10 @@ import TimePickerTest from './TimePickerTest/TimePicker.test';
 import selectoptionwithJsSuit from './SelectTest/selectoptionwithJsSuit.test';
 import SelectTest from './SelectTest/Select.test';
 import radioTest from './RadioTest/radio.test';
+import CheckboxTest from './CheckboxTest/Checkbox.test';
+import textpicker from './TextPicker/TextPicker';
+import TextPickerSec from './TextPicker/TextPickerSec';
+import textpickermultiTest from './TextPicker/TextPickerMulti';
 
 export default function testsuite() {
   SelectAttr()
@@ -24,4 +28,8 @@ export default function testsuite() {
   selectoptionwithJsSuit()
   SelectTest()
   radioTest()
+  CheckboxTest();
+  textpicker()
+  TextPickerSec()
+  textpickermultiTest()
 }
