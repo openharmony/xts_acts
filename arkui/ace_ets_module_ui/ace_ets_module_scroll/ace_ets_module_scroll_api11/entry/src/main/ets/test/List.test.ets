@@ -44,6 +44,8 @@ import ScrollTest from './ScrollTest/Scroll.test'
 import tabs from './TabsTest/Tabs'
 import tabsSec from './TabsTest/TabsSec'
 import tabsThird from './TabsTest/TabsThird'
+import RefreshTest from './RefreshTest/Refresh.test'
+import ScrollTest2 from './ScrollTest/Scroll2.test'
 
 export default function testsuite() {
   listJsunit();
@@ -78,4 +80,6 @@ export default function testsuite() {
   tabs()
   tabsSec()
   tabsThird()
+  RefreshTest()
+  ScrollTest2()
 }
