@@ -14,7 +14,8 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import commonEvent from '@ohos.app.ability.common';
+import commonEvent from '@ohos.commonEvent';
+import common from '@ohos.app.ability.common';
 import commonEventManager from '@ohos.commonEventManager';
 
 let subscriberInfo_MainAbility: commonEventManager.CommonEventSubscribeInfo = {
