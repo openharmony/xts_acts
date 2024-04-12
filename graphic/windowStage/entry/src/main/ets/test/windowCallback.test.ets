@@ -611,26 +611,21 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect().assertFail();
         done();
       });
-      try {
-        mainWnd.setSystemBarEnable([null, undefined], (err, data) => {
-          console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(data)==' + JSON.stringify(data));
-          console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(err)==' + JSON.stringify(err));
-          if (err && err.code) {
-            try {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable  JSON.stringify(err.code)===' + JSON.stringify(err.code));
-              expect(err.code === 1003).assertTrue();
-            } catch (error) {
-              console.info(`mainWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
-            }
-            done();
-          } else {
-            unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.setSystemBarEnable [null,123]', done);
+      mainWnd.setSystemBarEnable([null, undefined], (err, data) => {
+        console.log(msgStr + 'mainWnd.setSystemBarEnable [null,undefined] JSON.stringify(data)==' + JSON.stringify(data));
+        console.log(msgStr + 'mainWnd.setSystemBarEnable [null,undefined] JSON.stringify(err)==' + JSON.stringify(err));
+        if (err && err.code) {
+          try {
+            console.log(msgStr + 'mainWnd.setSystemBarEnable  JSON.stringify(err.code)===' + JSON.stringify(err.code));
+            expect(err.code === 1003).assertTrue();
+          } catch (error) {
+            console.info(`mainWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
           }
-        })
-      } catch (catcherr) {
-        console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(catcherr)==' + JSON.stringify(catcherr));
-      }
-
+          done();
+        } else {
+          unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.setSystemBarEnable [null,undefined]', done);
+        }
+      })
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1380
@@ -2372,18 +2367,18 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testWindowVisibilityChange_on_Function_Callback", 0, async function (done) {
+    it("testWindowVisibilityChange_on_Function_Callback", 0, async function(done){
       let msgStr = "testWindowVisibilityChange_on_Function_Callback";
       console.log(msgStr + "begin");
-      try {
+      try{
         console.log(msgStr + "try begin");
         let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
-        windowClass.on('windowVisibilityChange', (boolean) => {
+        windowClass.on('windowVisibilityChange',(boolean) => {
           console.log(msgStr + 'Window visibility changed, isVisible=' + boolean);
         });
         expect(true).assertTrue();
         done();
-      } catch (error) {
+      } catch(error){
         console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
         if (!currentDeviceIsRk) {
           console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
@@ -2406,17 +2401,17 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testWindowVisibilityChange_off_Function_Callback", 0, async function (done) {
+    it("testWindowVisibilityChange_off_Function_Callback", 0, async function(done){
       let msgStr = "testWindowVisibilityChange_off_Function_Callback";
       console.log(msgStr + "begin");
-      try {
+      try{
         console.log(msgStr + "try begin");
         let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
         windowClass.off('windowVisibilityChange');
         console.log(msgStr + 'Window visibility changed');
         expect(true).assertTrue();
         done();
-      } catch (error) {
+      } catch(error){
         console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
         if (!currentDeviceIsRk) {
           console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
@@ -2439,10 +2434,10 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testNoInteractionDetected_on_Function_Callback", 0, async function (done) {
+    it("testNoInteractionDetected_on_Function_Callback", 0, async function(done){
       let msgStr = "testNoInteractionDetected_on_Function_Callback";
       console.log(msgStr + "begin");
-      try {
+      try{
         console.log(msgStr + "try begin")
         let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
         windowClass.on('noInteractionDetected', 60, () => {
@@ -2452,7 +2447,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done();
       } catch (error) {
         console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
-        if (!currentDeviceIsRk) {
+        if(!currentDeviceIsRk){
           console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
@@ -2472,10 +2467,10 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testNoInteractionDetected_off_Function_Callback", 0, async function (done) {
+    it("testNoInteractionDetected_off_Function_Callback", 0, async function(done){
       let msgStr = "tetestNoInteractionDetected_off_Function_Callback";
       console.log(msgStr + "begin");
-      try {
+      try{
         console.log(msgStr + "try begin");
         let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
         windowClass.off('noInteractionDetected');
@@ -2484,7 +2479,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done();
       } catch (error) {
         console.log(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(error));
-        if (!currentDeviceIsRk) {
+        if(!currentDeviceIsRk){
           console.log(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
