@@ -119,9 +119,11 @@ import ImageAttr from './imageTest/ImageAttr.test';
 import TextfieldMultiTest from './textTest/TextfieldMulti.test';
 import TextfieldOtherTest from './textTest/TextfieldOther.test';
 import TextfieldSingleTest from './textTest/TextfieldSingle.test';
+import search from './SearchTest/SearchTest.test'
 
 
 export default function testsuite() {
+  search();
   textStyleJsunit();
   marqueeJsunit();
   ImageTextTest();
