@@ -68,14 +68,14 @@ export default function swiperMarPad() {
       console.info('new testSwiperSetPaddingMargin START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('swiperMarPad');
-
-      let swiperMarPad: RectValue = CommonFunc.getComponentRect('swiperMarPad');
-      let swiperMarPad01: RectValue = CommonFunc.getComponentRect('swiperMarPad01');
-      let swiperMarPad02: RectValue = CommonFunc.getComponentRect('swiperMarPad02');
-      let swiperMarPad03: RectValue = CommonFunc.getComponentRect('swiperMarPad03');
-      let swiperMarPad04: RectValue = CommonFunc.getComponentRect('swiperMarPad04');
-      let swiperMarPad05: RectValue = CommonFunc.getComponentRect('swiperMarPad05');
-      let swiperMarPad06: RectValue = CommonFunc.getComponentRect('swiperMarPad06');
+      
+      let swiperMarPad = CommonFunc.getComponentRectOnScreen('swiperMarPad');
+      let swiperMarPad01= CommonFunc.getComponentRectOnScreen('swiperMarPad01');
+      let swiperMarPad02 = CommonFunc.getComponentRectOnScreen('swiperMarPad02');
+      let swiperMarPad03= CommonFunc.getComponentRectOnScreen('swiperMarPad03');
+      let swiperMarPad04 = CommonFunc.getComponentRectOnScreen('swiperMarPad04');
+      let swiperMarPad05= CommonFunc.getComponentRectOnScreen('swiperMarPad05');
+      let swiperMarPad06 = CommonFunc.getComponentRectOnScreen('swiperMarPad06');
       // Before flipping the page
       console.info("Before page turning , swiperMarPad01.left - swiperMarPad.left value is " + JSON.stringify(swiperMarPad01.left - swiperMarPad.left));
       expect(swiperMarPad01.left - swiperMarPad.left).assertEqual(Math.round(vp2px(20)));
@@ -84,17 +84,25 @@ export default function swiperMarPad() {
       expect(swiperMarPad.bottom - swiperMarPad01.bottom).assertEqual(Math.round(vp2px(20)));
       // Page turning.
       let driver = Driver.create();
-      await CommonFunc.sleep(500)
-      //await driver.swipe(250, 230, 200, 230);
-      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
-      await CommonFunc.sleep(1000);
-      swiperMarPad = CommonFunc.getComponentRect('swiperMarPad');
-      swiperMarPad01 = CommonFunc.getComponentRect('swiperMarPad01');
-      swiperMarPad02 = CommonFunc.getComponentRect('swiperMarPad02');
-      swiperMarPad03 = CommonFunc.getComponentRect('swiperMarPad03');
-      swiperMarPad04 = CommonFunc.getComponentRect('swiperMarPad04');
-      swiperMarPad05 = CommonFunc.getComponentRect('swiperMarPad05');
-      swiperMarPad06 = CommonFunc.getComponentRect('swiperMarPad06');
+      // await CommonFunc.sleep(500)
+      // //await driver.swipe(250, 230, 200, 230);
+      // await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
+      // await CommonFunc.sleep(1000);
+      let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('swiperMarPad')
+      await driver.swipe(
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        1000);
+      await CommonFunc.sleep(3000);
+      swiperMarPad = CommonFunc.getComponentRectOnScreen('swiperMarPad');
+      swiperMarPad01 = CommonFunc.getComponentRectOnScreen('swiperMarPad01');
+      swiperMarPad02 = CommonFunc.getComponentRectOnScreen('swiperMarPad02');
+      swiperMarPad03 = CommonFunc.getComponentRectOnScreen('swiperMarPad03');
+      swiperMarPad04 = CommonFunc.getComponentRectOnScreen('swiperMarPad04');
+      swiperMarPad05 = CommonFunc.getComponentRectOnScreen('swiperMarPad05');
+      swiperMarPad06 = CommonFunc.getComponentRectOnScreen('swiperMarPad06');
       // After flipping the page.
       console.info("After page turning, swiperMarPad02.left - swiperMarPad.left value is " + JSON.stringify(swiperMarPad02.left - swiperMarPad.left));
       expect(swiperMarPad02.left - swiperMarPad.left).assertEqual(Math.round(vp2px(20)));

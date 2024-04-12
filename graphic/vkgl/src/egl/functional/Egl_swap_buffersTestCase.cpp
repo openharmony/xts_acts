@@ -23,47 +23,65 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003055, "dEQP-EGL.functional.swap_buffers.rgb565_no_depth_no_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003055, "dEQP-EGL.functional.swap_buffers.rgb56",
+    "5_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003056, "dEQP-EGL.functional.swap_buffers.rgb565_no_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003056, "dEQP-EGL.functional.swap_buffers.rgb56",
+    "5_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003057, "dEQP-EGL.functional.swap_buffers.rgb565_depth_no_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003057, "dEQP-EGL.functional.swap_buffers.rgb56",
+    "5_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003058, "dEQP-EGL.functional.swap_buffers.rgb565_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003058, "dEQP-EGL.functional.swap_buffers.rgb56",
+    "5_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003059, "dEQP-EGL.functional.swap_buffers.rgb888_no_depth_no_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003059, "dEQP-EGL.functional.swap_buffers.rgb8",
+    "88_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003060, "dEQP-EGL.functional.swap_buffers.rgb888_no_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003060, "dEQP-EGL.functional.swap_buffers.rgb8",
+    "88_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003061, "dEQP-EGL.functional.swap_buffers.rgb888_depth_no_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003061, "dEQP-EGL.functional.swap_buffers.rgb8",
+    "88_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003062, "dEQP-EGL.functional.swap_buffers.rgb888_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003062, "dEQP-EGL.functional.swap_buffers.rgb",
+    "888_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003063, "dEQP-EGL.functional.swap_buffe"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003063, "dEQP-EGL.functional.swap_buffe",
     "rs.rgba4444_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003064, "dEQP-EGL.functional.swap_buffers.rgba4444_no_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003064, "dEQP-EGL.functional.swap_buffers.rgba4",
+    "444_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003065, "dEQP-EGL.functional.swap_buffers.rgba4444_depth_no_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003065, "dEQP-EGL.functional.swap_buffers.rgba44",
+    "44_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003066, "dEQP-EGL.functional.swap_buffers.rgba4444_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003066, "dEQP-EGL.functional.swap_buffers.rgba44",
+    "44_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003067, "dEQP-EGL.functional.swap_buffe"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003067, "dEQP-EGL.functional.swap_buffe",
     "rs.rgba5551_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003068, "dEQP-EGL.functional.swap_buffers.rgba5551_no_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003068, "dEQP-EGL.functional.swap_buffers.rgba55",
+    "51_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003069, "dEQP-EGL.functional.swap_buffers.rgba5551_depth_no_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003069, "dEQP-EGL.functional.swap_buffers.rgba55",
+    "51_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003070, "dEQP-EGL.functional.swap_buffers.rgba5551_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003070, "dEQP-EGL.functional.swap_buffers.rgba55",
+    "51_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003071, "dEQP-EGL.functional.swap_buffe"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003071, "dEQP-EGL.functional.swap_buffe",
     "rs.rgba8888_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003072, "dEQP-EGL.functional.swap_buffers.rgba8888_no_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003072, "dEQP-EGL.functional.swap_buffers.rgba88",
+    "88_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003073, "dEQP-EGL.functional.swap_buffers.rgba8888_depth_no_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003073, "dEQP-EGL.functional.swap_buffers.rgba88",
+    "88_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003074, "dEQP-EGL.functional.swap_buffers.rgba8888_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003074, "dEQP-EGL.functional.swap_buffers.rgba88",
+    "88_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003075, "dEQP-EGL.functional.swap_buffers.other");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003075, "dEQP-EGL.functional.swap_buffe",
+    "rs.other");

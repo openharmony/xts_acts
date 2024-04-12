@@ -15,35 +15,40 @@
 
 import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import common from '@ohos.app.ability.common';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
 
 const TEST_SUITE_NAME: string = 'AbilityToolFinishTest';
 const CODE_ERROR = 401;
-let abilityDelegator;
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 
 export default function abilityToolFinishTest() {
-  describe('AbilityToolFinishTest', function () {
-
-    beforeAll(async function (done) {
-      abilityDelegator = await AbilityDelegatorRegistry.getAbilityDelegator();
+  describe('AbilityToolFinishTest', () => {
+    beforeAll(async (done: Function) => {
+      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       await done();
     })
 
-    afterEach(async (done) => {
+    afterEach(async (done: Function) => {
       console.log("AbilityToolFinishTest afterEach called");
-      let wantInfo = {
+      let wantInfo: Want = {
         bundleName: "com.acts.abilitytoolfinishtest",
         abilityName: "MainAbility"
       }
-      await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
-        console.log("AbilityToolFinishTest startAbility data : " + JSON.stringify(data));
-      }).catch((err) => {
-        console.log("AbilityToolFinishTest startAbility err : " + JSON.stringify(err));
-      })
+      await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(wantInfo)
+        .then((data) => {
+          console.log("AbilityToolFinishTest startAbility data : " + JSON.stringify(data));
+        })
+        .catch((err: BusinessError) => {
+          console.log("AbilityToolFinishTest startAbility err : " + JSON.stringify(err));
+        })
 
-      setTimeout(function () {
+      setTimeout(() => {
         console.log("AbilityToolFinishTest afterEach end");
         done();
-      }, 1000);
+      }, 1000)
     })
 
     /**
@@ -57,14 +62,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20600', 3,  done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20600', 3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
-        expect(globalThis.stdResult206.indexOf('aa test') === -1).assertTrue();
+        expect(AppStorage.get<string>("stdResult206")!.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         expect().assertFail();
         done();
       }
@@ -81,14 +86,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20700', 3, async done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20700', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
-        expect(globalThis.stdResult207.indexOf('aa test') === -1).assertTrue();
+        expect(AppStorage.get<string>("stdResult207")!.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         expect().assertFail();
         done();
       }
@@ -105,14 +110,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20800', 3,  done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20800', 3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
-        expect(globalThis.stdResult208.indexOf('aa test') === -1).assertTrue();
+        expect(AppStorage.get<string>("stdResult208")!.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         expect().assertFail();
         done();
       }
@@ -129,14 +134,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20900', 3,  done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20900', 3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
-        expect(globalThis.stdResult209.indexOf('aa test') === -1).assertTrue();
+        expect(AppStorage.get<string>("stdResult209")!.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         expect().assertFail();
         done();
       }
@@ -153,14 +158,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21000', 3,  done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21000', 3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
-        expect(globalThis.stdResult210.indexOf('aa test') === -1).assertTrue();
+        expect(AppStorage.get<string>("stdResult210")!.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         expect().assertFail();
         done();
       }
@@ -175,16 +180,17 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21100', 3, async done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21100', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21100';
       try {
-        await abilityDelegator.finishTest(null, 1).then(() => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          expect().assertFail()
-          done()
-        })
+        await abilityDelegator.finishTest(null, 1)
+          .then(() => {
+            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `);
+            expect().assertFail();
+            done();
+          })
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err.code}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err.code}`);
         expect(err.code).assertEqual(CODE_ERROR);
         done();
       }
@@ -199,14 +205,15 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21200', 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21200'
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21200', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21200';
       try {
-        await abilityDelegator.finishTest(undefined, 1).then(() => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          expect().assertFail()
-          done()
-        })
+        await abilityDelegator.finishTest(undefined, 1)
+          .then(() => {
+            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `);
+            expect().assertFail();
+            done();
+          })
       } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err.code}`)
         expect(err.code).assertEqual(CODE_ERROR);
@@ -223,14 +230,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21300', 3, async done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21300', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
         expect(globalThis.stdResult1.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         done();
       }
     })
@@ -244,14 +251,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400', 3, async done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
         expect(globalThis.stdResult1.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         done();
       }
     })
@@ -267,14 +274,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21500', 3, async done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21500', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
         expect(globalThis.stdResult1.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         done();
       }
     })
@@ -290,14 +297,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21600', 3, async done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21600', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
         expect(globalThis.stdResult1.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         done();
       }
     })
@@ -313,14 +320,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21700', 3, async done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21700', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
         expect(globalThis.stdResult1.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         done();
       }
     })
@@ -336,14 +343,14 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21800', 3, async done => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21800', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
         expect(globalThis.stdResult1.indexOf('aa test') === -1).assertTrue();
         done();
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         done();
       }
     })

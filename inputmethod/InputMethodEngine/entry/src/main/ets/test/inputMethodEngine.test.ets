@@ -18,7 +18,7 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import subtype from '@ohos.InputMethodSubtype';
 import inputMethod from '@ohos.inputMethod';
 import display from '@ohos.display';
-import {Driver, ON, MatchPattern, Component, UiWindow } from '@ohos.UiTest'
+import {Driver, ON, MatchPattern, Component, UiWindow, DisplayRotation } from '@ohos.UiTest'
 import deviceinfo from '@ohos.deviceInfo';
 import { BusinessError} from '@ohos.base'
 
@@ -32,6 +32,9 @@ export default function inputMethodEngineJSUnit() {
       console.info('====>beforeAll inputMethod_enable start!')
       try{
         if(deviceinfo.deviceType != 'default'){
+          let displayClass: display.Display;
+          displayClass = display.getDefaultDisplaySync();
+          console.info('====>displayClass Info: ' + JSON.stringify(displayClass));
           let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
           let cmd = 'aa start -a com.huawei.hmos.settings.MainAbility -b com.huawei.hmos.settings';
           abilityDelegator.executeShellCommand(cmd);
@@ -44,7 +47,29 @@ export default function inputMethodEngineJSUnit() {
             let systemAndUpdate: Component = await settingList.scrollSearch(ON.text('系统和更新', MatchPattern.CONTAINS));
             console.info(`====>inputMethod_enable systemAndUpdate: ${systemAndUpdate}`);
             await systemAndUpdate.click();
-          }else{
+          } else if(deviceinfo.deviceType === 'tablet'){
+            console.info('====> tablet');
+            // 未锁定情况下,旋转为竖屏
+            await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
+            await settingList.scrollToBottom();
+            let common_text: Component = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 3000);
+            console.info(`====>inputMethod_enable common_text: ${common_text}`);
+            // 适配横屏下模拟人工滑动
+            if (common_text == null){
+              console.info(`====>start swipe`);
+              if(displayClass.rotation == 0){
+                await driver.swipe(displayClass.width * 0.2, displayClass.height * 0.9, 
+                displayClass.width * 0.2, displayClass.height * 0.5, 10000);
+              }else{
+                await driver.swipe(displayClass.height * 0.2, displayClass.width * 0.9, 
+                displayClass.height * 0.2, displayClass.width
+                 * 0.5, 10000);
+              }              
+              common_text = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 3000);
+              console.info(`====>inputMethod_enable swipe common_text: ${common_text}`);
+            }
+            await common_text.click();
+          } else {
             console.info('====> other');
             await driver.swipe(600, 2500, 600, 1000, 15000);
             let common_text: Component = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 3000);
@@ -1614,10 +1639,7 @@ export default function inputMethodEngineJSUnit() {
         if (err) {
           console.info("====>inputMethodEngine_test_074 publishCallback failed:" + JSON.stringify(err));
         }  else {
-          let t = setTimeout(()=>{
-            runCmd();
-            clearTimeout(t)
-          }, 100)
+          runCmd();
         }
       }
 

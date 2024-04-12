@@ -729,5 +729,48 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       }
       done();
     });
+
+    /**
+     * @tc.number SUB_Security_HUKS_Cipher_API8_SM4_0100
+     * @tc.name generate sm4 with error key size 256
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level2
+     */
+    it('SUB_Security_HUKS_Cipher_API8_SM4_0100', 0, async function (done) {
+      const srcKeyAlias = 'SUB_Security_HUKS_Cipher_API8_SM4_0100';
+
+      let HuksOptions = {
+        properties: new Array(
+          {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_SM4
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: 256
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_DIGEST,
+            value: huks.HuksKeyDigest.HUKS_DIGEST_SM3
+          },
+        )
+      }
+      try {
+        await huks.generateKeyItem(srcKeyAlias, HuksOptions);
+        console.error(srcKeyAlias + `: generateKeyItem success, expect fail`);
+        expect(null).assertFail();
+      } catch (err) {
+        console.log(srcKeyAlias + `: catch error ${JSON.stringify(err)}`);
+        expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT);
+      }
+      console.log(srcKeyAlias + `: success.`);
+      done();
+    });
+
   });
 }

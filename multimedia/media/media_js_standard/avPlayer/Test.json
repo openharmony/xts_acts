@@ -72,7 +72,25 @@
                 "./resource/media/audioplayer/flac/flac_48ksr_16kbr_1ch.flac -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
                 "./resource/media/hevc_320x240_60.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
                 "./resource/media/AVPlayer/H264_MP3_1s.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
-                "./resource/media/AVPlayer/h264_aac_3840_2160.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/"
+                "./resource/media/AVPlayer/h264_aac_3840_2160.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrnb_4.75k_8000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrnb_5.9k_8000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrnb_5.15k_8000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrnb_6.7k_8000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrnb_7.4k_8000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrnb_7.95k_8000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrnb_10.2k_8000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrnb_12.2k_8000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrwb_6.6k_16000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrwb_8.85k_16000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrwb_12.65k_16000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrwb_14.25k_16000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrwb_15.85k_16000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrwb_18.25k_16000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrwb_19.85k_16000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrwb_23.05k_16000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/amrwb_23.85k_16000.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/",
+                "./resource/media/AVPlayer/NONOamrwb_15850.amr -> /data/app/el2/100/base/ohos.acts.multimedia.avplayer/haps/phone/files/"
             ]
         },
         {

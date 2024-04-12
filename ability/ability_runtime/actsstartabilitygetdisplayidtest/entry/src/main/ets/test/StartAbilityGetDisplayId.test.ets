@@ -13,46 +13,55 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, it, expect } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEvent';
 import { Constant } from '../Common';
 import display from '@ohos.display';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-const displayId = 'displayId'
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
+import common from '@ohos.app.ability.common';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import commonEventManager from '@ohos.commonEventManager';
+
+const displayId = 'displayId';
 const TAG: string = 'StartAbilityGetDisplayIdTest';
-const TEST_SUITE_NAME: string = 'StartAbilityGetDisplayIdTest'
-let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+const TEST_SUITE_NAME: string = 'StartAbilityGetDisplayIdTest';
+let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
-function sleep(time) {
-  return new Promise((resolve) => setTimeout(resolve, time))
+function sleep(time: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, time))
 }
 
-async function startAbilityForResult(want, display = undefined) {
-  await globalThis.abilityContext.startAbilityForResult(
+async function startAbilityForResult(want: Want, display: number | undefined = undefined) {
+  await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbilityForResult(
     want,
     {
       displayId: display
     }
-  ).then(() => {
-    console.info(`${TEST_SUITE_NAME}====>startAbilityForResult success====>`);
-  }).catch((err) => {
-    expect().assertFail();
-    console.info(`${TEST_SUITE_NAME}====>ACTS_startAbilityForResult err====> ${err}`)
-  })
+  )
+    .then(() => {
+      console.info(`${TEST_SUITE_NAME}====>startAbilityForResult success====>`);
+    })
+    .catch((err: BusinessError) => {
+      expect().assertFail();
+      console.info(`${TEST_SUITE_NAME}====>ACTS_startAbilityForResult err====> ${err}`);
+    })
 }
 
-async function startAbility(want, display = undefined) {
-  await globalThis.abilityContext.startAbility(
+async function startAbility(want: Want, display: ESObject = undefined) {
+  await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(
     want,
     {
       displayId: display
     }
-  ).then(() => {
-    console.info(`${TEST_SUITE_NAME}====>startAbility success====>`);
-  }).catch((err) => {
-    expect().assertFail();
-    console.info(`${TEST_SUITE_NAME}====>ACTS_startAbility err====> ${err}`)
-  })
+  )
+    .then(() => {
+      console.info(`${TEST_SUITE_NAME}====>startAbility success====>`);
+    })
+    .catch((err: BusinessError) => {
+      expect().assertFail();
+      console.info(`${TEST_SUITE_NAME}====>ACTS_startAbility err====> ${err}`)
+    })
 }
 
 export default function StartAbilityGetDisplayIdTest() {
@@ -72,26 +81,26 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0500", 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0500'
-      try{
-        let commonEventSubscribeInfo = {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0500", 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0500';
+      try {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [Constant.event_500]
         }
-        await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-
-          commonEvent.subscribe(subscriber, (err, commonEventData) => {
-            console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 500=====> data: ${JSON.stringify(commonEventData)}`);
-            expect(commonEventData.parameters[displayId]).assertEqual(0);
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              done();
-            });
+        await commonEvent.createSubscriber(commonEventSubscribeInfo)
+          .then((subscriber) => {
+            commonEvent.subscribe(subscriber, (err, commonEventData) => {
+              console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 500=====> data: ${JSON.stringify(commonEventData)}`);
+              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              commonEvent.unsubscribe(subscriber, (err, data) => {
+                done();
+              });
+            })
           })
-        })
 
-        let currentDisplayId = display.getDefaultDisplaySync().id
-        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult_0500 get current screen display id=====: ${currentDisplayId}`)
-        let want = {
+        let currentDisplayId = display.getDefaultDisplaySync().id;
+        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult_0500 get current screen display id=====: ${currentDisplayId}`);
+        let want: Want = {
           bundleName: 'com.ohos.startabilitygetdisplayidtest',
           abilityName: 'MainAbility5',
         }
@@ -113,22 +122,23 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0600', 3, async done => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0600', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0600';
-      try{
-        let commonEventSubscribeInfo = {
+      try {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [Constant.event_600]
         }
-        await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          commonEvent.subscribe(subscriber, (err, commonEventData) => {
-            console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 600=====> data: ${JSON.stringify(commonEventData)}`);
-            expect(commonEventData.parameters[displayId]).assertEqual(0);
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              done()
-            });
+        await commonEvent.createSubscriber(commonEventSubscribeInfo)
+          .then((subscriber) => {
+            commonEvent.subscribe(subscriber, (err, commonEventData) => {
+              console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 600=====> data: ${JSON.stringify(commonEventData)}`);
+              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              commonEvent.unsubscribe(subscriber, (err, data) => {
+                done();
+              });
+            })
           })
-        })
-        let want = {
+        let want: Want = {
           bundleName: 'com.ohos.startabilitygetdisplayidtest',
           abilityName: 'MainAbility6',
         }
@@ -151,21 +161,22 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0700', 3, async done => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0700', 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0700';
-      try{
-        let commonEventSubscribeInfo = {
+      try {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [Constant.event_700]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          commonEvent.subscribe(subscriber, (err, commonEventData) => {
-            expect(commonEventData.parameters[displayId]).assertEqual(0);
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              done()
-            });
+        commonEvent.createSubscriber(commonEventSubscribeInfo)
+          .then((subscriber) => {
+            commonEvent.subscribe(subscriber, (err, commonEventData) => {
+              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              commonEvent.unsubscribe(subscriber, (err, data) => {
+                done();
+              });
+            })
           })
-        })
-        let want = {
+        let want: Want = {
           bundleName: 'com.ohos.startabilitygetdisplayidtest',
           abilityName: 'MainAbility7',
           parameters: {
@@ -191,24 +202,24 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0300', 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0300'
-      try{
-        let commonEventSubscribeInfo = {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0300', 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0300';
+      try {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [Constant.event_300]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+        commonEvent.createSubscriber(commonEventSubscribeInfo)
+          .then((subscriber) => {
+            commonEvent.subscribe(subscriber, (err, commonEventData) => {
+              console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 300=====> data: ${JSON.stringify(commonEventData)}`);
 
-          commonEvent.subscribe(subscriber, (err, commonEventData) => {
-            console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 300=====> data: ${JSON.stringify(commonEventData)}`);
-
-            expect(commonEventData.parameters[displayId]).assertEqual(0);
-            commonEvent.unsubscribe(subscriber, (err,data) => {
-              done()
-            });
+              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              commonEvent.unsubscribe(subscriber, (err, data) => {
+                done();
+              });
+            })
           })
-        })
-        let want = {
+        let want: Want = {
           bundleName: 'com.ohos.startabilitygetdisplayidtest',
           abilityName: 'MainAbility3',
         }
@@ -231,24 +242,23 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0200", 3, async done => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0200", 3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0200'
-      try{
-        let commonEventSubscribeInfo = {
+      try {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [Constant.event_200]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-
-          commonEvent.subscribe(subscriber, (err, commonEventData) => {
-            console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 200=====> data: ${JSON.stringify(commonEventData)}`);
-
-            expect(commonEventData.parameters[displayId]).assertEqual(0);
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              done()
-            });
+        commonEvent.createSubscriber(commonEventSubscribeInfo)
+          .then((subscriber) => {
+            commonEvent.subscribe(subscriber, (err, commonEventData) => {
+              console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 200=====> data: ${JSON.stringify(commonEventData)}`);
+              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              commonEvent.unsubscribe(subscriber, (err, data) => {
+                done();
+              });
+            })
           })
-        })
-        let want = {
+        let want: Want = {
           bundleName: 'com.ohos.startabilitygetdisplayidtest',
           abilityName: 'MainAbility2',
         }
@@ -271,27 +281,28 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0100", 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0100'
-      try{
-        let commonEventSubscribeInfo = {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0100", 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0100';
+      try {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [Constant.event_100]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          commonEvent.subscribe(subscriber, (err, commonEventData) => {
-            console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 100=====> data: ${JSON.stringify(commonEventData)}`);
-            expect(commonEventData.parameters[displayId]).assertEqual(0);
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              done()
-            });
+        commonEvent.createSubscriber(commonEventSubscribeInfo)
+          .then((subscriber) => {
+            commonEvent.subscribe(subscriber, (err, commonEventData) => {
+              console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 100=====> data: ${JSON.stringify(commonEventData)}`);
+              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              commonEvent.unsubscribe(subscriber, (err, data) => {
+                done();
+              });
+            })
           })
-        })
-        let want = {
+        let want: Want = {
           bundleName: 'com.ohos.startabilitygetdisplayidtest',
           abilityName: 'MainAbility1',
         }
-        let currentDisplayId = display.getDefaultDisplaySync().id
-        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult_0100 get current screen display id=====: ${currentDisplayId}`)
+        let currentDisplayId = display.getDefaultDisplaySync().id;
+        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult_0100 get current screen display id=====: ${currentDisplayId}`);
         await sleep(500);
         await startAbility(want, currentDisplayId)
         await sleep(4000);
@@ -311,24 +322,23 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0400", 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0400'
-      try{
-        let commonEventSubscribeInfo = {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0400", 3, async (done: Function) => {
+      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0400';
+      try {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
           events: [Constant.event_400]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-
-          commonEvent.subscribe(subscriber, (err, commonEventData) => {
-            console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 400=====> data: ${JSON.stringify(commonEventData)}`);
-
-            expect(commonEventData.parameters[displayId]).assertEqual(0);
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              done()
-            });
+        commonEvent.createSubscriber(commonEventSubscribeInfo)
+          .then((subscriber) => {
+            commonEvent.subscribe(subscriber, (err, commonEventData) => {
+              console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult  subcribed success 400=====> data: ${JSON.stringify(commonEventData)}`);
+              expect(commonEventData.parameters[displayId]).assertEqual(0);
+              commonEvent.unsubscribe(subscriber, (err, data) => {
+                done();
+              });
+            })
           })
-        })
-        let want = {
+        let want: Want = {
           bundleName: 'com.ohos.startabilitygetdisplayidtest',
           abilityName: 'MainAbility4',
           parameters: {

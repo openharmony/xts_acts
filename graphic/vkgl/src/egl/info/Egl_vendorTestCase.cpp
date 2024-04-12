@@ -23,4 +23,5 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000002, "dEQP-EGL.info.vendor");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000002, "dEQP-EGL.info.ve",
+    "ndor");

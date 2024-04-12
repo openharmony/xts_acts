@@ -22,6 +22,7 @@ import pipWindowTest from './pipwindow.test'
 import interfaceSupportSessionManagerTest from './interfaceSupportSessionManager.test'
 import windowAbnormalScenario from './windowAbnormalScenario.test'
 import windowRecoverTest from './windowRecover.test'
+import windowAnimatorTest from './windowAnimator.test'
 
 export default function testsuite() {
   parameterVerificationIsOptional(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
@@ -34,4 +35,5 @@ export default function testsuite() {
   interfaceSupportSessionManagerTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowAbnormalScenario(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowRecoverTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
+  windowAnimatorTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
 }

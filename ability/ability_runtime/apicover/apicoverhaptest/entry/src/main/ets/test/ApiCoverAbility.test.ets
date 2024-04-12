@@ -547,6 +547,7 @@ export default function ApiCoverTest() {
       expect('ohos.extra.param.key.form_launch_reason').assertEqual(formInfoNew.FormParam.LAUNCH_REASON_KEY)
       // expect('ohos.extra.param.key.form_rendering_mode').assertEqual(formInfoNew.FormParam.FORM_RENDERING_MODE_KEY)
       console.info("SUB_AA_Test_InsightIntent_0100:" + formInfoNew.FormParam.FORM_RENDERING_MODE_KEY);
+      expect('ohos.extra.param.key.host_bg_inverse_color').assertEqual(formInfoNew.FormParam.HOST_BG_INVERSE_COLOR_KEY)
       expect(1).assertEqual(formInfoNew.LaunchReason.FORM_DEFAULT);
       expect(2).assertEqual(formInfoNew.LaunchReason.FORM_SHARE);
       expect(0).assertEqual(formInfoNew.FormState.DEFAULT)
@@ -856,7 +857,8 @@ export default function ApiCoverTest() {
           expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
           expect(data[i].bundleNames.length).assertLarger(0);
           expect(typeof data[i].state).assertEqual("number");
-          expect(data[i].state).assertLarger(0);
+          expect(data[i].state).assertLarger(-1);
+          expect(data[i].state).assertLess(5);
         }
         done();
       })

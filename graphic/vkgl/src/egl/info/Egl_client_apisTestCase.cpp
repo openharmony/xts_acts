@@ -23,4 +23,5 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000003, "dEQP-EGL.info.client_apis");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000003, "dEQP-EGL.info.cl",
+    "ient_apis");

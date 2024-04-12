@@ -345,5 +345,49 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       await publicHmacFunc(srcKeyAlies, HuksOptions, "abort");
       done();
     });
+
+
+    /**
+     * @tc.number SUB_Security_HUKS_HMAC_API8_SM3_0100
+     * @tc.name generate sm3 with error key size 511
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level2
+     */
+    it('SUB_Security_HUKS_HMAC_API8_SM3_0100', 0, async function (done) {
+      const srcKeyAlias = 'SUB_Security_HUKS_HMAC_API8_SM3_0100';
+
+      let HuksOptions = {
+        properties: new Array(
+          {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_HMAC
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512 - 1
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_DIGEST,
+            value: huks.HuksKeyDigest.HUKS_DIGEST_SM3
+          },
+        )
+      }
+      try {
+        await huks.generateKeyItem(srcKeyAlias, HuksOptions);
+        expect(null).assertFail();
+        console.error(srcKeyAlias + `: generateKeyItem success, expect fail`);
+      } catch (err) {
+        console.log(srcKeyAlias + `: catch error ${JSON.stringify(err)}`);
+        expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_ILLEGAL_ARGUMENT);
+      }
+      console.log(srcKeyAlias + `: success.`);
+      done();
+    });
+
   });
 }

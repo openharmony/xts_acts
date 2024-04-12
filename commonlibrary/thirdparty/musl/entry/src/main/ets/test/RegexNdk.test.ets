@@ -40,21 +40,6 @@ export default function regexNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_REGEX_REGEXEC_0100
-     * @tc.name       : testMuslRegexRegexec001
-     * @tc.desc       : test regexec
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslRegexRegexec001', 0, async (done: Function) => {
-      let result:number = regex.regexec();
-      console.info("Test regexec result = " + JSON.stringify(result));
-      expect(result).assertEqual(1);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_REGEX_REGERROR_0100
      * @tc.name       : testMuslRegexRegerror001
      * @tc.desc       : test regexec

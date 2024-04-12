@@ -35,6 +35,5 @@ function comparePairParams(priKey: cpFw.PriKey, pubKey: cpFw.PubKey): boolean {
 }
 
 export {
-  compareECCParams,
-  comparePairParams
+  compareECCParams, comparePairParams
 }

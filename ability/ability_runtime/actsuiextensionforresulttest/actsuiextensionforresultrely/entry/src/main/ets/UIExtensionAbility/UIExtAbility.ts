@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility';
 import wantConstant from '@ohos.app.ability.wantConstant';
 import commonEvent from '@ohos.commonEventManager';
@@ -249,4 +250,4 @@ export default class UiExtAbility extends UIExtensionAbility {
     // Ability has brought to foreground
     console.log('=====> UIExtAbility onForeground =====> ');
   }
-};
+}

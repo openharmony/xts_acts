@@ -23,6 +23,8 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003751, "dEQP-EGL.functional.hdr_metadata.smpte2086");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003751, "dEQP-EGL.functional.hdr_meta",
+    "data.smpte2086");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003752, "dEQP-EGL.functional.hdr_metadata.cta861_3");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003752, "dEQP-EGL.functional.hdr_meta",
+    "data.cta861_3");

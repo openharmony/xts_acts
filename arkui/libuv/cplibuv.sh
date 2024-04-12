@@ -15,7 +15,7 @@
 
 set -e
 root_libuv_path=$1
-mkdir -p  "suites/acts/testcases/libuvdata/test"
-cp -rf "$root_libuv_path/test/xts/acts/arkui/libuv/genlocal.py" "suites/acts/testcases/libuvdata"
-cp -rf "thirdparty/libuv/libuvruntest" "suites/acts/testcases/libuvdata"
-cp -rf "$root_libuv_path/third_party/libuv/test/fixtures" "suites/acts/testcases/libuvdata/test"
+mkdir -p  "suites/acts/acts/testcases/libuvdata/test"
+cp -rf "$root_libuv_path/test/xts/acts/arkui/libuv/genlocal.py" "suites/acts/acts/testcases/libuvdata"
+cp -rf "thirdparty/libuv/libuvruntest" "suites/acts/acts/testcases/libuvdata"
+cp -rf "$root_libuv_path/third_party/libuv/test/fixtures" "suites/acts/acts/testcases/libuvdata/test"

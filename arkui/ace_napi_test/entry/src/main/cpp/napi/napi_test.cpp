@@ -3324,7 +3324,7 @@ static napi_value CoerceToNativeBindingObject(napi_env env, napi_callback_info i
 
     napi_value undefined = nullptr;
     napi_get_undefined(env, &undefined);
-    napi_value data = nullptr;
+    void* data = nullptr;
     napi_serialize_inner(env, object, undefined, undefined, false, true, &data);
     NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
     napi_value result = nullptr;
@@ -3584,6 +3584,103 @@ static napi_value StopEventLoop(napi_env env, napi_callback_info info)
     return _value;
 }
 
+static napi_value NapiSerialize(napi_env env, napi_callback_info info)
+{
+    napi_value object = nullptr;
+    napi_create_object(env, &object);
+    napi_value num = nullptr;
+    uint32_t value = 2000;
+    napi_create_uint32(env, value, &num);
+    napi_set_named_property(env, object, "numKey", num);
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_set_named_property(env, object, "objKey", obj);
+
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    void* data = nullptr;
+    napi_status status = napi_serialize(env, object, undefined, undefined, &data);
+    NAPI_ASSERT(env, status == napi_ok, "napi_serialize fail");
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result = nullptr;
+    napi_deserialize(env, data, &result);
+    napi_value number = nullptr;
+    napi_get_named_property(env, result, "numKey", &number);
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, number, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_number, "Wrong type of argment. Expects a number.");
+    napi_delete_serialization_data(env, data);
+
+    return number;
+}
+
+static napi_value NapiDeSerialize(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value num = nullptr;
+    uint32_t value = 2000;
+    napi_create_uint32(env, value, &num);
+    void* data = nullptr;
+    napi_serialize(env, num, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_number, "Wrong type of argment. Expects a number.");
+
+    napi_value number = nullptr;
+    status = napi_deserialize(env, data, &number);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+    napi_delete_serialization_data(env, data);
+
+    return number;
+}
+
+static napi_value NapiDeleteSerializationData(napi_env env, napi_callback_info info)
+{
+    napi_value object = nullptr;
+    napi_create_object(env, &object);
+    napi_value num = nullptr;
+    uint32_t value = 2000;
+    napi_create_uint32(env, value, &num);
+    napi_set_named_property(env, object, "numKey", num);
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    napi_set_named_property(env, object, "objKey", obj);
+
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    void* data = nullptr;
+    napi_status status = napi_serialize(env, object, undefined, undefined, &data);
+    NAPI_ASSERT(env, status == napi_ok, "napi_serialize fail");
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_deserialize(env, data, &result1);
+    napi_value obj1 = nullptr;
+    napi_get_named_property(env, result1, "objKey", &obj1);
+    napi_valuetype valuetype1;
+    NAPI_CALL(env, napi_typeof(env, obj1, &valuetype1));
+    NAPI_ASSERT(env, valuetype1 == napi_object, "Wrong type of argment. Expects a object.");
+
+    napi_value result2 = nullptr;
+    napi_deserialize(env, data, &result2);
+    napi_value number = nullptr;
+    napi_get_named_property(env, result2, "numKey", &number);
+    napi_valuetype valuetype2;
+    NAPI_CALL(env, napi_typeof(env, number, &valuetype2));
+    NAPI_ASSERT(env, valuetype2 == napi_number, "Wrong type of argment. Expects a number.");
+    napi_delete_serialization_data(env, data);
+
+    return number;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -3730,6 +3827,9 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("makeCallbackOne", MakeCallbackOne),
         DECLARE_NAPI_FUNCTION("runEventLoop", RunEventLoop),
         DECLARE_NAPI_FUNCTION("stopEventLoop", StopEventLoop),
+        DECLARE_NAPI_FUNCTION("napiSerialize", NapiSerialize),
+        DECLARE_NAPI_FUNCTION("napiDeSerialize", NapiDeSerialize),
+        DECLARE_NAPI_FUNCTION("napiDeleteSerializationData", NapiDeleteSerializationData),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
