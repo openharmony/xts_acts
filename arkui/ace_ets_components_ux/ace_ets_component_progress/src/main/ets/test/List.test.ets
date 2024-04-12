@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import progressTest from './progress';
-import progressSecTest from './progressSec';
+import progressTest from './progress'
+import progressSecTest from './progressSec'
 
 export default function testsuite() {
-  progressTest();
-  progressSecTest();
+       progressTest()
+       progressSecTest()
 }
