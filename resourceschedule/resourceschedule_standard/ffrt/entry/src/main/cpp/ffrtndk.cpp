@@ -2810,7 +2810,6 @@ static void TimerCb(void *data)
     timerData->dispatchTime = high_resolution_clock::now();
     std::chrono::duration<double, std::milli> elapsed = timerData->dispatchTime - timerData->submitTime;
     double realTimeVal = elapsed.count();
-    printf("timer id = %d, real timeout %f, expect timeout = %lu\n", timerData->timerId, realTimeVal,
         timerData->timeout);
     if (realTimeVal < timerData->timeout - error || realTimeVal > timerData->timeout + error) {
         timerData->result += 1;
