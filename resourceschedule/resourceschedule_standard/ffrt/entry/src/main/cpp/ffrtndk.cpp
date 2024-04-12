@@ -3147,7 +3147,7 @@ static napi_value ffrt_queue_parallel_api_0003(napi_env env, napi_callback_info 
         result += 1;
     }
 
-    const int abnormal_pri = 100;
+    const ffrt_queue_priority_t abnormal_pri = (ffrt_queue_priority_t)100;
     ffrt_task_attr_set_queue_priority(&task_attr, abnormal_pri);
     priority = ffrt_task_attr_get_queue_priority(&task_attr);
     if (priority != ffrt_queue_priority_low) {
