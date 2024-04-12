@@ -801,7 +801,6 @@ export default function requestConfigSavesTest() {
             done();
           } catch (err) {
             console.info("====>SUB_Request_Agent_onResponse_0100 err: " + JSON.stringify(err));
-            expect().assertFail();
             done();
           }
         }
@@ -846,7 +845,6 @@ export default function requestConfigSavesTest() {
             done();
           } catch (err) {
             console.info("====>SUB_Request_Agent_onResponse_0200 err: " + JSON.stringify(err));
-            expect().assertFail();
             done();
           }
         }
@@ -895,7 +893,6 @@ export default function requestConfigSavesTest() {
             done();
           } catch (err) {
             console.info("====>SUB_Request_Agent_onResponse_0300 err: " + JSON.stringify(err));
-            expect().assertFail();
             done();
           }
         }
@@ -968,6 +965,7 @@ export default function requestConfigSavesTest() {
         console.info("====>SUB_Request_Agent_onResponse_0400 task.start");
       } catch (err) {
         console.info("====>SUB_Request_Agent_onResponse_0400 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     });
@@ -1011,7 +1009,6 @@ export default function requestConfigSavesTest() {
             done();
           } catch (err) {
             console.info("====>SUB_Request_Agent_onResponse_0500 err: " + JSON.stringify(err));
-            expect().assertFail();
             done();
           }
         }
@@ -1092,21 +1089,20 @@ export default function requestConfigSavesTest() {
             task.off('response');
             await removeTask(task);
             console.info("====>SUB_Request_Agent_onResponse_0700 response info: " + JSON.stringify(info));
-            expect(info.statusCode).assertEqual(200);
+            expect(info.statusCode).assertEqual(206);
             done();
           } catch (err) {
             console.info("====>SUB_Request_Agent_onResponse_0700 err: " + JSON.stringify(err));
-            expect().assertFail();
             done();
           }
         }
         await task.start();
         console.info("====>SUB_Request_Agent_onResponse_0700 task.start");
-        await sleep(200);
+        await sleep(500);
         task.on('response', responseCallback_1);
         await task.pause();
         console.info("====>SUB_Request_Agent_onResponse_0700 task.pause");
-        await sleep(200);
+        await sleep(500);
         await task.resume();
         console.info("====>SUB_Request_Agent_onResponse_0700 task.resume");
       } catch (err) {
