@@ -3176,7 +3176,7 @@ static napi_value ffrt_queue_parallel_api_0004(napi_env env, napi_callback_info 
         result += 1;
     }
     // 销毁队列
-    ffrt_queue_attr_destroy(&task_attr);
+    ffrt_task_attr_destroy(&task_attr);
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
