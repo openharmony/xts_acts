@@ -7,6 +7,14 @@
     {
       "name": "color_world",
       "value": "#ff0000ff"
+    },
+    {
+      "name": "start_block_Border_Color",
+      "value": "#FF19D41C"
+    },
+    {
+      "name": "start_Step_Color",
+      "value": "#FF19D41C"
     }
   ]
 }

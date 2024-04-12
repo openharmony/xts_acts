@@ -8,6 +8,7 @@
         "MainAbility/pages/imageEffects/blendMode1",
         "MainAbility/pages/imageEffects/InvertOptions",
         "MainAbility/pages/imageEffects/ForegroundColor",
-        "MainAbility/pages/imageEffects/sheetSize"
+        "MainAbility/pages/imageEffects/sheetSize",
+        "MainAbility/pages/clickeffect/Index"
     ]
 }
