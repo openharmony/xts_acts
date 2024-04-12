@@ -2816,6 +2816,21 @@ static void TimerCb(void *data)
     timerData->finish = true;
 }
 
+static napi_value ffrt_timer_start_abnormal_0001(napi_env env, napi_callback_info info)
+{
+    high_resolution_clock::time_point startT = high_resolution_clock::now();
+    timerData_t timerData1 = {.timerId = 1, .timeout = 0, .submitTime = startT, .finish = false, .result = 0};
+    int ret = ffrt_timer_start(-1, 0, reinterpret_cast<void *>(&timerData1), timerCb, false);
+    
+    int result = 0;
+    if (ret != -1) {
+        result += 1;
+    }
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
 static napi_value ffrt_timer_start_0001(napi_env env, napi_callback_info info)
 {
     high_resolution_clock::time_point startT = high_resolution_clock::now();
@@ -2889,6 +2904,61 @@ static napi_value ffrt_timer_cancel_0001(napi_env env, napi_callback_info info)
     }
     napi_value flag = nullptr;
     napi_create_double(env, timerData.result, &flag);
+    return flag;
+}
+
+static napi_value ffrt_loop_abnormal_0001(napi_env env, napi_callback_info info)
+{
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
+
+    int result2 = 0;
+    const int addnum = 20;
+    std::function<void()>&& basicFunc2 = [&result2]() {result2 += addnum;};
+    ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc2, 
+        ffrt_function_kind_queue), nullptr);
+    auto loop = ffrt_loop_create(queue_handle);
+
+    int result = 0;
+    if (loop != nullptr) {
+        result += 1;
+    }
+
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value ffrt_loop_abnormal_0002(napi_env env, napi_callback_info info)
+{
+    ffrt_queue_attr_t queue_attr;
+    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
+
+    auto loop = ffrt_loop_create(nullptr);
+    int result = 0;
+    if (loop != nullptr) {
+        result += 1;
+    }
+    int res2 = ffrt_loop_destroy(loop);
+    if (res2 != -1) {
+        result += 1;
+    }
+    int res3 = ffrt_loop_run(loop);
+    if (res3 != -1) {
+        result += 1;
+    }
+    auto res4 = ffrt_queue_attr_get_max_concurrency(nullptr);
+    if (res4 != 0) {
+        result += 1;
+    }
+
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
     return flag;
 }
 
