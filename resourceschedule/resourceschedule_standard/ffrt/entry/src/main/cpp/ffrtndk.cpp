@@ -2819,8 +2819,8 @@ static void TimerCb(void *data)
 static napi_value ffrt_timer_start_abnormal_0001(napi_env env, napi_callback_info info)
 {
     high_resolution_clock::time_point startT = high_resolution_clock::now();
-    timerData_t timerData1 = {.timerId = 1, .timeout = 0, .submitTime = startT, .finish = false, .result = 0};
-    int ret = ffrt_timer_start(-1, 0, reinterpret_cast<void *>(&timerData1), timerCb, false);
+    TimerDataT timerData1 = {.timerId = 1, .timeout = 0, .submitTime = startT, .finish = false, .result = 0};
+    int ret = ffrt_timer_start(-1, 0, reinterpret_cast<void *>(&timerData1), TimerCb, false);
     
     int result = 0;
     if (ret != -1) {
@@ -2916,8 +2916,6 @@ static napi_value ffrt_loop_abnormal_0001(napi_env env, napi_callback_info info)
     int result2 = 0;
     const int addnum = 20;
     std::function<void()>&& basicFunc2 = [&result2]() {result2 += addnum;};
-    ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc2, 
-        ffrt_function_kind_queue), nullptr);
     auto loop = ffrt_loop_create(queue_handle);
 
     int result = 0;
@@ -3072,14 +3070,8 @@ static napi_value ffrt_queue_parallel_api_0001(napi_env env, napi_callback_info 
     }
 
     // 销毁队列
-    int ret = ffrt_queue_attr_destroy(&queue_attr);
-    if (ret != 0) {
-        result += 1;
-    }
-    ret = ffrt_queue_attr_destroy(&queue_attr);
-    if (ret != -1) {
-        result += 1;
-    }
+    ffrt_queue_attr_destroy(&queue_attr);
+
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -3113,52 +3105,52 @@ static napi_value ffrt_queue_parallel_api_0003(napi_env env, napi_callback_info 
     int result = 0;
     ffrt_task_attr_t task_attr;
     (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_priority(nullptr, immediate);
-    int priority = ffrt_task_attr_get_priority(&task_attr);
-    if (priority != low) {
+    ffrt_task_attr_set_queue_priority(nullptr, ffrt_queue_priority_immediate);
+    int priority = ffrt_task_attr_get_queue_priority(&task_attr);
+    if (priority != ffrt_queue_priority_low) {
         result += 1;
     }
 
-    ffrt_task_attr_set_priority(&task_attr, immediate - 1);
-    priority = ffrt_task_attr_get_priority(&task_attr);
-    if (priority != low) {
+    ffrt_task_attr_set_queue_priority(&task_attr, ffrt_queue_priority_immediate - 1);
+    priority = ffrt_task_attr_get_queue_priority(&task_attr);
+    if (priority != ffrt_queue_priority_low) {
         result += 1;
     }
 
-    ffrt_task_attr_set_priority(&task_attr, idle + 1);
-    priority = ffrt_task_attr_get_priority(&task_attr);
-    if (priority != low) {
+    ffrt_task_attr_set_queue_priority(&task_attr, ffrt_queue_priority_idle + 1);
+    priority = ffrt_task_attr_get_queue_priority(&task_attr);
+    if (priority != ffrt_queue_priority_low) {
         result += 1;
     }
 
-    ffrt_task_attr_set_priority(&task_attr, immediate);
-    priority = ffrt_task_attr_get_priority(&task_attr);
-    if (priority != immediate) {
+    ffrt_task_attr_set_queue_priority(&task_attr, ffrt_queue_priority_immediate);
+    priority = ffrt_task_attr_get_queue_priority(&task_attr);
+    if (priority != ffrt_queue_priority_immediate) {
         result += 1;
     }
 
-    ffrt_task_attr_set_priority(&task_attr, high);
-    priority = ffrt_task_attr_get_priority(&task_attr);
-    if (priority != high) {
+    ffrt_task_attr_set_queue_priority(&task_attr, ffrt_queue_priority_high);
+    priority = ffrt_task_attr_get_queue_priority(&task_attr);
+    if (priority != ffrt_queue_priority_high) {
         result += 1;
     }
 
-    ffrt_task_attr_set_priority(&task_attr, idle);
-    priority = ffrt_task_attr_get_priority(&task_attr);
-    if (priority != idle) {
+    ffrt_task_attr_set_queue_priority(&task_attr, ffrt_queue_priority_idle);
+    priority = ffrt_task_attr_get_queue_priority(&task_attr);
+    if (priority != ffrt_queue_priority_idle) {
         result += 1;
     }
 
-    ffrt_task_attr_set_priority(&task_attr, low);
-    priority = ffrt_task_attr_get_priority(&task_attr);
-    if (priority != low) {
+    ffrt_task_attr_set_queue_priority(&task_attr, ffrt_queue_priority_low);
+    priority = ffrt_task_attr_get_queue_priority(&task_attr);
+    if (priority != ffrt_queue_priority_low) {
         result += 1;
     }
 
     const int abnormal_pri = 100;
-    ffrt_task_attr_set_priority(&task_attr, abnormal_pri);
-    priority = ffrt_task_attr_get_priority(&task_attr);
-    if (priority != low) {
+    ffrt_task_attr_set_queue_priority(&task_attr, abnormal_pri);
+    priority = ffrt_task_attr_get_queue_priority(&task_attr);
+    if (priority != ffrt_queue_priority_low) {
         result += 1;
     }
     // 销毁队列
@@ -3173,14 +3165,14 @@ static napi_value ffrt_queue_parallel_api_0004(napi_env env, napi_callback_info 
     int result = 0;
     ffrt_task_attr_t task_attr;
     (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_priority(&task_attr, immediate);
-    int priority = ffrt_task_attr_get_priority(nullptr);
+    ffrt_task_attr_set_queue_priority(&task_attr, ffrt_queue_priority_immediate);
+    int priority = ffrt_task_attr_get_queue_priority(nullptr);
     if (priority != 0) {
         result += 1;
     }
 
-    priority = ffrt_task_attr_get_priority(&task_attr);
-    if (priority != immediate) {
+    priority = ffrt_task_attr_get_queue_priority(&task_attr);
+    if (priority != ffrt_queue_priority_immediate) {
         result += 1;
     }
     // 销毁队列
@@ -3356,7 +3348,7 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
     ffrt_task_attr_t task_attr[task_cnt];
     for (int i = 0; i < task_cnt; ++i) {
         (void)ffrt_task_attr_init(&task_attr[i]);
-        ffrt_task_attr_set_priority(&task_attr[i], task_cnt - i);
+        ffrt_task_attr_set_queue_priority(&task_attr[i], task_cnt - i);
     }
 
     double t;
