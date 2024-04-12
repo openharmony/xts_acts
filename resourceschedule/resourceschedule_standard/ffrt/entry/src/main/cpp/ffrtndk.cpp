@@ -2934,9 +2934,6 @@ static napi_value ffrt_loop_abnormal_0001(napi_env env, napi_callback_info info)
 
 static napi_value ffrt_loop_abnormal_0002(napi_env env, napi_callback_info info)
 {
-    ffrt_queue_attr_t queue_attr;
-    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
-
     auto loop = ffrt_loop_create(nullptr);
     int result = 0;
     if (loop != nullptr) {
@@ -2954,9 +2951,6 @@ static napi_value ffrt_loop_abnormal_0002(napi_env env, napi_callback_info info)
     if (res4 != 0) {
         result += 1;
     }
-
-    ffrt_queue_attr_destroy(&queue_attr);
-    ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -3001,6 +2995,10 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
     ffrt_loop_stop(loop);
     pthread_join(thread, nullptr);
     ffrt_loop_destroy(loop);
+    int destory_ret = ffrt_loop_destroy(loop);
+    if (destory_ret != -1) {
+        result += 1;
+    }
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
@@ -3072,7 +3070,14 @@ static napi_value ffrt_queue_parallel_api_0001(napi_env env, napi_callback_info 
     }
 
     // 销毁队列
-    ffrt_queue_attr_destroy(&queue_attr);
+    int ret = ffrt_queue_attr_destroy(&queue_attr);
+    if (ret != 0) {
+        result += 1;
+    }
+    ret = ffrt_queue_attr_destroy(&queue_attr);
+    if (ret != -1) {
+        result += 1;
+    }
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -3126,6 +3131,24 @@ static napi_value ffrt_queue_parallel_api_0003(napi_env env, napi_callback_info 
     ffrt_task_attr_set_priority(&task_attr, immediate);
     priority = ffrt_task_attr_get_priority(&task_attr);
     if (priority != immediate) {
+        result += 1;
+    }
+
+    ffrt_task_attr_set_priority(&task_attr, high);
+    priority = ffrt_task_attr_get_priority(&task_attr);
+    if (priority != high) {
+        result += 1;
+    }
+
+    ffrt_task_attr_set_priority(&task_attr, idle);
+    priority = ffrt_task_attr_get_priority(&task_attr);
+    if (priority != idle) {
+        result += 1;
+    }
+
+    ffrt_task_attr_set_priority(&task_attr, low);
+    priority = ffrt_task_attr_get_priority(&task_attr);
+    if (priority != low) {
         result += 1;
     }
     // 销毁队列
@@ -3216,9 +3239,7 @@ static napi_value queue_parallel_cancel_0002(napi_env env, napi_callback_info in
         ffrt_create_function_wrapper(OnePlusFfrtSleepFunc, ffrt_function_kind_queue), nullptr);
 
     usleep(delayTime);
-    int ret = 
-    
-    (task1);
+    int ret = ffrt_queue_cancel(task1);
     if (res != 0) {
         result += 1;
     }
