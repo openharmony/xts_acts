@@ -24,6 +24,7 @@ import NavDestinationInfoStateJsunit  from './NavDestinationTest/NavDestinationI
 import QueryNavDestinationInfoNavDestinationJsunit from './NavDestinationTest/QueryNavDestinationInfoNavDestinationJsunit.test';
 import NavigationAttr from './NavigationTest/NavigationAttr.test'
 import navigationApi1 from './NavigationTest/navigationApi/navigationApi1.test'
+import sidebar from './SideBarContainerTest/SideBar.test'
 
 export default function testsuite() {
   stepperJsunit();
@@ -38,4 +39,6 @@ export default function testsuite() {
   QueryNavDestinationInfoNavDestinationJsunit()
   NavigationAttr()
   navigationApi1()
+  sidebar()
+
 }
