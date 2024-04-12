@@ -282,14 +282,6 @@ export default function flagstartwithouttipstest() {
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0700', 0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0700';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
-      try {
-        await context.startAbility({
-          bundleName: 'com.acts.flagstartwithouttipstest',
-          abilityName: 'EntryAbility',
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s EntryAbility error', JSON.stringify(error));
-      }
       await abilityDelegator.executeShellCommand('aa start -b com.acts.flagstartwithouttipstest -a TestAbility');
       await sleep(3000);
       try {
@@ -330,14 +322,6 @@ export default function flagstartwithouttipstest() {
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0800', 0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0800';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
-      try {
-        await context.startAbility({
-          bundleName: 'com.acts.flagstartwithouttipstest',
-          abilityName: 'EntryAbility',
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s EntryAbility error', JSON.stringify(error));
-      }
       await abilityDelegator.executeShellCommand('aa start -b com.acts.flagstartwithouttipstest -a TestAbility');
       await sleep(3000);
       try {
