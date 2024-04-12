@@ -1730,6 +1730,8 @@ static napi_value QueueDfxTest004(napi_env env, napi_callback_info info)
 static napi_value QueueDfxTest005(napi_env env, napi_callback_info info)
 {
     int resultEnd = 0;
+    const int sleepTime = 500;
+    const int sleepMs = 1000;
     int x = 0;
     int end = 0;
     std::function<void()> cbOne = [&end]() {
@@ -1742,7 +1744,7 @@ static napi_value QueueDfxTest005(napi_env env, napi_callback_info info)
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     std::function<void()>&& basicFunc1 = [&] {
         x++;
-        usleep(500 * 1000);
+        usleep(sleepTime * sleepMs);
     };
     ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(basicFunc1, ffrt_function_kind_queue), nullptr);
@@ -1756,7 +1758,7 @@ static napi_value QueueDfxTest005(napi_env env, napi_callback_info info)
     
     std::function<void()>&& basicFunc2 = [&] {
         x++;
-        ffrt_usleep(500 * 1000);
+        ffrt_usleep(sleepTime * sleepMs);
     };
     ffrt_task_handle_t handle1 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(basicFunc2, ffrt_function_kind_queue), nullptr);
@@ -2650,11 +2652,12 @@ static napi_value SleepForTest000(napi_env env, napi_callback_info info)
 static napi_value SleepForTest001(napi_env env, napi_callback_info info)
 {
     int resultEnd = 0;
+    const uint32_t slpTime = 1000;
     // sleep 1ms，验证sleep时间的正确性
     double t;
     std::function<void()>&& func = [&]() {
         auto start = std::chrono::high_resolution_clock::now();
-        ffrt_usleep(1000);
+        ffrt_usleep(slpTime);
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double, std::milli> elapsed = end-start;
         t = elapsed.count();
@@ -2784,19 +2787,35 @@ typedef struct {
     high_resolution_clock::time_point submitTime;
     high_resolution_clock::time_point dispatchTime;
     bool finish;
-} timerData_t;
+} TimerDataT;
 
-static void timerCb(void *data)
+static inline void StallUs(size_t us)
 {
-    printf("enter timerCb\n");
-    double error = 100;
-    timerData_t *timerData = reinterpret_cast<timerData_t *>(data);
+    auto start = std::chrono::system_clock::now();
+    size_t passed = 0;
+    while (passed < us) {
+        passed = 
+            std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now() - start).count();
+    }
+}
+
+void* ThreadFunc(void *p)
+{
+    ffrt_loop_run(p);
+    return nullptr;
+}
+
+static void TimerCb(void *data)
+{
+    printf("enter TimerCb\n");
+    const double error = 100;
+    TimerDataT *timerData = reinterpret_cast<TimerDataT *>(data);
     timerData->dispatchTime = high_resolution_clock::now();
     std::chrono::duration<double, std::milli> elapsed = timerData->dispatchTime - timerData->submitTime;
     double realTimeVal = elapsed.count();
     printf("timer id = %d, real timeout %f, expect timeout = %lu\n", timerData->timerId, realTimeVal,
         timerData->timeout);
-    if (realTimeVal < timerData->timeout - error || realTimeVal > timeout + error) {
+    if (realTimeVal < timerData->timeout - error || realTimeVal > timerData->timeout + error) {
         timerData->result += 1;
     }
     timerData->finish = true;
@@ -2805,11 +2824,13 @@ static void timerCb(void *data)
 static napi_value ffrt_timer_start_0001(napi_env env, napi_callback_info info)
 {
     high_resolution_clock::time_point startT = high_resolution_clock::now();
-    timerData_t timerData1 = {.timerId = 1, .timeout = 0, .submitTime = startT, .finish = false, .result = 0};
-    ffrt_timer_start(ffrt_qos_default, 0, reinterpret_cast<void *>(&timerData1), timerCb, false);
+    TimerDataT timerData1 = {.timerId = 1, .timeout = 0, .submitTime = startT, .finish = false, .result = 0};
+    ffrt_timer_start(ffrt_qos_default, 0, reinterpret_cast<void *>(&timerData1), TimerCb, false);
     while (1) {
         usleep(1);
-        if (timerData1.finish) break;
+        if (timerData1.finish) {
+            break;
+        }
     }
     napi_value flag = nullptr;
     napi_create_double(env, timerData1.result, &flag);
@@ -2820,22 +2841,27 @@ static napi_value ffrt_timer_start_0002(napi_env env, napi_callback_info info)
 {
     const int timerCount = 100;
     bool finish = true;
-    timerData_t timerData[timerCount];
+    TimerDataT timerData[timerCount];
     high_resolution_clock::time_point startT = high_resolution_clock::now();
-    ffrt_qos_default_t qos_type[5] = {ffrt_qos_inherit, ffrt_qos_background, ffrt_qos_utility, ffrt_qos_default, ffrt_qos_initiated};
+    ffrt_qos_default_t qos_type[5] = {ffrt_qos_inherit, ffrt_qos_background, ffrt_qos_utility,
+        ffrt_qos_default, ffrt_qos_user_initiated};
     for (int i = 0; i < timerCount; ++i) {
         uint64_t timeout = 0;
-        timeout = rand() % 500;
-        int qos_idx = rand() % 5;
+        const int mod1 = 500;
+        const int mod2 = 5;
+        timeout = rand() % mod1;
+        int qosidx = rand() % mod2;
         timerData[i] = {.timerId = i, .timeout = timeout, .submitTime = startT, .finish = false, .result = 0};
-        ffrt_timer_start(qos_type[qos_idx], timeout, (void *)&timerData[i], timerCb, false);
+        ffrt_timer_start(qos_type[qosidx], timeout, (void *)&timerData[i], TimerCb, false);
     }
     while (1) {
         usleep(1);
         for (int i = 0; i < timerCount; ++i) {
             finish = finish && timerData[i].finish;
         }
-        if (finish) break;
+        if (finish) {
+            break;
+        }
     }
     napi_value flag = nullptr;
     for (int i = 0; i < timerCount; ++i) {
@@ -2845,18 +2871,19 @@ static napi_value ffrt_timer_start_0002(napi_env env, napi_callback_info info)
     return flag;
 }
 
-static void timerCbCancel(void *data)
+static void TimerCbCancel(void *data)
 {
-    printf("enter timerCbCancel\n");
-    stall_us(500 * 1000);
-    timerData_t *timerData = reinterpret_cast<timerData_t *>(data);
+    printf("enter TimerCbCancel\n");
+    const uint32_t slpTime = 500 * 1000;
+    StallUs(slpTime);
+    TimerDataT *timerData = reinterpret_cast<TimerDataT *>(data);
     timerData->finish = true;
 }
 
 static napi_value ffrt_timer_cancel_0001(napi_env env, napi_callback_info info)
 {
-    timerData_t timerData = { .finish = false, .result = 0};
-    int handle = ffrt_timer_start(ffrt_qos_default, 2000, reinterpret_cast<void *>(&timerData), timerCbCancel, false);
+    TimerDataT timerData = { .finish = false, .result = 0};
+    int handle = ffrt_timer_start(ffrt_qos_default, 2000, reinterpret_cast<void *>(&timerData), TimerCbCancel, false);
     int abnormalHandle = handle + 1;
     ffrt_timer_stop(ffrt_qos_default, abnormalHandle);
     ffrt_timer_stop(ffrt_qos_default, handle);
@@ -2871,21 +2898,26 @@ static napi_value ffrt_timer_cancel_0001(napi_env env, napi_callback_info info)
 
 static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
 {
+    const uint32_t delayTime = 1000;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
     auto loop = ffrt_loop_create(queue_handle);
     ffrt_task_attr_t task_attr;
     (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_delay(&task_attr, 1000);
+    ffrt_task_attr_set_delay(&task_attr, delayTime);
     int result1 = 0;
-    std::function<void()>&& basicFunc1 = [&result1]() {for (int i = 0; i < 1000000000; ++i) {result1 += 1;}};
-    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1, ffrt_function_kind_queue), &task_attr);
+    const int loop_cnt = 1000000000;
+    std::function<void()>&& basicFunc1 = [&result1]() {for (int i = 0; i < loop_cnt; ++i) {result1 += 1;}};
+    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1, 
+        ffrt_function_kind_queue), &task_attr);
     pthread_t thread;
     pthread_create(&thread, 0, ThreadFunc, loop);
     int result2 = 0;
-    std::function<void()>&& basicFunc2 = [&result2]() {result2 += 20;};
-    ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc2, ffrt_function_kind_queue), nullptr);
+    const int addnum = 20;
+    std::function<void()>&& basicFunc2 = [&result2]() {result2 += addnum;};
+    ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc2, 
+        ffrt_function_kind_queue), nullptr);
     ffrt_queue_wait(task1);
     ffrt_queue_wait(task2);
     int result = 0;
@@ -2893,17 +2925,18 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
         result += 1;
     }
     int result3 = 0;
-    std::function<void()>&& basicFunc3 = [&result3]() {result3 += 20;};
-    ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc3, ffrt_function_kind_queue), nullptr);
+    std::function<void()>&& basicFunc3 = [&result3]() {result3 += addnum;};
+    ffrt_task_handle_t task3 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc3, 
+        ffrt_function_kind_queue), nullptr);
     int ret = ffrt_queue_cancel(task3);
     if (ret != 0 || result3 != 0) {
         result += 1;
     }
     ffrt_loop_stop(loop);
     pthread_join(thread, nullptr);
-    ffrt_loop_destory(loop);
-    ffrt_queue_attr_destory(&queue_attr);
-    ffrt_queue_destory(queue_handle);
+    ffrt_loop_destroy(loop);
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -2919,8 +2952,10 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     pthread_create(&thread, 0, ThreadFunc, loop);
 
     int result1 = 0;
-    std::function<void()>&& basicFunc1 = [&result1]() {result1 += 10;};
-    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1, ffrt_function_kind_queue), nullptr);
+    const int addTen = 10;
+    std::function<void()>&& basicFunc1 = [&result1]() {result1 += addTen;};
+    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc1, 
+        ffrt_function_kind_queue), nullptr);
     int result = 0;
     int ret1 = ffrt_queue_cancel(task1);
     if (ret1 != 0) {
@@ -2928,8 +2963,10 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
     }
 
     int result2 = 0;
-    std::function<void()>&& basicFunc2 = [&result2]() {result2 += 20;};
-    ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc2, ffrt_function_kind_queue), nullptr);
+    const int addTwenty = 20;
+    std::function<void()>&& basicFunc2 = [&result2]() {result2 += addTwenty;};
+    ffrt_task_handle_t task2 = ffrt_queue_submit_h(queue_handle, create_function_wrapper(basicFunc2, 
+        ffrt_function_kind_queue), nullptr);
     int ret2 = ffrt_queue_cancel(task2);
     if (ret2 != 0) {
         result += 1;
@@ -2937,9 +2974,9 @@ static napi_value ffrt_loop_0002(napi_env env, napi_callback_info info)
 
     ffrt_loop_stop(loop);
     pthread_join(thread, nullptr);
-    ffrt_loop_destory(loop);
-    ffrt_queue_attr_destory(&queue_attr);
-    ffrt_queue_destory(queue_handle);
+    ffrt_loop_destroy(loop);
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
