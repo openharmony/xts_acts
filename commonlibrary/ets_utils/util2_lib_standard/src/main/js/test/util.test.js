@@ -1322,6 +1322,25 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GENERATE_RANDOM_UUID_003
+     * @tc.name: testUtilgenerateRandomUUID003
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilgenerateRandomUUID003', 0, async function () {
+        let sum = 0
+        for (let i = 0; i < 10; i++) {
+          let result = util.generateRandomUUID(true);
+          if (result.length === 36) {
+            sum++;
+          }
+        }
+        expect(sum).assertEqual(10);
+    })
+
+    /**
      * @tc.number: SUB_COMMONLIBRARY_UTIL_GENERATE_RANDOM_BINARY_UUID_001
      * @tc.name: testUtilgenerateRandomBinaryUUID001
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
