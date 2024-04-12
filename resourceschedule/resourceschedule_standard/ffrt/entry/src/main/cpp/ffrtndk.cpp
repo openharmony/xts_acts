@@ -2839,8 +2839,9 @@ static napi_value ffrt_timer_start_0001(napi_env env, napi_callback_info info)
     bool finish = false;
     while (!finish) {
         usleep(1);
+        bool flag = false;
         if (timerData1.finish) {
-            break;
+            flag = true;
         }
         finish = (flag == true ? true, false);
     }
