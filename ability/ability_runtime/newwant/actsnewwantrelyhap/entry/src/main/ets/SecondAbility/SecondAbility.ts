@@ -44,7 +44,7 @@ export default class SecondAbility extends Ability {
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("ACTS_NewWant SecondAbility onWindowStageCreate")
-        globalThis.abilityContext = this.context
+        globalThis.hapSecondabilityContext = this.context
         windowStage.setUIContent(this.context, "pages/index/index", null)
 
         commonEvent.publish("onWindowStageCreateSecond_To_Test_CommonEvent", () => {
@@ -63,7 +63,7 @@ export default class SecondAbility extends Ability {
         console.log("ACTS_NewWant SecondAbility onForeground")
         if (globalThis.abilityWant.action == 'startSingleton0400')
         {
-            globalThis.abilityContext.startAbility({
+            globalThis.hapSecondabilityContext.startAbility({
                 bundleName: "com.example.newwanthap",
                 abilityName: "com.example.newwanthapa.MainAbility",
                 action:"startStandard0400"
@@ -74,7 +74,7 @@ export default class SecondAbility extends Ability {
         }
         if (globalThis.abilityWant.action == 'startSingleton0300')
         {
-            globalThis.abilityContext.startAbility({
+            globalThis.hapSecondabilityContext.startAbility({
                 bundleName: "com.example.newwanthap",
                 abilityName: "com.example.newwanthapa.MainAbility",
                 action:"restartSingleton"
@@ -84,7 +84,7 @@ export default class SecondAbility extends Ability {
             })
         }
         if (globalThis.abilityWant.action == 'startHapA0500') {
-            globalThis.abilityContext.startAbility({
+            globalThis.hapSecondabilityContext.startAbility({
                 bundleName: "com.example.newwanthap",
                 abilityName: "com.example.newwanthapb.MainAbility",
                 action: "restartHapB"
@@ -94,7 +94,7 @@ export default class SecondAbility extends Ability {
             })
         }
         if (globalThis.abilityWant.action == 'startHapA0600') {
-            globalThis.abilityContext.startAbility({
+            globalThis.hapSecondabilityContext.startAbility({
                 bundleName: "com.example.newwanthapa",
                 abilityName: "com.example.newwanthapc.MainAbility",
                 action: "restartHapC"
@@ -104,7 +104,7 @@ export default class SecondAbility extends Ability {
             })
         }
         if (globalThis.abilityWant.action == 'startSecondAbility0700') {
-            globalThis.abilityContext.startAbility(
+            globalThis.hapSecondabilityContext.startAbility(
                 {
                     bundleName: "com.example.newwanthap",
                     abilityName: "com.example.newwanthapa.MainAbility",
@@ -115,7 +115,7 @@ export default class SecondAbility extends Ability {
             });
         }
         if (globalThis.abilityWant.action == 'startSecondAbility0800') {
-            globalThis.abilityContext.startAbility(
+            globalThis.hapSecondabilityContext.startAbility(
                 {
                     bundleName: "com.example.newwanthapapi7",
                     abilityName: "com.example.newwanthapapi7.MainAbility",

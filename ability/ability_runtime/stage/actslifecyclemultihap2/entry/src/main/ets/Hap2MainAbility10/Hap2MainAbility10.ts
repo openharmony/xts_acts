@@ -31,6 +31,7 @@ export default class Hap2MainAbility10 extends Ability {
         console.log("[Demo] Hap2MainAbility10 onWindowStageCreate")
 
         windowStage.setUIContent(this.context, "pages/Hap2MainAbility10_pages", null)
+        globalThis.hap2MainAbility10Context = this.context;
     }
 
     onWindowStageDestroy() {

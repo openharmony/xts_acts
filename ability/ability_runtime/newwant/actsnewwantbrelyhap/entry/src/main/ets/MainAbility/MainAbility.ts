@@ -43,7 +43,7 @@ export default class MainAbility extends Ability {
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("ACTS_NewWant MainAbility onWindowStageCreate")
-        globalThis.abilityContext = this.context
+        globalThis.hapBAbilityContext = this.context
         windowStage.setUIContent(this.context, "pages/index/index", null)
 
         commonEvent.publish("onWindowStageCreateMain_To_Test_CommonEvent", () => {
@@ -61,7 +61,7 @@ export default class MainAbility extends Ability {
         // Ability has brought to foreground
         console.log("ACTS_NewWant MainAbility onForeground")
         if (globalThis.abilityWant.action == 'startHapB') {
-            globalThis.abilityContext.startAbility({
+            globalThis.hapBAbilityContext.startAbility({
                 bundleName: "com.example.newwanthap",
                 abilityName: "com.example.newwanthapa.SecondAbility",
                 action: "startHapA0500"

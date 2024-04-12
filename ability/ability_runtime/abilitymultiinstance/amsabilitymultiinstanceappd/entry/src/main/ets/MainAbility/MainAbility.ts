@@ -24,7 +24,7 @@ function publishCallBack() {
   console.debug("====>AbilityMultiInstanceAppD Publish CallBack ====>");
 }
 
-async function onShowProcess() {
+async function onShowProcess(AppDMainAbilityContext) {
   let abilityWant: Want = AppStorage.get("abilityWant")!;
   let callBackData = "AppD:";
   callBackSeq += AppStorage.get("onAcceptWantCalledSeq")!;
@@ -39,14 +39,14 @@ async function onShowProcess() {
     commonEvent.publish("MultiInstanceStartFinish", commonEventPublishData, publishCallBack);
   } else {
     commonEvent.publish("MultiInstanceStartNext", commonEventPublishData, () => {
-      startAbilityProcess(AppStorage.get("abilityContext")!, abilityWant.parameters);
+      startAbilityProcess(AppDMainAbilityContext, abilityWant.parameters);
     })
   }
   AppStorage.setOrCreate("onAcceptWantCalledSeq", "");
   callBackSeq = "";
 }
 
-async function startAbilityProcess(abilityContext, parameters) {
+async function startAbilityProcess(AppDMainAbilityContext, parameters) {
   let bundleName = "com.acts.abilitymultiinstancea";
   let abilityName = "com.acts.abilitymultiinstancea.MainAbility";
 
@@ -92,7 +92,7 @@ async function startAbilityProcess(abilityContext, parameters) {
       break;
   }
   parameters.nextStep = ++idx;
-  abilityContext.startAbility({
+  AppDMainAbilityContext.startAbility({
     bundleName: bundleName,
     abilityName: abilityName,
     parameters: parameters
@@ -117,7 +117,7 @@ export default class MainAbility extends Ability {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     console.log("AbilityMultiInstanceAppD onWindowStageCreate");
-    AppStorage.setOrCreate("abilityContext", this.context);
+    AppStorage.setOrCreate("AppDMainAbilityContext", this.context);
     windowStage.loadContent("pages/index/index", null);
   }
 
@@ -130,7 +130,7 @@ export default class MainAbility extends Ability {
     // Ability has brought to foreground
     console.log("AbilityMultiInstanceAppD onForeground");
     callBackSeq += "onForeground";
-    onShowProcess();
+    onShowProcess(this.context);
   }
 
   onBackground() {
