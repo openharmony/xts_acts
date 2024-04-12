@@ -3201,6 +3201,10 @@ static napi_value queue_parallel_cancel_0001(napi_env env, napi_callback_info in
     if (res != 0) {
         result += 1;
     }
+    ret = ffrt_queue_cancel(task1);
+    if (res != -1) {
+        result += 1;
+    }
 
     std::function<void()> &&MultipleFunc = [&res] () {MultipleForTest((void *)(&res));};
     std::function<void()> &&OneSubFunc = [&res] () {SubForTest((void *)(&res));};
