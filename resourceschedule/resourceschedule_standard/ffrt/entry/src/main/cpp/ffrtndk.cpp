@@ -2843,7 +2843,7 @@ static napi_value ffrt_timer_start_0001(napi_env env, napi_callback_info info)
         if (timerData1.finish) {
             flag = true;
         }
-        finish = (flag == true ? true, false);
+        finish = (flag == true ? true : false);
     }
     napi_value flag = nullptr;
     napi_create_double(env, timerData1.result, &flag);
@@ -2874,7 +2874,7 @@ static napi_value ffrt_timer_start_0002(napi_env env, napi_callback_info info)
         for (int i = 0; i < timerCount; ++i) {
             flag = (flag && timerData[i].finish);
         }
-        finish = flag == true ? true, false;
+        finish = flag == true ? true : false;
     }
     napi_value flag = nullptr;
     for (int i = 0; i < timerCount; ++i) {
