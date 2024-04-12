@@ -2836,11 +2836,13 @@ static napi_value ffrt_timer_start_0001(napi_env env, napi_callback_info info)
     high_resolution_clock::time_point startT = high_resolution_clock::now();
     TimerDataT timerData1 = {.timerId = 1, .timeout = 0, .submitTime = startT, .finish = false, .result = 0};
     ffrt_timer_start(ffrt_qos_default, 0, reinterpret_cast<void *>(&timerData1), TimerCb, false);
-    for (;;) {
+    bool finish = false;
+    while (!finish)
         usleep(1);
         if (timerData1.finish) {
             break;
-        }        
+        }  
+        finish = (flag == true ? true, false);
     }
     napi_value flag = nullptr;
     napi_create_double(env, timerData1.result, &flag);
@@ -2850,7 +2852,7 @@ static napi_value ffrt_timer_start_0001(napi_env env, napi_callback_info info)
 static napi_value ffrt_timer_start_0002(napi_env env, napi_callback_info info)
 {
     const int timerCount = 100;
-    bool finish = true;
+    bool finish = false;
     TimerDataT timerData[timerCount];
     high_resolution_clock::time_point startT = high_resolution_clock::now();
     ffrt_qos_default_t qos_type[5] = {ffrt_qos_inherit, ffrt_qos_background, ffrt_qos_utility,
@@ -2864,14 +2866,13 @@ static napi_value ffrt_timer_start_0002(napi_env env, napi_callback_info info)
         timerData[i] = {.timerId = i, .timeout = timeout, .submitTime = startT, .finish = false, .result = 0};
         ffrt_timer_start(qos_type[qosidx], timeout, (void *)&timerData[i], TimerCb, false);
     }
-    for (;;) {
+    while (!finish)
         usleep(1);
+        bool flag = true;
         for (int i = 0; i < timerCount; ++i) {
-            finish = (finish && timerData[i].finish);
+            flag = (flag && timerData[i].finish);
         }
-        if (finish) {
-            break;
-        }      
+        finish = (flag == true ? true, false);
     }
     napi_value flag = nullptr;
     for (int i = 0; i < timerCount; ++i) {
@@ -3476,21 +3477,21 @@ static napi_value Init(napi_env env, napi_value exports)
         { "ffrt_timer_cancel_0001", nullptr, ffrt_timer_cancel_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ffrt_loop_0001", nullptr, ffrt_loop_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ffrt_loop_0002", nullptr, ffrt_loop_0002, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "ffrt_timer_start_abnormal_0001", nullptr, ffrt_timer_start_abnormal_0001, nullptr, 
+        { "ffrt_timer_start_abnormal_0001", nullptr, ffrt_timer_start_abnormal_0001, nullptr,
             nullptr, nullptr, napi_default, nullptr },
         { "ffrt_loop_abnormal_0001", nullptr, ffrt_loop_abnormal_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ffrt_loop_abnormal_0002", nullptr, ffrt_loop_abnormal_0002, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "ffrt_queue_parallel_api_0001", nullptr, ffrt_queue_parallel_api_0001, nullptr, nullptr, nullptr, napi_default, 
+        { "ffrt_queue_parallel_api_0001", nullptr, ffrt_queue_parallel_api_0001, nullptr, nullptr, nullptr, napi_default,
             nullptr },
-        { "ffrt_queue_parallel_api_0002", nullptr, ffrt_queue_parallel_api_0002, nullptr, nullptr, 
+        { "ffrt_queue_parallel_api_0002", nullptr, ffrt_queue_parallel_api_0002, nullptr, nullptr,
             nullptr, napi_default, nullptr },
-        { "ffrt_queue_parallel_api_0003", nullptr, ffrt_queue_parallel_api_0003, nullptr, nullptr, 
+        { "ffrt_queue_parallel_api_0003", nullptr, ffrt_queue_parallel_api_0003, nullptr, nullptr,
             nullptr, napi_default, nullptr },
-        { "ffrt_queue_parallel_api_0004", nullptr, ffrt_queue_parallel_api_0004, nullptr, nullptr, 
+        { "ffrt_queue_parallel_api_0004", nullptr, ffrt_queue_parallel_api_0004, nullptr, nullptr,
             nullptr, napi_default, nullptr },
-        { "queue_parallel_cancel_0001", nullptr, queue_parallel_cancel_0001, nullptr, nullptr, 
+        { "queue_parallel_cancel_0001", nullptr, queue_parallel_cancel_0001, nullptr, nullptr,
             nullptr, napi_default, nullptr },
-        { "queue_parallel_cancel_0002", nullptr, queue_parallel_cancel_0002, nullptr, nullptr, 
+        { "queue_parallel_cancel_0002", nullptr, queue_parallel_cancel_0002, nullptr, nullptr,
             nullptr, napi_default, nullptr },
         { "queue_parallel_0001", nullptr, queue_parallel_0001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queue_parallel_0002", nullptr, queue_parallel_0002, nullptr, nullptr, nullptr, napi_default, nullptr }
