@@ -112,7 +112,7 @@ export default function TextPickerJsunit() {
       let driver = await UiDriver.create()
       await CommonFunc.sleep(1000);
       await driver.swipe(Math.round(right / 2), Math.round(middle + 50), Math.round(right / 2), Math.round(middle - 50));
-      await CommonFunc.sleep(1500);
+      await CommonFunc.sleep(6000);
       let strJson = getInspectorByKey('textContent1');
       let obj = JSON.parse(strJson);
       console.info("[TextPickerJsunit_0300] obj: " + JSON.stringify(obj));
