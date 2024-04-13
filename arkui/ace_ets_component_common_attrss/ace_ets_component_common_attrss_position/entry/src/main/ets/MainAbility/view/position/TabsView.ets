@@ -15,10 +15,10 @@
 
 @Component
 export struct TabsView {
-  @State fontColor: string = '#182431'
-  @State selectedFontColor: string = '#007DFF'
-  @State currentIndex: number = 0
-  private controller: TabsController = new TabsController()
+  @State fontColor: string = '#182431';
+  @State selectedFontColor: string = '#007DFF';
+  @State currentIndex: number = 0;
+  private controller: TabsController = new TabsController();
   @Link _position: Position;
   private componentKey: string;
 
@@ -40,19 +40,31 @@ export struct TabsView {
   build() {
     Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
       TabContent() {
-        Column().width('100%').height('100%').backgroundColor('#00CB87')
+        Column()
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#00CB87')
       }.tabBar(this.TabBuilder(0, 'green'))
 
       TabContent() {
-        Column().width('100%').height('100%').backgroundColor('#007DFF')
+        Column()
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#007DFF')
       }.tabBar(this.TabBuilder(1, 'blue'))
 
       TabContent() {
-        Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        Column()
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#FFBF00')
       }.tabBar(this.TabBuilder(2, 'yellow'))
 
       TabContent() {
-        Column().width('100%').height('100%').backgroundColor('#E67C92')
+        Column()
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#E67C92')
       }.tabBar(this.TabBuilder(3, 'pink'))
     }
     .vertical(false)
