@@ -26,7 +26,8 @@
 static napi_value GetFileLocation(napi_env env, napi_callback_info info)
 {
     FileIO_FileLocation location;
-    char uri[] = "file://com.acts.storage.environmentndk/data/storage/el2/base/haps/com.acts.storage.environmentndk/files/fileio_location.txt";
+    char uri[] = "file://com.acts.storage.environmentndk/data/storage/el2/base\
+/haps/com.acts.storage.environmentndk/files/fileio_location.txt";
     FileManagement_ErrCode ret = OH_FileIO_GetFileLocation(uri, strlen(uri), &location);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
