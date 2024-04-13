@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, afterEach } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEvent';
 import { Constant } from '../Common';
 import display from '@ohos.display';
@@ -26,6 +26,7 @@ import commonEventManager from '@ohos.commonEventManager';
 const displayId = 'displayId';
 const TAG: string = 'StartAbilityGetDisplayIdTest';
 const TEST_SUITE_NAME: string = 'StartAbilityGetDisplayIdTest';
+let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
 function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time))
@@ -64,7 +65,13 @@ async function startAbility(want: Want, display: ESObject = undefined) {
 }
 
 export default function StartAbilityGetDisplayIdTest() {
-  describe('ActsAbilityTest', () => {
+
+  describe('ActsAbilityTest', function () {
+    afterEach(async function (done) {
+      await abilityDelegator.executeShellCommand('aa start -b com.ohos.startabilitygetdisplayidtest -a TestAbility');
+      done();
+    });
+
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0500
      * @tc.name      : The device has only one physical screen, call the startAbilityForResult parameter to start the application,
@@ -97,11 +104,12 @@ export default function StartAbilityGetDisplayIdTest() {
           bundleName: 'com.ohos.startabilitygetdisplayidtest',
           abilityName: 'MainAbility5',
         }
-        await startAbilityForResult(want, currentDisplayId);
-      } catch (err) {
-        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`);
-        expect().assertFail();
-        done();
+        await startAbilityForResult(want, currentDisplayId)
+        await sleep(4000);
+      }catch(err){
+        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`)
+        expect().assertFail()
+        done()
       }
     })
 
@@ -136,10 +144,11 @@ export default function StartAbilityGetDisplayIdTest() {
         }
         await sleep(1000);
         await startAbilityForResult(want);
-      } catch (err) {
-        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`);
-        expect().assertFail();
-        done();
+        await sleep(4000);
+      }catch(err){
+        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`)
+        expect().assertFail()
+        done()
       }
     })
 
@@ -176,10 +185,11 @@ export default function StartAbilityGetDisplayIdTest() {
         }
         await sleep(1000);
         await startAbilityForResult(want);
-      } catch (err) {
-        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`);
-        expect().assertFail();
-        done();
+        await sleep(4000);
+      }catch(err){
+        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`)
+        expect().assertFail()
+        done()
       }
     })
 
@@ -214,11 +224,12 @@ export default function StartAbilityGetDisplayIdTest() {
           abilityName: 'MainAbility3',
         }
         await sleep(1000);
-        await startAbility(want);
-      } catch (err) {
-        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`);
-        expect().assertFail();
-        done();
+        await startAbility(want)
+        await sleep(4000);
+      }catch(err){
+        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`)
+        expect().assertFail()
+        done()
       }
     })
 
@@ -252,11 +263,12 @@ export default function StartAbilityGetDisplayIdTest() {
           abilityName: 'MainAbility2',
         }
         await sleep(500);
-        await startAbility(want, '1');
-      } catch (err) {
-        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`);
-        expect().assertFail();
-        done();
+        await startAbility(want, '1')
+        await sleep(4000);
+      }catch(err){
+        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`)
+        expect().assertFail()
+        done()
       }
     })
 
@@ -292,11 +304,12 @@ export default function StartAbilityGetDisplayIdTest() {
         let currentDisplayId = display.getDefaultDisplaySync().id;
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> ACTS_startAbilityForResult_0100 get current screen display id=====: ${currentDisplayId}`);
         await sleep(500);
-        await startAbility(want, currentDisplayId);
-      } catch (err) {
-        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`);
-        expect().assertFail();
-        done();
+        await startAbility(want, currentDisplayId)
+        await sleep(4000);
+      }catch(err){
+        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`)
+        expect().assertFail()
+        done()
       }
     })
 
@@ -333,11 +346,12 @@ export default function StartAbilityGetDisplayIdTest() {
           }
         }
         await sleep(500);
-        await startAbility(want);
-      } catch (err) {
-        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`);
-        expect().assertFail();
-        done();
+        await startAbility(want)
+        await sleep(4000);
+      }catch(err){
+        console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> err: ${err}`)
+        expect().assertFail()
+        done()
       }
     })
   })
