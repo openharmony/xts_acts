@@ -44,6 +44,17 @@ import ScrollTest from './ScrollTest/Scroll.test'
 import AlphabetIndexer from './AlphabetIndexerTest/AlphabetIndexer'
 import RefreshTest from './RefreshTest/Refresh.test'
 import ScrollTest2 from './ScrollTest/Scroll2.test'
+import Tabs_itemPadMar from './TabsTest/Tabs_ItemsChange/Tabs_itemPadMar.test';
+import Tabs_itemSize from './TabsTest/Tabs_ItemsChange/Tabs_itemSize.test';
+import tabs_IndexTest from './TabsTest/tabs_index/Tabs_index.test';
+import tabs_PadMarTest from './TabsTest/Tabs_ParmsChange/Tabs_PadMar.test';
+import tabs_WidHeiTest from './TabsTest/Tabs_ParmsChange/Tabs_WidHei.test';
+import Tabs_barMode from './TabsTest/Tabs_ParmsChange/Tabs_barMode.test';
+import Tabs_barPosition from './TabsTest/Tabs_ParmsChange/Tabs_barPosition.test';
+import Tabs_barWidHei from './TabsTest/Tabs_ParmsChange/Tabs_barWidHei.test';
+import Tabs_scrollable from './TabsTest/Tabs_ParmsChange/Tabs_scrollable.test';
+import waterFlow_WaterFlowFrictionTest from './WaterFlowTest/WaterFlow_attribute/WaterFlow_WaterFlowFriction.test';
+import scroll_ScrollFrictionTest from './ScrollTest/Scroll_ScrollFriction.test';
 
 export default function testsuite() {
   listJsunit();
@@ -78,4 +89,15 @@ export default function testsuite() {
   AlphabetIndexer()
   RefreshTest()
   ScrollTest2()
+  Tabs_itemPadMar();
+  Tabs_itemSize();
+  tabs_IndexTest();
+  tabs_PadMarTest();
+  tabs_WidHeiTest();
+  Tabs_barMode();
+  Tabs_barPosition();
+  Tabs_barWidHei();
+  Tabs_scrollable();
+  waterFlow_WaterFlowFrictionTest()
+  scroll_ScrollFrictionTest()
 }

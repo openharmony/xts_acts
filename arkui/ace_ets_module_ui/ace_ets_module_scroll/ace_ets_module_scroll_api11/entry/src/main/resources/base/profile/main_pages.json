@@ -32,6 +32,17 @@
         "MainAbility/pages/Tabs/tabs/tabsApi1",
         "MainAbility/pages/AlphabetIndexer/Index",
         "MainAbility/pages/Refresh/Index",
-        "MainAbility/pages/Scroll/Index2"
+        "MainAbility/pages/Scroll/Index2",
+        "MainAbility/pages/Tabs/tabs_index/Tabs_index",
+        "MainAbility/pages/Tabs/Tabs_ItemsChange/Tabs_itemPadMar",
+        "MainAbility/pages/Tabs/Tabs_ItemsChange/Tabs_itemSize",
+        "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_barMode",
+        "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_barPosition",
+        "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_barWidHei",
+        "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_PadMar",
+        "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_scrollable",
+        "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_WidHei",
+        "MainAbility/pages/WaterFlow/WaterFlow_attribute/WaterFlowFrictionPage",
+        "MainAbility/pages/Scroll/ScrollFrictionPage"
     ]
 }
