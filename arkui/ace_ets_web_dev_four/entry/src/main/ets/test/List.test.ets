@@ -29,11 +29,13 @@ import webViewControllerResumeAllTimers from './WebViewControllerResumeAllTimers
 import webViewControllerVideoMedia from './WebViewControllerVideoMedia.test';
 import WebNetError from './WebNetError.test';
 import webViewControllerAudioMedia from './WebViewControllerAudioMedia.test';
+import WebCameraApiNoCrash from './WebCameraApiNoCrash.test';
 
 
 export default function testsuite() {
        webJsunit()
        webTwoJsunit()
+       WebCameraApiNoCrash()
        webViewControllerAudioMedia()
        webViewControllerResumeAllTimers()
        webOnFirstMeaningfulPaint()
