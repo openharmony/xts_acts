@@ -3353,7 +3353,6 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
         ffrt_task_attr_set_queue_priority(&task_attr[i], pri);
     }
 
-    auto start = std::chrono::high_resolution_clock::now();
     for (int i = 0; i < maxConcurrency; ++i) {
         ffrt_queue_submit(queue_handle, create_function_wrapper(OnePlusFfrtSleepFunc,
             ffrt_function_kind_queue), nullptr);
