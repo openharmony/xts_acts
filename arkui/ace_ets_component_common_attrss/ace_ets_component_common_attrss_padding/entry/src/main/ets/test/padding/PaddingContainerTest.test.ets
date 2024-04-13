@@ -17,6 +17,28 @@ import { AttrsManager } from '../../MainAbility/common/AttrsManager';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentBackGroundColor: Color;
+  parentComponentKey: string;
+  referenceComponentKey: string;
+}
+
+class TestValues {
+  describe: string;
+  setValue: Padding;
+  expectValue: Padding;
+}
+
+class Padding {
+  padding: ESObject;
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+}
 
 export default function paddingTest() {
   //A list of components that support padding attributes is required.
@@ -46,14 +68,14 @@ export default function paddingTest() {
     'Navigator',
     //    'RelativeContainer',
     'RowSplit',
-    //    'ListItem'
+  //    'ListItem'
   ]
 
   //Called from the parent class when setting the background color.
   let parentBackGroundColor = Color.Yellow
 
   //Page related configuration, this parameter is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testPaddingContainer',
     pageName: 'PaddingContainerPage',
     pageUrl: 'MainAbility/pages/padding/PaddingContainerPage',
@@ -63,7 +85,7 @@ export default function paddingTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [
+  let testValues: TestValues[] = [
     {
       describe: 'SetPadding',
       setValue: {
@@ -76,7 +98,7 @@ export default function paddingTest() {
       },
       expectValue: {
         padding: {
-          'top': '20.00vp', 'right': '10.00vp', 'bottom': '10.00vp', 'left': '10.00vp'
+          top: '20.00vp', right: '10.00vp', bottom: '10.00vp', left: '10.00vp'
         },
         top: vp2px(20),
         right: vp2px(10),
@@ -84,77 +106,77 @@ export default function paddingTest() {
         left: vp2px(10)
       }
     }, {
-      describe: 'SetPaddingTop',
-      setValue: {
-        padding: {
-          top: 20
-        }
-      },
-      expectValue: {
-        padding: {
-          'top': '20.00vp', 'right': '0.00vp', 'bottom': '0.00vp', 'left': '0.00vp'
-        },
-        top: vp2px(20),
-        right: vp2px(0),
-        bottom: vp2px(0),
-        left: vp2px(0)
+    describe: 'SetPaddingTop',
+    setValue: {
+      padding: {
+        top: 20
       }
-    }, {
-      describe: 'SetPaddingRight',
-      setValue: {
-        padding: {
-          right: 20
-        }
+    },
+    expectValue: {
+      padding: {
+        top: '20.00vp', right: '0.00vp', bottom: '0.00vp', left: '0.00vp'
       },
-      expectValue: {
-        padding: {
-          'top': '0.00vp', 'right': '20.00vp', 'bottom': '0.00vp', 'left': '0.00vp'
-        },
-        top: vp2px(0),
-        right: vp2px(20),
-        bottom: vp2px(0),
-        left: vp2px(0)
+      top: vp2px(20),
+      right: vp2px(0),
+      bottom: vp2px(0),
+      left: vp2px(0)
+    }
+  }, {
+    describe: 'SetPaddingRight',
+    setValue: {
+      padding: {
+        right: 20
       }
-    }, {
-      describe: 'SetPaddingBottom',
-      setValue: {
-        padding: {
-          bottom: 20
-        }
+    },
+    expectValue: {
+      padding: {
+        top: '0.00vp', right: '20.00vp', bottom: '0.00vp', left: '0.00vp'
       },
-      expectValue: {
-        padding: {
-          'top': '0.00vp', 'right': '0.00vp', 'bottom': '20.00vp', 'left': '0.00vp'
-        },
-        top: vp2px(0),
-        right: vp2px(0),
-        bottom: vp2px(20),
-        left: vp2px(0)
+      top: vp2px(0),
+      right: vp2px(20),
+      bottom: vp2px(0),
+      left: vp2px(0)
+    }
+  }, {
+    describe: 'SetPaddingBottom',
+    setValue: {
+      padding: {
+        bottom: 20
       }
-    }, {
-      describe: 'SetPaddingLeft',
-      setValue: {
-        padding: {
-          left: 20
-        }
+    },
+    expectValue: {
+      padding: {
+        top: '0.00vp', right: '0.00vp', bottom: '20.00vp', left: '0.00vp'
       },
-      expectValue: {
-        padding: {
-          'top': '0.00vp', 'right': '0.00vp', 'bottom': '0.00vp', 'left': '20.00vp'
-        },
-        top: vp2px(0),
-        right: vp2px(0),
-        bottom: vp2px(0),
-        left: vp2px(20)
+      top: vp2px(0),
+      right: vp2px(0),
+      bottom: vp2px(20),
+      left: vp2px(0)
+    }
+  }, {
+    describe: 'SetPaddingLeft',
+    setValue: {
+      padding: {
+        left: 20
       }
-    }]
+    },
+    expectValue: {
+      padding: {
+        top: '0.00vp', right: '0.00vp', bottom: '0.00vp', left: '20.00vp'
+      },
+      top: vp2px(0),
+      right: vp2px(0),
+      bottom: vp2px(0),
+      left: vp2px(20)
+    }
+  }]
 
   /**
    * Create test suite.
    */
   describe('PaddingContainerTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Modify the reference component properties.
       AttrsManager.change(data.caseTag, {
         padding: {
@@ -180,7 +202,7 @@ export default function paddingTest() {
       let targetRectAfter = Utils.getComponentRect(data.pageConfig.componentKey);
 
       //Confirm that the size attribute values have been successfully set.
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       expect(viewObj.$attrs.padding).assertEqual(JSON.stringify(data.testValue.expectValue.padding));
 
       //Verification method for special reference components
@@ -207,26 +229,36 @@ export default function paddingTest() {
         if (data.testValue.describe == 'SetPadding') {
           //Panel component need special adapter ,the reason is the top of Panel has a own size
           if (data.pageConfig.componentKey == 'Panel') {
-            expect(Math.abs(referenceRect.top - targetRectAfter.top - (data.testValue.expectValue.top + vp2px(8))) <= 1).assertTrue();
+            expect(Math.abs(referenceRect.top - targetRectAfter.top - (data.testValue.expectValue.top + vp2px(8))) <= 1)
+              .assertTrue();
           } else {
-            expect(Math.abs(referenceRect.top - targetRectAfter.top - data.testValue.expectValue.top) <= 1).assertTrue();
+            expect(Math.abs(referenceRect.top - targetRectAfter.top - data.testValue.expectValue.top) <= 1)
+              .assertTrue();
           }
-          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1).assertTrue();
-          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1).assertTrue();
-          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.left) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1)
+            .assertTrue();
+          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1)
+            .assertTrue();
+          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.left) <= 1)
+            .assertTrue();
         } else if (data.testValue.describe == 'SetPaddingTop') {
           //Panel component need special adapter ,the reason is the top of Panel has a own size
           if (data.pageConfig.componentKey == 'Panel') {
-            expect(Math.abs(referenceRect.top - targetRectAfter.top - (data.testValue.expectValue.top + vp2px(8))) <= 1).assertTrue();
+            expect(Math.abs(referenceRect.top - targetRectAfter.top - (data.testValue.expectValue.top + vp2px(8))) <= 1)
+              .assertTrue();
           } else {
-            expect(Math.abs(referenceRect.top - targetRectAfter.top - (data.testValue.expectValue.top)) <= 1).assertTrue();
+            expect(Math.abs(referenceRect.top - targetRectAfter.top - (data.testValue.expectValue.top)) <= 1)
+              .assertTrue();
           }
         } else if (data.testValue.describe == 'SetPaddingBottom') {
-          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1)
+            .assertTrue();
         } else if (data.testValue.describe == 'SetPaddingRight') {
-          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1)
+            .assertTrue();
         } else if (data.testValue.describe == 'SetPaddingLeft') {
-          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.left) <= 1).assertTrue();
+          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.left) <= 1)
+            .assertTrue();
         }
       } else if (data.pageConfig.componentKey == 'Tabs') {
         let referenceRect = Utils.getComponentRectByObj(JSON.parse(JSON.stringify(getInspectorTree()))
@@ -238,18 +270,26 @@ export default function paddingTest() {
           .$children[0]
           .$children[0]);
         if (data.testValue.describe == 'SetPadding') {
-          expect(Math.abs(referenceRect.top - targetRectAfter.top - (rectTabBar.bottom - rectTabBar.top) - data.testValue.expectValue.top) <= 1).assertTrue();
-          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1).assertTrue();
-          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1).assertTrue();
-          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.left) <= 1).assertTrue();
+          expect(Math.abs(referenceRect.top - targetRectAfter.top - (rectTabBar.bottom - rectTabBar.top) - data.testValue.expectValue.top) <= 1)
+            .assertTrue();
+          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1)
+            .assertTrue();
+          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1)
+            .assertTrue();
+          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.left) <= 1)
+            .assertTrue();
         } else if (data.testValue.describe == 'SetPaddingTop') {
-          expect(Math.abs(referenceRect.top - targetRectAfter.top - (rectTabBar.bottom - rectTabBar.top) - data.testValue.expectValue.top) <= 1).assertTrue();
+          expect(Math.abs(referenceRect.top - targetRectAfter.top - (rectTabBar.bottom - rectTabBar.top) - data.testValue.expectValue.top) <= 1)
+            .assertTrue();
         } else if (data.testValue.describe == 'SetPaddingBottom') {
-          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1)
+            .assertTrue();
         } else if (data.testValue.describe == 'SetPaddingRight') {
-          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1)
+            .assertTrue();
         } else if (data.testValue.describe == 'SetPaddingLeft') {
-          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.left) <= 1).assertTrue();
+          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.left) <= 1)
+            .assertTrue();
         }
       } else {
         //Verify the width size of the target component.
@@ -264,8 +304,10 @@ export default function paddingTest() {
         console.info('[' + data.caseTag + '] referenceRectAfterHeight:' + targetRectAfterHeight);
 
         //Confirm that the calculated value is consistent with the expected value.
-        expect(Math.abs(targetRectAfterWidth - targetRectBeforeWidth - (data.testValue.expectValue.left + data.testValue.expectValue.right)) <= 1).assertTrue();
-        expect(Math.abs(targetRectAfterHeight - targetRectBeforeHeight - (data.testValue.expectValue.top + data.testValue.expectValue.bottom)) <= 1).assertTrue();
+        expect(Math.abs(targetRectAfterWidth - targetRectBeforeWidth - (data.testValue.expectValue.left + data.testValue.expectValue.right)) <= 1)
+          .assertTrue();
+        expect(Math.abs(targetRectAfterHeight - targetRectBeforeHeight - (data.testValue.expectValue.top + data.testValue.expectValue.bottom)) <= 1)
+          .assertTrue();
       }
     })
   })

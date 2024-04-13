@@ -17,6 +17,20 @@ import { AttrsManager } from '../../MainAbility/common/AttrsManager';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentBackGroundColor: Color;
+  parentComponentKey: string;
+}
+
+class TestValues {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
 /**
  * Test of common attribute: padding
  */
@@ -27,8 +41,8 @@ export default function paddingTest() {
     'Button',
     'BlankRow',
     'BlankColumn',
-//    'Checkbox',
-//    'CheckboxGroup',
+    //    'Checkbox',
+    //    'CheckboxGroup',
     'DataPanel',
     'DatePicker',
     'Divider',
@@ -41,7 +55,7 @@ export default function paddingTest() {
     'NavRouter',
     'Progress',
     'QRCode',
-//    'Radio',
+    //    'Radio',
     'ScrollBar',
     'Rating',
     'Search',
@@ -56,7 +70,7 @@ export default function paddingTest() {
     'TextPicker',
     'TextTimer',
     'TimePicker',
-//    'Toggle',
+    //    'Toggle',
     'Web',
     'Circle',
     'Ellipse',
@@ -75,7 +89,7 @@ export default function paddingTest() {
   let parentBackGroundColor = Color.Yellow
 
   //Page related configuration, this parameter is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testPaddingBaseLength',
     pageName: 'PaddingBasePageLength',
     pageUrl: 'MainAbility/pages/padding/PaddingBasePageLength',
@@ -84,7 +98,7 @@ export default function paddingTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues: TestValues[] = [{
     describe: 'SetNumber',
     setValue: {
       padding: 100,
@@ -123,13 +137,13 @@ export default function paddingTest() {
    */
   describe('PaddingBaseLengthTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Modify the reference component properties.
       AttrsManager.change(data.caseTag, data.testValue.setValue);
       await Utils.sleep(1000);
 
       //Confirm that the padding attribute values have been successfully set.
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + '] viewObj.$attrs.padding:' + viewObj.$attrs.padding);
       console.info('[' + data.caseTag + '] data.testValue.expectValue.padding:' + data.testValue.expectValue.padding);
 
