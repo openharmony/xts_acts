@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../test/List.test'
@@ -30,7 +30,6 @@ struct AlphabetIndexerTest {
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
     'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
     'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-
   @State popupSelectedColorStr: string = '#00FF00'
   @State popupUnselectedColorStr: string = '#DA70D6'
   @State popupItemBackgroundStr: string = '#FFD700'
@@ -57,7 +56,6 @@ struct AlphabetIndexerTest {
   @State nullFlag3: boolean = false
   @State nullFlag4: boolean = false
   @State nullFlag5: boolean = false
-
   private stateChangCallBack = (eventData) => {
     console.info("sideBar page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
@@ -144,14 +142,14 @@ struct AlphabetIndexerTest {
   }
 
   aboutToAppear() {
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 183,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-    var abilityDelegator: any
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
@@ -232,7 +230,7 @@ struct AlphabetIndexerTest {
           console.info('onPopupSelected label :' + index)
         })
         .margin({ top: 20, left: 20 })
-        .alignStyle(IndexerAlign.Left,this.nullFlag5 ? null : this.popupSpaceNum)
+        .alignStyle(IndexerAlign.Left, this.nullFlag5 ? null : this.popupSpaceNum)
         .popupSelectedColor(this.nullFlag1 ? null : this.popupSelectedColorNum)
         .popupUnselectedColor(this.nullFlag2 ? null : this.popupUnselectedColorNum)
         .popupItemBackgroundColor(this.nullFlag3 ? null : this.popupItemBackgroundNum)
@@ -273,7 +271,7 @@ struct AlphabetIndexerTest {
           console.info('onPopupSelected label :' + index)
         })
         .margin({ top: 20, left: 20 })
-        .alignStyle(IndexerAlign.Left,this.nullFlag5 ? null : this.popupSpaceStr)
+        .alignStyle(IndexerAlign.Left, this.nullFlag5 ? null : this.popupSpaceStr)
         .popupSelectedColor(this.nullFlag1 ? null : this.popupSelectedColorStr)
         .popupUnselectedColor(this.nullFlag2 ? null : this.popupUnselectedColorStr)
         .popupItemBackgroundColor(this.nullFlag3 ? null : this.popupItemBackgroundStr)
@@ -314,11 +312,14 @@ struct AlphabetIndexerTest {
           console.info('onPopupSelected label :' + index)
         })
         .margin({ top: 20, left: 20 })
-        .alignStyle(IndexerAlign.Left,this.nullFlag5 ? null : this.popupSpaceRes)
+        .alignStyle(IndexerAlign.Left, this.nullFlag5 ? null : this.popupSpaceRes)
         .popupSelectedColor(this.nullFlag1 ? null : this.popupSelectedColorRes)
         .popupUnselectedColor(this.nullFlag2 ? null : this.popupUnselectedColorRes)
         .popupItemBackgroundColor(this.nullFlag3 ? null : this.popupItemBackgroundRes)
-        .popupItemFont(this.nullFlag4 ? null : { size: this.popupItemFontSizeRes, weight: this.popupItemFontWeightFont })
+        .popupItemFont(this.nullFlag4 ? null : {
+          size: this.popupItemFontSizeRes,
+          weight: this.popupItemFontWeightFont
+        })
 
       AlphabetIndexer({ arrayValue: this.value, selected: 0 })
         .key('alphabetIndexerTest5')
@@ -355,7 +356,7 @@ struct AlphabetIndexerTest {
           console.info('onPopupSelected label :' + index)
         })
         .margin({ top: 20, left: 20 })
-        .alignStyle(IndexerAlign.Left,this.popupSpaceNum)
+        .alignStyle(IndexerAlign.Left, this.popupSpaceNum)
         .popupSelectedColor(this.popupSelectedColor)
         .popupUnselectedColor(this.popupUnselectedColor)
         .popupItemBackgroundColor(this.popupItemBackgroundColor)
