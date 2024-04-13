@@ -17,74 +17,74 @@ import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
 import * as env from './Const.ets';
 
+let audioVolumeGroupManager: audio.AudioVolumeGroupManager = null;
+let TagFrmwk = "audioManagerEnhanceTest";
+
+function getAudioManager() {
+  let audioManager = audio.getAudioManager();
+  if (audioManager != null) {
+    console.info(`${TagFrmwk}: getAudioManger : PASS`);
+    let audioVolumeManager = audioManager.getVolumeManager();
+    console.info(`${TagFrmwk}: getVolumeManager : PASS`);
+    let groupid = audio.DEFAULT_VOLUME_GROUP_ID;
+    audioVolumeManager.getVolumeGroupManager(groupid, (err, value) => {
+      if (err) {
+        console.info("getVolumeGroupManager failed. err:" + JSON.stringify(err));
+        console.info("groupid:" + groupid);
+        return;
+      }
+      console.info("getVolumeGroupManager success");
+      audioVolumeGroupManager = value;
+    });
+  }
+  else {
+    console.info(`${TagFrmwk}: getAudioManger : FAIL`);
+  }
+}
+
+function sleep(ms: number) {
+  return new Promise<number>(resolve => setTimeout(resolve, ms));
+}
+
+async function getPermission() {
+  console.info("getPermission IN\n")
+  let permissions = ['ohos.permission.MICROPHONE', 'ohos.permission.MODIFY_AUDIO_SETTINGS', 'ohos.permission.ACCESS_NOTIFICATION_POLICY'];
+  featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
+    console.info("request success" + JSON.stringify(data));
+  })
+}
+
 export default function audioManagerTest() {
-  describe('isVolumeUnadjustable', function () {
-    let audioManager = null;
-    let audioVolumeManager = null;
-    let audioVolumeGroupManager = null;
-    let TagFrmwk = "audioManagerEnhanceTest";
-    const VOLUME_ADJUST_UP = 0;
-    const VOLUME_ADJUST_DOWN = 1;
-    beforeAll(async function () {
+  describe('isVolumeUnadjustable', () => {
+
+
+    beforeAll(async () => {
       console.info('TestLog: Start Testing audioManagerTest Interfaces\n');
-      // await getPermission();
-      // await sleep(3000);
     })
-    beforeEach(async function () {
+    beforeEach(async () => {
       console.info(`${TagFrmwk}: beforeEach: Prerequisites at the test case level`);
       getAudioManager();
       await sleep(100);
     })
-    afterEach(async function () {
+    afterEach(async () => {
       console.info(`${TagFrmwk}: afterEach: Test case-level clearance conditions`);
       await sleep(100);
     })
-    afterAll(function () {
+    afterAll(() => {
       console.info(`${TagFrmwk}: afterAll: Test suite-level cleanup condition`);
     })
-    function getAudioManager() {
-      audioManager = audio.getAudioManager();
-      if (audioManager != null) {
-        console.info(`${TagFrmwk}: getAudioManger : PASS`);
-        audioVolumeManager = audioManager.getVolumeManager();
-        console.info(`${TagFrmwk}: getVolumeManager : PASS`);
-        let groupid = audio.DEFAULT_VOLUME_GROUP_ID;
-        audioVolumeManager.getVolumeGroupManager(groupid, (err, value) => {
-          if (err) {
-            console.info("getVolumeGroupManager failed. err:" + JSON.stringify(err));
-            console.info("groupid:" + groupid);
-            return;
-          }
-          console.info("getVolumeGroupManager success");
-          audioVolumeGroupManager = value;
-        });
-      }
-      else {
-        console.info(`${TagFrmwk}: getAudioManger : FAIL`);
-      }
-    }
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    async function getPermission() {
-      console.info("getPermission IN\n")
-      let permissions = ['ohos.permission.MICROPHONE','ohos.permission.MODIFY_AUDIO_SETTINGS','ohos.permission.ACCESS_NOTIFICATION_POLICY'];
-      featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
-        console.info("request success" + JSON.stringify(data));
-      })
-    }
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0100
-     *@tc.name      : isVolumeUnadjustable - Media
-     *@tc.desc      : Judge volume is Unadjustable or adjustable
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0100
+     * @tc.name      : isVolumeUnadjustable - Media
+     * @tc.desc      : Judge volume is Unadjustable or adjustable
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0100', 0, async (done: Function) => {
       try {
-        let bol = await audioVolumeGroupManager.isVolumeUnadjustable();
+        let bol = audioVolumeGroupManager.isVolumeUnadjustable();
         console.info(`isVolumeUnadjustable SUCCESS, is ${bol}`);
         expect(bol).assertEqual(false);
         done();
@@ -96,16 +96,16 @@ export default function audioManagerTest() {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0200
-     *@tc.name      : isVolumeUnadjustable - Media
-     *@tc.desc      : Judge volume is Unadjustable or adjustable
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0200
+     * @tc.name      : isVolumeUnadjustable - Media
+     * @tc.desc      : Judge volume is Unadjustable or adjustable
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0200', 0, async (done: Function) => {
       try {
-        let bol = await audioVolumeGroupManager.isVolumeUnadjustable();
+        let bol = audioVolumeGroupManager.isVolumeUnadjustable();
         let vol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA);
         await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, vol + 1);
         let vol1 = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
@@ -120,16 +120,16 @@ export default function audioManagerTest() {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0300
-     *@tc.name      : isVolumeUnadjustable - Media
-     *@tc.desc      : Judge volume is Unadjustable or adjustable
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0300
+     * @tc.name      : isVolumeUnadjustable - Media
+     * @tc.desc      : Judge volume is Unadjustable or adjustable
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0300', 0, async (done: Function) => {
       try {
-        let bol = await audioVolumeGroupManager.isVolumeUnadjustable();
+        let bol = audioVolumeGroupManager.isVolumeUnadjustable();
         let Vol = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
         await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, Vol - 1);
         let Vol1 = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
