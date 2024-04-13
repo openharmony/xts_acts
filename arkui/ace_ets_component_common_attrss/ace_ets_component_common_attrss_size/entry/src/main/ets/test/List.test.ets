@@ -13,12 +13,8 @@
  * limitations under the License.
  */
 
-
-
 import sizeTest from './size/SizeTest.test';
 
 export default function testsuite() {
-
   sizeTest();
-
 }

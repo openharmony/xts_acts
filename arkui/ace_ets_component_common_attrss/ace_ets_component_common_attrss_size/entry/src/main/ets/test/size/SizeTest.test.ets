@@ -16,6 +16,22 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentWidth: number;
+  parentHeight: number;
+  parentBackGroundColor: Color;
+  BackGroundColor: Color;
+}
+
+class TestValues {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
 /**
  * Test of common attribute: size
  */
@@ -35,7 +51,7 @@ export default function sizeTest() {
     'Image',
     'ImageAnimator',
     'LoadingProgress',
-//    'Marquee',
+    //    'Marquee',
     'Navigation',
     'NavRouter',
     'Progress',
@@ -45,7 +61,7 @@ export default function sizeTest() {
     'Rating',
     'Search',
     'RichText',
-//    'Select',
+    //    'Select',
     'Slider',
     'Text',
     'TextArea',
@@ -60,7 +76,7 @@ export default function sizeTest() {
     'ColumnSplit',
     'Counter',
     'Flex',
-//    'GridRow',
+    //    'GridRow',
     'Grid',
     'List',
     'ListItem',
@@ -83,15 +99,15 @@ export default function sizeTest() {
     'Line',
     'WaterFlow',
     'Stepper',
-//    'StepperItem',
+    //    'StepperItem',
     'FlowItem',
-//    'GridCol',
+    //    'GridCol',
     'GridItem',
     'RelativeContainer',
     'Navigator',
     'Menu',
     'MenuItem',
-//    'MenuItemGroup'
+  //    'MenuItemGroup'
   ]
 
   //The size of the parent component, when set as a percentage, serves as the calculation.
@@ -102,7 +118,7 @@ export default function sizeTest() {
   let BackGroundColor = Color.Orange;
 
   //Page related configuration, this parameter is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testSize',
     pageName: 'SizePage',
     pageUrl: 'MainAbility/pages/size/SizePage',
@@ -113,7 +129,7 @@ export default function sizeTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues: TestValues[] = [{
     describe: 'StringNumber',
     setValue: {
       width: 200, height: 200
@@ -178,7 +194,7 @@ export default function sizeTest() {
    */
   describe('SizeTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
 
       //Obtain dimensional information for reference components.
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
