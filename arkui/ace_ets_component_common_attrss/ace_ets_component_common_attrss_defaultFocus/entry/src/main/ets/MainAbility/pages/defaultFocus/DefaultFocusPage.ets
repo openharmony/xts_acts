@@ -28,18 +28,18 @@ struct DefaultFocusPage {
   @State _defaultFocus: boolean = true;
   @State callback: string = '';
   @State referenceCallback: string = '';
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
   @State textComponentKey: string =
-    router.getParams() ? router.getParams()['view']['textComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['textComponentKey'] : ''
   @State referenceComponentKey: string =
-    router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
 
   onPageShow() {
     console.info('[DefaultFocusPage] page show called ');
 
     //Register data change call back.
-    attrsManager.registerDataChange(value => {
+    attrsManager.registerDataChange((value: ESObject) => {
       this._defaultFocus = value;
     })
   }
@@ -47,7 +47,8 @@ struct DefaultFocusPage {
   /**
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .defaultFocus(this._defaultFocus)
     .key(this.componentKey)
     .onFocus(() => {
@@ -260,7 +261,7 @@ struct DefaultFocusPage {
           direction: GridRowDirection.Row
         }) {
           ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue,],
-            (color) => {
+            (color: Color) => {
               GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                 Row() {
                   Button('Button')
@@ -333,7 +334,7 @@ struct DefaultFocusPage {
       } else if (this.targetView == 'Scroll') {
         Scroll(this.scroller) {
           Flex({ direction: FlexDirection.Column }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: number) => {
               Row() {
                 Text(item.toString())
                   .width(80)
@@ -345,13 +346,13 @@ struct DefaultFocusPage {
                   .margin({ top: 5 })
                   .focusable(true)
               }
-            }, item => item)
+            }, (item: number) => item.toString())
           }.margin({ right: 15 })
         }.width(200).height(300).commonStyle()
       } else if (this.targetView == 'SideBarContainer') {
         SideBarContainer(SideBarContainerType.Embed) {
           Column() {
-            ForEach([1, 2, 3], (item) => {
+            ForEach([1, 2, 3], (item: number) => {
               Column({ space: 5 }) {
                 Image($r('app.media.icon')).width(64).height(64).focusable(true)
                 Text('Index0' + item).fontSize(25).focusable(true)
@@ -372,9 +373,9 @@ struct DefaultFocusPage {
         .backgroundColor(Color.Blue).width(200).height(300).commonStyle()
       } else if (this.targetView == 'Swiper') {
         Swiper() {
-          ForEach([1, 2, 3], (item: string) => {
+          ForEach([1, 2, 3], (item: number) => {
             Text('Swiper' + item).width('90%').height(160).focusable(true)
-          }, item => item)
+          }, (item: number) => item.toString())
         }
         .indicator(true)
         .backgroundColor(Color.White)
