@@ -17,11 +17,38 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentWidth: number;
+  parentHeight: number;
+  parentComponentKey: string;
+}
+
+class TestValue {
+  describe: string;
+  setValue: SetValue;
+  expectValue: ESObject;
+}
+
+class AlignItems {
+  Row: VerticalAlign;
+  Column: HorizontalAlign;
+  Flex: ItemAlign;
+  GridRow: ItemAlign;
+}
+
+class SetValue {
+  defaultAlignItems: AlignItems;
+  alignSelf: ItemAlign
+}
+
 export default function alignSelfTest() {
 
   let supportView = [
     'AlphabetIndexer',
-//    'Blank',
+    //    'Blank',
     'Button',
     'Checkbox',
     'CheckboxGroup',
@@ -44,7 +71,7 @@ export default function alignSelfTest() {
     'ColumnSplit',
     'TextTimer',
     'Stepper',
-//    'Flex',
+    //    'Flex',
     'Progress',
     'QRCode',
     'Radio',
@@ -62,7 +89,7 @@ export default function alignSelfTest() {
     'Badge',
     'Column',
     'Counter',
-//    'GridRow',
+    //    'GridRow',
     'Grid',
     'List',
     'Panel',
@@ -88,7 +115,7 @@ export default function alignSelfTest() {
   let parentWidth = 400;
   let parentHeight = 400;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testAlignSelf',
     pageName: 'AlignSelfPage',
     pageUrl: 'MainAbility/pages/flex/AlignSelfPage',
@@ -97,14 +124,14 @@ export default function alignSelfTest() {
     parentComponentKey: 'parentComponentKey'
   }
 
-  let defaultAlignItems = {
+  let defaultAlignItems: AlignItems = {
     Row: VerticalAlign.Top,
     Column: HorizontalAlign.Start,
     Flex: ItemAlign.Start,
     GridRow: ItemAlign.Start
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetAuto',
     setValue: {
       defaultAlignItems: defaultAlignItems,
@@ -166,14 +193,14 @@ export default function alignSelfTest() {
   }]
 
   describe('AlignSelfTest', () => {
-    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async data => {
+    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async (data: ESObject) => {
 
       //Get component rect and parent component rect
       let parentRect = Utils.getComponentRect(data.pageConfig.parentComponentKey);
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
 
       //Get viewObj in order to judge attribute is set success
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
 
       //Verify attribute
       expect(viewObj.$attrs.alignSelf).assertEqual(data.testValue.expectValue.expectAlignSelf);

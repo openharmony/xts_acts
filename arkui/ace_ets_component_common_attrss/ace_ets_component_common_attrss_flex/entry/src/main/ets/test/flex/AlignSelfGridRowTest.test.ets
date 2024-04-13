@@ -17,6 +17,33 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentWidth: number;
+  parentHeight: number;
+  parentComponentKey: string;
+}
+
+class TestValue {
+  describe: string;
+  setValue: SetValue;
+  expectValue: ESObject;
+}
+
+class AlignItems {
+  Row: VerticalAlign;
+  Column: HorizontalAlign;
+  Flex: ItemAlign;
+  GridRow: ItemAlign;
+}
+
+class SetValue {
+  defaultAlignItems: AlignItems;
+  alignSelf: ItemAlign
+}
+
 export default function alignSelfGridRowTest() {
 
   let supportView = [
@@ -26,7 +53,7 @@ export default function alignSelfGridRowTest() {
   let parentWidth = 400;
   let parentHeight = 400;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testAlignSelf',
     pageName: 'AlignSelfPage',
     pageUrl: 'MainAbility/pages/flex/AlignSelfPage',
@@ -35,14 +62,14 @@ export default function alignSelfGridRowTest() {
     parentComponentKey: 'parentComponentKey'
   }
 
-  let defaultAlignItems = {
+  let defaultAlignItems: AlignItems = {
     Row: VerticalAlign.Top,
     Column: HorizontalAlign.Start,
     Flex: ItemAlign.Start,
     GridRow: ItemAlign.Start
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetAuto',
     setValue: {
       defaultAlignItems: defaultAlignItems,
@@ -104,14 +131,14 @@ export default function alignSelfGridRowTest() {
   }]
 
   describe('AlignSelfGridRowTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
 
       //Get component rect and parent component rect
       let parentRect = Utils.getComponentRect(data.pageConfig.parentComponentKey);
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
 
       //Get viewObj in order to judge attribute is set success
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
 
       //Verify attribute
       expect(viewObj.$attrs.alignSelf).assertEqual(data.testValue.expectValue.expectAlignSelf);
@@ -125,11 +152,11 @@ export default function alignSelfGridRowTest() {
         //When alignSelf : ItemAlign.Center
         let rectY = Utils.getRectVerticalCenterY(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] rectY : '
-        + rectY);
+          + rectY);
 
         let parentRectY = Utils.getRectVerticalCenterY(data.pageConfig.parentComponentKey);
         console.info('[' + data.caseTag + '] parentRectY : '
-        + parentRectY);
+          + parentRectY);
 
         expect(rectY).assertEqual(parentRectY);
       } else if (data.testValue.describe == 'SetEnd') {

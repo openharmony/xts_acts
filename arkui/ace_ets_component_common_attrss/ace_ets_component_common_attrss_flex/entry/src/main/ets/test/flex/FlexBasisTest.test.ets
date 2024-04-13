@@ -17,6 +17,22 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentWidth: number;
+  parentHeight: number;
+  targetWidth: number;
+  targetHeight: number;
+}
+
+class TestValue {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
 export default function flexBasisTest() {
 
   let supportView = [
@@ -43,7 +59,7 @@ export default function flexBasisTest() {
     'ColumnSplit',
     'TextTimer',
     'Stepper',
-//    'Flex',
+    //    'Flex',
     'Progress',
     'QRCode',
     'Radio',
@@ -61,7 +77,7 @@ export default function flexBasisTest() {
     'Badge',
     'Column',
     'Counter',
-//    'GridRow',
+    //    'GridRow',
     'Grid',
     'List',
     'Panel',
@@ -89,7 +105,7 @@ export default function flexBasisTest() {
   let targetWidth = 120;
   let targetHeight = 120;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testFlexBasis',
     pageName: 'FlexBasisPage',
     pageUrl: 'MainAbility/pages/flex/FlexBasisPage',
@@ -99,7 +115,7 @@ export default function flexBasisTest() {
     targetHeight: targetHeight
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetNumber',
     setValue: {
       flexBasis: 100.00
@@ -128,13 +144,13 @@ export default function flexBasisTest() {
   }]
 
   describe('FlexBasisTest', () => {
-    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async data => {
+    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async (data: ESObject) => {
 
       //Verify the flexBasis is or not be set success
       console.info('[' + data.caseTag + '] check the flexBasis is or not be set success');
       if (data.testValue.describe == 'SetNumber' || data.testValue.describe == 'SetStringPx') {
-         expect(data.viewObj.$attrs.flexBasis).assertEqual(data.testValue.expectValue.expectFlexBasis);
-         console.info('[' + data.caseTag + '] data.viewObj.$attrs.flexBasis' + data.viewObj.$attrs.flexBasis);
+        expect(data.viewObj.$attrs.flexBasis).assertEqual(data.testValue.expectValue.expectFlexBasis);
+        console.info('[' + data.caseTag + '] data.viewObj.$attrs.flexBasis' + data.viewObj.$attrs.flexBasis);
       }
 
       //Get target component rect
@@ -142,18 +158,18 @@ export default function flexBasisTest() {
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
 
       console.info('[' + data.caseTag + '] check the size of the component in the spindle ' +
-      'direction has been changed by flexBasis ');
+        'direction has been changed by flexBasis ');
 
       //Verify the size is or not be the expect size
       if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow'
-      || data.pageConfig.containerView == 'FlexRowReverse') {
+        || data.pageConfig.containerView == 'FlexRowReverse') {
 
         let realWidth = Number(rect.right - rect.left).toFixed(2);
         console.info('[' + data.caseTag + '] realWidth : ' + realWidth);
         expect(realWidth)
           .assertEqual(Number(data.testValue.expectValue.expectSize).toFixed(2));
       } else if (data.pageConfig.containerView == 'Column' || data.pageConfig.containerView == 'FlexColumn'
-      || data.pageConfig.containerView == 'FlexColumnReverse') {
+        || data.pageConfig.containerView == 'FlexColumnReverse') {
 
         let realHeight = Number(rect.bottom - rect.top).toFixed(2);
         console.info('[' + data.caseTag + '] realHeight : ' + realHeight);
