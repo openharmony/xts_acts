@@ -30,6 +30,7 @@ ohos_js_hap_suite("image_receiver_ndk_js_hap") {
   shared_libraries = [
     "./entry/src/main/cpp:ImageReceiverNDKTest",
     "./entry/src/main/cpp:ImageReceiverTest",
+    "./entry/src/main/cpp:ImageReceiverNativeTest",
     ":libcppso",
   ]
 }

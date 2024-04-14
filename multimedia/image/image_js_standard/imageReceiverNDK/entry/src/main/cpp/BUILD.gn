@@ -15,6 +15,7 @@ import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
 import("//foundation/arkui/napi/napi.gni")
 import("//foundation/multimedia/image_framework/ide/image_decode_config.gni")
+import("//foundation/multimedia/camera_framework/multimedia_camera_framework.gni")
 
 drivers_path = "//drivers"
 
@@ -77,4 +78,42 @@ ohos_shared_library("ImageReceiverTest") {
   output_extension = "so"
   subsystem_name = "multimedia"
   part_name = "image_framework"
+}
+
+ohos_shared_library("ImageReceiverNativeTest") {
+  sources = [
+    "./napi/image_receiver_module_test.cpp",
+    "./napi/camera_manager.cpp",
+    "./napi/module_test.cpp",
+  ]
+
+  include_dirs = [
+    "../cpp",
+    "$image_subsystem/frameworks/innerkitsimpl/utils/include",
+    "$image_subsystem/interfaces/innerkits/include",
+    "$image_subsystem/interfaces/kits/native/include",
+    "$graphic_subsystem/rosen/modules/2d_graphics/include/effect",
+    "$graphic_subsystem/rosen/modules/2d_graphics/src",
+    "$graphic_subsystem/rosen/modules/2d_graphics/include",
+    "$drivers_path/peripheral/display/interfaces/include",
+    "$multimedia_camera_framework_path/interfaces/kits/native/include/camera",
+    "$graphic_surface_root/interfaces/inner_api/surface",
+  ]
+  configs = [ ":config" ]
+
+  deps = [
+    "$multimedia_camera_framework_path/frameworks/native/ndk:ohcamera",
+  ]
+
+  external_deps = [
+    "hilog:libhilog",
+    "hilog:hilog_ndk",
+    "napi:ace_napi",
+    "image_framework:image_receiver",
+    "image_framework:ohimage",
+  ]
+
+  output_extension = "so"
+  subsystem_name = "multimedia"
+  part_name = "camera_framework"
 }
