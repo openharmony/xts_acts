@@ -124,6 +124,7 @@ import richEditorApi5 from './RichEditorTest/richEditorApi/richEditorApi5.test';
 import richEditorApi6 from './RichEditorTest/richEditorApi/richEditorApi6.test';
 import richEditorApi7 from './RichEditorTest/richEditorApi/richEditorApi7.test';
 import richEditorApi8 from './RichEditorTest/richEditorApi/richEditorApi8.test';
+import search from './SearchTest/SearchTest.test';
 
 
 export default function testsuite() {
@@ -132,10 +133,6 @@ export default function testsuite() {
   richEditorApi6();
   richEditorApi7();
   richEditorApi8();
-import search from './SearchTest/SearchTest.test'
-
-
-export default function testsuite() {
   search();
   textStyleJsunit();
   marqueeJsunit();
