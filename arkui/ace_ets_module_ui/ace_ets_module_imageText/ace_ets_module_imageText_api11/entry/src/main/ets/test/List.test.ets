@@ -133,7 +133,7 @@ export default function testsuite() {
   richEditorApi6();
   richEditorApi7();
   richEditorApi8();
-  search();
+   search();
   textStyleJsunit();
   marqueeJsunit();
   ImageTextTest();
