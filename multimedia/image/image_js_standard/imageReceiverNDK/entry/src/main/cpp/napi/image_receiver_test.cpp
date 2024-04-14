@@ -15,7 +15,7 @@
 
 #include <memory>
 #include <string>
-#include <set>
+#include <map>
 #include <uv.h>
 #include "node_api.h"
 #include "hilog/log.h"
@@ -34,6 +34,9 @@ static constexpr uint32_t NUM_0 = 0;
 static constexpr uint32_t NUM_1 = 1;
 static constexpr uint32_t NUM_2 = 2;
 static constexpr uint32_t NUM_3 = 3;
+static constexpr int32_t NUM_1000 = 1000;
+static constexpr int32_t NUM_2000 = 2000;
+static constexpr int32_t NUM_3000 = 3000;
 
 struct ImageReceiverContext {
     napi_env env = nullptr;
@@ -121,81 +124,109 @@ napi_ref JSImageBufferAvaliableHandler::handler_ = nullptr;
 napi_env JSImageBufferAvaliableHandler::env_ = nullptr;
 uv_loop_s *JSImageBufferAvaliableHandler::loop_ = nullptr;
 
-static std::set<uintptr_t> imageReceiverVec;
-static std::set<uintptr_t> imageVec;
-static std::set<uintptr_t> optionVec;
-
-static bool saveImageReceiver(uintptr_t receiver)
+class MyMap
 {
-    auto it = imageReceiverVec.find(receiver);
-    if (it == imageReceiverVec.end()) {
-        imageReceiverVec.insert(receiver);
+public:
+    /*
+     * constructor
+     */
+    MyMap(int32_t startCount) : count_(startCount)
+    {
     }
-    return true;
-}
 
-static bool removeImageReceiver(uintptr_t receiver)
-{
-    imageReceiverVec.erase(receiver);
-    return true;
-}
+    /*
+     * destructor
+     */
+    ~MyMap()
+    {
+    }
 
-static bool checkImageReceiver(uintptr_t receiver)
-{
-    auto it = imageReceiverVec.find(receiver);
-    if (it != imageReceiverVec.end()) {
+    /*
+     * 
+     */
+    int32_t save(uintptr_t ptr)
+    {
+        for (auto itor = map_.begin(); itor != map_.end(); ++itor) {
+            if (itor->second == ptr) {
+                return itor->first;
+            }
+        }
+        increase();
+        map_.insert(std::pair<int32_t, uintptr_t>(count_, ptr));
+        return count_;
+    }
+
+    /*
+     * 
+     */
+    uintptr_t find(int32_t key)
+    {
+        auto itor = map_.find(key);
+        if (itor == map_.end()) {
+            return 0;
+        }
+        return itor->second;
+    }
+
+    /*
+     * 
+     */
+    bool remove(uintptr_t ptr)
+    {
+        for (auto itor = map_.begin(); itor != map_.end(); ++itor) {
+            if (itor->second == ptr) {
+                map_.erase(itor);
+                return true;
+            }
+        }
         return true;
     }
-    return false;
-}
 
-static bool saveImage(uintptr_t image)
-{
-    auto it = imageVec.find(image);
-    if (it == imageVec.end()) {
-        imageVec.insert(image);
-    }
-    return true;
-}
-
-static bool removeImage(uintptr_t image)
-{
-    imageVec.erase(image);
-    return true;
-}
-
-static bool checkImage(uintptr_t image)
-{
-    auto it = imageVec.find(image);
-    if (it != imageVec.end()) {
+    /*
+     * 
+     */
+    bool remove(int32_t key)
+    {
+        map_.erase(key);
         return true;
     }
-    return false;
-}
 
-static bool saveOption(uintptr_t option)
-{
-    auto it = optionVec.find(option);
-    if (it == optionVec.end()) {
-        optionVec.insert(option);
+    /*
+     * 
+     */
+    bool check(uintptr_t ptr)
+    {
+        for (auto itor = map_.begin(); itor != map_.end(); ++itor) {
+            if (itor->second == ptr) {
+                return true;
+            }
+        }
+        return false;
     }
-    return true;
-}
 
-static bool removeOption(uintptr_t option)
-{
-    optionVec.erase(option);
-    return true;
-}
-
-static bool checkOption(uintptr_t option)
-{
-    auto it = optionVec.find(option);
-    if (it != optionVec.end()) {
-        return true;
+    /*
+     * 
+     */
+    bool check(int32_t key)
+    {
+        auto itor = map_.find(key);
+        return itor != map_.end();
     }
-    return false;
-}
+
+protected:
+    void increase()
+    {
+        count_++;
+    }
+
+protected:
+    std::map<int32_t, uintptr_t> map_;
+    int32_t count_;
+};
+
+static MyMap receiverMap(NUM_1000);
+static MyMap imageMap(NUM_2000);
+static MyMap optionMap(NUM_3000);
 
 static bool CheckArgs(size_t argc, const napi_value* argv, size_t expectedCount)
 {
@@ -241,8 +272,9 @@ napi_value ImageReceiverTest::JsCreateImageReceiverOptions(napi_env env, napi_ca
     OH_ImageReceiverOptions* options = nullptr;
     napi_get_undefined(env, &udfVar);
     Image_ErrorCode nRst = OH_ImageReceiverOptions_Create(&options);
+    int32_t optionKey = 0;
     if (options != nullptr) {
-        saveOption((uintptr_t)options);
+        optionKey = optionMap.save((uintptr_t)options);
     } else {
         HiviewDFX::HiLog::Error(LABEL, "JsCreateImageReceiverOptions failed to create options");
         return udfVar;
@@ -269,12 +301,12 @@ napi_value ImageReceiverTest::JsCreateImageReceiverOptions(napi_env env, napi_ca
     OH_ImageReceiverOptions_SetCapacity(options, capacity);
     HiviewDFX::HiLog::Error(LABEL, "capacity: %{public}d", capacity);
 
-    if (nRst != IMAGE_SUCCESS || options == nullptr) {
+    if (nRst != IMAGE_SUCCESS || options == nullptr || optionKey == 0) {
         return udfVar;
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, (int32_t)(uintptr_t)options, &result);
+    napi_create_int32(env, optionKey, &result);
     return result;
 }
 
@@ -288,8 +320,8 @@ napi_value ImageReceiverTest::JsImageReceiverOptionsGetSize(napi_env env, napi_c
         return udfVar;
     }
 
-    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)(uintptr_t)params[NUM_0];
-    if (!checkOption((uintptr_t)options)) {
+    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)optionMap.find(params[NUM_0]);
+    if (options == nullptr) {
         return udfVar;
     }
     Image_Size size;
@@ -315,8 +347,8 @@ napi_value ImageReceiverTest::JsImageReceiverOptionsSetSize(napi_env env, napi_c
         return udfVar;
     }
 
-    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)(uintptr_t)params[NUM_0];
-    if (!checkOption((uintptr_t)options)) {
+    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)optionMap.find(params[NUM_0]);
+    if (options == nullptr) {
         return udfVar;
     }
     size.width = params[NUM_1];
@@ -337,8 +369,8 @@ napi_value ImageReceiverTest::JsImageReceiverOptionsGetCapacity(napi_env env, na
         return udfVar;
     }
 
-    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)(uintptr_t)params[NUM_0];
-    if (!checkOption((uintptr_t)options)) {
+    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)optionMap.find(params[NUM_0]);
+    if (options == nullptr) {
         return udfVar;
     }
     int32_t capacity = 0;
@@ -361,8 +393,8 @@ napi_value ImageReceiverTest::JsImageReceiverOptionsSetCapacity(napi_env env, na
         return udfVar;
     }
 
-    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)(uintptr_t)params[NUM_0];
-    if (!checkOption((uintptr_t)options)) {
+    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)optionMap.find(params[NUM_0]);
+    if (options == nullptr) {
         return udfVar;
     }
     Image_ErrorCode nRst = OH_ImageReceiverOptions_SetCapacity(options, params[NUM_1]);
@@ -381,12 +413,12 @@ napi_value ImageReceiverTest::JsReleaseImageReceiverOptions(napi_env env, napi_c
         return udfVar;
     }
 
-    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)(uintptr_t)params[NUM_0];
-    if (!checkOption((uintptr_t)options)) {
+    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)optionMap.find(params[NUM_0]);
+    if (options == nullptr) {
         return udfVar;
     }
     Image_ErrorCode nRst = OH_ImageReceiverOptions_Release(options);
-    removeOption((uintptr_t)options);
+    optionMap.remove(params[NUM_0]);
     napi_value result = nullptr;
     napi_create_int32(env, nRst, &result);
     return result;
@@ -402,23 +434,25 @@ napi_value ImageReceiverTest::JsCreateImageReceiver(napi_env env, napi_callback_
         return udfVar;
     }
 
-    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)(uintptr_t)params[NUM_0];
-    if (!checkOption((uintptr_t)options)) {
+    OH_ImageReceiverOptions* options = (OH_ImageReceiverOptions*)optionMap.find(params[NUM_0]);
+    if (options == nullptr) {
         return udfVar;
     }
-    OH_ImageReceiverNative* receiver = nullptr;
-    Image_ErrorCode nRst = OH_ImageReceiverNative_Create(options, &receiver);
 
+    OH_ImageReceiverNative* receiver = nullptr;
+    int32_t receiverKey = 0;
+    Image_ErrorCode nRst = OH_ImageReceiverNative_Create(options, &receiver);
     if (receiver != nullptr) {
-        saveImageReceiver((uintptr_t)receiver);
+        receiverKey = receiverMap.save((uintptr_t)receiver);
     }
-    if (nRst != IMAGE_SUCCESS || receiver == nullptr) {
+
+    if (nRst != IMAGE_SUCCESS || receiver == nullptr || receiverKey == 0) {
         HiviewDFX::HiLog::Error(LABEL, "JsCreateImageReceiver failed to create receiver");
         return udfVar;
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, (int32_t)(uintptr_t)receiver, &result);
+    napi_create_int32(env, receiverKey, &result);
     return result;
 }
 
@@ -432,8 +466,8 @@ napi_value ImageReceiverTest::JsGetReceivingSurfaceId(napi_env env, napi_callbac
         return udfVar;
     }
 
-    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)(uintptr_t)params[NUM_0];
-    if (!checkImageReceiver((uintptr_t)receiver)) {
+    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)receiverMap.find(params[NUM_0]);
+    if (receiver == nullptr) {
         return udfVar;
     }
     uint64_t id = 0;
@@ -457,20 +491,24 @@ napi_value ImageReceiverTest::JsReadLatestImage(napi_env env, napi_callback_info
         return udfVar;
     }
 
-    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)(uintptr_t)params[NUM_0];
-    if (!checkImageReceiver((uintptr_t)receiver)) {
+    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)receiverMap.find(params[NUM_0]);
+    if (receiver == nullptr) {
         return udfVar;
     }
     OH_ImageNative* image = nullptr;
     if (OH_ImageReceiverNative_ReadLatestImage(receiver, &image) != IMAGE_SUCCESS) {
         return udfVar;
     }
+    int32_t imageKey = 0;
     if (image != nullptr) {
-        saveImage((uintptr_t)image);
+        imageKey = imageMap.save((uintptr_t)image);
+    }
+    if (imageKey == 0) {
+        return udfVar;
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, (int32_t)(uintptr_t)image, &result);
+    napi_create_int32(env, imageKey, &result);
     return result;
 }
 
@@ -484,20 +522,24 @@ napi_value ImageReceiverTest::JsReadNextImage(napi_env env, napi_callback_info i
         return udfVar;
     }
 
-    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)(uintptr_t)params[NUM_0];
-    if (!checkImageReceiver((uintptr_t)receiver)) {
+    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)receiverMap.find(params[NUM_0]);
+    if (receiver == nullptr) {
         return udfVar;
     }
     OH_ImageNative* image = nullptr;
     if (OH_ImageReceiverNative_ReadNextImage(receiver, &image) != IMAGE_SUCCESS) {
         return udfVar;
     }
+    int32_t imageKey = 0;
     if (image != nullptr) {
-        saveImage((uintptr_t)image);
+        imageKey = imageMap.save((uintptr_t)image);
+    }
+    if (imageKey == 0) {
+        return udfVar;
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, (int32_t)(uintptr_t)image, &result);
+    napi_create_int32(env, imageKey, &result);
     return result;
 }
 
@@ -520,8 +562,8 @@ napi_value ImageReceiverTest::JsOn(napi_env env, napi_callback_info info)
         return udfVar;
     }
 
-    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)(uintptr_t)params[NUM_0];
-    if (!checkImageReceiver((uintptr_t)receiver)) {
+    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)receiverMap.find(params[NUM_0]);
+    if (receiver == nullptr) {
         return udfVar;
     }
     napi_ref jsCallbackHandler;
@@ -546,8 +588,8 @@ napi_value ImageReceiverTest::JsOff(napi_env env, napi_callback_info info)
         return udfVar;
     }
 
-    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)(uintptr_t)params[NUM_0];
-    if (!checkImageReceiver((uintptr_t)receiver)) {
+    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)receiverMap.find(params[NUM_0]);
+    if (receiver == nullptr) {
         return udfVar;
     }
     Image_ErrorCode nRst = OH_ImageReceiverNative_Off(receiver);
@@ -566,8 +608,8 @@ napi_value ImageReceiverTest::JsGetSize(napi_env env, napi_callback_info info)
         return udfVar;
     }
 
-    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)(uintptr_t)params[NUM_0];
-    if (!checkImageReceiver((uintptr_t)receiver)) {
+    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)receiverMap.find(params[NUM_0]);
+    if (receiver == nullptr) {
         return udfVar;
     }
     Image_Size size;
@@ -592,8 +634,8 @@ napi_value ImageReceiverTest::JsGetCapacity(napi_env env, napi_callback_info inf
         return udfVar;
     }
 
-    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)(uintptr_t)params[NUM_0];
-    if (!checkImageReceiver((uintptr_t)receiver)) {
+    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)receiverMap.find(params[NUM_0]);
+    if (receiver == nullptr) {
         return udfVar;
     }
     int32_t capacity = 0;
@@ -616,12 +658,12 @@ napi_value ImageReceiverTest::JsReleaseImageReceiver(napi_env env, napi_callback
         return udfVar;
     }
 
-    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)(uintptr_t)params[NUM_0];
-    if (!checkImageReceiver((uintptr_t)receiver)) {
+    OH_ImageReceiverNative* receiver = (OH_ImageReceiverNative*)receiverMap.find(params[NUM_0]);
+    if (receiver == nullptr) {
         return udfVar;
     }
     Image_ErrorCode nRst = OH_ImageReceiverNative_Release(receiver);
-    removeImageReceiver((uintptr_t)receiver);
+    receiverMap.remove(params[NUM_0]);
     napi_value result = nullptr;
     napi_create_int32(env, nRst, &result);
     return result;
@@ -637,8 +679,8 @@ napi_value ImageReceiverTest::JsGetImageSize(napi_env env, napi_callback_info in
         return udfVar;
     }
 
-    OH_ImageNative* image = (OH_ImageNative*)(uintptr_t)params[NUM_0];
-    if (!checkImage((uintptr_t)image)) {
+    OH_ImageNative* image = (OH_ImageNative*)imageMap.find(params[NUM_0]);
+    if (image == nullptr) {
         return udfVar;
     }
     Image_Size size;
@@ -663,8 +705,8 @@ napi_value ImageReceiverTest::JsGetImageComponentTypes(napi_env env, napi_callba
         return udfVar;
     }
 
-    OH_ImageNative* image = (OH_ImageNative*)(uintptr_t)params[NUM_0];
-    if (!checkImage((uintptr_t)image)) {
+    OH_ImageNative* image = (OH_ImageNative*)imageMap.find(params[NUM_0]);
+    if (image == nullptr) {
         return udfVar;
     }
     size_t typeSize = 0;
@@ -710,8 +752,8 @@ napi_value ImageReceiverTest::JsGetImageByteBuffer(napi_env env, napi_callback_i
         return udfVar;
     }
 
-    OH_ImageNative* image = (OH_ImageNative*)(uintptr_t)params[NUM_0];
-    if (!checkImage((uintptr_t)image)) {
+    OH_ImageNative* image = (OH_ImageNative*)imageMap.find(params[NUM_0]);
+    if (image == nullptr) {
         return udfVar;
     }
     uint32_t componentType = params[NUM_1];
@@ -735,8 +777,8 @@ napi_value ImageReceiverTest::JsGetImageBufferSize(napi_env env, napi_callback_i
         return udfVar;
     }
 
-    OH_ImageNative* image = (OH_ImageNative*)(uintptr_t)params[NUM_0];
-    if (!checkImage((uintptr_t)image)) {
+    OH_ImageNative* image = (OH_ImageNative*)imageMap.find(params[NUM_0]);
+    if (image == nullptr) {
         return udfVar;
     }
     uint32_t componentType = params[NUM_1];
@@ -760,8 +802,8 @@ napi_value ImageReceiverTest::JsGetImageRowStride(napi_env env, napi_callback_in
         return udfVar;
     }
 
-    OH_ImageNative* image = (OH_ImageNative*)(uintptr_t)params[NUM_0];
-    if (!checkImage((uintptr_t)image)) {
+    OH_ImageNative* image = (OH_ImageNative*)imageMap.find(params[NUM_0]);
+    if (image == nullptr) {
         return udfVar;
     }
     uint32_t componentType = params[NUM_1];
@@ -785,8 +827,8 @@ napi_value ImageReceiverTest::JsGetImagePixelStride(napi_env env, napi_callback_
         return udfVar;
     }
 
-    OH_ImageNative* image = (OH_ImageNative*)(uintptr_t)params[NUM_0];
-    if (!checkImage((uintptr_t)image)) {
+    OH_ImageNative* image = (OH_ImageNative*)imageMap.find(params[NUM_0]);
+    if (image == nullptr) {
         return udfVar;
     }
     uint32_t componentType = params[NUM_1];
@@ -810,12 +852,12 @@ napi_value ImageReceiverTest::JsReleaseImage(napi_env env, napi_callback_info in
         return udfVar;
     }
 
-    OH_ImageNative* image = (OH_ImageNative*)(uintptr_t)params[NUM_0];
-    if (!checkImage((uintptr_t)image)) {
+    OH_ImageNative* image = (OH_ImageNative*)imageMap.find(params[NUM_0]);
+    if (image == nullptr) {
         return udfVar;
     }
     Image_ErrorCode nRst = OH_ImageNative_Release(image);
-    removeImage((uintptr_t)image);
+    imageMap.remove(params[NUM_0]);
     napi_value result = nullptr;
     napi_create_int32(env, nRst, &result);
     return result;
