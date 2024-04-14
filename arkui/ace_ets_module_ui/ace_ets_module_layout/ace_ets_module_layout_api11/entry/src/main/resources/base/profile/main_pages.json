@@ -3,6 +3,7 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/FolderStack/FolderStack3Api",
         "MainAbility/pages/FolderStack/folder_stack",
+        "MainAbility/pages/Stack_Text/Stack_Text",
         "MainAbility/pages/GridCol/grid_col",
         "MainAbility/pages/GridRow/grid_row",
         "MainAbility/pages/inspector/inspector",

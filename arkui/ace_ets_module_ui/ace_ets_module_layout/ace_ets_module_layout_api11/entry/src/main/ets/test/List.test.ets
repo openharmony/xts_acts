@@ -14,6 +14,7 @@
  */
 import FolderStack3ApiJsunit from './FolderStackTest/FolderStack3ApiJsunit.test';
 import enumFolderTest from "./FolderStackTest/enumflodstack.test"
+import Stack_Text from './Stack_Text/Stack_Text.test';
 import grid_colSpanJsunit from './GridColTest/grid_col.test';
 import grid_rowOnBreakpointChangeJsunit from './GridRowTest/grid_row.test';
 import inspectorJsunit from './inspectorTest/inspector.test'
@@ -544,6 +545,7 @@ import GridRow_onBreakpoint from './GridTest/Grid_Row/onBreakpointChange/onBreak
 export default function testsuite() {
   FolderStack3ApiJsunit()
   enumFolderTest()
+  Stack_Text()
   inspectorJsunit()
     
   Column_Space()
