@@ -218,7 +218,7 @@ Image_ErrorCode ImageReceiverModuleTest::VerifyImageReceiver()
         IMG_TST_LOGE("Get Image Receiver SurfaceId failed: err = %{public}d.", ret);
         return ret;
     }
-    IMG_TST_LOGI("Image Receiver surfaceId = %{public}llu.", id);
+    IMG_TST_LOGI("Image Receiver surfaceId = %{public}llu.", static_cast<unsigned long long>(id));
     if (id == 0) {
         IMG_TST_LOGE("Get Image Receiver SurfaceId is zero.");
         return IMAGE_BAD_PARAMETER;
@@ -241,7 +241,7 @@ Image_ErrorCode ImageReceiverModuleTest::DumpImageInfo(OH_ImageNative *image)
     }
 
     IMG_TST_LOGI("=== Start dump image(%{public}p) ===.", image);
-    IMG_TST_LOGI("Get %{public}d components.", types.size());
+    IMG_TST_LOGI("Get %{public}lu components.", static_cast<unsigned long>(types.size()));
     for (uint32_t i = 0; i < types.size(); i++) {
         OH_NativeBuffer* nativeBuffer = nullptr;
         size_t bufferSize = 0;
@@ -254,9 +254,9 @@ Image_ErrorCode ImageReceiverModuleTest::DumpImageInfo(OH_ImageNative *image)
             IMG_TST_LOGE("Get Image property failed.");
             return IMAGE_BAD_PARAMETER;
         }
-        IMG_TST_LOGI("Image component(%{public}d): ByteBuffer(%{public}p) Size(%{public}d "
+        IMG_TST_LOGI("Image component(%{public}d): ByteBuffer(%{public}p) Size(%{public}lu "
             "Stride(row %{public}d pixel %{public}d)).",
-            types[i], nativeBuffer, bufferSize, rowStride, pixelStride);
+            types[i], nativeBuffer, static_cast<unsigned long>(bufferSize), rowStride, pixelStride);
     }
     IMG_TST_LOGI("=== End dump image(%{public}p) ===.", image);
 
