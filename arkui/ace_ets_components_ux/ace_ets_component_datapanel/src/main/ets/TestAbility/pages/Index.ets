@@ -14,7 +14,7 @@
  */
  //@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../test/List.test'
@@ -23,9 +23,9 @@ import testsuite from '../../test/List.test'
 struct DatapanelTest {
 
   aboutToAppear(){
-    var abilityDelegator: any
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator 
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
