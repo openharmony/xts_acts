@@ -1894,5 +1894,126 @@ export default function nativeApiStringJsunit() {
       expect(value).assertEqual(2000);
       done();
     });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0127
+     * @tc.name aceNapiTest0127
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0127', 0, async (done: Function) => {
+      console.info('aceNapiTest0127 START');
+      value = napitest.napiSerializeDate();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0128
+     * @tc.name aceNapiTest0128
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0128', 0, async (done: Function) => {
+      console.info('aceNapiTest0128 START');
+      value = napitest.napiSerializeString();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0129
+     * @tc.name aceNapiTest0129
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0129', 0, async (done: Function) => {
+      console.info('aceNapiTest0129 START');
+      value = napitest.napiSerializeArray();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0130
+     * @tc.name aceNapiTest0130
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0130', 0, async (done: Function) => {
+      console.info('aceNapiTest0130 START');
+      value = napitest.napiSerializeObject();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0131
+     * @tc.name aceNapiTest0131
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0131', 0, async (done: Function) => {
+      console.info('aceNapiTest0131 START');
+      value = napitest.napiSerializeArraybuffer();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0132
+     * @tc.name aceNapiTest0132
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0132', 0, async (done: Function) => {
+      console.info('aceNapiTest0132 START');
+      value = napitest.napiSerializeTypearray();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0133
+     * @tc.name aceNapiTest0133
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0133', 0, async (done: Function) => {
+      console.info('aceNapiTest0133 START');
+      let temp = new SharedArrayBuffer(20);
+      value = napitest.napiSerializeSharedarraybuffer(temp);
+      expect(value).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0134
+     * @tc.name aceNapiTest0134
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0134', 0, async (done: Function) => {
+      console.info('aceNapiTest0134 START');
+      let mapTemp = new Map();
+      value = napitest.napiSerializeMap(mapTemp);
+      expect(value).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0135
+     * @tc.name aceNapiTest0135
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0135', 0, async (done: Function) => {
+      console.info('aceNapiTest0135 START');
+      let setTemp = new Set();
+      value = napitest.napiSerializeSet(setTemp);
+      expect(value).assertEqual(0);
+      done();//let regexp: RegExp = new RegExp('\\[', 'g');
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0136
+     * @tc.name aceNapiTest0136
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0136', 0, async (done: Function) => {
+      console.info('aceNapiTest0136 START');
+      let regexp: RegExp = new RegExp('\\[', 'g');
+      value = napitest.napiSerializeRegExp(regexp);
+      expect(value).assertEqual(0);
+      done();
+  });
   })
 }
