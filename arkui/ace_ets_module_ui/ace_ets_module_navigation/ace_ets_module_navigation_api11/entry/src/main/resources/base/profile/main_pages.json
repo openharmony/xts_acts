@@ -13,6 +13,10 @@
         "MainAbility/pages/NavDestination/QueryNavDestinationInfoNavDestination",
         "MainAbility/pages/Navigation/NavigationAttr",
         "MainAbility/pages/Navigation/navigationApi/navigationApi1",
-        "MainAbility/pages/SideBarContainer/SideBarContainer"
+        "MainAbility/pages/SideBarContainer/SideBarContainer",
+
+        "MainAbility/pages/Navigation/Navigation",
+        "MainAbility/pages/stepper/Stepper1",
+        "MainAbility/pages/Navigator/Navigator"
     ]
 }

@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 import allowOverride from './allowOverrideTest/allowOverride.test';
+import appStorageJsunit from './AppStorage/AppStorageJsunit.test';
+import linkJsunit from './Link/LinkJsunit.test';
 
 export default function testsuite() {
   allowOverride()
+  appStorageJsunit()
+  linkJsunit()
 }

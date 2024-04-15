@@ -72,6 +72,18 @@ import swiperItemMargin from './SwiperTest/Swiper_ItemChange/swiperItemMargin.te
 import swiperItemPadMar from './SwiperTest/Swiper_ItemChange/swiperItemPadMar.test.ets';
 import swiperItemVisibility from './SwiperTest/Swiper_ItemChange/swiperItemVisibility.test.ets';
 
+import edgeEffectJsunit from './ListTest/EdgeEffectJsunit.test'
+import swiperTest from './SwiperTest/swiper.test';
+import swiperSecTest from './SwiperTest/swipersec.test';
+import scrollbarJsunit from './ScrollBar/ScrollerBarJsunit.test';
+import alphabetIndexerJsunit from './AlphabetIndexerTest/AlphabetIndexerJsunit.test';
+import gridIndexTest from './gridTest/GridJsnuit.test';
+import gridItemJsunit from './gridTest/GridItem.test';
+import listJsunit from './ListTest/ListJsunit1.test';
+import listItemJsunit from './ListTest/ListItemJsunit.test';
+import swiperJsunit from './SwiperTest/SwiperJsunit2.test';
+import tabJsunit from './TabsTest/TabJsunit.test';
+
 export default function testsuite() {
   listJsunit();
   swiperJsunit();
@@ -105,6 +117,19 @@ export default function testsuite() {
   AlphabetIndexer()
   RefreshTest()
   ScrollTest2()
+
+  edgeEffectJsunit()
+  swiperTest();
+  swiperSecTest();
+  scrollbarJsunit();
+  alphabetIndexerJsunit();
+  gridIndexTest();
+  gridItemJsunit();
+  listJsunit();
+  listItemJsunit();
+  swiperJsunit();
+  tabJsunit();
+  
   Tabs_itemPadMar();
   Tabs_itemSize();
   tabs_IndexTest();

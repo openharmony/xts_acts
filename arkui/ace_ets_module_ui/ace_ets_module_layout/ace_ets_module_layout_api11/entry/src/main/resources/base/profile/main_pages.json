@@ -437,6 +437,16 @@
         "MainAbility/pages/Grid/Grid_Row/onBreakpointChange/onBreakpointChange",
         "MainAbility/pages/Grid/Grid_Row/Grid_Row_Direction/Grid_Row_Direction_Row",
         "MainAbility/pages/Grid/Grid_Row/Grid_Row_Direction/Grid_Row_Direction_RowReverse",
+
+        "MainAbility/pages/Row/colorGradient",
+        "MainAbility/pages/Row/enumsImage",
+        "MainAbility/pages/Row/enumsVerticalAlign",
+        "MainAbility/pages/Flex/enumsFlexAlign",
+        "MainAbility/pages/Column/enumsHorizontalAlign",
+        "MainAbility/pages/Row/transForm",
+        "MainAbility/pages/Row/visibility",
+        "MainAbility/pages/Row/Row",
+        
         "MainAbility/pages/GridCol/Grid_Col_Span/Grid_Col_Span_Default",
         "MainAbility/pages/GridCol/Grid_Col_Span/Grid_Col_Span_Number",
         "MainAbility/pages/GridCol/Grid_Col_Span/Grid_Col_Span_GridColColumnOption",
