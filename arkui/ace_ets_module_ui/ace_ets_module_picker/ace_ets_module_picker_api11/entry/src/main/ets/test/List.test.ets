@@ -23,8 +23,10 @@ import TextPickerSec from './TextPicker/TextPickerSec';
 import textpickermultiTest from './TextPicker/TextPickerMulti';
 import sliderTest from './SliderTest/SliderTest';
 import SliderTestSec from './SliderTest/SliderTestSec';
+import TimePicker1Test from './TimePickerTest/TimePicker1.test';
 
 export default function testsuite() {
+  TimePicker1Test()
   SelectAttr()
   TimePickerTest()
   selectoptionwithJsSuit()
