@@ -19,6 +19,14 @@
     {
       "name": "radio_IndicatorColor",
       "value": "#FF00FF00"
+    },
+    {
+      "name": "start_block_Border_Color",
+      "value": "#FF19D41C"
+    },
+    {
+      "name": "start_Step_Color",
+      "value": "#FF19D41C"
     }
   ]
 }
