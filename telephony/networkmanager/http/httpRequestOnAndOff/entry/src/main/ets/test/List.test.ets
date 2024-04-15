@@ -17,6 +17,6 @@ import HttpRequestOnTest from './HttpRequestOn.test';
 import HttpRequestOffTest from './HttpRequestOff.test';
 
 export default function testsuite() {
-  // HttpRequestOnTest();
+  HttpRequestOnTest();
   HttpRequestOffTest();
 }
