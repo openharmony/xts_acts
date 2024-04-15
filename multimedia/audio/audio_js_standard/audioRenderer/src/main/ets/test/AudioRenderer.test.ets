@@ -12052,5 +12052,429 @@ export default function audioRendererTest() {
       await closeFileDescriptor(readPath);
       done();
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0100
+     * @tc.name      : AudioRenderer - getVolume 0 - promise
+     * @tc.desc      : AudioRenderer - getVolume 0 - promise
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0100', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+      let audioRen;
+      try {
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+          audioRen = data;
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+        }).catch((err) => {
+          console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+        });
+
+        let inputVolume = 0;
+
+        await audioRen.setVolume(inputVolume).then(() => {
+          expect(true).assertTrue();
+          console.info(`${TagFrmwkRender}: setVolume to 0 : Success`);
+          let data = audioRen.getVolume();
+          console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0100 SUCCESS: ${data}`);
+          expect(data).assertEqual(0);
+        }).catch((err) => {
+          console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
+          expect(false).assertTrue();
+        });
+      }
+      catch (error) {
+        console.log("SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0100 : error = " + error);
+        expect(false).assertTrue();
+      }
+      await sleep(2000);
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+      });
+      done();
+    })
+	
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0200
+     * @tc.name      : AudioRenderer - getVolume 0.5 - promise
+     * @tc.desc      : AudioRenderer - getVolume 0.5 - promise
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0200', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+      let audioRen;
+      try {
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+          audioRen = data;
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+        }).catch((err) => {
+          console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+        });
+
+        let inputVolume = 0.5;
+
+        await audioRen.setVolume(inputVolume).then(() => {
+          expect(true).assertTrue();
+          console.info(`${TagFrmwkRender}: setVolume to 0.5 : Success`);
+          let data = audioRen.getVolume();
+          console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0200 SUCCESS: ${data}`);
+          expect(data).assertEqual(0.5);
+        }).catch((err) => {
+          console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
+          expect(false).assertTrue();
+        });
+      }
+      catch (error) {
+        console.log("SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0200 : error = " + error);
+        expect(false).assertTrue();
+      }
+      await sleep(2000);
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+      });
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0300
+     * @tc.name      : AudioRenderer - getVolume 1 - promise
+     * @tc.desc      : AudioRenderer - getVolume 1 - promise
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0300', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+      let audioRen;
+      try {
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+          audioRen = data;
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+        }).catch((err) => {
+          console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+        });
+
+        let inputVolume = 1;
+
+        await audioRen.setVolume(inputVolume).then(() => {
+          expect(true).assertTrue();
+          console.info(`${TagFrmwkRender}: setVolume to 1 : Success`);
+          let data = audioRen.getVolume();
+          console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0300 SUCCESS: ${data}`);
+          expect(data).assertEqual(1);
+        }).catch((err) => {
+          console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
+          expect(false).assertTrue();
+        });
+      }
+      catch (error) {
+        console.log("SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0300 : error = " + error);
+        expect(false).assertTrue();
+      }
+      await sleep(2000);
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+      });
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0400
+     * @tc.name      : AudioRenderer - getVolume 1 - callback
+     * @tc.desc      : AudioRenderer - getVolume 1 - callback
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0400', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+      let audioRen;
+      try {
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+          audioRen = data;
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+        }).catch((err) => {
+          console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+        });
+
+        let data = audioRen.getVolume();
+        console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0400 SUCCESS: ${data}`);
+        expect(data).assertEqual(1);
+      }
+      catch (error) {
+        console.log("SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0400 : error = " + error);
+        expect(false).assertTrue();
+      }
+      await sleep(2000);
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+      });
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0500
+     * @tc.name      : AudioRenderer - setVolume 0 - callback
+     * @tc.desc      : AudioRenderer - setVolume 0 - callback
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0500', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+      let audioRen;
+      try {
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+          audioRen = data;
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+        }).catch((err) => {
+          console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+        });
+
+        let inputVolume = 0;
+
+        audioRen.setVolume(inputVolume, (err) => {
+          let data = audioRen.getVolume();
+          console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0500 SUCCESS: ${data}`);
+          expect(data).assertEqual(0);
+          if (err) {
+            console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
+            expect(false).assertTrue();
+          } else {
+            expect(true).assertTrue();
+            console.info(`${TagFrmwkRender}: setVolume to 0 : Success`);
+          }
+        });
+      }
+      catch (error) {
+        console.log("SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0500 : error = " + error);
+        expect(false).assertTrue();
+      }
+      await sleep(2000);
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+      });
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0600
+     * @tc.name      : AudioRenderer - setVolume 0 - callback
+     * @tc.desc      : AudioRenderer - setVolume 0 - callback
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0600', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+      let audioRen;
+      try {
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+          audioRen = data;
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+        }).catch((err) => {
+          console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+        });
+
+        let inputVolume = 0.5;
+
+        audioRen.setVolume(inputVolume, (err) => {
+          let data = audioRen.getVolume();
+          console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0600 SUCCESS: ${data}`);
+          expect(data).assertEqual(0.5);
+          if (err) {
+            console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
+            expect(false).assertTrue();
+          } else {
+            expect(true).assertTrue();
+            console.info(`${TagFrmwkRender}: setVolume to 0 : Success`);
+          }
+        });
+      }
+      catch (error) {
+        console.log("SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0600 : error = " + error);
+        expect(false).assertTrue();
+      }
+      await sleep(2000);
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+      });
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0700
+     * @tc.name      : AudioRenderer - setVolume 0 - callback
+     * @tc.desc      : AudioRenderer - setVolume 0 - callback
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0700', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+      let audioRen;
+      try {
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+          audioRen = data;
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+          console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+        }).catch((err) => {
+          console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+        });
+
+        let inputVolume = 1;
+
+        audioRen.setVolume(inputVolume, (err) => {
+          let data = audioRen.getVolume();
+          console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0700 SUCCESS: ${data}`);
+          expect(data).assertEqual(1);
+          if (err) {
+            console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
+            expect(false).assertTrue();
+          } else {
+            expect(true).assertTrue();
+            console.info(`${TagFrmwkRender}: setVolume to 0 : Success`);
+          }
+        });
+      }
+      catch (error) {
+        console.log("SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0700 : error = " + error);
+        expect(false).assertTrue();
+      }
+      await sleep(2000);
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+      });
+      done();
+    })
   })
 }

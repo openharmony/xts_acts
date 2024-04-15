@@ -36,6 +36,7 @@ ohos_shared_library("audioNdkTest") {
     "$AUDIO_ROOT_DIR/interfaces/kits/c/common/",
     "$AUDIO_ROOT_DIR/interfaces/kits/c/audio_renderer/",
     "$AUDIO_ROOT_DIR/interfaces/kits/c/audio_capturer/",
+    "$AUDIO_ROOT_DIR/interfaces/kits/c/audio_manager/",
   ]
   configs = [ ":config" ]
   deps = [ "$AUDIO_ROOT_DIR/frameworks/native/ohaudio:ohaudio" ]

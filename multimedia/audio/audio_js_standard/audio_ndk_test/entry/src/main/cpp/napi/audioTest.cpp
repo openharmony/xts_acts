@@ -13,12 +13,30 @@
  * limitations under the License.
  */
 
+#include <string>
+#include <stdio.h>
 #include "napi/native_api.h"
 #include "native_audiocapturer.h"
 #include "native_audiorenderer.h"
 #include "native_audiostream_base.h"
 #include "native_audiostreambuilder.h"
 #include "unistd.h"
+#include "native_audio_routing_manager.h"
+#include "native_audio_common.h"
+#include "native_audio_device_base.h"
+
+#define LOG(cond, fmt, ...)           \
+    if (!(cond)) {                                  \
+        (void)printf(fmt, ##__VA_ARGS__);           \
+    }
+
+const int32_t g_samplingRate = 48000; // 48000:g_samplingRate value
+const int32_t g_channelCount = 2; // 2:g_channelCount value
+const int32_t g_latencyMode = 0;
+const int32_t g_sampleFormat = 1;
+const int32_t g_frameSize = 240; // 240:g_frameSize value
+bool g_flag = false;
+bool g_mark = false;
 
 static napi_value CreateAudioStreamBuilder(napi_env env, napi_callback_info info)
 {
@@ -861,6 +879,7 @@ static int32_t AudioRendererOnWriteData(OH_AudioRenderer* capturer,
     void* buffer,
     int32_t bufferLen)
 {
+    printf("AudioRendererOnWriteData callback\n");
     return 0;
 }
 static napi_value AudioStreamBuilderSetRendererCallback(napi_env env, napi_callback_info info)
@@ -943,6 +962,2028 @@ static napi_value AudioStreamBuilderSetFrameSizeInCallback(napi_env env, napi_ca
     return res;
 }
 
+// OH_Audio_Render_GetVolume_001: result AUDIOSTREAM_ERROR_INVALID_PARAM(1).
+static napi_value AudioRendererGetVolume_01(napi_env env, napi_callback_info info)
+{
+    OH_AudioRenderer* audioRenderer = nullptr;
+    float volume;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetVolume(audioRenderer, &volume);
+    LOG(false, "OH_AudioRenderer_GetVolume, volumeGet is %f, result %d", volume, result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_GetVolume_002: Test OH_Audio_Render_GetVolume interface .
+static napi_value AudioRendererGetVolume_02(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeGet;
+    result = OH_AudioRenderer_GetVolume(audioRenderer, &volumeGet);
+    LOG(false, "OH_AudioRenderer_GetVolume, volumeGet is %f, result %d", volumeGet, result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_double(env, volumeGet, &res);
+    return res;
+}
+
+// OH_AudioRenderer_SetVolume_001: Test OH_AudioRenderer_SetVolume interface for maximum volumes.
+static napi_value AudioRendererSetVolume_01(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 1.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 1.0, result is %d", result);
+    float volumeGet;
+    result = OH_AudioRenderer_GetVolume(audioRenderer, &volumeGet);
+    LOG(false, "OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeGet, result);
+    OH_AudioStreamBuilder_Destroy(builder);
+
+    napi_value res;
+    napi_create_double(env, volumeGet, &res);
+    return res;
+}
+
+// OH_AudioRenderer_SetVolume_002: Test OH_AudioRenderer_SetVolume interface for minimum volumes.
+static napi_value AudioRendererSetVolume_02(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 0.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 0.0, result is %d", result);
+    float volumeGet;
+    result = OH_AudioRenderer_GetVolume(audioRenderer, &volumeGet);
+    LOG(false, "OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeGet, result);
+    OH_AudioStreamBuilder_Destroy(builder);
+
+    napi_value res;
+    napi_create_double(env, volumeGet, &res);
+    return res;
+}
+
+// OH_AudioRenderer_SetVolume_003: Test OH_AudioRenderer_SetVolume interface for twice with different volumes.
+static napi_value AudioRendererSetVolume_03(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 0.3;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 0.3, result is %d", result);
+    volumeSet = 0.8;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 0.8, result is %d", result);
+    float volumeGet;
+    result = OH_AudioRenderer_GetVolume(audioRenderer, &volumeGet);
+    LOG(false, "OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeGet, result);
+    OH_AudioStreamBuilder_Destroy(builder);
+
+    napi_value res;
+    napi_create_double(env, volumeGet, &res);
+    return res;
+}
+
+// OH_AudioRenderer_SetVolume_004: Test OH_AudioRenderer_SetVolume interface with out of range values.
+static napi_value AudioRendererSetVolume_04(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = -1.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume -1.0 result is %f, %d", volumeSet, result);
+    OH_AudioStreamBuilder_Destroy(builder);
+
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_AudioRenderer_SetVolume_005: Test OH_AudioRenderer_SetVolume interface with out of range values.
+static napi_value AudioRendererSetVolume_05(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 1.5;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 1.5 result is %f, %d", volumeSet, result);
+    OH_AudioStreamBuilder_Destroy(builder);
+
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_AudioRenderer_SetVolume_006: result is AUDIOSTREAM_ERROR_INVALID_PARAM(1).
+static napi_value AudioRendererSetVolume_06(napi_env env, napi_callback_info info)
+{
+    OH_AudioRenderer* audioRenderer = nullptr;
+    float volumeSet = 0.5;
+    OH_AudioStream_Result result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_GetVolume, volumeGet is %f, %d", volumeSet, result);
+
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetVolumeWithRamp_001: Test OH_Audio_Render_SetVolumeWithRamp interface.
+static napi_value AudioRendererSetVolumeWithRamp_01(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 0.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 0.0 result is %d", result);
+    int32_t durationMs = 1000;
+    volumeSet = 1.0;
+    result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
+    LOG(false, "OH_AudioRenderer_SetVolumeWithRamp 0.0->1.0 1000 result is %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetVolumeWithRamp_002: Test OH_Audio_Render_SetVolumeWithRamp interface.
+static napi_value AudioRendererSetVolumeWithRamp_02(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 1.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 1.0 result is %d", result);
+    int32_t durationMs = 100;
+    volumeSet = 0.0;
+    result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
+    LOG(false, "OH_AudioRenderer_SetVolumeWithRamp 1.0->0.0 100 result is %f, %d", volumeSet, result);
+    OH_AudioStreamBuilder_Destroy(builder);
+
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetVolumeWithRamp_003: Test OH_Audio_Render_SetVolumeWithRamp interface.
+static napi_value AudioRendererSetVolumeWithRamp_03(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 0.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 0.0 result is %d", result);
+    int32_t durationMs = 10;
+    volumeSet = 0.5;
+    result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
+    LOG(false, "OH_AudioRenderer_SetVolumeWithRamp 0.0->0.5 10 result is %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetVolumeWithRamp_004: Test OH_Audio_Render_SetVolumeWithRamp interface.
+static napi_value AudioRendererSetVolumeWithRamp_04(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 1.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 1.0 result is %d", result);
+    int32_t durationMs = 10;
+    volumeSet = 0.5;
+    result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
+    LOG(false, "OH_AudioRenderer_SetVolumeWithRamp 1.0->0.5 10 result is %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetVolumeWithRamp_005: Test OH_Audio_Render_SetVolumeWithRamp interface.
+static napi_value AudioRendererSetVolumeWithRamp_05(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 0.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 0.0 result is %d", result);
+    int32_t durationMs = 10;
+    volumeSet = 0.0;
+    result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
+    LOG(false, "OH_AudioRenderer_SetVolumeWithRamp 0.0->0.0 10 result is %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetVolumeWithRamp_006: Test OH_Audio_Render_SetVolumeWithRamp interface.
+static napi_value AudioRendererSetVolumeWithRamp_06(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 1.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 1.0 result is %d", result);
+    int32_t durationMs = 10;
+    volumeSet = 1.0;
+    result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
+    LOG(false, "OH_AudioRenderer_SetVolumeWithRamp 1.0->1.0 10 result is %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetVolumeWithRamp_007: Test OH_Audio_Render_SetVolumeWithRamp interface Err.
+static napi_value AudioRendererSetVolumeWithRamp_07(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 1.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 1.0 result is %d", result);
+    int32_t durationMs = 100;
+    volumeSet = 1.2;
+    result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
+    LOG(false, "OH_AudioRenderer_SetVolumeWithRamp 1.0->1.2 100 result is %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetVolumeWithRamp_008: Test OH_Audio_Render_SetVolumeWithRamp interface Err.
+static napi_value AudioRendererSetVolumeWithRamp_08(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    float volumeSet = 0.0;
+    result = OH_AudioRenderer_SetVolume(audioRenderer, volumeSet);
+    LOG(false, "OH_AudioRenderer_SetVolume 0.0 result is %d", result);
+    int32_t durationMs = 100;
+    volumeSet = -0.2;
+    result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
+    LOG(false, "OH_AudioRenderer_SetVolumeWithRamp 0.0->-0.2 100 result is %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetVolumeWithRamp_009: result is AUDIOSTREAM_ERROR_INVALID_PARAM(1).
+static napi_value AudioRendererSetVolumeWithRamp_09(napi_env env, napi_callback_info info)
+{
+    OH_AudioRenderer* audioRenderer = nullptr;
+    float volumeSet = 0.5;
+    int32_t durationMs = 10;
+    OH_AudioStream_Result result = OH_AudioRenderer_SetVolumeWithRamp(audioRenderer, volumeSet, durationMs);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static void AudioRendererOnMarkReachedCb(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)
+{
+    g_flag = true;
+    printf("AudioRendererOnMarkReachedCb samplePos: %d \n", samplePos);
+}
+
+// OH_Audio_Renderer_SetMarkPosition_001: result is AUDIOSTREAM_SUCCESS(0).(0)
+static napi_value AudioRendererSetOnMarkReached_01(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    uint32_t samplePos = 1;
+    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
+    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_01 result is: %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Renderer_SetMarkPosition_002: result is AUDIOSTREAM_ERROR_INVALID_PARAM(1)
+static napi_value AudioRendererSetOnMarkReached_02(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    uint32_t samplePos = 0;
+    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
+    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_02 result is: %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetMarkPosition_003: result is AUDIOSTREAM_SUCCESS(0).
+static napi_value AudioRendererSetOnMarkReached_03(napi_env env, napi_callback_info info)
+{
+    g_flag = false;
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
+    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
+    // set buffer size to g_frameSize
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    uint32_t samplePos = 1;
+    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
+    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_03 result is: %d", result);
+    OH_AudioRenderer_Start(audioRenderer);
+    sleep(2);
+    OH_AudioRenderer_Stop(audioRenderer);
+    if (!g_flag) {
+        result = AUDIOSTREAM_ERROR_SYSTEM;
+    }
+    OH_AudioRenderer_Release(audioRenderer);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Renderer_SetMarkPosition_004: result is AUDIOSTREAM_ERROR_INVALID_PARAM(1)
+static napi_value AudioRendererSetOnMarkReached_04(napi_env env, napi_callback_info info)
+{
+    OH_AudioRenderer* audioRenderer = nullptr;
+    uint32_t samplePos = 1;
+    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
+    OH_AudioStream_Result result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRendererSetOnMarkReached_05(napi_env env, napi_callback_info info)
+{
+    g_flag = false;
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
+    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
+    // set buffer size to g_frameSize
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    uint32_t samplePos = 1;
+    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
+    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_04 result is: %d", result);
+    OH_AudioRenderer_Start(audioRenderer);
+    sleep(2);
+    OH_AudioRenderer_Stop(audioRenderer);
+    if (!g_flag) {
+        result = AUDIOSTREAM_ERROR_SYSTEM;
+    }
+    OH_AudioRenderer_Release(audioRenderer);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRendererSetOnMarkReached_06(napi_env env, napi_callback_info info)
+{
+    g_flag = false;
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
+    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
+    // set buffer size to g_frameSize
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    uint32_t samplePos = 1000;
+    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
+    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_06result is: %d", result);
+    OH_AudioRenderer_Start(audioRenderer);
+    sleep(2);
+    OH_AudioRenderer_Stop(audioRenderer);
+    if (!g_flag) {
+        result = AUDIOSTREAM_ERROR_SYSTEM;
+    }
+    OH_AudioRenderer_Release(audioRenderer);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+//OH_AudioRenderer_CancelMark_001: result is AUDIOSTREAM_SUCCESS(0).
+static napi_value AudioRendererCancelMark_01(napi_env env, napi_callback_info info)
+{
+    g_flag = false;
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
+    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
+    // set buffer size to g_frameSize
+    result = OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    uint32_t samplePos = 1;
+    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
+    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_03 result is: %d", result);
+    result = OH_AudioRenderer_Start(audioRenderer);
+    sleep(2);
+    // CancelMark
+    result = OH_AudioRenderer_CancelMark(audioRenderer);
+    LOG(false, "OH_AudioRenderer_CancelMark result is %d", result);
+    OH_AudioRenderer_Stop(audioRenderer);
+    if (!g_flag) {
+        result = AUDIOSTREAM_ERROR_SYSTEM;
+    }
+    OH_AudioRenderer_Release(audioRenderer);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+//OH_AudioRenderer_CancelMark_002: result is AUDIOSTREAM_SUCCESS(0).
+static napi_value AudioRendererCancelMark_02(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    result = OH_AudioRenderer_CancelMark(audioRenderer);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+//OH_AudioRenderer_CancelMark_003: result is AUDIOSTREAM_ERROR_INVALID_PARAM(1).
+static napi_value AudioRendererCancelMark_03(napi_env env, napi_callback_info info)
+{
+    OH_AudioRenderer* audioRenderer = nullptr;
+    OH_AudioStream_Result result = OH_AudioRenderer_CancelMark(audioRenderer);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static int32_t AudioRendererInterruptEvent(OH_AudioRenderer* renderer,
+            void* userData,
+            OH_AudioInterrupt_ForceType type,
+            OH_AudioInterrupt_Hint hint)
+{
+    g_mark = true;
+    printf("AudioRendererInterruptEvent type = %d, hint = %d\n", type, hint);
+    return 0;
+}
+
+// OH_Audio_Render_SetInterruptMode_001: result is AUDIOSTREAM_SUCCESS(0).
+static napi_value AudioRendererSetInterruptMode_01(napi_env env, napi_callback_info info)
+{
+    g_mark = false;
+    // 1. create builder
+    OH_AudioStreamBuilder* builder1;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
+    OH_AudioStream_Usage usage = AUDIOSTREAM_USAGE_VOICE_COMMUNICATION;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_Create(&builder1, type);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+
+    OH_AudioStreamBuilder* builder2;
+    result = OH_AudioStreamBuilder_Create(&builder2, type);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+
+    // 2. set builder1 builder2 params
+    OH_AudioStreamBuilder_SetSamplingRate(builder1, g_samplingRate);
+    OH_AudioStreamBuilder_SetChannelCount(builder1, g_channelCount);
+    OH_AudioStreamBuilder_SetLatencyMode(builder1, (OH_AudioStream_LatencyMode)g_latencyMode);
+    OH_AudioStreamBuilder_SetSampleFormat(builder1, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioStreamBuilder_SetRendererInfo(builder1, usage);
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
+    callbacks.OH_AudioRenderer_OnInterruptEvent = AudioRendererInterruptEvent;
+    result = OH_AudioStreamBuilder_SetRendererCallback(builder1, callbacks, nullptr);
+    result = OH_AudioStreamBuilder_SetFrameSizeInCallback(builder1, g_frameSize);
+
+    OH_AudioStreamBuilder_SetSamplingRate(builder2, g_samplingRate);
+    OH_AudioStreamBuilder_SetChannelCount(builder2, g_channelCount);
+    OH_AudioStreamBuilder_SetLatencyMode(builder2, (OH_AudioStream_LatencyMode)g_latencyMode);
+    OH_AudioStreamBuilder_SetSampleFormat(builder2, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    usage = AUDIOSTREAM_USAGE_VOICE_ASSISTANT;
+    OH_AudioStreamBuilder_SetRendererInfo(builder2, usage);
+    result = OH_AudioStreamBuilder_SetRendererCallback(builder2, callbacks, nullptr);
+    result = OH_AudioStreamBuilder_SetFrameSizeInCallback(builder2, g_frameSize);
+
+    OH_AudioInterrupt_Mode mode = AUDIOSTREAM_INTERRUPT_MODE_SHARE;
+    result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder1, mode);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+    result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder2, mode);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+
+    // 3. create audioRenderer1 audioRenderer2
+    OH_AudioRenderer* audioRenderer1;
+    result = OH_AudioStreamBuilder_GenerateRenderer(builder1, &audioRenderer1);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+
+    OH_AudioRenderer* audioRenderer2;
+    result = OH_AudioStreamBuilder_GenerateRenderer(builder2, &audioRenderer2);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+
+    // 4. start
+    result = OH_AudioRenderer_Start(audioRenderer1);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+    sleep(1);
+    result = OH_AudioRenderer_Start(audioRenderer2);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+
+    // 5. stop and release client
+    OH_AudioRenderer_Stop(audioRenderer2);
+    OH_AudioRenderer_Release(audioRenderer2);
+
+    OH_AudioRenderer_Stop(audioRenderer1);
+    OH_AudioRenderer_Release(audioRenderer1);
+
+    result = OH_AudioStreamBuilder_Destroy(builder2);
+    result = OH_AudioStreamBuilder_Destroy(builder1);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetInterruptMode_002: result is AUDIOSTREAM_SUCCESS(0).
+static napi_value AudioRendererSetInterruptMode_02(napi_env env, napi_callback_info info)
+{
+    g_mark = false;
+    // 1. create builder
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
+    OH_AudioStream_Usage usage = AUDIOSTREAM_USAGE_MUSIC;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_Create(&builder, type);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+
+    OH_AudioStreamBuilder* builder2;
+    result = OH_AudioStreamBuilder_Create(&builder2, type);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+
+    // 2. set builder params
+    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
+    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioStreamBuilder_SetRendererInfo(builder, usage);
+
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
+    callbacks.OH_AudioRenderer_OnInterruptEvent = AudioRendererInterruptEvent;
+    result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
+    result = OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+
+    OH_AudioStreamBuilder_SetSamplingRate(builder2, g_samplingRate);
+    OH_AudioStreamBuilder_SetChannelCount(builder2, g_channelCount);
+    OH_AudioStreamBuilder_SetLatencyMode(builder2, (OH_AudioStream_LatencyMode)g_latencyMode);
+    OH_AudioStreamBuilder_SetSampleFormat(builder2, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    usage = AUDIOSTREAM_USAGE_MOVIE;
+    OH_AudioStreamBuilder_SetRendererInfo(builder2, usage);
+    result = OH_AudioStreamBuilder_SetRendererCallback(builder2, callbacks, nullptr);
+    result = OH_AudioStreamBuilder_SetFrameSizeInCallback(builder2, g_frameSize);
+
+    OH_AudioInterrupt_Mode mode = AUDIOSTREAM_INTERRUPT_MODE_INDEPENDENT;
+    result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder, mode);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+    result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder2, mode);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+
+    // 3. create audioRenderer1 audioRenderer2
+    OH_AudioRenderer* audioRenderer1;
+    result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer1);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioRenderer* audioRenderer2;
+    result = OH_AudioStreamBuilder_GenerateRenderer(builder2, &audioRenderer2);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+    // 4. start
+    result = OH_AudioRenderer_Start(audioRenderer1);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+    sleep(1);
+    result = OH_AudioRenderer_Start(audioRenderer2);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        result = AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+    }
+    sleep(2);
+
+    if (!g_mark) {
+        result = AUDIOSTREAM_ERROR_SYSTEM;
+    }
+
+    // 5. stop and release client
+    OH_AudioRenderer_Stop(audioRenderer2);
+    OH_AudioRenderer_Release(audioRenderer2);
+
+    OH_AudioRenderer_Stop(audioRenderer1);
+    OH_AudioRenderer_Release(audioRenderer1);
+
+    result = OH_AudioStreamBuilder_Destroy(builder);
+    result = OH_AudioStreamBuilder_Destroy(builder2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetInterruptMode_003: result is AUDIOSTREAM_ERROR_INVALID_PARAM(1).
+static napi_value AudioRendererSetInterruptMode_03(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = nullptr;
+    OH_AudioInterrupt_Mode mode = AUDIOSTREAM_INTERRUPT_MODE_SHARE;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder, mode);
+    LOG(false, "OH_AudioRenderer_SetInterruptMode_03, result is: %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_Audio_Render_SetInterruptMode_004: result is AUDIOSTREAM_ERROR_INVALID_PARAM(1).
+static napi_value AudioRendererSetInterruptMode_04(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = nullptr;
+    OH_AudioInterrupt_Mode mode = static_cast<OH_AudioInterrupt_Mode>(-2);
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererInterruptMode(builder, mode);
+    LOG(false, "OH_AudioRenderer_SetInterruptMode_04, result is: %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static int32_t DeviceChangeCallback(OH_AudioDevice_ChangeType type,
+    OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)
+{
+    printf("DeviceChangeCallback triggrred, ChangeType: %d\n", type);
+    if (type == AUDIO_DEVICE_CHANGE_TYPE_CONNECT) {
+        OH_AudioDeviceDescriptor *audioDeviceDescriptor = audioDeviceDescriptorArray->descriptors[0];
+        if (audioDeviceDescriptor) {
+            OH_AudioDevice_Role deviceRole = AUDIO_DEVICE_ROLE_OUTPUT;
+            OH_AudioDeviceDescriptor_GetDeviceRole(audioDeviceDescriptor, &deviceRole);
+            OH_AudioDevice_Type deviceType = AUDIO_DEVICE_TYPE_INVALID;
+            OH_AudioDeviceDescriptor_GetDeviceType(audioDeviceDescriptor, &deviceType);
+            printf("Receive new device: DeviceRole: %d, DeviceType: %d\n", deviceRole, deviceType);
+        }
+    }
+    return 0;
+}
+
+static napi_value AudioManagerGetAudioRoutingManager_01(napi_env env, napi_callback_info info)
+{ 
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    LOG(false, "AudioManagerGetAudioRoutingManager_01, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerGetDevices_01(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_NONE;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result1 == AUDIOCOMMON_RESULT_ERROR_NO_MEMORY && array == nullptr && result == AUDIOCOMMON_RESULT_SUCCESS) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerGetDevices_01, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerGetDevices_02(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr && result == AUDIOCOMMON_RESULT_SUCCESS) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    OH_AudioCommon_Result result3 = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result3 == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerGetDevices_02, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerGetDevices_03(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_INPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr && result == AUDIOCOMMON_RESULT_SUCCESS) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    OH_AudioCommon_Result result3 = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result3 == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerGetDevices_03, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerGetDevices_04(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr && result == AUDIOCOMMON_RESULT_SUCCESS) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    OH_AudioCommon_Result result3 = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result3 == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerGetDevices_04, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerGetDevices_05(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    int32_t flag = -1;
+    OH_AudioDevice_Flag deviceFlag = (OH_AudioDevice_Flag)flag;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result2 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result2 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result == AUDIOCOMMON_RESULT_SUCCESS) {
+        result3 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerGetDevices_05, result is: %d", result3);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerGetDevices_06(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    LOG(false, "AudioRoutingManagerGetDevices_06, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerGetDevices_07(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    int32_t flag = 4;
+    OH_AudioDevice_Flag deviceFlag = (OH_AudioDevice_Flag)flag;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result2 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result2 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result == AUDIOCOMMON_RESULT_SUCCESS) {
+        result3 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerGetDevices_07, result is: %d", result3);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_NONE;
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerRegisterDeviceChangeCallback_001, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerRegisterDeviceChangeCallback_002, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_INPUT;
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerRegisterDeviceChangeCallback_003, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_004(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerRegisterDeviceChangeCallback_004, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_005(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
+    OH_AudioCommon_Result result =
+        OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
+    LOG(false, "AudioRoutingManagerRegisterDeviceChangeCallback_005, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_006(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerRegisterDeviceChangeCallback_006, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_007(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    int32_t flag = -1;
+    OH_AudioDevice_Flag deviceFlag = (OH_AudioDevice_Flag)flag;
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerRegisterDeviceChangeCallback_007, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_008(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    int32_t flag = 4;
+    OH_AudioDevice_Flag deviceFlag = (OH_AudioDevice_Flag)flag;
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_RegisterDeviceChangeCallback(audioRoutingManager, deviceFlag, callback);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerRegisterDeviceChangeCallback_008, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerUnregisterDeviceChangeCallback_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_UnregisterDeviceChangeCallback(audioRoutingManager, callback);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerUnregisterDeviceChangeCallback_001, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerUnregisterDeviceChangeCallback_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = DeviceChangeCallback;
+    OH_AudioCommon_Result result = OH_AudioRoutingManager_UnregisterDeviceChangeCallback(audioRoutingManager, callback);
+    LOG(false, "AudioRoutingManagerUnregisterDeviceChangeCallback_002, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerUnregisterDeviceChangeCallback_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioRoutingManager_OnDeviceChangedCallback callback = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_UnregisterDeviceChangeCallback(audioRoutingManager, callback);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerUnregisterDeviceChangeCallback_003, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerReleaseDevices_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray = nullptr;
+    OH_AudioCommon_Result result =
+        OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, audioDeviceDescriptorArray);
+    LOG(false, "AudioRoutingManagerReleaseDevices_001, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerReleaseDevices_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, audioDeviceDescriptorArray);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioRoutingManagerReleaseDevices_002, result is: %d", result2);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceType_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (array) {
+        int size = array->size;
+        for (int i = 0; i < size; i++) {
+            OH_AudioDeviceDescriptor *descriptor = array->descriptors[i];
+            if (descriptor == nullptr) {
+                result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+            }
+            OH_AudioDevice_Type deviceType = AUDIO_DEVICE_TYPE_INVALID;
+            OH_AudioCommon_Result result4 = OH_AudioDeviceDescriptor_GetDeviceType(descriptor, &deviceType);
+            if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result4 == AUDIOCOMMON_RESULT_SUCCESS) {
+                result3 = AUDIOCOMMON_RESULT_SUCCESS;
+                printf("DeviceType: %d\n", deviceType);
+            } else {
+                result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+                break;
+            }
+        }
+    }
+    OH_AudioCommon_Result result5 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS && result3 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result5 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceType_001, result is: %d", result5);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceType_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceType(descriptor, nullptr);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceType_002, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceType_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceDescriptor *descriptor = nullptr;
+    OH_AudioDevice_Type deviceType = AUDIO_DEVICE_TYPE_INVALID;
+    OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceType(descriptor, &deviceType);
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceType_003, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceRole_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (array) {
+        int size = array->size;
+        for (int i = 0; i < size; i++) {
+            OH_AudioDeviceDescriptor *descriptor = array->descriptors[i];
+            if (descriptor == nullptr) {
+                result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+            }
+            OH_AudioDevice_Role deviceRole = AUDIO_DEVICE_ROLE_OUTPUT;
+            OH_AudioCommon_Result result4 = OH_AudioDeviceDescriptor_GetDeviceRole(descriptor, &deviceRole);
+            if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result4 == AUDIOCOMMON_RESULT_SUCCESS) {
+                result3 = AUDIOCOMMON_RESULT_SUCCESS;
+                printf("DeviceRole: %d\n", deviceRole);
+            } else {
+                result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+                break;
+            }
+        }
+    }
+    OH_AudioCommon_Result result5 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS && result3 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result5 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceRole_001, result is: %d", result5);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceRole_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceRole(descriptor, nullptr);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceRole_002, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceRole_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceDescriptor *descriptor = nullptr;
+    OH_AudioDevice_Role deviceRole = AUDIO_DEVICE_ROLE_OUTPUT;
+    OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceRole(descriptor, &deviceRole);
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceRole_003, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceId_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (array) {
+        int size = array->size;
+        for (int i = 0; i < size; i++) {
+            OH_AudioDeviceDescriptor *descriptor = array->descriptors[i];
+            if (descriptor == nullptr) {
+                result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+            }
+            uint32_t id = 0;
+            OH_AudioCommon_Result result4 = OH_AudioDeviceDescriptor_GetDeviceId(descriptor, &id);
+            if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result4 == AUDIOCOMMON_RESULT_SUCCESS) {
+                result3 = AUDIOCOMMON_RESULT_SUCCESS;
+                printf("DeviceId: %d\n", id);
+            } else {
+                result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+                break;
+            }
+        }
+    }
+    OH_AudioCommon_Result result5 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS && result3 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result5 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceId_001, result is: %d", result5);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceId_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceId(descriptor, nullptr);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceId_002, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceId_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceDescriptor *descriptor = nullptr;
+    uint32_t id = 0;
+    OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceId(descriptor, &id);
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceId_003, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceName_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (array) {
+        int size = array->size;
+        for (int i = 0; i < size; i++) {
+            OH_AudioDeviceDescriptor *descriptor = array->descriptors[i];
+            if (descriptor == nullptr) {
+                result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+            }
+            char* deviceName;
+            OH_AudioCommon_Result result4 = OH_AudioDeviceDescriptor_GetDeviceName(descriptor, &deviceName);
+            if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result4 == AUDIOCOMMON_RESULT_SUCCESS) {
+                result3 = AUDIOCOMMON_RESULT_SUCCESS;
+                printf("DeviceName: %s\n", deviceName);
+            } else {
+                result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+                break;
+            }
+        }
+    }
+    OH_AudioCommon_Result result5 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS && result3 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result5 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceName_001, result is: %d", result5);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceName_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceName(descriptor, nullptr);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceName_002, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceName_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceDescriptor *descriptor = nullptr;
+    char* deviceName;
+    OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceName(descriptor, &deviceName);
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceName_003, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceAddress_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (array) {
+        int size = array->size;
+        for (int i = 0; i < size; i++) {
+            OH_AudioDeviceDescriptor *descriptor = array->descriptors[i];
+            if (descriptor == nullptr) {
+                result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+            }
+            char *address;
+            OH_AudioCommon_Result result4 = OH_AudioDeviceDescriptor_GetDeviceAddress(descriptor, &address);
+            if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result4 == AUDIOCOMMON_RESULT_SUCCESS) {
+                result3 = AUDIOCOMMON_RESULT_SUCCESS;
+                printf("DeviceAddress: %s\n", address);
+            } else {
+                result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+                break;
+            }
+        }
+    }
+    OH_AudioCommon_Result result5 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS && result3 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result5 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceAddress_001, result is: %d", result5);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceAddress_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceAddress(descriptor, nullptr);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceAddress_002, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceAddress_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceDescriptor *descriptor = nullptr;
+    char *address;
+    OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceAddress(descriptor, &address);
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceAddress_003, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceSampleRates_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (array) {
+        int size = array->size;
+        for (int i = 0; i < size; i++) {
+            OH_AudioDeviceDescriptor *descriptor = array->descriptors[i];
+            if (descriptor == nullptr) {
+                result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+            }
+            uint32_t *sampleRates;
+            uint32_t size = 0;
+            OH_AudioCommon_Result result4 = OH_AudioDeviceDescriptor_GetDeviceSampleRates(descriptor, &sampleRates, &size);
+            if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result4 == AUDIOCOMMON_RESULT_SUCCESS) {
+                result3 = AUDIOCOMMON_RESULT_SUCCESS;
+                printf("DeviceSampleRates: %d, size = %d\n", *sampleRates, size);
+            } else {
+                result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+                break;
+            }
+        }
+    }
+    OH_AudioCommon_Result result5 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS && result3 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result5 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceSampleRates_001, result is: %d", result5);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceSampleRates_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    uint32_t size = 0;
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceSampleRates(descriptor, nullptr, &size);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceSampleRates_002, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceSampleRates_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    uint32_t *sampleRates;
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceSampleRates(descriptor, &sampleRates, nullptr);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceSampleRates_003, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceSampleRates_004(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceDescriptor *descriptor = nullptr;
+    uint32_t *sampleRates;
+    uint32_t size = 0;
+    OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceSampleRates(descriptor, &sampleRates, &size);
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceSampleRates_004, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceChannelCounts_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (array) {
+        int size = array->size;
+        for (int i = 0; i < size; i++) {
+            OH_AudioDeviceDescriptor *descriptor = array->descriptors[i];
+            if (descriptor == nullptr) {
+                result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+            }
+            uint32_t *channelCounts;
+            uint32_t channelSize = 0;
+            OH_AudioCommon_Result result4 = OH_AudioDeviceDescriptor_GetDeviceChannelCounts(descriptor, &channelCounts, &channelSize);
+            if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result4 == AUDIOCOMMON_RESULT_SUCCESS) {
+                result3 = AUDIOCOMMON_RESULT_SUCCESS;
+                printf("DeviceChannelCounts: %d, channelSize = %d\n", *channelCounts, channelSize);
+            } else {
+                result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+                break;
+            }
+        }
+    }
+    OH_AudioCommon_Result result5 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS && result3 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result5 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceChannelCounts_001, result is: %d", result5);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceChannelCounts_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    uint32_t channelSize = 0;
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceChannelCounts(descriptor, nullptr, &channelSize);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceChannelCounts_002, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceChannelCounts_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    uint32_t *channelCounts;
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceChannelCounts(descriptor, &channelCounts, nullptr);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceChannelCounts_003, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceChannelCounts_004(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceDescriptor *descriptor = nullptr;
+    uint32_t *channelCounts;
+    uint32_t channelSize = 0;
+    OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceChannelCounts(descriptor, &channelCounts, &channelSize);
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceChannelCounts_004, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceDisplayName_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (array) {
+        int size = array->size;
+        for (int i = 0; i < size; i++) {
+            OH_AudioDeviceDescriptor *descriptor = array->descriptors[i];
+            if (descriptor == nullptr) {
+                result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+            }
+            char *displayName;
+            OH_AudioCommon_Result result4 = OH_AudioDeviceDescriptor_GetDeviceDisplayName(descriptor, &displayName);
+            if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result4 == AUDIOCOMMON_RESULT_SUCCESS) {
+                result3 = AUDIOCOMMON_RESULT_SUCCESS;
+                printf("DeviceDisplayName: %s\n", displayName);
+            } else {
+                result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+                break;
+            }
+        }
+    }
+    OH_AudioCommon_Result result5 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS && result3 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result5 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceDisplayName_001, result is: %d", result5);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceDisplayName_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceDisplayName(descriptor, nullptr);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceDisplayName_002, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceDisplayName_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceDescriptor *descriptor = nullptr;
+    char *displayName;
+    OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceDisplayName(descriptor, &displayName);
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceDisplayName_003, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceEncodingTypes_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_ALL;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioCommon_Result result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (array) {
+        int size = array->size;
+        for (int i = 0; i < size; i++) {
+            OH_AudioDeviceDescriptor *descriptor = array->descriptors[i];
+            if (descriptor == nullptr) {
+                result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+            }
+            OH_AudioStream_EncodingType *encodingTypes;
+            uint32_t encodingTypeSize = 0;
+            OH_AudioCommon_Result result4 = OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(descriptor, &encodingTypes, &encodingTypeSize);
+            if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result4 == AUDIOCOMMON_RESULT_SUCCESS) {
+                result3 = AUDIOCOMMON_RESULT_SUCCESS;
+                printf("DeviceEncodingTypes: %d, encodingTypeSize: %d\n", *encodingTypes, encodingTypeSize);
+            } else {
+                result3 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+                break;
+            }
+        }
+    }
+    OH_AudioCommon_Result result5 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    result = OH_AudioRoutingManager_ReleaseDevices(audioRoutingManager, array);
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result2 == AUDIOCOMMON_RESULT_SUCCESS && result3 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result5 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceEncodingTypes_001, result is: %d", result5);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceEncodingTypes_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    uint32_t encodingTypeSize = 0;
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(descriptor, nullptr, &encodingTypeSize);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceEncodingTypes_002, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceEncodingTypes_003(napi_env env, napi_callback_info info)
+{
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (audioRoutingManager == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioDevice_Flag deviceFlag = AUDIO_DEVICE_FLAG_OUTPUT;
+    OH_AudioDeviceDescriptorArray *array = nullptr;
+    OH_AudioCommon_Result result1 = OH_AudioRoutingManager_GetDevices(audioRoutingManager, deviceFlag, &array);
+    OH_AudioCommon_Result result2 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS && result1 == AUDIOCOMMON_RESULT_SUCCESS && array != nullptr) {
+        result2 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+
+    OH_AudioDeviceDescriptor *descriptor = array->descriptors[0];
+    if (descriptor == nullptr) {
+        result = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    }
+    OH_AudioStream_EncodingType *encodingTypes;
+    OH_AudioCommon_Result result3 = OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(descriptor, &encodingTypes, nullptr);
+    OH_AudioCommon_Result result4 = AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE;
+    if (result != AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE && result3 == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && result2 == AUDIOCOMMON_RESULT_SUCCESS) {
+        result4 = AUDIOCOMMON_RESULT_SUCCESS;
+    }
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceEncodingTypes_003, result is: %d", result4);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004(napi_env env, napi_callback_info info)
+{
+    OH_AudioDeviceDescriptor *descriptor = nullptr;
+    OH_AudioStream_EncodingType *encodingTypes;
+    uint32_t encodingTypeSize = 0;
+    OH_AudioCommon_Result result = OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(descriptor, &encodingTypes, &encodingTypeSize);
+    LOG(false, "AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004, result is: %d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1009,7 +3050,87 @@ static napi_value Init(napi_env env, napi_value exports)
         {"audioRenderGetChannelCount", nullptr, AudioRenderGetChannelCount, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioStreamBuilderSetFrameSizeInCallback", nullptr, AudioStreamBuilderSetFrameSizeInCallback,
             nullptr, nullptr, nullptr, napi_default, nullptr},
-
+        {"audioRendererGetVolume_01", nullptr, AudioRendererGetVolume_01, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererGetVolume_02", nullptr, AudioRendererGetVolume_02, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolume_01", nullptr, AudioRendererSetVolume_01, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolume_02", nullptr, AudioRendererSetVolume_02, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolume_03", nullptr, AudioRendererSetVolume_03, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolume_04", nullptr, AudioRendererSetVolume_04, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolume_05", nullptr, AudioRendererSetVolume_05, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolume_06", nullptr, AudioRendererSetVolume_06, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolumeWithRamp_01", nullptr, AudioRendererSetVolumeWithRamp_01, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolumeWithRamp_02", nullptr, AudioRendererSetVolumeWithRamp_02, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolumeWithRamp_03", nullptr, AudioRendererSetVolumeWithRamp_03, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolumeWithRamp_04", nullptr, AudioRendererSetVolumeWithRamp_04, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolumeWithRamp_05", nullptr, AudioRendererSetVolumeWithRamp_05, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolumeWithRamp_06", nullptr, AudioRendererSetVolumeWithRamp_06, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolumeWithRamp_07", nullptr, AudioRendererSetVolumeWithRamp_07, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolumeWithRamp_08", nullptr, AudioRendererSetVolumeWithRamp_08, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetVolumeWithRamp_09", nullptr, AudioRendererSetVolumeWithRamp_09, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetOnMarkReached_01", nullptr, AudioRendererSetOnMarkReached_01, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetOnMarkReached_02", nullptr, AudioRendererSetOnMarkReached_02, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetOnMarkReached_03", nullptr, AudioRendererSetOnMarkReached_03, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetOnMarkReached_04", nullptr, AudioRendererSetOnMarkReached_04, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetOnMarkReached_05", nullptr, AudioRendererSetOnMarkReached_05, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetOnMarkReached_06", nullptr, AudioRendererSetOnMarkReached_06, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererCancelMark_01", nullptr, AudioRendererCancelMark_01, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererCancelMark_02", nullptr, AudioRendererCancelMark_02, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererCancelMark_03", nullptr, AudioRendererCancelMark_03, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetInterruptMode_01", nullptr, AudioRendererSetInterruptMode_01, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetInterruptMode_02", nullptr, AudioRendererSetInterruptMode_02, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetInterruptMode_03", nullptr, AudioRendererSetInterruptMode_03, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetInterruptMode_04", nullptr, AudioRendererSetInterruptMode_04, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioManagerGetAudioRoutingManager_01", nullptr, AudioManagerGetAudioRoutingManager_01, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerGetDevices_01", nullptr, AudioRoutingManagerGetDevices_01, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerGetDevices_02", nullptr, AudioRoutingManagerGetDevices_02, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerGetDevices_03", nullptr, AudioRoutingManagerGetDevices_03, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerGetDevices_04", nullptr, AudioRoutingManagerGetDevices_04, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerGetDevices_05", nullptr, AudioRoutingManagerGetDevices_05, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerGetDevices_06", nullptr, AudioRoutingManagerGetDevices_06, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerGetDevices_07", nullptr, AudioRoutingManagerGetDevices_07, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerRegisterDeviceChangeCallback_001", nullptr, AudioRoutingManagerRegisterDeviceChangeCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerRegisterDeviceChangeCallback_002", nullptr, AudioRoutingManagerRegisterDeviceChangeCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerRegisterDeviceChangeCallback_003", nullptr, AudioRoutingManagerRegisterDeviceChangeCallback_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerRegisterDeviceChangeCallback_004", nullptr, AudioRoutingManagerRegisterDeviceChangeCallback_004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerRegisterDeviceChangeCallback_005", nullptr, AudioRoutingManagerRegisterDeviceChangeCallback_005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerRegisterDeviceChangeCallback_006", nullptr, AudioRoutingManagerRegisterDeviceChangeCallback_006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerRegisterDeviceChangeCallback_007", nullptr, AudioRoutingManagerRegisterDeviceChangeCallback_007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerRegisterDeviceChangeCallback_008", nullptr, AudioRoutingManagerRegisterDeviceChangeCallback_008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerUnregisterDeviceChangeCallback_001", nullptr, AudioRoutingManagerUnregisterDeviceChangeCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerUnregisterDeviceChangeCallback_002", nullptr, AudioRoutingManagerUnregisterDeviceChangeCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerUnregisterDeviceChangeCallback_003", nullptr, AudioRoutingManagerUnregisterDeviceChangeCallback_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerReleaseDevices_001", nullptr, AudioRoutingManagerReleaseDevices_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerReleaseDevices_002", nullptr, AudioRoutingManagerReleaseDevices_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceType_001", nullptr, AudioAudioDeviceDescriptorGetDeviceType_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceType_002", nullptr, AudioAudioDeviceDescriptorGetDeviceType_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceType_003", nullptr, AudioAudioDeviceDescriptorGetDeviceType_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceRole_001", nullptr, AudioAudioDeviceDescriptorGetDeviceRole_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceRole_002", nullptr, AudioAudioDeviceDescriptorGetDeviceRole_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceRole_003", nullptr, AudioAudioDeviceDescriptorGetDeviceRole_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceId_001", nullptr, AudioAudioDeviceDescriptorGetDeviceId_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceId_002", nullptr, AudioAudioDeviceDescriptorGetDeviceId_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceId_003", nullptr, AudioAudioDeviceDescriptorGetDeviceId_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceName_001", nullptr, AudioAudioDeviceDescriptorGetDeviceName_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceName_002", nullptr, AudioAudioDeviceDescriptorGetDeviceName_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceName_003", nullptr, AudioAudioDeviceDescriptorGetDeviceName_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceAddress_001", nullptr, AudioAudioDeviceDescriptorGetDeviceAddress_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceAddress_002", nullptr, AudioAudioDeviceDescriptorGetDeviceAddress_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceAddress_003", nullptr, AudioAudioDeviceDescriptorGetDeviceAddress_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceSampleRates_001", nullptr, AudioAudioDeviceDescriptorGetDeviceSampleRates_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceSampleRates_002", nullptr, AudioAudioDeviceDescriptorGetDeviceSampleRates_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceSampleRates_003", nullptr, AudioAudioDeviceDescriptorGetDeviceSampleRates_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceSampleRates_004", nullptr, AudioAudioDeviceDescriptorGetDeviceSampleRates_004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceChannelCounts_001", nullptr, AudioAudioDeviceDescriptorGetDeviceChannelCounts_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceChannelCounts_002", nullptr, AudioAudioDeviceDescriptorGetDeviceChannelCounts_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceChannelCounts_003", nullptr, AudioAudioDeviceDescriptorGetDeviceChannelCounts_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceChannelCounts_004", nullptr, AudioAudioDeviceDescriptorGetDeviceChannelCounts_004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceDisplayName_001", nullptr, AudioAudioDeviceDescriptorGetDeviceDisplayName_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceDisplayName_002", nullptr, AudioAudioDeviceDescriptorGetDeviceDisplayName_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceDisplayName_003", nullptr, AudioAudioDeviceDescriptorGetDeviceDisplayName_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceEncodingTypes_001", nullptr, AudioAudioDeviceDescriptorGetDeviceEncodingTypes_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceEncodingTypes_002", nullptr, AudioAudioDeviceDescriptorGetDeviceEncodingTypes_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceEncodingTypes_003", nullptr, AudioAudioDeviceDescriptorGetDeviceEncodingTypes_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioDeviceDescriptorGetDeviceEncodingTypes_004", nullptr, AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
