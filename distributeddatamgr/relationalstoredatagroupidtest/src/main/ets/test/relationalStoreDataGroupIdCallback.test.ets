@@ -67,13 +67,13 @@ export default function relationalStoreDataGroupIdCallback() {
       try {
         relationalStore.getRdbStore(context, STORE_CONFIG, async function (err, rdbStore) {
           console.info(TAG, `Get RdbStore successfully.`);
-          done();
           if (err) {
             console.info(TAG, `Get RdbStore failed.` + `  rdbStore = ${rdbStore} , err = ${err}`);
             expect().assertFail();
           }
           expect(rdbStore != undefined).assertTrue();
           await relationalStore.deleteRdbStore(context, STORE_CONFIG);
+		  done();
         })
       } catch (errInfo) {
         console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
@@ -99,13 +99,13 @@ export default function relationalStoreDataGroupIdCallback() {
       try {
         relationalStore.getRdbStore(context, STORE_CONFIG, async function (err, rdbStore) {
           console.info(TAG, `Get RdbStore successfully.`);
-          done();
           if (err) {
             console.info(TAG, `Get RdbStore failed.` + `  rdbStore = ${rdbStore} , err = ${err}`);
             expect().assertFail();
           }
           expect(rdbStore != undefined).assertTrue();
           await relationalStore.deleteRdbStore(context, STORE_CONFIG);
+		  done();
         })
       } catch (errInfo) {
         console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
@@ -158,7 +158,6 @@ export default function relationalStoreDataGroupIdCallback() {
           };
           try {
             relationalStore.getRdbStore(context, STORE_CONFIG, async function (err, rdbStore) {
-              done();
               if (err) {
                 console.info(TAG, `Get RdbStore failed.` + `  rdbStore = ${rdbStore} , err = ${err}`);
                 expect().assertFail();
@@ -166,6 +165,7 @@ export default function relationalStoreDataGroupIdCallback() {
               console.info(TAG, `Get RdbStore successfully.` + `  rdbStore = ${rdbStore} , err = ${err}`);
               expect(rdbStore != undefined).assertTrue();
               await relationalStore.deleteRdbStore(context, STORE_CONFIG);
+			  done();
             })
           } catch (errInfo) {
             console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
