@@ -55,6 +55,22 @@ import Tabs_barWidHei from './TabsTest/Tabs_ParmsChange/Tabs_barWidHei.test';
 import Tabs_scrollable from './TabsTest/Tabs_ParmsChange/Tabs_scrollable.test';
 import waterFlow_WaterFlowFrictionTest from './WaterFlowTest/WaterFlow_attribute/WaterFlow_WaterFlowFriction.test';
 import scroll_ScrollFrictionTest from './ScrollTest/Scroll_ScrollFriction.test';
+import swiperIndex from './SwiperTest/Swiper_ParmsChange/swiperIndex.test.ets';
+import swiperVertical from './SwiperTest/Swiper_ParmsChange/swiperVertical.test.ets';
+import swiperLoopTrue from './SwiperTest/Swiper_ParmsChange/swiperLoopTrue.test.ets';
+import swiperLoopFalse from './SwiperTest/Swiper_ParmsChange/swiperLoopFalse.test.ets';
+import swiperItemSpace from './SwiperTest/Swiper_ParmsChange/swiperItemSpace.test.ets';
+import swiperPadding from './SwiperTest/Swiper_ParmsChange/swiperPadding.test.ets';
+import swiperMargin from './SwiperTest/Swiper_ParmsChange/swiperMargin.test.ets';
+import swiperMarPad from './SwiperTest/Swiper_ParmsChange/swiperMarPad.test.ets';
+import swiperDisableSwipeTrue from './SwiperTest/Swiper_ParmsChange/swiperDisableSwipeTrue.test.ets';
+import swiperDisableSwipeFalse from './SwiperTest/Swiper_ParmsChange/swiperDisableSwipeFalse.test.ets';
+import swiperItemSize from './SwiperTest/Swiper_ItemChange/swiperItemSize.test.ets';
+import swiperItemSize2 from './SwiperTest/Swiper_ItemChange/swiperItemSize2.test.ets';
+import swiperItemPadding from './SwiperTest/Swiper_ItemChange/swiperItemPadding.test.ets';
+import swiperItemMargin from './SwiperTest/Swiper_ItemChange/swiperItemMargin.test.ets';
+import swiperItemPadMar from './SwiperTest/Swiper_ItemChange/swiperItemPadMar.test.ets';
+import swiperItemVisibility from './SwiperTest/Swiper_ItemChange/swiperItemVisibility.test.ets';
 
 export default function testsuite() {
   listJsunit();
@@ -100,4 +116,20 @@ export default function testsuite() {
   Tabs_scrollable();
   waterFlow_WaterFlowFrictionTest()
   scroll_ScrollFrictionTest()
+  swiperIndex()
+  swiperVertical()
+  swiperLoopTrue()
+  swiperLoopFalse()
+  swiperItemSpace()
+  swiperPadding()
+  swiperMargin()
+  swiperMarPad()
+  swiperDisableSwipeTrue()
+  swiperDisableSwipeFalse()
+  swiperItemSize()
+  swiperItemSize2()
+  swiperItemPadding()
+  swiperItemMargin()
+  swiperItemPadMar()
+  swiperItemVisibility()
 }

@@ -542,6 +542,16 @@ import Grid_Row_Breakpoints_Incremental
 import Grid_Row_Breakpoints_Negative from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Negative.test';
 import Grid_Row_Breakpoints_Quantity from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Quantity.test';
 import GridRow_onBreakpoint from './GridTest/Grid_Row/onBreakpointChange/onBreakpointChange.test';
+import Grid_Col_Span_Default from './GridColTest/Grid_Col_Span/Grid_Col_Span_Default.test.ets';
+import Grid_Col_Span_Number from './GridColTest/Grid_Col_Span/Grid_Col_Span_Number.test.ets';
+import Grid_Col_Span_GridColColumnOption from './GridColTest/Grid_Col_Span/Grid_Col_Span_GridColColumnOption.test.ets';
+import Grid_Col_Order_Default from './GridColTest/Grid_Col_Order/Grid_Col_Order_Default.test.ets';
+import Grid_Col_Order_Number from './GridColTest/Grid_Col_Order/Grid_Col_Order_Number.test.ets';
+import Grid_Col_Order_GridColColumnOption from './GridColTest/Grid_Col_Order/Grid_Col_Order_GridColColumnOption.test.ets';
+import Grid_Col_Offset_Default from './GridColTest/Grid_Col_Offset/Grid_Col_Offset_Default.test.ets';
+import Grid_Col_Offset_Number from './GridColTest/Grid_Col_Offset/Grid_Col_Offset_Number.test.ets';
+import Grid_Col_Offset_GridColColumnOption from './GridColTest/Grid_Col_Offset/Grid_Col_Offset_GridColColumnOption.test.ets';
+  
 export default function testsuite() {
   FolderStack3ApiJsunit()
   enumFolderTest()
@@ -990,4 +1000,13 @@ export default function testsuite() {
   Grid_Row_Breakpoints_Negative()
   Grid_Row_Breakpoints_Quantity()
   GridRow_onBreakpoint()
+  Grid_Col_Span_Default()
+  Grid_Col_Span_Number()
+  Grid_Col_Span_GridColColumnOption()
+  Grid_Col_Order_Default()
+  Grid_Col_Order_Number()
+  Grid_Col_Order_GridColColumnOption()
+  Grid_Col_Offset_Default()
+  Grid_Col_Offset_Number()
+  Grid_Col_Offset_GridColColumnOption()
 }
