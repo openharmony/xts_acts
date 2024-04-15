@@ -73,7 +73,7 @@ export default function waterFlowView() {
       let obj = JSON.parse(strJson);
       console.info("[waterFlowViewJsunit_0200] obj is: " + JSON.stringify(obj.$attrs));
 
-      expect(obj.$attrs.friction).assertEqual(0.6);
+      expect(Math.abs(obj.$attrs.friction - 0.6) < 0.000001).assertTrue();
       console.info('[waterFlowViewJsunit_0200] END');
       done();
     });

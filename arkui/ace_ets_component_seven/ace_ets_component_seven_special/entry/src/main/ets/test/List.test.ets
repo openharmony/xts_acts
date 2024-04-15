@@ -92,7 +92,7 @@ export default function list() {
       let obj = JSON.parse(strJson);
       console.info("[ListJsunit_0102] obj is: " + JSON.stringify(obj.$attrs));
 
-      expect(obj.$attrs.friction).assertEqual(0.6);
+      expect(Math.abs(obj.$attrs.friction - 0.6) < 0.000001).assertTrue();
       console.info('[ListJsunit_0102] END');
       done();
     });

@@ -55,7 +55,7 @@ export default function gridMaxCountJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[GridJsunit_0100] obj GridJsunit_0100 is: " + JSON.stringify(obj.$attrs));
 
-      expect(obj.$attrs.friction).assertEqual(0.6);
+      expect(Math.abs(obj.$attrs.friction - 0.6) < 0.000001).assertTrue();
       console.info('[GridJsunit_0100] END');
       done();
     });

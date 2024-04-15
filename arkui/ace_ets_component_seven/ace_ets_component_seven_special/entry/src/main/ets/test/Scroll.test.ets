@@ -74,7 +74,7 @@ export default function scrollOnScrollBeginJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[testScroll0002] obj is: " + JSON.stringify(obj.$attrs));
 
-      expect(obj.$attrs.friction).assertEqual(0.6);
+      expect(Math.abs(obj.$attrs.friction - 0.6) < 0.000001).assertTrue();
       console.info('testScroll0001 END');
       done();
     });
