@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll, afterEach } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, afterEach } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import commonEventManager from '@ohos.commonEventManager';
-import Want from '@ohos.app.ability.Want';
+import { Driver, ON } from '@ohos.UiTest';
 
-let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+let driver = Driver.create();
+let TestUiAbility;
+let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const sleep = async delay => {
     return new Promise((resolve, _) => {
         setTimeout(async () => {
@@ -30,23 +32,8 @@ const sleep = async delay => {
 export default function stageAppContextTest(abilityContext) {
     describe('ActsStageAppContextTest', function () {
 
-        beforeAll(async (done) => {
-            console.log("ActsStageContextPropertiesTest afterAll called");
-            await abilityContext.startAbility({
-                bundleName: "com.example.stageappcontexttest",
-                abilityName: "ServiceAbility",
-            }).then((data) => {
-                console.log('ActsStageContextPropertiesTest - ServiceAbility: ' + JSON.stringify(data));
-            }).catch((err) => {
-                console.log("ActsStageContextPropertiesTest - ServiceAbility failed: "
-                    + JSON.stringify(err));
-                done()
-            })
-
-            setTimeout(function () {
-                console.log("ActsStageContextPropertiesTest afterAll end");
-                done();
-            }, 1000);
+        beforeAll(async () => {
+            TestUiAbility = await abilityDelegator.getCurrentTopAbility();
         })
 
         afterEach(async (done) => {
@@ -289,15 +276,15 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.level   3
          */
         it('SUB_AA_OpenHarmony_ApplicationContext_1800', 0, async function (done) {
-          let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1800";
-          console.log(TAG + " --- start");
-          let context = globalThis.abilityStageContext.getApplicationContext();
-          context.getProcessRunningInformation((err, data) => {
-              console.log(TAG + " result = " + JSON.stringify(data));
-              expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
-              expect(typeof data[0].state).assertEqual("number");
-          })
-          done();
+            let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1800";
+            console.log(TAG + " --- start");
+            let context = globalThis.abilityStageContext.getApplicationContext();
+            context.getProcessRunningInformation((err, data) => {
+                console.log(TAG + " result = " + JSON.stringify(data));
+                expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
+                expect(typeof data[0].state).assertEqual("number");
+            })
+            done();
         });
 
         /**
@@ -318,8 +305,10 @@ export default function stageAppContextTest(abilityContext) {
             let subscriberInfo_startdebugapp = {
                 events: ['clearUpApplicationDataEvent'],
             };
-            let startAbility = (notClear = false) => {
-                abilityDelegator.startAbility({
+            let startAbility = async (notClear = false) => {
+                await abilityDelegator.doAbilityForeground(TestUiAbility);
+                await sleep(3000);
+                await abilityContext.startAbility({
                     bundleName: 'com.example.clearUpApplicationDataHelp',
                     abilityName: 'MainAbility',
                     parameters: {
@@ -327,6 +316,10 @@ export default function stageAppContextTest(abilityContext) {
                         startType,
                         createFile
                     }
+                }).then(async () => {
+                    await sleep(3000);
+                    let openBtn = await driver.findComponent(ON.text('打开'));
+                    openBtn?.click();
                 }).catch((error) => {
                     console.log(TAG + 'start clearUpApplicationDataHelp failed:' + JSON.stringify(error));
                 });
@@ -361,7 +354,7 @@ export default function stageAppContextTest(abilityContext) {
                 console.log(TAG + 'Subscriber create fail ' + JSON.stringify(error));
             }
             await sleep(100);
-            startAbility();
+            await startAbility();
         });
 
         /**
@@ -382,8 +375,10 @@ export default function stageAppContextTest(abilityContext) {
             let subscriberInfo_startdebugapp = {
                 events: ['clearUpApplicationDataEvent'],
             };
-            let startAbility = (notClear = false) => {
-                abilityDelegator.startAbility({
+            let startAbility = async (notClear = false) => {
+                await abilityDelegator.doAbilityForeground(TestUiAbility);
+                await sleep(3000);
+                await abilityContext.startAbility({
                     bundleName: 'com.example.clearUpApplicationDataHelp',
                     abilityName: 'MainAbility',
                     parameters: {
@@ -391,6 +386,10 @@ export default function stageAppContextTest(abilityContext) {
                         startType,
                         createFile
                     }
+                }).then(async () => {
+                    await sleep(3000);
+                    let openBtn = await driver.findComponent(ON.text('打开'));
+                    openBtn?.click();
                 }).catch((error) => {
                     console.log(TAG + 'start clearUpApplicationDataHelp failed:' + JSON.stringify(error));
                 });
@@ -425,7 +424,7 @@ export default function stageAppContextTest(abilityContext) {
                 console.log(TAG + 'Subscriber create fail ' + JSON.stringify(error));
             }
             await sleep(100);
-            startAbility();
+            await startAbility();
         });
 
         /**
@@ -446,8 +445,10 @@ export default function stageAppContextTest(abilityContext) {
             let subscriberInfo_startdebugapp = {
                 events: ['clearUpApplicationDataEventFeature'],
             };
-            let startAbility = (notClear = false) => {
-                abilityDelegator.startAbility({
+            let startAbility = async (notClear = false) => {
+                await abilityDelegator.doAbilityForeground(TestUiAbility);
+                await sleep(3000);
+                await abilityContext.startAbility({
                     bundleName: 'com.example.clearUpApplicationDataHelp',
                     abilityName: 'MainAbilityFeature',
                     parameters: {
@@ -455,6 +456,10 @@ export default function stageAppContextTest(abilityContext) {
                         startType,
                         createFile
                     }
+                }).then(async () => {
+                    await sleep(3000);
+                    let openBtn = await driver.findComponent(ON.text('打开'));
+                    openBtn?.click();
                 }).catch((error) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpFeature failed:' + JSON.stringify(error));
                 });
@@ -489,7 +494,7 @@ export default function stageAppContextTest(abilityContext) {
                 console.log(TAG + 'Subscriber create fail ' + JSON.stringify(error));
             }
             await sleep(100);
-            startAbility();
+            await startAbility();
         });
 
         /**
@@ -510,8 +515,10 @@ export default function stageAppContextTest(abilityContext) {
             let subscriberInfo_startdebugapp = {
                 events: ['clearUpApplicationDataEventFeature'],
             };
-            let startAbility = (notClear = false) => {
-                abilityDelegator.startAbility({
+            let startAbility = async (notClear = false) => {
+                await abilityDelegator.doAbilityForeground(TestUiAbility);
+                await sleep(3000);
+                await abilityContext.startAbility({
                     bundleName: 'com.example.clearUpApplicationDataHelp',
                     abilityName: 'MainAbilityFeature',
                     parameters: {
@@ -519,6 +526,10 @@ export default function stageAppContextTest(abilityContext) {
                         startType,
                         createFile
                     }
+                }).then(async () => {
+                    await sleep(3000);
+                    let openBtn = await driver.findComponent(ON.text('打开'));
+                    openBtn?.click();
                 }).catch((error) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpFeature failed:' + JSON.stringify(error));
                 });
@@ -553,7 +564,7 @@ export default function stageAppContextTest(abilityContext) {
                 console.log(TAG + 'Subscriber create fail ' + JSON.stringify(error));
             }
             await sleep(100);
-            startAbility();
+            await startAbility();
         });
 
         /**
@@ -574,8 +585,10 @@ export default function stageAppContextTest(abilityContext) {
             let subscriberInfo_startdebugapp = {
                 events: ['clearUpApplicationDataEventSystem'],
             };
-            let startAbility = (notClear = false) => {
-                abilityDelegator.startAbility({
+            let startAbility = async (notClear = false) => {
+                await abilityDelegator.doAbilityForeground(TestUiAbility);
+                await sleep(3000);
+                await abilityContext.startAbility({
                     bundleName: 'com.example.clearUpApplicationDataHelpSystem',
                     abilityName: 'MainAbility',
                     parameters: {
@@ -583,6 +596,10 @@ export default function stageAppContextTest(abilityContext) {
                         startType,
                         createFile
                     }
+                }).then(async () => {
+                    await sleep(3000);
+                    let openBtn = await driver.findComponent(ON.text('打开'));
+                    openBtn?.click();
                 }).catch((error) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpSystem failed:' + JSON.stringify(error));
                 });
@@ -617,7 +634,7 @@ export default function stageAppContextTest(abilityContext) {
                 console.log(TAG + 'Subscriber create fail ' + JSON.stringify(error));
             }
             await sleep(100);
-            startAbility();
+            await startAbility();
         });
 
         /**
@@ -638,8 +655,10 @@ export default function stageAppContextTest(abilityContext) {
             let subscriberInfo_startdebugapp = {
                 events: ['clearUpApplicationDataEventSystem'],
             };
-            let startAbility = (notClear = false) => {
-                abilityDelegator.startAbility({
+            let startAbility = async (notClear = false) => {
+                await abilityDelegator.doAbilityForeground(TestUiAbility);
+                await sleep(3000);
+                await abilityContext.startAbility({
                     bundleName: 'com.example.clearUpApplicationDataHelpSystem',
                     abilityName: 'MainAbility',
                     parameters: {
@@ -647,6 +666,10 @@ export default function stageAppContextTest(abilityContext) {
                         startType,
                         createFile
                     }
+                }).then(async () => {
+                    await sleep(3000);
+                    let openBtn = await driver.findComponent(ON.text('打开'));
+                    openBtn?.click();
                 }).catch((error) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpSystem failed:' + JSON.stringify(error));
                 });
@@ -681,7 +704,7 @@ export default function stageAppContextTest(abilityContext) {
                 console.log(TAG + 'Subscriber create fail ' + JSON.stringify(error));
             }
             await sleep(100);
-            startAbility();
+            await startAbility();
         });
 
         /**
@@ -699,7 +722,9 @@ export default function stageAppContextTest(abilityContext) {
             console.log(TAG + ' --- start');
             let createFile = true;
             let startEntery = async () => {
-                await abilityDelegator.startAbility({
+                await abilityDelegator.doAbilityForeground(TestUiAbility);
+                await sleep(3000);
+                await abilityContext.startAbility({
                     bundleName: 'com.example.clearUpApplicationDataHelp',
                     abilityName: 'MainAbility',
                     parameters: {
@@ -707,6 +732,10 @@ export default function stageAppContextTest(abilityContext) {
                         startType,
                         createFile
                     }
+                }).then(async () => {
+                    await sleep(3000);
+                    let openBtn = await driver.findComponent(ON.text('打开'));
+                    openBtn?.click();
                 }).catch((error) => {
                     console.log(TAG + 'start clearUpApplicationDataHelp failed:' + JSON.stringify(error));
                 });
@@ -749,7 +778,9 @@ export default function stageAppContextTest(abilityContext) {
             }
             let createFileSys = true;
             let startSystem = async (notClear = false) => {
-                await abilityDelegator.startAbility({
+                await abilityDelegator.doAbilityForeground(TestUiAbility);
+                await sleep(3000);
+                await abilityContext.startAbility({
                     bundleName: 'com.example.clearUpApplicationDataHelpSystem',
                     abilityName: 'MainAbility',
                     parameters: {
@@ -757,6 +788,10 @@ export default function stageAppContextTest(abilityContext) {
                         startType,
                         createFile: createFileSys
                     }
+                }).then(async () => {
+                    await sleep(3000);
+                    let openBtn = await driver.findComponent(ON.text('打开'));
+                    openBtn?.click();
                 }).catch((error) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpSystem failed:' + JSON.stringify(error));
                 });
@@ -814,7 +849,9 @@ export default function stageAppContextTest(abilityContext) {
             console.log(TAG + ' --- start');
             let createFile = true;
             let startEntery = async () => {
-                await abilityDelegator.startAbility({
+                await abilityDelegator.doAbilityForeground(TestUiAbility);
+                await sleep(3000);
+                await abilityContext.startAbility({
                     bundleName: 'com.example.clearUpApplicationDataHelp',
                     abilityName: 'MainAbility',
                     parameters: {
@@ -822,6 +859,10 @@ export default function stageAppContextTest(abilityContext) {
                         startType,
                         createFile
                     }
+                }).then(async () => {
+                    await sleep(3000);
+                    let openBtn = await driver.findComponent(ON.text('打开'));
+                    openBtn?.click();
                 }).catch((error) => {
                     console.log(TAG + 'start clearUpApplicationDataHelp failed:' + JSON.stringify(error));
                 });
@@ -864,7 +905,9 @@ export default function stageAppContextTest(abilityContext) {
             }
             let createFileSys = true;
             let startSystem = async (notClear = false) => {
-                await abilityDelegator.startAbility({
+                await abilityDelegator.doAbilityForeground(TestUiAbility);
+                await sleep(3000);
+                await abilityContext.startAbility({
                     bundleName: 'com.example.clearUpApplicationDataHelpSystem',
                     abilityName: 'MainAbility',
                     parameters: {
@@ -872,6 +915,10 @@ export default function stageAppContextTest(abilityContext) {
                         startType,
                         createFile: createFileSys
                     }
+                }).then(async () => {
+                    await sleep(3000);
+                    let openBtn = await driver.findComponent(ON.text('打开'));
+                    openBtn?.click();
                 }).catch((error) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpSystem failed:' + JSON.stringify(error));
                 });
