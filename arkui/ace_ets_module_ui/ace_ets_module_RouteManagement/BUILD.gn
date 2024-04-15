@@ -11,10 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsAceEtsModuleImageTextTest") {
+group("ActsAceEtsModuleRouteManagementTest") {
   testonly = true
-  deps = [
-    "ace_ets_module_imageText_api11:ActsAceEtsModuleImageTextApi11Test",
-    "ace_ets_module_imageText_api12:ActsAceEtsModuleImageTextApi12Test",
-  ]
+  deps = [ "ace_ets_module_RouteManagement_api12:ActsAceEtsModuleRouteManagementApi12Test" ]
 }
