@@ -436,6 +436,15 @@
         "MainAbility/pages/Grid/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Quantity",
         "MainAbility/pages/Grid/Grid_Row/onBreakpointChange/onBreakpointChange",
         "MainAbility/pages/Grid/Grid_Row/Grid_Row_Direction/Grid_Row_Direction_Row",
-        "MainAbility/pages/Grid/Grid_Row/Grid_Row_Direction/Grid_Row_Direction_RowReverse"
+        "MainAbility/pages/Grid/Grid_Row/Grid_Row_Direction/Grid_Row_Direction_RowReverse",
+        "MainAbility/pages/GridCol/Grid_Col_Span/Grid_Col_Span_Default",
+        "MainAbility/pages/GridCol/Grid_Col_Span/Grid_Col_Span_Number",
+        "MainAbility/pages/GridCol/Grid_Col_Span/Grid_Col_Span_GridColColumnOption",
+        "MainAbility/pages/GridCol/Grid_Col_Order/Grid_Col_Order_Default",
+        "MainAbility/pages/GridCol/Grid_Col_Order/Grid_Col_Order_Number",
+        "MainAbility/pages/GridCol/Grid_Col_Order/Grid_Col_Order_GridColColumnOption",
+        "MainAbility/pages/GridCol/Grid_Col_Offset/Grid_Col_Offset_Default",
+        "MainAbility/pages/GridCol/Grid_Col_Offset/Grid_Col_Offset_Number",
+        "MainAbility/pages/GridCol/Grid_Col_Offset/Grid_Col_Offset_GridColColumnOption"
     ]
 }
