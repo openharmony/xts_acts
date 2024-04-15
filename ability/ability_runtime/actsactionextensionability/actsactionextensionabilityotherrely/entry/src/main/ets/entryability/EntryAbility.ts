@@ -12,12 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     console.info('====>another EntryAbility');
 
@@ -28,56 +31,56 @@ export default class EntryAbility extends UIAbility {
         parameters: {
           'ability.want.params.uiExtensionType': 'action'
         }
-      }).catch((err)=>{
+      }).catch((err) => {
         console.info('====>ActionExtensionAbility_0100 err:' + JSON.stringify(err));
-      });
+      })
     }
 
     if (want.action === 'AsyncCallback_0200') {
       console.info("====>EntryAbility want.action == 'AsyncCallback_0200':");
-      AppStorage.SetOrCreate('want', {
+      AppStorage.setOrCreate('want', {
         action: 'AsyncCallback_0200',
         bundleName: 'com.example.actsactionextensionabilityrely',
         abilityName: 'UIExtAbility',
         parameters: {
           'ability.want.params.uiExtensionType': 'action'
         }
-      });
+      })
     }
 
     if (want.action === 'AsyncCallback_0300') {
       console.info("====>EntryAbility want.action == 'AsyncCallback_0300':");
-      AppStorage.SetOrCreate('want', {
+      AppStorage.setOrCreate('want', {
         action: 'AsyncCallback_0300',
         bundleName: 'com.example.actsactionextensionabilityrely',
         abilityName: 'UIExtAbility',
         parameters: {
           'ability.want.params.uiExtensionType': 'action'
         }
-      });
+      })
     }
 
     if (want.action === 'Promise_0200') {
       console.info("====>EntryAbility want.action == 'Promise_0200':");
-      AppStorage.SetOrCreate('want', {
+      AppStorage.setOrCreate('want', {
         action: 'Promise_0200',
         bundleName: 'com.example.actsactionextensionabilityrely',
         abilityName: 'UIExtAbility',
         parameters: {
           'ability.want.params.uiExtensionType': 'action'
         }
-      });
+      })
     }
     if (want.action === 'Promise_0300') {
       console.info("====>EntryAbility want.action == 'Promise_0300':");
-      AppStorage.SetOrCreate('want', {
+      AppStorage.setOrCreate('want', {
         action: 'Promise_0300',
         bundleName: 'com.example.actsactionextensionabilityrely',
         abilityName: 'UIExtAbility',
         parameters: {
           'ability.want.params.uiExtensionType': 'action'
         }
-      });
+      })
     }
   }
 
@@ -95,7 +98,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
+    })
   }
 
   onWindowStageDestroy() {

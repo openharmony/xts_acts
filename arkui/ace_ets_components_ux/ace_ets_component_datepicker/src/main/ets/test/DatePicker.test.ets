@@ -15,14 +15,14 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 
 export default function ActsDatePickerTest() {
-  describe('ActsDatePickerTest', function () {
-    beforeEach(async function (done) {
+  describe('ActsDatePickerTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/DatePicker',
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/DatePicker',
       }
       try {
         router.clear();
@@ -38,14 +38,13 @@ export default function ActsDatePickerTest() {
       }
       done()
     });
-    it('Stage_DatePicker_Test_0010', 0, async function (done) {
+    it('Stage_DatePicker_Test_0010', 0, async (done: Function) => {
       console.info('Stage_DatePicker_Test_0010 START');
-      try{
+      try {
         let strJson = getInspectorByKey('Stage_DatePicker_Test_0010');
-        console.info('Stage_DatePicker_Test_0010 START  :'+ JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
-        console.info("Stage_DatePicker_Test_0010 obj is: " + JSON.stringify(obj));
-        let onDateChange = obj.$attrs.onDateChange
+        console.info('Stage_DatePicker_Test_0010 START  :' + JSON.stringify(strJson));
+        console.info("Stage_DatePicker_Test_0010 obj is: " + JSON.stringify(JSON.parse(strJson)));
+        let onDateChange: ESObject = JSON.parse(strJson).$attrs.onDateChange
         expect(typeof onDateChange).assertEqual("undefined")
         let DatePickerDialog: DatePickerDialogOptions = {
           onDateAccept: (value: Date) => {
@@ -53,14 +52,15 @@ export default function ActsDatePickerTest() {
           },
           onDateChange: (value: Date) => {
             console.info("DatePickerDialog:onChange()" + value.toString())
-          }}
+          }
+        }
         console.info("Stage_DatePicker_Test_0010 InsertValue is: " + JSON.stringify(DatePickerDialog))
         expect(typeof DatePickerDialog.onDateAccept).assertEqual("function")
         expect(typeof DatePickerDialog.onDateChange).assertEqual("function")
         console.info('Stage_DatePicker_Test_0010 END ');
-      } catch(err) {
+      } catch (err) {
         expect().assertFail()
-        console.info('Stage_DatePicker_Test_0010 ERR  '+ JSON.stringify(err));
+        console.info('Stage_DatePicker_Test_0010 ERR  ' + JSON.stringify(err));
       }
       done();
     });

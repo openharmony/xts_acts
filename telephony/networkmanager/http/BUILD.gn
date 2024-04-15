@@ -21,6 +21,7 @@ group("http") {
       "httpCache:ActsNetworkManagerHttpCacheTest",
       "httpDataOptions:ActsNetworkManagerHttpDataOptionsTest",
       "httpRequest:ActsNetworkManagerHttpRequestTest",
+      "httpRequestOnAndOff:ActsNetworkManagerHttpRequestOnAndOffTest",
     ]
   }
 }

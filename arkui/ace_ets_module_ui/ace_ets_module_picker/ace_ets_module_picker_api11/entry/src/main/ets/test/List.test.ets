@@ -21,6 +21,8 @@ import CheckboxTest from './CheckboxTest/Checkbox.test';
 import textpicker from './TextPicker/TextPicker';
 import TextPickerSec from './TextPicker/TextPickerSec';
 import textpickermultiTest from './TextPicker/TextPickerMulti';
+import sliderTest from './SliderTest/SliderTest';
+import SliderTestSec from './SliderTest/SliderTestSec';
 
 export default function testsuite() {
   SelectAttr()
@@ -32,4 +34,6 @@ export default function testsuite() {
   textpicker()
   TextPickerSec()
   textpickermultiTest()
+  sliderTest()
+  SliderTestSec()
 }

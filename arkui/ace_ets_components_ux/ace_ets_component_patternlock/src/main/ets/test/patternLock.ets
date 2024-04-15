@@ -14,31 +14,32 @@
  */
 // @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+
 let emitKey = "emitUserAgent";
+
 export default function patternLockTest() {
 
-  describe('ActsPatternLockInterfaceTest', function () {
+  describe('ActsPatternLockInterfaceTest', () => {
 
-    beforeAll(function () {
+    beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
       setTimeout(() => {
       }, 1000)
     })
 
-   /*
-     *tc.number ArkUX_Stage_PatternLock_setChallengeResult_0100
-     *tc.name   Support setting the dot color
-     *tc.desc   Sets the setChallengeResult property parameter to undefined
-     */
-     it('ArkUX_Stage_PatternLock_setChallengeResult_0100', 0, async function (done) {
+    /*
+      *tc.number ArkUX_Stage_PatternLock_setChallengeResult_0100
+      *tc.name   Support setting the dot color
+      *tc.desc   Sets the setChallengeResult property parameter to undefined
+      */
+    it('ArkUX_Stage_PatternLock_setChallengeResult_0100', 0, async (done: Function) =>{
       console.info('ArkUX_Stage_PatternLock_setChallengeResult_0100 START');
       try {
         let strJson = getInspectorByKey('lock');
         console.info('ArkUX_Stage_PatternLock_setChallengeResult_0100 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
         console.info("ArkUX_Stage_PatternLock_setChallengeResult_0100 component obj.$attrs.setChallengeResult is: " +
-        JSON.stringify(obj.$attrs.setChallengeResult));
+        JSON.stringify(JSON.parse(strJson).$attrs.setChallengeResult));
         console.info('ArkUX_Stage_PatternLock_setChallengeResult_0100 END ');
       } catch (err) {
         expect().assertFail();
@@ -52,14 +53,13 @@ export default function patternLockTest() {
      *tc.name   Support getting the dot index
      *tc.desc   Sets the onDotConnect property parameter to undefined
      */
-    it('ArkUX_Stage_PatternLock_onDotConnect_0100', 0, async function (done) {
+    it('ArkUX_Stage_PatternLock_onDotConnect_0100', 0, async (done: Function) =>{
       console.info('ArkUX_Stage_PatternLock_onDotConnect_0100 START');
       try {
         let strJson = getInspectorByKey('lock');
         console.info('ArkUX_Stage_PatternLock_onDotConnect_0100 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
         console.info("ArkUX_Stage_PatternLock_onDotConnect_0100 component obj.$attrs.onDotConnect is: " +
-        JSON.stringify(obj.$attrs.onDotConnect));
+        JSON.stringify(JSON.parse(strJson).$attrs.onDotConnect));
         console.info('ArkUX_Stage_PatternLock_onDotConnect_0100 END ');
       } catch (err) {
         expect().assertFail();
@@ -67,6 +67,6 @@ export default function patternLockTest() {
       }
       done();
     });
-    
+
   })
 }

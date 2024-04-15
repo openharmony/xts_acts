@@ -51,11 +51,11 @@ export struct ListItemGroupView {
   build() {
     List({ space: 20 }) {
       ListItemGroup({ header: this.itemHead('Group1'), footer: this.itemFoot(this.projects.length) }) {
-        ForEach(this.projects, (project) => {
+        ForEach(this.projects, (project:string) => {
           ListItem() {
             this.content(project)
           }
-        }, item => item)
+        }, (item:string) => item)
       }
       .borderRadius(20)
       .position(this._position)
@@ -63,11 +63,11 @@ export struct ListItemGroupView {
       .divider({ strokeWidth: 1, color: Color.Blue })
 
       ListItemGroup({ header: this.itemHead('Group2'), footer: this.itemFoot(this.projects.length) }) {
-        ForEach(this.projects, (project) => {
+        ForEach(this.projects, (project:string) => {
           ListItem() {
             this.content(project)
           }
-        }, item => item)
+        }, (item: string) => item)
       }
       .borderRadius(20)
       .key(this.referenceComponentKey)

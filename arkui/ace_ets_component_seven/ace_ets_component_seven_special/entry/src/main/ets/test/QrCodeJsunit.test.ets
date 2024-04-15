@@ -53,7 +53,7 @@ export default function qrCodeJsunit() {
       var strJson = getInspectorByKey('QrCodeColorKey1');
       var obj = JSON.parse(strJson);
       console.info("[test_qrCode_001] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.opacity).assertEqual(0.1);
+      expect(Math.abs(obj.$attrs.opacity - 0.1) < 0.000001).assertTrue();
       console.info('[test_qrCode_001] END');
       done();
     });

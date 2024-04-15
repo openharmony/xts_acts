@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import hilog from '@ohos.hilog';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../../test/List.test'
 
@@ -24,14 +24,16 @@ struct Index {
   aboutToAppear() {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-    var abilityDelegator: any
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
+
   @State message: string = 'ArkUX XtsTest'
+
   build() {
     Row() {
       Column() {

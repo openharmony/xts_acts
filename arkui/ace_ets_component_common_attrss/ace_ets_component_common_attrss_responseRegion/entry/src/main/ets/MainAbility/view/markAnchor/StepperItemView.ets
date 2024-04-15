@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-@Styles function itemStyle() {
+@Styles
+function itemStyle() {
   .width(336)
   .height(621)
   .margin({ top: 48, left: 12 })
@@ -21,7 +22,8 @@
   .backgroundColor('#FFFFFF')
 }
 
-@Extend(Text) function itemTextStyle() {
+@Extend(Text)
+function itemTextStyle() {
   .fontColor('#182431')
   .fontSize(36)
   .fontWeight(500)
@@ -32,10 +34,10 @@
 
 @Component
 export struct StepperItemView {
-  @State prevIndex: number = 0
-  @State currentIndex: number = 0
-  @State firstState: ItemState = ItemState.Normal
-  @State secondState: ItemState = ItemState.Normal
+  @State prevIndex: number = 0;
+  @State currentIndex: number = 0;
+  @State firstState: ItemState = ItemState.Normal;
+  @State secondState: ItemState = ItemState.Normal;
   @Link _markAnchor: Position;
   private componentKey: string;
   private parentWidth: number;

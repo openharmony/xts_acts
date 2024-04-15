@@ -9,6 +9,8 @@
         "MainAbility/pages/Checkbox/Index",
         "MainAbility/pages/TextPicker/TextPickerSec",
         "MainAbility/pages/TextPicker/Index",
-        "MainAbility/pages/TextPicker/TextPickerMulti"
+        "MainAbility/pages/TextPicker/TextPickerMulti",
+        "MainAbility/pages/Slider/Index",
+        "MainAbility/pages/Slider/SliderTestSec"
     ]
 }

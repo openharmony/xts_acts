@@ -16,6 +16,6 @@ import checkBoxTest from './checkBox'
 import checkBoxGroupTest from './checkBoxGroup'
 
 export default function testsuite() {
-       checkBoxTest()
-       checkBoxGroupTest()
+  checkBoxTest()
+  checkBoxGroupTest()
 }

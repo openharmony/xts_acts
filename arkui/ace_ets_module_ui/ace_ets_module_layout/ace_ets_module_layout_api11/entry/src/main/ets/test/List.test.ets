@@ -14,6 +14,7 @@
  */
 import FolderStack3ApiJsunit from './FolderStackTest/FolderStack3ApiJsunit.test';
 import enumFolderTest from "./FolderStackTest/enumflodstack.test"
+import Stack_Text from './Stack_Text/Stack_Text.test';
 import grid_colSpanJsunit from './GridColTest/grid_col.test';
 import grid_rowOnBreakpointChangeJsunit from './GridRowTest/grid_row.test';
 import inspectorJsunit from './inspectorTest/inspector.test'
@@ -510,10 +511,51 @@ import Row_Padding from './RowTest/parentComponentChanged/Row_Padding.test';
 import Row_Size from './RowTest/parentComponentChanged/Row_Size.test';
 import Row_VerticalAlign from './RowTest/parentComponentChanged/Row_VerticalAlign.test';
 
-
+import stackAlignChange from './Stack/Stack_change/stackAlignChange.test.ets';
+import stackSizeChange from './Stack/Stack_change/stackSizeChange.test.ets';
+import stackNoneSettingWidthHeight from './Stack/Stack_change/stackNoneSettingWidthHeight.test.ets';
+import stackPaddingChange from './Stack/Stack_change/stackPaddingChange.test.ets';
+import stackMarginChange from './Stack/Stack_change/stackMarginChange.test.ets';
+import Stack_AlignContent from './Stack/Stack_alignContent/stack_alignContent.test';
+import Stack_Offset_Change from './Stack/StackItem_change/stack_offset_change.test';
+import Stack_Position_Change from './Stack/StackItem_change/stack_position_change.test';
+import Stack_ZIndex from './Stack/StackItem_change/stack_zIndex.test';
+import Grid_Row_Columns from './GridTest/Grid_Row/Grid_Row_Columns/Grid_Row_Columns.test.ets';
+import Grid_Row_Columns_Default from './GridTest/Grid_Row/Grid_Row_Columns/Grid_Row_Columns_Default.test.ets';
+import Grid_Row_Columns_Option from './GridTest/Grid_Row/Grid_Row_Columns/Grid_Row_Columns_Option.test.ets';
+import Grid_Row_Gutter from './GridTest/Grid_Row/Grid_Row_Gutter/Grid_Row_Gutter.test.ets';
+import Grid_Row_Length_String from './GridTest/Grid_Row/Grid_Row_Gutter/Grid_Row_Length_String.test';
+import Gutter_Length_Resource from './GridTest/Grid_Row/Grid_Row_Gutter/Grid_Row_Resource.test';
+import Gutter_Length_Default from './GridTest/Grid_Row/Grid_Row_Gutter/Grid_Row_Default.test';
+import Grid_Row_SizeOption from './GridTest/Grid_Row/Grid_Row_GutterOption/Grid_Row_SizeOption.test';
+import Grid_Row_GutterOption_String from './GridTest/Grid_Row/Grid_Row_GutterOption/Grid_Row_GutterOption_String.test';
+import Grid_Row_GutterOption_Default from './GridTest/Grid_Row/Grid_Row_GutterOption/Grid_Row_GutterOption_Default.test';
+import Grid_Row_GutterOption_Number from './GridTest/Grid_Row/Grid_Row_GutterOption/Grid_Row_GutterOption_Number.test';
+import Grid_Row_Direction_Row from './GridTest/Grid_Row/Grid_Row_Direction/Grid_Row_Direction_Row.test';
+import Grid_Row_Direction_RowReverse from './GridTest/Grid_Row/Grid_Row_Direction/Grid_Row_Direction_RowReverse.test';
+import Grid_Row_Breakpoints_Default from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Default.test';
+import Grid_Row_Breakpoints_Component from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Component.test';
+import Grid_Row_Breakpoints_Window from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Window.test';
+import Grid_Row_Breakpoints_Change from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Change.test';
+import Grid_Row_Breakpoints_Incremental
+  from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Incremental.test';
+import Grid_Row_Breakpoints_Negative from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Negative.test';
+import Grid_Row_Breakpoints_Quantity from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Quantity.test';
+import GridRow_onBreakpoint from './GridTest/Grid_Row/onBreakpointChange/onBreakpointChange.test';
+import Grid_Col_Span_Default from './GridColTest/Grid_Col_Span/Grid_Col_Span_Default.test.ets';
+import Grid_Col_Span_Number from './GridColTest/Grid_Col_Span/Grid_Col_Span_Number.test.ets';
+import Grid_Col_Span_GridColColumnOption from './GridColTest/Grid_Col_Span/Grid_Col_Span_GridColColumnOption.test.ets';
+import Grid_Col_Order_Default from './GridColTest/Grid_Col_Order/Grid_Col_Order_Default.test.ets';
+import Grid_Col_Order_Number from './GridColTest/Grid_Col_Order/Grid_Col_Order_Number.test.ets';
+import Grid_Col_Order_GridColColumnOption from './GridColTest/Grid_Col_Order/Grid_Col_Order_GridColColumnOption.test.ets';
+import Grid_Col_Offset_Default from './GridColTest/Grid_Col_Offset/Grid_Col_Offset_Default.test.ets';
+import Grid_Col_Offset_Number from './GridColTest/Grid_Col_Offset/Grid_Col_Offset_Number.test.ets';
+import Grid_Col_Offset_GridColColumnOption from './GridColTest/Grid_Col_Offset/Grid_Col_Offset_GridColColumnOption.test.ets';
+  
 export default function testsuite() {
   FolderStack3ApiJsunit()
   enumFolderTest()
+  Stack_Text()
   inspectorJsunit()
     
   Column_Space()
@@ -927,4 +969,44 @@ export default function testsuite() {
   Row_Padding();
   Row_Size();
   Row_VerticalAlign();
+
+  stackAlignChange();
+  stackSizeChange();
+  stackNoneSettingWidthHeight();
+  stackPaddingChange();
+  stackMarginChange();
+  Stack_AlignContent();
+  Stack_Offset_Change();
+  Stack_Position_Change();
+  Stack_ZIndex();
+  Grid_Row_Columns()
+  Grid_Row_Columns_Option()
+  Grid_Row_Columns_Default()
+  Grid_Row_Gutter()
+  Gutter_Length_Resource()
+  Gutter_Length_Default()
+  Grid_Row_GutterOption_Number()
+  Grid_Row_GutterOption_Default()
+  Grid_Row_Direction_Row()
+  Grid_Row_Direction_RowReverse()
+  Grid_Row_Length_String()
+  Grid_Row_SizeOption()
+  Grid_Row_GutterOption_String()
+  Grid_Row_Breakpoints_Default()
+  Grid_Row_Breakpoints_Component()
+  Grid_Row_Breakpoints_Window()
+  Grid_Row_Breakpoints_Change()
+  Grid_Row_Breakpoints_Incremental()
+  Grid_Row_Breakpoints_Negative()
+  Grid_Row_Breakpoints_Quantity()
+  GridRow_onBreakpoint()
+  Grid_Col_Span_Default()
+  Grid_Col_Span_Number()
+  Grid_Col_Span_GridColColumnOption()
+  Grid_Col_Order_Default()
+  Grid_Col_Order_Number()
+  Grid_Col_Order_GridColColumnOption()
+  Grid_Col_Offset_Default()
+  Grid_Col_Offset_Number()
+  Grid_Col_Offset_GridColColumnOption()
 }

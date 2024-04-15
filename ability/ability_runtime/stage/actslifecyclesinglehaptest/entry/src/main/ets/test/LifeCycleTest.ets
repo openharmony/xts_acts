@@ -81,7 +81,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility2",
       }
-      globalThis.abilityContext.startAbility(str)
+      await globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {

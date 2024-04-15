@@ -19,25 +19,28 @@ import router from '@ohos.router'
 @Component
 struct PaddingPage_Length {
   //Use for TimePicker.
-  private selectedTime: Date = new Date('2022-07-22T08:00:00')
+  private selectedTime: Date = new Date('2022-07-22T08:00:00');
   //Use for QRCode,Marquee.
-  private src: string = 'Running Marquee starts rolling'
+  private src: string = 'Running Marquee starts rolling';
   //Use for AlphabetIndexer,TextPicker.
-  private value: string[] = ['#', 'A', 'B']
+  private value: string[] = ['#', 'A', 'B'];
   //Use for Scroll,Grid,DataPanel.
-  public valueArr: number[] = [5, 10, 10, 7, 9, 10, 10, 10, 10]
+  public valueArr: number[] = [5, 10, 10, 7, 9, 10, 10, 10, 10];
   @State _padding: number | string = 0;
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentBackGroundColor: string = router.getParams() ? router.getParams()['view']['parentBackGroundColor'] : ''
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentBackGroundColor: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentBackGroundColor'] : ''
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
 
   onPageShow() {
     console.info('padding page show called ')
-    attrsManager.registerDataChange(value => this._padding = value.padding)
+    attrsManager.registerDataChange((value: ESObject) => {
+      this._padding = value.padding
+    })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .padding(this._padding)
     .key(this.componentKey)
   }
@@ -57,9 +60,13 @@ struct PaddingPage_Length {
           Blank().color(Color.Orange).commonStyle()
         }
       } else if (this.targetView == 'Checkbox') {
-        Checkbox().backgroundColor(Color.Orange).commonStyle()
+        Checkbox().backgroundColor(Color.Orange)
+          .commonStyle()
       } else if (this.targetView == 'CheckboxGroup') {
-        CheckboxGroup({ group: 'checkboxGroup' }).commonStyle().backgroundColor(Color.Orange).margin(0)
+        CheckboxGroup({ group: 'checkboxGroup' })
+          .commonStyle()
+          .backgroundColor(Color.Orange)
+          .margin(0)
       } else if (this.targetView == 'DataPanel') {
         DataPanel({ values: this.valueArr }).commonStyle()
       } else if (this.targetView == 'DatePicker') {
@@ -70,9 +77,14 @@ struct PaddingPage_Length {
       } else if (this.targetView == 'Divider') {
         Divider().strokeWidth(8).color(Color.Red).commonStyle()
       } else if (this.targetView == 'Gauge') {
-        Gauge({ value: 105 }).commonStyle().colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1]])
+        Gauge({ value: 105 })
+          .commonStyle()
+          .colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1]])
       } else if (this.targetView == 'Image') {
-        Image($r('app.media.icon')).commonStyle().height(110).backgroundColor(Color.Red)
+        Image($r('app.media.icon'))
+          .commonStyle()
+          .height(110)
+          .backgroundColor(Color.Red)
       } else if (this.targetView == 'ImageAnimator') {
         ImageAnimator()
           .images([

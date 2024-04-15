@@ -282,6 +282,8 @@ export default function flagstartwithouttipstest() {
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0700', 0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0700';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
+      await abilityDelegator.executeShellCommand('aa start -b com.acts.flagstartwithouttipstest -a TestAbility');
+      await sleep(3000);
       try {
         let wantInfo: Want = {
           action: 'ohos.want.onlyforwithouttips.onlyforwithouttips',
@@ -320,6 +322,8 @@ export default function flagstartwithouttipstest() {
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0800', 0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0800';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
+      await abilityDelegator.executeShellCommand('aa start -b com.acts.flagstartwithouttipstest -a TestAbility');
+      await sleep(3000);
       try {
         let wantInfo: Want = {
           action: 'ohos.want.onlyforwithouttips.onlyforwithouttips',

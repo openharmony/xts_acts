@@ -28,33 +28,61 @@
       "name":"message_arrive",
       "value":"We will arrive at %s."
     },
-      {
-            "name": "phone_entry_dsc",
-            "value": "i am an entry for phone"
-        },
-        {
-            "name": "phone_entry_main",
-            "value": "the phone entry ability"
-        },
-        {
-            "name": "entry_label",
-            "value": "ActsContextTest"
-        },
-        {
-            "name": "form_description",
-            "value": "my form"
-        },
-        {
-            "name": "serviceability_description",
-            "value": "my whether"
-        },
-        {
-            "name": "description_application",
-            "value": "demo for test"
-        },
-        {
-            "name": "app_name",
-            "value": "Demo"
-        }
+    {
+      "name": "phone_entry_dsc",
+      "value": "i am an entry for phone"
+    },
+    {
+      "name": "phone_entry_main",
+      "value": "the phone entry ability"
+    },
+    {
+      "name": "entry_label",
+      "value": "ActsContextTest"
+    },
+    {
+      "name": "form_description",
+      "value": "my form"
+    },
+    {
+      "name": "serviceability_description",
+      "value": "my whether"
+    },
+    {
+      "name": "description_application",
+      "value": "demo for test"
+    },
+    {
+      "name": "app_name",
+      "value": "Demo"
+    },
+    {
+      "name": "block_border_width_test",
+      "value": "7"
+    },
+    {
+      "name": "trach_border_radius_test",
+      "value": "50"
+    },
+    {
+      "name": "block_size_test",
+      "value": "50"
+    },
+    {
+      "name": "step_size_test",
+      "value": "50vp"
+    },
+    {
+      "name":"block_size_width_test",
+      "value":"50vp"
+    },
+    {
+      "name":"block_size_height_test",
+      "value":"50vp"
+    },
+    {
+      "name": "sliderTest",
+      "value": "ResourceTest"
+    }
   ]
 }

@@ -15,5 +15,5 @@
 import gauge from './gauge'
 
 export default function testsuite() {
-      gauge()
+  gauge()
 }

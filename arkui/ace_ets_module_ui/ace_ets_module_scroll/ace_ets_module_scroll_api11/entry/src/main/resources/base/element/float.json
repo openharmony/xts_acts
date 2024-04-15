@@ -39,6 +39,10 @@
     {
       "name": "BottomTabBarStyleLabelStyle_Font_Size_Test",
       "value": "18.00fp"
+    },
+    {
+      "name": "float_1",
+      "value": "10vp"
     }
   ]
 }

@@ -17,6 +17,39 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentWidth: number;
+  parentHeight: number;
+  targetWidth: number;
+  targetHeight: number;
+  compareWidth: number;
+  compareHeight: number;
+  parentComponentKey: string;
+  referenceComponentKey: string;
+}
+
+class TestValue {
+  describe: string;
+  setValue: SetValue;
+  expectValue: ESObject;
+}
+
+class AlignItems {
+  Row: VerticalAlign;
+  Column: HorizontalAlign;
+  Flex: ItemAlign;
+  GridRow: ItemAlign;
+}
+
+class SetValue {
+  direction: FlexDirection;
+  alignSelf: ItemAlign
+  wrap: FlexWrap
+}
+
 export default function alignSelfStretchTest() {
 
   let supportView = [
@@ -92,7 +125,7 @@ export default function alignSelfStretchTest() {
   let compareWidth = 200;
   let compareHeight = 200;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testAlignSelf',
     pageName: 'AlignSelfStretchPage',
     pageUrl: 'MainAbility/pages/flex/AlignSelfStretchPage',
@@ -106,7 +139,7 @@ export default function alignSelfStretchTest() {
     referenceComponentKey: 'referenceComponentKey'
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetStretchRowWrap',
     setValue: {
       direction: FlexDirection.Row,
@@ -189,7 +222,7 @@ export default function alignSelfStretchTest() {
   }]
 
   describe('AlignSelfStretchTest', () => {
-    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async data => {
+    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async (data: ESObject) => {
 
       //Get component rect and parent component rect
       let parentRect = Utils.getComponentRect(data.pageConfig.parentComponentKey);

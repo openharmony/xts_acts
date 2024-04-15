@@ -18,6 +18,22 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 import Utils from '../../MainAbility/common/Utils';
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetComponentHeight: number;
+  targetComponentWidth: number;
+  referenceComponentKey: string;
+  parentComponentKey: string;
+}
+
+class TestValues {
+  describe: string;
+  setValue: Visibility;
+  expectValue: ESObject;
+}
+
 export default function visibilityTest() {
   let supportView = [
     'AlphabetIndexer',
@@ -93,7 +109,7 @@ export default function visibilityTest() {
   let targetComponentWidth = 200;
   let targetComponentHeight = 200;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testVisibility',
     pageName: 'VisibilityPage',
     pageUrl: 'MainAbility/pages/visibility/VisibilityPage',
@@ -103,15 +119,16 @@ export default function visibilityTest() {
     parentComponentKey: 'parentComponentKey'
   }
 
-  let testValues = [{
-//    describe: 'SetNone',
-//    setValue: Visibility.None,
-//    expectValue: {
-//      visibility: 'Visibility.None',
-//      width: 0,
-//      height: 0
-//    }
-//  }, {
+
+  let testValues: TestValues[] = [{
+    //    describe: 'SetNone',
+    //    setValue: Visibility.None,
+    //    expectValue: {
+    //      visibility: 'Visibility.None',
+    //      width: 0,
+    //      height: 0
+    //    }
+    //  }, {
     describe: 'SetHidden',
     setValue: Visibility.Hidden,
     expectValue: {
@@ -126,7 +143,7 @@ export default function visibilityTest() {
   }]
 
   describe('VisibilityTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       AttrsManager.change(data.caseTag, Visibility.Visible);
       await Utils.sleep(1000);
 
@@ -169,10 +186,10 @@ export default function visibilityTest() {
           expect(referenceRectAfter.top).assertEqual(referenceRectBefore.top);
           expect(referenceRectAfter.left).assertEqual(referenceRectBefore.left);
         } else if ((data.pageConfig.componentKey == 'MenuItem')
-        || (data.pageConfig.componentKey == 'MenuItemGroup')
-        || (data.pageConfig.componentKey == 'ListItem')
-        || (data.pageConfig.componentKey == 'ListItemGroup')
-        || (data.pageConfig.componentKey == 'GridCol')) {
+          || (data.pageConfig.componentKey == 'MenuItemGroup')
+          || (data.pageConfig.componentKey == 'ListItem')
+          || (data.pageConfig.componentKey == 'ListItemGroup')
+          || (data.pageConfig.componentKey == 'GridCol')) {
           expect(referenceRectAfter.top).assertEqual(rectBefore.top);
           expect(referenceRectAfter.left).assertEqual(rectBefore.left);
         } else {
@@ -193,9 +210,9 @@ export default function visibilityTest() {
         expect(width > 0).assertEqual(true);
         expect(height > 0).assertEqual(true);
       }
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
-      console.info('[' + data.caseTag + ']' + 'visibility is:' + viewObj.$attrs.visibility);
-      expect(viewObj.$attrs.visibility).assertEqual(data.testValue.expectValue.visibility);
+      let rect: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
+      console.info('[' + data.caseTag + ']' + 'visibility is:' + rect.$attrs.visibility);
+      expect(rect.$attrs.visibility).assertEqual(data.testValue.expectValue.visibility);
       //The expected size of the reference component remains unchanged before and after
       expect(referenceHeight).assertEqual(referenceBeforeHeight);
       expect(referenceWidth).assertEqual(referenceBeforeWidth);

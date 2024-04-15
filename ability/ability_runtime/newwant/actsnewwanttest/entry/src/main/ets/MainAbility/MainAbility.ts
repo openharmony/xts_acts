@@ -25,7 +25,7 @@ export default class MainAbility extends Ability {
         console.log("MainAbility onCreate")
         globalThis.abilityWant = want;
 
-        globalThis.abilityContext = this.context
+        globalThis.mainAbilityContext = this.context
         console.info("start run testcase!!!!")
         var abilityDelegator: any
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()

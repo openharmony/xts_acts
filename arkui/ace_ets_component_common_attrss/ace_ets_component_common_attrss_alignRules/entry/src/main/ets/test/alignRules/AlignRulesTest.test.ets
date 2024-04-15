@@ -12,9 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Utils from '../../MainAbility/common/Utils';
+import Utils, { RectValue } from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
+
+class TestValue {
+  describe: string;
+  setValue: AlignRuleOption;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentWidth: number;
+  parentHeight: number;
+  subassemblyWidth: number;
+  subassemblyHeight: number;
+  subassemblyCenter: AlignRuleOption;
+  parentComponentKey: string;
+  referenceComponentKey: string;
+}
 
 export default function AlignRulesTest() {
   //A list of components that support the position attribute, which is required.
@@ -31,7 +49,7 @@ export default function AlignRulesTest() {
   let parentHeight = 300;
   let subassemblyWidth = 100;
   let subassemblyHeight = 100;
-  let subassemblyCenter = {
+  let subassemblyCenter: AlignRuleOption = {
     center: {
       anchor: '__container__', align: VerticalAlign.Center
     },
@@ -41,7 +59,7 @@ export default function AlignRulesTest() {
   }
 
   //Page config, this param is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testAlignRules',
     pageName: 'AlignRulesPage',
     pageUrl: 'MainAbility/pages/alignRules/AlignRulesPage',
@@ -55,7 +73,7 @@ export default function AlignRulesTest() {
   }
 
   //Test values, looped to create cases, this param is required.
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'ParentAlignTopLeftJustifying',
     setValue: {
       left: {
@@ -235,23 +253,24 @@ export default function AlignRulesTest() {
         anchor: 'referenceComponentKey', align: VerticalAlign.Bottom
       }
     }
-  }]
+  }
+  ]
 
   describe('AlignRulesTest', () => {
     //Create test cases by config.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
 
       //Obtain the region information of the target component.
       console.info('[' + data.caseTag + '] get targetComponent rect after position changed.');
-      let rec = Utils.getComponentRect(data.pageConfig.componentKey);
+      let rec: RectValue = Utils.getComponentRect(data.pageConfig.componentKey);
 
       //Obtain the region information of the parent component.
       console.info('[' + data.caseTag + '] get parentComponent rect after position changed.');
-      let recParent = Utils.getComponentRect(data.pageConfig.parentComponentKey);
+      let recParent: RectValue = Utils.getComponentRect(data.pageConfig.parentComponentKey);
 
       //Obtain the region information of the reference component.
       console.info('[' + data.caseTag + '] get referenceComponent rect after position changed.');
-      let recReference = Utils.getComponentRect(data.pageConfig.referenceComponentKey);
+      let recReference: RectValue = Utils.getComponentRect(data.pageConfig.referenceComponentKey);
       console.info('[' + data.caseTag + '] check alignRules value.');
 
       //Verify actual alignment position after alignment
@@ -267,17 +286,17 @@ export default function AlignRulesTest() {
         expect(rec.top).assertEqual(recParent.top)
       } else if (data.testValue.describe == 'ParentVerticalCenterLeftJustifying') {
         expect(rec.left).assertEqual(recParent.left)
-        expect(Math.abs((rec.top + (rec.bottom - rec.top) / 2).toFixed(2)
-        - (recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2)) <=1 ).assertTrue();
+        expect(Math.abs(Number((rec.top + (rec.bottom - rec.top) / 2).toFixed(2))
+          - Number((recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2))) <= 1).assertTrue();
       } else if (data.testValue.describe == 'ParentVerticalCenterHorizontally') {
-        expect(Math.abs((rec.left + (rec.right - rec.left) / 2).toFixed(2) -
-        (recReference.left + (recReference.right - recReference.left) / 2).toFixed(2)) <= 1).assertTrue()
-        expect(Math.abs((rec.top + (rec.bottom - rec.top) / 2).toFixed(2) - 
-        (recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2)) <= 1).assertTrue()
+        expect(Math.abs(Number((rec.left + (rec.right - rec.left) / 2).toFixed(2)) -
+        Number((recReference.left + (recReference.right - recReference.left) / 2).toFixed(2))) <= 1).assertTrue()
+        expect(Math.abs(Number((rec.top + (rec.bottom - rec.top) / 2).toFixed(2)) -
+        Number((recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2))) <= 1).assertTrue()
       } else if (data.testValue.describe == 'ParentVerticalCenterRightAlignment') {
         expect(rec.right).assertEqual(recParent.right)
-        expect(Math.abs((rec.top + (rec.bottom - rec.top) / 2).toFixed(2) -
-        (recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2)) <=1).assertTrue()
+        expect(Math.abs(Number((rec.top + (rec.bottom - rec.top) / 2).toFixed(2)) -
+        Number((recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2))) <= 1).assertTrue()
       } else if (data.testValue.describe == 'ParentAlignmentLeftJustifying') {
         expect(rec.left).assertEqual(recParent.left)
         expect(rec.bottom).assertEqual(recParent.bottom)
