@@ -41,6 +41,22 @@ export default class UIExtAbility extends UIExtensionAbility {
             'session': session
         });
         session.loadContent('pages/index', storage);
+        try {
+            this.context.reportDrawnCompleted((err) => {
+                if (err.code) {
+                    // 处理业务逻辑错误
+                    console.error(`reportDrawnCompleted failed, code is ${err.code}, message is ${err.message}`);
+                    return;
+                }
+                // 执行正常业务
+                console.info('reportDrawnCompleted succeed');
+            });
+        } catch (err) {
+            // 捕获同步的参数错误
+            let code = err.code;
+            let message = err.message;
+            console.error(`reportDrawnCompleted failed, code is ${code}, message is ${message}`);
+        }
     }
 
     onSessionDestroy(session) {

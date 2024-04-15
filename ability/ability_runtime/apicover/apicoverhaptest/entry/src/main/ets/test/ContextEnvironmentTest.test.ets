@@ -23,12 +23,16 @@ export default function ContextEnvironmentTest(applicationContext) {
     var callbackid_errorNum = -1
     var callbackid_errorType = "test"
     var callNum = 0;
+    var fontSizeScale = 0;
+    var fontWeightScale = 0;
 
     let envCallback = {
       onConfigurationUpdated(config) {
         console.info(TAG, `envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`)
         update_language = config.language;
         isUpdated = true;
+        fontSizeScale = config.fontSizeScale;
+        fontWeightScale = config.fontWeightScale;
       }
     }
 
