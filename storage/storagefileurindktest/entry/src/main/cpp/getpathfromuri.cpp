@@ -30,7 +30,7 @@ static napi_value GetUriFromPath(napi_env env, napi_callback_info info)
     char path[] = "/data/storage/el2/base/files/test1.txt";
     unsigned int length = strlen(path);
     char *uriResult = nullptr;
-    FileManagement_ErrCode ret = OH_FileUri_GetUriFromPath(path, length, &uriResult); 
+    FileManagement_ErrCode ret = OH_FileUri_GetUriFromPath(path, length, &uriResult);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -53,7 +53,7 @@ static napi_value GetFullDirectoryUri(napi_env env, napi_callback_info info)
 "file://com.acts.storage.fileurindk/data/storage/el2/base/haps/com.acts.storage.fileurindk/files/1.txt";
     unsigned int length = strlen(uri);
     char *uriResult = nullptr;
-    FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length ,&uriResult);
+    FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length, &uriResult);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;

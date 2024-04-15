@@ -34,7 +34,7 @@ struct Index {
       alignItems: ItemAlign.Center,
       justifyContent: FlexAlign.Center
     }) {
-      Text('NDK TEST')
+      Text('FileuriNdkTest')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
     }
