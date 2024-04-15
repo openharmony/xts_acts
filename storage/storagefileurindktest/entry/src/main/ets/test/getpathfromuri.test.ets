@@ -19,111 +19,111 @@ import fileuri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs';
 
 export default function fileuriNdkTest(){
-   describe('getfileurifrompath_Ndk_test',async function(){
+   describe('fileuri_Ndk_test',async function(){
 
       /**
-       * @tc.number SUB_BASIC_FM_FileAPI_NDK_getfileuri_0100
-       * @tc.name geturifrompath_ndktest_001
+       * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0100
+       * @tc.name fileuri_geturifrompath_001
        * @tc.desc function of API, Test GetUriFromPath, normal function
        * @tc.size MEDIUM
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
        */
-      it('geturifrompath_ndktest_001', 0,async function (done){
+      it('fileuri_geturifrompath_001', 0,async function (done){
          try{
             let ret = getpathfromuri.GetUriFromPath();
-            console.info("geturiFrompath_ndktest_001 test napi ret = " + JSON.stringify(ret));
-            console.info("geturiFrompath_ndktest_001 test successful!");
+            console.info("fileuri_geturifrompath_001 test napi ret = " + JSON.stringify(ret));
+            console.info("fileuri_geturifrompath_001 test successful!");
             expect(ret).assertEqual(0);
             done();
          }catch(e){
-            console.info('geturifrompath_ndktest_001 has failed for ' + e.message + ', code: ' + e.code);
+            console.info('fileuri_geturifrompath_001 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
          }
       });
 
       /**
-       * @tc.number SUB_BASIC_FM_FileAPI_NDK_getfileuri_0200
-       * @tc.name getpathfromuri_ndktest_001
+       * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0200
+       * @tc.name fileuri_getpathfromuri_001
        * @tc.desc function of API, Test GetPathFromUri, normal function
        * @tc.size MEDIUM
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
        */
-      it('getpathfromuri_ndktest_001', 0,async function (done){
+      it('fileuri_getpathfromuri_001', 0,async function (done){
          try{
             let ret = getpathfromuri.GetPathFromUri();
-            console.info("getpathfromuri_ndktest_001 test napi ret = " + JSON.stringify(ret));
+            console.info("fileuri_getpathfromuri_001 test napi ret = " + JSON.stringify(ret));
             if(ret == 801){
                expect(true).assertTrue();
                done();
             }else{
-               console.info("getpathfromuri_ndktest_001 test successful!");
+               console.info("fileuri_getpathfromuri_001 test successful!");
                expect(ret).assertEqual(0);
                done();
             };
             done();
          }catch(e){
-            console.info('getpathfromuri_ndktest_001 has failed for ' + e.message + ', code: ' + e.code);
+            console.info('fileuri_getpathfromuri_001 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
          }
       });
 
       /**
-       * @tc.number SUB_BASIC_FM_FileAPI_NDK_getfileuri_0300
-       * @tc.name getfulldirectory_ndktest_001
+       * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0300
+       * @tc.name fileuri_getfulldirectory_001
        * @tc.desc function of API, Test getfulldirectory, normal function
        * @tc.size MEDIUM
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
        */
-      it('getfulldirectory_ndktest_001', 0,async function (done){
+      it('fileuri_getfulldirectory_001', 0,async function (done){
          try{
             let filepath = getContext().filesDir + "/1.txt";
             fs.openSync(filepath,0o102);
             let uri = new fileuri.FileUri(filepath);
             let ret = getpathfromuri.GetFullDirectoryUri();
-            console.info("getfulldirectory_ndktest_001 test napi ret = "+ JSON.stringify(ret));
+            console.info("fileuri_getfulldirectory_001 test napi ret = "+ JSON.stringify(ret));
             if(ret == 801){
                expect(true).assertTrue();
                done();
             }else{
-               console.info("getfulldirectory_ndktest_001 test successful!");
+               console.info("fileuri_getfulldirectory_001 test successful!");
                expect(ret).assertEqual(0);
                done();
             };
             done();
          }catch(e){
-            console.info('getfulldirectory_ndktest_001 has failed for ' + e.message + ', code: ' + e.code);
+            console.info('fileuri_getfulldirectory_001 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
          }
       });
 
       /**
-       * @tc.number SUB_BASIC_FM_FileAPI_NDK_getfileuri_0400
-       * @tc.name isvaliduri_ndktest_001
+       * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0400
+       * @tc.name fileuri_isvaliduri_001
        * @tc.desc function of API, Test IsValidUri, normal function
        * @tc.size MEDIUM
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
        */
-      it('isvaliduri_ndktest_001', 0,async function (done){
+      it('fileuri_isvaliduri_001', 0,async function (done){
          try{
             let filepath = getContext().filesDir + "/4.txt";
             fs.openSync(filepath,0o102);
             let uri = new fileuri.FileUri(filepath);
-            console.info("isvaliduri_ndktest_001 test napi uri = "+ uri);
+            console.info("fileuri_isvaliduri_001 test napi uri = "+ uri);
             let ret = getpathfromuri.IsValidUri();
-            console.info("isvaliduri_ndktest_001 test napi ret = "+ JSON.stringify(ret));
-            console.info("isvaliduri_ndktest_001 test successful!");
+            console.info("fileuri_isvaliduri_001 test napi ret = "+ JSON.stringify(ret));
+            console.info("fileuri_isvaliduri_001 test successful!");
             expect(ret).assertEqual(1);
             done();
          }catch(e){
-            console.info('isvaliduri_ndktest_001 has failed for ' + e.message + ', code: ' + e.code);
+            console.info('fileuri_isvaliduri_001 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
          }
       });

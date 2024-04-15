@@ -19,52 +19,54 @@
 #include <iostream>
 #include "native_common.h"
 #include "hilog/log.h"
-#include "errno.h"
+#include <cerrno>
 #include <malloc.h>
-#include "stdio.h"
-#include "string.h"
+#include <cstdio>
+#include <cstring>
 #include <js_native_api_types.h>
 
-static napi_value GetUriFromPath(napi_env env,napi_callback_info info)
+static napi_value GetUriFromPath(napi_env env, napi_callback_info info)
 {
     char path[] = "/data/storage/el2/base/files/test1.txt";
     unsigned int length = strlen(path);
     char *uriResult = nullptr;
-    FileManagement_ErrCode ret = OH_FileUri_GetUriFromPath(path, length ,&uriResult); 
+    FileManagement_ErrCode ret = OH_FileUri_GetUriFromPath(path, length, &uriResult); 
     napi_value result = nullptr;
-    napi_create_int32(env,ret,&result);
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value GetPathFromUri(napi_env env,napi_callback_info info)
+static napi_value GetPathFromUri(napi_env env, napi_callback_info info)
 {
     char uri[] = "/data/storage/el2/base/files/test2.txt";
     unsigned int length = strlen(uri);
     char *uriResult = nullptr;
-    FileManagement_ErrCode ret=OH_FileUri_GetPathFromUri(uri,length,&uriResult);
-    napi_value result=nullptr;
-    napi_create_int32(env,ret,&result);
+    FileManagement_ErrCode ret = OH_FileUri_GetPathFromUri(uri, length, &uriResult);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value GetFullDirectoryUri(napi_env env,napi_callback_info info)
+static napi_value GetFullDirectoryUri(napi_env env, napi_callback_info info)
 {
-    char uri[]="file://com.acts.storage.fileurindk/data/storage/el2/base/haps/com.acts.storage.fileurindk/files/1.txt";
+    char uri[] =
+"file://com.acts.storage.fileurindk/data/storage/el2/base/haps/com.acts.storage.fileurindk/files/1.txt";
     unsigned int length = strlen(uri);
     char *uriResult = nullptr;
     FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length ,&uriResult);
     napi_value result = nullptr;
-    napi_create_int32(env,ret,&result);
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
 static napi_value IsValidUri(napi_env env, napi_callback_info info)
 {
-    char uri[] = "file://com.acts.storage.fileurindk/data/storage/el2/base/haps/com.acts.storage.fileurindk/files/4.txt";
+    char uri[] =
+"file://com.acts.storage.fileurindk/data/storage/el2/base/haps/com.acts.storage.fileurindk/files/4.txt";
     unsigned int length = strlen(uri);
     bool falgs = OH_FileUri_IsValidUri(uri, length);
     napi_value result = nullptr;
-    napi_create_int32(env,falgs,&result);
+    napi_create_int32(env, falgs, &result);
     return result;
 }
 
@@ -72,7 +74,7 @@ static napi_value IsValidUri(napi_env env, napi_callback_info info)
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
-    napi_property_descriptor desc[]={
+    napi_property_descriptor desc[] = {
         { "GetUriFromPath", nullptr, GetUriFromPath, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "GetPathFromUri", nullptr, GetPathFromUri, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "GetFullDirectoryUri", nullptr, GetFullDirectoryUri, nullptr, nullptr, nullptr, napi_default, nullptr },
