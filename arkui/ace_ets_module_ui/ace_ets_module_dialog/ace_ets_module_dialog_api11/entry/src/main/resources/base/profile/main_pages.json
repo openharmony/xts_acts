@@ -8,6 +8,8 @@
     "MainAbility/pages/promptAction/ToastShowMode",
     "MainAbility/pages/promptAction/prompt",
     "MainAbility/pages/promptAction/Index",
+    "MainAbility/pages/AlertDialog/AlertDialog",
+    "MainAbility/pages/Panel/Panel",
     "MainAbility/pages/panel/Index"
   ]
 }
