@@ -81,6 +81,7 @@ async function imageComparisonAssert(left: number, top: number) {
         }
       })
       pixelMap.release();
+      return isTrue;
     });
   } catch (exception) {
     console.error('Failed to save screenshot. Code: ' + JSON.stringify(exception));

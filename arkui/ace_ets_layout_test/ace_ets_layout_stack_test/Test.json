@@ -10,7 +10,8 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceEtsLayoutStackTest.hap"
+            "ActsAceEtsLayoutStackTest.hap",
+            "ActsAceEtsLayoutStackMainTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
