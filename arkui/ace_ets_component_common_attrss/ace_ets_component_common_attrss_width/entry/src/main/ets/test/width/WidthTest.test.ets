@@ -16,6 +16,23 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class TestValue {
+  describe: string;
+  setValue: ESObject
+  expectValue: ESObject;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentWidth: number;
+  parentHeight: number;
+  parentBackGroundColor: Color;
+  BackGroundColor: Color;
+  parentComponentKey: string;
+}
+
 /**
  * Test of common attribute: width
  */
@@ -41,16 +58,16 @@ export default function widthTest() {
     'Progress',
     'QRCode',
     'Radio',
-//    'ScrollBar',
+    //    'ScrollBar',
     'Rating',
-//    'Search',
+    //    'Search',
     'RichText',
     'Select',
     'Slider',
     'Text',
-//    'TextArea',
+    //    'TextArea',
     'TextClock',
-//    'TextInput',
+    //    'TextInput',
     'TextPicker',
     'TextTimer',
     'TimePicker',
@@ -59,21 +76,21 @@ export default function widthTest() {
     'Badge',
     'Column',
     'ColumnSplit',
-//    'Counter',
+    //    'Counter',
     'Flex',
     'GridRow',
     'Grid',
     'List',
     'ListItem',
-//    'Panel',
+    //    'Panel',
     'Refresh',
     'Row',
     'RowSplit',
-//    'Scroll',
-//    'SideBarContainer',
+    //    'Scroll',
+    //    'SideBarContainer',
     'Stack',
     'Swiper',
-//    'Tabs',
+    //    'Tabs',
     'Circle',
     'Ellipse',
     'Polyline',
@@ -84,9 +101,9 @@ export default function widthTest() {
     'Line',
     'WaterFlow',
     'Stepper',
-//    'StepperItem',
+    //    'StepperItem',
     'FlowItem',
-//    'GridCol',
+    //    'GridCol',
     'GridItem',
     'RelativeContainer',
     'Navigator',
@@ -100,7 +117,7 @@ export default function widthTest() {
   let BackGroundColor = Color.Orange
 
   //Page related configuration, this parameter is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testWidth',
     pageName: 'WidthPage',
     pageUrl: 'MainAbility/pages/width/WidthPage',
@@ -112,7 +129,7 @@ export default function widthTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'ExceedParent',
     setValue: {
       width: 400
@@ -155,7 +172,7 @@ export default function widthTest() {
    */
   describe('WidthTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
 
       //Obtain dimensional information for reference components.
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
