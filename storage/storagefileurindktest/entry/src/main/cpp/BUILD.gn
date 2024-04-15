@@ -47,9 +47,8 @@ ohos_shared_library("getpathfromuri") {
 
   configs = [ ":config" ]
 
-  deps = [
-    "${app_file_service_path}/interfaces/kits/ndk/fileuri/src:ohfileuri",
-  ]
+  deps =
+      [ "${app_file_service_path}/interfaces/kits/ndk/fileuri/src:ohfileuri" ]
 
   external_deps = [
     "hilog:libhilog",
