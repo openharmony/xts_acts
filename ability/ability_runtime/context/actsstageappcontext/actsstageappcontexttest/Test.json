@@ -22,6 +22,7 @@
         {
             "type": "ShellKit",
             "run-command": [
+                "param set persist.ace.testmode.enabled 1",
                 "param set persist.sys.suspend_manager_enabled false",
                 "reboot",
                 "power-shell wakeup",
