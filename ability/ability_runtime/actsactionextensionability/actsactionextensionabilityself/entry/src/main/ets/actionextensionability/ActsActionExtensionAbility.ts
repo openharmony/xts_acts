@@ -12,14 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import ActionExtensionAbility from '@ohos.app.ability.ActionExtensionAbility';
 import commonEventManager from '@ohos.commonEventManager';
+import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
 
 let count = 0;
 const TIME_OUT = 500;
+
 export default class ActsActionExtensionAbility extends ActionExtensionAbility {
   storage: LocalStorage;
   message: string;
+
   onCreate() {
     console.log('====>ActsActionExtensionAbility onCreate called');
     count++;
@@ -32,17 +36,19 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
       parameters: {
         'count': count
       }
-    };
-    commonEventManager.publish('ACTS_TEST_FOREGROUND', options, function () {});
+    }
+    commonEventManager.publish('ACTS_TEST_FOREGROUND', options,
+      function () {})
   }
 
   onBackground() {
     console.log('====>ActsActionExtensionAbility onBackground called');
     count++;
-    commonEventManager.publish('ACTS_TEST_BACKGROUND', function () {});
+    commonEventManager.publish('ACTS_TEST_BACKGROUND', function () {
+    })
     setTimeout(() => {
-      globalThis.session.terminateSelf();
-    }, TIME_OUT);
+      AppStorage.get<UIExtensionContentSession>("session")!.terminateSelf();
+    }, TIME_OUT)
   }
 
   onSessionCreate(want, session) {
@@ -53,9 +59,9 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
       {
         'session': session,
         'messages': this.message
-      });
+      })
+    AppStorage.setOrCreate<UIExtensionContentSession>("session", session);
     session.loadContent('pages/PageThree', this.storage);
-    globalThis.session = session;
   }
 
   onDestroy() {
@@ -65,8 +71,9 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
       parameters: {
         'count': count
       }
-    };
-    commonEventManager.publish('ACTS_TEST_DESTROY', options, function () {});
+    }
+    commonEventManager.publish('ACTS_TEST_DESTROY', options,
+      function () {})
   }
 
   onSessionDestroy(session) {

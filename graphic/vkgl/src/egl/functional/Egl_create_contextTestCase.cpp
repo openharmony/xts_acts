@@ -23,57 +23,68 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000006, "dEQP-EGL.functional.create_con"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000006, "dEQP-EGL.functional.create_con",
     "text.rgb565_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000007, "dEQP-EGL.functional.create_context.rgb565_no_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000007, "dEQP-EGL.functional.create_cont",
+    "ext.rgb565_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000008, "dEQP-EGL.functional.create_context.rgb565_depth_no_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000008, "dEQP-EGL.functional.create_cont",
+    "ext.rgb565_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000009, "dEQP-EGL.functional.create_context.rgb565_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000009, "dEQP-EGL.functional.create_cont",
+    "ext.rgb565_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000010, "dEQP-EGL.functional.create_con"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000010, "dEQP-EGL.functional.create_con",
     "text.rgb888_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000011, "dEQP-EGL.functional.create_context.rgb888_no_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000011, "dEQP-EGL.functional.create_cont",
+    "ext.rgb888_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000012, "dEQP-EGL.functional.create_context.rgb888_depth_no_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000012, "dEQP-EGL.functional.create_cont",
+    "ext.rgb888_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000013, "dEQP-EGL.functional.create_context.rgb888_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000013, "dEQP-EGL.functional.create_cont",
+    "ext.rgb888_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000014, "dEQP-EGL.functional.create_cont"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000014, "dEQP-EGL.functional.create_cont",
     "ext.rgba4444_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000015, "dEQP-EGL.functional.create_con"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000015, "dEQP-EGL.functional.create_con",
     "text.rgba4444_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000016, "dEQP-EGL.functional.create_con"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000016, "dEQP-EGL.functional.create_con",
     "text.rgba4444_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000017, "dEQP-EGL.functional.create_context.rgba4444_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000017, "dEQP-EGL.functional.create_cont",
+    "ext.rgba4444_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000018, "dEQP-EGL.functional.create_cont"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000018, "dEQP-EGL.functional.create_cont",
     "ext.rgba5551_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000019, "dEQP-EGL.functional.create_con"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000019, "dEQP-EGL.functional.create_con",
     "text.rgba5551_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000020, "dEQP-EGL.functional.create_con"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000020, "dEQP-EGL.functional.create_con",
     "text.rgba5551_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000021, "dEQP-EGL.functional.create_context.rgba5551_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000021, "dEQP-EGL.functional.create_cont",
+    "ext.rgba5551_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000022, "dEQP-EGL.functional.create_cont"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000022, "dEQP-EGL.functional.create_cont",
     "ext.rgba8888_no_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000023, "dEQP-EGL.functional.create_con"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000023, "dEQP-EGL.functional.create_con",
     "text.rgba8888_no_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000024, "dEQP-EGL.functional.create_con"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000024, "dEQP-EGL.functional.create_con",
     "text.rgba8888_depth_no_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000025, "dEQP-EGL.functional.create_context.rgba8888_depth_stencil");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000025, "dEQP-EGL.functional.create_cont",
+    "ext.rgba8888_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000026, "dEQP-EGL.functional.create_context.other");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000026, "dEQP-EGL.functional.create_cont",
+    "ext.other");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000027, "dEQP-EGL.functional.create_context.no_config");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000027, "dEQP-EGL.functional.create_cont",
+    "ext.no_config");

@@ -62,11 +62,6 @@ export default function AudioRendererInterruptUnitTest() {
         usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
         rendererFlags: 0
       },
-      // 'ULTRASONIC': {
-      //     content: audio.ContentType.CONTENT_TYPE_ULTRASONIC,
-      //     usage: audio.StreamUsage.STREAM_USAGE_SYSTEM,
-      //     rendererFlags: 0
-      // },
       'ALARM': {
         content: audio.ContentType.CONTENT_TYPE_MUSIC,
         usage: audio.StreamUsage.STREAM_USAGE_ALARM,
@@ -2975,11 +2970,10 @@ export default function AudioRendererInterruptUnitTest() {
       render1.on("audioInterrupt", async (eventAction) => {
         console.log("14.eventAction=" + JSON.stringify(eventAction))
         if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_PAUSE)
         } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
-        } else {
-        }
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_RESUME)
+        } else { }
       })
       await start(render1, done)
 
@@ -2987,8 +2981,9 @@ export default function AudioRendererInterruptUnitTest() {
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
       await sleep(500)
-      await release(render1, done)
       await release(render2, done)
+      await sleep(500)
+      await release(render1, done)
       done()
     })
 

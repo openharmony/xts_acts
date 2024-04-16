@@ -59,6 +59,18 @@
     {
       "name": "swiper_margin",
       "value": "12"
+    },
+    {
+      "name": "calc",
+      "value": "calc(90%)"
+    },
+    {
+      "name": "actionAreaDistance1",
+      "value": "80vp"
+    },
+    {
+      "name": "strokeWidth",
+      "value": "20"
     }
   ]
 }

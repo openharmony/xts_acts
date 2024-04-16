@@ -17,7 +17,7 @@
             "abilities": [
               {
                 "name": "MainAbility",
-                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ets",
                 "description": "$string:MainAbility_desc",
                 "icon": "$media:icon",
                 "label": "$string:MainAbility_label",
@@ -46,11 +46,6 @@
         "description": "$string:MainAbility3_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility3_label"
-      }
-    ],
-    "requestPermissions": [
-      {
-        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ]
   }

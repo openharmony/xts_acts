@@ -17,6 +17,31 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  targetWidth: number;
+  targetHeight: number;
+  compareOneButtonWidth: number;
+  compareOneButtonHeight: number;
+  compareOneButtonKey: string;
+  compareTwoButtonWidth: number;
+  compareTwoButtonHeight: number;
+  compareTwoButtonDisplayPriority: number;
+  compareTwoButtonKey: string;
+  parentWidth: number;
+  parentHeight: number;
+  parentKey: string;
+}
+
+class TestValue {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
 
 export default function displayPriorityTest() {
 
@@ -101,7 +126,7 @@ export default function displayPriorityTest() {
   let parentHeight = 300;
   let parentKey = 'parentKey';
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testDisplayPriority',
     pageName: 'DisplayPriorityPage',
     pageUrl: 'MainAbility/pages/displayPriority/DisplayPriorityPage',
@@ -121,7 +146,7 @@ export default function displayPriorityTest() {
   }
 
   //Test content and expected results
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'LowPriorityIsHidden',
     setValue: {
       displayPriority: 4.0
@@ -152,7 +177,7 @@ export default function displayPriorityTest() {
     }]
 
   describe('DisplayPriorityTest', () => {
-    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async data => {
+    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async (data: ESObject) => {
       let targetRect = Utils.getComponentRect(data.pageConfig.componentKey);
       let parentRect = Utils.getComponentRect(data.pageConfig.parentKey);
       let compareTwoButtonRect = Utils.getComponentRect(data.pageConfig.compareTwoButtonKey);
@@ -181,11 +206,11 @@ export default function displayPriorityTest() {
           expect(px2vp(compareTwoButtonRect.right - compareTwoButtonRect.left)).assertEqual(compareTwoButtonWidth);
         } else if (data.testValue.describe == 'SetPriority') {
           //Check whether the position of the reference component is correct
-          let compareOneButtonComponent = Utils.getComponentByKey(data.pageConfig.compareOneButtonKey);
+          let compareOneButtonComponent: ESObject = Utils.getComponentByKey(data.pageConfig.compareOneButtonKey);
           console.info('[' + data.caseTag + '] data.testValue.describe is:' + data.testValue.describe);
           console.info('[' + data.caseTag + '] displayPriority is:' + data.viewObj.$attrs.displayPriority);
           console.info('[' + data.caseTag + '] compareOneButton displayPriority is:'
-          + compareOneButtonComponent.$attrs.displayPriority);
+            + compareOneButtonComponent.$attrs.displayPriority);
           console.info('[' + data.caseTag + '] parentRect.left is:' + parentRect.left);
           console.info('[' + data.caseTag + '] compareTwoButtonRect.left is:' + compareTwoButtonRect.left);
           console.info('[' + data.caseTag + '] compareTwoButtonRect.right is:' + compareTwoButtonRect.right);
@@ -222,10 +247,10 @@ export default function displayPriorityTest() {
           expect(px2vp(compareTwoButtonRect.bottom - compareTwoButtonRect.top)).assertEqual(compareTwoButtonHeight);
         } else if (data.testValue.describe == 'SetPriority') {
           //Check whether the position of the reference component is correct
-          let compareOneButtonComponent = Utils.getComponentByKey(data.pageConfig.compareOneButtonKey);
+          let compareOneButtonComponent: ESObject = Utils.getComponentByKey(data.pageConfig.compareOneButtonKey);
           console.info('[' + data.caseTag + '] data.testValue.describe is:' + data.testValue.describe);
           console.info('[' + data.caseTag + '] compareOneButton displayPriority is:'
-          + compareOneButtonComponent.$attrs.displayPriority);
+            + compareOneButtonComponent.$attrs.displayPriority);
           console.info('[' + data.caseTag + '] displayPriority is:' + data.viewObj.$attrs.displayPriority);
           console.info('[' + data.caseTag + '] parentRect.top is:' + parentRect.top);
           console.info('[' + data.caseTag + '] compareTwoButtonRect.top is:' + compareTwoButtonRect.top);

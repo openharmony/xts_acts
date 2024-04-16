@@ -24,7 +24,7 @@ function publishCallBack() {
   console.debug("====>AbilityMultiInstanceAppC Publish CallBack ====>");
 }
 
-async function onShowProcess() {
+async function onShowProcess(AppCAbilityContext) {
   let abilityWant = AppStorage.get<Want>("abilityWant")!;
   let callBackData = "AppC:";
   callBackData += callBackSeq;
@@ -37,13 +37,13 @@ async function onShowProcess() {
     commonEvent.publish("MultiInstanceStartFinish", commonEventPublishData, publishCallBack);
   } else {
     commonEvent.publish("MultiInstanceStartNext", commonEventPublishData, () => {
-      startAbilityProcess(AppStorage.get("abilityContext")!, abilityWant.parameters);
+      startAbilityProcess(AppCAbilityContext, abilityWant.parameters);
     })
   }
   callBackSeq = "";
 }
 
-async function startAbilityProcess(abilityContext, parameters) {
+async function startAbilityProcess(AppCAbilityContext, parameters) {
   let bundleName = "com.acts.abilitymultiinstancea";
   let abilityName = "com.acts.abilitymultiinstancea.MainAbility";
 
@@ -89,7 +89,7 @@ async function startAbilityProcess(abilityContext, parameters) {
       break;
   }
   parameters.nextStep = ++idx;
-  abilityContext.startAbility({
+  AppCAbilityContext.startAbility({
     bundleName: bundleName,
     abilityName: abilityName,
     parameters: parameters
@@ -114,7 +114,7 @@ export default class MainAbility extends Ability {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     console.log("MainAbility onWindowStageCreate");
-    AppStorage.setOrCreate("abilityContext", this.context);
+    AppStorage.setOrCreate("AppCAbilityContext", this.context);
     windowStage.loadContent("pages/index/index", null);
   }
 
@@ -127,7 +127,7 @@ export default class MainAbility extends Ability {
     // Ability has brought to foreground
     console.log("MainAbility onForeground");
     callBackSeq += "onForeground";
-    onShowProcess();
+    onShowProcess(this.context);
   }
 
   onBackground() {

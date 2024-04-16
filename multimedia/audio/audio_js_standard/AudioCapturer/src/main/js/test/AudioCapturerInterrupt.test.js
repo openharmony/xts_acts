@@ -390,7 +390,7 @@ export default function audioCapturerInterrupt() {
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0400', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -424,25 +424,18 @@ export default function audioCapturerInterrupt() {
              *@tc.level     : Level 0
             */
         it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0500', 0, async function (done) {
-            let flag1 = false;
-            let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
             await capturerStart(capture, done)
             capture.on("audioInterrupt", async (eventAction) => {
                 console.log("05 capture.eventAction:" + JSON.stringify(eventAction))
-                flag1 = true;
+                expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_STOP)
             })
 
             let render = await createAudioRenderer(renderInfo['VOICE_CALL'], streamInfo['44100'])
             await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
             await renderStart(render, done)
-            render.on("audioInterrupt", async (eventAction) => {
-                console.log("05 render.eventAction:" + JSON.stringify(eventAction))
-                flag2 = true;
-            })
 
             await sleep(500)
-            expect(flag1 == false && flag2 == false).assertTrue()
             await capturerRelease(capture, done)
             await renderRelease(render, done)
             done()

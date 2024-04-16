@@ -7,6 +7,26 @@
     {
       "name": "color_world",
       "value": "#ff0000ff"
+    },
+    {
+      "name": "radio_BackgroundColor",
+      "value": "#FFA67D3D"
+    },
+    {
+      "name": "radio_UnBorderColor",
+      "value": "#FFFF0000"
+    },
+    {
+      "name": "radio_IndicatorColor",
+      "value": "#FF00FF00"
+    },
+    {
+      "name": "start_block_Border_Color",
+      "value": "#FF19D41C"
+    },
+    {
+      "name": "start_Step_Color",
+      "value": "#FF19D41C"
     }
   ]
 }

@@ -23,4 +23,5 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000005, "dEQP-EGL.info.configs");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000005, "dEQP-EGL.info.con",
+    "figs");

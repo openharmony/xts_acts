@@ -13,12 +13,11 @@
  * limitations under the License.
  */
 
-var storage = LocalStorage.GetShared();
+let storage = LocalStorage.GetShared();
 
 @Entry(storage)
 @Component
 struct Index3 {
-
   build() {
     Row() {
       Column() {

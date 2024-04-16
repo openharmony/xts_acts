@@ -15,12 +15,12 @@
 
 set -e
 root_vkgl_path=$1
-mkdir -p  "suites/acts/acts/testcases/vkgldata"
-cp -rf "$root_vkgl_path/third_party/vk-gl-cts/data" "suites/acts/acts/testcases/vkgldata"
-cp -rf "$root_vkgl_path/third_party/vk-gl-cts/external/openglcts/data" "suites/acts/acts/testcases/vkgldata"
-tar czvf "vkgldata.tar.gz" -C "suites/acts/acts/testcases/vkgldata" "."
-mv "vkgldata.tar.gz" "suites/acts/acts/testcases/vkgldata"
-cp -rf "graphic/graphic_2d/libdeqp_ohos_platform.z.so" "suites/acts/acts/testcases/vkgldata"
-cp -rf "graphic/graphic_2d/librosen_context.z.so" "suites/acts/acts/testcases/vkgldata"
-cp -rf "graphic/graphic_2d/libdeqp_spirv.z.so" "suites/acts/acts/testcases/vkgldata"
-cp -rf "graphic/graphic_2d/libdeqp_spvremapper.z.so" "suites/acts/acts/testcases/vkgldata"
+mkdir -p  "suites/acts/testcases/vkgldata"
+cp -rf "$root_vkgl_path/third_party/vk-gl-cts/data" "suites/acts/testcases/vkgldata"
+cp -rf "$root_vkgl_path/third_party/vk-gl-cts/external/openglcts/data" "suites/acts/testcases/vkgldata"
+tar czvf "vkgldata.tar.gz" -C "suites/acts/testcases/vkgldata" "."
+mv "vkgldata.tar.gz" "suites/acts/testcases/vkgldata"
+cp -rf "graphic/graphic_2d/libdeqp_ohos_platform.z.so" "suites/acts/testcases/vkgldata"
+cp -rf "graphic/graphic_2d/librosen_context.z.so" "suites/acts/testcases/vkgldata"
+cp -rf "graphic/graphic_2d/libdeqp_spirv.z.so" "suites/acts/testcases/vkgldata"
+cp -rf "graphic/graphic_2d/libdeqp_spvremapper.z.so" "suites/acts/testcases/vkgldata"

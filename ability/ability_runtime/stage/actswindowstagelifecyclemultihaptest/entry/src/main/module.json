@@ -88,6 +88,9 @@
     "requestPermissions": [
       {
         "name": "ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ]
   }

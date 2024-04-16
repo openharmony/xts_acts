@@ -14,12 +14,22 @@
  */
 import CustomDialogMaskTest from './promptActionTest/CustomDialogMask.test'
 import menu from './MenuTest/menu.test'
+import menuTest from './MenuTest/menufirst.test'
+import menuSecondTest from './MenuTest/menusecond.test'
 import ToastShowMode from './promptActionTest/ToastShowMode.test';
 import promptTest from './promptActionTest/promptTest.test';
+import DialogTest from './promptActionTest/Dialog.test';
+import panelJsunit from './Panel/PanelJsunit.test';
+import panelClose from './panelTest/panelClose'
 
 export default function testsuite() {
   CustomDialogMaskTest()
   menu()
+  menuTest()
+  menuSecondTest();
   ToastShowMode()
   promptTest()
+  DialogTest();
+  panelJsunit();
+  panelClose()
 }

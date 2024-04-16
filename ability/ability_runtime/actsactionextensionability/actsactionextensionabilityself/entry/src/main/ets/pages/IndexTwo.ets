@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @Entry
 @Component
 struct IndexTwo {
@@ -27,7 +28,6 @@ struct IndexTwo {
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            globalThis.StartAbilityForResult_CallBack()
           })
           .margin({
             top: 5

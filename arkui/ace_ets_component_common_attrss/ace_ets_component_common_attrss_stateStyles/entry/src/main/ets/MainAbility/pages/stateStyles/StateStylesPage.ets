@@ -20,24 +20,27 @@ import router from '@ohos.router'
 @Component
 struct StateStylesPage {
   @State _isEnable: boolean = true
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
 
   onPageShow() {
     console.info('StateStylesPage show called ')
-    AttrsManager.registerDataChange(value => this._isEnable = value)
+    AttrsManager.registerDataChange((value: boolean) => this._isEnable = value)
     console.info('this._isEnable:' + this._isEnable)
   }
 
-  @Styles disabledStyles() {
+  @Styles
+  disabledStyles() {
     .zIndex(2)
   }
 
-  @Styles normalStyles() {
+  @Styles
+  normalStyles() {
     .zIndex(1)
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .enabled(this._isEnable)
     .key(this.componentKey)
     .stateStyles({
@@ -64,7 +67,8 @@ struct StateStylesPage {
         } else if (this.targetView == 'CheckboxGroup') {
           CheckboxGroup({ group: 'checkboxGroup' }).commonStyle()
         } else if (this.targetView == 'DataPanel') {
-          DataPanel({ values: [5, 10, 10, 7, 9, 10, 10, 10, 10] }).commonStyle()
+          DataPanel({ values: [5, 10, 10, 7, 9, 10, 10, 10, 10] })
+            .commonStyle()
         } else if (this.targetView == 'DatePicker') {
           DatePicker({
             start: new Date('1970-1-1'),
@@ -132,10 +136,12 @@ struct StateStylesPage {
         } else if (this.targetView == 'Search') {
           Search({ placeholder: 'Type to search...' })
             .backgroundColor(Color.White)
-            .searchButton('SEARCH').commonStyle()
+            .searchButton('SEARCH')
+            .commonStyle()
         } else if (this.targetView == 'Select') {
           Select([{ value: 'aaa', icon: '/common/public_icon.svg' },
-            { value: 'bbb', icon: '/common/public_icon.svg' }]).commonStyle()
+            { value: 'bbb', icon: '/common/public_icon.svg' }])
+            .commonStyle()
         } else if (this.targetView == 'Slider') {
           Slider({
             value: 50,
@@ -204,22 +210,34 @@ struct StateStylesPage {
             style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red }
           }) {
             Button('message')
-              .width(100).height(50).backgroundColor(0x317aff)
+              .width(100)
+              .height(50)
+              .backgroundColor(0x317aff)
           }.commonStyle()
         } else if (this.targetView == 'Column') {
           Column() {
-            Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+            Column()
+              .width('100%')
+              .height(30)
+              .backgroundColor(0xAFEEEE)
           }.commonStyle()
         } else if (this.targetView == 'ColumnSplit') {
           ColumnSplit() {
-            Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+            Text('1')
+              .width('100%')
+              .height(50)
+              .backgroundColor(0xF5DEB3)
+              .textAlign(TextAlign.Center)
           }.commonStyle()
         } else if (this.targetView == 'Counter') {
           Counter() {
           }.commonStyle()
         } else if (this.targetView == 'Flex') {
           Flex() {
-            Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
+            Text('1')
+              .width('20%')
+              .height(50)
+              .backgroundColor(0xF5DEB3)
           }.commonStyle()
         } else if (this.targetView == 'GridRow') {
           GridRow({
@@ -227,10 +245,14 @@ struct StateStylesPage {
             direction: GridRowDirection.Row
           }) {
             ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green,
-            Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color) => {
+              Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color: Color) => {
               GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
-                Row().width('100%').height('20vp')
-              }.borderColor(color).borderWidth(2)
+                Row()
+                  .width('100%')
+                  .height('20vp')
+              }
+              .borderColor(color)
+              .borderWidth(2)
             })
           }.commonStyle()
         } else if (this.targetView == 'Grid') {
@@ -238,8 +260,11 @@ struct StateStylesPage {
             ForEach(['0', '1', '2', '3', '4'], () => {
               ForEach(['0', '1', '2', '3', '4'], (day: string) => {
                 GridItem() {
-                  Text(day).backgroundColor(Color.White)
-                    .width('100%').height('100%').textAlign(TextAlign.Center)
+                  Text(day)
+                    .backgroundColor(Color.White)
+                    .width('100%')
+                    .height('100%')
+                    .textAlign(TextAlign.Center)
                 }
               })
             })
@@ -256,7 +281,10 @@ struct StateStylesPage {
                 .width('100%')
                 .height('100%')
                 .textAlign(TextAlign.Center)
-            }.rowStart(1).rowEnd(4).commonStyle()
+            }
+            .rowStart(1)
+            .rowEnd(4)
+            .commonStyle()
           }
           .width('100%')
           .height('100%')
@@ -284,7 +312,9 @@ struct StateStylesPage {
           .height('100%')
         } else if (this.targetView == 'Navigator') {
           Navigator({ target: '' }) {
-            Text('Go to back page').width('100%').height(20)
+            Text('Go to back page')
+              .width('100%')
+              .height(20)
           }.commonStyle().backgroundColor(Color.Red)
         } else if (this.targetView == 'Panel') {
           Panel(true) {
@@ -317,48 +347,66 @@ struct StateStylesPage {
         } else if (this.targetView == 'Scroll') {
           Scroll() {
             Column() {
-              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                 Text('Scroll' + item.toString())
                   .width('90%')
                   .height(50)
                   .backgroundColor(Color.White)
                   .textAlign(TextAlign.Center)
-              }, item => item)
+              }, (item: string) => item)
             }.width('100%')
           }.scrollBar(BarState.On).commonStyle()
         } else if (this.targetView == 'SideBarContainer') {
           SideBarContainer(SideBarContainerType.Embed) {
             Column() {
               Column({ space: 5 }) {
-                Text('Index0').fontSize(25)
+                Text('Index0')
+                  .fontSize(25)
               }
-            }.width('100%').justifyContent(FlexAlign.SpaceEvenly).backgroundColor(Color.Green)
+            }
+            .width('100%')
+            .justifyContent(FlexAlign.SpaceEvenly)
+            .backgroundColor(Color.Green)
 
             Column() {
-              Text('SideBarContainer content').fontSize(25)
+              Text('SideBarContainer content')
+                .fontSize(25)
             }.backgroundColor(Color.Orange)
           }.commonStyle()
         } else if (this.targetView == 'Stack') {
           Stack() {
             Text('Stack')
-          }.backgroundColor(Color.White).commonStyle()
+          }
+          .backgroundColor(Color.White)
+          .commonStyle()
         } else if (this.targetView == 'Swiper') {
           Swiper() {
-            Text('Swiper').width('100%').height('100%')
+            Text('Swiper')
+              .width('100%')
+              .height('100%')
           }.indicator(true)
           .backgroundColor(Color.White)
           .commonStyle()
         } else if (this.targetView == 'Tabs') {
           Tabs() {
             TabContent() {
-              Column().width('100%').height('100%').backgroundColor('#00CB87')
+              Column()
+                .width('100%')
+                .height('100%')
+                .backgroundColor('#00CB87')
             }
           }.commonStyle()
         } else if (this.targetView == 'TabContent') {
           Tabs() {
             TabContent() {
-              Text('TabContent Test').width('100%').height('100%').backgroundColor(Color.White)
-            }.tabBar('Tabs1').commonStyle().backgroundColor(Color.Yellow)
+              Text('TabContent Test')
+                .width('100%')
+                .height('100%')
+                .backgroundColor(Color.White)
+            }
+            .tabBar('Tabs1')
+            .commonStyle()
+            .backgroundColor(Color.Yellow)
           }.backgroundColor(Color.Red)
           .width('100%')
           .height('100%')
@@ -366,7 +414,9 @@ struct StateStylesPage {
           WaterFlow() {
             FlowItem() {
               Column() {
-                Text('WaterFlow').fontSize(12).height('16')
+                Text('WaterFlow')
+                  .fontSize(12)
+                  .height('16')
                 Image($r('app.media.icon'))
                   .width(50)
                   .height(50)
@@ -393,7 +443,9 @@ struct StateStylesPage {
             direction: GridRowDirection.Row
           }) {
             GridCol() {
-              Row().width('100%').height('20vp')
+              Row()
+                .width('100%')
+                .height('20vp')
             }
             .commonStyle()
             .backgroundColor(Color.Yellow)
@@ -405,7 +457,9 @@ struct StateStylesPage {
           WaterFlow() {
             FlowItem() {
               Column() {
-                Text('WaterFlow').fontSize(12).height('16')
+                Text('WaterFlow')
+                  .fontSize(12)
+                  .height('16')
                 Image($r('app.media.icon'))
                   .width(50)
                   .height(50)
@@ -433,7 +487,10 @@ struct StateStylesPage {
           .width('100%')
           .height('100%')
         }
-      }.backgroundColor(Color.Pink).width('100%').width('100%')
+      }
+      .backgroundColor(Color.Pink)
+      .width('100%')
+      .width('100%')
     }.backgroundColor(Color.Yellow)
   }
 }

@@ -15,5 +15,5 @@
 import abilityTest from './popup'
 
 export default function testsuite() {
-       abilityTest()
+  abilityTest()
 }

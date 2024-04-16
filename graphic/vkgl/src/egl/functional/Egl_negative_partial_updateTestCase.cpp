@@ -23,23 +23,23 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003560, "dEQP-EGL.functional.negative_par"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003560, "dEQP-EGL.functional.negative_par",
     "tial_update.not_postable_sur""face");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003561, "dEQP-EGL.functional.negative_pa"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003561, "dEQP-EGL.functional.negative_pa",
     "rtial_update.not_current_sur""face");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003562, "dEQP-EGL.functional.negative_p"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003562, "dEQP-EGL.functional.negative_p",
     "artial_update.buffer_preserved");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003563, "dEQP-EGL.functional.negative_part"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003563, "dEQP-EGL.functional.negative_part",
     "ial_update.set_damage_region_twice");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003564, "dEQP-EGL.functional.negative_partial_up"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003564, "dEQP-EGL.functional.negative_partial_up",
     "date.set_damage_region_before_query_age");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003565, "dEQP-EGL.functional.negative_par"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003565, "dEQP-EGL.functional.negative_par",
     "tial_update.pass_null_0_as_params");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003566, "dEQP-EGL.functional.negative_par"
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003566, "dEQP-EGL.functional.negative_par",
     "tial_update.not_current_sur""face2");

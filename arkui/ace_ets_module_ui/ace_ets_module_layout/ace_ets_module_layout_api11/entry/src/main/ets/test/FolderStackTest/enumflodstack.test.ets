@@ -27,7 +27,7 @@ export default function enumFolderTest() {
         console.info("get enumFolderTest state pages:" + JSON.stringify(pages));
         if (!("folder_stack" == pages.name)) {
           console.info("get enumFolderTest  pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({url:"MainAbility/pages/FolderStack/folder_stack"})
+          let result = await router.pushUrl({url:"MainAbility/pages/folderStack/folder_stack"})
           await CommonFunc.sleep(2000);
           console.info("push enumFolderTest page result:" + JSON.stringify(result));
         }

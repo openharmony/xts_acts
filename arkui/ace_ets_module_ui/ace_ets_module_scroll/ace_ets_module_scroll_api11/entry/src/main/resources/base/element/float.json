@@ -7,6 +7,10 @@
     {
       "name":"font_world",
       "value":"20.0fp"
+    },
+    {
+      "name": "float_1",
+      "value": "10vp"
     }
   ]
 }

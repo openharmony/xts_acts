@@ -26,29 +26,34 @@
 #include "deUniquePtr.hpp"
 #include "tcuOhosPlatform.hpp"
 
-#include "external/vulkancts/modules/vulkan/vktTestPackage.hpp"
+#include "external/openglcts/modules/common/glcConfigPackage.hpp"
+#include "external/openglcts/modules/common/glcSingleConfigTestPackage.hpp"
+#include "external/openglcts/modules/common/glcTestPackage.hpp"
+#include "external/openglcts/modules/gles2/es2cTestPackage.hpp"
+#include "external/openglcts/modules/gles32/es32cTestPackage.hpp"
+#include "external/openglcts/modules/gles31/es31cTestPackage.hpp"
+#include "external/openglcts/modules/gles3/es3cTestPackage.hpp"
+#include "external/openglcts/modules/glesext/esextcTestPackage.hpp"
 
+#include "modules/egl/teglTestPackage.hpp"
+#include "modules/gles2/tes2TestPackage.hpp"
+#include "modules/gles3/tes3TestPackage.hpp"
+#include "modules/gles31/tes31TestPackage.hpp"
+
+#include "ohos_context_i.h"
 #include "logdefine.h"
 #include "EglBaseFunc.h"
 
-
 static tcu::TestPackage* createTestPackage(tcu::TestContext& testCtx)
 {
-    return new vkt::TestPackage(testCtx);
-}
-
-static tcu::TestPackage* createExperimentalTestPackage(tcu::TestContext& testCtx)
-{
-    return new vkt::ExperimentalTestPackage(testCtx);
+    return new deqp::egl::TestPackage(testCtx);
 }
 
 void RegistPackage(void)
 {
     tcu::TestPackageRegistry *registry = tcu::TestPackageRegistry::getSingleton();
-    registry->registerPackage("dEQP-VK", createTestPackage);
-    registry->registerPackage("dEQP-VK-experimental", createExperimentalTestPackage);
+    registry->registerPackage("dEQP-EGL", createTestPackage);
 }
-
 
 // extern tcu::TestLog tcutestlog;
 FuncRunResult RunTestKHRGLES(int argc, const char** argv)
@@ -62,7 +67,7 @@ FuncRunResult RunTestKHRGLES(int argc, const char** argv)
         de::UniquePtr<tcu::Platform> platform(createOhosPlatform());
         de::UniquePtr<tcu::App> app(new tcu::App(*platform, archive, OHOS::Logdefine::tcutestlog, cmdLine));
 
-        for (isExist) {
+        for (;isExist;) {
             if (!app->iterate()) {
                 isExist = false;
             };

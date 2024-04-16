@@ -79,7 +79,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       'TYPE_FLOAT': 8,
     }
 
-    let currentDeviceIsRk = false; 
+    let currentDeviceIsRk = false;
     beforeAll(() => {
       let deviceTypeInfo = deviceInfo.deviceType
       currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
@@ -611,10 +611,9 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect().assertFail();
         done();
       });
-      // @ts-ignore
-      mainWnd.setSystemBarEnable([null, '123'], (err, data) => {
-        console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(data)==' + JSON.stringify(data));
-        console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(err)==' + JSON.stringify(err));
+      mainWnd.setSystemBarEnable([null, undefined], (err, data) => {
+        console.log(msgStr + 'mainWnd.setSystemBarEnable [null,undefined] JSON.stringify(data)==' + JSON.stringify(data));
+        console.log(msgStr + 'mainWnd.setSystemBarEnable [null,undefined] JSON.stringify(err)==' + JSON.stringify(err));
         if (err && err.code) {
           try {
             console.log(msgStr + 'mainWnd.setSystemBarEnable  JSON.stringify(err.code)===' + JSON.stringify(err.code));
@@ -624,7 +623,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
           }
           done();
         } else {
-          unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.setSystemBarEnable [null,123]', done);
+          unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.setSystemBarEnable [null,undefined]', done);
         }
       })
     });
@@ -1673,7 +1672,8 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       let mainWin: ohosWindow.Window | void;
       let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED',
         'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE',
-        'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED', 'UNSPECIFIED'];
+        'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED',
+        'USER_ROTATION_PORTRAIT', 'USER_ROTATION_LANDSCAPE','USER_ROTATION_PORTRAIT_INVERTED','USER_ROTATION_LANDSCAPE_INVERTED','UNSPECIFIED'];
 
       let setPreferredOrientationFun: Function = (win: ohosWindow.Window, orientation: ohosWindow.Orientation) => {
         return new Promise<boolean>((resolve, reject) => {
@@ -2271,7 +2271,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       console.log(msg + ' begin')
 
       try {
-          windowClass.loadContentByName("Index1", storage, (err: BusinessError) => {
+        windowClass.loadContentByName("Index1", storage, (err: BusinessError) => {
           const errCode: number = err.code;
           if (errCode) {
             console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
@@ -2306,7 +2306,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       console.log(msg + ' begin')
 
       try {
-          windowClass.loadContentByName("Index1", (err: BusinessError) => {
+        windowClass.loadContentByName("Index1", (err: BusinessError) => {
           const errCode = err.code;
           if (errCode) {
             console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
@@ -2318,7 +2318,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
             done()
           }
         });
-        
+
       } catch (exception) {
         console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(exception));
         expect().assertFail()
@@ -2367,7 +2367,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
-     */ 
+     */
     it("testWindowVisibilityChange_on_Function_Callback", 0, async function(done){
       let msgStr = "testWindowVisibilityChange_on_Function_Callback";
       console.log(msgStr + "begin");
@@ -2392,16 +2392,16 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
           done();
         }
       }
-    }) 
-    
+    })
+
     /**
-    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3960
-    * @tc.name      : testWindowVisibilityChange_off_Function_Callback
-    * @tc.desc      : window type windowVisibilityChange
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level3
-    */ 
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3960
+     * @tc.name      : testWindowVisibilityChange_off_Function_Callback
+     * @tc.desc      : window type windowVisibilityChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
     it("testWindowVisibilityChange_off_Function_Callback", 0, async function(done){
       let msgStr = "testWindowVisibilityChange_off_Function_Callback";
       console.log(msgStr + "begin");
@@ -2413,7 +2413,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect(true).assertTrue();
         done();
       } catch(error){
-       console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
+        console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
         if (!currentDeviceIsRk) {
           console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
           expect().assertFail();
@@ -2425,16 +2425,16 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
           done();
         }
       }
-    })       
+    })
 
     /**
-    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3980
-    * @tc.name      : testNoInteractionDetected_on_Function_Callback
-    * @tc.desc      : window type noInteractionDetected
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level3
-    */ 
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3980
+     * @tc.name      : testNoInteractionDetected_on_Function_Callback
+     * @tc.desc      : window type noInteractionDetected
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
     it("testNoInteractionDetected_on_Function_Callback", 0, async function(done){
       let msgStr = "testNoInteractionDetected_on_Function_Callback";
       console.log(msgStr + "begin");
@@ -2461,13 +2461,13 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
     })
 
     /**
-    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3990
-    * @tc.name      : tetestNoInteractionDetected_off_Function_Callback
-    * @tc.desc      : window type noInteractionDetected
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level3
-    */ 
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3990
+     * @tc.name      : tetestNoInteractionDetected_off_Function_Callback
+     * @tc.desc      : window type noInteractionDetected
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
     it("testNoInteractionDetected_off_Function_Callback", 0, async function(done){
       let msgStr = "tetestNoInteractionDetected_off_Function_Callback";
       console.log(msgStr + "begin");
@@ -2490,7 +2490,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
           done();
         }
       }
-    }) 
+    })
 
   })
 }

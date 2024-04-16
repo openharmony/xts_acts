@@ -14,8 +14,13 @@
  */
 import screen from '@ohos.screen';
 import { BusinessError } from '@ohos.base';
-import RectValue from '../common/Rect';
 
+export class RectValue {
+  left: number = 0;
+  top: number = 0;
+  right: number = 0;
+  bottom: number = 0;
+}
 export default class CommonFunc {
   static rect_left: number;
   static rect_top: number;

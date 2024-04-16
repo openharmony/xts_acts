@@ -3244,14 +3244,14 @@ export default function imageJsTest() {
                     console.log(msg + ' Succeed in calling pixelMap.scaleSync')
                     expect(true).assertTrue()
                     done()
-                } catch{
-                    console.error(msg + ' Failed in calling pixelMap.scaleSync ')
+                } catch(err){
+                    console.error(msg + ' Failed in calling pixelMap.scaleSync ' + JSON.stringify(err))
                     expect().assertFail()
                     done()
                 }
             })
         })
-
+        
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_SUB_GRAPHIC_IMAGE_GETIMAGEINFOSYNC_0100
          * @tc.name      : Test_getImageInfoSync
@@ -3277,8 +3277,8 @@ export default function imageJsTest() {
                     console.log(msg + ' Succeed in calling pixelMap.getImageInfoSync')
                     expect(true).assertTrue()
                     done()
-                } catch{
-                    console.log(msg + ' Failed in calling pixelMap.getImageInfoSync ')
+                } catch(err){
+                    console.log(msg + ' Failed in calling pixelMap.getImageInfoSync ' + JSON.stringify(err))
                     expect().assertFail()
                     done()
                 }
@@ -3304,7 +3304,36 @@ export default function imageJsTest() {
             let msg = 'Test_CreatePixelMapSyncProperty_PixelFormat_AlphaType'
             try{
               let pixelmap = image.createPixelMapSync(color, opts)
-              console.log(msg + ' Succeed in calling image.createPixelMapSync ')
+              console.log(msg + ' Succeed in calling image.createPixelMapSync ' + pixelmap)
+              expect(true).assertTrue()
+              done()
+            }catch(err) {
+              console.log(msg + ' Failed in calling image.createPixelMapSync ' + JSON.stringify(err))
+              expect().assertFail()
+              done()
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_SUB_GRAPHIC_IMAGE_CREATEPIXELMAPSYNC_PARAMETER_0200
+         * @tc.name      : Test_CreatePixelMapSyncPropertyParameter
+         * @tc.desc      : This new interface createPixelMapSync adds parameter
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('Test_CreatePixelMapSyncPropertyParameter', 0, async function (done) {
+            let color = new ArrayBuffer(96)
+            let initializationOptions = {
+                editable: true,
+                pixelFormat: 7,
+                size: { height: 7, width: 9 },
+                alphaType: 0
+            }
+            let msg = 'Test_CreatePixelMapSyncPropertyParameter'
+            try{
+              let pixelmap = image.createPixelMapSync(color, initializationOptions)
+              console.log(msg + ' Succeed in calling image.createPixelMapSync ' + pixelmap)
               expect(true).assertTrue()
               done()
             }catch(err) {

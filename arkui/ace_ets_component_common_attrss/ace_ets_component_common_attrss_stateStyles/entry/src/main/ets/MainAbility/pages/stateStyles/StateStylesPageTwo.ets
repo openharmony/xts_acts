@@ -20,24 +20,27 @@ import router from '@ohos.router'
 @Component
 struct StateStylesPageTwo {
   @State _isSelect: boolean = true
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
 
   onPageShow() {
     console.info('StateStylesPageTwo show called ')
-    AttrsManager.registerDataChange(value => this._isSelect = value)
+    AttrsManager.registerDataChange((value: boolean) => this._isSelect = value)
     console.info('this._isSelect:' + this._isSelect)
   }
 
-  @Styles selectedStyles() {
+  @Styles
+  selectedStyles() {
     .zIndex(2)
   }
 
-  @Styles normalStyles() {
+  @Styles
+  normalStyles() {
     .zIndex(1)
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .key(this.componentKey)
     .stateStyles({
       normal: this.normalStyles,
@@ -64,7 +67,11 @@ struct StateStylesPageTwo {
           .width('100%')
           .height('100%')
         }
-      }.backgroundColor(Color.Pink).width('100%').width('100%')
-    }.backgroundColor(Color.Yellow)
+      }
+      .backgroundColor(Color.Pink)
+      .width('100%')
+      .width('100%')
+    }
+    .backgroundColor(Color.Yellow)
   }
 }

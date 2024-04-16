@@ -16,6 +16,7 @@ import Ability from '@ohos.app.ability.UIAbility'
 import { UIContext, AtomicServiceBar } from '@ohos.arkui.UIContext';
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 
 export default class MainAbility extends Ability {
   onCreate(want, launchParam) {
@@ -32,6 +33,10 @@ export default class MainAbility extends Ability {
   onWindowStageCreate(windowStage) {
     // Main window is created, set main page for this ability
     console.log("[Demo] MainAbility onWindowStageCreate windowStage=" + windowStage)
+	let AtManager = abilityAccessCtrl.createAtManager();
+    AtManager.requestPermissionsFromUser(this.context, [
+      "ohos.permission.CAPTURE_SCREEN"]).then(() => {
+    });
     globalThis.windowStage = windowStage
     globalThis.abilityContext = this.context
     windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)

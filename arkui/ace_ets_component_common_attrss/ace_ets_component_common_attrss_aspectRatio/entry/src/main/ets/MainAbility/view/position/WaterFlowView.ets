@@ -64,7 +64,7 @@ export struct WaterFlowView {
         .width(this.itemWidthArray[item])
         .height(this.itemHeightArray[item])
         .backgroundColor(this.colors[item % 5])
-      }, item => item)
+      }, (item: number) => item.toString())
     }
     .columnsTemplate('1fr 1fr 1fr 1fr')
     .itemConstraintSize({

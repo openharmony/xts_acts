@@ -20,12 +20,12 @@ import router from '@ohos.router'
 @Component
 struct AlignSelfPage {
   @State _alignSelf: ItemAlign = ItemAlign.Auto;
-  @State containerView: string = router.getParams() ? router.getParams()['view']['containerView'] : ''
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
+  @State containerView: string = router.getParams() ? (router.getParams() as ESObject)['view']['containerView'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
   @State _alignItemsForFlex: ItemAlign = ItemAlign.Start;
   @State _alignItemsForRow: VerticalAlign = VerticalAlign.Top;
   @State _alignItemsForColumn: HorizontalAlign = HorizontalAlign.Start;
@@ -33,7 +33,7 @@ struct AlignSelfPage {
 
   onPageShow() {
     console.info('AlignSelf page show called ')
-    AttrsManager.registerDataChange(value => {
+    AttrsManager.registerDataChange((value: ESObject) => {
       if (value.alignSelf) {
         this._alignSelf = value.alignSelf
       }
@@ -52,7 +52,8 @@ struct AlignSelfPage {
     })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .margin(0)
     .alignSelf(this._alignSelf)
     .width(200)
@@ -61,7 +62,8 @@ struct AlignSelfPage {
     .backgroundColor(Color.Pink)
   }
 
-  @Builder buildTargetView() {
+  @Builder
+  buildTargetView() {
     if (this.targetView == 'AlphabetIndexer') {
       AlphabetIndexer({ arrayValue: ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G'], selected: 0 }).commonStyle()
     } else if (this.targetView == 'Button') {

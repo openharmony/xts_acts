@@ -19,25 +19,28 @@ import router from '@ohos.router'
 @Component
 struct paddingPage {
   //Use for TimePicker.
-  private selectedTime: Date = new Date('2022-07-22T08:00:00')
+  private selectedTime: Date = new Date('2022-07-22T08:00:00');
   //Use for QRCode,Marquee.
-  private src: string = 'Running Marquee starts rolling'
+  private src: string = 'Running Marquee starts rolling';
   //Use for AlphabetIndexer,TextPicker.
-  private value: string[] = ['#', 'A', 'B']
+  private value: string[] = ['#', 'A', 'B'];
   //Use for DataPanel.
-  public valueArr: number[] = [5, 10, 10, 7, 9, 10, 10, 10, 10]
+  public valueArr: number[] = [5, 10, 10, 7, 9, 10, 10, 10, 10];
   @State _padding: Padding = { left: 0, right: 0, top: 0, bottom: 0 };
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentBackGroundColor: string = router.getParams() ? router.getParams()['view']['parentBackGroundColor'] : ''
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentBackGroundColor: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentBackGroundColor'] : ''
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
 
   onPageShow() {
     console.info('padding page show called ')
-    attrsManager.registerDataChange(value => this._padding = value.padding)
+    attrsManager.registerDataChange((value: ESObject) => {
+      this._padding = value.padding
+    })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .padding(this._padding)
     .key(this.componentKey)
   }

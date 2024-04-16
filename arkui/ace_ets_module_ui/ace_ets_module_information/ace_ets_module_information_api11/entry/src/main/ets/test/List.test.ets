@@ -14,8 +14,13 @@
  */
 import gaugeJsunit from './gaugeTest/GaugeJsunit.test';
 import CounterEnableTest from './CounterTest/CounterEnable.test'
+import progressTest from './ProgressTest/progress.test'
+import progressSecTest from './ProgressTest/progressSec.test'
 
 export default function testsuite() {
   gaugeJsunit();
   CounterEnableTest();
+  progressTest();
+  progressSecTest();
+
 }

@@ -19,7 +19,6 @@ import router from '@ohos.router';
 @Entry
 @Component
 struct DatePickerDialogExample {
-
   private changeOrientation(isLandscape: boolean) {
     // 获取UIAbility实例的上下文信息
     let context = getContext(this) as common.UIAbilityContext;
@@ -28,6 +27,7 @@ struct DatePickerDialogExample {
       lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
     });
   }
+
   selectedDate: Date = new Date("2010-2-2")
 
   build() {

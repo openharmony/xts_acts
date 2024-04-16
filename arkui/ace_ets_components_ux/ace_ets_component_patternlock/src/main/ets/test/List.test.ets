@@ -15,5 +15,5 @@
 import patternLock from './patternLock'
 
 export default function testsuite() {
-       patternLock()
+  patternLock()
 }

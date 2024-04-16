@@ -137,6 +137,11 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility12_label"
       }
+    ],
+    "requestPermissions": [
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+      }
     ]
   }
 }

@@ -62,6 +62,9 @@ export default {
                 }
             }
         )
+        featureAbility.terminateSelf((err, data)=>{
+            console.debug('==========Terminate Ability Success==========')
+        });
     },
     onReady() {
         console.info('ApplicationInfo MainAbility2 onReady');

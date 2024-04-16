@@ -17,6 +17,21 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  parentWidth: number;
+  parentHeight: number;
+}
+
+class TestValue {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
 
 export default function aspectRatioWidthTest() {
 
@@ -96,7 +111,7 @@ export default function aspectRatioWidthTest() {
   let parentWidth = 300;
   let parentHeight = 600;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testAspectRatioWidth',
     pageName: 'AspectRatioWidthPage',
     pageUrl: 'MainAbility/pages/aspectRatio/AspectRatioWidthPage',
@@ -106,7 +121,7 @@ export default function aspectRatioWidthTest() {
   }
 
   //Test content and expected results
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetNumber',
     setValue: {
       width: 100,
@@ -131,7 +146,7 @@ export default function aspectRatioWidthTest() {
   }]
 
   describe('AspectRatioWidthTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       //Gets Rect information for the target component
       let targetRect = Utils.getComponentRect(data.pageConfig.componentKey);
       let targetRectWidth = targetRect.right - targetRect.left;
@@ -149,8 +164,10 @@ export default function aspectRatioWidthTest() {
       console.info('[' + data.caseTag + '] targetRectHeight is:' + targetRectHeight);
       console.info('[' + data.caseTag + '] targetRectAspectRatio:' + targetRectAspectRatio);
       expect(targetRectWidth).assertEqual(data.testValue.expectValue.widthValue);
-      expect(Math.abs(Number(targetRectAspectRatio) - Number(data.testValue.expectValue.aspectRatio)) <= 1).assertTrue();
-      expect(Math.abs(targetRectHeight - data.testValue.expectValue.widthValue / data.testValue.expectValue.aspectRatio) <= 1).assertTrue();
+      expect(Math.abs(Number(targetRectAspectRatio) - Number(data.testValue.expectValue.aspectRatio)) <= 1)
+        .assertTrue();
+      expect(Math.abs(targetRectHeight - data.testValue.expectValue.widthValue / data.testValue.expectValue.aspectRatio) <= 1)
+        .assertTrue();
     });
   })
 }

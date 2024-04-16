@@ -28,11 +28,17 @@ import webOnLargestContentfulPaint from './WebOnLargestContentfulPaint.test';
 import webViewControllerResumeAllTimers from './WebViewControllerResumeAllTimers.test';
 import webViewControllerVideoMedia from './WebViewControllerVideoMedia.test';
 import WebNetError from './WebNetError.test';
+import webViewControllerAudioMedia from './WebViewControllerAudioMedia.test';
+import WebCameraApiNoCrash from './WebCameraApiNoCrash.test';
+import webViewOnSslErrorEvent from './webViewOnSslErrorEvent.test';
 
 
 export default function testsuite() {
        webJsunit()
        webTwoJsunit()
+       webViewOnSslErrorEvent()
+       WebCameraApiNoCrash()
+       webViewControllerAudioMedia()
        webViewControllerResumeAllTimers()
        webOnFirstMeaningfulPaint()
        webOnLargestContentfulPaint()

@@ -27,20 +27,23 @@ struct heightPage {
   //Use for Scroll,Grid,DataPanel.
   public valueArr: number[] = [5, 10, 10, 7, 9, 10, 10, 10, 10]
   @State _height: number | string = 0
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State parentBackGroundColor: string = router.getParams() ? router.getParams()['view']['parentBackGroundColor'] : ''
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
-  @State BackGroundColor: string = router.getParams() ? router.getParams()['view']['BackGroundColor'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State parentBackGroundColor: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentBackGroundColor'] : ''
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
+  @State BackGroundColor: string = router.getParams() ? (router.getParams() as ESObject)['view']['BackGroundColor'] : ''
 
   onPageShow() {
     console.info('height page show called ')
-    attrsManager.registerDataChange(value => this._height = value.height)
+    attrsManager.registerDataChange((value: ESObject) => {
+      this._height = value.height
+    })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .height(this._height)
     .key(this.componentKey)
   }
@@ -92,7 +95,7 @@ struct heightPage {
         Marquee({
           start: true,
           step: 50,
-          loop: Infinity,
+          loop: Number.MAX_VALUE,
           fromStart: true,
           src: this.src
         }).commonStyle().width(100)
@@ -208,7 +211,7 @@ struct heightPage {
           breakpoints: { value: ['400vp', '600vp', '800vp'], reference: BreakpointsReference.WindowSize },
           direction: GridRowDirection.Row
         }) {
-          ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink], (color) => {
+          ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink], (color: Color) => {
             GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
               Row().width('100%').height('20vp')
             }.borderColor(color).borderWidth(2)
@@ -216,11 +219,11 @@ struct heightPage {
         }.commonStyle().width(100)
       } else if (this.targetView == 'Grid') {
         Grid() {
-          ForEach(this.valueArr, (day: string) => {
+          ForEach(this.valueArr, (day: number) => {
             GridItem() {
-              Text(day)
+              Text(day.toString())
             }
-          }, day => day)
+          }, (day: number) => day.toString())
         }.columnsTemplate('1fr 1fr 1fr 1fr 1fr').commonStyle().width(100).backgroundColor(this.BackGroundColor)
       } else if (this.targetView == 'List') {
         List() {
@@ -250,17 +253,17 @@ struct heightPage {
       } else if (this.targetView == 'Scroll') {
         Scroll() {
           List() {
-            ForEach(this.valueArr, (item) => {
+            ForEach(this.valueArr, (item: number) => {
               ListItem() {
                 Text('ListItem' + item)
               }.width('100%').height(100)
-            }, item => item)
+            }, (item: number) => item.toString())
           }.width(200).height(200)
         }.commonStyle().width(100).backgroundColor(this.BackGroundColor)
       } else if (this.targetView == 'SideBarContainer') {
         SideBarContainer(SideBarContainerType.Embed) {
           Column() {
-            ForEach([1, 2, 3], (item) => {
+            ForEach([1, 2, 3], (item: number) => {
               Column({ space: 5 }) {
                 Image($r('app.media.icon')).width(50).height(50)
                 Text('Index0' + item).fontSize(25)
@@ -279,9 +282,9 @@ struct heightPage {
         }.commonStyle().width(100)
       } else if (this.targetView == 'Swiper') {
         Swiper() {
-          ForEach([1, 2, 3], (item: string) => {
+          ForEach([1, 2, 3], (item: number) => {
             Text('Swiper' + item).width('90%').height(50)
-          }, item => item)
+          }, (item: number) => item.toString())
         }.indicator(true).commonStyle().width(100)
       } else if (this.targetView == 'Tabs') {
         Tabs() {

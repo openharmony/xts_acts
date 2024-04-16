@@ -12,42 +12,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- // @ts-nocheck
+// @ts-nocheck
 import hilog from '@ohos.hilog';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Curves from '@ohos.curves';
+
 @Entry
 @Component
 struct Index {
   private scrollerForList: Scroller = new Scroller()
   @State message: string = 'Hello World'
-  aboutToAppear(){
-    var abilityDelegator: any
+
+  aboutToAppear() {
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
+
   build() {
     Row() {
       Column() {
-        List({ space: "4vp", initialIndex: 0 ,scroller: this.scrollerForList }) {
-          ListItemGroup(){}
+        List({ space: "4vp", initialIndex: 0, scroller: this.scrollerForList }) {
+          ListItemGroup() {
+          }
           .key("nurmal")
-          .margin({left:$r('sys.float.ohos_id_card_margin_start'),right:$r('sys.float.ohos_id_card_margin_end')})
-          ListItemGroup({style: ListItemGroupStyle.CARD}) {
-            ListItem({style: ListItemStyle.CARD}) {
+          .margin({ left: $r('sys.float.ohos_id_card_margin_start'), right: $r('sys.float.ohos_id_card_margin_end') })
+
+          ListItemGroup({ style: ListItemGroupStyle.CARD }) {
+            ListItem({ style: ListItemStyle.CARD }) {
               Text("ListItemGroupStyle.CARD与ListItemStyle.CARD")
                 .fontSize(10)
                 .width('100%')
                 .textAlign(TextAlign.Center)
             }
             .key("ArkUXII_List_style_0100")
-        
-            ListItem({style: ListItemStyle.NONE}) {
+
+            ListItem({ style: ListItemStyle.NONE }) {
               Text("ListItemGroupStyle.CARD与ListItemStyle.NONE")
                 .fontSize(10)
                 .width('100%')
@@ -55,7 +60,7 @@ struct Index {
             }
             .key("ArkUXII_List_style_0300")
 
-            ListItem({style: null}) {
+            ListItem({ style: null }) {
               Text("ListItemGroupStyle.CARD与null")
                 .fontSize(10)
                 .width('100%')
@@ -63,7 +68,7 @@ struct Index {
             }
             .key("ArkUXII_List_style_0400")
 
-            ListItem({style: undefined}) {
+            ListItem({ style: undefined }) {
               Text("ListItemGroupStyle.CARD与undefined")
                 .fontSize(10)
                 .width('100%')
@@ -71,7 +76,7 @@ struct Index {
             }
             .key("ArkUXII_List_style_0500")
 
-            ListItem({style: ""}) {
+            ListItem({ style: "" }) {
               Text("ListItemGroupStyle.CARD与\"\"")
                 .fontSize(10)
                 .width('100%')
@@ -88,8 +93,9 @@ struct Index {
             .key("ArkUXII_List_style_0700")
           }
           .key("ListItemGroup")
-          ListItemGroup({style: ListItemGroupStyle.NONE}) {
-            ListItem({style: ListItemStyle.CARD}) {
+
+          ListItemGroup({ style: ListItemGroupStyle.NONE }) {
+            ListItem({ style: ListItemStyle.CARD }) {
               Text("ListItemGroupStyle.NONE与ListItemStyle.CARD")
                 .fontSize(10)
                 .width('100%')
@@ -98,8 +104,8 @@ struct Index {
           }
           .key("ArkUXII_List_style_0800")
 
-          ListItemGroup({style: null}) {
-            ListItem({style: ListItemStyle.CARD}) {
+          ListItemGroup({ style: null }) {
+            ListItem({ style: ListItemStyle.CARD }) {
               Text("null与ListItemStyle.CARD")
                 .fontSize(10)
                 .width('100%')
@@ -108,8 +114,8 @@ struct Index {
           }
           .key("ArkUXII_List_style_0900")
 
-          ListItemGroup({style: undefined}) {
-            ListItem({style: ListItemStyle.CARD}) {
+          ListItemGroup({ style: undefined }) {
+            ListItem({ style: ListItemStyle.CARD }) {
               Text("undefined与ListItemStyle.CARD")
                 .fontSize(10)
                 .width('100%')
@@ -118,8 +124,8 @@ struct Index {
           }
           .key("ArkUXII_List_style_1000")
 
-          ListItemGroup({style: ""}) {
-            ListItem({style: ListItemStyle.CARD}) {
+          ListItemGroup({ style: "" }) {
+            ListItem({ style: ListItemStyle.CARD }) {
               Text("\"\"与ListItemStyle.CARD")
                 .fontSize(10)
                 .width('100%')
@@ -129,7 +135,7 @@ struct Index {
           .key("ArkUXII_List_style_1100")
 
           ListItemGroup() {
-            ListItem({style: ListItemStyle.CARD}) {
+            ListItem({ style: ListItemStyle.CARD }) {
               Text("ListItemStyle.CARD")
                 .fontSize(10)
                 .width('100%')
@@ -138,8 +144,8 @@ struct Index {
           }
           .key("ArkUXII_List_style_1200")
 
-          ListItemGroup({style: "",style:ListItemGroupStyle.CARD}) {
-            ListItem({style: "",style: ListItemStyle.CARD}) {
+          ListItemGroup({ style: "", style: ListItemGroupStyle.CARD }) {
+            ListItem({ style: "", style: ListItemStyle.CARD }) {
               Text("\"\"之后再ListItemStyle.CARD与\"\"之后再ListItemGroupStyle.CARD")
                 .fontSize(10)
                 .width('100%')
@@ -149,14 +155,16 @@ struct Index {
           }
           .key("ArkUXII_List_style_0200")
 
-          ListItem(){
-             Button("scrollTo自定义弹簧曲线测试(Curves.springCurve(7, 1, 227, 33))")
+          ListItem() {
+            Button("scrollTo自定义弹簧曲线测试(Curves.springCurve(7, 1, 227, 33))")
               .key("scrollerForList")
               .onClick(() => {
                 let curve = Curves.springCurve(7, 1, 227, 33)
-                this.scrollerForList.scrollTo({ xOffset: 0,
-                                                yOffset: this.scrollerForList.currentOffset().yOffset + 600,
-                                                animation:true })
+                this.scrollerForList.scrollTo({
+                  xOffset: 0,
+                  yOffset: this.scrollerForList.currentOffset().yOffset + 600,
+                  animation: true
+                })
               })
               .height(45)
               .width('80%')
@@ -165,70 +173,86 @@ struct Index {
         }
         .key("RollBack")
         .multiSelectable(true)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0100")
         .scrollSnapAlign(ScrollSnapAlign.NONE)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0200")
         .scrollSnapAlign(ScrollSnapAlign.START)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0300")
         .scrollSnapAlign(ScrollSnapAlign.CENTER)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0400")
         .scrollSnapAlign(ScrollSnapAlign.END)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0500")
         .scrollSnapAlign(null)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0600")
         .scrollSnapAlign("")
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0700")
         .scrollSnapAlign(undefined)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0800")
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0900")
         .scrollSnapAlign("ScrollSnapAlign.START")
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_1000")
         .scrollSnapAlign(ScrollSnapAlign.START)
         .scrollSnapAlign(ScrollSnapAlign.NONE)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_1100")
         .scrollSnapAlign(ScrollSnapAlign.NONE)
         .scrollSnapAlign(ScrollSnapAlign.START)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_1200")
         .scrollSnapAlign(ScrollSnapAlign.START)
         .scrollSnapAlign("")
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_1300")
         .scrollSnapAlign("")
         .scrollSnapAlign(ScrollSnapAlign.START)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_1400")
         .scrollSnapAlign(0)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_1500")
         .scrollSnapAlign(1)
-        List(){
+
+        List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_1600")
         .scrollSnapAlign(6)

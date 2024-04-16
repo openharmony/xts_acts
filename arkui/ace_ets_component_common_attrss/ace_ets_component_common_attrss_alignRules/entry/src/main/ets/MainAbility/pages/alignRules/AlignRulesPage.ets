@@ -24,30 +24,35 @@ import { StepperView } from '../../view/alignRules/StepperView';
 @Component
 struct AlignRules {
   @State show: boolean = false //For Panel
-  @State _alignRules: Object = { center: { anchor: '__container__', align: VerticalAlign.Center },
+  @State _alignRules: AlignRuleOption = { center: { anchor: '__container__', align: VerticalAlign.Center },
     middle: { anchor: '__container__', align: HorizontalAlign.Center } };
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State subassemblyWidth: number = router.getParams() ? router.getParams()['view']['subassemblyWidth'] : 0
-  @State subassemblyHeight: number = router.getParams() ? router.getParams()['view']['subassemblyHeight'] : 0
-  @State subassemblyCenter: Object = router.getParams() ? router.getParams()['view']['subassemblyCenter'] : {}
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State subassemblyWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['subassemblyWidth'] : 0
+  @State subassemblyHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['subassemblyHeight'] : 0
+  @State subassemblyCenter: AlignRuleOption = router.getParams() ? (router.getParams() as ESObject)['view']['subassemblyCenter'] : {
+  }
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
   @State referenceComponentKey: string =
-    router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
 
   onPageShow() {
     console.info('[AlignRules] page show called ')
 
     //Register data change call back.
-    attrsManager.registerDataChange(value => this._alignRules = value)
+    attrsManager.registerDataChange((value: AlignRuleOption) => {
+      this._alignRules = value
+    })
   }
+
   /**
    * Set common style.
    *
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .alignRules(this._alignRules)
     .id(this.componentKey)
   }
@@ -62,8 +67,8 @@ struct AlignRules {
         Radio({ value: 'Radio1', group: 'radioGroup' })
           .margin(0).width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'Select') {
-        Select([{ value: 'aaa', icon: '/common/public_icon.svg' },
-          { value: 'bbb', icon: '/common/public_icon.svg' }])
+        Select([{ value: 'aaa', icon: '../../../../common/public_icon.svg' },
+          { value: 'bbb', icon: '../../../../common/public_icon.svg' }])
           .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'Checkbox') {
         Checkbox({ name: 'checkbox1' })
@@ -191,7 +196,7 @@ struct AlignRules {
           direction: GridRowDirection.Row
         }) {
           ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown],
-            (color) => {
+            (color: Color) => {
               GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                 Row().width('100%').height('20vp')
               }.borderColor(color).borderWidth(2)
@@ -229,13 +234,13 @@ struct AlignRules {
       } else if (this.targetView == 'Scroll') {
         Scroll() {
           Column() {
-            ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+            ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
               Text('Scroll' + item.toString())
                 .width('90%')
                 .height(150)
                 .backgroundColor(Color.White)
                 .textAlign(TextAlign.Center)
-            }, item => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .scrollBar(BarState.On)
@@ -246,12 +251,12 @@ struct AlignRules {
       } else if (this.targetView == 'SideBarContainer') {
         SideBarContainer(SideBarContainerType.Embed) {
           Column() {
-            ForEach([1, 2, 3], (item) => {
+            ForEach([1, 2, 3], (item: number) => {
               Column({ space: 5 }) {
                 Image($r('app.media.icon')).width(64).height(64)
                 Text('Index0' + item).fontSize(25)
               }
-            })
+            }, (item: number) => item.toString())
           }.width('100%')
           .justifyContent(FlexAlign.SpaceEvenly)
           .backgroundColor(Color.Green)
@@ -272,9 +277,9 @@ struct AlignRules {
           .commonStyle()
       } else if (this.targetView == 'Swiper') {
         Swiper() {
-          ForEach([1, 2, 3], (item: string) => {
+          ForEach([1, 2, 3], (item: number) => {
             Text('Swiper' + item).width('90%').height(160)
-          }, item => item)
+          }, (item: number) => item.toString())
         }
         .indicator(true)
         .backgroundColor(Color.White)

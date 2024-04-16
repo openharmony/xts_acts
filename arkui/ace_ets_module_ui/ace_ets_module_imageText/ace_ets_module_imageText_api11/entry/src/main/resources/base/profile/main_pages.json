@@ -50,6 +50,7 @@
         "MainAbility/pages/RelativeContainer/RelativeBarrier8",
         "MainAbility/pages/RelativeContainer/RelativeBorder",
         "MainAbility/pages/RelativeContainer/RelativePadding",
+        "MainAbility/pages/Search/SearchTest",
         "MainAbility/pages/RelativeContainer/relativeApi11/Navigation1",
         "MainAbility/pages/RelativeContainer/relativeApi11/Navigation2",
         "MainAbility/pages/RelativeContainer/relativeApi11/Navigation3",
@@ -83,6 +84,11 @@
         "MainAbility/pages/RichEditor/richEditorApi/richEditorApi1",
         "MainAbility/pages/RichEditor/richEditorApi/richEditorApi2",
         "MainAbility/pages/RichEditor/richEditorApi/richEditorApi3",
+        "MainAbility/pages/RichEditor/richEditorApi/richEditorApi4",
+        "MainAbility/pages/RichEditor/richEditorApi/richEditorApi5",
+        "MainAbility/pages/RichEditor/richEditorApi/richEditorApi6",
+         "MainAbility/pages/RichEditor/richEditorApi/richEditorApi7",
+         "MainAbility/pages/RichEditor/richEditorApi/richEditorApi8",
         "MainAbility/pages/RichEditor/RichEditor/RichEditor",
         "MainAbility/pages/span/spanApi/spanApi1",
         "MainAbility/pages/SymbolGlyph/symbolGlyphApi/symbolGlyphApi1",
@@ -102,6 +108,17 @@
         "MainAbility/pages/image/ImageAttr",
         "MainAbility/pages/text/TextfieldMulti",
         "MainAbility/pages/text/TextfieldOther",
-        "MainAbility/pages/text/TextfieldSingle"
+        "MainAbility/pages/text/TextfieldSingle",
+
+        "MainAbility/pages/text/curve",
+        "MainAbility/pages/text/backgroundAndSizeSetting",
+        "MainAbility/pages/text/border",
+        "MainAbility/pages/ImageAnimator/fillMode",
+        "MainAbility/pages/image/ohosMatrix4",
+        "MainAbility/pages/text/positionSetting",
+        "MainAbility/pages/image/shapeClipping",
+        "MainAbility/pages/TextArea/TextArea",
+        "MainAbility/pages/TextInput/TextInput",
+        "MainAbility/pages/text/Prop"
     ]
 }
