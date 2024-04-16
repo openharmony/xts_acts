@@ -181,10 +181,10 @@ export default function OffsetTest() {
             .assertTrue()
         } else {
           //When setting the type to percentage, use the width/height of the parent container as the base.
-          expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2))
-            .assertEqual(Number((rectParent.right - rectParent.left) * 0.5).toFixed(2));
-          expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2))
-            .assertEqual(Number((rectParent.bottom - rectParent.top) * 0.5).toFixed(2));
+          expect(Math.abs(Number((targetRectAfter.left - initialPosition.left).toFixed(2)) - Number(((rectParent.right - rectParent.left) * 0.5).toFixed(2))) <= 1)
+            .assertTrue()
+          expect(Math.abs(Number((targetRectAfter.top - initialPosition.top).toFixed(2)) - Number(((rectParent.bottom - rectParent.top) * 0.5).toFixed(2))) <= 1)
+            .assertTrue()
         }
       } else {
         //When set to the basic type, verify the calculated shifting

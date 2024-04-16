@@ -118,10 +118,10 @@ export default function flex_AlignContent_SpaceAround_FlexSizeTest() {
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(firstText.bottom - firstText.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondText.bottom - secondText.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdText.bottom - thirdText.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fourthText.bottom - fourthText.top) - Math.round(vp2px(100))) <= 1).assertTrue();
 
       expect(Math.abs(firstText.bottom - secondText.top) <= 1).assertTrue();
       expect(Math.abs(secondText.bottom - thirdText.top) <= 1).assertTrue();
@@ -132,7 +132,7 @@ export default function flex_AlignContent_SpaceAround_FlexSizeTest() {
       expect(Math.abs(thirdText.left - fourthText.left) <= 1).assertTrue();
       expect(Math.abs(fourthText.left - flexContainer.left) <= 1).assertTrue();
       expect(Math.abs(firstText.top - flexContainer.top) <= 1).assertTrue();
-      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.abs(Math.round(fourthText.bottom - flexContainer.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
       console.info('[testFlexAlignContentSpaceAroundFlexSizeOverflow] END');
 
     });

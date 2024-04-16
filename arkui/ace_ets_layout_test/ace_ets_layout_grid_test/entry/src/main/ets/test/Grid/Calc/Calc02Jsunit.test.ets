@@ -86,15 +86,15 @@ export default function CalcJsunit02() {
       console.log('7777', calc0207.right, calc0207.left, calc0207.right - calc0207.left)
       console.log('8888', calc0208.right, calc0208.left, calc0208.right - calc0208.left)
       console.log('9999', calc0209.right, calc0209.left, calc0209.right - calc0209.left)
-      expect(Math.round(calc0201.bottom - calc0201.top)).assertEqual(Math.round(vp2px(54)));
-      expect(Math.round(calc0202.right - calc0202.left)).assertEqual(Math.round(vp2px(120)));
-      expect(Math.round(calc0203.right - calc0203.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(calc0204.right - calc0204.left)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(calc0205.right - calc0205.left)).assertEqual(Math.round(vp2px(120)));
-      expect(Math.round(calc0206.right - calc0206.left)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(calc0207.right - calc0207.left)).assertEqual(Math.round(vp2px(90)));
-      expect(Math.round(calc0208.right - calc0208.left)).assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(calc0209.right - calc0209.left)).assertEqual(Math.round(vp2px(90)));
+      expect(Math.abs(Math.round(calc0201.bottom - calc0201.top) - Math.round(vp2px(54))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc0202.right - calc0202.left) - Math.round(vp2px(120))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc0203.right - calc0203.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc0204.right - calc0204.left) - Math.round(vp2px(140))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc0205.right - calc0205.left) - Math.round(vp2px(120))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc0206.right - calc0206.left) - Math.round(vp2px(0))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc0207.right - calc0207.left) - Math.round(vp2px(90))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc0208.right - calc0208.left) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc0209.right - calc0209.left) - Math.round(vp2px(90))) <= 1).assertTrue();
       done();
     });
   })

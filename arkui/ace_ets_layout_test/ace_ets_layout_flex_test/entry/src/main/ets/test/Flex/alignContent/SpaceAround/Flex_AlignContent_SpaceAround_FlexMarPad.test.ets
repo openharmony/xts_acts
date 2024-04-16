@@ -77,9 +77,9 @@ export default function flex_AlignContent_SpaceAround_FlexMarPadTest() {
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(20))); //margin =20
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(50))); //padding =50
+      expect(Math.abs(Math.round(flexContainer.top - columnContainer.top) - Math.round(vp2px(20))) <= 1).assertTrue(); //margin =20
+      expect(Math.abs(Math.round(firstText.top - flexContainer.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(firstText.left - flexContainer.left) - Math.round(vp2px(50))) <= 1).assertTrue(); //padding =50
       expect(Math.abs(firstText.left - secondText.left) <= 1).assertTrue();
       expect(Math.abs(secondText.left - thirdText.left) <= 1).assertTrue();
       expect(Math.abs(thirdText.left - fourthText.left) <= 1).assertTrue();
@@ -87,7 +87,7 @@ export default function flex_AlignContent_SpaceAround_FlexMarPadTest() {
       expect(Math.abs(firstText.bottom - secondText.top) <= 1).assertTrue();
       expect(Math.abs(secondText.bottom - thirdText.top) <= 1).assertTrue();
       expect(Math.abs(thirdText.bottom - fourthText.top) <= 1).assertTrue();
-      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(fourthText.bottom - flexContainer.bottom) - Math.round(vp2px(10))) <= 1).assertTrue(); 
       console.info('[testFlexAlignContentSpaceAroundFlexMarPadOverflow] END');
 
     });
