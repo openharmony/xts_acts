@@ -16,6 +16,23 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class TestValue {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentHeight: number;
+  parentWidth: number;
+  parentBackGroundColor: Color;
+  parentComponentKey: string;
+  BackGroundColor: Color;
+}
+
 /**
  * Test of common attribute: height
  */
@@ -41,16 +58,16 @@ export default function heightTest() {
     'Progress',
     'QRCode',
     'Radio',
-//    'ScrollBar',
+    //    'ScrollBar',
     'Rating',
     'Search',
     'RichText',
     'Select',
     'Slider',
     'Text',
-//    'TextArea',
+    //    'TextArea',
     'TextClock',
-//    'TextInput',
+    //    'TextInput',
     'TextPicker',
     'TextTimer',
     'TimePicker',
@@ -59,21 +76,21 @@ export default function heightTest() {
     'Badge',
     'Column',
     'ColumnSplit',
-//    'Counter',
+    //    'Counter',
     'Flex',
-//    'GridRow',
+    //    'GridRow',
     'Grid',
     'List',
     'ListItem',
-//    'Panel',
+    //    'Panel',
     'Refresh',
     'Row',
     'RowSplit',
-//    'Scroll',
-//    'SideBarContainer',
+    //    'Scroll',
+    //    'SideBarContainer',
     'Stack',
     'Swiper',
-//    'Tabs',
+    //    'Tabs',
     'Circle',
     'Ellipse',
     'Polyline',
@@ -83,16 +100,16 @@ export default function heightTest() {
     'Shape',
     'Line',
     'WaterFlow',
-//    'StepperItem',
+    //    'StepperItem',
     'FlowItem',
-//    'GridCol',
+    //    'GridCol',
     'GridItem',
     'RelativeContainer',
     'Navigator',
     'Stepper',
     'Menu',
     'MenuItem',
-//    'MenuItemGroup'
+  //    'MenuItemGroup'
   ]
 
   //The size of the parent component, when set as a percentage, serves as the calculation.
@@ -103,7 +120,7 @@ export default function heightTest() {
   let BackGroundColor = Color.Orange
 
   //Page related configuration, this parameter is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testHeight',
     pageName: 'HeightPage',
     pageUrl: 'MainAbility/pages/height/HeightPage',
@@ -115,7 +132,7 @@ export default function heightTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'ExceedParent',
     setValue: {
       height: 550
@@ -159,7 +176,7 @@ export default function heightTest() {
    */
   describe('HeightTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       //Obtain dimensional information for target components.
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
 
