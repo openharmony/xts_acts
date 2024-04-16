@@ -16,6 +16,18 @@
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class TestValue {
+  describe: string;
+  setValue?: boolean
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  referenceComponentKey: string;
+}
+
 export default function FocusControlTest() {
 
   //A list of components that support the position attribute, which is required.
@@ -31,10 +43,10 @@ export default function FocusControlTest() {
     'Checkbox',
     'CheckboxGroup',
     'DatePicker',
-//    'ImageAnimator',
+    //    'ImageAnimator',
     'Menu',
     'MenuItem',
-//    'MenuItemGroup',
+    //    'MenuItemGroup',
     'Radio',
     'Rating',
     'Select',
@@ -47,33 +59,33 @@ export default function FocusControlTest() {
     'Web',
     'AlphabetIndexer',
     'Column',
-//    'ColumnSplit',
+    //    'ColumnSplit',
     'Counter',
     'Flex',
-//    'GridCol',
-//    'GridRow',
+    //    'GridCol',
+    //    'GridRow',
     'GridItem',
     'ListItem',
-//    'ListItemGroup',
+    //    'ListItemGroup',
     'Row',
-//    'RowSplit',
+    //    'RowSplit',
     'Scroll',
     'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
-//    'TabContent'
+  //    'TabContent'
   ]
 
   //Page config, this param is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testFocusControl',
     pageName: 'FocusControlPage',
     pageUrl: 'MainAbility/pages/focusControl/FocusControlPage',
     referenceComponentKey: 'referenceComponentKey',
   }
   //Test values, looped to create cases, this param is required.
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetFocusableTrue',
   }, {
     describe: 'SetFocusableFalse',
@@ -88,26 +100,26 @@ export default function FocusControlTest() {
 
   describe('FocusControlTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
 
       if ('SetFocusableTrue' == data.testValue.describe) {
         //Confirm focus shift
         //Focus the target component
         let res = focusControl.requestFocus(data.pageConfig.componentKey);
         expect(res).assertEqual(true);
-        console.info('[' + data.caseTag + '] FocusControlCallback is ' + res );
+        console.info('[' + data.caseTag + '] FocusControlCallback is ' + res);
       } else if ('SetFocusableFalse' == data.testValue.describe) {
         //Confirm focus shift
         //Focus the target component
         let res = focusControl.requestFocus(data.pageConfig.componentKey);
         expect(res).assertEqual(false);
-        console.info('[' + data.caseTag + '] FocusControlCallback is ' + res );
+        console.info('[' + data.caseTag + '] FocusControlCallback is ' + res);
       } else if ('SetAbsentComponent' == data.testValue.describe) {
         //Confirm focus shift
         //Focus the target component
         let res = focusControl.requestFocus('nullKey');
         expect(res).assertEqual(false);
-        console.info('[' + data.caseTag + '] FocusControlCallback is ' + res );
+        console.info('[' + data.caseTag + '] FocusControlCallback is ' + res);
       }
     })
   })

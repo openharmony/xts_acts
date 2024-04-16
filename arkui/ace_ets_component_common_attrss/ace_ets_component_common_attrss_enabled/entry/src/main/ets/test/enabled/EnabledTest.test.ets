@@ -18,6 +18,34 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  referenceComponentKey: string;
+}
+
+class TestValue {
+  describe: string;
+  exceptView?: string[]
+  setValue: boolean;
+  expectValue: boolean;
+}
+
+
+function expectEvent(data: ESObject, event: string) {
+  let referenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
+  if (isEnabledTrue(data)) {
+    expect(referenceComponent.$attrs.content).assertContain(event);
+  } else {
+    expect(referenceComponent.$attrs.content).assertEqual('');
+  }
+}
+
+function isEnabledTrue(data: ESObject): boolean {
+  return data.testValue.describe.indexOf('SetTrue') >= 0;
+}
+
 /**
  * Test of common attribute: enabled
  */
@@ -34,33 +62,33 @@ export default function enabledTest() {
     'Divider',
     'Gauge',
     'Image',
-//    'ImageAnimator',
+    //    'ImageAnimator',
     'LoadingProgress',
     'Marquee',
-//    'Menu',
+    //    'Menu',
     'MenuItem',
-//    'MenuItemGroup',
-//    'Navigation',
+    //    'MenuItemGroup',
+    //    'Navigation',
     'NavRouter',
     'ScrollBar',
-//    'RowSplit',
+    //    'RowSplit',
     'Row',
     'RelativeContainer',
     'Navigator',
-//    'ListItemGroup',
+    //    'ListItemGroup',
     'GridItem',
-//    'GridCol',
-//    'ColumnSplit',
+    //    'GridCol',
+    //    'ColumnSplit',
     'TextTimer',
     'Stepper',
     'StepperItem',
     'Flex',
-//    'FlowItem',
+    //    'FlowItem',
     'Progress',
     'QRCode',
     'Radio',
     'Rating',
-//    'Search',
+    //    'Search',
     'Select',
     'Slider',
     'Text',
@@ -73,18 +101,18 @@ export default function enabledTest() {
     'Badge',
     'Column',
     'Counter',
-//    'GridRow',
+    //    'GridRow',
     'Grid',
     'List',
     'ListItem',
     'Panel',
     'Refresh',
     'Scroll',
-//    'SideBarContainer',
+    //    'SideBarContainer',
     'Stack',
-//    'Swiper',
+    //    'Swiper',
     'Tabs',
-//    'TabContent',
+    //    'TabContent',
     'WaterFlow',
     'Circle',
     'Ellipse',
@@ -103,7 +131,7 @@ export default function enabledTest() {
     'Polyline', 'Polygon', 'Path', 'Rect', 'Shape', 'WaterFlow']
 
   //Page related configuration, this parameter is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testEnabled',
     pageName: 'EnabledPage',
     pageUrl: 'MainAbility/pages/enabled/EnabledPage',
@@ -111,7 +139,7 @@ export default function enabledTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetTrueOnClick',
     setValue: true,
     expectValue: true
@@ -162,7 +190,7 @@ export default function enabledTest() {
    */
   describe('EnabledTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       if ('' != Utils.getComponentByKey(data.pageConfig.referenceComponentKey).$attrs.content) {
         console.info('[' + data.caseTag + '] reset status.');
         AttrsManager.change(data.caseTag, data.testValue.setValue);
@@ -229,16 +257,4 @@ export default function enabledTest() {
     })
   })
 
-  function expectEvent(data, event: string) {
-    let referenceComponent = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
-    if (isEnabledTrue(data)) {
-      expect(referenceComponent.$attrs.content).assertContain(event);
-    } else {
-      expect(referenceComponent.$attrs.content).assertEqual('');
-    }
-  }
-
-  function isEnabledTrue(data): boolean {
-    return data.testValue.describe.indexOf('SetTrue') >= 0;
-  }
 }

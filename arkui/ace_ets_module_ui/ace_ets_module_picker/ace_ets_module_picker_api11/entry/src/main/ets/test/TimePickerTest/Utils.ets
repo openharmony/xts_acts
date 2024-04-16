@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,16 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@Entry
-@Component
-struct Index2 {
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Text('Hello World Mainability2')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-    }
-    .width('100%')
-    .height('100%')
+
+export default class Utils {
+  static sleep(time: number) {
+    return new Promise<string>((resolve, reject) => {
+      setTimeout(() => {
+        resolve("ok")
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
   }
 }

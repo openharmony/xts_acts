@@ -26,7 +26,10 @@ import SliderTestSec from './SliderTest/SliderTestSec';
 import buttonJsunit from './ButtonTest/ButtonJsunit.test';
 import ratingJsunit from './RatingTest/RatingJsunit.test';
 import sliderJsunit from './SliderTest/SliderJsunit.test';
+import TimePicker1Test from './TimePickerTest/TimePicker1.test';
+
 export default function testsuite() {
+  TimePicker1Test()
   SelectAttr()
   TimePickerTest()
   selectoptionwithJsSuit()
