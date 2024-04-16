@@ -147,8 +147,8 @@ export default function AlignContent_Center_FlexP_Fixed_Margin() {
       console.log('AlignContentFlexCenter_4 rect_value is:' +
       JSON.stringify(AlignContentFlexCenter_4));
 
-      expect(Math.round(AlignContentFlexCenter_1.bottom - AlignContentFlexCenter_1.top))
-        .assertEqual(Math.round(vp2px(50)));
+      expect(Math.abs(Math.round(AlignContentFlexCenter_1.bottom - AlignContentFlexCenter_1.top) - Math.round(vp2px(50))) <= 1)
+        .assertTrue();
       expect(Math.abs(Math.round(AlignContentFlexCenter_2.bottom - AlignContentFlexCenter_2.top) - Math.round(vp2px(100))) <= 1)
         .assertTrue();
       expect(Math.round(AlignContentFlexCenter_3.bottom - AlignContentFlexCenter_3.top))

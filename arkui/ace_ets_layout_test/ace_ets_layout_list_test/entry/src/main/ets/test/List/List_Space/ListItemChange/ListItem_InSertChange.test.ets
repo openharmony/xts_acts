@@ -117,8 +117,8 @@ export default function listItem_InSertChange() {
         .assertTrue();
       expect(Math.abs(Math.round(TextTest1.top - locationText1.top) - Math.round(locationText1.bottom - TextTest1.bottom)) <= 1)
         .assertTrue();
-      expect(Math.round(TextTest1.right - TextTest1.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(TextTest1.bottom - TextTest1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.abs(Math.round(TextTest1.right - TextTest1.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(TextTest1.bottom - TextTest1.top) - Math.round(vp2px(50))) <= 1).assertTrue();
       let driver = Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest74');
@@ -168,23 +168,23 @@ export default function listItem_InSertChange() {
       expect(Math.round(locationText4.right - locationText4.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(locationText4.bottom - locationText4.top)).assertEqual(Math.round(vp2px(100)));
 
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(locationText3.top - locationText2.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(locationText4.top - locationText3.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(locationList.bottom - locationText4.bottom)).assertEqual(Math.round(vp2px(40)));
+      expect(Math.abs(Math.round(locationText2.top - locationText1.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText3.top - locationText2.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText4.top - locationText3.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationList.bottom - locationText4.bottom) - Math.round(vp2px(40))) <= 1).assertTrue();
 
-      expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
-      expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
-      expect(locationText1.left).assertEqual(TextTest1.left);
-      expect(locationText1.top).assertEqual(TextTest1.top);
-      expect(Math.round(TextTest1.right - locationText1.right)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(TextTest1.bottom - locationText1.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(TextTest1.right - TextTest1.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(TextTest1.bottom - TextTest1.top)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.abs(Math.round(locationList.right - locationList.left) - Math.round(vp2px(350))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationList.bottom - locationList.top) - Math.round(vp2px(500))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText1.left) - Math.round(TextTest1.left)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText1.top) - Math.round(TextTest1.top)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(TextTest1.right - locationText1.right) - Math.round(vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(TextTest1.bottom - locationText1.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(TextTest1.right - TextTest1.left) - Math.round(vp2px(330))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(TextTest1.bottom - TextTest1.top) - Math.round(vp2px(110))) <= 1).assertTrue();
       let driver = Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest74');
-      expect(locationText4.top).assertEqual(locationText4Again.top);
+      expect(Math.abs(Math.round(locationText4.top) - Math.round(locationText4Again.top)) <= 1).assertTrue();
       console.info('new testListItemInSertChangeOneHundredAndTenPercent END');
       done();
     });

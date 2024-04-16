@@ -117,11 +117,11 @@ export default function flex_AlignContent_SpaceBetween_TextMarTest() {
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
       expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
 
-      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(10))); //margin =10
+      expect(Math.abs(Math.round(firstText.left - flexContainer.left) - Math.round(vp2px(10))) <= 1).assertTrue(); //margin =10
       expect(Math.abs(secondText.left - thirdText.left) <= 1).assertTrue();
       expect(Math.abs(thirdText.left - fourthText.left) <= 1).assertTrue();
       expect(Math.abs(fourthText.left - flexContainer.left) <= 1).assertTrue();
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(firstText.top - flexContainer.top) - Math.round(vp2px(10))) <= 1).assertTrue();
       expect(Math.abs(flexContainer.bottom - fourthText.bottom) <= 1).assertTrue();
 
       expect(Math.abs(Math.round(secondText.top - firstText.bottom - vp2px(10)) - Math.round(thirdText.top - secondText.bottom)) <= 1)

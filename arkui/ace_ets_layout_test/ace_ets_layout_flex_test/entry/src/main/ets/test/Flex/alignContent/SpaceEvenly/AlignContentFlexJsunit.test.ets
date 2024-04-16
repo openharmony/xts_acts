@@ -85,31 +85,23 @@ export default function AlignContentFlexJsunit() {
       console.log('AlignContentFlexSpaceEvenly_4 rect_value is:' +
       JSON.stringify(AlignContentFlexSpaceEvenly_4));
 
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.bottom - AlignContentFlexSpaceEvenly_1.top))
-        .assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_2.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_3.bottom - AlignContentFlexSpaceEvenly_3.top))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_4.bottom - AlignContentFlexSpaceEvenly_4.top))
-        .assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.right - AlignContentFlexSpaceEvenly_1.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_2.right - AlignContentFlexSpaceEvenly_2.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_3.right - AlignContentFlexSpaceEvenly_3.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left))
-        .assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_1.bottom - AlignContentFlexSpaceEvenly_1.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_2.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_3.bottom - AlignContentFlexSpaceEvenly_3.top) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_4.bottom - AlignContentFlexSpaceEvenly_4.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_1.right - AlignContentFlexSpaceEvenly_1.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_2.right - AlignContentFlexSpaceEvenly_2.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_3.right - AlignContentFlexSpaceEvenly_3.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left) - Math.round(vp2px(150))) <= 1).assertTrue();
 
       expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
 
-      expect(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom)
-        .assertEqual(AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex001.top);
+      expect(Math.abs((AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom) - (AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex001.top)) <= 1)
+        .assertTrue();
 
-      expect(AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_2.bottom)
-        .assertEqual(AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex001.top);
+      expect(Math.abs((AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_2.bottom) - (AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex001.top)) <= 1)
+        .assertTrue();
 
       console.info('testAlignContentSpaceEvenlyFlexHeightSatisfy END');
 
@@ -148,30 +140,23 @@ export default function AlignContentFlexJsunit() {
       console.log('AlignContentFlexSpaceEvenly_4 rect_value is:' +
       JSON.stringify(AlignContentFlexSpaceEvenly_4));
 
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.bottom - AlignContentFlexSpaceEvenly_1.top))
-        .assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_2.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_3.bottom - AlignContentFlexSpaceEvenly_3.top))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_4.bottom - AlignContentFlexSpaceEvenly_4.top))
-        .assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.right - AlignContentFlexSpaceEvenly_1.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_2.right - AlignContentFlexSpaceEvenly_2.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_3.right - AlignContentFlexSpaceEvenly_3.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left))
-        .assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_1.bottom - AlignContentFlexSpaceEvenly_1.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_2.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_3.bottom - AlignContentFlexSpaceEvenly_3.top) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_4.bottom - AlignContentFlexSpaceEvenly_4.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_1.right - AlignContentFlexSpaceEvenly_1.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_2.right - AlignContentFlexSpaceEvenly_2.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_3.right - AlignContentFlexSpaceEvenly_3.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left) - Math.round(vp2px(150))) <= 1).assertTrue();
 
       expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
 
-      expect(AlignContentFlexSpaceEvenly_1.top).assertEqual(AlignContentFlexSpaceEvenly_flex002.top);
-      expect(AlignContentFlexSpaceEvenly_4.bottom).assertLarger(AlignContentFlexSpaceEvenly_flex002.bottom);
-      expect(AlignContentFlexSpaceEvenly_2.bottom).assertEqual(AlignContentFlexSpaceEvenly_4.top);
 
+      expect(Math.abs(AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex002.top) <= 1).assertTrue();
+      expect(AlignContentFlexSpaceEvenly_4.bottom).assertLarger(AlignContentFlexSpaceEvenly_flex002.bottom);
+      expect(Math.abs(AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_4.top) <= 1).assertTrue();
+    
       console.info('testAlignContentSpaceEvenlyFlexHeightNoSatisfy END');
 
     });

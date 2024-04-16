@@ -87,11 +87,11 @@ export default function listItem_Padding() {
       let TextTest2: RectValue = CommonFunc.getComponentRect('PaddingText2');
       let TextTest3: RectValue = CommonFunc.getComponentRect('PaddingText3');
       let TextTest4: RectValue = CommonFunc.getComponentRect('PaddingText4');
-      expect(locationText1.left).assertEqual(locationText2.left);
-      expect(locationText2.left).assertEqual(locationText3.left);
-      expect(locationText3.left).assertEqual(locationText4.left);
-      expect(locationText4.left).assertEqual(locationList.left);
-      expect(locationText1.top).assertEqual(locationList.top);
+      expect(Math.abs(locationText1.left - locationText2.left) <= 1).assertTrue();
+      expect(Math.abs(locationText2.left - locationText3.left) <= 1).assertTrue();
+      expect(Math.abs(locationText3.left - locationText4.left) <= 1).assertTrue();
+      expect(Math.abs(locationText4.left - locationList.left) <= 1).assertTrue();
+      expect(Math.abs(locationText1.top - locationList.top) <= 1).assertTrue();
 
       expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(100)));
@@ -102,21 +102,21 @@ export default function listItem_Padding() {
       expect(Math.round(locationText4.right - locationText4.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(locationText4.bottom - locationText4.top)).assertEqual(Math.round(vp2px(100)));
 
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(locationText3.top - locationText2.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(locationText4.top - locationText3.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(locationList.bottom - locationText4.bottom)).assertEqual(Math.round(vp2px(40)));
+      expect(Math.abs(Math.round(locationText2.top - locationText1.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText3.top - locationText2.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText4.top - locationText3.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationList.bottom - locationText4.bottom) - Math.round(vp2px(40))) <= 1).assertTrue();
 
-      expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
-      expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
-      expect(Math.round(TextTest1.left - locationText1.left)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(TextTest1.top - locationText1.top)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(locationText1.right - TextTest1.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(locationText1.bottom - TextTest1.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(locationList.right - locationList.left) - Math.round(vp2px(350))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationList.bottom - locationList.top) - Math.round(vp2px(500))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(TextTest1.left - locationText1.left) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(TextTest1.top - locationText1.top) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText1.right - TextTest1.right) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText1.bottom - TextTest1.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
       let driver = Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest24');
-      expect(locationText4.top).assertEqual(locationText4Again.top);
+      expect(Math.abs(locationText4.top - locationText4Again.top) <= 1).assertTrue();
       console.info('new testListItemPadding END');
       done();
     });

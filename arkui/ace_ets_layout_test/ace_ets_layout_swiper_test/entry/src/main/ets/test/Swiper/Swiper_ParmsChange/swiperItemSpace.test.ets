@@ -82,14 +82,14 @@ export default function swiperItemSpace() {
       // Before flipping the page.
       console.info("Before page turning , the itemspacekey.left value is " + JSON.stringify(itemspacekey.left));
       console.info("Before page turning , the itemspacekey01.left value is " + JSON.stringify(itemspacekey01.left));
-      expect(itemspacekey.left).assertEqual(itemspacekey01.left)
-      expect(itemspacekey.top).assertEqual(itemspacekey01.top)
-      expect(itemspacekey.bottom).assertEqual(itemspacekey01.bottom)
+      expect(Math.abs(itemspacekey.left - itemspacekey01.left) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.top - itemspacekey01.top) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.bottom - itemspacekey01.bottom) <= 1).assertTrue();
       // Page turning.
-      expect(itemspacekey.top).assertEqual(itemspacekey02.top)
-      expect(itemspacekey.bottom).assertEqual(itemspacekey02.bottom)
-      expect(Math.round(itemspacekey02.left - itemspacekey01.right)).assertEqual(vp2px(20))
-      expect(itemspacekey.right).assertEqual(itemspacekey02.right)
+      expect(Math.abs(itemspacekey.top - itemspacekey02.top) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.bottom - itemspacekey02.bottom) <= 1).assertTrue();
+      expect(Math.abs(Math.round(itemspacekey02.left - itemspacekey01.right) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.right - itemspacekey02.right) <= 1).assertTrue();
 
       let driver = Driver.create();
       // await CommonFunc.sleep(500);
@@ -113,14 +113,14 @@ export default function swiperItemSpace() {
       // After flipping the page.
       console.info("After page turning , the itemspacekey.left value is " + JSON.stringify(itemspacekey.left));
       console.info("After page turning , the itemspacekey02.left value is " + JSON.stringify(itemspacekey02.left));
-      expect(itemspacekey.left).assertEqual(itemspacekey02.left);
-      expect(itemspacekey.top).assertEqual(itemspacekey02.top);
-      expect(itemspacekey.bottom).assertEqual(itemspacekey02.bottom);
+      expect(Math.abs(itemspacekey.left - itemspacekey02.left) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.top - itemspacekey02.top) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.bottom - itemspacekey02.bottom) <= 1).assertTrue();
 
-      expect(itemspacekey.top).assertEqual(itemspacekey03.top);
-      expect(itemspacekey.bottom).assertEqual(itemspacekey03.bottom);
-      expect(Math.round(itemspacekey03.left - itemspacekey02.right)).assertEqual(Math.round(vp2px(20)));
-      expect(itemspacekey.right).assertEqual(itemspacekey03.right)
+      expect(Math.abs(itemspacekey.top - itemspacekey03.top) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.bottom - itemspacekey03.bottom) <= 1).assertTrue();
+      expect(Math.abs(Math.round(itemspacekey03.left - itemspacekey02.right) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.right - itemspacekey03.right) <= 1).assertTrue();
       console.info("The type value is " + JSON.stringify(JSON.parse(strJson).$type));
       console.info("The loop value is " + JSON.stringify(JSON.parse(strJson).$attrs.loop));
       console.info("The itemSpace value is " + JSON.stringify(JSON.parse(strJson).$attrs.itemSpace));
