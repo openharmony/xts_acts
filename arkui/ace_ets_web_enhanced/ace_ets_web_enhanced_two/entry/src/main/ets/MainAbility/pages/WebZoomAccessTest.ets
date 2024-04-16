@@ -100,7 +100,7 @@ struct WebZoomAccessTest {
                 await Utils.sleep(2000)
                 await Utils.fingerZoom('WebZoomAccessTestWebView', true);
                 await Utils.sleep(2000)
-                await Utils.fingerZoom('WebZoomAccessTestWebView', false);
+                await Utils.pinchInComponent('WebZoomAccessTestWebView')
                 await Utils.sleep(2000)
                 Utils.emitEvent(this.oldScale > 0 && this.newScale > 0 && this.newScale < this.oldScale, 6506)
               } catch (error) {

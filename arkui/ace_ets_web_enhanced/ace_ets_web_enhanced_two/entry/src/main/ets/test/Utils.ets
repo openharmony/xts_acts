@@ -14,7 +14,7 @@
  */
 import events_emitter from '@ohos.events.emitter';
 import { expect } from '@ohos/hypium';
-import { Driver, ON, PointerMatrix } from '@ohos.UiTest';
+import { Driver, ON, PointerMatrix, Component } from '@ohos.UiTest';
 import { ComponentInfo, RectInfo } from './Interfaces';
 import systemDateTime from '@ohos.systemDateTime';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
@@ -126,6 +126,12 @@ export default class Utils {
     let driver = Driver.create();
     let component = await driver.findComponent(ON.id(id));
     await component.click();
+  }
+
+  static async pinchInComponent(id: string) {
+    let driver: Driver = Driver.create();
+    let image: Component = await driver.findComponent(ON.id(id));
+    await image.pinchIn(0.5);
   }
 
   static async triggerKey(id: number) {
