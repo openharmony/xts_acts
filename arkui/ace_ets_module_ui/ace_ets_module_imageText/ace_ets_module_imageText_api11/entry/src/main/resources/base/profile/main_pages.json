@@ -119,6 +119,9 @@
         "MainAbility/pages/image/shapeClipping",
         "MainAbility/pages/TextArea/TextArea",
         "MainAbility/pages/TextInput/TextInput",
-        "MainAbility/pages/text/Prop"
+        "MainAbility/pages/text/Prop",
+        "MainAbility/pages/image/Image",
+        "MainAbility/pages/span/Span",
+        "MainAbility/pages/text/Text"
     ]
 }

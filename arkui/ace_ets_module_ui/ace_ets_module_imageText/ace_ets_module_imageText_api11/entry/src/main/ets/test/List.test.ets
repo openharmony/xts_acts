@@ -136,7 +136,9 @@ import ShapeClippingJsunit from './imageTest/ShapeClippingJsunit.test';
 import textAreaJsunit from './TextAreaTest/TextAreaJsunit.test';
 import textInputJsunit from './TextInputTest/TextInputJsunit.test';
 import propJsunit from './textTest/PropJsunit.test';
-
+import imageJsunit from './imageTest/ImageJsunit.test';
+import spanJsunit from './spanTest/SpanJsunit.test';
+import textJsunit from './textTest/TextJsunit.test';
 
 export default function testsuite() {
   richEditorApi4();
@@ -257,4 +259,7 @@ export default function testsuite() {
   textAreaJsunit();
   textInputJsunit();
   propJsunit();
+  imageJsunit()
+  spanJsunit()
+  textJsunit()
 }

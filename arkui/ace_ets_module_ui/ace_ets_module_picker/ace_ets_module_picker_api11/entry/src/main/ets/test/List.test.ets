@@ -23,7 +23,9 @@ import TextPickerSec from './TextPicker/TextPickerSec';
 import textpickermultiTest from './TextPicker/TextPickerMulti';
 import sliderTest from './SliderTest/SliderTest';
 import SliderTestSec from './SliderTest/SliderTestSec';
-
+import buttonJsunit from './ButtonTest/ButtonJsunit.test';
+import ratingJsunit from './RatingTest/RatingJsunit.test';
+import sliderJsunit from './SliderTest/SliderJsunit.test';
 export default function testsuite() {
   SelectAttr()
   TimePickerTest()
@@ -36,4 +38,7 @@ export default function testsuite() {
   textpickermultiTest()
   sliderTest()
   SliderTestSec()
+  buttonJsunit()
+  ratingJsunit()
+  sliderJsunit()
 }
