@@ -25,7 +25,7 @@ export default function ActsStorageFileUriNdkTest(){
        * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0100
        * @tc.name geturifrompath_ndktest_001
        * @tc.desc function of API, Test GetUriFromPath, normal function
-       * @tc.size MEDIUM
+       * @tc.size MediumTest
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
@@ -47,7 +47,7 @@ export default function ActsStorageFileUriNdkTest(){
        * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0200
        * @tc.name getpathfromuri_ndktest_001
        * @tc.desc function of API, Test GetPathFromUri, normal function
-       * @tc.size MEDIUM
+       * @tc.size MediumTest
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
@@ -69,7 +69,7 @@ export default function ActsStorageFileUriNdkTest(){
        * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0300
        * @tc.name getfulldirectory_ndktest_001
        * @tc.desc function of API, Test getfulldirectory, normal function
-       * @tc.size MEDIUM
+       * @tc.size MediumTest
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
@@ -94,7 +94,7 @@ export default function ActsStorageFileUriNdkTest(){
        * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0400
        * @tc.name isvaliduri_ndktest_001
        * @tc.desc function of API, Test IsValidUri, normal function
-       * @tc.size MEDIUM
+       * @tc.size MediumTest
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
