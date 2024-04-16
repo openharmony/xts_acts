@@ -111,7 +111,7 @@ export default function rdbStoreExcuteTest(){
       try {
         rdbStore.version = 5;
         let ret = await rdbStore.execute("PRAGMA user_version");
-        expect("5").assertEqual(ret);
+        expect(5).assertEqual(ret);
       } catch (err) {
         expect(null).assertFail();
         console.error(`get user_version failed, code:${err.code}, message: ${err.message}`);
@@ -455,4 +455,47 @@ export default function rdbStoreExcuteTest(){
 
     console.info(TAG + "*************Unit Test End*************");
   })
+  
+  
+      /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2600
+     * @tc.name AbNormal test case of Execute, if args is null or undefined
+     * @tc.desc 1. Insert data and set args as null or undefined
+     *          2. Check returned value
+     */
+
+    it('testExecute0017', 0, async function (done) {
+        console.info(TAG + "************* testExecute0017 start *************");
+        try {
+            let ret = await rdbStore.execute("PRAGMA user_version=5");
+            expect(null).assertEqual(ret);
+        } catch (err) {
+            expect(null).assertFail();
+            console.error(`set user version failed, code:${err.code}, message: ${err.message}`);
+        }
+        done();
+        console.info(TAG + "************* testExecute0017 end   *************");
+    })
+
+
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2700
+     * @tc.name AbNormal test case of Execute, if args is null or undefined
+     * @tc.desc 1. Insert data and set args as null or undefined
+     *          2. Check returned value
+     */
+
+    it('testExecute0018', 0, async function (done) {
+        console.info(TAG + "************* testExecute0018 start *************");
+        try {
+            await rdbStore.execute("PRAGMA table_info(test)");
+            expect(null).assertFail();
+        } catch (err) {
+            expect(14800000).assertEqual(err.code);
+            console.error(`get table info failed, code:${err.code}, message: ${err.message}`);
+        }
+        done();
+        console.info(TAG + "************* testExecute0018 end   *************");
+    })
 }
