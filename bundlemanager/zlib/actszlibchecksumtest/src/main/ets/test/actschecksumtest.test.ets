@@ -31,9 +31,9 @@ export default function ActsChecksumTest() {
         console.info("==================ACTS_ChecksumTest_01 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
-        let data = new Uint8Array(arrayBufferIn);
+        let byteArray = new Uint8Array(arrayBufferIn);
         for (let i = 0, j = str.length; i < j; i++) {
-            data[i] = str.charCodeAt(i);
+            byteArray[i] = str.charCodeAt(i);
         }
         let checksum = zlib.createChecksumSync()
         zlib.createChecksum().then((data)=>{
@@ -46,7 +46,7 @@ export default function ActsChecksumTest() {
             done();
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-            expect().assertFail();
+            expect(errData).assertFail();
             done();
         })
         console.info("==================ACTS_ChecksumTest_01 end==================");
@@ -64,9 +64,9 @@ export default function ActsChecksumTest() {
         console.info("==================ACTS_ChecksumTest_02 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
-        let data = new Uint8Array(arrayBufferIn);
+        let byteArray = new Uint8Array(arrayBufferIn);
         for (let i = 0, j = str.length; i < j; i++) {
-            data[i] = str.charCodeAt(i);
+            byteArray[i] = str.charCodeAt(i);
         }
         let checksum = zlib.createChecksumSync()
         let adler1 = 0;
@@ -87,7 +87,7 @@ export default function ActsChecksumTest() {
             done();
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-            expect().assertFail();
+            expect(errData).assertFail();
             done();
         })
         console.info("==================ACTS_ChecksumTest_02 end==================");
@@ -105,9 +105,9 @@ export default function ActsChecksumTest() {
         console.info("==================ACTS_ChecksumTest_03 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
-        let data = new Uint8Array(arrayBufferIn);
+        let byteArray = new Uint8Array(arrayBufferIn);
         for (let i = 0, j = str.length; i < j; i++) {
-            data[i] = str.charCodeAt(i);
+            byteArray[i] = str.charCodeAt(i);
         }
         let checksum = zlib.createChecksumSync()
         await checksum.crc32(0, arrayBufferIn
@@ -117,7 +117,7 @@ export default function ActsChecksumTest() {
             done();
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-            expect().assertFail();
+            expect(errData).assertFail();
             done();
         })
         console.info("==================ACTS_ChecksumTest_03 end==================");
@@ -135,9 +135,9 @@ export default function ActsChecksumTest() {
         console.info("==================ACTS_ChecksumTest_04 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
-        let data = new Uint8Array(arrayBufferIn);
+        let byteArray = new Uint8Array(arrayBufferIn);
         for (let i = 0, j = str.length; i < j; i++) {
-            data[i] = str.charCodeAt(i);
+            byteArray[i] = str.charCodeAt(i);
         }
         let checksum = zlib.createChecksumSync()
         let crc1 = 0;
@@ -158,7 +158,7 @@ export default function ActsChecksumTest() {
             done();
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-            expect().assertFail();
+            expect(errData).assertFail();
             done();
         })
         console.info("==================ACTS_ChecksumTest_04 end==================");
@@ -176,9 +176,9 @@ export default function ActsChecksumTest() {
         console.info("==================ACTS_ChecksumTest_05 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
-        let data = new Uint8Array(arrayBufferIn);
+        let byteArray = new Uint8Array(arrayBufferIn);
         for (let i = 0, j = str.length; i < j; i++) {
-            data[i] = str.charCodeAt(i);
+            byteArray[i] = str.charCodeAt(i);
         }
         let checksum = zlib.createChecksumSync()
         let result = ""
@@ -189,7 +189,7 @@ export default function ActsChecksumTest() {
             done();
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-            expect().assertFail();
+            expect(errData).assertFail();
             done();
         })
         console.info("==================ACTS_ChecksumTest_05 end==================");
@@ -214,7 +214,7 @@ export default function ActsChecksumTest() {
             done();
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-            expect().assertFail();
+            expect(errData).assertFail();
             done();
         })
         console.info("==================ACTS_ChecksumTest_06 end==================");
@@ -239,7 +239,7 @@ export default function ActsChecksumTest() {
             done();
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-            expect().assertFail();
+            expect(errData).assertFail();
             done();
         })
         console.info("==================ACTS_ChecksumTest_07 end==================");
@@ -257,19 +257,19 @@ export default function ActsChecksumTest() {
         console.info("==================actsChecksumTest08 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
-        let data = new Uint8Array(arrayBufferIn);
+        let byteArray = new Uint8Array(arrayBufferIn);
         for (let i = 0, j = str.length; i < j; i++) {
-            data[i] = str.charCodeAt(i);
+            byteArray[i] = str.charCodeAt(i);
         }
         let checksum = zlib.createChecksumSync()
         try {
         await checksum.adler32(null, arrayBufferIn).then((data) => {
             console.info('adler32 success');
-            expect(data).assertEqual(511509629);
+            expect(data).assertFail();
         })
         } catch(errData) {
           console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-          expect(errData.code).assertEqual(17800002);
+          expect(errData.code).assertEqual(401);
         }
         done();
         console.info("==================actsChecksumTest08 end==================");
@@ -287,20 +287,20 @@ export default function ActsChecksumTest() {
         console.info("==================actsChecksumTest09 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
-        let data = new Uint8Array(arrayBufferIn);
+        let byteArray = new Uint8Array(arrayBufferIn);
         for (let i = 0, j = str.length; i < j; i++) {
-            data[i] = str.charCodeAt(i);
+            byteArray[i] = str.charCodeAt(i);
         }
         let checksum = zlib.createChecksumSync()
         try {
         await checksum.crc32(null, arrayBufferIn
         ).then((data) => {
             console.info('crc32 success');
-            expect(data).assertEqual(62177901);
+            expect(data).assertFail();
         })
         } catch(errData) {
           console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-          expect(errData.code).assertEqual(17800002);
+          expect(errData.code).assertEqual(401);
         }
         done();
         console.info("==================actsChecksumTest09 end==================");
@@ -318,21 +318,20 @@ export default function ActsChecksumTest() {
         console.info("==================actsChecksumTest10 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
-        let data = new Uint8Array(arrayBufferIn);
+        let byteArray = new Uint8Array(arrayBufferIn);
         for (let i = 0, j = str.length; i < j; i++) {
-            data[i] = str.charCodeAt(i);
+            byteArray[i] = str.charCodeAt(i);
         }
         let checksum = zlib.createChecksumSync()
         let result = ""
         try {
-        await checksum.crc64(0, arrayBufferIn).then((data) => {
+        await checksum.crc64(null, arrayBufferIn).then((data) => {
             console.info('crc64 success');
-            result = data.toString()
-            expect(result).assertEqual("1194955322566906912");
+            expect(data).assertFail();
         })
         } catch(errData) {
           console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-          expect(errData.code).assertEqual(17800002);
+          expect(errData.code).assertEqual(401);
         }
         done();
         console.info("==================actsChecksumTest10 end==================");
@@ -350,19 +349,19 @@ export default function ActsChecksumTest() {
         console.info("==================actsChecksumTest11 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
-        let data = new Uint8Array(arrayBufferIn);
+        let byteArray = new Uint8Array(arrayBufferIn);
         for (let i = 0, j = str.length; i < j; i++) {
-            data[i] = str.charCodeAt(i);
+            byteArray[i] = str.charCodeAt(i);
         }
         let checksum = zlib.createChecksumSync()
         try {
         await checksum.adler32Combine(null, 1, 12).then((data) => {
             console.info('adler32Combine success');
-            expect(data).assertEqual(1926629626);
+            expect(data).assertFail();
         })
         } catch(errData) {
           console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-          expect(errData.code).assertEqual(17800002);
+          expect(errData.code).assertEqual(401);
         }
         done();
         console.info("==================actsChecksumTest11 end==================");
@@ -380,19 +379,19 @@ export default function ActsChecksumTest() {
         console.info("==================actsChecksumTest12 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
-        let data = new Uint8Array(arrayBufferIn);
+        let byteArray = new Uint8Array(arrayBufferIn);
         for (let i = 0, j = str.length; i < j; i++) {
-            data[i] = str.charCodeAt(i);
+            byteArray[i] = str.charCodeAt(i);
         }
         let checksum = zlib.createChecksumSync()
         try {
         await checksum.crc32Combine(null, 2, 12).then((data) => {
             console.info('crc32Combine success');
-            expect(data).assertEqual(1773756883);
+            expect(data).assertFail();
         })
         } catch(errData) {
           console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-          expect(errData.code).assertEqual(17800002);
+          expect(errData.code).assertEqual(401);
         }
         done();
         console.info("==================actsChecksumTest12 end==================");
