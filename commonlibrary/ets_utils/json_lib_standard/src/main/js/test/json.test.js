@@ -192,7 +192,6 @@ describe('JsonTest', function () {
     expect(rst).assertEqual('{}');
   });
 
-
   /**
    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0013
    * @tc.name: teststringify0013
@@ -214,7 +213,6 @@ describe('JsonTest', function () {
     expect(rst).assertEqual('{"1":"JOHN","2":30,"3":"NEW YORK"}');
   });
 
-
   /**
    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0014
    * @tc.name: teststringify0014
@@ -235,7 +233,6 @@ describe('JsonTest', function () {
     let rst = JSON.stringify(obj, replacer, undefined);
     expect(rst).assertEqual('{"1":"JOHN","2":30,"3":"NEW YORK"}');
   });
-
 
   /**
    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0015
@@ -266,7 +263,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0016", 0, function () {
+  it("testhas0016", 0, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
     let rst = JSON.has(obj, 'name');
     expect(rst).assertEqual(true);
@@ -280,7 +277,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0017", 0, function () {
+  it("testhas0017", 0, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
     let rst = JSON.has(obj, 'sex');
     expect(rst).assertEqual(false);
@@ -294,7 +291,7 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0018", 0, function () {
+  it("tesremove0018", 0, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
     JSON.remove(obj, "name");
     let rst = JSON.has(obj, "name");
@@ -309,10 +306,172 @@ describe('JsonTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("teststringify0019", 0, function () {
+  it("tesremove0019", 0, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
     JSON.remove(obj, "sex");
     let rst = JSON.has(obj, "name");
     expect(rst).assertEqual(true);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0020
+   * @tc.name: testremove0020
+   * @tc.desc: Parsing JSON strings
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it("testparse0020", 0, function () {
+      try {
+        let rst = JSON.parse('12\t\r\n 34')
+      } catch (e) {
+        let name = e.name;
+        expect(name).assertEqual('BusinessError');
+      }
+    });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0021
+   * @tc.name: testremove0021
+   * @tc.desc: Parsing JSON strings
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0021", 0, function () {
+    try {
+      let rst = JSON.parse('\u2028\u20291234');
+    } catch (e) {
+      let name = e.name;
+      expect(name).assertEqual('BusinessError');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0022
+   * @tc.name: testremove0022
+   * @tc.desc: Parsing JSON strings
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0022", 0, function () {
+    let rst = JSON.parse('\t\r \n{\t\r \n' +
+      '"property"\t\r \n:\t\r \n{\t\r \n}\t\r \n,\t\r \n' +
+      '"prop2"\t\r \n:\t\r \n' +
+      '[\t\r \ntrue\t\r \n,\t\r \nnull\t\r \n,123.456\t\r \n]' +
+      '\t\r \n}\t\r \n');
+    let strRst = JSON.stringify(rst);
+    expect(strRst).assertEqual('{"property":{},"prop2":[true,null,123.456]}');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0023
+   * @tc.name: testremove0023
+   * @tc.desc: Parsing JSON strings
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0023", 0, function () {
+    try {
+      let rst = JSON.parse('12 34');
+    } catch (e) {
+      let name = e.name;
+      expect(name).assertEqual('BusinessError');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0024
+   * @tc.name: testremove0024
+   * @tc.desc: Parsing JSON strings
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0024", 0, function () {
+    let rst = JSON.parse('"abc"');
+    expect(rst).assertEqual(rst);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0025
+   * @tc.name: testremove0025
+   * @tc.desc: Parsing JSON strings
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0025", 0, function () {
+    try {
+      let rst = JSON.parse('""');
+      let rst1 = JSON.stringify(rst);
+    } catch (e) {
+      let name = e.name;
+      expect(name).assertEqual('BusinessError');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0026
+   * @tc.name: testremove0026
+   * @tc.desc: Parsing JSON strings
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0026", 0, function () {
+    try {
+      let rst = JSON.parse('"\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007"');
+    } catch (e) {
+      let name = e.name;
+      expect(name).assertEqual('BusinessError');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0027
+   * @tc.name: testremove0027
+   * @tc.desc: Parsing JSON strings
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0027", 0, function () {
+    let rst = JSON.parse('"\\u0058"');
+    expect(rst).assertEqual('X');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0028
+   * @tc.name: testremove0028
+   * @tc.desc: Parsing JSON strings
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0028", 0, function () {
+    let rst = JSON.parse('"\\\\"');
+    expect(rst).assertEqual('\\');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0029
+   * @tc.name: testremove0029
+   * @tc.desc: Parsing JSON strings
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testparse0029", 0, function () {
+    var nullChars = new Array();
+    nullChars[0] = '\"\u0000\"';
+    try {
+       let obj = JSON.parse('{ "name" : ' + nullChars[0] + "John" + nullChars[0] + ' } ');
+    } catch (e) {
+      let name = e.name;
+      expect(name).assertEqual('BusinessError');
+    }
   });
 })}

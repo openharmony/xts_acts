@@ -3681,6 +3681,280 @@ static napi_value NapiDeleteSerializationData(napi_env env, napi_callback_info i
     return number;
 }
 
+static napi_value NapiSerializeDate(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value num = nullptr;
+    double time = 1679839496000; // 2023.3.17 12:34:56 UTC
+    napi_create_date(env, time, &num);
+
+    void* data = nullptr;
+    napi_serialize(env, num, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    bool isDate = false;
+    napi_is_date(env, result1, &isDate);
+    NAPI_ASSERT(env, isDate, "napi_is_Date fail");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeString(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value num = nullptr;
+    const char* str = "abc";
+    napi_create_string_utf8(env, str, NAPI_AUTO_LENGTH, &num);
+
+    void* data = nullptr;
+    napi_serialize(env, num, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_string, "Wrong type of argment. Expects a string.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeArray(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value num = nullptr;
+    napi_create_array(env, &num);
+
+    void* data = nullptr;
+    napi_serialize(env, num, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    bool isArray = false;
+    napi_is_array(env, result1, &isArray);
+    NAPI_ASSERT(env, isArray, "napi_is_array fail");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeObject(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value result = nullptr;
+    napi_create_object(env, &result);
+
+    void* data = nullptr;
+    napi_serialize(env, result, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a object.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeArraybuffer(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value result = nullptr;
+    size_t byteLength = 1024;
+    void *data = nullptr;
+    napi_create_arraybuffer(env, byteLength, &data, &result);
+
+    void *dataVal = nullptr;
+    napi_serialize(env, result, undefined, undefined, &dataVal);
+    NAPI_ASSERT(env, dataVal != nullptr, " The dataVal is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, dataVal, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    bool retIsArrayBuffer = false;
+    napi_is_arraybuffer(env, result1, &retIsArrayBuffer);
+    NAPI_ASSERT(env, retIsArrayBuffer, "napi_is_arraybuffer fail");
+
+    napi_delete_serialization_data(env, dataVal);
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeTypearray(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value arrayBuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 16;
+    size_t typedArrayLength = 4;
+    napi_create_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    NAPI_ASSERT(env, arrayBufferPtr != nullptr, "getTypedArrayInfo napi_create_arraybuffer fail");
+    bool isArrayBuffer = false;
+    napi_is_arraybuffer(env, arrayBuffer, &isArrayBuffer);
+    NAPI_ASSERT(env, isArrayBuffer, "getTypedArrayInfo napi_is_arraybuffer fail");
+    napi_value result;
+    napi_create_typedarray(env, napi_int32_array, typedArrayLength, arrayBuffer, 0, &result);
+
+    void* data = nullptr;
+    napi_serialize(env, result, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    bool retIsTypedarray = false;
+    napi_is_typedarray(env, result1, &retIsTypedarray);
+    NAPI_ASSERT(env, retIsTypedarray, "napi_is_typedarray fail");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeSharedarraybuffer(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    size_t argc = 1;
+    napi_value args;
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    void* data = nullptr;
+    napi_serialize(env, args, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a object.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeSet(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    size_t argc = 1;
+    napi_value args;
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    void* data = nullptr;
+    napi_serialize(env, args, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a object.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeMap(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    size_t argc = 1;
+    napi_value args;
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    void* data = nullptr;
+    napi_serialize(env, args, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a object.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeRegExp(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    size_t argc = 1;
+    napi_value args;
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    void* data = nullptr;
+    napi_serialize(env, args, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a object.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -3830,6 +4104,16 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("napiSerialize", NapiSerialize),
         DECLARE_NAPI_FUNCTION("napiDeSerialize", NapiDeSerialize),
         DECLARE_NAPI_FUNCTION("napiDeleteSerializationData", NapiDeleteSerializationData),
+        DECLARE_NAPI_FUNCTION("napiSerializeDate", NapiSerializeDate),
+        DECLARE_NAPI_FUNCTION("napiSerializeString", NapiSerializeString),
+        DECLARE_NAPI_FUNCTION("napiSerializeArray", NapiSerializeArray),
+        DECLARE_NAPI_FUNCTION("napiSerializeObject", NapiSerializeObject),
+        DECLARE_NAPI_FUNCTION("napiSerializeArraybuffer", NapiSerializeArraybuffer),
+        DECLARE_NAPI_FUNCTION("napiSerializeTypearray", NapiSerializeTypearray),
+        DECLARE_NAPI_FUNCTION("napiSerializeSharedarraybuffer", NapiSerializeSharedarraybuffer),
+        DECLARE_NAPI_FUNCTION("napiSerializeSet", NapiSerializeSet),
+        DECLARE_NAPI_FUNCTION("napiSerializeMap", NapiSerializeMap),
+        DECLARE_NAPI_FUNCTION("napiSerializeRegExp", NapiSerializeRegExp),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
