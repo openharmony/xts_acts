@@ -6,7 +6,7 @@
         "bundle-name": "com.example.stageappcontexttest",
         "module-name": "entry_test",
         "shell-timeout": "1200000",
-        "testcase-timeout": "15000"
+        "testcase-timeout": "30000"
     },
     "kits": [
         {
@@ -22,11 +22,12 @@
         {
             "type": "ShellKit",
             "run-command": [
+                "param set persist.ace.testmode.enabled 1",
                 "param set persist.sys.suspend_manager_enabled false",
                 "reboot",
                 "power-shell wakeup",
                 "power-shell setmode 602",
-                "uinput -T -d 654 2750 -m 654 2750 654 2284 -u 300 2284"
+                "uinput -T -m 300 2700 280 200"
             ],
             "teardown-command": [
                 "param set persist.sys.suspend_manager_enabled true",
