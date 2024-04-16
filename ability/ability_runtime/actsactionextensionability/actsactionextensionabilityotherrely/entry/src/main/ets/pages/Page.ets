@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-let storage = LocalStorage.GetShared();
+var storage = LocalStorage.GetShared()
 
 @Entry(storage)
 @Component
 struct Page {
-  @State message: string = 'UIExtAbility';
+  @State message: string = 'UIExtAbility'
 
   build() {
     Row() {

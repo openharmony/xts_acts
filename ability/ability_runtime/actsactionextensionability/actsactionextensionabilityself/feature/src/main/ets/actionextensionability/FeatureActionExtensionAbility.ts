@@ -12,14 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import ActionExtensionAbility from '@ohos.app.ability.ActionExtensionAbility';
 import commonEventManager from '@ohos.commonEventManager';
 
 export default class FeatureActionExtensionAbility extends ActionExtensionAbility {
   storage: LocalStorage;
   message: string;
-
   onCreate() {
   }
 
@@ -33,8 +31,7 @@ export default class FeatureActionExtensionAbility extends ActionExtensionAbilit
 
   onSessionCreate(want, session) {
     console.log('====>FeatureActionExtensionAbility onSessionCreate called');
-    commonEventManager.publish('ACTS_FEATURE_CREATE', () => {
-    });
+    commonEventManager.publish('ACTS_FEATURE_CREATE', function () {});
     if (want.action === 'Acts_ActionExtensionAbility_0400') {
       this.context.startAbility({
         bundleName: 'com.example.actsactionextensionabilitytest',

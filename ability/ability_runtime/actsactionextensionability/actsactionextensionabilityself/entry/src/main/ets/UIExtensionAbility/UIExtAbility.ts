@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import ActionExtensionAbility from '@ohos.app.ability.ActionExtensionAbility';
 import wantConstant from '@ohos.app.ability.wantConstant';
 import commonEvent from '@ohos.commonEventManager';
@@ -63,21 +62,19 @@ export default class UiExtAbility extends ActionExtensionAbility {
         parameters: {
           [wantConstant.Params.ABILITY_BACK_TO_OTHER_MISSION_STACK]: true
         }
-      })
-        .then(() => {
-          console.info('=======>Acts_ActionExtensionAbility_1100 UIExtAbility startAbility success ======>');
-          let commonEventData = {
-            parameters: {
-              str: 'success'
-            }
-          };
-          commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-            console.debug('====>Acts_ActionExtensionAbility_1100 publish err:' + JSON.stringify(err));
-          });
-        })
-        .catch((err) => {
-          console.debug('====>Acts_ActionExtensionAbility_1100 UIExtAbility startAbility err:' + JSON.stringify(err));
+      }).then(() => {
+        console.info('=======>Acts_ActionExtensionAbility_1100 UIExtAbility startAbility success ======>');
+        let commonEventData = {
+          parameters: {
+            str: 'success'
+          }
+        };
+        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+          console.debug('====>Acts_ActionExtensionAbility_1100 publish err:' + JSON.stringify(err));
         });
+      }).catch((err) => {
+        console.debug('====>Acts_ActionExtensionAbility_1100 UIExtAbility startAbility err:' + JSON.stringify(err));
+      });
     }
 
     if (want.action === 'Acts_ActionExtensionAbility_1200') {
@@ -431,4 +428,4 @@ export default class UiExtAbility extends ActionExtensionAbility {
   onForeground() {
     console.log('=====> UIExtAbility onForeground =====> ');
   }
-}
+};

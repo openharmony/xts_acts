@@ -12,19 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import type window from '@ohos.window';
-import Want from '@ohos.app.ability.Want';
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 const CUMULATIVE = 2;
 
 export default class OtherAbility extends UIAbility {
   circulate: number = 0;
 
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want, launchParam) {
     console.log('=====> OtherAbility onCreate =====>');
   }
 
@@ -41,7 +38,7 @@ export default class OtherAbility extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    })
+    });
   }
 
   onWindowStageDestroy() {
@@ -63,7 +60,7 @@ export default class OtherAbility extends UIAbility {
         }
       }, (err) => {
         console.log('=====> OtherAbility CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
-      })
+      });
     }
   }
 

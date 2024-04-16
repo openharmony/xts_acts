@@ -12,20 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import Want from '@ohos.app.ability.Want';
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  @State message: string = 'Hello World'
   @StorageLink('want') want: Want = {
     bundleName: 'com.example.actsactionextensionabilitytest',
     abilityName: 'ActsActionExtensionAbility',
     parameters: {
       'ability.want.params.uiExtensionType': 'action'
     }
-  };
+  }
 
   build() {
     Row() {
