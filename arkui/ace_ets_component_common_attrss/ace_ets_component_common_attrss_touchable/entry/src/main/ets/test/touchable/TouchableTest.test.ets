@@ -16,6 +16,18 @@
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+}
+
+class TestValues {
+  describe: string;
+  setValue: boolean;
+  expectValue: boolean
+}
+
 /**
  * Test of common attribute: touchable
  */
@@ -95,14 +107,14 @@ export default function touchableTest() {
   ]
 
   //Page related configuration, this parameter is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testTouchable',
     pageName: 'TouchablePage',
     pageUrl: 'MainAbility/pages/touchable/TouchablePage',
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues: TestValues[] = [{
     describe: 'SetTrue',
     setValue: true,
     expectValue: true
@@ -117,7 +129,7 @@ export default function touchableTest() {
    */
   describe('TouchableTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       console.info('[' + data.caseTag + ']' + 'touchable is:' + data.viewObj.$attrs.touchable);
       expect(data.viewObj.$attrs.touchable)
         .assertEqual(data.testValue.expectValue);

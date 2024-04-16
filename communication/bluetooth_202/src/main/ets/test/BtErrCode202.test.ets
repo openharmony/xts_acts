@@ -89,8 +89,8 @@ export default function errCode202Test() {
   let hidSrc = null;
   describe('errCode202Test', function() {
     beforeAll(async function (done) {
-      await openPhone();
       await clickRequestPermission();
+      await openPhone();
       await tryToEnableBt();
       a2dpSrc = btA2dp.createA2dpSrcProfile();
       hfpSrc = btHfp.createHfpAgProfile();

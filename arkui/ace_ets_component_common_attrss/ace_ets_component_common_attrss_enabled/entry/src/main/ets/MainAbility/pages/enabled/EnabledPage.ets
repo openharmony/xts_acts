@@ -23,17 +23,17 @@ import router from '@ohos.router'
 @Component
 struct EnabledPage {
   @State _enabled: boolean = true;
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
   @State eventCallBackStr: string = ''
   @State referenceComponentKey: string = router.getParams() ?
-  router.getParams()['view']['referenceComponentKey'] : ''
+  (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
 
   onPageShow() {
     console.info('[EnabledPage] page show called ')
 
     //Register data change call back.
-    attrsManager.registerDataChange(value => {
+    attrsManager.registerDataChange((value: ESObject) => {
       this._enabled = value
       this.eventCallBackStr = ''
     })
@@ -42,7 +42,8 @@ struct EnabledPage {
   /**
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .enabled(this._enabled)
     .key(this.componentKey)
     .width(200)
@@ -71,7 +72,8 @@ struct EnabledPage {
     })
   }
 
-  @Builder itemHead(text: string) {
+  @Builder
+  itemHead(text: string) {
     Button('Header' + text)
   }
 
@@ -285,11 +287,11 @@ struct EnabledPage {
             .commonStyle()
           } else if (this.targetView == 'List') {
             List({ space: 20, initialIndex: 0 }) {
-              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                 ListItem() {
                   Button('ListItem' + item)
                 }
-              }, item => item)
+              }, (item: number) => item.toString())
             }
             .listDirection(Axis.Vertical)
             .commonStyle()
@@ -337,9 +339,9 @@ struct EnabledPage {
           } else if (this.targetView == 'Scroll') {
             Scroll() {
               Column() {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                   Button('Scroll item' + item)
-                }, item => item)
+                }, (item: number) => item.toString())
               }.width('100%')
             }
             .scrollBar(BarState.On)
@@ -362,9 +364,9 @@ struct EnabledPage {
             }.backgroundColor(Color.Orange).commonStyle()
           } else if (this.targetView == 'Swiper') {
             Swiper() {
-              ForEach([1, 2, 3], (item: string) => {
+              ForEach([1, 2, 3], (item: number) => {
                 Text('Swiper' + item).width('90%').height(160)
-              }, item => item)
+              }, (item: number) => item.toString())
             }
             .indicator(true)
             .backgroundColor(Color.White)

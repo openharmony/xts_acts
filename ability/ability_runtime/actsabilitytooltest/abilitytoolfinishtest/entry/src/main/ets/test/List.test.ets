@@ -13,8 +13,8 @@
 * limitations under the License.
 */
 
-import abilityToolFinishTest from './AbilityToolFinish.test'
+import abilityToolFinishTest from './AbilityToolFinish.test';
 
 export default function testsuite() {
-  abilityToolFinishTest()
+  abilityToolFinishTest();
 }

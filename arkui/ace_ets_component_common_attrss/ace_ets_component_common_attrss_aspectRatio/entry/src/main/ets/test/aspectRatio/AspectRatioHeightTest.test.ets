@@ -13,10 +13,24 @@
  * limitations under the License.
  */
 
-import Utils from '../../MainAbility/common/Utils';
+import Utils, { RectValue } from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  parentWidth: number;
+  parentHeight: number;
+}
+
+class TestValue {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ESObject;
+}
 
 export default function aspectRatioHeightTest() {
 
@@ -96,7 +110,7 @@ export default function aspectRatioHeightTest() {
   let parentWidth = 300;
   let parentHeight = 600;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testAspectRatioHeight',
     pageName: 'AspectRatioHeightPage',
     pageUrl: 'MainAbility/pages/aspectRatio/AspectRatioHeightPage',
@@ -106,7 +120,7 @@ export default function aspectRatioHeightTest() {
   }
 
   //Test content and expected results
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetNumber',
     setValue: {
       height: 100,
@@ -131,7 +145,7 @@ export default function aspectRatioHeightTest() {
   }]
 
   describe('AspectRatioHeightTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       //Gets Rect information for the target component
       let targetRect = Utils.getComponentRect(data.pageConfig.componentKey);
       let targetRectWidth = targetRect.right - targetRect.left;

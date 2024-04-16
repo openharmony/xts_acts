@@ -39,14 +39,14 @@ async function onShowProcess() {
     commonEvent.publish("MultiInstanceStartFinish", commonEventPublishData, publishCallBack);
   } else {
     commonEvent.publish("MultiInstanceStartNext", commonEventPublishData, () => {
-      startAbilityProcess(AppStorage.get("abilityContext")!, abilityWant.parameters);
+      startAbilityProcess(AppStorage.get("AppDThirdAbilityContext")!, abilityWant.parameters);
     })
   }
   AppStorage.setOrCreate("onAcceptWantCalledSeq", "");
   callBackSeq = "";
 }
 
-async function startAbilityProcess(abilityContext, parameters) {
+async function startAbilityProcess(AppDThirdAbilityContext, parameters) {
   let bundleName = "com.acts.abilitymultiinstancea";
   let abilityName = "com.acts.abilitymultiinstancea.MainAbility";
 
@@ -88,7 +88,7 @@ async function startAbilityProcess(abilityContext, parameters) {
       break;
   }
   parameters.nextStep = ++idx;
-  abilityContext.startAbility({
+  AppDThirdAbilityContext.startAbility({
     bundleName: bundleName,
     abilityName: abilityName,
     parameters: parameters
@@ -113,7 +113,7 @@ export default class ThirdAbility extends Ability {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     console.log("AbilityMultiInstanceAppD Third onWindowStageCreate");
-    AppStorage.setOrCreate("abilityContext", this.context);
+    AppStorage.setOrCreate("AppDThirdAbilityContext", this.context);
     windowStage.loadContent("pages/index/index", null);
   }
 

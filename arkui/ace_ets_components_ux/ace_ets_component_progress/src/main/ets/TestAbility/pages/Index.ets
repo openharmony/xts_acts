@@ -42,7 +42,7 @@ struct progressTest {
               .mask(this.progress)
               .backgroundColor(Color.Pink)
               .width('500px')
-              .height('280px')
+              .height('100px')
           }
 
           ListItem() {
@@ -51,7 +51,7 @@ struct progressTest {
               .mask(this.progress_default)
               .backgroundColor(Color.Pink)
               .width('500px')
-              .height('280px')
+              .height('100px')
           }
 
           ListItem() {

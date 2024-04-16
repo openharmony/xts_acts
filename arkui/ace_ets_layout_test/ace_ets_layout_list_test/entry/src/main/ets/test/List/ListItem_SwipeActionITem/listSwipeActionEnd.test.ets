@@ -71,7 +71,7 @@ export default function listSwipeActionEndJsunit() {
       // swipe the listItem
       //[15.00, 87.00][705.00,237.00]
       await driver.swipe(
-        Math.round(vp2px(240)), Math.round(vp2px(108)), Math.round(vp2px(230)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(230)), Math.round(vp2px(108) + globalThis.winTop)
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionState
@@ -100,7 +100,7 @@ export default function listSwipeActionEndJsunit() {
       // swipe the listItem
 
       await driver.swipe(
-        Math.round(vp2px(240)), Math.round(vp2px(108)), Math.round(vp2px(100)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round( globalThis.winLeft + vp2px(100)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionState
@@ -128,7 +128,7 @@ export default function listSwipeActionEndJsunit() {
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0100] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
       await driver.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(108)), Math.round(vp2px(10)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(10)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionState

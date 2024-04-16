@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import Want from '@ohos.app.ability.Want';
 import commonEventManager from '@ohos.commonEventManager';
 
@@ -26,7 +27,8 @@ struct Index {
     parameters: {
       'ability.want.params.uiExtensionType': 'action'
     }
-  };
+  }
+
   build() {
     Row() {
       Column() {
@@ -34,55 +36,55 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         UIExtensionComponent(this.want)
-          .size({width:'100%',height:'100'})
+          .size({ width: '100%', height: '100' })
           .backgroundColor(Color.Blue)
-          .border({width:5,color:Color.Red})
+          .border({ width: 5, color: Color.Red })
           .onRemoteReady((proxy) => {
             setTimeout(() => {
               proxy.send({
                 name: {
                   test: 'actionExtensionTest'
                 }
-              });
-            }, 1000);
+              })
+            }, 1000)
           })
-          .onResult((data)=>{
-            var onResultEvent = 'ACTS_UIExtension_OnResult';
-            var options = {
+          .onResult((data) => {
+            let onResultEvent = 'ACTS_UIExtension_OnResult';
+            let options: commonEventManager.CommonEventPublishData = {
               parameters: {
                 'result': data
               }
             }
             commonEventManager.publish(onResultEvent, options, (err) => {
               console.log('ACTS_UIExtension_OnResult');
-            });
+            })
           })
-          .onReceive((data)=>{
-            var onReceiveEvent = 'ACTS_UIExtension_OnReceive';
-            var options = {
+          .onReceive((data) => {
+            let onReceiveEvent = 'ACTS_UIExtension_OnReceive';
+            let options: commonEventManager.CommonEventPublishData = {
               parameters: {
                 'result': data
               }
             }
             commonEventManager.publish(onReceiveEvent, options, (err) => {
               console.log('ACTS_UIExtension_OnReceive');
-            });
+            })
           })
           .onError((err) => {
-            var options = {
+            let options: commonEventManager.CommonEventPublishData = {
               parameters: {
                 'err': err
               }
             }
-            commonEventManager.publish('ACTS_TEST_START_ERR', options, function (){});
+            commonEventManager.publish('ACTS_TEST_START_ERR', options, () => { });
           })
           .onRelease((releaseCode) => {
-            var options = {
+            let options: commonEventManager.CommonEventPublishData = {
               parameters: {
                 'releaseCode': releaseCode
               }
             }
-            commonEventManager.publish('ACTS_TEST_RELEASE', options, function (){});
+            commonEventManager.publish('ACTS_TEST_RELEASE', options, () => { });
           })
       }
       .width('100%')

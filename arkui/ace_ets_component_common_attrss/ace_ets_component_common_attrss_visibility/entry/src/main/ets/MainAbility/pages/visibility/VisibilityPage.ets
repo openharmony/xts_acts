@@ -20,28 +20,30 @@ import router from '@ohos.router'
 @Component
 struct VisibilityPage {
   @State _visibility: Visibility = Visibility.Visible
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State targetComponentWidth: number = router.getParams() ? router.getParams()['view']['targetComponentWidth'] : 0
-  @State targetComponentHeight: number = router.getParams() ? router.getParams()['view']['targetComponentHeight'] : 0
-  @State referenceComponentKey: string = router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State targetComponentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetComponentWidth'] : 0
+  @State targetComponentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetComponentHeight'] : 0
+  @State referenceComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
 
   onPageShow() {
     console.info('visibility page show called ')
-    AttrsManager.registerDataChange(value => {
+    AttrsManager.registerDataChange((value: Visibility) => {
       this._visibility = value
     })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .visibility(this._visibility)
     .width(this.targetComponentWidth)
     .height(this.targetComponentHeight)
     .key(this.componentKey)
   }
 
-  @Styles referenceComponentCommonStyle(){
+  @Styles
+  referenceComponentCommonStyle(){
     .width(this.targetComponentWidth)
     .height(this.targetComponentHeight)
     .key(this.referenceComponentKey)
@@ -99,11 +101,20 @@ struct VisibilityPage {
         Row() {
           Menu() {
             MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
-              .backgroundColor(Color.Yellow).commonStyle()
+              .backgroundColor(Color.Yellow)
+              .commonStyle()
             MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
-              .backgroundColor(Color.Red).referenceComponentCommonStyle()
-          }.backgroundColor(Color.Pink).width(200).height(400)
-        }.width('100%').height('100%').backgroundColor(Color.Green).key(this.parentComponentKey)
+              .backgroundColor(Color.Red)
+              .referenceComponentCommonStyle()
+          }
+          .backgroundColor(Color.Pink)
+          .width(200)
+          .height(400)
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(Color.Green)
+        .key(this.parentComponentKey)
       } else if (this.targetView == 'MenuItemGroup') {
         Row() {
           Menu() {
@@ -113,48 +124,87 @@ struct VisibilityPage {
 
             MenuItemGroup({ header: 'MenuItemGroup' }) {
               MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
-            }.backgroundColor(Color.Red).referenceComponentCommonStyle()
-          }.backgroundColor(Color.Pink).width(200).height(400)
-        }.width('100%').height('100%').backgroundColor(Color.Green).key(this.parentComponentKey)
+            }
+            .backgroundColor(Color.Red)
+            .referenceComponentCommonStyle()
+          }
+          .backgroundColor(Color.Pink)
+          .width(200)
+          .height(400)
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(Color.Green).key(this.parentComponentKey)
       } else if (this.targetView == 'GridCol') {
         GridRow({
           columns: 1,
           direction: GridRowDirection.Row
         }) {
           GridCol() {
-            Row().width('100%').height('20vp')
+            Row()
+              .width('100%')
+              .height('20vp')
           }.commonStyle()
 
           GridCol() {
-            Row().width('100%').height('20vp')
+            Row()
+              .width('100%')
+              .height('20vp')
           }.referenceComponentCommonStyle()
-        }.backgroundColor(Color.Pink).width(200).height(400).key(this.parentComponentKey)
+        }
+        .backgroundColor(Color.Pink)
+        .width(200)
+        .height(400)
+        .key(this.parentComponentKey)
       } else if (this.targetView == 'FlowItem') {
         WaterFlow() {
           FlowItem() {
             Column() {
-              Text('WaterFlow').fontSize(12).height('16')
-              Image($r('app.media.icon')).width(50).height(50).objectFit(ImageFit.Fill)
+              Text('WaterFlow')
+                .fontSize(12)
+                .height('16')
+              Image($r('app.media.icon'))
+                .width(50)
+                .height(50)
+                .objectFit(ImageFit.Fill)
             }
           }.commonStyle()
 
           FlowItem() {
             Column() {
-              Text('WaterFlow').fontSize(12).height('16')
-              Image($r('app.media.icon')).width(50).height(50).objectFit(ImageFit.Fill)
+              Text('WaterFlow')
+                .fontSize(12)
+                .height('16')
+              Image($r('app.media.icon'))
+                .width(50)
+                .height(50)
+                .objectFit(ImageFit.Fill)
             }
           }.referenceComponentCommonStyle()
-        }.backgroundColor(Color.Pink).width(200).height(400).key(this.parentComponentKey)
+        }.backgroundColor(Color.Pink)
+        .width(200)
+        .height(400)
+        .key(this.parentComponentKey)
       } else if (this.targetView == 'GridItem') {
         Grid() {
           GridItem() {
-            Text('4').backgroundColor(0xFAEEE0).width('100%').height('100%').textAlign(TextAlign.Center)
+            Text('4').backgroundColor(0xFAEEE0)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
           }.commonStyle()
 
           GridItem() {
-            Text('4').backgroundColor(0xFAEEE0).width('100%').height('100%').textAlign(TextAlign.Center)
+            Text('4')
+              .backgroundColor(0xFAEEE0)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
           }.referenceComponentCommonStyle()
-        }.backgroundColor(Color.Pink).width(200).height(400).key(this.parentComponentKey)
+        }.backgroundColor(Color.Pink)
+        .width(200)
+        .height(400)
+        .key(this.parentComponentKey)
       } else {
         Row() {
           if (this.targetView == 'Button') {
@@ -311,15 +361,24 @@ struct VisibilityPage {
               style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red }
             }) {
               Button('message')
-                .width(100).height(50).backgroundColor(0x317aff)
+                .width(100)
+                .height(50)
+                .backgroundColor(0x317aff)
             }.commonStyle()
           } else if (this.targetView == 'Column') {
             Column() {
-              Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+              Column()
+                .width('100%')
+                .height(30)
+                .backgroundColor(0xAFEEEE)
             }.commonStyle()
           } else if (this.targetView == 'ColumnSplit') {
             ColumnSplit() {
-              Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+              Text('1')
+                .width('100%')
+                .height(50)
+                .backgroundColor(0xF5DEB3)
+                .textAlign(TextAlign.Center)
             }.commonStyle()
           } else if (this.targetView == 'Counter') {
             Counter() {
@@ -327,7 +386,10 @@ struct VisibilityPage {
             }.commonStyle()
           } else if (this.targetView == 'Flex') {
             Flex() {
-              Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
+              Text('1')
+                .width('20%')
+                .height(50)
+                .backgroundColor(0xF5DEB3)
             }.commonStyle()
           } else if (this.targetView == 'GridRow') {
             GridRow({
@@ -335,10 +397,13 @@ struct VisibilityPage {
               direction: GridRowDirection.Row
             }) {
               ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green,
-              Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color) => {
+                Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color: Color) => {
                 GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
-                  Row().width('100%').height('20vp')
-                }.borderColor(color).borderWidth(2)
+                  Row()
+                    .width('100%')
+                    .height('20vp')
+                }
+                .borderColor(color).borderWidth(2)
               })
             }.commonStyle()
           } else if (this.targetView == 'Grid') {
@@ -404,25 +469,30 @@ struct VisibilityPage {
           } else if (this.targetView == 'Scroll') {
             Scroll() {
               Column() {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                   Text('Scroll' + item.toString())
                     .width('90%')
                     .height(50)
                     .backgroundColor(Color.White)
                     .textAlign(TextAlign.Center)
-                }, item => item)
+                }, (item: number) => item.toString())
               }.width('100%')
             }.scrollBar(BarState.On).commonStyle()
           } else if (this.targetView == 'SideBarContainer') {
             SideBarContainer(SideBarContainerType.Embed) {
               Column() {
-                ForEach([1, 2, 3], (item) => {
+                ForEach([1, 2, 3], (item: number) => {
                   Column({ space: 5 }) {
-                    Image($r('app.media.icon')).width(50).height(50)
-                    Text('Index0' + item).fontSize(25)
+                    Image($r('app.media.icon'))
+                      .width(50)
+                      .height(50)
+                    Text('Index0' + item)
+                      .fontSize(25)
                   }
                 })
-              }.width('100%').justifyContent(FlexAlign.SpaceEvenly).backgroundColor(Color.Green)
+              }.width('100%')
+              .justifyContent(FlexAlign.SpaceEvenly)
+              .backgroundColor(Color.Green)
 
               Column() {
                 Text('SideBarContainer content').fontSize(25)
@@ -434,9 +504,11 @@ struct VisibilityPage {
             }.commonStyle()
           } else if (this.targetView == 'Swiper') {
             Swiper() {
-              ForEach([1, 2, 3], (item: string) => {
-                Text('Swiper' + item).width('90%').height(50)
-              }, item => item)
+              ForEach([1, 2, 3], (item: number) => {
+                Text('Swiper' + item)
+                  .width('90%')
+                  .height(50)
+              }, (item: number) => item.toString())
             }
             .indicator(true)
             .backgroundColor(Color.White)
@@ -444,7 +516,10 @@ struct VisibilityPage {
           } else if (this.targetView == 'Tabs') {
             Tabs() {
               TabContent() {
-                Column().width('100%').height('100%').backgroundColor('#00CB87')
+                Column()
+                  .width('100%')
+                  .height('100%')
+                  .backgroundColor('#00CB87')
               }
             }.commonStyle()
           } else if (this.targetView == 'WaterFlow') {
@@ -459,13 +534,17 @@ struct VisibilityPage {
                       .objectFit(ImageFit.Fill)
                   }
                 }
-              }, item => item)
+              }, (item: number) => item.toString())
             }.commonStyle()
           }
           Text('referenceComponentKey')
             .backgroundColor(0xc1cbac)
             .referenceComponentCommonStyle()
-        }.width(400).height(200).backgroundColor(Color.Pink).key(this.parentComponentKey)
+        }
+        .width(400)
+        .height(200)
+        .backgroundColor(Color.Pink)
+        .key(this.parentComponentKey)
       }
     }.backgroundColor(Color.Yellow)
   }

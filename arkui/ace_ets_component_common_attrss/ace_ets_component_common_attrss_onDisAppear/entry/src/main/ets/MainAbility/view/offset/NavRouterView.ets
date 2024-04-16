@@ -15,15 +15,19 @@
 
 @Component
 export struct NavRouterView {
-  @State isActive: boolean = false
-  @State dex: number = 0
+  @State isActive: boolean = false;
+  @State indexDev: number = 0;
   @Link _offset: Position;
   private componentKey: string;
 
   build() {
     NavRouter() {
       Row() {
-        Image($r('app.media.icon')).width(30).height(30).borderRadius(30).margin({ left: 3, right: 10 })
+        Image($r('app.media.icon'))
+          .width(30)
+          .height(30)
+          .borderRadius(30)
+          .margin({ left: 3, right: 10 })
         Text(`NavRouter`)
           .fontSize(22)
           .fontWeight(500)
@@ -35,11 +39,17 @@ export struct NavRouterView {
       .borderRadius(24)
 
       NavDestination() {
-        Text(`Page 1 Content`).fontSize(50)
+        Text(`Page 1 Content`)
+          .fontSize(50)
         Flex({ direction: FlexDirection.Row }) {
           Row() {
-            Image($r('app.media.icon')).width(40).height(40).borderRadius(40).margin({ right: 15 })
-            Text('Seven classes in total').fontSize(30)
+            Image($r('app.media.icon'))
+              .width(40)
+              .height(40)
+              .borderRadius(40)
+              .margin({ right: 15 })
+            Text('Seven classes in total')
+              .fontSize(30)
           }.padding({ left: 15 })
         }
       }.backgroundColor('#ccc')

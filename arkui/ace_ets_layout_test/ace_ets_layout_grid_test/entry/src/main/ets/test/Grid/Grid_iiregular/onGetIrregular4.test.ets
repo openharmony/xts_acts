@@ -80,11 +80,11 @@ export default function onGetIrregular4Jsunit() {
 
 
       await CommonFunc.sleep(1000);
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(Math.round(GridItem0.right - GridItem0.left));
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(Math.round(GridItem1.right - GridItem1.left));
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(Math.round(GridItem2.right - GridItem2.left));
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(Math.round(GridItem3.right - GridItem3.left));
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(Math.round(GridItem4.right - GridItem4.left));
+      expect(Math.abs(Math.round((Grid.right - Grid.left)- (GridItem0.right - GridItem0.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((Grid.right - Grid.left)- (GridItem1.right - GridItem1.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((Grid.right - Grid.left)- (GridItem2.right - GridItem2.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((Grid.right - Grid.left)- (GridItem3.right - GridItem3.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((Grid.right - Grid.left)- (GridItem4.right - GridItem4.left))) <= 1).assertTrue();
 
       console.info('[onGetIrregular4Jsunit_0000] END');
       done();

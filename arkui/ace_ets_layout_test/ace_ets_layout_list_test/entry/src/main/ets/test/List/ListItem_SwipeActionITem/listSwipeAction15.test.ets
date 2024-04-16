@@ -70,7 +70,7 @@ export default function listSwipeAction15Jsunit() {
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0150] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(100)), Math.round(vp2px(115)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionState
@@ -98,7 +98,7 @@ export default function listSwipeAction15Jsunit() {
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0160] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(100)), Math.round(vp2px(115)), Math.round(vp2px(200))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200))
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionState
@@ -127,7 +127,7 @@ export default function listSwipeAction15Jsunit() {
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0170] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(100)), Math.round(vp2px(115)), Math.round(vp2px(350))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round( globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(350))
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionState

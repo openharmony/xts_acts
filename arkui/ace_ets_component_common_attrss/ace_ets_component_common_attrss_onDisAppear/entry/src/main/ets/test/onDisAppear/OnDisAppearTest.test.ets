@@ -102,7 +102,23 @@ export default function onDisAppearTest() {
   let targetWidth = 60;
   let targetHeight = 60;
 
-  let pageConfig = {
+  class PageConfig {
+    testName: string;
+    pageName: string;
+    pageUrl: string;
+    targetGroupView: string;
+    compareTextKey: string;
+    targetWidth: number;
+    targetHeight: number;
+  }
+
+  class TestValues {
+    describe: string;
+    setValue: ESObject
+    expectValue: ESObject
+  }
+
+  let pageConfig: PageConfig = {
     testName: 'testOnDisAppear',
     pageName: 'OnDisAppearPage',
     pageUrl: 'MainAbility/pages/onDisAppear/OnDisAppearPage',
@@ -113,7 +129,7 @@ export default function onDisAppearTest() {
   }
 
   //Test content and expected results
-  let testValues = [{
+  let testValues: TestValues[] = [{
     describe: '',
     setValue: {
       isShow: false
@@ -124,12 +140,12 @@ export default function onDisAppearTest() {
   }]
 
   describe('OnDisAppearTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Set value
       AttrsManager.change(data.caseTag, data.testValue.setValue);
-      await  Utils.sleep(2000);
+      await Utils.sleep(2000);
       //Get text content,check content is changeDisAppear
-      let compareTextObj = Utils.getComponentByKey(data.pageConfig.compareTextKey);
+      let compareTextObj: ESObject = Utils.getComponentByKey(data.pageConfig.compareTextKey);
       console.info('compareTextObj.$attrs.content: ' + compareTextObj.$attrs.content);
       expect(compareTextObj.$attrs.content).assertEqual(data.testValue.expectValue.changeDisAppear);
     });

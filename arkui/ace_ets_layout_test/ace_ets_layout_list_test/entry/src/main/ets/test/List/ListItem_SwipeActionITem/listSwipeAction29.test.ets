@@ -70,7 +70,7 @@ export default function listSwipeAction29Jsunit() {
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0290] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem to right
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(60)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(60)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
@@ -80,7 +80,7 @@ export default function listSwipeAction29Jsunit() {
       expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('0');
       // reset
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(500)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(500)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       let buttonReset = await driver.findComponent(ON.id('btreset29'));
@@ -90,7 +90,7 @@ export default function listSwipeAction29Jsunit() {
 
       // swipe to left
       await driver.swipe(
-        Math.round(vp2px(240)), Math.round(vp2px(108)), Math.round(vp2px(230)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(230)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(4000);
       let textSwipeOffset2 = getInspectorByKey('swipe29Offset');
@@ -121,7 +121,7 @@ export default function listSwipeAction29Jsunit() {
 
       // swipe the listItem to right
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(300)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
@@ -131,7 +131,7 @@ export default function listSwipeAction29Jsunit() {
       expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('160')
       // reset
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(500)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(500)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       let buttonReset2 = await driver.findComponent(ON.id('btreset29'));
@@ -141,7 +141,7 @@ export default function listSwipeAction29Jsunit() {
 
       // swipe to left
       await driver.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(108)), Math.round(vp2px(100)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(100)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       let textSwipeOffset2 = getInspectorByKey('swipe29Offset');
@@ -150,7 +150,7 @@ export default function listSwipeAction29Jsunit() {
       expect(JSON.parse(textSwipeOffset2).$attrs.content).assertEqual('-160');
       // init reset the state
       await driver.swipe(
-        Math.round(vp2px(240)), Math.round(vp2px(108)), Math.round(vp2px(-1000)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(-1000)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       done();

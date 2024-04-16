@@ -12,15 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import type window from '@ohos.window';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class FeatureAbility extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     const TIMEOUT = 50;
-    globalThis.featureTerminate = (str) => {
+    globalThis.featureTerminate = (str: string) => {
       setTimeout(() => {
         this.context.terminateSelf().then(() => {
           console.info('====>terminateSelf' + JSON.stringify(str) + ' end');
@@ -32,7 +35,7 @@ export default class FeatureAbility extends UIAbility {
 
     if (want.action === 'Acts_ActionExtensionAbility_0400') {
       console.info('====>FeatureAbility want.action == Acts_ActionExtensionAbility_0400');
-      AppStorage.SetOrCreate('want', {
+      AppStorage.setOrCreate<Want>('want', {
         action: 'Acts_ActionExtensionAbility_0400',
         bundleName: 'com.example.actsactionextensionabilitytest',
         abilityName: 'FeatureActionExtensionAbility',
@@ -44,7 +47,7 @@ export default class FeatureAbility extends UIAbility {
 
     if (want.action === 'Acts_ActionExtensionAbility_0200') {
       console.info('====>FeatureAbility want.action == Acts_ActionExtensionAbility_0200');
-      AppStorage.SetOrCreate('want', {
+      AppStorage.setOrCreate<Want>('want', {
         bundleName: 'com.example.actsactionextensionabilitytest',
         abilityName: 'ActsActionExtensionAbility',
         parameters: {

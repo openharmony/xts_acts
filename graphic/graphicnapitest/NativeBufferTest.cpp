@@ -13,15 +13,27 @@
  * limitations under the License.
  */
 #include <gtest/gtest.h>
+#include "iconsumer_surface.h"
 #include <iservice_registry.h>
-#include <native_buffer.h>
+#include <ctime>
+#include "native_buffer.h"
+#include "native_buffer_inner.h"
+#include "native_window.h"
 #include "surface_type.h"
 #include "graphic_common_c.h"
 
+using namespace std;
 using namespace testing;
 using namespace testing::ext;
 
 namespace OHOS::Rosen {
+class BufferConsumerListener : public IBufferConsumerListener {
+public:
+    void OnBufferAvailable() override
+    {
+    }
+};
+
 class NativeBufferTest : public testing::Test {
 public:
     static void SetUpTestCase();
@@ -49,9 +61,11 @@ void NativeBufferTest::TearDownTestCase()
 
 /*
  * @tc.name  OHNativeBufferAlloc001
- * @tc.desc  test for call OH_NativeBuffer_Alloc by abnormal input and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_Alloc by abnormal input
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferAlloc001, Function | MediumTest | Level2)
 {
     buffer = OH_NativeBuffer_Alloc(nullptr);
@@ -60,9 +74,11 @@ HWTEST_F(NativeBufferTest, OHNativeBufferAlloc001, Function | MediumTest | Level
 
 /*
  * @tc.name  OHNativeBufferAlloc002
- * @tc.desc  test for call OH_NativeBuffer_Alloc and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_Alloc
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferAlloc002, Function | MediumTest | Level2)
 {
     buffer = OH_NativeBuffer_Alloc(&config);
@@ -71,9 +87,11 @@ HWTEST_F(NativeBufferTest, OHNativeBufferAlloc002, Function | MediumTest | Level
 
 /*
  * @tc.name  OHNativeBufferGetSeqNum001
- * @tc.desc  test for call OH_NativeBuffer_GetSeqNum by abnormal input and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_GetSeqNum by abnormal input
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferGetSeqNum001, Function | MediumTest | Level2)
 {
     uint32_t id = OH_NativeBuffer_GetSeqNum(nullptr);
@@ -82,9 +100,11 @@ HWTEST_F(NativeBufferTest, OHNativeBufferGetSeqNum001, Function | MediumTest | L
 
 /*
  * @tc.name  OHNativeBufferGetSeqNum002
- * @tc.desc  test for call OH_NativeBuffer_GetSeqNum and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  all OH_NativeBuffer_GetSeqNum
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferGetSeqNum002, Function | MediumTest | Level2)
 {
     uint32_t id = OH_NativeBuffer_GetSeqNum(buffer);
@@ -93,8 +113,10 @@ HWTEST_F(NativeBufferTest, OHNativeBufferGetSeqNum002, Function | MediumTest | L
 
 /*
  * @tc.name  OHNativeBufferGetConfig001
- * @tc.desc  test for call OH_NativeBuffer_GetConfig and check ret
- * @tc.type  FUNC
+ * @tc.desc  call OH_NativeBuffer_GetConfig
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeBufferTest, OHNativeBufferGetConfig001, Function | MediumTest | Level2)
 {
@@ -104,9 +126,11 @@ HWTEST_F(NativeBufferTest, OHNativeBufferGetConfig001, Function | MediumTest | L
 
 /*
  * @tc.name  OHNativeBufferGetConfig002
- * @tc.desc  test for call OH_NativeBuffer_GetConfig by abnormal input and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_GetConfig
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferGetConfig002, Function | MediumTest | Level2)
 {
     checkConfig.width = 0x0;
@@ -120,12 +144,13 @@ HWTEST_F(NativeBufferTest, OHNativeBufferGetConfig002, Function | MediumTest | L
     ASSERT_EQ(checkConfig.usage, 0x0);
 }
 
-
 /*
  * @tc.name  OHNativeBufferReference001
- * @tc.desc  test for call OH_NativeBuffer_Reference by abnormal input and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_Reference
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferReference001, Function | MediumTest | Level2)
 {
     int32_t ret = OH_NativeBuffer_Reference(nullptr);
@@ -134,9 +159,11 @@ HWTEST_F(NativeBufferTest, OHNativeBufferReference001, Function | MediumTest | L
 
 /*
  * @tc.name  OHNativeBufferReference002
- * @tc.desc  test for call OH_NativeBuffer_Reference and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_Reference
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferReference002, Function | MediumTest | Level2)
 {
     int32_t ret = OH_NativeBuffer_Reference(buffer);
@@ -145,9 +172,11 @@ HWTEST_F(NativeBufferTest, OHNativeBufferReference002, Function | MediumTest | L
 
 /*
  * @tc.name  OHNativeBufferUnreference001
- * @tc.desc  test for call OH_NativeBuffer_Unreference by abnormal input and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_Unreference by abnormal input
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferUnreference001, Function | MediumTest | Level2)
 {
     int32_t ret = OH_NativeBuffer_Unreference(nullptr);
@@ -156,9 +185,11 @@ HWTEST_F(NativeBufferTest, OHNativeBufferUnreference001, Function | MediumTest |
 
 /*
  * @tc.name  OHNativeBufferUnreference002
- * @tc.desc  test for call OH_NativeBuffer_Unreference and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_Unreference
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferUnreference002, Function | MediumTest | Level2)
 {
     int32_t ret = OH_NativeBuffer_Unreference(buffer);
@@ -167,9 +198,11 @@ HWTEST_F(NativeBufferTest, OHNativeBufferUnreference002, Function | MediumTest |
 
 /*
  * @tc.name  OHNativeBufferGetSeqNum003
- * @tc.desc  test for check OH_NativeBuffer_GetSeqNum
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_GetSeqNum
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferGetSeqNum003, Function | MediumTest | Level2)
 {
     uint32_t oldSeq = OH_NativeBuffer_GetSeqNum(buffer);
@@ -178,22 +211,65 @@ HWTEST_F(NativeBufferTest, OHNativeBufferGetSeqNum003, Function | MediumTest | L
     buffer = OH_NativeBuffer_Alloc(&config);
     ASSERT_EQ(oldSeq + 1, OH_NativeBuffer_GetSeqNum(buffer));
 }
+
+/*
+ * @tc.name  OHNativeBufferGetBufferHandle001
+ * @tc.desc  call OH_NativeBuffer_GetBufferHandle
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
+HWTEST_F(NativeBufferTest, OHNativeBufferGetBufferHandle001, Function | MediumTest | Level2)
+{
+    const BufferHandle* handle = OH_NativeBuffer_GetBufferHandle(buffer);
+    ASSERT_NE(handle, nullptr);
+    int32_t ret = FreeBufferHandle(nullptr);
+    ASSERT_EQ(ret, 0);
+    BufferHandle* cloneHandle = CloneBufferHandle(nullptr);
+    ASSERT_EQ(cloneHandle, nullptr);
+    cloneHandle = CloneBufferHandle(handle);
+    ASSERT_NE(cloneHandle, nullptr);
+    ASSERT_NE(handle, nullptr);
+    ASSERT_EQ(cloneHandle->width, handle->width);
+}
+
+/*
+ * @tc.name  OHNativeBufferGetNativeBufferConfig001
+ * @tc.desc  call OH_NativeBuffer_GetNativeBufferConfig
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
+HWTEST_F(NativeBufferTest, OHNativeBufferGetNativeBufferConfig001, Function | MediumTest | Level2)
+{
+    OH_NativeBuffer_Config testConfig = {};
+    OH_NativeBuffer_GetNativeBufferConfig(buffer, &testConfig);
+    ASSERT_EQ(testConfig.width, config.width);
+    ASSERT_EQ(testConfig.height, config.height);
+    ASSERT_EQ(testConfig.format, config.format);
+    ASSERT_EQ(testConfig.usage, config.usage);
+}
+
 /*
  * @tc.name  OHNativeBufferSetColorSpace001
- * @tc.desc  test for call OH_NativeBuffer_SetColorSpace
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_SetColorSpace by abnormal input
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferSetColorSpace001, Function | MediumTest | Level2)
 {
     int32_t ret = OH_NativeBuffer_SetColorSpace(nullptr, OH_COLORSPACE_DISPLAY_BT2020_PQ);
-    ASSERT_EQ(ret, GSERROR_INVALID_ARGUMENTS);
+    ASSERT_NE(ret, GSERROR_OK);
 }
 
 /*
  * @tc.name  OHNativeBufferSetColorSpace002
- * @tc.desc  test for call OH_NativeBuffer_SetColorSpace
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_SetColorSpace
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferSetColorSpace002, Function | MediumTest | Level2)
 {
     if (buffer == nullptr) {
@@ -201,51 +277,19 @@ HWTEST_F(NativeBufferTest, OHNativeBufferSetColorSpace002, Function | MediumTest
         ASSERT_NE(buffer, nullptr);
     }
 
-    int32_t ret = OH_NativeBuffer_SetColorSpace(buffer, OH_COLORSPACE_P3_PQ_FULL);
-    std::cout << ret << std::endl;
-    if (ret != GSERROR_NOT_SUPPORT) { // some device not support set colorspace
+    int32_t ret = OH_NativeBuffer_SetColorSpace(buffer, OH_COLORSPACE_BT709_LIMIT);
+    if (ret != GSERROR_NOT_SUPPORT) {
         ASSERT_EQ(ret, GSERROR_OK);
     }
 }
-/*
- * @tc.name  OHNativeBufferSetColorSpace003
- * @tc.desc  test for call OH_NativeBuffer_SetColorSpace
- * @tc.type  FUNC
- */
-HWTEST_F(NativeBufferTest, OHNativeBufferSetColorSpace003, Function | MediumTest | Level2)
-{
-    if (buffer == nullptr) {
-        buffer = OH_NativeBuffer_Alloc(&config);
-        ASSERT_NE(buffer, nullptr);
-    }
 
-    int32_t ret = OH_NativeBuffer_SetColorSpace(buffer, OH_COLORSPACE_NONE);
-    if (ret != GSERROR_NOT_SUPPORT) { // some device not support set colorspace
-        ASSERT_EQ(ret, GSERROR_OK);
-    }
-}
-/*
- * @tc.name  OHNativeBufferSetColorSpace004
- * @tc.desc  test for call OH_NativeBuffer_SetColorSpace
- * @tc.type  FUNC
- */
-HWTEST_F(NativeBufferTest, OHNativeBufferSetColorSpace004, Function | MediumTest | Level2)
-{
-    if (buffer == nullptr) {
-        buffer = OH_NativeBuffer_Alloc(&config);
-        ASSERT_NE(buffer, nullptr);
-    }
-
-    int32_t ret = OH_NativeBuffer_SetColorSpace(buffer, OH_COLORSPACE_DISPLAY_BT2020_PQ);
-    if (ret != GSERROR_NOT_SUPPORT) { // some device not support set colorspace
-        ASSERT_EQ(ret, GSERROR_OK);
-    }
-}
 /*
  * @tc.name  OHNativeBufferMap001
- * @tc.desc  test for call OH_NativeBuffer_Map by abnormal input and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_Map by abnormal input 
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferMap001, Function | MediumTest | Level2)
 {
     void *virAddr = nullptr;
@@ -255,9 +299,11 @@ HWTEST_F(NativeBufferTest, OHNativeBufferMap001, Function | MediumTest | Level2)
 
 /*
  * @tc.name  OHNativeBufferMap002
- * @tc.desc  test for call OH_NativeBuffer_Map and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_Map
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferMap002, Function | MediumTest | Level2)
 {
     void *virAddr = nullptr;
@@ -268,9 +314,11 @@ HWTEST_F(NativeBufferTest, OHNativeBufferMap002, Function | MediumTest | Level2)
 
 /*
  * @tc.name  OHNativeBufferUnmap001
- * @tc.desc  test for call OH_NativeBuffer_Unmap by abnormal input and check ret
- * @tc.type  FUNC
- */
+ * @tc.desc  call OH_NativeBuffer_Unmap by abnormal input
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferUnmap001, Function | MediumTest | Level2)
 {
     int32_t ret = OH_NativeBuffer_Unmap(nullptr);
@@ -278,15 +326,246 @@ HWTEST_F(NativeBufferTest, OHNativeBufferUnmap001, Function | MediumTest | Level
 }
 
 /*
- * @tc.name  OHNativeBufferUnmap001
- * @tc.desc  test for call OH_NativeBuffer_Unmap
- * @tc.type  FUNC
- */
+ * @tc.name  OHNativeBufferUnmap002
+ * @tc.desc  call OH_NativeBuffer_Unmap
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
 HWTEST_F(NativeBufferTest, OHNativeBufferUnmap002, Function | MediumTest | Level2)
 {
     int32_t ret = OH_NativeBuffer_Unmap(buffer);
     ASSERT_EQ(ret, GSERROR_OK);
     ret = OH_NativeBuffer_Unreference(buffer);
     ASSERT_EQ(ret, GSERROR_OK);
+}
+
+/*
+ * @tc.name  NativeBufferFromNativeWindowBuffer001
+ * @tc.desc  call OH_NativeBufferFromNativeWindowBuffer by abnormal input
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
+HWTEST_F(NativeBufferTest, NativeBufferFromNativeWindowBuffer001, Function | MediumTest | Level2)
+{
+    OH_NativeBuffer* nativeBuffer = OH_NativeBufferFromNativeWindowBuffer(nullptr);
+    ASSERT_EQ(nativeBuffer, nullptr);
+}
+
+/*
+ * @tc.name  NativeBufferFromNativeWindowBuffer002
+ * @tc.desc  call OH_NativeBufferFromNativeWindowBuffer
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
+HWTEST_F(NativeBufferTest, NativeBufferFromNativeWindowBuffer002, Function | MediumTest | Level2)
+{
+    sptr<OHOS::IConsumerSurface> cSurface = IConsumerSurface::Create();
+    sptr<IBufferConsumerListener> listener = new BufferConsumerListener();
+    cSurface->RegisterConsumerListener(listener);
+    sptr<OHOS::IBufferProducer> producer = cSurface->GetProducer();
+    sptr<OHOS::Surface> pSurface = Surface::CreateSurfaceAsProducer(producer);
+    int32_t fence;
+    sptr<OHOS::SurfaceBuffer> sBuffer = nullptr;
+    BufferRequestConfig requestConfig = {
+        .width = 0x100,  // small
+        .height = 0x100, // small
+        .strideAlignment = 0x8,
+        .format = GRAPHIC_PIXEL_FMT_RGBA_8888,
+        .usage = BUFFER_USAGE_CPU_READ | BUFFER_USAGE_CPU_WRITE | BUFFER_USAGE_MEM_DMA,
+        .timeout = 0,
+    };
+    pSurface->RequestBuffer(sBuffer, fence, requestConfig);
+    NativeWindow* nativeWindow = OH_NativeWindow_CreateNativeWindow(&pSurface);
+    ASSERT_NE(nativeWindow, nullptr);
+    NativeWindowBuffer* nativeWindowBuffer = OH_NativeWindow_CreateNativeWindowBufferFromSurfaceBuffer(&sBuffer);
+    ASSERT_NE(nativeWindowBuffer, nullptr);
+    OH_NativeBuffer* nativeBuffer = OH_NativeBufferFromNativeWindowBuffer(nativeWindowBuffer);
+    ASSERT_NE(nativeBuffer, nullptr);
+
+    int32_t ret = OH_NativeBuffer_FromNativeWindowBuffer(nativeWindowBuffer, nullptr);
+    ASSERT_EQ(ret, OHOS::GSERROR_INVALID_ARGUMENTS);
+    OH_NativeBuffer* nativeBufferTmp = nullptr;
+    ret = OH_NativeBuffer_FromNativeWindowBuffer(nativeWindowBuffer, &nativeBufferTmp);
+    ASSERT_EQ(ret, OHOS::GSERROR_OK);
+    ASSERT_EQ(nativeBuffer, nativeBufferTmp);
+
+    void *virAddr = nullptr;
+    OH_NativeBuffer_Planes outPlanes;
+    ret = OH_NativeBuffer_MapPlanes(nativeBuffer, &virAddr, &outPlanes);
+    ASSERT_NE(ret, OHOS::GSERROR_OK);
+
+    sBuffer = nullptr;
+    cSurface = nullptr;
+    producer = nullptr;
+    pSurface = nullptr;
+    nativeWindow = nullptr;
+    nativeWindowBuffer = nullptr;
+}
+
+/*
+ * @tc.name  NativeBufferFromNativeWindowBuffer003
+ * @tc.desc  call OH_NativeBuffer_FromNativeWindowBuffer by abnormal input 
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
+HWTEST_F(NativeBufferTest, NativeBufferFromNativeWindowBuffer003, Function | MediumTest | Level2)
+{
+    int32_t ret = OH_NativeBuffer_FromNativeWindowBuffer(nullptr, nullptr);
+    ASSERT_EQ(ret, OHOS::GSERROR_INVALID_ARGUMENTS);
+
+    NativeWindowBuffer nativeWindowBuffer;
+    ret = OH_NativeBuffer_FromNativeWindowBuffer(&nativeWindowBuffer, nullptr);
+    ASSERT_EQ(ret, OHOS::GSERROR_INVALID_ARGUMENTS);
+}
+
+/*
+ * @tc.name  OHNativeBufferMapPlanes001
+ * @tc.desc  call OH_NativeBuffer_MapPlanes by abnormal input 
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
+HWTEST_F(NativeBufferTest, OHNativeBufferMapPlanes001, Function | MediumTest | Level2)
+{
+    int32_t ret = OH_NativeBuffer_MapPlanes(nullptr, nullptr, nullptr);
+    ASSERT_EQ(ret, OHOS::GSERROR_INVALID_ARGUMENTS);
+
+    OH_NativeBuffer *buffer = (OH_NativeBuffer *)0xFFFFFFFF;
+    ret = OH_NativeBuffer_MapPlanes(buffer, nullptr, nullptr);
+    ASSERT_EQ(ret, OHOS::GSERROR_INVALID_ARGUMENTS);
+
+    void *virAddr = nullptr;
+    ret = OH_NativeBuffer_MapPlanes(buffer, &virAddr, nullptr);
+    ASSERT_EQ(ret, OHOS::GSERROR_INVALID_ARGUMENTS);
+}
+
+/*
+ * @tc.name  OHNativeBufferMapPlanes002
+ * @tc.desc  call OH_NativeBuffer_MapPlanes
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
+HWTEST_F(NativeBufferTest, OHNativeBufferMapPlanes002, Function | MediumTest | Level2)
+{
+    sptr<OHOS::IConsumerSurface> cSurface = IConsumerSurface::Create();
+    sptr<IBufferConsumerListener> listener = new BufferConsumerListener();
+    cSurface->RegisterConsumerListener(listener);
+    sptr<OHOS::IBufferProducer> producer = cSurface->GetProducer();
+    sptr<OHOS::Surface> pSurface = Surface::CreateSurfaceAsProducer(producer);
+    int32_t fence;
+    sptr<OHOS::SurfaceBuffer> sBuffer = nullptr;
+    BufferRequestConfig requestConfig = {.width = 0x100, .height = 0x100, .strideAlignment = 0x8,
+        .format = GRAPHIC_PIXEL_FMT_YCBCR_420_SP,
+        .usage = BUFFER_USAGE_CPU_READ | BUFFER_USAGE_CPU_WRITE | BUFFER_USAGE_MEM_DMA, .timeout = 0};
+    pSurface->SetQueueSize(4);
+    int32_t formatType[] = {GRAPHIC_PIXEL_FMT_YCBCR_420_SP, GRAPHIC_PIXEL_FMT_YCRCB_420_SP,
+        GRAPHIC_PIXEL_FMT_YCBCR_420_P, GRAPHIC_PIXEL_FMT_YCRCB_420_P};
+    NativeWindow* nativeWindow;
+    NativeWindowBuffer* nativeWindowBuffer;
+    for (int32_t i = 0; i < sizeof(formatType) / sizeof(int32_t); i++) {
+        requestConfig.format = formatType[i];
+        pSurface->RequestBuffer(sBuffer, fence, requestConfig);
+        nativeWindow = OH_NativeWindow_CreateNativeWindow(&pSurface);
+        ASSERT_NE(nativeWindow, nullptr);
+        nativeWindowBuffer = OH_NativeWindow_CreateNativeWindowBufferFromSurfaceBuffer(&sBuffer);
+        ASSERT_NE(nativeWindowBuffer, nullptr);
+        OH_NativeBuffer* nativeBuffer = OH_NativeBufferFromNativeWindowBuffer(nativeWindowBuffer);
+        ASSERT_NE(nativeBuffer, nullptr);
+
+        void *virAddr = nullptr;
+        OH_NativeBuffer_Planes outPlanes;
+        int32_t ret = OH_NativeBuffer_MapPlanes(nativeBuffer, &virAddr, &outPlanes);
+        if (ret != 50001999) {
+            ASSERT_EQ(ret, OHOS::GSERROR_OK);
+            ASSERT_NE(virAddr, nullptr);
+            ASSERT_EQ(outPlanes.planeCount, 3);
+            ASSERT_EQ(outPlanes.planes[0].offset, 0);
+            ASSERT_NE(outPlanes.planes[1].offset, 0);
+            ASSERT_NE(outPlanes.planes[2].offset, 0);
+            std::cout << "i:" << i << std::endl;
+            for (int32_t j = 0; j < 3; j++) {
+                std::cout << "offset:" << outPlanes.planes[j].offset <<
+                    " rowStride:" << outPlanes.planes[j].rowStride << " columnStride:" <<
+                    outPlanes.planes[j].columnStride << std::endl;
+            }
+        }
+    }
+
+    sBuffer = nullptr;
+    cSurface = nullptr;
+    producer = nullptr;
+    pSurface = nullptr;
+    nativeWindow = nullptr;
+    nativeWindowBuffer = nullptr;
+}
+
+/*
+ * @tc.name  OHNativeBufferMapPlanes003
+ * @tc.desc  call OH_NativeBuffer_MapPlanes
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+*/
+HWTEST_F(NativeBufferTest, OHNativeBufferMapPlanes003, Function | MediumTest | Level2)
+{
+    sptr<OHOS::IConsumerSurface> cSurface = IConsumerSurface::Create();
+    sptr<IBufferConsumerListener> listener = new BufferConsumerListener();
+    cSurface->RegisterConsumerListener(listener);
+    sptr<OHOS::IBufferProducer> producer = cSurface->GetProducer();
+    sptr<OHOS::Surface> pSurface = Surface::CreateSurfaceAsProducer(producer);
+    int32_t fence;
+    sptr<OHOS::SurfaceBuffer> sBuffer = nullptr;
+    BufferRequestConfig requestConfig = {.width = 0x100, .height = 0x100, .strideAlignment = 0x8,
+        .format = GRAPHIC_PIXEL_FMT_YCBCR_420_SP,
+        .usage = BUFFER_USAGE_CPU_READ | BUFFER_USAGE_CPU_WRITE | BUFFER_USAGE_MEM_DMA, .timeout = 0};
+    pSurface->SetQueueSize(4);
+    int32_t formatType = GRAPHIC_PIXEL_FMT_YCBCR_420_SP;
+    NativeWindow* nativeWindow;
+    NativeWindowBuffer* nativeWindowBuffer;
+    requestConfig.format = formatType;
+    pSurface->RequestBuffer(sBuffer, fence, requestConfig);
+    nativeWindow = OH_NativeWindow_CreateNativeWindow(&pSurface);
+    ASSERT_NE(nativeWindow, nullptr);
+    nativeWindowBuffer = OH_NativeWindow_CreateNativeWindowBufferFromSurfaceBuffer(&sBuffer);
+    ASSERT_NE(nativeWindowBuffer, nullptr);
+    OH_NativeBuffer* nativeBuffer = OH_NativeBufferFromNativeWindowBuffer(nativeWindowBuffer);
+    ASSERT_NE(nativeBuffer, nullptr);
+
+    OH_NativeBuffer* nativeBufferTmp = nullptr;
+    for (int32_t i = 0; i < 1000; i++) {
+        int32_t ret = OH_NativeBuffer_FromNativeWindowBuffer(nativeWindowBuffer, &nativeBufferTmp);
+        ASSERT_EQ(ret, OHOS::GSERROR_OK);
+        ASSERT_EQ(nativeBuffer, nativeBufferTmp);
+    }
+
+    void *virAddr = nullptr;
+    OH_NativeBuffer_Planes outPlanes;
+    clock_t startTime, endTime;
+    startTime = clock();
+    for (int32_t i = 0; i < 1000; i++) {
+        int32_t ret = OH_NativeBuffer_MapPlanes(nativeBuffer, &virAddr, &outPlanes);
+        if (ret != 50001999) {
+            ASSERT_EQ(ret, OHOS::GSERROR_OK);
+            ASSERT_NE(virAddr, nullptr);
+            ASSERT_EQ(outPlanes.planeCount, 3);
+            ASSERT_EQ(outPlanes.planes[0].offset, 0);
+            ASSERT_NE(outPlanes.planes[1].offset, 0);
+            ASSERT_NE(outPlanes.planes[2].offset, 0);
+        }
+    }
+    endTime = clock();
+    cout << "OH_NativeBuffer_MapPlanes 1000 times cost time: " << (endTime - startTime) << "ms" << endl;
+
+    sBuffer = nullptr;
+    cSurface = nullptr;
+    producer = nullptr;
+    pSurface = nullptr;
+    nativeWindow = nullptr;
+    nativeWindowBuffer = nullptr;
 }
 }

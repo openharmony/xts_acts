@@ -1,7 +1,0 @@
-{
-    "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/gauge/gauge",
-        "MainAbility/pages/Counter/CounterEnable"
-    ]
-}

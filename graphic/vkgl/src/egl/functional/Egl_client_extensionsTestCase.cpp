@@ -23,8 +23,11 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC002631, "dEQP-EGL.functional.client_extensions.base");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC002631, "dEQP-EGL.functional.client_ex",
+    "tensions.base");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC002632, "dEQP-EGL.functional.client_extensions.disjoint");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC002632, "dEQP-EGL.functional.client_exte",
+    "nsions.disjoint");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC002633, "dEQP-EGL.functional.client_extensions.extensions");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC002633, "dEQP-EGL.functional.client_exte",
+    "nsions.extensions");

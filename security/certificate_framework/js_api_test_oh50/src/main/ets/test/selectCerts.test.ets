@@ -1133,6 +1133,29 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
       done();
     });
 
+	/**
+     * @tc.number SUB_Security_Cert_Framework_Select_Certs_Func_8000
+     * @tc.name check CertCRLCollection.selectCerts with parameter privateKeyValid match
+     * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_8000", 0, async (done: Function) => {
+      const param: cert.X509CertMatchParameters = {
+        privateKeyValid: '241121-00:00:00Z'
+      };
+      try {
+        const certs = await certFunc.checkSelectCerts(PEM, [1], param, IS_PROMISE);
+        expect(certs != null).assertTrue();
+        expect(certs.length === 1).assertTrue();
+      }
+      catch (err) {
+        expect(null).assertFail();
+      }
+      done();
+    });
+
     /**
      * @tc.number SUB_Security_Cert_Framework_Select_Certs_Func_8100
      * @tc.name check CertCRLCollection.selectCerts with parameter privateKeyValid mismatching
@@ -1143,7 +1166,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      */
     it("SUB_Security_Cert_Framework_Select_Certs_Func_8100", 0, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
-        privateKeyValid: '20231012080000Z'
+        privateKeyValid: '291121-00:00:00Z'
       };
       try {
         const certs = await certFunc.checkSelectCerts(PEM, [1], param, IS_PROMISE);
@@ -1166,7 +1189,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      */
     it("SUB_Security_Cert_Framework_Select_Certs_Func_8200", 0, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
-        privateKeyValid: '20231212080000Z'
+        privateKeyValid: '241121-00:00:00Z'
       };
       try {
         const certs = await certFunc.checkSelectCerts(PEM, [5], param, IS_PROMISE);

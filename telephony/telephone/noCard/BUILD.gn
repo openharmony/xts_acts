@@ -13,5 +13,9 @@
 
 group("noCard") {
   testonly = true
-  deps = [ "data:ActsTelephonyDataNoCardTest" ]
+  deps = [
+    "data:ActsTelephonyDataNoCardTest",
+    "observertest:ActsTelephonyObserverNoCardTest",
+    "simtest:ActsTelephonySimNoCardTest",
+  ]
 }

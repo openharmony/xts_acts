@@ -16,7 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
-import { Driver } from '@ohos.UiTest';
+import { Driver,ON } from '@ohos.UiTest';
 
 export default function buttonJsunit() {
   describe('buttonTest', () => {
@@ -294,9 +294,15 @@ export default function buttonJsunit() {
 
     it('testButton12', 0, async (done: Function) => {
       let driver = Driver.create();
+
+      await Utils.sleep(500);
+      let buttonCl = await driver.findComponent(ON.id('buttonClick'));
+      await Utils.sleep(500);
+      let point = await buttonCl.getBoundsCenter();
+
       let density = await driver.getDisplayDensity();
       console.info("[testButton12] getDisplayDensity is: " + JSON.stringify(density));
-      await Utils.sleep(1000);
+      await Utils.sleep(500);
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[testButton12] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual(true)
@@ -306,18 +312,14 @@ export default function buttonJsunit() {
           .screenX));
         console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data.event).x));
         console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data.event).y));
+
+        let ScreenX = JSON.parse(eventData.data.event).screenX
+        let ScreenY  = JSON.parse(eventData.data.event).screenY
         try {
-          if (density.x == 1080) {
-            expect(Math.abs(JSON.parse(eventData.data.event).screenX - 185) <= 1).assertTrue()
-            expect(Math.abs(JSON.parse(eventData.data.event).screenY - 533) <= 1).assertTrue()
+            expect(Math.abs(vp2px(ScreenX) - point.x + globalThis.winLeft) <= 1).assertTrue()
+            expect(Math.abs(vp2px(ScreenY) - point.y + globalThis.winTop)  <= 1).assertTrue()
             expect(Math.trunc(JSON.parse(eventData.data.event).x)).assertEqual(100)
             expect(Math.trunc(JSON.parse(eventData.data.event).y)).assertEqual(50)
-          }else {
-            expect(Math.abs(JSON.parse(eventData.data.event).screenX - 185) <= 1).assertTrue()
-            expect(Math.abs(JSON.parse(eventData.data.event).screenY - 523) <= 1).assertTrue()
-            expect(Math.trunc(JSON.parse(eventData.data.event).x)).assertEqual(100)
-            expect(Math.trunc(JSON.parse(eventData.data.event).y)).assertEqual(50)
-          }
         } catch (err) {
           console.info("[testButton12_] expection err : " + JSON.stringify(err));
           expect().assertFail();

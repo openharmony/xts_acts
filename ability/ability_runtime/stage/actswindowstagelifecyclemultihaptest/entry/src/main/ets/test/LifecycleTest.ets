@@ -14,6 +14,10 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
+
+let deviceType = '';
+
 export default function abilityTest() {
 
   describe('AbilityTest', function () {
@@ -52,6 +56,7 @@ export default function abilityTest() {
     }
 
     beforeAll(()=>{
+      deviceType = systemParameterEnhance.getSync('const.product.devicetype');
       let actsEvents = [
         'Hap2MainAbility10onForeground',
         'Hap3MainAbility3onForeground',
@@ -112,6 +117,7 @@ export default function abilityTest() {
     });
 
     afterEach(async function (done) {
+      await sleep(1000);
       console.info('LifeCycleTest after each called');
       if (!("Multihap_WindowStageLifecycleTest_007" == TAG ||
         "Multihap_WindowStageLifecycleTest_010" == TAG || "Multihap_WindowStageLifecycleTest_006" == TAG)) {
@@ -463,58 +469,63 @@ export default function abilityTest() {
     it("Multihap_WindowStageLifecycleTest_006", 0, async function (done) {
       console.log("------------Multihap_WindowStageLifecycleTest_006 start-------------");
       TAG = "Multihap_WindowStageLifecycleTest_006";
-      let isOneStartedHap2MainAbility8:boolean = false;
-      let ids:Array<number> = []
-      function eventCallback (event: string){
-        console.log(TAG + " eventCallback, event is :" + event);
-        if (event === 'MainAbility7onForeground') {
-          console.log(TAG + "MainAbility7 is onForeground, callBackId is :" + globalThis.mainAbility7CallBackId);
-          ids.push(globalThis.mainAbility7CallBackId);
-          if (isOneStartedHap2MainAbility8) {
-            console.log(TAG + " ids is :" + JSON.stringify(ids));
-            clearInterval(intervalId);
-            if (ids.length < 2) {
-              expect().assertFail()
+      if (deviceType != '2in1') {
+        let isOneStartedHap2MainAbility8:boolean = false;
+        let ids:Array<number> = []
+        function eventCallback (event: string){
+          console.log(TAG + " eventCallback, event is :" + event);
+          if (event === 'MainAbility7onForeground') {
+            console.log(TAG + "MainAbility7 is onForeground, callBackId is :" + globalThis.mainAbility7CallBackId);
+            ids.push(globalThis.mainAbility7CallBackId);
+            if (isOneStartedHap2MainAbility8) {
+              console.log(TAG + " ids is :" + JSON.stringify(ids));
+              clearInterval(intervalId);
+              if (ids.length < 2) {
+                expect().assertFail()
+              } else {
+                expect(ids[1]).assertEqual(ids[0] + 1);
+              }
+              ids.forEach(id => {
+                globalThis.ApplicationContext7.unregisterAbilityLifecycleCallback(id);
+              })
+              globalThis.ability7context.terminateSelf();
+              commonEvent.publish('Hap2MainAbility8doTerminateSelf', (err) => {
+                console.log('Hap2MainAbility8doTerminateSelf');
+              })
+              done();
             } else {
-              expect(ids[1]).assertEqual(ids[0] + 1);
+              isOneStartedHap2MainAbility8 = true;
+              globalThis.abilityContext.startAbility({
+                bundleName: "com.example.lifecycletest",
+                abilityName: "Hap2MainAbility8"
+              }, (error, data) => {
+                console.log(TAG + ": first Hap2MainAbility8 startAbility success, err: " + JSON.stringify(error) +
+                ",data: " + JSON.stringify(data));
+              });
             }
-            ids.forEach(id => {
-              globalThis.ApplicationContext7.unregisterAbilityLifecycleCallback(id);
-            })
-            globalThis.ability7context.terminateSelf();
-            commonEvent.publish('Hap2MainAbility8doTerminateSelf', (err) => {
-              console.log('Hap2MainAbility8doTerminateSelf');
-            })
-            done();
-          } else {
-            isOneStartedHap2MainAbility8 = true;
+          } else if (event === 'Hap2MainAbility8onForeground') {
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
-              abilityName: "Hap2MainAbility8"
+              abilityName: "MainAbility7"
             }, (error, data) => {
-              console.log(TAG + ": first Hap2MainAbility8 startAbility success, err: " + JSON.stringify(error) +
+              console.log(TAG + ": second MainAbility7 startAbility success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
             });
           }
-        } else if (event === 'Hap2MainAbility8onForeground') {
-          globalThis.abilityContext.startAbility({
-            bundleName: "com.example.lifecycletest",
-            abilityName: "MainAbility7"
-          }, (error, data) => {
-            console.log(TAG + ": second MainAbility7 startAbility success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-          });
         }
+        handlerMessage(eventCallback);
+  
+        globalThis.abilityContext.startAbility({
+          bundleName: "com.example.lifecycletest",
+          abilityName: "MainAbility7"
+        }, (error, data) => {
+          console.log(TAG + ": first MainAbility7 startAbility success, err: " + JSON.stringify(error) +
+          ",data: " + JSON.stringify(data));
+        });
+      } else if (deviceType == '2in1') {
+        done();
       }
-      handlerMessage(eventCallback);
 
-      globalThis.abilityContext.startAbility({
-        bundleName: "com.example.lifecycletest",
-        abilityName: "MainAbility7"
-      }, (error, data) => {
-        console.log(TAG + ": first MainAbility7 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
-      });
       console.log("------------Multihap_WindowStageLifecycleTest_006 end-------------");
     });
 
@@ -673,56 +684,13 @@ export default function abilityTest() {
     it('Multihap_WindowStageLifecycleTest_009', 0, async function (done) {
       console.info("---------------Multihap_WindowStageLifecycleTest_009 is start---------------")
       TAG = "Multihap_WindowStageLifecycleTest_009";
-      let hap3MainAbility3onForegroundCount:number = 0;
-      let isFirstMainAbility4onForeground = true;
-      function eventCallback (event: string){
-        console.log(TAG + " eventCallback, event is :" + event);
-        if (event === 'MainAbility4onForeground' && isFirstMainAbility4onForeground){
-          isFirstMainAbility4onForeground = false;
-          globalThis.abilityContext.startAbility({
-            bundleName: "com.example.lifecycletest",
-            abilityName: "Hap2MainAbility10",
-          }, (error, data) => {
-            console.log(TAG + ": first Hap2MainAbility10 startAbility success, err: " +
-            JSON.stringify(error) + ",data: " + JSON.stringify(data));
-          })
-        } else if (event === 'Hap2MainAbility10onForeground') {
-          globalThis.abilityContext.startAbility({
-            bundleName: "com.example.lifecycletest",
-            abilityName: "Hap3MainAbility3",
-          }, (error, data) => {
-            console.log(TAG + ": second Hap3MainAbility3 startAbility success, err: " +
-            JSON.stringify(error) + ",data: " + JSON.stringify(data));
-          })
-        } else if (event === 'Hap3MainAbility3onForeground') {
-          hap3MainAbility3onForegroundCount ++;
-          if (hap3MainAbility3onForegroundCount == 3) {
-            clearInterval(intervalId);
-            let listTemp = JSON.stringify(globalThis.mainAbility4ListKey);
-            console.log(TAG + " listTemp is :" + listTemp);
-            console.log(TAG + " globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-
-            expect(listTemp.indexOf("Hap2MainAbility10 onWindowStageCreate") !== -1).assertTrue();
-            expect(listTemp.split("Hap2MainAbility10 onWindowStageActive").length - 1).assertEqual(3);
-            expect(listTemp.split("Hap2MainAbility10 onWindowStageInactive").length - 1).assertEqual(3);
-            expect(listTemp.indexOf("Hap3MainAbility3 onWindowStageCreate")!=-1).assertTrue();
-            expect(listTemp.split("Hap3MainAbility3 onWindowStageActive").length - 1).assertEqual(3);
-            expect(listTemp.split("Hap3MainAbility3 onWindowStageInactive").length - 1).assertEqual(2);
-            globalThis.ApplicationContext4
-              .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
-                console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
-                expect(error.code).assertEqual(0);
-                globalThis.abilityContext.startAbility({
-                  bundleName: "com.example.lifecycletest",
-                  abilityName: "com.example.lifecycletest.MainAbility",
-                }, (error, data) => {
-                  console.log(TAG + ": first Hap2MainAbility10 startAbility success, err: " +
-                  JSON.stringify(error) + ",data: " + JSON.stringify(data));
-                })
-                done();
-              });
-          } else {
+      if (deviceType != '2in1') {
+        let hap3MainAbility3onForegroundCount:number = 0;
+        let isFirstMainAbility4onForeground = true;
+        function eventCallback (event: string){
+          console.log(TAG + " eventCallback, event is :" + event);
+          if (event === 'MainAbility4onForeground' && isFirstMainAbility4onForeground){
+            isFirstMainAbility4onForeground = false;
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility10",
@@ -730,10 +698,58 @@ export default function abilityTest() {
               console.log(TAG + ": first Hap2MainAbility10 startAbility success, err: " +
               JSON.stringify(error) + ",data: " + JSON.stringify(data));
             })
+          } else if (event === 'Hap2MainAbility10onForeground') {
+            globalThis.abilityContext.startAbility({
+              bundleName: "com.example.lifecycletest",
+              abilityName: "Hap3MainAbility3",
+            }, (error, data) => {
+              console.log(TAG + ": second Hap3MainAbility3 startAbility success, err: " +
+              JSON.stringify(error) + ",data: " + JSON.stringify(data));
+            })
+          } else if (event === 'Hap3MainAbility3onForeground') {
+            hap3MainAbility3onForegroundCount ++;
+            if (hap3MainAbility3onForegroundCount == 3) {
+              clearInterval(intervalId);
+              let listTemp = JSON.stringify(globalThis.mainAbility4ListKey);
+              console.log(TAG + " listTemp is :" + listTemp);
+              console.log(TAG + " globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
+  
+              expect(listTemp.indexOf("Hap2MainAbility10 onWindowStageCreate") !== -1).assertTrue();
+              expect(listTemp.split("Hap2MainAbility10 onWindowStageActive").length - 1).assertEqual(3);
+              expect(listTemp.split("Hap2MainAbility10 onWindowStageInactive").length - 1).assertEqual(3);
+              expect(listTemp.indexOf("Hap3MainAbility3 onWindowStageCreate")!=-1).assertTrue();
+              expect(listTemp.split("Hap3MainAbility3 onWindowStageActive").length - 1).assertEqual(3);
+              expect(listTemp.split("Hap3MainAbility3 onWindowStageInactive").length - 1).assertEqual(2);
+              globalThis.ApplicationContext4
+                .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
+                  console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                  ",data: " + JSON.stringify(data));
+                  expect(error.code).assertEqual(0);
+                  globalThis.abilityContext.startAbility({
+                    bundleName: "com.example.lifecycletest",
+                    abilityName: "com.example.lifecycletest.MainAbility",
+                  }, (error, data) => {
+                    console.log(TAG + ": first Hap2MainAbility10 startAbility success, err: " +
+                    JSON.stringify(error) + ",data: " + JSON.stringify(data));
+                  })
+                  done();
+                });
+            } else {
+              globalThis.abilityContext.startAbility({
+                bundleName: "com.example.lifecycletest",
+                abilityName: "Hap2MainAbility10",
+              }, (error, data) => {
+                console.log(TAG + ": first Hap2MainAbility10 startAbility success, err: " +
+                JSON.stringify(error) + ",data: " + JSON.stringify(data));
+              })
+            }
           }
         }
+        handlerMessage(eventCallback);
+      } else if (deviceType == '2in1') {
+        done();
       }
-      handlerMessage(eventCallback);
+
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",

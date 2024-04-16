@@ -23,26 +23,38 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003351, "dEQP-EGL.functional.resize.sur""face_size.shrink");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003351, "dEQP-EGL.functional.resize.sur",
+    "face_size.shrink");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003352, "dEQP-EGL.functional.resize.sur""face_size.grow");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003352, "dEQP-EGL.functional.resize.sur",
+    "face_size.grow");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003353, "dEQP-EGL.functional.resize.sur""face_size.stretch_width");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003353, "dEQP-EGL.functional.resize.sur",
+    "face_size.stretch_width");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003354, "dEQP-EGL.functional.resize.sur""face_size.stretch_height");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003354, "dEQP-EGL.functional.resize.sur",
+    "face_size.stretch_height");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003355, "dEQP-EGL.functional.resize.back_buffer.shrink");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003355, "dEQP-EGL.functional.resize.back_buf",
+    "fer.shrink");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003356, "dEQP-EGL.functional.resize.back_buffer.grow");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003356, "dEQP-EGL.functional.resize.back_buff",
+    "er.grow");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003357, "dEQP-EGL.functional.resize.back_buffer.stretch_width");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003357, "dEQP-EGL.functional.resize.back_buff",
+    "er.stretch_width");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003358, "dEQP-EGL.functional.resize.back_buffer.stretch_height");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003358, "dEQP-EGL.functional.resize.back_buff",
+    "er.stretch_height");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003359, "dEQP-EGL.functional.resize.pixel_density.shrink");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003359, "dEQP-EGL.functional.resize.pixel_den",
+    "sity.shrink");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003360, "dEQP-EGL.functional.resize.pixel_density.grow");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003360, "dEQP-EGL.functional.resize.pixel_den",
+    "sity.grow");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003361, "dEQP-EGL.functional.resize.pixel_density.stretch_width");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003361, "dEQP-EGL.functional.resize.pixel_den",
+    "ity.stretch_width");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003362, "dEQP-EGL.functional.resize.pixel_density.stretch_height");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003362, "dEQP-EGL.functional.resize.pixel_dens",
+    "ity.stretch_height");

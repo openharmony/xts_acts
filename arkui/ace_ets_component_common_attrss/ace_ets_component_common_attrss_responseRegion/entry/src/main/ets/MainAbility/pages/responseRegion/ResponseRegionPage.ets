@@ -21,21 +21,22 @@ import router from '@ohos.router'
 struct ResponseRegionPage {
   @State eventCallBackStr: string = ''
   @State _responseRegion: Array<Rectangle> = [{ x: 0, y: 0, width: '100%', height: '100%' }]
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State targetWidth: number = router.getParams() ? router.getParams()['view']['targetWidth'] : 0
-  @State targetHeight: number = router.getParams() ? router.getParams()['view']['targetHeight'] : 0
-  @State referenceComponentKey: string = router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State targetWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetWidth'] : 0
+  @State targetHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetHeight'] : 0
+  @State referenceComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
 
   onPageShow() {
     console.info('responseRegion page show called ')
-    AttrsManager.registerDataChange(value => {
+    AttrsManager.registerDataChange((value: Array<Rectangle>) => {
       this._responseRegion = value
       this.eventCallBackStr = ''
     })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .width(this.targetWidth)
     .height(this.targetHeight)
     .responseRegion(this._responseRegion)
@@ -50,17 +51,24 @@ struct ResponseRegionPage {
     Column() {
       Stack() {
         if (this.targetView == 'Button') {
-          Button('button1').commonStyle()
+          Button('button1')
+            .commonStyle()
         } else if (this.targetView == 'Text') {
-          Text('text1').commonStyle()
+          Text('text1')
+            .commonStyle()
         } else if (this.targetView == 'AlphabetIndexer') {
           AlphabetIndexer({ arrayValue: ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G'], selected: 0 }).commonStyle()
         } else if (this.targetView == 'Blank') {
           Row() {
-            Blank().backgroundColor(Color.Yellow).commonStyle()
-          }.width('100%').height('100%')
+            Blank()
+              .backgroundColor(Color.Yellow)
+              .commonStyle()
+          }
+          .width('100%')
+          .height('100%')
         } else if (this.targetView == 'Checkbox') {
-          Checkbox().commonStyle()
+          Checkbox()
+            .commonStyle()
         } else if (this.targetView == 'CheckboxGroup') {
           CheckboxGroup({ group: 'checkboxGroup' }).commonStyle()
         } else if (this.targetView == 'DataPanel') {
@@ -71,13 +79,15 @@ struct ResponseRegionPage {
             end: new Date('2100-1-1'),
           }).commonStyle()
         } else if (this.targetView == 'Divider') {
-          Divider().commonStyle()
+          Divider()
+            .commonStyle()
         } else if (this.targetView == 'Gauge') {
           Gauge({ value: 105 })
             .commonStyle()
             .colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1]])
         } else if (this.targetView == 'Image') {
-          Image($r('app.media.icon')).commonStyle()
+          Image($r('app.media.icon'))
+            .commonStyle()
         } else if (this.targetView == 'ImageAnimator') {
           ImageAnimator()
             .images([
@@ -97,10 +107,13 @@ struct ResponseRegionPage {
           }).commonStyle()
         } else if (this.targetView == 'Navigation') {
           Navigation() {
-          }.commonStyle().backgroundColor(Color.Blue)
+          }
+          .commonStyle()
+          .backgroundColor(Color.Blue)
         } else if (this.targetView == 'Menu') {
           Menu() {
-          }.backgroundColor(Color.Yellow).commonStyle()
+          }.backgroundColor(Color.Yellow)
+          .commonStyle()
         } else if (this.targetView == 'NavRouter') {
           NavRouter() {
             Row() {
@@ -108,7 +121,8 @@ struct ResponseRegionPage {
             }
 
             NavDestination() {
-              Text('NavDestination').fontSize(10)
+              Text('NavDestination')
+                .fontSize(10)
             }
           }.commonStyle()
         } else if (this.targetView == 'Progress') {
@@ -130,10 +144,12 @@ struct ResponseRegionPage {
         } else if (this.targetView == 'Search') {
           Search({ placeholder: 'Type to search...' })
             .backgroundColor(Color.White)
-            .searchButton('SEARCH').commonStyle()
+            .searchButton('SEARCH')
+            .commonStyle()
         } else if (this.targetView == 'Select') {
           Select([{ value: 'aaa', icon: '/common/public_icon.svg' },
-            { value: 'bbb', icon: '/common/public_icon.svg' }]).commonStyle()
+            { value: 'bbb', icon: '/common/public_icon.svg' }])
+            .commonStyle()
         } else if (this.targetView == 'Slider') {
           Slider({
             value: 50,
@@ -150,6 +166,7 @@ struct ResponseRegionPage {
                 Text('Page One')
               }
             }
+			.nextLabel('')
           }.commonStyle()
         } else if (this.targetView == 'TextArea') {
           TextArea({
@@ -204,22 +221,34 @@ struct ResponseRegionPage {
             style: { color: 0xFFFFFF, fontSize: 16, badgeSize: 20, badgeColor: Color.Red }
           }) {
             Button('message')
-              .width(100).height(50).backgroundColor(0x317aff)
+              .width(100)
+              .height(50)
+              .backgroundColor(0x317aff)
           }.commonStyle()
         } else if (this.targetView == 'Column') {
           Column() {
-            Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+            Column()
+              .width('100%')
+              .height(30)
+              .backgroundColor(0xAFEEEE)
           }.commonStyle()
         } else if (this.targetView == 'ColumnSplit') {
           ColumnSplit() {
-            Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+            Text('1')
+              .width('100%')
+              .height(50)
+              .backgroundColor(0xF5DEB3)
+              .textAlign(TextAlign.Center)
           }.commonStyle()
         } else if (this.targetView == 'Counter') {
           Counter() {
           }.commonStyle()
         } else if (this.targetView == 'Flex') {
           Flex() {
-            Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
+            Text('1')
+              .width('20%')
+              .height(50)
+              .backgroundColor(0xF5DEB3)
           }.commonStyle()
         } else if (this.targetView == 'GridRow') {
           GridRow({
@@ -227,10 +256,14 @@ struct ResponseRegionPage {
             direction: GridRowDirection.Row
           }) {
             ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green,
-            Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color) => {
+              Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color: Color) => {
               GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
-                Row().width('100%').height('20vp')
-              }.borderColor(color).borderWidth(2)
+                Row()
+                  .width('100%')
+                  .height('20vp')
+              }
+              .borderColor(color)
+              .borderWidth(2)
             })
           }.commonStyle()
         } else if (this.targetView == 'Grid') {
@@ -238,8 +271,11 @@ struct ResponseRegionPage {
             ForEach(['0', '1', '2', '3', '4'], () => {
               ForEach(['0', '1', '2', '3', '4'], (day: string) => {
                 GridItem() {
-                  Text(day).backgroundColor(Color.White)
-                    .width('100%').height('100%').textAlign(TextAlign.Center)
+                  Text(day)
+                    .backgroundColor(Color.White)
+                    .width('100%')
+                    .height('100%')
+                    .textAlign(TextAlign.Center)
                 }
               })
             })
@@ -256,7 +292,10 @@ struct ResponseRegionPage {
                 .width('100%')
                 .height('100%')
                 .textAlign(TextAlign.Center)
-            }.rowStart(1).rowEnd(4).commonStyle()
+            }
+            .rowStart(1)
+            .rowEnd(4)
+            .commonStyle()
           }
         } else if (this.targetView == 'List') {
           List() {
@@ -282,8 +321,12 @@ struct ResponseRegionPage {
           .height('100%')
         } else if (this.targetView == 'Navigator') {
           Navigator({ target: '' }) {
-            Text('Go to back page').width('100%').height(20)
-          }.commonStyle().backgroundColor(Color.Red)
+            Text('Go to back page')
+              .width('100%')
+              .height(20)
+          }
+          .commonStyle()
+          .backgroundColor(Color.Red)
         } else if (this.targetView == 'Panel') {
           Panel(true) {
             Text('Text')
@@ -315,25 +358,30 @@ struct ResponseRegionPage {
         } else if (this.targetView == 'Scroll') {
           Scroll() {
             Column() {
-              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: string) => {
                 Text('Scroll' + item.toString())
                   .width('90%')
                   .height(50)
                   .backgroundColor(Color.White)
                   .textAlign(TextAlign.Center)
-              }, item => item)
+              }, (item: string) => item)
             }.width('100%')
           }.scrollBar(BarState.On).commonStyle()
         } else if (this.targetView == 'SideBarContainer') {
           SideBarContainer(SideBarContainerType.Embed) {
             Column() {
               Column({ space: 5 }) {
-                Text('Index0').fontSize(25)
+                Text('Index0')
+                  .fontSize(25)
               }
-            }.width('100%').justifyContent(FlexAlign.SpaceEvenly).backgroundColor(Color.Green)
+            }
+            .width('100%')
+            .justifyContent(FlexAlign.SpaceEvenly)
+            .backgroundColor(Color.Green)
 
             Column() {
-              Text('SideBarContainer content').fontSize(25)
+              Text('SideBarContainer content')
+                .fontSize(25)
             }.backgroundColor(Color.Orange)
           }.commonStyle()
         } else if (this.targetView == 'Stack') {
@@ -342,21 +390,32 @@ struct ResponseRegionPage {
           }.backgroundColor(Color.White).commonStyle()
         } else if (this.targetView == 'Swiper') {
           Swiper() {
-            Text('Swiper').width('100%').height('100%')
+            Text('Swiper')
+              .width('100%')
+              .height('100%')
           }.indicator(true)
           .backgroundColor(Color.White)
           .commonStyle()
         } else if (this.targetView == 'Tabs') {
           Tabs() {
             TabContent() {
-              Column().width('100%').height('100%').backgroundColor('#00CB87')
+              Column()
+                .width('100%')
+                .height('100%')
+                .backgroundColor('#00CB87')
             }
           }.commonStyle()
         } else if (this.targetView == 'TabContent') {
           Tabs() {
             TabContent() {
-              Text('TabContent Test').width('100%').height('100%').backgroundColor(Color.White)
-            }.tabBar('Tabs1').commonStyle().backgroundColor(Color.Yellow)
+              Text('TabContent Test')
+                .width('100%')
+                .height('100%')
+                .backgroundColor(Color.White)
+            }
+            .tabBar('Tabs1')
+            .commonStyle()
+            .backgroundColor(Color.Yellow)
           }.backgroundColor(Color.Red)
           .width('100%')
           .height('100%')
@@ -364,7 +423,9 @@ struct ResponseRegionPage {
           WaterFlow() {
             FlowItem() {
               Column() {
-                Text('WaterFlow').fontSize(12).height('16')
+                Text('WaterFlow')
+                  .fontSize(12)
+                  .height('16')
                 Image($r('app.media.icon'))
                   .width(50)
                   .height(50)
@@ -391,7 +452,9 @@ struct ResponseRegionPage {
             direction: GridRowDirection.Row
           }) {
             GridCol() {
-              Row().width('100%').height('20vp')
+              Row()
+                .width('100%')
+                .height('20vp')
             }
             .commonStyle()
             .backgroundColor(Color.Yellow)
@@ -403,7 +466,9 @@ struct ResponseRegionPage {
           WaterFlow() {
             FlowItem() {
               Column() {
-                Text('WaterFlow').fontSize(12).height('16')
+                Text('WaterFlow')
+                  .fontSize(12)
+                  .height('16')
                 Image($r('app.media.icon'))
                   .width(50)
                   .height(50)
@@ -424,7 +489,9 @@ struct ResponseRegionPage {
                 .width('100%')
                 .height('100%')
                 .textAlign(TextAlign.Center)
-            }.rowStart(1).rowEnd(4)
+            }
+            .rowStart(1)
+            .rowEnd(4)
             .commonStyle()
             .backgroundColor(Color.Yellow)
           }
@@ -446,13 +513,17 @@ struct ResponseRegionPage {
           .width('100%')
           .height('100%')
         }
-      }.width(600).height(600).backgroundColor(Color.Pink)
+      }
+      .width(600)
+      .height(600)
+      .backgroundColor(Color.Pink)
 
       Text(this.eventCallBackStr)
         .width(100)
         .height(100)
         .backgroundColor(0xc1cbac)
         .key(this.referenceComponentKey)
-    }.backgroundColor(Color.Yellow)
+    }
+    .backgroundColor(Color.Yellow)
   }
 }

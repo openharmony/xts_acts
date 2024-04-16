@@ -18,6 +18,18 @@ import Utils from '../../MainAbility/common/Utils';
 import { AttrsManager } from '../../MainAbility/common/AttrsManager';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+}
+
+class TestValues {
+  describe: string;
+  setValue: boolean;
+  expectValue: ESObject
+}
+
 export default function stateStylesTestTwo() {
   let supportView = [
     'Checkbox',
@@ -27,13 +39,13 @@ export default function stateStylesTestTwo() {
     'MenuItem'
   ]
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testStateStylesTwo',
     pageName: 'StateStylesPageTwo',
     pageUrl: 'MainAbility/pages/stateStyles/StateStylesPageTwo'
   }
 
-  let testValues = [{
+  let testValues: TestValues[] = [{
     describe: 'SetSelected',
     setValue: false,
     expectValue: {
@@ -43,16 +55,16 @@ export default function stateStylesTestTwo() {
   }]
 
   describe('StateStylesTestTwo', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Obtain target component information before changes
-      let targetBeforeObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let targetBeforeObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
 
       //Set value
       AttrsManager.change(data.caseTag, data.testValue.setValue);
       await Utils.sleep(1000);
 
       //Obtain target component information after changes
-      let targetAfterObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let targetAfterObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
 
       //Check results
       console.info('[' + data.caseTag + ']' + 'targetBeforeObj.$attrs.zIndex is:' + targetBeforeObj.$attrs.zIndex);

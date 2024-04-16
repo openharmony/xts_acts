@@ -19,7 +19,8 @@
     "mainAbility": ".MainAbility",
     "deviceType": [
       "phone",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "distro": {
       "deliveryWithInstall": true,

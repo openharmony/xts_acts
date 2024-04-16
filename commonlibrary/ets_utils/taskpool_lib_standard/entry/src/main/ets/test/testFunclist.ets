@@ -1,0 +1,216 @@
+/**
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import taskpool from '@ohos.taskpool';
+import { BusinessError } from '@ohos.base'
+import { strCat } from './exportFunclist'
+
+export class A {
+  a: number;
+  b: number;
+  constructor() {
+    this.a = 1;
+    this.b = 2;
+  }
+}
+
+export class B {
+  a: number;
+  b: number;
+  constructor() {
+    this.a = 3;
+    this.b = 4;
+  }
+}
+
+export async function currentFun(): Promise<void> {
+  "use concurrent"
+  await new Promise<void>((resolve: Function, reject: Function) => {
+    setTimeout(resolve, 500, "async operation 1")
+  });
+  await new Promise<void>((resolve, reject) => {
+    setTimeout(resolve, 500, "async operation 2")
+  });
+}
+
+export function transferArrayBuffer(arg1: Array<number>): string {
+  "use concurrent"
+  arg1[0] = 100;
+  arg1[1] = 200;
+  arg1[2] = 300;
+  arg1[3] = 400;
+  return "success";
+}
+
+export function transferAtomics(arg1: Int32Array) {
+  "use concurrent"
+  console.info("wait begin::");
+  let res = Atomics.wait(arg1, 0, 0, 3000);
+  return res;
+}
+
+export function setCloneListTest(arrayBuffer: Array<number>): Int32Array {
+  "use concurrent"
+  let view: Int32Array = new Int32Array(arrayBuffer);
+  let arr: Array<number> = [5, 6, 7, 8];
+  for (let i: number = 0; i < arr.length; i++) {
+    view[i] = arr[i];
+  }
+  return view;
+}
+
+export function setTransferListTest(arg1: Uint8Array, arg2: Uint8Array): number {
+  "use concurrent"
+  return arg1.byteLength + arg2.byteLength;
+}
+
+export async function testString(args: string): Promise<void> {
+  "use concurrent"
+  let p: number = await new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const randomNumber: number = Math.floor(Math.random() * 100);
+      resolve(randomNumber);
+    }, 200);
+  })
+}
+
+export function testTime(): number {
+  "use concurrent";
+  return Date.now();
+}
+
+export async function testNumber(value1: number, value2: number): Promise<number> {
+  "use concurrent"
+  let result: number = await new Promise((resolve, reject) => {
+    let value = value1 + value2;
+    resolve(value);
+  })
+  return result;
+}
+
+export function testTaskPool(): void {
+  try {
+    let task1: taskpool.Task = new taskpool.Task(delaySum, 100, 100, 500);
+    let task2: taskpool.Task = new taskpool.Task(delaySum, 200, 200, 500);
+    let task3: taskpool.Task = new taskpool.Task(printArgs, 300);
+
+    taskpool.execute(task1)
+    taskpool.execute(task2)
+    taskpool.execute(task3)
+
+    let start: number = new Date().getTime();
+    while (new Date().getTime() - start < 1000) {
+      continue;
+    }
+    for (let i: number = 1; i <= 10; i++) {
+      taskpool.cancel(task1);
+    }
+  }
+  catch(e) {
+    console.info("taskpool catch error: " + e);
+  }
+}
+
+export function promiseCase() {
+  let p: Promise<void> = new Promise<void>((resolve: Function, reject: Function) => {
+    setTimeout(() => {
+      resolve(1)
+    }, 100)
+  }).then(undefined, (error: BusinessError) => {
+  })
+  return p
+}
+
+export function printArgs(args: number): number {
+  "use concurrent"
+  return args;
+}
+
+export function printArgsFunc(Sum: Function, num1: number, num2: number): number {
+  "use concurrent"
+  let result: number = Sum(num1, num2)
+  return result;
+}
+
+export function Sum(value1: number, value2: number): number {
+  "use concurrent"
+  return value1 + value2;
+}
+
+export async function asyncSum(value1: number, value2: number): Promise<number> {
+  "use concurrent"
+  return value1 + value2;
+}
+
+export function delaySum(value1: number, value2: number, delay: number): number {
+  "use concurrent"
+  let start: number = new Date().getTime();
+  while (new Date().getTime() - start < delay) {
+    continue;
+  }
+  return value1 + value2;
+}
+
+export function Add(value1: boolean, value2: boolean): boolean {
+  "use concurrent"
+  if (value1 && value2)
+    return true;
+  else
+    return false;
+}
+
+export function StrCat(value1: string, value2: string): string {
+  "use concurrent"
+  return value1 + value2;
+}
+
+export function funcStrCat(value1: string, value2: string, value3: string): string {
+  "use concurrent"
+  return value1 + strCat(value2, value3);
+}
+
+export function arraySum(arg1: Array<number>, arg2: Array<number>): Array<number> {
+  "use concurrent"
+  let value: Array<number> = [];
+  value[0] = arg1[0] + arg2[0];
+  value[1] = arg1[1] + arg2[1];
+  return value;
+}
+
+export function objectSum(arg1: A, arg2: B): A {
+  "use concurrent"
+  let cc: A = arg1;
+  cc.a = arg1.a + arg2.a;
+  cc.b = arg1.b + arg2.b;
+  return cc;
+}
+
+export function Multi(value1: number, value2: number): number {
+  "use concurrent"
+  return value1 * value2;
+}
+
+export function AdditionDelay(delay: number): void {
+  "use concurrent"
+  let start: number = new Date().getTime();
+  while (new Date().getTime() - start < delay) {
+    continue;
+  }
+}
+
+export function WaitforRunner(finalString: string): string {
+  "use concurrent"
+  return finalString;
+}

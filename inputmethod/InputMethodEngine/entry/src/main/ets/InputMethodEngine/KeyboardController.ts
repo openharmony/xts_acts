@@ -736,19 +736,29 @@ export class KeyboardController {
         };
         console.info(TAG + '====>receive inputMethodEngine_test_074 success');
         let count = 0;
-        inputKeyboardDelegate.on('cursorContextChange', (x, y, h) => {
-            console.info(TAG + "====>inputKeyboardDelegate.on('cursorContextChange') count: " + count);
-            if (count === 1){
-                inputKeyboardDelegate.off('cursorContextChange');
-            }
-            count += 1;
-            console.info(TAG + '====>inputMethodEngine_test_074 x,y,z: ' + x + "---" + y + "---" + h);
-        });
-        
+
         let t = setTimeout(async () => {
             clearTimeout(t);
-            await this.TextInputClient.insertText("ttt");
-            console.info(TAG + '====>keyboardController.insertText count: ' +  count);
+            inputKeyboardDelegate.on('cursorContextChange', (x, y, h) => {
+                console.info(TAG + "====>inputKeyboardDelegate.on('cursorContextChange') count: " + count);
+                if (count === 1){
+                    inputKeyboardDelegate.off('cursorContextChange');
+                    console.info(TAG + '====>inputMethodEngine_test_074 inputKeyboardDelegate.off');
+                }
+                count += 1;
+                console.info(TAG + '====>inputMethodEngine_test_074 x,y,z: ' + x + "---" + y + "---" + h);
+            });
+
+            let loop = 0;
+            let t1 = setInterval(async () => {
+                await this.TextInputClient.insertText("ttt");
+                console.info(TAG + '====>keyboardController.insertText count: ' +  count);
+                console.info(TAG + '====>keyboardController.insertText loop: ' +  loop);
+                loop += 1;
+                if (loop === 3){
+                    clearInterval(t1);
+                }
+            },500);
         },1000);
 
         let t1 = setTimeout(() => {
@@ -759,7 +769,7 @@ export class KeyboardController {
             }
             commoneventmanager.publish("inputMethodEngine_test_074", commonEventPublishData, this.publishCallback);
             clearTimeout(t1);
-        },1500);
+        },4000);
     }
 
     async inputMethodEngine_test_076() {

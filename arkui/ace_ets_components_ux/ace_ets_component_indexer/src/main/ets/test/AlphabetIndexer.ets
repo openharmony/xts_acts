@@ -20,17 +20,17 @@ import Utils from './Utils.ets';
 let emitKey = "emitUserAgent";
 
 export default function AlphabetIndexer() {
-  describe('ActsAlphabetIndexerTest', function () {
-    beforeEach(async function (done) {
+  describe('ActsAlphabetIndexerTest', () => {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("AlphabetIndexer beforeEach start");
       done();
     })
 
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("AlphabetIndexer afterEach start");
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "popupSelectedColorStr": '#00FF00',
             "popupUnselectedColorStr": '#DA70D6',
@@ -40,7 +40,7 @@ export default function AlphabetIndexer() {
             "popupSpaceStr": '120',
             "popupSelectedColor": Color.Orange,
             "popupUnselectedColor": Color.Green,
-            "popupItemBackgroundColor": Color = Color.Pink,
+            "popupItemBackgroundColor": Color.Pink,
             "popupSelectedColorNum": 0x00CED1,
             "popupUnselectedColorNum": 0xC0FF3E,
             "popupItemBackgroundNum": 0x8470FF,
@@ -60,7 +60,7 @@ export default function AlphabetIndexer() {
             "nullFlag5": false
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -73,46 +73,42 @@ export default function AlphabetIndexer() {
       done();
     })
 
-    it('ArkUI_AlphabetIndexer_0100', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0100', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0100 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.popupSelectedColor).assertEqual(obj.$attrs.backgroundColor);
-      expect(obj.$attrs.popupUnselectedColor).assertEqual(obj.$attrs.backgroundColor);
-      expect(obj.$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
-      expect(obj.$attrs.popupItemFontSize).assertEqual("24.00vp");
-      expect(obj.$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
-      expect(obj.$attrs.popupHorizontalSpace).assertEqual("-1.00vp");
+      expect(JSON.parse(strJson).$attrs.popupSelectedColor).assertEqual(JSON.parse(strJson).$attrs.backgroundColor);
+      expect(JSON.parse(strJson).$attrs.popupUnselectedColor).assertEqual(JSON.parse(strJson).$attrs.backgroundColor);
+      expect(JSON.parse(strJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+      expect(JSON.parse(strJson).$attrs.popupItemFontSize).assertEqual("24.00vp");
+      expect(JSON.parse(strJson).$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
+      expect(JSON.parse(strJson).$attrs.popupHorizontalSpace).assertEqual("-1.00vp");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_0600', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0600', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0600 start");
       let strJson = getInspectorByKey('alphabetIndexerTest6');
-      let obj = JSON.parse(strJson);
-      let popupItemFontSize = obj.$attrs.popupItemFontSize;
-      expect(parseFloat(popupItemFontSize)).assertEqual(30)
+      expect(parseFloat(JSON.parse(strJson).$attrs.popupItemFontSize)).assertEqual(30)
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_0700', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0700', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0700 start");
       let strJson = getInspectorByKey('alphabetIndexerTest7');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.popupItemFontWeight).assertEqual("FontWeight.Normal");
+      expect(JSON.parse(strJson).$attrs.popupItemFontWeight).assertEqual("FontWeight.Normal");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_0800', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0800', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0800 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag1": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -123,21 +119,20 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupSelectedColor).assertEqual(obj.$attrs.backgroundColor);
+      expect(JSON.parse(newJson).$attrs.popupSelectedColor).assertEqual(JSON.parse(newJson).$attrs.backgroundColor);
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_0900', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_0900', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0900 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag2": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -148,21 +143,20 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupUnselectedColor).assertEqual(obj.$attrs.backgroundColor);
+      expect(JSON.parse(newJson).$attrs.popupUnselectedColor).assertEqual(JSON.parse(newJson).$attrs.backgroundColor);
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1000', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_1000', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1000 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag3": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -173,21 +167,20 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+      expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1100', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_1100', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1100 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag4": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -198,21 +191,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemFontSize).assertEqual("24.00vp");
+
+      expect(JSON.parse(newJson).$attrs.popupItemFontSize).assertEqual("24.00vp");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1200', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_1200', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1200 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag4": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -223,21 +216,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
+
+      expect(JSON.parse(newJson).$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1300', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_1300', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1300 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag5": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -248,21 +241,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest2');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupHorizontalSpace).assertEqual("-1.00vp");
+
+      expect(JSON.parse(newJson).$attrs.popupHorizontalSpace).assertEqual("-1.00vp");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1400', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_1400', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1400 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag1": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -273,21 +266,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest3');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupSelectedColor).assertEqual(obj.$attrs.backgroundColor);
+
+      expect(JSON.parse(newJson).$attrs.popupSelectedColor).assertEqual(JSON.parse(newJson).$attrs.backgroundColor);
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1500', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_1500', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1500 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag2": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -298,21 +291,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest3');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupUnselectedColor).assertEqual(obj.$attrs.backgroundColor);
+
+      expect(JSON.parse(newJson).$attrs.popupUnselectedColor).assertEqual(JSON.parse(newJson).$attrs.backgroundColor);
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1600', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_1600', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1600 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag3": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -323,21 +316,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest3');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+
+      expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1700', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_1700', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1700 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag4": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -348,21 +341,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest3');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemFontSize).assertEqual("24.00vp");
+
+      expect(JSON.parse(newJson).$attrs.popupItemFontSize).assertEqual("24.00vp");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1800', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_1800', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1800 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag4": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -373,21 +366,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest3');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
+
+      expect(JSON.parse(newJson).$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1900', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_1900', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1900 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag5": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -398,21 +391,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest3');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupHorizontalSpace).assertEqual("-1.00vp");
+
+      expect(JSON.parse(newJson).$attrs.popupHorizontalSpace).assertEqual("-1.00vp");
       done();
     })
 
-    it('ArkUI_AlphabetIndexer_2600', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_2600', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_2600 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag1": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -423,21 +416,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest4');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupSelectedColor).assertEqual(obj.$attrs.backgroundColor);
+
+      expect(JSON.parse(newJson).$attrs.popupSelectedColor).assertEqual(JSON.parse(newJson).$attrs.backgroundColor);
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_2700', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_2700', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_2700 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag2": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -448,21 +441,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest4');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupUnselectedColor).assertEqual(obj.$attrs.backgroundColor);
+
+      expect(JSON.parse(newJson).$attrs.popupUnselectedColor).assertEqual(JSON.parse(newJson).$attrs.backgroundColor);
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_2800', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_2800', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_2800 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag3": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -473,21 +466,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest4');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
+
+      expect(JSON.parse(newJson).$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_2900', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_2900', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_2900 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag4": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -498,21 +491,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest4');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemFontSize).assertEqual("24.00vp");
+
+      expect(JSON.parse(newJson).$attrs.popupItemFontSize).assertEqual("24.00vp");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_3000', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_3000', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_3000 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag4": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -523,21 +516,21 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest4');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
+
+      expect(JSON.parse(newJson).$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_3100', 0, async function (done) {
+    it('ArkUI_AlphabetIndexer_3100', 0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_3100 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag5": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -548,8 +541,8 @@ export default function AlphabetIndexer() {
       }
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest4');
-      let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupHorizontalSpace).assertEqual("-1.00vp");
+
+      expect(JSON.parse(newJson).$attrs.popupHorizontalSpace).assertEqual("-1.00vp");
       done();
     });
   })

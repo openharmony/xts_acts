@@ -68,7 +68,7 @@ export default function listSwipeAction36Jsunit() {
 
       // swipe the listItem to bottom
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(100)), Math.round(vp2px(115)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
@@ -84,7 +84,7 @@ export default function listSwipeAction36Jsunit() {
 
       // swipe to up
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(200)), Math.round(vp2px(115)), Math.round(vp2px(190))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(190))
       );
       await CommonFunc.sleep(5000);
       let textSwipeOffset2 = getInspectorByKey('swipe36Offset');
@@ -111,7 +111,7 @@ export default function listSwipeAction36Jsunit() {
       // swipe the listItem to bottom
 
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(100)), Math.round(vp2px(115)), Math.round(vp2px(200))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
@@ -122,7 +122,7 @@ export default function listSwipeAction36Jsunit() {
       expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('50')
       // reset
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(200)), Math.round(vp2px(115)), Math.round(vp2px(-600))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(-600))
       );
       await CommonFunc.sleep(5000);
       let buttonReset2 = await driver.findComponent(ON.id('btreset36'));
@@ -131,7 +131,7 @@ export default function listSwipeAction36Jsunit() {
       await CommonFunc.sleep(3000);
       // swipe to up
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(200)), Math.round(vp2px(115)), Math.round(vp2px(100))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100))
       );
       await CommonFunc.sleep(4000);
       let textSwipeOffset2 = getInspectorByKey('swipe36Offset');
@@ -158,7 +158,7 @@ export default function listSwipeAction36Jsunit() {
 
       // swipe the listItem to bottom
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(100)), Math.round(vp2px(115)), Math.round(vp2px(450))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(450))
       );
       await CommonFunc.sleep(6000);
 
@@ -175,7 +175,7 @@ export default function listSwipeAction36Jsunit() {
       await CommonFunc.sleep(3000);
       // swipe to up
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(200)), Math.round(vp2px(115)), Math.round(vp2px(-700))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(-700))
       );
       await CommonFunc.sleep(5000);
       let textSwipeOffset2 = getInspectorByKey('swipe36Offset');

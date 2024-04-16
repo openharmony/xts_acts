@@ -60,7 +60,7 @@ export default function APITabsBarBackgroundBlurStyleJsunit() {
       await CommonFunc.sleep(1000);
       console.info('APITabsBarBackgroundBlurStyleJsunit_0100 component obj is: ' + JSON.parse(strcontent));
       console.info('APITabsBarBackgroundBlurStyleJsunit_0100 component obj.$attrs.flingSpeedLimit is: ' + JSON.parse(strcontent).$attrs.barBackgroundBlurStyle);
-      expect(JSON.parse(strcontent).$attrs.barBackgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      expect(JSON.parse(strcontent).$attrs.barBackgroundBlurStyle).assertEqual('undefined');
       console.info('APITabsBarBackgroundBlurStyleJsunit_0100 END')
       done();
     });

@@ -1,8 +1,0 @@
-{
-    "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/overlay/overlay",
-        "MainAbility/pages/visibility/visibility",
-        "MainAbility/pages/zIndex/zIndex"
-    ]
-}

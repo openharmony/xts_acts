@@ -57,7 +57,8 @@
             }
         ],
         "deviceType": [
-            "default"
+            "default",
+            "2in1"
         ],
         "mainAbility": ".MainAbility",
         "distro": {

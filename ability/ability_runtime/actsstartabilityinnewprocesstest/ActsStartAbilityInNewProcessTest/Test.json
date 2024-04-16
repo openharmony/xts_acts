@@ -22,6 +22,7 @@
             "run-command": [
                 "mount -o rw,remount /",
                 "sed -i 's/enforcing/permissive/g' /system/etc/selinux/config",
+                "param set persist.sys.abilityms.support.start_other_app true",
                 "reboot",
                 "power-shell wakeup",
                 "uinput -T -m 300 2700 280 200",
