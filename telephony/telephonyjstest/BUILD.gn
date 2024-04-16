@@ -17,7 +17,6 @@ group("telephonyjstest") {
     "actscontactstageapitest:ActsContactStageAPITest",
     "call_manager:call_manager",
     "cellular_data:cellular_data",
-    "contacttest:ActsTelephonyContactTest",
     "netmanager_base:netmanager_base",
     "netmanager_http:ActsNetManagerHttpEtsTest",
     "netmanager_socket:ActsNetManagerSocketEtsTest",
@@ -29,5 +28,6 @@ group("telephonyjstest") {
     "radiostatistic:ActsRadiostatisticEtsTest",
     "sim:sim",
     "sms_mms:sms_mms",
+    "telephony_base:telephony_base",
   ]
 }
