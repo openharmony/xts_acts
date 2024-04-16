@@ -21,20 +21,23 @@ import AttrsManager from '../../common/AttrsManager';
 @Component
 struct FlexBasisPage {
   @State _flexBasis: number | string = 0
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State containerView: string = router.getParams() ? router.getParams()['view']['containerView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State targetWidth: number = router.getParams() ? router.getParams()['view']['targetWidth'] : 0
-  @State targetHeight: number = router.getParams() ? router.getParams()['view']['targetHeight'] : 0
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State containerView: string = router.getParams() ? (router.getParams() as ESObject)['view']['containerView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State targetWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetWidth'] : 0
+  @State targetHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetHeight'] : 0
 
   onPageShow() {
     console.info('[FlexBasis] page show called ')
-    AttrsManager.registerDataChange(value => this._flexBasis = value.flexBasis)
+    AttrsManager.registerDataChange((value: ESObject) => {
+      this._flexBasis = value.flexBasis
+    })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .margin(0)
     .flexBasis(this._flexBasis)
     .width(this.targetWidth)
@@ -43,7 +46,8 @@ struct FlexBasisPage {
     .key(this.componentKey)
   }
 
-  @Builder buildTargetView() {
+  @Builder
+  buildTargetView() {
     if (this.targetView == 'AlphabetIndexer') {
       AlphabetIndexer({ arrayValue: ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G'], selected: 0 }).commonStyle()
     } else if (this.targetView == 'Button') {
@@ -76,7 +80,7 @@ struct FlexBasisPage {
     } else if (this.targetView == 'Menu') {
       Menu() {
         MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu' })
-      }.commonStyle().constraintSize({minWidth: 0})
+      }.commonStyle().constraintSize({ minWidth: 0 })
     } else if (this.targetView == 'Navigation') {
       Navigation().commonStyle()
     } else if (this.targetView == 'NavRouter') {
@@ -115,7 +119,7 @@ struct FlexBasisPage {
         .commonStyle()
     } else if (this.targetView == 'Select') {
       Select([{ value: 'aaa', icon: '/common/public_icon.svg' },
-        { value: 'bbb', icon: '/common/public_icon.svg' }]).commonStyle().constraintSize({minWidth: 0})
+        { value: 'bbb', icon: '/common/public_icon.svg' }]).commonStyle().constraintSize({ minWidth: 0 })
     } else if (this.targetView == 'Slider') {
       Slider({ value: 50, style: SliderStyle.OutSet, direction: Axis.Vertical })
         .blockColor('#191970')

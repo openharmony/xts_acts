@@ -15,5 +15,5 @@
 import datapanelTest from './datapanel'
 
 export default function testsuite() {
-       datapanelTest()
+  datapanelTest()
 }

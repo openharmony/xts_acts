@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import ActionExtensionAbility from '@ohos.app.ability.ActionExtensionAbility';
 
 export default class UiExtAbility extends ActionExtensionAbility {
@@ -23,7 +24,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
     console.log(`want: ${JSON.stringify(want)}}`);
     let storage: LocalStorage = new LocalStorage({
       'session': session
-    });
+    })
     session.loadContent('pages/Page', storage);
     console.info('=======>UIExtAbility onSessionCreate======>');
   }
@@ -40,4 +41,4 @@ export default class UiExtAbility extends ActionExtensionAbility {
     // Ability has brought to foreground
     console.log('=====> UIExtAbility onForeground =====> ');
   }
-};
+}

@@ -65,7 +65,7 @@ export default function flagstartwithouttipstest() {
         hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
       }
       // Wait for the popup to open
-      await sleep(20000);
+      await sleep(15000);
       try {
         try {
           await driver.assertComponentExist(ON.text('暂无支持此类文件的应用')).then((data) => {
@@ -166,7 +166,7 @@ export default function flagstartwithouttipstest() {
         hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
       }
       // Wait for the popup to open
-      await sleep(20000);
+      await sleep(15000);
       try {
         try {
           await driver.assertComponentExist(ON.text('选择打开方式')).then((data) => {
@@ -230,7 +230,7 @@ export default function flagstartwithouttipstest() {
         hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
       }
       // Wait for the popup to open
-      await sleep(20000);
+      await sleep(15000);
       try {
         try {
           await driver.assertComponentExist(ON.text('选择打开方式')).then((data) => {
@@ -282,14 +282,7 @@ export default function flagstartwithouttipstest() {
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0700', 0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0700';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
-      try {
-        await context.startAbility({
-          bundleName: 'com.acts.flagstartwithouttipstest',
-          abilityName: 'EntryAbility',
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s EntryAbility error', JSON.stringify(error));
-      }
+      await abilityDelegator.executeShellCommand('aa start -b com.acts.flagstartwithouttipstest -a TestAbility');
       await sleep(3000);
       try {
         let wantInfo: Want = {
@@ -299,12 +292,15 @@ export default function flagstartwithouttipstest() {
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
       }
-      await sleep(20000);
+      await sleep(5000);
       let openViewData = false;
       try {
-        await driver.assertComponentExist(ON.text('ohos.want.action.viewData ability')).then((data) => {
+        await driver.findComponent(ON.text('ohos.want.action.viewData ability')).then(async (data) => {
           hilog.info(0x0000, TAG, 'text at this success %{public}s ', JSON.stringify(data));
           openViewData = true;
+          await data.click();
+        }).catch(() => {
+          hilog.info(0x0000, TAG, '%{public}s', 'findComponent failed');
         })
       } catch (error) {
         hilog.info(0x0000, TAG, 'text at it failed %{public}s', error?.message);
@@ -326,14 +322,7 @@ export default function flagstartwithouttipstest() {
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0800', 0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0800';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
-      try {
-        await context.startAbility({
-          bundleName: 'com.acts.flagstartwithouttipstest',
-          abilityName: 'EntryAbility',
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s EntryAbility error', JSON.stringify(error));
-      }
+      await abilityDelegator.executeShellCommand('aa start -b com.acts.flagstartwithouttipstest -a TestAbility');
       await sleep(3000);
       try {
         let wantInfo: Want = {
@@ -344,12 +333,15 @@ export default function flagstartwithouttipstest() {
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
       }
-      await sleep(20000);
+      await sleep(5000);
       let openViewData = false;
       try {
-        await driver.assertComponentExist(ON.text('ohos.want.action.viewData ability')).then((data) => {
+        await driver.findComponent(ON.text('ohos.want.action.viewData ability')).then(async (data) => {
           hilog.info(0x0000, TAG, 'text at this success %{public}s ', JSON.stringify(data));
           openViewData = true;
+          await data.click();
+        }).catch(() => {
+          hilog.info(0x0000, TAG, '%{public}s', 'findComponent failed');
         })
       } catch (error) {
         hilog.info(0x0000, TAG, 'text at it failed %{public}s', error?.message);

@@ -33,7 +33,7 @@ export default class TestAbility extends Ability {
             console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data))
         });
 
-        globalThis.abilityContext = this.context;
+        globalThis.testAbilityContext = this.context;
     }
 
     onWindowStageDestroy() {

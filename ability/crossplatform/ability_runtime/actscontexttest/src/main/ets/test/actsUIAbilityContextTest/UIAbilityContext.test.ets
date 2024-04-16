@@ -16,8 +16,11 @@
 import common from '@ohos.app.ability.common';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 import Want from '@ohos.app.ability.Want';
+
+let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -1121,6 +1124,15 @@ export default function UIAbilityContext() {
         console.info('result: ' + JSON.stringify(result));
         expect(result[0]).assertEqual('MainAbility1 onCreate');
         let context1: common.UIAbilityContext = globalThis.ability1Context;
+        
+        let res = undefined;
+        await abilityDelegator
+        .executeShellCommand('aa start -b com.example.contexttest -a TestAbility')
+        .then(data => {
+          res = data.stdResult;
+        }).catch(err => {
+          console.log(`testStartAbilityCallback013 aa fail` + JSON.stringify(err))
+        })
 
         context.startAbility(want, (err) => {
           if (err.code) {

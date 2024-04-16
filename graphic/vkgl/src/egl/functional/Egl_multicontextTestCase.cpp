@@ -23,14 +23,20 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003621, "dEQP-EGL.functional.multicontext.non_shared");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003621, "dEQP-EGL.functional.multico",
+    "ntext.non_shared");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003622, "dEQP-EGL.functional.multicontext.shared");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003622, "dEQP-EGL.functional.multicon",
+    "text.shared");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003623, "dEQP-EGL.functional.multicontext.non_shared_make_current");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003623, "dEQP-EGL.functional.multicon",
+    "text.non_shared_make_current");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003624, "dEQP-EGL.functional.multicontext.shared_make_current");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003624, "dEQP-EGL.functional.multicont",
+    "ext.shared_make_current");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003625, "dEQP-EGL.functional.multicontext.non_shared_clear");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003625, "dEQP-EGL.functional.multicont",
+    "ext.non_shared_clear");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003626, "dEQP-EGL.functional.multicontext.shared_clear");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003626, "dEQP-EGL.functional.multicont",
+    "ext.shared_clear");

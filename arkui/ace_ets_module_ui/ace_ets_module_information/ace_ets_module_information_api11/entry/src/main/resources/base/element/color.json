@@ -7,6 +7,18 @@
     {
       "name": "color_world",
       "value": "#ff0000ff"
+    },
+    {
+      "name": "Progress_borderColor",
+      "value": "#FFFD0000"
+    },
+    {
+      "name": "Progress_updateColor",
+      "value": "#FFFD0000"
+    },
+    {
+      "name": "Progress_updateColor_transparency",
+      "value": "#33006cde"
     }
   ]
 }

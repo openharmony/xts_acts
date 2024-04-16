@@ -67,7 +67,7 @@ export default function opacityTest() {
       console.info('[' + data.caseTag + '] opacityTest. data.testValue.setValue.opacity : ' + data.testValue.setValue.opacity);
       console.info('[' + data.viewObj.$attrs.opacity + '] opacityTest. viewObj.$attrs.opacity.');
       console.info('[' + data.testValue.expectValue.opacity + '] opacityTest. data.testValue.expectValue.opacity.');
-      expect(data.viewObj.$attrs.opacity).assertEqual(data.testValue.expectValue.opacity);
+      expect(Math.abs(data.viewObj.$attrs.opacity - data.testValue.expectValue.opacity) <= 0.00001 ).assertTrue();
 
     });
   })

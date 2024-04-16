@@ -17,6 +17,58 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils';
 
+async function clickPoint(data: ESObject, xPoint: number, yPoint: number) {
+  await Utils.performClickPoint(xPoint, yPoint);
+  if ('Select' == data.pageConfig.componentKey) {
+    await Utils.sleep(2000);
+    await eventResult(data, 'onClick');
+    Utils.performClick(data.pageConfig.componentKey);
+    await Utils.sleep(2000);
+    await resetStatus(data);
+  } else {
+    await eventResult(data, 'onClick');
+    await resetStatus(data);
+  }
+}
+
+async function resetStatus(data: ESObject) {
+  console.info('[' + data.caseTag + '] reset status.');
+  AttrsManager.change(data.caseTag, data.testValue.setValue);
+  await Utils.sleep(1000);
+}
+
+async function eventResult(data: ESObject, expectationValue: ESObject) {
+  await Utils.sleep(1000);
+  let referenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
+  console.info('[' + data.caseTag + ']' + 'content is:' + referenceComponent.$attrs.content);
+  if ('' == expectationValue) {
+    expect(referenceComponent.$attrs.content).assertEqual(expectationValue);
+  } else {
+    expect(referenceComponent.$attrs.content).assertContain(expectationValue);
+  }
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetHeight: number;
+  targetWidth: number;
+  referenceComponentKey: string;
+  referenceText: string;
+}
+
+class TestValues {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ResponseRegion;
+  exceptView?: ESObject;
+}
+
+class ResponseRegion {
+  responseRegion: ESObject;
+}
+
 export default function responseRegionTest() {
   let supportView = [
     'AlphabetIndexer',
@@ -95,7 +147,7 @@ export default function responseRegionTest() {
   let targetHeight = 200;
   let click = 'onClick';
   let notClick = '';
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testResponseRegion',
     pageName: 'ResponseRegionPage',
     pageUrl: 'MainAbility/pages/responseRegion/ResponseRegionPage',
@@ -105,7 +157,7 @@ export default function responseRegionTest() {
     referenceText: 'referenceText'
   }
 
-  let testValues = [{
+  let testValues: TestValues[] = [{
     describe: 'SetNumber',
     setValue: {
       x: 50, y: 50, width: 200, height: 200
@@ -224,7 +276,7 @@ export default function responseRegionTest() {
   }]
 
   describe('ResponseRegionTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Get the initial region information of the target component
       console.info('[' + data.caseTag + '] get Component rect before position changed.');
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
@@ -233,7 +285,7 @@ export default function responseRegionTest() {
       console.info('[' + data.caseTag + '] setValue : ' + JSON.stringify(data.testValue.setValue));
       AttrsManager.change(data.caseTag, data.testValue.setValue);
       await Utils.sleep(1000);
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       if ('SetMultiArea' == data.testValue.describe) {
         expect(viewObj.$attrs.responseRegion[0])
           .assertEqual(JSON.stringify(data.testValue.expectValue.responseRegion[0]));
@@ -277,7 +329,7 @@ export default function responseRegionTest() {
         offsetWidth = vp2px(data.testValue.setValue.numberWidth);
         offsetHeight = vp2px(data.testValue.setValue.numberHeight);
       } else if (('SetIntraArea' == data.testValue.describe) ||
-      ('SetOutsideArea' == data.testValue.describe)) {
+        ('SetOutsideArea' == data.testValue.describe)) {
         offsetX = vp2px(data.testValue.setValue.x);
         offsetY = vp2px(data.testValue.setValue.y);
         offsetWidth = rectWidth * data.testValue.setValue.ratioWidth;
@@ -337,34 +389,5 @@ export default function responseRegionTest() {
     });
   })
 
-  async function clickPoint(data, xPoint, yPoint) {
-    await Utils.performClickPoint(xPoint, yPoint);
-    if ('Select' == data.pageConfig.componentKey) {
-      await Utils.sleep(2000);
-      await eventResult(data, click);
-      Utils.performClick(data.pageConfig.componentKey);
-      await Utils.sleep(2000);
-      await resetStatus(data);
-    } else {
-      await eventResult(data, click);
-      await resetStatus(data);
-    }
-  }
 
-  async function resetStatus(data) {
-    console.info('[' + data.caseTag + '] reset status.');
-    AttrsManager.change(data.caseTag, data.testValue.setValue);
-    await Utils.sleep(1000);
-  }
-
-  async function eventResult(data, expectationValue) {
-    await Utils.sleep(1000);
-    let referenceComponent = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
-    console.info('[' + data.caseTag + ']' + 'content is:' + referenceComponent.$attrs.content);
-    if ('' == expectationValue) {
-      expect(referenceComponent.$attrs.content).assertEqual(expectationValue);
-    } else {
-      expect(referenceComponent.$attrs.content).assertContain(expectationValue);
-    }
-  }
 }

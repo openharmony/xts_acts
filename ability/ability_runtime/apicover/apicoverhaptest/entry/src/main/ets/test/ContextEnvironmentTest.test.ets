@@ -19,7 +19,17 @@ import common from '@ohos.app.ability.common';
 import EnvironmentCallback from '@ohos.app.ability.EnvironmentCallback';
 import { BusinessError } from '@ohos.base';
 
-let TAG: string = '';
+let envCallback: EnvironmentCallback = {
+  onConfigurationUpdated(config) {
+    console.info(TAG, `envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`)
+    update_language = config.language;
+    isUpdated = true;
+    fontSizeScale = config.fontSizeScale;
+    fontWeightScale = config.fontWeightScale;
+  }
+}
+
+
 
 function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time));
@@ -29,13 +39,14 @@ export default function ContextEnvironmentTest(applicationContext: common.Applic
   describe('ContextEnvironmentTest', () => {
     let isUpdated = false;
     let update_language = "";
-    let callbackid_NA = 100;
-    let callbackid_errorNum = -1;
-    let callbackid_errorType = "test";
+    let callbackid_NA = 100
+    let callbackid_errorNum = -1
+    let callbackid_errorType = "test"
     let callNum = 0;
-
-
+    let fontSizeScale = 0;
+    let fontWeightScale = 0;
     let gSetTimeout = 1000
+
     beforeEach(async (done: Function) => {
       isUpdated = false;
       setTimeout(() => {

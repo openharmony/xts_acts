@@ -637,5 +637,98 @@ export default function ReminderAgentManagerTest() {
             }
 
         })
+
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0025
+         * @tc.desc      test reminderRequest WantAgent parameters.
+         */
+        it("reminderRequestAttribute_0025", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0025---------------------------');
+            let timer = {
+                reminderType:reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
+                hour:6,
+                minute:30,
+                daysOfWeek:[1],
+                actionButton:[{
+                    title:'close',
+                    titleResource:'this is 0025 close button',
+                    type:reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
+                }],
+                wantAgent:{
+                    pkgName:"ohos.acts.resourceschedule.reminderagentMgr.js.function",
+                    abilityName:"ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility",
+                    parameters:{"aa":"aaa"},
+                    uri:"#"
+                }
+            }
+            try{
+                reminderAgent.publishReminder(timer, (err, reminderId) => {
+                    if(err){
+                        console.info('reminderRequestAttribute_0025 callback err.code is : ' + err.code)
+                    }else{
+                        console.info('reminderRequestAttribute_0025 callback reminderId is : ' + reminderId)
+                        expect(reminderId).assertLarger(0);
+                        done();
+                    }
+                })
+            }catch(error){
+                console.info('reminderRequestAttribute_0025 publishReminder err.code is : ' + err.code)
+            }
+        })
+
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0026
+         * @tc.desc      test getValidReminders promise. 
+         */
+        it("reminderRequestAttribute_0026", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0026---------------------------');
+            try{
+                reminderAgent.getAllValidReminders().then((reminderInfo) => {
+                    console.info('reminderRequestAttribute_0026 reminderInfo = ' + JSON.stringify(reminderInfo));
+                    let reminderInfoArr = [];
+                    reminderInfoArr = reminderInfo;
+                    let reminderId = 0;
+                    let reminderReq = {};
+                    console.info('reminderRequestAttribute_0026 reminderInfoArr = ' + JSON.stringify(reminderInfoArr));
+                    for(let i = 0; i < reminderInfoArr.length; i++){
+                        console.info('reminderRequestAttribute_0026 for is ok');
+                        if(reminderInfoArr[i].reminderReq.minute == 30){
+                            console.info('reminderRequestAttribute_0026 if is ok');
+                            reminderId = reminderInfoArr[i].reminderId;
+                            Object.assign(reminderReq, reminderInfoArr[i].reminderReq);
+                        }
+                    }
+                    console.info('reminderRequestAttribute_0026 = ' + JSON.stringify(reminderReq));
+                    expect(reminderInfoArr.length).assertLarger(0);
+                    expect(reminderId).assertLarger(0);
+                    expect(reminderReq.hour).assertEqual(6);
+                    done();
+                }).catch((err) =>{
+                    console.info('reminderRequestAttribute_0026 promise err.code is : ' + err.code);
+                })
+            }catch(error){
+                console.info('reminderRequestAttribute_0026 getValidReminders error.code is : ' + error.code);
+            }
+        })
+        
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0027
+         * @tc.desc      test timer normal parameter, return with promise. 
+         */
+        it("reminderRequestAttribute_0027", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0027---------------------------');
+            try{
+                reminderAgent.cancelAllReminders().then((err, data) => {
+                    console.info('reminderRequestAttribute_0027 cancelAllReminders success');
+                    expect(true).assertTrue();
+                    done();
+                })
+            }catch(error){
+                console.info('reminderRequestAttribute_0027 cancelAllReminders error.code is : ' + error.code);
+            }
+        })
     })
 }

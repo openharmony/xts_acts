@@ -15,5 +15,5 @@
 import clickeffectTest from './clickeffect'
 
 export default function testsuite() {
-       clickeffectTest()
+  clickeffectTest()
 }

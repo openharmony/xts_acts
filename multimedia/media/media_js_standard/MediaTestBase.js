@@ -46,7 +46,10 @@ export async function driveFn(num) {
         } 
         console.info(`button is ${JSON.stringify(button)}`)
         await msleepAsync(2000)
-        await button.click()
+        if(await driver.findComponent(BY.text('允许')) != null){
+            await button.click()
+        }
+        await msleepAsync(2000)
     }
     await msleepAsync(2000)
 }

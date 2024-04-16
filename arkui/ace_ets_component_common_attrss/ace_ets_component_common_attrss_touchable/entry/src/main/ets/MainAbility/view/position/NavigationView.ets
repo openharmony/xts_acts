@@ -28,7 +28,11 @@ export struct NavigationView {
           ListItem() {
             NavRouter() {
               Row() {
-                Image($r('app.media.icon')).width(30).height(30).borderRadius(30).margin({ left: 3, right: 10 })
+                Image($r('app.media.icon'))
+                  .width(30)
+                  .height(30)
+                  .borderRadius(30)
+                  .margin({ left: 3, right: 10 })
                 Text(`NavRouter${item + 1}`)
                   .fontSize(22)
                   .fontWeight(500)
@@ -43,8 +47,13 @@ export struct NavigationView {
                 Text(`NavDestination${item + 1}`).fontSize(50)
                 Flex({ direction: FlexDirection.Row }) {
                   Row() {
-                    Image($r('app.media.icon')).width(40).height(40).borderRadius(40).margin({ right: 15 })
-                    Text('NavDestination content').fontSize(30)
+                    Image($r('app.media.icon'))
+                      .width(40)
+                      .height(40)
+                      .borderRadius(40)
+                      .margin({ right: 15 })
+                    Text('NavDestination content')
+                      .fontSize(30)
                   }.padding({ left: 15 })
                 }
               }.backgroundColor('#ccc')
@@ -54,7 +63,7 @@ export struct NavigationView {
               this.dex = index
             })
           }
-        }, item => item)
+        }, (item: string) => item)
       }
       .height('100%')
       .width('100%')

@@ -12,14 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import type window from '@ohos.window';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class CalledAbility extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CalledAbility onCreate');
-
     console.log('=====> second app CalledAbility bas been created =====>');
 
     if (want.action === 'AsyncCallback_0200') {
@@ -32,7 +34,7 @@ export default class CalledAbility extends UIAbility {
         }
       }, (err) => {
         console.log('=====> AsyncCallback_0200 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
-      });
+      })
     }
   }
 
@@ -50,7 +52,7 @@ export default class CalledAbility extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
+    })
   }
 
   onWindowStageDestroy() {
