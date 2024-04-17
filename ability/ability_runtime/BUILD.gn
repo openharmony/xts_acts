@@ -71,6 +71,13 @@ group("ability_runtime") {
       "stopserviceextension:stopserviceextension",
       "want:want",
       "workercontextcover:workercontextcover",
+      "abilitytoolabilitydelegatortest:abilitytoolabilitydelegatortest",
+      "actsactionextensionability:actsactionextensionability",
+      "actscleantemptest:cleantempfiles",
+      "actsnfcselecttypes:actsnfcselecttypes",
+      "actsturipermisssiontest:actsturipermisssiontest",
+      "actsuiextensionforresulttest:actsuiextensionforresulttest",
+      "shareextensionability:actsshareextensionability",
     ]
   }
 }
