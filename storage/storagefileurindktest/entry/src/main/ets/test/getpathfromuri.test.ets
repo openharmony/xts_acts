@@ -18,14 +18,14 @@ import getpathfromuri from 'libgetpathfromuri.so';
 import fileuri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs';
 
-export default function fileuriNdkTest(){
-   describe('fileurindktest',async function(){
+export default function ActsStorageFileUriNdkTest(){
+   describe('ActsStorageFileUriNdkTest',async function(){
 
       /**
        * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0100
        * @tc.name geturifrompath_ndktest_001
        * @tc.desc function of API, Test GetUriFromPath, normal function
-       * @tc.size MEDIUM
+       * @tc.size MediumTest
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
@@ -34,8 +34,8 @@ export default function fileuriNdkTest(){
          try{
             let ret = getpathfromuri.GetUriFromPath();
             console.info("geturifrompath_ndktest_001 test napi ret = " + JSON.stringify(ret));
-            console.info("geturifrompath_ndktest_001 test successful!");
             expect(ret).assertEqual(0);
+            console.info("geturifrompath_ndktest_001 test successful!");
             done();
          }catch(e){
             console.info('geturifrompath_ndktest_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -47,7 +47,7 @@ export default function fileuriNdkTest(){
        * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0200
        * @tc.name getpathfromuri_ndktest_001
        * @tc.desc function of API, Test GetPathFromUri, normal function
-       * @tc.size MEDIUM
+       * @tc.size MediumTest
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
@@ -56,14 +56,8 @@ export default function fileuriNdkTest(){
          try{
             let ret = getpathfromuri.GetPathFromUri();
             console.info("getpathfromuri_ndktest_001 test napi ret = " + JSON.stringify(ret));
-            if(ret == 801){
-               expect(true).assertTrue();
-               done();
-            }else{
-               console.info("getpathfromuri_ndktest_001 test successful!");
-               expect(ret).assertEqual(0);
-               done();
-            };
+            expect(ret).assertEqual(0);
+            console.info("getpathfromuri_ndktest_001 test successful!");
             done();
          }catch(e){
             console.info('getpathfromuri_ndktest_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -75,7 +69,7 @@ export default function fileuriNdkTest(){
        * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0300
        * @tc.name getfulldirectory_ndktest_001
        * @tc.desc function of API, Test getfulldirectory, normal function
-       * @tc.size MEDIUM
+       * @tc.size MediumTest
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
@@ -87,14 +81,8 @@ export default function fileuriNdkTest(){
             let uri = new fileuri.FileUri(filepath);
             let ret = getpathfromuri.GetFullDirectoryUri();
             console.info("getfulldirectory_ndktest_001 test napi ret = "+ JSON.stringify(ret));
-            if(ret == 801){
-               expect(true).assertTrue();
-               done();
-            }else{
-               console.info("getfulldirectory_ndktest_001 test successful!");
-               expect(ret).assertEqual(0);
-               done();
-            };
+            expect(ret).assertEqual(0);
+            console.info("getpathfromuri_ndktest_001 test successful!");
             done();
          }catch(e){
             console.info('getfulldirectory_ndktest_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -106,7 +94,7 @@ export default function fileuriNdkTest(){
        * @tc.number SUB_BASIC_FM_FileAPI_getfileuri_0400
        * @tc.name isvaliduri_ndktest_001
        * @tc.desc function of API, Test IsValidUri, normal function
-       * @tc.size MEDIUM
+       * @tc.size MediumTest
        * @tc.type Function
        * @tc.level Level 0
        * @tc.require
@@ -119,8 +107,8 @@ export default function fileuriNdkTest(){
             console.info("isvaliduri_ndktest_001 test napi uri = "+ uri);
             let ret = getpathfromuri.IsValidUri();
             console.info("isvaliduri_ndktest_001 test napi ret = "+ JSON.stringify(ret));
-            console.info("isvaliduri_ndktest_001 test successful!");
             expect(ret).assertEqual(1);
+            console.info("isvaliduri_ndktest_001 test successful!");
             done();
          }catch(e){
             console.info('isvaliduri_ndktest_001 has failed for ' + e.message + ', code: ' + e.code);
