@@ -47,7 +47,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/settingsdata:settingsdata",
   "${ACTS_ROOT}/barrierfree:barrierfree",
   "${ACTS_ROOT}/applications:applications",
-  "${ACTS_ROOT}/wukong:wukong",
+  "${ACTS_ROOT}/ostest:ostest",
   "${ACTS_ROOT}/validator:validator",
   "${ACTS_ROOT}/xts:xts",
   "${ACTS_ROOT}/driver:driver",

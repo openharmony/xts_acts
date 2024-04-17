@@ -13,7 +13,7 @@
 import("//build/ohos_var.gni")
 import("//test/xts/tools/build/suite.gni")
 
-group("wukong") {
+group("ostest") {
   testonly = true
   if (is_standard_system) {
     deps = [ "actswukongtest:ActsWukongTest" ]
