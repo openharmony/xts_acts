@@ -20,22 +20,25 @@ import router from '@ohos.router'
 @Component
 struct MarginPage {
   @State _margin: Margin = { top: 0, right: 0, bottom: 0, left: 0 };
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State targetGroupView: string = router.getParams() ? router.getParams()['view']['targetGroupView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
-  @State childWidth: number = router.getParams() ? router.getParams()['view']['childWidth'] : 0
-  @State childHeight: number = router.getParams() ? router.getParams()['view']['childHeight'] : 0
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State buttonComponentKey: string = router.getParams() ? router.getParams()['view']['buttonComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State targetGroupView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetGroupView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
+  @State childWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['childWidth'] : 0
+  @State childHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['childHeight'] : 0
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State buttonComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['buttonComponentKey'] : ''
 
   onPageShow() {
     console.info('Margin page show called ')
-    AttrsManager.registerDataChange(value => this._margin = value)
+    AttrsManager.registerDataChange((value: ESObject) => {
+      this._margin = value
+    })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .margin(this._margin)
     .width(this.childWidth)
     .height(this.childHeight)
@@ -76,7 +79,8 @@ struct MarginPage {
           Menu() {
             MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
               .margin(this._margin).key(this.componentKey).width('100%').height('100%')
-          }.backgroundColor(Color.Yellow)
+          }
+          .backgroundColor(Color.Yellow)
           .width(this.parentWidth)
           .height(this.parentHeight)
           .padding(0)
@@ -88,7 +92,8 @@ struct MarginPage {
             MenuItemGroup({ header: 'MenuItemGroup' }) {
               MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
             }.margin(this._margin).key(this.componentKey).width('100%').height('100%')
-          }.backgroundColor(Color.Yellow)
+          }
+          .backgroundColor(Color.Yellow)
           .width(this.parentWidth)
           .height(this.parentHeight)
           .padding(0)
@@ -200,7 +205,7 @@ struct MarginPage {
             Marquee({
               start: true,
               step: 50,
-              loop: Infinity,
+              loop: Number.MAX_VALUE,
               fromStart: true,
               src: 'Running Marquee starts rolling'
             }).commonStyle()
@@ -324,7 +329,7 @@ struct MarginPage {
               breakpoints: { value: ['400vp', '600vp', '800vp'], reference: BreakpointsReference.WindowSize },
               direction: GridRowDirection.Row
             }) {
-              ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color) => {
+              ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color: Color) => {
                 GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                   Row().width('100%').height('20vp')
                 }.borderColor(color).borderWidth(2)
@@ -378,19 +383,19 @@ struct MarginPage {
           } else if (this.targetView == 'Scroll') {
             Scroll() {
               Column() {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                   Text('Scroll' + item.toString())
                     .width('90%')
                     .height(150)
                     .backgroundColor(Color.White)
                     .textAlign(TextAlign.Center)
-                }, item => item)
+                }, (item: number) => item.toString())
               }.width('100%')
             }.scrollBar(BarState.On).commonStyle()
           } else if (this.targetView == 'SideBarContainer') {
             SideBarContainer(SideBarContainerType.Embed) {
               Column() {
-                ForEach([1, 2, 3], (item) => {
+                ForEach([1, 2, 3], (item: number) => {
                   Column({ space: 5 }) {
                     Image($r('app.media.icon')).width(50).height(50)
                     Text('Index0' + item).fontSize(25)
@@ -409,9 +414,9 @@ struct MarginPage {
             }.commonStyle()
           } else if (this.targetView == 'Swiper') {
             Swiper() {
-              ForEach([1, 2, 3], (item: string) => {
+              ForEach([1, 2, 3], (item: number) => {
                 Text('Swiper' + item).width('90%').height(50)
-              }, item => item)
+              }, (item: number) => item.toString())
             }.indicator(true).backgroundColor(Color.White).commonStyle()
           } else if (this.targetView == 'Tabs') {
             Tabs() {
@@ -428,7 +433,7 @@ struct MarginPage {
                     Image($r('app.media.icon')).width(50).height(50).objectFit(ImageFit.Fill)
                   }
                 }
-              }, item => item)
+              }, (item: number) => item.toString())
             }.commonStyle()
           }
           Button('button')
