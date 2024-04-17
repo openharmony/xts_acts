@@ -130,14 +130,16 @@ export default function ImageReceiverModuleTest() {
         afterAll(function () { console.info('afterAll case'); })
 
         /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_FUNCTION_SINGLE_PHOTO_001
-         * @tc.name      : ImageInput api
-         * @tc.desc      : ImageInput api
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_FUNCTION_SINGLE_PHOTO_0100
+         * @tc.name      : test get image receiver by creating output after shooting
+         * @tc.desc      : 1.prepare camera then take photo
+         *                 2.create image receiver
+         *                 3.put photo into image receiver
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_NDK_FUNCTION_SINGLE_PHOTO_001', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_NDK_FUNCTION_SINGLE_PHOTO_0100', 0, async function (done) {
             console.info(TAG + "--------------SUB_MULTIMEDIA_IMAGE_NDK_FUNCTION_SINGLE_PHOTO--------------");
             await createInput();
             createCameraSessionInstance();

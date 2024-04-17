@@ -1,6 +1,6 @@
 // @ts-nocheck
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -22,33 +22,6 @@ import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 // @ts-ignore
 import ndkTest from 'libImageReceiverTest.so'
 const TAG = "ImageReceiverTest: ";
-
-// Define global variables
-let captureLocation = {
-    latitude: 0,
-    longitude: 0,
-    altitude: 0,
-}
-
-let captureSetting = {
-    quality: cameraObj.QualityLevel.QUALITY_LEVEL_LOW,
-    rotation: cameraObj.ImageRotation.ROTATION_0,
-    location: captureLocation,
-    mirror: false
-}
-
-let mCameraManager;
-let cameraOutputCap;
-let mCameraDevicesArray;
-let mCameraSession;
-let mCameraNum;
-let mCameraInput;
-let mPreviewOutput;
-let mPhotoSurface;
-let mPhotoOutput;
-let mTestImage;
-let context = featureAbility.getContext();
-const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 
 export default function ImageReceiverTest() {
     async function getPermission() {
@@ -85,7 +58,37 @@ export default function ImageReceiverTest() {
         const WIDTH = 1280;
         const HEIGHT = 960;
         const CAPACITY = 8;
+        const SET_WIDTH = 1024;
+        const SET_HEIGHT = 768;
+        const SET_CAPACITY = 6;
+        const ERR_PARA = -1;
         const Jpg_Stride = 1;
+        let captureLocation = {
+            latitude: 0,
+            longitude: 0,
+            altitude: 0,
+        }
+
+        let captureSetting = {
+            quality: cameraObj.QualityLevel.QUALITY_LEVEL_LOW,
+            rotation: cameraObj.ImageRotation.ROTATION_0,
+            location: captureLocation,
+            mirror: false
+        }
+
+        let mCameraManager;
+        let cameraOutputCap;
+        let mCameraDevicesArray;
+        let mCameraSession;
+        let mCameraNum;
+        let mCameraInput;
+        let mPreviewOutput;
+        let mPhotoSurface;
+        let mPhotoOutput;
+        let nextImage;
+        let lastestImage;
+        let context = featureAbility.getContext();
+        const delegator = abilityDelegatorRegistry.getAbilityDelegator();
         function logger(caseName) {
             return {
                 myName: caseName,
@@ -107,27 +110,6 @@ export default function ImageReceiverTest() {
         afterEach(function () { console.info('afterEach case'); })
 
         afterAll(function () { console.info('afterAll case'); })
-
-        function createReceiverErr(done, log, ...params) {
-            let mlg = logger(log);
-            try {
-                mlg.log(log);
-                let options = ndkTest.JsCreateImageReceiverOptions(params);
-                let myReceiverOptions = ndkTest.JsReleaseImageReceiverOptions(options);
-                let myReceiver = ndkTest.JsCreateImageReceiver(options);
-                expect(myReceiverOptions == undefined).assertTrue();
-                expect(myReceiver == undefined).assertTrue();
-                done();
-            } catch (error) {
-                mlg.log("Test exception " + error);
-                expect().assertFail();
-                done();
-            }
-        }
-
-        function isString(value) {
-            return typeof value === "string";
-        }
 
         function isEmpty(data) {
             if (data == null || data == undefined) {
@@ -259,27 +241,100 @@ export default function ImageReceiverTest() {
         }
 
         /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0001
-         * @tc.name      : JsCreateImageReceiver
-         * @tc.desc      : 1.set width,height,capacity
-         *               : 2.JsCreateImageReceiver
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0100
+         * @tc.name      : test release image receiver options
+         * @tc.desc      : 1.create image receiver options
+         *                 2.create image receiver
+         *                 3.release image receiver options
+         *                 4.recreate image receiver failed
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0001', 0, async function (done) {
-            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0001");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0100', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0100");
+            try {
+                let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
+                let myReceiver = ndkTest.JsCreateImageReceiver(options);
+                expect(myReceiver != undefined).assertTrue();
+                mlg.log("Create receiver success");
+                let ret = ndkTest.JsReleaseImageReceiverOptions(options);
+                expect(ret != undefined).assertTrue();
+                ret = ndkTest.JsReleaseImageReceiverOptions(options);
+                expect(ret == undefined).assertTrue();
+                mlg.log("Release receiver options success");
+                let newReceiver = ndkTest.JsCreateImageReceiver(options);
+                expect(newReceiver == undefined).assertTrue();
+                mlg.log("Can't recreate receiver, case success.");
+                done();
+            } catch (error) {
+                mlg.log("Test exception " + error);
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0200
+         * @tc.name      : test release image receiver
+         * @tc.desc      : 1.create image receiver options
+         *                 2.create image receiver
+         *                 3.release image receiver
+         *                 4.get image receiver properties failed
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0200', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0200");
+            try {
+                let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
+                let myReceiver = ndkTest.JsCreateImageReceiver(options);
+                expect(myReceiver != undefined).assertTrue();
+                mlg.log("Create receiver success");
+                let ret = ndkTest.JsReleaseImageReceiver(myReceiver);
+                expect(ret != undefined).assertTrue();
+                ret = ndkTest.JsReleaseImageReceiver(myReceiver);
+                expect(ret == undefined).assertTrue();
+                mlg.log("Release receiver success");
+                let size = ndkTest.JsGetSize(myReceiver);
+                let capacity = ndkTest.JsGetCapacity(myReceiver);
+                expect(size == undefined).assertTrue();
+                expect(capacity == undefined).assertTrue();
+                mlg.log("Can't get receiver properties, case success.");
+                done();
+            } catch (error) {
+                mlg.log("Test exception " + error);
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0100
+         * @tc.name      : test set callback image receiver 
+         * @tc.desc      : 1.create image receiver options
+         *                 2.create image receiver
+         *                 3.make receiver callback on, take photo, check callback status
+         *                 4.make receiver callback off, take photo, check callback status
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0100', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0100");
             getCameraManagerInstance();
             getCameraSupportDevicesArray();
             try {
                 let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
                 let myReceiver = ndkTest.JsCreateImageReceiver(options);
-                ndkTest.JsReleaseImageReceiverOptions(options);
+                let capacity = CAPACITY;
 
                 let onRet = ndkTest.JsOn(myReceiver, (receiver) => {
                     mlg.log("Image receiver callback success " + JSON.stringify(receiver));
-                    mTestImage = ndkTest.JsReadNextImage(myReceiver);
-                    mlg.log("OnCallback: mTestImage 1 " + JSON.stringify(mTestImage));
+                    capacity = capacity + 1;
+                    ndkTest.JsImageReceiverOptionsSetCapacity(options, capacity);
+                    mlg.log("OnCallback success");
                     expect(receiver != undefined).assertTrue();
                 });
                 expect(onRet != undefined).assertTrue();
@@ -299,9 +354,10 @@ export default function ImageReceiverTest() {
                     console.info('capture failed :' + err);
                 });
                 await sleep(1000);
-                mTestImage = ndkTest.JsReadNextImage(myReceiver);
-                mlg.log("mTestImage 1 " + JSON.stringify(mTestImage));
-                ndkTest.JsReleaseImage(mTestImage);
+                nextImage = ndkTest.JsReadNextImage(myReceiver);
+                mlg.log("mTestImage 1 " + JSON.stringify(nextImage));
+                let capacityAfterOn = ndkTest.JsImageReceiverOptionsGetCapacity(options);
+                expect( capacityAfterOn == CAPACITY + 1).assertTrue();
 
                 let onOFF = ndkTest.JsOff(myReceiver);
                 expect(onOFF != undefined).assertTrue();
@@ -312,11 +368,14 @@ export default function ImageReceiverTest() {
                     console.info('capture failed: ' + err);
                 });
                 await sleep(1000);
-                mTestImage = ndkTest.JsReadLatestImage(myReceiver);
-                mlg.log("mTestImage 2 " + JSON.stringify(mTestImage));
+                lastestImage = ndkTest.JsReadLatestImage(myReceiver);
+                mlg.log("mTestImage 2 " + JSON.stringify(lastestImage));
+                let capacityAfterOff = ndkTest.JsImageReceiverOptionsGetCapacity(options);
+                expect( capacityAfterOff == CAPACITY + 1).assertTrue();
 
                 await mCameraSession.stop();
                 await sleep(1000);
+                ndkTest.JsReleaseImageReceiverOptions(options);
                 ndkTest.JsReleaseImageReceiver(myReceiver);
                 done();
             } catch (error) {
@@ -327,29 +386,29 @@ export default function ImageReceiverTest() {
         })
 
         /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0100
-         * @tc.name      : JsCreateImageReceiver
-         * @tc.desc      : 1.set width,height,capacity
-         *               : 2.JsCreateImageReceiver
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0200
+         * @tc.name      : test set image receiver options
+         * @tc.desc      : 1.create image receiver options
+         *                 2.set image receiver options
+         *                 3.create image receiver
+         *                 4.get image receiver properties
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0100', 0, async function (done) {
-            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0100");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0200', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0200");
             try {
-                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0100");
                 let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
-                let myReceiver = ndkTest.JsCreateImageReceiver(options);
-                expect(myReceiver != undefined).assertTrue();
-                let ret = ndkTest.JsReleaseImageReceiverOptions(options);
-                expect(ret != undefined).assertTrue();
-                ret = ndkTest.JsReleaseImageReceiverOptions(options);
-                expect(ret == undefined).assertTrue();
-                ret = ndkTest.JsReleaseImageReceiver(myReceiver);
-                expect(ret != undefined).assertTrue();
-                ret = ndkTest.JsReleaseImageReceiver(myReceiver);
-                expect(ret == undefined).assertTrue();
+                ndkTest.JsImageReceiverOptionsSetCapacity(options, SET_CAPACITY);
+                ndkTest.JsImageReceiverOptionsSetSize(options, SET_WIDTH, SET_HEIGHT);
+                mlg.log("Set options finished");
+                let imageReceiver = ndkTest.JsCreateImageReceiver(options);
+                let receiverSize = ndkTest.JsGetSize(imageReceiver);
+                let receiverCapacity = ndkTest.JsGetCapacity(imageReceiver);
+                expect(receiverSize.width == SET_WIDTH).assertTrue();
+                expect(receiverSize.height == SET_HEIGHT).assertTrue();
+                expect(receiverCapacity == SET_CAPACITY).assertTrue();
                 done();
             } catch (error) {
                 mlg.log("Test exception " + error);
@@ -359,77 +418,69 @@ export default function ImageReceiverTest() {
         })
 
         /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0100
-         * @tc.name      : JsCreateImageReceiver_1
-         * @tc.desc      : 1.set width,height,capacity
-         *               : 2.JsCreateImageReceiver
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0300
+         * @tc.name      : test set image receiver options fail
+         * @tc.desc      : 1.create image receiver options
+         *                 2.set image receiver options with wrong parameter type
+         *                 3.create image receiver
+         *                 4.get image receiver properties
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0100', 0, async function (done) {
-            createReceiverErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0100", 'a', HEIGHT, CAPACITY);
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0200
-         * @tc.name      : JsCreateImageReceiver_2
-         * @tc.desc      : 1.set width,height,capacity
-         *               : 2.JsCreateImageReceiver
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0200', 0, async function (done) {
-            createReceiverErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0200", WIDTH, { a: 1 }, CAPACITY);
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0300
-         * @tc.name      : JsCreateImageReceiver_3
-         * @tc.desc      : 1.set width,height,capacity
-         *               : 2.JsCreateImageReceiver
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0300', 0, async function (done) {
-            createReceiverErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0300", WIDTH, HEIGHT, CAPACITY);
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0400
-         * @tc.name      : JsCreateImageReceiver_4
-         * @tc.desc      : 1.set width,height,capacity
-         *               : 2.JsCreateImageReceiver
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0400', 0, async function (done) {
-            createReceiverErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0400", WIDTH, HEIGHT, true);
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0200
-         * @tc.name      : JsGetSize
-         * @tc.desc      : 1.set width,height,capacity
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0200', 0, async function (done) {
-            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0200");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0300', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0300");
             try {
-                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0200");
+                let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
+                ndkTest.JsImageReceiverOptionsSetCapacity(options, true);
+                ndkTest.JsImageReceiverOptionsSetSize(options, 'width', 'height');
+                mlg.log("Set options finished");
+                let imageReceiver = ndkTest.JsCreateImageReceiver(options);
+                let receiverSize = ndkTest.JsGetSize(imageReceiver);
+                let receiverCapacity = ndkTest.JsGetCapacity(imageReceiver);
+                expect(receiverSize.width == WIDTH).assertTrue();
+                expect(receiverSize.height == HEIGHT).assertTrue();
+                expect(receiverCapacity == CAPACITY).assertTrue();
+                done();
+            } catch (error) {
+                mlg.log("Test exception " + error);
+                expect().assertTrue();
+                done();
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0400
+         * @tc.name      : test get image receiver properties
+         * @tc.desc      : 1.create image receiver options
+         *                 2.create image receiver
+         *                 3.get image receiver properties
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0400', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0400");
+            try {
                 let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
                 let myReceiver = ndkTest.JsCreateImageReceiver(options);
-
-                let size = ndkTest.JsGetSize(myReceiver);
-                let capacity = ndkTest.JsGetCapacity(myReceiver);
-                expect(size.width == WIDTH).assertTrue();
-                expect(size.height == HEIGHT).assertTrue();
-                expect(capacity == CAPACITY).assertTrue();
+                let optionsSize = ndkTest.JsImageReceiverOptionsGetSize(options);
+                let optionsCapacity = ndkTest.JsImageReceiverOptionsGetCapacity(options);
+                let receiverSize = ndkTest.JsGetSize(myReceiver);
+                let receiverCapacity = ndkTest.JsGetCapacity(myReceiver); 
+                let lastestSize = ndkTest.JsGetImageSize(lastestImage);
+                let nextSize = ndkTest.JsGetImageSize(nextImage);
+                mlg.log("Get all properties success");
+                expect(optionsSize.width == WIDTH).assertTrue();
+                expect(optionsSize.height == HEIGHT).assertTrue();
+                expect(optionsCapacity == CAPACITY).assertTrue();
+                expect(receiverSize.width == WIDTH).assertTrue();
+                expect(receiverSize.height == HEIGHT).assertTrue();
+                expect(receiverCapacity == CAPACITY).assertTrue();
+                expect(lastestSize.height > 0).assertTrue();
+                expect(lastestSize.width > 0).assertTrue();
+                expect(nextSize.height > 0).assertTrue();
+                expect(nextSize.width > 0).assertTrue();
                 done();
             } catch (error) {
                 mlg.log("Test exception " + error);
@@ -439,115 +490,42 @@ export default function ImageReceiverTest() {
         })
 
         /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0300
-         * @tc.name      : JsGetReceivingSurfaceId
-         * @tc.desc      : receiver test
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500
+         * @tc.name      : test get image properties in image receiver
+         * @tc.desc      : 1.create image receiver options
+         *                 2.create image receiver
+         *                 3.get image in receiver
+         *                 4.get image properties
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0300', 0, async function (done) {
-            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0300");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500");
             try {
-                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0300");
-                let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
-                let myReceiver = ndkTest.JsCreateImageReceiver(options);
-                let sId = ndkTest.JsGetReceivingSurfaceId(myReceiver);
-                mlg.log("sId " + sId);
-                expect(isString(sId)).assertTrue();
-                done();
-            } catch (error) {
-                mlg.log("Test exception " + error);
-                expect().assertFail();
-                done();
-            }
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0600
-         * @tc.name      : JsOn
-         * @tc.desc      : receiver test
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0600', 0, async function (done) {
-            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0600");
-            try {
-                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0600");
-                let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
-                let myReceiver = ndkTest.JsCreateImageReceiver(options);
-
-                let onRet = ndkTest.JsOn(myReceiver, (receiver) => {
-                    mlg.log("Image receiver callback success " + JSON.stringify(receiver));
-                    expect(receiver != undefined).assertTrue();
-                });
-                mlg.log("onRet " + JSON.stringify(onRet));
-                await sleep(2000);
-                expect(onRet != undefined).assertTrue();
-                let onOFF = ndkTest.JsOff(myReceiver);
-                expect(onOFF != undefined).assertTrue();
-                done();
-            } catch (error) {
-                mlg.log("Test exception " + error);
-                expect().assertFail();
-                done();
-            }
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0900
-         * @tc.name      : JsGetImageFormat
-         * @tc.desc      : receiver test
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0900', 0, async function (done) {
-            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0900");
-            try {
-                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0900");
-                let types = ndkTest.JsGetImageComponentTypes(mTestImage);
+                let size = ndkTest.JsGetImageSize(lastestImage);
+                expect(size.height > 0).assertTrue();
+                expect(size.width > 0).assertTrue();
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500" + size.height);
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500" + size.width);
+                let types = ndkTest.JsGetImageComponentTypes(lastestImage);
                 expect(Array.isArray(types)).assertEqual(true);
                 expect(types.length > 0).assertEqual(true);
                 mlg.log("JsGetImageComponentTypes types " + JSON.stringify(types));
                 let type = types[0];
-                let nativeBuffer = ndkTest.JsGetImageByteBuffer(mTestImage, type);
-                let bufferSize = ndkTest.JsGetImageBufferSize(mTestImage, type);
-                let rowStride = ndkTest.JsGetImageRowStride(mTestImage, type);
-                let pixelStride = ndkTest.JsGetImagePixelStride(mTestImage, type);
+                let nativeBuffer = ndkTest.JsGetImageByteBuffer(lastestImage, type);
+                let bufferSize = ndkTest.JsGetImageBufferSize(lastestImage, type);
+                let rowStride = ndkTest.JsGetImageRowStride(lastestImage, type);
+                let pixelStride = ndkTest.JsGetImagePixelStride(lastestImage, type);
+                ndkTest.JsReleaseImage(lastestImage);                
+                ndkTest.JsReleaseImage(nextImage);
+                let sizeAfterRelease = ndkTest.JsGetImageSize(lastestImage);
                 expect(bufferSize > 0).assertTrue();
                 expect(nativeBuffer != undefined).assertTrue();
                 expect(type >= 0).assertTrue();
                 expect(rowStride > 0).assertTrue();
                 expect(pixelStride == Jpg_Stride).assertTrue();
-                done();
-            } catch (error) {
-                mlg.log("Test exception " + error);
-                expect().assertFail();
-                done();
-            }
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_1600
-         * @tc.name      : JsGetImageSize
-         * @tc.desc      : receiver test
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_1600', 0, async function (done) {
-            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_1600");
-            try {
-                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_1600");
-                let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
-                let size = ndkTest.JsImageReceiverOptionsGetSize(options);
-                expect(size.width == WIDTH).assertTrue();
-                expect(size.height == HEIGHT).assertTrue();
-                ndkTest.JsImageReceiverOptionsSetCapacity(options, CAPACITY);
-                let capacity = ndkTest.JsImageReceiverOptionsGetCapacity(options);
-                expect(capacity == CAPACITY).assertTrue();
+                expect(sizeAfterRelease == undefined).assertTrue();
                 done();
             } catch (error) {
                 mlg.log("Test exception " + error);

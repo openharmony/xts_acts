@@ -186,9 +186,6 @@ static napi_value CreatePreviewOutput(napi_env env, napi_callback_info info)
     return result;
 }
 
-#define FILE_PATH "/data/local/tmp/test.jpg"
-#define PARAM_0644 0644
-
 static void OnBufferAvaliable(OH_ImageReceiverNative*)
 {
     OH_ImageNative *image = nullptr;
