@@ -2,6 +2,7 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/text/textStyle",
+        "MainAbility/pages/text/TextState",
         "MainAbility/pages/marquee/marquee",
         "MainAbility/pages/text/ImageText",
         "MainAbility/pages/text/textDataDataDetectorConfig",
