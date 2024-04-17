@@ -32,7 +32,7 @@ import toggleJsunit from './Toggle/ToggleJsunit.test';
 import checkboxJsunit from './CheckboxTest/CheckboxJsunit.test';
 import checkboxGroupJsunit from './checkboxGroup/CheckboxGroupJsunit.test';
 import selectJsunit from './SelectTest/SelectJsunit1.test';
-import sliderJsunit from './slider/SliderJsunit.test';
+import sliderJsunit1 from './slider/SliderJsunit1.test';
 export default function testsuite() {
   TimePicker1Test()
   SelectAttr()
@@ -49,7 +49,7 @@ export default function testsuite() {
   checkboxJsunit()
   checkboxGroupJsunit()
   selectJsunit()
-  sliderJsunit()
+  sliderJsunit1()
   
   sliderTest()
   SliderTestSec()

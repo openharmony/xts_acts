@@ -17,11 +17,11 @@ import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
-export default function sliderJsunit() {
+export default function sliderJsunit1() {
   describe('appInfoTest_five_3', () => {
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/slider/slider',
+        url: 'MainAbility/pages/slider1/slider',
       }
       try {
         router.clear();
