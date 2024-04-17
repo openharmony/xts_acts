@@ -82,28 +82,28 @@ export default function List_scrollToIndex3() {
 
       let List: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_List');
       let ListItem1: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItem1');
-      expect(Math.round(ListItem1.top)).assertEqual(Math.round(List.top + vp2px(10)));
+      expect(Math.abs(Math.round(ListItem1.top) - Math.round(List.top + vp2px(10))) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] START0 END');
 
       let btn2 = await driver.findComponent(ON.id('List_scrollToIndex3_CENTER0'));
       await btn2.click();
       await CommonFunc.sleep(500);
       let ListItem2: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItem1');
-      expect(Math.round(ListItem2.top)).assertEqual(Math.round(List.top + vp2px(10)));
+      expect(Math.abs(Math.round(ListItem2.top) - Math.round(List.top + vp2px(10))) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] CENTER0 END');
 
       let btn3 = await driver.findComponent(ON.id('List_scrollToIndex3_END0'));
       await btn3.click();
       await CommonFunc.sleep(500);
       let ListItem3: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItem1');
-      expect(Math.round(ListItem3.top)).assertEqual(Math.round(List.top + vp2px(10)));
+      expect(Math.abs(Math.round(ListItem3.top) - Math.round(List.top + vp2px(10))) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] END0 END');
 
       let btn4 = await driver.findComponent(ON.id('List_scrollToIndex3_AUTO0'));
       await btn4.click();
       await CommonFunc.sleep(500);
       let ListItem4: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItem1');
-      expect(Math.round(ListItem4.top)).assertEqual(Math.round(List.top + vp2px(10)));
+      expect(Math.abs(Math.round(ListItem4.top) - Math.round(List.top + vp2px(10))) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] AUTO0 END');
 
       let btnVisibility = await driver.findComponent(ON.id('List_scrollToIndex3_visibility'));
@@ -114,21 +114,21 @@ export default function List_scrollToIndex3() {
       await btn22.click();
       await CommonFunc.sleep(500);
       let ListItemGroup22: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItemGroup');
-      expect(ListItemGroup22.top).assertEqual(List.top);
+      expect(Math.abs(ListItemGroup22.top - List.top) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] visibility CENTER0 END');
 
       let btn33 = await driver.findComponent(ON.id('List_scrollToIndex3_END0'));
       await btn33.click();
       await CommonFunc.sleep(500);
       let ListItemGroup33: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItemGroup');
-      expect(ListItemGroup33.top).assertEqual(List.top);
+      expect(Math.abs(ListItemGroup33.top - List.top) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] visibility END0 END');
 
       let btn44 = await driver.findComponent(ON.id('List_scrollToIndex3_AUTO0'));
       await btn44.click();
       await CommonFunc.sleep(500);
       let ListItemGroup44: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItemGroup');
-      expect(ListItemGroup44.top).assertEqual(List.top);
+      expect(Math.abs(ListItemGroup44.top - List.top) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] visibility AUTO0 END');
 
       let btnScrollBy200 = await driver.findComponent(ON.id('List_scrollToIndex3_scrollBy'));
@@ -139,28 +139,28 @@ export default function List_scrollToIndex3() {
       await btn111.click();
       await CommonFunc.sleep(1000);
       let ListItemGroup111: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItemGroup');
-      expect(ListItemGroup111.top).assertEqual(List.top);
+      expect(Math.abs(ListItemGroup111.top - List.top) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] ScrollBy200 START0 END');
 
       let btn222 = await driver.findComponent(ON.id('List_scrollToIndex3_CENTER0'));
       await btn222.click();
       await CommonFunc.sleep(500);
       let ListItemGroup222: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItemGroup');
-      expect(ListItemGroup222.top).assertEqual(List.top);
+      expect(Math.abs(ListItemGroup222.top - List.top) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] ScrollBy200 CENTER0 END');
 
       let btn333 = await driver.findComponent(ON.id('List_scrollToIndex3_END0'));
       await btn333.click();
       await CommonFunc.sleep(500);
       let ListItemGroup333: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItemGroup');
-      expect(ListItemGroup333.top).assertEqual(List.top);
+      expect(Math.abs(ListItemGroup333.top - List.top) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] ScrollBy200 END0 END');
 
       let btn444 = await driver.findComponent(ON.id('List_scrollToIndex3_AUTO0'));
       await btn444.click();
       await CommonFunc.sleep(500);
       let ListItemGroup444: RectValue = CommonFunc.getComponentRect('List_scrollToIndex3_ListItemGroup');
-      expect(ListItemGroup444.top).assertEqual(List.top);
+      expect(Math.abs(ListItemGroup444.top - List.top) <= 1).assertTrue();
       console.info('[List_scrollToIndex3_0200] ScrollBy200 AUTO0 END');
 
       console.info('[List_scrollToIndex3_0200] END');

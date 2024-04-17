@@ -23,6 +23,10 @@ import TextPickerSec from './TextPicker/TextPickerSec';
 import textpickermultiTest from './TextPicker/TextPickerMulti';
 import sliderTest from './SliderTest/SliderTest';
 import SliderTestSec from './SliderTest/SliderTestSec';
+import buttonJsunit from './ButtonTest/ButtonJsunit.test';
+import ratingJsunit from './RatingTest/RatingJsunit.test';
+import sliderJsunit from './SliderTest/SliderJsunit.test';
+import TimePicker1Test from './TimePickerTest/TimePicker1.test';
 
 import toggleJsunit from './Toggle/ToggleJsunit.test';
 import checkboxJsunit from './CheckboxTest/CheckboxJsunit.test';
@@ -30,6 +34,7 @@ import checkboxGroupJsunit from './checkboxGroup/CheckboxGroupJsunit.test';
 import selectJsunit from './SelectTest/SelectJsunit1.test';
 import sliderJsunit from './slider/SliderJsunit.test';
 export default function testsuite() {
+  TimePicker1Test()
   SelectAttr()
   TimePickerTest()
   selectoptionwithJsSuit()
@@ -48,4 +53,7 @@ export default function testsuite() {
   
   sliderTest()
   SliderTestSec()
+  buttonJsunit()
+  ratingJsunit()
+  sliderJsunit()
 }

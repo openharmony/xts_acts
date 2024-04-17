@@ -24,6 +24,7 @@ struct buttonEnabledDemo {
 
   @State but4: string = '鼠标事件onHover-禁用'
   @State but5: string = '鼠标事件onMouse-禁用'
+  @State but7: string = '鼠标事件onMouse-禁用'
   @State action: string = ''
   @State mouseBtn: string = ''
 
@@ -70,11 +71,29 @@ struct buttonEnabledDemo {
 
       Button(this.but5)
         .key("btnEnd5")
-        .onClick((event: MouseEvent) => {
-          switch (event.button){
+        .onClick((event: ClickEvent) => {
+          this.but5 = '鼠标事件onMouse 已触发'
+        })
+        .enabled(false)
+
+      Button(this.but6)
+        .key("btnEnd6")
+        .focusable(true)
+        .onFocus(() => {
+          this.but6 = '焦点事件onFocus 已触发'
+        })
+        .onBlur(() => {
+          this.but6 = '焦点事件onBlur 已触发'
+        })
+        .enabled(false)
+
+      Button(this.but7)
+        .key("btnEnd7")
+        .onMouse((event: MouseEvent) => {
+          switch (event.button) {
             case MouseButton.None:
-             this.mouseBtn = 'None';
-             break;
+              this.mouseBtn = 'None';
+              break;
             case MouseButton.Left:
               this.mouseBtn = 'Left';
               break;
@@ -91,7 +110,7 @@ struct buttonEnabledDemo {
               this.mouseBtn = 'Middle';
               break;
           }
-          switch (event.action){
+          switch (event.action) {
             case MouseAction.Hover:
               this.action = 'Hover';
               break;
@@ -105,18 +124,7 @@ struct buttonEnabledDemo {
               this.action = 'Release';
               break;
           }
-          this.but5 = '鼠标事件onMouse 已触发'
-        })
-        .enabled(false)
-
-      Button(this.but6)
-        .key("btnEnd6")
-        .focusable(true)
-        .onFocus(() => {
-          this.but6 = '焦点事件onFocus 已触发'
-        })
-        .onBlur(() => {
-          this.but6 = '焦点事件onBlur 已触发'
+          this.but7 = '鼠标事件onMouse 已触发'
         })
         .enabled(false)
     }

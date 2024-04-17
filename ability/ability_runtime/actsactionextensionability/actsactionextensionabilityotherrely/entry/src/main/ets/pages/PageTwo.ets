@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 @Entry
 @Component
 struct PageTwo {
-  @State message: string = 'Second application';
+  @State message: string = 'Second application'
 
   build() {
     Row() {

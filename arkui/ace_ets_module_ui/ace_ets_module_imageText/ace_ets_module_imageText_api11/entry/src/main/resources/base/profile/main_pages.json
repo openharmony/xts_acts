@@ -2,6 +2,7 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/text/textStyle",
+        "MainAbility/pages/text/TextState",
         "MainAbility/pages/marquee/marquee",
         "MainAbility/pages/text/ImageText",
         "MainAbility/pages/text/textDataDataDetectorConfig",
@@ -108,6 +109,20 @@
         "MainAbility/pages/image/ImageAttr",
         "MainAbility/pages/text/TextfieldMulti",
         "MainAbility/pages/text/TextfieldOther",
-        "MainAbility/pages/text/TextfieldSingle"
+        "MainAbility/pages/text/TextfieldSingle",
+
+        "MainAbility/pages/text/curve",
+        "MainAbility/pages/text/backgroundAndSizeSetting",
+        "MainAbility/pages/text/border",
+        "MainAbility/pages/ImageAnimator/fillMode",
+        "MainAbility/pages/image/ohosMatrix4",
+        "MainAbility/pages/text/positionSetting",
+        "MainAbility/pages/image/shapeClipping",
+        "MainAbility/pages/TextArea/TextArea",
+        "MainAbility/pages/TextInput/TextInput",
+        "MainAbility/pages/text/Prop",
+        "MainAbility/pages/image/Image",
+        "MainAbility/pages/span/Span",
+        "MainAbility/pages/text/Text"
     ]
 }

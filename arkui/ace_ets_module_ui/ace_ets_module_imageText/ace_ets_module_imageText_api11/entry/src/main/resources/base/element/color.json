@@ -7,6 +7,18 @@
     {
       "name": "color_world",
       "value": "#ff0000ff"
+    },
+    {
+      "name": "start_window_background",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "Divider_color",
+      "value": "#000000"
+    },
+    {
+      "name": "textShadow_Color",
+      "value": "#FFFD0000"
     }
   ]
 }

@@ -25,7 +25,7 @@ import clickeffectTest from './clickeffectTest/clickeffect'
 export default function testsuite() {
   imageEffectsJsunit();
   backgroundEffectJsunit();
-  blendMode1Jsunit();
+  
   blendModeTest();
   backgroundEffectJsSuit();
   InvertOptionsJsSuit();

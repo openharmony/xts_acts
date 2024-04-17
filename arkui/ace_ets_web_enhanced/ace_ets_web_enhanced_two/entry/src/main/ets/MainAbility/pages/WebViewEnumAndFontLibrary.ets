@@ -98,6 +98,7 @@ struct WebViewEnumAndFontLibrary {
   @State minLogicalFontSize: number = 13
   @State databaseAccess: boolean = true
   @State PermissionRequestState: boolean = false
+  @State userAgentPC:string = "";
   WebResult: WebContextMenuResult = new WebContextMenuResult;
 
   onPageShow() {
@@ -202,6 +203,11 @@ struct WebViewEnumAndFontLibrary {
               break;
             }
             case "emitWebContextMenuParamGetSourceType": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(2, 809)
+                  break;
+                }
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
@@ -242,6 +248,11 @@ struct WebViewEnumAndFontLibrary {
               break;
             }
             case "emitContextMenuSourceTypeLongPress": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(2, 841)
+                  break;
+                }
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();

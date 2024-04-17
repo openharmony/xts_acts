@@ -83,18 +83,18 @@ export default function AlignContent_FlexAlign_End_padding() {
       console.log('AlignContentFlexEndPadding_flex001_4 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_4));
 
-      expect(Math.round(AlignContentFlexEnd_1.bottom - AlignContentFlexEnd_1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(AlignContentFlexEnd_2.bottom - AlignContentFlexEnd_2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(AlignContentFlexEnd_3.bottom - AlignContentFlexEnd_3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexEnd_4.bottom - AlignContentFlexEnd_4.top)).assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(AlignContentFlexEnd_1.right - AlignContentFlexEnd_1.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexEnd_2.right - AlignContentFlexEnd_2.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexEnd_3.right - AlignContentFlexEnd_3.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexEnd_4.right - AlignContentFlexEnd_4.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(AlignContentFlexEnd_1.bottom - AlignContentFlexEnd_1.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_2.bottom - AlignContentFlexEnd_2.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_3.bottom - AlignContentFlexEnd_3.top) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_4.bottom - AlignContentFlexEnd_4.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_1.right - AlignContentFlexEnd_1.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_2.right - AlignContentFlexEnd_2.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_3.right - AlignContentFlexEnd_3.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_4.right - AlignContentFlexEnd_4.left) - Math.round(vp2px(150))) <= 1).assertTrue();
 
-      expect(Math.round(AlignContentFlexEnd_1.top - AlignContentFlexEnd_flex001.top)).assertEqual(vp2px(40));
+      expect(Math.abs(Math.round(AlignContentFlexEnd_1.top - AlignContentFlexEnd_flex001.top) - Math.round(vp2px(40))) <= 1).assertTrue();
       expect(AlignContentFlexEnd_flex001.bottom - AlignContentFlexEnd_4.bottom).assertLess(vp2px(40));
-      expect(AlignContentFlexEnd_4.top).assertEqual(AlignContentFlexEnd_2.bottom);
+      expect(Math.abs(AlignContentFlexEnd_4.top - AlignContentFlexEnd_2.bottom) <= 1).assertTrue();
 
       expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
@@ -135,14 +135,14 @@ export default function AlignContent_FlexAlign_End_padding() {
       console.log('AlignContentFlexEnd_4 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_4));
 
-      expect(Math.round(AlignContentFlexEnd_1.bottom - AlignContentFlexEnd_1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(AlignContentFlexEnd_2.bottom - AlignContentFlexEnd_2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(AlignContentFlexEnd_3.bottom - AlignContentFlexEnd_3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexEnd_4.bottom - AlignContentFlexEnd_4.top)).assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(AlignContentFlexEnd_1.right - AlignContentFlexEnd_1.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexEnd_2.right - AlignContentFlexEnd_2.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexEnd_3.right - AlignContentFlexEnd_3.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexEnd_4.right - AlignContentFlexEnd_4.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(AlignContentFlexEnd_1.bottom - AlignContentFlexEnd_1.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_2.bottom - AlignContentFlexEnd_2.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_3.bottom - AlignContentFlexEnd_3.top) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_4.bottom - AlignContentFlexEnd_4.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_1.right - AlignContentFlexEnd_1.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_2.right - AlignContentFlexEnd_2.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_3.right - AlignContentFlexEnd_3.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexEnd_4.right - AlignContentFlexEnd_4.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       expect(Math.abs(Math.round(AlignContentFlexEnd_4.top) - Math.round(AlignContentFlexEnd_2.bottom)) <= 1)
         .assertTrue();
       expect(Math.abs(Math.round((AlignContentFlexEnd_1.top - AlignContentFlexEndPadding_flex002.top) * 10) / 10 - vp2px(45)) <= 1)

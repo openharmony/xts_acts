@@ -2,6 +2,13 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/gauge/gauge",
-        "MainAbility/pages/Counter/CounterEnable"
+        "MainAbility/pages/Counter/CounterEnable",
+        "MainAbility/pages/Progress/Progress",
+        "MainAbility/pages/Progress/ProgressSec",
+        "MainAbility/pages/Badge/Badge",
+        "MainAbility/pages/Counter/Counter",
+        "MainAbility/pages/DataPanel/DataPanel",
+        "MainAbility/pages/Progress/ProgressA",
+        "MainAbility/pages/Qrcode/Qrcode"
     ]
 }

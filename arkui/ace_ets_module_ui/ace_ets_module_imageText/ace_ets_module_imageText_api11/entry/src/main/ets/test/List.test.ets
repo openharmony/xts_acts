@@ -14,6 +14,7 @@
  */
 import marqueeJsunit from './marqueeTest/MarqueeJsunit.test';
 import textStyleJsunit from './textTest/TextStyleJsunit.test';
+import TextStateJsunit from './textTest/TextStateJsunit.test';
 import ImageTextTest from './textTest/ImageText.test';
 import TextAreaCallbackTest from './TextAreaTest/TextAreaCallback.test';
 import TextAreaSelectTest from './TextAreaTest/TextAreaSelect.test';
@@ -126,8 +127,22 @@ import richEditorApi7 from './RichEditorTest/richEditorApi/richEditorApi7.test';
 import richEditorApi8 from './RichEditorTest/richEditorApi/richEditorApi8.test';
 import search from './SearchTest/SearchTest.test';
 
+import CurveTest from './textTest/CurveJsunit.test';
+import backgroundAndSizeSettingJsunit from './textTest/BackgroundAndSizeSettingJsunit.test';
+import borderJsunit from './textTest/BorderJsunit.test';
+import fillModeJsunit from './ImageAnimator/FillModeJsunit.test';
+import ohosMatrix4Jsunit from './imageTest/OhosMatrix4Jsunit.test';
+import positionSettingJsunit from './textTest/PositionSettingJsunit.test';
+import ShapeClippingJsunit from './imageTest/ShapeClippingJsunit.test';
+import textAreaJsunit from './TextAreaTest/TextAreaJsunit.test';
+import textInputJsunit from './TextInputTest/TextInputJsunit.test';
+import propJsunit from './textTest/PropJsunit.test';
+import imageJsunit from './imageTest/ImageJsunit.test';
+import spanJsunit from './spanTest/SpanJsunit.test';
+import textJsunit from './textTest/TextJsunit.test';
 
 export default function testsuite() {
+  TextStateJsunit();
   richEditorApi4();
   richEditorApi5();
   richEditorApi6();
@@ -235,4 +250,18 @@ export default function testsuite() {
   TextfieldOtherTest()
   TextfieldSingleTest()
   TextfieldMultiTest()
+
+  CurveTest()
+  backgroundAndSizeSettingJsunit()
+  borderJsunit();
+  fillModeJsunit();
+  ohosMatrix4Jsunit();
+  positionSettingJsunit();
+  ShapeClippingJsunit();
+  textAreaJsunit();
+  textInputJsunit();
+  propJsunit();
+  imageJsunit()
+  spanJsunit()
+  textJsunit()
 }

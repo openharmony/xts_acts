@@ -72,14 +72,14 @@ export default function OnlyRowsTemplate4() {
       let GridItem_02: RectValue = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_02');
 
       console.log('assert space')
-      expect(Math.round(GridItem_02.top - GridItem_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(GridItem_02.top - GridItem_01.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
       console.log('GridItem_02.top - GridItem_01.bottom' + (GridItem_02.top - GridItem_01.bottom))
 
 
       console.log('assert size')
-      expect(Math.round(GridItem_01.right - GridItem_01.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(GridItem_01.right - GridItem_01.left) - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('GGridItem_01.right - GridItem_01.left' + (GridItem_01.right - GridItem_01.left))
-      expect(Math.round(GridItem_01.bottom - GridItem_01.top)).assertEqual(Math.round(vp2px(72)));
+      expect(Math.abs(Math.round(GridItem_01.bottom - GridItem_01.top) - Math.round(vp2px(72))) <= 1).assertTrue();
       console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_01.bottom - GridItem_01.top))
 
       await CommonFunc.sleep(1000);

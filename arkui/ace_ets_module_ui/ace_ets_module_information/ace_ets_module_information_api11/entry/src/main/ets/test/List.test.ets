@@ -14,8 +14,23 @@
  */
 import gaugeJsunit from './gaugeTest/GaugeJsunit.test';
 import CounterEnableTest from './CounterTest/CounterEnable.test'
+import progressTest from './ProgressTest/progress.test'
+import progressSecTest from './ProgressTest/progressSec.test'
+import badgeJsunit from './BadgeTest/BadgeJsunit.test';
+import counterJsunit from './CounterTest/CounterJsunit.test';
+import datapanelJsunit from './DataPanelTest/DataPanelJsunit.test';
+import progressJsunit from './ProgressTest/ProgressJsunit.test';
+import qrcodeJsunit from './QrcodeTest/QrcodeJsunit.test';
 
 export default function testsuite() {
   gaugeJsunit();
   CounterEnableTest();
+  progressTest();
+  progressSecTest();
+  badgeJsunit()
+  counterJsunit()
+  datapanelJsunit()
+  progressJsunit()
+  qrcodeJsunit()
+
 }

@@ -13,5 +13,8 @@
 
 group("ActsAceEtsModuleImageTextTest") {
   testonly = true
-  deps = [ "ace_ets_module_imageText_api11:ActsAceEtsModuleImageTextApi11Test" ]
+  deps = [
+    "ace_ets_module_imageText_api11:ActsAceEtsModuleImageTextApi11Test",
+    "ace_ets_module_imageText_api12:ActsAceEtsModuleImageTextApi12Test",
+  ]
 }

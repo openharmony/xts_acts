@@ -19,6 +19,7 @@ import menuSecondTest from './MenuTest/menusecond.test'
 import ToastShowMode from './promptActionTest/ToastShowMode.test';
 import promptTest from './promptActionTest/promptTest.test';
 import DialogTest from './promptActionTest/Dialog.test';
+import panelJsunit from './Panel/PanelJsunit.test';
 import panelClose from './panelTest/panelClose'
 
 export default function testsuite() {
@@ -29,5 +30,6 @@ export default function testsuite() {
   ToastShowMode()
   promptTest()
   DialogTest();
+  panelJsunit();
   panelClose()
 }

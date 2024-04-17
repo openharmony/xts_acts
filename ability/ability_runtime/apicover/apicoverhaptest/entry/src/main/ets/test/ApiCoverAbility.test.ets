@@ -356,6 +356,7 @@ export default function ApiCoverTest() {
         let connectOptions: common.ConnectOptions;
         let abilityStartCllback: common.AbilityStartCallback;
         let pacMap: common.PacMap;
+        let emContext: common.EmbeddableUIAbilityContext;
         let FApacMap: ability.PacMap;
         let vpnExtensionContext: common.VpnExtensionContext;
         console.log("killAllProcesses:" + JSON.stringify(appContext.killAllProcesses));
@@ -608,6 +609,7 @@ export default function ApiCoverTest() {
       expect('ohos.extra.param.key.shareAbstract').assertEqual(wantConstant.Params.SHARE_ABSTRACT_KEY)
       expect('ohos.extra.param.key.shareUrl').assertEqual(wantConstant.Params.SHARE_URL_KEY)
       expect('ohos.ability.params.abilityRecoveryRestart').assertEqual(wantConstant.Params.ABILITY_RECOVERY_RESTART)
+      expect('ohos.extra.param.key.showMode').assertEqual(wantConstant.Params.SHOW_MODE_KEY)
       done()
     });
 

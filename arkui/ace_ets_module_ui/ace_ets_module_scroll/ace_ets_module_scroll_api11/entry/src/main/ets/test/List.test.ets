@@ -84,6 +84,7 @@ import listItemJsunit from './ListTest/ListItemJsunit.test';
 import swiperJsunit2 from './SwiperTest/SwiperJsunit2.test';
 import tabJsunit from './TabsTest/TabJsunit.test';
 
+import ScrollJsunit from './ScrollTest/ScrollJsunit.test';
 export default function testsuite() {
   listJsunit();
   swiperJsunit();
@@ -157,4 +158,5 @@ export default function testsuite() {
   swiperItemMargin()
   swiperItemPadMar()
   swiperItemVisibility()
+  ScrollJsunit()
 }

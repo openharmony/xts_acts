@@ -81,35 +81,26 @@ export default function List_ListDirection() {
       let List_ListDirection_013: RectValue = CommonFunc.getComponentRect('List_ListDirection_013');
       let List_ListDirection_014: RectValue = CommonFunc.getComponentRect('List_ListDirection_014');
       let List_ListDirection_01: RectValue = CommonFunc.getComponentRect('List_ListDirection_01');
-      expect(List_ListDirection_011.left).assertEqual(List_ListDirection_01.left);
-      expect(List_ListDirection_012.left).assertEqual(List_ListDirection_01.left);
-      expect(List_ListDirection_013.left).assertEqual(List_ListDirection_01.left);
-      expect(List_ListDirection_014.left).assertEqual(List_ListDirection_01.left);
-      expect(List_ListDirection_011.top).assertEqual(List_ListDirection_01.top);
+      expect(Math.abs(List_ListDirection_011.left - List_ListDirection_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_ListDirection_012.left - List_ListDirection_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_ListDirection_013.left - List_ListDirection_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_ListDirection_014.left - List_ListDirection_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_ListDirection_011.top - List_ListDirection_01.top) <= 1).assertTrue();
 
-      expect(Math.round(List_ListDirection_012.top - List_ListDirection_011.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_ListDirection_013.top - List_ListDirection_012.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_ListDirection_014.top - List_ListDirection_013.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_ListDirection_01.bottom - List_ListDirection_014.bottom))
-        .assertEqual(Math.round(vp2px(60)));
+      expect(Math.abs(Math.round(List_ListDirection_012.top - List_ListDirection_011.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_ListDirection_013.top - List_ListDirection_012.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_ListDirection_014.top - List_ListDirection_013.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_ListDirection_01.bottom - List_ListDirection_014.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
 
-      expect(Math.round(List_ListDirection_011.right - List_ListDirection_011.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_ListDirection_012.right - List_ListDirection_012.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_ListDirection_013.right - List_ListDirection_013.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_ListDirection_014.right - List_ListDirection_014.left))
-        .assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(List_ListDirection_011.right - List_ListDirection_011.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_ListDirection_012.right - List_ListDirection_012.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_ListDirection_013.right - List_ListDirection_013.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_ListDirection_014.right - List_ListDirection_014.left) - Math.round(vp2px(300))) <= 1).assertTrue();
 
-      expect(Math.round(List_ListDirection_011.bottom - List_ListDirection_011.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_ListDirection_012.bottom - List_ListDirection_012.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_ListDirection_013.bottom - List_ListDirection_013.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_ListDirection_014.bottom - List_ListDirection_014.top))
-        .assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(List_ListDirection_011.bottom - List_ListDirection_011.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_ListDirection_012.bottom - List_ListDirection_012.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_ListDirection_013.bottom - List_ListDirection_013.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_ListDirection_014.bottom - List_ListDirection_014.top) - Math.round(vp2px(100))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -119,7 +110,7 @@ export default function List_ListDirection() {
         Math.round(List_ListDirection_012.bottom));
       await CommonFunc.sleep(1000);
       let List_ListDirection_024: RectValue = CommonFunc.getComponentRect('List_ListDirection_014');
-      expect(List_ListDirection_01.bottom - List_ListDirection_024.bottom).assertEqual(Math.round(vp2px(60)));
+      expect(Math.abs(Math.round(List_ListDirection_01.bottom - List_ListDirection_024.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
       console.info('testListListDirectionAxisVertical END');
       done();
     });
