@@ -46,4 +46,34 @@ export default function testsuite() {
   dragPreviewOptionsJsSuit()
   GestureTagJsSuit()
   freezeInactive()
+  GesturePanGesture();
+  OnClick1();
+  OnClick2();
+  OnClick3();
+  SwipeGesture1();
+  SwipeGesture2();
+  SwipeGesture3();
+  TapGesture1();
+  TapGesture2();
+  TapGesture3();
+  OnTouch1();
+  OnTouch2();
+  OnTouch3();
+  GestureClick();
+  GestureContiune();
+  GestureDrag();
+  GestureIsSystemGesture();
+  GesturePinchGesture();
+  GestureReject();
+  GestureRotationGesture();
+  GestureSwipeGesture();
+  GestureTap();
+  GestureTapGesture();
+  PanGesture1()
+  PanGesture2()
+  PanGesture3()
+  LongPressGesture1()
+  LongPressGesture2()
+  LongPressGesture3()
+  GestureLongPressGesture();
 }
