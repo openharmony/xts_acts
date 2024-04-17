@@ -22,13 +22,7 @@ import hilog from '@ohos.hilog';
 struct PanelExample {
   @State show: boolean = true
   @State isShowCloseIcon: boolean = true
-  aboutToAppear(){
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-  }
+  
 
   build(){
 
