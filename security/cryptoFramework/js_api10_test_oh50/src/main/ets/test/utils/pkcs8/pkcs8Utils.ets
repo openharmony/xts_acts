@@ -62,18 +62,6 @@ async function convertDataKeyPairToKeyPair(algName: string, data: dataKeyPair): 
   }
 }
 
-function generatePemData(keyPair: cryptoFramework.KeyPair): dataStyle {
-  try {
-    let pubKey = keyPair.pubKey.getEncodedPem("PKCS8");
-    let priKey = keyPair.priKey.getEncodedPem("PKCS8");
-
-    return {dataPubKey:pubKey, dataPriKey:priKey}
-  } catch (error) {
-    console.error(`generatePemData “${error}“, error code: ${error.code}`);
-    throw error as Error;
-  }
-}
-
 async function generateRfc5208KeyPair(algName: string, dataKeyPair: dataKeyPair) {
   try {
     let cipher: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -108,7 +96,6 @@ export {
   generateRfc5915KeyPair,
   generateRfc5915KeyPairEncoded,
   convertDataKeyPairToKeyPair,
-  generatePemData,
   generateRfc5208KeyPair,
   generatePriKeyDerData,
   dataKeyPair,
