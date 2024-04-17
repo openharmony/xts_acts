@@ -453,11 +453,8 @@ export default function rdbStoreExcuteTest(){
       console.info(TAG + "************* testExecute0016 end   *************");
     })
 
-    console.info(TAG + "*************Unit Test End*************");
-  })
-  
-  
-      /**
+
+          /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2600
      * @tc.name AbNormal test case of Execute, if args is null or undefined
      * @tc.desc 1. Insert data and set args as null or undefined
@@ -498,4 +495,9 @@ export default function rdbStoreExcuteTest(){
         done();
         console.info(TAG + "************* testExecute0018 end   *************");
     })
+
+    console.info(TAG + "*************Unit Test End*************");
+  })
+  
+  
 }
