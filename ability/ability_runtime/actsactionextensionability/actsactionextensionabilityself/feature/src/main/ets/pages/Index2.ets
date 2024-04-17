@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-let storage = LocalStorage.GetShared();
+var storage = LocalStorage.GetShared();
 
 @Entry(storage)
 @Component
