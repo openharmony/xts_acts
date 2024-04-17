@@ -77,11 +77,11 @@ import swiperTest from './SwiperTest/swiper.test';
 import swiperSecTest from './SwiperTest/swipersec.test';
 import scrollbarJsunit from './ScrollBar/ScrollerBarJsunit.test';
 import alphabetIndexerJsunit from './AlphabetIndexerTest/AlphabetIndexerJsunit.test';
-import gridIndexTest from './gridTest/GridJsnuit.test';
+import gridIndexTest1 from './gridTest/GridJsnuit.test';
 import gridItemJsunit from './gridTest/GridItem.test';
-import listJsunit from './ListTest/ListJsunit1.test';
+import listJsunit1 from './ListTest/ListJsunit1.test';
 import listItemJsunit from './ListTest/ListItemJsunit.test';
-import swiperJsunit from './SwiperTest/SwiperJsunit2.test';
+import swiperJsunit2 from './SwiperTest/SwiperJsunit2.test';
 import tabJsunit from './TabsTest/TabJsunit.test';
 
 export default function testsuite() {
@@ -123,11 +123,11 @@ export default function testsuite() {
   swiperSecTest();
   scrollbarJsunit();
   alphabetIndexerJsunit();
-  gridIndexTest();
+  gridIndexTest1();
   gridItemJsunit();
-  listJsunit();
+  listJsunit1();
   listItemJsunit();
-  swiperJsunit();
+  swiperJsunit2();
   tabJsunit();
   
   Tabs_itemPadMar();

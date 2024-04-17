@@ -50,7 +50,7 @@ async function backToIndex() {
   });
 }
 
-export default function swiperJsunit() {
+export default function swiperJsunit2() {
 
 
   describe('swiperTest', () => {
