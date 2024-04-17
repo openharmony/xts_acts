@@ -3192,9 +3192,8 @@ export default function progressSecTest() {
       let strColor = JSON.stringify(objDefault.$attrs.backgroundColor);
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + strColor);
 
-      let finalResult = "#08" + strColor.substr(4, 6);
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual(finalResult);
+      expect(obj.$attrs.backgroundColor).assertEqual(objDefault.$attrs.backgroundColor);
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100] end");
       done();
     });
