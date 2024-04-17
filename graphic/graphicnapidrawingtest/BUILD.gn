@@ -29,12 +29,14 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "NativeDrawingCanvasTest.cpp",
     "NativeDrawingColorSpaceTest.cpp",
     "NativeDrawingColorTest.cpp",
+    "NativeDrawingGpuContextTest.cpp",
     "NativeDrawingMatrixTest.cpp",
     "NativeDrawingPathEffectTest.cpp",
     "NativeDrawingPathTest.cpp",
     "NativeDrawingPenTest.cpp",
     "NativeDrawingRectTest.cpp",
     "NativeDrawingRegionTest.cpp",
+    "NativeDrawingSurfaceTest.cpp",
     "NativeFontTest.cpp",
     "NativeImageTest.cpp",
     "OH_Drawing_FontCollectionTest.cpp",
@@ -62,6 +64,10 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "graphic_2d:2d_graphics",
     "graphic_2d:native_drawing_ndk",
     "hilog:libhilog",
+    "openssl:libcrypto_shared",
   ]
-  deps = [ "//third_party/googletest:gtest_main" ]
+  deps = [
+    "$comPath:libgl",
+    "//third_party/googletest:gtest_main",
+  ]
 }
