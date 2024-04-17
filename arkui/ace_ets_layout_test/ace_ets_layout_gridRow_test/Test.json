@@ -10,7 +10,8 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceEtsLayoutGridRowTest.hap"
+            "ActsAceEtsLayoutGridRowTest.hap",
+            "ActsAceEtsLayoutGridRowMainTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
