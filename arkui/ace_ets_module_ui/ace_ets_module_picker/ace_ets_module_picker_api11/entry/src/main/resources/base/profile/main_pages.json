@@ -12,6 +12,9 @@
         "MainAbility/pages/TextPicker/Index",
         "MainAbility/pages/TextPicker/TextPickerMulti",
         "MainAbility/pages/Slider/Index",
-        "MainAbility/pages/Slider/SliderTestSec"
+        "MainAbility/pages/Slider/SliderTestSec",
+        "MainAbility/pages/Button/Button",
+        "MainAbility/pages/Rating/Rating",
+        "MainAbility/pages/Slider/Slider"
     ]
 }
