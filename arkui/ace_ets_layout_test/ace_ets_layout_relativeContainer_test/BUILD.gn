@@ -13,29 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAceEtsLayoutRelativeContainerTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":ace_ets_layout_relativeContainer_js_assets",
-    ":ace_ets_layout_relativeContainer_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("ActsAceEtsLayoutRelativeContainerMainTest") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceEtsLayoutRelativeContainerMainTest"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
+}
+
+ohos_js_app_suite("ActsAceEtsLayoutRelativeContainerTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAceEtsLayoutRelativeContainerTest"
-}
-
-ohos_app_scope("ace_ets_layout_relativeContainer_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("ace_ets_layout_relativeContainer_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("ace_ets_layout_relativeContainer_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":ace_ets_layout_relativeContainer_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
+  deps = [ ":ActsAceEtsLayoutRelativeContainerMainTest" ]
 }
