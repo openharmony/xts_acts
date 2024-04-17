@@ -12,24 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from './../../../common/MessageManager';
+import { MessageManager, Callback, Message } from './../../../common/MessageManager';
 @Entry
 @Component
 struct Column_Space_Default {
   @State addSpace1:number=0
   @State addSpace2:string='0'
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager()
   onPageShow() {
     console.info('Column_Space_Default onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addSpace1') {
         this.addSpace1 = message.value;
       }else if(message.name == 'addSpace2'){
-        this.addSpace2 = message.value;
+        this.addSpace2 = message.value.toString();
       }
     }
     this.messageManager.registerCallback(callback);

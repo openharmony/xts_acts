@@ -17,7 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../MainAbility/common/MessageManager';
 
 export default function column_Padding_ChangeParent() {
 
@@ -61,7 +61,7 @@ export default function column_Padding_ChangeParent() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnPaddingChange1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1: RectValue = CommonFunc.getComponentRect('Padding_Test1');
       let locationText2: RectValue = CommonFunc.getComponentRect('Padding_Test2');
@@ -113,7 +113,7 @@ export default function column_Padding_ChangeParent() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnPaddingChange1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1: RectValue = CommonFunc.getComponentRect('Padding_Test1');
       let locationText2: RectValue = CommonFunc.getComponentRect('Padding_Test2');

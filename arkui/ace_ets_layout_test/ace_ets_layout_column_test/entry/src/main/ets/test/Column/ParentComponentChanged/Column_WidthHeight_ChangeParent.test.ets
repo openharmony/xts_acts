@@ -17,7 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../MainAbility/common/MessageManager';
 
 export default function column_WidthHeight_ChangeParent() {
 
@@ -59,7 +59,7 @@ export default function column_WidthHeight_ChangeParent() {
       globalThis.value.message.notify({ name: 'width', value: 350 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnWidthHeightChange1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test1');
       let locationText2 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test2');
@@ -94,7 +94,7 @@ export default function column_WidthHeight_ChangeParent() {
       globalThis.value.message.notify({ name: 'width', value: 350 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnWidthHeightChange1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test1');
       let locationText2 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test2');
@@ -129,7 +129,7 @@ export default function column_WidthHeight_ChangeParent() {
       globalThis.value.message.notify({ name: 'width', value: 200 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnWidthHeightChange1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test1');
       let locationText2 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test2');

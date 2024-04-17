@@ -12,24 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from './../../../common/MessageManager';
+import { MessageManager, Callback, Message } from './../../../common/MessageManager';
 @Entry
 @Component
 struct flexBasis_Type {
   @State addflexBasis1: number = 0
   @State addflexBasis2: string = '0'
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager()
   onPageShow() {
     console.info('flexBasis_Type onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addflexBasis1') {
         this.addflexBasis1 = message.value;
       }else if(message.name == 'addflexBasis2'){
-        this.addflexBasis2 = message.value;
+        this.addflexBasis2 = message.value.toString();
       }
     }
     this.messageManager.registerCallback(callback);
