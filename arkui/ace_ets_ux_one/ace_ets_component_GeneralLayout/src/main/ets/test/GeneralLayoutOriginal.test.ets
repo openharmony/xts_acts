@@ -1,0 +1,302 @@
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import router from '@ohos.router';
+import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import display from '@ohos.display';
+
+export default function GeneralLayoutOriginalTest() {
+  describe('GeneralLayoutOriginalTest', () => {
+
+    let screenWidth = display.getDefaultDisplaySync().width;
+    let original_rect_left: number;
+    let original_rect_top: number;
+    let original_rect_bottom: number;
+    let original_rect_right: number;
+
+    beforeEach(async (done: Function) => {
+      console.info("flex beforeEach start");
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/IndexOrig',
+      };
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get IndexOrig state success " + JSON.stringify(pages));
+        if (!("IndexOrig" == pages.name)) {
+          console.info("get IndexOrig state success " + JSON.stringify(pages.name));
+          let result = await router.pushUrl(options);
+          console.info("push IndexOrig page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push IndexOrig page error: " + err);
+      }
+      done();
+    });
+
+    /*
+     *@tc.number     : ArkUIHDS_General_Layout_2800
+     *@tc.name       : ArkUIHDS_General_Layout_2800
+     *@tc.desc       : test original parameters of position
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 1
+     */
+    it('ArkUIHDS_General_Layout_2800', 0, async (done: Function) => {
+      console.info('ArkUIHDS_General_Layout_2800 START');
+      try {
+        setTimeout(() => {
+          let strJson = getInspectorByKey('Original_0100');
+          original_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0];
+          original_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1];
+          setTimeout(() => {
+            let strJson1 = getInspectorByKey('top');
+            let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
+            expect(original_rect_left).assertEqual(100);
+            expect(original_rect_top - top).assertEqual(vp2px(100));
+            console.info('ArkUIHDS_General_Layout_2800 END');
+            done();
+          }, 500);
+        }, 300);
+      } catch (err) {
+        expect().assertFail();
+        console.info('ArkUIHDS_General_Layout_2800 ERR  ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /*
+     *@tc.number     : ArkUIHDS_General_Layout_2900
+     *@tc.name       : ArkUIHDS_General_Layout_2900
+     *@tc.desc       : test original parameters of position
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 1
+     */
+    it('ArkUIHDS_General_Layout_2900', 0, async (done: Function) => {
+      console.info('ArkUIHDS_General_Layout_2900 START');
+      try {
+        setTimeout(() => {
+          let strJson = getInspectorByKey('Original_0200');
+          original_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0];
+          original_rect_bottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[1];
+          setTimeout(() => {
+            let strJson1 = getInspectorByKey('bottom');
+            let bottom: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
+            expect(screenWidth - original_rect_right).assertEqual(fp2px(100));
+            expect(bottom - original_rect_bottom).assertEqual(lpx2px(100));
+            console.info('ArkUIHDS_General_Layout_2900 END');
+            done();
+          }, 500);
+        }, 300);
+      } catch (err) {
+        expect().assertFail();
+        console.info('ArkUIHDS_General_Layout_2900 ERR  ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /*
+     *@tc.number     : ArkUIHDS_General_Layout_3000
+     *@tc.name       : ArkUIHDS_General_Layout_3000
+     *@tc.desc       : test original parameters of position
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 1
+     */
+    it('ArkUIHDS_General_Layout_3000', 0, async (done: Function) => {
+      console.info('ArkUIHDS_General_Layout_3000 START');
+      try {
+        setTimeout(() => {
+          let strJson = getInspectorByKey('Original_0300');
+          original_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0];
+          original_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1];
+          setTimeout(() => {
+            let strJson1 = getInspectorByKey('top');
+            let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
+            expect(original_rect_left).assertEqual(vp2px(100));
+            expect(original_rect_top - top).assertEqual(vp2px(100));
+            console.info('ArkUIHDS_General_Layout_3000 END');
+            done();
+          }, 500);
+        }, 300);
+      } catch (err) {
+        expect().assertFail();
+        console.info('ArkUIHDS_General_Layout_3000 ERR  ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /*
+     *@tc.number     : ArkUIHDS_General_Layout_3100
+     *@tc.name       : ArkUIHDS_General_Layout_3100
+     *@tc.desc       : test original parameters of markAnchor
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 1
+     */
+    it('ArkUIHDS_General_Layout_3100', 0, async (done: Function) => {
+      console.info('ArkUIHDS_General_Layout_3100 START');
+      try {
+        setTimeout(() => {
+          let strJson = getInspectorByKey('Original_0400');
+          original_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0];
+          original_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1];
+          original_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0];
+          setTimeout(() => {
+            let strJson1 = getInspectorByKey('top');
+            let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
+            expect((screenWidth / 2) - ((original_rect_left + original_rect_right) / 2)).assertEqual(100);
+            expect(original_rect_top - top).assertEqual(vp2px(100));
+            console.info('ArkUIHDS_General_Layout_3100 END');
+            done();
+          }, 500);
+        }, 300);
+      } catch (err) {
+        expect().assertFail();
+        console.info('ArkUIHDS_General_Layout_3100 ERR  ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /*
+     *@tc.number     : ArkUIHDS_General_Layout_3200
+     *@tc.name       : ArkUIHDS_General_Layout_3200
+     *@tc.desc       : test original parameters of markAnchor
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 1
+     */
+    it('ArkUIHDS_General_Layout_3200', 0, async (done: Function) => {
+      console.info('ArkUIHDS_General_Layout_3200 START');
+      try {
+        setTimeout(() => {
+          let strJson = getInspectorByKey('Original_0500');
+          original_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0];
+          original_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1];
+          original_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0];
+          setTimeout(() => {
+            let strJson1 = getInspectorByKey('top');
+            let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
+            expect(((original_rect_left + original_rect_right) / 2) - (screenWidth / 2)).assertEqual(fp2px(100));
+            expect(original_rect_top - top - 30).assertEqual(lpx2px(100));
+            console.info('ArkUIHDS_General_Layout_3200 END');
+            done();
+          }, 500);
+        }, 300);
+      } catch (err) {
+        expect().assertFail();
+        console.info('ArkUIHDS_General_Layout_3200 ERR  ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /*
+     *@tc.number     : ArkUIHDS_General_Layout_3300
+     *@tc.name       : ArkUIHDS_General_Layout_3300
+     *@tc.desc       : test original parameters of offset
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 1
+     */
+    it('ArkUIHDS_General_Layout_3300', 0, async (done: Function) => {
+      console.info('ArkUIHDS_General_Layout_3300 START');
+      try {
+        setTimeout(() => {
+          let strJson = getInspectorByKey('Original_0600');
+          original_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0];
+          original_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1];
+          original_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0];
+          setTimeout(() => {
+            let strJson1 = getInspectorByKey('top');
+            let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
+            expect(((original_rect_left + original_rect_right) / 2) - (screenWidth / 2)).assertEqual(100);
+            expect(original_rect_top - top - 60).assertEqual(vp2px(100));
+            console.info('ArkUIHDS_General_Layout_3300 END');
+            done();
+          }, 500);
+        }, 300);
+      } catch (err) {
+        expect().assertFail();
+        console.info('ArkUIHDS_General_Layout_3300 ERR  ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /*
+     *@tc.number     : ArkUIHDS_General_Layout_3400
+     *@tc.name       : ArkUIHDS_General_Layout_3400
+     *@tc.desc       : test original parameters of offset
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 1
+     */
+    it('ArkUIHDS_General_Layout_3400', 0, async (done: Function) => {
+      console.info('ArkUIHDS_General_Layout_3400 START');
+      try {
+        setTimeout(() => {
+          let strJson = getInspectorByKey('Original_0700');
+          original_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0];
+          original_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1];
+          original_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0];
+          setTimeout(() => {
+            let strJson1 = getInspectorByKey('top');
+            let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
+            expect(((screenWidth / 2) - (original_rect_left + original_rect_right) / 2)).assertEqual(fp2px(100));
+            expect(original_rect_top - top - 90).assertEqual(lpx2px(100));
+            console.info('ArkUIHDS_General_Layout_3400 END');
+            done();
+          }, 500);
+        }, 300);
+      } catch (err) {
+        expect().assertFail();
+        console.info('ArkUIHDS_General_Layout_3400 ERR  ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /*
+     *@tc.number     : ArkUIHDS_General_Layout_3500
+     *@tc.name       : ArkUIHDS_General_Layout_3500
+     *@tc.desc       : test original parameters of offset
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 1
+     */
+    it('ArkUIHDS_General_Layout_3500', 0, async (done: Function) => {
+      console.info('ArkUIHDS_General_Layout_3500 START');
+      try {
+        setTimeout(() => {
+          let strJson = getInspectorByKey('Original_0800');
+          original_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0];
+          original_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1];
+          original_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0];
+          setTimeout(() => {
+            let strJson1 = getInspectorByKey('top');
+            let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
+            expect(((original_rect_left + original_rect_right) / 2) - (screenWidth / 2)).assertEqual(vp2px(100));
+            expect(original_rect_top - top - 120).assertEqual(vp2px(100));
+            console.info('ArkUIHDS_General_Layout_3500 END');
+            done();
+          }, 500);
+        }, 300);
+      } catch (err) {
+        expect().assertFail();
+        console.info('ArkUIHDS_General_Layout_3500 ERR  ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+  })
+}
