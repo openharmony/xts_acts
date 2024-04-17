@@ -14,6 +14,7 @@
  */
 import marqueeJsunit from './marqueeTest/MarqueeJsunit.test';
 import textStyleJsunit from './textTest/TextStyleJsunit.test';
+import TextStateJsunit from './textTest/TextStateJsunit.test';
 import ImageTextTest from './textTest/ImageText.test';
 import TextAreaCallbackTest from './TextAreaTest/TextAreaCallback.test';
 import TextAreaSelectTest from './TextAreaTest/TextAreaSelect.test';
@@ -141,6 +142,7 @@ import spanJsunit from './spanTest/SpanJsunit.test';
 import textJsunit from './textTest/TextJsunit.test';
 
 export default function testsuite() {
+  TextStateJsunit();
   richEditorApi4();
   richEditorApi5();
   richEditorApi6();
