@@ -248,7 +248,7 @@ export default function ActsChecksumTest() {
     /**
      * @tc.number     : ACTS_ChecksumTest_08
      * @tc.name       : actsChecksumTest08
-     * @tc.desc       : test getCrc64Table
+     * @tc.desc       : test adler32
      * @tc.size       : MEDIUM
      * @tc.type       : Function
      * @tc.level      : Level 2
