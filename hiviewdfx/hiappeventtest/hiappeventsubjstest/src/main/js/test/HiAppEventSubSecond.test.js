@@ -21,7 +21,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_3000
-     * @tc.name 验证调用write接口，缺少write参数，无法打点，错误码401。
+     * @tc.name HiAppEventSub30
      * @tc.desc HiAppEvent write interface test.
      */
     it('HiAppEventSub30', 3, async function (done) {
@@ -44,7 +44,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_3100
-     * @tc.name 验证调用addWatcher接口，缺少name参数，订阅失败，错误码401。
+     * @tc.name HiAppEventSub31
      * @tc.desc HiAppEvent write interface test.
      */
     it('HiAppEventSub31', 3, async function (done) {
@@ -73,7 +73,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_3200
-     * @tc.name 验证调用write接口，打点功能被关闭，打点错误，返回错误码11100001
+     * @tc.name HiAppEventSub32
      * @tc.desc HiAppEvent write interface test.
      */
     it('HiAppEventSub32', 3, async function (done) {
@@ -113,7 +113,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_3300
-     * @tc.name 验证调用write接口，事件领域名称包含特殊字符，打点错误，返回错误码11101001
+     * @tc.name HiAppEventSub33
      * @tc.desc HiAppEvent write interface test.
      */
     it('HiAppEventSub33', 3, async function (done) {
@@ -146,7 +146,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_3400
-     * @tc.name 验证调用write接口，事件领域名称以下划线结尾，打点错误，返回错误码11101001
+     * @tc.name HiAppEventSub34
      * @tc.desc HiAppEvent write interface test.
      */
     it('HiAppEventSub34', 3, async function (done) {
@@ -179,7 +179,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_3500
-     * @tc.name 验证调用write接口，事件领域名称为空，打点错误，返回错误码11101001
+     * @tc.name HiAppEventSub35
      * @tc.desc HiAppEvent write interface test.
      */
     it('HiAppEventSub35', 3, async function (done) {
@@ -212,7 +212,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_3600
-     * @tc.name 验证调用write接口，事件领域名称超长，打点错误，返回错误码11101001
+     * @tc.name HiAppEventSub36
      * @tc.desc HiAppEvent write interface test.
      */
     it('HiAppEventSub36', 3, async function (done) {
@@ -284,8 +284,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_3800
-     * @tc.name 验证调用write接口，事件名称包含特殊字符，打点错误，返回错误码11101002
+     * @tc.name HiAppEventSub38
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub38', 3, async function (done) {
         console.info('testHiAppEventSub38 start')
@@ -317,8 +320,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_3900
-     * @tc.name 验证调用write接口，事件名称以下划线结尾，打点错误，返回错误码11101002
+     * @tc.name HiAppEventSub39
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub39', 3, async function (done) {
         console.info('testHiAppEventSub39 start')
@@ -350,8 +356,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4000
-     * @tc.name 验证调用write接口，事件名称为空，打点错误，返回错误码11101002
+     * @tc.name HiAppEventSub40
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub40', 3, async function (done) {
         console.info('testHiAppEventSub40 start')
@@ -383,8 +392,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4100
-     * @tc.name 验证调用write接口，事件名称超长，打点错误，返回错误码11101002
+     * @tc.name HiAppEventSub41
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub41', 3, async function (done) {
         console.info('testHiAppEventSub41 start')
@@ -416,8 +428,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4200
-     * @tc.name 验证调用write接口，事件名称数字开头，打点错误，返回错误码11101002
+     * @tc.name HiAppEventSub42
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub42', 3, async function (done) {
         console.info('testHiAppEventSub42 start')
@@ -449,8 +464,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4300
-     * @tc.name 验证调用write接口，参数数量非法，丢弃额外事件，返回错误码11101003
+     * @tc.name HiAppEventSub43
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub43', 3, async function (done) {
         console.info('testHiAppEventSub43 start')
@@ -483,8 +501,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4400
-     * @tc.name 验证调用write接口，事件参数值传入了超长的字符串，丢弃额外字符，返回错误码11101004
+     * @tc.name HiAppEventSub44
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub44', 3, async function (done) {
         console.info('testHiAppEventSub44 start')
@@ -517,8 +538,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4500
-     * @tc.name 验证调用write接口，事件参数名称以下划线结尾，忽略相关事件参数，返回错误码11101005
+     * @tc.name HiAppEventSub45
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub45', 3, async function (done) {
         console.info('testHiAppEventSub45 start')
@@ -550,8 +574,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4600
-     * @tc.name 验证调用write接口，事件参数名称以下划线结尾，忽略相关事件参数，返回错误码11101005
+     * @tc.name HiAppEventSub46
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub46', 3, async function (done) {
         console.info('testHiAppEventSub46 start')
@@ -583,8 +610,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4700
-     * @tc.name 验证调用write接口，事件参数名称为空，忽略相关事件参数，返回错误码11101005
+     * @tc.name HiAppEventSub47
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub47', 3, async function (done) {
         console.info('testHiAppEventSub47 start')
@@ -616,8 +646,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4800
-     * @tc.name 验证调用write接口，事件参数名称超长，忽略相关事件参数，返回错误码11101005
+     * @tc.name HiAppEventSub48
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub48', 3, async function (done) {
         console.info('testHiAppEventSub48 start')
@@ -649,8 +682,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4900
-     * @tc.name 验证调用write接口，事件参数名称数字开头，忽略相关事件参数，返回错误码11101005
+     * @tc.name HiAppEventSub49
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub49', 3, async function (done) {
         console.info('testHiAppEventSub49 start')
@@ -682,8 +718,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_5000
-     * @tc.name 验证调用write接口，事件参数值传入了超出长度的数组，丢弃额外数组元素，返回错误码11101006
+     * @tc.name HiAppEventSub50
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub50', 3, async function (done) {
         console.info('testHiAppEventSub50 start')
@@ -720,8 +759,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_5100
-     * @tc.name 验证调用addWatcher接口，watcher名称包含特殊字符，忽略忽略此次订阅，返回错误码11102001
+     * @tc.name HiAppEventSub51
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub51', 3, async function (done) {
         console.info('testHiAppEventSub11 start')
@@ -750,8 +792,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_5200
-     * @tc.name 验证调用addWatcher接口，watcher名称以下划线结尾，忽略忽略此次订阅，返回错误码11102001
+     * @tc.name HiAppEventSub52
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub52', 3, async function (done) {
         console.info('testHiAppEventSub11 start')
@@ -780,8 +825,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_5300
-     * @tc.name 验证调用addWatcher接口，watcher名称为空，忽略忽略此次订阅，返回错误码11102001
+     * @tc.name HiAppEventSub53
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub53', 3, async function (done) {
         console.info('testHiAppEventSub53 start')
@@ -810,8 +858,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_5400
-     * @tc.name 验证调用addWatcher接口，watcher名称超长，忽略忽略此次订阅，返回错误码11102001
+     * @tc.name HiAppEventSub54
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub54', 3, async function (done) {
         console.info('testHiAppEventSub54 start')
@@ -840,7 +891,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_5500
-     * @tc.name 验证调用addWatcher接口，watcher名称以大写字母开头，,32字节，添加订阅者成功
+     * @tc.name HiAppEventSub55
      * @tc.desc HiAppEvent write interface test.
      * @tc.size MediumTest
      * @tc.type Function
@@ -874,8 +925,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_5600
-     * @tc.name 验证调用addWatcher接口，过滤事件领域名称包含特殊字符，忽略忽略此次订阅，返回错误码11102002
+     * @tc.name HiAppEventSub56
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub56', 3, async function (done) {
         console.info('testHiAppEventSub56 start')
@@ -904,8 +958,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_5700
-     * @tc.name 验证调用addWatcher接口，过滤事件领域名称以下划线结尾，忽略忽略此次订阅，返回错误码11102002
+     * @tc.name HiAppEventSub57
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub57', 3, async function (done) {
         console.info('testHiAppEventSub57 start')
@@ -934,8 +991,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_5800
-     * @tc.name 验证调用addWatcher接口，过滤事件领域名称为空，忽略忽略此次订阅，返回错误码11102002
+     * @tc.name HiAppEventSub58
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub58', 3, async function (done) {
         console.info('testHiAppEventSub58 start')
@@ -964,8 +1024,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_5900
-     * @tc.name 验证调用addWatcher接口，过滤事件领域名称超长，忽略忽略此次订阅，返回错误码11102002
+     * @tc.name HiAppEventSub59
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub59', 3, async function (done) {
         console.info('testHiAppEventSub59 start')
@@ -994,7 +1057,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_6000
-     * @tc.name 验证调用addWatcher接口，过滤事件领域名称以大写字母开头，32字节添加订阅者成功
+     * @tc.name HiAppEventSub60
      * @tc.desc HiAppEvent write interface test.
      * @tc.size MediumTest
      * @tc.type Function
@@ -1028,8 +1091,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_6100
-     * @tc.name 验证调用addWatcher接口，传入了非法的事件个数值，忽略忽略此次订阅，返回错误码11102003
+     * @tc.name HiAppEventSub61
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub61', 3, async function (done) {
         console.info('testHiAppEventSub61 start')
@@ -1058,8 +1124,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_6200
-     * @tc.name 验证调用addWatcher接口，传入了非法的事件大小值，忽略忽略此次订阅，返回错误码11102004
+     * @tc.name HiAppEventSub62
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub62', 3, async function (done) {
         console.info('testHiAppEventSub11 start')
@@ -1088,8 +1157,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_6300
-     * @tc.name 验证调用addWatcher接口，传入了非法的超时值，忽略忽略此次订阅，返回错误码11102005
+     * @tc.name HiAppEventSub63
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub63', 3, async function (done) {
         console.info('testHiAppEventSub63 start')
@@ -1118,8 +1190,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_6400
-     * @tc.name 验证调用configure接口，存储配额值含特殊字符，系统将忽略此次配置，返回错误码11103001
+     * @tc.name HiAppEventSub64
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub64', 3, async function (done) {
         console.info('testHiAppEventSub64 start')
@@ -1137,8 +1212,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_6500
-     * @tc.name 验证调用configure接口，存储配额值无单位，系统将忽略此次配置，返回错误码11103001
+     * @tc.name HiAppEventSub65
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub65', 3, async function (done) {
         console.info('testHiAppEventSub65 start')
@@ -1156,8 +1234,11 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_6600
-     * @tc.name 验证调用setSize接口，事件包大小值为负，系统将忽略此次配置，返回错误码11104001
+     * @tc.name HiAppEventSub66
      * @tc.desc HiAppEvent write interface test.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
      */
     it('HiAppEventSub66', 3, async function (done) {
         console.info('testHiAppEventSub66 start')

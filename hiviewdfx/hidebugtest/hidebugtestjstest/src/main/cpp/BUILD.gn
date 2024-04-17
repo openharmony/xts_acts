@@ -37,16 +37,12 @@ ohos_shared_library("hidebugndk") {
   part_name = "hiprofiler"
   subsystem_name = "developtools"
 
-  include_dirs = [
-    "$hidebug_path/interfaces/native/kits/include",
-  ]
+  include_dirs = [ "$hidebug_path/interfaces/native/kits/include" ]
   configs = [ ":config" ]
 
   deps = [ "$hidebug_path/frameworks/hidebug_ndk:ohhidebug" ]
 
-  public_external_deps = [
-    "napi:ace_napi",
-  ]
+  public_external_deps = [ "napi:ace_napi" ]
 
   output_extension = "so"
 }

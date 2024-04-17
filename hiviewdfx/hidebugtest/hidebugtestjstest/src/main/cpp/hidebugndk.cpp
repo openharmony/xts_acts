@@ -200,7 +200,8 @@ static napi_value StartAppTraceCapture(napi_env env, napi_callback_info info)
     return ret;
 }
 
-static napi_value GetAppTraceCaptureFile(napi_env env, napi_callback_info info) {
+static napi_value GetAppTraceCaptureFile(napi_env env, napi_callback_info info)
+{
     napi_value ret;
     size_t argc = 3;                // arg total：3
     napi_value args[3] = {nullptr}; // arg total：3
