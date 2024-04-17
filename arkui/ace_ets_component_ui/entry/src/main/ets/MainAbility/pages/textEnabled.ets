@@ -27,6 +27,7 @@ struct textEnabledDemo {
   @State mouseBtn: string = ''
 
   @State text6: string = '焦点事件-禁用'
+  @State text7: string = '鼠标事件onMouse-禁用'
 
   build() {
     Column({ space: 10 }) {
@@ -75,11 +76,35 @@ struct textEnabledDemo {
         .border({width: 1})
         .textAlign(TextAlign.Center)
         .width('90%')
-        .onClick((event: MouseEvent) => {
-          switch (event.button){
+        .onClick((event: ClickEvent) => {
+          this.text5 = '鼠标事件onMouse 已触发'
+        })
+        .enabled(false)
+
+      Text(this.text6).key("texEnd6")
+        .padding(10)
+        .border({width: 1})
+        .textAlign(TextAlign.Center)
+        .width('90%')
+        .focusable(true)
+        .onFocus(() => {
+          this.text6 = '焦点事件onFocus 已触发'
+        })
+        .onBlur(() => {
+          this.text6 = '焦点事件onBlur 已触发'
+        })
+        .enabled(false)
+
+      Text(this.text7).key("texEnd7")
+        .padding(10)
+        .border({ width: 1 })
+        .textAlign(TextAlign.Center)
+        .width('90%')
+        .onMouse((event: MouseEvent) => {
+          switch (event.button) {
             case MouseButton.None:
-             this.mouseBtn = 'None';
-             break;
+              this.mouseBtn = 'None';
+              break;
             case MouseButton.Left:
               this.mouseBtn = 'Left';
               break;
@@ -96,7 +121,7 @@ struct textEnabledDemo {
               this.mouseBtn = 'Middle';
               break;
           }
-          switch (event.action){
+          switch (event.action) {
             case MouseAction.Hover:
               this.action = 'Hover';
               break;
@@ -110,21 +135,7 @@ struct textEnabledDemo {
               this.action = 'Release';
               break;
           }
-          this.text5 = '鼠标事件onMouse 已触发'
-        })
-        .enabled(false)
-
-      Text(this.text6).key("texEnd6")
-        .padding(10)
-        .border({width: 1})
-        .textAlign(TextAlign.Center)
-        .width('90%')
-        .focusable(true)
-        .onFocus(() => {
-          this.text6 = '焦点事件onFocus 已触发'
-        })
-        .onBlur(() => {
-          this.text6 = '焦点事件onBlur 已触发'
+          this.text7 = '鼠标事件onMouse 已触发'
         })
         .enabled(false)
     }
