@@ -41,6 +41,9 @@ import swiperRightScrollTest from './SwiperTest/swiper2/swiperightscroll.test'
 import tabsApi1 from './TabsTest/tabs/tabsApi1.test';
 import TouchTestStrategy from './ScrollTest/TouchTestStrategy.test';
 import ScrollTest from './ScrollTest/Scroll.test'
+import tabs from './TabsTest/Tabs'
+import tabsSec from './TabsTest/TabsSec'
+import tabsThird from './TabsTest/TabsThird'
 import AlphabetIndexer from './AlphabetIndexerTest/AlphabetIndexer'
 import RefreshTest from './RefreshTest/Refresh.test'
 import ScrollTest2 from './ScrollTest/Scroll2.test'
@@ -102,6 +105,9 @@ export default function testsuite() {
   tabsApi1()
   TouchTestStrategy()
   ScrollTest()
+  tabs()
+  tabsSec()
+  tabsThird()
   AlphabetIndexer()
   RefreshTest()
   ScrollTest2()
