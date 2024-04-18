@@ -23,7 +23,7 @@ export default function graphicTextATest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0100
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0010
      * @tc.name      : testTextAlign
      * @tc.desc      : Test the enum value of testTextAlign
      * @tc.size      : MediumTest
