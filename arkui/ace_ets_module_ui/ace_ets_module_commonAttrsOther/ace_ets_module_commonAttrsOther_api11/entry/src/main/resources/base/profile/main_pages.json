@@ -1,6 +1,13 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+
+
+        "MainAbility/pages/noBarrierComponents",
+        "MainAbility/pages/noBarriersGroup",
+
+
+
         "MainAbility/pages/overlay/overlay",
         "MainAbility/pages/visibility/visibility",
         "MainAbility/pages/zIndex/zIndex",

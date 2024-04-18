@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 import geometryTransition from './geometryTransitionTest/geometryTransition.test';
+import animateToTest from './animateto.test';
+import animationCurveTest from './animationCurve.test';
 
 export default function testsuite() {
+  animateToTest();
+  animationCurveTest();
+
   geometryTransition()
 }

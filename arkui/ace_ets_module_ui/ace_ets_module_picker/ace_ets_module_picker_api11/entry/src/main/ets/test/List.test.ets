@@ -28,10 +28,16 @@ import ratingJsunit from './RatingTest/RatingJsunit.test';
 import sliderJsunit from './SliderTest/SliderJsunit.test';
 import TimePicker1Test from './TimePickerTest/TimePicker1.test';
 
+import stageTimePickerDialog from './TimePickerTest/stageTimePickerDialog.test';
+import stageTextPickerDialog from './TextPicker/stageTextPickerDialog.test';
+import stageDatePickerDialog from './stageDatePickerDialog.test';
 import menuBackgroundBlurStyle from './SelectTest/menuBackgroundBlurStyle.test.ets'
 import menuBackgroundColor from './SelectTest/menuBackgroundColor.test.ets'
 
 export default function testsuite() {
+  stageTimePickerDialog();
+  stageTextPickerDialog();
+  stageDatePickerDialog();
   TimePicker1Test()
   SelectAttr()
   TimePickerTest()

@@ -75,7 +75,17 @@ import swiperItemMargin from './SwiperTest/Swiper_ItemChange/swiperItemMargin.te
 import swiperItemPadMar from './SwiperTest/Swiper_ItemChange/swiperItemPadMar.test.ets';
 import swiperItemVisibility from './SwiperTest/Swiper_ItemChange/swiperItemVisibility.test.ets';
 import ScrollJsunit from './ScrollTest/ScrollJsunit.test';
+import ActsGridTest from "./gridTest/GridJC.test";
+import gridScrollbarUpdateTest from "./gridTest/gridScrollbarUpdate.test";
+import List07Test from './ListTest/List07.test';
+import Swiper07Test from './SwiperTest/Swiper07.test';
+import sidebarTypeTest from './sidebarType.test';
 export default function testsuite() {
+  ActsGridTest();
+  gridScrollbarUpdateTest();
+  List07Test();
+  Swiper07Test();
+  sidebarTypeTest();
   listJsunit();
   swiperJsunit();
   ListDeleteTest();
