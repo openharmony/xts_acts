@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,45 +13,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
-var TAG: string = ''
-export default function ContextEnvironmentTest(applicationContext) {
-  describe('ContextEnvironmentTest', function () {
-    var isUpdated = false;
-    var update_language = "";
-    var callbackid_NA = 100
-    var callbackid_errorNum = -1
-    var callbackid_errorType = "test"
-    var callNum = 0;
-    var fontSizeScale = 0;
-    var fontWeightScale = 0;
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import common from '@ohos.app.ability.common';
+import EnvironmentCallback from '@ohos.app.ability.EnvironmentCallback';
+import { BusinessError } from '@ohos.base';
 
-    let envCallback = {
-      onConfigurationUpdated(config) {
-        console.info(TAG, `envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`)
-        update_language = config.language;
-        isUpdated = true;
-        fontSizeScale = config.fontSizeScale;
-        fontWeightScale = config.fontWeightScale;
-      }
-    }
+let envCallback: EnvironmentCallback = {
+  onConfigurationUpdated(config) {
+    console.info(TAG, `envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`)
+    update_language = config.language;
+    isUpdated = true;
+    fontSizeScale = config.fontSizeScale;
+    fontWeightScale = config.fontWeightScale;
+  }
+}
 
-    function sleep(time) {
-      return new Promise((resolve) => setTimeout(resolve, time))
-    }
 
+
+function sleep(time: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, time));
+}
+
+export default function ContextEnvironmentTest(applicationContext: common.ApplicationContext) {
+  describe('ContextEnvironmentTest', () => {
+    let isUpdated = false;
+    let update_language = "";
+    let callbackid_NA = 100
+    let callbackid_errorNum = -1
+    let callbackid_errorType = "test"
+    let callNum = 0;
+    let fontSizeScale = 0;
+    let fontWeightScale = 0;
     let gSetTimeout = 1000
-    beforeEach(async (done) => {
+
+    beforeEach(async (done: Function) => {
       isUpdated = false;
-      setTimeout(function () {
+      setTimeout(() => {
         done();
       }, gSetTimeout);
     })
 
-    afterEach(async (done) => {
+    afterEach(async (done: Function) => {
       isUpdated = false;
-      setTimeout(function () {
+      setTimeout(() => {
         done();
       }, gSetTimeout);
     })
@@ -61,31 +67,40 @@ export default function ContextEnvironmentTest(applicationContext) {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Context_EnvironmentTest_0400', 0, async function (done) {
-      TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0400 ==== '
-      console.info(TAG, `begin`)
+    it('SUB_AA_AMS_Context_EnvironmentTest_0400', 0, async (done: Function) => {
+      TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0400 ==== ';
+      console.info(TAG, `begin`);
+      let envCallback: EnvironmentCallback = {
+        onConfigurationUpdated(config) {
+          console.info(TAG, `envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
+          update_language = config.language;
+          isUpdated = true;
+        },
+        onMemoryLevel(level) {
+          console.log('onMemoryLevel level: ${level}');
+        }
+      }
 
-      for (let i = 0;i < 5;i++) {
+      for (let i = 0; i < 5; i++) {
         // registerEnvironmentCallback
-        var callbackId = applicationContext.registerEnvironmentCallback(envCallback);
-        var code = undefined
-        console.info(TAG + "callbackId = " + callbackId + " callNum = " + callNum)
+        let callbackId: number = applicationContext.registerEnvironmentCallback(envCallback);
+        let code: number;
+        console.info(TAG + "callbackId = " + callbackId + " callNum = " + callNum);
 
         await sleep(700)
         // unregisterEnvironmentCallback
         applicationContext.unregisterEnvironmentCallback(callbackId, (error, data) => {
-          console.info(TAG + "unregisterEnvironmentCallback first err is : " + JSON.stringify(error) + ", data is : " + JSON.stringify(data))
-          code = error.code
-
+          console.info(TAG + "unregisterEnvironmentCallback first err is : " + JSON.stringify(error) + ", data is : " + JSON.stringify(data));
+          code = error.code;
         })
 
-        await sleep(700)
-        expect(callbackId).assertEqual(callNum)
-        expect(code).assertEqual(0)
+        await sleep(700);
+        expect(callbackId).assertEqual(callNum);
+        expect(code).assertEqual(0);
         callNum++;
       }
-      done()
-      console.info(TAG, `end`)
+      done();
+      console.info(TAG, `end`);
     })
 
     /*
@@ -94,15 +109,14 @@ export default function ContextEnvironmentTest(applicationContext) {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Context_EnvironmentTest_0500', 0, async function (done) {
-      TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0500 ==== '
-      console.info(TAG, `begin`)
+    it('SUB_AA_AMS_Context_EnvironmentTest_0500', 0, async (done: Function) => {
+      TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0500 ==== ';
+      console.info(TAG, `begin`);
 
       applicationContext.unregisterEnvironmentCallback(callbackid_NA, (error, data) => {
-        console.info(TAG + "unregisterEnvironmentCallback err is : " + JSON.stringify(error) + ", data is : " + JSON.stringify(data))
-        expect(error.code).assertEqual(1)
-
-        console.info(TAG, `end`)
+        console.info(TAG + "unregisterEnvironmentCallback err is : " + JSON.stringify(error) + ", data is : " + JSON.stringify(data));
+        expect(error.code).assertEqual(1);
+        console.info(TAG, `end`);
         done();
       })
     })
@@ -113,15 +127,14 @@ export default function ContextEnvironmentTest(applicationContext) {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Context_EnvironmentTest_0600', 0, async function (done) {
-      TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0600 ==== '
-      console.info(TAG, `begin`)
+    it('SUB_AA_AMS_Context_EnvironmentTest_0600', 0, async (done: Function) => {
+      TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0600 ==== ';
+      console.info(TAG, `begin`);
 
       applicationContext.unregisterEnvironmentCallback(callbackid_errorNum, (error, data) => {
-        console.info(TAG + "unregisterEnvironmentCallback err is : " + JSON.stringify(error) + ", data is : " + JSON.stringify(data))
-        expect(error.code).assertEqual(1)
-
-        console.info(TAG, `end`)
+        console.info(TAG + "unregisterEnvironmentCallback err is : " + JSON.stringify(error) + ", data is : " + JSON.stringify(data));
+        expect(error.code).assertEqual(1);
+        console.info(TAG, `end`);
         done();
       })
     })
@@ -132,15 +145,15 @@ export default function ContextEnvironmentTest(applicationContext) {
     * @tc.desc    Function test
     * @tc.level   3
     */
-    it('SUB_AA_AMS_Context_EnvironmentTest_0700', 0, async function (done) {
-      TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0700 ==== '
-      console.info(TAG, `begin`)
+    it('SUB_AA_AMS_Context_EnvironmentTest_0700', 0, async (done: Function) => {
+      TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0700 ==== ';
+      console.info(TAG, `begin`);
 
       applicationContext.unregisterEnvironmentCallback(callbackid_errorType, (error, data) => {
-        console.info(TAG + "unregisterEnvironmentCallback err is : " + JSON.stringify(error) + ", data is : " + JSON.stringify(data))
-        expect(error.code).assertEqual(1)
+        console.info(TAG + "unregisterEnvironmentCallback err is : " + JSON.stringify(error) + ", data is : " + JSON.stringify(data));
+        expect(error.code).assertEqual(1);
 
-        console.info(TAG, `end`)
+        console.info(TAG, `end`);
         done();
       })
     })
@@ -151,19 +164,21 @@ export default function ContextEnvironmentTest(applicationContext) {
     * @tc.desc    Function test
     * @tc.level   3
     */
-    it('SUB_AA_AMS_Context_EnvironmentTest_0800', 0, async function (done) {
-      TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0800 ==== '
-      console.info(TAG, `begin`)
+    it('SUB_AA_AMS_Context_EnvironmentTest_0800', 0, async (done: Function) => {
+      TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0800 ==== ';
+      console.info(TAG, `begin`);
 
-      await applicationContext.unregisterEnvironmentCallback(undefined).then((data) => {
-        console.info(TAG + "unregisterEnvironmentCallback data is : " + JSON.stringify(data))
-        expect().assertFail();
-      }).catch((error) => {
-        console.info(TAG + "unregisterEnvironmentCallback err is : " + JSON.stringify(error))
-        expect(error.code).assertEqual(1)
-      });
+      await applicationContext.unregisterEnvironmentCallback(undefined)
+        .then((data) => {
+          console.info(TAG + "unregisterEnvironmentCallback data is : " + JSON.stringify(data));
+          expect().assertFail();
+        })
+        .catch((error: BusinessError) => {
+          console.info(TAG + "unregisterEnvironmentCallback err is : " + JSON.stringify(error));
+          expect(error.code).assertEqual(1);
+        })
 
-      console.info(TAG, `end`)
+      console.info(TAG, `end`);
       done();
     })
   })
