@@ -11,13 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("networkmanager") {
+group("network") {
   testonly = true
-  deps = [
-    "fetch:fetch",
-    "http:http",
-    "network:network",
-    "socket:socket",
-    "vpntest:ActsNetworkMgrVpnTest",
-  ]
+  deps = [ "networkwifi:ActsNetworkMgrSysNetworkWiFiTest" ]
 }
