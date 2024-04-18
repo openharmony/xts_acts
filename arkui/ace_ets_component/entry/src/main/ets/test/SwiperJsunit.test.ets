@@ -164,7 +164,7 @@ export default function swiperJsunit() {
       await Utils.sleep(1500);
       let callback = (InnerEvent: events_emitter.EventData) => {
         console.info("swiperTest_0800 get state result is: " + JSON.stringify(InnerEvent));
-        expect(InnerEvent.data.ACTION).assertEqual(true);
+        expect(InnerEvent.data?.ACTION).assertEqual(true);
         done()
       }
       let InnerEvent: events_emitter.InnerEvent = {
@@ -187,7 +187,7 @@ export default function swiperJsunit() {
       await Utils.sleep(1500);
       let callback = (InnerEvent: events_emitter.EventData) => {
         console.info("swiperTest_0900 get state result is: " + JSON.stringify(InnerEvent));
-        expect(InnerEvent.data.ACTION).assertEqual(true);
+        expect(InnerEvent.data?.ACTION).assertEqual(true);
         done()
       }
       let InnerEvent: events_emitter.InnerEvent = {
@@ -209,7 +209,7 @@ export default function swiperJsunit() {
       await Utils.sleep(1500);
       let callbackOne = (InnerEventOne: events_emitter.EventData) => {
         console.info("swiperTest_1000 get state result is: " + JSON.stringify(InnerEventOne));
-        expect(InnerEventOne.data.ACTION).assertEqual(true);
+        expect(InnerEventOne.data?.ACTION).assertEqual(true);
         done()
       }
       let innerEvent: events_emitter.InnerEvent = {
@@ -225,7 +225,7 @@ export default function swiperJsunit() {
       await Utils.sleep(1500);
       let callback = (InnerEvent: events_emitter.EventData) => {
         console.info("swiperTest_1000 get state result is: " + JSON.stringify(InnerEvent));
-        expect(InnerEvent.data.ACTION).assertEqual(true);
+        expect(InnerEvent.data?.ACTION).assertEqual(true);
         done()
       }
       let InnerEvent: events_emitter.InnerEvent = {

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,26 +19,26 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct GaugeExample {
   @State gaugeValue: number = 50;
-  @State strokeWidthValue: string = 20;
+  @State strokeWidthValue: number = 20;
   @State startAngleValue: number = 210;
   @State endAngleValue: number = 150;
-  @State colorValues: Array = [[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1], [0xD94838, 1]];
+  @State colorValues: Array<Array<number>> = [[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1], [0xD94838, 1]];
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("gauge page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.gaugeValue != null) {
+      if (eventData.data?.gaugeValue != null) {
         this.gaugeValue = eventData.data.gaugeValue;
       }
-      if (eventData.data.strokeWidthValue != null) {
+      if (eventData.data?.strokeWidthValue != null) {
         this.strokeWidthValue = eventData.data.strokeWidthValue;
       }
-      if (eventData.data.startAngleValue != null) {
+      if (eventData.data?.startAngleValue != null) {
         this.startAngleValue = eventData.data.startAngleValue;
       }
-      if (eventData.data.endAngleValue != null) {
+      if (eventData.data?.endAngleValue != null) {
         this.endAngleValue = eventData.data.endAngleValue;
       }
-      if (eventData.data.colorValues != null) {
+      if (eventData.data?.colorValues != null) {
         this.colorValues = JSON.parse(eventData.data.colorValues);
       }
     }

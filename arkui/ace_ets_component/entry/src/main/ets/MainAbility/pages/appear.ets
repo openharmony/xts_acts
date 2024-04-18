@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,7 +39,7 @@ struct AppearExample {
     console.info("[appear] page stateChangCallBack");
     if (eventData != null) {
       console.info("[appear] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.isShow != null) {
+      if (eventData.data?.isShow != null) {
         this.isShow = eventData.data.isShow;
       }
     }
@@ -64,8 +63,8 @@ struct AppearExample {
             }
             console.info("appearFlag start to emit action state")
             events_emitter.emit(backEvent, backData)
-          } catch {
-            console.info("appearFlag emit action state err: " + JSON.stringify(err.message))
+          } catch (err) {
+            console.info("appearFlag emit action state err: " + JSON.stringify(err?.message))
           }
         })
         .margin(3)
@@ -89,8 +88,8 @@ struct AppearExample {
               }
               console.info("appearFlag start to emit action state")
               events_emitter.emit(backEvent2, backData2)
-            } catch {
-              console.info("appearFlag emit action state err: " + JSON.stringify(err.message))
+            } catch (err) {
+              console.info("appearFlag emit action state err: " + JSON.stringify(err?.message))
             }
           })
           .onDisAppear(() => {
@@ -110,8 +109,8 @@ struct AppearExample {
               }
               console.info("disAppearFlag start to emit action state")
               events_emitter.emit(backEvent1, backData1)
-            } catch {
-              console.info("disAppearFlag emit action state err: " + JSON.stringify(err.message))
+            } catch (err) {
+              console.info("disAppearFlag emit action state err: " + JSON.stringify(err?.message))
             }
           })
       }

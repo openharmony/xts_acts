@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct AreaExample {
   @State value: string = 'Text';
-  @State size: string = '';
+  @State _size: string = '';
   @State onActionCalled: boolean = false;
 
   build() {
@@ -50,7 +49,7 @@ struct AreaExample {
         })
         .onAreaChange((oldValue: Area, newValue: Area) => {
           console.info(`Ace: on area change, oldValue is ${JSON.stringify(oldValue)} newvalue is ${JSON.stringify(newValue)}`)
-          this.size = JSON.stringify(newValue)
+          this._size = JSON.stringify(newValue)
           this.onActionCalled = true;
           console.info('onAreaChange current action state is: ' + this.onActionCalled);
           try {
@@ -69,7 +68,7 @@ struct AreaExample {
             console.info("onAreaChange emit action state err: " + JSON.stringify(err.message))
           }
         })
-      Text('new area is: \n' + this.size)
+      Text('new area is: \n' + this._size)
         .key('text2')
         .margin({ right: 30, left: 30 })
     }

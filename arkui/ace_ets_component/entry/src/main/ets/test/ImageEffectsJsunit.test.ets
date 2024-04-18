@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,21 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
+import ShadowValue from '../MainAbility/pages/imageEffects'
 
+interface ShadowValueString {
+  radius: string;
+  color: string;
+  offsetX: string;
+  offsetY: string;
+}
+
+interface ShadowValueColoringStrategy {
+  radius: number;
+  color: ColoringStrategy;
+  offsetX: number;
+  offsetY: number;
+}
 
 export default function imageEffectsJsunit() {
   describe('imageEffectsTest', () => {
@@ -175,7 +189,7 @@ export default function imageEffectsJsunit() {
     it('testImageEffects007', 0, async (done:Function) => {
       console.info('[testImageEffects007] START');
       await Utils.sleep(1000);
-      let shadowValue = {
+      let shadowValue: ShadowValue = {
         radius: 20, color: Color.Gray, offsetX: 10, offsetY: 10
       };
       try {
@@ -208,7 +222,7 @@ export default function imageEffectsJsunit() {
     it('testImageEffects008', 0, async (done:Function) => {
       console.info('[testImageEffects008] START');
       await Utils.sleep(1000);
-      let shadowValue = {
+      let shadowValue: ShadowValue = {
         radius: 0x80000000, color: 0x80000000, offsetX: 0x80000000, offsetY: 0x80000000
       };
       try {
@@ -240,7 +254,7 @@ export default function imageEffectsJsunit() {
     it('testImageEffects009', 0, async (done:Function) => {
       console.info('[testImageEffects009] START');
       await Utils.sleep(1000);
-      let shadowValue = {
+      let shadowValue: ShadowValue = {
         radius: 0x7FFFFFFF, color: 0x7FFFFFFF, offsetX: 0x7FFFFFFF, offsetY: 0x7FFFFFFF
       };
       try {
@@ -272,7 +286,7 @@ export default function imageEffectsJsunit() {
     it('testImageEffects010', 0, async (done:Function) => {
       console.info('[testImageEffects010] START');
       await Utils.sleep(1000);
-      let shadowValue = {
+      let shadowValue: ShadowValueString = {
         radius: 'error', color: 'error', offsetX: 'error', offsetY: 'error'
       };
       try {
@@ -874,7 +888,7 @@ export default function imageEffectsJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterDefaultXS
+            "shadowStyleValue": ShadowStyle.OUTER_DEFAULT_XS
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -900,7 +914,7 @@ export default function imageEffectsJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterDefaultSM
+            "shadowStyleValue": ShadowStyle.OUTER_DEFAULT_SM
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -927,7 +941,7 @@ export default function imageEffectsJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterDefaultMD
+            "shadowStyleValue": ShadowStyle.OUTER_DEFAULT_MD
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -954,7 +968,7 @@ export default function imageEffectsJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterDefaultLG
+            "shadowStyleValue": ShadowStyle.OUTER_DEFAULT_LG
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -981,7 +995,7 @@ export default function imageEffectsJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterFloatingSM
+            "shadowStyleValue": ShadowStyle.OUTER_FLOATING_SM
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -1008,7 +1022,7 @@ export default function imageEffectsJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "shadowStyleValue": ShadowStyle.OuterFloatingMD
+            "shadowStyleValue": ShadowStyle.OUTER_FLOATING_MD
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -1032,7 +1046,7 @@ export default function imageEffectsJsunit() {
     it('testImageEffects042', 0, async (done:Function) => {
       console.info('[testImageEffects042] START');
       await Utils.sleep(1000);
-      let shadowValue = {
+      let shadowValue: ShadowValueColoringStrategy = {
         radius: 20, color: ColoringStrategy.AVERAGE, offsetX: 10, offsetY: 10
       };
       try {
