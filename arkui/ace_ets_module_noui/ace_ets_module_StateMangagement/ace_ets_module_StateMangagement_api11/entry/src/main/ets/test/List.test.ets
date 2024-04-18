@@ -13,6 +13,10 @@
  * limitations under the License.
  */
 import allowOverride from './allowOverrideTest/allowOverride.test';
+
+import appStorageJsunit from './AppStorage/AppStorageJsunit.test';
+import linkJsunit from './Link/LinkJsunit.test';
+
 import provideBrother1 from './ProvideTest/provideBrother1.test.ets'
 import provideBrother2 from './ProvideTest/provideBrother2.test.ets'
 import provideComponent1 from './ProvideTest/provideComponent1.test.ets'
@@ -25,6 +29,8 @@ import provideParent6 from './ProvideTest/provideParent6.test.ets'
 
 export default function testsuite() {
   allowOverride()
+  appStorageJsunit()
+  linkJsunit()
   provideBrother1()
   provideBrother2()
   provideComponent1()
