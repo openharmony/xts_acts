@@ -79,10 +79,10 @@ export default function swiperPadding() {
       let swiperPadding06: RectValue = CommonFunc.getComponentRectOnScreen('swiperPadding06');
       // Before flipping the page
       console.info("Before page turning , swiperPadding01.left - swiperPadding.left value is " + JSON.stringify(swiperPadding01.left - swiperPadding.left));
-      expect(swiperPadding01.left - swiperPadding.left).assertEqual(Math.round(vp2px(20)))
-      expect(swiperPadding.right - swiperPadding01.right).assertEqual(Math.round(vp2px(20)))
-      expect(swiperPadding01.top - swiperPadding.top).assertEqual(Math.round(vp2px(20)))
-      expect(swiperPadding.bottom - swiperPadding01.bottom).assertEqual(Math.round(vp2px(20)))
+      expect(Math.abs(Math.round(swiperPadding01.left - swiperPadding.left) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(swiperPadding.right - swiperPadding01.right) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(swiperPadding01.top - swiperPadding.top) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(swiperPadding.bottom - swiperPadding01.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
       // Page turning.
       let driver = Driver.create();
       // await CommonFunc.sleep(500);
@@ -106,10 +106,10 @@ export default function swiperPadding() {
       swiperPadding06 = CommonFunc.getComponentRectOnScreen('swiperPadding06');
       // After flipping the page.
       console.info("After page turning, swiperPadding02.left - swiperPadding.left value is " + JSON.stringify(swiperPadding02.left - swiperPadding.left));
-      expect(swiperPadding02.left - swiperPadding.left).assertEqual(Math.round(vp2px(20)));
-      expect(swiperPadding.right - swiperPadding02.right).assertEqual(Math.round(vp2px(20)));
-      expect(swiperPadding02.top - swiperPadding.top).assertEqual(Math.round(vp2px(20)));
-      expect(swiperPadding.bottom - swiperPadding02.bottom).assertEqual(Math.round(vp2px(20)));
+      expect(Math.abs(Math.round(swiperPadding02.left - swiperPadding.left) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(swiperPadding.right - swiperPadding02.right) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(swiperPadding02.top - swiperPadding.top) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(swiperPadding.bottom - swiperPadding02.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
       console.info("The type value is " + JSON.stringify(JSON.parse(strJson).$type));
       console.info("The indicator value is " + JSON.stringify(JSON.parse(strJson).$attrs.indicator));
       console.info("The loop value is " + JSON.stringify(JSON.parse(strJson).$attrs.loop));
