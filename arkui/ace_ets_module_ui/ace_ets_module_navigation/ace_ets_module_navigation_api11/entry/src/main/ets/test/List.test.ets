@@ -68,7 +68,9 @@ import NavigationMode17Jsunit from './Navigation/NavigationMode17Jsunit.test';
 import NavRouter_onStateChange1 from './NavRouter/NavRouter_onStateChange1.test'
 import NavRouter_onStateChange2 from './NavRouter/NavRouter_onStateChange2.test'
 import NavDestination_onBackPressed from './NavRouter/NavDestination_onBackPressed.test'
-
+import navigationJsunit from './NavigationTest/NavigationJsunit.test'
+import stepperJsunit1 from './stepperTest/StepperJsunit1.test'
+import navigatorJsunit from './Navigator/NavigatorJsunit.test'
 
 export default function testsuite() {
   stepperJsunit();
@@ -84,6 +86,9 @@ export default function testsuite() {
   NavigationAttr();
   navigationApi1();
   sidebar();
+  navigationJsunit();
+  stepperJsunit1();
+  navigatorJsunit();
   NavRouterJsunit();
   NavDestinationJsunit();
   NavigationJsunit();

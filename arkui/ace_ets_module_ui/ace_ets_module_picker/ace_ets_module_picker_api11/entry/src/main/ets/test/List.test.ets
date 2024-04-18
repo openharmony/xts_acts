@@ -28,6 +28,11 @@ import ratingJsunit from './RatingTest/RatingJsunit.test';
 import sliderJsunit from './SliderTest/SliderJsunit.test';
 import TimePicker1Test from './TimePickerTest/TimePicker1.test';
 
+import toggleJsunit from './Toggle/ToggleJsunit.test';
+import checkboxJsunit from './CheckboxTest/CheckboxJsunit.test';
+import checkboxGroupJsunit from './checkboxGroup/CheckboxGroupJsunit.test';
+import selectJsunit from './SelectTest/SelectJsunit1.test';
+import sliderJsunit1 from './slider/SliderJsunit1.test';
 import menuBackgroundBlurStyle from './SelectTest/menuBackgroundBlurStyle.test.ets'
 import menuBackgroundColor from './SelectTest/menuBackgroundColor.test.ets'
 
@@ -42,6 +47,13 @@ export default function testsuite() {
   textpicker()
   TextPickerSec()
   textpickermultiTest()
+
+  toggleJsunit()
+  checkboxJsunit()
+  checkboxGroupJsunit()
+  selectJsunit()
+  sliderJsunit1()
+  
   sliderTest()
   SliderTestSec()
   buttonJsunit()

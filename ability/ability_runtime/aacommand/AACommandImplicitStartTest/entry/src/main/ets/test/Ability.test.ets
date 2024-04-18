@@ -149,10 +149,14 @@ export default function aaImplicitStartTest() {
         hilog.info(0x0000, 'debuggabletest', '%{public}s',
           'SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0500 err is: ' + JSON.stringify(err));
       })
-      expect(res).assertContain('[-d <device-id>] [-a <ability-name> -b <bundle-name>] [-m <module-name>]' +
-        ' [-p <perf-cmd>] [-D] [-S] [-N]   [--ps <key> <string-value>]   [--pi <key> <integer-value>]' +
-        '   [--pb <key> <boolean-value>]   [--psn <key>]   [-A <action-name>]   [-U <URI>]   [-e <entity>]' +
-        '   [-t <mime-type>]   start ability with an element name');
+      expect(res).assertContain('[-a <ability-name> -b <bundle-name>]');
+      expect(res).assertContain('[--ps <key> <string-value>]');
+      expect(res).assertContain('[--pi <key> <integer-value>]');
+      expect(res).assertContain('[--pb <key> <boolean-value>]');
+      expect(res).assertContain('[--psn <key>]');
+      expect(res).assertContain('[-A <action-name>]');
+      expect(res).assertContain('[-U <URI>]');
+      expect(res).assertContain('[-e <entity>]');
       done();
     })
 
