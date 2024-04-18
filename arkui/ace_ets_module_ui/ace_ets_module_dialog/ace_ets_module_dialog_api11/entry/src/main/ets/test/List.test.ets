@@ -22,6 +22,31 @@ import DialogTest from './promptActionTest/Dialog.test';
 import panelJsunit from './Panel/PanelJsunit.test';
 import panelClose from './panelTest/panelClose'
 
+import ActionSheet from './actionSheetTest/ActionSheet.test'
+import ActionSheetFalse from './actionSheetTest/ActionSheetFalse.test'
+import ActionSheetTrue from './actionSheetTest/ActionSheetTrue.test'
+import CalendarPickerDialog from './calendarPickerDialogTest/CalendarPickerDialog.test'
+import CustomDialog from './customDialogTest/CustomDialog.test'
+import CustomDialogFalse from './customDialogTest/CustomDialogFalse.test'
+import CustomDialogTrue from './customDialogTest/CustomDialogTrue.test'
+import DatePickerDialog from './datePickerDialogTest/DatePickerDialog.test'
+import TextPickerDialog from './textPickerDialogTest/TextPickerDialog.test'
+import TimePickerDialog from './timePickerDialogTest/TimePickerDialog.test'
+import openCustomDialog from './promptActionTest/openCustomDialog.test'
+import openCustomDialogFalse from './promptActionTest/openCustomDialogFalse.test'
+import openCustomDialogNew from './promptActionTest/openCustomDialogNew.test'
+import openCustomDialogTrue from './promptActionTest/openCustomDialogTrue.test'
+import showActionMenu from './promptActionTest/showActionMenu.test'
+import showActionMenuFalse from './promptActionTest/showActionMenuFalse.test'
+import showActionMenuTrue from './promptActionTest/showActionMenuTrue.test'
+import showDialog from './promptActionTest/showDialog.test'
+import showDialogFalse from './promptActionTest/showDialogFalse.test'
+import showDialogTrue from './promptActionTest/showDialogTrue.test'
+import showToast from './promptActionTest/showToast.test'
+import AlertDialog1 from './alertDialogTest/AlertDialog1.test'
+import AlertDialogFalse from './alertDialogTest/AlertDialogFalse.test'
+import AlertDialogTrue from './alertDialogTest/AlertDialogTrue.test'
+
 export default function testsuite() {
   CustomDialogMaskTest()
   menu()
@@ -32,4 +57,29 @@ export default function testsuite() {
   DialogTest();
   panelJsunit();
   panelClose()
+
+  ActionSheet();
+  ActionSheetFalse();
+  ActionSheetTrue();
+  CalendarPickerDialog();
+  CustomDialog();
+  CustomDialogFalse();
+  CustomDialogTrue();
+  DatePickerDialog();
+  TextPickerDialog();
+  TimePickerDialog();
+  openCustomDialog();
+  openCustomDialogFalse();
+  openCustomDialogNew();
+  openCustomDialogTrue();
+  showActionMenu();
+  showActionMenuFalse();
+  showActionMenuTrue();
+  showDialog();
+  showDialogFalse();
+  showDialogTrue();
+  showToast();
+  AlertDialog1();
+  AlertDialogFalse();
+  AlertDialogTrue()
 }

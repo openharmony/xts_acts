@@ -123,6 +123,7 @@
         "MainAbility/pages/text/Prop",
         "MainAbility/pages/image/Image",
         "MainAbility/pages/span/Span",
-        "MainAbility/pages/text/Text"
+        "MainAbility/pages/text/Text",
+        "MainAbility/pages/text/outline"
     ]
 }

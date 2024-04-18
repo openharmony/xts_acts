@@ -568,6 +568,7 @@ import flexJsunit from './FlexTest/FlexJsunit.test';
 import gridContainerJsunit from './GridTest/GridContainerJsunit.test';
 import rowSplitJsunit from './RowTest/RowSplitJsunit.test';
 import StackJsunit from './Stack/StackJsunit.test';
+import useShadowBatching from './ColumnTest/useShadowBatching.test';
 export default function testsuite() {
   FolderStack3ApiJsunit()
   enumFolderTest()
@@ -1041,4 +1042,5 @@ export default function testsuite() {
   gridContainerJsunit()
   rowSplitJsunit()
   StackJsunit()
+  useShadowBatching()
 }
