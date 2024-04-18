@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import shellCommandControlTest from './ShellCommandControl.test'
+import shellCommandControlTest from './ShellCommandControl.test';
 
 export default function testsuite() {
   shellCommandControlTest();

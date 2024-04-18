@@ -145,7 +145,7 @@ describe('btAccessTest', function() {
      it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0300', 0, async function (done) {
         try {
             let state = bluetooth.getState();
-            expect(true).assertTrue(state >= 0 && state <= 6);
+            expect(state >= 0 && state <= 6).assertTrue();
         } catch (error) {
             console.error("[bluetooth_js] bluetooth getState errCode:" + error.code + ",bluetooth getState errMessage:" + error.message);
             expect(error.code).assertEqual('2900099');
@@ -169,11 +169,9 @@ describe('btAccessTest', function() {
         let state = bluetooth.getState();
         console.info('[bluetooth_js] get bluetooth state' + JSON.stringify(state));
         if (state != bluetooth.BluetoothState.STATE_ON) {
-            let enable = bluetooth.enableBluetooth();
+            bluetooth.enableBluetooth();
             await clickRequestPermission();
             await sleep(10000);
-            console.info('[bluetooth_js] bluetooth enable' + JSON.stringify(enable));
-            expect(enable).assertTrue();
             let state1 = bluetooth.getState();
             console.info('[bluetooth_js] enable state ' + JSON.stringify(state1));
             expect(state1).assertEqual(bluetooth.BluetoothState.STATE_ON);
@@ -204,11 +202,9 @@ describe('btAccessTest', function() {
         let state = bluetooth.getState();
         console.info('[bluetooth_js] get bluetooth state001' + JSON.stringify(state));
         if (state != bluetooth.BluetoothState.STATE_OFF) {
-            let disable = bluetooth.disableBluetooth();
+            bluetooth.disableBluetooth();
             await clickRequestPermission();
             await sleep(10000);
-            console.info('[bluetooth_js] bluetooth disable001' + JSON.stringify(disable));
-            expect(disable).assertTrue();
             let state1 = bluetooth.getState();
             console.info('[bluetooth_js] disable state001 ' + JSON.stringify(state1));
             expect(state1).assertEqual(bluetooth.BluetoothState.STATE_OFF);
@@ -230,25 +226,25 @@ describe('btAccessTest', function() {
      it('SUB_COMMUNICATION_BLUETOOTHACCESS_STATECHANGE_0600', 0, async function (done) {
         let STATE_ON = bluetooth.BluetoothState.STATE_ON;
         console.info("[bluetooth_js]STATE_ON : " + JSON.stringify(STATE_ON));
-        expect(true).assertTrue(STATE_ON == 2);
+        expect(true).assertEqual(STATE_ON == 2);
         let STATE_OFF = bluetooth.BluetoothState.STATE_OFF;
         console.info("[bluetooth_js]STATE_OFF : " + JSON.stringify(STATE_OFF));
-        expect(true).assertTrue(STATE_OFF == 0);
+        expect(true).assertEqual(STATE_OFF == 0);
         let STATE_TURNING_ON = bluetooth.BluetoothState.STATE_TURNING_ON;
         console.info("[bluetooth_js]STATE_TURNING_ON : " + JSON.stringify(STATE_TURNING_ON));
-        expect(true).assertTrue(STATE_TURNING_ON == 1);
+        expect(true).assertEqual(STATE_TURNING_ON == 1);
         let STATE_TURNING_OFF = bluetooth.BluetoothState.STATE_TURNING_OFF;
         console.info("[bluetooth_js]STATE_TURNING_OFF : " + JSON.stringify(STATE_TURNING_OFF));
-        expect(true).assertTrue(STATE_TURNING_OFF == 3);
+        expect(true).assertEqual(STATE_TURNING_OFF == 3);
         let STATE_BLE_TURNING_ON = bluetooth.BluetoothState.STATE_BLE_TURNING_ON;
         console.info("[bluetooth_js]STATE_BLE_TURNING_ON : " + JSON.stringify(STATE_BLE_TURNING_ON));
-        expect(true).assertTrue(STATE_BLE_TURNING_ON == 4);
+        expect(true).assertEqual(STATE_BLE_TURNING_ON == 4);
         let STATE_BLE_ON = bluetooth.BluetoothState.STATE_BLE_ON;
         console.info("[bluetooth_js]STATE_BLE_ON : " + JSON.stringify(STATE_BLE_ON));
-        expect(true).assertTrue(STATE_BLE_ON == 5);
+        expect(true).assertEqual(STATE_BLE_ON == 5);
         let STATE_BLE_TURNING_OFF = bluetooth.BluetoothState.STATE_BLE_TURNING_OFF;
         console.info("[bluetooth_js]STATE_BLE_TURNING_OFF : " + JSON.stringify(STATE_BLE_TURNING_OFF));
-        expect(true).assertTrue(STATE_BLE_TURNING_OFF == 6);
+        expect(true).assertEqual(STATE_BLE_TURNING_OFF == 6);
         done();
     })
 })

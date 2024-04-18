@@ -23,6 +23,7 @@ import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
 import promptAction from '@ohos.promptAction';
 import screenshot from '@ohos.screenshot';
+import { Info } from '../ArkUI/InfoObj';
 
 let path = globalThis.dir;
 const TAG = '[SignificantMotion]';
@@ -33,7 +34,7 @@ struct SignificantMotion {
   @State FillColor: string = '#FF000000';
   @State name: string = 'SignificantMotion';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有大幅动作检测传感器' + '\n-点击开启按钮打开传感器,' +
-  '如果有传感器，请大幅度甩动设备，观察各方向的数值是否为“1”，否则返回上一级' + '\n-预期结果：各方向的数值是为“1”';
+    '如果有传感器，请大幅度甩动设备，观察各方向的数值是否为“1”，否则返回上一级' + '\n-预期结果：各方向的数值是为“1”';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
@@ -55,13 +56,13 @@ struct SignificantMotion {
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, (data: sensor.SignificantMotionResponse) => {
           Logger.info('Succeeded in invoking on. HeartRate: ' + data.scalar);
           this.dataScalar = data.scalar.toFixed(2);
-          Logger.info('Succeeded in this.dataScalar on. HeartRate: ' +  this.dataScalar);
+          Logger.info('Succeeded in this.dataScalar on. HeartRate: ' + this.dataScalar);
           this.intervalNum = setInterval(() => {
             this.nextScalar = data.scalar.toFixed(2);
-            if (this.nextScalar !== this.dataScalar ) {
+            if (this.nextScalar !== this.dataScalar) {
               this.Vue = true;
             }
-            if(data.scalar === 1){
+            if (data.scalar === 1) {
               this.Vue = true;
             }
           }, 500)
@@ -112,7 +113,7 @@ struct SignificantMotion {
     }
   }
 
-  async aboutToDisappear(){
+  async aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -143,7 +144,8 @@ struct SignificantMotion {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -167,7 +169,8 @@ struct SignificantMotion {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -290,12 +293,12 @@ struct SignificantMotion {
     })
   }
 
-  async savePicture(data: image.PixelMap, context: any) {
+  async savePicture(data: image.PixelMap, context: ESObject) {
     Logger.info(TAG, `savePicture`);
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -332,7 +335,7 @@ struct SignificantMotion {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);

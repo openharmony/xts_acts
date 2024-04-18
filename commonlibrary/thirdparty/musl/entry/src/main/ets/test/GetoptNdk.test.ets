@@ -27,20 +27,6 @@ export default function muslGetoptNdkTest() {
     })
 
     /**getopt
-     * @tc.number   : SUB_THIRDPARTY_MUSL_GETOPT_GETOPT_LONG_0100
-     * @tc.name     : testMuslGetoptGetoptLong001
-     * @tc.desc     : test getopt_long
-     * @tc.size     : MediumTest
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    it('testMuslGetoptGetoptLong001', 0, async (done: Function) => {
-      let result: number = getopt.getoptLong();
-      expect(result).assertEqual(0)
-      done()
-    });
-
-    /**getopt
      * @tc.number   : SUB_THIRDPARTY_MUSL_GETOPY_GETOPTLONG_ONLY_0100
      * @tc.name     : testMuslGetoptGetoptLongOnly001
      * @tc.desc     : test getopt_long_only

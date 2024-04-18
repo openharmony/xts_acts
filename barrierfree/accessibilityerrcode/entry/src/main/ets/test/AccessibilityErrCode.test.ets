@@ -40,7 +40,7 @@ export default function abilityTest() {
     /* Cases for namespace accessibility */
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0200
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0200
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0200
     * @tc.desc    The parameters input are 'audible' and 'install', test the getAccessibilityExtensionList()
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -63,7 +63,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0201
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0201
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0201
     * @tc.desc    The parameters input are 'audible' and 'install', test the getAccessibilityExtensionList() function,
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -85,7 +85,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0202
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0202
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0202
     * @tc.desc    The parameters input are 'generic' and 'install', test the getAccessibilityExtensionList()
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -108,7 +108,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0203
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0203
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0203
     * @tc.desc    The parameters input are 'generic' and 'install', test the getAccessibilityExtensionList() function,
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -130,7 +130,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0204
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0204
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0204
     * @tc.desc    The parameters input are 'generic' and 'install', test the getAccessibilityExtensionList()
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -153,7 +153,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0205
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0205
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0205
     * @tc.desc    The parameters input are 'generic' and 'install', test the getAccessibilityExtensionList() function,
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -175,7 +175,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0206
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0206
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0206
     * @tc.desc    The parameters input are 'haptic' and 'install', test the getAccessibilityExtensionList()
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -198,7 +198,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0207
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0207
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0207
     * @tc.desc    The parameters input are 'haptic' and 'install', test the getAccessibilityExtensionList() function,
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -220,7 +220,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0208
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0208
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0208
     * @tc.desc    The parameters input are 'spoken' and 'install', test the getAccessibilityExtensionList()
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -243,7 +243,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0209
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0209
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0209
     * @tc.desc    The parameters input are 'spoken' and 'install', test the getAccessibilityExtensionList() function,
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -265,7 +265,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0210
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0210
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0210
     * @tc.desc    The parameters input are 'visual' and 'install', test the getAccessibilityExtensionList()
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -288,7 +288,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0211
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0211
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0211
     * @tc.desc    The parameters input are 'visual' and 'install', test the getAccessibilityExtensionList() function,
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -310,7 +310,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0212
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0212
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0212
     * @tc.desc    The parameters input are 'all' and 'enable', test the getAccessibilityExtensionList()
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -333,7 +333,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0213
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0213
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0213
     * @tc.desc    The parameters input are 'all' and 'enable', test the getAccessibilityExtensionList() function,
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -355,7 +355,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0214
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0214
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0214
     * @tc.desc    The parameters input are 'all' and 'disable', test the getAccessibilityExtensionList()
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -378,7 +378,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0215
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0215
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0215
     * @tc.desc    The parameters input are 'all' and 'disable', test the getAccessibilityExtensionList() function,
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -400,7 +400,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0216
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0216
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0216
     * @tc.desc    The parameters input are 'all' and 'install', test the getAccessibilityExtensionList()
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -423,7 +423,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0217
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0217
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0217
     * @tc.desc    The parameters input are 'all' and 'install', test the getAccessibilityExtensionList() function,
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
@@ -445,7 +445,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0300
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0300
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0300
     * @tc.desc    test Accessibility EventInfo
     * @tc.size    SmallTest
     * @tc.type    User
@@ -461,10 +461,250 @@ export default function abilityTest() {
       done();
     })
 
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0301
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0301
+    * @tc.desc    The parameters input are '' and 'install', test the getAccessibilityExtensionList() function,
+    *             and the output is the list of AccessibilityAbilityInfo CallBack
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0301', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0301');
+      try {
+        let abilityType ;
+        accessibility.getAccessibilityExtensionList(abilityType, 'install', (err, data) => {
+          if (err && err.code != 0) {
+            console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0301 has error: ${err.code}`);
+            expect(err.code).assertEqual(401);
+            done();
+          }else{
+            console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0301 result ${data.length}`);
+            expect(Array.isArray(data)).assertEqual(false);
+            done();
+          }
+        });
+      } catch (exception) {
+        console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0301 has error: ${exception.code}`);
+        expect(exception.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0302
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode_0302
+    * @tc.desc    The parameters input are null and 'install', test the getAccessibilityExtensionList() function,
+    *             and the output is the list of AccessibilityAbilityInfo CallBack
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0302', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0302');
+      try {
+        let abilityType = null;
+        accessibility.getAccessibilityExtensionList(abilityType, 'install', (err, data) => {
+          if (err && err.code != 0) {
+            console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0302 has error: ${err.code}`);
+            expect(err.code).assertEqual(401);
+            done();
+          }else{
+            console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0302 result ${data.length}`);
+            expect(Array.isArray(data)).assertEqual(false);
+            done();
+          }
+        });
+      } catch (exception) {
+        console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0302 has error: ${exception.code}`);
+        expect(exception.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0303
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode_0303
+    * @tc.desc    The parameters input are 'all' and '', test the getAccessibilityExtensionList() function,
+    *             and the output is the list of AccessibilityAbilityInfo CallBack
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0303', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0303');
+      try {
+        let abilityState ;
+        accessibility.getAccessibilityExtensionList('all', abilityState, (err, data) => {
+          if (err && err.code != 0) {
+            console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0303 has error: ${err.code}`);
+            expect(err.code).assertEqual(401);
+            done();
+          }else{
+            console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0303 result ${data.length}`);
+            expect(Array.isArray(data)).assertEqual(false);
+            done();
+          }
+        });
+      } catch (exception) {
+        console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0303 has error: ${exception.code}`);
+        expect(exception.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0304
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode_0304
+    * @tc.desc    The parameters input are 'all' and null, test the getAccessibilityExtensionList() function,
+    *             and the output is the list of AccessibilityAbilityInfo CallBack
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0304', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0304');
+      try {
+        let abilityState = null;
+        accessibility.getAccessibilityExtensionList('all', abilityState, (err, data) => {
+          if (err && err.code != 0) {
+            console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0304 has error: ${err.code}`);
+            expect(err.code).assertEqual(401);
+            done();
+          }else{
+            console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0304 result ${data.length}`);
+            expect(Array.isArray(data)).assertEqual(false);
+            done();
+          }
+        });
+      } catch (exception) {
+        console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0304 has error: ${exception.code}`);
+        expect(exception.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode_0305
+    * @tc.desc    The parameters input are '' and 'install', test the getAccessibilityExtensionList() function,
+    *             and the output is the list of AccessibilityAbilityInfo Promise
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305');
+      try {
+        let abilityType ;
+        accessibility.getAccessibilityExtensionList(abilityType, 'install').then((result) => {
+          console.info(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305 result ${result.length}`);
+          expect(Array.isArray(result)).assertEqual(false);
+          done();
+        }).catch((err) => {
+          console.error(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305 has error: ${err}`);
+          expect(err.code).assertEqual(401);
+          done();
+        })
+      } catch (exception) {
+        console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305 has error: ${exception.code}`);
+        expect(exception.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0306
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode_0306
+    * @tc.desc    The parameters input are null and 'install', test the getAccessibilityExtensionList() function,
+    *             and the output is the list of AccessibilityAbilityInfo Promise
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0306', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0306');
+      try {
+        let abilityType = null;
+        accessibility.getAccessibilityExtensionList(abilityType, 'install').then((result) => {
+          console.info(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305 result ${result.length}`);
+          expect(Array.isArray(result)).assertEqual(false);
+          done();
+        }).catch((err) => {
+          console.error(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305 has error: ${err}`);
+          expect(err.code).assertEqual(401);
+          done();
+        })
+      } catch (exception) {
+        console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305 has error: ${exception.code}`);
+        expect(exception.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0307
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode_0307
+    * @tc.desc    The parameters input are 'all' and '', test the getAccessibilityExtensionList() function,
+    *             and the output is the list of AccessibilityAbilityInfo Promise
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0307', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0307');
+      try {
+        let abilityState ;
+        accessibility.getAccessibilityExtensionList('all', abilityState).then((result) => {
+          console.info(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0307 result ${result.length}`);
+          expect(Array.isArray(result)).assertEqual(false);
+          done();
+        }).catch((err) => {
+          console.error(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0307 has error: ${err}`);
+          expect(err.code).assertEqual(401);
+          done();
+        })
+      } catch (exception) {
+        console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0307 has error: ${exception.code}`);
+        expect(exception.code).assertEqual(401);
+        done();
+      }
+    });
+
+
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0308
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode_0308
+    * @tc.desc    The parameters input are 'all' and null, test the getAccessibilityExtensionList() function,
+    *             and the output is the list of AccessibilityAbilityInfo Promise
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0308', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0308');
+      try {
+        let abilityState = null;
+        accessibility.getAccessibilityExtensionList('all', abilityState).then((result) => {
+          console.info(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0308 result ${result.length}`);
+          expect(Array.isArray(result)).assertEqual(false);
+          done();
+        }).catch((err) => {
+          console.error(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0308 has error: ${err}`);
+          expect(err.code).assertEqual(401);
+          done();
+        })
+      } catch (exception) {
+        console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0308 has error: ${exception.code}`);
+        expect(exception.code).assertEqual(401);
+        done();
+      }
+    });
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0800
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0800
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0800
     * @tc.desc    test Accessibility SendEvent CallBack
     * @tc.size    SmallTest
     * @tc.type    User
@@ -485,7 +725,7 @@ export default function abilityTest() {
     })
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0100
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0100
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0100
     * @tc.desc    test Ability Capability
     * @tc.size    SmallTest
     * @tc.type    User
@@ -524,7 +764,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0101
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0101
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0101
     * @tc.desc    test Ability Captions Manager
     * @tc.size    SmallTest
     * @tc.type    User
@@ -545,7 +785,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_1000
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_1000
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode1000
     * @tc.desc    test GesturePath And GesturePoint
     * @tc.size    SmallTest
     * @tc.type    User
@@ -596,7 +836,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0900
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0900
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0900
     * @tc.desc    test AccessibilitySetTargetBundleName
     * @tc.size    SmallTest
     * @tc.type    User
@@ -626,7 +866,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0901
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0901
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0901
     * @tc.desc    test AccessibilitySetTargetBundleName
     * @tc.size    SmallTest
     * @tc.type    User
@@ -653,7 +893,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0400
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0400
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0400
     * @tc.desc    test AccessibilityGetFocusElement
     * @tc.size    SmallTest
     * @tc.type    User
@@ -702,7 +942,7 @@ export default function abilityTest() {
     })
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0401
     * @tc.desc    test AccessibilityGetFocusElement
     * @tc.size    SmallTest
     * @tc.type    User
@@ -794,7 +1034,7 @@ export default function abilityTest() {
     })
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0402
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0402
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0402
     * @tc.desc    test AccessibilityGetFocusElement
     * @tc.size    SmallTest
     * @tc.type    User
@@ -849,7 +1089,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0500
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0500
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0500
     * @tc.desc    test AccessibilityGetWindowRootElement
     * @tc.size    SmallTest
     * @tc.type    User
@@ -879,7 +1119,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0501
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0501
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0501
     * @tc.desc    test AccessibilityGetWindowRootElement
     * @tc.size    SmallTest
     * @tc.type    User
@@ -906,7 +1146,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0502
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0502
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0502
     * @tc.desc    test AccessibilityGetWindowRootElement
     * @tc.size    SmallTest
     * @tc.type    User
@@ -934,7 +1174,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0600
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0600
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0600
     * @tc.desc    test AccessibilityGetWindows
     * @tc.size    SmallTest
     * @tc.type    User
@@ -977,7 +1217,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0601
     * @tc.desc    test AccessibilityGetWindows
     * @tc.size    SmallTest
     * @tc.type    User
@@ -1020,7 +1260,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0602
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0602
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0602
     * @tc.desc    test AccessibilityGetWindows
     * @tc.size    SmallTest
     * @tc.type    User
@@ -1048,7 +1288,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0700
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0700
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0700
     * @tc.desc    test AccessibilityInjectGesture
     * @tc.size    SmallTest
     * @tc.type    User
@@ -1082,7 +1322,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0701
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0701
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0701
     * @tc.desc    test AccessibilityInjectGesture
     * @tc.size    SmallTest
     * @tc.type    User
@@ -1112,7 +1352,7 @@ export default function abilityTest() {
     })
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0702
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0702
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0702
     * @tc.desc    test AccessibilityInjectGesture
     * @tc.size    SmallTest
     * @tc.type    User

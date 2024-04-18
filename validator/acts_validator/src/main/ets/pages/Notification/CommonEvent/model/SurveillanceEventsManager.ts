@@ -36,9 +36,9 @@ export default class SurveillanceEventsManager {
   }
 
   static surveillanceEvents: Array<string> = [
-  commonEvent.Support.COMMON_EVENT_SCREEN_OFF,
-  commonEvent.Support.COMMON_EVENT_SCREEN_ON,
-  commonEvent.Support.COMMON_EVENT_SCREEN_LOCKED,
-  commonEvent.Support.COMMON_EVENT_SCREEN_UNLOCKED,
+    commonEvent.Support.COMMON_EVENT_SCREEN_OFF,
+    commonEvent.Support.COMMON_EVENT_SCREEN_ON,
+    commonEvent.Support.COMMON_EVENT_SCREEN_LOCKED,
+    commonEvent.Support.COMMON_EVENT_SCREEN_UNLOCKED,
   ]
 }

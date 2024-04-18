@@ -31,7 +31,8 @@ struct GrandSon {
 
 @Component
 struct Child {
-  @Provide({allowOverride : "reviewVotes"}) reviewVotes: number = 10;
+  @Provide({ allowOverride: "reviewVotes" }) reviewVotes: number = 10;
+
   build() {
     Row({ space: 5 }) {
       GrandSon()
@@ -41,7 +42,8 @@ struct Child {
 
 @Component
 struct Parent {
-  @Provide({allowOverride : "reviewVotes"}) reviewVotes: number = 20;
+  @Provide({ allowOverride: "reviewVotes" }) reviewVotes: number = 20;
+
   build() {
     Child()
   }

@@ -14,27 +14,28 @@
  */
 
 
-
 @Entry
 @Component
 struct NavigationApi {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
 
-  @Builder pageOneTmp() {
+  @Builder
+  pageOneTmp() {
     NavDestination() {
-      Column({space:10}) {
-        Text('pageOne').id('NavigationApi_text_pageOne')
+      Column({ space: 10 }) {
+        Text('pageOne')
+          .id('NavigationApi_text_pageOne')
 
         Button('replacePathByName')
           .width('80%')
           .height(40)
           .onClick(() => {
-            this.pageInfos.replacePathByName('pageTwo',null )
+            this.pageInfos.replacePathByName('pageTwo', null)
           })
           .id('NavigationApi_replacePathByName')
-        
-
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageOne')
     .onBackPressed(() => {
       this.pageInfos.pop()
@@ -42,28 +43,30 @@ struct NavigationApi {
     })
   }
 
-  @Builder pageTwoTmp() {
-  NavDestination() {
-    Column({space:5}) {
+  @Builder
+  pageTwoTmp() {
+    NavDestination() {
+      Column({ space: 5 }) {
 
-      Text('pageTwo').id('NavigationApi_text_pageTwo')
+        Text('pageTwo').id('NavigationApi_text_pageTwo')
 
-      Button('pop')
-        .width('80%')
-        .height(40)
-        .onClick(() => {
-          this.pageInfos.pop()
-        })
-        .id('NavigationApi_pop2')
+        Button('pop')
+          .width('80%')
+          .height(40)
+          .onClick(() => {
+            this.pageInfos.pop()
+          })
+          .id('NavigationApi_pop2')
 
-    }.width('100%').height('100%')
-  }.title('pageTwo')
-  .onBackPressed(() => {
-    this.pageInfos.pop()
-    return true
-  })
-}
-
+      }
+      .width('100%')
+      .height('100%')
+    }.title('pageTwo')
+    .onBackPressed(() => {
+      this.pageInfos.pop()
+      return true
+    })
+  }
 
   @Builder
   PageMap(name: string) {
@@ -78,7 +81,8 @@ struct NavigationApi {
     Navigation(this.pageInfos) {
       Column() {
 
-        Text('Navigation').id('NavigationApi_text_Navigation')
+        Text('Navigation')
+          .id('NavigationApi_text_Navigation')
 
         Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -94,9 +98,12 @@ struct NavigationApi {
           .onClick(() => {
             this.pageInfos.disableAnimation(false)
           })
-          .margin({top:10})
+          .margin({ top: 10 })
 
       }
-    }.title('NavIndex').navDestination(this.PageMap).id('NavigationApi_Navigation')
+    }
+    .title('NavIndex')
+    .navDestination(this.PageMap)
+    .id('NavigationApi_Navigation')
   }
 }

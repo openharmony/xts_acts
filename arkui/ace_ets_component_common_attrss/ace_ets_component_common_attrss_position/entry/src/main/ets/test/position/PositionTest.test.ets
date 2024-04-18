@@ -18,6 +18,22 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentWidth: number;
+  parentHeight: number;
+  parentComponentKey: string;
+  referenceComponentKey: string;
+}
+
+class TestValues {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
 /**
  * Test of common attribute: position
  */
@@ -25,7 +41,7 @@ export default function positionTest() {
   //A list of components that support the position attribute, which is required.
   let supportView = [
     'AlphabetIndexer',
-//    'Blank',
+    //    'Blank',
     'Button',
     'Checkbox',
     'CheckboxGroup',
@@ -65,12 +81,12 @@ export default function positionTest() {
     'Slider',
     'Text',
     'TextArea',
-//    'TextClock',
+    //    'TextClock',
     'TextInput',
     'TextPicker',
     'TimePicker',
     'Toggle',
-//    'Badge',
+    //    'Badge',
     'Column',
     'Counter',
     'GridRow',
@@ -101,7 +117,7 @@ export default function positionTest() {
   let parentHeight = 400;
 
   //Page related configuration, this parameter is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testPosition',
     pageName: 'PositionPage',
     pageUrl: 'MainAbility/pages/position/PositionPage',
@@ -112,7 +128,7 @@ export default function positionTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues: TestValues[] = [{
     describe: 'SetNumber',
     setValue: {
       x: 200, y: 100
@@ -151,7 +167,7 @@ export default function positionTest() {
    */
   describe('PositionTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Obtain the region information of the reference component.
       console.info('[' + data.caseTag + '] get referenceComponent rect before position changed.');
       let referenceRectBefore = Utils.getComponentRect(data.pageConfig.referenceComponentKey);
@@ -182,11 +198,11 @@ export default function positionTest() {
       let rectParent = parentRectAfter;
       let benchmarkChanged = false;
       if ('TabContent' == data.pageConfig.targetView || 'StepperItem' == data.pageConfig.targetView) {
-        let parentComponent = JSON.parse(JSON.stringify(getInspectorTree()))
+        let parentComponent: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[0]
           .$children[0];
-        parentComponent.$children.forEach(element => {
+        parentComponent.$children.forEach((element: ESObject) => {
           if ('Swiper' == element.$type) {
             rectParent = Utils.getComponentRectByObj(element)
             benchmarkChanged = true;
@@ -210,19 +226,22 @@ export default function positionTest() {
       if ('SetStringPercent' == data.testValue.describe && benchmarkChanged) {
         console.info('[' + data.caseTag + '] benchmark changed after component rendered.');
         console.info('[' + data.caseTag + '] check actual offset x.');
-        expect(Math.abs(Number(rect.left - rectParent.left) - Number(percentBaseX * data.testValue.setValue.xp)) <= 1).assertTrue();
+        expect(Math.abs(Number(rect.left - rectParent.left) - Number(percentBaseX * data.testValue.setValue.xp)) <= 1)
+          .assertTrue();
         console.info('[' + data.caseTag + '] check actual offset y.');
-        expect(Math.abs(Number(rect.top - rectParent.top) - Number(percentBaseY * data.testValue.setValue.yp)) <= 1).assertTrue();
+        expect(Math.abs(Number(rect.top - rectParent.top) - Number(percentBaseY * data.testValue.setValue.yp)) <= 1)
+          .assertTrue();
       } else {
         console.info('[' + data.caseTag + '] check actual offset x.');
-        expect(Math.abs(Number(rect.left - rectParent.left) - Number(data.testValue.expectValue.left)) <= 1).assertTrue();
+        expect(Math.abs(Number(rect.left - rectParent.left) - Number(data.testValue.expectValue.left)) <= 1)
+          .assertTrue();
         console.info('[' + data.caseTag + '] check actual offset y.');
         expect(Math.abs(Number(rect.top - rectParent.top) - Number(data.testValue.expectValue.top)) <= 1).assertTrue();
       }
 
       //Confirm that the position attribute value has been set successfully.
       console.info('[' + data.caseTag + '] check position attr value.');
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + '] check position x.');
       expect(viewObj.$attrs.position.x).assertEqual(data.testValue.expectValue.x);
       console.info('[' + data.caseTag + '] check position y.');

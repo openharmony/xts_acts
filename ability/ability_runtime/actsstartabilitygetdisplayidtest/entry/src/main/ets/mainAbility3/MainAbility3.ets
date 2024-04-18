@@ -18,29 +18,27 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import commonEvent from '@ohos.commonEvent';
 import { Constant } from '../Common';
+import Want from '@ohos.app.ability.Want';
+import commonEventManager from '@ohos.commonEventManager';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 async function publishEvent() {
-  let abilityWant = globalThis.abilityWant2;
-
-  let commonEventPublishData = {
+  let abilityWant: Want = AppStorage.get<Want>("abilityWant2");
+  let commonEventPublishData: commonEventManager.CommonEventPublishData = {
     parameters: {
       displayId: abilityWant.parameters[Constant.displayId]
     }
   };
-
   console.log("liubea-Ability received abilityWant = " + JSON.stringify(abilityWant));
-
   commonEvent.publish(Constant.event_300, commonEventPublishData, () => {
-    console.log('liubea-============>publish START_ABILITY_CALLBACK_998877 success==========>>')
-
+    console.log('liubea-============>publish START_ABILITY_CALLBACK_998877 success==========>>');
   });
-
 }
 
 export default class MainAbility3 extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    globalThis.abilityWant2 = want
+    AppStorage.setOrCreate<Want>("abilityWant2", want);
   }
 
   onDestroy() {
@@ -68,8 +66,7 @@ export default class MainAbility3 extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
-
-    publishEvent()
+    publishEvent();
   }
 
   onBackground() {

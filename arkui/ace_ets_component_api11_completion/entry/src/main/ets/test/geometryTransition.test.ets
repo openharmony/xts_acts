@@ -12,18 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 export default function geometryTransition() {
-  describe('geometryTransition', function () {
-    beforeEach(async function (done) {
+  describe('geometryTransition', () => {
+    beforeEach(async (done: Function) => {
       console.info("geometryTransition beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/geometryTransition',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/geometryTransition',
       }
       try {
         router.clear();
@@ -49,7 +62,7 @@ export default function geometryTransition() {
     * @tc.type :
     * @tc.size :
     */
-    it('geometryTransition_0100', 0, async function (done) {
+    it('geometryTransition_0100', 0, async (done: Function) => {
       console.info('geometryTransition_0100 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -58,11 +71,10 @@ export default function geometryTransition() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('geometry_follow_2');
-      let obj = JSON.parse(strJson);
-      console.info("[geometryTransition_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[geometryTransition_0100] geometryTransition: " + JSON.stringify(obj.$attrs.geometryTransition));
-      expect(obj.$attrs.autoResize == "false").assertTrue();
-      expect(obj.$attrs.clip == "true").assertTrue();
+      console.info("[geometryTransition_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[geometryTransition_0100] geometryTransition: " + JSON.stringify(JSON.parse(strJson).$attrs.geometryTransition));
+      expect(JSON.parse(strJson).$attrs.autoResize == "false").assertTrue();
+      expect(JSON.parse(strJson).$attrs.clip == "true").assertTrue();
       console.info('[geometryTransition_0100] END');
       done();
     })

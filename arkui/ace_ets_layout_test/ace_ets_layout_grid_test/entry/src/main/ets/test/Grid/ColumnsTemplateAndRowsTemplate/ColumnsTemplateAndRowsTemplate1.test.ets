@@ -29,7 +29,7 @@ export default function ColumnsTemplateAndRowsTemplate1() {
         router.clear();
         let pages = router.getState();
         console.info("get ColumnsTemplateAndRowsTemplate1 state pages:" + JSON.stringify(pages));
-        if (!("GridFrictionPage" == pages.name)) {
+        if (!("ColumnsTemplateAndRowsTemplate1" == pages.name)) {
           console.info("get ColumnsTemplateAndRowsTemplate1 pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);

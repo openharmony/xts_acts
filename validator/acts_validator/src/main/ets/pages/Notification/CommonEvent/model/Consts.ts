@@ -27,8 +27,8 @@ export default class consts {
   static readonly DATA_BASE_KEY_NEVER_EVENTS: string = "neverCall";
 
   // definition for event enable state
-  static readonly ENABLE_STATE_ALWAYS : number = 0
-  static readonly ENABLE_STATE_NEVER : number = 2
+  static readonly ENABLE_STATE_ALWAYS: number = 0
+  static readonly ENABLE_STATE_NEVER: number = 2
 
   // definition for record volume
   static readonly MAX_RECORD_NUM: number = 10;

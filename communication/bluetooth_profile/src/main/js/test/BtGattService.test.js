@@ -83,6 +83,7 @@ describe('btGattServiceTest', function() {
     beforeAll(async function (done) {
         console.info('beforeAll called')
         await openPhone();
+        await tryToEnableBt();
         gattServer = bluetooth.BLE.createGattServer();
         console.info('[bluetooth_js]bgs gattServer create info:' + gattServer);
         gattClient = bluetooth.BLE.createGattClientDevice("00:22:44:66:77:69");

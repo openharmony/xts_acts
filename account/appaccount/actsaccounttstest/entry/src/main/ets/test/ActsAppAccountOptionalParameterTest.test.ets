@@ -14,27 +14,19 @@
  */
 import account from '@ohos.account.appAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { BusinessError } from '@ohos.base'
 
 export default function ActsAppAccountOptionalParameterTest() {
-  describe('ActsAppAccountOptionalParameterTest', function () {
+  describe('ActsAppAccountOptionalParameterTest', () => {
     const name = 'zhangsan'
     const owner = 'com.example.accounttstest'
 
-    async function sleep(delay) {
-      let timeoutId = null;
-      var promise = new Promise((resolve, reject) => {
-        timeoutId = setTimeout(() => resolve("done!"), delay);
-      });
-      await promise
-      clearTimeout(timeoutId)
-    }
-
-    beforeEach(async (done) => {
+    beforeEach(async (done: Function) => {
       console.info("====>afterEach start====");
-      var appAccountManager = account.createAppAccountManager();
-      var accounts = await appAccountManager.getAccountsByOwner(owner)
-      for (var i = 0; i < accounts.length; i++) {
-        var localName = accounts[i].name
+      let appAccountManager = account.createAppAccountManager();
+      let accounts = await appAccountManager.getAccountsByOwner(owner)
+      for (let i = 0; i < accounts.length; i++) {
+        let localName = accounts[i].name
         if (localName == 'zhangsan') {
           await appAccountManager.removeAccount(localName)
         }
@@ -50,9 +42,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_0100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0100 start====");
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>create finish====");
       appAccountManager.createAccount(name, (err) => {
         console.info("====>createAccount ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
@@ -74,9 +66,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_0200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0200 start====");
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
       console.info("====>createAccount start====");
       try {
@@ -101,9 +93,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_0300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0300 start====");
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
       appAccountManager.createAccount(name, undefined, (err) => {
         console.info("====>createAccount ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
@@ -125,9 +117,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_0400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0400 start====");
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
       console.info("====>createAccount start====");
       try {
@@ -152,9 +144,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_0500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0500 start====");
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
       appAccountManager.createAccount(name, null, (err) => {
         console.info("====>createAccount ActsAccountOptionalParameter_0500 err:" + JSON.stringify(err));
@@ -176,9 +168,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_0600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0600 start====");
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
       console.info("====>createAccount start====");
       try {
@@ -203,10 +195,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_0700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0700 start====");
-      let createAccountOptions = {}
-      var appAccountManager = account.createAppAccountManager();
+      let createAccountOptions: account.CreateAccountOptions = {}
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
       appAccountManager.createAccount("account_name_callback_second", createAccountOptions, (err) => {
         console.info("====>createAccount ActsAccountOptionalParameter_0700 err:" + JSON.stringify(err));
@@ -228,10 +220,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_0800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0800 start====");
-      let createAccountOptions = {}
-      var appAccountManager = account.createAppAccountManager();
+      let createAccountOptions: account.CreateAccountOptions = {}
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
       console.info("====>createAccount start====");
       try {
@@ -256,12 +248,12 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_0900', 0, async (done: Function) => {
       console.info("====>ActsAccountCreateAccount_0300 start====");
-      let createAccountOptions = {
+      let createAccountOptions: account.CreateAccountOptions = {
         customData: undefined
       };
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
       appAccountManager.createAccount("account_name_callback_second", createAccountOptions, (err) => {
         console.info("====>createAccount ActsAccountOptionalParameter_0900 err:" + JSON.stringify(err));
@@ -283,12 +275,12 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_1000', 0, async (done: Function) => {
       console.info("====>ActsAccountCreateAccount_0400 start====");
-      let createAccountOptions = {
+      let createAccountOptions: account.CreateAccountOptions = {
         customData: undefined
       }
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
       console.info("====>createAccount start====");
       try {
@@ -313,12 +305,12 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_1100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1100 start====");
-      let createAccountOptions = {
+      let createAccountOptions: account.CreateAccountOptions = {
         customData: null
       };
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
       appAccountManager.createAccount("account_name_callback_second", createAccountOptions, (err) => {
         console.info("====>createAccount ActsAccountOptionalParameter_1100 err:" + JSON.stringify(err));
@@ -340,12 +332,12 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_1200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1200 start====");
-      let createAccountOptions = {
+      let createAccountOptions: account.CreateAccountOptions = {
         customData: null
       }
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>createAppAccountManager finish====");
       console.info("====>createAccount start====");
       try {
@@ -373,14 +365,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_1300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
-        authType: "PIN", requiredLabels: ['male', '30-40'], parameters: {
-          'sex': 'male'
-        }
-      }
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", {
@@ -414,10 +401,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_1400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         authType: "PIN", requiredLabels: ['male', '30-40'], parameters: {
           'sex': 'male'
         }
@@ -437,7 +424,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_1400 onRequestContinued")
           }
         });
@@ -460,14 +447,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_1500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
-        authType: "PIN", requiredLabels: ['male', '30-40'], parameters: {
-          'sex': 'male'
-        }
-      }
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", undefined, {
@@ -501,14 +483,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_1600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
-        authType: "PIN", requiredLabels: ['male', '30-40'], parameters: {
-          'sex': 'male'
-        }
-      }
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", null, {
@@ -542,10 +519,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_1700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {}
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {}
       console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
@@ -561,7 +538,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_1700 onRequestContinued")
           }
         });
@@ -581,10 +558,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_1800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1800 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: undefined, authType: undefined, parameters: undefined
       }
       console.info("====>start finish====");
@@ -602,7 +579,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_1800 onRequestContinued")
           }
         });
@@ -622,10 +599,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_1900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1900 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: null, authType: null, parameters: null
       }
       console.info("====>start finish====");
@@ -643,7 +620,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_1900 onRequestContinued")
           }
         });
@@ -663,10 +640,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_2000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2000 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         authType: "PIN"
       }
       console.info("====>start finish====");
@@ -684,7 +661,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_2000 onRequestContinued")
           }
         });
@@ -704,10 +681,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_2100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2100 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: undefined, authType: "PIN", parameters: undefined
       }
       console.info("====>start finish====");
@@ -725,7 +702,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_2100 onRequestContinued")
           }
         });
@@ -745,10 +722,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_2200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: null, authType: "PIN", parameters: null
       }
       console.info("====>start finish====");
@@ -766,7 +743,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_2200 onRequestContinued")
           }
         });
@@ -786,10 +763,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_2300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: ['male', '30-40']
       }
       console.info("====>start finish====");
@@ -807,7 +784,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_2300 onRequestContinued")
           }
         });
@@ -827,10 +804,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_2400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: ['male', '30-40'], authType: undefined, parameters: undefined
       }
       console.info("====>start finish====");
@@ -848,7 +825,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_2400 onRequestContinued")
           }
         });
@@ -868,10 +845,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_2500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: ['male', '30-40'], authType: null, parameters: null
       }
       console.info("====>start finish====");
@@ -889,7 +866,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_2500 onRequestContinued")
           }
         });
@@ -909,10 +886,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_2600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         parameters: {
           'sex': 'male'
         }
@@ -932,7 +909,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_2600 onRequestContinued")
           }
         });
@@ -952,10 +929,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_2700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: undefined, authType: undefined, parameters: {
           'sex': 'male'
         }
@@ -975,7 +952,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_2700 onRequestContinued")
           }
         });
@@ -995,10 +972,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_2800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2800 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: null, authType: null, parameters: {
           'sex': 'male'
         }
@@ -1021,7 +998,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_2800 onRequestContinued")
           }
         });
@@ -1041,10 +1018,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_2900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2900 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: ['male', '30-40'], authType: "PIN"
       }
       console.info("====>start finish====");
@@ -1065,7 +1042,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_2900 onRequestContinued")
           }
         });
@@ -1085,10 +1062,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_3000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3000 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: ['male', '30-40'], authType: "PIN", parameters: undefined
       }
       console.info("====>start finish====");
@@ -1109,7 +1086,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_3000 onRequestContinued")
           }
         });
@@ -1129,10 +1106,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_3100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3100 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: ['male', '30-40'], authType: "PIN", parameters: null
       }
       console.info("====>start finish====");
@@ -1153,7 +1130,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_3100 onRequestContinued")
           }
         });
@@ -1173,10 +1150,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_3200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         authType: "PIN", parameters: {
           'sex': 'male'
         }
@@ -1199,7 +1176,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_3200 onRequestContinued")
           }
         });
@@ -1219,10 +1196,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_3300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: undefined, authType: "PIN", parameters: {
           'sex': 'male'
         }
@@ -1245,7 +1222,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_3300 onRequestContinued")
           }
         });
@@ -1265,10 +1242,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_3400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: null, authType: "PIN", parameters: {
           'sex': 'male'
         }
@@ -1291,7 +1268,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_3400 onRequestContinued")
           }
         });
@@ -1311,10 +1288,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_3500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: ['male', '30-40'], parameters: {
           'sex': 'male'
         }
@@ -1334,7 +1311,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_3500 onRequestContinued")
           }
         });
@@ -1354,10 +1331,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_3600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: ['male', '30-40'], authType: undefined, parameters: {
           'sex': 'male'
         }
@@ -1377,7 +1354,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_3600 onRequestContinued")
           }
         });
@@ -1397,10 +1374,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_3700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.CreateAccountImplicitlyOptions = {
         requiredLabels: ['male', '30-40'], authType: null, parameters: {
           'sex': 'male'
         }
@@ -1420,7 +1397,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
           },
           onRequestRedirected: null,
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>ActsAccountOptionalParameter_3700 onRequestContinued")
           }
         });
@@ -1440,9 +1417,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_3800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3800 start====");
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       try {
         appAccountManager.auth("authenticate_test_account", "com.acts.accountauthenticator", "authType", {
           onResult: (resultCode) => {
@@ -1455,7 +1432,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               done();
             }
           },
-          onRequestRedirected: function () {
+          onRequestRedirected: () => {
             console.info("====>onRequestRedirected")
           }
         });
@@ -1475,9 +1452,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_3900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3900 start====");
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       try {
         appAccountManager.auth("authenticate_test_account", "com.acts.accountauthenticator", "authType", {}, {
           onResult: (resultCode, resultData) => {
@@ -1492,10 +1469,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             }
 
           },
-          onRequestRedirected: function () {
+          onRequestRedirected: () => {
             console.info("====>onRequestRedirected")
           },
-          onRequestContinued: function () {
+          onRequestContinued: () => {
             console.info("====>_onRequestContinued")
           }
         });
@@ -1515,9 +1492,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_4000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4000 start====");
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       try {
         appAccountManager.auth("authenticate_test_account", "com.acts.accountauthenticator", "authType", undefined, {
           onResult: (resultCode, undefined) => {
@@ -1530,7 +1507,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               done();
             }
           },
-          onRequestRedirected: function () {
+          onRequestRedirected: () => {
             console.info("====>onRequestRedirected")
           },
           onRequestContinued: undefined
@@ -1551,9 +1528,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_4100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4100 start====");
-      var appAccountManager = account.createAppAccountManager();
+      let appAccountManager = account.createAppAccountManager();
       try {
         appAccountManager.auth("authenticate_test_account", "com.acts.accountauthenticator", "authType", null, {
           onResult: (resultCode) => {
@@ -1566,7 +1543,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               done();
             }
           },
-          onRequestRedirected: function () {
+          onRequestRedirected: () => {
             console.info("====>onRequestRedirected")
           },
           onRequestContinued: null
@@ -1587,14 +1564,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_4200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
-        credentialType: "PIN", credential: "123456", parameters: {
-          'sex': 'male'
-        }
-      }
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>start finish====");
       try {
         appAccountManager.createAccount(name, (err) => {
@@ -1633,10 +1605,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_4300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: "123456", parameters: {
           'sex': 'male'
         }
@@ -1662,7 +1634,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>_onRequestContinued")
             }
           });
@@ -1683,10 +1655,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_4400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: "123456", parameters: {
           'sex': 'male'
         }
@@ -1730,10 +1702,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_4500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: "123456", parameters: {
           'sex': 'male'
         }
@@ -1777,10 +1749,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_4600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {}
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {}
       console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
         console.info("====>ActsAccountOptionalParameter_4600 add_account_err:" + JSON.stringify(err));
@@ -1819,10 +1791,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_4700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: undefined, credential: undefined, parameters: undefined
       }
       console.info("====>start finish====");
@@ -1863,10 +1835,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_4800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4800 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: null, credential: null, parameters: null
       }
       console.info("====>start finish====");
@@ -1907,10 +1879,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_4900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4900 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN"
       }
       console.info("====>start finish====");
@@ -1951,10 +1923,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_5000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5000 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: undefined, parameters: undefined
       }
       console.info("====>start finish====");
@@ -1995,10 +1967,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_5100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5100 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: null, parameters: null
       }
       console.info("====>start finish====");
@@ -2039,10 +2011,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_5200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credential: "123456"
       }
       console.info("====>start finish====");
@@ -2083,10 +2055,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_5300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: undefined, credential: "123456", parameters: undefined
       }
       console.info("====>start finish====");
@@ -2127,10 +2099,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_5400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: null, credential: "123456", parameters: null
       }
       console.info("====>start finish====");
@@ -2171,10 +2143,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_5500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         parameters: {
           'sex': 'male'
         }
@@ -2217,10 +2189,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_5600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: undefined, credential: undefined, parameters: {
           'sex': 'male'
         }
@@ -2263,10 +2235,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_5700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: null, credential: null, parameters: {
           'sex': 'male'
         }
@@ -2309,10 +2281,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_5800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5800 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: "123456"
       }
       console.info("====>start finish====");
@@ -2353,10 +2325,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_5900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5900 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: "123456", parameters: undefined
       }
       console.info("====>start finish====");
@@ -2397,10 +2369,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_6000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6000 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: "123456", parameters: null
       }
       console.info("====>start finish====");
@@ -2441,10 +2413,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_6100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6100 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", parameters: {
           'sex': 'male'
         }
@@ -2487,10 +2459,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_6200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: undefined, parameters: {
           'sex': 'male'
         }
@@ -2533,10 +2505,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_6300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: null, parameters: {
           'sex': 'male'
         }
@@ -2579,10 +2551,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_6400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credential: "123456", parameters: {
           'sex': 'male'
         }
@@ -2625,10 +2597,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_6500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: undefined, credential: "123456", parameters: {
           'sex': 'male'
         }
@@ -2671,10 +2643,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_6600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: null, credential: "123456", parameters: {
           'sex': 'male'
         }
@@ -2717,10 +2689,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_6700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.VerifyCredentialOptions = {
         credentialType: "PIN", credential: "123456", parameters: {
           'sex': 'male'
         }
@@ -2763,16 +2735,9 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_6800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6800 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
-        properties: {
-          "prop1": "value1"
-        }, parameters: {
-          'sex': 'male'
-        }
-      }
+      let appAccountManager = account.createAppAccountManager();
       console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
         console.info("====>ActsAccountOptionalParameter_6800 add_account_err:" + JSON.stringify(err));
@@ -2811,10 +2776,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_6900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6900 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         properties: {
           "prop1": "value1"
         }, parameters: {
@@ -2842,7 +2807,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>ActsAccountOptionalParameter_6900 verifyCredential_onRequestContinued")
             }
           });
@@ -2863,10 +2828,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_7000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7000 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         properties: {
           "prop1": "value1"
         }, parameters: {
@@ -2912,10 +2877,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_7100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7100 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         properties: {
           "prop1": "value1"
         }, parameters: {
@@ -2961,10 +2926,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_7200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {}
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {}
       console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
         console.info("====>ActsAccountOptionalParameter_7200 add_account_err:" + JSON.stringify(err));
@@ -2986,7 +2951,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>ActsAccountOptionalParameter_7200 verifyCredential_onRequestContinued")
             }
           });
@@ -3007,10 +2972,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_7300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         properties: {
           "prop1": undefined
         }, parameters: {
@@ -3038,7 +3003,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>ActsAccountOptionalParameter_7300 verifyCredential_onRequestContinued")
             }
           });
@@ -3059,10 +3024,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
             */
-    it('ActsAccountOptionalParameter_7400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_7400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         properties: {
           "prop1": null
         }, parameters: {
@@ -3090,7 +3055,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>ActsAccountOptionalParameter_7400 verifyCredential_onRequestContinued")
             }
           });
@@ -3111,10 +3076,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
             */
-    it('ActsAccountOptionalParameter_7500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_7500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         properties: {
           "prop1": "value1"
         }
@@ -3140,7 +3105,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>ActsAccountOptionalParameter_7500 verifyCredential_onRequestContinued")
             }
           });
@@ -3161,10 +3126,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_7600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         properties: {
           "prop1": "value1"
         }, parameters: undefined
@@ -3190,7 +3155,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>ActsAccountOptionalParameter_7600 verifyCredential_onRequestContinued")
             }
           });
@@ -3211,10 +3176,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_7700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         properties: {
           "prop1": "value1"
         }, parameters: null
@@ -3240,7 +3205,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>ActsAccountOptionalParameter_7700 verifyCredential_onRequestContinued")
             }
           });
@@ -3261,10 +3226,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_7800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7800 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         parameters: {
           'sex': 'male'
         }
@@ -3290,7 +3255,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>ActsAccountOptionalParameter_7800 verifyCredential_onRequestContinued")
             }
           });
@@ -3311,10 +3276,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_7900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7900 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         properties: undefined, parameters: {
           'sex': 'male'
         }
@@ -3340,7 +3305,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>ActsAccountOptionalParameter_7900 verifyCredential_onRequestContinued")
             }
           });
@@ -3361,10 +3326,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_8000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_8000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8000 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SetPropertiesOptions = {
         properties: null, parameters: {
           'sex': 'male'
         }
@@ -3390,7 +3355,7 @@ export default function ActsAppAccountOptionalParameterTest() {
               }
             },
             onRequestRedirected: null,
-            onRequestContinued: function () {
+            onRequestContinued: () => {
               console.info("====>ActsAccountOptionalParameter_8000 verifyCredential_onRequestContinued")
             }
           });
@@ -3411,10 +3376,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_8100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_8100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8100 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {}
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {}
       console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
         try {
@@ -3443,10 +3408,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_8200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_8200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {}
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {}
       console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
         console.info("====>ActsAccountOptionalParameter_8200 add_account_err:" + JSON.stringify(err));
@@ -3458,7 +3423,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_8200 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -3479,10 +3444,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_8300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_8300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
@@ -3515,10 +3480,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_8400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_8400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
@@ -3534,7 +3499,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_8400 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -3555,10 +3520,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_8500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_8500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: undefined, allowedOwners: undefined, requiredLabels: undefined
       }
       console.info("====>start finish====");
@@ -3590,10 +3555,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_8600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_8600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: undefined, allowedOwners: undefined, requiredLabels: undefined
       }
       console.info("====>start finish====");
@@ -3607,7 +3572,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_8600 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -3629,10 +3594,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_8700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_8700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: null, allowedOwners: null, requiredLabels: null
       }
       console.info("====>start finish====");
@@ -3664,10 +3629,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_8800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_8800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8800 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: null, allowedOwners: null, requiredLabels: null
       }
       console.info("====>start finish====");
@@ -3681,7 +3646,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_8800 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -3703,10 +3668,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_8900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_8900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8900 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }]
@@ -3740,10 +3705,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_9000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9000 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }]
@@ -3759,7 +3724,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_9000 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -3781,10 +3746,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_9100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9100 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: undefined, requiredLabels: undefined
@@ -3817,10 +3782,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_9200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: undefined, requiredLabels: undefined
@@ -3836,7 +3801,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_9200 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -3858,10 +3823,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_9300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_9300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: null, requiredLabels: null
@@ -3894,10 +3859,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_9400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: null, requiredLabels: null
@@ -3913,7 +3878,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_9400 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -3935,10 +3900,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_9500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_9500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedOwners: ["com.example.accounttstest"]
       }
       console.info("====>start finish====");
@@ -3970,10 +3935,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_9600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedOwners: ["com.example.accounttstest"]
       }
       console.info("====>start finish====");
@@ -3987,7 +3952,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_9600 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4009,10 +3974,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_9700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_9700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: undefined, allowedOwners: ["com.example.accounttstest"], requiredLabels: undefined
       }
       console.info("====>start finish====");
@@ -4043,10 +4008,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_9800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9800 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: undefined, allowedOwners: ["com.example.accounttstest"], requiredLabels: undefined
       }
       console.info("====>start finish====");
@@ -4060,7 +4025,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_9800 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4082,10 +4047,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_9900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_9900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9900 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: null, allowedOwners: ["com.example.accounttstest"], requiredLabels: null
       }
       console.info("====>start finish====");
@@ -4116,10 +4081,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_10000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_10000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10000 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: null, allowedOwners: ["com.example.accounttstest"], requiredLabels: null
       }
       console.info("====>start finish====");
@@ -4133,7 +4098,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_10000 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4155,10 +4120,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_10100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_10100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10100 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -4190,10 +4155,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_10200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_10200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -4207,7 +4172,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_10200 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4229,10 +4194,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_10300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_10300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: undefined, allowedOwners: undefined, requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -4264,10 +4229,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_10400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_10400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: undefined, allowedOwners: undefined, requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -4281,7 +4246,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_10400 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4303,10 +4268,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_10500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_10500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: null, allowedOwners: null, requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -4337,10 +4302,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_10600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_10600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: null, allowedOwners: null, requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -4354,7 +4319,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_10600 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4376,10 +4341,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_10700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_10700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"]
@@ -4413,10 +4378,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_10800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_10800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10800 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"]
@@ -4432,7 +4397,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_10800 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4454,10 +4419,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_10900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_10900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10900 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: undefined
@@ -4491,10 +4456,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_11000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_11000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11000 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: undefined
@@ -4510,7 +4475,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_11000 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4532,10 +4497,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_11100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_11100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11100 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: null
@@ -4569,10 +4534,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_11200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_11200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: null
@@ -4588,7 +4553,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_11200 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4610,10 +4575,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_11300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_11300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], requiredLabels: ["student"]
@@ -4647,10 +4612,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_11400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_11400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], requiredLabels: ["student"]
@@ -4666,7 +4631,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_11400 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4688,10 +4653,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_11500', 0, async function (done) {
+    it('ActsAccountOptionalParameter_11500', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11500 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: undefined, requiredLabels: ["student"]
@@ -4725,10 +4690,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_11600', 0, async function (done) {
+    it('ActsAccountOptionalParameter_11600', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11600 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: undefined, requiredLabels: ["student"]
@@ -4744,7 +4709,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_11600 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4766,10 +4731,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_11700', 0, async function (done) {
+    it('ActsAccountOptionalParameter_11700', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11700 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: null, requiredLabels: ["student"]
@@ -4803,10 +4768,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_11800', 0, async function (done) {
+    it('ActsAccountOptionalParameter_11800', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11800 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: null, requiredLabels: ["student"]
@@ -4822,7 +4787,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_11800 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4844,10 +4809,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_11900', 0, async function (done) {
+    it('ActsAccountOptionalParameter_11900', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11900 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -4879,10 +4844,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_12000', 0, async function (done) {
+    it('ActsAccountOptionalParameter_12000', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_12000 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -4896,7 +4861,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_12000 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4918,10 +4883,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_12100', 0, async function (done) {
+    it('ActsAccountOptionalParameter_12100', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_12100 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: undefined, allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -4953,10 +4918,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_12200', 0, async function (done) {
+    it('ActsAccountOptionalParameter_12200', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_12200 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: undefined, allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -4970,7 +4935,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_12200 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
@@ -4992,10 +4957,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_12300', 0, async function (done) {
+    it('ActsAccountOptionalParameter_12300', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_12300 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: null, allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -5027,10 +4992,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_12400', 0, async function (done) {
+    it('ActsAccountOptionalParameter_12400', 0, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_12400 start====");
-      var appAccountManager = account.createAppAccountManager();
-      var options = {
+      let appAccountManager = account.createAppAccountManager();
+      let options: account.SelectAccountsOptions = {
         allowedAccounts: null, allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
       console.info("====>start finish====");
@@ -5044,7 +5009,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             await appAccountManager.removeAccount(name);
             console.info("====>ActsAccountOptionalParameter_12400 success")
             done()
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()

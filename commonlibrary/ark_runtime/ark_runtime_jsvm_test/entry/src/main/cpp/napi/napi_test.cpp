@@ -32,6 +32,29 @@
 #define LOG_DEMAIN 0x0202
 using namespace std;
 static int aa = 0;
+static bool g_temp = false;
+const int DIFF_VALUE_ZERO = 0;
+const int DIFF_VALUE_NOE = 1;
+const int DIFF_VALUE_TWO = 2;
+const int DIFF_VALUE_THREE = 3;
+const int DIFF_VALUE_FOUR = 4;
+const int DIFF_VALUE_FIVE = 5;
+const int DIFF_VALUE_SIX = 6;
+const int DIFF_VALUE_SEVEN = 7;
+const int DIFF_VALUE_EIGHT = 8;
+const int DIFF_VALUE_NINE = 9;
+const int DIFF_VALUE_TEN = 10;
+const int DIFF_VALUE_ELEVEN = 11;
+const int DIFF_VALUE_TWELVE = 12;
+const int DIFF_VALUE_THIRTEEN = 13;
+const int DIFF_VALUE_FOURTEEN = 14;
+const int DIFF_VALUE_FITEEN = 15;
+const int DIFF_VALUE_SIXTEEN = 16;
+const int DIFF_VALUE_SEVENTEEN = 17;
+const int DIFF_VALUE_EIGHTEEN = 18;
+const int DIFF_VALUE_NINETEEN = 19;
+const int DIFF_VALUE_TWENTY = 20;
+const int DIFF_VALUE_TWENTYONE = 21;
 #define OPENCODE
 #ifdef OPENCODE
 static void addReturnedStatus(JSVM_Env env, const char *key, JSVM_Value object, const char *expected_message,
@@ -160,6 +183,9 @@ static intptr_t externals[] = {
     0,
 };
 
+static JSVM_PropertyHandlerConfigurationStruct propertyCfg{
+    nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr
+};
 
 static napi_value testEngineAndContext(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
@@ -549,7 +575,9 @@ static napi_value testCreateData1(napi_env env1, napi_callback_info info){
     JSVM_Value arrayBuffer = nullptr;
     void *arrayBufferPtr = nullptr;
     size_t arrayBufferSize = 1024;
-    OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    JSVM_Status status = OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    JSVM_ASSERT(env, status == JSVM_OK, "success to OH_JSVM_CreateArraybuffer");
+    JSVM_ASSERT(env, arrayBuffer != nullptr, "success create_arryBuffer");
     JSVM_Value createResult = nullptr;
     double time = 202110181203150;
     OH_JSVM_CreateDate(env, time, &createResult);
@@ -563,6 +591,7 @@ static napi_value testCreateData1(napi_env env1, napi_callback_info info){
         env, (void *)testStr, [](JSVM_Env env, void *data, void *hint) {}, (void *)testStr, &external);
     void *tempExternal = nullptr;
     OH_JSVM_GetValueExternal(env, external, &tempExternal);
+    OH_JSVM_DetachArraybuffer(env, arrayBuffer);
     OH_JSVM_CloseHandleScope(env, handlescope);
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -668,7 +697,9 @@ static napi_value testCreateData3(napi_env env1, napi_callback_info info){
     JSVM_Value arrayBuffer = nullptr;
     void *arrayBufferPtr = nullptr;
     size_t arrayBufferSize = 16;
-    OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    JSVM_Status status = OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    JSVM_ASSERT(env, status == JSVM_OK, "success to OH_JSVM_CreateArraybuffer");
+    JSVM_ASSERT(env, arrayBuffer != nullptr, "success create_arryBuffer");
     bool isArrayBuffer = false;
     OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer);
     JSVM_Value result = nullptr;
@@ -680,6 +711,7 @@ static napi_value testCreateData3(napi_env env1, napi_callback_info info){
     size_t byteLength = 0;
     size_t byteOffset = -1;
     OH_JSVM_GetDataviewInfo(env, result, &byteLength, &data, &retArrayBuffer, &byteOffset);
+    OH_JSVM_DetachArraybuffer(env, arrayBuffer);
     OH_JSVM_CloseHandleScope(env, handlescope);
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -1476,6 +1508,2180 @@ static napi_value Add1(napi_env env1, napi_callback_info info) {
     NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
     return result11;
 }
+static bool output_stream(const char *data, int size, void *stream_data) {
+    return true;
+}
+static JSVM_Value theSecondOperations(JSVM_Env env, JSVM_CallbackInfo info) {
+    JSVM_VM vm;
+    OH_JSVM_CreateVM(nullptr, &vm);
+    void *data = nullptr;
+    JSVM_HeapStatistics stats;
+    OH_JSVM_GetHeapStatistics(vm, &stats);
+    OH_JSVM_TakeHeapSnapshot(vm,output_stream,data);
+    JSVM_CpuProfiler cpu_profiler;
+    OH_JSVM_StartCpuProfiler(vm, &cpu_profiler);
+    OH_JSVM_StopCpuProfiler( vm,cpu_profiler,output_stream,data);
+    return nullptr;
+}
+static napi_value testSecondOperations(napi_env env1, napi_callback_info info) {
+        JSVM_InitOptions init_options;
+        memset(&init_options, 0, sizeof(init_options));
+        init_options.externalReferences = externals;
+        if (aa == 0) {
+            OH_JSVM_Init(&init_options);
+            aa++;
+        }
+        JSVM_VM vm;
+        JSVM_CreateVMOptions options;
+        memset(&options, 0, sizeof(options));
+        OH_JSVM_CreateVM(&options, &vm);
+        JSVM_VMScope vm_scope;
+        OH_JSVM_OpenVMScope(vm, &vm_scope);
+        JSVM_Env env;
+        JSVM_CallbackStruct param[1];
+        param[0].data = nullptr;
+        param[0].callback = theSecondOperations;
+        JSVM_PropertyDescriptor descriptor[] = {
+            {"theSecondOperations", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+        };
+        OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+        OH_JSVM_OpenInspector(env, "localhost", 9229);
+        OH_JSVM_WaitForDebugger(env, false);
+        JSVM_EnvScope envScope;
+        OH_JSVM_OpenEnvScope(env, &envScope);
+        JSVM_HandleScope handlescope;
+        OH_JSVM_OpenHandleScope(env, &handlescope);
+        OH_JSVM_CloseHandleScope(env, handlescope);
+        OH_JSVM_CloseInspector(env);
+        OH_JSVM_CloseEnvScope(env, envScope);
+        OH_JSVM_DestroyEnv(env);
+        OH_JSVM_CloseVMScope(vm, vm_scope);
+        OH_JSVM_DestroyVM(vm);
+        napi_value result11;
+        NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+        return result11;
+}
+
+// ========= arguments check =========
+static JSVM_Value checkArgs(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    auto func = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.callback = func;
+    param.data = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+
+    // case 1. If env is null ptr, return JSVM_INVALID_ARG.
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(nullptr, "Test1", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, &param, &testWrapClass);
+    if (res == JSVM_INVALID_ARG) {
+        JSVM_ASSERT(env, res == JSVM_INVALID_ARG, "OH_JSVM_DefineClassWithPropertyHandler failed due to nullptr env");
+    }
+
+    // case 1. If utf8name is nullptr, return JSVM_INVALID_ARG.
+    res = OH_JSVM_DefineClassWithPropertyHandler(env, nullptr, NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                 &propertyCfg, &param, &testWrapClass);
+    if (res == JSVM_INVALID_ARG) {
+        JSVM_ASSERT(env, res == JSVM_INVALID_ARG, "OH_JSVM_DefineClassWithPropertyHandler failed due to nullptr utf8name");
+    }
+
+    // case 3. if constructor is nullptr, return JSVM_INVALID_ARG.
+    res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test1", NAPI_AUTO_LENGTH, nullptr, 0, nullptr, &propertyCfg,
+                                                 &param, &testWrapClass);
+    if (res == JSVM_INVALID_ARG) {
+        JSVM_ASSERT(env, res == JSVM_INVALID_ARG, "OH_JSVM_DefineClassWithPropertyHandler failed due to nullptr constructor");
+    }
+    
+    // case 4. If the callback of the constructor is nullptr, return JSVM_INVALID_ARG.
+    param.callback = nullptr;
+    res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test1", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                 &propertyCfg, &param, &testWrapClass);
+    if (res == JSVM_INVALID_ARG) {
+        JSVM_ASSERT(env, res == JSVM_INVALID_ARG, "OH_JSVM_DefineClassWithPropertyHandler failed due to nullptr constructor callback");
+    }
+    param.callback = func;
+    
+    // case 5. If propertyCount is greater than 0, properties are nullptr
+    res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test1", NAPI_AUTO_LENGTH, &param, 1, nullptr, &propertyCfg,
+                                                 &param, &testWrapClass);
+    if (res == JSVM_INVALID_ARG) {
+        JSVM_ASSERT(env, res == JSVM_INVALID_ARG, "OH_JSVM_DefineClassWithPropertyHandler failed due to nullptr properties");
+    }
+
+    // case 6. If propertyHandlerCfg is nullptr, return JSVM_INVALID_ARG.
+    res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test1", NAPI_AUTO_LENGTH, &param, 0, nullptr, nullptr,
+                                                 &param, &testWrapClass);
+    if (res == JSVM_INVALID_ARG) {
+        JSVM_ASSERT(env, res == JSVM_INVALID_ARG, "OH_JSVM_DefineClassWithPropertyHandler failed due to nullptr propertyHandlerCfg");
+    }
+
+    // case 7. If result is nullptr, return JSVM_INVALID_ARG.
+    res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test1", NAPI_AUTO_LENGTH, &param, 0, nullptr, &propertyCfg,
+                                                 &param, nullptr);
+    if (res == JSVM_INVALID_ARG) {
+        JSVM_ASSERT(env, res == JSVM_INVALID_ARG, "OH_JSVM_DefineClassWithPropertyHandler failed due to nullptr result");
+    }
+
+    // case 8. Valid input parameter, return JSVM_OK.
+    res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test1", NAPI_AUTO_LENGTH, &param, 0, nullptr, &propertyCfg,
+                                                 nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        JSVM_ASSERT(env, res == JSVM_INVALID_ARG, "OH_JSVM_DefineClassWithPropertyHandler successfully");
+    }
+    return nullptr;
+}
+
+static napi_value testCheckArgs(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = checkArgs;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"checkArgs", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ============ empty propertyHandlerCfg ============================
+// case 9. setProperty
+static JSVM_Value setProperty(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    
+    OH_JSVM_DefineClassWithPropertyHandler(env, "Test2", NAPI_AUTO_LENGTH, &param, 0, nullptr, &propertyCfg, nullptr,
+                                           &testWrapClass);
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world";
+    JSVM_Value setvalueName = nullptr;
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    JSVM_Status res = OH_JSVM_SetNamedProperty(env, instanceValue, "mySettedProperty", setvalueName);
+    if (res == JSVM_OK) {
+        char resultStr[] = "set property successfully";
+        OH_JSVM_CreateStringUtf8(env, resultStr, strlen(resultStr), &result);
+    }
+    return result;
+}
+
+static napi_value testSetProperty(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = setProperty;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"setProperty", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// case 10. getProperty
+static JSVM_Value getProperty(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    OH_JSVM_DefineClassWithPropertyHandler(env, "Test3", NAPI_AUTO_LENGTH, &param, 0, nullptr, &propertyCfg, nullptr,
+                                           &testWrapClass);
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "mySettedProperty", setvalueName);
+
+    JSVM_Value valueName = nullptr;
+    JSVM_Status res = OH_JSVM_GetNamedProperty(env, instanceValue, "mySettedProperty", &valueName);
+    if (res == JSVM_OK) {
+        printf("JSVM getProperty successfully");
+    }
+    return valueName;
+}
+
+static napi_value testGetProperty(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+
+    param[0].callback = nullptr;
+    param[0].callback = getProperty;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"getProperty", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// case 11 and case 12
+static JSVM_Value CallObjectAsFunction(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+
+    JSVM_PropertyHandlerConfigurationStruct propertyCfg;
+    JSVM_CallbackStruct callbackStruct;
+    callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        void *innerData;
+        size_t argc = 1;
+        JSVM_Value args[1];
+        OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, &innerData);
+        uint32_t ret = 0;
+        OH_JSVM_GetValueUint32(env, args[0], &ret);
+        const char testStr[] = "hello world 111111";
+        JSVM_Value setvalueName = nullptr;
+        OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+        return setvalueName;
+    };
+    char data[100] = "hello world";
+    callbackStruct.data = data;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test12", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, &callbackStruct, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    JSVM_Value gloablObj = nullptr;
+    OH_JSVM_GetGlobal(env, &gloablObj);
+    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance", instanceValue);
+    return nullptr;
+}
+
+static napi_value testCallFunction(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = CallObjectAsFunction;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"CallObjectAsFunction", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ============================= test nullptr return for namedProperty handle ====================================
+// cases 13-16, return nullptr, only listen without interception, successfully setProperty.
+static JSVM_Value SetNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value name, JSVM_Value property, JSVM_Value thisArg)
+{
+    char strValue[100];
+    size_t size;
+    size_t bufferSize = 300;
+    OH_JSVM_GetValueStringUtf8(env, name, strValue, bufferSize, &size);
+    char str[100];
+    size_t size1;
+    OH_JSVM_GetValueStringUtf8(env, property, str, strlen(str), &size1);
+    JSVM_Value gloablObj = nullptr;
+    OH_JSVM_GetGlobal(env, &gloablObj);
+    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance1", thisArg);
+    return nullptr;
+}
+
+static JSVM_Value NameHandler(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    
+    propertyCfg.genericNamedPropertySetterCallback = SetNamedPropertyCbInfo1;
+    JSVM_CallbackStruct callbackStruct;
+    callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        printf("call as a function called");
+        return nullptr;
+    };
+    callbackStruct.data = nullptr;
+    
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test4", NAPI_AUTO_LENGTH, &param, 0, nullptr, &propertyCfg, &callbackStruct, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "nameProperty1", setvalueName);
+    JSVM_Value valueName = nullptr;
+    OH_JSVM_GetNamedProperty(env, instanceValue, "nameProperty1", &valueName);
+    propertyCfg.genericNamedPropertySetterCallback = nullptr;
+    return valueName;
+}
+
+static napi_value testSetNamedProperty01(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = NameHandler;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"NameHandler", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ============================= test non-nullptr return for namedProperty handle ================================
+// case 17 Return non null ptr, listen and intercept, failed to setProperty.
+static JSVM_Value SetNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value name, JSVM_Value property, JSVM_Value thisArg)
+{
+    return property;
+}
+
+static JSVM_Value NameHandler1(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericNamedPropertySetterCallback = SetNamedPropertyCbInfo2;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test5", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world2";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "nameProperty2", setvalueName);
+
+    const char testStr2[] = "nameProperty2";
+    JSVM_Value setvalueName2 = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr2, strlen(testStr2), &setvalueName2);
+    bool isExisted = false;
+    OH_JSVM_HasProperty(env, instanceValue, setvalueName2, &isExisted);
+    propertyCfg.genericNamedPropertySetterCallback = nullptr;
+    return nullptr;
+}
+
+static napi_value testSetNamedProperty02(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = NameHandler1;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"NameHandler1", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ============================= test nullptr return for indexedProperty handle ===================================
+// cases 18-21 return nullptr, only listen without interception, successfully setProperty.
+static JSVM_Value SetIndexPropertyCbInfo1(JSVM_Env env, JSVM_Value index, JSVM_Value property, JSVM_Value thisArg)
+{
+    uint32_t value;
+    OH_JSVM_GetValueUint32(env, index, &value);
+    char str[100];
+    size_t size;
+    OH_JSVM_GetValueStringUtf8(env, property, str, strlen(str), &size);
+    JSVM_Value gloablObj = nullptr;
+    OH_JSVM_GetGlobal(env, &gloablObj);
+    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance1", thisArg);
+    return nullptr;
+}
+
+static JSVM_Value IndexHandler1(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    
+    propertyCfg.genericIndexedPropertySetterCallback = SetIndexPropertyCbInfo1;
+    JSVM_CallbackStruct callbackStruct;
+    callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        printf("call as a function called");
+        return nullptr;
+    };
+    callbackStruct.data = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test6", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, &callbackStruct, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    JSVM_Value jsIndex = nullptr;
+    uint32_t index = 0;
+    OH_JSVM_CreateUint32(env, index, &jsIndex);
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex, setvalueName);
+    propertyCfg.genericIndexedPropertySetterCallback = nullptr;
+    return setvalueName;
+}
+
+static napi_value testSetIndexProperty01(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = IndexHandler1;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"IndexHandler1", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ============================= test non-nullptr return for indexedProperty handle ==================================
+// //case 22 returns non nullptr, only listens and intercepts, property setting failed.
+static JSVM_Value SetIndexPropertyCbInfo2(JSVM_Env env, JSVM_Value index, JSVM_Value property, JSVM_Value thisArg)
+{
+    return property;
+}
+
+static JSVM_Value IndexHandler2(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericIndexedPropertySetterCallback = SetIndexPropertyCbInfo2;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test7", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    JSVM_Value jsIndex = nullptr;
+    uint32_t index = 0;
+    OH_JSVM_CreateUint32(env, index, &jsIndex);
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex, setvalueName);
+    bool isExisted = false;
+    OH_JSVM_HasProperty(env, instanceValue, jsIndex, &isExisted);
+    propertyCfg.genericIndexedPropertySetterCallback = nullptr;
+    return nullptr;
+}
+
+static napi_value testSetIndexProperty02(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = IndexHandler2;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"IndexHandler2", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ============================= test nullptr return for namedProperty handle ===============
+// case 23~25
+static JSVM_Value GetNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg)
+{
+    char strValue[100];
+    size_t size;
+    size_t bufferSize = 300;
+    OH_JSVM_GetValueStringUtf8(env, name, strValue, bufferSize, &size);
+    JSVM_Value gloablObj = nullptr;
+    OH_JSVM_GetGlobal(env, &gloablObj);
+    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance1", thisArg);
+    return nullptr;
+}
+
+static JSVM_Value NameHandler2(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericNamedPropertyGetterCallback = GetNamedPropertyCbInfo1;
+    JSVM_CallbackStruct callbackStruct;
+    callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        printf("call as a function called");
+        return nullptr;
+    };
+    callbackStruct.data = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test8", NAPI_AUTO_LENGTH, &param, 0,
+                                                             nullptr, &propertyCfg, &callbackStruct, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "nameProperty1", setvalueName);
+    JSVM_Value valueName = nullptr;
+    OH_JSVM_GetNamedProperty(env, instanceValue, "nameProperty1", &valueName);
+    propertyCfg.genericNamedPropertyGetterCallback = nullptr;
+    return valueName;
+}
+
+static napi_value testGetNamedProperty01(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = NameHandler2;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"NameHandler2", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ========================= test non-nullptr return for namedProperty handle ============
+// case 26
+static JSVM_Value GetNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg)
+{
+    JSVM_Value newResult = nullptr;
+    if (g_temp) {
+        char newStr[] = "hi from name handler";
+        OH_JSVM_CreateStringUtf8(env, newStr, strlen(newStr), &newResult);
+    }
+    return newResult;
+}
+
+static JSVM_Value NameHandler3(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    
+    propertyCfg.genericNamedPropertyGetterCallback = GetNamedPropertyCbInfo2;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test9", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "nameProperty2", setvalueName);
+
+    g_temp = true;
+    JSVM_Value valueName = nullptr;
+    OH_JSVM_GetNamedProperty(env, instanceValue, "nameProperty2", &valueName);
+    char str[100];
+    size_t size;
+    OH_JSVM_GetValueStringUtf8(env, valueName, str, strlen(str), &size);
+    g_temp = false;
+    OH_JSVM_GetNamedProperty(env, instanceValue, "nameProperty2", &valueName);
+    char str2[100];
+    size_t size2;
+    OH_JSVM_GetValueStringUtf8(env, valueName, str2, strlen(str2), &size2);
+    propertyCfg.genericNamedPropertyGetterCallback = nullptr;
+
+    return valueName;
+}
+
+static napi_value testGetNamedProperty02(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = NameHandler3;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"NameHandler3", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ========================== test nullptr return for indexedProperty handle ================
+// case 27~29
+static JSVM_Value GetIndexPropertyCbInfo1(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg)
+{
+    uint32_t value;
+    OH_JSVM_GetValueUint32(env, index, &value);
+    JSVM_Value gloablObj = nullptr;
+    OH_JSVM_GetGlobal(env, &gloablObj);
+    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance2", thisArg);
+    return nullptr;
+}
+
+static JSVM_Value IndexHandler3(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericIndexedPropertyGetterCallback = GetIndexPropertyCbInfo1;
+    JSVM_CallbackStruct callbackStruct;
+    callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        printf("call as a function called");
+        return nullptr;
+    };
+    callbackStruct.data = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test10", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, &callbackStruct, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    JSVM_Value jsIndex = nullptr;
+    uint32_t index = 0;
+    OH_JSVM_CreateUint32(env, index, &jsIndex);
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex, setvalueName);
+    JSVM_Value valueName = nullptr;
+    OH_JSVM_GetProperty(env, instanceValue, jsIndex, &valueName);
+    propertyCfg.genericIndexedPropertyGetterCallback = nullptr;
+    return valueName;
+}
+
+static napi_value testGetIndexProperty01(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = IndexHandler3;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"IndexHandler3", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// =====================test non-nullptr return for indexedProperty handle =========
+// case 30
+static JSVM_Value GetIndexPropertyCbInfo2(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg)
+{
+    JSVM_Value newResult = nullptr;
+    if (g_temp) {
+        char newStr[] = "hi from index handler";
+        OH_JSVM_CreateStringUtf8(env, newStr, strlen(newStr), &newResult);
+    }
+    return newResult;
+}
+
+static JSVM_Value IndexHandler4(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericIndexedPropertyGetterCallback = GetIndexPropertyCbInfo2;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test11", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    JSVM_Value jsIndex = nullptr;
+    uint32_t index = 0;
+    OH_JSVM_CreateUint32(env, index, &jsIndex);
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex, setvalueName);
+    g_temp = true;
+    JSVM_Value valueName = nullptr;
+    OH_JSVM_GetProperty(env, instanceValue, jsIndex, &valueName);
+    char str[100];
+    size_t size;
+    OH_JSVM_GetValueStringUtf8(env, valueName, str, strlen(str), &size);
+    g_temp = false;
+    OH_JSVM_GetProperty(env, instanceValue, jsIndex, &valueName);
+    char str2[100];
+    size_t size2;
+    OH_JSVM_GetValueStringUtf8(env, valueName, str2, strlen(str2), &size2);
+    propertyCfg.genericIndexedPropertyGetterCallback = nullptr;
+    return valueName;
+}
+
+static napi_value testGetIndexProperty02(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = IndexHandler4;
+
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"IndexHandler4", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ======================== test nullptr return for namedProperty handle ==================
+//  cases 31-33 when returning nullptr, delete listening trigger, only listen without intercepting.
+//  The attribute deletion is successful, and the OH_JSVM_DeleteProperty output parameter is true.
+static JSVM_Value DeleterNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg)
+{
+    char strValue[100];
+    size_t size;
+    size_t bufferSize = 300;
+    OH_JSVM_GetValueStringUtf8(env, name, strValue, bufferSize, &size);
+    JSVM_Value gloablObj = nullptr;
+    OH_JSVM_GetGlobal(env, &gloablObj);
+    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance1", thisArg);
+    return nullptr;
+}
+
+static JSVM_Value NameHandler4(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericNamedPropertyDeleterCallback = DeleterNamedPropertyCbInfo1;
+    JSVM_CallbackStruct callbackStruct;
+    callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        printf("call as a function called");
+        return nullptr;
+    };
+    callbackStruct.data = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test13", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, &callbackStruct, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "nameProperty1", setvalueName);
+    bool result = false;
+    JSVM_Value propertyName = nullptr;
+    char propertyChar[] = "nameProperty1";
+    OH_JSVM_CreateStringUtf8(env, propertyChar, strlen(propertyChar), &propertyName);
+    OH_JSVM_DeleteProperty(env, instanceValue, propertyName, &result);
+    bool isExisted = false;
+    OH_JSVM_HasProperty(env, instanceValue, propertyName, &isExisted);
+    propertyCfg.genericNamedPropertyDeleterCallback = nullptr;
+    return nullptr;
+}
+
+static napi_value testDeleterNamedProperty01(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = NameHandler4;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"NameHandler4", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+    
+// ===================== test return true for namedProperty handle =======================
+// case 34 when returning true, the deletion of the listening trigger is triggered, and the interception
+// is successful. The deletion of the attribute fails, and the output parameter of OH_JSVM_DeleteProperty is true.
+static JSVM_Value DeleterNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg)
+{
+    char strValue[100];
+    size_t size;
+    size_t bufferSize = 300;
+    OH_JSVM_GetValueStringUtf8(env, name, strValue, bufferSize, &size);
+    JSVM_Value newResult = nullptr;
+    bool returnValue = true;
+    OH_JSVM_GetBoolean(env, returnValue, &newResult);
+    return newResult;
+}
+
+static JSVM_Value NameHandler5(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+
+    JSVM_PropertyHandlerConfigurationStruct propertyCfg;
+    propertyCfg.genericIndexedPropertyEnumeratorCallback = nullptr;
+    propertyCfg.genericIndexedPropertyDeleterCallback = nullptr;
+    propertyCfg.genericIndexedPropertySetterCallback = nullptr;
+    propertyCfg.genericIndexedPropertyGetterCallback = nullptr;
+    propertyCfg.genericNamedPropertyEnumeratorCallback = nullptr;
+    propertyCfg.genericNamedPropertyDeleterCallback = DeleterNamedPropertyCbInfo2;
+    propertyCfg.genericNamedPropertySetterCallback = nullptr;
+    propertyCfg.genericNamedPropertyGetterCallback = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test14", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world2";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "nameProperty2", setvalueName);
+
+    bool result = false;
+    JSVM_Value propertyName = nullptr;
+    char propertyChar[] = "nameProperty2";
+    OH_JSVM_CreateStringUtf8(env, propertyChar, strlen(propertyChar), &propertyName);
+    OH_JSVM_DeleteProperty(env, instanceValue, propertyName, &result);
+    bool isExisted = false;
+    OH_JSVM_HasProperty(env, instanceValue, propertyName, &isExisted);
+    return nullptr;
+}
+
+static napi_value testDeleterNamedProperty02(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = NameHandler5;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"NameHandler5", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ======================= test return false for namedProperty handle ========================
+// case 35 when false is returned, the deletion of the listening trigger is triggered, and the
+// interception is successful. The attribute deletion fails, and the OH_JSVM_DeleteProperty output parameter is false.
+static JSVM_Value DeleterNamedPropertyCbInfo3(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg)
+{
+    char strValue[100];
+    size_t size;
+    size_t bufferSize = 300;
+    OH_JSVM_GetValueStringUtf8(env, name, strValue, bufferSize, &size);
+    JSVM_Value newResult = nullptr;
+    bool returnValue = false;
+    OH_JSVM_GetBoolean(env, returnValue, &newResult);
+    return newResult;
+}
+
+static JSVM_Value NameHandler6(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+
+    JSVM_PropertyHandlerConfigurationStruct propertyCfg;
+    propertyCfg.genericIndexedPropertyEnumeratorCallback = nullptr;
+    propertyCfg.genericIndexedPropertyDeleterCallback = nullptr;
+    propertyCfg.genericIndexedPropertySetterCallback = nullptr;
+    propertyCfg.genericIndexedPropertyGetterCallback = nullptr;
+    propertyCfg.genericNamedPropertyEnumeratorCallback = nullptr;
+    propertyCfg.genericNamedPropertyDeleterCallback = DeleterNamedPropertyCbInfo3;
+    propertyCfg.genericNamedPropertySetterCallback = nullptr;
+    propertyCfg.genericNamedPropertyGetterCallback = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test15", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+    const char testStr[] = "hello world3";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "nameProperty3", setvalueName);
+    bool result = false;
+    JSVM_Value propertyName = nullptr;
+    char propertyChar[] = "nameProperty3";
+    OH_JSVM_CreateStringUtf8(env, propertyChar, strlen(propertyChar), &propertyName);
+    OH_JSVM_DeleteProperty(env, instanceValue, propertyName, &result);
+    bool isExisted = false;
+    OH_JSVM_HasProperty(env, instanceValue, propertyName, &isExisted);
+    return nullptr;
+}
+
+static napi_value testDeleterNamedProperty03(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = NameHandler6;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"NameHandler6", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ==================test nullptr return for indexedProperty handle =====================
+// cases 36-38, when returning nullptr, delete listening trigger, only listen without intercepting.
+// The attribute deletion is successful, and the OH_JSVM_DeleteProperty output parameter is true.
+static JSVM_Value DeleterIndexedPropertyCbInfo1(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg)
+{
+    uint32_t value;
+    OH_JSVM_GetValueUint32(env, index, &value);
+    JSVM_Value gloablObj = nullptr;
+    OH_JSVM_GetGlobal(env, &gloablObj);
+    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance1", thisArg);
+    return nullptr;
+}
+
+static JSVM_Value IndexHandler5(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericIndexedPropertyDeleterCallback = DeleterIndexedPropertyCbInfo1;
+    JSVM_CallbackStruct callbackStruct;
+    callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        printf("call as a function called");
+        return nullptr;
+    };
+    callbackStruct.data = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test16", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, &callbackStruct, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    JSVM_Value jsIndex = nullptr;
+    uint32_t index = 0;
+    OH_JSVM_CreateUint32(env, index, &jsIndex);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex, setvalueName);
+    bool result = false;
+    OH_JSVM_DeleteProperty(env, instanceValue, jsIndex, &result);
+    bool isExisted = false;
+    OH_JSVM_HasProperty(env, instanceValue, jsIndex, &isExisted);
+    propertyCfg.genericIndexedPropertyDeleterCallback = nullptr;
+    return nullptr;
+}
+
+static napi_value testDeleterIndexedProperty01(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = IndexHandler5;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"IndexHandler5", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// =================== test return true for indexedProperty handle ========================
+// case 39 When returning true, the deletion of the listening trigger is triggered, and the interception
+// is successful. The attribute deletion fails, and the OH_JSVM_DeleteProperty output parameter is true.
+static JSVM_Value DeleterIndexedPropertyCbInfo2(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg)
+{
+    uint32_t value;
+    OH_JSVM_GetValueUint32(env, index, &value);
+    JSVM_Value newResult = nullptr;
+    bool returnValue = true;
+    OH_JSVM_GetBoolean(env, returnValue, &newResult);
+    return newResult;
+}
+
+static JSVM_Value IndexHandler6(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericIndexedPropertyDeleterCallback = DeleterIndexedPropertyCbInfo2;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test17", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    JSVM_Value jsIndex = nullptr;
+    uint32_t index = 0;
+    OH_JSVM_CreateUint32(env, index, &jsIndex);
+    const char testStr[] = "hello world2";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex, setvalueName);
+    bool result = false;
+    OH_JSVM_DeleteProperty(env, instanceValue, jsIndex, &result);
+    bool isExisted = false;
+    OH_JSVM_HasProperty(env, instanceValue, jsIndex, &isExisted);
+    propertyCfg.genericIndexedPropertyDeleterCallback = nullptr;
+    return nullptr;
+}
+
+static napi_value testDeleterIndexedProperty02(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = IndexHandler6;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"IndexHandler6", NULL, &param[1], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ============================= test return false for indexedProperty handle =======================
+// case 40 When returning false, the deletion of the listening trigger is triggered, and the interception
+// is successful.The attribute deletion fails, and the OH_JSVM_DeleteProperty output parameter is false.
+static JSVM_Value DeleterIndexedPropertyCbInfo3(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg)
+{
+    uint32_t value;
+    OH_JSVM_GetValueUint32(env, index, &value);
+    JSVM_Value newResult = nullptr;
+    bool returnValue = false;
+    OH_JSVM_GetBoolean(env, returnValue, &newResult);
+    return newResult;
+}
+
+static JSVM_Value IndexHandler7(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericIndexedPropertyDeleterCallback = DeleterIndexedPropertyCbInfo3;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test18", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    JSVM_Value jsIndex = nullptr;
+    uint32_t index = 0;
+    OH_JSVM_CreateUint32(env, index, &jsIndex);
+    const char testStr[] = "hello world2";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex, setvalueName);
+    bool result = false;
+    OH_JSVM_DeleteProperty(env, instanceValue, jsIndex, &result);
+    bool isExisted = false;
+    OH_JSVM_HasProperty(env, instanceValue, jsIndex, &isExisted);
+    propertyCfg.genericIndexedPropertyDeleterCallback = nullptr;
+    return nullptr;
+}
+
+static napi_value testDeleterIndexedProperty03(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = IndexHandler7;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"IndexHandler7", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// =================test nullptr return for namedProperty handle =======
+// case 41 and case 42
+// When returning nullptr, the enumerator listens and triggers, only listens but not
+// intercepts.OH_JSVM_GetAllPropertyNames can retrieve the property names that have already been set.
+static JSVM_Value EnumeratorNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value thisArg)
+{
+    JSVM_Value gloablObj = nullptr;
+    OH_JSVM_GetGlobal(env, &gloablObj);
+    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance1", thisArg);
+    return nullptr;
+}
+
+static JSVM_Value NameHandler7(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericNamedPropertyEnumeratorCallback = EnumeratorNamedPropertyCbInfo1;
+    JSVM_CallbackStruct callbackStruct;
+    callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        printf("call as a function called");
+        return nullptr;
+    };
+    callbackStruct.data = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test19", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, &callbackStruct, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "nameProperty1", setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "nameProperty2", setvalueName);
+
+    JSVM_Value allPropertyNames = nullptr;
+    OH_JSVM_GetAllPropertyNames(
+        env,
+        instanceValue,
+        JSVM_KEY_OWN_ONLY,
+        static_cast<JSVM_KeyFilter>(JSVM_KEY_ENUMERABLE | JSVM_KEY_SKIP_SYMBOLS),
+        JSVM_KEY_NUMBERS_TO_STRINGS,
+        &allPropertyNames);
+    uint32_t nameSize = 0;
+    OH_JSVM_GetArrayLength(env, allPropertyNames, &nameSize);
+    JSVM_Value propertyName = nullptr;
+    for (uint32_t i = 0; i < nameSize; ++i) {
+        OH_JSVM_GetElement(env, allPropertyNames, i, &propertyName);
+        char str[100];
+        size_t size;
+        OH_JSVM_GetValueStringUtf8(env, propertyName, str, strlen(str), &size);
+        bool isExisted = false;
+        OH_JSVM_HasProperty(env, instanceValue, propertyName, &isExisted);
+    }
+    propertyCfg.genericNamedPropertyEnumeratorCallback = nullptr;
+    return nullptr;
+}
+
+static napi_value testEnumeratorNamedProperty01(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = NameHandler7;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"NameHandler7", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ================== test return true for namedProperty handle =========
+// case 43
+// When returning nullptr, the enumerator listens and triggers, only listens but not
+// intercepts. OH_JSVM_GetAllPropertyNames can retrieve the property names that have already been set.
+static JSVM_Value EnumeratorNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value thisArg)
+{
+    uint32_t arrayLength = 2;
+    JSVM_Value testArray = nullptr;
+    OH_JSVM_CreateArrayWithLength(env, arrayLength, &testArray);
+    JSVM_Value name1 = nullptr;
+    char newStr1[] = "hahaha";
+    OH_JSVM_CreateStringUtf8(env, newStr1, strlen(newStr1), &name1);
+    JSVM_Value name2 = nullptr;
+    char newStr2[] = "heheheh";
+    OH_JSVM_CreateStringUtf8(env, newStr2, strlen(newStr2), &name2);
+    OH_JSVM_SetElement(env, testArray, 0, name1);
+    OH_JSVM_SetElement(env, testArray, 1, name2);
+    return testArray;
+}
+
+static JSVM_Value NameHandler8(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericNamedPropertyEnumeratorCallback = EnumeratorNamedPropertyCbInfo2;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test20", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+    const char testStr[] = "hello world2";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "str11", setvalueName);
+    OH_JSVM_SetNamedProperty(env, instanceValue, "str123", setvalueName);
+    JSVM_Value allPropertyNames = nullptr;
+    OH_JSVM_GetAllPropertyNames(
+        env,
+        instanceValue,
+        JSVM_KEY_OWN_ONLY,
+        static_cast<JSVM_KeyFilter>(JSVM_KEY_ENUMERABLE | JSVM_KEY_SKIP_SYMBOLS),
+        JSVM_KEY_NUMBERS_TO_STRINGS,
+        &allPropertyNames);
+    uint32_t nameSize = 0;
+    OH_JSVM_GetArrayLength(env, allPropertyNames, &nameSize);
+    JSVM_Value propertyName = nullptr;
+    for (uint32_t i = 0; i < nameSize; ++i) {
+        OH_JSVM_GetElement(env, allPropertyNames, i, &propertyName);
+        char str[100];
+        size_t size;
+        OH_JSVM_GetValueStringUtf8(env, propertyName, str, strlen(str), &size);
+        bool isExisted = false;
+        OH_JSVM_HasProperty(env, instanceValue, propertyName, &isExisted);
+    }
+    propertyCfg.genericNamedPropertyEnumeratorCallback = nullptr;
+    return nullptr;
+}
+
+static napi_value testEnumeratorNamedProperty02(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = NameHandler8;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"NameHandler8", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// ================== test nullptr return for indexedProperty handle =========
+// case 44 and case 45
+// When returning nullptr, the enumerator listens and triggers, only listens but not intercepts.
+// OH_JSVM_GetAllPropertyNames can retrieve the property names that have already been set
+static JSVM_Value EnumeratorIndexedPropertyCbInfo1(JSVM_Env env, JSVM_Value thisArg)
+{
+    JSVM_Value gloablObj = nullptr;
+    OH_JSVM_GetGlobal(env, &gloablObj);
+    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance1", thisArg);
+    return nullptr;
+}
+
+static JSVM_Value IndexHandler8(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericIndexedPropertyEnumeratorCallback = EnumeratorIndexedPropertyCbInfo1;
+    JSVM_CallbackStruct callbackStruct;
+    callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        printf("call as a function called");
+        return nullptr;
+    };
+    callbackStruct.data = nullptr;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test21", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, &callbackStruct, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world1";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    JSVM_Value jsIndex = nullptr;
+    uint32_t index = 0;
+    OH_JSVM_CreateUint32(env, index, &jsIndex);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex, setvalueName);
+    JSVM_Value jsIndex1 = nullptr;
+    uint32_t index1 = 1;
+    OH_JSVM_CreateUint32(env, index1, &jsIndex1);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex1, setvalueName);
+    JSVM_Value allPropertyNames = nullptr;
+    OH_JSVM_GetAllPropertyNames(
+        env,
+        instanceValue,
+        JSVM_KEY_OWN_ONLY,
+        static_cast<JSVM_KeyFilter>(JSVM_KEY_ENUMERABLE | JSVM_KEY_SKIP_SYMBOLS),
+        JSVM_KEY_NUMBERS_TO_STRINGS,
+        &allPropertyNames);
+    uint32_t nameSize = 0;
+    OH_JSVM_GetArrayLength(env, allPropertyNames, &nameSize);
+    JSVM_Value propertyName = nullptr;
+    for (uint32_t i = 0; i < nameSize; ++i) {
+        OH_JSVM_GetElement(env, allPropertyNames, i, &propertyName);
+        char str[100];
+        size_t size;
+        OH_JSVM_GetValueStringUtf8(env, propertyName, str, strlen(str), &size);
+        bool isExisted = false;
+        OH_JSVM_HasProperty(env, instanceValue, propertyName, &isExisted);
+    }
+    propertyCfg.genericIndexedPropertyEnumeratorCallback = nullptr;
+    return nullptr;
+}
+
+static napi_value testEnumeratorIndexedProperty01(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = IndexHandler8;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"indexHandler8", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+// =================== test return true for indexedProperty handle ============
+// case 46
+// When returning the array, the enumerator listens and triggers, listens and intercepts, and
+// OH_JSVM_GetAllPropertyNames can retrieve the already set property names You can obtain the property
+// names set in the listening callback and in the array, but the property names set in the callback are not actual properties
+static JSVM_Value EnumeratorIndexedPropertyCbInfo2(JSVM_Env env, JSVM_Value thisArg)
+{
+    JSVM_Value testArray = nullptr;
+    uint32_t arrayLength = 2;
+    OH_JSVM_CreateArrayWithLength(env, arrayLength, &testArray);
+    JSVM_Value index1 = nullptr;
+    uint32_t num1 = 2;
+    OH_JSVM_CreateUint32(env, num1, &index1);
+    JSVM_Value index2 = nullptr;
+    uint32_t num2 = 3;
+    OH_JSVM_CreateUint32(env, num2, &index2);
+    OH_JSVM_SetElement(env, testArray, 0, index1);
+    OH_JSVM_SetElement(env, testArray, 1, index2);
+    return testArray;
+}
+
+static JSVM_Value IndexHandler9(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_CallbackStruct param;
+    param.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
+        JSVM_Value thisVar = nullptr;
+        OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, &thisVar, nullptr);
+        return thisVar;
+    };
+    param.data = nullptr;
+    propertyCfg.genericIndexedPropertyEnumeratorCallback = EnumeratorIndexedPropertyCbInfo2;
+    JSVM_Value testWrapClass = nullptr;
+    JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test22", NAPI_AUTO_LENGTH, &param, 0, nullptr,
+                                                             &propertyCfg, nullptr, &testWrapClass);
+    if (res == JSVM_OK) {
+        printf("OH_JSVM_DefineClassWithPropertyHandler successfully");
+    } else {
+        printf("OH_JSVM_DefineClassWithPropertyHandler failed");
+        return nullptr;
+    }
+    JSVM_Value instanceValue = nullptr;
+    OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
+
+    const char testStr[] = "hello world2";
+    JSVM_Value setvalueName = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setvalueName);
+    JSVM_Value jsIndex = nullptr;
+    uint32_t index = 0;
+    OH_JSVM_CreateUint32(env, index, &jsIndex);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex, setvalueName);
+    JSVM_Value jsIndex1 = nullptr;
+    uint32_t index1 = 1;
+    OH_JSVM_CreateUint32(env, index1, &jsIndex1);
+    OH_JSVM_SetProperty(env, instanceValue, jsIndex1, setvalueName);
+    JSVM_Value allPropertyNames = nullptr;
+    OH_JSVM_GetAllPropertyNames(
+        env,
+        instanceValue,
+        JSVM_KEY_OWN_ONLY,
+        static_cast<JSVM_KeyFilter>(JSVM_KEY_ENUMERABLE | JSVM_KEY_SKIP_SYMBOLS),
+        JSVM_KEY_NUMBERS_TO_STRINGS,
+        &allPropertyNames);
+    uint32_t nameSize = 0;
+    OH_JSVM_GetArrayLength(env, allPropertyNames, &nameSize);
+    JSVM_Value propertyName = nullptr;
+    for (uint32_t i = 0; i < nameSize; ++i) {
+        OH_JSVM_GetElement(env, allPropertyNames, i, &propertyName);
+        char str[100];
+        size_t size;
+        OH_JSVM_GetValueStringUtf8(env, propertyName, str, strlen(str), &size);
+        bool isExisted = false;
+        OH_JSVM_HasProperty(env, instanceValue, propertyName, &isExisted);
+    }
+    propertyCfg.genericIndexedPropertyEnumeratorCallback = nullptr;
+    return nullptr;
+}
+
+static napi_value testEnumeratorIndexedProperty02(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].callback = nullptr;
+    param[0].callback = IndexHandler9;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"indexHandler9", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+static napi_value testDefinePropertyHandle(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    int32_t value;
+    napi_value result = 0;
+    NAPI_CALL(env, napi_get_value_int32(env, args[0], &value));
+    if (value == DIFF_VALUE_ZERO) {
+        result = testCheckArgs(env, info);
+    } else if (value == DIFF_VALUE_NOE) {
+        result = testSetProperty(env, info);
+    } else if (value == DIFF_VALUE_TWO) {
+        result = testGetProperty(env, info);
+    } else if (value == DIFF_VALUE_THREE) {
+        result = testCallFunction(env, info);
+    } else if (value == DIFF_VALUE_FOUR) {
+        result = testSetNamedProperty01(env, info);
+    } else if (value == DIFF_VALUE_FIVE) {
+        result = testSetNamedProperty02(env, info);
+    } else if (value == DIFF_VALUE_SIX) {
+        result = testSetIndexProperty01(env, info);
+    } else if (value == DIFF_VALUE_SEVEN) {
+        result = testSetIndexProperty02(env, info);
+    } else if (value == DIFF_VALUE_EIGHT) {
+        result = testGetNamedProperty01(env, info);
+    } else if (value == DIFF_VALUE_NINE) {
+        result = testGetNamedProperty02(env, info);
+    } else if (value == DIFF_VALUE_TEN) {
+        result = testGetIndexProperty01(env, info);
+    } else if (value == DIFF_VALUE_ELEVEN) {
+        result = testGetIndexProperty02(env, info);
+    } else if (value == DIFF_VALUE_TWELVE) {
+        result = testDeleterNamedProperty01(env, info);
+    } else if (value == DIFF_VALUE_THIRTEEN) {
+        result = testDeleterNamedProperty02(env, info);
+    } else if (value == DIFF_VALUE_FOURTEEN) {
+        result = testDeleterNamedProperty03(env, info);
+    } else if (value == DIFF_VALUE_FITEEN) {
+        result = testDeleterIndexedProperty01(env, info);
+    } else if (value == DIFF_VALUE_SIXTEEN) {
+        result = testDeleterIndexedProperty02(env, info);
+    } else if (value == DIFF_VALUE_SEVENTEEN) {
+        result = testDeleterIndexedProperty03(env, info);
+    } else if (value == DIFF_VALUE_EIGHTEEN) {
+        result = testEnumeratorNamedProperty01(env, info);
+    } else if (value == DIFF_VALUE_NINETEEN) {
+        result = testEnumeratorNamedProperty02(env, info);
+    }  else if (value == DIFF_VALUE_TWENTY) {
+        result = testEnumeratorIndexedProperty01(env, info);
+    } else if (value == DIFF_VALUE_TWENTYONE) {
+        result = testEnumeratorIndexedProperty02(env, info);
+    }
+    return result;
+}
 
 EXTERN_C_START
 
@@ -1506,6 +3712,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testOthers",testOthers),
         DECLARE_NAPI_FUNCTION("Add",Add),
         DECLARE_NAPI_FUNCTION("Add1",Add1),
+        DECLARE_NAPI_FUNCTION("testSecondOperations",testSecondOperations),
+        DECLARE_NAPI_FUNCTION("testDefinePropertyHandle",testDefinePropertyHandle),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

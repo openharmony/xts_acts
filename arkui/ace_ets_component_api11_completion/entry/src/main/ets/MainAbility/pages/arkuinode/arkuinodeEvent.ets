@@ -18,6 +18,7 @@ import { NodeController, BuilderNode, FrameNode, NodeRenderType } from '@ohos.ar
 
 class Params {
   text: string = "this is a text"
+
   constructor(text: string) {
     this.text = text;
   }
@@ -49,20 +50,20 @@ class MyNodeController extends NodeController {
   private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
 
   makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new BuilderNode(uiContext,{type:NodeRenderType.RENDER_TYPE_DISPLAY});
+    this.rootNode = new BuilderNode(uiContext, { type: NodeRenderType.RENDER_TYPE_DISPLAY });
     this.rootNode.build(this.wrapBuilder, { text: "this is a string" })
     return this.rootNode.getFrameNode();
   }
 
   postTouchEvent(touchEvent: TouchEvent): void {
-    if(this.rootNode == null){
+    if (this.rootNode == null) {
       return;
     }
     console.info("postTouchEvent")
   }
 
-  onTouchEvent(touchEvent:TouchEvent) :void {
-     console.info("touch event info")
+  onTouchEvent(touchEvent: TouchEvent): void {
+    console.info("touch event info")
   }
 }
 
@@ -70,7 +71,7 @@ class MyNodeController extends NodeController {
 @Component
 struct MyComponent {
   private nodeController: MyNodeController = new MyNodeController();
-  @State text1:string = "";
+  @State text1: string = "";
 
   build() {
     Column() {
@@ -78,20 +79,21 @@ struct MyComponent {
       NodeContainer(this.nodeController)
         .height(300)
         .key("nodeTest")
-        .width(500).onTouch((event) => {
-        this.nodeController.onTouchEvent(event)
-
-      })
+        .width(500)
+        .onTouch((event) => {
+          this.nodeController.onTouchEvent(event);
+        })
 
       Column()
         .width(500)
         .height(300)
         .backgroundColor(Color.Pink)
         .onTouch((event) => {
-          if(event != undefined){
+          if (event != undefined) {
             this.nodeController.postTouchEvent(event);
           }
-        }).key("columnTest")
+        })
+        .key("columnTest")
     }
   }
 }

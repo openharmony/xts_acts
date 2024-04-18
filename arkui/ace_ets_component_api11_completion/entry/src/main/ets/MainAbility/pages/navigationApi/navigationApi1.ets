@@ -12,51 +12,54 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomTransition} from './CustomNavigationUtils'
-let durationOne = 1000
+import { CustomTransition } from './CustomNavigationUtils';
+
+let durationOne = 1000;
+
 @Entry
 @Component
-struct navigationApi1{
-  @State opacity1:number = 1
-  @State timeout: number = 1000
-  @State durationOne: number = 1000
-  @State text: string = ''
+struct navigationApi1 {
+  @State opacity1: number = 1;
+  @State timeout: number = 1000;
+  @State durationOne: number = 1000;
+  @State text: string = '';
+  @Provide('pageInfo') pageInfos: NavPathStack = new NavPathStack()
 
-  @Provide('pageInfo') pageInfos:NavPathStack = new  NavPathStack()
-
-  @Builder PageMap(name:string){
-    if (name === 'pageOne'){
+  @Builder
+  PageMap(name: string) {
+    if (name === 'pageOne') {
       pageOne()
     }
   }
 
-  aboutToAppear(){
-    CustomTransition.getInstance().registerNavParam('Index',(isPush:boolean, onFinish: ()=> void, isexit:boolean, isPop:boolean) => {
-      if (isexit && isPop == false) {
-        this.opacity1 = 0
-        animateTo({duration: durationOne, onFinish:onFinish}, () => {
-          this.opacity1 = 1
-        })
-      }else if (isPush && isPop == false){
-        this.opacity1 = 0
-        animateTo({duration: durationOne, onFinish:onFinish}, () => {
-          this.opacity1 = 1
-        })
-      }else if (isPop){
-        this.opacity1 = 0
-        animateTo({duration: durationOne, onFinish:onFinish}, () => {
-          this.opacity1 = 1
-        })
-      }
-    })
+  aboutToAppear() {
+    CustomTransition.getInstance()
+      .registerNavParam('Index', (isPush: boolean, onFinish: () => void, isexit: boolean, isPop: boolean) => {
+        if (isexit && isPop == false) {
+          this.opacity1 = 0
+          animateTo({ duration: durationOne, onFinish: onFinish }, () => {
+            this.opacity1 = 1
+          })
+        } else if (isPush && isPop == false) {
+          this.opacity1 = 0
+          animateTo({ duration: durationOne, onFinish: onFinish }, () => {
+            this.opacity1 = 1
+          })
+        } else if (isPop) {
+          this.opacity1 = 0
+          animateTo({ duration: durationOne, onFinish: onFinish }, () => {
+            this.opacity1 = 1
+          })
+        }
+      })
   }
 
-  build(){
-    Navigation(this.pageInfos){
-      Column(){
+  build() {
+    Navigation(this.pageInfos) {
+      Column() {
         Text(this.text).width('80%').fontSize(12).key('navigationApi1_text1')
         Button('pushPath').onClick(() => {
-          this.pageInfos.pushPath({name: 'pageOne'})
+          this.pageInfos.pushPath({ name: 'pageOne' })
         }).id('navigationApi1_btn1')
       }.opacity(this.opacity1)
     }
@@ -79,23 +82,23 @@ struct navigationApi1{
 
         },
         timeout: 700,
-        transition: (transitionContext)=>{
-          let onFinish:() => void = () => {
+        transition: (transitionContext) => {
+          let onFinish: () => void = () => {
             transitionContext.finishTransition()
           }
 
-          let fromAnimatedFunc: (isPush: boolean, onFinish: () => void,isexit: boolean, isPop: boolean) => void
+          let fromAnimatedFunc: (isPush: boolean, onFinish: () => void, isexit: boolean, isPop: boolean) => void
           fromAnimatedFunc = CustomTransition.getInstance().getNavParam(transitionContext.from.name)
           if (fromAnimatedFunc != undefined && operation === NavigationOperation.PUSH) {
-            fromAnimatedFunc(operation === NavigationOperation.PUSH, onFinish,false,false)
-          }else if (fromAnimatedFunc != undefined && operation === NavigationOperation.POP) {
-            fromAnimatedFunc(operation === NavigationOperation.POP, onFinish,false,false)
+            fromAnimatedFunc(operation === NavigationOperation.PUSH, onFinish, false, false)
+          } else if (fromAnimatedFunc != undefined && operation === NavigationOperation.POP) {
+            fromAnimatedFunc(operation === NavigationOperation.POP, onFinish, false, false)
           }
 
-          let toAnimatedFunc:(isPush:boolean,onFinish:() => void, isexit:boolean, isPop:boolean) => void
+          let toAnimatedFunc: (isPush: boolean, onFinish: () => void, isexit: boolean, isPop: boolean) => void
           toAnimatedFunc = CustomTransition.getInstance().getNavParam(transitionContext.to.name)
           if (toAnimatedFunc != undefined && operation == NavigationOperation.PUSH) {
-            toAnimatedFunc(operation == NavigationOperation.PUSH, onFinish,true,false)
+            toAnimatedFunc(operation == NavigationOperation.PUSH, onFinish, true, false)
           }
         }
       };
@@ -105,45 +108,51 @@ struct navigationApi1{
 }
 
 @Component
-export  struct  pageOne{
-  @Consume('pageInfo') pageInfos:NavPathStack
+export struct pageOne {
+  @Consume('pageInfo') pageInfos: NavPathStack
   @State opacity1: number = 1
   @State duration: number = durationOne
 
-  aboutToAppear(){
-    CustomTransition.getInstance().registerNavParam('Index',(isPush:boolean, onFinish: ()=> void, isexit:boolean, isPop:boolean) => {
-      if (isexit && isPop == false) {
-        this.opacity1 = 0
-        animateTo({duration: durationOne, onFinish:onFinish}, () => {
-          this.opacity1 = 1
-        })
-      }else if (isPush && isPop == false){
-        this.opacity1 = 0
-        animateTo({duration: durationOne, onFinish:onFinish}, () => {
-          this.opacity1 = 1
-        })
-      }else if (isPop){
-        this.opacity1 = 0
-        animateTo({duration: durationOne, onFinish:onFinish}, () => {
-          this.opacity1 = 1
-        })
-      }
-    })
+  aboutToAppear() {
+    CustomTransition.getInstance()
+      .registerNavParam('Index', (isPush: boolean, onFinish: () => void, isexit: boolean, isPop: boolean) => {
+        if (isexit && isPop == false) {
+          this.opacity1 = 0;
+          animateTo({ duration: durationOne, onFinish: onFinish }, () => {
+            this.opacity1 = 1;
+          })
+        } else if (isPush && isPop == false) {
+          this.opacity1 = 0;
+          animateTo({ duration: durationOne, onFinish: onFinish }, () => {
+            this.opacity1 = 1;
+          })
+        } else if (isPop) {
+          this.opacity1 = 0
+          animateTo({ duration: durationOne, onFinish: onFinish }, () => {
+            this.opacity1 = 1;
+          })
+        }
+      })
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     CustomTransition.getInstance().unRegisterNavParam('pageOne')
   }
 
-  build(){
-    Scroll(){
-      NavDestination(){
-        Column(){
+  build() {
+    Scroll() {
+      NavDestination() {
+        Column() {
           Button('pop').onClick(() => {
             this.pageInfos.pop()
-          }).id('navigationApi1_btn2')
-        }.width('100%').height('100%')
-      }.title('pageOne').opacity(this.opacity1)
+          })
+            .id('navigationApi1_btn2')
+        }
+        .width('100%')
+        .height('100%')
+      }
+      .title('pageOne')
+      .opacity(this.opacity1)
     }
   }
 }

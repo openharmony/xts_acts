@@ -67,7 +67,7 @@ struct StorageLink1 {
 
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 5 }) {
       Button(`num: ${this.num}`).margin(3).width("100%")
         .key("button_son1")
         .onClick(() => {

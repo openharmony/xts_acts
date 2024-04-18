@@ -62,9 +62,11 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       'TYPE_FLOAT': 8,
     }
     let currentDeviceIsRk = false;
+    let currentDeviceIsPC = false;
     beforeAll(() => {
       let deviceTypeInfo = deviceInfo.deviceType
       currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
+      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
       console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
@@ -481,13 +483,12 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      // @ts-ignore
-      await tempWnd.setSystemBarEnable([null, '123']).catch((err: BusinessError) => {
-        console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) err=' + JSON.stringify(err));
+      await tempWnd.setSystemBarEnable([null, undefined]).catch((err: BusinessError) => {
+        console.log(msgStr + 'tempWnd.setSystemBarEnable([null, undefined]) err=' + JSON.stringify(err));
         expect(err.code === 1003).assertTrue();
         done();
       });
-      console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) finished');
+      console.log(msgStr + 'tempWnd.setSystemBarEnable([null, undefined]) finished');
     })
 
     /**
@@ -1188,7 +1189,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let num = 0
       let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED',
         'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE',
-        'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED', 'UNSPECIFIED'];
+        'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED',
+        'USER_ROTATION_PORTRAIT', 'USER_ROTATION_LANDSCAPE','USER_ROTATION_PORTRAIT_INVERTED','USER_ROTATION_LANDSCAPE_INVERTED','UNSPECIFIED'];
       for (let i = 0; i < orientationItem.length; i++) {
         let orientation: ohosWindow.Orientation = ohosWindow.Orientation[orientationItem[i]]
         console.log(msgStr + 'i : ' + i + ' ,orientation : ' + orientation);
@@ -1546,13 +1548,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
-    * @tc.name      : testSetSpecificSystemBarEnabled_2_Function_Promise
-    * @tc.desc      : Test the function of setSpecificSystemBarEnabled
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level3
-    */
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
+     * @tc.name      : testSetSpecificSystemBarEnabled_2_Function_Promise
+     * @tc.desc      : Test the function of setSpecificSystemBarEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
     it('testSetSpecificSystemBarEnabled_2_Function_Promise', 0, async function(done){
       let msgStr = 'testSetSpecificSystemBarEnabled_2';
       console.log(msgStr + 'begin')
@@ -1667,6 +1669,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         let tempWnd: ohosWindow.Window | void = await windowStage.getMainWindow().catch((err: BusinessError) => {
           unexpectedError(TRUE_FLAG, err, caseName, 'windowStage.getMainWindow', done);
         });
+        let wnd: ohosWindow.Window = tempWnd as ohosWindow.Window
+        let height: number = wnd.getWindowDecorHeight()
         console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
         expect(true).assertTrue()
         done()
@@ -1793,6 +1797,186 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done();
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3910
+     * @tc.name      : testCreateSubWindowWithOptions_Function_Promise
+     * @tc.desc      : Test the function value of createSubWindowWithOptions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testCreateSubWindowWithOptions_Function_Promise", 0, async function(done){
+      let msgStr = "testCreateSubWindowWithOptions_Function_Promise";
+      console.log(msgStr + " begin");
+      let windowClass = undefined;
+      try {
+        console.log(msgStr + " try begin")
+        let options:ohosWindow.SubWindowOptions = {
+          title: 'title',
+          decorEnabled: true
+        };
+        let promise = windowStage.createSubWindowWithOptions('mySubWindow', options);
+        promise.then((data) => {
+          windowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          expect(true).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          if(error.code == 1300002){
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+        if(error.code == 1300002){
+          expect().assertTrue();
+          done();
+        } else {
+          expect.assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3920
+     * @tc.name      : testGetWindowSystemBarProperties_Function
+     * @tc.desc      : Test the function value of getWindowSystemBarProperties
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testGetWindowSystemBarProperties_Function", 0, async function(done){
+      let msgStr = "testGetWindowSystemBarProperties_Function";
+      console.log(msgStr + " begin");
+      ohosWindow.getLastWindow(context).then(wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        try {
+          let systemBarProperty = wnd.getWindowSystemBarProperties();
+          console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
+          expect(true).assertTrue()
+          done()
+        } catch (exception) {
+          console.error(msgStr + ' Failed to get system bar properties. Cause: ' + JSON.stringify(exception));
+          expect().assertFail()
+          done()
+        }
+      })
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4000
+     * @tc.name      : testEnableLandscapeMultiWindow_Function
+     * @tc.desc      : Test the function value of EnableLandscapeMultiWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testEnableLandscapeMultiWindow_Function", 0, async function(done){
+      let msgStr = "testEnableLandscapeMultiWindow_Function";
+      console.log(msgStr + " begin");
+      ohosWindow.getLastWindow(context).then(wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        try {
+          let promise = wnd.enableLandscapeMultiWindow()
+          promise.then(() => {
+            console.info(msgStr + ' Succeeded in making multi-window become landscape.');
+            expect(true).assertTrue()
+            done()
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + ' Failed to make multi-window become landscape. Cause: ' + JSON.stringify(err));
+            expect().assertFail()
+            done()
+          });
+        } catch (exception) {
+          console.error(msgStr + ' Failed to call enableLandscapeMultiWindow. Cause: ' + JSON.stringify(exception));
+          expect().assertFail()
+          done()
+        }
+      })
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4010
+     * @tc.name      : testDisableLandscapeMultiWindow_Function
+     * @tc.desc      : Test the function value of DisableLandscapeMultiWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testDisableLandscapeMultiWindow_Function", 0, async function(done){
+      let msgStr = "testDisableLandscapeMultiWindow_Function";
+      console.log(msgStr + " begin");
+      ohosWindow.getLastWindow(context).then(wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        try {
+          let promise = wnd.disableLandscapeMultiWindow()
+          promise.then(() => {
+            console.info(msgStr + ' Succeeded in making multi-window become not landscape.');
+            expect(true).assertTrue()
+            done()
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + ' Failed to make multi-window become not landscape. Cause: ' + JSON.stringify(err));
+            expect().assertFail()
+            done()
+          });
+        } catch (exception) {
+          console.error(msgStr + ' Failed to call enableLandscapeMultiWindow. Cause: ' + JSON.stringify(exception));
+          expect().assertFail()
+          done()
+        }
+      })
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3930
+     * @tc.name      : testSetWindowMask_Function_Promise
+     * @tc.desc      : Test the function value of setWindowMask
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testSetWindowMask_Function_Promise", 0, async function(done){
+      let msgStr = "testSetWindowMask_Function_Promise";
+      console.log(msgStr + "begin0");
+      if(currentDeviceIsPC){
+        console.log(msgStr + "begin1")
+        try{
+          let windowMask: Array<Array<number>> = [
+            [0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 1, 1, 1, 0, 0],
+            [0, 1, 1, 0, 1, 1, 0],
+            [1, 1, 0, 0, 0, 1, 1]
+          ];
+          let windowClass = await ohosWindow.getLastWindow(context);
+          let promise = windowClass.setWindowMask(windowMask);
+          console.log(msgStr + windowMask);
+          promise.then(() => {
+            console.log(msgStr + 'Succeeded in setting the window mask.');
+            expect(true).assertTrue();
+            console.log(msgStr + true);
+            done();
+          }).catch((err: BusinessError) => {
+            console.log(msgStr + 'Failed1 to set the window mask. Cause: ' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          });
+        } catch (exception) {
+          console.log(msgStr + 'Failed2 to set the window mask. Cause:' + JSON.stringify(exception));
+          expect().assertFail();
+          done();
+        }
+      }else{
+        console.log(msgStr + "该设备类型不是PC" );
+        expect(deviceInfo.deviceType).assertEqual(deviceInfo.deviceType);
+        done();
+      }
+    })
+
 
   })
 }

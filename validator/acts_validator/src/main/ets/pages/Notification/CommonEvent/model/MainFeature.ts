@@ -21,7 +21,8 @@ import surveillanceEventsManager from './SurveillanceEventsManager';
 export default class MainFeature {
   private onceEvents: Array<string> = [];
   private currentValidEvents: Array<string> = surveillanceEventsManager.surveillanceEvents;
-  private settingSubscriber = null // this subscriber subscribe self defined sticky events
+  private settingSubscriber = null
+  // this subscriber subscribe self defined sticky events
   private eventsState: HashMap<string, number> = new HashMap();
 
   constructor() {
@@ -32,7 +33,7 @@ export default class MainFeature {
     if (this.settingSubscriber == null) {
       let settingSubscriberInfo = {
         events: [
-        consts.COMMON_EVENT_SETTING_UPDATE
+          consts.COMMON_EVENT_SETTING_UPDATE
         ]
       };
       commonEventManager.createSubscriber(settingSubscriberInfo).then((subscriber) => {

@@ -88,6 +88,10 @@ export default function listItem_Visibility() {
       let locationText3: RectValue = CommonFunc.getComponentRect('ListItemTest43');
       let locationText4: RectValue = CommonFunc.getComponentRect('ListItemTest44');
       let locationList: RectValue = CommonFunc.getComponentRect('ListItemVisibility1');
+      let left = locationList.left;
+      let top = locationList.top;
+      let right = locationList.right;
+      let bottom = locationList.bottom;
       expect(locationText1.left).assertEqual(locationText2.left);
       expect(locationText2.left).assertEqual(locationText3.left);
       expect(locationText3.left).assertEqual(locationText4.left);
@@ -113,7 +117,7 @@ export default function listItem_Visibility() {
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = Driver.create();
-      await driver.swipe(360, 690, 360, 30);
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + globalThis.winTop));
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest44');
       expect(locationText4.top).assertEqual(locationText4Again.top);
       console.info('new testListItemVisibilityFirstNone END');
@@ -144,6 +148,10 @@ export default function listItem_Visibility() {
       let locationText3: RectValue = CommonFunc.getComponentRect('ListItemTest43');
       let locationText4: RectValue = CommonFunc.getComponentRect('ListItemTest44');
       let locationList: RectValue = CommonFunc.getComponentRect('ListItemVisibility1');
+      let left = locationList.left;
+      let top = locationList.top;
+      let right = locationList.right;
+      let bottom = locationList.bottom;
       expect(locationText1.left).assertEqual(locationText2.left);
       expect(locationText2.left).assertEqual(locationText3.left);
       expect(locationText3.left).assertEqual(locationText4.left);
@@ -170,7 +178,7 @@ export default function listItem_Visibility() {
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = Driver.create();
-      await driver.swipe(360, 690, 360, 30);
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top +  globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top +  globalThis.winTop));
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest44');
       expect(locationText4.top).assertEqual(locationText4Again.top);
       console.info('new testListItemVisibilitySecondNone END');
@@ -201,6 +209,11 @@ export default function listItem_Visibility() {
       let locationText3: RectValue = CommonFunc.getComponentRect('ListItemTest43');
       let locationText4: RectValue = CommonFunc.getComponentRect('ListItemTest44');
       let locationList: RectValue = CommonFunc.getComponentRect('ListItemVisibility1');
+      
+      let left = locationList.left;
+      let top = locationList.top;
+      let right = locationList.right;
+      let bottom = locationList.bottom;
       expect(locationText1.left).assertEqual(locationText2.left);
       expect(locationText2.left).assertEqual(locationText3.left);
       expect(locationText3.left).assertEqual(locationText4.left);
@@ -225,11 +238,11 @@ export default function listItem_Visibility() {
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = Driver.create();
-      await driver.swipe(360, 690, 360, 30);
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + globalThis.winTop));
       await CommonFunc.sleep(1000);
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest44');
       expect(locationText4Again.bottom).assertEqual(locationList.bottom);
-      await driver.swipe(360, 150, 360, 690);
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top +  globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop));
       await CommonFunc.sleep(2000);
       console.info('new testListItemVisibilityFirstHidden END');
       done();
@@ -259,6 +272,10 @@ export default function listItem_Visibility() {
       let locationText3: RectValue = CommonFunc.getComponentRect('ListItemTest43');
       let locationText4: RectValue = CommonFunc.getComponentRect('ListItemTest44');
       let locationList: RectValue = CommonFunc.getComponentRect('ListItemVisibility1');
+      let left = locationList.left;
+      let top = locationList.top;
+      let right = locationList.right;
+      let bottom = locationList.bottom;
       expect(locationText1.left).assertEqual(locationText2.left);
       expect(locationText2.left).assertEqual(locationText3.left);
       expect(locationText3.left).assertEqual(locationText4.left);
@@ -282,11 +299,11 @@ export default function listItem_Visibility() {
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = Driver.create();
-      await driver.swipe(360, 690, 360, 30);
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + globalThis.winTop));
       await CommonFunc.sleep(1000);
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest44');
       expect(locationText4Again.bottom).assertEqual(locationList.bottom);
-      await driver.swipe(360, 150, 360, 690);
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top +  globalThis.winTop));
       await CommonFunc.sleep(1000);
       console.info('new testListItemVisibilityFirstVisibile END');
       done();

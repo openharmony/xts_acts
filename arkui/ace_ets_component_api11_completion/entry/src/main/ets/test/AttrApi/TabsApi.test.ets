@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/utils/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function TabsApi() {
-  describe('TabsApi', function () {
-    beforeEach(async function (done) {
+  describe('TabsApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("TabsApi beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AttrApi/TabsApi',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AttrApi/TabsApi',
       }
       try {
         router.clear();
@@ -40,36 +40,33 @@ export default function TabsApi() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("TabsApi after each called");
     });
 
     /**
-     * @tc.number      TabsApi_001
-     * @tc.name        TabsApi_001
-     * @tc.desc        Tabs customContentTransition test
-     * @tc.level       Level 2
+     * @tc.number TabsApi_001
+     * @tc.name TabsApi_001
+     * @tc.desc Tabs customContentTransition test
+     * @tc.level Level 2
      */
-    it('TabsApi_001', 0, async function (done) {
+    it('TabsApi_001', 0, async (done: Function) => {
       console.info('[TabsApi_001] START');
       await Utils.sleep(1000);
 
-      let driver= Driver.create();
+      let driver = Driver.create();
       await Utils.sleep(1000);
       let btn = await driver.findComponent(ON.text('Yellow'));
       await btn.click()
       await Utils.sleep(4000);
 
       let strJson = getInspectorByKey('TabsApi_text1');
-      let obj = JSON.parse(strJson);
       await Utils.sleep(1000);
-      console.info("[TabsApi_001] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('onChange');
-
+      console.info("[TabsApi_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('onChange');
       console.info('[TabsApi_001] END');
       done();
-
     });
   })
 }

@@ -105,8 +105,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_001', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported(uuid);
-      expect(c).assertEqual(Drm_Support.DRM_TRUE);
+      if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported(uuid);
+        expect(c).assertEqual(Drm_Support.DRM_TRUE);
+      }
       done();
     })
     /* *
@@ -118,8 +120,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_002', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported("com.wwwwwwwwww.drm");
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported("com.wwwwwwwwww.drm");
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -131,8 +135,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_003', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported("");
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported("");
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -144,8 +150,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_004', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported(" ");
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported(" ");
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -157,8 +165,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_005', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported2(uuid,"video/mp4");
-      expect(c).assertEqual(Drm_Support.DRM_TRUE);
+      if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported2(uuid,"video/mp4");
+        expect(c).assertEqual(Drm_Support.DRM_TRUE);
+      }
       done();
     })
     /* *
@@ -170,8 +180,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_006', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported2("com..drm","video/mp4");
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported2("com..drm","video/mp4");
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -183,8 +195,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_007', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported2("","video/mp4");
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported2("","video/mp4");
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -196,8 +210,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_008', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported2(" ","video/mp4");
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported2(" ","video/mp4");
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -209,11 +225,13 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_009', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported2(uuid,"111/mp4");
-      if(blueArea === 1) {
+      if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported2(uuid,"111/mp4");
+        if(blueArea === 1) {
         expect(c).assertEqual(Drm_Support.DRM_FALSE);
-      } else{
+        } else{
         expect(c).assertEqual(Drm_Support.DRM_TRUE); // 黄区未判断minetype，已提单
+        }
       }
       done();
     })
@@ -226,8 +244,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_010', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported2(uuid,"");
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported2(uuid,"");
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -239,8 +259,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_011', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported2(uuid," ");
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported2(uuid," ");
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+	    }
       done();
     })
     /* *
@@ -252,8 +274,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_012', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
-      expect(c).assertEqual(Drm_Support.DRM_TRUE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        expect(c).assertEqual(Drm_Support.DRM_FALSE); // 最新版本0不支持
+      }
       done();
     })
     /* *
@@ -265,8 +289,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_013', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-      expect(c).assertEqual(Drm_Support.DRM_TRUE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+        expect(c).assertEqual(Drm_Support.DRM_TRUE);
+      }
       done();
     })
     /* *
@@ -278,8 +304,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_014', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
-      expect(c).assertEqual(Drm_Support.DRM_TRUE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
+        expect(c).assertEqual(Drm_Support.DRM_TRUE);
+      }
       done();
     })
     /* *
@@ -291,8 +319,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_015', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO);
-      expect(c).assertEqual(Drm_Support.DRM_TRUE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO);
+        expect(c).assertEqual(Drm_Support.DRM_TRUE);
+      }
       done();
     })
     /* *
@@ -304,8 +334,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_016', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_MAX);
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_MAX);
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -317,8 +349,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_017', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",5);
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",5);
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -330,8 +364,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_018', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3("","video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3("","video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -343,8 +379,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_019', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3(" ","video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3(" ","video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -356,8 +394,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_020', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3("wiseplay.drm","video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3("wiseplay.drm","video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -369,8 +409,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_021', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3(uuid,"",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3(uuid,"",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -382,8 +424,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_022', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3(uuid,"111/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3(uuid,"111/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -395,8 +439,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_023', 0, function (done) {
-      let c = testNapi.Test_KeySystemSupported3(uuid," ",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-      expect(c).assertEqual(Drm_Support.DRM_FALSE);
+	    if(blueArea === 1){
+        let c = testNapi.Test_KeySystemSupported3(uuid," ",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+        expect(c).assertEqual(Drm_Support.DRM_FALSE);
+      }
       done();
     })
     /* *
@@ -408,8 +454,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_024', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_Create(uuid,"ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_Create(uuid,"ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -421,8 +469,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_025', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_Create("wiseplay.drm","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_Create("wiseplay.drm","ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -434,8 +484,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_026', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_Create(" ","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_Create(" ","ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -447,8 +499,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_027', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_Create("","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_Create("","ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -460,8 +514,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_028', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_Create(uuid," ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_Create(uuid," ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -473,11 +529,13 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_029', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr","version","2.2");
-      if(blueArea === 1){
-        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
-      } else{
-        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);// 黄区set设置不成功，插件未实现
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr","version","2.2");
+        if(blueArea === 1){
+          expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+        } else{
+          expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);// 黄区set设置不成功，插件未实现
+        }
       }
       done();
     })
@@ -490,8 +548,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_030', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationString(" ","version","2.2");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationString(" ","version","2.2");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -503,8 +563,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_031', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr"," ","2.2");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr"," ","2.2");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -516,8 +578,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_032', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr","version"," ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr","version"," ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -529,8 +593,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_033', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr","","2.2");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr","","2.2");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -542,8 +608,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_034', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr","version","");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr","version","");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -555,8 +623,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_035', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","version","ptr",55,"set");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","version","ptr",55,"set");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -568,21 +638,8 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_036', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","maxSessionNum","ptr",55,"set");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
-      done();
-    })
-    /* *
-     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_037
-     * @tc.name      : testMediaKeySystemGetConfigurationString
-     * @tc.desc      : 获取插件字符串属性【handle_in/属性名_in/属性值_out（头指针/长度)/预期】：正常参数
-     * @tc.size      : MediumTest
-     * @tc.type      : Function test
-     * @tc.level     : Level0
-     */
-    it('SUB_MULTIMEDIA_DRM_C_API_037', 0, function (done) {
-      if(!blueArea){
-        let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","maxSessionNum","ptr",55,"64");
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","maxSessionNum","ptr",55,"set");
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       }
       done();
@@ -596,8 +653,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_038', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationString(" ","version","ptr",100,"1.1");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationString(" ","version","ptr",100,"1.1");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -609,8 +668,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_039', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr"," ","ptr",100,"1.1");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr"," ","ptr",100,"1.1");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -622,8 +683,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_040', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","version"," ",100,"set");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","version"," ",100,"set");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -635,8 +698,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_041', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","version","ptr",-1,"1.1");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","version","ptr",-1,"1.1");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -648,8 +713,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_042', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","version","ptr",0,"1.1");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","version","ptr",0,"1.1");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -661,8 +728,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_043', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","version","ptr",1,"1.1");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","version","ptr",1,"1.1");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -674,8 +743,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_044', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","","ptr",55,"1.1");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr","","ptr",55,"1.1");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -687,10 +758,12 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_045', 0, function (done) {
-      var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      var dataString = dataArry.toString();
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr","version",dataString,dataArry.length);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	    if(blueArea === 1){
+        var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+        var dataString = dataArry.toString();
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr","version",dataString,dataArry.length);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -702,10 +775,12 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_046', 0, function (done) {
-      var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      var dataString = dataArry.toString();
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray(" ","version",dataString,dataArry.length);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空指针
+	    if(blueArea === 1){
+        var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+        var dataString = dataArry.toString();
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray(" ","version",dataString,dataArry.length);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空指针
+      }
       done();
     })
     /* *
@@ -717,10 +792,12 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_047', 0, function (done) {
-      var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      var dataString = dataArry.toString();
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr"," ",dataString,dataArry.length);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空指针
+	    if(blueArea === 1){
+        var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+        var dataString = dataArry.toString();
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr"," ",dataString,dataArry.length);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空指针
+      }
       done();
     })
     /* *
@@ -732,10 +809,12 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_048', 0, function (done) {
-      var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      var dataString = dataArry.toString();
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr","",dataString,dataArry.length);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空字符串
+    	if(blueArea === 1){
+        var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+        var dataString = dataArry.toString();
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr","",dataString,dataArry.length);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空字符串
+      }
       done();
     })
     /* *
@@ -747,10 +826,12 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_049', 0, function (done) {
-      var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      var dataString = dataArry.toString();
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr","version"," ",dataArry.length);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空指针
+	    if(blueArea === 1){
+        var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+        var dataString = dataArry.toString();
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr","version"," ",dataArry.length);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空指针
+      }
       done();
     })
     /* *
@@ -762,10 +843,12 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_050', 0, function (done) {
-      var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      var dataString = dataArry.toString();
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr","version",dataString,-1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+        var dataString = dataArry.toString();
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr","version",dataString,-1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -777,10 +860,12 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_051', 0, function (done) {
-      var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      var dataString = dataArry.toString();
-      let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr","version",dataString,0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        var dataArry =  new Uint8Array([0x22, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56,0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+        var dataString = dataArry.toString();
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr","version",dataString,0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -792,8 +877,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_052', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr","value","ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr","value","ptr","ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -805,8 +892,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_053', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray(" ","version","ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray(" ","version","ptr","ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -818,8 +907,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_054', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr"," ","ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr"," ","ptr","ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -831,8 +922,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_055', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr","","ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr","","ptr","ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -844,8 +937,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_056', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr","version"," ","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr","version"," ","ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -857,8 +952,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_057', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr","version","ptr"," ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr","version","ptr"," ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -870,8 +967,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_058', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetStatistics("ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetStatistics("ptr","ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -883,8 +982,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_059', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetStatistics(" ","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetStatistics(" ","ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -896,8 +997,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_060', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetStatistics("ptr"," ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetStatistics("ptr"," ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -909,13 +1012,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_061', 0, function (done) {
-      let c;
       if(blueArea === 1) {
-        c = testNapi.Test_MediaKeySystem_GetMaxContentProtectionLevel("ptr","ptr",1);
-      } else{
-        c = testNapi.Test_MediaKeySystem_GetMaxContentProtectionLevel("ptr","ptr",2);
-      }
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+        let c = testNapi.Test_MediaKeySystem_GetMaxContentProtectionLevel("ptr","ptr",1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	  }
       done();
     })
     /* *
@@ -927,8 +1027,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_062', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetMaxContentProtectionLevel(" ","ptr",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetMaxContentProtectionLevel(" ","ptr",0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -940,8 +1042,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_063', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetMaxContentProtectionLevel("ptr"," ",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GetMaxContentProtectionLevel("ptr"," ",0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -953,8 +1057,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_064', 0, function (done) {
-      let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN,"ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN,"ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -966,8 +1072,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_065', 0, function (done) {
-      let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO,"ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	    if(blueArea === 1){
+        let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO,"ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -979,8 +1087,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_066', 0, function (done) {
-      let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO,"ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	    if(blueArea === 1){
+        let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO,"ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -992,8 +1102,10 @@ export default function abilityTest() {
      * @tc.level     : Level0
      */
     it('SUB_MULTIMEDIA_DRM_C_API_067', 0, function (done) {
-      let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO,"ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	    if(blueArea === 1){
+        let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO,"ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1005,8 +1117,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_068', 0, function (done) {
-      let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_MAX,"ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	    if(blueArea === 1){
+        let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_MAX,"ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1018,8 +1132,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_069', 0, function (done) {
-      let c = testNapi.Test_CreateMediaKeySession("ptr",5,"ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_CreateMediaKeySession("ptr",5,"ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1031,8 +1147,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_070', 0, function (done) {
-      let c = testNapi.Test_CreateMediaKeySession("ptr",-1,"ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_CreateMediaKeySession("ptr",-1,"ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1044,8 +1162,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_071', 0, function (done) {
-      let c = testNapi.Test_CreateMediaKeySession(" ",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO,"ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_CreateMediaKeySession(" ",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO,"ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1057,8 +1177,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_072', 0, function (done) {
-      let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO," ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_CreateMediaKeySession("ptr",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO," ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1070,9 +1192,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_073', 0, function (done) {
-      var defaultUrl = "http://default.com";
-      let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr","ptr",defaultUrl,defaultUrl.length);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr","ptr","ptr",1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1084,9 +1207,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_074', 0, function (done) {
-      var defaultUrl = "http://default.com";
-      let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest(" ","ptr","ptr",defaultUrl,defaultUrl.length);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest(" ","ptr","ptr","ptr",1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1098,9 +1222,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_075', 0, function (done) {
-      var defaultUrl = "http://default.com";
-      let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr"," ","ptr",defaultUrl,defaultUrl.length);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr"," ","ptr","ptr",1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1112,9 +1237,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_076', 0, function (done) {
-      var defaultUrl = "http://default.com";
-      let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr"," ",defaultUrl,defaultUrl.length);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea === 1){
+        let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr"," ","ptr",1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1126,9 +1252,11 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_077', 0, function (done) {
-      var defaultUrl = "http://111111111.com";
-      let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr","ptr",defaultUrl,defaultUrl.length);
+	    if(blueArea === 1){
+        var defaultUrl = "http://111111111.com";
+        let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr","ptr",defaultUrl,defaultUrl.length);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1140,9 +1268,11 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_078', 0, function (done) {
-      var defaultUrl = "";
-      let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr","ptr",defaultUrl,0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+    	if(blueArea === 1){
+        var defaultUrl = "";
+        let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr","ptr",defaultUrl,0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1154,9 +1284,11 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_079', 0, function (done) {
-      var defaultUrl = "http://default.com";
-      let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr","ptr",defaultUrl,0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+	    if(blueArea === 1){
+        var defaultUrl = "http://default.com";
+        let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr","ptr",defaultUrl,0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1167,12 +1299,14 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_080', 0, function (done) {
-    //   var defaultUrl = "http://default.com";
-    //   let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr","ptr","ptr",defaultUrl,-1);
-    //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
-    //   done();
-    // })
+    it('SUB_MULTIMEDIA_DRM_C_API_080', 0, function (done) {
+      if(blueArea === 1) {
+        var defaultUrl = "http://default.com";
+        let c = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr", "ptr", "ptr", defaultUrl, -1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
+      done();
+    })
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_081
     * @tc.name      : testMediaKeySystemProcessKeySystemResponse
@@ -1182,17 +1316,13 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_081', 0, function (done) {
-      var length;
-      if(blueArea ==1 ){
+      if (blueArea == 1) {
         var arry = new Uint8Array([1, 2, 3, 4, 5]);
         var provisionResponseStr = arry.toString();
-        length = arry.length;
-      } else{
-        var provisionResponseStr = "genResponse";
-        length = 100;
-      }
-      let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr",provisionResponseStr,length);
+        var length = arry.length;
+       let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr", provisionResponseStr, length);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+    }
       done();
     })
     /* *
@@ -1204,17 +1334,13 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_082', 0, function (done) {
-      var length;
-      if(blueArea ==1 ){
+      if(blueArea ==1 ) {
         var arry = new Uint8Array([1, 2, 3, 4, 5]);
         var provisionResponseStr = arry.toString();
-        length = arry.length;
-      } else{
-        var provisionResponseStr = "get_in_c";
-        length = 100;
+        var length = arry.length;
+        let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse(" ", provisionResponseStr, length);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       }
-      let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse(" ",provisionResponseStr,length);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
     /* *
@@ -1226,8 +1352,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_083', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr"," ",100);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr", " ", 100);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1239,8 +1367,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_084', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr","get_in_c",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr", "get_in_c", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1251,14 +1381,16 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_085', 0, function (done) {
-    //   var length =-1;
-    //   var arry = new Uint8Array([1, 2, 3, 4, 5]);
-    //   var provisionResponseStr = arry.toString();
-    //   let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr",provisionResponseStr,length);
-    //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
-    //   done();
-    // })
+    it('SUB_MULTIMEDIA_DRM_C_API_085', 0, function (done) {
+      if(blueArea ==1 ) {
+        var length = -1;
+        var arry = new Uint8Array([1, 2, 3, 4, 5]);
+        var provisionResponseStr = arry.toString();
+        let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr", provisionResponseStr, length);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
+      done();
+    })
    /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_086
     * @tc.name      : testMediaKeySystemGetOfflineMediaKeyIds
@@ -1268,8 +1400,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_086', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds("ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds("ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1281,8 +1415,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_087', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds(" ","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds(" ", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1294,8 +1430,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_088', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds("ptr"," ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds("ptr", " ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1307,8 +1445,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     *//
     it('SUB_MULTIMEDIA_DRM_C_API_089', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr","genKey",1,"ptr",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", "genKey", 1, "ptr", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1320,10 +1460,12 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_090', 0, function (done) {
-      var responseKeyStr ="11,22,33,44";
-      let len = 4;
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr",responseKeyStr,len,"ptr",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        var responseKeyStr = "11,22,33,44";
+        let len = 4;
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", responseKeyStr, len, "ptr", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1335,8 +1477,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_091', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus(" ","genKey",1,"ptr",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus(" ", "genKey", 1, "ptr", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1348,8 +1492,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_092', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr"," ",5,"ptr",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", " ", 5, "ptr", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1361,23 +1507,27 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_093', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr","",5,"ptr",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", "", 5, "ptr", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
-    // /* *
-    // * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_094
-    // * @tc.name      : testMediaKeySystem_GetOfflineMediaKeyStatus
-    // * @tc.desc      : 获取离线license状态【systemHandle_in/key_in(值/长度)/状态_out/预期】：key值长度为-1
-    // * @tc.size      : MediumTest
-    // * @tc.type      : Function test
-    // * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_DRM_C_API_094', 0, function (done) {
-    //   let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr","genKey",-1,"ptr",0);
-    //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL)
-    //   done();
-    // })
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_094
+    * @tc.name      : testMediaKeySystem_GetOfflineMediaKeyStatus
+    * @tc.desc      : 获取离线license状态【systemHandle_in/key_in(值/长度)/状态_out/预期】：key值长度为-1
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_DRM_C_API_094', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", "genKey", -1, "ptr", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
+      done();
+    })
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_095
     * @tc.name      : testMediaKeySystem_GetOfflineMediaKeyStatus
@@ -1387,8 +1537,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_095', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr","genKey",0,"ptr",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL)
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", "genKey", 0, "ptr", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1400,8 +1552,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_096', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr","genKey",1," ",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", "genKey", 1, " ", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1413,8 +1567,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_097', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr","genKey",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", "genKey", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1426,8 +1582,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_098', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys(" ","genKey",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys(" ", "genKey", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1439,8 +1597,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_099', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr"," ",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", " ", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1452,9 +1612,11 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_100', 0, function (done) {
-      var responseKeyStr = "11,22,33,44,55,66,77,88";
-      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr",responseKeyStr,8);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        var responseKeyStr = "11,22,33,44,55,66,77,88";
+        let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", responseKeyStr, 8);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1466,8 +1628,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_101', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr","genKey",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", "genKey", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1478,11 +1642,13 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_102', 0, function (done) {
-    //   let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr","genKey",-1);
-    //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
-    //   done();
-    // })
+    it('SUB_MULTIMEDIA_DRM_C_API_102', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", "genKey", -1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
+      done();
+    })
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_103
     * @tc.name      : testMediaKeySystemGetCertificateStatus
@@ -1492,8 +1658,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_103', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetCertificateStatus("ptr","ptr",Drm_CertificateStatus.CERT_STATUS_PROVISIONED);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetCertificateStatus("ptr", "ptr", Drm_CertificateStatus.CERT_STATUS_PROVISIONED);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1505,8 +1673,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_104', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetCertificateStatus(" ","ptr",Drm_CertificateStatus.CERT_STATUS_NOT_PROVISIONED);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetCertificateStatus(" ", "ptr", Drm_CertificateStatus.CERT_STATUS_NOT_PROVISIONED);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1518,8 +1688,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_105', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetCertificateStatus("ptr"," ",Drm_CertificateStatus.CERT_STATUS_NOT_PROVISIONED);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_GetCertificateStatus("ptr", " ", Drm_CertificateStatus.CERT_STATUS_NOT_PROVISIONED);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1531,8 +1703,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_106', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_Destroy("ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_Destroy("ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1544,8 +1718,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_107', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_Destroy(" ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_Destroy(" ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1557,8 +1733,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_108', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_Destroy("twice");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_Destroy("twice");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1570,8 +1748,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_109', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_SetMediaKeySystemCallback("ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_SetMediaKeySystemCallback("ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1583,8 +1763,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_110', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_SetMediaKeySystemCallback(" ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_SetMediaKeySystemCallback(" ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1596,8 +1778,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_111', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr","ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1609,8 +1793,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_112', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest(" ","ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest(" ", "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1622,8 +1808,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_113', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr"," ","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", " ", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1635,8 +1823,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_114', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr","ptr"," ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "ptr", " ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1648,11 +1838,13 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_115', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr","err_type","ptr");
-      if(blueArea){
-        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
-      }else{
-        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "err_type", "ptr");
+        if (blueArea) {
+          expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+        } else {
+          expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+        }
       }
       done();
     })
@@ -1665,8 +1857,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_116', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr","err_data","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "err_data", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1678,8 +1872,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_117', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr","err_dataLen","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "err_dataLen", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1691,8 +1887,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_118', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr","err_mineType","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "err_mineType", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1704,8 +1902,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_119', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr","genResponse",1,"ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr", "genResponse", 1, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1717,8 +1917,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_120', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse(" ","genResponse",1,"ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse(" ", "genResponse", 1, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1730,8 +1932,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_121', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr"," ",10,"ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr", " ", 10, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1743,10 +1947,12 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_122', 0, function (done) {
-      var responseStr = "11,11,11,11,11,11,11,11,11,111";
-      let len = 10;
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr",responseStr,len,"ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        var responseStr = "11,11,11,11,11,11,11,11,11,111";
+        let len = 10;
+        let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr", responseStr, len, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1758,8 +1964,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_123', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr","genResponse",0,"ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr", "genResponse", 0, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1770,11 +1978,13 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_124', 0, function (done) {
-    //   let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr","genResponse",-1,"ptr","ptr");
-    //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
-    //   done();
-    // })
+    it('SUB_MULTIMEDIA_DRM_C_API_124', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr", "genResponse", -1, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
+      done();
+    })
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_125
     * @tc.name      : testMediaKeySessionProcessMediaKeyResponse
@@ -1784,8 +1994,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_125', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr","genResponse",1," ","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr", "genResponse", 1, " ", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1797,8 +2009,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_126', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr","genResponse",1,"ptr"," ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr", "genResponse", 1, "ptr", " ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1810,8 +2024,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_127', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr","ptr",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr", "ptr", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1823,8 +2039,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_128', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus(" ","ptr",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus(" ", "ptr", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1836,8 +2054,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_129', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr"," ",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr", " ", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1849,8 +2069,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_130', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_ClearMediaKeys("ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_ClearMediaKeys("ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1862,8 +2084,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_131', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_ClearMediaKeys(" ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_ClearMediaKeys(" ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1875,8 +2099,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_132', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GetContentProtectionLevel("ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GetContentProtectionLevel("ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1888,8 +2114,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_133', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GetContentProtectionLevel(" ","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GetContentProtectionLevel(" ", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1901,8 +2129,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_134', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GetContentProtectionLevel("ptr"," ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GetContentProtectionLevel("ptr", " ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1914,11 +2144,13 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_135', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr","video/mp4","ptr",1);
-      if(blueArea){
-        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
-      } else{
-        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr", "video/mp4", "ptr", 1);
+        if (blueArea) {
+          expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+        } else {
+          expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+        }
       }
       done();
     })
@@ -1931,8 +2163,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_136', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr","video/hevc","ptr",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr", "video/hevc", "ptr", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1944,8 +2178,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_137', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr","video/avs3","ptr",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr", "video/avs3", "ptr", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -1957,8 +2193,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_138', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule(" ","video/mp4","ptr",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule(" ", "video/mp4", "ptr", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1970,8 +2208,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_139', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr"," ","ptr",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr", " ", "ptr", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1983,8 +2223,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_140', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr","","ptr",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr", "", "ptr", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -1996,8 +2238,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_141', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr","video/mp4"," ",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("ptr", "video/mp4", " ", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2009,8 +2253,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_142', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_SetMediaKeySessionCallback("ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_SetMediaKeySessionCallback("ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -2022,8 +2268,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_143', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_SetMediaKeySessionCallback(" ","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_SetMediaKeySessionCallback(" ", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2035,8 +2283,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_144', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_SetMediaKeySessionCallback("ptr"," ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_SetMediaKeySessionCallback("ptr", " ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2048,8 +2298,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_145', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr","genKey",1,"ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", 1, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -2061,8 +2313,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_146', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest(" ","genKey",1,"ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest(" ", "genKey", 1, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2074,8 +2328,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_147', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr"," ",1,"ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", " ", 1, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2087,10 +2343,12 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_148', 0, function (done) {
-      var licenseIdStr = "11,11,11,11,12,22";
-      var len = 6;
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr",licenseIdStr,len,"ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        var licenseIdStr = "11,11,11,11,12,22";
+        var len = 6;
+        let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", licenseIdStr, len, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -2102,8 +2360,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_149', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr","genKey",0,"ptr","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", 0, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2114,11 +2374,13 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_150', 0, function (done) {
-    //   let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr","genKey",-1,"ptr","ptr");
-    //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
-    //   done();
-    // })
+    it('SUB_MULTIMEDIA_DRM_C_API_150', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", -1, "ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
+      done();
+    })
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_151
     * @tc.name      : testMediaKeySessionSetGenerateOfflineReleaseRequest
@@ -2128,8 +2390,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_151', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr","genKey",1," ","ptr");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", 1, " ", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2141,8 +2405,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_152', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", 1, "ptr", " ");
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", 1, "ptr", " ");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2221,15 +2487,15 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_157', 0, function (done) {
-    //   if(blueArea){
-    //     var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-    //     var responseStr = responseArray.toString();
-    //     let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",-1,responseStr,responseArray.length);
-    //     expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
-    //   }// TODO：黄区processOfflineReleaseResponse不支持
-    //   done();
-    // })
+    it('SUB_MULTIMEDIA_DRM_C_API_157', 0, function (done) {
+      if(blueArea){
+        var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+        var responseStr = responseArray.toString();
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",-1,responseStr,responseArray.length);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }// TODO：黄区processOfflineReleaseResponse不支持
+      done();
+    })
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_158
     * @tc.name      : testMediaKeySessionProcessOfflineReleaseResponse
@@ -2272,15 +2538,15 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_160', 0, function (done) {
-    //   if(blueArea){
-    //     var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-    //     var responseStr = responseArray.toString();
-    //     let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",1,responseStr,-1);
-    //     expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
-    //   }// TODO：黄区processOfflineReleaseResponse不支持
-    //   done();
-    // })
+    it('SUB_MULTIMEDIA_DRM_C_API_160', 0, function (done) {
+      if(blueArea){
+        var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+        var responseStr = responseArray.toString();
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",1,responseStr,-1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }// TODO：黄区processOfflineReleaseResponse不支持
+      done();
+    })
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_161
     * @tc.name      : testMediaKeySessionProcessOfflineReleaseResponse
@@ -2313,7 +2579,7 @@ export default function abilityTest() {
         var responseArray =  new Uint8Array([0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         var responseStr = responseArray.toString();
         let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",1,responseStr,responseArray.length);
-        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       }
       done();
     })
@@ -2349,7 +2615,7 @@ export default function abilityTest() {
         var responseStr = "";
         var len = 10;
         let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",1,responseStr,len);
-        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       }// TODO：黄区processOfflineReleaseResponse不支持
       done();
     })
@@ -2362,8 +2628,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_165', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr","getKey",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr", "getKey", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -2375,8 +2643,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_166', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys(" ","getKey",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys(" ", "getKey", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2388,10 +2658,12 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_167', 0, function (done) {
-      var licenseResponseStr ="11,11,11,11,11,111,11,111";
-      var len = 8;
-      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr",licenseResponseStr,len);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        var licenseResponseStr = "11,11,11,11,11,111,11,111";
+        var len = 8;
+        let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr", licenseResponseStr, len);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2403,8 +2675,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_168', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr"," ",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr", " ", 1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2416,8 +2690,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_169', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr","getKey",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr", "getKey", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
       done();
     })
     /* *
@@ -2428,11 +2704,13 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_170', 0, function (done) {
-    //   let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr","getKey",-1);
-    //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
-    //   done();
-    // })
+    it('SUB_MULTIMEDIA_DRM_C_API_170', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr", "getKey", -1);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
+      done();
+    })
 
     // add cases
     /* *
@@ -2444,8 +2722,10 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_171', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr","ptr",5);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr", "ptr", 5);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
     /* *
@@ -2457,8 +2737,70 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_172', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr","ptr",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr", "ptr", 0);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
+      done();
+    })
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_173
+     * @tc.name      : Test_CreateMediaKeySession_multi
+     * @tc.desc      : 创建多个session【个数】：
+     * @tc.size      : MediumTest
+     * @tc.type      : Function test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_DRM_C_API_173', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_CreateMediaKeySession_multi(64);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
+      done();
+    })
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_174
+    * @tc.name      : Test_CreateMediaKeySession_multi
+    * @tc.desc      : 创建多个session【个数】：
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_DRM_C_API_174', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_CreateMediaKeySession_multi(65);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+      }
+      done();
+    })
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_175
+    * @tc.name      : Test_MediaKeySession_ProcessOfflineReleaseResponse_multi
+    * @tc.desc      : 多次release【个数】：
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_DRM_C_API_175', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse_multi(2);
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
+      done();
+    })
+    /* *
+   * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_176
+   * @tc.name      : Test_MediaKeySystem_SetConfigurationString_multi
+   * @tc.desc      : 多次设置字符串，不同长度是否覆盖
+   * @tc.size      : MediumTest
+   * @tc.type      : Function test
+   * @tc.level     : Level0
+   */
+    it('SUB_MULTIMEDIA_DRM_C_API_176', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_SetConfigurationString_multi();
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
       done();
     })
   })

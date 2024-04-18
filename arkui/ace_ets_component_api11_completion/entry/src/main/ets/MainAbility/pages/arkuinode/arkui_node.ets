@@ -25,7 +25,8 @@ function buttonBuilder(params: Params) {
   Column() {
     Button(`button ` + params.text)
       .borderWidth(2)
-      .backgroundColor(Color.Orange).key('nodeButton')
+      .backgroundColor(Color.Orange)
+      .key('nodeButton')
   }
 }
 
@@ -59,16 +60,15 @@ class MyNodeController extends NodeController {
   aboutToDisappear() {
     console.log("aboutToDisappear");
   }
-  update()
-  {
-    if(this.rootNode == null)
-    {
+
+  update() {
+    if (this.rootNode == null) {
       return;
     }
     this.rebuild();
   }
 
-  onTouchEvent(event:TouchEvent) {
+  onTouchEvent(event: TouchEvent) {
     console.log("onTouchEvent");
   }
 }
@@ -80,8 +80,8 @@ struct nodeIndex {
 
   build() {
     Row() {
-      NodeContainer(this.myNodeController).onClick(()=> {
-           this.myNodeController.update();
+      NodeContainer(this.myNodeController).onClick(() => {
+        this.myNodeController.update();
       }).key("nodeContainer")
     }
   }

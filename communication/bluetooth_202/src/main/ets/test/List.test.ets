@@ -13,8 +13,12 @@
  * limitations under the License.
  */
 
-import errCode202Test from './BtErrCode202.test'
+import errCode202Test from './BtErrCode202.test';
+import parameter from '@ohos.systemparameter';
 
+let info = parameter.getSync("const.SystemCapability.Communication.Bluetooth.Core", "false");
 export default function testsuite() {
-    errCode202Test()
+    if (info != "false") {
+        errCode202Test();
+    } 
 }

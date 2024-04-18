@@ -1,0 +1,22 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/Select/SelectAttr",
+        "MainAbility/pages/Select/selectoptionwith",
+        "MainAbility/pages/TimePicker/TimePicker",
+        "MainAbility/pages/TimePicker/TimePicker1",
+        "MainAbility/pages/Select/Select",
+        "MainAbility/pages/Radio/Radio",
+        "MainAbility/pages/Checkbox/Index",
+        "MainAbility/pages/TextPicker/TextPickerSec",
+        "MainAbility/pages/TextPicker/Index",
+        "MainAbility/pages/TextPicker/TextPickerMulti",
+        "MainAbility/pages/Slider/Index",
+        "MainAbility/pages/Slider/SliderTestSec",
+        "MainAbility/pages/Button/Button",
+        "MainAbility/pages/Rating/Rating",
+        "MainAbility/pages/Slider/Slider",
+        "MainAbility/pages/Select/menuBackgroundBlurStyle",
+        "MainAbility/pages/Select/menuBackgroundColor"
+    ]
+}

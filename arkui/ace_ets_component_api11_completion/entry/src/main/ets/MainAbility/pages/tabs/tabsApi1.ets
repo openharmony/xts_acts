@@ -15,19 +15,19 @@
 @Entry
 @Component
 struct tabsApi1 {
-  @State useCustomAnimation: boolean = true
-  @State tabContent0Scale: number = 1.0
-  @State tabContent1Scale: number = 1.0
-  @State tabContent0Opacity: number = 1.0
-  @State tabContent1Opacity: number = 1.0
-  @State tabContent2Opacity: number = 1.0
-  tabsController: TabsController = new TabsController()
-  private firstTimeout: number = 3000
-  private secondTimeout: number = 5000
-  private first2secondDuration: number = 3000
-  private second2thirdDuration: number = 5000
-  private first2thirdDuration: number = 2000
-  @State text1: string = '111'
+  @State useCustomAnimation: boolean = true;
+  @State tabContent0Scale: number = 1.0;
+  @State tabContent1Scale: number = 1.0;
+  @State tabContent0Opacity: number = 1.0;
+  @State tabContent1Opacity: number = 1.0;
+  @State tabContent2Opacity: number = 1.0;
+  @State text1: string = '111';
+  tabsController: TabsController = new TabsController();
+  private firstTimeout: number = 3000;
+  private secondTimeout: number = 5000;
+  private first2secondDuration: number = 3000;
+  private second2thirdDuration: number = 5000;
+  private first2thirdDuration: number = 2000;
 
   build() {
     Column() {

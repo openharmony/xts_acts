@@ -13,10 +13,13 @@
  * limitations under the License.
  */
 import { RenderNode, FrameNode, NodeController } from "@ohos.arkui.node"
+
 const renderNode = new RenderNode();
 renderNode.scale = { x: 0.5, y: 1 };
+
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     const rootRenderNode = this.rootNode.getRenderNode();
@@ -26,15 +29,17 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
 struct scaleI {
-  @State getX:number = 1
-  @State getY:number = 0.2
+  @State getX: number = 1;
+  @State getY: number = 0.2;
   private MyNodeController: MyNodeController = new MyNodeController();
+
   build() {
-    Column({space:5}){
-      Row(){
+    Column({ space: 5 }) {
+      Row() {
         Text(this.getX.toString())
           .id('text_getScale')
           .width(50)
@@ -42,15 +47,16 @@ struct scaleI {
           .backgroundColor(0xF5DEB3)
           .textAlign(TextAlign.Center)
         Button('getScale')
-          .onClick(()=>{
-            this.getX =  renderNode.scale.x
+          .onClick(() => {
+            this.getX = renderNode.scale.x
           })
           .id('getScale_id')
           .width('60%')
           .height(100)
           .backgroundColor(0xD2B48C)
       }.width('100%')
-      Row(){
+
+      Row() {
         Text(this.getY.toString())
           .id('text_setScale')
           .width(50)
@@ -58,15 +64,15 @@ struct scaleI {
           .backgroundColor(0xF5DEB3)
           .textAlign(TextAlign.Center)
         Button('setScale')
-          .onClick(()=>{
+          .onClick(() => {
             renderNode.scale = { x: 0.3, y: 0.5 };
-            this.getY =  renderNode.scale.y
+            this.getY = renderNode.scale.y
           })
           .id('setScale_id')
           .width('60%')
           .height(100)
           .backgroundColor(0xD2B48C)
       }.width('100%')
-    }.margin({top:20,left:20})
+    }.margin({ top: 20, left: 20 })
   }
 }

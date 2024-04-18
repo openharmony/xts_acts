@@ -840,7 +840,7 @@ describe('btManagerError003Test', function() {
         function onReceiveEvent(data)
         {
             console.info('[bluetooth_js] BLEscan device result8'+JSON.stringify(data));
-            expect(true).assertTrue(data.length=0);
+            expect(data.length = 0).assertTrue();
         }
         try {
             let state = bluetoothManager.getState();
@@ -886,7 +886,7 @@ describe('btManagerError003Test', function() {
          * @tc.type Function
          * @tc.level Level 3
          */
-    it('SUB_COMMUNICATION_BTMANAGER_BLESCAN_0900', 0, async function (done) {
+    it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_4000', 0, async function (done) {
         bluetooth.disableBluetooth();
         await clickTheWindow();
         await sleep(3000);
@@ -895,7 +895,7 @@ describe('btManagerError003Test', function() {
         function onReceiveEvent(data)
         {
             console.info('[bluetooth_js] BLEscan device result8'+JSON.stringify(data));
-            expect(true).assertTrue(data.length=0);
+            expect(data.length == 0).assertTrue();
         }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan(

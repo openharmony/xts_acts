@@ -110,13 +110,15 @@ export default function imageModifyProperty() {
                 globalImagesource = imageSourceApi;
                 imageSourceApi.modifyImageProperty(key, value, (error) => {
                     if (error) {
-                        expect(false).assertTrue();
                         console.info(`${testNum} modify err: ` + error);
+                        expect(false).assertTrue();
+                        done();
                     } else {
                         imageSourceApi.getImageProperty(key, (error, data) => {
                             if (error) {
-                                expect(false).assertTrue();
                                 console.info(`${testNum} get err: ` + error);
+                                expect(false).assertTrue();
+                                done();
                             } else {
                                 console.info(`${testNum} ${key}: ` + data);
                                 checkProps(data);
@@ -146,13 +148,15 @@ export default function imageModifyProperty() {
                 let property = { index: 0, defaultValue: "1" };
                 imageSourceApi.modifyImageProperty(key, value, property, (error) => {
                     if (error) {
-                        expect(false).assertTrue();
                         console.info(`${testNum} modify err: ` + error);
+                        expect(false).assertTrue();
+                        done();
                     } else {
                         imageSourceApi.getImageProperty(key, (error, data) => {
                             if (error) {
-                                expect(false).assertTrue();
                                 console.info(`${testNum} get err: ` + error);
+                                expect(false).assertTrue();
+                                done();
                             } else {
                                 console.info(`${testNum} ${key}: ` + data);
                                 checkProps(data);
@@ -180,8 +184,8 @@ export default function imageModifyProperty() {
             } else {
                 globalImagesource = imageSourceApi;
                 imageSourceApi.modifyImageProperty(key, value, (error) => {
-                    expect(error.code != 0).assertTrue();
                     console.info(`${testNum} errormsg: ` + error);
+                    expect(error.code == 62980135).assertTrue();
                     done();
                 });
             }
@@ -204,8 +208,8 @@ export default function imageModifyProperty() {
                 globalImagesource = imageSourceApi;
                 let property = { index: 0, defaultValue: "1" };
                 imageSourceApi.modifyImageProperty(key, value, property, (error) => {
-                    expect(error.code != 0).assertTrue();
                     console.info(`${testNum} errormsg: ` + error);
+                    expect(error.code == 62980135).assertTrue();
                     done();
                 });
             }
@@ -246,6 +250,44 @@ export default function imageModifyProperty() {
             }
         }
 
+        async function modifyImageBuffer(done, testNum, type, key, value) {
+            let imageSourceApi;
+            try {
+                if (type == "buffer") {
+                    const data = modifyBuf.buffer;
+                    imageSourceApi = image.createImageSource(data);
+                } else {
+                    console.info(`${testNum} buffer source failed`);
+                    expect(false).assertTrue();
+                    done();
+                }
+            } catch (error) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            }
+
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                globalImagesource = imageSourceApi;
+                imageSourceApi
+                    .modifyImageProperty(key, value)
+                    .then(() => {
+                        expect(false).assertTrue();
+                        done();
+                    })
+                    .catch((error) => {
+                        console.info(`${testNum} message: ` + error);
+                        expect(error.code == 62980146).assertTrue();
+                        expect(error.message == "The EXIF data failed to be written to the file.").assertTrue();
+                        done();
+                    });
+            }
+        }
+
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0100
          * @tc.name      : modifyImageProperty(Orientation)-promise
@@ -257,16 +299,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0100", 0, async function (done) {
-            function checkProps(result) {
-                expect(result == "Top-right").assertTrue();
-            }
-            modifyPromise(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0100",
                 "buffer",
                 image.PropertyKey.ORIENTATION,
-                "2",
-                checkProps
+                "2"
             );
         });
 
@@ -281,16 +319,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0200", 0, async function (done) {
-            function checkProps(result) {
-                expect(result.search("38") != -1).assertTrue();
-            }
-            modifyPromise(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0200",
                 "buffer",
                 image.PropertyKey.GPS_LATITUDE,
-                "114,3",
-                checkProps
+                "114,3"
             );
         });
 
@@ -305,16 +339,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0300", 0, async function (done) {
-            function checkProps(result) {
-                expect(result.search("9") != -1).assertTrue();
-            }
-            modifyPromise(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0300",
                 "buffer",
                 image.PropertyKey.GPS_LONGITUDE,
-                "18,2",
-                checkProps
+                "18,2"
             );
         });
 
@@ -329,16 +359,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0400", 0, async function (done) {
-            function checkProps(result) {
-                expect(result == "N").assertTrue();
-            }
-            modifyPromise(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0400",
                 "buffer",
                 image.PropertyKey.GPS_LATITUDE_REF,
                 "N",
-                checkProps
             );
         });
 
@@ -353,16 +379,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0500", 0, async function (done) {
-            function checkProps(result) {
-                expect(result == "W").assertTrue();
-            }
-            modifyPromise(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0500",
                 "buffer",
                 image.PropertyKey.GPS_LONGITUDE_REF,
-                "W",
-                checkProps
+                "W"
             );
         });
 
@@ -611,14 +633,14 @@ export default function imageModifyProperty() {
                  */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1600", 0, async function (done) {
             function checkProps(result) {
-                expect(result == "Internal error (unknown value 51)").assertTrue();
+                expect(result == "Directly photographed").assertTrue();
             }
             modifyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1600",
                 "fd",
                 "SceneType",
-                "3",
+                "1",
                 checkProps
             );
         });
@@ -707,14 +729,14 @@ export default function imageModifyProperty() {
                  */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2000", 0, async function (done) {
             function checkProps(result) {
-                expect(result == "").assertTrue();
+                expect(result == "11:37:56.00").assertTrue();
             }
             modifyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2000",
                 "fd",
                 "GPSTimeStamp",
-                "0:0:12",
+                "11/1 37/1 56/1",
                 checkProps
             );
         });
@@ -1163,10 +1185,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0100", 0, async function (done) {
-            function checkProps(result) {
-                expect(result == "Top-right").assertTrue();
-            }
-            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0100", "buffer", "Orientation", "2", checkProps);
+            modifyImageBuffer(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0100", "buffer", "Orientation", "2");
         });
 
         /**
@@ -1180,16 +1199,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0200", 0, async function (done) {
-            function checkProps(result) {
-                expect(result.search("38") != -1).assertTrue();
-            }
-            modifyCb(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0200",
                 "buffer",
                 "GPSLatitude",
-                "114,3",
-                checkProps
+                "114,3"
             );
         });
 
@@ -1204,16 +1219,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0300", 0, async function (done) {
-            function checkProps(result) {
-                expect(result.search("9") != -1).assertTrue();
-            }
-            modifyCb(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0300",
                 "buffer",
                 "GPSLongitude",
-                "18,2",
-                checkProps
+                "18,2"
             );
         });
 
@@ -1228,16 +1239,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0400", 0, async function (done) {
-            function checkProps(result) {
-                expect(result == "N").assertTrue();
-            }
-            modifyCb(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0400",
                 "buffer",
                 "GPSLatitudeRef",
-                "N",
-                checkProps
+                "N"
             );
         });
 
@@ -1252,17 +1259,13 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0500", 0, async function (done) {
-            function checkProps(result) {
-                expect(result == "W").assertTrue();
-            }
-            modifyCb(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0500",
                 "buffer",
                 "GPSLongitudeRef",
-                "W",
-                checkProps
-            );
+                "W"
+                );
         });
 
         /**
@@ -1462,14 +1465,14 @@ export default function imageModifyProperty() {
                  */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1600", 0, async function (done) {
             function checkProps(result) {
-                expect(result == "Internal error (unknown value 51)").assertTrue();
+                expect(result == "Directly photographed").assertTrue();
             }
             modifyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1600",
                 "fd",
                 "SceneType",
-                "3",
+                "1",
                 checkProps
             );
         });
@@ -1558,14 +1561,14 @@ export default function imageModifyProperty() {
                  */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2000", 0, async function (done) {
             function checkProps(result) {
-                expect(result == "").assertTrue();
+                expect(result == "11:37:56.00").assertTrue();
             }
             modifyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2000",
                 "fd",
                 "GPSTimeStamp",
-                "0:0:12",
+                "11:37:56",
                 checkProps
             );
         });
@@ -1894,7 +1897,7 @@ export default function imageModifyProperty() {
                  */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3600", 0, async function (done) {
             function checkProps(result) {
-                expect(result == "1111I").assertTrue();
+                expect(result == "1111").assertTrue();
             }
             modifyCb(
                 done,
@@ -2013,16 +2016,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0100", 0, async function (done) {
-            function checkProps(result) {
-                expect(result == "Top-right").assertTrue();
-            }
-            modifyCb1(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0100",
                 "buffer",
                 "Orientation",
-                "2",
-                checkProps
+                "2"
             );
         });
 
@@ -2037,16 +2036,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0200", 0, async function (done) {
-            function checkProps(result) {
-                expect(result.search("38") != -1).assertTrue();
-            }
-            modifyCb1(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0200",
                 "buffer",
                 "GPSLatitude",
-                "114,3",
-                checkProps
+                "114,3"
             );
         });
 
@@ -2061,16 +2056,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0300", 0, async function (done) {
-            function checkProps(result) {
-                expect(result.search("9") != -1).assertTrue();
-            }
-            modifyCb1(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0300",
                 "buffer",
                 "GPSLongitude",
-                "18,2",
-                checkProps
+                "18,2"
             );
         });
 
@@ -2085,16 +2076,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0400", 0, async function (done) {
-            function checkProps(result) {
-                expect(result == "N").assertTrue();
-            }
-            modifyCb1(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0400",
                 "buffer",
                 "GPSLatitudeRef",
-                "N",
-                checkProps
+                "N"
             );
         });
 
@@ -2109,16 +2096,12 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0500", 0, async function (done) {
-            function checkProps(result) {
-                expect(result == "W").assertTrue();
-            }
-            modifyCb1(
+            modifyImageBuffer(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0500",
                 "buffer",
                 "GPSLongitudeRef",
-                "W",
-                checkProps
+                "W"
             );
         });
 
@@ -2375,14 +2358,14 @@ export default function imageModifyProperty() {
                  */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1600", 0, async function (done) {
             function checkProps(result) {
-                expect(result == "Internal error (unknown value 51)").assertTrue();
+                expect(result == "Directly photographed").assertTrue();
             }
             modifyCb1(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1600",
                 "fd",
                 "SceneType",
-                "3",
+                "1",
                 checkProps
             );
         });
@@ -2471,14 +2454,14 @@ export default function imageModifyProperty() {
                  */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2000", 0, async function (done) {
             function checkProps(result) {
-                expect(result == "").assertTrue();
+                expect(result == "11:37:56.00").assertTrue();
             }
             modifyCb1(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2000",
                 "fd",
                 "GPSTimeStamp",
-                "0:0:12",
+                "11:37:56",
                 checkProps
             );
         });
@@ -2807,7 +2790,7 @@ export default function imageModifyProperty() {
                  */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3600", 0, async function (done) {
             function checkProps(result) {
-                expect(result == "1111I").assertTrue();
+                expect(result == "1111").assertTrue();
             }
             modifyCb1(
                 done,

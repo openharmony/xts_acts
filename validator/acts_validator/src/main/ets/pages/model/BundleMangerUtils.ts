@@ -16,11 +16,13 @@
 import bundle from '@ohos.bundle';
 import ResMgr from '@ohos.resourceManager';
 import { AppInfoItem } from '../model/LocalConfigEntity';
-import SPLogger from '../model/SPLogger'
+import SPLogger from '../model/SPLogger';
+
 /**
  * 包管理 获取应用列表、icon、app名称
  */
-const TAG = "BundleManager"
+const TAG = "BundleManager";
+
 export default class BundleManager {
   //根据包名获取base64
   static async getIconByBundleName(mBundleNameArr: Array<String>): Promise<Map<string, string>> {
@@ -32,13 +34,13 @@ export default class BundleManager {
     };
     bundle.queryAbilityByWant(want, 1).then(async data => {
       await
-      SPLogger.INFO(TAG,'getIconByBundleName data length [' + data.length + ']');
+      SPLogger.INFO(TAG, 'getIconByBundleName data length [' + data.length + ']');
       for (let j = 0; j < data.length; j++) {
-        let bundleName = data[j].bundleName
+        let bundleName = data[j].bundleName;
         for (let i = 0; i < mBundleNames.length; i++) {
           if (mBundleNames[i] == bundleName) {
-            let bundleContext = globalThis.abilityContext.createBundleContext(mBundleNames[i])
-            await bundleContext.resourceManager.getMediaBase64(data[j].iconId).then((value)=> {
+            let bundleContext = globalThis.abilityContext.createBundleContext(mBundleNames[i]);
+            await bundleContext.resourceManager.getMediaBase64(data[j].iconId).then((value) => {
               if (value != null) {
                 mMap.set(mBundleNames[i], value)
               }
@@ -48,7 +50,7 @@ export default class BundleManager {
         }
       }
     }).catch((error) => {
-      SPLogger.ERROR(TAG,'Operation failed. Cause: ' + JSON.stringify(error))
+      SPLogger.ERROR(TAG, 'Operation failed. Cause: ' + JSON.stringify(error));
       console.error('BundleManager ... Operation failed. Cause: ' + JSON.stringify(error));
     })
     return mMap
@@ -56,36 +58,37 @@ export default class BundleManager {
 
   //获取app列表
   static async getAppList(): Promise<Array<AppInfoItem>> {
-    let appInfoList = new Array<AppInfoItem>()
+    let appInfoList = new Array<AppInfoItem>();
     let want = {
       action: "action.system.home",
       entities: ["entity.system.home"]
     };
     bundle.queryAbilityByWant(want, 1).then(async data => {
       await
-      SPLogger.INFO(TAG,'xxx getAllApplicationInfo data length [' + data.length + ']')
+      SPLogger.INFO(TAG, 'xxx getAllApplicationInfo data length [' + data.length + ']')
       for (let i = 0; i < data.length; i++) {
-        let bundleName = data[i].bundleName
-        let bundleContext = globalThis.abilityContext.createBundleContext(data[i].bundleName)
+        let bundleName = data[i].bundleName;
+        let bundleContext = globalThis.abilityContext.createBundleContext(data[i].bundleName);
         try {
-          let appName = await bundleContext.resourceManager.getString(data[i].labelId)
-          let icon = await bundleContext.resourceManager.getMediaBase64(data[i].iconId)
+          let appName = await bundleContext.resourceManager.getString(data[i].labelId);
+          let icon = await bundleContext.resourceManager.getMediaBase64(data[i].iconId);
           bundle.getBundleInfo(bundleName, 1).then(bundleData => {
             BundleManager.getAbility(bundleName).then(abilityName => {
               console.info("index[" + i + "].getAbility for begin data: ", abilityName);
-              appInfoList.push(new AppInfoItem(bundleName, appName, bundleData.versionName, icon, abilityName))
+              appInfoList.push(new AppInfoItem(bundleName, appName, bundleData.versionName, icon, abilityName));
             });
           })
         } catch (err) {
-          SPLogger.ERROR(TAG,"index[" + i + "]  getAllApplicationInfo err" + err);
+          SPLogger.ERROR(TAG, "index[" + i + "]  getAllApplicationInfo err" + err);
         }
       }
     }).catch((error) => {
-      SPLogger.ERROR(TAG,'Operation failed. Cause: ' + JSON.stringify(error))
+      SPLogger.ERROR(TAG, 'Operation failed. Cause: ' + JSON.stringify(error));
       console.error('BundleManager ... Operation failed. Cause: ' + JSON.stringify(error));
     })
     return appInfoList
   }
+
   //获取启动ability
   static async getAbility(bundleName: string): Promise<string> {
     let abilityName = "";
@@ -103,9 +106,9 @@ export default class BundleManager {
         }
       })
     } catch (err) {
-      SPLogger.ERROR(TAG,"index[" + bundleName + "] getAbility err" + err);
+      SPLogger.ERROR(TAG, "index[" + bundleName + "] getAbility err" + err);
     }
-    SPLogger.INFO(TAG,"index[" + bundleName + "] getAbility abilityName: " + abilityName);
+    SPLogger.INFO(TAG, "index[" + bundleName + "] getAbility abilityName: " + abilityName);
     return abilityName;
   }
 }

@@ -19,10 +19,14 @@ struct APITextBackgroundStyle {
     Column() {
       Text() {
         ContainerSpan() {
-          Span('   Hello World !   ').fontSize(26).key('APITextBackgroundStyleSpan')
+          Span('   Hello World !   ')
+            .fontSize(26)
+            .key('APITextBackgroundStyleSpan')
         }
-        .textBackgroundStyle({color: "#FF209B08", radius: "50px"})
+        .textBackgroundStyle({ color: "#FF209B08", radius: "50px" })
       }.margin(20)
-    }.width('100%').alignItems(HorizontalAlign.Center)
+    }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
   }
 }

@@ -200,12 +200,12 @@ async function publicDeleteKeyFunc(srcKeyAlies, genHuksOptionsNONC) {
 }
 
 async function publicCipherFunc(
-        srcKeyAlies,
-        newSrcKeyAlies,
-        genHuksOptionsNONC,
-        HuksOptions,
-        thirdInderfaceName,
-        isEncrypt
+    srcKeyAlies,
+    newSrcKeyAlies,
+    genHuksOptionsNONC,
+    HuksOptions,
+    thirdInderfaceName,
+    isEncrypt
 ) {
     inputInData = HuksOptions.inData;
     try {
@@ -250,7 +250,7 @@ let genHuksOptions = {
 
 export default function SecurityHuksCipherRSABasicPromiseJsunit() {
     describe('SecurityHuksCipherSM2BasicPromiseJsunit', function () {
-        
+
         it('Security_HUKS_Cipher_API8_SM2_101', 0, async function (done) {
             const srcKeyAlies = 'Security_HUKS_Cipher_API8_SM2_101A';
             const newSrcKeyAlies = 'Security_HUKS_Cipher_API8_SM2_101B';
@@ -371,6 +371,48 @@ export default function SecurityHuksCipherRSABasicPromiseJsunit() {
             //delete
             publicDeleteKeyFunc(srcKeyAlies, genHuksOptions);
             publicDeleteKeyFunc(newSrcKeyAlies, genHuksOptions);
+            done();
+        });
+
+        /**
+         * @tc.number SUB_Security_HUKS_Cipher_API8_SM2_0100
+         * @tc.name generate sm2 with error key size 128
+         * @tc.size Medium
+         * @tc.type Func
+         * @tc.level Level2
+         */
+        it('SUB_Security_HUKS_Cipher_API8_SM2_0100', 0, async function (done) {
+            const srcKeyAlias = 'SUB_Security_HUKS_Cipher_API8_SM2_0100';
+
+            let HuksOptions = {
+                properties: new Array(
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+                        value: huks.HuksKeyAlg.HUKS_ALG_SM2
+                    },
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+                        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+                    },
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+                        value: 128
+                    },
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_DIGEST,
+                        value: huks.HuksKeyDigest.HUKS_DIGEST_SM3
+                    },
+                )
+            }
+            try {
+                await huks.generateKeyItem(srcKeyAlias, HuksOptions);
+                console.error(srcKeyAlias + `: generateKeyItem success, expect fail`);
+                expect(null).assertFail();
+            } catch (err) {
+                console.log(srcKeyAlias + `: catch error ${JSON.stringify(err)}`);
+                expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT);
+            }
+            console.log(srcKeyAlias + `: success.`);
             done();
         });
     }

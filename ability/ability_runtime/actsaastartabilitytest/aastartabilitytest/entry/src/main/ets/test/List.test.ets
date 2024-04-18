@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import wantSupportModuleNameTest from './WantSupportModuleName.test'
+import wantSupportModuleNameTest from './WantSupportModuleName.test';
 
 export default function testsuite() {
-  wantSupportModuleNameTest()
+  wantSupportModuleNameTest();
 }

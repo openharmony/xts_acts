@@ -20,7 +20,9 @@ import connection from '@ohos.net.connection';
 let httpProxy:http.HttpProxy = {
   host: "8.8.8.8",
   port: 5555,
-  exclusionList: ["12", "13"]
+  exclusionList: ["12", "13"],
+  username: "",
+  password: ""
 };
 let httpProxy1:http.HttpProxy = {
   host: "9.9.9.9",

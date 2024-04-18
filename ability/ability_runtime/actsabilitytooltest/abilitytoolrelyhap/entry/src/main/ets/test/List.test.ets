@@ -13,8 +13,8 @@
 * limitations under the License.
 */
 
-import abilityToolRelyTest from './AbilityToolRely.test'
+import abilityToolRelyTest from './AbilityToolRely.test';
 
 export default function testsuite() {
-  abilityToolRelyTest()
+  abilityToolRelyTest();
 }

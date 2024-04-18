@@ -12,20 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct StackAlignChange {
   @State testAlignContentValue: number = Alignment.TopStart
   @State testAlignValue: number = Alignment.TopStart
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager()
   private content: string = "StackAlignChange Page";
+
   onPageShow() {
     console.info('StackAlignChange onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'alignContent') {
         this.testAlignContentValue = message.value;
@@ -33,7 +36,7 @@ struct StackAlignChange {
       if (message.name == 'align') {
         this.testAlignValue = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -42,11 +45,16 @@ struct StackAlignChange {
   }
 
   build() {
-    Column(){
-        Stack({alignContent: this.testAlignContentValue}) {
-          Text('1').width(200).height(200).backgroundColor(0xF5DEB3).key('stackTopStartKey01')
-          Text('2').width(100).height(100).backgroundColor(0xD2B48C).key('stackTopStartKey02')
-       }.width(300).height(300).backgroundColor(0xAFEEEE).align(this.testAlignValue).key('stackTopStartKey')
-      }.alignItems(HorizontalAlign.Start)
+    Column() {
+      Stack({ alignContent: this.testAlignContentValue }) {
+        Text('1').width(200).height(200).backgroundColor(0xF5DEB3).key('stackTopStartKey01')
+        Text('2').width(100).height(100).backgroundColor(0xD2B48C).key('stackTopStartKey02')
+      }
+      .width(300)
+      .height(300)
+      .backgroundColor(0xAFEEEE)
+      .align(this.testAlignValue)
+      .key('stackTopStartKey')
+    }.alignItems(HorizontalAlign.Start)
   }
 }

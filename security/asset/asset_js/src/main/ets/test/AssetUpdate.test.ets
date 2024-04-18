@@ -300,8 +300,66 @@ export default function abilityTest() {
       attr3.set(asset.Tag.RETURN_OFFSET, 1);
       expect(Number(await aw.assetUpdateAttrs(attr2, attr3)))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
-
-
     })
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_Password_Func_0500
+     * @tc.name 通过更新接口修改设置密码时有效的参数
+     * @tc.desc test error cases
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it('SUB_Security_DataSecurity_Asset_Password_Func_0500', 0, async () => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
+      attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
+      attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
+      attr.set(asset.Tag.REQUIRE_PASSWORD_SET, true);
+      await aw.assetAddAttr(attr);
+      let attr2: asset.AssetMap = new Map();
+      attr2.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
+      let attr3: asset.AssetMap = new Map();
+      attr3.set(asset.Tag.SECRET, aw.StringToArray(aw.updateSecret));
+      attr3.set(asset.Tag.REQUIRE_PASSWORD_SET, false);
+      expect(Number(await aw.assetUpdateAttrs(attr2, attr3)))
+        .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
+
+      aw.cleanData();
+      attr.set(asset.Tag.REQUIRE_PASSWORD_SET, false);
+      attr2.set(asset.Tag.REQUIRE_PASSWORD_SET, true);
+      expect(Number(await aw.assetUpdateAttrs(attr2, attr3)))
+        .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
+    })
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_LevelCtrl_Func_2500
+     * @tc.name 通过更新接口修改数据分级参数
+     * @tc.desc test error cases
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it('SUB_Security_DataSecurity_Asset_LevelCtrl_Func_2500', 0, async () => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
+      attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
+      attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_UNLOCKED);
+      await aw.assetAddAttr(attr);
+      let attr2: asset.AssetMap = new Map();
+      attr2.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
+      let attr3: asset.AssetMap = new Map();
+      attr3.set(asset.Tag.SECRET, aw.StringToArray(aw.updateSecret));
+      attr3.set(asset.Tag.ACCESSIBILITY,asset.Accessibility.DEVICE_POWERED_ON);
+      expect(Number(await aw.assetUpdateAttrs(attr2, attr3)))
+        .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
+
+      aw.cleanData();
+      attr.set(asset.Tag.ACCESSIBILITY,asset.Accessibility.DEVICE_POWERED_ON);
+      attr3.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_UNLOCKED);
+      expect(Number(await aw.assetUpdateAttrs(attr2, attr3)))
+        .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
+    })
+
   })
 }

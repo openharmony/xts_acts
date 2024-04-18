@@ -15,12 +15,12 @@
 @Entry
 @Component
 struct APIScrollflingSpeedLimit {
-  private scrollerForScroll: Scroller = new Scroller()
+  private scrollerForScroll: Scroller = new Scroller();
 
   build() {
     Flex() {
       Scroll(this.scrollerForScroll) {
-        Column({space:30}) {
+        Column({ space: 30 }) {
           Button('button1')
             .width('90%').height(200)
           Button('button1')
@@ -40,6 +40,10 @@ struct APIScrollflingSpeedLimit {
       .flingSpeedLimit(10)
       .key('ScrollflingSpeedLimitKey')
 
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding(20)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding(20)
   }
 }

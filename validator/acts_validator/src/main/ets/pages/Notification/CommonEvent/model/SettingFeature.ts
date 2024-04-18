@@ -19,6 +19,7 @@ import consts from './Consts';
 import dataPreferences from '@ohos.data.preferences';
 import Logger from '../../../model/Logger';
 import surveillanceEventsManager from './SurveillanceEventsManager';
+
 export default class SettingFeature {
   private innerContext: common.UIAbilityContext = null
   private pref: dataPreferences.Preferences = null
@@ -28,22 +29,22 @@ export default class SettingFeature {
   }
 
   async init() {
-    await dataPreferences.getPreferences(this.innerContext, consts.DATA_BASE_NAME).then((pref=>{
+    await dataPreferences.getPreferences(this.innerContext, consts.DATA_BASE_NAME).then((pref => {
       this.pref = pref
-    })).catch(err=>{
+    })).catch(err => {
       Logger.info(`getPreferences err ${JSON.stringify(err)}`)
     })
   }
 
   changeState(group: string, state: number) {
-    console.info('changeState==group=='+group)
-    console.info('changeState==state=='+state)
+    console.info('changeState==group==' + group)
+    console.info('changeState==state==' + state)
     globalThis.settings.set(group, state);
     let options = {
       isSticky: true,
       parameters: surveillanceEventsManager.getSurveillanceEventStates()
     }
-      commonEvent.publish(consts.COMMON_EVENT_SETTING_UPDATE, options, () => {
+    commonEvent.publish(consts.COMMON_EVENT_SETTING_UPDATE, options, () => {
       Logger.info('success to publish setting update event')
     })
   }

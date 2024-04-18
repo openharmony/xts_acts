@@ -13,13 +13,13 @@
  * limitations under the License.
  */
 
-export const Constant = {
-  event_100: 'START_ABILITY_CALLBACK_100',
-  event_200: 'START_ABILITY_CALLBACK_200',
-  event_300: 'START_ABILITY_CALLBACK_300',
-  event_400: 'START_ABILITY_CALLBACK_400',
-  event_500: 'START_ABILITY_CALLBACK_500',
-  event_600: 'START_ABILITY_CALLBACK_600',
-  event_700: 'START_ABILITY_CALLBACK_700',
-  displayId: 'ohos.aafwk.param.displayId'
+export enum Constant {
+  event_100 = 'START_ABILITY_CALLBACK_100',
+  event_200 = 'START_ABILITY_CALLBACK_200',
+  event_300 = 'START_ABILITY_CALLBACK_300',
+  event_400 = 'START_ABILITY_CALLBACK_400',
+  event_500 = 'START_ABILITY_CALLBACK_500',
+  event_600 = 'START_ABILITY_CALLBACK_600',
+  event_700 = 'START_ABILITY_CALLBACK_700',
+  displayId = 'ohos.aafwk.param.displayId'
 }

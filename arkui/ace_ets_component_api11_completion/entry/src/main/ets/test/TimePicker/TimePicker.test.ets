@@ -13,16 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from "../../MainAbility/common/Common";
 
 export default function TimePickerTest() {
-  describe('TimePickerTest', function () {
-    beforeEach(async function (done) {
+  describe('TimePickerTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("TimePickerTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TimePicker/TimePicker',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TimePicker/TimePicker',
       }
       try {
         router.clear();
@@ -47,24 +60,17 @@ export default function TimePickerTest() {
        * @tc.desc  : font fontDir test
        * @tc.level : Level 2
        */
-    it('TimePicker_001', 0, async function (done) {
+    it('TimePicker_001', 0, async (done: Function) => {
 
       console.info('[TimePicker_001] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TimePicker1');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      console.info("[TimePicker_001] component obj is: " + JSON.stringify(obj));
+      console.info("[TimePicker_001] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
-      expect(obj.$type).assertEqual('TimePicker');
-
+      expect(JSON.parse(strJson).$type).assertEqual('TimePicker');
       console.info('[TimePicker_001] END');
       done();
     });
-
-
-
-
-
   })
 }

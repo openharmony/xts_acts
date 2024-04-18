@@ -15,12 +15,30 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton,
+  UIElementInfo,
+  UIEventObserver
+} from '@ohos.UiTest';
+
 export default function getOpacityJsunit() {
-  describe('getOpacityJsunit', function () {
-    beforeEach(async function (done) {
+  describe('getOpacityJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("getOpacityJsunit beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/renderNode001/getOpacity",
       }
       try {
@@ -39,27 +57,26 @@ export default function getOpacityJsunit() {
       console.info("getOpacityJsunit beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("getOpacityJsunit after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_getOpacityJsunit_001
-     * @tc.name      getOpacityJsunit
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_getOpacityJsunit_001
+     * @tc.name getOpacityJsunit
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('getOpacityJsunit_001', 0, async function (done) {
+    it('getOpacityJsunit_001', 0, async (done: Function) => {
       console.info('[getOpacityJsunit_001] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('getOpacity');
-      let obj = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
-      console.info("[getOpacityJsunit_001] component obj is: " + JSON.stringify(obj));
-      console.info("[getOpacityJsunit_001] component content is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("getOpacityStatus:1");
+      console.info("[getOpacityJsunit_001] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[getOpacityJsunit_001] component content is: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("getOpacityStatus:1");
       console.info('[getOpacityJsunit_001] END');
       await CommonFunc.sleep(1000);
       done();

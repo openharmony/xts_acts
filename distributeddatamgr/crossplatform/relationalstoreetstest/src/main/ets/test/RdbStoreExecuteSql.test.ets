@@ -16,28 +16,69 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { ValuesBucket } from '@ohos.data.ValuesBucket';
+import { BusinessError } from '@ohos.base';
 
 let context: Context;
 const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS_TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
 
-const STORE_CONFIG = {
+const STORE_CONFIG: relationalStore.StoreConfig = {
   name: "ExcuteSqlTest.db",
   securityLevel: relationalStore.SecurityLevel.S1,
 };
 let rdbStore = undefined;
 
+async function createTest1() {
+  console.info(TAG + "createTest start");
+  {
+    const valueBucket: ValuesBucket = {
+      name: "zhangsan",
+      age: 18,
+      salary: 100.5,
+      blobType: new Uint8Array([1, 2, 3]),
+    };
+    await rdbStore.insert("test", valueBucket);
+  }
+}
+
+async function createTest2() {
+  console.info(TAG + "createTest start");
+  {
+    const valueBucket: ValuesBucket = {
+      name: "lisi",
+      age: 28,
+      salary: 200.5,
+      blobType: new Uint8Array([1, 2, 3]),
+    };
+    await rdbStore.insert("test", valueBucket);
+  }
+}
+
+async function createTest3() {
+  console.info(TAG + "createTest start");
+  {
+    const valueBucket: ValuesBucket = {
+      name: "lisi2",
+      age: 28,
+      salary: 200.5,
+      blobType: new Uint8Array([1, 2, 3]),
+    };
+    await rdbStore.insert("test", valueBucket);
+  }
+}
+
 export default function rdbstoreStoreExcuteSqlTest() {
-  describe("rdbstoreStoreExcuteSqlTest", function () {
-    beforeAll(async function () {
+  describe("rdbstoreStoreExcuteSqlTest", () => {
+    beforeAll(async () => {
       console.info(TAG + "beforeAll");
       let ability = await delegator.getCurrentTopAbility();
       context = ability.context;
       console.info(TAG + 'Get context successful. context=' + context);
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
       await rdbStore.executeSql("DELETE FROM test");
@@ -47,54 +88,15 @@ export default function rdbstoreStoreExcuteSqlTest() {
       await createTest3();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       console.info(TAG + "afterEach");
       rdbStore = null;
       await relationalStore.deleteRdbStore(context, "ExcuteSqlTest.db");
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info(TAG + "afterAll");
     });
-
-    async function createTest1() {
-      console.info(TAG + "createTest start");
-      {
-        const valueBucket = {
-          name: "zhangsan",
-          age: 18,
-          salary: 100.5,
-          blobType: new Uint8Array([1, 2, 3]),
-        };
-        await rdbStore.insert("test", valueBucket);
-      }
-    }
-
-    async function createTest2() {
-      console.info(TAG + "createTest start");
-      {
-        const valueBucket = {
-          name: "lisi",
-          age: 28,
-          salary: 200.5,
-          blobType: new Uint8Array([1, 2, 3]),
-        };
-        await rdbStore.insert("test", valueBucket);
-      }
-    }
-
-    async function createTest3() {
-      console.info(TAG + "createTest start");
-      {
-        const valueBucket = {
-          name: "lisi2",
-          age: 28,
-          salary: 200.5,
-          blobType: new Uint8Array([1, 2, 3]),
-        };
-        await rdbStore.insert("test", valueBucket);
-      }
-    }
 
     /**
      * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0640
@@ -104,7 +106,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreExecuteSql001", 0, async function (done) {
+    it("testRdbStoreExecuteSql001", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreExecuteSql001 start *************");
       rdbStore.executeSql("DELETE FROM test WHERE name = 'zhangsan'", async (err) => {
         if (err) {
@@ -129,7 +131,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreExecuteSql002", 0, async function (done) {
+    it("testRdbStoreExecuteSql002", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreExecuteSql002 start *************");
       rdbStore.executeSql("DELETE FROM test WHERE age = ? OR age = ?", ["18", "28"], async (err) => {
         if (err) {
@@ -154,7 +156,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreExecuteSql003", 0, async function (done) {
+    it("testRdbStoreExecuteSql003", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreExecuteSql003 start *************");
       let promise = rdbStore.executeSql("DELETE FROM test WHERE name = 'zhangsan'");
       promise
@@ -165,7 +167,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
           resultSet.close();
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
           expect(!err).assertFail();
         });
@@ -180,7 +182,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreExecuteSql004", 0, async function (done) {
+    it("testRdbStoreExecuteSql004", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreExecuteSql004 start *************");
       let promise = rdbStore.executeSql("DELETE FROM test WHERE age = ? OR age = ?", ["18", "28"]);
       promise
@@ -191,7 +193,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
           resultSet.close();
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
           expect(!err).assertFail();
         });

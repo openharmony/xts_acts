@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@observed
+@ObservedV2
 class Pencil{
-  @track length:number = 18
+  @Trace length:number = 18
 }
 class Bag{
   width:number=50

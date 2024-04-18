@@ -15,27 +15,40 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { logGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY,MatchPattern,
-  DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import notificationManager from '@ohos.notificationManager';
 import hilog from '@ohos.hilog';
 import image from '@ohos.multimedia.image';
+import { BusinessError } from '@ohos.base';
 
 export default function notificationRequestTest() {
-  describe('ActsNotificationRequestTest', function () {
+  describe('ActsNotificationRequestTest', () => {
 
     const TAG = 'ActsNotificationRequestTest ===>';
     let log = logGenerator(TAG);
     log('ActsNotificationRequestTest START');
 
     class Utils {
-      static info(str) {
+      static info(str: string) {
         hilog.info(0, 'bms test', str)
       }
 
-      static sleep(time) {
-        return new Promise((resolve, reject) => {
-          setTimeout((data) => {
+      static sleep(time: number) {
+        return new Promise<string>((resolve, reject) => {
+          setTimeout((data: string) => {
             resolve(data)
           }, time)
         }).then(() => {
@@ -50,21 +63,19 @@ export default function notificationRequestTest() {
      * @tc.name: Test the notificationSlotType property.
      * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.SOCIAL_COMMUNICATION.
      */
-    it('Acts_NotificationRequest_0100', 0, async function (done) {
+    it('Acts_NotificationRequest_0100', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationRequest_0100';
 
-      function requestEnableNotificationCallback(err) {
+      notificationManager.requestEnableNotification((err) => {
         if (err) {
           console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
         } else {
           console.info("requestEnableNotification success");
         }
-      };
-
-      notificationManager.requestEnableNotification(requestEnableNotificationCallback);
+      });
 
       await sleep(1500);
-      let driver = await Driver.create();
+      let driver = Driver.create();
       log(`driver is ${JSON.stringify(driver)}`);
       await driver.assertComponentExist(ON.text('允许'));
       let button = await driver.findComponent(ON.text('允许'));
@@ -76,7 +87,7 @@ export default function notificationRequestTest() {
         log(`button is null`)
       }
 
-      let notificationRequest = {
+      let notificationRequest: notificationManager.NotificationRequest = {
         id: 1,
         content: {
           notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
@@ -109,10 +120,10 @@ export default function notificationRequestTest() {
      * @tc.name: Test the notificationSlotType property.
      * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.SERVICE_INFORMATION.
      */
-    it('Acts_NotificationRequest_0200', 0, async function (done) {
+    it('Acts_NotificationRequest_0200', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationRequest_0200';
 
-      let notificationRequest = {
+      let notificationRequest: notificationManager.NotificationRequest = {
         id: 1,
         content: {
           notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
@@ -148,18 +159,18 @@ export default function notificationRequestTest() {
      * @tc.name: Test the notificationSlotType property.
      * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.CONTENT_INFORMATION.
      */
-    it('Acts_NotificationRequest_0300', 0, async function (done) {
+    it('Acts_NotificationRequest_0300', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationRequest_0300';
 
       const color = new ArrayBuffer(60000);
       let bufferArr = new Uint8Array(color);
-      for (var i = 0; i < bufferArr.byteLength; i++) {
+      for (let i = 0; i < bufferArr.byteLength; i++) {
         bufferArr[i++] = 60;
         bufferArr[i++] = 20;
         bufferArr[i++] = 220;
         bufferArr[i] = 100;
       }
-      let opts = {
+      let opts: image.InitializationOptions = {
         editable: true, pixelFormat: 2, size: {
           height: 100, width: 150
         }
@@ -169,11 +180,11 @@ export default function notificationRequestTest() {
         .then(async (pixelmap) => {
           await pixelmap.getImageInfo().then(imageInfo => {
             console.log("=====size: ====" + JSON.stringify(imageInfo.size));
-          }).catch(err => {
+          }).catch((err: BusinessError) => {
             console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
             return;
           })
-          let notificationRequest = {
+          let notificationRequest: notificationManager.NotificationRequest = {
             id: 1,
             content: {
               notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
@@ -211,10 +222,10 @@ export default function notificationRequestTest() {
      * @tc.name: Test the notificationSlotType property.
      * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.OTHER_TYPES.
      */
-    it(" Acts_NotificationRequest_0400", 0, async function (done) {
+    it(" Acts_NotificationRequest_0400", 0, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationRequest_0400';
 
-      let notificationRequest = {
+      let notificationRequest: notificationManager.NotificationRequest = {
         id: 1,
         content: {
           notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
@@ -244,6 +255,56 @@ export default function notificationRequestTest() {
         hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
         done();
       }
+    })
+
+    /**
+     * @tc.number: Acts_NotificationRequest_0600
+     * @tc.name: Test the notificationRequest property.
+     * @tc.desc: Construct the notificationRequest.
+     */
+    it(" Acts_NotificationRequest_0600", 0, async (done: Function) => {
+      const TEST_CASE_NAME = 'Acts_NotificationRequest_0600';
+
+      const color = new ArrayBuffer(60000);
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.byteLength; i++) {
+        bufferArr[i++] = 60;
+        bufferArr[i++] = 20;
+        bufferArr[i++] = 220;
+        bufferArr[i] = 100;
+      }
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: 2, size: {
+          height: 100, width: 150
+        }
+      };
+      await image
+        .createPixelMap(color, opts)
+        .then(async (pixelmap) => {
+          await pixelmap.getImageInfo().then(imageInfo => {
+            console.log("=====size: ====" + JSON.stringify(imageInfo.size));
+          }).catch((err: BusinessError) => {
+            console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
+            return;
+          })
+          let notificationRequest: notificationManager.NotificationRequest = {
+            id: 1,
+            appMessageId: "appMessageId",
+            sound: "sound",
+            content: {
+              notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+              normal: {
+                title: 'text_title',
+                text: 'text_text',
+                additionalText: '',
+                lockscreenPicture: pixelmap
+              }
+            },
+            notificationSlotType: notificationManager.SlotType.OTHER_TYPES
+          }
+        })
+      hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case start`);
+      done();
     })
   })
 }

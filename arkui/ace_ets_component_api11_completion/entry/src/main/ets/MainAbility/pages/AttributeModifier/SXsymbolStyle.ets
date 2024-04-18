@@ -21,7 +21,7 @@ struct SXsymbolStyle {
   @State text2: string = '';
 
   build() {
-    Column({space:20}) {
+    Column({ space: 20 }) {
       RichEditor(this.options)
         .onReady(() => {
           this.controller.addSymbolSpan($r("sys.symbol.ohos_trash"),
@@ -49,12 +49,13 @@ struct SXsymbolStyle {
       Button('get').key('SXsymbolStyleButton')
         .onClick(() => {
           this.controller.getSpans({ start: 0, end: 6 }).forEach((item) => {
-            this.text2  +=  (item as RichEditorTextSpanResult).symbolSpanStyle?.fontSize
+            this.text2 += (item as RichEditorTextSpanResult).symbolSpanStyle?.fontSize
           })
-        }).height(100)
-      Text(this.text2).key('SXsymbolStyleText')
+        })
+        .height(100)
+      Text(this.text2)
+        .key('SXsymbolStyleText')
     }.margin(20)
   }
-
 }
 

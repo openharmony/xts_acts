@@ -14,7 +14,7 @@
  */
 //@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../test/List.test'
@@ -23,9 +23,9 @@ import testsuite from '../../test/List.test'
 @Component
 struct ClickEffectTest {
   aboutToAppear() {
-    var abilityDelegator: any
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
@@ -46,6 +46,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_1')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -56,6 +57,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_2')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -66,6 +68,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_3')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -76,6 +79,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_4')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -86,6 +90,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_5')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -96,6 +101,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_6')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -106,6 +112,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_7')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -116,6 +123,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_8')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -126,6 +134,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_9')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -136,6 +145,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_10')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -147,6 +157,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_11')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -158,6 +169,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_12')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -169,6 +181,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_13')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -179,6 +192,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_14')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)
@@ -189,6 +203,7 @@ struct ClickEffectTest {
               })
               .key('clickEffect_15')
           }
+
           ListItem() {
             Toggle({ type: ToggleType.Switch, isOn: false })
               .selectedColor(0xed6f21)

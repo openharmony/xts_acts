@@ -20,20 +20,22 @@ import router from '@ohos.router'
 @Component
 struct TouchablePage {
   @State _touchable: boolean = false
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
 
   onPageShow() {
     console.info('TouchablePage page show called ')
-    AttrsManager.registerDataChange(value => this._touchable = value)
+    AttrsManager.registerDataChange((value: boolean) => this._touchable = value)
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .touchable(this._touchable)
     .key(this.componentKey)
   }
 
-  @Builder itemHead(text: string) {
+  @Builder
+  itemHead(text: string) {
     Button('Header' + text)
   }
 
@@ -42,12 +44,20 @@ struct TouchablePage {
       //Create view by config.
       if (this.targetView == 'MenuItem') {
         Menu() {
-          MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' }).commonStyle()
-        }.width('100%').height('70%').backgroundColor(Color.Yellow)
+          MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
+            .commonStyle()
+        }
+        .width('100%')
+        .height('70%')
+        .backgroundColor(Color.Yellow)
       } else if (this.targetView == 'MenuItemGroup') {
         Menu() {
-          MenuItemGroup({ header: 'MenuItemGroup' }).commonStyle()
-        }.width('100%').height('70%').backgroundColor(Color.Yellow)
+          MenuItemGroup({ header: 'MenuItemGroup' })
+            .commonStyle()
+        }
+        .width('100%')
+        .height('70%')
+        .backgroundColor(Color.Yellow)
       } else if (this.targetView == 'ListItem') {
         List({ space: 20, initialIndex: 0 }) {
           ListItem() {
@@ -77,13 +87,17 @@ struct TouchablePage {
         GridRow({ columns: 1, }) {
           GridCol({ span: 1 }) {
             Button('GridCol')
-          }.backgroundColor(Color.Green).commonStyle()
-        }.width('100%')
+          }
+          .backgroundColor(Color.Green)
+          .commonStyle()
+        }
+        .width('100%')
         .height('70%')
       } else if (this.targetView == 'GridItem') {
         Grid() {
           GridItem() {
-            Text('GridItem1').focusable(true)
+            Text('GridItem1')
+              .focusable(true)
           }.commonStyle()
         }
         .width('100%')
@@ -95,7 +109,9 @@ struct TouchablePage {
         Stepper() {
           StepperItem() {
             Button('StepperItem')
-          }.backgroundColor(Color.Green).commonStyle()
+          }
+          .backgroundColor(Color.Green)
+          .commonStyle()
         }
         .width('100%')
         .height('70%')
@@ -103,7 +119,9 @@ struct TouchablePage {
         WaterFlow() {
           FlowItem() {
             Button('FlowItem')
-          }.backgroundColor(Color.Green).commonStyle()
+          }
+          .backgroundColor(Color.Green)
+          .commonStyle()
         }
         .width('100%')
         .height('70%')
@@ -113,9 +131,12 @@ struct TouchablePage {
           if (this.targetView == 'AlphabetIndexer') {
             AlphabetIndexer({ arrayValue: ['#', 'A', 'B', 'C', 'D'], selected: 0 }).commonStyle()
           } else if (this.targetView == 'Blank') {
-            Blank().backgroundColor(Color.Orange).commonStyle()
+            Blank()
+              .backgroundColor(Color.Orange)
+              .commonStyle()
           } else if (this.targetView == 'Button') {
-            Button('button1').commonStyle()
+            Button('button1')
+              .commonStyle()
           } else if (this.targetView == 'Checkbox') {
             Checkbox({ name: 'checkbox1', group: 'checkboxGroup' }).commonStyle()
           } else if (this.targetView == 'CheckboxGroup') {
@@ -129,24 +150,38 @@ struct TouchablePage {
               selected: new Date()
             }).commonStyle()
           } else if (this.targetView == 'Divider') {
-            Divider().strokeWidth(8).vertical(true).commonStyle()
+            Divider()
+              .strokeWidth(8)
+              .vertical(true)
+              .commonStyle()
           } else if (this.targetView == 'Gauge') {
             Gauge({ value: 75 }).colors([[Color.White, 1], [Color.Black, 1]]).commonStyle()
           } else if (this.targetView == 'Image') {
-            Image($r('app.media.icon')).commonStyle()
+            Image($r('app.media.icon'))
+              .commonStyle()
           } else if (this.targetView == 'ImageAnimator') {
             ImageAnimator().images([{ src: $r('app.media.icon') }]).commonStyle()
           } else if (this.targetView == 'LoadingProgress') {
-            LoadingProgress().color(Color.Blue).commonStyle()
+            LoadingProgress()
+              .color(Color.Blue)
+              .commonStyle()
           } else if (this.targetView == 'Marquee') {
             Marquee({ start: true, step: 50, src: 'Running Marquee starts rolling' })
-              .fontWeight(700).fontColor(Color.White).fontSize(48).commonStyle()
+              .fontWeight(700)
+              .fontColor(Color.White)
+              .fontSize(48)
+              .commonStyle()
           } else if (this.targetView == 'Menu') {
             Menu() {
               MenuItem({ content: 'Menu' })
-            }.backgroundColor(Color.Yellow).padding(100).commonStyle()
+            }
+            .backgroundColor(Color.Yellow)
+            .padding(100)
+            .commonStyle()
           } else if (this.targetView == 'Navigation') {
-            Navigation().backgroundColor(Color.Green).commonStyle()
+            Navigation()
+              .backgroundColor(Color.Green)
+              .commonStyle()
           } else if (this.targetView == 'NavRouter') {
             NavRouter() {
               Row() {
@@ -164,12 +199,20 @@ struct TouchablePage {
           } else if (this.targetView == 'Radio') {
             Radio({ value: 'Radio1', group: 'radioGroup' }).commonStyle()
           } else if (this.targetView == 'Rating') {
-            Rating({ rating: 4 }).stars(5).commonStyle()
+            Rating({ rating: 4 })
+              .stars(5)
+              .commonStyle()
           } else if (this.targetView == 'ScrollBar') {
             ScrollBar({ scroller: new Scroller(), state: BarState.On }) {
-              Text().width(20).height(100).borderRadius(10)
+              Text()
+                .width(20)
+                .height(100)
+                .borderRadius(10)
                 .backgroundColor('#C0C0C0')
-            }.width(20).backgroundColor('#ededed').commonStyle()
+            }
+            .width(20)
+            .backgroundColor('#ededed')
+            .commonStyle()
           } else if (this.targetView == 'Stepper') {
             Stepper() {
               StepperItem() {
@@ -192,7 +235,10 @@ struct TouchablePage {
               .selectedColor('#4169E1')
               .commonStyle()
           } else if (this.targetView == 'Text') {
-            Text('text').fontColor(Color.White).fontSize(30).commonStyle()
+            Text('text')
+              .fontColor(Color.White)
+              .fontSize(30)
+              .commonStyle()
           } else if (this.targetView == 'TextArea') {
             TextArea({ placeholder: 'TextArea', }).backgroundColor(Color.White).commonStyle()
           } else if (this.targetView == 'TextClock') {
@@ -247,11 +293,11 @@ struct TouchablePage {
             .commonStyle()
           } else if (this.targetView == 'List') {
             List({ space: 20, initialIndex: 0 }) {
-              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                 ListItem() {
                   Button('ListItem' + item)
                 }
-              }, item => item)
+              }, (item: number) => item.toString())
             }
             .listDirection(Axis.Vertical)
             .commonStyle()
@@ -299,9 +345,9 @@ struct TouchablePage {
           } else if (this.targetView == 'Scroll') {
             Scroll() {
               Column() {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                   Button('Scroll item' + item)
-                }, item => item)
+                }, (item: number) => item.toString())
               }.width('100%')
             }
             .scrollBar(BarState.On)
@@ -325,8 +371,10 @@ struct TouchablePage {
           } else if (this.targetView == 'Swiper') {
             Swiper() {
               ForEach([1, 2, 3], (item: string) => {
-                Text('Swiper' + item).width('90%').height(160)
-              }, item => item)
+                Text('Swiper' + item)
+                  .width('90%')
+                  .height(160)
+              }, (item: string) => item)
             }
             .indicator(true)
             .backgroundColor(Color.White)

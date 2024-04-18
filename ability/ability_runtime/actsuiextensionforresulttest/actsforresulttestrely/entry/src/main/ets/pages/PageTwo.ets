@@ -12,10 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @Entry
 @Component
 struct PageTwo {
-  @State message: string = 'Second application'
+  @State message: string = 'Second application';
 
   build() {
     Row() {
@@ -27,20 +28,14 @@ struct PageTwo {
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            globalThis.StartAbilityForResult_CallBack()
           })
-          .margin({
-            top: 5
-          })
+          .margin({ top: 5 })
         Button('TerminatePromise0100')
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            globalThis.StartAbilityForResult_Promise()
           })
-          .margin({
-            top: 5
-          })
+          .margin({ top: 5 })
       }
       .width('100%')
     }

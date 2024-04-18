@@ -13,16 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+
 export default function setForegroundColor() {
-  describe('setForegroundColor', function () {
-    beforeEach(async function (done) {
+  describe('setForegroundColor', () => {
+    beforeEach(async (done: Function) => {
       console.info("setForegroundColor beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/DragController/setForegroundColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/DragController/setForegroundColor',
       }
       try {
         router.clear();
@@ -42,14 +55,14 @@ export default function setForegroundColor() {
     });
 
     /**
-     * @tc.number    SUB_ACE_setForegroundColor_0100
-     * @tc.name      setForegroundColor_0100
-     * @tc.desc      setForegroundColor api
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_setForegroundColor_0100
+     * @tc.name setForegroundColor_0100
+     * @tc.desc setForegroundColor api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('setForegroundColor_0100', 0, async function (done) {
+    it('setForegroundColor_0100', 0, async (done: Function) => {
       console.info('setForegroundColor_0100 START');
       let driver: Driver = Driver.create();
       let button: Component = await driver.findComponent(ON.id('TouchParent_id'));
@@ -57,23 +70,22 @@ export default function setForegroundColor() {
       await button.dragTo(text);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('setForegroundColor_id');
-      let obj = JSON.parse(strJson);
-      console.info("[setForegroundColor_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[setForegroundColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
+      console.info("[setForegroundColor_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[setForegroundColor_0100] title: " + JSON.stringify(JSON.parse(strJson).$attrs.backgroundColor));
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#FFFFC0CB');
       console.info('[setForegroundColor_0100] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_setForegroundColor_0200
-     * @tc.name      setForegroundColor_0200
-     * @tc.desc     getDragPreview api
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_setForegroundColor_0200
+     * @tc.name setForegroundColor_0200
+     * @tc.desc getDragPreview api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('setForegroundColor_0200', 0, async function (done) {
+    it('setForegroundColor_0200', 0, async (done: Function) => {
       console.info('setForegroundColor_0200 START');
       let driver: Driver = Driver.create();
       let button: Component = await driver.findComponent(ON.id('TouchParent_id'));
@@ -81,10 +93,9 @@ export default function setForegroundColor() {
       await button.dragTo(text);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('setForegroundColor_id');
-      let obj = JSON.parse(strJson);
-      console.info("[setForegroundColor_0200] component obj is: " + JSON.stringify(obj));
-      console.info("[setForegroundColor_0200] title: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
+      console.info("[setForegroundColor_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[setForegroundColor_0200] title: " + JSON.stringify(JSON.parse(strJson).$attrs.backgroundColor));
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#FFFFC0CB');
       console.info('[setForegroundColor_0200] END');
       done();
     });

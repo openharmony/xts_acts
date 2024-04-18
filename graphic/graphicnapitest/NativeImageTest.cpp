@@ -35,6 +35,7 @@ constexpr int32_t EGL_CONTEXT_CLIENT_VERSION_NUM = 2;
 constexpr char CHARACTER_WHITESPACE = ' ';
 constexpr const char* CHARACTER_STRING_WHITESPACE = " ";
 constexpr const char* EGL_GET_PLATFORM_DISPLAY_EXT = "eglGetPlatformDisplayEXT";
+constexpr int32_t MATRIX_SIZE = 16;
 
 struct TEST_IMAGE {
     int a;
@@ -191,7 +192,9 @@ void NativeImageTest::Deinit()
 /*
  * @tc.name: OHNativeImageCreate001
  * @tc.desc: test for call OH_NativeImage_Create and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageCreate001, Function | MediumTest | Level1)
 {
@@ -202,7 +205,9 @@ HWTEST_F(NativeImageTest, OHNativeImageCreate001, Function | MediumTest | Level1
 /*
  * @tc.name: OHNativeImageAcquireNativeWindow001
  * @tc.desc: test for call OH_NativeImage_AcquireNativeWindow by abnormal input and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindow001, Function | MediumTest | Level2)
 {
@@ -213,7 +218,9 @@ HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindow001, Function | Medium
 /*
  * @tc.name: OHNativeImageAcquireNativeWindow001
  * @tc.desc: test for call OH_NativeImage_AcquireNativeWindow and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindow002, Function | MediumTest | Level1)
 {
@@ -224,7 +231,9 @@ HWTEST_F(NativeImageTest, OHNativeImageAcquireNativeWindow002, Function | Medium
 /*
  * @tc.name: OHNativeImageAttachContext001
  * @tc.desc: test for call OH_NativeImage_AttachContext by abnormal input and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeImageTest, OHNativeImageAttachContext001, Function | MediumTest | Level2)
 {
@@ -235,7 +244,9 @@ HWTEST_F(NativeImageTest, OHNativeImageAttachContext001, Function | MediumTest |
 /*
  * @tc.name: OHNativeImageDetachContext001
  * @tc.desc: test for call OHNativeImageDetachContext by abnormal input and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeImageTest, OHNativeImageDetachContext001, Function | MediumTest | Level2)
 {
@@ -246,7 +257,9 @@ HWTEST_F(NativeImageTest, OHNativeImageDetachContext001, Function | MediumTest |
 /*
  * @tc.name: OHNativeImageDetachContext002
  * @tc.desc: test for call OHNativeImageDetachContext and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageDetachContext002, Function | MediumTest | Level1)
 {
@@ -257,7 +270,9 @@ HWTEST_F(NativeImageTest, OHNativeImageDetachContext002, Function | MediumTest |
 /*
  * @tc.name: OHNativeImageDetachContext003
  * @tc.desc: test for call OHNativeImageDetachContext and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageDetachContext003, Function | MediumTest | Level1)
 {
@@ -269,7 +284,9 @@ HWTEST_F(NativeImageTest, OHNativeImageDetachContext003, Function | MediumTest |
 /*
  * @tc.name: OHNativeImageDetachContext003
  * @tc.desc: test for call OH_NativeImage_AttachContext and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageAttachContext002, Function | MediumTest | Level1)
 {
@@ -280,7 +297,9 @@ HWTEST_F(NativeImageTest, OHNativeImageAttachContext002, Function | MediumTest |
 /*
  * @tc.name: OHNativeImageUpdateSurfaceImage001
  * @tc.desc: test for  call OH_NativeImage_UpdateSurfaceImage by abnormal input and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage001, Function | MediumTest | Level2)
 {
@@ -291,7 +310,9 @@ HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage001, Function | MediumT
 /*
  * @tc.name: OHNativeImageUpdateSurfaceImage002
  * @tc.desc: test for call OH_NativeImage_UpdateSurfaceImage and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage002, Function | MediumTest | Level1)
 {
@@ -302,7 +323,9 @@ HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage002, Function | MediumT
 /*
  * @tc.name: OHNativeImageUpdateSurfaceImage003
  * @tc.desc: test for call OH_NativeImage_UpdateSurfaceImage.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage003, Function | MediumTest | Level1)
 {
@@ -355,7 +378,9 @@ HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage003, Function | MediumT
 /*
  * @tc.name: OHNativeImageGetTimestamp001
  * @tc.desc: test for call OH_NativeImage_GetTimestamp by abnormal input and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeImageTest, OHNativeImageGetTimestamp001, Function | MediumTest | Level2)
 {
@@ -366,7 +391,9 @@ HWTEST_F(NativeImageTest, OHNativeImageGetTimestamp001, Function | MediumTest | 
 /*
  * @tc.name: OHNativeImageGetTimestamp002
  * @tc.desc: test for call OH_NativeImage_GetTimestamp and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageGetTimestamp002, Function | MediumTest | Level1)
 {
@@ -377,11 +404,13 @@ HWTEST_F(NativeImageTest, OHNativeImageGetTimestamp002, Function | MediumTest | 
 /*
  * @tc.name: OHNativeImageGetTransformMatrix001
  * @tc.desc: test for call OH_NativeImage_GetTransformMatrix by abnormal input and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix001, Function | MediumTest | Level2)
 {
-    float matrix[16];
+    float matrix[MATRIX_SIZE];
     int32_t ret = OH_NativeImage_GetTransformMatrix(nullptr, matrix);
     ASSERT_NE(ret, SURFACE_ERROR_OK);
 }
@@ -389,19 +418,112 @@ HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix001, Function | MediumT
 /*
  * @tc.name: OHNativeImageGetTransformMatrix002
  * @tc.desc: test for call OH_NativeImage_GetTransformMatrix and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix002, Function | MediumTest | Level1)
 {
-    float matrix[16];
+    float matrix[MATRIX_SIZE];
     int32_t ret = OH_NativeImage_GetTransformMatrix(image, matrix);
     ASSERT_EQ(ret, SURFACE_ERROR_OK);
 }
 
+bool CheckMatricIsSame(float matrixOld[MATRIX_SIZE], float matrixNew[MATRIX_SIZE])
+{
+    for (int32_t i = 0; i < MATRIX_SIZE; i++) {
+        if (fabs(matrixOld[i] - matrixNew[i]) > 1e-6) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int32_t testType[] = {
+    GraphicTransformType::GRAPHIC_ROTATE_NONE, GraphicTransformType::GRAPHIC_ROTATE_90,
+    GraphicTransformType::GRAPHIC_ROTATE_180, GraphicTransformType::GRAPHIC_ROTATE_270,
+    GraphicTransformType::GRAPHIC_FLIP_H, GraphicTransformType::GRAPHIC_FLIP_V,
+    GraphicTransformType::GRAPHIC_FLIP_H_ROT90, GraphicTransformType::GRAPHIC_FLIP_V_ROT90,
+    GraphicTransformType::GRAPHIC_FLIP_H_ROT180, GraphicTransformType::GRAPHIC_FLIP_V_ROT180,
+    GraphicTransformType::GRAPHIC_FLIP_H_ROT270, GraphicTransformType::GRAPHIC_FLIP_V_ROT270,
+};
+float matrixArr[][MATRIX_SIZE] = {
+    {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {-1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {0, -1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {0, -1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+};
+
+/*
+ * @tc.name: OHNativeImageGetTransformMatrix003
+ * @tc.desc: test for call OH_NativeImage_GetTransformMatrix and check ret.
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix003, Function | MediumTest | Level1)
+{
+    if (image == nullptr) {
+        image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+        ASSERT_NE(image, nullptr);
+    }
+
+    if (nativeWindow == nullptr) {
+        nativeWindow = OH_NativeImage_AcquireNativeWindow(image);
+        ASSERT_NE(nativeWindow, nullptr);
+    }
+
+    OH_OnFrameAvailableListener listener;
+    listener.context = this;
+    listener.onFrameAvailable = NativeImageTest::OnFrameAvailable;
+    int32_t ret = OH_NativeImage_SetOnFrameAvailableListener(image, listener);
+    ASSERT_EQ(ret, GSERROR_OK);
+
+    NativeWindowBuffer* nativeWindowBuffer = nullptr;
+    int fenceFd = -1;
+    struct Region *region = new Region();
+    struct Region::Rect *rect = new Region::Rect();
+    
+    for (int32_t i = 0; i < sizeof(testType) / sizeof(int32_t); i++) {
+        int code = SET_TRANSFORM;
+        ret = NativeWindowHandleOpt(nativeWindow, code, testType[i]);
+        ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+        ASSERT_EQ(ret, GSERROR_OK);
+
+        rect->x = 0x100;
+        rect->y = 0x100;
+        rect->w = 0x100;
+        rect->h = 0x100;
+        region->rects = rect;
+        ret = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region);
+        ASSERT_EQ(ret, GSERROR_OK);
+
+        ret = OH_NativeImage_UpdateSurfaceImage(image);
+        ASSERT_EQ(ret, SURFACE_ERROR_OK);
+
+        float matrix[16];
+        int32_t ret = OH_NativeImage_GetTransformMatrix(image, matrix);
+        ASSERT_EQ(ret, SURFACE_ERROR_OK);
+
+        bool bRet = CheckMatricIsSame(matrix, matrixArr[i]);
+        ASSERT_EQ(bRet, true);
+    }
+    delete region;
+}
 /*
  * @tc.name: OHNativeImageGetTransformMatrix003
  * @tc.desc: test for call OH_NativeImage_GetTransformMatrix with another texture and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageAttachContext003, Function | MediumTest | Level1)
 {
@@ -412,7 +534,9 @@ HWTEST_F(NativeImageTest, OHNativeImageAttachContext003, Function | MediumTest |
 /*
  * @tc.name: OHNativeImageUpdateSurfaceImage004
  * @tc.desc: test for OH_NativeImage_UpdateSurfaceImage after the OPENGL ES texture changed and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage004, Function | MediumTest | Level1)
 {
@@ -439,7 +563,9 @@ HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage004, Function | MediumT
 /*
  * @tc.name: OHNativeImageDetachContext004
  * @tc.desc: test for call OH_NativeImage_DetachContext and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageDetachContext004, Function | MediumTest | Level1)
 {
@@ -450,7 +576,9 @@ HWTEST_F(NativeImageTest, OHNativeImageDetachContext004, Function | MediumTest |
 /*
  * @tc.name: OHNativeImageAttachContext004
  * @tc.desc: test for call OH_NativeImage_AttachContext after OH_NativeImage_DetachContext and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageAttachContext004, Function | MediumTest | Level1)
 {
@@ -461,7 +589,9 @@ HWTEST_F(NativeImageTest, OHNativeImageAttachContext004, Function | MediumTest |
 /*
  * @tc.name: OHNativeImageUpdateSurfaceImage005
  * @tc.desc: test for OHNativeImageUpdateSurfaceImage again and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage005, Function | MediumTest | Level1)
 {
@@ -488,7 +618,9 @@ HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage005, Function | MediumT
 /*
  * @tc.name: OHNativeImageGetSurfaceId001
  * @tc.desc: test for call OH_NativeImage_GetSurfaceId
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageGetSurfaceId001, Function | MediumTest | Level1)
 {
@@ -504,7 +636,9 @@ HWTEST_F(NativeImageTest, OHNativeImageGetSurfaceId001, Function | MediumTest | 
 /*
  * @tc.name: OHNativeImageGetSurfaceId002
  * @tc.desc: test for call OH_NativeImage_GetSurfaceId
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageGetSurfaceId002, Function | MediumTest | Level1)
 {
@@ -515,7 +649,9 @@ HWTEST_F(NativeImageTest, OHNativeImageGetSurfaceId002, Function | MediumTest | 
 /*
  * @tc.name: OHNativeImageGetSurfaceId003
  * @tc.desc: test for call OH_NativeImage_GetSurfaceId
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageGetSurfaceId003, Function | MediumTest | Level1)
 {
@@ -531,7 +667,9 @@ HWTEST_F(NativeImageTest, OHNativeImageGetSurfaceId003, Function | MediumTest | 
 /*
  * @tc.name: OHNativeImageSetOnFrameAvailableListener001
  * @tc.desc: test for call OH_NativeImage_SetOnFrameAvailableListener
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageSetOnFrameAvailableListener001, Function | MediumTest | Level1)
 {
@@ -573,7 +711,9 @@ HWTEST_F(NativeImageTest, OHNativeImageSetOnFrameAvailableListener001, Function 
 /*
  * @tc.name: OHNativeImageSetOnFrameAvailableListener002
  * @tc.desc: test for call OH_NativeImage_SetOnFrameAvailableListener
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageSetOnFrameAvailableListener002, Function | MediumTest | Level1)
 {
@@ -593,7 +733,9 @@ HWTEST_F(NativeImageTest, OHNativeImageSetOnFrameAvailableListener002, Function 
 /*
  * @tc.name: OHNativeImageSetOnFrameAvailableListener003
  * @tc.desc: test for call OH_NativeImage_SetOnFrameAvailableListener
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageSetOnFrameAvailableListener003, Function | MediumTest | Level1)
 {
@@ -618,7 +760,9 @@ HWTEST_F(NativeImageTest, OHNativeImageSetOnFrameAvailableListener003, Function 
 /*
  * @tc.name: OHNativeImageUnsetOnFrameAvailableListener001
  * @tc.desc: test for call OH_NativeImage_UnsetOnFrameAvailableListener
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageUnsetOnFrameAvailableListener001, Function | MediumTest | Level1)
 {
@@ -628,7 +772,9 @@ HWTEST_F(NativeImageTest, OHNativeImageUnsetOnFrameAvailableListener001, Functio
 /*
  * @tc.name: OHNativeImageUnsetOnFrameAvailableListener002
  * @tc.desc: test for call OH_NativeImage_UnsetOnFrameAvailableListener
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageUnsetOnFrameAvailableListener002, Function | MediumTest | Level1)
 {
@@ -639,7 +785,9 @@ HWTEST_F(NativeImageTest, OHNativeImageUnsetOnFrameAvailableListener002, Functio
 /*
  * @tc.name: OHNativeImageDestroy001
  * @tc.desc: test for call OH_NativeImage_Destroy by abnormal input and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageDestroy001, Function | MediumTest | Level2)
 {
@@ -650,7 +798,9 @@ HWTEST_F(NativeImageTest, OHNativeImageDestroy001, Function | MediumTest | Level
 /*
  * @tc.name: OHNativeImageDestroy002
  * @tc.desc: test for call OH_NativeImage_Destroy and check ret.
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeImageTest, OHNativeImageDestroy002, Function | MediumTest | Level1)
 {

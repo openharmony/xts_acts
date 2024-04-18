@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import swiperIndex from './Swiper/Swiper_ParmsChange/swiperIndex.test.ets';
 import swiperVertical from './Swiper/Swiper_ParmsChange/swiperVertical.test.ets';
 import swiperLoopTrue from './Swiper/Swiper_ParmsChange/swiperLoopTrue.test.ets';
@@ -31,22 +32,22 @@ import swiperItemPadMar from './Swiper/Swiper_ItemChange/swiperItemPadMar.test.e
 import swiperItemVisibility from './Swiper/Swiper_ItemChange/swiperItemVisibility.test.ets';
 
 export default function testsuite() {
- 
-swiperIndex()
-swiperVertical()
-swiperLoopTrue()
-swiperLoopFalse()
-swiperItemSpace()
-swiperPadding()
-swiperMargin()
-swiperMarPad()
-swiperDisableSwipeTrue()
-swiperDisableSwipeFalse()
-swiperItemSize()
-swiperItemSize2()
-swiperItemPadding()
-swiperItemMargin()
-swiperItemPadMar()
-swiperItemVisibility()
+
+  swiperIndex()
+  swiperVertical()
+  swiperLoopTrue()
+  swiperLoopFalse()
+  swiperItemSpace()
+  swiperPadding()
+  swiperMargin()
+  swiperMarPad()
+  swiperDisableSwipeTrue()
+  swiperDisableSwipeFalse()
+  swiperItemSize()
+  swiperItemSize2()
+  swiperItemPadding()
+  swiperItemMargin()
+  swiperItemPadMar()
+  swiperItemVisibility()
 
 }

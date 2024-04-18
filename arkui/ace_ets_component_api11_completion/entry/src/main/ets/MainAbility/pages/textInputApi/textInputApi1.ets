@@ -15,9 +15,10 @@
 @Entry
 @Component
 struct textInputApi1 {
-  @State value: string = ''
-  @State text1: string = ''
-  @State TextError: string = ''
+  @State value: string = '';
+  @State text1: string = '';
+  @State TextError: string = '';
+
   build() {
     Column() {
       TextInput({ placeholder: '请输入用户名', text: this.text1 })
@@ -31,7 +32,10 @@ struct textInputApi1 {
         })
 
 
-      Text( this.value ).height('60%').width('100%') .key('textInputApi1_text')
+      Text(this.value)
+        .height('60%')
+        .width('100%')
+        .key('textInputApi1_text')
     }
   }
 }

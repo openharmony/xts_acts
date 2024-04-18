@@ -346,13 +346,11 @@ describe('btConnectionTest', function() {
        {
            let oldScanMode = bluetooth.getBluetoothScanMode();
            console.info('[bluetooth_js] ScanMode_0100 oldScanMode = '+ JSON.stringify(oldScanMode));
-           let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_NONE,0);
-           expect(result).assertTrue();
+           bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_NONE,0);
            let getScanMode = bluetooth.getBluetoothScanMode();
            console.info('[bluetooth_js] ScanMode_0100 newscanmode = '+ JSON.stringify(getScanMode));
            expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_NONE);
-           result=bluetooth.setBluetoothScanMode(oldScanMode,0);
-           expect(result).assertTrue();
+           bluetooth.setBluetoothScanMode(oldScanMode,0);
            let getOldScanMode = bluetooth.getBluetoothScanMode();
            console.info('[bluetooth_js] ScanMode_0100 setoldscanmode = '+ JSON.stringify(getOldScanMode));
            expect(true).assertEqual(oldScanMode == getOldScanMode);
@@ -381,13 +379,11 @@ describe('btConnectionTest', function() {
        {
            let oldScanMode = bluetooth.getBluetoothScanMode();
            console.info('[bluetooth_js] ScanMode_0200 oldScanMode = '+ JSON.stringify(oldScanMode));
-           let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,0);
-           expect(result).assertTrue();
+           bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,0);
            let getScanMode = bluetooth.getBluetoothScanMode();
            console.info('[bluetooth_js] ScanMode_0200 newscanmode = '+ JSON.stringify(getScanMode));
            expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE);
-           result=bluetooth.setBluetoothScanMode(oldScanMode,0);
-           expect(result).assertTrue();
+           bluetooth.setBluetoothScanMode(oldScanMode,0);
            let getOldScanMode = bluetooth.getBluetoothScanMode();
            console.info('[bluetooth_js] ScanMode_0200 setoldscanmode = '+ JSON.stringify(getOldScanMode));
            expect(true).assertEqual(oldScanMode == getOldScanMode);
@@ -414,13 +410,11 @@ describe('btConnectionTest', function() {
     {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0300 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,40000);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,40000);
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0300 getScanMode = '+ JSON.stringify(getScanMode));
         expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE);
-        result=bluetooth.setBluetoothScanMode(oldScanMode,0);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(oldScanMode,0);
         let getOldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0300 getOldScanMode = '+ JSON.stringify(getOldScanMode));
         expect(true).assertEqual(oldScanMode == getOldScanMode);
@@ -448,13 +442,11 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0400', 0, async function (don
     {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0400 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE,40000);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE,40000);
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0400 getScanMode = '+ JSON.stringify(getScanMode));
         expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE);
-        result=bluetooth.setBluetoothScanMode(oldScanMode,0);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(oldScanMode,0);
         let getOldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0400 getOldScanMode = '+ JSON.stringify(getOldScanMode));
         expect(true).assertEqual(oldScanMode == getOldScanMode);
@@ -482,13 +474,11 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0500', 0, async function (don
     {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0500 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE,0);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE,0);
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0500 getScanMode = '+ JSON.stringify(getScanMode));
         expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE);
-        result=bluetooth.setBluetoothScanMode(oldScanMode,0);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(oldScanMode,0);
         let getOldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0500 getOldScanMode = '+ JSON.stringify(getOldScanMode));
         expect(true).assertEqual(oldScanMode == getOldScanMode);
@@ -516,13 +506,11 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0600', 0, async function (don
     {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0600 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE,0);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE,0);
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0600 getScanMode = '+ JSON.stringify(getScanMode));
         expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE);
-        result=bluetooth.setBluetoothScanMode(oldScanMode,0);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(oldScanMode,0);
         let getOldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0600 getOldScanMode = '+ JSON.stringify(getOldScanMode));
         expect(true).assertEqual(oldScanMode == getOldScanMode);
@@ -550,13 +538,11 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0700', 0, async function (don
     {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0700 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE,20000);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE,20000);
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0700 getScanMode = '+ JSON.stringify(getScanMode));
         expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE);
-        result=bluetooth.setBluetoothScanMode(oldScanMode,0);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(oldScanMode,0);
         let getOldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0700 getOldScanMode = '+ JSON.stringify(getOldScanMode));
         expect(true).assertEqual(oldScanMode == getOldScanMode);
@@ -584,13 +570,11 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0800', 0, async function (don
     {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0800 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE,0);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE,0);
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0800 getScanMode = '+ JSON.stringify(getScanMode));
         expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE);
-        result=bluetooth.setBluetoothScanMode(oldScanMode,0);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(oldScanMode,0);
         let getOldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0800 getOldScanMode = '+ JSON.stringify(getOldScanMode));
         expect(true).assertEqual(oldScanMode == getOldScanMode);
@@ -618,13 +602,11 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_0900', 0, async function (don
     {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0900 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE,30000);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE,30000);
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0900 getScanMode = '+ JSON.stringify(getScanMode));
         expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE);
-        result=bluetooth.setBluetoothScanMode(oldScanMode,0);
-        expect(result).assertTrue();
+        bluetooth.setBluetoothScanMode(oldScanMode,0);
         let getOldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0900 getOldScanMode = '+ JSON.stringify(getOldScanMode));
         expect(true).assertEqual(oldScanMode == getOldScanMode);
@@ -653,8 +635,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
         {
             let oldScanMode = bluetooth.getBluetoothScanMode();
             console.info('[bluetooth_js] ScanMode_1000 oldScanMode = '+ JSON.stringify(oldScanMode));
-            let result = bluetooth.setBluetoothScanMode(-1,0);
-            expect(result).assertFalse();
+            bluetooth.setBluetoothScanMode(-1,0);
             let getScanMode = bluetooth.getBluetoothScanMode();
             console.info('[bluetooth_js] ScanMode_1000 getScanMode = '+ JSON.stringify(getScanMode));
             expect(true).assertEqual(getScanMode == oldScanMode);
@@ -674,7 +655,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
 })
 
    /**
-     * @tc.number SUB_COMMUNICATION_BTMANAGER_DISCOVERY_0100
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_DISCOVERY_0100
      * @tc.name TEST bluetoothDeviceFind on&off 
      * @tc.desc TEST bluetoothDeviceFind api10
      * @tc.type Function
@@ -684,18 +665,14 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
         function onReceiveEvent(data) {
             console.info('[bluetooth_js] Device' + JSON.stringify(data) +
             'length' + data.length);
-            expect(true).assertTrue(data.length > 0);
+            expect(data.length > 0).assertTrue();
         }
     try {
         bluetooth.on("bluetoothDeviceFind", onReceiveEvent);
-        let result = bluetooth.startBluetoothDiscovery();
+        bluetooth.startBluetoothDiscovery();
         await sleep(3000);
-        console.info('[bluetooth_js] startDiscovery' + result);
-        expect(result).assertTrue();
         bluetooth.off('bluetoothDeviceFind', onReceiveEvent);
-        result = bluetooth.stopBluetoothDiscovery();
-        console.info('[bluetooth_js] stopDiscovery' + result);
-        expect(true).assertTrue();
+        bluetooth.stopBluetoothDiscovery();
     } catch (error) {
         console.info(`[bluetooth_js]bluetoothDeviceFin error, code is ${error.code},message is ${error.message}`);
         expect(error.code).assertEqual('2900099');
@@ -714,8 +691,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      * @tc.level Level 1 
      */
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0100', 0, async function (done) {
-        let result = bluetooth.setLocalName(Btname.LETTERS_TEST);
-        expect(result).assertTrue();
+        bluetooth.setLocalName(Btname.LETTERS_TEST);
         await sleep(1000);
         try {
             let getNewName = bluetooth.getLocalName();
@@ -737,8 +713,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0200', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.CHINESES_TEST2);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(Btname.CHINESES_TEST2);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_0200 NewName = '+ JSON.stringify(getNewName));
@@ -759,8 +734,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0300', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.NUM_TEST);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(Btname.NUM_TEST);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_0300 NewName = '+ JSON.stringify(getNewName));
@@ -781,8 +755,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0400', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.SYMBOL_TEST);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(Btname.SYMBOL_TEST);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_0400 NewName = '+ JSON.stringify(getNewName));
@@ -804,8 +777,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0500', 0, async function (done) {
         try {
             let newName = 'my bluetooth';
-            let result = bluetooth.setLocalName(newName);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(newName);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_0500 NewName = '+ JSON.stringify(getNewName));
@@ -827,8 +799,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0600', 0, async function (done) {
         try {
             let newName = 'bluetooth1234ABCDEFGH';
-            let result = bluetooth.setLocalName(newName);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(newName);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_0600 NewName = '+ JSON.stringify(getNewName));
@@ -850,8 +821,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0700', 0, async function (done) {
         try {
             let newName = '蓝牙设备bluetooth';
-            let result = bluetooth.setLocalName(newName);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(newName);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_0700 NewName = '+ JSON.stringify(getNewName));
@@ -872,8 +842,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
      it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0800', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.MIXES4);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(Btname.MIXES4);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_0800 NewName = '+ JSON.stringify(getNewName));
@@ -894,8 +863,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_0900', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.MIXES2);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(Btname.MIXES2);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_0900 NewName = '+ JSON.stringify(getNewName));
@@ -916,12 +884,11 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1000', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.MIXES3);
-        expect(result).assertTrue();
-        await sleep(1000);
-        let getNewName = bluetooth.getLocalName();
-        console.info('[bluetooth_js] LocalName_1000 NewName = '+ JSON.stringify(getNewName));
-        expect(true).assertEqual(Btname.MIXES3 == getNewName);
+            bluetooth.setLocalName(Btname.MIXES3);
+            await sleep(1000);
+            let getNewName = bluetooth.getLocalName();
+            console.info('[bluetooth_js] LocalName_1000 NewName = '+ JSON.stringify(getNewName));
+            expect(true).assertEqual(Btname.MIXES3 == getNewName);
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
             expect().assertFail();
@@ -939,8 +906,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1100', 0, async function (done) {
         try {
             let newName = '蓝牙设备123';
-            let result = bluetooth.setLocalName(newName);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(newName);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_1100 NewName = '+ JSON.stringify(getNewName));
@@ -962,8 +928,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1200', 0, async function (done) {
         try {
             let newName = '蓝牙设备bluetooth12';
-            let result = bluetooth.setLocalName(newName);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(newName);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName1200 NewName = '+ JSON.stringify(getNewName));
@@ -984,8 +949,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
       it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1300', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.MIXES6);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(Btname.MIXES6);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_1300 NewName = '+ JSON.stringify(getNewName));
@@ -1006,8 +970,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1400', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.MIXES);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(Btname.MIXES);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_1400 NewName = '+ JSON.stringify(getNewName));
@@ -1028,8 +991,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1500', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.MIXES5);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(Btname.MIXES5);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_1500 NewName = '+ JSON.stringify(getNewName));
@@ -1050,8 +1012,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1600', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.NUM_TEST1);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(Btname.NUM_TEST1);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_1600 NewName = '+ JSON.stringify(getNewName));
@@ -1072,8 +1033,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
      */
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1700', 0, async function (done) {
         try {
-            let result = bluetooth.setLocalName(Btname.MIXES7);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(Btname.MIXES7);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_1700 NewName = '+ JSON.stringify(getNewName));
@@ -1095,11 +1055,10 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_LOCALNAME_1800', 0, async function (done) {
         try {
             let name = bluetooth.getLocalName();
-            let set = bluetooth.setLocalName('');
-            expect(set).assertFalse();
+            bluetooth.setLocalName('');
             await sleep(1000);
             let localName = bluetooth.getLocalName();
-            expect(true).assertTrue(localName==name);
+            expect(localName == name).assertTrue();
             console.info('[bluetooth_js] getLocalName1800 = ' + JSON.stringify(localName));
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
@@ -1121,14 +1080,12 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
             console.info('[bluetooth_js] LocalName_1900 localName = '+ JSON.stringify(localName));
             expect(true).assertEqual(localName!=null);
             let newName = 'bluetoothtest';
-            let result = bluetooth.setLocalName(newName);
-            expect(result).assertTrue();
+            bluetooth.setLocalName(newName);
             await sleep(1000);
             let getNewName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalName_1900 NewName = '+ JSON.stringify(getNewName));
             expect(true).assertEqual(newName == getNewName);
-            let result1=bluetooth.setLocalName(localName);
-            expect(result1).assertTrue();
+            bluetooth.setLocalName(localName);
             await sleep(1000);
             let getLocalName = bluetooth.getLocalName();
             console.info('[bluetooth_js] LocalNam1900 localName ='+ JSON.stringify(getLocalName));

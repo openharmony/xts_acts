@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from "../../MainAbility/common/Common";
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function textInputApi1() {
-  describe('textInputApi1', function () {
-    beforeEach(async function (done) {
+  describe('textInputApi1', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputApi1 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/textInputApi/textInputApi1',
       }
       try {
@@ -40,7 +53,7 @@ export default function textInputApi1() {
       console.info("textInputApi1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("textInputApi1 after each called");
     });
@@ -50,7 +63,7 @@ export default function textInputApi1() {
         * @tc.desc  : onSubmit event test
         * @tc.level : Level 2
         */
-    it('textInputApi1_001', 0, async function (done) {
+    it('textInputApi1_001', 0, async (done: Function) => {
 
       console.info('[textInputApi1_001] START');
       await CommonFunc.sleep(1000);
@@ -64,10 +77,9 @@ export default function textInputApi1() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('textInputApi1_text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      console.info("[textInputApi1_001] component obj is: " + JSON.stringify(obj));
+      console.info("[textInputApi1_001] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.content).assertEqual('PREVIOUS');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('PREVIOUS');
 
       console.info('[textInputApi1_001] END');
       done();

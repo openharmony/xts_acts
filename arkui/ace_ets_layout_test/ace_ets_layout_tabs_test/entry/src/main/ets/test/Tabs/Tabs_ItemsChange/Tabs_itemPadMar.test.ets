@@ -15,23 +15,38 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function Tabs_itemPadMar() {
-  describe('Tabs_itemPadMar', function () {
-    beforeEach(async function (done) {
+  describe('Tabs_itemPadMar', () => {
+    beforeEach(async (done: Function) => {
       console.info("Tabs_itemPadMar beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Tabs/Tabs_ItemsChange/Tabs_itemPadMar",
-      }
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Tabs_itemPadMar state pages:" + JSON.stringify(pages));
         if (!("Tabs_itemPadMar" == pages.name)) {
           console.info("get Tabs_itemPadMar pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Tabs_itemPadMar page result:" + JSON.stringify(result));
         }
@@ -42,56 +57,60 @@ export default function Tabs_itemPadMar() {
       console.info("Tabs_itemPadMar beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Tabs_itemPadMar after each called")
-      globalThis.value.message.notify({name:'currentIndex', value:0});
+      globalThis.value.message.notify({
+        name: 'currentIndex', value: 0
+      });
     });
     /**
-     * @tc.number    SUB_ACE_TABS_ITEMPADMAR_TEST_0100
-     * @tc.name      testTabsItemPad
-     * @tc.desc      Set 20 padding for TabContent
+     * @tc.number SUB_ACE_TABS_ITEMPADMAR_TEST_0100
+     * @tc.name testTabsItemPad
+     * @tc.desc Set 20 padding for TabContent
      */
-    it('testTabsItemPad', 0, async function (done) {
+    it('testTabsItemPad', 0, async (done: Function) => {
       console.info('[testTabsItemPad] START');
-      globalThis.value.message.notify({name:'dadPadding', value:20});
+      globalThis.value.message.notify({
+        name: 'dadPadding', value: 20
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Tabs_itemPadMar_01');
-      let obj = JSON.parse(strJson);
-      console.info(`[testTabsItemPad] type: ${JSON.stringify(obj.$type)}`);
-      console.info("[testTabsItemPad] barPosition: " + JSON.stringify(obj.$attrs.barPosition));
-      console.info("[testTabsItemPad] index: " + JSON.stringify(obj.$attrs.index));
-      console.info("[testTabsItemPad] scrollable: " + JSON.stringify(obj.$attrs.scrollable));
-      console.info("[testTabsItemPad] barMode: " + JSON.stringify(obj.$attrs.barMode));
-      expect(obj.$type).assertEqual('Tabs');
-      expect(obj.$attrs.barPosition).assertEqual("BarPosition.Start");
-      expect(obj.$attrs.index).assertEqual("0");
-      expect(obj.$attrs.scrollable).assertEqual(true);
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_itemPadMar_001 = CommonFunc.getComponentRect('Tabs_itemPadMar_001');
-      let Tabs_itemPadMar_011 = CommonFunc.getComponentRect('Tabs_itemPadMar_011');
-      let driver = await Driver.create();
+
+      console.info(`[testTabsItemPad] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
+      console.info("[testTabsItemPad] barPosition: " + JSON.stringify(JSON.parse(strJson).$attrs.barPosition));
+      console.info("[testTabsItemPad] index: " + JSON.stringify(JSON.parse(strJson).$attrs.index));
+      console.info("[testTabsItemPad] scrollable: " + JSON.stringify(JSON.parse(strJson).$attrs.scrollable));
+      console.info("[testTabsItemPad] barMode: " + JSON.stringify(JSON.parse(strJson).$attrs.barMode));
+      expect(JSON.parse(strJson).$type).assertEqual('Tabs');
+      expect(JSON.parse(strJson).$attrs.barPosition).assertEqual("BarPosition.Start");
+      expect(JSON.parse(strJson).$attrs.index).assertEqual("0");
+      expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
+      expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
+      let Tabs_itemPadMar_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_001');
+      let Tabs_itemPadMar_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_011');
+      let driver = Driver.create();
       await driver.swipe(Math.round(Tabs_itemPadMar_011.right - 30),
-      Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)),
-      Math.round(Tabs_itemPadMar_011.left + 30),
-      Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)));
+        Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)),
+        Math.round(Tabs_itemPadMar_011.left + 30),
+        Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_itemPadMar_002 = CommonFunc.getComponentRect('Tabs_itemPadMar_002');
-      let Tabs_itemPadMar_012 = CommonFunc.getComponentRect('Tabs_itemPadMar_012');
+      let Tabs_itemPadMar_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_002');
+      let Tabs_itemPadMar_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_012');
       await driver.swipe(Math.round(Tabs_itemPadMar_012.right - 30),
-      Math.round(Tabs_itemPadMar_012.top +((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)),
-      Math.round(Tabs_itemPadMar_012.left + 30),
-      Math.round(Tabs_itemPadMar_012.top + ((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)));
+        Math.round(Tabs_itemPadMar_012.top + ((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)),
+        Math.round(Tabs_itemPadMar_012.left + 30),
+        Math.round(Tabs_itemPadMar_012.top + ((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_itemPadMar_003 = CommonFunc.getComponentRect('Tabs_itemPadMar_003');
-      let Tabs_itemPadMar_013 = CommonFunc.getComponentRect('Tabs_itemPadMar_013');
-      let Tabs_itemPadMar_01 = CommonFunc.getComponentRect('Tabs_itemPadMar_01');
-      let subGreen = CommonFunc.getComponentRect('Tabs_itemPadMar_green');
-      let subBlue = CommonFunc.getComponentRect('Tabs_itemPadMar_blue');
-      let subYellow = CommonFunc.getComponentRect('Tabs_itemPadMar_yellow');
+      let Tabs_itemPadMar_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_003');
+      let Tabs_itemPadMar_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_013');
+      let Tabs_itemPadMar_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_01');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_yellow');
 
       console.info(`[testTabsItemPad] Tabs_itemPadMar_011.left equal Tabs_itemPadMar_01.left=
-        ${ Tabs_itemPadMar_011.left } === ${ Tabs_itemPadMar_01.left }`);
+        ${Tabs_itemPadMar_011.left} === ${Tabs_itemPadMar_01.left}`);
       expect(Tabs_itemPadMar_011.left).assertEqual(Tabs_itemPadMar_01.left);
       expect(Tabs_itemPadMar_011.top).assertEqual(subGreen.bottom);
       expect(Tabs_itemPadMar_012.left).assertEqual(Tabs_itemPadMar_01.left);
@@ -137,48 +156,52 @@ export default function Tabs_itemPadMar() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_TABS_ITEMPADMAR_TEST_0200
-     * @tc.name      testTabsItemMar
-     * @tc.desc      Set 20 margin for TabContent
+     * @tc.number SUB_ACE_TABS_ITEMPADMAR_TEST_0200
+     * @tc.name testTabsItemMar
+     * @tc.desc Set 20 margin for TabContent
      */
-    it('testTabsItemMar', 0, async function (done) {
+    it('testTabsItemMar', 0, async (done: Function) => {
       console.info('[testTabsItemMar] START');
-      globalThis.value.message.notify({name:'dadPadding', value:0});
-      globalThis.value.message.notify({name:'dadMargin', value:20});
+      globalThis.value.message.notify({
+        name: 'dadPadding', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'dadMargin', value: 20
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Tabs_itemPadMar_01');
-      let obj = JSON.parse(strJson);
-      console.info(`[testTabsItemMar] type: ${JSON.stringify(obj.$type)}`);
-      console.info("[testTabsItemMar] barPosition: " + JSON.stringify(obj.$attrs.barPosition));
-      console.info("[testTabsItemMar] index: " + JSON.stringify(obj.$attrs.index));
-      console.info("[testTabsItemMar] scrollable: " + JSON.stringify(obj.$attrs.scrollable));
-      console.info("[testTabsItemMar] barMode: " + JSON.stringify(obj.$attrs.barMode));
-      expect(obj.$type).assertEqual('Tabs');
-      expect(obj.$attrs.barPosition).assertEqual("BarPosition.Start");
-      expect(obj.$attrs.index).assertEqual("0");
-      expect(obj.$attrs.scrollable).assertEqual(true);
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_itemPadMar_001 = CommonFunc.getComponentRect('Tabs_itemPadMar_001');
-      let Tabs_itemPadMar_011 = CommonFunc.getComponentRect('Tabs_itemPadMar_011');
-      let driver = await Driver.create();
+
+      console.info(`[testTabsItemMar] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
+      console.info("[testTabsItemMar] barPosition: " + JSON.stringify(JSON.parse(strJson).$attrs.barPosition));
+      console.info("[testTabsItemMar] index: " + JSON.stringify(JSON.parse(strJson).$attrs.index));
+      console.info("[testTabsItemMar] scrollable: " + JSON.stringify(JSON.parse(strJson).$attrs.scrollable));
+      console.info("[testTabsItemMar] barMode: " + JSON.stringify(JSON.parse(strJson).$attrs.barMode));
+      expect(JSON.parse(strJson).$type).assertEqual('Tabs');
+      expect(JSON.parse(strJson).$attrs.barPosition).assertEqual("BarPosition.Start");
+      expect(JSON.parse(strJson).$attrs.index).assertEqual("0");
+      expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
+      expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
+      let Tabs_itemPadMar_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_001');
+      let Tabs_itemPadMar_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_011');
+      let driver = Driver.create();
       await driver.swipe(Math.round(Tabs_itemPadMar_011.right - 30),
-      Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)),
-      Math.round(Tabs_itemPadMar_011.left + 30),
-      Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)));
+        Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)),
+        Math.round(Tabs_itemPadMar_011.left + 30),
+        Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_itemPadMar_002 = CommonFunc.getComponentRect('Tabs_itemPadMar_002');
-      let Tabs_itemPadMar_012 = CommonFunc.getComponentRect('Tabs_itemPadMar_012');
+      let Tabs_itemPadMar_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_002');
+      let Tabs_itemPadMar_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_012');
       await driver.swipe(Math.round(Tabs_itemPadMar_012.right - 30),
-      Math.round(Tabs_itemPadMar_012.top +((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)),
-      Math.round(Tabs_itemPadMar_012.left + 30),
-      Math.round(Tabs_itemPadMar_012.top + ((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)));
+        Math.round(Tabs_itemPadMar_012.top + ((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)),
+        Math.round(Tabs_itemPadMar_012.left + 30),
+        Math.round(Tabs_itemPadMar_012.top + ((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_itemPadMar_003 = CommonFunc.getComponentRect('Tabs_itemPadMar_003');
-      let Tabs_itemPadMar_013 = CommonFunc.getComponentRect('Tabs_itemPadMar_013');
-      let Tabs_itemPadMar_01 = CommonFunc.getComponentRect('Tabs_itemPadMar_01');
-      let subGreen = CommonFunc.getComponentRect('Tabs_itemPadMar_green');
-      let subBlue = CommonFunc.getComponentRect('Tabs_itemPadMar_blue');
-      let subYellow = CommonFunc.getComponentRect('Tabs_itemPadMar_yellow');
+      let Tabs_itemPadMar_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_003');
+      let Tabs_itemPadMar_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_013');
+      let Tabs_itemPadMar_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_01');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_yellow');
 
       console.info(`[testTabsItemMar] Tabs_itemPadMar_011.left - Tabs_itemPadMar_01.left=
         ${Math.round(Tabs_itemPadMar_011.left - Tabs_itemPadMar_01.left)}`);
@@ -190,7 +213,7 @@ export default function Tabs_itemPadMar() {
       expect(Tabs_itemPadMar_013.top).assertEqual(subYellow.bottom);
 
       console.info(`[testTabsItemMar] Tabs_itemPadMar_001.left equal Tabs_itemPadMar_011.left=
-        ${Tabs_itemPadMar_001.left } === ${ Tabs_itemPadMar_011.left}`);
+        ${Tabs_itemPadMar_001.left} === ${Tabs_itemPadMar_011.left}`);
       expect(Tabs_itemPadMar_001.left).assertEqual(Tabs_itemPadMar_011.left);
       expect(Tabs_itemPadMar_001.top).assertEqual(Tabs_itemPadMar_011.top);
       expect(Tabs_itemPadMar_002.left).assertEqual(Tabs_itemPadMar_012.left);
@@ -228,48 +251,52 @@ export default function Tabs_itemPadMar() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_TABS_ITEMPADMAR_TEST_0300
-     * @tc.name      testTabsItemPadMar
-     * @tc.desc      Set 20 padding and 20 margin for TabContent
+     * @tc.number SUB_ACE_TABS_ITEMPADMAR_TEST_0300
+     * @tc.name testTabsItemPadMar
+     * @tc.desc Set 20 padding and 20 margin for TabContent
      */
-    it('testTabsItemPadMar', 0, async function (done) {
+    it('testTabsItemPadMar', 0, async (done: Function) => {
       console.info('[testTabsItemPadMar] START');
-      globalThis.value.message.notify({name:'dadPadding', value:20});
-      globalThis.value.message.notify({name:'dadMargin', value:20});
+      globalThis.value.message.notify({
+        name: 'dadPadding', value: 20
+      });
+      globalThis.value.message.notify({
+        name: 'dadMargin', value: 20
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Tabs_itemPadMar_01');
-      let obj = JSON.parse(strJson);
-      console.info(`[testTabsItemPadMar] type: ${JSON.stringify(obj.$type)}`);
-      console.info("[testTabsItemPadMar] barPosition: " + JSON.stringify(obj.$attrs.barPosition));
-      console.info("[testTabsItemPadMar] index: " + JSON.stringify(obj.$attrs.index));
-      console.info("[testTabsItemPadMar] scrollable: " + JSON.stringify(obj.$attrs.scrollable));
-      console.info("[testTabsItemPadMar] barMode: " + JSON.stringify(obj.$attrs.barMode));
-      expect(obj.$type).assertEqual('Tabs');
-      expect(obj.$attrs.barPosition).assertEqual("BarPosition.Start");
-      expect(obj.$attrs.index).assertEqual("0");
-      expect(obj.$attrs.scrollable).assertEqual(true);
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_itemPadMar_001 = CommonFunc.getComponentRect('Tabs_itemPadMar_001');
-      let Tabs_itemPadMar_011 = CommonFunc.getComponentRect('Tabs_itemPadMar_011');
-      let driver = await Driver.create();
+
+      console.info(`[testTabsItemPadMar] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
+      console.info("[testTabsItemPadMar] barPosition: " + JSON.stringify(JSON.parse(strJson).$attrs.barPosition));
+      console.info("[testTabsItemPadMar] index: " + JSON.stringify(JSON.parse(strJson).$attrs.index));
+      console.info("[testTabsItemPadMar] scrollable: " + JSON.stringify(JSON.parse(strJson).$attrs.scrollable));
+      console.info("[testTabsItemPadMar] barMode: " + JSON.stringify(JSON.parse(strJson).$attrs.barMode));
+      expect(JSON.parse(strJson).$type).assertEqual('Tabs');
+      expect(JSON.parse(strJson).$attrs.barPosition).assertEqual("BarPosition.Start");
+      expect(JSON.parse(strJson).$attrs.index).assertEqual("0");
+      expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
+      expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
+      let Tabs_itemPadMar_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_001');
+      let Tabs_itemPadMar_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_011');
+      let driver = Driver.create();
       await driver.swipe(Math.round(Tabs_itemPadMar_011.right - 30),
-      Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)),
-      Math.round(Tabs_itemPadMar_011.left + 30),
-      Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)));
+        Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)),
+        Math.round(Tabs_itemPadMar_011.left + 30),
+        Math.round(Tabs_itemPadMar_011.top + ((Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_itemPadMar_002 = CommonFunc.getComponentRect('Tabs_itemPadMar_002');
-      let Tabs_itemPadMar_012 = CommonFunc.getComponentRect('Tabs_itemPadMar_012');
+      let Tabs_itemPadMar_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_002');
+      let Tabs_itemPadMar_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_012');
       await driver.swipe(Math.round(Tabs_itemPadMar_012.right - 30),
-      Math.round(Tabs_itemPadMar_012.top +((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)),
-      Math.round(Tabs_itemPadMar_012.left + 30),
-      Math.round(Tabs_itemPadMar_012.top + ((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)));
+        Math.round(Tabs_itemPadMar_012.top + ((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)),
+        Math.round(Tabs_itemPadMar_012.left + 30),
+        Math.round(Tabs_itemPadMar_012.top + ((Tabs_itemPadMar_012.bottom - Tabs_itemPadMar_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_itemPadMar_003 = CommonFunc.getComponentRect('Tabs_itemPadMar_003');
-      let Tabs_itemPadMar_013 = CommonFunc.getComponentRect('Tabs_itemPadMar_013');
-      let Tabs_itemPadMar_01 = CommonFunc.getComponentRect('Tabs_itemPadMar_01');
-      let subGreen = CommonFunc.getComponentRect('Tabs_itemPadMar_green');
-      let subBlue = CommonFunc.getComponentRect('Tabs_itemPadMar_blue');
-      let subYellow = CommonFunc.getComponentRect('Tabs_itemPadMar_yellow');
+      let Tabs_itemPadMar_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_003');
+      let Tabs_itemPadMar_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_013');
+      let Tabs_itemPadMar_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_01');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_itemPadMar_yellow');
 
       console.info(`[testTabsItemPadMar] Tabs_itemPadMar_011.left - Tabs_itemPadMar_01.left=
         ${Math.round(Tabs_itemPadMar_011.left - Tabs_itemPadMar_01.left)}`);

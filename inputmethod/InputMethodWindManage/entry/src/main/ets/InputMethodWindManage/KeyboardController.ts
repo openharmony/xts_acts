@@ -934,7 +934,7 @@ export class KeyboardController {
                     if (timeCount === 2) {
                         clearInterval(t1);
                     }
-                },100);
+                },300);
 
                 let t2 = setTimeout(() => {
                     console.info(TAG + '====>setTimeout count: ' +  count);
@@ -945,7 +945,7 @@ export class KeyboardController {
                     }
                     commoneventmanager.publish('Sub_Misc_inputMethod_Panel_offHide_0200', commonEventPublishData, this.publishCallback);
                     clearTimeout(t2);
-                },500);
+                },1000);
 
             } else {
                 commonEventPublishData = {

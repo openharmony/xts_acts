@@ -13,26 +13,38 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {CustomContainer} from '../common/CustomContainer4';
+import { CustomContainer } from '../common/CustomContainer4';
 import FirstDialog from '../model/FirstDialog';
+
 @Entry
 @Component
 struct TapGestureExample {
   @State value: string = '';
   @State name: string = 'TapGesture';
-  @State StepTips: string = '操作步骤：手指连续双击图像'+'\n'+'预期结果：双击图片后文本提示正常弹出';
+  @State StepTips: string = '操作步骤：手指连续双击图像' + '\n' + '预期结果：双击图片后文本提示正常弹出';
   @State Vue: boolean = false;
-  async aboutToAppear(){
-    await FirstDialog.ChooseDialog(this.StepTips,this.name);
+
+  async aboutToAppear() {
+    await FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
-  @Builder specificNoParam() {
+
+  @Builder
+  specificNoParam() {
     Column() {
       Scroll() {
         Column() {
-          Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-            Image($r("app.media.img")).height('60%').width('60%')
+          Flex({
+            direction: FlexDirection.Column,
+            alignItems: ItemAlign.Center,
+            justifyContent: FlexAlign.SpaceBetween
+          }) {
+            Image($r("app.media.img"))
+              .height('60%')
+              .width('60%')
           }
-          .height('350vp').width('350vp').padding(20)
+          .height('350vp')
+          .width('350vp')
+          .padding(20)
           .gesture(
             TapGesture({ count: 2 })
               .onAction(() => {
@@ -40,12 +52,19 @@ struct TapGestureExample {
                 this.Vue = true;
               })
           )
+
           Text(this.value)
         }
-      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
-    }.width('100%').height('80%').backgroundColor(Color.White)
+      }
+      .scrollBarWidth('6vp')
+      .scrollBarColor('#cccccc')
+    }
+    .width('100%')
+    .height('80%')
+    .backgroundColor(Color.White)
     .justifyContent(FlexAlign.SpaceEvenly)
   }
+
   build() {
     Column() {
       CustomContainer({
@@ -57,11 +76,15 @@ struct TapGestureExample {
         name: $name,
         Vue: $Vue,
       })
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/ArkUI/ArkUI_index',
+      url: 'pages/ArkUI/ArkUI_index',
     })
   }
 }

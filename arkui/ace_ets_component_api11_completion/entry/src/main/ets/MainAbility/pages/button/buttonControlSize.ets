@@ -18,13 +18,24 @@
 struct ButtonExample {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
-      Text('Small size button').fontSize(9).fontColor(0xCCCCCC)
+      Text('Small size button')
+        .fontSize(9)
+        .fontColor(0xCCCCCC)
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Button('Emphasized').controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.EMPHASIZED).key('controlSizeBt');
-        Button('Normal').controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.NORMAL);
-        Button('Textual').controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.TEXTUAL);
+        Button('Emphasized')
+          .controlSize(ControlSize.SMALL)
+          .buttonStyle(ButtonStyleMode.EMPHASIZED)
+          .key('controlSizeBt');
+        Button('Normal')
+          .controlSize(ControlSize.SMALL)
+          .buttonStyle(ButtonStyleMode.NORMAL);
+        Button('Textual')
+          .controlSize(ControlSize.SMALL)
+          .buttonStyle(ButtonStyleMode.TEXTUAL);
       }
 
-    }.height(400).padding({ left: 35, right: 35, top: 35 })
+    }
+    .height(400)
+    .padding({ left: 35, right: 35, top: 35 })
   }
 }

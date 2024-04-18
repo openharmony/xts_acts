@@ -16,46 +16,39 @@
 @Entry
 @Component
 struct RichEditorApi {
-
   controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller }
-
+  options: RichEditorOptions = { controller: this.controller };
   controller2: RichEditorController = new RichEditorController();
-  options2: RichEditorOptions = { controller: this.controller2 }
-
+  options2: RichEditorOptions = { controller: this.controller2 };
   controller3: RichEditorController = new RichEditorController();
-  options3: RichEditorOptions = { controller: this.controller3 }
-
+  options3: RichEditorOptions = { controller: this.controller3 };
   controller4: RichEditorController = new RichEditorController();
-  options4: RichEditorOptions = { controller: this.controller4 }
-
-  @State spanParagraphs: string = ''
-
-  @State text1: string = ''
+  options4: RichEditorOptions = { controller: this.controller4 };
+  @State spanParagraphs: string = '';
+  @State text1: string = '';;
   @State text2: string = ''
 
   @Builder
   placeholderBuilder() {
-    Text("hello").borderWidth(1)
+    Text("hello")
+      .borderWidth(1)
       .id('RichEditorApi_text_hello')
   }
 
-
   @Builder
   panel() {
-    Text("Custom").borderWidth(1)
+    Text("Custom")
+      .borderWidth(1)
   }
 
   @Builder
   panel2() {
-    Text("Second").borderWidth(1)
+    Text("Second")
+      .borderWidth(1)
   }
 
-
-
-
   build() {
-    Column({ space: 10 }){
+    Column({ space: 10 }) {
 
       Text(this.spanParagraphs)
         .id('RichEditorApi_text_spanParagraphs')
@@ -64,26 +57,26 @@ struct RichEditorApi {
       RichEditor(this.options)
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
-        .onReady(()=>{
-          this.controller.addBuilderSpan(()=>this.placeholderBuilder(), { offset: 0 })
+        .width('300vp')
+        .onReady(() => {
+          this.controller.addBuilderSpan(() => this.placeholderBuilder(), { offset: 0 })
         })
         .id('RichEditorApi_addBuilderSpan')
 
       RichEditor(this.options2)
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
-        .onReady(()=> {
+        .width('300vp')
+        .onReady(() => {
           this.controller2.addTextSpan('Text', { paragraphStyle: { leadingMargin: '5vp' } })
         })
 
 
-      Row({space:5}){
+      Row({ space: 5 }) {
         Button("updateParagraphStyle")
           .id('RichEditorApi_btn_updateParagraphStyle')
           .onClick(() => {
-            this.controller2.updateParagraphStyle({style:{leadingMargin:'10vp'}})
+            this.controller2.updateParagraphStyle({ style: { leadingMargin: '10vp' } })
           })
 
         Button("getParagraphs")
@@ -96,20 +89,23 @@ struct RichEditorApi {
       }
 
 
-      Text(this.text1).id('RichEditorApi_text1')
+      Text(this.text1)
+        .id('RichEditorApi_text1')
 
       RichEditor(this.options3)
         .id('RichEditorApi_RichEditor3')
-        .onReady(()=> {
+        .onReady(() => {
           this.controller3.addTextSpan('文本')
         })
-        .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel, RichEditorResponseType.RIGHT_CLICK, {onAppear:()=>{
-          this.text1 = 'CustomMenuAppear'
-        }} )
+        .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel, RichEditorResponseType.RIGHT_CLICK, {
+          onAppear: () => {
+            this.text1 = 'CustomMenuAppear'
+          }
+        })
         .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel, RichEditorResponseType.SELECT)
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
+        .width('300vp')
         .height('70vp')
 
 
@@ -117,18 +113,17 @@ struct RichEditorApi {
 
       RichEditor(this.options4)
         .id('RichEditorApi_RichEditor4')
-        .onReady(()=> {
+        .onReady(() => {
           this.controller4.addTextSpan('paragraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraph')
         })
-        .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel2, RichEditorResponseType.LONG_PRESS,{onAppear:()=>{
-          this.text2 = 'SecondMenuAppear'
-        }} )
+        .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel2, RichEditorResponseType.LONG_PRESS, {
+          onAppear: () => {
+            this.text2 = 'SecondMenuAppear'
+          }
+        })
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
-
-
-
+        .width('300vp')
     }.width('100%')
   }
 }

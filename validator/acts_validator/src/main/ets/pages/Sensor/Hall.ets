@@ -33,7 +33,7 @@ struct Hall {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Hall';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有霍尔传感器' + '\n-点击开启按钮打开传感器,' +
-  '如果有传感器，请将设备放置周围电子设备多的地方查看是否有磁力吸引，否则返回上一级' + '\n-预期结果：数值发生变化';
+    '如果有传感器，请将设备放置周围电子设备多的地方查看是否有磁力吸引，否则返回上一级' + '\n-预期结果：数值发生变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
@@ -109,7 +109,7 @@ struct Hall {
     }
   }
 
-  async aboutToDisappear(){
+  async aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -140,7 +140,8 @@ struct Hall {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -164,7 +165,8 @@ struct Hall {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);

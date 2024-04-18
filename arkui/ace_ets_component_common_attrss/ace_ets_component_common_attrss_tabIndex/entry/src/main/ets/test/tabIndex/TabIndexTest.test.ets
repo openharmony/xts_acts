@@ -17,6 +17,40 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+async function executeTab(data: ESObject, referenceOneValue: string, textValue: string, referenceTwoValue: string) {
+  expect(Utils.performKeyEventDownUp(2049, 'Tab')).assertEqual(true);
+  await Utils.sleep(1000);
+  console.info('[' + data.caseTag + '] Press Tab.');
+  let referenceOneComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceOneComponentKey);
+  let textComponent: ESObject = Utils.getComponentByKey(data.pageConfig.textComponentKey);
+  let referenceTwoComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceTwoComponentKey);
+  //Confirm reference component one text
+  console.info('[' + data.caseTag + '] referenceOneComponent.$attrs.label:' + referenceOneComponent.$attrs.label);
+  expect(referenceOneComponent.$attrs.label).assertEqual(referenceOneValue);
+  //Confirm Text Content
+  console.info('[' + data.caseTag + '] textComponent.$attrs.content:' + textComponent.$attrs.content);
+  expect(textComponent.$attrs.content).assertEqual(textValue);
+  //Confirm reference component two text
+  console.info('[' + data.caseTag + '] referenceTwoComponent.$attrs.label:' + referenceTwoComponent.$attrs.label);
+  expect(referenceTwoComponent.$attrs.label).assertEqual(referenceTwoValue);
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  textComponentKey: string;
+  referenceOneComponentKey: string;
+  referenceTwoComponentKey: string;
+  sharePage: boolean;
+}
+
+class TestValues {
+  describe: string;
+  setValue: number;
+  expectValue: number;
+}
+
 export default function TabIndexTest() {
   //A list of components that support the position attribute, which is required.
   let supportView = [
@@ -31,10 +65,10 @@ export default function TabIndexTest() {
     'Checkbox',
     'CheckboxGroup',
     'DatePicker',
-//    'ImageAnimator',
+    //    'ImageAnimator',
     'Menu',
-//    'MenuItem',
-//    'MenuItemGroup',
+    //    'MenuItem',
+    //    'MenuItemGroup',
     'Radio',
     'Rating',
     'Select',
@@ -47,25 +81,25 @@ export default function TabIndexTest() {
     'Web',
     'AlphabetIndexer',
     'Column',
-//    'ColumnSplit',
+    //    'ColumnSplit',
     'Counter',
     'Flex',
-//    'GridCol',
-//    'GridRow',
+    //    'GridCol',
+    //    'GridRow',
     'GridItem',
     'ListItem',
-//    'ListItemGroup',
+    //    'ListItemGroup',
     'Row',
-//    'RowSplit',
+    //    'RowSplit',
     'Scroll',
     'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
-//    'TabContent'
+  //    'TabContent'
   ]
   //Page config, this param is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testTabIndex',
     pageName: 'TabIndexPage',
     pageUrl: 'MainAbility/pages/tabIndex/TabIndexPage',
@@ -75,11 +109,11 @@ export default function TabIndexTest() {
     sharePage: false
   }
   //Test values, looped to create cases, this param is required.
-  let testValues = [{
+  let testValues: TestValues[] = [{
     describe: 'SetLessThanZero',
     setValue: -1,
     expectValue: -1
-  },/* {
+  }, /* {
     describe: 'SetEqualZero',
     setValue: 0,
     expectValue: 0
@@ -95,7 +129,7 @@ export default function TabIndexTest() {
 
   describe('TabIndexTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
 
       //Place Focus
       let requestFocusText = focusControl.requestFocus(data.pageConfig.textComponentKey);
@@ -110,7 +144,7 @@ export default function TabIndexTest() {
         await executeTab(data, 'onBlur', '', 'onFocus');
 
         //Confirm target component attribute values
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] viewObj.$attrs.tabIndex:' + viewObj.$attrs.tabIndex);
         expect(viewObj.$attrs.tabIndex).assertEqual(data.testValue.expectValue);
       } else if ('SetEqualZero' == data.testValue.describe) {
@@ -122,7 +156,7 @@ export default function TabIndexTest() {
         //Press the Tab key for the third time to focus on the target component
         await executeTab(data, 'onBlur', 'onFocus', 'onBlur');
 
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] viewObj.$attrs.tabIndex:' + viewObj.$attrs.tabIndex);
         expect(viewObj.$attrs.tabIndex).assertEqual(data.testValue.expectValue);
 
@@ -135,7 +169,7 @@ export default function TabIndexTest() {
         //Press the Tab key for the third time to reference the component (2) and capture the focus
         await executeTab(data, 'onBlur', 'onBlur', 'onFocus');
 
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] viewObj.$attrs.tabIndex:' + viewObj.$attrs.tabIndex);
         expect(viewObj.$attrs.tabIndex).assertEqual(data.testValue.expectValue);
 
@@ -149,29 +183,12 @@ export default function TabIndexTest() {
         await executeTab(data, 'onBlur', 'onBlur', 'onFocus');
 
         //Confirm target component attribute values
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] viewObj.$attrs.tabIndex:' + viewObj.$attrs.tabIndex);
         expect(viewObj.$attrs.tabIndex).assertEqual(data.testValue.expectValue);
       }
     })
   })
 
-  async function executeTab(data, referenceOneValue, textValue, referenceTwoValue) {
-    expect(Utils.performKeyEventDownUp(2049, 'Tab')).assertEqual(true);
-    await Utils.sleep(1000);
-    console.info('[' + data.caseTag + '] Press Tab.');
-    let referenceOneComponent = Utils.getComponentByKey(data.pageConfig.referenceOneComponentKey);
-    let textComponent = Utils.getComponentByKey(data.pageConfig.textComponentKey);
-    let referenceTwoComponent = Utils.getComponentByKey(data.pageConfig.referenceTwoComponentKey);
-    //Confirm reference component one text
-    console.info('[' + data.caseTag + '] referenceOneComponent.$attrs.label:' + referenceOneComponent.$attrs.label);
-    expect(referenceOneComponent.$attrs.label).assertEqual(referenceOneValue);
-    //Confirm Text Content
-    console.info('[' + data.caseTag + '] textComponent.$attrs.content:' + textComponent.$attrs.content);
-    expect(textComponent.$attrs.content).assertEqual(textValue);
-    //Confirm reference component two text
-    console.info('[' + data.caseTag + '] referenceTwoComponent.$attrs.label:' + referenceTwoComponent.$attrs.label);
-    expect(referenceTwoComponent.$attrs.label).assertEqual(referenceTwoValue);
-  }
 
 }

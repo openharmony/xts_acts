@@ -15,16 +15,22 @@
 @Entry
 @Component
 struct FolderStack3Api {
-  @State len_wid: number = 480
-  @State w: string = "40%"
-  @State text:string = "start"
+  @State len_wid: number = 480;
+  @State w: string = "40%";
+  @State text:string = "start";
   build() {
     Column() {
       FolderStack({ upperItems: ["upperitemsId"] }) {
         Column() {
           Text(this.text).key('FolderStack3ApiTestText')
-            .height("100%").width("100%").textAlign(TextAlign.Center).fontSize(25)
-        }.backgroundColor(Color.Pink).width("100%").height("100%").id("upperitemsId")
+            .height("100%")
+            .width("100%")
+            .textAlign(TextAlign.Center).fontSize(25)
+        }
+        .backgroundColor(Color.Pink)
+        .width("100%")
+        .height("100%")
+        .id("upperitemsId")
 
         Column() {
           Text("vedioTitle")
@@ -34,7 +40,10 @@ struct FolderStack3Api {
             .backgroundColor(Color.Red)
             .fontSize(25)
             .key('FolderStack3ApiText01')
-        }.width("100%").height("100%").justifyContent(FlexAlign.Start)
+        }
+        .width("100%")
+        .height("100%")
+        .justifyContent(FlexAlign.Start)
 
         Column() {
           Text("vedie bar ")
@@ -43,7 +52,10 @@ struct FolderStack3Api {
             .textAlign(TextAlign.Center)
             .backgroundColor(Color.Red)
             .fontSize(25)
-        }.width("100%").height("100%").justifyContent(FlexAlign.End)
+        }
+        .width("100%")
+        .height("100%")
+        .justifyContent(FlexAlign.End)
       }
       .backgroundColor(Color.Yellow)
       .enableAnimation(true)

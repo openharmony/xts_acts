@@ -17,14 +17,14 @@ import bundle from '@ohos.bundle.bundleManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 export default function getBundleInfoForSelf() {
-  describe('getBundleInfoForSelf', function () {
+  describe('getBundleInfoForSelf', () => {
 
     /*
      * @tc.number: SUB_BMS_SERVICE_SPLIT_0031
      * @tc.name: getBundleInfoForSelfAtomicService
      * @tc.desc: Test getBundleInfoForSelf with AtomicService
      */
-    it('getBundleInfoForSelfAtomicService', 0, async function (done) {
+    it('getBundleInfoForSelfAtomicService', 0, async (done: Function) => {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
       bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE).then(data => {
         let preloadItemTest: bundle.PreloadItem = data.hapModulesInfo[2].preloads[0];
@@ -61,9 +61,9 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfSyncAtomicService
      * @tc.desc: Test getBundleInfoForSelfSync with AtomicService
      */
-    it('getBundleInfoForSelfSyncAtomicService', 0, async function (done) {
+    it('getBundleInfoForSelfSyncAtomicService', 0, async (done: Function) => {
       let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
-        bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE);
+      bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE);
       let preloadItemTest: bundle.PreloadItem = data.hapModulesInfo[2].preloads[0];
       expect(typeof (preloadItemTest.moduleName)).assertEqual('string');
       let dependencyTest: bundle.Dependency = data.hapModulesInfo[2].dependencies[0];

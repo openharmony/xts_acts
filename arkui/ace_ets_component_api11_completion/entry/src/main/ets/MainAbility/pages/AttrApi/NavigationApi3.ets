@@ -14,38 +14,38 @@
  */
 
 
-
 @Entry
 @Component
 struct NavigationApi3 {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  @State text1: string = '11';
+  @State text2: string = '22';
+  @State text3: string = '33';
 
-  @State text1: string = '11'
-  @State text2: string = '22'
-  @State text3: string = '33'
-
-  @Builder pageOneTmp3() {
+  @Builder
+  pageOneTmp3() {
     NavDestination() {
-      Column({space:10}) {
+      Column({ space: 10 }) {
         Text('pageOne')
 
         Button('Next')
           .width('80%')
           .height(40)
           .onClick(() => {
-            this.pageInfos.pushPath({name:'pageTwo', })
+            this.pageInfos.pushPath({ name: 'pageTwo', })
           })
           .id('NavigationApi3_pushPathPageTwo')
-        
-
-      }.width('100%').height('100%')
-    }.title('pageOne')
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('pageOne')
     .mode(NavDestinationMode.STANDARD)
-    .onShown(()=>{
-      this.text1 = 'pageOnw onShown'
+    .onShown(() => {
+      this.text1 = 'pageOnw onShown';
     })
-    .onHidden(()=>{
-      this.text1 = 'pageOne onHidden'
+    .onHidden(() => {
+      this.text1 = 'pageOne onHidden';
     })
     .onBackPressed(() => {
       this.pageInfos.pop()
@@ -53,49 +53,55 @@ struct NavigationApi3 {
     })
   }
 
-  @Builder pageTwoTmp3() {
-  NavDestination() {
-    Column({space:5}) {
-
-      Text('pageTwo')
-
-      Button('Next')
-        .width('80%')
-        .height(40)
-        .onClick(() => {
-          this.pageInfos.pushPath({name:'pageThree', })
-        })
-        .id('NavigationApi3_pushPathPageThree')
-
-
-    }.width('100%').height('100%')
-  }.title('pageTwo')
-  .mode(NavDestinationMode.STANDARD)
-  .onShown(()=>{
-    this.text2 = 'pageTwo onShown'
-  })
-  .onHidden(()=>{
-    this.text2 = 'pageTwo onHidden'
-  })
-  .onBackPressed(() => {
-    this.pageInfos.pop()
-    return true
-  })
-}
-
-  @Builder pageThreeTmp3() {
+  @Builder
+  pageTwoTmp3() {
     NavDestination() {
-      Column({space:5}) {
+      Column({ space: 5 }) {
+
+        Text('pageTwo')
+
+        Button('Next')
+          .width('80%')
+          .height(40)
+          .onClick(() => {
+            this.pageInfos.pushPath({ name: 'pageThree', })
+          })
+          .id('NavigationApi3_pushPathPageThree')
+
+
+      }.width('100%').height('100%')
+    }
+    .title('pageTwo')
+    .mode(NavDestinationMode.STANDARD)
+    .onShown(() => {
+      this.text2 = 'pageTwo onShown'
+    })
+    .onHidden(() => {
+      this.text2 = 'pageTwo onHidden'
+    })
+    .onBackPressed(() => {
+      this.pageInfos.pop()
+      return true
+    })
+  }
+
+  @Builder
+  pageThreeTmp3() {
+    NavDestination() {
+      Column({ space: 5 }) {
 
         Text('pageThree')
 
-      }.width('100%').height('100%')
-    }.title('pageThree')
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('pageThree')
     .mode(NavDestinationMode.DIALOG)
-    .onShown(()=>{
+    .onShown(() => {
       this.text3 = 'pageThree onShown'
     })
-    .onHidden(()=>{
+    .onHidden(() => {
       this.text3 = 'pageThree onHidden'
     })
     .onBackPressed(() => {
@@ -103,7 +109,6 @@ struct NavigationApi3 {
       return true
     })
   }
-
 
   @Builder
   PageMap(name: string) {
@@ -117,12 +122,18 @@ struct NavigationApi3 {
   }
 
   build() {
-    Column({space:20}){
-      Column({space:10}){
-        Text(this.text1).id('NavigationApi3_text1')
-        Text(this.text2).id('NavigationApi3_text2')
-        Text(this.text3).id('NavigationApi3_text3')
-      }.width('80%').borderWidth(1).margin({top:20})
+    Column({ space: 20 }) {
+      Column({ space: 10 }) {
+        Text(this.text1)
+          .id('NavigationApi3_text1')
+        Text(this.text2)
+          .id('NavigationApi3_text2')
+        Text(this.text3)
+          .id('NavigationApi3_text3')
+      }
+      .width('80%')
+      .borderWidth(1)
+      .margin({ top: 20 })
 
       Navigation(this.pageInfos) {
         Column() {
@@ -134,8 +145,9 @@ struct NavigationApi3 {
             })
             .id('NavigationApi3_pushPathPageOne')
         }
-      }.title('NavIndex').navDestination(this.PageMap)
+      }
+      .title('NavIndex')
+      .navDestination(this.PageMap)
     }.width('100%')
-
   }
 }

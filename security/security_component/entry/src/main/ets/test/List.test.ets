@@ -20,6 +20,7 @@ import locationComponentTest_1 from './LocationComponentTest_1.test.ets';
 import locationComponentTest_2 from './LocationComponentTest_2.test.ets';
 import saveComponentTest from './SaveComponentTest.test.ets';
 import saveComponentTest_1 from './SaveComponentTest_1.test.ets';
+import saveComponentTest_2 from './SaveComponentTest_2.test.ets';
 
 export default function testsuite() {
   pasteComponentTest();
@@ -29,4 +30,5 @@ export default function testsuite() {
   locationComponentTest_2();
   saveComponentTest();
   saveComponentTest_1();
+  saveComponentTest_2();
 }

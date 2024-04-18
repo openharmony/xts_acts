@@ -25,6 +25,8 @@ import image from '@ohos.multimedia.image';
 import screenshot from '@ohos.screenshot';
 import fs from '@ohos.file.fs';
 import emitter from '@ohos.events.emitter';
+import { Info } from '../../ArkUI/InfoObj';
+import { BusinessError } from '@ohos.base';
 
 export interface ButtonMsg {
   text: string,
@@ -105,7 +107,8 @@ struct Index {
       .onClick(() => {
         router.back({
           url: 'pages/Notification/Notification_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -129,7 +132,8 @@ struct Index {
     .onClick(() => {
       router.back({
         url: 'pages/Notification/Notification_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -139,7 +143,8 @@ struct Index {
     })
   }
 
-  @Styles viewStyle(){
+  @Styles
+  viewStyle(){
     .width('48%')
     .height(100)
     .borderRadius(20)
@@ -147,13 +152,15 @@ struct Index {
     .backgroundColor('#FFFFFF')
   }
 
-  @Styles toggleStyle(){
+  @Styles
+  toggleStyle(){
     .width(52)
     .height(26)
     .margin({ right: 24 })
   }
 
-  @Styles rowStyle(){
+  @Styles
+  rowStyle(){
     .backgroundColor('#FFFFFF')
     .borderRadius(20)
     .margin({ top: 18 })
@@ -259,22 +266,22 @@ struct Index {
 
         Column() {
           Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween, alignContent: FlexAlign.SpaceEvenly }) {
-              Column() {
-                Image($r('app.media.ic_notice_jiben'))
-                  .width(40)
-                  .height(28)
-                  .objectFit(ImageFit.Contain)
-                  .margin({ bottom: 10 })
-                Text('基本型通知')
-                  .fontSize(16)
-                  .onClick(this.notificationOperations.publishBasicNotification)
-              }
-              .borderColor(this.flagOne ? Color.Green : Color.White)
-              .borderWidth(10)
-              .viewStyle()
-              .justifyContent(FlexAlign.Center)
-              .alignItems(HorizontalAlign.Center)
-              .onClick(this.notificationOperations.publishBasicNotification)
+            Column() {
+              Image($r('app.media.ic_notice_jiben'))
+                .width(40)
+                .height(28)
+                .objectFit(ImageFit.Contain)
+                .margin({ bottom: 10 })
+              Text('基本型通知')
+                .fontSize(16)
+                .onClick(this.notificationOperations.publishBasicNotification)
+            }
+            .borderColor(this.flagOne ? Color.Green : Color.White)
+            .borderWidth(10)
+            .viewStyle()
+            .justifyContent(FlexAlign.Center)
+            .alignItems(HorizontalAlign.Center)
+            .onClick(this.notificationOperations.publishBasicNotification)
 
             Column() {
               Image($r('app.media.ic_notice_changwenben'))
@@ -421,7 +428,7 @@ struct Index {
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -453,12 +460,12 @@ struct Index {
       }
     }
     try {
-      screenshot.save(screenshotOptions, (err, data: image.PixelMap) => {
+      screenshot.save(screenshotOptions, (err: BusinessError, data: image.PixelMap) => {
         if (err) {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message is ${err.message}`);

@@ -1,0 +1,25 @@
+{
+  "src": [
+    "MainAbility/pages/index/index",
+    "MainAbility/pages/TextPickerDialog/TextPickerDialog",
+    "MainAbility/pages/TimePickerDialog/TimePickerDialog",
+    "MainAbility/pages/CalendarPickerDialog/CalendarPickerDialog",
+    "MainAbility/pages/DatePickerDialog/DatePickerDialog",
+    "MainAbility/pages/ActionSheet/ActionSheet1",
+    "MainAbility/pages/ActionSheet/ActionSheet2",
+    "MainAbility/pages/ActionSheet/ActionSheet3",
+    "MainAbility/pages/AlertDialog/AlertDialog1",
+    "MainAbility/pages/AlertDialog/AlertDialog2",
+    "MainAbility/pages/AlertDialog/AlertDialog3",
+    "MainAbility/pages/CustomDialog/CustomDialog1",
+    "MainAbility/pages/CustomDialog/CustomDialog2",
+    "MainAbility/pages/CustomDialog/CustomDialog3",
+    "MainAbility/pages/openCustomDialog/openCustomDialog1",
+    "MainAbility/pages/openCustomDialog/openCustomDialog2",
+    "MainAbility/pages/openCustomDialog/openCustomDialog3",
+    "MainAbility/pages/CalendarPickerDialog/CalendarDialogCallback",
+    "MainAbility/pages/DatePickerDialog/DatePickerDialogCallback",
+    "MainAbility/pages/TextPickerDialog/TextPickerDialogCallback",
+    "MainAbility/pages/TimePickerDialog/TimePickerDialogCallback"
+  ]
+}

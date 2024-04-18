@@ -12,19 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
-struct Stack_ZIndex{
+struct Stack_ZIndex {
   @State addZIndex: number = 1;
   @State addAlignContent: number = Alignment.TopStart;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('Stack_ZIndex onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'addZIndex') {
         this.addZIndex = message.value;
@@ -32,12 +35,18 @@ struct Stack_ZIndex{
       if (message.name == 'addAlignContent') {
         this.addAlignContent = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Stack({ alignContent:this.addAlignContent }) {
-      Text().width(200).height(200).backgroundColor(Color.Red).key('Stack_ZIndex_011').zIndex(this.addZIndex);
+
+  build() {
+    Stack({ alignContent: this.addAlignContent }) {
+      Text()
+        .width(200)
+        .height(200)
+        .backgroundColor(Color.Red)
+        .key('Stack_ZIndex_011')
+        .zIndex(this.addZIndex);
       Text().width(100).height(100).backgroundColor(Color.Blue).key('Stack_ZIndex_012');
     }
     .width(350)

@@ -12,25 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
-import router from '@system.router';
-// @ts-nocheck
+import Utils from './Utils';
+import router from '@ohos.router';
+
 let emitKey = "emitOnHttpErrorRecvExampleIsReadyFalseWebc";
+
 export default function webONHttpErrorRecvExampleIsReady() {
-  describe('ActsAceWebDevWebONHttpErrorRecvExampleIsReadyTest', function () {
-    beforeAll(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/webONHttpErrorRecvExampleIsReady',
-      }
+  describe('ActsAceWebDevWebONHttpErrorRecvExampleIsReadyTest', () => {
+    beforeAll(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/webONHttpErrorRecvExampleIsReady',
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get webONHttpErrorRecvExampleIsReady state success " + JSON.stringify(pages));
         if (!("webONHttpErrorRecvExampleIsReady" == pages.name)) {
           console.info("get webONHttpErrorRecvExampleIsReady state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push webONHttpErrorRecvExampleIsReady page success " + JSON.stringify(result));
         }
@@ -39,27 +40,27 @@ export default function webONHttpErrorRecvExampleIsReady() {
       }
       done()
     });
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("webONHttpErrorRecvExampleIsReady beforeEach start");
       done();
     })
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("webONHttpErrorRecvExampleIsReady afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        };
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        };
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -69,11 +70,11 @@ export default function webONHttpErrorRecvExampleIsReady() {
      *tc.name testOnHttpErrorRecvExampleIsReadyFalseWebc
      *tc.desc test interface of onHttpErrorReceive with parameter used by example but setResponseIsReady false
      */
-    it('testOnHttpErrorRecvExampleIsReadyFalseWebc',0,async function(done){
-      emitKey="emitOnHttpErrorRecvExampleIsReadyFalseWebc";
-      Utils.registerEvent("testOnHttpErrorRecvExampleIsReadyFalseWebc",403,493,done);
-      Utils.registerEvent("testOnHttpErrorRecvExampleIsReadyFalseWebc","",494,done);
-      sendEventByKey('webONHttpErrorRecvExampleIsReady',10,'');
+    it('testOnHttpErrorRecvExampleIsReadyFalseWebc', 0, async (done: Function) => {
+      emitKey = "emitOnHttpErrorRecvExampleIsReadyFalseWebc";
+      Utils.registerEvent("testOnHttpErrorRecvExampleIsReadyFalseWebc", 403, 493, done);
+      Utils.registerEvent("testOnHttpErrorRecvExampleIsReadyFalseWebc", "", 494, done);
+      sendEventByKey('webONHttpErrorRecvExampleIsReady', 10, '');
     })
   })
 }

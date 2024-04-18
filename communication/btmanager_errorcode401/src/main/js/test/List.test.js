@@ -13,9 +13,14 @@
  * limitations under the License.
  */
 
-import btManagerMError401Test from './BtMGattManager401.test.js'
-import btManagerAdvertError401Test from './BtMGattAdvertiser401.test.js'
+import btManagerMError401Test from './BtMGattManager401.test.js';
+import btManagerAdvertError401Test from './BtMGattAdvertiser401.test.js';
+import parameter from '@ohos.systemparameter';
+
+let info = parameter.getSync("const.SystemCapability.Communication.Bluetooth.Core", "false");
 export default function testsuite() {
-	btManagerMError401Test()
-	btManagerAdvertError401Test()
+	if (info != "false") {
+		btManagerMError401Test();
+	btManagerAdvertError401Test();
+	}
 }

@@ -14,7 +14,47 @@
  */
 import webJsunit from './WebJsunit.test'
 import webTwoJsunit from './WebTwoJsunit.test'
+import webDefaultTextEncodingFormat from './WebDefaultTextEncodingFormat.test';
+import webViewOnRequestStart from './webViewOnRequestStart.test';
+import webViewOnRequestStartTwo from './webViewOnRequestStartTwo.test';
+import webViewOnRequestStop from './webViewOnRequestStop.test';
+import WebSchemeHandlerResponse from './WebSchemeHandlerResponse.test';
+import WebHttpBodyStream from './WebHttpBodyStream.test';
+import setAndClearWebSchemeHandler from './setAndClearWebSchemeHandler.test';
+import setAndClearServiceWorkerWebSchemeHandler from './setAndClearServiceWorkerWebSchemeHandler.test';
+import customizeSchemes from './customizeSchemes.test';
+import webOnFirstMeaningfulPaint from './WebOnFirstMeaningfulPaint.test';
+import webOnLargestContentfulPaint from './WebOnLargestContentfulPaint.test';
+import webViewControllerResumeAllTimers from './WebViewControllerResumeAllTimers.test';
+import webViewControllerVideoMedia from './WebViewControllerVideoMedia.test';
+import WebNetError from './WebNetError.test';
+import webViewControllerAudioMedia from './WebViewControllerAudioMedia.test';
+import WebCameraApiNoCrash from './WebCameraApiNoCrash.test';
+import webViewOnSslErrorEvent from './webViewOnSslErrorEvent.test';
+
+
 export default function testsuite() {
        webJsunit()
        webTwoJsunit()
+       webViewOnSslErrorEvent()
+       WebCameraApiNoCrash()
+       webViewControllerAudioMedia()
+       webViewControllerResumeAllTimers()
+       webOnFirstMeaningfulPaint()
+       webOnLargestContentfulPaint()
+       webDefaultTextEncodingFormat()
+       webViewControllerVideoMedia()
+       webViewOnRequestStart()
+       webViewOnRequestStartTwo()
+       webViewOnRequestStop()
+       WebSchemeHandlerResponse()
+       WebHttpBodyStream()
+       setAndClearWebSchemeHandler()
+       setAndClearServiceWorkerWebSchemeHandler()
+       customizeSchemes()
+       WebNetError()
+       
+       
+       
+       
 }

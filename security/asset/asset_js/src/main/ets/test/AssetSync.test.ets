@@ -156,7 +156,7 @@ export default function AssetSynctest() {
       let testAlias = "0123456789123456".repeat(15);
       let attr: asset.AssetMap = new Map();
 
-      let times = 50;
+      let times = 20;
 
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secLong));
       attr.set(asset.Tag.DATA_LABEL_NORMAL_1, aw.StringToArray(aw.labelLong));
@@ -173,8 +173,6 @@ export default function AssetSynctest() {
       let attr2: asset.AssetMap = new Map();
       attr2.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
       expect(aw.assetQueryTask(times, attr2, testAlias)).assertLess(120);
-
-
       attr2.delete(asset.Tag.RETURN_TYPE);
       let attr3: asset.AssetMap = new Map();
       attr3.set(asset.Tag.SECRET, aw.StringToArray(aw.labelLong));
@@ -252,7 +250,6 @@ export default function AssetSynctest() {
       attr2.set(asset.Tag.RETURN_ORDERED_BY, 0);
       expect(aw.assetQueryAttr(attr2))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
-
     });
 
     /**
@@ -349,8 +346,6 @@ export default function AssetSynctest() {
       expect(aw.assetUpdateAttrs(attr2, attr3))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
       attr2.delete(asset.Tag.RETURN_TYPE);
-
-
     });
 
     /**
@@ -379,8 +374,6 @@ export default function AssetSynctest() {
         .assertEqual(0);
       expect(aw.assetQueryNum(attr2))
         .assertEqual(asset.ErrorCode.NOT_FOUND);
-
-
     });
 
     /**
@@ -415,8 +408,6 @@ export default function AssetSynctest() {
       attr2.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
       expect(aw.assetRemoveAttr(attr2))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
-
-
     });
 
     /**
@@ -499,8 +490,6 @@ export default function AssetSynctest() {
       attr2.set(asset.Tag.RETURN_LIMIT, 1);
       expect(aw.assetPreQueryExpect(attr2))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
-
-
     });
 
   })

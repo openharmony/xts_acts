@@ -25,19 +25,6 @@ export default function locale1NdkTest() {
     })
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOCALTIME64_0200
-     * @tc.name       : testMusLocaleLocalTime64002
-     * @tc.desc       : test __localtime64
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMusLocaleLocalTime64002', 0, async (done: Function) => {
-      expect(locale.__localtime64()).assertEqual(-1);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_NEWLOCALE_0200
      * @tc.name       : testMuslLocaleNewlocale002
      * @tc.desc       : test newlocale

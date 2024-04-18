@@ -13,16 +13,20 @@
  * limitations under the License.
  */
 
-import btBleScanTest from './BtBleScanResult.test.js'
-import btPairTest from './BtPair.test.js'
-import btManagerDiscoveryTest from './BtManagerDiscovery.test.js'
-import btManagerPairTest from './BtManagerPair.test.js'
-import btGattManagerTest from './BtGattManager.test.js'
+import btBleScanTest from './BtBleScanResult.test.js';
+import btPairTest from './BtPair.test.js';
+import btManagerDiscoveryTest from './BtManagerDiscovery.test.js';
+import btManagerPairTest from './BtManagerPair.test.js';
+import btGattManagerTest from './BtGattManager.test.js';
+import parameter from '@ohos.systemparameter';
 
-export default function testsuite() {  
-    btPairTest()
-    btBleScanTest()
-    btManagerDiscoveryTest()
-    btManagerPairTest()
-    btGattManagerTest()
+let info = parameter.getSync("const.SystemCapability.Communication.Bluetooth.Core", "false");
+export default function testsuite() {
+    if (info != "false") {
+        btPairTest();
+        btBleScanTest();
+        btManagerDiscoveryTest();
+        btManagerPairTest();
+        btGattManagerTest();
+    }
 }

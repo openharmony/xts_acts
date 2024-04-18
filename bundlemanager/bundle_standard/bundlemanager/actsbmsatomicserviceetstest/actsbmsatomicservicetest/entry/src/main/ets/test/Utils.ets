@@ -14,8 +14,8 @@
  */
 
 export default class Utils {
-  static sleep(time) {
-    return new Promise((resolve, reject) => {
+  static sleep(time: number) {
+    return new Promise((resolve: (value: string) => void) => {
       setTimeout((data) => {
         resolve(data)
       }, time)

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,6 +18,7 @@ import { describe, expect, it } from '@ohos/hypium'
 
 export default function Http2Test() {
     describe('Http2Test', function () {
+		let cc = net_Http.ResponseCode.RANGE_NOT_SATISFIABLE
 
         /**
          * @tc.number Telephony_NETSTACK_Http2TestBasicGet_0100
@@ -26,11 +27,11 @@ export default function Http2Test() {
          */
         it('Telephony_NETSTACK_Http2TestBasicGet_0100', 0, async function (done) {
             let http = net_Http.createHttp();
-            http.request("https://www.zhihu.com", {
+            http.request("https://www.baidu.com", {
                 usingProtocol: net_Http.HttpProtocol.HTTP1_1
             }).then(function (data) {
-                http.destroy();
                 expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
+				http.destroy();
                 done();
             });
         });
@@ -42,12 +43,12 @@ export default function Http2Test() {
          */
         it('Telephony_NETSTACK_Http2TestBasicGet_0200', 0, async function (done) {
             let http = net_Http.createHttp();
-            http.request("https://www.zhihu.com", {
+            http.request("https://www.baidu.com", {
                 usingProtocol: net_Http.HttpProtocol.HTTP2
             }).then(function (data) {
-                http.destroy();
                 console.info("Telephony_NETSTACK_Http2TestBasicGet_0200" + JSON.stringify(data));
                 expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
+				http.destroy();
                 done();
             });
         });
@@ -59,10 +60,10 @@ export default function Http2Test() {
          */
         it('Telephony_NETSTACK_Http2TestBasicGet_0300', 0, async function (done) {
             let http = net_Http.createHttp();
-            http.request("https://www.zhihu.com").then(function (data) {
-                http.destroy();
+            http.request("https://www.baidu.com").then(function (data) {
                 console.info("Telephony_NETSTACK_Http2TestBasicGet_0300" + JSON.stringify(data));
                 expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
+				http.destroy();
                 done();
             });
         });
@@ -89,13 +90,18 @@ export default function Http2Test() {
             expect(net_Http.HttpDataType.ARRAY_BUFFER).assertEqual(2);
             done();
         });
-
+		
+		 /**
+         * @tc.number Telephony_http_HttpTestPriority_0100
+         * @tc.name set usingCache to true
+         * @tc.desc usingCache test
+         */
         it('Telephony_http_HttpTestPriority_0100', 0, async function (done) {
             let CaseName = 'Telephony_http_HttpTestPriority_0100';
             try {
                 let httpRequestOptions = {
                     method: net_Http.RequestMethod.GET,
-                    extraData: null,
+                    extraData: '',
                     expectDataType: net_Http.HttpDataType.STRING,
                     header: "content-type': 'application/json",
                     readTimeout: 6000,
@@ -103,12 +109,12 @@ export default function Http2Test() {
                     priority: 100,
                     caPath: ''
                 }
-                var httpRequest = net_Http.createHttp();
-                httpRequest.request("https://www.zhihu.com", httpRequestOptions, (err, data) => {
-                    httpRequest.destroy();
+                let httpRequest = net_Http.createHttp();
+                httpRequest.request("https://www.baidu.com", httpRequestOptions, (err, data) => {
                     console.info(CaseName + JSON.stringify(err) + "data" + JSON.stringify(data));
                     expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
                     expect(data.resultType == net_Http.HttpDataType.STRING).assertTrue();
+					httpRequest.destroy();
                     done();
                 });
             } catch (err) {

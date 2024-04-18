@@ -12,15 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import observer from '@ohos.arkui.observer'
-let tt : string|Resource|ResourceStr = 'TTTTTT'
+import observer from '@ohos.arkui.observer';
+
+let tt: string | Resource | ResourceStr = 'TTTTTT';
 
 @Entry
 @Component
 struct QueryNavDestinationInfoNavDestination {
-  @State isActiveWLAN: boolean = false
-  @State isActiveBluetooth: boolean = false
-  @State tState: string|Resource|ResourceStr = 'YYYYY'
+  @State isActiveWLAN: boolean = false;
+  @State isActiveBluetooth: boolean = false;
+  @State tState: string | Resource | ResourceStr = 'YYYYY';
+
   // 可删
   aboutToAppear() {
     observer.on('navDestinationUpdate', (info) => {
@@ -42,12 +44,21 @@ struct QueryNavDestinationInfoNavDestination {
   }
 
   build() {
-    Column({space:20}) {
-      Text(this.tState).fontSize(26).fontWeight(700).key('QueryNavDestinationInfoNavDestinationTextObserver').fontColor(Color.Red)
+    Column({ space: 20 }) {
+      Text(this.tState)
+        .fontSize(26)
+        .fontWeight(700)
+        .key('QueryNavDestinationInfoNavDestinationTextObserver')
+        .fontColor(Color.Red)
       Navigation() {
         NavRouter() {
           Row() {
-            Row().width(30).height(30).borderRadius(30).margin({ left: 3, right: 10 }).backgroundColor(Color.Pink)
+            Row()
+              .width(30)
+              .height(30)
+              .borderRadius(30)
+              .margin({ left: 3, right: 10 })
+              .backgroundColor(Color.Pink)
             Text(`WLAN`).key('QueryNavDestinationInfoNavDestinationText01')
               .fontSize(22)
               .fontWeight(500)
@@ -55,9 +66,11 @@ struct QueryNavDestinationInfoNavDestination {
           }
           .width('90%')
           .height(72)
+
           NavDestination() {
             XX()
-          }.hideTitleBar(false).backgroundColor('#0c182431').id('111')
+          }.hideTitleBar(false).backgroundColor('#0c182431')
+          .id('111')
         }.backgroundColor(this.isActiveWLAN ? '#ccc' : '#fff')
         .borderRadius(24)
         .onStateChange((isActivated: boolean) => {
@@ -86,8 +99,12 @@ struct XX {
   }
 
   build() {
-    Column({space:20}){
-      Text(tt).fontSize(26).fontWeight(700).key('XXqueryNavDestinationInfoNavDestinationText01').fontColor(Color.Blue)
+    Column({ space: 20 }) {
+      Text(tt)
+        .fontSize(26)
+        .fontWeight(700)
+        .key('XXqueryNavDestinationInfoNavDestinationText01')
+        .fontColor(Color.Blue)
     }
   }
 }

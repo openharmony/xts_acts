@@ -15,14 +15,27 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix,MouseButton} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  MouseButton
+} from '@ohos.UiTest';
 
 export default function richEditorApi5() {
-  describe('richEditorApi5', function () {
-    beforeEach(async function (done) {
+  describe('richEditorApi5', () => {
+    beforeEach(async (done: Function) => {
       console.info("richEditorApi5 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/richEditor/richEditorApi/richEditorApi5',
       }
       try {
@@ -31,7 +44,7 @@ export default function richEditorApi5() {
         console.info("get richEditorApi5 state pages:" + JSON.stringify(pages));
         if (!("richEditorApi5" == pages.name)) {
           console.info("get richEditorApi5 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push richEditorApi5 page result:" + JSON.stringify(result));
         }
@@ -41,30 +54,31 @@ export default function richEditorApi5() {
       console.info("richEditorApi5 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("richEditorApi5 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_richEditorApi5_0100
-     * @tc.name      testRichEditor
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_richEditorApi5_0100
+     * @tc.name testRichEditor
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('richEditorApi5_0100', 0, async function (done) {
+    it('richEditorApi5_0100', 0, async (done: Function) => {
       console.info('[richEditorApi5_0100] START');
       await CommonFunc.sleep(2000);
 
       let driver = Driver.create();
       await CommonFunc.sleep(300);
 
-      await driver.mouseClick({x:300, y:300}, MouseButton.MOUSE_BUTTON_LEFT)
-
+      await driver.mouseClick({
+        x: 300, y: 300
+      }, MouseButton.MOUSE_BUTTON_LEFT)
 
       let text1 = getInspectorByKey('richEditorApi5_text1');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('444');
 
       console.info('[testRichEditor_0100] END');

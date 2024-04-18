@@ -13,40 +13,59 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {CustomContainer} from '../common/CustomContainer2';
+import { CustomContainer } from '../common/CustomContainer2';
 import FirstDialog from '../model/FirstDialog';
+
 @Entry
 @Component
 struct RotationGuestureTest {
   @State X: number = 0;
   @State name: string = 'RotationGesture';
-  @State StepTips: string = '操作步骤：两根手指旋转图像'+'\n'+'预期结果：图片能够正常旋转且文本旋转角度显示正常';
+  @State StepTips: string = '操作步骤：两根手指旋转图像' + '\n' + '预期结果：图片能够正常旋转且文本旋转角度显示正常';
   @State Vue: boolean = false;
-  async aboutToAppear(){
-    await FirstDialog.ChooseDialog(this.StepTips,this.name);
+
+  async aboutToAppear() {
+    await FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
-  @Builder specificNoParam() {
-    Column(){
+
+  @Builder
+  specificNoParam() {
+    Column() {
       Scroll() {
         Column() {
-      Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Image($r("app.media.img")).height('60%').width('60%')
-      }
-      .height('350vp').width('350vp').padding(20)
-      .rotate({ x:1, y:1, z:1, angle: this.X })
-      .margin(80)
-      .gesture(
-      RotationGesture()
-        .onActionUpdate((event: GestureEvent) => {
-          this.X = event.angle;
-          this.Vue = true;
-        })
-      )
-      Text('旋转角度:' + this.X)
+          Flex({
+            direction: FlexDirection.Column,
+            alignItems: ItemAlign.Center,
+            justifyContent: FlexAlign.SpaceBetween
+          }) {
+            Image($r("app.media.img"))
+              .height('60%')
+              .width('60%')
+          }
+          .height('350vp')
+          .width('350vp')
+          .padding(20)
+          .rotate({ x: 1, y: 1, z: 1, angle: this.X })
+          .margin(80)
+          .gesture(
+            RotationGesture()
+              .onActionUpdate((event: GestureEvent) => {
+                this.X = event.angle;
+                this.Vue = true;
+              })
+          )
+
+          Text('旋转角度:' + this.X)
         }
-      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
-    }.height('80%').width('100%').backgroundColor(Color.White)
+      }
+      .scrollBarWidth('6vp')
+      .scrollBarColor('#cccccc')
+    }
+    .height('80%')
+    .width('100%')
+    .backgroundColor(Color.White)
   }
+
   build() {
     Column() {
       CustomContainer({
@@ -58,11 +77,15 @@ struct RotationGuestureTest {
         name: $name,
         Vue: $Vue,
       })
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/ArkUI/ArkUI_index',
+      url: 'pages/ArkUI/ArkUI_index',
     })
   }
 }

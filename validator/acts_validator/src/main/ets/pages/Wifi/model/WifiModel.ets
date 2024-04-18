@@ -13,12 +13,12 @@
 * limitations under the License.
 */
 
-import prompt from '@ohos.promptAction'
-import wifi from '@ohos.wifiManager'
-import emitter from '@ohos.events.emitter'
-import Logger from '../../model/Logger'
+import prompt from '@ohos.promptAction';
+import wifi from '@ohos.wifiManager';
+import emitter from '@ohos.events.emitter';
+import Logger from '../../model/Logger';
 
-const TAG: string = 'WiFiModel'
+const TAG: string = 'WiFiModel';
 
 export type WifiType = {
   ssid: string,
@@ -42,7 +42,7 @@ export class WifiModel {
       return wifiList
     }
     Logger.info(TAG, `scan info call back: ${result.length}`)
-    for (var i = 0; i < result.length; ++i) {
+    for (let i = 0; i < result.length; ++i) {
       wifiList.push({
         ssid: result[i].ssid,
         bssid: result[i].bssid,

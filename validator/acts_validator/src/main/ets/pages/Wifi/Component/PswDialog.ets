@@ -20,10 +20,10 @@ let TAG: string = 'PswDialog'
 
 @CustomDialog
 export struct PswDialog {
-  @Link scanInfo: wifi.WifiScanInfo
-  private psw: string = ''
-  private controller: CustomDialogController
-  private action: (scanInfo, psw) => void
+  @Link scanInfo: wifi.WifiScanInfo;
+  private psw: string = '';
+  private controller: CustomDialogController;
+  private action: (scanInfo:wifi.WifiScanInfo, psw: string) => void;
 
   build() {
     Column() {

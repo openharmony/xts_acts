@@ -33,7 +33,8 @@ struct attributePressedDemo {
     Row() {
       Column() {
         Button("Button")
-          .attributeModifier(this.modifier).key("pressedBt")
+          .attributeModifier(this.modifier)
+          .key("pressedBt")
       }
       .width('100%')
     }

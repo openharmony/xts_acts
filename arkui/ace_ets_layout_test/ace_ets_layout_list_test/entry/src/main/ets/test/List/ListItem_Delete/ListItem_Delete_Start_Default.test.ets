@@ -112,7 +112,7 @@ export default function ListItem_Delete_Start_Default() {
       let ListItem_01: RectValue = CommonFunc.getComponentRect('ListItem_Delete_Start_Default_ListItem_01');
       let driver = Driver.create();
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(300)), Math.round(vp2px(50))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 
@@ -151,7 +151,7 @@ export default function ListItem_Delete_Start_Default() {
       let ListItem_01: RectValue = CommonFunc.getComponentRect('ListItem_Delete_Start_Default_ListItem_01');
 
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(100)), Math.round(vp2px(50))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(100)), Math.round(globalThis.winTop + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 

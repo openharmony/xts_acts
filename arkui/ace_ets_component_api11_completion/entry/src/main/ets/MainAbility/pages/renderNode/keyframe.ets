@@ -20,14 +20,16 @@ import { UIContext } from '@ohos.arkui.UIContext';
 struct KeyframeDemo {
   @State myScale: number = 1.0;
   @State message: string = 'hello';
-  @State DragPreviewMode1: DragPreviewMode = DragPreviewMode.DISABLE_SCALE
+  @State DragPreviewMode1: DragPreviewMode = DragPreviewMode.DISABLE_SCALE;
   uiContext: UIContext | undefined = undefined;
+
   aboutToAppear() {
     this.uiContext = this.getUIContext?.();
   }
+
   build() {
     Column() {
-      Text('message:'+`${this.message}`).key('keyframe_0')
+      Text('message:' + `${this.message}`).key('keyframe_0')
       Circle()
         .key('keyframe_1')
         .width(100)
@@ -57,6 +59,8 @@ struct KeyframeDemo {
             }
           ]);
         })
-    }.width('100%').margin({ top: 5 })
+    }
+    .width('100%')
+    .margin({ top: 5 })
   }
 }

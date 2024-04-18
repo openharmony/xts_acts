@@ -86,7 +86,7 @@ export default function swiperAnimationJsunit() {
       }
       await CommonFunc.sleep(1000);
       // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -97,7 +97,7 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right/2) + 40,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
       await CommonFunc.sleep(1000);
       // check the onAnimation triggers
       let strJson = getInspectorByKey('animationEnd');
@@ -144,7 +144,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -156,10 +156,9 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver2 = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver2.swipe(Math.round(right/2) + 40,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2));
+     await driver2.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-      //swipe
-      await driver2.swipe(Math.round(right/2) + 40,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2)); 
+     await driver2.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
@@ -205,7 +204,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -269,7 +268,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -287,10 +286,10 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(200);
       await driver.longClick(Math.round(right/2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-      // to swipe for duration
-      await driver.swipe(Math.round(right/2) + 40,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2));
+     // to swipe for duration
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right/2) + 40,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2)); 
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
 
        // check the onAnimation triggers
@@ -337,7 +336,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -394,7 +393,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -459,7 +458,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -526,7 +525,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -551,7 +550,7 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(1000);
 
      // press screen to swipe
-      await driver.swipe(Math.round(right/2) + 40,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);  
 
 
@@ -601,7 +600,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -626,10 +625,11 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(1000);
 
      // press screen to swipe
-      await driver.swipe(Math.round(right/2) + 40,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2));
-      await CommonFunc.sleep(500);  
-      await driver.swipe(Math.round(left - 20),Math.round(bottom + height/2),Math.round(right/2) + 40,Math.round(bottom + height/2));
-      await CommonFunc.sleep(500);  
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await CommonFunc.sleep(3000);
+     await driver.swipe(Math.round(left + width*0.1),Math.round(bottom + height/2),Math.round(left + width*0.1),Math.round(bottom + height/2));
+
+      await CommonFunc.sleep(500);
 
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
@@ -677,7 +677,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -690,7 +690,9 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right/2) + 70,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2));
+     // getComponentRectOnScreen
+     await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+
       await CommonFunc.sleep(1000);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
@@ -737,7 +739,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -749,14 +751,14 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right/2) + 40,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0017'] component obj2 is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('GestureSwipe index: 1');
-      await driver.swipe(Math.round(left - 20), Math.round(bottom + height/2),Math.round(right/2) + 40,Math.round(bottom + height/2));
+      await driver.swipe(Math.round(left + width*0.1), Math.round(bottom + height/2),Math.round(left + width*0.1),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
       let strJson2 = getInspectorByKey('GestureSwipe');
       let obj2 = JSON.parse(strJson2);
@@ -802,7 +804,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -817,14 +819,14 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right/2) + 40,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0019'] component obj2 is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('GestureSwipe index: 1');
-      await driver.swipe(Math.round(left - 20), Math.round(bottom + height/2),Math.round(right/2) + 40,Math.round(bottom + height/2));
+      await driver.swipe(Math.round(left + width*0.1), Math.round(bottom + height/2),Math.round(left + width*0.1),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
       let strJson2 = getInspectorByKey('GestureSwipe');
       let obj2 = JSON.parse(strJson2);
@@ -870,7 +872,7 @@ export default function swiperAnimationJsunit() {
          console.error("push circle page error: " + err);
       }
             // get the rect of swiper
-      let swiperAnimation = CommonFunc.getComponentRect('swiperAnimation');
+      let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
@@ -894,14 +896,14 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(1000);
 
       // to swiper
-      await driver.swipe(Math.round(right/2) + 40,Math.round(bottom + height/2),Math.round(left - 20),Math.round(bottom + height/2));
-      await CommonFunc.sleep(500);
-       // check the onAnimation triggers
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await CommonFunc.sleep(3000);
+       //check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0020'] component obj2 is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('GestureSwipe index: 2');
-      await driver.swipe(Math.round(left - 20), Math.round(bottom + height/2),Math.round(right/2) + 40,Math.round(bottom + height/2));
+      await driver.swipe(Math.round(left + width*0.1), Math.round(bottom + height/2),Math.round(left + width*0.1),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
       let strJson2 = getInspectorByKey('GestureSwipe');
       let obj2 = JSON.parse(strJson2);

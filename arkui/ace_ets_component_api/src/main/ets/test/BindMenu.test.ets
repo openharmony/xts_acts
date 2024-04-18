@@ -16,6 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+import MyUtils from '../TestAbility/common/MyUtils';
 
 export default function BindMenuTest() {
 
@@ -35,6 +36,8 @@ export default function BindMenuTest() {
           await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
           })
+          await MyUtils.sleep(3000);
+
         }
       } catch (err) {
         console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));

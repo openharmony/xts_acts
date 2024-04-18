@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import AbilityDelegatorStageTest from './AbilityDelegatorStage.test'
+import AbilityDelegatorStageTest from './AbilityDelegatorStage.test';
 
 export default function testsuite() {
-  AbilityDelegatorStageTest()
+  AbilityDelegatorStageTest();
 }

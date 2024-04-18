@@ -84,6 +84,10 @@ export default function List_divider() {
       let List_divider_013: RectValue = CommonFunc.getComponentRect('List_divider_013');
       let List_divider_014: RectValue = CommonFunc.getComponentRect('List_divider_014');
       let List_divider_01: RectValue = CommonFunc.getComponentRect('List_divider_01');
+      let left = List_divider_01.left;
+      let top = List_divider_01.top;
+      let right = List_divider_01.right;
+      let bottom = List_divider_01.bottom;
       expect(Math.round(List_divider_011.right - List_divider_011.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(List_divider_012.right - List_divider_012.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(List_divider_013.right - List_divider_013.left)).assertEqual(Math.round(vp2px(300)));
@@ -106,7 +110,7 @@ export default function List_divider() {
       expect(Math.round(List_divider_01.bottom - List_divider_01.top)).assertEqual(Math.round(vp2px(500)));
       expect(Math.round(List_divider_01.right - List_divider_01.left)).assertEqual(Math.round(vp2px(350)));
       let driver = Driver.create();
-      await driver.swipe(360, 690, 360, 30);
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(globalThis.winTop + (bottom-top)/2 + top), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(globalThis.winTop + top));
       await CommonFunc.sleep(3000);
       let List_divider_014Again: RectValue = CommonFunc.getComponentRect('List_divider_014');
       expect(List_divider_014.top).assertEqual(List_divider_014Again.top);
@@ -133,6 +137,10 @@ export default function List_divider() {
       let List_divider_013: RectValue = CommonFunc.getComponentRect('List_divider_013');
       let List_divider_014: RectValue = CommonFunc.getComponentRect('List_divider_014');
       let List_divider_01: RectValue = CommonFunc.getComponentRect('List_divider_01');
+      let left = List_divider_01.left;
+      let top = List_divider_01.top;
+      let right = List_divider_01.right;
+      let bottom = List_divider_01.bottom;
       expect(Math.round(List_divider_011.right - List_divider_011.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(List_divider_012.right - List_divider_012.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(List_divider_013.right - List_divider_013.left)).assertEqual(Math.round(vp2px(300)));
@@ -155,7 +163,7 @@ export default function List_divider() {
       expect(Math.round(List_divider_01.bottom - List_divider_01.top)).assertEqual(Math.round(vp2px(500)));
       expect(Math.round(List_divider_01.right - List_divider_01.left)).assertEqual(Math.round(vp2px(350)));
       let driver = Driver.create();
-      await driver.swipe(360, 690, 360, 30);
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2),  Math.round(globalThis.winTop + (bottom-top)/2 + top), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(globalThis.winTop + top));
       await CommonFunc.sleep(3000);
       let List_divider_014Again: RectValue = CommonFunc.getComponentRect('List_divider_014');
       expect(List_divider_01.bottom).assertEqual(List_divider_014Again.bottom);

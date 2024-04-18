@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 export default function SXSymbolGlyphSINGLE01Jsunit() {
-  describe('SXSymbolGlyphSINGLE01Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('SXSymbolGlyphSINGLE01Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("SXSymbolGlyphSINGLE01Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AttributeModifier/SXSymbolGlyphSINGLE01',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AttributeModifier/SXSymbolGlyphSINGLE01',
       }
       try {
         router.clear();
@@ -40,16 +53,15 @@ export default function SXSymbolGlyphSINGLE01Jsunit() {
       }
       done();
     });
-    it('SXSymbolGlyphSINGLE01Jsunit_0100', 0, async function (done) {
+    it('SXSymbolGlyphSINGLE01Jsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('SXSymbolGlyphSINGLE01Jsunit_0100 START');
       let strcontent = getInspectorByKey('SXSymbolGlyphSINGLE01Key');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('SXSymbolGlyphSINGLE01Jsunit_0100 component obj is: ' + obj);
-      console.info('SXSymbolGlyphSINGLE01Jsunit_0100 component obj.$attrs is: ' + obj.$attrs);
-      console.info('SXSymbolGlyphSINGLE01Jsunit_0100 component obj.$attrs.textBackgroundStyle is: ' + obj.$attrs.renderingStrategy);
-      expect(obj.$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.SINGLE');
+      console.info('SXSymbolGlyphSINGLE01Jsunit_0100 component obj is: ' + JSON.parse(strcontent));
+      console.info('SXSymbolGlyphSINGLE01Jsunit_0100 component obj.$attrs is: ' + JSON.parse(strcontent).$attrs);
+      console.info('SXSymbolGlyphSINGLE01Jsunit_0100 component obj.$attrs.textBackgroundStyle is: ' + JSON.parse(strcontent).$attrs.renderingStrategy);
+      expect(JSON.parse(strcontent).$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.SINGLE');
       console.info('SXSymbolGlyphSINGLE01Jsunit_0100 END')
       done();
     });

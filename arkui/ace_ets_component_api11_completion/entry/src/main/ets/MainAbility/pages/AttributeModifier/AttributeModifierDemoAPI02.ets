@@ -14,6 +14,7 @@
  */
 class MyButtonModifier2 implements AttributeModifier<ButtonAttribute> {
   isDark: boolean = false
+
   applyFocusedAttribute(instance: ButtonAttribute): void {
     instance.backgroundColor("#FF209B08")
   }
@@ -24,10 +25,12 @@ class MyButtonModifier2 implements AttributeModifier<ButtonAttribute> {
 struct AttributeModifierDemoAPI02 {
   @State modifier: MyButtonModifier2 = new MyButtonModifier2()
   @State enabledFlag: boolean = true
+
   build() {
     Row() {
       Column() {
-        Button("检测此button").key('AttributeModifierDemoAPI02ButtonFocus')
+        Button("检测此button")
+          .key('AttributeModifierDemoAPI02ButtonFocus')
           .width('90%')
           .height(80)
           .attributeModifier(this.modifier)

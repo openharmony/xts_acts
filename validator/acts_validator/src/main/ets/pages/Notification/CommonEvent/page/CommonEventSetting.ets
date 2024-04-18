@@ -60,7 +60,8 @@ struct CommonEventSetting {
     .onClick(() => {
       router.back({
         url: 'pages/Notification/Notification_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);

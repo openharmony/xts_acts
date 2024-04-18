@@ -18,6 +18,7 @@ import router from '@ohos.router'
 
 class PaddingButtonModifier implements AttributeModifier<CommonAttribute> {
   mPadding: Padding | Length = 0;
+
   applyNormalAttribute(instance: CommonAttribute): void {
     instance.padding(this.mPadding);
   }
@@ -28,28 +29,30 @@ class PaddingButtonModifier implements AttributeModifier<CommonAttribute> {
 @Component
 struct VisibilityPage {
   @State _paddingButtonModifier: PaddingButtonModifier = new PaddingButtonModifier();
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : '';
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : '';
-  @State targetComponentWidth: number = router.getParams() ? router.getParams()['view']['targetComponentWidth'] : 0;
-  @State targetComponentHeight: number = router.getParams() ? router.getParams()['view']['targetComponentHeight'] : 0;
-  @State referenceComponentKey: string = router.getParams() ? router.getParams()['view']['referenceComponentKey'] : '';
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : '';
+  @State targetView: string = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.targetView : '';
+  @State componentKey: string = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.componentKey : '';
+  @State targetComponentWidth: number = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.targetComponentWidth : 0;
+  @State targetComponentHeight: number = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.targetComponentHeight : 0;
+  @State referenceComponentKey: string = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.referenceComponentKey : '';
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.parentComponentKey : '';
 
   onPageShow() {
     console.info('visibility page show called ')
-    AttrsManager.registerDataChange(value => {
-      this._paddingButtonModifier.mPadding= value;
+    AttrsManager.registerDataChange((value: Padding | Length) => {
+      this._paddingButtonModifier.mPadding = value;
     })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .attributeModifier(this._paddingButtonModifier)
     .width(this.targetComponentWidth)
     .height(this.targetComponentHeight)
     .key(this.componentKey)
   }
 
-  @Styles referenceComponentCommonStyle(){
+  @Styles
+  referenceComponentCommonStyle(){
     .width(this.targetComponentWidth)
     .height(this.targetComponentHeight)
     .key(this.referenceComponentKey)
@@ -65,6 +68,7 @@ struct VisibilityPage {
               .textAlign(TextAlign.Center)
               .backgroundColor(Color.White)
           }.commonStyle()
+
           ListItem() {
             Text('referenceComponent')
               .width('100%')
@@ -87,6 +91,7 @@ struct VisibilityPage {
                 .backgroundColor(Color.White)
             }
           }.backgroundColor(Color.Yellow).commonStyle()
+
           ListItemGroup() {
             ListItem() {
               Text('referenceComponentKey')
@@ -130,6 +135,7 @@ struct VisibilityPage {
           GridCol() {
             Row().width('100%').height('20vp')
           }.commonStyle()
+
           GridCol() {
             Row().width('100%').height('20vp')
           }.referenceComponentCommonStyle()
@@ -142,6 +148,7 @@ struct VisibilityPage {
               Image($r('app.media.icon')).width(50).height(50).objectFit(ImageFit.Fill)
             }
           }.commonStyle()
+
           FlowItem() {
             Column() {
               Text('WaterFlow').fontSize(12).height('16')
@@ -154,6 +161,7 @@ struct VisibilityPage {
           GridItem() {
             Text('4').backgroundColor(0xFAEEE0).width('100%').height('100%').textAlign(TextAlign.Center)
           }.commonStyle()
+
           GridItem() {
             Text('4').backgroundColor(0xFAEEE0).width('100%').height('100%').textAlign(TextAlign.Center)
           }.referenceComponentCommonStyle()
@@ -216,6 +224,7 @@ struct VisibilityPage {
               Row() {
                 Image($r('app.media.icon'))
               }
+
               NavDestination() {
                 Text('NavDestination').fontSize(10)
               }
@@ -337,7 +346,7 @@ struct VisibilityPage {
               direction: GridRowDirection.Row
             }) {
               ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green,
-                Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color) => {
+                Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color: Color) => {
                 GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                   Row().width('100%').height('20vp')
                 }.borderColor(color).borderWidth(2)
@@ -406,19 +415,19 @@ struct VisibilityPage {
           } else if (this.targetView == 'Scroll') {
             Scroll() {
               Column() {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                   Text('Scroll' + item.toString())
                     .width('90%')
                     .height(50)
                     .backgroundColor(Color.White)
                     .textAlign(TextAlign.Center)
-                }, item => item)
+                }, (item: number) => item.toString())
               }.width('100%')
             }.scrollBar(BarState.On).commonStyle()
           } else if (this.targetView == 'SideBarContainer') {
             SideBarContainer(SideBarContainerType.Embed) {
               Column() {
-                ForEach([1, 2, 3], (item) => {
+                ForEach([1, 2, 3], (item: number) => {
                   Column({ space: 5 }) {
                     Image($r('app.media.icon')).width(50).height(50)
                     Text('Index0' + item).fontSize(25)
@@ -438,7 +447,7 @@ struct VisibilityPage {
             Swiper() {
               ForEach([1, 2, 3], (item: string) => {
                 Text('Swiper' + item).width('90%').height(50)
-              }, item => item)
+              }, (item: string) => item)
             }
             .indicator(true)
             .backgroundColor(Color.White)
@@ -461,7 +470,7 @@ struct VisibilityPage {
                       .objectFit(ImageFit.Fill)
                   }
                 }
-              }, item => item)
+              }, (item: number) => item.toString())
             }.commonStyle()
           }
           Text('referenceComponentKey')

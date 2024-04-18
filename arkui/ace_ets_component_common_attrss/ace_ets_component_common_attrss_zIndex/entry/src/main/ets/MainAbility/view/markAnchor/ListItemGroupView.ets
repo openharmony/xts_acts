@@ -21,9 +21,10 @@ export struct ListItemGroupView {
   private parentHeight: number;
   private subassemblyWidth: number;
   private subassemblyHeight: number;
-  private projects: string[] = ['Chinese', 'mathematics', 'English']
+  private projects: string[] = ['Chinese', 'mathematics', 'English'];
 
-  @Builder itemHead(text: string) {
+  @Builder
+  itemHead(text: string) {
     Text(text)
       .fontSize(20)
       .backgroundColor(0xAABBCC)
@@ -31,7 +32,8 @@ export struct ListItemGroupView {
       .padding(10)
   }
 
-  @Builder itemFoot(num: number) {
+  @Builder
+  itemFoot(num: number) {
     Text('have ' + num + 'classes')
       .fontSize(16)
       .backgroundColor(0xAABBCC)
@@ -39,7 +41,8 @@ export struct ListItemGroupView {
       .padding(5)
   }
 
-  @Builder content(project: string) {
+  @Builder
+  content(project: string) {
     Text(project)
       .width('100%')
       .height(100)
@@ -51,11 +54,11 @@ export struct ListItemGroupView {
   build() {
     List({ space: 20 }) {
       ListItemGroup({ header: this.itemHead('Monday'), footer: this.itemFoot(this.projects.length) }) {
-        ForEach(this.projects, (project) => {
+        ForEach(this.projects, (project: string) => {
           ListItem() {
             this.content(project)
           }
-        }, item => item)
+        }, (item: string) => item)
       }
       .width(this.subassemblyWidth)
       .height(this.subassemblyHeight)
@@ -65,11 +68,11 @@ export struct ListItemGroupView {
       .divider({ strokeWidth: 1, color: Color.Blue }) // line of demarcation
 
       ListItemGroup({ header: this.itemHead('Tuesday'), footer: this.itemFoot(this.projects.length) }) {
-        ForEach(this.projects, (project) => {
+        ForEach(this.projects, (project: string) => {
           ListItem() {
             this.content(project)
           }
-        }, item => item)
+        }, (item: string) => item)
       }
       .borderRadius(20)
       .divider({ strokeWidth: 1, color: Color.Blue }) // line of demarcation

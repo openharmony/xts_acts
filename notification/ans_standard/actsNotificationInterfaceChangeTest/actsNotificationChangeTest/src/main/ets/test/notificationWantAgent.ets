@@ -12,25 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import wantAgent from '@ohos.app.ability.wantAgent';
 
-var TAG;
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import wantAgent, {WantAgent} from '@ohos.app.ability.wantAgent';
+
+let TAG: string;
 
 export default function wantAgentInfoTest() {
-  describe('WantAgentTest', function () {
+  describe('WantAgentTest',  ()=> {
 
     /**
      * @tc.number Acts_WantAgentInfo_0100
      * @tc.name Verify operationType properties and getOperationType properties.
      * @tc.desc Set wantAgent.OperationType.START_ABILITY and [wantAgent.WantAgentFlags.ONE_TIME_FLAG].
      */
-    it('Acts_WantAgentInfo_0100', 0, async function (done) {
+    it('Acts_WantAgentInfo_0100', 0, async  (done:Function)=> {
       TAG = 'Acts_WantAgentInfo_0100 ==>';
       console.info('Acts_WantAgentInfo_0100 START')
 
-      let WantAgent = {}
-      var WantAgentInfo = {
+      let WantAgent: WantAgent;
+      let WantAgentInfo: wantAgent.WantAgentInfo = {
         wants: [
           {
             deviceId: "deviceId",
@@ -79,12 +80,12 @@ export default function wantAgentInfoTest() {
      * @tc.name Verify operationType properties and getOperationType properties.
      * @tc.desc Set wantAgent.OperationType.START_ABILITY and [wantAgent.WantAgentFlags.NO_BUILD_FLAG].
      */
-    it('Acts_WantAgentInfo_0200', 0, async function (done) {
+    it('Acts_WantAgentInfo_0200', 0, async  (done:Function)=> {
       TAG = 'Acts_WantAgentInfo_0200 ==>';
       console.info('Acts_WantAgentInfo_0200 START')
 
-      let WantAgent = {}
-      var WantAgentInfo = {
+      let WantAgent: WantAgent;
+      let WantAgentInfo: wantAgent.WantAgentInfo = {
         wants: [
           {
             deviceId: "deviceId",
@@ -133,12 +134,12 @@ export default function wantAgentInfoTest() {
      * @tc.name Verify operationType properties and getOperationType properties.
      * @tc.desc Set wantAgent.OperationType.START_ABILITIES and [wantAgent.WantAgentFlags.CANCEL_PRESENT_FLAG].
      */
-    it('Acts_WantAgentInfo_0300', 0, async function (done) {
+    it('Acts_WantAgentInfo_0300', 0, async  (done:Function)=> {
       TAG = 'Acts_WantAgentInfo_0300 ==>';
       console.info('Acts_WantAgentInfo_0300 START')
 
-      let WantAgent = {}
-      var WantAgentInfo = {
+      let WantAgent: WantAgent;
+      let WantAgentInfo: wantAgent.WantAgentInfo = {
         wants: [
           {
             deviceId: "deviceId",
@@ -187,12 +188,12 @@ export default function wantAgentInfoTest() {
      * @tc.name Verify operationType properties and getOperationType properties.
      * @tc.desc Set wantAgent.OperationType.START_SERVICE and [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG].
      */
-    it('Acts_WantAgentInfo_0400', 0, async function (done) {
+    it('Acts_WantAgentInfo_0400', 0, async  (done:Function)=> {
       TAG = 'Acts_WantAgentInfo_0400 ==>';
       console.info('Acts_WantAgentInfo_0400 START')
 
-      let WantAgent = {}
-      var WantAgentInfo = {
+      let WantAgent: WantAgent;
+      let WantAgentInfo: wantAgent.WantAgentInfo = {
         wants: [
           {
             deviceId: "deviceId",
@@ -241,12 +242,12 @@ export default function wantAgentInfoTest() {
      * @tc.name Verify operationType properties and getOperationType properties.
      * @tc.desc Set wantAgent.OperationType.SEND_COMMON_EVENT and [wantAgent.WantAgentFlags.CONSTANT_FLAG].
      */
-    it('Acts_WantAgentInfo_0500', 0, async function (done) {
+    it('Acts_WantAgentInfo_0500', 0, async  (done:Function)=> {
       TAG = 'Acts_WantAgentInfo_0500 ==>';
       console.info('Acts_WantAgentInfo_0500 START')
 
-      let WantAgent = {}
-      var WantAgentInfo = {
+      let WantAgent: WantAgent;
+      let WantAgentInfo: wantAgent.WantAgentInfo = {
         wants: [
           {
             deviceId: "deviceId",

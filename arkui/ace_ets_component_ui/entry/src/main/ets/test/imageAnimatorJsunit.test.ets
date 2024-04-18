@@ -176,12 +176,15 @@ export default function imageAniamtorJsunit() {
       console.info('imageAniamtorJsunit_0700 START');
       // test the image event start and Finish
       let driver = await UiDriver.create()
+      await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(BY.key('start'));
+      await CommonFunc.sleep(1000);
       expect(btn != null).assertTrue();
       await btn.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('t1');
       let obj = JSON.parse(strJson);
+      await CommonFunc.sleep(1000);
       console.info("[imageAniamtorJsunit_0700] obj: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('start');
       await CommonFunc.sleep(3000);
@@ -198,8 +201,11 @@ export default function imageAniamtorJsunit() {
       // test the image event of pause and repeat
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
+      await CommonFunc.sleep(500);
       let btn = await driver.findComponent(ON.id('infinite'));
+      await CommonFunc.sleep(1000);
       expect(btn != null).assertTrue();
+      await CommonFunc.sleep(1000);
       await btn.click();
       await CommonFunc.sleep(2000);
       let btn2 = await driver.findComponent(ON.id('start'));

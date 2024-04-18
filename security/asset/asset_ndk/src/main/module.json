@@ -5,7 +5,10 @@
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
     "deviceTypes": [
-      "phone"
+      "default",
+      "phone",
+      "2in1",
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

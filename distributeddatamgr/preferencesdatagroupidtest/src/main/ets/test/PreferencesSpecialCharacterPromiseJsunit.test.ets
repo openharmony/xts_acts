@@ -17,25 +17,27 @@ import dataPreferences from '@ohos.data.preferences';
 import util from '@ohos.util';
 import common from "@ohos.app.ability.common"
 import huks from '@ohos.security.huks';
+import { BusinessError } from '@ohos.base';
+
 const NAME = 'test_preferences';
 const KEY_TEST_UINT8ARRAY = 'key_test_uint8array';
 let mPreferences;
-let context: common.UIAbilityContext
+let context: common.UIAbilityContext;
 
 let aesKeyAlias = 'test_aesKeyAlias';
-let handle:number;
+let handle: number;
 let IV = '001122334455';
-let cipherData:Uint8Array;
+let cipherData: Uint8Array;
 
 function StringToUint8Array(str: String) {
-  let arr:number[]=new Array();
+  let arr: number[] = new Array();
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData:Uint8Array) {
+function Uint8ArrayToString(fileData: Uint8Array) {
   let dataString = '';
   for (let i = 0; i < fileData.length; i++) {
     dataString += String.fromCharCode(fileData[i]);
@@ -122,15 +124,15 @@ function GetAesDecryptProperties() {
   return properties;
 }
 
-export default function preferencesSpecialCharacterPromiseTest(){
-  describe('preferencesSpecialCharacterPromiseTest', function () {
-    beforeAll(async function () {
+export default function preferencesSpecialCharacterPromiseTest() {
+  describe('preferencesSpecialCharacterPromiseTest', () => {
+    beforeAll(async () => {
       console.info('beforeAll');
-      context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext
+      context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
       mPreferences = await dataPreferences.getPreferences(context, NAME);
     })
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info('afterAll');
       await dataPreferences.deletePreferences(context, NAME);
     })
@@ -143,7 +145,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0010', 0, async function () {
+    it('testPreferencesPutUint8Array0010', 0, async () => {
       let uInt8Array = new util.TextEncoder().encodeInto("!@#$%^&*() _+-~");
       const promise = mPreferences.put(KEY_TEST_UINT8ARRAY, uInt8Array);
       await promise.then(async (ret) => {
@@ -168,7 +170,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0020', 0, async function () {
+    it('testPreferencesPutUint8Array0020', 0, async () => {
       let uInt8Array = new util.TextEncoder().encodeInto("abc123");
       const promise = mPreferences.put(KEY_TEST_UINT8ARRAY, uInt8Array);
       await promise.then(async (ret) => {
@@ -180,7 +182,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
         mPreferences = await dataPreferences.getPreferences(context, NAME);
         let pre2 = await mPreferences.get(KEY_TEST_UINT8ARRAY, new Uint8Array(0));
         expect(uInt8Array.toString() === pre2.toString()).assertTrue();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         expect(null).assertFail();
       });
     })
@@ -193,7 +195,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0030', 0, async function () {
+    it('testPreferencesPutUint8Array0030', 0, async () => {
       let uInt8Array = new util.TextEncoder().encodeInto("abc@#$%123");
       const promise = mPreferences.put(KEY_TEST_UINT8ARRAY, uInt8Array);
       await promise.then(async (ret) => {
@@ -205,7 +207,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
         mPreferences = await dataPreferences.getPreferences(context, NAME);
         let pre2 = await mPreferences.get(KEY_TEST_UINT8ARRAY, new Uint8Array(0));
         expect(uInt8Array.toString() === pre2.toString()).assertTrue();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         expect(null).assertFail();
       });
     })
@@ -218,7 +220,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0040', 0, async function () {
+    it('testPreferencesPutUint8Array0040', 0, async () => {
       let uInt8Array = new Uint8Array(8192);
       uInt8Array.fill(100);
       const promise = mPreferences.put(KEY_TEST_UINT8ARRAY, uInt8Array);
@@ -231,7 +233,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
         mPreferences = await dataPreferences.getPreferences(context, NAME);
         let pre2 = await mPreferences.get(KEY_TEST_UINT8ARRAY, new Uint8Array(0));
         expect(uInt8Array.toString() === pre2.toString()).assertTrue();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         expect(null).assertFail();
       });
     })
@@ -244,7 +246,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0050', 0, async function (done) {
+    it('testPreferencesPutUint8Array0050', 0, async (done: Function) => {
       let uInt8Array = new Uint8Array(8193);
       uInt8Array.fill(100);
       try {
@@ -264,7 +266,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutUint8Array0060', 0, async function () {
+    it('testPreferencesPutUint8Array0060', 0, async () => {
       let genProperties = GetAesGenerateProperties();
       let options: huks.HuksOptions = {
         properties: genProperties
@@ -272,7 +274,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
       await huks.generateKeyItem(aesKeyAlias, options)
         .then((data) => {
           console.info(`generate AES Key success, data = ${JSON.stringify(data)}`);
-        }).catch((error)=>{
+        }).catch((error: BusinessError) => {
           console.error(`generate AES Key failed`);
         })
       let uInt8Array = new util.TextEncoder().encodeInto("!@#$%^&*() _+-~");
@@ -284,14 +286,14 @@ export default function preferencesSpecialCharacterPromiseTest(){
       await huks.initSession(aesKeyAlias, options2)
         .then((data) => {
           handle = data.handle;
-        }).catch((error)=>{
+        }).catch((error: BusinessError) => {
           console.error(`callback: init encryptdata failed`);
         })
       await huks.finishSession(handle, options2)
         .then((data) => {
-          console.info(`encrypt data success, data is `+ Uint8ArrayToString(data.outData as Uint8Array));
+          console.info(`encrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
           cipherData = data.outData as Uint8Array;
-        }).catch((error)=>{
+        }).catch((error: BusinessError) => {
           console.error(`encrypt data failed`);
         })
       await mPreferences.put(KEY_TEST_UINT8ARRAY, cipherData).then(async (ret) => {
@@ -304,7 +306,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
         await huks.initSession(aesKeyAlias, options3)
           .then((data) => {
             handle = data.handle;
-          }).catch((error)=>{
+          }).catch((error: BusinessError) => {
             console.error(`init decryptdata failed`);
           })
         await huks.finishSession(handle, options3)
@@ -312,7 +314,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
             console.info(`decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
             console.info(`decrypt data success, data is ` + Uint8ArrayToString(uInt8Array as Uint8Array));
             expect(uInt8Array.toString() === data.outData.toString()).assertTrue();
-          }).catch((error)=>{
+          }).catch((error: BusinessError) => {
             console.error(`callback: decrypt data failed`);
           })
         await mPreferences.flush();
@@ -327,17 +329,17 @@ export default function preferencesSpecialCharacterPromiseTest(){
         await huks.initSession(aesKeyAlias, options4)
           .then((data) => {
             handle = data.handle;
-          }).catch((error)=>{
+          }).catch((error: BusinessError) => {
             console.error(`init decryptdata failed`);
           })
         await huks.finishSession(handle, options4).then((data) => {
-            console.info(`decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
-            console.info(`decrypt data success, data is ` + Uint8ArrayToString(uInt8Array as Uint8Array));
-            expect(uInt8Array.toString() === data.outData.toString()).assertTrue();
-          }).catch((error)=>{
-            console.error(`decrypt data failed`);
-          })
-      }).catch((err) => {
+          console.info(`decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+          console.info(`decrypt data success, data is ` + Uint8ArrayToString(uInt8Array as Uint8Array));
+          expect(uInt8Array.toString() === data.outData.toString()).assertTrue();
+        }).catch((error: BusinessError) => {
+          console.error(`decrypt data failed`);
+        })
+      }).catch((err: BusinessError) => {
         expect(null).assertFail();
       });
       let emptyOptions: huks.HuksOptions = {
@@ -346,7 +348,7 @@ export default function preferencesSpecialCharacterPromiseTest(){
       await huks.deleteKeyItem(aesKeyAlias, emptyOptions)
         .then((data) => {
           console.info(`delete data success`);
-        }).catch((error)=>{
+        }).catch((error: BusinessError) => {
           console.error(`delete data failed`);
         })
     })

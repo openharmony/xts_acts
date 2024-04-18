@@ -54,7 +54,7 @@ struct ClickExample {
           })
 
         Button('Mouse').width(100).height(40).id("Mouse_click")
-          .onClick((event: MouseEvent) => {
+          .onClick((event: ClickEvent) => {
             this.displayX = "MouseEvent: " + event.displayX
             this.displayY = "MouseEvent: " + event.displayY
             this.windowX = "MouseEvent: " + event.windowX

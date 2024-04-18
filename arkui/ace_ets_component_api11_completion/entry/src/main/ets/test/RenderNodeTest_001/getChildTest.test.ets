@@ -13,15 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+
 export default function getChildTest() {
-  describe('getChildTest', function () {
-    beforeEach(async function (done) {
+  describe('getChildTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("getChildTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/renderNode001/getChild',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/renderNode001/getChild',
       }
       try {
         router.clear();
@@ -40,14 +54,14 @@ export default function getChildTest() {
       done();
     });
     /**
-     * @tc.number    getChild
-     * @tc.name      getChildTest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number getChild
+     * @tc.name getChildTest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('getChildTest_0100', 0, async function (done) {
+    it('getChildTest_0100', 0, async (done: Function) => {
       console.info('getChildTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -58,21 +72,20 @@ export default function getChildTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('getChild_2_text');
-      let obj = JSON.parse(strJson);
-      console.info("[getChildTest_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('width:100');
+      console.info("[getChildTest_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('width:100');
       console.info('[getChildTest_0100] END');
       done();
     });
     /**
-     * @tc.number    getChild
-     * @tc.name      getChildTest_0200
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number getChild
+     * @tc.name getChildTest_0200
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('getChildTest_0200', 0, async function (done) {
+    it('getChildTest_0200', 0, async (done: Function) => {
       console.info('getChildTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -83,21 +96,20 @@ export default function getChildTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('getChild_3_text');
-      let obj = JSON.parse(strJson);
-      console.info("[getChildTest_0200] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('width:100');
+      console.info("[getChildTest_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('width:100');
       console.info('[getChildTest_0200] END');
       done();
     });
     /**
-     * @tc.number    getChild
-     * @tc.name      getChildTest_0300
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number getChild
+     * @tc.name getChildTest_0300
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('getChildTest_0300', 0, async function (done) {
+    it('getChildTest_0300', 0, async (done: Function) => {
       console.info('getChildTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -110,21 +122,20 @@ export default function getChildTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('getChild_4_text');
-      let obj = JSON.parse(strJson);
-      console.info("[getChildTest_0300] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('width:100');
+      console.info("[getChildTest_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('width:100');
       console.info('[getChildTest_0300] END');
       done();
     });
     /**
-     * @tc.number    getChild
-     * @tc.name      getChildTest_0400
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number getChild
+     * @tc.name getChildTest_0400
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('getChildTest_0400', 0, async function (done) {
+    it('getChildTest_0400', 0, async (done: Function) => {
       console.info('getChildTest_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -140,9 +151,8 @@ export default function getChildTest() {
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('getChild_5_text');
-      let obj = JSON.parse(strJson);
-      console.info("[getChildTest_0400] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('width:100');
+      console.info("[getChildTest_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('width:100');
       console.info('[getChildTest_0400] END');
       done();
     });

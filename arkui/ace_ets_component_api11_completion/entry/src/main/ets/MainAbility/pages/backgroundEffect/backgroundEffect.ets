@@ -17,16 +17,28 @@
 struct backgroundEffect1 {
   build() {
     Column() {
-      Text('Thin Material').fontSize(30).fontColor(0xCCCCCC)
+      Text('Thin Material')
+        .fontSize(30)
+        .fontColor(0xCCCCCC)
       Image($r('app.media.icon')).id("backgroundEffect_id1")
         .width(300)
         .height(350)
-        .backgroundEffect({ radius: 10, saturation: 10, adaptiveColor: AdaptiveColor.DEFAULT, blurOptions: {grayscale:[1,1]} })
+        .backgroundEffect({
+          radius: 10,
+          saturation: 10,
+          adaptiveColor: AdaptiveColor.DEFAULT,
+          blurOptions: { grayscale: [1, 1] }
+        })
 
       Image($r('app.media.icon')).id("backgroundEffect_id2")
         .width(300)
         .height(350)
-        .backgroundEffect({ radius: 10, saturation: 10, adaptiveColor: AdaptiveColor.AVERAGE, blurOptions: {grayscale:[1,1]} })
+        .backgroundEffect({
+          radius: 10,
+          saturation: 10,
+          adaptiveColor: AdaptiveColor.AVERAGE,
+          blurOptions: { grayscale: [1, 1] }
+        })
     }
     .height('100%')
     .width('100%')

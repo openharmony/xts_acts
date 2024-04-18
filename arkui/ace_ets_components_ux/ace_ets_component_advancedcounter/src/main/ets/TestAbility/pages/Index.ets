@@ -17,24 +17,37 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../test/List.test';
-import {CounterType, CounterComponent, CounterOptions, DateData} from '@ohos.arkui.advanced.Counter';
+import { CounterType, CounterComponent, CounterOptions, DateData } from '@ohos.arkui.advanced.Counter';
 
 @Entry
 @Component
 struct CounterExample {
-    build() {
-        Column() {
-            CounterComponent({ options:{type:CounterType.LIST,numberOptions:{label:'Number',min:1,value:10,max:20,step:1}}})
-            CounterComponent({ options:{type:CounterType.COMPACT,numberOptions:{label:'Total',min:10,value:50,max:100}}})
-            .onAppear(() => {
-                var abilityDelegator: any
-                abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-                var abilityDelegatorArguments: any
-                abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-                hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-                hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-                Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-            })
+  build() {
+    Column() {
+      CounterComponent({
+        options: {
+          type: CounterType.LIST,
+          numberOptions: {
+            label: 'Number',
+            min: 1,
+            value: 10,
+            max: 20,
+            step: 1
+          }
         }
+      })
+      CounterComponent({
+        options: { type: CounterType.COMPACT, numberOptions: { label: 'Total', min: 10, value: 50, max: 100 } }
+      })
+        .onAppear(() => {
+          // var abilityDelegator: any
+          let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+          // var abilityDelegatorArguments: any
+          let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+          hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
+          hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
+          Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+        })
     }
+  }
 }

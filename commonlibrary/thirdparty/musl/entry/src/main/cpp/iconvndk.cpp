@@ -55,38 +55,49 @@ static napi_value Iconv(napi_env env, napi_callback_info info)
 
 static napi_value IconvOpen(napi_env env, napi_callback_info info)
 {
-    size_t inLen = BUFF_SIZE;
-    size_t outLen = BUFF_SIZE;
-    char *outbuf = static_cast<char *>(malloc(BUFF_SIZE));
-    char *inbuf = static_cast<char *>(malloc(BUFF_SIZE));
+    iconv_t cd;
+    char buf[PARAM_100];
+    char *inbuf = static_cast<char *>(malloc(sizeof("hello,world!")));
     memcpy(inbuf, "hello,world!", sizeof("hello,world!"));
-    iconv_t there = iconv_open("GBK", "UTF-8");
-    iconv(there, &inbuf, &inLen, &outbuf, &outLen);
-    iconv_close(there);
-    free(outbuf);
-    free(inbuf);
+    char *outbuf = buf;
+    size_t inlen = strlen(inbuf);
+    size_t outlen;
+    const char *bad = "bad-codeset";
+    cd = iconv_open(bad, bad);
+    cd = iconv_open("UTF-8", "UTF-8");
+    errno = PARAM_0;
+    outlen = PARAM_0;
+    iconv(cd, &inbuf, &inlen, &outbuf, &outlen);
+    outlen = sizeof buf;
+    iconv(cd, &inbuf, &inlen, &outbuf, &outlen);
     napi_value result = nullptr;
-    if (there == nullptr) {
+    if (cd == nullptr) {
         napi_create_int32(env, FAIL, &result);
     } else {
         napi_create_int32(env, NO_ERR, &result);
     }
+    iconv_close(cd);
     return result;
 }
 
 static napi_value IconvClose(napi_env env, napi_callback_info info)
 {
-    int ret;
-    size_t inLen = BUFF_SIZE;
-    size_t outLen = BUFF_SIZE;
-    char *outbuf = static_cast<char *>(malloc(BUFF_SIZE));
-    char *inbuf = static_cast<char *>(malloc(BUFF_SIZE));
+    iconv_t cd;
+    char buf[PARAM_100];
+    char *inbuf = static_cast<char *>(malloc(sizeof("hello,world!")));
     memcpy(inbuf, "hello,world!", sizeof("hello,world!"));
-    iconv_t there = iconv_open("GBK", "UTF-8");
-    ret = iconv(there, &inbuf, &inLen, &outbuf, &outLen);
-    ret = iconv_close(there);
-    free(outbuf);
-    free(inbuf);
+    char *outbuf = buf;
+    size_t inlen = strlen(inbuf);
+    size_t outlen;
+    const char *bad = "bad-codeset";
+    cd = iconv_open(bad, bad);
+    cd = iconv_open("UTF-8", "UTF-8");
+    errno = PARAM_0;
+    outlen = PARAM_0;
+    iconv(cd, &inbuf, &inlen, &outbuf, &outlen);
+    outlen = sizeof buf;
+    iconv(cd, &inbuf, &inlen, &outbuf, &outlen);
+    int ret = iconv_close(cd);
     napi_value result = nullptr;
     if (ret == FAIL) {
         napi_create_int32(env, FAIL, &result);

@@ -22,20 +22,23 @@ struct PaddingPage_Length {
   //Use for Grid.
   public valueArr: number[] = [5, 10, 10, 7, 9, 10, 10, 10, 10]
   @State _padding: number | string = 0;
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentBackGroundColor: string = router.getParams() ? router.getParams()['view']['parentBackGroundColor'] : ''
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State referenceComponentKey: string = router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentBackGroundColor: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentBackGroundColor'] : ''
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State referenceComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
 
   onPageShow() {
     console.info('padding page show called ')
-    attrsManager.registerDataChange(value => this._padding = value.padding)
+    attrsManager.registerDataChange((value: ESObject) => {
+      this._padding = value.padding
+    })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .padding(this._padding)
     .key(this.componentKey)
   }
@@ -69,7 +72,10 @@ struct PaddingPage_Length {
               .width('100%')
               .height('100%')
               .backgroundColor('#FF3333')
-          }.width('100%').height('100%').key(this.referenceComponentKey)
+          }
+          .width('100%')
+          .height('100%')
+          .key(this.referenceComponentKey)
         }.commonStyle()
       } else if (this.targetView == 'Grid') {
         Grid() {
@@ -86,8 +92,14 @@ struct PaddingPage_Length {
               .width('100%')
               .height('100%')
               .backgroundColor('#FF3333')
-          }.width('100%').height('100%').key(this.referenceComponentKey)
-        }.commonStyle().width('50%').height('50%')
+          }
+          .width('100%')
+          .height('100%')
+          .key(this.referenceComponentKey)
+        }
+        .commonStyle()
+        .width('50%')
+        .height('50%')
       } else if (this.targetView == 'Panel') {
         Panel(true) {
           Column() {
@@ -95,7 +107,10 @@ struct PaddingPage_Length {
               .width('100%')
               .height('100%')
               .backgroundColor('#FF3333')
-          }.width('100%').height('100%').key(this.referenceComponentKey)
+          }
+          .width('100%')
+          .height('100%')
+          .key(this.referenceComponentKey)
         }
         .mode(PanelMode.Full)
         .commonStyle()
@@ -119,10 +134,13 @@ struct PaddingPage_Length {
       } else if (this.targetView == 'SideBarContainer') {
         SideBarContainer(SideBarContainerType.Embed) {
           Column() {
-            ForEach([1, 2, 3], (item) => {
+            ForEach([1, 2, 3], (item: string) => {
               Column({ space: 5 }) {
-                Image($r('app.media.icon')).width(64).height(64)
-                Text('Index0' + item).fontSize(25)
+                Image($r('app.media.icon'))
+                  .width(64)
+                  .height(64)
+                Text('Index0' + item)
+                  .fontSize(25)
               }
 
             })
@@ -132,8 +150,14 @@ struct PaddingPage_Length {
 
           Column() {
             Text('SideBarContainer content').fontSize(25)
-          }.width('100%').height('100%').backgroundColor(Color.Orange).key(this.referenceComponentKey)
-        }.commonStyle().width('50%').height('50%')
+          }.width('100%')
+          .height('100%')
+          .backgroundColor(Color.Orange)
+          .key(this.referenceComponentKey)
+        }
+        .commonStyle()
+        .width('50%')
+        .height('50%')
       } else if (this.targetView == 'Stack') {
         Stack() {
           Button('message')
@@ -148,19 +172,31 @@ struct PaddingPage_Length {
         Tabs() {
           TabContent() {
             Row()
-              .height('100%').width('100%')
+              .height('100%')
+              .width('100%')
               .backgroundColor('#FF3333')
-          }.height('100%').width('100%').key(this.referenceComponentKey)
-        }.commonStyle().height('50%').width('50%')
+          }
+          .height('100%')
+          .width('100%')
+          .key(this.referenceComponentKey)
+        }.commonStyle()
+        .height('50%')
+        .width('50%')
       } else if (this.targetView == 'TabContent') {
         Tabs() {
           TabContent() {
             Row()
-              .height('100%').width('100%')
+              .height('100%')
+              .width('100%')
               .backgroundColor('#FF3333')
               .key(this.referenceComponentKey)
-          }.commonStyle().height('50%').width('50%')
-        }.key(this.parentComponentKey).width(this.parentWidth).height(this.parentHeight)
+          }
+          .commonStyle()
+          .height('50%')
+          .width('50%')
+        }.key(this.parentComponentKey)
+        .width(this.parentWidth)
+        .height(this.parentHeight)
       } else if (this.targetView == 'WaterFlow') {
         WaterFlow() {
           FlowItem() {
@@ -169,8 +205,15 @@ struct PaddingPage_Length {
         }.height('50%').width('50%').commonStyle()
       } else if (this.targetView == 'ColumnSplit') {
         ColumnSplit() {
-          Text('1').width('100%').height('100%').backgroundColor(0xF5DEB3).key(this.referenceComponentKey)
-        }.commonStyle().width('50%').height('50%')
+          Text('1')
+            .width('100%')
+            .height('100%')
+            .backgroundColor(0xF5DEB3)
+            .key(this.referenceComponentKey)
+        }
+        .commonStyle()
+        .width('50%')
+        .height('50%')
       } else if (this.targetView == 'Flex') {
         Flex() {
           Row()
@@ -178,7 +221,10 @@ struct PaddingPage_Length {
             .height('100%')
             .backgroundColor('#FF3333')
             .key(this.referenceComponentKey)
-        }.commonStyle().width('50%').height('50%')
+        }
+        .commonStyle()
+        .width('50%')
+        .height('50%')
       } else if (this.targetView == 'FlowItem') {
         WaterFlow() {
           FlowItem() {
@@ -187,7 +233,9 @@ struct PaddingPage_Length {
               .height('100%')
               .backgroundColor('#FF3333')
               .key(this.referenceComponentKey)
-          }.commonStyle().width('50%').height('50%')
+          }.commonStyle()
+          .width('50%')
+          .height('50%')
         }.key(this.parentComponentKey).width(this.parentWidth).height(this.parentHeight)
       } else if (this.targetView == 'GridCol') {
         GridRow({
@@ -203,11 +251,15 @@ struct PaddingPage_Length {
               .backgroundColor('#FF3333')
               .key(this.referenceComponentKey)
           }.commonStyle()
-        }.width(this.parentWidth).height(this.parentHeight).key(this.parentComponentKey)
+        }.width(this.parentWidth)
+        .height(this.parentHeight)
+        .key(this.parentComponentKey)
       } else if (this.targetView == 'GridItem') {
         Grid() {
           GridItem().commonStyle()
-        }.key(this.parentComponentKey).width(this.parentWidth).height(this.parentHeight)
+        }.key(this.parentComponentKey)
+        .width(this.parentWidth)
+        .height(this.parentHeight)
       } else if (this.targetView == 'ListItemGroup') {
         List({ space: 20 }) {
           ListItemGroup() {
@@ -216,9 +268,14 @@ struct PaddingPage_Length {
                 .width('100%')
                 .height('100%')
                 .backgroundColor('#FF3333')
-            }.width('100%').height('100%').key(this.referenceComponentKey)
+            }
+            .width('100%')
+            .height('100%')
+            .key(this.referenceComponentKey)
           }.commonStyle()
-        }.key(this.parentComponentKey).width(this.parentWidth).height(this.parentHeight)
+        }.key(this.parentComponentKey)
+        .width(this.parentWidth)
+        .height(this.parentHeight)
       } else if (this.targetView == 'Navigator') {
         Navigator().commonStyle()
       } else if (this.targetView == 'RelativeContainer') {
@@ -228,12 +285,22 @@ struct PaddingPage_Length {
             .height('100%')
             .backgroundColor('#FF3333')
             .key(this.referenceComponentKey)
-        }.height('50%').width('50%').backgroundColor(Color.Green).commonStyle()
+        }
+        .height('50%')
+        .width('50%')
+        .backgroundColor(Color.Green)
+        .commonStyle()
       } else if (this.targetView == 'RowSplit') {
         RowSplit() {
-          Text('1').width('100%')
-            .height('100%').backgroundColor(0xF5DEB3).key(this.referenceComponentKey)
-        }.commonStyle().width('50%').height('50%')
+          Text('1')
+            .width('100%')
+            .height('100%')
+            .backgroundColor(0xF5DEB3)
+            .key(this.referenceComponentKey)
+        }
+        .commonStyle()
+        .width('50%')
+        .height('50%')
       } else if (this.targetView == 'ListItem') {
         List() {
           ListItem() {
@@ -242,8 +309,15 @@ struct PaddingPage_Length {
               .height('100%')
               .backgroundColor('#FF3333')
               .key(this.referenceComponentKey)
-          }.commonStyle().height('50%').width('50%').backgroundColor(Color.Green)
-        }.key(this.parentComponentKey).width(this.parentWidth).height(this.parentHeight)
+          }
+          .commonStyle()
+          .height('50%')
+          .width('50%')
+          .backgroundColor(Color.Green)
+        }
+        .key(this.parentComponentKey)
+        .width(this.parentWidth)
+        .height(this.parentHeight)
       }
     }.backgroundColor(this.parentBackGroundColor)
     .height(this.parentHeight)

@@ -13,16 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 export default function keyframeTest() {
-  describe('keyframeTest', function () {
-    beforeEach(async function (done) {
+  describe('keyframeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("keyframeTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/renderNode/keyframe',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/renderNode/keyframe',
       }
       try {
         router.clear();
@@ -42,14 +55,14 @@ export default function keyframeTest() {
     });
 
     /**
-     * @tc.number    keyframe
-     * @tc.name      keyframeTest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number keyframe
+     * @tc.name keyframeTest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('keyframeTest_0100', 0, async function (done) {
+    it('keyframeTest_0100', 0, async (done: Function) => {
       console.info('keyframeTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -57,9 +70,8 @@ export default function keyframeTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('keyframe_0');
-      let obj = JSON.parse(strJson);
-      console.info("[keyframeTest_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('message:world');
+      console.info("[keyframeTest_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('message:world');
       console.info('[keyframeTest_0100] END');
       done();
     });

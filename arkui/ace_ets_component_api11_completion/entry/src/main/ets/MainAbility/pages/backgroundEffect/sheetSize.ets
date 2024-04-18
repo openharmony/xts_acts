@@ -16,11 +16,12 @@
 @Entry
 @Component
 struct SheetSizeExample1 {
-  @State detents: [(SheetSize | Length), (SheetSize | Length)?, (SheetSize | Length)?] = [SheetSize.MEDIUM,SheetSize.LARGE,SheetSize.FIT_CONTENT]
-  @State isShow:boolean = false
-  @State dismiss:string = "Init"
+  @State detents: [(SheetSize | Length), (SheetSize | Length)?, (SheetSize | Length)?] = [SheetSize.MEDIUM, SheetSize.LARGE, SheetSize.FIT_CONTENT];
+  @State isShow: boolean = false;
+  @State dismiss: string = "Init";
 
-  @Builder myBuilder() {
+  @Builder
+  myBuilder() {
     Column() {
       Button("content1")
         .margin(10)
@@ -35,23 +36,28 @@ struct SheetSizeExample1 {
 
   build() {
     Column() {
-      Text(this.dismiss).id("bindSheet_dismiss1").margin(10)
-      Text(this.detents + '').key("detents").margin(10)
-      Button("transition modal 1").id("bindSheet_SheetSize1")
+      Text(this.dismiss)
+        .id("bindSheet_dismiss1")
+        .margin(10)
+      Text(this.detents + '')
+        .key("detents")
+        .margin(10)
+      Button("transition modal 1")
+        .id("bindSheet_SheetSize1")
         .onClick(() => {
           this.isShow = true
 
         })
         .fontSize(20)
         .margin(10)
-        .bindSheet($$this.isShow, this.myBuilder(),{
-          detents:this.detents,
-          backgroundColor:Color.Gray,
-          blurStyle:BlurStyle.Thick,
-          showClose:true,
-          title:{title:"title", subtitle:"subtitle"},
+        .bindSheet($$this.isShow, this.myBuilder(), {
+          detents: this.detents,
+          backgroundColor: Color.Gray,
+          blurStyle: BlurStyle.Thick,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
           preferType: SheetType.CENTER,
-          shouldDismiss:((sheetDismiss: SheetDismiss)=> {
+          shouldDismiss: ((sheetDismiss: SheetDismiss) => {
             console.log("bind sheet shouldDismiss")
             sheetDismiss.dismiss()
             this.dismiss = "dismiss succ"

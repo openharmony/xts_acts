@@ -13,12 +13,8 @@
  * limitations under the License.
  */
 
-
-
 import visibilityTest from './visibility/VisibilityTest.test';
 
 export default function testsuite() {
-
   visibilityTest();
-
 }

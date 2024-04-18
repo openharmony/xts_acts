@@ -97,8 +97,10 @@ export default function ListJsunit() {
       let bottom = gridBottom.bottom
       let gridRight = CommonFunc.getComponentRect('list');
       let right = gridRight.right
+      let left = gridRight.left;
       let driver = await UiDriver.create()
-      await driver.swipe(Math.round(top + 50), Math.round(right - 50), 20, Math.round(right - 50));
+      console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right - left)/2), Math.round(globalThis.winTop + top + (bottom - top)/2), Math.round(globalThis.winLeft + left + (right - left)/2 - vp2px(4)), Math.round(globalThis.winTop + top + (bottom - top)/2));
       await CommonFunc.sleep(1000);
       
       let onScrollText = await driver.findComponent(BY.key('onScrollText'));
@@ -135,12 +137,12 @@ export default function ListJsunit() {
       expect(text5).assertEqual('onScrollStop');
 
       // Verify the functions of onReachEnd
-      await driver.swipe(Math.round(right), Math.round(top -100), 10, Math.round(top - 100));
-      await driver.swipe(Math.round(right), Math.round(top -100), 10, Math.round(top - 100));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right - left)/2), Math.round(globalThis.winTop + top + (bottom - top)/2), Math.round(globalThis.winLeft + left + (right - left)/2 - vp2px(4)), Math.round(globalThis.winTop + top + (bottom - top)/2));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right - left)/2), Math.round(globalThis.winTop + top + (bottom - top)/2), Math.round(globalThis.winLeft + left + (right - left)/2 - vp2px(4)), Math.round(globalThis.winTop + top + (bottom - top)/2));
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(right), Math.round(top -100), 10, Math.round(top - 100));
-      await driver.swipe(Math.round(right), Math.round(top -100), 10, Math.round(top - 100));
-      await driver.swipe(Math.round(right), Math.round(top -100), 10, Math.round(top - 100));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right - left)/2), Math.round(globalThis.winTop + top + (bottom - top)/2), Math.round(globalThis.winLeft + left + (right - left)/2 - vp2px(4)), Math.round(globalThis.winTop + top + (bottom - top)/2));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right - left)/2), Math.round(globalThis.winTop + top + (bottom - top)/2), Math.round(globalThis.winLeft + left + (right - left)/2 - vp2px(4)), Math.round(globalThis.winTop + top + (bottom - top)/2));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right - left)/2), Math.round(globalThis.winTop + top + (bottom - top)/2), Math.round(globalThis.winLeft + left + (right - left)/2 - vp2px(4)), Math.round(globalThis.winTop + top + (bottom - top)/2));
       await CommonFunc.sleep(1000);
       let onReachEndText = await driver.findComponent(BY.key('onReachEndText'));
       let text= await onReachEndText.getText();

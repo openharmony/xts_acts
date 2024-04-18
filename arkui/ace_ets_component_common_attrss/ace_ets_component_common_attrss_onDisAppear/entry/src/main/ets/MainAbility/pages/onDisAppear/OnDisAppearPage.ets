@@ -21,12 +21,12 @@ import router from '@ohos.router'
 struct OnDisAppearPage {
   @State changeDisAppear: string = '';
   @State _isShow: boolean = true;
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State targetGroupView: string = router.getParams() ? router.getParams()['view']['targetGroupView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State compareTextKey: string = router.getParams() ? router.getParams()['view']['compareTextKey'] : ''
-  @State targetWidth: number = router.getParams() ? router.getParams()['view']['targetWidth'] : 0
-  @State targetHeight: number = router.getParams() ? router.getParams()['view']['targetHeight'] : 0
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State targetGroupView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetGroupView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State compareTextKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['compareTextKey'] : ''
+  @State targetWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetWidth'] : 0
+  @State targetHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetHeight'] : 0
   textTimerController: TextTimerController = new TextTimerController() //Use by TextTimer
   private scroller: Scroller = new Scroller()
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G']; //Use by AlphabetIndexer TextPicker
@@ -34,13 +34,16 @@ struct OnDisAppearPage {
 
   onPageShow() {
     console.info('OnDisAppearPage show called ')
-    AttrsManager.registerDataChange(value => this._isShow = value.isShow)
+    AttrsManager.registerDataChange((value: ESObject) => {
+      this._isShow = value.isShow
+    })
   }
 
   /*
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .width(this.targetWidth)
     .height(this.targetHeight)
     .key(this.componentKey)
@@ -322,22 +325,25 @@ struct OnDisAppearPage {
         } else if (this.targetView == 'Scroll') {
           Scroll() {
             Column() {
-              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: string) => {
                 Text('Scroll' + item.toString())
                   .width('90%')
                   .height(150)
                   .backgroundColor(Color.White)
                   .textAlign(TextAlign.Center)
-              }, item => item)
+              }, (item: string) => item)
             }.width('100%')
           }.scrollBar(BarState.On).commonStyle()
         } else if (this.targetView == 'SideBarContainer') {
           SideBarContainer(SideBarContainerType.Embed) {
             Column() {
-              ForEach([1, 2, 3], (item) => {
+              ForEach([1, 2, 3], (item: string) => {
                 Column({ space: 5 }) {
-                  Image($r('app.media.icon')).width(50).height(50)
-                  Text('Index0' + item).fontSize(25)
+                  Image($r('app.media.icon'))
+                    .width(50)
+                    .height(50)
+                  Text('Index0' + item)
+                    .fontSize(25)
                 }
               })
             }.width('100%')
@@ -345,7 +351,8 @@ struct OnDisAppearPage {
             .backgroundColor(Color.Green)
 
             Column() {
-              Text('SideBarContainer content').fontSize(25)
+              Text('SideBarContainer content')
+                .fontSize(25)
             }.backgroundColor(Color.Orange)
           }.commonStyle()
         } else if (this.targetView == 'Stack') {
@@ -356,7 +363,7 @@ struct OnDisAppearPage {
           Swiper() {
             ForEach([1, 2, 3], (item: string) => {
               Text('Swiper' + item)
-            }, item => item)
+            }, (item: string) => item)
           }
           .indicator(true)
           .backgroundColor(Color.Pink)
@@ -430,6 +437,9 @@ struct OnDisAppearPage {
             .commonStyle()
         }
       }
-    }.width('100%').height('100%').backgroundColor(Color.Green)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Green)
   }
 }

@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@observed
+@ObservedV2
 class InfoC {
-  @track memberMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]);
+  @Trace memberMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]);
 }
 
 @Entry

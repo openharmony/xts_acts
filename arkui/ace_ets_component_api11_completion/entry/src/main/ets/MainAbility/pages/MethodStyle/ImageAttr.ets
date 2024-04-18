@@ -15,10 +15,10 @@
 @Entry
 @Component
 struct ImageExample1 {
-  @State top: number = 10
-  @State bottom: number = 10
-  @State left: number = 10
-  @State right: number = 10
+  @State top: number = 10;
+  @State bottom: number = 10;
+  @State left: number = 10;
+  @State right: number = 10;
   build() {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
@@ -29,29 +29,35 @@ struct ImageExample1 {
         Row() {
           // 加载png格式图片
           Image($r('app.media.icon'))
-            .width(110).height(110).margin(15).resizable({slice:{top: this.top,bottom: this.bottom, left: this.left, right: this.right}})
+            .width(110)
+            .height(110)
+            .margin(15)
+            .resizable({slice:{top: this.top,bottom: this.bottom, left: this.left, right: this.right}})
             .overlay('png', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
         }
 
         Button('changeTop').onClick(() => {
-          this.top = 30
+          this.top = 30;
         }).id('changeTop')
 
         Button('changeBottom').onClick(() => {
-          this.bottom = 0
+          this.bottom = 0;
         }).id('changeBottom')
 
 
         Button('changeleft').onClick(() => {
-          this.left = 30
+          this.left = 30;
         }).id('changeleft')
 
         Button('changeright').onClick(() => {
-          this.right = 0
+          this.right = 0;
         }).id('changeright')
 
 
       }
-    }.height(320).width(360).padding({ right: 10, top: 10 })
+    }
+    .height(320)
+    .width(360)
+    .padding({ right: 10, top: 10 })
   }
 }

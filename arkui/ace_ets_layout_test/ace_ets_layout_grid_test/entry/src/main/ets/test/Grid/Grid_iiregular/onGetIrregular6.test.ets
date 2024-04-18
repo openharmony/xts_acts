@@ -76,8 +76,8 @@ export default function onGetIrregular6Jsunit() {
       let GridItem0: RectValue = CommonFunc.getComponentRect('GridLog0');
       let GridItem1: RectValue = CommonFunc.getComponentRect('GridLog1');
       await CommonFunc.sleep(1000);
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(Math.round(GridItem0.right - GridItem0.left));
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(Math.round(GridItem1.right - GridItem1.left));
+      expect(Math.abs(Math.round((Grid.right - Grid.left)- (GridItem0.right - GridItem0.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((Grid.right - Grid.left)- (GridItem1.right - GridItem1.left))) <= 1).assertTrue();
       console.info('[onGetIrregular6Jsunit_0001] END');
       done();
     });

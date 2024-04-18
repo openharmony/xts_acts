@@ -21,10 +21,10 @@ let context: Context;
 const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS _TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-"data1 asset, " + "data2 asset, " + "data3 assets )";
+  "data1 asset, " + "data2 asset, " + "data3 assets )";
 const DROP_TABLE_TEST = "DROP TABLE IF EXISTS test";
 
-const STORE_CONFIG = {
+const STORE_CONFIG: data_relationalStore.StoreConfig = {
   name: "Asset.db",
   securityLevel: data_relationalStore.SecurityLevel.S1,
 }
@@ -56,11 +56,35 @@ const asset3 = {
   status: data_relationalStore.AssetStatus.ASSET_UPDATE,
 }
 
-var rdbStore = undefined;
+let rdbStore = undefined;
+
+async function createTest() {
+  console.log(TAG + "createTest data start");
+  const assets1 = [asset1];
+  const assets2 = [asset1, asset2, asset3];
+  let valuesBucket = {
+    "data1": asset1,
+    "data2": asset2,
+    "data3": assets1,
+  }
+  await rdbStore.insert("test", valuesBucket);
+  valuesBucket = {
+    "data1": asset2,
+    "data2": asset3,
+    "data3": assets2,
+  }
+  await rdbStore.insert("test", valuesBucket);
+  let valuesBucket1 = {
+    "data1": asset1,
+    "data3": new Array()
+  }
+  await rdbStore.insert("test", valuesBucket1);
+  console.log(TAG + "createTest data end");
+}
 
 export default function relationalStoreAssetResultSetTest() {
-  describe('relationalStoreAssetResultSetTest', function () {
-    beforeAll(async function () {
+  describe('relationalStoreAssetResultSetTest', () => {
+    beforeAll(async () => {
       console.info(TAG + 'beforeAll')
       let ability = await delegator.getCurrentTopAbility();
       context = ability.context;
@@ -68,45 +92,21 @@ export default function relationalStoreAssetResultSetTest() {
       rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
     })
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
       console.info(TAG + 'beforeEach');
     })
 
-    afterEach(async function () {
+    afterEach(async () => {
       await rdbStore.executeSql(DROP_TABLE_TEST, null);
       console.info(TAG + 'afterEach')
     })
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info(TAG + 'afterAll')
       rdbStore = null
       await data_relationalStore.deleteRdbStore(context, "Asset.db");
     })
-
-    async function createTest() {
-      console.log(TAG + "createTest data start");
-      const assets1 = [asset1];
-      const assets2 = [asset1, asset2, asset3];
-      let valuesBucket = {
-        "data1": asset1,
-        "data2": asset2,
-        "data3": assets1,
-      }
-      await rdbStore.insert("test", valuesBucket);
-      valuesBucket = {
-        "data1": asset2,
-        "data2": asset3,
-        "data3": assets2,
-      }
-      await rdbStore.insert("test", valuesBucket);
-      let valuesBucket1 = {
-        "data1": asset1,
-        "data3": new Array()
-      }
-      await rdbStore.insert("test", valuesBucket1);
-      console.log(TAG + "createTest data end");
-    }
 
 
     /**
@@ -117,7 +117,7 @@ export default function relationalStoreAssetResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testAssetResultSetGetAsset0001', 0, async function (done) {
+    it('testAssetResultSetGetAsset0001', 0, async (done: Function) => {
       await createTest();
       console.log(TAG + "************* testAssetResultSetGetAsset0001 start *************");
       let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -151,7 +151,7 @@ export default function relationalStoreAssetResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testAssetResultSetGetAsset0002', 0, async function (done) {
+    it('testAssetResultSetGetAsset0002', 0, async (done: Function) => {
       await createTest();
       console.log(TAG + "************* testAssetResultSetGetAsset0002 start *************");
       let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -181,7 +181,7 @@ export default function relationalStoreAssetResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testAssetResultSetGetAssets0001', 0, async function (done) {
+    it('testAssetResultSetGetAssets0001', 0, async (done: Function) => {
       await createTest();
       console.log(TAG + "************* testAssetResultSetGetAssets0001 start *************");
       let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -218,7 +218,7 @@ export default function relationalStoreAssetResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testAssetResultSetGetAssets0002', 0, async function (done) {
+    it('testAssetResultSetGetAssets0002', 0, async (done: Function) => {
       await createTest();
       console.log(TAG + "************* testAssetResultSetGetAssets0002 start *************");
       let predicates = await new data_relationalStore.RdbPredicates("test")

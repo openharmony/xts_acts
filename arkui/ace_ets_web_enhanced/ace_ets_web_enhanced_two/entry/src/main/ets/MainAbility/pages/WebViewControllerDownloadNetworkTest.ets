@@ -25,8 +25,8 @@ struct WebViewControllerDownloadNetworkTest {
   delegate: webView.WebDownloadDelegate = new webView.WebDownloadDelegate();
   @State str: string = '';
   @State downloadUrl: string = 'https://consumer.huawei.com/content/dam/' +
-  'huawei-cbg-site/cn/mkt/mobileservices/2022/download/' +
-  'PC107f1b3947c942ffaa14334a879065d8.2107261020.exe'
+    'huawei-cbg-site/cn/mkt/mobileservices/2022/download/' +
+    'PC107f1b3947c942ffaa14334a879065d8.2107261020.exe'
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = false;

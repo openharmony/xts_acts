@@ -15,10 +15,10 @@
 @Entry
 @Component
 struct Index1 {
-  private iconStr: ResourceStr = $r("app.media.icon")
-  @State preview: string = ''
-  @State start:number = 0.1
-  @State end: number = 0.8
+  private iconStr: ResourceStr = $r("app.media.icon");
+  @State preview: string = '';
+  @State start: number = 0.1;
+  @State end: number = 0.8;
 
   @Builder
   MyMenu() {
@@ -33,8 +33,8 @@ struct Index1 {
     Column({ space: 50 }) {
       Column() {
         Column() {
-         Text(''+ this.start).id('preview_start')
-          Text(''+ this.end).id('preview_end')
+          Text('' + this.start).id('preview_start')
+          Text('' + this.end).id('preview_end')
           Text('preview-image')
             .width(200)
             .height(100)
@@ -43,8 +43,9 @@ struct Index1 {
             .fontSize(30)
             .id('preview-image')
             .bindContextMenu(this.MyMenu, ResponseType.LongPress,
-              { preview: MenuPreviewMode.IMAGE,
-                previewAnimationOptions: {scale: [this.start, this.end]},
+              {
+                preview: MenuPreviewMode.IMAGE,
+                previewAnimationOptions: { scale: [this.start, this.end] },
               })
             .backgroundColor("#ff3df2f5")
 
@@ -55,7 +56,6 @@ struct Index1 {
           Button('change结束').onClick(() => {
             this.end = 20
           }).id('button_end_preview')
-
 
         }
       }.width('100%')

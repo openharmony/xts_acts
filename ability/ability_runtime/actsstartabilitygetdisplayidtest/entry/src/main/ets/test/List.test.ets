@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import StartAbilityGetDisplayIdTest from './StartAbilityGetDisplayId.test'
+import StartAbilityGetDisplayIdTest from './StartAbilityGetDisplayId.test';
 
 export default function testsuite() {
-  StartAbilityGetDisplayIdTest()
+  StartAbilityGetDisplayIdTest();
 }

@@ -79,7 +79,7 @@ describe('relationalStoreTest', function () {
     it('testRdbStore0002', 0, async function (done) {
         console.info(TAG + "************* testRdbStore0002 start *************");
         let storePromise = data_Rdb.getRdbStore(context, STORE_CONFIG);
-        storePromise.then(async (store) => {
+        await storePromise.then(async (store) => {
             try {
                 console.info(TAG + "getRdbStore done: " + store);
                 await store.executeSql(CREATE_TABLE_TEST);
@@ -89,8 +89,6 @@ describe('relationalStoreTest', function () {
         }).catch((err) => {
             expect(null).assertFail();
         })
-        await storePromise;
-        storePromise = null;
         done();
         console.info(TAG + "************* testRdbStore0002 end   *************");
     })

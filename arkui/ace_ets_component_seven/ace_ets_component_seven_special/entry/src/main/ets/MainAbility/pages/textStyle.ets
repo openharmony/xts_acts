@@ -31,7 +31,7 @@ class TextModifier1 implements AttributeModifier<TextAttribute>{
 
 @Entry
 @Component
-struct TextStyle {
+struct TextStylePage {
   @State textModifier1: TextModifier1 = new TextModifier1()
   build() {
     Column({ space: 20 }) {

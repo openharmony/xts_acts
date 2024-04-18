@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 export default function pixelRoundTest() {
-  describe('pixelRoundTest', function () {
-    beforeEach(async function (done) {
+  describe('pixelRoundTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("pixelRoundTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/renderNode/pixelRound',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/renderNode/pixelRound',
       }
       try {
         router.clear();
@@ -50,14 +63,14 @@ export default function pixelRoundTest() {
        * @tc.type : xts
        * @tc.size : 1
        */
-    it('pixelRoundTest_001', 0, async function (done) {
+    it('pixelRoundTest_001', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('pixelRoundTest_001 START');
       let strcontent = getInspectorByKey('pixelRound_1');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('pixelRoundTest_001 component obj is: ' + obj);
-      expect(obj.$attrs.pixelRound).assertEqual('{"start":"PixelRoundCalcPolicy.NO_FORCE_ROUND","top":"PixelRoundCalcPolicy.FORCE_CEIL","end":"PixelRoundCalcPolicy.NO_FORCE_ROUND","bottom":"PixelRoundCalcPolicy.FORCE_FLOOR"}');
+      console.info('pixelRoundTest_001 component obj is: ' + JSON.parse(strcontent));
+      expect(JSON.parse(strcontent).$attrs.pixelRound)
+        .assertEqual('{"start":"PixelRoundCalcPolicy.NO_FORCE_ROUND","top":"PixelRoundCalcPolicy.FORCE_CEIL","end":"PixelRoundCalcPolicy.NO_FORCE_ROUND","bottom":"PixelRoundCalcPolicy.FORCE_FLOOR"}');
       console.info('pixelRoundTest_001 END')
       done();
     });

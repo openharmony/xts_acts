@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../common/MessageManager';
+
+import { MessageManager, Callback } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct SwiperAutoPlay_3Test {
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('SwiperAutoPlay onPageShow');
   }
@@ -24,12 +27,29 @@ struct SwiperAutoPlay_3Test {
   build() {
     Column({ space: 5 }) {
       Swiper() {
-        Column(){Text ('1')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('autoPlay03_1')
-        Column(){Text ('2')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('autoPlay03_2')
-        Column(){Text ('3')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('autoPlay03_3')
-        Column(){Text ('4')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('autoPlay03_4')
-        Column(){Text ('5')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('autoPlay03_5')
-        Column(){Text ('6')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('autoPlay03_6')
+        Column() {
+          Text('1')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('autoPlay03_1')
+
+        Column() {
+          Text('2')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('autoPlay03_2')
+
+        Column() {
+          Text('3')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('autoPlay03_3')
+
+        Column() {
+          Text('4')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('autoPlay03_4')
+
+        Column() {
+          Text('5')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('autoPlay03_5')
+
+        Column() {
+          Text('6')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('autoPlay03_6')
       }
       .key('autoPlay03')
       .height(300)

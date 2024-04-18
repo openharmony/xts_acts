@@ -22,76 +22,83 @@ import Utils from '../../test/Utils';
 @Entry
 @Component
 struct webDefaultFontSizeWithMinLogical {
-    controller: WebController = new WebController();
-    @State str:string="emitdefaultFontSizeHalfAndminFontSizeHalfWebC";
-    @State javaScriptAccess:boolean=true;
-    @State fileAccess:boolean=true;
-    @State domStorageAccess:boolean=false;
-    @State imageAccess:boolean=true;
-    @State onlineImageAccess:boolean=true;
-    @State databaseAccess:boolean=true;
-    @State userAgent:string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
+  controller: WebController = new WebController();
+  @State str: string = "emitdefaultFontSizeHalfAndminFontSizeHalfWebC";
+  @State javaScriptAccess: boolean = true;
+  @State fileAccess: boolean = true;
+  @State domStorageAccess: boolean = false;
+  @State imageAccess: boolean = true;
+  @State onlineImageAccess: boolean = true;
+  @State databaseAccess: boolean = true;
+  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
     " CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
-    @State defaultFontSize: number = 13;
-    @State minFontSize: number = 13;
-    @State minLogicalFontSize: number = 13;
-    @State checkEleResult: Object = {};
-    onPageShow(){
-        let valueChangeEvent={
-            eventId:10,
-            priority:events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
-    }
-    private valueChangeCallBack=(eventData)=>{
-        console.info("webDefaultFontSizeWithMinLogical page valueChangeCallBack");
-        if(eventData != null){
-                console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-                if(eventData.data.ACTION != null){
-                    this.str = eventData.data.ACTION;
-                }
-        }
-    }
+  @State defaultFontSize: number = 13;
+  @State minFontSize: number = 13;
+  @State minLogicalFontSize: number = 13;
+  @State checkEleResult: Object = {};
 
-    build() {
-        Column() {
-            Row() {
-                Button("web click").key('webDefaultFontSizeWithMinLogical').onClick(async () => {
-                    console.info("key==>" + this.str)
-                    switch (this.str) {
-                        case "emitdefaultFontSizeHalfAndminFontSizeHalfWebC": {
-                            try {
-                                this.defaultFontSize = 0.5;
-                                this.minFontSize = 0.5;
-                                this.minLogicalFontSize = 0.5
-                                await Utils.sleep(2000);
-                                console.log("fonsize of emitdefaultFontSizeHalfAndminFontSizeHalfWebC is :" + this.defaultFontSize + this.minFontSize);
-                                this.controller.runJavaScript({script:"getPageFontsize()",callback:(result) => {
-                                    this.checkEleResult = JSON.parse(result)
-                                    console.log(`The getPageFontsize() return value is: ${result}`);
-                                }})  
-                            } catch (error) {
-                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                            }
-                            this.controller.runJavaScript({script:"test()",callback:(res) => {
-                                Utils.emitEvent(this.checkEleResult[1], 430)
-                            }})
-                            break;
-                        }
-                    }
-                })
-            }
-            Web({ src:$rawfile('indexFive.html'), controller: this.controller })
-                .defaultFontSize(this.defaultFontSize)
-                .minFontSize(this.minFontSize)
-                .minLogicalFontSize(this.minLogicalFontSize)
-                .javaScriptAccess(this.javaScriptAccess)
-                .fileAccess(this.fileAccess)
-                .imageAccess(this.imageAccess)
-                .domStorageAccess(this.domStorageAccess)
-                .onlineImageAccess(this.onlineImageAccess)
-                .databaseAccess(this.databaseAccess)
-                .userAgent(this.userAgent)
-            }
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
+  }
+
+  private valueChangeCallBack = (eventData: ESObject) => {
+    console.info("webDefaultFontSizeWithMinLogical page valueChangeCallBack");
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
+        this.str = eventData.data.ACTION;
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button("web click").key('webDefaultFontSizeWithMinLogical').onClick(async () => {
+          console.info("key==>" + this.str)
+          switch (this.str) {
+            case "emitdefaultFontSizeHalfAndminFontSizeHalfWebC": {
+              try {
+                this.defaultFontSize = 0.5;
+                this.minFontSize = 0.5;
+                this.minLogicalFontSize = 0.5
+                await Utils.sleep(2000);
+                console.log("fonsize of emitdefaultFontSizeHalfAndminFontSizeHalfWebC is :" + this.defaultFontSize + this.minFontSize);
+                this.controller.runJavaScript({
+                  script: "getPageFontsize()", callback: (result) => {
+                    this.checkEleResult = JSON.parse(result)
+                    console.log(`The getPageFontsize() return value is: ${result}`);
+                  }
+                })
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              this.controller.runJavaScript({
+                script: "test()", callback: (res) => {
+                  Utils.emitEvent(this.checkEleResult[1], 430)
+                }
+              })
+              break;
+            }
+          }
+        })
+      }
+
+      Web({ src: $rawfile('indexFive.html'), controller: this.controller })
+        .defaultFontSize(this.defaultFontSize)
+        .minFontSize(this.minFontSize)
+        .minLogicalFontSize(this.minLogicalFontSize)
+        .javaScriptAccess(this.javaScriptAccess)
+        .fileAccess(this.fileAccess)
+        .imageAccess(this.imageAccess)
+        .domStorageAccess(this.domStorageAccess)
+        .onlineImageAccess(this.onlineImageAccess)
+        .databaseAccess(this.databaseAccess)
+        .userAgent(this.userAgent)
+    }
+  }
 }

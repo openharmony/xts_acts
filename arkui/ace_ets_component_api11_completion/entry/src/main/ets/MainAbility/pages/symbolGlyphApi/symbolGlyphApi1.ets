@@ -15,16 +15,17 @@
 @Entry
 @Component
 struct symbolGlyphApi1 {
-  @State text1: string = ''
+  @State text1: string = '';
+
   build() {
     Column() {
-        Column(){
-          Text("无动效")
-          SymbolGlyph($r('sys.symbol.ohos_lungs'))
-            .fontSize(100)
-            .effectStrategy(SymbolEffectStrategy.NONE)
-            .key('symbolGlyphApi1')
-        }
+      Column() {
+        Text("无动效")
+        SymbolGlyph($r('sys.symbol.ohos_lungs'))
+          .fontSize(100)
+          .effectStrategy(SymbolEffectStrategy.NONE)
+          .key('symbolGlyphApi1')
+      }
     }
   }
 }

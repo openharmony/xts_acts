@@ -18,6 +18,7 @@ import router from '@ohos.router'
 
 class ButtonModifier implements AttributeModifier<CommonAttribute> {
   mvisibility: Visibility = Visibility.Visible
+
   applyNormalAttribute(instance: CommonAttribute): void {
     console.info(`Button visibility page show ${this.mvisibility}`)
     instance.visibility(this.mvisibility)
@@ -26,6 +27,7 @@ class ButtonModifier implements AttributeModifier<CommonAttribute> {
 
 class BlankModifier implements AttributeModifier<BlankAttribute> {
   mvisibility: Visibility = Visibility.Visible
+
   applyNormalAttribute(instance: BlankAttribute): void {
     console.info(`Button visibility page show ${this.mvisibility}`)
     instance.visibility(this.mvisibility)
@@ -37,29 +39,31 @@ class BlankModifier implements AttributeModifier<BlankAttribute> {
 struct VisibilityPage {
   @State _visibilityButttonModifier: ButtonModifier = new ButtonModifier()
   @State _visibilityBlankModifier: BlankModifier = new BlankModifier()
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State targetComponentWidth: number = router.getParams() ? router.getParams()['view']['targetComponentWidth'] : 0
-  @State targetComponentHeight: number = router.getParams() ? router.getParams()['view']['targetComponentHeight'] : 0
-  @State referenceComponentKey: string = router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State targetComponentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetComponentWidth'] : 0
+  @State targetComponentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetComponentHeight'] : 0
+  @State referenceComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
 
   onPageShow() {
     console.info('visibility page show called ')
-    AttrsManager.registerDataChange(value => {
-      this._visibilityButttonModifier.mvisibility= value
-      this._visibilityBlankModifier.mvisibility= value
+    AttrsManager.registerDataChange((value: Visibility) => {
+      this._visibilityButttonModifier.mvisibility = value
+      this._visibilityBlankModifier.mvisibility = value
     })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .attributeModifier(this._visibilityButttonModifier)
     .width(this.targetComponentWidth)
     .height(this.targetComponentHeight)
     .key(this.componentKey)
   }
 
-  @Styles referenceComponentCommonStyle(){
+  @Styles
+  referenceComponentCommonStyle(){
     .width(this.targetComponentWidth)
     .height(this.targetComponentHeight)
     .key(this.referenceComponentKey)
@@ -353,7 +357,7 @@ struct VisibilityPage {
               direction: GridRowDirection.Row
             }) {
               ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green,
-                Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color) => {
+                Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color: Color) => {
                 GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                   Row().width('100%').height('20vp')
                 }.borderColor(color).borderWidth(2)
@@ -422,19 +426,19 @@ struct VisibilityPage {
           } else if (this.targetView == 'Scroll') {
             Scroll() {
               Column() {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                   Text('Scroll' + item.toString())
                     .width('90%')
                     .height(50)
                     .backgroundColor(Color.White)
                     .textAlign(TextAlign.Center)
-                }, item => item)
+                }, (item: number) => item.toString())
               }.width('100%')
             }.scrollBar(BarState.On).commonStyle()
           } else if (this.targetView == 'SideBarContainer') {
             SideBarContainer(SideBarContainerType.Embed) {
               Column() {
-                ForEach([1, 2, 3], (item) => {
+                ForEach([1, 2, 3], (item: number) => {
                   Column({ space: 5 }) {
                     Image($r('app.media.icon')).width(50).height(50)
                     Text('Index0' + item).fontSize(25)
@@ -454,7 +458,7 @@ struct VisibilityPage {
             Swiper() {
               ForEach([1, 2, 3], (item: string) => {
                 Text('Swiper' + item).width('90%').height(50)
-              }, item => item)
+              }, (item: string) => item)
             }
             .indicator(true)
             .backgroundColor(Color.White)
@@ -477,7 +481,7 @@ struct VisibilityPage {
                       .objectFit(ImageFit.Fill)
                   }
                 }
-              }, item => item)
+              }, (item: number) => item.toString())
             }.commonStyle()
           }
           Text('referenceComponentKey')

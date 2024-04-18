@@ -191,6 +191,7 @@ export default function textAreaJsunit() {
         await copy.click();
         await CommonFunc.sleep(1000);
       }
+      await CommonFunc.sleep(2000);
       let textIn = await driver.findComponent(BY.key('copy'));
       let txt = await textIn.getText();
       console.info('textAreaJsunit_0900 component obj is: ' + txt);
@@ -204,6 +205,7 @@ export default function textAreaJsunit() {
         await paste.click();
         await CommonFunc.sleep(1000);
       }
+      await CommonFunc.sleep(2000);
       let textPaste = await driver.findComponent(BY.key('paste'));
       let text1 = await textPaste.getText();
       console.info('textAreaJsunit_0900 text1: ' + text1);
@@ -231,6 +233,7 @@ export default function textAreaJsunit() {
         await cutComponent.click();
         await CommonFunc.sleep(1000);
       }
+      await CommonFunc.sleep(2000);
       let textCut = await driver.findComponent(BY.key('cut'));
       let text = await textCut.getText();
       console.info('textAreaJsunit_1000 component obj is: ' + text);

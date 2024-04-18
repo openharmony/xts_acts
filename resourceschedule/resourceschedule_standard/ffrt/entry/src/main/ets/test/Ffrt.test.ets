@@ -380,5 +380,166 @@ export default function ffrtTest() {
       var flag = ffrtndk.taskAttrSetQosTest();
       expect(flag).assertEqual(0);
     })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_7000
+     *@tc.name: ffrt_timer_start_0001
+     *@tc.desc: test ffrt_timer_start api
+     */
+    it('ffrt_timer_start_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_timer_start_0001();
+      expect(flag).assertEqual(0);
+    })
+      /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_7100
+     *@tc.name: ffrt_timer_start_0002
+     *@tc.desc: test ffrt_timer_start api
+     */
+    it('ffrt_timer_start_0002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_timer_start_0002();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_7200
+     *@tc.name: ffrt_timer_cancel_0001
+     *@tc.desc: test ffrt_timer_cancel api
+     */
+    it('ffrt_timer_cancel_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_timer_cancel_0001();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_7300
+     *@tc.name: ffrt_loop_0001
+     *@tc.desc: test ffrt_loop api
+     */
+    it('ffrt_loop_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_loop_0001();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_7400
+     *@tc.name: ffrt_loop_0002
+     *@tc.desc: test ffrt_loop api
+     */
+    it('ffrt_loop_0002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_loop_0002();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_7500
+     *@tc.name: ffrt_timer_start_abnormal_0001
+     *@tc.desc: test ffrt_timer_start abnormal cases
+     */
+    it('ffrt_timer_start_abnormal_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_timer_start_abnormal_0001();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_7600
+     *@tc.name: ffrt_loop_abnormal_0001
+     *@tc.desc: test ffrt_loop abnormal api
+     */
+    it('ffrt_loop_abnormal_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_loop_abnormal_0001();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_7700
+     *@tc.name: ffrt_loop_abnormal_0002
+     *@tc.desc: test ffrt_loop abnormal api
+     */
+    it('ffrt_loop_abnormal_0002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_loop_abnormal_0002();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_7800
+     *@tc.name: ffrt_queue_parallel_api_0001
+     *@tc.desc: test ffrt_queue_parallel api
+     */
+    it('ffrt_queue_parallel_api_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_queue_parallel_api_0001();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_7900
+     *@tc.name: ffrt_queue_parallel_api_0002
+     *@tc.desc: test ffrt_queue_parallel api
+     */
+    it('ffrt_queue_parallel_api_0002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_queue_parallel_api_0002();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_8000
+     *@tc.name: ffrt_queue_parallel_api_0003
+     *@tc.desc: test ffrt_queue_parallel api
+     */
+    it('ffrt_queue_parallel_api_0003',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_queue_parallel_api_0003();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_8100
+     *@tc.name: ffrt_queue_parallel_api_0004
+     *@tc.desc: test ffrt_queue_parallel api
+     */
+    it('ffrt_queue_parallel_api_0004',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_queue_parallel_api_0004();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_8200
+     *@tc.name: queue_parallel_cancel_0001
+     *@tc.desc: test queue_parallel_cancel api
+     */
+    it('queue_parallel_cancel_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queue_parallel_cancel_0001();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_8300
+     *@tc.name: queue_parallel_cancel_0002
+     *@tc.desc: test queue_parallel_cancel api
+     */
+    it('queue_parallel_cancel_0002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queue_parallel_cancel_0002();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_8400
+     *@tc.name: queue_parallel_0001
+     *@tc.desc: test queue_parallel_cancel api
+     */
+    it('queue_parallel_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queue_parallel_0001();
+      expect(flag).assertEqual(0);
+    })
+
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_8500
+     *@tc.name: queue_parallel_0002
+     *@tc.desc: test queue_parallel_cancel api
+     */
+    it('queue_parallel_0002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queue_parallel_0002();
+      expect(flag).assertEqual(0);
+    })
   })
 }

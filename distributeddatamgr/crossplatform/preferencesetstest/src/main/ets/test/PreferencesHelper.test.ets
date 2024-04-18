@@ -15,30 +15,31 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
 import common from "@ohos.app.ability.common";
+import { BusinessError } from '@ohos.base';
 
 const NAME = "test_preferences";
 const KEY_TEST_STRING_ELEMENT = "key_test_string";
 const KEY_TEST_INT_ELEMENT = "key_test_int";
 let mPreferences;
-let context: common.UIAbilityContext ;
+let context: common.UIAbilityContext;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 export default function preferencesHelperTest() {
-  describe("preferencesHelperTest", function () {
-    beforeAll(async function () {
+  describe("preferencesHelperTest", () => {
+    beforeAll(async () => {
       console.info("beforeAll");
       context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
-      console.info("context=======>"+context);
+      console.info("context=======>" + context);
       mPreferences = await dataPreferences.getPreferences(context, NAME);
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info("afterAll");
       await dataPreferences.deletePreferences(context, NAME);
     });
-
-    function sleep(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
 
     /**
      * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_1300
@@ -48,11 +49,11 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetPreferencesHelper0001", 0, async function () {
+    it("testGetPreferencesHelper0001", 0, async () => {
       mPreferences = await dataPreferences.getPreferences(context, NAME);
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
-      var value = await mPreferences.get(KEY_TEST_STRING_ELEMENT, 0);
+      let value = await mPreferences.get(KEY_TEST_STRING_ELEMENT, 0);
       expect(value).assertEqual("test");
     });
 
@@ -64,21 +65,21 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetPreferencesHelper0002", 0, async function (done) {
+    it("testGetPreferencesHelper0002", 0, async (done: Function) => {
       const promise = dataPreferences.getPreferences(context, NAME);
-      let preferences = null;
+      let preferences: dataPreferences.Preferences;
       promise
         .then(async (pref) => {
           preferences = pref;
           await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
             expect("test").assertEqual(ret);
           });
           await dataPreferences.deletePreferences(context, NAME);
           console.info("Succeeded in getting preferences.");
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -91,9 +92,8 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0001", 0, async function (done) {
-      let preferences = null;
-      preferences = await dataPreferences.getPreferences(context, NAME);
+    it("testRemovePreferencesFromCacheHelper0001", 0, async (done: Function) => {
+      let preferences = await dataPreferences.getPreferences(context, NAME);
       const promise = dataPreferences.removePreferencesFromCache(context, NAME);
       promise
         .then(() => {
@@ -101,7 +101,7 @@ export default function preferencesHelperTest() {
           expect("{}").assertEqual(JSON.stringify(preferences));
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -114,23 +114,22 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0004", 0, async function (done) {
-      let preferences = null;
-      preferences = await dataPreferences.getPreferences(context, NAME);
+    it("testRemovePreferencesFromCacheHelper0004", 0, async (done: Function) => {
+      let preferences = await dataPreferences.getPreferences(context, NAME);
       await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-      preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+      preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
         expect("test").assertEqual(ret);
       });
       dataPreferences
         .removePreferencesFromCache(context, "test_preferences1")
         .then(() => {
           console.info("Succeeded in removing preferences.");
-          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, pre) => {
             expect("test").assertEqual(pre);
             done();
           });
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           console.info("Remove preferences from cache error: " + err);
           expect(!err).assertTrue();
           done();
@@ -145,9 +144,8 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0005", 0, async function (done) {
-      let preferences = null;
-      preferences = await dataPreferences.getPreferences(context, {
+    it("testRemovePreferencesFromCacheHelper0005", 0, async (done: Function) => {
+      let preferences = await dataPreferences.getPreferences(context, {
         name: NAME
       });
       const promise = dataPreferences.removePreferencesFromCache(context, {
@@ -159,7 +157,7 @@ export default function preferencesHelperTest() {
           expect("{}").assertEqual(JSON.stringify(preferences));
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -172,13 +170,12 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0006", 0, async function (done) {
-      let preferences = null;
-      preferences = await dataPreferences.getPreferences(context, {
+    it("testRemovePreferencesFromCacheHelper0006", 0, async (done: Function) => {
+      let preferences = await dataPreferences.getPreferences(context, {
         name: NAME
       });
       await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-      preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+      preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
         expect("test").assertEqual(ret);
       });
       dataPreferences
@@ -187,12 +184,12 @@ export default function preferencesHelperTest() {
         })
         .then(() => {
           console.info("Succeeded in removing preferences.");
-          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, pre) => {
             expect("test").assertEqual(pre);
             done();
           });
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           console.info("Remove preferences from cache error: " + err);
           expect(!err).assertTrue();
           done();
@@ -207,9 +204,8 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0001", 0, async function (done) {
-      let preferences = null;
-      preferences = await dataPreferences.getPreferences(context, NAME);
+    it("testPreferencesDeleteHelper0001", 0, async (done: Function) => {
+      let preferences = await dataPreferences.getPreferences(context, NAME);
       const promise = dataPreferences.deletePreferences(context, NAME);
       promise
         .then(() => {
@@ -217,7 +213,7 @@ export default function preferencesHelperTest() {
           expect("{}").assertEqual(JSON.stringify(preferences));
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           console.info("Delete preferences err: " + err);
           expect(!err).assertTrue();
         });
@@ -231,23 +227,22 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0004", 0, async function (done) {
-      let preferences = null;
-      preferences = await dataPreferences.getPreferences(context, NAME);
+    it("testPreferencesDeleteHelper0004", 0, async (done: Function) => {
+      let preferences = await dataPreferences.getPreferences(context, NAME);
       await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-      preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+      preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
         expect("test").assertEqual(ret);
       });
       dataPreferences
         .deletePreferences(context, "test_preferences1")
         .then(() => {
           console.info("Succeeded in deleting preferences.");
-          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, pre) => {
             expect("test").assertEqual(pre);
             done();
           });
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           console.info("Delete preferences err: " + err);
           expect(!err).assertTrue();
           done();
@@ -262,9 +257,8 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0005", 0, async function (done) {
-      let preferences = null;
-      preferences = await dataPreferences.getPreferences(context, {
+    it("testPreferencesDeleteHelper0005", 0, async (done: Function) => {
+      let preferences = await dataPreferences.getPreferences(context, {
         name: NAME
       });
       const promise = dataPreferences.deletePreferences(context, {
@@ -276,7 +270,7 @@ export default function preferencesHelperTest() {
           expect("{}").assertEqual(JSON.stringify(preferences));
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           console.info("Delete preferences err: " + err);
           expect(!err).assertTrue();
         });
@@ -290,13 +284,12 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0006", 0, async function (done) {
-      let preferences = null;
-      preferences = await dataPreferences.getPreferences(context, {
+    it("testPreferencesDeleteHelper0006", 0, async (done: Function) => {
+      let preferences = await dataPreferences.getPreferences(context, {
         name: NAME
       });
       await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-      preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+      preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
         expect("test").assertEqual(ret);
       });
       dataPreferences
@@ -305,12 +298,12 @@ export default function preferencesHelperTest() {
         })
         .then(() => {
           console.info("Succeeded in deleting preferences.");
-          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, pre) => {
             expect("test").assertEqual(pre);
             done();
           });
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           console.info("Delete preferences err: " + err);
           expect(!err).assertTrue();
           done();
@@ -325,7 +318,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Constant
      * @tc.level   : Level 0
      */
-    it("testMaxKeyLength001", 0, function () {
+    it("testMaxKeyLength001", 0, () => {
       expect(dataPreferences.MAX_KEY_LENGTH == 80).assertTrue();
     });
 
@@ -337,7 +330,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Constant
      * @tc.level   : Level 0
      */
-    it("testMaxValueLength001", 0, function () {
+    it("testMaxValueLength001", 0, () => {
       expect(dataPreferences.MAX_VALUE_LENGTH == 8192).assertTrue();
     });
 
@@ -349,10 +342,10 @@ export default function preferencesHelperTest() {
      * @tc.type    : Constant
      * @tc.level   : Level 2
      */
-    it("testPreferencesOn001", 0, async function () {
+    it("testPreferencesOn001", 0, async () => {
       try {
         await mPreferences.clear();
-        var observer = function (key) {
+        let observer = (key: string) => {
           console.info("testPreferencesOn001 key " + key);
           expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
         };
@@ -373,10 +366,10 @@ export default function preferencesHelperTest() {
      * @tc.type    : Constant
      * @tc.level   : Level 2
      */
-    it("testPreferencesOn002", 0, async function () {
+    it("testPreferencesOn002", 0, async () => {
       try {
         await mPreferences.clear();
-        var observer = function (key) {
+        let observer = (key: string) => {
           console.info("testPreferencesOn002 key " + key);
           expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
         };
@@ -396,10 +389,10 @@ export default function preferencesHelperTest() {
      * @tc.type    : Constant
      * @tc.level   : Level 2
      */
-    it("testPreferencesOn003", 0, async function () {
+    it("testPreferencesOn003", 0, async () => {
       try {
         await mPreferences.clear();
-        var observer = function (key) {
+        let observer = (key: string) => {
           console.info("testPreferencesOn003 key " + key);
           expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
         };
@@ -419,10 +412,10 @@ export default function preferencesHelperTest() {
      * @tc.type    : Constant
      * @tc.level   : Level 2
      */
-    it("testPreferencesOn004", 0, async function () {
+    it("testPreferencesOn004", 0, async () => {
       try {
         await mPreferences.clear();
-        var observer = function (key) {
+        let observer = (key: string) => {
           console.info("testPreferencesOn004 key " + key);
           expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
         };
@@ -442,11 +435,11 @@ export default function preferencesHelperTest() {
      * @tc.type    : Constant
      * @tc.level   : Level 2
      */
-    it("testPreferencesOff001", 0, async function () {
+    it("testPreferencesOff001", 0, async () => {
       try {
         await mPreferences.clear();
         let isTrigger = false;
-        var observer = function (key) {
+        let observer = (key: string) => {
           console.info("testPreferencesOff001 key" + key);
           isTrigger = true;
         };
@@ -470,11 +463,11 @@ export default function preferencesHelperTest() {
      * @tc.type    : Constant
      * @tc.level   : Level 2
      */
-    it("testPreferencesOff002", 0, async function () {
+    it("testPreferencesOff002", 0, async () => {
       try {
         await mPreferences.clear();
         let isTrigger = false;
-        var observer = function (key) {
+        let observer = (key: string) => {
           console.info("testPreferencesOff001 key" + key);
           isTrigger = true;
         };
@@ -498,11 +491,11 @@ export default function preferencesHelperTest() {
      * @tc.type    : Constant
      * @tc.level   : Level 2
      */
-    it("testPreferencesOff003", 0, async function () {
+    it("testPreferencesOff003", 0, async () => {
       try {
         await mPreferences.clear();
         let isTrigger = false;
-        var observer = function (key) {
+        let observer = (key: string) => {
           console.info("testPreferencesOff003 key" + key);
           isTrigger = true;
         };
@@ -523,11 +516,11 @@ export default function preferencesHelperTest() {
      * @tc.type    : Constant
      * @tc.level   : Level 2
      */
-    it("testPreferencesOff004", 0, async function () {
+    it("testPreferencesOff004", 0, async () => {
       try {
         await mPreferences.clear();
         let isTrigger = false;
-        var observer = function (key) {
+        let observer = (key: string) => {
           console.info("testPreferencesOff004 key" + key);
           isTrigger = true;
         };

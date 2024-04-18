@@ -88,7 +88,7 @@ struct SwiperAnimationExample {
       .interval(4000)
       .indicator(true)
       .loop(true)
-      .duration(1000)
+      .duration(300)
       .itemSpace(0)
       .key('swiperAnimation')
       .displayArrow({

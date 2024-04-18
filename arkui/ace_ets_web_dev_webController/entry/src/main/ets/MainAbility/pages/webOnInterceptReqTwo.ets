@@ -22,84 +22,87 @@ import Utils from '../../test/Utils';
 @Entry
 @Component
 struct webOnInterceptReqTwo {
-    controller: WebController = new WebController();
-    responseweb: WebResourceResponse = new WebResourceResponse()
-    heads:Header[] = new Array()
-    @State str:string="emitOnInterceptRequestSecondWebC";
-    @State webdata: string = "<!DOCTYPE html>\n" +
-    "<html>\n"+
-    "<head>\n"+
-    "<title>intercept test</title>\n"+
-    "</head>\n"+
-    "<body>\n"+
-    "<h1>intercept test</h1>\n"+
-    "</body>\n"+
+  controller: WebController = new WebController();
+  responseweb: WebResourceResponse = new WebResourceResponse()
+  heads: Header[] = new Array()
+  @State str: string = "emitOnInterceptRequestSecondWebC";
+  @State webdata: string = "<!DOCTYPE html>\n" +
+    "<html>\n" +
+    "<head>\n" +
+    "<title>intercept test</title>\n" +
+    "</head>\n" +
+    "<body>\n" +
+    "<h1>intercept test</h1>\n" +
+    "</body>\n" +
     "</html>"
-    @State title:string = "test";
+  @State title: string = "test";
 
-    onPageShow(){
-        let valueChangeEvent={
-            eventId:10,
-            priority:events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
-    private valueChangeCallBack=(eventData)=>{
-        console.info("webOnInterceptReqTwo page valueChangeCallBack");
-        if(eventData != null){
-                console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-                if(eventData.data.ACTION != null){
-                    this.str = eventData.data.ACTION;
-                }
-        }
-    }
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
+  }
 
-    build() {
-        Column() {
-            Row() {
-                Button("web click").key('webOnInterceptReqTwo').onClick(async () => {
-                    console.info("key==>" + this.str)
-                    switch (this.str) {
-                        case "emitOnInterceptRequestSecondWebC": {
-                            try {
-                                this.controller.runJavaScript({script:"test()",callback:(res) => {
-                                    Utils.emitEvent(this.title, 408);
-                                }})
-                            } catch (error) {
-                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                            }
-                            break;
-                        }
-                    }
+  private valueChangeCallBack = (eventData: ESObject) => {
+    console.info("webOnInterceptReqTwo page valueChangeCallBack");
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
+        this.str = eventData.data.ACTION;
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button("web click").key('webOnInterceptReqTwo').onClick(async () => {
+          console.info("key==>" + this.str)
+          switch (this.str) {
+            case "emitOnInterceptRequestSecondWebC": {
+              try {
+                this.controller.runJavaScript({
+                  script: "test()", callback: (res) => {
+                    Utils.emitEvent(this.title, 408);
+                  }
                 })
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
             }
-            Web({ src:$rawfile('indexCopy.html'), controller: this.controller })
-              .onInterceptRequest((event) => {
-                  console.log('url:' + event.request.getRequestUrl())
-                  var head1:Header = {
-                    headerKey:"Connection",
-                    headerValue:"keep-alive"
-                  }
-                  var head2:Header = {
-                    headerKey:"Cache-Control",
-                    headerValue:"no-cache"
-                  }
-                  var length = this.heads.push(head1)
-                  length = this.heads.push(head2)
-                  this.responseweb.setResponseHeader(this.heads)
-                  this.responseweb.setResponseData(this.webdata)
-                  this.responseweb.setResponseEncoding('utf-8')
-                  this.responseweb.setResponseMimeType('text/html')
-                  this.responseweb.setResponseCode(200)
-                  this.responseweb.setReasonMessage('OK')
-                  return this.responseweb
-                  console.log("this.responseweb: " + this.responseweb);
-              })
-              .onTitleReceive((event) => {
-                  console.log('title:' + event.title);
-                  this.title = event.title
-                  Utils.emitEvent(this.title, 408);
-              })
-        }
+          }
+        })
+      }
+
+      Web({ src: $rawfile('indexCopy.html'), controller: this.controller })
+        .onInterceptRequest((event) => {
+          console.log('url:' + event.request.getRequestUrl());
+          let head1: Header = {
+            headerKey: "Connection",
+            headerValue: "keep-alive"
+          };
+          let head2: Header = {
+            headerKey: "Cache-Control",
+            headerValue: "no-cache"
+          };
+          let length = this.heads.push(head1);
+          length = this.heads.push(head2);
+          this.responseweb.setResponseHeader(this.heads);
+          this.responseweb.setResponseData(this.webdata);
+          this.responseweb.setResponseEncoding('utf-8');
+          this.responseweb.setResponseMimeType('text/html');
+          this.responseweb.setResponseCode(200);
+          this.responseweb.setReasonMessage('OK');
+          return this.responseweb;
+        })
+        .onTitleReceive((event) => {
+          console.log('title:' + event.title);
+          this.title = event.title;
+          Utils.emitEvent(this.title, 408);
+        })
     }
+  }
 }

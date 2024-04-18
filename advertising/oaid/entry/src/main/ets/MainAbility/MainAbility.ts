@@ -16,17 +16,18 @@ import Ability from '@ohos.app.ability.UIAbility';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import window from '@ohos.window';
 
 export default class MainAbility extends Ability {
-  async onCreate(want, launchParam){
+  async onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     // Ability is creating, initialize resources for this ability
     console.log('[Demo] MainAbility onCreate');
     globalThis.abilityWant = want;
     globalThis.abilityContext = this.context;
-    let abilityDelegator: any;
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-    let abilityDelegatorArguments: any;
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     console.info('start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
@@ -36,12 +37,18 @@ export default class MainAbility extends Ability {
     console.log('[Demo] MainAbility onDestroy');
   }
 
-  onWindowStageCreate(windowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     console.log('[Demo] MainAbility onWindowStageCreate windowStage=' + windowStage);
     globalThis.windowStage = windowStage;
     globalThis.abilityContext = this.context;
-    windowStage.setUIContent(this.context, 'MainAbility/pages/index/index', null);
+    windowStage.loadContent("MainAbility/pages/index/index", (err, data) => {
+      if (err.code) {
+        console.error('[Demo] Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('[Demo] Succeeded in loading the content. Data: ' + JSON.stringify(data));
+    });
   }
 
   onWindowStageDestroy() {

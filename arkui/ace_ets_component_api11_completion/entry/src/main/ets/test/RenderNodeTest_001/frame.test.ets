@@ -13,15 +13,28 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+
 export default function frame() {
-  describe('frame', function () {
-    beforeEach(async function (done) {
+  describe('frame', () => {
+    beforeEach(async (done: Function) => {
       console.info("frame beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/renderNode001/frame',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/renderNode001/frame',
       }
       try {
         router.clear();
@@ -40,14 +53,14 @@ export default function frame() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_frame_0100
-     * @tc.name      frame_0100
-     * @tc.desc      getFrame api
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_frame_0100
+     * @tc.name frame_0100
+     * @tc.desc getFrame api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('frame_0100', 0, async function (done) {
+    it('frame_0100', 0, async (done: Function) => {
       console.info('frame_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -55,22 +68,21 @@ export default function frame() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_getFrame');
-      let obj = JSON.parse(strJson);
-      console.info("[frame_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[frame_0100] title: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('50');
+      console.info("[frame_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[frame_0100] title: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('50');
       console.info('[frame_0100] END');
       done();
     });
     /**
-     * @tc.number    SUB_ACE_frame_0200
-     * @tc.name      frame_0200
-     * @tc.desc      setFrame api
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_frame_0200
+     * @tc.name frame_0200
+     * @tc.desc setFrame api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('frame_0200', 0, async function (done) {
+    it('frame_0200', 0, async (done: Function) => {
       console.info('frame_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -78,10 +90,9 @@ export default function frame() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_setFrame');
-      let obj = JSON.parse(strJson);
-      console.info("[frame_0200] component obj is: " + JSON.stringify(obj));
-      console.info("[frame_0200] title: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('60');
+      console.info("[frame_0200] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[frame_0200] title: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('60');
       console.info('[frame_0200] END');
       done();
     });

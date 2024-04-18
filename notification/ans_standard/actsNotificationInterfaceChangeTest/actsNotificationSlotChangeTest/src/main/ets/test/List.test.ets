@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import notificationSlot from './notificationSlot'
+import notificationSlot from './notificationSlot';
 
 export default function testsuite() {
-  notificationSlot()
+  notificationSlot();
 }

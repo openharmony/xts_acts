@@ -27,14 +27,14 @@ struct WebOnHttpErrorReceive {
   heads: Header[] = new Array()
   responseWeb: WebResourceResponse = new WebResourceResponse()
   webData: string = "<!DOCTYPE html>\n" +
-  "<html>\n" +
-  "<head>\n" +
-  "<title>intercept test</title>\n" +
-  "</head>\n" +
-  "<body>\n" +
-  "<h1>intercept test</h1>\n" +
-  "</body>\n" +
-  "</html>"
+    "<html>\n" +
+    "<head>\n" +
+    "<title>intercept test</title>\n" +
+    "</head>\n" +
+    "<body>\n" +
+    "<h1>intercept test</h1>\n" +
+    "</body>\n" +
+    "</html>"
   @State title: string = "test";
 
   onPageShow() {

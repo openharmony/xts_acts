@@ -18,12 +18,15 @@ import componentSnapshot from '@ohos.arkui.componentSnapshot';
 import image from '@ohos.multimedia.image';
 import curves from '@ohos.curves';
 import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct DragControllerPage {
-  @State pixmap: image.PixelMap|null = null
-  @State setColorText:  ResourceColor = Color.Green
-  @Builder DraggingBuilder() {
+  @State pixmap: image.PixelMap | null = null;
+  @State setColorText: ResourceColor = Color.Green;
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
     }
@@ -31,7 +34,9 @@ struct DragControllerPage {
     .height(100)
     .backgroundColor(Color.Blue)
   }
-  @Builder PixmapBuilder() {
+
+  @Builder
+  PixmapBuilder() {
     Column() {
       Text("PixmapBuilder")
     }
@@ -39,6 +44,7 @@ struct DragControllerPage {
     .height(100)
     .backgroundColor(Color.Blue)
   }
+
   build() {
     Column() {
       Button('拖拽至此处')
@@ -49,7 +55,7 @@ struct DragControllerPage {
             let previewObj: dragController.DragPreview = dragController.getDragPreview();
             this.setColorText = Color.Pink
             let previewAnimation: dragController.AnimationOptions = {
-              curve: curves.cubicBezierCurve(0.2,0,0,1),
+              curve: curves.cubicBezierCurve(0.2, 0, 0, 1),
             }
             previewObj.animate(previewAnimation, () => {
               previewObj.setForegroundColor(this.setColorText);
@@ -63,40 +69,42 @@ struct DragControllerPage {
         .onDrop(() => {
         })
       Button('拖起')
-         .draggable(true)
+        .draggable(true)
         .id('TouchParent_id')
-        .onTouch((event?:TouchEvent) => {
-        if(event){
-          if (event.type == TouchType.Down) {
-            let text = new UDC.Text()
-            let unifiedData = new UDC.UnifiedData(text)
-            console.log("one drag Down");
-            let dragInfo: dragController.DragInfo = {
-              pointerId: 0,
-              data: unifiedData,
-              extraParams: ''
-            }
-            class tmp{
-              event:DragEvent|undefined = undefined
-              extraParams:string = ''
-            }
-            let eve:tmp = new tmp()
-            dragController.executeDrag(() => {
-              this.DraggingBuilder()
-            }, dragInfo, (err , eve) => {
-              console.log(`zxr ${JSON.stringify(err)}`)
-              if (eve && eve.event) {
-                if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
-                  console.log('success');
-                } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
-                  console.log('failed');
-                }
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
+            if (event.type == TouchType.Down) {
+              let text = new UDC.Text()
+              let unifiedData = new UDC.UnifiedData(text)
+              console.log("one drag Down");
+              let dragInfo: dragController.DragInfo = {
+                pointerId: 0,
+                data: unifiedData,
+                extraParams: ''
               }
-            })
 
+              class tmp {
+                event: DragEvent | undefined = undefined
+                extraParams: string = ''
+              }
+
+              let eve: tmp = new tmp()
+              dragController.executeDrag(() => {
+                this.DraggingBuilder()
+              }, dragInfo, (err, eve) => {
+                console.log(`zxr ${JSON.stringify(err)}`)
+                if (eve && eve.event) {
+                  if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                    console.log('success');
+                  } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
+                    console.log('failed');
+                  }
+                }
+              })
+
+            }
           }
-        }
-      }).margin({top:100})
+        }).margin({ top: 100 })
     }
     .width('100%')
     .height('100%')

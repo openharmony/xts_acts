@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 export default function AttributeModifierDemoAPI02Jsunit() {
-  describe('AttributeModifierDemoAPI02Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('AttributeModifierDemoAPI02Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("AttributeModifierDemoAPI02Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AttributeModifier/AttributeModifierDemoAPI02',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AttributeModifier/AttributeModifierDemoAPI02',
       }
       try {
         router.clear();
@@ -40,7 +53,7 @@ export default function AttributeModifierDemoAPI02Jsunit() {
       }
       done();
     });
-    it('AttributeModifierDemoAPI02Jsunit_0100', 0, async function (done) {
+    it('AttributeModifierDemoAPI02Jsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('AttributeModifierDemoAPI02Jsunit_0100 START');
 
@@ -50,10 +63,9 @@ export default function AttributeModifierDemoAPI02Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strcontent = getInspectorByKey('AttributeModifierDemoAPI02ButtonFocus');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('AttributeModifierDemoAPI02Jsunit_0100 component obj.backgroundColor is: ' + obj.$attrs.backgroundColor);
-      expect(obj.$attrs.backgroundColor).assertEqual("#FF209B08");
+      console.info('AttributeModifierDemoAPI02Jsunit_0100 component obj.backgroundColor is: ' + JSON.parse(strcontent).$attrs.backgroundColor);
+      expect(JSON.parse(strcontent).$attrs.backgroundColor).assertEqual("#FF209B08");
       console.info('AttributeModifierDemoAPI02Jsunit_0100 END')
       done();
     });

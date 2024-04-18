@@ -27,25 +27,25 @@ struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraFlash';
   @State StepTips: string = '测试目的：用于测试相机闪光灯能力\n-确定是否有闪光灯\n-根据设备选择选项\n-点击开启关闭对闪光灯进行操作' + '\n' + '预期结果：操作后闪关灯表现一致';
-  private tag: string = 'qlw CameraFlash'
-  @State Vue: boolean = false
-  @State isFlash: boolean = undefined
-  private mXComponentController: XComponentController = new XComponentController()
-  @State captureSession: camera.CaptureSession = undefined
-  @State flashChange: boolean = false
+  private tag: string = 'qlw CameraFlash';
+  @State Vue: boolean = false;
+  @State isFlash: boolean = undefined;
+  private mXComponentController: XComponentController = new XComponentController();
+  @State captureSession: camera.CaptureSession = undefined;
+  @State flashChange: boolean = false;
 
   async aboutToAppear() {
-    await FirstDialog.ChooseDialog(this.StepTips, this.name)
-    this.cameraIsFlash()
+    await FirstDialog.ChooseDialog(this.StepTips, this.name);
+    this.cameraIsFlash();
   }
 
   cameraInit() {
     // @ts-ignore
     this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
     CameraService.initCamera(this.surfaceId, 0).then(() => {
-      this.captureSession = CameraService.captureSession
-      this.isFlash = this.captureSession.hasFlash()
-      Logger.info(this.tag, `onLoad isFlash: ${this.isFlash}`)
+      this.captureSession = CameraService.captureSession;
+      this.isFlash = this.captureSession.hasFlash();
+      Logger.info(this.tag, `onLoad isFlash: ${this.isFlash}`);
     })
   }
 
@@ -53,14 +53,14 @@ struct cameraOrientation {
     this.flashChange = !this.flashChange
     if (this.isFlash) {
       // 设置当前设备的闪光灯模式
-      this.captureSession.setFlashMode(this.flashChange ? camera.FlashMode.FLASH_MODE_ALWAYS_OPEN : camera.FlashMode.FLASH_MODE_CLOSE)
-      if (!this.flashChange){
-        this.Vue = true
+      this.captureSession.setFlashMode(this.flashChange ? camera.FlashMode.FLASH_MODE_ALWAYS_OPEN : camera.FlashMode.FLASH_MODE_CLOSE);
+      if (!this.flashChange) {
+        this.Vue = true;
       }
-      Logger.info(this.tag, `setFlashMode success`)
+      Logger.info(this.tag, `setFlashMode success`);
       // 获取当前设备的闪光灯模式
-      let flashMode = this.captureSession.getFlashMode()
-      Logger.info(this.tag, `getFlashMode success: ${flashMode}`)
+      let flashMode = this.captureSession.getFlashMode();
+      Logger.info(this.tag, `getFlashMode success: ${flashMode}`);
     }
   }
 
@@ -69,16 +69,21 @@ struct cameraOrientation {
   }
 
   onPageHide() {
-    CameraService.releaseCamera()
-    Logger.info(this.tag, `onPageHide releaseCamera end`)
+    CameraService.releaseCamera();
+    Logger.info(this.tag, `onPageHide releaseCamera end`);
   }
 
   build() {
     Column() {
       Row() {
         Button() {
-          Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({ left: '20vp' })
-        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
+          Image($r('app.media.ic_public_back'))
+            .width('20vp')
+            .height('18vp')
+            .margin({ left: '20vp' })
+        }
+        .backgroundColor(Color.Black)
+        .size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
             url: 'pages/Camera/Camera_index',
@@ -86,9 +91,18 @@ struct cameraOrientation {
           })
         })
 
-        Text(this.name).fontColor(Color.White).fontSize('18fp').margin({ left: '-20vp' })
-        Text('hello').fontColor(Color.White).visibility(Visibility.Hidden)
-      }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
+        Text(this.name)
+          .fontColor(Color.White)
+          .fontSize('18fp')
+          .margin({ left: '-20vp' })
+        Text('hello')
+          .fontColor(Color.White)
+          .visibility(Visibility.Hidden)
+      }
+      .backgroundColor(Color.Black)
+      .height('10%')
+      .width('100%')
+      .justifyContent(FlexAlign.SpaceBetween)
 
       Stack() {
         XComponent({
@@ -100,7 +114,9 @@ struct cameraOrientation {
             Logger.info(this.tag, 'onLoad is called')
             this.cameraInit()
           })
-        Row().backgroundColor(Color.Black).size({ width: '100%', height: '100%' })
+        Row()
+          .backgroundColor(Color.Black)
+          .size({ width: '100%', height: '100%' })
       }.size({ width: '10%', height: '30%' })
 
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start, direction: FlexDirection.Column }) {
@@ -108,7 +124,9 @@ struct cameraOrientation {
           Column() {
             // Text(`提示：` + this.isFlash).fontSize('16fp').fontColor(Color.White)
             Text(`提示：如果设备存在闪光灯，选择开启，否则选择无闪光灯`)
-              .fontSize('16fp').fontColor(Color.White).margin('20fp')
+              .fontSize('16fp')
+              .fontColor(Color.White)
+              .margin('20fp')
             Row() {
               Button(this.flashChange ? '关闭' : '开启').onClick(() => {
                 this.openFlash()
@@ -116,11 +134,16 @@ struct cameraOrientation {
               Button('无闪光灯').onClick(() => {
                 this.Vue = true
               })
-            }.justifyContent(FlexAlign.SpaceEvenly).width('100%').margin('20fp')
+            }
+            .justifyContent(FlexAlign.SpaceEvenly)
+            .width('100%')
+            .margin('20fp')
           }
         }.scrollBarColor(Color.White) // 滚动条颜色
         .scrollBarWidth(10)
-      }.width('80%').height('50%')
+      }
+      .width('80%')
+      .height('50%')
 
 
       CustomContainer({
@@ -130,13 +153,19 @@ struct cameraOrientation {
         FillColor: $FillColor,
         name: $name,
         Vue: $Vue,
-        isFlash:$isFlash
-      }).height('10%').width('100%')
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+        isFlash: $isFlash
+      })
+        .height('10%')
+        .width('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/Camera/Camera_index',
+      url: 'pages/Camera/Camera_index',
     })
   }
 }

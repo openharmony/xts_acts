@@ -15,11 +15,24 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function listSContentTest() {
-  describe('listSContentTest', function () {
-    beforeEach(async function (done) {
+  describe('listSContentTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("listSContent beforeEach start");
       try {
         router.clear();
@@ -27,7 +40,9 @@ export default function listSContentTest() {
         console.info("get listSContent state pages:" + JSON.stringify(pages));
         if (!("listTest" == pages.name)) {
           console.info("get listSContent pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({url:"MainAbility/pages/list/listTest"})
+          let result = await router.pushUrl({
+            url: "MainAbility/pages/list/listTest"
+          })
           await CommonFunc.sleep(2000);
           console.info("push listSContent  page result:" + JSON.stringify(result));
         }
@@ -37,30 +52,28 @@ export default function listSContentTest() {
       console.info("listSContent beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("listSContent after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_listSContentTest_0100
-     * @tc.desc      test contentStartOffset
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_listSContentTest_0100
+     * @tc.desc test contentStartOffset
+     * @tc.level Level 2
      * @tc.type
      * @tc.size
      */
 
-    it('listSContentTest_0100', 0, async function (done) {
+    it('listSContentTest_0100', 0, async (done: Function) => {
       console.info('[listSContentTest_0100] START');
       await CommonFunc.sleep(2000);
       let json = getInspectorByKey('listTestCon');
-      let Obj1 = JSON.parse(json);
       console.info("listTestCon json info " + JSON.stringify(json));
-      expect(Obj1.$attrs.contentStartOffset).assertEqual('10.000000');
-      expect(Obj1.$attrs.contentEndOffset).assertEqual('10.000000');
+      expect(JSON.parse(json).$attrs.contentStartOffset).assertEqual('10.000000');
+      expect(JSON.parse(json).$attrs.contentEndOffset).assertEqual('10.000000');
       console.info('[listSContentTest_0100] END');
       done();
     });
-
   })
 }

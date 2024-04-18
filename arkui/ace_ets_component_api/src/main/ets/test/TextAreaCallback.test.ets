@@ -16,6 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+import Utils from '../TestAbility/common/MyUtils';
 
 export default function TextAreaCallbackTest() {
 
@@ -35,6 +36,7 @@ export default function TextAreaCallbackTest() {
           await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
           })
+          await Utils.sleep(2500);
         }
       } catch (err) {
         console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));

@@ -20,21 +20,21 @@ import common from "@ohos.app.ability.common";
 
 const NAME = "test_preferences";
 const NAME1 = "getPreferencesTest";
-let mPreferences;
-let context: common.UIAbilityContext ;
+let mPreferences: dataPreferences.Preferences;
+let context: common.UIAbilityContext;
 
 const TAG = "[PREFERENCES_IGNORE_TEST]";
 
 export default function preferencesIgnoreTest() {
-  describe("preferencesIgnoreTest", function () {
-    beforeAll(async function () {
+  describe("preferencesIgnoreTest", () => {
+    beforeAll(async () => {
       console.info("beforeAll");
       context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
-      console.info("context=======>"+context);
+      console.info("context=======>" + context);
       mPreferences = await dataPreferences.getPreferences(context, NAME);
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info("afterAll");
       await dataPreferences.deletePreferences(context, NAME);
     });
@@ -47,7 +47,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferences001", 0, async function (done) {
+    it("testPreferencesGetPreferences001", 0, async (done: Function) => {
       try {
         // @ts-ignore
         await dataPreferences.getPreferences(context, -1, (err, preferences) => {
@@ -76,7 +76,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences002", 0, async function (done) {
+    it("testPreferencesDeletePreferences002", 0, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -112,7 +112,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences003", 0, async function (done) {
+    it("testPreferencesDeletePreferences003", 0, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -151,7 +151,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache002", 0, async function (done) {
+    it("testRemovePreferencesFromCache002", 0, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -186,7 +186,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetPreferencesHelper0003", 0, async function (done) {
+    it("testGetPreferencesHelper0003", 0, async (done: Function) => {
       try {
         // @ts-ignore
         let perference = await dataPreferences.getPreferences(context, -1);
@@ -208,7 +208,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetPreferencesHelper0004", 0, async function (done) {
+    it("testGetPreferencesHelper0004", 0, async (done: Function) => {
       try {
         // @ts-ignore
         let perference = await dataPreferences.getPreferences(context);
@@ -229,7 +229,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0002", 0, async function (done) {
+    it("testRemovePreferencesFromCacheHelper0002", 0, async (done: Function) => {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
@@ -251,7 +251,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0003", 0, async function (done) {
+    it("testRemovePreferencesFromCacheHelper0003", 0, async (done: Function) => {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
@@ -273,7 +273,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0002", 0, async function (done) {
+    it("testPreferencesDeleteHelper0002", 0, async (done: Function) => {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
@@ -295,7 +295,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0003", 0, async function (done) {
+    it("testPreferencesDeleteHelper0003", 0, async (done: Function) => {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
@@ -317,7 +317,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0004", 0, async function (done) {
+    it("testPreferencesDeleteHelper0004", 0, async (done: Function) => {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore

@@ -12,35 +12,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct SwiperItemSpaceTest {
-  @State test_itemspace: number = 0
-  messageManager:MessageManager = new MessageManager()
+  @State test_itemspace: number = 0;
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('SwiperItemSpace onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'itemspace') {
         this.test_itemspace = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
   build() {
     Column({ space: 5 }) {
       Swiper() {
-        Column(){Text ('1')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('itemspacekey01')
-        Column(){Text ('2')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('itemspacekey02')
-        Column(){Text ('3')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('itemspacekey03')
-        Column(){Text ('4')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('itemspacekey04')
-        Column(){Text ('5')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('itemspacekey05')
-        Column(){Text ('6')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('itemspacekey06')
+        Column() {
+          Text('1')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('itemspacekey01')
+
+        Column() {
+          Text('2')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('itemspacekey02')
+
+        Column() {
+          Text('3')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('itemspacekey03')
+
+        Column() {
+          Text('4')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('itemspacekey04')
+
+        Column() {
+          Text('5')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('itemspacekey05')
+
+        Column() {
+          Text('6')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('itemspacekey06')
       }
       .key('itemspacekey')
       .index(0)
@@ -49,7 +69,7 @@ struct SwiperItemSpaceTest {
       .indicator(true)
       .loop(true)
       .itemSpace(this.test_itemspace)
-       .displayCount(2)
+      .displayCount(2)
     }.margin({ top: 5 }).alignItems(HorizontalAlign.Start)
   }
 }

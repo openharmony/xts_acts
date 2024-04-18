@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import notificationManager from '@ohos.notificationManager';
 import hilog from '@ohos.hilog';
@@ -22,15 +23,15 @@ const TAG = 'NotificationActs';
 const TEST_SUITE_NAME = 'testNotificationEmitterNotification';
 
 export default function ActsNotificationEmitterTest() {
-describe('testNotificationEmitterNotification', () =>  {
-   /*
-     * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_0600
-     * @tc.name   : testEmitterOneventIdforstring
-     * @tc.desc   : test on interface success
-     * @tc.size   : Large-scaleTest
-     * @tc.type   : Interface
-     * @tc.level  : Level 3
-     */
+  describe('testNotificationEmitterNotification', () => {
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_0600
+      * @tc.name   : testEmitterOneventIdforstring
+      * @tc.desc   : test on interface success
+      * @tc.size   : Large-scaleTest
+      * @tc.type   : Interface
+      * @tc.level  : Level 3
+      */
     it('testEmitterOneventIdforstring', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdforstring';
       let eventId06 = 'eventId06'
@@ -49,7 +50,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId06)
+      let num: number = notificationemitter.getListenerCount(eventId06)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ` getListenerCount success,data is %{public}s`, JSON.stringify(num));
       expect(num).assertEqual(1);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -82,7 +83,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId07)
+      let num: number = notificationemitter.getListenerCount(eventId07)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -114,7 +115,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId08)
+      let num: number = notificationemitter.getListenerCount(eventId08)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(undefined);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -146,7 +147,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId09)
+      let num: number = notificationemitter.getListenerCount(eventId09)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' off success');
@@ -184,10 +185,10 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId10)
+      let num: number = notificationemitter.getListenerCount(eventId10)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
-      let num1 = notificationemitter.getListenerCount(innerEvent10.eventId)
+      let num1: number = notificationemitter.getListenerCount(innerEvent10.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(1);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -259,7 +260,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
         notificationemitter.emit(eventId18)
         setTimeout(() => {
-          let num = notificationemitter.getListenerCount(eventId18)
+          let num: number = notificationemitter.getListenerCount(eventId18)
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
           expect(num).assertEqual(0);
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -300,7 +301,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
         notificationemitter.emit(eventId19)
         setTimeout(() => {
-          let num = notificationemitter.getListenerCount(eventId19)
+          let num: number = notificationemitter.getListenerCount(eventId19)
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
           expect(num).assertEqual(0);
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -339,7 +340,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId20)
+      let num: number = notificationemitter.getListenerCount(eventId20)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(undefined);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -372,7 +373,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
         notificationemitter.emit(eventId21)
         setTimeout(() => {
-          let num = notificationemitter.getListenerCount(eventId21)
+          let num: number = notificationemitter.getListenerCount(eventId21)
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
           expect(num).assertEqual(0);
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -423,10 +424,10 @@ describe('testNotificationEmitterNotification', () =>  {
         done();
       }
       setTimeout(() => {
-        let num = notificationemitter.getListenerCount(eventId22)
+        let num: number = notificationemitter.getListenerCount(eventId22)
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
         expect(num).assertEqual(0);
-        let num1 = notificationemitter.getListenerCount(innerEvent22.eventId)
+        let num1: number = notificationemitter.getListenerCount(innerEvent22.eventId)
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
         expect(num1).assertEqual(0);
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -462,7 +463,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId23)
+      let num: number = notificationemitter.getListenerCount(eventId23)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       try {
@@ -475,7 +476,7 @@ describe('testNotificationEmitterNotification', () =>  {
         done();
       }
       setTimeout(() => {
-        let num1 = notificationemitter.getListenerCount(eventId23)
+        let num1: number = notificationemitter.getListenerCount(eventId23)
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
         expect(num1).assertEqual(1);
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' No subscription message');
@@ -509,11 +510,11 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId30)
+      let num: number = notificationemitter.getListenerCount(eventId30)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       notificationemitter.off(eventId30, onCallback30)
-      let num1 = notificationemitter.getListenerCount(eventId30)
+      let num1: number = notificationemitter.getListenerCount(eventId30)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(0);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -547,12 +548,12 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId31)
+      let num: number = notificationemitter.getListenerCount(eventId31)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       notificationemitter.off(eventId31, onCallback31)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' off1 success');
-      let num1 = notificationemitter.getListenerCount(eventId31)
+      let num1: number = notificationemitter.getListenerCount(eventId31)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(0);
       notificationemitter.off(eventId31, onCallback31)
@@ -591,7 +592,7 @@ describe('testNotificationEmitterNotification', () =>  {
       }
       notificationemitter.off(eventId32, onCallback32)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' off success');
-      let num = notificationemitter.getListenerCount(eventId32)
+      let num: number = notificationemitter.getListenerCount(eventId32)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(undefined);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -623,12 +624,12 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId33)
+      let num: number = notificationemitter.getListenerCount(eventId33)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       notificationemitter.off(eventId33, onCallback33)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' off success');
-      let num1 = notificationemitter.getListenerCount(eventId33)
+      let num1: number = notificationemitter.getListenerCount(eventId33)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(0);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -670,10 +671,10 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(innerEvent34.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent34.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
-      let num1 = notificationemitter.getListenerCount(eventId34)
+      let num1: number = notificationemitter.getListenerCount(eventId34)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(1);
       notificationemitter.off(innerEvent34.eventId, onCallback134)
@@ -799,12 +800,12 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(innerEvent44.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent44.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       notificationemitter.off(eventId44)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' off success');
-      let num1 = notificationemitter.getListenerCount(innerEvent44.eventId)
+      let num1: number = notificationemitter.getListenerCount(innerEvent44.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(1);
       notificationemitter.emit(eventId44, option44, data144)
@@ -851,7 +852,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(innerEvent45.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent45.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       notificationemitter.emit(eventId45, option45, data145)
@@ -898,7 +899,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(innerEvent46.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent46.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       notificationemitter.emit(eventId46, option46, data146)
@@ -938,7 +939,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(innerEvent50.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent50.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -973,7 +974,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(innerEvent51.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent51.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1070,7 +1071,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(innerEvent52.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent52.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(10);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1165,7 +1166,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId53)
+      let num: number = notificationemitter.getListenerCount(eventId53)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(10);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1272,7 +1273,7 @@ describe('testNotificationEmitterNotification', () =>  {
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' off4 success');
       notificationemitter.off(innerEvent54.eventId, onCallback554)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' off5 success');
-      let num = notificationemitter.getListenerCount(innerEvent54.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent54.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(5);
       let eventId54 = 'eventId54'
@@ -1304,7 +1305,7 @@ describe('testNotificationEmitterNotification', () =>  {
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' off4 success');
       notificationemitter.off(eventId54, onCallback554)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' off5 success');
-      let num1 = notificationemitter.getListenerCount(eventId54)
+      let num1: number = notificationemitter.getListenerCount(eventId54)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(5);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1401,7 +1402,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(innerEvent55.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent55.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(10);
       let eventId55 = 'eventId55'
@@ -1423,7 +1424,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num1 = notificationemitter.getListenerCount(eventId55)
+      let num1: number = notificationemitter.getListenerCount(eventId55)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(10);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1504,7 +1505,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num1 = notificationemitter.getListenerCount(eventId57)
+      let num1: number = notificationemitter.getListenerCount(eventId57)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(1);
       let num2 = notificationemitter.getListenerCount(innerEvent57.eventId)
@@ -1546,7 +1547,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num1 = notificationemitter.getListenerCount(eventId58)
+      let num1: number = notificationemitter.getListenerCount(eventId58)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(2);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1589,7 +1590,7 @@ describe('testNotificationEmitterNotification', () =>  {
         done();
       }
       setTimeout(() => {
-        let num1 = notificationemitter.getListenerCount(eventId59)
+        let num1: number = notificationemitter.getListenerCount(eventId59)
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
         expect(num1).assertEqual(0);
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1637,7 +1638,7 @@ describe('testNotificationEmitterNotification', () =>  {
         done();
       }
       setTimeout(() => {
-        let num1 = notificationemitter.getListenerCount(eventId60)
+        let num1: number = notificationemitter.getListenerCount(eventId60)
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
         expect(num1).assertEqual(0);
         let num2 = notificationemitter.getListenerCount(innerEvent60.eventId)
@@ -1690,7 +1691,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId61)
+      let num: number = notificationemitter.getListenerCount(eventId61)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(0);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1731,7 +1732,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId65)
+      let num: number = notificationemitter.getListenerCount(eventId65)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(0);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1764,7 +1765,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num1 = notificationemitter.getListenerCount(eventId66)
+      let num1: number = notificationemitter.getListenerCount(eventId66)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(1);
       try {
@@ -1829,7 +1830,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId67)
+      let num: number = notificationemitter.getListenerCount(eventId67)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(undefined);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1870,7 +1871,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId68)
+      let num: number = notificationemitter.getListenerCount(eventId68)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(0);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -1916,10 +1917,10 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId69)
+      let num: number = notificationemitter.getListenerCount(eventId69)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(0);
-      let num1 = notificationemitter.getListenerCount(innerEvent69.eventId)
+      let num1: number = notificationemitter.getListenerCount(innerEvent69.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(0);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -2153,7 +2154,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(innerEvent81.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent81.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(2);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -2250,7 +2251,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(innerEvent82.eventId)
+      let num: number = notificationemitter.getListenerCount(innerEvent82.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(10);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -2291,7 +2292,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId83)
+      let num: number = notificationemitter.getListenerCount(eventId83)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(1);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -2345,7 +2346,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num1 = notificationemitter.getListenerCount(eventId84)
+      let num1: number = notificationemitter.getListenerCount(eventId84)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(1);
       let num2 = notificationemitter.getListenerCount(innerEvent84.eventId)
@@ -2534,7 +2535,7 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num1 = notificationemitter.getListenerCount(eventId85)
+      let num1: number = notificationemitter.getListenerCount(eventId85)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(5);
       let num2 = notificationemitter.getListenerCount(innerEvent85.eventId)
@@ -2589,10 +2590,10 @@ describe('testNotificationEmitterNotification', () =>  {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       }
-      let num = notificationemitter.getListenerCount(eventId86)
+      let num: number = notificationemitter.getListenerCount(eventId86)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
       expect(num).assertEqual(0);
-      let num1 = notificationemitter.getListenerCount(innerEvent86.eventId)
+      let num1: number = notificationemitter.getListenerCount(innerEvent86.eventId)
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
       expect(num1).assertEqual(0);
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
@@ -2612,15 +2613,15 @@ describe('testNotificationEmitterNotification', () =>  {
       const TEST_CASE_NAME = 'testDeserializeEmitterCallbackNoPar';
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",() => {
+        emitter.on("eventid", () => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success,data is %{public}s');
           expect(true).assertTrue();
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
           done();
         })
         emitter.emit('eventid');
-      }catch (e){
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
@@ -2639,49 +2640,49 @@ describe('testNotificationEmitterNotification', () =>  {
       const TEST_CASE_NAME = 'testDeserializeEmitterCallback';
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       const re = new RegExp("\\w+");
-      const buffer : ArrayBuffer = new ArrayBuffer(8);
-      const view : Int32Array = new Int32Array(buffer);
-      const buffer1 : ArrayBuffer = new ArrayBuffer(16);
-      const view1 : DataView = new DataView(buffer1,0);
-      const birthday : Date = new Date("December 17,1995 03:24:00");
-      let a = view1.setInt16(1,42);
+      const buffer: ArrayBuffer = new ArrayBuffer(8);
+      const view: Int32Array = new Int32Array(buffer);
+      const buffer1: ArrayBuffer = new ArrayBuffer(16);
+      const view1: DataView = new DataView(buffer1, 0);
+      const birthday: Date = new Date("December 17,1995 03:24:00");
+      let a = view1.setInt16(1, 42);
       let b = view1.getInt16(1);
-      const aa = new Set([1,2,3]);
+      const aa = new Set([1, 2, 3]);
       const errtypes = new Error('Whoops!');
       const bmaps = new Map([
-        [1,'one'],[2,'two'],[3,'three']
+        [1, 'one'], [2, 'two'], [3, 'three']
       ]);
-      let testObject : emitter.EventData = {
-        data : {
-          'test' : 1
+      let testObject: emitter.EventData = {
+        data: {
+          'test': 1
         }
       };
-      let eventData : emitter.EventData = {
-        data : {
-          "number" : 1,
-          "string" : "str",
-          "boolean" : false,
-          "reg" : re,
-          "set" : aa,
-          "date" : birthday,
-          "view" : view,
-          "map" : bmaps,
-          "error" : errtypes,
-          "la" : b,
-          "obk" : testObject
+      let eventData: emitter.EventData = {
+        data: {
+          "number": 1,
+          "string": "str",
+          "boolean": false,
+          "reg": re,
+          "set": aa,
+          "date": birthday,
+          "view": view,
+          "map": bmaps,
+          "error": errtypes,
+          "la": b,
+          "obk": testObject
         }
       };
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",(eventData : emitter.EventData) => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on success,data is %{public}s',JSON.stringify(eventData));
+        emitter.on("eventid", (eventData: emitter.EventData) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on success,data is %{public}s', JSON.stringify(eventData));
           expect(true).assertTrue();
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
           done();
         })
-        emitter.emit('eventid',eventData);
-      }catch (e){
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        emitter.emit('eventid', eventData);
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
@@ -2698,7 +2699,7 @@ describe('testNotificationEmitterNotification', () =>  {
     */
     it('testDeserializeEmitterTwoCallbackNoPar', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoCallbackNoPar';
-      let count : number = 0;
+      let count: number = 0;
       let oncallback1 = () => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s');
         count++;
@@ -2709,19 +2710,20 @@ describe('testNotificationEmitterNotification', () =>  {
       };
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",oncallback1);
-        emitter.on("eventid",oncallback2);
+        emitter.on("eventid", oncallback1);
+        emitter.on("eventid", oncallback2);
         emitter.emit("eventid");
-      }catch (e){
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      };
+      }
+      ;
       setTimeout(() => {
         expect(count).assertEqual(2);
         done();
-      },1000);
+      }, 1000);
     })
 
     /*
@@ -2734,65 +2736,66 @@ describe('testNotificationEmitterNotification', () =>  {
     */
     it('testDeserializeEmitterTwoOnCallback', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnCallback';
-      let count : number = 0;
-      let oncallback1 = (data : emitter.EventData) => {
+      let count: number = 0;
+      let oncallback1 = (data: emitter.EventData) => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s');
         expect(true).assertTrue();
         count++;
       };
-      let oncallback2 = (data : emitter.EventData) => {
+      let oncallback2 = (data: emitter.EventData) => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s');
         expect(true).assertTrue();
         count++;
       };
       const re = new RegExp("\\w+");
-      const buffer : ArrayBuffer = new ArrayBuffer(8);
-      const view : Int32Array = new Int32Array(buffer);
-      const buffer1 : ArrayBuffer = new ArrayBuffer(16);
-      const view1 : DataView = new DataView(buffer1,0);
-      const birthday : Date = new Date("December 17,1995 03:24:00");
-      let a = view1.setInt16(1,42);
+      const buffer: ArrayBuffer = new ArrayBuffer(8);
+      const view: Int32Array = new Int32Array(buffer);
+      const buffer1: ArrayBuffer = new ArrayBuffer(16);
+      const view1: DataView = new DataView(buffer1, 0);
+      const birthday: Date = new Date("December 17,1995 03:24:00");
+      let a = view1.setInt16(1, 42);
       let b = view1.getInt16(1);
-      const aa = new Set([1,2,3]);
+      const aa = new Set([1, 2, 3]);
       const errtypes = new Error('Whoops!');
       const bmaps = new Map([
-        [1,'one'],[2,'two'],[3,'three']
+        [1, 'one'], [2, 'two'], [3, 'three']
       ]);
-      let testObject : emitter.EventData = {
-        data : {
-          'test' : 1
+      let testObject: emitter.EventData = {
+        data: {
+          'test': 1
         }
       };
-      let eventData : emitter.EventData = {
-        data : {
-          "number" : 1,
-          "string" : "str",
-          "boolean" : false,
-          "reg" : re,
-          "set" : aa,
-          "date" : birthday,
-          "view" : view,
-          "map" : bmaps,
-          "error" : errtypes,
-          "la" : b,
-          "obk" : testObject
+      let eventData: emitter.EventData = {
+        data: {
+          "number": 1,
+          "string": "str",
+          "boolean": false,
+          "reg": re,
+          "set": aa,
+          "date": birthday,
+          "view": view,
+          "map": bmaps,
+          "error": errtypes,
+          "la": b,
+          "obk": testObject
         }
       };
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",oncallback1);
-        emitter.on("eventid",oncallback2);
-        emitter.emit("eventid",eventData);
-      }catch (e){
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        emitter.on("eventid", oncallback1);
+        emitter.on("eventid", oncallback2);
+        emitter.emit("eventid", eventData);
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      };
+      }
+      ;
       setTimeout(() => {
         expect(count).assertEqual(2);
         done();
-      },1000);
+      }, 1000);
     })
 
     /*
@@ -2805,7 +2808,7 @@ describe('testNotificationEmitterNotification', () =>  {
     */
     it('testDeserializeEmitterTwoOnTwoEmitNoEventData', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitNoEventData';
-      let count : number = 0;
+      let count: number = 0;
       let oncallback1 = () => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s');
         expect(true).assertTrue();
@@ -2818,20 +2821,21 @@ describe('testNotificationEmitterNotification', () =>  {
       };
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",oncallback1);
-        emitter.on("eventids",oncallback2);
+        emitter.on("eventid", oncallback1);
+        emitter.on("eventids", oncallback2);
         emitter.emit("eventid");
         emitter.emit("eventids");
-      }catch (e){
-        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      };
+      }
+      ;
       setTimeout(() => {
         expect(count).assertEqual(2);
         done();
-      },1000);
+      }, 1000);
     })
 
     /*
@@ -2844,44 +2848,45 @@ describe('testNotificationEmitterNotification', () =>  {
     */
     it('testDeserializeEmitterTwoOnTwoEmitStrignAndArray', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitStrignAndArray';
-      let count : number = 0;
-      let oncallback1 = (data1 : emitter.EventData) => {
+      let count: number = 0;
+      let oncallback1 = (data1: emitter.EventData) => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s');
         expect(true).assertTrue();
         count++;
       };
-      let oncallback2 = (data2 : emitter.EventData) => {
+      let oncallback2 = (data2: emitter.EventData) => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s');
         expect(true).assertTrue();
         count++;
       };
-      let data1 : emitter.EventData = {
-        data : {
-          'string' : 'string'
+      let data1: emitter.EventData = {
+        data: {
+          'string': 'string'
         }
       };
-      let data2 : emitter.EventData = {
-        data : {
-          'Array' : [1,2,7,8]
+      let data2: emitter.EventData = {
+        data: {
+          'Array': [1, 2, 7, 8]
         }
       }
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",oncallback1);
-        emitter.on("eventids",oncallback2);
-        emitter.emit("eventid",data1);
-        emitter.emit("eventids",data2);
-      }catch (e){
-        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        emitter.on("eventid", oncallback1);
+        emitter.on("eventids", oncallback2);
+        emitter.emit("eventid", data1);
+        emitter.emit("eventids", data2);
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      };
+      }
+      ;
       setTimeout(() => {
         expect(count).assertEqual(2);
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      },1000);
+      }, 1000);
     })
 
     /*
@@ -2894,44 +2899,45 @@ describe('testNotificationEmitterNotification', () =>  {
     */
     it('testDeserializeEmitterTwoOnTwoEmitNumberAndBoolean', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitNumberAndBoolean';
-      let count : number = 0;
-      let oncallback1 = (data1 : emitter.EventData) => {
+      let count: number = 0;
+      let oncallback1 = (data1: emitter.EventData) => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s');
         expect(true).assertTrue();
         count++;
       };
-      let oncallback2 = (data2 : emitter.EventData) => {
+      let oncallback2 = (data2: emitter.EventData) => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s');
         expect(true).assertTrue();
         count++;
       };
-      let data1 : emitter.EventData = {
-        data : {
-          'number' : 1
+      let data1: emitter.EventData = {
+        data: {
+          'number': 1
         }
       };
-      let data2 : emitter.EventData = {
-        data : {
-          'Boolean' : true
+      let data2: emitter.EventData = {
+        data: {
+          'Boolean': true
         }
       }
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",oncallback1);
-        emitter.on("eventids",oncallback2);
-        emitter.emit("eventid",data1);
-        emitter.emit("eventids",data2);
-      }catch (e){
-        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        emitter.on("eventid", oncallback1);
+        emitter.on("eventids", oncallback2);
+        emitter.emit("eventid", data1);
+        emitter.emit("eventids", data2);
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      };
+      }
+      ;
       setTimeout(() => {
         expect(count).assertEqual(2);
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      },1000);
+      }, 1000);
     })
 
     /*
@@ -2944,45 +2950,46 @@ describe('testNotificationEmitterNotification', () =>  {
    */
     it('testDeserializeEmitterTwoOnTwoEmitArrayAndBuffer', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitArrayAndBuffer';
-      let count : number = 0;
-      let oncallback1 = (data1 : emitter.EventData) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s',JSON.stringify(data1));
+      let count: number = 0;
+      let oncallback1 = (data1: emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s', JSON.stringify(data1));
         expect(true).assertTrue();
         count++;
       };
-      let oncallback2 = (data2 : emitter.EventData) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s',JSON.stringify(data2));
+      let oncallback2 = (data2: emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s', JSON.stringify(data2));
         expect(true).assertTrue();
         count++;
       };
-      let data1 : emitter.EventData = {
-        data : {
-          'Array' : [1,2,3]
+      let data1: emitter.EventData = {
+        data: {
+          'Array': [1, 2, 3]
         }
       };
-      const buffer1 : ArrayBuffer = new ArrayBuffer(16);
-      let data2 : emitter.EventData = {
-        data : {
-          'Arraybuffer1' : buffer1
+      const buffer1: ArrayBuffer = new ArrayBuffer(16);
+      let data2: emitter.EventData = {
+        data: {
+          'Arraybuffer1': buffer1
         }
       };
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",oncallback1);
-        emitter.on("eventids",oncallback2);
-        emitter.emit("eventid",data1);
-        emitter.emit("eventids",data2);
-      }catch (e){
-        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        emitter.on("eventid", oncallback1);
+        emitter.on("eventids", oncallback2);
+        emitter.emit("eventid", data1);
+        emitter.emit("eventids", data2);
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      };
+      }
+      ;
       setTimeout(() => {
         expect(count).assertEqual(2);
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      },1000);
+      }, 1000);
     })
 
     /*
@@ -2995,47 +3002,48 @@ describe('testNotificationEmitterNotification', () =>  {
    */
     it('testDeserializeEmitterTwoOnTwoEmitDateAndDateView', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitDateAndDateView';
-      let count : number = 0;
-      let oncallback1 = (data1 : emitter.EventData) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s',JSON.stringify(data1));
+      let count: number = 0;
+      let oncallback1 = (data1: emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s', JSON.stringify(data1));
         expect(true).assertTrue();
         count++;
       };
-      let oncallback2 = (data2 : emitter.EventData) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s',JSON.stringify(data2));
+      let oncallback2 = (data2: emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s', JSON.stringify(data2));
         expect(true).assertTrue();
         count++;
       };
-      let birthday : Date = new Date('Decenmber 17,1995 03:24:00');
-      let data1 : emitter.EventData = {
-        data : {
-          'Date' : birthday
+      let birthday: Date = new Date('Decenmber 17,1995 03:24:00');
+      let data1: emitter.EventData = {
+        data: {
+          'Date': birthday
         }
       };
-      const buffer : ArrayBuffer = new ArrayBuffer(16);
-      const view = new DataView(buffer,0);
-      let data2 : emitter.EventData = {
-        data : {
-          'Arraybuffer' : view
+      const buffer: ArrayBuffer = new ArrayBuffer(16);
+      const view = new DataView(buffer, 0);
+      let data2: emitter.EventData = {
+        data: {
+          'Arraybuffer': view
         }
       };
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",oncallback1);
-        emitter.on("eventids",oncallback2);
-        emitter.emit("eventid",data1);
-        emitter.emit("eventids",data2);
-      }catch (e){
-        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        emitter.on("eventid", oncallback1);
+        emitter.on("eventids", oncallback2);
+        emitter.emit("eventid", data1);
+        emitter.emit("eventids", data2);
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      };
+      }
+      ;
       setTimeout(() => {
         expect(count).assertEqual(2);
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      },1000);
+      }, 1000);
     })
 
     /*
@@ -3048,48 +3056,49 @@ describe('testNotificationEmitterNotification', () =>  {
   */
     it('testDeserializeEmitterTwoOnTwoEmitMapAndSet', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitMapAndSet';
-      let count : number = 0;
-      let oncallback1 = (data1 : emitter.EventData) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s',JSON.stringify(data1));
+      let count: number = 0;
+      let oncallback1 = (data1: emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s', JSON.stringify(data1));
         expect(true).assertTrue();
         count++;
       };
-      let oncallback2 = (data2 : emitter.EventData) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s',JSON.stringify(data2));
+      let oncallback2 = (data2: emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s', JSON.stringify(data2));
         expect(true).assertTrue();
         count++;
       };
-      const Sets = new Set([1,2,3]);
-      let data1 : emitter.EventData = {
-        data : {
-          'Sets' : Sets
+      const Sets = new Set([1, 2, 3]);
+      let data1: emitter.EventData = {
+        data: {
+          'Sets': Sets
         }
       };
       const Maps = new Map([
-        [1,'one'],[2,'two'],[3,'three']
+        [1, 'one'], [2, 'two'], [3, 'three']
       ]);
-      let data2 : emitter.EventData = {
-        data : {
-          'Map' : Maps
+      let data2: emitter.EventData = {
+        data: {
+          'Map': Maps
         }
       };
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",oncallback1);
-        emitter.on("eventids",oncallback2);
-        emitter.emit("eventid",data1);
-        emitter.emit("eventids",data2);
-      }catch (e){
-        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        emitter.on("eventid", oncallback1);
+        emitter.on("eventids", oncallback2);
+        emitter.emit("eventid", data1);
+        emitter.emit("eventids", data2);
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      };
+      }
+      ;
       setTimeout(() => {
         expect(count).assertEqual(2);
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      },1000);
+      }, 1000);
     })
 
     /*
@@ -3102,47 +3111,48 @@ describe('testNotificationEmitterNotification', () =>  {
  */
     it('testDeserializeEmitterTwoOnTwoEmitErrorTypesAndTypedArray', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitErrorTypesAndTypedArray';
-      let count : number = 0;
-      let oncallback1 = (data1 : emitter.EventData) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s',JSON.stringify(data1));
+      let count: number = 0;
+      let oncallback1 = (data1: emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s', JSON.stringify(data1));
         expect(true).assertTrue();
         count++;
       };
-      let oncallback2 = (data2 : emitter.EventData) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s',JSON.stringify(data2));
+      let oncallback2 = (data2: emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s', JSON.stringify(data2));
         expect(true).assertTrue();
         count++;
       };
       const errtypes = new Error('Whoops!');
-      let data1 : emitter.EventData = {
-        data : {
-          'errtypes' : errtypes
+      let data1: emitter.EventData = {
+        data: {
+          'errtypes': errtypes
         }
       };
       const buffer = new ArrayBuffer(8);
       const view = new Int32Array(buffer);
-      let data2 : emitter.EventData = {
-        data : {
-          'TypeArray' : view
+      let data2: emitter.EventData = {
+        data: {
+          'TypeArray': view
         }
       };
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",oncallback1);
-        emitter.on("eventids",oncallback2);
-        emitter.emit("eventid",data1);
-        emitter.emit("eventids",data2);
-      }catch (e){
-        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        emitter.on("eventid", oncallback1);
+        emitter.on("eventids", oncallback2);
+        emitter.emit("eventid", data1);
+        emitter.emit("eventids", data2);
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      };
+      }
+      ;
       setTimeout(() => {
         expect(count).assertEqual(2);
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      },1000);
+      }, 1000);
     })
 
     /*
@@ -3155,47 +3165,48 @@ describe('testNotificationEmitterNotification', () =>  {
  */
     it('testDeserializeEmitterTwoOnTwoEmitRegExpAndPrimitivetypes', 0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitRegExpAndPrimitivetypes';
-      let count : number = 0;
-      let oncallback1 = (data1 : emitter.EventData) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s',JSON.stringify(data1));
+      let count: number = 0;
+      let oncallback1 = (data1: emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s', JSON.stringify(data1));
         expect(true).assertTrue();
         count++;
       };
-      let oncallback2 = (data2 : emitter.EventData) => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s',JSON.stringify(data2));
+      let oncallback2 = (data2: emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s', JSON.stringify(data2));
         expect(true).assertTrue();
         count++;
       };
       const re = new RegExp('\\w+');
-      let data1 : emitter.EventData = {
-        data : {
-          'RegExp' : re
+      let data1: emitter.EventData = {
+        data: {
+          'RegExp': re
         }
       };
       const Primitivetypes = 1;
-      let data2 : emitter.EventData = {
-        data : {
-          'Primitivetypes' : Primitivetypes
+      let data2: emitter.EventData = {
+        data: {
+          'Primitivetypes': Primitivetypes
         }
       };
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
-        emitter.on("eventid",oncallback1);
-        emitter.on("eventids",oncallback2);
-        emitter.emit("eventid",data1);
-        emitter.emit("eventids",data2);
-      }catch (e){
-        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        emitter.on("eventid", oncallback1);
+        emitter.on("eventids", oncallback2);
+        emitter.emit("eventid", data1);
+        emitter.emit("eventids", data2);
+      } catch (e) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(e));
         expect(false).assertTrue();
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      };
+      }
+      ;
       setTimeout(() => {
         expect(count).assertEqual(2);
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
-      },1000);
+      }, 1000);
     })
-   
-})
+
+  })
 }

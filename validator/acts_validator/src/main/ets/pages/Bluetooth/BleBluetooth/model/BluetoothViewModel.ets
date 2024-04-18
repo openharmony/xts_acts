@@ -173,7 +173,7 @@ export class BluetoothViewModel {
         })
         if (!device) {
           Log.info(TAG, `onBLEDeviceFind: deviceId = ${deviceId}, deviceName = ${deviceName}`);
-          this.mAvailableDevices.push(this.getDevice(deviceId, deviceName,rssi));
+          this.mAvailableDevices.push(this.getDevice(deviceId, deviceName, rssi));
           AppStorage.SetOrCreate('availableDevices', this.mAvailableDevices);
         }
       })
@@ -401,9 +401,9 @@ export class BluetoothViewModel {
     Log.info(TAG, `getDevice: deviceId = ${deviceId}, deviceName = ${deviceName}, rssi = ${rssi}`);
     let device = new BluetoothDevice();
     device.deviceId = deviceId;
-    if(deviceName){
+    if (deviceName) {
       device.deviceName = deviceName;
-    }else {
+    } else {
       device.deviceName = 'N/A'
     }
     device.rssi = rssi

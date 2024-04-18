@@ -18,8 +18,8 @@
 struct richEditorApi2 {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
-  @State selection:string = ''
-  @State text1:string = '111'
+  @State selection: string = ''
+  @State text1: string = '111'
 
   build() {
     Scroll() {
@@ -38,7 +38,7 @@ struct richEditorApi2 {
           this.controller.setSelection(-1, -1)
         }).id('richEditorApi2_btn1')
         Button('getSelection').onClick((event: ClickEvent) => {
-          this.text1  =  JSON.stringify(this.controller.getSelection().selection)
+          this.text1 = JSON.stringify(this.controller.getSelection().selection)
         }).id('richEditorApi2_btn2')
         Text('' + this.text1).key('richEditorApi2_text1')
 

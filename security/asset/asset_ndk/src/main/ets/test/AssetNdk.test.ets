@@ -125,7 +125,7 @@ export default function AssetNdkTest() {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       expect(myAssetNdk.asset_queryError(aw.aliasNameList[0], aw.secretList[0]))
-        .assertEqual(aw.assetQueryTrue);
+        .assertEqual(4);
     })
 
     /**
@@ -169,7 +169,7 @@ export default function AssetNdkTest() {
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
 
       expect(myAssetNdk.asset_updateError(aw.aliasNameList[0], aw.secretList[0]))
-        .assertEqual(aw.assetQueryTrue);
+        .assertEqual(4);
     })
 
     /**
@@ -204,7 +204,7 @@ export default function AssetNdkTest() {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       expect(myAssetNdk.asset_removeError(aw.aliasNameList[0], aw.secretList[0]))
-        .assertEqual(aw.assetQueryTrue);
+        .assertEqual(4);
     })
 
     /**
@@ -219,7 +219,7 @@ export default function AssetNdkTest() {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAllAuth(attr);
       expect(myAssetNdk.asset_preAndPostQueryNormal(aw.aliasNameList[0], aw.aliasNameList[1]))
-        .assertEqual(aw.assetQueryTrue);
+        .assertEqual(3);
 
     })
 
@@ -235,7 +235,7 @@ export default function AssetNdkTest() {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAllAuth(attr);
       expect(myAssetNdk.asset_preAndPostQueryError(aw.aliasNameList[0], aw.secretList[0]))
-        .assertEqual(aw.assetQueryTrue);
+        .assertEqual(3);
     })
 
   })

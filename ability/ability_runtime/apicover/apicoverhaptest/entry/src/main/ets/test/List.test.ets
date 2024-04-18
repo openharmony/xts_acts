@@ -18,6 +18,7 @@ import newApiCoverAbility from './NewApiCoverAbility.test'
 import verificationTest from './VerificationTest'
 import wantAgentCover from './WantAgentCover.test'
 import contextEnvironmentTest from './ContextEnvironmentTest.test';
+import UIContextWindowStageTest from './UIContextWindowStage.test';
 
 export default function List() {
 
@@ -26,4 +27,5 @@ export default function List() {
   verificationTest()
   wantAgentCover()
   contextEnvironmentTest(globalThis.applicationContext)
+  UIContextWindowStageTest()
 }

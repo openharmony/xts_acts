@@ -21,17 +21,20 @@ struct paddingPage {
   //Use for Grid.
   public valueArr: number[] = [5, 10, 10, 7, 9, 10, 10, 10, 10]
   @State _padding: Padding = { left: 0, right: 0, top: 0, bottom: 0 };
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentBackGroundColor: string = router.getParams() ? router.getParams()['view']['parentBackGroundColor'] : ''
-  @State referenceComponentKey: string = router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentBackGroundColor: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentBackGroundColor'] : ''
+  @State referenceComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
 
   onPageShow() {
     console.info('padding page show called ')
-    attrsManager.registerDataChange(value => this._padding = value.padding)
+    attrsManager.registerDataChange((value: ESObject) => {
+      this._padding = value.padding
+    })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .padding(this._padding)
     .key(this.componentKey)
   }
@@ -109,10 +112,13 @@ struct paddingPage {
       } else if (this.targetView == 'SideBarContainer') {
         SideBarContainer(SideBarContainerType.Embed) {
           Column() {
-            ForEach([1, 2, 3], (item) => {
+            ForEach([1, 2, 3], (item:string) => {
               Column({ space: 5 }) {
-                Image($r('app.media.icon')).width(64).height(64)
-                Text('Index0' + item).fontSize(25)
+                Image($r('app.media.icon'))
+                  .width(64)
+                  .height(64)
+                Text('Index0' + item)
+                  .fontSize(25)
               }
             })
           }.width('100%')
@@ -120,8 +126,12 @@ struct paddingPage {
           .backgroundColor(Color.Green)
 
           Column() {
-            Text('SideBarContainer content').fontSize(25)
-          }.backgroundColor(Color.Orange).width('100%').height('100%').key(this.referenceComponentKey)
+            Text('SideBarContainer content')
+              .fontSize(25)
+          }.backgroundColor(Color.Orange)
+          .width('100%')
+          .height('100%')
+          .key(this.referenceComponentKey)
         }.commonStyle()
       } else if (this.targetView == 'Stack') {
         Stack() {
@@ -137,15 +147,23 @@ struct paddingPage {
         Tabs() {
           TabContent() {
             Row()
-              .height('100%').width('100%')
+              .height('100%')
+              .width('100%')
               .backgroundColor('#FF3333')
-          }.height('100%').width('100%').key(this.referenceComponentKey)
-        }.commonStyle().height('50%').width('50%')
+          }
+          .height('100%')
+          .width('100%')
+          .key(this.referenceComponentKey)
+        }
+        .commonStyle()
+        .height('50%')
+        .width('50%')
       } else if (this.targetView == 'TabContent') {
         Tabs() {
           TabContent() {
             Row()
-              .height('100%').width('100%')
+              .height('100%')
+              .width('100%')
               .backgroundColor('#FF3333')
               .key(this.referenceComponentKey)
           }.commonStyle()
@@ -157,7 +175,10 @@ struct paddingPage {
         }.commonStyle()
       } else if (this.targetView == 'ColumnSplit') {
         ColumnSplit() {
-          Text('1').width('100%').height('100%').backgroundColor(0xF5DEB3).key(this.referenceComponentKey)
+          Text('1')
+            .width('100%')
+            .height('100%')
+            .backgroundColor(0xF5DEB3).key(this.referenceComponentKey)
         }.commonStyle()
       } else if (this.targetView == 'Flex') {
         Flex() {
@@ -216,10 +237,17 @@ struct paddingPage {
             .height('100%')
             .backgroundColor('#FF3333')
             .key(this.referenceComponentKey)
-        }.height('50%').width('50%').backgroundColor(Color.Green).commonStyle()
+        }.height('50%')
+        .width('50%')
+        .backgroundColor(Color.Green)
+        .commonStyle()
       } else if (this.targetView == 'RowSplit') {
         RowSplit() {
-          Text('1').width('100%').height('100%').backgroundColor(0xF5DEB3).key(this.referenceComponentKey)
+          Text('1')
+            .width('100%')
+            .height('100%')
+            .backgroundColor(0xF5DEB3)
+            .key(this.referenceComponentKey)
         }.commonStyle()
       } else if (this.targetView == 'ListItem') {
         List() {
@@ -229,8 +257,14 @@ struct paddingPage {
               .height('100%')
               .backgroundColor('#FF3333')
               .key(this.referenceComponentKey)
-          }.commonStyle().height('50%').width('50%').backgroundColor(Color.Green)
-        }.width('100%').height('100%')
+          }
+          .commonStyle()
+          .height('50%')
+          .width('50%')
+          .backgroundColor(Color.Green)
+        }
+        .width('100%')
+        .height('100%')
       }
     }.backgroundColor(this.parentBackGroundColor)
   }

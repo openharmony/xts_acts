@@ -1,0 +1,14 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/imageEffects/imageEffects",
+        "MainAbility/pages/imageEffects/blendMode",
+        "MainAbility/pages/imageEffects/backgroundEffect",
+        "MainAbility/pages/imageEffects/backgroundEffect1",
+        "MainAbility/pages/imageEffects/blendMode1",
+        "MainAbility/pages/imageEffects/InvertOptions",
+        "MainAbility/pages/imageEffects/ForegroundColor",
+        "MainAbility/pages/imageEffects/sheetSize",
+        "MainAbility/pages/clickeffect/Index"
+    ]
+}

@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import select from './Select'
-import selectmenuTest from './SelectMenu'
+import select from './Select';
+import selectmenuTest from './SelectMenu';
 
 export default function testsuite() {
-       select()
-       selectmenuTest()
+  select();
+  selectmenuTest();
 }

@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import CommonFunc from "../../MainAbility/common/Common";
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function menu() {
-  describe('menu', function () {
-    beforeEach(async function (done) {
+  describe('menu', () => {
+    beforeEach(async (done: Function) => {
       console.info("menu beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/MethodStyle/menu',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/MethodStyle/menu',
       }
       try {
         router.clear();
@@ -40,18 +40,18 @@ export default function menu() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info(" menu after each called");
     });
 
     /**
-     * @tc.number       menu_001
-     * @tc.name         menu_001
-     * @tc.desc        menu test
-     * @tc.level       Level 2
+     * @tc.number menu_001
+     * @tc.name menu_001
+     * @tc.desc menu test
+     * @tc.level Level 2
      */
-    it('menu_001', 0, async function (done) {
+    it('menu_001', 0, async (done: Function) => {
       console.info('[menu_001] START');
 
       await CommonFunc.sleep(1000);
@@ -67,26 +67,17 @@ export default function menu() {
 
       let strJson1 = getInspectorByKey('preview_start');
       await CommonFunc.sleep(200);
-      let obj1 = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.content).assertEqual('10');
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('10');
 
 
       let strJson2 = getInspectorByKey('preview_end');
       await CommonFunc.sleep(200);
-      let obj2 = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
-      expect(obj2.$attrs.content).assertEqual('20');
-
-
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('20');
       console.info('[menu_001] END');
       done();
     });
-
-
-
-
-
   })
 }
 

@@ -17,5 +17,5 @@ import scroll_ScrollFrictionTest from './Scroll/Scroll_attribute/Scroll_ScrollFr
 
 export default function testsuite() {
   scroll_ScrollFrictionTest();
-  
+
 }

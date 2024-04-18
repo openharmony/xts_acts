@@ -13,14 +13,17 @@
  * limitations under the License.
  */
 import { RenderNode, FrameNode, NodeController } from "@ohos.arkui.node"
+
 let renderNode = new RenderNode();
 renderNode.size = { width: 300, height: 300 };
 renderNode.backgroundColor = 0XFF00FF00
 renderNode.position = { x: 10, y: 10 }
 let x = renderNode.position.x
 let y = renderNode.position.y
+
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     const rootRenderNode = this.rootNode.getRenderNode();
@@ -30,12 +33,14 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
 struct setPosition {
   @State MyNodeController: MyNodeController = new MyNodeController();
   @State getX: number = x
   @State getY: number = y
+
   build() {
     Row() {
       Column() {

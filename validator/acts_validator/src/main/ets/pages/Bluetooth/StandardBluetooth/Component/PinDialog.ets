@@ -16,16 +16,17 @@ import Logger from '../../../model/Logger';
 import connection from '@ohos.bluetooth.connection';
 import emitter from '@ohos.events.emitter';
 
-const TAG: string = 'PinDialog'
+const TAG: string = 'PinDialog';
 
 @CustomDialog
 export struct PinDialog {
-  private controller?: CustomDialogController
-  private data: connection.PinRequiredParam | null = null
-  @State titleText: string = ''
-  @State pinCode: string = ''
+  private controller?: CustomDialogController;
+  private data: connection.PinRequiredParam | null = null;
+  @State titleText: string = '';
+  @State pinCode: string = '';
 
-  @Builder choiceText(message: string, handlerClick) {
+  @Builder
+  choiceText(message: string, handlerClick) {
     Text(message)
       .width('50%')
       .fontSize(30)

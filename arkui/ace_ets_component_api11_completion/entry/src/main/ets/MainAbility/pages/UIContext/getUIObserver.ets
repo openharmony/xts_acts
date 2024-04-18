@@ -13,27 +13,35 @@
  * limitations under the License.
  */
 import observer from '@ohos.arkui.observer';
+
 @Entry
 @Component
 struct NavRouterExample {
-  aboutToAppear(){
-    let context:UIContext | undefined = this.getUIContext?.()
-    if(context!=undefined){
+  aboutToAppear() {
+    let context: UIContext | undefined = this.getUIContext?.()
+    if (context != undefined) {
       let contextObserver = context.getUIObserver();
-      contextObserver.on("navDestinationUpdate",(e)=>{
+      contextObserver.on("navDestinationUpdate", (e) => {
         this.showFlag = '30'
       });
     }
   }
-  @State isActiveWLAN: boolean = false
-  @State isActiveBluetooth: boolean = false
-  @State showFlag:ResourceStr=''
+
+  @State isActiveWLAN: boolean = false;
+  @State isActiveBluetooth: boolean = false;
+  @State showFlag: ResourceStr = '';
+
   build() {
     Column() {
       Navigation() {
         NavRouter() {
           Row() {
-            Row().width(30).height(30).borderRadius(30).margin({ left: 3, right: 10 }).backgroundColor(Color.Pink)
+            Row()
+              .width(30)
+              .height(30)
+              .borderRadius(30)
+              .margin({ left: 3, right: 10 })
+              .backgroundColor(Color.Pink)
             Text(`WLAN`)
               .fontSize(22)
               .fontWeight(500)
@@ -41,6 +49,7 @@ struct NavRouterExample {
           }
           .width('90%')
           .height(72)
+
           NavDestination() {
             Flex({ direction: FlexDirection.Row }) {
               Text('wifi').fontSize(30).padding({ left: 35 })
@@ -51,9 +60,15 @@ struct NavRouterExample {
         .onStateChange((isActivated: boolean) => {
           this.isActiveWLAN = isActivated
         })
+
         NavRouter() {
           Row() {
-            Row().width(30).height(30).borderRadius(30).margin({ left: 3, right: 10 }).backgroundColor(Color.Pink)
+            Row()
+              .width(30)
+              .height(30)
+              .borderRadius(30)
+              .margin({ left: 3, right: 10 })
+              .backgroundColor(Color.Pink)
             Text(`蓝牙`)
               .fontSize(22)
               .fontWeight(500)
@@ -62,6 +77,7 @@ struct NavRouterExample {
           .id('lanYa_id')
           .width('90%')
           .height(72)
+
           NavDestination() {
             Flex({ direction: FlexDirection.Row }) {
               Text(this.showFlag.toString()).fontSize(30).padding({ left: 35 }).key('showFlag_id')

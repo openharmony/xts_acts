@@ -33,6 +33,7 @@ export default class Hap2MainAbility8 extends Ability {
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("[Demo] Hap2MainAbility8 onWindowStageCreate")
+        globalThis.hap2MainAbility8Context = this.context;
 
         windowStage.setUIContent(this.context, "pages/Hap2MainAbility8_pages", null)
     }

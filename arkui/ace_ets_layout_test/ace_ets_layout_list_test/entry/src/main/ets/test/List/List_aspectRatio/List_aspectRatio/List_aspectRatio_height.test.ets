@@ -77,8 +77,8 @@ export default function List_aspectRatio_height() {
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_01');
 
-      expect(Math.round(List01.right - List01.left)).assertEqual(vp2px(350));
-      expect(Math.round(List01.bottom - List01.top)).assertEqual(vp2px(350));
+      expect(Math.round(List01.right - List01.left)).assertEqual(Math.round(vp2px(350)));
+      expect(Math.round(List01.bottom - List01.top)).assertEqual(Math.round(vp2px(350)));
 
       console.info('[SUB_ACE_List_aspectRatio_height_0100] END');
       done();
@@ -117,7 +117,7 @@ export default function List_aspectRatio_height() {
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_01');
 
-      expect(Math.round(List01.right - List01.left)).assertEqual(vp2px(700));
+      expect(Math.round(List01.right - List01.left)).assertEqual(Math.round(vp2px(700)));
       expect(Math.round(List01.bottom - List01.top)).assertEqual(Math.round(vp2px(350)));
 
       console.info('[SUB_ACE_List_aspectRatio_height_0300] END');

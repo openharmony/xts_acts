@@ -30,7 +30,7 @@ function translateParamsToString(parameters) {
     return targetParams.trim()
 }
 
- export default {
+export default {
     onPrepare() {
         console.info('OpenHarmonyTestRunner OnPrepare')
     },
@@ -44,12 +44,11 @@ function translateParamsToString(parameters) {
         var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
         cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters)
         var debug = abilityDelegatorArguments.parameters["-D"]
-        console.info('debug value : '+debug)
-        if (debug == 'true')
-        {
+        console.info('debug value : ' + debug)
+        if (debug == 'true') {
             cmd += ' -D'
         }
-        console.info('cmd : '+cmd)
+        console.info('cmd : ' + cmd)
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
             console.info('executeShellCommand : err : ' + JSON.stringify(err));
             console.info('executeShellCommand : data : ' + data.stdResult);

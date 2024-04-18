@@ -15,6 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
 import common from "@ohos.app.ability.common";
+import { BusinessError } from '@ohos.base';
 
 const NAME = "test_preferences";
 const NAME1 = "getPreferencesTest";
@@ -27,19 +28,19 @@ const KEY_TEST_NUMBER_ARRAY_ELEMENT = "key_test_number_array";
 const KEY_TEST_STRING_ARRAY_ELEMENT = "key_test_string_array";
 const KEY_TEST_BOOL_ARRAY_ELEMENT = "key_test_bool_array";
 const TAG = "[PREFERENCES_PROMISE_JSUNIT_TEST]";
-let mPreferences;
+let mPreferences: dataPreferences.Preferences;
 let context: common.UIAbilityContext;
 
 export default function preferencesPromiseTest() {
-  describe("preferencesPromiseTest", function () {
-    beforeAll(async function () {
+  describe("preferencesPromiseTest", () => {
+    beforeAll(async () => {
       console.info("beforeAll");
       context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
-      console.info("context=======>"+context);
+      console.info("context=======>" + context);
       mPreferences = await dataPreferences.getPreferences(context, NAME);
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info("afterAll");
       await dataPreferences.deletePreferences(context, NAME);
     });
@@ -52,16 +53,16 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferencesPromise001", 0, async function (done) {
+    it("testPreferencesGetPreferencesPromise001", 0, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1).then(async (preferences) => {
         console.info(TAG + "Get preferences success" + preferences);
         await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-        preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+        preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
           expect("test").assertEqual(ret);
         });
         await dataPreferences.deletePreferences(context, NAME1);
         done();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(TAG + "Get preferences err: " + err);
         expect(!err).assertTrue();
       })
@@ -75,13 +76,13 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferencesPromise002", 0, async function (done) {
+    it("testPreferencesGetPreferencesPromise002", 0, async (done: Function) => {
       try {
         dataPreferences.getPreferences(context, null).then(async (preferences) => {
           console.info(TAG + "Get preferences success" + preferences);
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.info(TAG + "Get preferences err: " + JSON.stringify(err));
           expect(!err).assertFalse();
           done();
@@ -102,18 +103,18 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferencesPromise003", 0, async function (done) {
+    it("testPreferencesGetPreferencesPromise003", 0, async (done: Function) => {
       dataPreferences.getPreferences(context, {
         name: NAME1
       }).then(async (preferences) => {
         console.info(TAG + "Get preferences success" + preferences);
         await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-        preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+        preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
           expect("test").assertEqual(ret);
         });
         await dataPreferences.deletePreferences(context, NAME1);
         done();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(TAG + "Get preferences err: " + err);
         expect(!err).assertTrue();
       })
@@ -127,7 +128,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferencesPromise004", 0, async function (done) {
+    it("testPreferencesGetPreferencesPromise004", 0, async (done: Function) => {
       try {
         dataPreferences.getPreferences(context, {
           name: NAME1
@@ -135,7 +136,7 @@ export default function preferencesPromiseTest() {
           console.info(TAG + "Get preferences success" + preferences);
           expect(preferences !== null).assertTrue();
           done();
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.info(TAG + "Get preferences err: " + JSON.stringify(err));
           expect(!err).assertFail();
           done();
@@ -155,20 +156,20 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferencesPromise001", 0, async function (done) {
+    it("testPreferencesDeletePreferencesPromise001", 0, async (done: Function) => {
       dataPreferences.getPreferences(context, {
         name: NAME1
       }).then(async (preferences) => {
         console.info(TAG + "Get preferences success" + preferences);
         await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-        preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+        preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
           expect("test").assertEqual(ret);
         });
         await dataPreferences.deletePreferences(context, {
           name: NAME1
         });
         done();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(TAG + "Get preferences err: " + err);
         expect(!err).assertTrue();
       })
@@ -182,7 +183,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferencesPromise002", 0, async function (done) {
+    it("testPreferencesDeletePreferencesPromise002", 0, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -195,7 +196,7 @@ export default function preferencesPromiseTest() {
               name: null
             }).then(async () => {
               expect().assertFail();
-            }).catch(err => {
+            }).catch((err: BusinessError) => {
               console.info("testPreferencesDeletePreferencesPromise002 fail1: " + err);
               expect(!err).assertFail();
             });
@@ -216,7 +217,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetDefValuePromise0001", 0, async function (done) {
+    it("testPreferencesGetDefValuePromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       const promise = mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultValue");
       promise
@@ -224,7 +225,7 @@ export default function preferencesPromiseTest() {
           expect("defaultValue").assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -237,7 +238,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetFloatPromise0001", 0, async function (done) {
+    it("testPreferencesGetFloatPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       const promise = mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -246,7 +247,7 @@ export default function preferencesPromiseTest() {
           expect(3.0).assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -259,7 +260,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetIntPromise0001", 0, async function (done) {
+    it("testPreferencesGetIntPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 3);
       const promise = mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
@@ -268,7 +269,7 @@ export default function preferencesPromiseTest() {
           expect(3).assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -281,7 +282,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetLongPromise0001", 0, async function (done) {
+    it("testPreferencesGetLongPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 3);
       const promise = mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
@@ -290,7 +291,7 @@ export default function preferencesPromiseTest() {
           expect(3).assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -303,7 +304,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetStringPromise0001", 0, async function (done) {
+    it("testPreferencesGetStringPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
@@ -313,7 +314,7 @@ export default function preferencesPromiseTest() {
           expect("test").assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -326,7 +327,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetBooleanPromise0001", 0, async function (done) {
+    it("testPreferencesGetBooleanPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, true);
       let promise = mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true);
@@ -335,7 +336,7 @@ export default function preferencesPromiseTest() {
           expect(true).assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -348,9 +349,9 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetStringArrayPromise0001", 0, async function (done) {
+    it("testPreferencesGetStringArrayPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
-      var stringArr = ["11", "22", "33"];
+      let stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
       let promise = mPreferences.get(KEY_TEST_STRING_ARRAY_ELEMENT, ["123", "321"]);
       promise
@@ -360,7 +361,7 @@ export default function preferencesPromiseTest() {
           }
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -373,9 +374,9 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetNumArrayPromise0001", 0, async function (done) {
+    it("testPreferencesGetNumArrayPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
-      var doubleArr = [11, 22, 33];
+      let doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr);
       let promise = mPreferences.get(KEY_TEST_NUMBER_ARRAY_ELEMENT, [123, 321]);
       promise
@@ -385,7 +386,7 @@ export default function preferencesPromiseTest() {
           }
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -398,7 +399,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetBoolArrayPromise0001", 0, async function (done) {
+    it("testPreferencesGetBoolArrayPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let boolArr = [true, false, false, true];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
@@ -410,7 +411,7 @@ export default function preferencesPromiseTest() {
           }
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -423,7 +424,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncDefaultValue0001", 0, async function (done) {
+    it("testPreferencesGetSyncDefaultValue0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let ret = mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultValue");
       expect("defaultValue").assertEqual(ret);
@@ -438,7 +439,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncFloat0001", 0, async function (done) {
+    it("testPreferencesGetSyncFloat0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       let ret = mPreferences.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -454,7 +455,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncInt0001", 0, async function (done) {
+    it("testPreferencesGetSyncInt0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 3);
       let ret = mPreferences.getSync(KEY_TEST_INT_ELEMENT, 0);
@@ -471,7 +472,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncLong0001", 0, async function (done) {
+    it("testPreferencesGetSyncLong0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 3);
       let ret = mPreferences.getSync(KEY_TEST_LONG_ELEMENT, 0);
@@ -487,7 +488,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncString0001", 0, async function (done) {
+    it("testPreferencesGetSyncString0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       let ret = mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue");
@@ -503,7 +504,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncBoolean0001", 0, async function (done) {
+    it("testPreferencesGetSyncBoolean0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, true);
       let ret = mPreferences.getSync(KEY_TEST_STRING_ELEMENT, true);
@@ -519,9 +520,9 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncStringArray0001", 0, async function (done) {
+    it("testPreferencesGetSyncStringArray0001", 0, async (done: Function) => {
       await mPreferences.clear();
-      var stringArr = ["11", "22", "33"];
+      let stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
       let ret = mPreferences.getSync(KEY_TEST_STRING_ARRAY_ELEMENT, ["123", "321"]);
       for (let i = 0; i < stringArr.length; i++) {
@@ -539,9 +540,9 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncNumArray0001", 0, async function (done) {
+    it("testPreferencesGetSyncNumArray0001", 0, async (done: Function) => {
       await mPreferences.clear();
-      var doubleArr = [11, 22, 33];
+      let doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr);
       let ret = mPreferences.getSync(KEY_TEST_NUMBER_ARRAY_ELEMENT, [123, 321]);
       for (let i = 0; i < doubleArr.length; i++) {
@@ -558,7 +559,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncBoolArray0001", 0, async function (done) {
+    it("testPreferencesGetSyncBoolArray0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let boolArr = [true, false, false, true];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
@@ -577,7 +578,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetAllPromise0001", 0, async function (done) {
+    it("testPreferencesGetAllPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -593,27 +594,28 @@ export default function preferencesPromiseTest() {
 
       let promise = mPreferences.getAll();
       promise
-        .then((obj) => {
+        .then((value: Object) => {
+          let obj = value as Record<string, object>;
           expect(false).assertEqual(obj.key_test_boolean);
           expect("123").assertEqual(obj.key_test_string);
           expect(123.1).assertEqual(obj.key_test_float);
-          let sArr = obj.key_test_string_array;
+          let sArr = obj.key_test_string_array as Array<string>;
           for (let i = 0; i < sArr.length; i++) {
             expect(sArr[i]).assertEqual(stringArr[i]);
           }
 
-          let bArr = obj.key_test_bool_array;
+          let bArr = obj.key_test_bool_array as Array<boolean>;
           for (let i = 0; i < bArr.length; i++) {
             expect(bArr[i]).assertEqual(boolArr[i]);
           }
 
-          let nArr = obj.key_test_number_array;
+          let nArr = obj.key_test_number_array as Array<number>;
           for (let i = 0; i < nArr.length; i++) {
             expect(nArr[i]).assertEqual(doubleArr[i]);
           }
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -627,7 +629,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetAllSync0001", 0, async function (done) {
+    it("testPreferencesGetAllSync0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -641,21 +643,21 @@ export default function preferencesPromiseTest() {
 
       await mPreferences.flush();
 
-      let obj = mPreferences.getAllSync();
+      let obj = mPreferences.getAllSync() as Record<string, object>;
       expect(false).assertEqual(obj.key_test_boolean);
       expect("123").assertEqual(obj.key_test_string);
       expect(123.1).assertEqual(obj.key_test_float);
-      let sArr = obj.key_test_string_array;
+      let sArr = obj.key_test_string_array as Array<string>;
       for (let i = 0; i < sArr.length; i++) {
         expect(sArr[i]).assertEqual(stringArr[i]);
       }
 
-      let bArr = obj.key_test_bool_array;
+      let bArr = obj.key_test_bool_array as Array<boolean>;
       for (let i = 0; i < bArr.length; i++) {
         expect(bArr[i]).assertEqual(boolArr[i]);
       }
 
-      let nArr = obj.key_test_number_array;
+      let nArr = obj.key_test_number_array as Array<number>;
       for (let i = 0; i < nArr.length; i++) {
         expect(nArr[i]).assertEqual(doubleArr[i]);
       }
@@ -670,7 +672,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutFloatPromise0001", 0, async function (done) {
+    it("testPreferencesPutFloatPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0);
       let per = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -689,7 +691,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutIntPromise0001", 0, async function (done) {
+    it("testPreferencesPutIntPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 4);
       let per = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
@@ -708,7 +710,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutLongPromise0001", 0, async function (done) {
+    it("testPreferencesPutLongPromise0001", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
       let per = await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
       expect(4).assertEqual(per);
@@ -726,7 +728,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutStringPromise0001", 0, async function (done) {
+    it("testPreferencesPutStringPromise0001", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "");
       let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
       expect("").assertEqual(per);
@@ -744,7 +746,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutBooleanPromise0001", 0, async function (done) {
+    it("testPreferencesPutBooleanPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true);
       let per = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -763,9 +765,9 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutStringArrayPromise0001", 0, async function (done) {
+    it("testPreferencesPutStringArrayPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
-      var stringArr = ["1", "2", "3"];
+      let stringArr = ["1", "2", "3"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
       let promise2 = mPreferences.get(KEY_TEST_STRING_ARRAY_ELEMENT, ["123", "321"]);
       promise2
@@ -775,7 +777,7 @@ export default function preferencesPromiseTest() {
           }
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -788,9 +790,9 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutNumArrayPromise0001", 0, async function (done) {
+    it("testPreferencesPutNumArrayPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
-      var numberArr = [11, 22, 33, 44, 55];
+      let numberArr = [11, 22, 33, 44, 55];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
       let promise2 = mPreferences.get(KEY_TEST_NUMBER_ARRAY_ELEMENT, [123, 321]);
       promise2
@@ -800,7 +802,7 @@ export default function preferencesPromiseTest() {
           }
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -813,9 +815,9 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutBoolArrayPromise0001", 0, async function (done) {
+    it("testPreferencesPutBoolArrayPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
-      var boolArr = [true, true, false];
+      let boolArr = [true, true, false];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
       let promise2 = mPreferences.get(KEY_TEST_BOOL_ARRAY_ELEMENT, [false, true]);
       promise2
@@ -825,7 +827,7 @@ export default function preferencesPromiseTest() {
           }
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -838,7 +840,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncFloat0001", 0, async function (done) {
+    it("testPreferencesPutSyncFloat0001", 0, async (done: Function) => {
       await mPreferences.clear();
       mPreferences.putSync(KEY_TEST_FLOAT_ELEMENT, 4.0);
       let per = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -857,7 +859,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncInt0001", 0, async function (done) {
+    it("testPreferencesPutSyncInt0001", 0, async (done: Function) => {
       await mPreferences.clear();
       mPreferences.putSync(KEY_TEST_INT_ELEMENT, 4);
       let per = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
@@ -876,7 +878,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncLong0001", 0, async function (done) {
+    it("testPreferencesPutSyncLong0001", 0, async (done: Function) => {
       mPreferences.putSync(KEY_TEST_LONG_ELEMENT, 4);
       let per = await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
       expect(4).assertEqual(per);
@@ -894,7 +896,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncString0001", 0, async function (done) {
+    it("testPreferencesPutSyncString0001", 0, async (done: Function) => {
       mPreferences.putSync(KEY_TEST_STRING_ELEMENT, "");
       let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
       expect("").assertEqual(per);
@@ -912,7 +914,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncBoolean0001", 0, async function (done) {
+    it("testPreferencesPutSyncBoolean0001", 0, async (done: Function) => {
       await mPreferences.clear();
       mPreferences.putSync(KEY_TEST_BOOLEAN_ELEMENT, true);
       let per = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -931,9 +933,9 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncStringArray0001", 0, async function (done) {
+    it("testPreferencesPutSyncStringArray0001", 0, async (done: Function) => {
       await mPreferences.clear();
-      var stringArr = ["1", "2", "3"];
+      let stringArr = ["1", "2", "3"];
       mPreferences.putSync(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
       let promise2 = mPreferences.get(KEY_TEST_STRING_ARRAY_ELEMENT, ["123", "321"]);
       await promise2;
@@ -944,7 +946,7 @@ export default function preferencesPromiseTest() {
           }
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -957,9 +959,9 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncNumArray0001", 0, async function (done) {
+    it("testPreferencesPutSyncNumArray0001", 0, async (done: Function) => {
       await mPreferences.clear();
-      var numberArr = [11, 22, 33, 44, 55];
+      let numberArr = [11, 22, 33, 44, 55];
       mPreferences.putSync(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
       let promise2 = mPreferences.get(KEY_TEST_NUMBER_ARRAY_ELEMENT, [123, 321]);
       await promise2;
@@ -970,7 +972,7 @@ export default function preferencesPromiseTest() {
           }
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -983,9 +985,9 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncBoolArray0001", 0, async function (done) {
+    it("testPreferencesPutSyncBoolArray0001", 0, async (done: Function) => {
       await mPreferences.clear();
-      var boolArr = [true, true, false];
+      let boolArr = [true, true, false];
       mPreferences.putSync(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
       let promise2 = mPreferences.get(KEY_TEST_BOOL_ARRAY_ELEMENT, [false, true]);
       await promise2;
@@ -996,7 +998,7 @@ export default function preferencesPromiseTest() {
           }
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -1009,7 +1011,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0001", 0, async function (done) {
+    it("testPreferencesHasKeyPromise0001", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 2.0);
       const promise = mPreferences.has(KEY_TEST_FLOAT_ELEMENT);
       promise
@@ -1017,7 +1019,7 @@ export default function preferencesPromiseTest() {
           expect(true).assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -1030,7 +1032,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0002", 0, async function (done) {
+    it("testPreferencesHasKeyPromise0002", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 1);
       const promise = mPreferences.has(KEY_TEST_INT_ELEMENT);
       promise
@@ -1038,7 +1040,7 @@ export default function preferencesPromiseTest() {
           expect(true).assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -1051,7 +1053,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0003", 0, async function (done) {
+    it("testPreferencesHasKeyPromise0003", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 0);
       const promise = mPreferences.has(KEY_TEST_LONG_ELEMENT);
       promise
@@ -1059,7 +1061,7 @@ export default function preferencesPromiseTest() {
           expect(true).assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -1072,7 +1074,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0004", 0, async function (done) {
+    it("testPreferencesHasKeyPromise0004", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       const promise = mPreferences.has(KEY_TEST_STRING_ELEMENT);
       promise
@@ -1080,7 +1082,7 @@ export default function preferencesPromiseTest() {
           expect(true).assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -1093,7 +1095,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0005", 0, async function (done) {
+    it("testPreferencesHasKeyPromise0005", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, false);
       const promise = mPreferences.has(KEY_TEST_BOOLEAN_ELEMENT);
       promise
@@ -1101,7 +1103,7 @@ export default function preferencesPromiseTest() {
           expect(true).assertEqual(ret);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -1114,7 +1116,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasSync0001", 0, async function (done) {
+    it("testPreferencesHasSync0001", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 2.0);
       let ret = mPreferences.hasSync(KEY_TEST_FLOAT_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1129,7 +1131,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasSync0002", 0, async function (done) {
+    it("testPreferencesHasSync0002", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 1);
       let ret = mPreferences.hasSync(KEY_TEST_INT_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1144,7 +1146,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasSync0003", 0, async function (done) {
+    it("testPreferencesHasSync0003", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 0);
       let ret = mPreferences.hasSync(KEY_TEST_LONG_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1159,7 +1161,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasSync0004", 0, async function (done) {
+    it("testPreferencesHasSync0004", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       let ret = mPreferences.hasSync(KEY_TEST_STRING_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1174,7 +1176,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasSync0005", 0, async function (done) {
+    it("testPreferencesHasSync0005", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, false);
       let ret = mPreferences.hasSync(KEY_TEST_BOOLEAN_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1189,7 +1191,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesClearPromise0001", 0, async function (done) {
+    it("testPreferencesClearPromise0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -1203,21 +1205,21 @@ export default function preferencesPromiseTest() {
 
       await mPreferences.flush();
 
-      let obj = mPreferences.getAllSync();
+      let obj = mPreferences.getAllSync() as Record<string, object>;
       expect(false).assertEqual(obj.key_test_boolean);
       expect("123").assertEqual(obj.key_test_string);
       expect(123.1).assertEqual(obj.key_test_float);
-      let sArr = obj.key_test_string_array;
+      let sArr = obj.key_test_string_array as Array<string>;
       for (let i = 0; i < sArr.length; i++) {
         expect(sArr[i]).assertEqual(stringArr[i]);
       }
 
-      let bArr = obj.key_test_bool_array;
+      let bArr = obj.key_test_bool_array as Array<boolean>;
       for (let i = 0; i < bArr.length; i++) {
         expect(bArr[i]).assertEqual(boolArr[i]);
       }
 
-      let nArr = obj.key_test_number_array;
+      let nArr = obj.key_test_number_array as Array<number>;
       for (let i = 0; i < nArr.length; i++) {
         expect(nArr[i]).assertEqual(doubleArr[i]);
       }
@@ -1225,7 +1227,7 @@ export default function preferencesPromiseTest() {
       const promise = mPreferences.clear();
       promise
         .then(async () => {
-          let ret = mPreferences.getAllSync();
+          let ret = mPreferences.getAllSync() as Record<string, object>;
           console.log("testPreferencesClearPromise0001 end." + JSON.stringify(ret.key_test_string));
           expect(undefined).assertEqual(ret.key_test_boolean);
           expect(undefined).assertEqual(ret.key_test_string);
@@ -1235,7 +1237,7 @@ export default function preferencesPromiseTest() {
           expect(undefined).assertEqual(ret.key_test_number_array);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -1248,7 +1250,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesClearSync0001", 0, async function (done) {
+    it("testPreferencesClearSync0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -1262,27 +1264,27 @@ export default function preferencesPromiseTest() {
 
       await mPreferences.flush();
 
-      let obj = mPreferences.getAllSync();
+      let obj = mPreferences.getAllSync() as Record<string, object>;
       expect(false).assertEqual(obj.key_test_boolean);
       expect("123").assertEqual(obj.key_test_string);
       expect(123.1).assertEqual(obj.key_test_float);
-      let sArr = obj.key_test_string_array;
+      let sArr = obj.key_test_string_array as Array<string>;
       for (let i = 0; i < sArr.length; i++) {
         expect(sArr[i]).assertEqual(stringArr[i]);
       }
 
-      let bArr = obj.key_test_bool_array;
+      let bArr = obj.key_test_bool_array as Array<boolean>;
       for (let i = 0; i < bArr.length; i++) {
         expect(bArr[i]).assertEqual(boolArr[i]);
       }
 
-      let nArr = obj.key_test_number_array;
+      let nArr = obj.key_test_number_array as Array<number>;
       for (let i = 0; i < nArr.length; i++) {
         expect(nArr[i]).assertEqual(doubleArr[i]);
       }
 
       mPreferences.clearSync();
-      let ret = mPreferences.getAllSync();
+      let ret = mPreferences.getAllSync() as Record<string, object>;
       console.log("testPreferencesClearSync0001 end." + JSON.stringify(ret.key_test_string));
       expect(undefined).assertEqual(ret.key_test_boolean);
       expect(undefined).assertEqual(ret.key_test_string);
@@ -1301,7 +1303,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePromise0001", 0, async function (done) {
+    it("testPreferencesDeletePromise0001", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       let ret = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
       expect(3.0).assertEqual(ret);
@@ -1313,7 +1315,7 @@ export default function preferencesPromiseTest() {
           expect(0.0).assertEqual(per);
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });
@@ -1326,7 +1328,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteSync0001", 0, async function (done) {
+    it("testPreferencesDeleteSync0001", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       let ret = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
       expect(3.0).assertEqual(ret);
@@ -1345,7 +1347,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesFlushPromise0001", 0, async function (done) {
+    it("testPreferencesFlushPromise0001", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
       const promise = mPreferences.flush();
@@ -1354,7 +1356,7 @@ export default function preferencesPromiseTest() {
         expect("test").assertEqual(per);
         done();
       })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
         });
     });

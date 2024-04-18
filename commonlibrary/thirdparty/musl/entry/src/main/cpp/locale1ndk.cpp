@@ -33,22 +33,6 @@
 #define ERRON_0 0
 #define ONE_YEAR 31622400LL
 
-extern "C" struct tm *__localtime64(const time_t *);
-static napi_value Localtime64(napi_env env, napi_callback_info info)
-{
-    int ret = SUCCESS;
-    struct tm *tm;
-    const time_t time = INT_MIN * ONE_YEAR + PARAM_1;
-    errno = ERRON_0;
-    tm = __localtime64(&time);
-    if (tm == nullptr || errno == EOVERFLOW) {
-        ret = FAIL;
-    }
-    napi_value result = nullptr;
-    napi_create_int32(env, ret, &result);
-    return result;
-}
-
 static napi_value Newlocale(napi_env env, napi_callback_info info)
 {
     locale_t newLocale = newlocale(LC_ALL_MASK, "de.UTF-8", nullptr);
@@ -77,7 +61,6 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"__localtime64", nullptr, Localtime64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"newlocale", nullptr, Newlocale, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"setlocale", nullptr, Setlocale, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

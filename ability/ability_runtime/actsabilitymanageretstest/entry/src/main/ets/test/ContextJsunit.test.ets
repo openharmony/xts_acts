@@ -13,48 +13,47 @@
  * limitations under the License.
  */
 
-import featureAbility from '@ohos.ability.featureAbility'
-import {describe, beforeEach, afterEach, beforeAll, afterAll, it, expect} from '@ohos/hypium';
+import featureAbility from '@ohos.ability.featureAbility';
+import { describe, beforeEach, afterEach, beforeAll, afterAll, it, expect } from '@ohos/hypium';
 import Utils from './Utils';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 export default function ContextJsunit() {
-  describe('faContextTest', function () {
-
+  describe('faContextTest', () => {
     let TAG1 = "SUB_AA_OpenHarmony == faContextTest: ";
     let sleepTimeOne = 1000;
-    let id = undefined;
-      beforeAll(async (done) => {
-        console.log(TAG1 + "beforeAll called");
-        let myReason = 'test FaShowOnLockTest';
-        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
-            console.log(TAG1 + "Request suspension delay will time out.");
-        })
-        id = delayInfo.requestId;
-        console.log(TAG1 + "requestId is : " + id);
-        setTimeout(function () {
-            console.log(TAG1 + "beforeAll end");
-            done();
-        }, sleepTimeOne);
+    let id: number;
+    beforeAll(async (done: Function) => {
+      console.log(TAG1 + "beforeAll called");
+      let myReason = 'test FaShowOnLockTest';
+      let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+        console.log(TAG1 + "Request suspension delay will time out.");
+      })
+      id = delayInfo.requestId;
+      console.log(TAG1 + "requestId is : " + id);
+      setTimeout(() => {
+        console.log(TAG1 + "beforeAll end");
+        done();
+      }, sleepTimeOne);
     })
 
-    afterAll(async (done) => {
-        console.log(TAG1 + "afterAll called");
-        backgroundTaskManager.cancelSuspendDelay(id);
-        setTimeout(function () {
-            console.log(TAG1 + "afterAll end");
-            done();
-        }, sleepTimeOne);
+    afterAll(async (done: Function) => {
+      console.log(TAG1 + "afterAll called");
+      backgroundTaskManager.cancelSuspendDelay(id);
+      setTimeout(() => {
+        console.log(TAG1 + "afterAll end");
+        done();
+      }, sleepTimeOne);
     })
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("context before each called");
-      done()
-    });
+      done();
+    })
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(2000);
       console.info("context after each called");
-    });
+    })
 
     /*
      * @tc.number: context_getCacheDir_test_0100
@@ -62,26 +61,27 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
-    it("context_getCacheDir_test_0100", 0, async function (done) {
+    it("context_getCacheDir_test_0100", 0, async (done: Function) => {
       console.log("------------------start context_getCacheDir_test_0100-------------------");
       try {
-        var timeOldStamp = await Utils.getNowTime();
-        var context = await featureAbility.getContext();
-        context.getCacheDir().then((data) => {
-          var timeNewStamp = Utils.getNowTime();
-          Utils.getDurationTime('context_getCacheDir_test_0100', timeOldStamp, timeNewStamp)
-          console.log("context_getCacheDir_test_0100: CacheDir is " + data);
-        })
+        let timeOldStamp = Utils.getNowTime();
+        let context = featureAbility.getContext();
+        context.getCacheDir()
+          .then((data) => {
+            let timeNewStamp = Utils.getNowTime();
+            Utils.getDurationTime('context_getCacheDir_test_0100', timeOldStamp, timeNewStamp);
+            console.log("context_getCacheDir_test_0100: CacheDir is " + data);
+          })
+        let data1: string = await context.getCacheDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/base/haps/entry/cache");
+        done();
+        console.log("------------------end context_getCacheDir_test_0100-------------------");
       } catch (error) {
         console.log("logMessage context_getCacheDir_test_0100: error = " + error);
         expect(error).assertEqual("/data/storage/el2/base/haps/entry/cache");
       }
-      var data1 = await context.getCacheDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/cache");
-      done();
-      console.log("------------------end context_getCacheDir_test_0100-------------------");
-    });
+    })
 
     /*
      * @tc.number: context_getCacheDir_test_0200
@@ -89,26 +89,26 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      * @tc.level   0
      */
-    it("context_getCacheDir_test_0200", 0, async function (done) {
+    it("context_getCacheDir_test_0200", 0, async (done: Function) => {
       console.log("------------------start context_getCacheDir_test_0200-------------------");
       try {
-        var timeOldStamp = await Utils.getNowTime();
-        var context = await featureAbility.getContext();
+        let timeOldStamp = Utils.getNowTime();
+        let context = featureAbility.getContext();
         context.getCacheDir((err, data) => {
-          var timeNewStamp = Utils.getNowTime();
-          Utils.getDurationTime('context_getCacheDir_test_0200', timeOldStamp, timeNewStamp)
+          let timeNewStamp = Utils.getNowTime();
+          Utils.getDurationTime('context_getCacheDir_test_0200', timeOldStamp, timeNewStamp);
           console.log("context_getCacheDir_test_0200: getCacheDir successful, result = " + data);
-        });
+        })
+        let data1: string = await context.getCacheDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/base/haps/entry/cache");
+        done();
+        console.log("------------------end context_getCacheDir_test_0200-------------------");
       } catch (error) {
         console.log("logMessage context_getCacheDir_test_0200: error = " + error);
         expect(error).assertEqual("/data/storage/el2/base/haps/entry/cache");
       }
-      var data1 = await context.getCacheDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/cache");
-      done();
-      console.log("------------------end context_getCacheDir_test_0200-------------------");
-    });
+    })
 
     /*
      * @tc.number: context_getFilesDir_test_0100
@@ -116,26 +116,27 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
-    it("context_getFilesDir_test_0100", 0, async function (done) {
+    it("context_getFilesDir_test_0100", 0, async (done: Function) => {
       console.log("------------------start context_getFilesDir_test_0100-------------------");
       try {
-        var timeOldStamp = await Utils.getNowTime();
-        var context = await featureAbility.getContext();
-        context.getFilesDir().then((data) => {
-          var timeNewStamp = Utils.getNowTime();
-          Utils.getDurationTime('context_getFilesDir_test_0100', timeOldStamp, timeNewStamp)
-          console.log("context_getFilesDir_test_0100：FilesDir is " + data);
-        })
+        let timeOldStamp = await Utils.getNowTime();
+        let context = await featureAbility.getContext();
+        context.getFilesDir()
+          .then((data) => {
+            let timeNewStamp = Utils.getNowTime();
+            Utils.getDurationTime('context_getFilesDir_test_0100', timeOldStamp, timeNewStamp);
+            console.log("context_getFilesDir_test_0100：FilesDir is " + data);
+          })
+        let data1: string = await context.getFilesDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/base/haps/entry/files");
+        done();
+        console.log("------------------end context_getFilesDir_test_0100-------------------");
       } catch (error) {
         console.log("logMessage context_getFilesDir_test_0100: error = " + error);
         expect(error).assertEqual("/data/storage/el2/base/haps/entry/files");
       }
-      var data1 = await context.getFilesDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/files");
-      done();
-      console.log("------------------end context_getFilesDir_test_0100-------------------");
-    });
+    })
 
     /*
      * @tc.number: context_getFilesDir_test_0200
@@ -143,26 +144,26 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      * @tc.level   0
      */
-    it("context_getFilesDir_test_0200", 0, async function (done) {
+    it("context_getFilesDir_test_0200", 0, async (done: Function) => {
       console.log("------------------start context_getFilesDir_test_0200-------------------");
       try {
-        var timeOldStamp = await Utils.getNowTime();
-        var context = await featureAbility.getContext();
+        let timeOldStamp = await Utils.getNowTime();
+        let context = await featureAbility.getContext();
         context.getFilesDir((err, data) => {
-          var timeNewStamp = Utils.getNowTime();
-          Utils.getDurationTime('context_getFilesDir_test_0200', timeOldStamp, timeNewStamp)
+          let timeNewStamp = Utils.getNowTime();
+          Utils.getDurationTime('context_getFilesDir_test_0200', timeOldStamp, timeNewStamp);
           console.log("context_getFilesDir_test_0200: getFilesDir successful, result = " + data);
-        });
+        })
+        let data1: string = await context.getFilesDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/base/haps/entry/files");
+        done();
+        console.log("------------------end context_getFilesDir_test_0200-------------------");
       } catch (error) {
         console.log("logMessage context_getFilesDir_test_0200: error = " + error);
         expect(error).assertEqual("/data/storage/el2/base/haps/entry/files");
       }
-      var data1 = await context.getFilesDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/files");
-      done();
-      console.log("------------------end context_getFilesDir_test_0200-------------------");
-    });
+    })
 
 
     /*
@@ -171,26 +172,26 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
-    it("context_getOrCreateDistributedDir_0100", 0, async function (done) {
+    it("context_getOrCreateDistributedDir_0100", 0, async (done: Function) => {
       console.log("------------------start context_getOrCreateDistributedDir_0100-------------------");
       try {
-        var timeOldStamp = await Utils.getNowTime();
-        var context = await featureAbility.getContext();
+        let timeOldStamp = Utils.getNowTime();
+        let context = featureAbility.getContext();
         context.getOrCreateDistributedDir().then((data) => {
-          var timeNewStamp = Utils.getNowTime();
+          let timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('context_getOrCreateDistributedDir_0100', timeOldStamp, timeNewStamp);
           console.log("context_getOrCreateDistributedDir_0100: DistributedDir is " + data);
         })
+        let data1: string = await context.getOrCreateDistributedDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/distributedfiles");
+        done();
+        console.log("------------------end context_getOrCreateDistributedDir_0100-------------------");
       } catch (error) {
         console.log("logMessage context_getOrCreateDistributedDir_0100: error = " + error);
         expect(error).assertEqual("/data/storage/el2/distributedfiles/entry");
       }
-      var data1 = await context.getOrCreateDistributedDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/distributedfiles");
-      done();
-      console.log("------------------end context_getOrCreateDistributedDir_0100-------------------");
-    });
+    })
 
     /*
      * @tc.number: context_getOrCreateDistributedDir_0200
@@ -198,26 +199,26 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      * @tc.level   0
      */
-    it("context_getOrCreateDistributedDir_0200", 0, async function (done) {
+    it("context_getOrCreateDistributedDir_0200", 0, async (done: Function) => {
       console.log("------------------start context_getOrCreateDistributedDir_0200-------------------");
       try {
-        var timeOldStamp = await Utils.getNowTime();
-        var context = await featureAbility.getContext();
+        let timeOldStamp = await Utils.getNowTime();
+        let context = await featureAbility.getContext();
         context.getOrCreateDistributedDir((err, data) => {
-          var timeNewStamp = Utils.getNowTime();
+          let timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('context_getOrCreateDistributedDir_0200', timeOldStamp, timeNewStamp);
           console.log("context_getOrCreateDistributedDir_0200: getOrCreateDistributedDir successful, result = " + data);
-        });
+        })
+        let data1: string = await context.getOrCreateDistributedDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/distributedfiles");
+        done();
+        console.log("------------------end context_getOrCreateDistributedDir_0200-------------------");
       } catch (error) {
         console.log("logMessage context_getOrCreateDistributedDir_0200: error = " + error);
         expect(error).assertEqual("/data/storage/el2/distributedfiles/entry");
       }
-      var data1 = await context.getOrCreateDistributedDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/distributedfiles");
-      done();
-      console.log("------------------end context_getOrCreateDistributedDir_0200-------------------");
-    });
+    })
 
     /*
      * @tc.number: context_getAppType_0100
@@ -225,26 +226,27 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
-    it("context_getAppType_0100", 0, async function (done) {
+    it("context_getAppType_0100", 0, async (done: Function) => {
       console.log("------------------start context_getAppType_0100-------------------");
       try {
-        var timeOldStamp = await Utils.getNowTime();
-        var context = await featureAbility.getContext();
-        context.getAppType().then((data) => {
-          var timeNewStamp = Utils.getNowTime();
-          Utils.getDurationTime('context_getAppType_0100_0100', timeOldStamp, timeNewStamp);
-          console.log("context_getAppType_0100: AppType is " + data);
-        })
+        let timeOldStamp = Utils.getNowTime();
+        let context = featureAbility.getContext();
+        context.getAppType()
+          .then((data) => {
+            let timeNewStamp = Utils.getNowTime();
+            Utils.getDurationTime('context_getAppType_0100_0100', timeOldStamp, timeNewStamp);
+            console.log("context_getAppType_0100: AppType is " + data);
+          })
+        let data1: string = await context.getAppType();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("system");
+        done();
+        console.log("------------------end context_getAppType_0100-------------------");
       } catch (error) {
         console.log("logMessage context_getAppType_0100: error = " + error);
         expect(error).assertEqual("system");
       }
-      var data1 = await context.getAppType();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("system");
-      done();
-      console.log("------------------end context_getAppType_0100-------------------");
-    });
+    })
 
     /*
      * @tc.number: context_getAppType_0200
@@ -252,25 +254,25 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      * @tc.level   0
      */
-    it("context_getAppType_0200", 0, async function (done) {
+    it("context_getAppType_0200", 0, async (done: Function) => {
       console.log("------------------start context_getAppType_0200-------------------");
       try {
-        var timeOldStamp = await Utils.getNowTime();
-        var context = await featureAbility.getContext();
+        let timeOldStamp = await Utils.getNowTime();
+        let context = await featureAbility.getContext();
         context.getAppType((err, data) => {
-          var timeNewStamp = Utils.getNowTime();
+          let timeNewStamp = Utils.getNowTime();
           Utils.getDurationTime('context_getAppType_0200_0100', timeOldStamp, timeNewStamp);
           console.log("context_getAppType_0200: getAppType successful, result = " + data);
-        });
+        })
+        let data1: string = await context.getAppType();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("system");
+        done();
+        console.log("------------------end context_getAppType_0200-------------------");
       } catch (error) {
         console.log("logMessage context_getAppType_0200: error = " + error);
         expect(error).assertEqual("system");
       }
-      var data1 = await context.getAppType();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("system");
-      done();
-      console.log("------------------end context_getAppType_0200-------------------");
-    });
+    })
   })
 }

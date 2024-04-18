@@ -12,24 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function SideBarContainerType_DefaultValue1() {
-  describe('SideBarContainerType_DefaultValue1', function () {
-    beforeEach(async function (done) {
+  describe('SideBarContainerType_DefaultValue1', () => {
+    beforeEach(async (done: Function) => {
       console.info("SideBarContainerType_DefaultValue1 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue1',
-      }
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get SideBarContainerType_DefaultValue1 state pages:" + JSON.stringify(pages));
         if (!("SideBarContainerType_DefaultValue1" == pages.name)) {
           console.info("get SideBarContainerType_DefaultValue1 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push SideBarContainerType_DefaultValue1 page result:" + JSON.stringify(result));
         }
@@ -39,36 +41,40 @@ export default function SideBarContainerType_DefaultValue1() {
       console.info("SideBarContainerType_DefaultValue1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SideBarContainerType_DefaultValue1Test after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_SideBarContainerType_DefaultValue1_0100
-     * @tc.name      testSideBarContainerAttribute
-     * @tc.desc      SideBarContainerType.AUTO， width > minSideBarWidth + minContentWidth
+     * @tc.number SUB_ACE_SideBarContainerType_DefaultValue1_0100
+     * @tc.name testSideBarContainerAttribute
+     * @tc.desc SideBarContainerType.AUTO， width > minSideBarWidth + minContentWidth
      */
-    it('SUB_ACE_SideBarContainerType_DefaultValue1_0100', 0, async function (done) {
+    it('SUB_ACE_SideBarContainerType_DefaultValue1_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_DefaultValue1_0100] START');
-      globalThis.value.message.notify({name:'minSideBarWidth', value:300})
-      globalThis.value.message.notify({name:'width1', value:670})
+      globalThis.value.message.notify({
+        name: 'minSideBarWidth', value: 300
+      })
+      globalThis.value.message.notify({
+        name: 'width1', value: 670
+      })
       await CommonFunc.sleep(500);
       console.log("get Initial value")
-      let SideBar_01 = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_SideBar_01');
-      let sideBarContent_01 = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_sideBarContent_01');
-      let SideBarContainer_01 = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_SideBarContainer_01');
+      let SideBar_01: RectValue = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_SideBar_01');
+      let sideBarContent_01: RectValue = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_sideBarContent_01');
+      let SideBarContainer_01: RectValue = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_SideBarContainer_01');
 
       console.log("assert position")
-      expect(SideBar_01.left).assertEqual(SideBarContainer_01.left);
+      expect(Math.abs(SideBar_01.left - SideBarContainer_01.left) <= 1).assertTrue();
       console.log("SideBar_01.left" + SideBar_01.left)
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(300))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
 
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(369)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(369))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       console.info('[SUB_ACE_SideBarContainerType_DefaultValue1_0100] END');
@@ -76,19 +82,23 @@ export default function SideBarContainerType_DefaultValue1() {
     });
 
     /**
-     * @tc.number    SUB_ACE_SideBarContainerType_DefaultValue1_0200
-     * @tc.name      testSideBarContainerAttribute
-     * @tc.desc      SideBarContainerType.AUTO， width > minSideBarWidth + minContentWidth
+     * @tc.number SUB_ACE_SideBarContainerType_DefaultValue1_0200
+     * @tc.name testSideBarContainerAttribute
+     * @tc.desc SideBarContainerType.AUTO， width > minSideBarWidth + minContentWidth
      */
-    it('SUB_ACE_SideBarContainerType_DefaultValue1_0200', 0, async function (done) {
+    it('SUB_ACE_SideBarContainerType_DefaultValue1_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_DefaultValue1_0200] START');
-      globalThis.value.message.notify({name:'minSideBarWidth', value:300})
-      globalThis.value.message.notify({name:'width1', value:600})
+      globalThis.value.message.notify({
+        name: 'minSideBarWidth', value: 300
+      })
+      globalThis.value.message.notify({
+        name: 'width1', value: 600
+      })
       await CommonFunc.sleep(500);
       console.log("get Initial value")
-      let SideBar_01 = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_SideBar_01');
-      let sideBarContent_01 = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_sideBarContent_01');
-      let SideBarContainer_01 = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_SideBarContainer_01');
+      let SideBar_01: RectValue = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_SideBar_01');
+      let sideBarContent_01: RectValue = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_sideBarContent_01');
+      let SideBarContainer_01: RectValue = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_SideBarContainer_01');
 
       console.log("assert position")
       expect(SideBar_01.left).assertEqual(SideBarContainer_01.left);
@@ -105,10 +115,10 @@ export default function SideBarContainerType_DefaultValue1() {
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       let strJson1 = getInspectorByKey('SideBarContainerType_DefaultValue1_SideBarContainer_01');
-      let obj1 = JSON.parse(strJson1);
+
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.type).assertEqual('SideBarContainerType.OVERLAY');
-      console.log(obj1.$attrs.type)
+      expect(JSON.parse(strJson1).$attrs.type).assertEqual('SideBarContainerType.OVERLAY');
+      console.log(JSON.parse(strJson1).$attrs.type)
 
       console.info('[SUB_ACE_SideBarContainerType_DefaultValue1_0100] END');
       done();

@@ -15,14 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function richEditorApi2() {
-  describe('richEditorApi2', function () {
-    beforeEach(async function (done) {
+  describe('richEditorApi2', () => {
+    beforeEach(async (done: Function) => {
       console.info("richEditorApi2 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/richEditor/richEditorApi/richEditorApi2',
       }
       try {
@@ -31,7 +43,7 @@ export default function richEditorApi2() {
         console.info("get richEditorApi2 state pages:" + JSON.stringify(pages));
         if (!("richEditorApi2" == pages.name)) {
           console.info("get richEditorApi2 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push richEditorApi2 page result:" + JSON.stringify(result));
         }
@@ -41,19 +53,19 @@ export default function richEditorApi2() {
       console.info("richEditorApi2 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("richEditorApi2 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_richEditorApi2_0100
-     * @tc.name      testRichEditor
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_richEditorApi2_0100
+     * @tc.name testRichEditor
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('richEditorApi2_0100', 0, async function (done) {
+    it('richEditorApi2_0100', 0, async (done: Function) => {
       console.info('[richEditorApi2_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -68,8 +80,8 @@ export default function richEditorApi2() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('richEditorApi2_text1');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('[0,0]');
+      let Obj1: ESObject = JSON.parse(text1);
+      expect(Obj1.$attrs.content).assertEqual('[6,6]');
 
       console.info('[testRichEditor_0100] END');
       done();

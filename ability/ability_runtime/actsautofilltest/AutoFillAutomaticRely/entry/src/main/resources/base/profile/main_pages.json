@@ -1,8 +1,0 @@
-{
-  "src": [
-    "pages/Index",
-    "pages/LoggedInPage",
-    "pages/SelectorList",
-    "pages/SavePage"
-  ]
-}

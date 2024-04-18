@@ -93,6 +93,7 @@ struct ScrollExample {
                 .fontWeight(FontWeight.Bold)
             }
             .type(ButtonType.Capsule)
+            .key('jump')
             .margin({ top: 20 })
             .onHover((isHover: boolean) => {
               if (isHover) {

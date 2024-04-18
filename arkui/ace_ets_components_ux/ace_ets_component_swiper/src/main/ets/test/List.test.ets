@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import swiperTest from './swiper'
-import swiperSecTest from './swipersec'
+import swiperTest from './swiper';
+import swiperSecTest from './swipersec';
 
 export default function testsuite() {
-      swiperTest()
-       swiperSecTest()
+  swiperTest();
+  swiperSecTest();
 }

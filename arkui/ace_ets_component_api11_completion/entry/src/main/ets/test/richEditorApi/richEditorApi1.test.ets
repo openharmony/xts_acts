@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from "../../MainAbility/common/Common";
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function richEditorApi1() {
-  describe('richEditorApi1', function () {
-    beforeEach(async function (done) {
+  describe('richEditorApi1', () => {
+    beforeEach(async (done: Function) => {
       console.info("richEditorApi1 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/richEditorApi/richEditorApi1',
       }
       try {
@@ -40,19 +53,19 @@ export default function richEditorApi1() {
       console.info("richEditorApi1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("richEditorApi1 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_RICHEDITORAPI1_0100
-     * @tc.name      testRichEditor
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_RICHEDITORAPI1_0100
+     * @tc.name testRichEditor
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('richEditorApi1_0100', 0, async function (done) {
+    it('richEditorApi1_0100', 0, async (done: Function) => {
       console.info('[richEditorApi1_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -60,16 +73,16 @@ export default function richEditorApi1() {
       await CommonFunc.sleep(300);
 
       let RichEditor1 = CommonFunc.getComponentRect('RichEditor1')
-      await driver.longClick(parseInt((RichEditor1.right-RichEditor1.left)*0.5+RichEditor1.left),
-        parseInt((RichEditor1.bottom-RichEditor1.top)*0.5+RichEditor1.top))
+      await driver.longClick(Math.round((RichEditor1.right - RichEditor1.left) * 0.5 + RichEditor1.left),
+        Math.round((RichEditor1.bottom - RichEditor1.top) * 0.5 + RichEditor1.top))
       await CommonFunc.sleep(2000);
 
       let button1: Component = await driver.findComponent(ON.text('复制'));
       button1.click()
       await CommonFunc.sleep(1000);
 
-      await driver.longClick(parseInt((RichEditor1.right-RichEditor1.left)*0.5+RichEditor1.left),
-        parseInt((RichEditor1.bottom-RichEditor1.top)*0.5+RichEditor1.top))
+      await driver.longClick(Math.round((RichEditor1.right - RichEditor1.left) * 0.5 + RichEditor1.left),
+        Math.round((RichEditor1.bottom - RichEditor1.top) * 0.5 + RichEditor1.top))
       await CommonFunc.sleep(2000);
 
       let button2: Component = await driver.findComponent(ON.text('粘贴'));
@@ -77,8 +90,7 @@ export default function richEditorApi1() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('richEditorApi1_text1');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('222');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('222');
 
       console.info('[testRichEditor_0100] END');
       done();

@@ -15,10 +15,14 @@
 
 import SideBarContainer_Attribute from './SideBarContainer/SideBarContainer_attribute/SideBarContainer_Attribute.test';
 import SideBarContainerType from './SideBarContainer/SideBarContainerType/SideBarContainerType.test';
-import SideBarContainerType_DefaultValue1 from './SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue1.test';
-import SideBarContainerType_DefaultValue2 from './SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue2.test';
-import SideBarContainerType_DefaultValue3 from './SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue3.test';
+import SideBarContainerType_DefaultValue1
+  from './SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue1.test';
+import SideBarContainerType_DefaultValue2
+  from './SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue2.test';
+import SideBarContainerType_DefaultValue3
+  from './SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue3.test';
 import SideBarContainerDivider from './SideBarContainer/SideBarContainerDivider/SideBarContainerDivider.test';
+
 export default function testsuite() {
 
   SideBarContainer_Attribute();
