@@ -11,12 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("networkmanager") {
+import("//build/ohos_var.gni")
+
+group("noNet") {
   testonly = true
-  deps = [
-    "fetch:fetch",
-    "http:http",
-    "noNet:noNet",
-    "socket:socket",
-  ]
+  deps = [ "networktest:ActsNetworkMgrSysNetworkNoNetTest" ]
 }
