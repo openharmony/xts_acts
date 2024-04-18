@@ -638,7 +638,7 @@ export default function abilityTest() {
         console.info('====> [ACTS_aaDebug_2703] data.exitCode: ' + result1[0]);
 
         expect(result1[0].trim()).assertEqual('com.acts.bundleNameB');
-        expect(result[2].trim()).assertEqual('false');
+        expect(result[2].trim()).assertEqual('true');
         done();
 
       }).catch((err: BusinessError) => {
@@ -661,13 +661,15 @@ export default function abilityTest() {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmdA = 'aa appdebug --bundlename com.acts.bundleNameA --persist';
       let cmdB = 'aa appdebug --get';
-      let cmdC = 'aa appdebug --canacel'; //
+      let cmdC = 'aa appdebug --cancel';
       let cmdD = 'aa appdebug --get';
       await abilityDelegator.executeShellCommand(cmdA).then((d: abilityDelegatorRegistry.ShellCmdResult) => {
         console.info('====> [ACTS_aaDebug_2801] data.stdResultA: ' + d.stdResult);
         console.info('====> [ACTS_aaDebug_2801] data.exitCodeA: ' + d.exitCode);
       }).catch((err: BusinessError) => {
         console.info('====> errA: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       })
 
       await abilityDelegator.executeShellCommand(cmdB).then((d: abilityDelegatorRegistry.ShellCmdResult) => {
@@ -680,8 +682,6 @@ export default function abilityTest() {
 
         expect(result1[0].trim()).assertEqual('com.acts.bundleNameA');
         expect(result[2].trim()).assertEqual('true');
-        done();
-
       }).catch((err: BusinessError) => {
         console.info('====> [ACTS_aaDebug_2802] err2: ' + JSON.stringify(err));
         expect().assertFail();
@@ -693,6 +693,8 @@ export default function abilityTest() {
         console.info('====> [ACTS_aaDebug_2803] data.exitCodeC: ' + d.exitCode);
       }).catch((err: BusinessError) => {
         console.info('====> errC: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       })
 
       await abilityDelegator.executeShellCommand(cmdD).then((d: abilityDelegatorRegistry.ShellCmdResult) => {
@@ -751,14 +753,14 @@ export default function abilityTest() {
     })
 
     /*
- * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_3000
- * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
- * @tc.desc: Aa in developer mode supports temporarily setting DEBUG application waiting debugging mode and
- * can obtain setting information.
- * @tc.size: MediumTest
- * @tc.type: Function
- * @tc.level: Level 1
- */
+     * @tc.number: SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_3000
+     * @tc.name: Aa supports setting DEBUG application waiting debugging mode.
+     * @tc.desc: Aa in developer mode supports temporarily setting DEBUG application waiting debugging mode and
+     * can obtain setting information.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
     it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_3000', 0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = 'aa appdebug -b abc';
