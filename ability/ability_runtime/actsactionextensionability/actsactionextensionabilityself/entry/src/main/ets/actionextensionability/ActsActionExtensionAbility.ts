@@ -14,9 +14,13 @@
  */
 import ActionExtensionAbility from '@ohos.app.ability.ActionExtensionAbility';
 import commonEventManager from '@ohos.commonEventManager';
+import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 let count = 0;
 const TIME_OUT = 500;
+const TIME_OUT1 = 2000;
+
 export default class ActsActionExtensionAbility extends ActionExtensionAbility {
   storage: LocalStorage;
   message: string;
@@ -32,8 +36,20 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
       parameters: {
         'count': count
       }
-    };
-    commonEventManager.publish('ACTS_TEST_FOREGROUND', options, function () {});
+    }
+    commonEventManager.publish('ACTS_TEST_FOREGROUND', options, function () { });
+    try {
+      let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+      console.log(`====>ActsActionExtensionAbility deviceType: ${deviceType}`);
+      if (deviceType === '2in1') {
+        console.log('====>ActsActionExtensionAbility terminateSelf start');
+        setTimeout(() => {
+          globalThis.session.terminateSelf();
+        }, TIME_OUT1)
+      }
+    } catch (error) {
+      console.error('====>ActsActionExtensionAbility getSync errCode:' + error.code + ',errMessage:' + error.message);
+    }
   }
 
   onBackground() {
