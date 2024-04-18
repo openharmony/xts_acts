@@ -10,6 +10,12 @@
         "MainAbility/pages/Provide/provideParent3",
         "MainAbility/pages/Provide/provideParent4",
         "MainAbility/pages/Provide/provideParent5",
-        "MainAbility/pages/Provide/provideParent6"
+        "MainAbility/pages/Provide/provideParent6",
+        "MainAbility/pages/Track/extendTrack",
+        "MainAbility/pages/Track/localTrack",
+        "MainAbility/pages/Track/nestTrack",
+        "MainAbility/pages/Track/provideTrack",
+        "MainAbility/pages/Track/StateTrack",
+        "MainAbility/pages/Track/storageTrack"
     ]
 }

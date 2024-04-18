@@ -23,6 +23,14 @@ import provideParent4 from './ProvideTest/provideParent4.test.ets'
 import provideParent5 from './ProvideTest/provideParent5.test.ets'
 import provideParent6 from './ProvideTest/provideParent6.test.ets'
 
+
+import extendTrackTest from './Track/extendTrackTest.test.ets';
+import localTrackTest from './Track/localTrackTest.test.ets';
+import provideTrackTest from './Track/provideTrackTest.test.ets';
+import StateTrackTest from './Track/StateTrackTest.test.ets';
+import nestTrackTest from './Track/nestTrackTest.test.ets';
+import storageTrackTest from './Track/storageTrackTest.test.ets';
+
 export default function testsuite() {
   allowOverride()
   provideBrother1()
@@ -34,4 +42,11 @@ export default function testsuite() {
   provideParent4()
   provideParent5()
   provideParent6()
+
+  extendTrackTest()
+  localTrackTest()
+  provideTrackTest()
+  StateTrackTest()
+  nestTrackTest()
+  storageTrackTest()
 }
