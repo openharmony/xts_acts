@@ -13,16 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+
 export default function outlineTest() {
-  describe('outlineTest', function () {
-    beforeEach(async function (done) {
+  describe('outlineTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("outlineTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/commonApi/outline',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/commonApi/outline',
       }
       try {
         router.clear();
@@ -41,69 +55,63 @@ export default function outlineTest() {
       done();
     });
     /**
-     * @tc.number    outline
-     * @tc.name      outlineTest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number outline
+     * @tc.name outlineTest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('outlineTest_0100', 0, async function (done) {
+    it('outlineTest_0100', 0, async (done: Function) => {
       console.info('outlineTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('outline_text');
-      let obj = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
-      console.info("[outlineTest_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[outlineTest_0100] component obj.$attrs is: " + JSON.stringify(obj.$attrs));
-      console.info("[outlineTest_0100] text: " + JSON.stringify(obj.$attrs.label));
-      let obj1 = JSON.parse(obj.$attrs.outline).style.left;
-      expect(obj1).assertEqual("OutlineStyle.SOLID");
+      console.info("[outlineTest_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[outlineTest_0100] component obj.$attrs is: " + JSON.stringify(JSON.parse(strJson).$attrs));
+      console.info("[outlineTest_0100] text: " + JSON.stringify(JSON.parse(strJson).$attrs.label));
+      expect(JSON.parse(JSON.parse(strJson).$attrs.outline).style.left).assertEqual("OutlineStyle.SOLID");
       console.info('[outlineTest_0100] END');
       done();
     });
     /**
-     * @tc.number    outline
-     * @tc.name      outlineTest_0200
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number outline
+     * @tc.name outlineTest_0200
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('outlineTest_0200', 0, async function (done) {
+    it('outlineTest_0200', 0, async (done: Function) => {
       console.info('outlineTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('outline_text');
-      let obj = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
-      console.info("[outlineTest_0200] component obj is: " + JSON.stringify(obj));
-      console.info("[outlineTest_0200] component obj.$attrs is: " + JSON.stringify(obj.$attrs));
-      let obj1 = JSON.parse(obj.$attrs.outline).style.right;
-      expect(obj1).assertEqual("OutlineStyle.DASHED");
+      console.info("[outlineTest_0200] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[outlineTest_0200] component obj.$attrs is: " + JSON.stringify(JSON.parse(strJson).$attrs));
+      expect(JSON.parse(JSON.parse(strJson).$attrs.outline).style.right).assertEqual("OutlineStyle.DASHED");
       console.info('[outlineTest_0200] END');
       done();
     });
     /**
-     * @tc.number    outline
-     * @tc.name      outlineTest_0200
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number outline
+     * @tc.name outlineTest_0200
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('outlineTest_0300', 0, async function (done) {
+    it('outlineTest_0300', 0, async (done: Function) => {
       console.info('outlineTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('outline_text');
-      let obj = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
-      console.info("[outlineTest_0300] component obj is: " + JSON.stringify(obj));
-      console.info("[outlineTest_0300] component obj.$attrs is: " + JSON.stringify(obj.$attrs));
-      let obj1 = JSON.parse(obj.$attrs.outline).style.top;
-      expect(obj1).assertEqual("OutlineStyle.DOTTED");
+      console.info("[outlineTest_0300] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[outlineTest_0300] component obj.$attrs is: " + JSON.stringify(JSON.parse(strJson).$attrs));
+      expect(JSON.parse(JSON.parse(strJson).$attrs.outline).style.top).assertEqual("OutlineStyle.DOTTED");
       console.info('[outlineTest_0300] END');
       done();
     });

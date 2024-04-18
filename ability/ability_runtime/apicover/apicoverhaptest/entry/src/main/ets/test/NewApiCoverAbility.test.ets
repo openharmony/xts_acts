@@ -21,8 +21,23 @@ function sleep(time) {
   return new Promise((resolve)=>setTimeout(resolve,time));
 }
 
-export default function ApiCoverTest() {
+let observer: errorManager.LoopObserver = {
+  onLoopTimeOut(timeout: number) {
+    console.log('Duration timeout: ' + timeout);
+  }
+};
+
+export default function NewApiCoverTest() {
   describe('NewApiCoverTestTest', function () {
+    beforeAll(async (done) => {
+      errorManager.on("loopObserver", 1, observer);
+      done();
+    })
+    afterAll(async (done) => {
+      errorManager.off("loopObserver");
+      done();
+    })
+  
     afterEach(async (done) => {
       setTimeout(function () {
         done();

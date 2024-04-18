@@ -37,7 +37,8 @@ class TestObj {
 struct WebViewEnumAndFontLibrary {
   @State listData: number[] = [0, 0, 0]
 
-  @Builder MenuBuilder() {
+  @Builder
+  MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       ForEach(this.listData, (index: number | undefined) => {
         Column() {
@@ -97,6 +98,7 @@ struct WebViewEnumAndFontLibrary {
   @State minLogicalFontSize: number = 13
   @State databaseAccess: boolean = true
   @State PermissionRequestState: boolean = false
+  @State userAgentPC:string = "";
   WebResult: WebContextMenuResult = new WebContextMenuResult;
 
   onPageShow() {
@@ -201,6 +203,11 @@ struct WebViewEnumAndFontLibrary {
               break;
             }
             case "emitWebContextMenuParamGetSourceType": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(2, 809)
+                  break;
+                }
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
@@ -241,6 +248,11 @@ struct WebViewEnumAndFontLibrary {
               break;
             }
             case "emitContextMenuSourceTypeLongPress": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(2, 841)
+                  break;
+                }
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
@@ -281,33 +293,6 @@ struct WebViewEnumAndFontLibrary {
               this.MediaType = 0
               this.controller.loadUrl("resource://rawfile/indexJru.html")
               await Utils.sleep(2000);
-              break;
-            }
-            case "emitProtectedResourceType": {
-              this.PermissionRequestState = true
-              this.controller.loadUrl("resource://rawfile/indexVideo.html")
-              await Utils.sleep(2000);
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenter'));
-              await button.click();
-              break;
-            }
-            case "emitOnPermissionRequestGetOrigin": {
-              this.PermissionRequestState = false
-              this.controller.loadUrl("resource://rawfile/indexVideo.html")
-              await Utils.sleep(2000);
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenter'));
-              await button.click();
-              break;
-            }
-            case "emitOnPermissionRequest": {
-              this.Permission = true
-              this.controller.loadUrl("resource://rawfile/indexVideo.html")
-              await Utils.sleep(2000);
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenter'));
-              await button.click();
               break;
             }
             case "emitMessageLevelDebug": {
@@ -673,22 +658,6 @@ struct WebViewEnumAndFontLibrary {
             this.FileSelectorMode = fileSelectorObj.getMode()
           }
           return true
-        })
-        .onPermissionRequest((event) => {
-          console.log("emitProtectedResourceType >>>111")
-          if (this.Permission) {
-            Utils.emitEvent(true, 1103)
-            this.Permission = false
-          }
-          if (event) {
-            let returnArray = event?.request?.getAccessibleResource()
-            if (this.PermissionRequestState) {
-              Utils.emitEvent(String(returnArray), 1101)
-            } else {
-              console.log("emitProtectedResourceType >>>> " + event.request.getOrigin())
-              Utils.emitEvent(String(event.request.getOrigin()), 1102)
-            }
-          }
         })
         .onRenderExited((event) => {
           if (event) {

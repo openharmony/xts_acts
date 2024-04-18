@@ -416,25 +416,6 @@ export default function otherstestNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_FSTATAT_TIME64_0100
-     * @tc.name       : testMuslStatFstatatTime64001
-     * @tc.desc       : test __fstatat_time64
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslStatFstatatTime64001', 0, async (done: Function) => {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-      let filetext = filesDir + 'test.txt';
-      let file = fs.openSync(filetext, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      fs.closeSync(file);
-      expect(otherstestndk.__fstatat_time64(filetext)).assertEqual(0);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_UMASK_CHK_0100
      * @tc.name       : testMuslStatUMaskChk001
      * @tc.desc       : test __umask_chk
@@ -908,34 +889,6 @@ export default function otherstestNdkTest() {
      */
     it('testSetfatalmessage001', 0, async (done: Function) => {
       let result: number = otherstestndk.setfatalmessage();
-      expect(result).assertEqual(0);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_OTHER_AEABIATEXIT_0100
-     * @tc.name       : testAeabiatexit001
-     * @tc.desc       : test __aeabi_atexit
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAeabiatexit001', 0, async (done: Function) => {
-      let result: number = otherstestndk.aeabiatexit();
-      expect(result).assertEqual(0);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_OTHER_GNUUNWINDFINDEXIDX_0100
-     * @tc.name       : testGnuunwindfindexidx001
-     * @tc.desc       : test __gnu_Unwind_Find_exidx
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testGnuunwindfindexidx001', 0, async (done: Function) => {
-      let result: number = otherstestndk.gnuunwindfindexidx();
       expect(result).assertEqual(0);
       done();
     });

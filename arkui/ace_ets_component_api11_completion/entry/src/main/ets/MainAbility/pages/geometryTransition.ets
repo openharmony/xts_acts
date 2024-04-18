@@ -30,7 +30,8 @@ struct geometryTransitionExample {
           .offset({ y: 100 })
           .geometryTransition("picture", {
             follow: true
-          }).key('geometry_follow_2')
+          })
+          .key('geometry_follow_2')
           .transition(TransitionEffect.OPACITY)
       } else {
         Column() {
@@ -45,7 +46,8 @@ struct geometryTransitionExample {
         .clip(true)
         .geometryTransition("picture", {
           follow: true
-        }).key('geometry_follow_1')
+        })
+        .key('geometry_follow_1')
         .transition(TransitionEffect.OPACITY)
       }
     }

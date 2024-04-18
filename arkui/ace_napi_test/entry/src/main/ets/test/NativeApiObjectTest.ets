@@ -13,9 +13,8 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 
-// @ts-ignore
 import napitest from 'libnapitest.so'
 
 function deepStrictEqualOfArray(obj1, obj2) {
@@ -33,7 +32,7 @@ function deepStrictEqualOfArray(obj1, obj2) {
 
 function deepStrictEqualOfObject(obj1, obj2) {
   deepStrictEqualOfArray(Object.keys(obj1), Object.keys(obj2));
-  for(let key in obj1){
+  for (let key in obj1) {
     expect(obj1[key]).assertEqual(obj2[key]);
   }
 }
@@ -48,14 +47,12 @@ function addSeal() {
 function deleteSeal() {
   const obj = { x: 'a', y: 'b', z: 'c' };
   napitest.SealTest(obj);
-  // @ts-ignore
   delete obj.x;
 }
 
 function assignFreeze() {
   const obj = { x: 10, y: 10, z: 10 };
   napitest.FreezeTest(obj);
-  // @ts-ignore
   obj.x = 10;
 }
 
@@ -69,7 +66,6 @@ function addFreeze() {
 function deleteFreeze() {
   const obj = { x: 10, y: 10, z: 10 };
   napitest.FreezeTest(obj);
-  // @ts-ignore
   delete obj.x;
 }
 
@@ -77,146 +73,146 @@ const fooSymbol = Symbol('foo');
 
 function createObject() {
   const object = { __proto__: {
-                               inherited: 1,
-                              }
-                 };
+    inherited: 1,
+  }
+  };
   // @ts-ignore
   object.normal = 2;
   object[fooSymbol] = 3;
   Object.defineProperty(object,
-                        'unenumerable',
-                        {
-                         value: 4,
-                         enumerable: false,
-                         writable: true,
-                         configurable: true,
-                        });
+    'unenumerable',
+    {
+      value: 4,
+      enumerable: false,
+      writable: true,
+      configurable: true,
+    });
   Object.defineProperty(object,
-                        'writable',
-                        {
-                         value: 4,
-                         enumerable: true,
-                         writable: true,
-                         configurable: false,
-                        });
+    'writable',
+    {
+      value: 4,
+      enumerable: true,
+      writable: true,
+      configurable: false,
+    });
   Object.defineProperty(object,
-                        'configurable',
-                        {
-                         value: 4,
-                         enumerable: true,
-                         writable: false,
-                         configurable: true,
-                        });
+    'configurable',
+    {
+      value: 4,
+      enumerable: true,
+      writable: false,
+      configurable: true,
+    });
   object[5] = 5;
   return object;
 }
 
 export default function npiObjectTest() {
 
-  describe('npiObjectTest', function () {
+  describe('npiObjectTest', () => {
 
     /**
-    * run after testcase
-    */
-    afterEach(async function () {
+     * run after testcase
+     */
+    afterEach(async () => {
       console.info('[npiObjectTest] after each called')
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0001
-    * @tc.name      napiObjectTest001
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiObjectTest001', 0, function() {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0001
+     * @tc.name napiObjectTest001
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiObjectTest001', 0, () => {
       const testObject = createObject();
-      deepStrictEqualOfArray(napitest.GetSymbolNames(testObject),[fooSymbol]);
+      deepStrictEqualOfArray(napitest.GetSymbolNames(testObject), [fooSymbol]);
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0002
-    * @tc.name      napiObjectTest002
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiObjectTest002', 0, function() {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0002
+     * @tc.name napiObjectTest002
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiObjectTest002', 0, () => {
       const testObject = createObject();
       deepStrictEqualOfArray(napitest.GetEnumerableWritableNames(testObject),
-                             ['5',
-                              'normal',
-                              'writable',
-                              fooSymbol,
-                              'inherited']);
+        ['5',
+          'normal',
+          'writable',
+          fooSymbol,
+          'inherited']);
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0003
-    * @tc.name      napiObjectTest003
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiObjectTest003', 0, function() {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0003
+     * @tc.name napiObjectTest003
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiObjectTest003', 0, () => {
       const testObject = createObject();
       deepStrictEqualOfArray(napitest.GetOwnWritableNames(testObject),
-                             ['5',
-                              'normal',
-                              'unenumerable',
-                              'writable',
-                              fooSymbol]);
+        ['5',
+          'normal',
+          'unenumerable',
+          'writable',
+          fooSymbol]);
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0004
-    * @tc.name      napiObjectTest004
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiObjectTest004', 0, function() {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0004
+     * @tc.name napiObjectTest004
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiObjectTest004', 0, () => {
       const testObject = createObject();
       deepStrictEqualOfArray(napitest.GetEnumerableConfigurableNames(testObject),
-                             ['5',
-                             'normal',
-                             'configurable',
-                             fooSymbol,
-                             'inherited']);
+        ['5',
+          'normal',
+          'configurable',
+          fooSymbol,
+          'inherited']);
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0005
-    * @tc.name      napiObjectTest005
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiObjectTest005', 0, function() {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0005
+     * @tc.name napiObjectTest005
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiObjectTest005', 0, () => {
       const testObject = createObject();
       deepStrictEqualOfArray(napitest.GetOwnConfigurableNames(testObject),
-                             ['5',
-                              'normal',
-                              'unenumerable',
-                              'configurable',
-                              fooSymbol]);
+        ['5',
+          'normal',
+          'unenumerable',
+          'configurable',
+          fooSymbol]);
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0006
-    * @tc.name      napiObjectTest006
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiObjectTest006', 0, function() {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0006
+     * @tc.name napiObjectTest006
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiObjectTest006', 0, () => {
       const expectedForElement = {
-                                  envIsNull: 'Invalid argument',
-                                  objectIsNull: 'Invalid parameter',
-                                  valueIsNull: 'Invalid parameter',
-                                 };
+        envIsNull: 'Invalid argument',
+        objectIsNull: 'Invalid parameter',
+        valueIsNull: 'Invalid parameter',
+      };
       deepStrictEqualOfObject(napitest.GetAllPropertyNames(), expectedForElement);
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0007
-    * @tc.name      napiObjectTest007
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiObjectTest007', 0, function () {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0007
+     * @tc.name napiObjectTest007
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiObjectTest007', 0, () => {
       const obj = {
-                   x: 10,
-                   y: 10,
-                   z: 10,
-                  };
+        x: 10,
+        y: 10,
+        z: 10,
+      };
       napitest.FreezeTest(obj);
       expect(Object.isFrozen(obj)).assertDeepEquals(true);
       expect(assignFreeze).assertThrowError("Cannot assign to read only property");
@@ -225,16 +221,16 @@ export default function npiObjectTest() {
     })
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0008
-    * @tc.name      napiObjectTest008
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiObjectTest008', 0, function() {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0008
+     * @tc.name napiObjectTest008
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiObjectTest008', 0, () => {
       const obj = {
-                   x: 'a',
-                   y: 'b',
-                   z: 'c',
-                  };
+        x: 'a',
+        y: 'b',
+        z: 'c',
+      };
       napitest.SealTest(obj);
       expect(Object.isSealed(obj)).assertDeepEquals(true);
       expect(addSeal).assertThrowError("Cannot add property in prevent extensions");

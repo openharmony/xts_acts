@@ -20,12 +20,13 @@ import router from '@ohos.router';
 @Entry
 @Component
 struct playAudio {
+  @State routers: Record<string, string | number> = router.getParams() as Record<string, string | number>;
   @State FillColor: string = '#FF000000';
-  @State name: string = router.getParams()['audioTitle']
+  @State name: string = this.routers.audioTitle as string;
   @State StepTips: string = '测试目的：用于测试音频播放暂停seek\n预期结果：音频播放暂停seek功能正常';
   private tag: string = 'qlw';
   @State Vue: boolean = false;
-  @State audioSrc: string = router.getParams()['audioUrl'];
+  @State audioSrc: string = this.routers.audioUrl as string;
   @State isAutoPlay: boolean = true;
   @State showControls: boolean = true;
   controller: VideoController = new VideoController();
@@ -38,8 +39,13 @@ struct playAudio {
     Column() {
       Row() {
         Button() {
-          Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({ left: '20vp' })
-        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
+          Image($r('app.media.ic_public_back'))
+            .width('20vp')
+            .height('18vp')
+            .margin({ left: '20vp' })
+        }
+        .backgroundColor(Color.Black)
+        .size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
             url: 'pages/Player/PlayAudioList',
@@ -47,9 +53,18 @@ struct playAudio {
           })
         })
 
-        Text(this.name).fontColor(Color.White).fontSize('18fp').margin({ left: '-20vp' })
-        Text('hello').fontColor(Color.White).visibility(Visibility.Hidden)
-      }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
+        Text(this.name)
+          .fontColor(Color.White)
+          .fontSize('18fp')
+          .margin({ left: '-20vp' })
+        Text('hello')
+          .fontColor(Color.White)
+          .visibility(Visibility.Hidden)
+      }
+      .backgroundColor(Color.Black)
+      .height('10%')
+      .width('100%')
+      .justifyContent(FlexAlign.SpaceBetween)
 
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Video({
@@ -63,7 +78,10 @@ struct playAudio {
           .onFinish(() => {
             this.Vue = true;
           })
-      }.width('100%').height('80%').onClick(() => {
+      }
+      .width('100%')
+      .height('80%')
+      .onClick(() => {
         this.showControls = !this.showControls;
       })
 
@@ -73,8 +91,13 @@ struct playAudio {
         StepTips: this.StepTips,
         name: $name,
         Vue: $Vue
-      }).height('10%').width('100%')
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+      })
+        .height('10%')
+        .width('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Black)
   }
 
   onBackPress() {

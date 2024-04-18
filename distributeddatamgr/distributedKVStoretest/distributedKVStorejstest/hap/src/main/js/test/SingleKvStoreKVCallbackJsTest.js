@@ -2334,7 +2334,7 @@ describe('SingleKvStoreCallbackTest', function () {
                 expect(null).assertFail();
             })
         }catch(err){
-            expect(err.code).assertEqual("401")
+            expect(err.code).assertEqual(401)
         }
         done();
     });

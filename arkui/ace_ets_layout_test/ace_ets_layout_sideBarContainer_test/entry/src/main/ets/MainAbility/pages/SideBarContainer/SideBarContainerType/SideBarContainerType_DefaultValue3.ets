@@ -12,36 +12,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct SideBarContainerType_DefaultValue3 {
-  @State arr: number[] = [1, 2, 3]
-  @State current: number = 1
-  @State sideBarWidth: number = 150
-  @State maxSideBarWidth: number = 300
-  @State width1: number = 700
+  @State arr: number[] = [1, 2, 3];
+  @State current: number = 1;
+  @State sideBarWidth: number = 150;
+  @State maxSideBarWidth: number = 300;
+  @State width1: number = 700;
+  messageManager: MessageManager<number> = new MessageManager();
 
-  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('SideBarContainerType_DefaultValue3 page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'sideBarWidth') {
         this.sideBarWidth = message.value;
-      }else if(message.name == 'maxSideBarWidth'){
+      } else if (message.name == 'maxSideBarWidth') {
         this.maxSideBarWidth = message.value;
-      }else if(message.name == 'width1'){
+      } else if (message.name == 'width1') {
         this.width1 = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-
 
   build() {
     SideBarContainer(SideBarContainerType.AUTO) {
@@ -77,5 +77,4 @@ struct SideBarContainerType_DefaultValue3 {
       console.info('status:' + value)
     })
   }
-
 }

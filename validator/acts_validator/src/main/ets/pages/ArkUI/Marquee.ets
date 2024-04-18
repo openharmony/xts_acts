@@ -21,6 +21,7 @@ import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
 import screenshot from '@ohos.screenshot';
 import FirstDialog from '../model/FirstDialog';
+import { Info } from './InfoObj';
 
 let path = globalThis.dir;
 const TAG = '[Marquee]';
@@ -33,7 +34,7 @@ struct marquee {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Marquee';
   @State StepTips: string = '操作步骤：1、点击开始按钮\n2、打开是否从右至左播放选择按钮' +
-  '\n3、设置速度为20\n4、设置循环次数为2' + '\n' + '预期结果：设置选项与最终效果一致则通过';
+    '\n3、设置速度为20\n4、设置循环次数为2' + '\n' + '预期结果：设置选项与最终效果一致则通过';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
@@ -71,7 +72,8 @@ struct marquee {
       .onClick(() => {
         router.back({
           url: 'pages/ArkUI/ArkUI_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -95,7 +97,8 @@ struct marquee {
     .onClick(() => {
       router.back({
         url: 'pages/ArkUI/ArkUI_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -315,7 +318,7 @@ struct marquee {
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;

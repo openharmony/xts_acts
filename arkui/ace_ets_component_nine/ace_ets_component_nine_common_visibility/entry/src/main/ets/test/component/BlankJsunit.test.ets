@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,26 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function blankJsunit() {
-  describe('blankTest', function () {
-    beforeEach(async function (done) {
+  describe('blankTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("blank beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/blankPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/blankPage',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get blank state pages: " + JSON.stringify(pages));
         if (!("blankPage" == pages.name)) {
           console.info("get blank state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push blank page result: " + JSON.stringify(result));
         }
@@ -42,47 +41,47 @@ export default function blankJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("blank after each called");
     })
-     /**
+    /**
      * @tc.number Common_Visibility_10010
-     * @tc.name   testBlank01
-     * @tc.desc   The Visibility property of the Common component is set to Visibility.Visible
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name testBlank01
+     * @tc.desc The Visibility property of the Common component is set to Visibility.Visible
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testBlank01', 0, async function (done) {
+    it('testBlank01', 0, async (done: Function) => {
       console.info('[testBlank01] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('blank');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testBlank01] component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Blank');
       expect(obj.$attrs.visibility).assertEqual("Visibility.Visible");
       expect(obj.$attrs.min).assertEqual('0.00vp');
       done();
     });
-     /**
+    /**
      * @tc.number Common_Visibility_10020
-     * @tc.name   testBlank02
-     * @tc.desc   The Visibility property of the Common component is set to Visibility.Hidden
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name testBlank02
+     * @tc.desc The Visibility property of the Common component is set to Visibility.Hidden
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testBlank02', 0, async function (done) {
+    it('testBlank02', 0, async (done: Function) => {
       console.info('[testBlank02] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 1,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 69,
           priority: events_emitter.EventPriority.LOW
         }
@@ -93,7 +92,7 @@ export default function blankJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('blank');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[testBlank02] component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.visibility).assertEqual("Visibility.Hidden");
       expect(objNew.$type).assertEqual('Blank');
@@ -101,22 +100,22 @@ export default function blankJsunit() {
     });
     /**
      * @tc.number Common_Visibility_10030
-     * @tc.name   testBlank03
-     * @tc.desc   The Visibility property of the Common component is set to Visibility.None
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name testBlank03
+     * @tc.desc The Visibility property of the Common component is set to Visibility.None
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testBlank03', 0, async function (done) {
+    it('testBlank03', 0, async (done: Function) => {
       console.info('[testBlank02] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 2,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 69,
           priority: events_emitter.EventPriority.LOW
         }
@@ -127,7 +126,7 @@ export default function blankJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('blank');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[testBlank02] component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.visibility).assertEqual("Visibility.None");
       expect(objNew.$type).assertEqual('Blank');

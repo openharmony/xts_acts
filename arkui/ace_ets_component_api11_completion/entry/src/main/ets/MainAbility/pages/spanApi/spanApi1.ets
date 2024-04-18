@@ -15,17 +15,21 @@
 @Component
 @Entry
 struct spanApi1 {
-  @State text1 : string = ''
-  @State text2 : string = ''
+  @State text1: string = '';
+  @State text2: string = '';
+
   build() {
     Column() {
       Text() {
         Span(' Hello World ! ')
           .fontSize('20fp')
-          .textBackgroundStyle({color: "#7F007DFF", radius: "5vp"})
+          .textBackgroundStyle({ color: "#7F007DFF", radius: "5vp" })
           .fontColor(Color.White)
           .key('spanApi1')
       }
-    }.width('100%').margin({bottom: '5vp'}).alignItems(HorizontalAlign.Center)
+    }
+    .width('100%')
+    .margin({ bottom: '5vp' })
+    .alignItems(HorizontalAlign.Center)
   }
 }

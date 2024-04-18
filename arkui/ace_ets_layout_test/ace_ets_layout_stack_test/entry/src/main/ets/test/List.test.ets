@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import stackAlignChange from './Stack/Stack_change/stackAlignChange.test.ets';
 import stackSizeChange from './Stack/Stack_change/stackSizeChange.test.ets';
 import stackNoneSettingWidthHeight from './Stack/Stack_change/stackNoneSettingWidthHeight.test.ets';
@@ -23,12 +24,12 @@ import Stack_Position_Change from './Stack/StackItem_change/stack_position_chang
 import Stack_ZIndex from './Stack/StackItem_change/stack_zIndex.test';
 
 export default function testsuite() {
- 
-stackAlignChange()
-stackSizeChange()
-stackNoneSettingWidthHeight()
-stackPaddingChange()
-stackMarginChange()
+
+  stackAlignChange();
+  stackSizeChange();
+  stackNoneSettingWidthHeight();
+  stackPaddingChange();
+  stackMarginChange();
   Stack_AlignContent();
   Stack_Offset_Change();
   Stack_Position_Change();

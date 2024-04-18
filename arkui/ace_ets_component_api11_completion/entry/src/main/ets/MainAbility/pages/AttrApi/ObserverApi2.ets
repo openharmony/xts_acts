@@ -18,27 +18,27 @@ import router from '@ohos.router';
 @Entry
 @Component
 struct ObserverApi2Test {
-  @State text1 :string = '1'
+  @State text1: string = '1';
 
   build() {
-    Column({ space: 5 }){
+    Column({ space: 5 }) {
 
-      Text(this.text1).id('ObserverApi2_text')
+      Text(this.text1)
+        .id('ObserverApi2_text')
 
       Button('getText')
         .fontSize(14)
-        .onClick(()=>{
+        .onClick(() => {
           this.text1 = AppStorage.get('Observer_HIDE') as string + AppStorage.get('Observer_APPEAR') as string + AppStorage.get('Observer_SHOW') as string + ''
         })
         .id('ObserverApi2_getText')
 
       Button('backToPageOne')
         .fontSize(14)
-        .onClick(()=>{
-          router.back({url: "MainAbility/pages/AttrApi/ObserverApi"})
+        .onClick(() => {
+          router.back({ url: "MainAbility/pages/AttrApi/ObserverApi" })
         })
         .id('ObserverApi2_backToPageOne')
-
 
     }.width('100%')
   }

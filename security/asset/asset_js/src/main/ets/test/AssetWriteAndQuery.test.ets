@@ -366,6 +366,27 @@ export default function AssetWriteAndQueryNewTest() {
       expect(aw.ArrayToString((re as asset.AssetMap[])[4].get(asset.Tag.ALIAS) as Uint8Array))
         .assertEqual(aw.aliasNameList[2]);
     });
+
+    /**
+     * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_1800
+     * @tc.name 批量查询超过500条数据
+     * @tc.desc test error cases
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1800', 0, async () => {
+      let testAlias1 = aw.aliasNameList[0];
+      let times = 600;
+      let attr: asset.AssetMap = new Map();
+      for (let i = 0; i < times; i++) {
+        await aw.assetAddEasy(testAlias1 + i, testAlias1);
+      }
+      let attr2: asset.AssetMap = new Map();
+      expect(await aw.assetQueryNum(attr2))
+        .assertEqual(600);
+    })
+
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_1600
      * @tc.name 写入接口传入异常数据

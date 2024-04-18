@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@observed
+@ObservedV2
 class Manager{
-  @track static count :number =18
+  @Trace static count :number =18
 }
 @Entry
 @Component

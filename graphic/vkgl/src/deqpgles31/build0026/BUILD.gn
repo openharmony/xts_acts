@@ -45,8 +45,8 @@ ohos_moduletest_suite("ActsDeqpgles31TestSuite0026") {
   part_name = "graphic_2d"
   sources = [
     "../ActsDeqpgles310026TestSuite.cpp",
-    "../functional/Deqpgles31android_extension_pack_extensionsTestCase.cpp",
-    "../functional/Deqpgles31android_extension_pack_limitsTestCase.cpp",
+    "../functional/Deqpgles31and_extension_pack_extensionsTestCase.cpp",
+    "../functional/Deqpgles31and_extension_pack_limitsTestCase.cpp",
     "../functional/Deqpgles31depth_builtin_depthTestCase.cpp",
     "../functional/Deqpgles31depth_user_defined_depthTestCase.cpp",
     "../functional/Deqpgles31es31_extension_directiveTestCase.cpp",

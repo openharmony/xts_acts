@@ -27,7 +27,9 @@ export struct FlowItemView {
       WaterFlow() {
         FlowItem() {
           Column() {
-            Text('N1').fontSize(12).height('16')
+            Text('N1')
+              .fontSize(12)
+              .height('16')
           }
         }
         .width('100%')
@@ -38,7 +40,9 @@ export struct FlowItemView {
 
         FlowItem() {
           Column() {
-            Text('N2').fontSize(12).height('16')
+            Text('N2')
+              .fontSize(12)
+              .height('16')
           }
         }
         .width('100%')

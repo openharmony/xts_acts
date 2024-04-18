@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@observed
+@ObservedV2
 class Father1{
-  @track name:string = "Tom"
+  @Trace name:string = "Tom"
 }
 class Son1 extends Father1{}
 @Entry

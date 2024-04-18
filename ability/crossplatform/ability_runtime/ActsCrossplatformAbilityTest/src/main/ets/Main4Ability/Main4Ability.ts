@@ -23,7 +23,7 @@ export default class Main4Ability extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         console.log('testTag', '%{public}s', 'Ability onCreate');
         globalThis.want = want;
-        globalThis.main2AbilityContext = this.context;
+        globalThis.main4AbilityContext = this.context;
     }
 
     onDestroy() {

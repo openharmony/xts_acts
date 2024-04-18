@@ -17,43 +17,45 @@
 @Entry
 @Component
 struct IndexS {
-
-  @State text:string = ""
+  @State text: string = "";
 
   onFormRecover() {
-    this.text = "onFormRecover"
+    this.text = "onFormRecover";
   }
 
   onFormRecycle() {
-    this.text = "onFormRecycle"
+    this.text = "onFormRecycle";
     return this.text;
   }
 
   build() {
     Column() {
-      
-      Text("life test" + this.text).key('lifecycle')
+
+      Text("life test" + this.text)
+        .key('lifecycle')
 
       Row() {
-        Column(){
+        Column() {
           Text("细")
-          Text(){
+          Text() {
             SymbolSpan($r('sys.symbol.ohos_lungs'))
               .fontWeight(FontWeight.Lighter)
               .fontSize(100)
           }
         }
-        Column(){
+
+        Column() {
           Text("标准")
-          Text(){
+          Text() {
             SymbolSpan($r('sys.symbol.ohos_lungs'))
               .fontWeight(FontWeight.Normal)
               .fontSize(100)
           }
         }
-        Column(){
+
+        Column() {
           Text("粗")
-          Text(){
+          Text() {
             SymbolSpan($r('sys.symbol.ohos_lungs'))
               .fontWeight(FontWeight.Bold)
               .fontSize(100)
@@ -62,36 +64,39 @@ struct IndexS {
       }
 
       Row() {
-        Column(){
+        Column() {
           Text("单色")
-          Text(){
+          Text() {
             SymbolSpan($r('sys.symbol.ohos_lungs'))
               .fontSize(100)
               .renderingStrategy(SymbolRenderingStrategy.SINGLE)
-              .fontColor([Color.Blue,Color.Grey,Color.Green])
+              .fontColor([Color.Blue, Color.Grey, Color.Green])
           }.key("singleSym")
         }
-        Column(){
+
+        Column() {
           Text("多色")
-          Text(){
+          Text() {
             SymbolSpan($r('sys.symbol.ohos_lungs'))
               .fontSize(100)
               .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
-              .fontColor([Color.Blue,Color.Grey,Color.Green])
+              .fontColor([Color.Blue, Color.Grey, Color.Green])
           }
         }
-        Column(){
+
+        Column() {
           Text("透明度")
-          Text(){
+          Text() {
             SymbolSpan($r('sys.symbol.ohos_lungs'))
               .fontSize(100)
               .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
-              .fontColor([Color.Blue,Color.Grey,Color.Green])
+              .fontColor([Color.Blue, Color.Grey, Color.Green])
           }
         }
       }
+
       Row() {
-        Column(){
+        Column() {
           Text("无动效")
           Text() {
             SymbolSpan($r('sys.symbol.ohos_lungs'))
@@ -99,17 +104,19 @@ struct IndexS {
               .effectStrategy(SymbolEffectStrategy.NONE)
           }
         }
-        Column(){
+
+        Column() {
           Text("整体缩放动效")
-          Text(){
+          Text() {
             SymbolSpan($r('sys.symbol.ohos_lungs'))
               .fontSize(100)
               .effectStrategy(SymbolEffectStrategy.SCALE)
           }
         }
-        Column(){
+
+        Column() {
           Text("层级动效")
-          Text(){
+          Text() {
             SymbolSpan($r('sys.symbol.ohos_lungs'))
               .fontSize(100)
               .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)

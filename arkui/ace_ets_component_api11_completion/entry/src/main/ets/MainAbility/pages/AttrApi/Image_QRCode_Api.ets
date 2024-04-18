@@ -16,14 +16,18 @@
 @Entry
 @Component
 struct Image_QRCode_Api {
-
   build() {
-    Column({ space: 5 }){
-      Image($r('app.media.icon')).width(100).enableAnalyzer(true)
+    Column({ space: 5 }) {
+      Image($r('app.media.icon'))
+        .width(100)
+        .enableAnalyzer(true)
         .id('Image_QRCode_Api_Image')
 
-      QRCode('hello').width(100).height(100).contentOpacity(0.5).id('Image_QRCode_Api_QRCode1')
-
+      QRCode('hello')
+        .width(100)
+        .height(100)
+        .contentOpacity(0.5)
+        .id('Image_QRCode_Api_QRCode1')
 
     }.width('100%')
   }

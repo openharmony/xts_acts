@@ -21,6 +21,8 @@ import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
 import screenshot from '@ohos.screenshot';
 import FirstDialog from '../model/FirstDialog';
+import { Info } from './InfoObj';
+import { BusinessError } from '@ohos.base';
 
 let path = globalThis.dir;
 const TAG = '[Refresh]';
@@ -66,7 +68,8 @@ struct refresh {
       .onClick(() => {
         router.back({
           url: 'pages/ArkUI/ArkUI_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -90,7 +93,8 @@ struct refresh {
     .onClick(() => {
       router.back({
         url: 'pages/ArkUI/ArkUI_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -225,7 +229,7 @@ struct refresh {
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -257,12 +261,12 @@ struct refresh {
       }
     }
     try {
-      screenshot.save(screenshotOptions, (err, data: image.PixelMap) => {
+      screenshot.save(screenshotOptions, (err: BusinessError, data: image.PixelMap) => {
         if (err) {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);

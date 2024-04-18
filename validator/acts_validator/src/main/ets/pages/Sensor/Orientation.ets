@@ -23,6 +23,7 @@ import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
 import promptAction from '@ohos.promptAction';
 import screenshot from '@ohos.screenshot';
+import { Info } from '../ArkUI/InfoObj';
 
 let path = globalThis.dir;
 const TAG = '[Orientation]';
@@ -33,8 +34,8 @@ struct Orientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Orientation';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有方向' +
-  '传感器' + '\n-点击开启按钮打开传感器,' +
-  '如果有传感器，将设备按X、Y、Z轴方向旋转观察数值变化，否则返回上一级' + '\n-预期结果：旋转角度值发生变化';
+    '传感器' + '\n-点击开启按钮打开传感器,' +
+    '如果有传感器，将设备按X、Y、Z轴方向旋转观察数值变化，否则返回上一级' + '\n-预期结果：旋转角度值发生变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
@@ -58,22 +59,22 @@ struct Orientation {
       Logger.info(TAG, 'enter')
       try {
         sensor.on(sensor.SensorId.ORIENTATION, (data: sensor.OrientationResponse) => {
-          Logger.info(TAG,'Succeeded in getting the Orientation: ' + data.alpha);
-          Logger.info(TAG,'Succeeded in getting the Orientation: ' + data.beta);
-          Logger.info(TAG,'Succeeded in getting the Orientation: ' + data.gamma);
+          Logger.info(TAG, 'Succeeded in getting the Orientation: ' + data.alpha);
+          Logger.info(TAG, 'Succeeded in getting the Orientation: ' + data.beta);
+          Logger.info(TAG, 'Succeeded in getting the Orientation: ' + data.gamma);
           this.dataX = data.alpha.toFixed(2);
           this.dataY = data.beta.toFixed(2);
           this.dataZ = data.gamma.toFixed(2);
-          Logger.info(TAG,'Succeeded in this.dataX the Orientation: ' + this.dataX);
-          Logger.info(TAG,'Succeeded in this.dataY the Orientation: ' + this.dataY);
-          Logger.info(TAG,'Succeeded in this.dataZ the Orientation: ' + this.dataZ);
+          Logger.info(TAG, 'Succeeded in this.dataX the Orientation: ' + this.dataX);
+          Logger.info(TAG, 'Succeeded in this.dataY the Orientation: ' + this.dataY);
+          Logger.info(TAG, 'Succeeded in this.dataZ the Orientation: ' + this.dataZ);
           this.intervalNum = setInterval(() => {
             this.nextX = data.alpha.toFixed(2);
             this.nextY = data.beta.toFixed(2);
             this.nextZ = data.gamma.toFixed(2);
-            Logger.info(TAG,'Succeeded in this.intervalNum the Orientation: ' + this.nextX);
-            Logger.info(TAG,'Succeeded in this.intervalNum the Orientation: ' + this.nextY);
-            Logger.info(TAG,'Succeeded in this.intervalNum the Orientation: ' + this.nextZ);
+            Logger.info(TAG, 'Succeeded in this.intervalNum the Orientation: ' + this.nextX);
+            Logger.info(TAG, 'Succeeded in this.intervalNum the Orientation: ' + this.nextY);
+            Logger.info(TAG, 'Succeeded in this.intervalNum the Orientation: ' + this.nextZ);
             if (this.nextX !== this.dataX || this.nextY !== this.dataY || this.nextZ !== this.dataZ) {
               this.Vue = true;
             }
@@ -82,7 +83,7 @@ struct Orientation {
         setTimeout(() => {
           sensor.off(sensor.SensorId.ORIENTATION);
         }, 500);
-      }  catch (error) {
+      } catch (error) {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {
           this.isHave = false;
@@ -125,7 +126,7 @@ struct Orientation {
     }
   }
 
-  async aboutToDisappear(){
+  async aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -156,7 +157,8 @@ struct Orientation {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -180,7 +182,8 @@ struct Orientation {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -315,12 +318,12 @@ struct Orientation {
     })
   }
 
-  async savePicture(data: image.PixelMap, context: any) {
+  async savePicture(data: image.PixelMap, context: ESObject) {
     Logger.info(TAG, `savePicture`);
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -357,7 +360,7 @@ struct Orientation {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);

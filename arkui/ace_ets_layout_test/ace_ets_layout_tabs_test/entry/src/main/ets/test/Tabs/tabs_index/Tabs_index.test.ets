@@ -15,23 +15,38 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function tabs_IndexTest() {
-  describe('Tabs_IndexTest', function () {
-    beforeEach(async function (done) {
+  describe('Tabs_IndexTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("Tabs_IndexTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Tabs/tabs_index/Tabs_index",
-      }
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Tabs_index state pages:" + JSON.stringify(pages));
         if (!("Tabs_index" == pages.name)) {
           console.info("get Tabs_index pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Tabs_index page result:" + JSON.stringify(result));
         }
@@ -42,54 +57,56 @@ export default function tabs_IndexTest() {
       console.info("Tabs_IndexTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Tabs_IndexTest after each called")
     });
     /**
-     * @tc.number    SUB_ACE_TABS_INDEX_TEST_0100
-     * @tc.name      testTabsIndexLessThanMin
-     * @tc.desc      set index of tabs to -1
+     * @tc.number SUB_ACE_TABS_INDEX_TEST_0100
+     * @tc.name testTabsIndexLessThanMin
+     * @tc.desc set index of tabs to -1
      */
-    it('testTabsIndexLessThanMin', 0, async function (done) {
+    it('testTabsIndexLessThanMin', 0, async (done: Function) => {
       console.info('[testTabsIndexLessThanMin] START');
-      globalThis.value.message.notify({name:'index', value:-1});
+      globalThis.value.message.notify({
+        name: 'index', value: -1
+      });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Tabs_Index_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Tabs');
-      expect(obj.$attrs.barPosition).assertEqual("BarPosition.Start");
-      expect(obj.$attrs.index).assertEqual("0");
-      expect(obj.$attrs.scrollable).assertEqual(true);
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Fixed');
-      console.info(`[testTabsIndexLessThanMin] type: ${JSON.stringify(obj.$type)}`);
-      console.info(`[testTabsIndexLessThanMin] barPosition: ${JSON.stringify(obj.$attrs.barPosition)}`);
-      console.info(`[testTabsIndexLessThanMin] index: ${JSON.stringify(obj.$attrs.index)}`);
-      console.info(`[testTabsIndexLessThanMin] scrollable: ${JSON.stringify(obj.$attrs.scrollable)}`);
-      console.info(`[testTabsIndexLessThanMin] vertical: ${JSON.stringify(obj.$attrs.vertical)}`);
-      console.info(`[testTabsIndexLessThanMin] barMode: ${JSON.stringify(obj.$attrs.barMode)}`);
 
-      let Tabs_index_01 = CommonFunc.getComponentRect('Tabs_Index_01');
-      let Tabs_index_001 = CommonFunc.getComponentRect('Tabs_Index_001');
-      let Tabs_index_011 = CommonFunc.getComponentRect('Tabs_Index_011');
-      let driver = await Driver.create();
+      expect(JSON.parse(strJson).$type).assertEqual('Tabs');
+      expect(JSON.parse(strJson).$attrs.barPosition).assertEqual("BarPosition.Start");
+      expect(JSON.parse(strJson).$attrs.index).assertEqual("0");
+      expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
+      expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
+      console.info(`[testTabsIndexLessThanMin] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
+      console.info(`[testTabsIndexLessThanMin] barPosition: ${JSON.stringify(JSON.parse(strJson).$attrs.barPosition)}`);
+      console.info(`[testTabsIndexLessThanMin] index: ${JSON.stringify(JSON.parse(strJson).$attrs.index)}`);
+      console.info(`[testTabsIndexLessThanMin] scrollable: ${JSON.stringify(JSON.parse(strJson).$attrs.scrollable)}`);
+      console.info(`[testTabsIndexLessThanMin] vertical: ${JSON.stringify(JSON.parse(strJson).$attrs.vertical)}`);
+      console.info(`[testTabsIndexLessThanMin] barMode: ${JSON.stringify(JSON.parse(strJson).$attrs.barMode)}`);
+
+      let Tabs_index_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_01');
+      let Tabs_index_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_001');
+      let Tabs_index_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_011');
+      let driver = Driver.create();
       await driver.swipe(Math.round((Tabs_index_011.right - 30)),
         Math.round(Tabs_index_011.top + ((Tabs_index_011.bottom - Tabs_index_011.top) / 2)),
         Math.round(Tabs_index_011.left + 30),
         Math.round(Tabs_index_011.top + ((Tabs_index_011.bottom - Tabs_index_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_index_002 = CommonFunc.getComponentRect('Tabs_Index_002');
-      let Tabs_index_012 = CommonFunc.getComponentRect('Tabs_Index_012');
+      let Tabs_index_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_002');
+      let Tabs_index_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_012');
       await driver.swipe(Math.round(Tabs_index_012.right - 30),
-        Math.round(Tabs_index_012.top +((Tabs_index_012.bottom - Tabs_index_012.top) / 2)),
+        Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)),
         Math.round(Tabs_index_012.left + 30),
         Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_index_003 = CommonFunc.getComponentRect('Tabs_Index_003');
-      let Tabs_index_013 = CommonFunc.getComponentRect('Tabs_Index_013');
-      let subGreen = CommonFunc.getComponentRect('Tabs_Index_Green');
-      let subBlue = CommonFunc.getComponentRect('Tabs_Index_Blue');
-      let subYellow = CommonFunc.getComponentRect('Tabs_Index_Yellow');
+      let Tabs_index_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_003');
+      let Tabs_index_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Yellow');
 
       console.info(`[testTabsIndexLessThanMin] Tabs_index_01.left = ${Tabs_index_01.left}`);
       expect(Tabs_index_01.left).assertEqual(Tabs_index_011.left);
@@ -139,46 +156,50 @@ export default function tabs_IndexTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_TABS_INDEX_TEST_0200
-     * @tc.name      testTabsIndexNormal
-     * @tc.desc      set index of tabs to 1
+     * @tc.number SUB_ACE_TABS_INDEX_TEST_0200
+     * @tc.name testTabsIndexNormal
+     * @tc.desc set index of tabs to 1
      */
-    it('testTabsIndexNormal', 0, async function (done) {
+    it('testTabsIndexNormal', 0, async (done: Function) => {
       console.info('[testTabsIndexNormal] START');
-      globalThis.value.message.notify({name:'index', value:1});
+      globalThis.value.message.notify({
+        name: 'index', value: 1
+      });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Tabs_Index_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Tabs');
-      expect(obj.$attrs.barPosition).assertEqual("BarPosition.Start");
-      expect(obj.$attrs.index).assertEqual("1");
-      expect(obj.$attrs.scrollable).assertEqual(true);
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Fixed');
-      console.info(`[testTabsIndexNormal] type: ${JSON.stringify(obj.$type)}`);
-      console.info(`[testTabsIndexNormal] barPosition: ${JSON.stringify(obj.$attrs.barPosition)}`);
-      console.info(`[testTabsIndexNormal] index: ${JSON.stringify(obj.$attrs.index)}`);
-      console.info(`[testTabsIndexNormal] scrollable: ${JSON.stringify(obj.$attrs.scrollable)}`);
-      console.info(`[testTabsIndexNormal] vertical: ${JSON.stringify(obj.$attrs.vertical)}`);
-      console.info(`[testTabsIndexNormal] barMode: ${JSON.stringify(obj.$attrs.barMode)}`);
-      let driver = await Driver.create();
-      let Tabs_index_002 = CommonFunc.getComponentRect('Tabs_Index_002');
-      let Tabs_index_012 = CommonFunc.getComponentRect('Tabs_Index_012');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Tabs');
+      expect(JSON.parse(strJson).$attrs.barPosition).assertEqual("BarPosition.Start");
+      expect(JSON.parse(strJson).$attrs.index).assertEqual("1");
+      expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
+      expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
+      console.info(`[testTabsIndexNormal] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
+      console.info(`[testTabsIndexNormal] barPosition: ${JSON.stringify(JSON.parse(strJson).$attrs.barPosition)}`);
+      console.info(`[testTabsIndexNormal] index: ${JSON.stringify(JSON.parse(strJson).$attrs.index)}`);
+      console.info(`[testTabsIndexNormal] scrollable: ${JSON.stringify(JSON.parse(strJson).$attrs.scrollable)}`);
+      console.info(`[testTabsIndexNormal] vertical: ${JSON.stringify(JSON.parse(strJson).$attrs.vertical)}`);
+      console.info(`[testTabsIndexNormal] barMode: ${JSON.stringify(JSON.parse(strJson).$attrs.barMode)}`);
+      let driver = Driver.create();
+      let Tabs_index_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_002');
+      let Tabs_index_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_012');
       await driver.swipe(Math.round(Tabs_index_012.right - 30),
         Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)),
         Math.round(Tabs_index_012.left + 30),
         Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_index_003 = CommonFunc.getComponentRect('Tabs_Index_003');
-      let Tabs_index_013 = CommonFunc.getComponentRect('Tabs_Index_013');
-      let subGreen = CommonFunc.getComponentRect('Tabs_Index_Green');
-      let subBlue = CommonFunc.getComponentRect('Tabs_Index_Blue');
-      let subYellow = CommonFunc.getComponentRect('Tabs_Index_Yellow');
-      globalThis.value.message.notify({name:'index', value:0});
+      let Tabs_index_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_003');
+      let Tabs_index_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Yellow');
+      globalThis.value.message.notify({
+        name: 'index', value: 0
+      });
       await CommonFunc.sleep(1000);
 
-      let Tabs_index_01 = CommonFunc.getComponentRect('Tabs_Index_01');
-      let Tabs_index_001 = CommonFunc.getComponentRect('Tabs_Index_001');
-      let Tabs_index_011 = CommonFunc.getComponentRect('Tabs_Index_011');
+      let Tabs_index_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_01');
+      let Tabs_index_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_001');
+      let Tabs_index_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_011');
 
       console.info(`[testTabsIndexNormal] Tabs_index_01.left = ${Tabs_index_01.left}`);
       expect(Tabs_index_01.left).assertEqual(Tabs_index_011.left);
@@ -227,49 +248,51 @@ export default function tabs_IndexTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_TABS_INDEX_TEST_0300
-     * @tc.name      testTabsIndexMoreThanMax
-     * @tc.desc      set index of tabs to 3
+     * @tc.number SUB_ACE_TABS_INDEX_TEST_0300
+     * @tc.name testTabsIndexMoreThanMax
+     * @tc.desc set index of tabs to 3
      */
-    it('testTabsIndexMoreThanMax', 0, async function (done) {
+    it('testTabsIndexMoreThanMax', 0, async (done: Function) => {
       console.info('[testTabsIndexMoreThanMax] START');
-      globalThis.value.message.notify({name:'index', value:3});
+      globalThis.value.message.notify({
+        name: 'index', value: 3
+      });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Tabs_Index_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Tabs');
-      expect(obj.$attrs.barPosition).assertEqual("BarPosition.Start");
-      expect(obj.$attrs.index).assertEqual("0");
-      expect(obj.$attrs.scrollable).assertEqual(true);
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Fixed');
-      console.info(`[testTabsIndexMoreThanMax] type: ${JSON.stringify(obj.$type)}`);
-      console.info(`[testTabsIndexMoreThanMax] barPosition: ${JSON.stringify(obj.$attrs.barPosition)}`);
-      console.info(`[testTabsIndexMoreThanMax] index: ${JSON.stringify(obj.$attrs.index)}`);
-      console.info(`[testTabsIndexMoreThanMax] scrollable: ${JSON.stringify(obj.$attrs.scrollable)}`);
-      console.info(`[testTabsIndexMoreThanMax] vertical: ${JSON.stringify(obj.$attrs.vertical)}`);
-      console.info(`[testTabsIndexMoreThanMax] barMode: ${JSON.stringify(obj.$attrs.barMode)}`);
 
-      let Tabs_index_01 = CommonFunc.getComponentRect('Tabs_Index_01');
-      let Tabs_index_001 = CommonFunc.getComponentRect('Tabs_Index_001');
-      let Tabs_index_011 = CommonFunc.getComponentRect('Tabs_Index_011');
-      let driver = await Driver.create();
+      expect(JSON.parse(strJson).$type).assertEqual('Tabs');
+      expect(JSON.parse(strJson).$attrs.barPosition).assertEqual("BarPosition.Start");
+      expect(JSON.parse(strJson).$attrs.index).assertEqual("0");
+      expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
+      expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
+      console.info(`[testTabsIndexMoreThanMax] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
+      console.info(`[testTabsIndexMoreThanMax] barPosition: ${JSON.stringify(JSON.parse(strJson).$attrs.barPosition)}`);
+      console.info(`[testTabsIndexMoreThanMax] index: ${JSON.stringify(JSON.parse(strJson).$attrs.index)}`);
+      console.info(`[testTabsIndexMoreThanMax] scrollable: ${JSON.stringify(JSON.parse(strJson).$attrs.scrollable)}`);
+      console.info(`[testTabsIndexMoreThanMax] vertical: ${JSON.stringify(JSON.parse(strJson).$attrs.vertical)}`);
+      console.info(`[testTabsIndexMoreThanMax] barMode: ${JSON.stringify(JSON.parse(strJson).$attrs.barMode)}`);
+
+      let Tabs_index_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_01');
+      let Tabs_index_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_001');
+      let Tabs_index_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_011');
+      let driver = Driver.create();
       await driver.swipe(Math.round(Tabs_index_011.right - 30),
         Math.round(Tabs_index_011.top + ((Tabs_index_011.bottom - Tabs_index_011.top) / 2)),
         Math.round(Tabs_index_011.left + 30),
         Math.round(Tabs_index_011.top + ((Tabs_index_011.bottom - Tabs_index_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_index_002 = CommonFunc.getComponentRect('Tabs_Index_002');
-      let Tabs_index_012 = CommonFunc.getComponentRect('Tabs_Index_012');
+      let Tabs_index_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_002');
+      let Tabs_index_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_012');
       await driver.swipe(Math.round(Tabs_index_012.right - 30),
-        Math.round(Tabs_index_012.top +((Tabs_index_012.bottom - Tabs_index_012.top) / 2)),
+        Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)),
         Math.round(Tabs_index_012.left + 30),
         Math.round(Tabs_index_012.top + ((Tabs_index_012.bottom - Tabs_index_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_index_003 = CommonFunc.getComponentRect('Tabs_Index_003');
-      let Tabs_index_013 = CommonFunc.getComponentRect('Tabs_Index_013');
-      let subGreen = CommonFunc.getComponentRect('Tabs_Index_Green');
-      let subBlue = CommonFunc.getComponentRect('Tabs_Index_Blue');
-      let subYellow = CommonFunc.getComponentRect('Tabs_Index_Yellow');
+      let Tabs_index_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_003');
+      let Tabs_index_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_Index_Yellow');
 
       console.info(`[testTabsIndexMoreThanMax] Tabs_index_01.left = ${Tabs_index_01.left}`);
       expect(Tabs_index_01.left).assertEqual(Tabs_index_011.left);

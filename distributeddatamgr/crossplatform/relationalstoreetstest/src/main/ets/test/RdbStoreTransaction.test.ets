@@ -16,13 +16,14 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { ValuesBucket } from '@ohos.data.ValuesBucket';
 
 let context: Context;
 const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS_TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
 
-const STORE_CONFIG = {
+const STORE_CONFIG: relationalStore.StoreConfig = {
   name: "rdbstoreTransactionTest.db",
   securityLevel: relationalStore.SecurityLevel.S1,
 };
@@ -30,28 +31,28 @@ const STORE_CONFIG = {
 let rdbStore = undefined;
 
 export default function rdbstoreTransactionTest() {
-  describe("rdbstoreTransactionTest", function () {
-    beforeAll(async function () {
+  describe("rdbstoreTransactionTest", () => {
+    beforeAll(async () => {
       console.info(TAG + "beforeAll");
       let ability = await delegator.getCurrentTopAbility();
       context = ability.context;
       console.info(TAG + 'Get context successful. context=' + context);
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       console.info(TAG + "afterEach");
       await rdbStore.executeSql("DELETE FROM test");
       rdbStore = null;
       await relationalStore.deleteRdbStore(context, "rdbstoreTransactionTest.db");
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info(TAG + "afterAll");
     });
 
@@ -65,10 +66,10 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreTransaction001", 0, async function (done) {
+    it("testRdbStoreTransaction001", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreTransaction001 start *************");
       await rdbStore.beginTransaction();
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
@@ -80,7 +81,7 @@ export default function rdbstoreTransactionTest() {
       let resultSet = await rdbStore.query(predicates, ["name", "age"]);
       resultSet.goToFirstRow();
       const name = resultSet.getString(resultSet.getColumnIndex("name"));
-      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      const age = resultSet.getLong(resultSet.getColumnIndex("age"));
       expect(name == "zhangsan").assertTrue();
       expect(age == 18).assertTrue();
       expect(1).assertEqual(resultSet.rowCount);
@@ -97,10 +98,10 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreTransaction002", 0, async function (done) {
+    it("testRdbStoreTransaction002", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreTransaction002 start *************");
       await rdbStore.beginTransaction();
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
@@ -108,7 +109,7 @@ export default function rdbstoreTransactionTest() {
       };
       await rdbStore.insert("test", valueBucket1);
 
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age: 23,
         salary: 200,
@@ -116,7 +117,7 @@ export default function rdbstoreTransactionTest() {
       };
       await rdbStore.insert("test", valueBucket2);
 
-      const valueBucket3 = {
+      const valueBucket3: ValuesBucket = {
         name: "wangwu",
         age: 20,
         salary: 100.5,
@@ -129,7 +130,7 @@ export default function rdbstoreTransactionTest() {
       let resultSet = await rdbStore.query(predicates);
       resultSet.goToFirstRow();
       const name = resultSet.getString(resultSet.getColumnIndex("name"));
-      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      const age = resultSet.getLong(resultSet.getColumnIndex("age"));
       expect(name == "zhangsan").assertTrue();
       expect(age == 18).assertTrue();
       expect(3).assertEqual(resultSet.rowCount);
@@ -146,14 +147,14 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreTransaction003", 0, async function (done) {
+    it("testRdbStoreTransaction003", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreTransaction003 start *************");
       let predicates1 = new relationalStore.RdbPredicates("test");
       let resultSet1 = await rdbStore.query(predicates1);
       expect(0).assertEqual(resultSet1.rowCount);
       resultSet1.close();
       rdbStore.beginTransaction();
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
@@ -177,10 +178,10 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreTransaction004", 0, async function (done) {
+    it("testRdbStoreTransaction004", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreTransaction004 start *************");
       await rdbStore.beginTransaction();
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
@@ -189,7 +190,7 @@ export default function rdbstoreTransactionTest() {
       await rdbStore.insert("test", valueBucket);
 
       await rdbStore.beginTransaction();
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age: 23,
         salary: 200,
@@ -205,7 +206,7 @@ export default function rdbstoreTransactionTest() {
       let resultSet = await rdbStore.query(predicates);
       resultSet.goToFirstRow();
       const name = resultSet.getString(resultSet.getColumnIndex("name"));
-      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      const age = resultSet.getLong(resultSet.getColumnIndex("age"));
       expect(name == "zhangsan").assertTrue();
       expect(age == 18).assertTrue();
       expect(2).assertEqual(resultSet.rowCount);
@@ -222,10 +223,10 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreRollBack001", 0, async function (done) {
+    it("testRdbStoreRollBack001", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreRollBack001 start *************");
       await rdbStore.beginTransaction();
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
@@ -234,7 +235,7 @@ export default function rdbstoreTransactionTest() {
       await rdbStore.insert("test", valueBucket1);
 
       await rdbStore.beginTransaction();
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age: 23,
         salary: 200,
@@ -250,7 +251,7 @@ export default function rdbstoreTransactionTest() {
       let resultSet = await rdbStore.query(predicates);
       resultSet.goToFirstRow();
       const name = resultSet.getString(resultSet.getColumnIndex("name"));
-      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      const age = resultSet.getLong(resultSet.getColumnIndex("age"));
       expect(name == "zhangsan").assertTrue();
       expect(age == 18).assertTrue();
       expect(1).assertEqual(resultSet.rowCount);
@@ -267,11 +268,11 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreRollBack002", 0, async function (done) {
+    it("testRdbStoreRollBack002", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreRollBack002 start *************");
       try {
         await rdbStore.beginTransaction();
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           id: 1,
           name: "lisi",
           age: 18,

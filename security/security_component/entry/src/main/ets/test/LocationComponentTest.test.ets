@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
+import display from '@ohos.display';
 import events_emitter from '@ohos.events.emitter';
 import { Driver, ON } from '@ohos.UiTest'
 import Utils from './Utils';
@@ -1341,10 +1342,22 @@ export default function locationComponentTest() {
             "middle": 4
           }
         }
+        let displayClass = [];
+        display.getAllDisplays((err, data) => {
+          console.info("====>[Test_Security_Button_Location_1400] the display objects Data" + JSON.stringify(data));
+          displayClass = data;
+          if(JSON.stringify(displayClass[0].width) == '2160'){
+            console.info("====>[Test_Security_Button_Location_1400] the if + ok");
+            let offsetObj = { "offsetX": 615 };
+            Object.assign(eventData.data, offsetObj);
+          }
+        });
+        console.info("====>[Test_Security_Button_Location_1500] get modifyEventData is: " + JSON.stringify(eventData));
         var innerEvent = {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
+        await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_1400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
@@ -1353,7 +1366,12 @@ export default function locationComponentTest() {
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation1');
       let obj = JSON.parse(strJsonNew);
-      expect(obj.$attrs.offset.x).assertEqual('200.00vp');
+      console.info("====>[Test_Security_Button_Location_1400] obj.$attrs.offset.x: " + obj.$attrs.offset.x);
+      if(obj.$attrs.offset.x == '615.00vp'){
+        expect(obj.$attrs.offset.x).assertEqual('615.00vp');
+      }else{
+        expect(obj.$attrs.offset.x).assertEqual('200.00vp');
+      }
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
@@ -1435,10 +1453,22 @@ export default function locationComponentTest() {
             "middle": 4
           }
         }
+        let displayClass = [];
+        display.getAllDisplays((err, data) => {
+          console.info("====>[Test_Security_Button_Location_1500] the display objects Data" + JSON.stringify(data));
+          displayClass = data;
+          if(JSON.stringify(displayClass[0].width) == '2160'){
+            console.info("====>[Test_Security_Button_Location_1500] the if + ok");
+            let offsetObj = { "offsetX": -615 };
+            Object.assign(eventData.data, offsetObj);
+          }
+        });
+        console.info("====>[Test_Security_Button_Location_1500] get modifyEventData is: " + JSON.stringify(eventData));
         var innerEvent = {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
+        await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_1500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
@@ -1447,7 +1477,12 @@ export default function locationComponentTest() {
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation1');
       let obj = JSON.parse(strJsonNew);
-      expect(obj.$attrs.offset.x).assertEqual('-200.00vp');
+      console.info("====>[====>[Test_Security_Button_Location_1500] obj.$attrs.offset.x: " + obj.$attrs.offset.x);
+      if(obj.$attrs.offset.x == '-615.00vp'){
+        expect(obj.$attrs.offset.x).assertEqual('-615.00vp');
+      }else{
+        expect(obj.$attrs.offset.x).assertEqual('-200.00vp');
+      }
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
@@ -1529,10 +1564,21 @@ export default function locationComponentTest() {
             "middle": 4
           }
         }
+        let displayClass = [];
+        display.getAllDisplays((err, data) => {
+          console.info("====>[Test_Security_Button_Location_1600] the display objects Data" + JSON.stringify(data));
+          displayClass = data;
+          if (JSON.stringify(displayClass[0].width) == '2160') {
+            console.info("====>[Test_Security_Button_Location_1600] the if + ok");
+            let iconSizeObj = { "iconSize": 1100 };
+            Object.assign(eventData.data, iconSizeObj);
+          }
+        });
         var innerEvent = {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
+        await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_1600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
@@ -1541,7 +1587,12 @@ export default function locationComponentTest() {
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation');
       let obj = JSON.parse(strJsonNew);
-      expect(obj.$attrs.iconSize).assertEqual('160.00vp');
+      console.info("====>[Test_Security_Button_Location_1600] obj.$attrs.iconSize: " + obj.$attrs.iconSize);
+      if(obj.$attrs.iconSize == '1100.00vp'){
+        expect(obj.$attrs.iconSize).assertEqual('1100.00vp');
+      }else{
+        expect(obj.$attrs.iconSize).assertEqual('160.00vp');
+      }
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {

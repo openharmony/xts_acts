@@ -75,7 +75,7 @@ export default function Grid_ScrollAndScrollIndex() {
      */
     it('Grid_ScrollAndScrollIndex_0200', 0, async (done: Function) => {
       console.info('[Grid_ScrollAndScrollIndex_0200] START');
-      let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollAndScrollIndex_grid')
+      let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollAndScrollIndex_grid')
       let driver = Driver.create()
       await driver.swipe(
         Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
@@ -101,7 +101,7 @@ export default function Grid_ScrollAndScrollIndex() {
      */
     it('Grid_ScrollAndScrollIndex_0300', 0, async (done: Function) => {
       console.info('[Grid_ScrollAndScrollIndex_0300] START');
-      let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollAndScrollIndex_grid')
+      let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollAndScrollIndex_grid')
       let driver = Driver.create()
       await driver.swipe(
         Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
@@ -127,7 +127,7 @@ export default function Grid_ScrollAndScrollIndex() {
      */
     it('Grid_ScrollAndScrollIndex_0400', 0, async (done: Function) => {
       console.info('[Grid_ScrollAndScrollIndex_0400] START');
-      let scrollBarRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollAndScrollIndex_scrollBar')
+      let scrollBarRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollAndScrollIndex_scrollBar')
       let driver = Driver.create()
       await driver.swipe(
         Number.parseInt(`${(scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left}`),

@@ -13,12 +13,8 @@
  * limitations under the License.
  */
 
-
-
 import zIndexTest from './zIndex/ZIndexTest.test';
 
 export default function testsuite() {
-
   zIndexTest();
-
 }

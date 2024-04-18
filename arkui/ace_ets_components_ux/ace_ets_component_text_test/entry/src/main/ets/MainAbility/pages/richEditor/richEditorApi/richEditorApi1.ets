@@ -18,8 +18,8 @@
 struct richEditorApi1 {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
-  @State selection:string = ''
-  @State text1:string = '111'
+  @State selection: string = ''
+  @State text1: string = '111'
 
   build() {
     Scroll() {
@@ -39,7 +39,7 @@ struct richEditorApi1 {
             })
         }).id('richEditorApi1_btn1')
         Button('setTypingStyle').onClick((event: ClickEvent) => {
-          this.text1 =  JSON.stringify(this.controller.getTypingStyle())
+          this.text1 = JSON.stringify(this.controller.getTypingStyle())
         }).id('richEditorApi1_btn2')
         Text('' + this.text1).key('richEditorApi1_text1')
 

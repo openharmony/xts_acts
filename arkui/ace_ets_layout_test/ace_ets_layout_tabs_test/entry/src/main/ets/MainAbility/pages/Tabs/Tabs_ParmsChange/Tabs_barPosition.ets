@@ -12,7 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct Tabs_barPosition {
@@ -24,33 +26,36 @@ struct Tabs_barPosition {
   @State setBarWidth: number = 330;
   @State setBarHeight: number = 56;
   private controller: TabsController = new TabsController();
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number | boolean> = new MessageManager();
+
   onPageShow() {
     console.info('Tabs_barPosition onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number | boolean> = (message: Message<number | boolean>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'changeVertical') {
-        this.changeVertical = message.value;
+        this.changeVertical = message.value as boolean;
       }
       if (message.name == 'changeBarPosition') {
-        this.changeBarPosition = message.value;
+        this.changeBarPosition = message.value as number;
       }
       if (message.name == 'setBarWidth') {
-        this.setBarWidth = message.value;
+        this.setBarWidth = message.value as number;
       }
       if (message.name == 'setBarHeight') {
-        this.setBarHeight = message.value;
+        this.setBarHeight = message.value as number;
       }
       if (message.name == 'currentIndex') {
-        this.currentIndex = message.value;
+        this.currentIndex = message.value as number;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  @Builder TabBuilder(index: number, name: string) {
+
+  @Builder
+  TabBuilder(index: number, name: string) {
     Column() {
       Text(name)
         .fontColor(this.currentIndex === index ? this.selectedFontColor : this.fontColor)
@@ -62,13 +67,15 @@ struct Tabs_barPosition {
 
   build() {
     Column() {
-      Tabs({ barPosition:this.changeBarPosition, index:this.currentIndex }) {
+      Tabs({ barPosition: this.changeBarPosition, index: this.currentIndex }) {
         TabContent() {
           Column().width('100%').height('100%').backgroundColor('#00CB87').key("Tabs_barPosition_001")
         }.tabBar(this.TabBuilder(0, 'green')).key("Tabs_barPosition_011")
+
         TabContent() {
           Column().width('100%').height('100%').backgroundColor('#007DFF').key("Tabs_barPosition_002")
         }.tabBar(this.TabBuilder(1, 'blue')).key("Tabs_barPosition_012")
+
         TabContent() {
           Column().width('100%').height('100%').backgroundColor('#FFBF00').key("Tabs_barPosition_003")
         }.tabBar(this.TabBuilder(2, 'yellow')).key("Tabs_barPosition_013")

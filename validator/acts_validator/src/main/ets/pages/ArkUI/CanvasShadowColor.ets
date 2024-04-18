@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {CustomContainer} from '../common/CanvasCustomContainer2';
+import { CustomContainer } from '../common/CanvasCustomContainer2';
 import FirstDialog from '../model/FirstDialog';
+
 @Entry
 @Component
 struct SetCircle {
@@ -23,76 +24,95 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'CanvasShadowColor';
-  @State StepTips: string = '操作步骤：点击不同的颜色控件'+'\n'+'预期结果：阴影会随点击变化';
+  @State StepTips: string = '操作步骤：点击不同的颜色控件' + '\n' + '预期结果：阴影会随点击变化';
   @State Vue: boolean = false;
   @State num1: number = 0;
   @State num2: number = 0;
   @State num3: number = 0;
-  async aboutToAppear(){
-    await FirstDialog.ChooseDialog(this.StepTips,this.name);
+
+  async aboutToAppear() {
+    await FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
-  @Builder specificNoParam() {
+
+  @Builder
+  specificNoParam() {
     Column() {
       Scroll() {
         Column() {
-          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
+          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
             Toggle({ type: ToggleType.Button, isOn: false }) {
-              Text('Blue').fontSize(16)
-            }.size({width:'25%',height:'20%'})
-              .onClick(()=>{
-                this.context.clearRect(10, 100, 400, 300);
-                this.context.shadowBlur = 30;
-                this.context.shadowColor = 'rgb(0,0,255)';
-                this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 100, 100);
-                this.num1 = 1;
-                if ( this.num1 == 1 && this.num3 == 1 && this.num2 == 1 ){
-                  this.Vue = true;
-                }
-              })
+              Text('Blue')
+                .fontSize(16)
+            }.size({ width: '25%', height: '20%' })
+            .onClick(() => {
+              this.context.clearRect(10, 100, 400, 300);
+              this.context.shadowBlur = 30;
+              this.context.shadowColor = 'rgb(0,0,255)';
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 100, 100);
+              this.num1 = 1;
+              if (this.num1 == 1 && this.num3 == 1 && this.num2 == 1) {
+                this.Vue = true;
+              }
+            })
+
             Toggle({ type: ToggleType.Button, isOn: false }) {
-              Text('Yellow').fontSize(16)
-            }.size({width:'25%',height:'20%'})
-              .onClick(()=>{
-                this.context.clearRect(10, 100, 400, 300);
-                this.context.shadowBlur = 30;
-                this.context.shadowColor = '#fffffc3c';
-                this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 100, 100);
-                this.num2 = 1;
-                if ( this.num1 == 1 && this.num3 == 1 && this.num2 == 1 ){
-                  this.Vue = true;
-                }
-              })
+              Text('Yellow')
+                .fontSize(16)
+            }.size({ width: '25%', height: '20%' })
+            .onClick(() => {
+              this.context.clearRect(10, 100, 400, 300);
+              this.context.shadowBlur = 30;
+              this.context.shadowColor = '#fffffc3c';
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 100, 100);
+              this.num2 = 1;
+              if (this.num1 == 1 && this.num3 == 1 && this.num2 == 1) {
+                this.Vue = true;
+              }
+            })
+
             Toggle({ type: ToggleType.Button, isOn: false }) {
-              Text('Green').fontSize(16)
-            }.size({width:'25%',height:'20%'})
-              .onClick(()=>{
-                this.context.clearRect(10, 100, 400, 300);
-                this.context.shadowBlur = 30;
-                this.context.shadowColor = '#ff19fa00';
-                this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 100, 100);
-                this.num3 = 1;
-                if ( this.num1 == 1 && this.num3 == 1 && this.num2 == 1 ){
-                  this.Vue = true;
-                }
-              })
-          }.width('70%').height('30%')
+              Text('Green')
+                .fontSize(16)
+            }.size({ width: '25%', height: '20%' })
+            .onClick(() => {
+              this.context.clearRect(10, 100, 400, 300);
+              this.context.shadowBlur = 30;
+              this.context.shadowColor = '#ff19fa00';
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 100, 100);
+              this.num3 = 1;
+              if (this.num1 == 1 && this.num3 == 1 && this.num2 == 1) {
+                this.Vue = true;
+              }
+            })
+          }
+          .width('70%')
+          .height('30%')
+
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
             Canvas(this.context)
               .width('100%')
               .height('100%')
               .backgroundColor('#ffffffff')
-              .onReady(() =>{
+              .onReady(() => {
                 this.context.fillStyle = 'rgb(255,0,0)';
                 this.context.fillRect(150, 150, 100, 100);
               })
-          }.width('100%').height('60%')
+          }
+          .width('100%')
+          .height('60%')
         }
-      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
-    }.width('100%').height('80%').backgroundColor(Color.White)
+      }
+      .scrollBarWidth('6vp')
+      .scrollBarColor('#cccccc')
+    }
+    .width('100%')
+    .height('80%')
+    .backgroundColor(Color.White)
   }
+
   build() {
     Column() {
       CustomContainer({
@@ -105,11 +125,15 @@ struct SetCircle {
         name: $name,
         Vue: $Vue,
       })
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/ArkUI/ArkUI_index',
+      url: 'pages/ArkUI/ArkUI_index',
     })
   }
 }

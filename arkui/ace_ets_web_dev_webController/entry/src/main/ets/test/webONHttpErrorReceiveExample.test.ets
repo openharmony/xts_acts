@@ -12,54 +12,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
-import router from '@system.router';
-// @ts-nocheck
+import Utils from './Utils';
+import router from '@ohos.router';
+
 let emitKey = "emitOnHttpErrorReceiveByExampleWebc";
+
 export default function webONHttpErrorReceiveExample() {
-  describe('ActsAceWebDevWebONHttpErrorReceiveExampleTest', function () {
-    beforeAll(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/webONHttpErrorReceiveExample',
-      }
+  describe('ActsAceWebDevWebONHttpErrorReceiveExampleTest', () => {
+    beforeAll(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/webONHttpErrorReceiveExample',
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get webONHttpErrorReceiveExample state success " + JSON.stringify(pages));
         if (!("webONHttpErrorReceiveExample" == pages.name)) {
           console.info("get webONHttpErrorReceiveExample state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push webONHttpErrorReceiveExample page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push webONHttpErrorReceiveExample page error: " + err);
       }
-      done()
+      done();
     });
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("webONHttpErrorReceiveExample beforeEach start");
       done();
     })
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("webONHttpErrorReceiveExample afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        };
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        };
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -69,11 +70,11 @@ export default function webONHttpErrorReceiveExample() {
      *tc.name testOnHttpErrorReceiveByExampleWebc
      *tc.desc test interface of onHttpErrorReceive with parameter used by example
      */
-    it('testOnHttpErrorReceiveByExampleWebc',0,async function(done){
-      emitKey="emitOnHttpErrorReceiveByExampleWebc";
-      Utils.registerEvent("testOnHttpErrorReceiveByExampleWebc",403,491,done);
-      Utils.registerEvent("testOnHttpErrorReceiveByExampleWebc","intercept test",492,done);
-      sendEventByKey('webONHttpErrorReceiveExample',10,'');
+    it('testOnHttpErrorReceiveByExampleWebc', 0, async (done: Function) => {
+      emitKey = "emitOnHttpErrorReceiveByExampleWebc";
+      Utils.registerEvent("testOnHttpErrorReceiveByExampleWebc", 403, 491, done);
+      Utils.registerEvent("testOnHttpErrorReceiveByExampleWebc", "intercept test", 492, done);
+      sendEventByKey('webONHttpErrorReceiveExample', 10, '');
     })
   })
 }

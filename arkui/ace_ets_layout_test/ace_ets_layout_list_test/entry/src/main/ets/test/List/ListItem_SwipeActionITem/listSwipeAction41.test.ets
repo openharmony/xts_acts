@@ -71,7 +71,7 @@ export default function listSwipeAction41Jsunit() {
       // swipe the listItem to bottom
 
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(100)), Math.round(vp2px(115)), Math.round(vp2px(200))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
@@ -82,7 +82,7 @@ export default function listSwipeAction41Jsunit() {
       expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('50')
       // reset
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(200)), Math.round(vp2px(115)), Math.round(vp2px(-600))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(-600))
       );
       await CommonFunc.sleep(4000);
       let buttonReset2 = await driver.findComponent(ON.id('btreset41'));
@@ -91,7 +91,7 @@ export default function listSwipeAction41Jsunit() {
       await CommonFunc.sleep(3000);
       // swipe to up
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(200)), Math.round(vp2px(115)), Math.round(vp2px(100))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100))
       );
       await CommonFunc.sleep(5000);
       let textSwipeOffset2 = getInspectorByKey('swipe41Offset');
@@ -101,7 +101,7 @@ export default function listSwipeAction41Jsunit() {
       //init the state
       // swipe to up
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(200)), Math.round(vp2px(115)), Math.round(vp2px(-1000))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(-1000))
       );
       await CommonFunc.sleep(4000);
       done();

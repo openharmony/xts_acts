@@ -60,10 +60,10 @@ export default function RelativeContainer_AnchorPoint_Margin() {
       let RelativeContainer_AnchorPoint_Margin_tx2: RectValue = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Margin_tx2');
       let RelativeContainer_AnchorPoint_Margin_r1: RectValue = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Margin_r1');
       let RelativeContainer_AnchorPoint_Margin_row1: RectValue = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Margin_row1');
-
+      let RelativeContainer_AnchorPoint_Margin_row2: RectValue = CommonFunc.getComponentRect('row_marginTest');
 
       console.log('assert position')
-      expect(Math.abs(RelativeContainer_AnchorPoint_Margin_row1.left - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Margin_row1.left - RelativeContainer_AnchorPoint_Margin_row2.left - vp2px(100)) <= 1).assertTrue();
       expect(Math.abs(RelativeContainer_AnchorPoint_Margin_r1.left - RelativeContainer_AnchorPoint_Margin_row1.left) <= 1)
         .assertTrue();
 

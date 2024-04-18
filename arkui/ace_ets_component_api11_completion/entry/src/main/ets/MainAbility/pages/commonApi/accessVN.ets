@@ -15,7 +15,8 @@
 @Entry
 @Component
 struct accessVn1 {
-  @Builder customAccessibilityNode() {
+  @Builder
+  customAccessibilityNode() {
     Column() {
       Text(`virtual node`)
         .fontSize(10)
@@ -25,6 +26,7 @@ struct accessVn1 {
         .align(Alignment.Center)
     }
   }
+
   build() {
     Row() {
       Column() {

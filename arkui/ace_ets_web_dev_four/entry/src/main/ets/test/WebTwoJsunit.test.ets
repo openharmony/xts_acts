@@ -12,17 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
-import { describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+
+import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
-import Utils from './Utils.ets';
+import router from '@ohos.router';
+import Utils from './Utils';
+
 let emitKey = "emitGetCertificate";
+
 export default function webTwoJsunit() {
-  describe('overviewTest', function () {
-    beforeAll(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/webTwo',
+  describe('overviewTest', () => {
+    beforeAll(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/webTwo',
       }
       try {
         router.clear();
@@ -30,7 +32,7 @@ export default function webTwoJsunit() {
         console.info("get webTwo state success " + JSON.stringify(pages));
         if (!("webTwo" == pages.name)) {
           console.info("get webTwo state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push webTwo page success " + JSON.stringify(result));
         }
@@ -39,27 +41,27 @@ export default function webTwoJsunit() {
       }
       done()
     });
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
     })
-    afterEach(async function (done) {
-      console.info("web afterEach start:"+emitKey);
+    afterEach(async (done: Function) => {
+      console.info("web afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -69,50 +71,50 @@ export default function webTwoJsunit() {
      *tc.name GetCertificate                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
-    it('GetCertificate',0,async function(done){
-      emitKey="emitonDownloadFailed";
-      Utils.registerEvent("GetCertificate","getCertificate success: len = 0",4,done);
-      sendEventByKey('webcomponenttwo',10,'');
+    it('GetCertificate', 0, async (done: Function) => {
+      emitKey = "emitonDownloadFailed";
+      Utils.registerEvent("GetCertificate", "getCertificate success: len = 0", 4, done);
+      sendEventByKey('webcomponenttwo', 10, '');
     })
     /* 
      *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_002                                                                                                                                                                     
      *tc.name onDownloadFailed                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
-    it('onDownloadFailed',0,async function(done){
-      emitKey="emitsetDownloadDelegate";
-      Utils.registerEvent("onDownloadFailed",true,6,done);
-      sendEventByKey('webcomponenttwo',10,'');
+    it('onDownloadFailed', 0, async (done: Function) => {
+      emitKey = "emitsetDownloadDelegate";
+      Utils.registerEvent("onDownloadFailed", true, 6, done);
+      sendEventByKey('webcomponenttwo', 10, '');
     })
     /* 
      *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_003                                                                                                                                                                   
      *tc.name setDownloadDelegate                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
-    it('setDownloadDelegate',0,async function(done){
-      emitKey="emitresumeDownload";
-      Utils.registerEvent("setDownloadDelegate",true,8,done);
-      sendEventByKey('webcomponenttwo',10,'');
+    it('setDownloadDelegate', 0, async (done: Function) => {
+      emitKey = "emitresumeDownload";
+      Utils.registerEvent("setDownloadDelegate", true, 8, done);
+      sendEventByKey('webcomponenttwo', 10, '');
     })
     /* 
      *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_004                                                                                                                                                                 
      *tc.name resumeDownload                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
-    it('resumeDownload',0,async function(done){
-      emitKey="emitRegisterJavaScriptProxy";
-      Utils.registerEvent("resumeDownload",true,12,done);
-      sendEventByKey('webcomponenttwo',10,'');
+    it('resumeDownload', 0, async (done: Function) => {
+      emitKey = "emitRegisterJavaScriptProxy";
+      Utils.registerEvent("resumeDownload", true, 12, done);
+      sendEventByKey('webcomponenttwo', 10, '');
     })
     /* 
      *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_005                                                                                                                                                             
      *tc.name RegisterJavaScriptProxy                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
-    it('RegisterJavaScriptProxy',0,async function(done){
-      emitKey="emitRegisterJavaScriptProxy";
-      Utils.registerEvent("RegisterJavaScriptProxy",'\"okok\"',14,done);
-      sendEventByKey('webcomponenttwo',10,'');
+    it('RegisterJavaScriptProxy', 0, async (done: Function) => {
+      emitKey = "emitRegisterJavaScriptProxy";
+      Utils.registerEvent("RegisterJavaScriptProxy", '\"okok\"', 14, done);
+      sendEventByKey('webcomponenttwo', 10, '');
     })
   })
 }

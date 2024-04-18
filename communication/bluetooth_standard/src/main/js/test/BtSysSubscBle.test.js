@@ -115,7 +115,7 @@ describe('btSubscBleTest', function() {
                 console.log('[bluetooth_js] bluetooth.subscribeBLEFound1 success.');
                 const [device] = data.devices;
                 console.log('[bluetooth_js] devices:'+ JSON.stringify(data.devices) + 'length:' + data.devices.length);
-                expect(true).assertTrue(data.devices.length >=0);
+                expect(data.devices.length >= 0).assertTrue();
                 for (let i = 0; i < data.devices.length; i++) {
                 console.log(`subscribeBLEFound device, addrType: ${data.devices[i].addrType}`);
                 console.log(`subscribeBLEFound device, addr: ${data.devices[i].addr}`);

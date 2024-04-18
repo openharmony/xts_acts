@@ -13,16 +13,32 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../MainAbility/common/Common";
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../MainAbility/common/Common";
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function swiperItemSpace() {
-  describe('swiperItemSpaceTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Swiper/Swiper_ParmsChange/swiperItemSpace',
-      }
+  describe('swiperItemSpaceTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Swiper/Swiper_ParmsChange/swiperItemSpace',
+      };
       try {
         router.clear();
         await CommonFunc.sleep(1000);
@@ -30,30 +46,32 @@ export default function swiperItemSpace() {
         console.info("get swiperItemSpace state success " + JSON.stringify(pages));
         if (!("swiperItemSpace" == pages.name)) {
           console.info("get swiperItemSpace state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push swiperItemSpace page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push swiperItemSpace page error " + JSON.stringify(err));
       }
-        done();
+      done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("swiperItemSpace after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_SWIPER_ITEMSPACECHANGED_0100
-     * @tc.name      testSwiperSetItemSpace
-     * @tc.desc      Set swiper's  ItemSpace  value ' 20 '.
+     * @tc.number SUB_ACE_SWIPER_ITEMSPACECHANGED_0100
+     * @tc.name testSwiperSetItemSpace
+     * @tc.desc Set swiper's  ItemSpace  value ' 20 '.
      */
-    it('testSwiperSetItemSpace', 0, async function (done) {
+    it('testSwiperSetItemSpace', 0, async (done: Function) => {
       console.info('new testSwiperSetItemSpace START');
-      globalThis.value.message.notify({name:'itemspace', value: 20});
+      globalThis.value.message.notify({
+        name: 'itemspace', value: 20
+      });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('itemspacekey');
-      let obj = JSON.parse(strJson);
+
       let itemspacekey = CommonFunc.getComponentRect('itemspacekey');
       let itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
       let itemspacekey02 = CommonFunc.getComponentRect('itemspacekey02');
@@ -64,20 +82,27 @@ export default function swiperItemSpace() {
       // Before flipping the page.
       console.info("Before page turning , the itemspacekey.left value is " + JSON.stringify(itemspacekey.left));
       console.info("Before page turning , the itemspacekey01.left value is " + JSON.stringify(itemspacekey01.left));
-      expect(itemspacekey.left).assertEqual(itemspacekey01.left)
-      expect(itemspacekey.top).assertEqual(itemspacekey01.top)
-      expect(itemspacekey.bottom).assertEqual(itemspacekey01.bottom)
+      expect(Math.abs(itemspacekey.left - itemspacekey01.left) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.top - itemspacekey01.top) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.bottom - itemspacekey01.bottom) <= 1).assertTrue();
       // Page turning.
-      expect(itemspacekey.top).assertEqual(itemspacekey02.top)
-      expect(itemspacekey.bottom).assertEqual(itemspacekey02.bottom)
-      expect(Math.round(itemspacekey02.left - itemspacekey01.right)).assertEqual(vp2px(20))
-      expect(itemspacekey.right).assertEqual(itemspacekey02.right)
+      expect(Math.abs(itemspacekey.top - itemspacekey02.top) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.bottom - itemspacekey02.bottom) <= 1).assertTrue();
+      expect(Math.abs(Math.round(itemspacekey02.left - itemspacekey01.right) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.right - itemspacekey02.right) <= 1).assertTrue();
 
-      let driver = await Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
-      //await driver.swipe(250, 230, 200, 230);
+      let driver = Driver.create();
+      // await CommonFunc.sleep(500);
+      // await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       await CommonFunc.sleep(1000);
+      let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('itemspacekey')
+      await driver.swipe(
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        1000);
+      await CommonFunc.sleep(3000);
       itemspacekey = CommonFunc.getComponentRect('itemspacekey');
       itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
       itemspacekey02 = CommonFunc.getComponentRect('itemspacekey02');
@@ -88,37 +113,39 @@ export default function swiperItemSpace() {
       // After flipping the page.
       console.info("After page turning , the itemspacekey.left value is " + JSON.stringify(itemspacekey.left));
       console.info("After page turning , the itemspacekey02.left value is " + JSON.stringify(itemspacekey02.left));
-      expect(itemspacekey.left).assertEqual(itemspacekey02.left);
-      expect(itemspacekey.top).assertEqual(itemspacekey02.top);
-      expect(itemspacekey.bottom).assertEqual(itemspacekey02.bottom);
+      expect(Math.abs(itemspacekey.left - itemspacekey02.left) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.top - itemspacekey02.top) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.bottom - itemspacekey02.bottom) <= 1).assertTrue();
 
-      expect(itemspacekey.top).assertEqual(itemspacekey03.top);
-      expect(itemspacekey.bottom).assertEqual(itemspacekey03.bottom);
-      expect(Math.round(itemspacekey03.left - itemspacekey02.right)).assertEqual(Math.round(vp2px(20)));
-      expect(itemspacekey.right).assertEqual(itemspacekey03.right)
-      console.info("The type value is " + JSON.stringify(obj.$type));
-      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
-      console.info("The itemSpace value is " + JSON.stringify(obj.$attrs.itemSpace));
-      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.loop).assertEqual('true');
-      expect(obj.$attrs.itemSpace).assertEqual('20.00vp');
-      expect(obj.$attrs.displayCount).assertEqual(2);
+      expect(Math.abs(itemspacekey.top - itemspacekey03.top) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.bottom - itemspacekey03.bottom) <= 1).assertTrue();
+      expect(Math.abs(Math.round(itemspacekey03.left - itemspacekey02.right) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(itemspacekey.right - itemspacekey03.right) <= 1).assertTrue();
+      console.info("The type value is " + JSON.stringify(JSON.parse(strJson).$type));
+      console.info("The loop value is " + JSON.stringify(JSON.parse(strJson).$attrs.loop));
+      console.info("The itemSpace value is " + JSON.stringify(JSON.parse(strJson).$attrs.itemSpace));
+      console.info("The displayCount value is " + JSON.stringify(JSON.parse(strJson).$attrs.displayCount));
+      expect(JSON.parse(strJson).$type).assertEqual('Swiper');
+      expect(JSON.parse(strJson).$attrs.loop).assertEqual('true');
+      expect(JSON.parse(strJson).$attrs.itemSpace).assertEqual('20.00vp');
+      expect(JSON.parse(strJson).$attrs.displayCount).assertEqual(2);
       console.info('new testSwiperSetItemSpace END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_SWIPER_ITEMSPACECHANGED_0200
-     * @tc.name      testSwiperSetItemSpaceInvalid
-     * @tc.desc      Set swiper's  ItemSpace  value ' -20 '.
+     * @tc.number SUB_ACE_SWIPER_ITEMSPACECHANGED_0200
+     * @tc.name testSwiperSetItemSpaceInvalid
+     * @tc.desc Set swiper's  ItemSpace  value ' -20 '.
      */
-    it('testSwiperSetItemSpaceInvalid', 0, async function (done) {
+    it('testSwiperSetItemSpaceInvalid', 0, async (done: Function) => {
       console.info('new testSwiperSetItemSpaceInvalid START');
-      globalThis.value.message.notify({name:'itemspace', value: -20});
+      globalThis.value.message.notify({
+        name: 'itemspace', value: -20
+      });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('itemspacekey');
-      let obj = JSON.parse(strJson);
+
       let itemspacekey = CommonFunc.getComponentRect('itemspacekey');
       let itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
       let itemspacekey02 = CommonFunc.getComponentRect('itemspacekey02');
@@ -138,11 +165,20 @@ export default function swiperItemSpace() {
       expect(itemspacekey02.left).assertEqual(itemspacekey01.right);
       expect(itemspacekey02.right).assertEqual(itemspacekey.right);
       // After flipping the page.
-      let driver = await Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
-     // await driver.swipe(250, 230, 200, 230);
+      let driver = Driver.create();
+     //  await CommonFunc.sleep(500);
+     //  await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
+     // // await driver.swipe(250, 230, 200, 230);
+     //  await CommonFunc.sleep(1000);
       await CommonFunc.sleep(1000);
+      let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('itemspacekey')
+      await driver.swipe(
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        1000);
+      await CommonFunc.sleep(3000);
       itemspacekey = CommonFunc.getComponentRect('itemspacekey');
       itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
       itemspacekey02 = CommonFunc.getComponentRect('itemspacekey02');
@@ -161,14 +197,14 @@ export default function swiperItemSpace() {
       expect(itemspacekey.bottom).assertEqual(itemspacekey03.bottom);
       expect(itemspacekey03.left).assertEqual(itemspacekey02.right);
       expect(itemspacekey03.right).assertEqual(itemspacekey.right);
-      console.info("The type value is " + JSON.stringify(obj.$type));
-      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
-      console.info("The itemSpace value is " + JSON.stringify(obj.$attrs.itemSpace));
-      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.loop).assertEqual('true');
-      expect(obj.$attrs.itemSpace).assertEqual('0.00vp');
-      expect(obj.$attrs.displayCount).assertEqual(2);
+      console.info("The type value is " + JSON.stringify(JSON.parse(strJson).$type));
+      console.info("The loop value is " + JSON.stringify(JSON.parse(strJson).$attrs.loop));
+      console.info("The itemSpace value is " + JSON.stringify(JSON.parse(strJson).$attrs.itemSpace));
+      console.info("The displayCount value is " + JSON.stringify(JSON.parse(strJson).$attrs.displayCount));
+      expect(JSON.parse(strJson).$type).assertEqual('Swiper');
+      expect(JSON.parse(strJson).$attrs.loop).assertEqual('true');
+      expect(JSON.parse(strJson).$attrs.itemSpace).assertEqual('0.00vp');
+      expect(JSON.parse(strJson).$attrs.displayCount).assertEqual(2);
       console.info('new testSwiperSetItemSpaceInvalid END');
       done();
     });

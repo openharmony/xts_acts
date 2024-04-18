@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {CustomContainer} from '../common/CanvasCustomContainer2';
+import { CustomContainer } from '../common/CanvasCustomContainer2';
 import FirstDialog from '../model/FirstDialog';
+
 @Entry
 @Component
 struct SetCircle {
@@ -22,17 +23,21 @@ struct SetCircle {
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   @State FillColor: string = '#FF000000';
   @State name: string = 'CanvasLineWidth';
-  @State StepTips: string = '操作步骤：拖动滑块向右移动'+'\n'+'预期结果：边框会随着移动距离而变粗，并显示边框粗细';
+  @State StepTips: string = '操作步骤：拖动滑块向右移动' + '\n' + '预期结果：边框会随着移动距离而变粗，并显示边框粗细';
   @State Vue: boolean = false;
-  async aboutToAppear(){
-    await FirstDialog.ChooseDialog(this.StepTips,this.name);
+
+  async aboutToAppear() {
+    await FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
+
   @State X: number = 10;
-  @Builder specificNoParam() {
+
+  @Builder
+  specificNoParam() {
     Column() {
       Scroll() {
         Column() {
-          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
+          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
             Row() {
               Slider({
                 value: this.X,
@@ -48,31 +53,45 @@ struct SetCircle {
                 .onChange((value: number, mode: SliderChangeMode) => {
                   this.context.clearRect(100, 100, 250, 200);
                   this.X = value;
-                  this.context.lineWidth = (this.X)*0.1;
+                  this.context.lineWidth = (this.X) * 0.1;
                   this.context.strokeRect(120, 120, 120, 120);
-                  if ( value >= 100 ){
+                  if (value >= 100) {
                     this.Vue = true;
                   }
                 })
             }
-          }.width('70%').height('30%')
+          }
+          .width('70%')
+          .height('30%')
+
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-            Text('边框粗细: ' + (this.X)*0.1 )
-          }.width('100%').height('20%')
+            Text('边框粗细: ' + (this.X) * 0.1)
+          }
+          .width('100%')
+          .height('20%')
+
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
             Canvas(this.context)
               .width('100%')
               .height('100%')
               .backgroundColor('#ffffffff')
-              .onReady(() =>{
+              .onReady(() => {
                 this.context.lineWidth = 1;
                 this.context.strokeRect(120, 120, 120, 120);
               })
-          }.width('100%').height('50%')
+          }
+          .width('100%')
+          .height('50%')
         }
-      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
-    }.width('100%').height('80%').backgroundColor(Color.White)
+      }
+      .scrollBarWidth('6vp')
+      .scrollBarColor('#cccccc')
+    }
+    .width('100%')
+    .height('80%')
+    .backgroundColor(Color.White)
   }
+
   build() {
     Column() {
       CustomContainer({
@@ -85,11 +104,15 @@ struct SetCircle {
         name: $name,
         Vue: $Vue,
       })
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/ArkUI/ArkUI_index',
+      url: 'pages/ArkUI/ArkUI_index',
     })
   }
 }

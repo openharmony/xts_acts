@@ -84,6 +84,7 @@ describe('btBleManagerTest', function() {
     beforeAll(async function (done) {
         await clickRequestPermission();
         await openPhone();
+        await tryToEnableBt()
         gattS = bluetoothBle.createGattServer();
         console.info('bluetooth ble create gattserver result:' + gattS);
         gattC = bluetoothBle.createGattClientDevice('04:30:02:01:00:07');
@@ -196,7 +197,7 @@ describe('btBleManagerTest', function() {
             let result = bluetoothBle.getConnectedBLEDevices();
             console.info("[bluetooth_js] getConnDev:" + JSON.stringify(result)
                     + "length:" +result.length);
-            expect(true).assertTrue(result != null);
+            expect(result != null).assertTrue();
         } catch (error) {
             console.error(`[bluetooth_js]getConnDev failed, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
@@ -1128,13 +1129,13 @@ describe('btBleManagerTest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0100
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0100
      * @tc.name test GattClientDevice on blemtuchange
      * @tc.desc test GattClientDevice on blemtuchange api10.
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0100', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0100', 0, async function (done) {
         try {
             gattC.on('BLEMtuChange', (mtu: number) => {
                 console.info('BLEMtuChange, mtu: ' + mtu);
@@ -1149,13 +1150,13 @@ describe('btBleManagerTest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0200
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0200
      * @tc.name test GattClientDevice off blemtuchange
      * @tc.desc test GattClientDevice off blemtuchange api10
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0200', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0200', 0, async function (done) {
         gattC.on('BLEMtuChange', (mtu: number) => {
                 console.info('BLEMtuChange, mtu: ' + mtu);
             });

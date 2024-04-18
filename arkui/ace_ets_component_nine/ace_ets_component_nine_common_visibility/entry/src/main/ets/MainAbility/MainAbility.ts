@@ -14,9 +14,12 @@
  */
 
 import Ability from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import window from '@ohos.window';
 
 export default class MainAbility extends Ability {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     // Ability is creating, initialize resources for this ability
     console.log('[Demo] MainAbility onCreate');
     globalThis.abilityWant = want;
@@ -28,12 +31,18 @@ export default class MainAbility extends Ability {
     console.log('[Demo] MainAbility onDestroy');
   }
 
-  onWindowStageCreate(windowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     console.log('[Demo] MainAbility onWindowStageCreate windowStage=' + windowStage);
     globalThis.windowStage = windowStage;
     globalThis.abilityContext = this.context;
-    windowStage.setUIContent(this.context, 'MainAbility/pages/index/Index', null);
+    windowStage.loadContent("MainAbility/pages/index/Index", (err, data) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data));
+    });
   }
 
   onWindowStageDestroy() {

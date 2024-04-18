@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@observed
+@ObservedV2
 class Father2{
-  @track age:number = 18
+  @Trace age:number = 18
 }
 class Son2 extends Father2{
   son : Son2 =new Son2()

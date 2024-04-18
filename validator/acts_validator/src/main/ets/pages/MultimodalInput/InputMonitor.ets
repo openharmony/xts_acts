@@ -19,7 +19,9 @@ import FirstDialog from '../model/FirstDialog';
 import { MouseEvent } from '@ohos.multimodalInput.mouseEvent';
 import inputMonitor from '@ohos.multimodalInput.inputMonitor';
 import promptAction from '@ohos.promptAction';
+
 let callback
+
 @Entry
 @Component
 struct InputMonitor {
@@ -34,6 +36,7 @@ struct InputMonitor {
   @State btnThree: boolean = false;
   @State btnFour: boolean = false;
   @State intervalNum: number = 0;
+
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
@@ -93,7 +96,7 @@ struct InputMonitor {
         }
       }, 500)
     }
-     inputMonitor.on('mouse', callback);
+    inputMonitor.on('mouse', callback);
   }
 
   onPageHide() {
@@ -120,8 +123,6 @@ struct InputMonitor {
     }
   }
 
-
-
   build() {
     Column() {
       CustomContainerClick({
@@ -132,10 +133,10 @@ struct InputMonitor {
         X: $X,
         name: $name,
         Vue: $Vue,
-        btnOne:$btnOne,
-        btnTwo:$btnTwo,
-        btnThree:$btnThree,
-        btnFour:$btnFour,
+        btnOne: $btnOne,
+        btnTwo: $btnTwo,
+        btnThree: $btnThree,
+        btnFour: $btnFour,
       })
     }
     .width('100%')

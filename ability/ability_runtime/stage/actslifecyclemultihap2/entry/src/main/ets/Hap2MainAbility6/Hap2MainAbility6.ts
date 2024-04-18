@@ -14,6 +14,10 @@
  */
 import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
+
+let deviceType = '';
+deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 export default class Hap2MainAbility6 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] Hap2MainAbility6 onCreate")
@@ -54,5 +58,10 @@ export default class Hap2MainAbility6 extends Ability {
     onBackground() {
         // Ability has back to background
         console.log("[Demo] Hap2MainAbility6 onBackground")
+        if (deviceType == '2in1') {
+          setTimeout(() => {
+            globalThis.testEvent.push('MainAbility4onForeground');
+          }, 1500);
+        }
     }
 };

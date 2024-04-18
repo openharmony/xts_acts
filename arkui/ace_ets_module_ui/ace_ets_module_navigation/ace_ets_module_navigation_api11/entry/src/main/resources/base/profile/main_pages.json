@@ -1,0 +1,18 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/stepper/stepper",
+        "MainAbility/pages/Navigation/NavigationParam",
+        "MainAbility/pages/Navigation/NavigationApi",
+        "MainAbility/pages/Navigation/NavigationApi2",
+        "MainAbility/pages/Navigation/NavigationApi3",
+        "MainAbility/pages/Navigation/NavPathStackApi1",
+        "MainAbility/pages/Navigation/NavPathStackApi2",
+        "MainAbility/pages/Navigation/NavPathStackApi3",
+        "MainAbility/pages/NavDestination/NavDestinationInfoState",
+        "MainAbility/pages/NavDestination/QueryNavDestinationInfoNavDestination",
+        "MainAbility/pages/Navigation/NavigationAttr",
+        "MainAbility/pages/Navigation/navigationApi/navigationApi1",
+        "MainAbility/pages/SideBarContainer/SideBarContainer"
+    ]
+}

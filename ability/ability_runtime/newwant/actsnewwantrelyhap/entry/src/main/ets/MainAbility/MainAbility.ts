@@ -43,7 +43,7 @@ export default class MainAbility extends Ability {
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("ACTS_NewWant MainAbility onWindowStageCreate")
-        globalThis.abilityContext = this.context
+        globalThis.hapMainAbilityContext = this.context
         windowStage.setUIContent(this.context, "pages/index/index", null)
 
         commonEvent.publish("onWindowStageCreateMain_To_Test_CommonEvent", () => {
@@ -61,7 +61,7 @@ export default class MainAbility extends Ability {
         // Ability has brought to foreground
         console.log("ACTS_NewWant MainAbility onForeground")
         if (globalThis.abilityWant.action == 'startStandard0400') {
-            globalThis.abilityContext.startAbility({
+            globalThis.hapMainAbilityContext.startAbility({
                 bundleName: "com.example.newwanthap",
                 abilityName: "com.example.newwanthapa.SecondAbility",
                 action: "restartSingleton"
@@ -71,7 +71,7 @@ export default class MainAbility extends Ability {
             })
         }
         if (globalThis.abilityWant.action == 'startStandard0300') {
-            globalThis.abilityContext.startAbility({
+            globalThis.hapMainAbilityContext.startAbility({
                 bundleName: "com.example.newwanthap",
                 abilityName: "com.example.newwanthapa.SecondAbility",
                 action: "startSingleton0300"
@@ -81,7 +81,7 @@ export default class MainAbility extends Ability {
             })
         }
         if (globalThis.abilityWant.action == 'startMainAbility0700') {
-            globalThis.abilityContext.startAbility({
+            globalThis.hapMainAbilityContext.startAbility({
                 bundleName: "com.example.newwanthap",
                 abilityName: "com.example.newwanthapa.SecondAbility",
                 action: "restartSecondAbility0700"
@@ -91,7 +91,7 @@ export default class MainAbility extends Ability {
             })
         }
         if (globalThis.abilityWant.action == 'startMainAbility0800') {
-            globalThis.abilityContext.startAbility({
+            globalThis.hapMainAbilityContext.startAbility({
                 bundleName: "com.example.newwanthap",
                 abilityName: "com.example.newwanthapa.SecondAbility",
                 action: "startSecondAbility0800"

@@ -12,11 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import abilityTest from './Ability.test.ets'
 
+// import abilityTest from './Ability.test.ets'
+
+import abilityTest from './Ability.test';
+import common from '@ohos.app.ability.common';
 
 export default function testsuite() {
-
-  abilityTest(globalThis.abilityContext)
-
+  abilityTest(AppStorage.get<common.UIAbilityContext>("testAbilityContext")!);
 }

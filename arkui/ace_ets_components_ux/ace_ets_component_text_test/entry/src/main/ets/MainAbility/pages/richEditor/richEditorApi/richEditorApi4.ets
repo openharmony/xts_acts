@@ -18,9 +18,8 @@
 struct richEditorApi4 {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
-  @State selection:string = ''
-  @State text1:string = '111'
-
+  @State selection: string = ''
+  @State text1: string = '111'
 
   build() {
     Scroll() {

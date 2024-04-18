@@ -417,8 +417,6 @@ export default function abilityContextTest() {
         onDisconnect(elementName) { console.log('----------- onDisconnect -----------') },
         onFailed(code) {
           console.log(TAG + " error: " + code);
-          expect(code).assertEqual(ERROR_CODE);
-          done();
         }
       }
 
@@ -427,6 +425,8 @@ export default function abilityContextTest() {
       } catch (paramError) {
         console.log('error.code: ' + JSON.stringify(paramError.code) +
           ' error.message: ' + JSON.stringify(paramError.message));
+        expect(paramError.code).assertEqual(ERROR_CODE);
+        done();
       }
     })
 

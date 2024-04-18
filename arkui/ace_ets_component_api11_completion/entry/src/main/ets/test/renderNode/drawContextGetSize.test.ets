@@ -13,16 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 export default function drawContextGetSizeTest() {
-  describe('drawContextGetSizeTest', function () {
-    beforeEach(async function (done) {
+  describe('drawContextGetSizeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("drawContextGetSizeTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/renderNode/drawContextGetSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/renderNode/drawContextGetSize',
       }
       try {
         router.clear();
@@ -42,14 +55,14 @@ export default function drawContextGetSizeTest() {
     });
 
     /**
-     * @tc.number    drawContextGetSize
-     * @tc.name      drawContextGetSizeTest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number drawContextGetSize
+     * @tc.name drawContextGetSizeTest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('drawContextGetSizeTest_0100', 0, async function (done) {
+    it('drawContextGetSizeTest_0100', 0, async (done: Function) => {
       console.info('drawContextGetSizeTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -57,9 +70,8 @@ export default function drawContextGetSizeTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('DrawContext_get_Size_width');
-      let obj = JSON.parse(strJson);
-      console.info("[drawContextGetSizeTest_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('width: 1');
+      console.info("[drawContextGetSizeTest_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('width: 1');
       console.info('[drawContextGetSizeTest_0100] END');
       done();
     });

@@ -14,43 +14,43 @@
  */
 export default class SPLogger {
   //控制所有
-  private static isPrintLog = true
+  private static isPrintLog = true;
   //控制debug
-  private static isPrintDebugLog = true
+  private static isPrintDebugLog = true;
   //控制info
-  private static isPrintInfoLog = true
+  private static isPrintInfoLog = true;
   //控制warn
-  private static isPrintWarnLog = true
+  private static isPrintWarnLog = true;
   //控制error
-  private static isPrintErrorLog = true
+  private static isPrintErrorLog = true;
 
-  private static bastTag = "SmartPerf:"
+  private static bastTag = "SmartPerf:";
 
   //debug debug日志
   static DEBUG(tag: string, msg: string) {
     if (SPLogger.isPrintLog && SPLogger.isPrintDebugLog) {
-      console.debug(SPLogger.bastTag + tag + "," + msg)
+      console.debug(SPLogger.bastTag + tag + "," + msg);
     }
   }
 
   //info 级别日志
   static INFO(tag: string, msg: string) {
     if (SPLogger.isPrintLog && SPLogger.isPrintInfoLog) {
-      console.info(SPLogger.bastTag + tag + "," + msg)
+      console.info(SPLogger.bastTag + tag + "," + msg);
     }
   }
 
   //warn 级别日志
   static WARN(tag: string, msg: string) {
     if (SPLogger.isPrintLog && SPLogger.isPrintWarnLog) {
-      console.warn(SPLogger.bastTag + tag + "," + msg)
+      console.warn(SPLogger.bastTag + tag + "," + msg);
     }
   }
 
   //error 级别日志
   static ERROR(tag: string, msg: string) {
     if (SPLogger.isPrintLog && SPLogger.isPrintErrorLog) {
-      console.error(SPLogger.bastTag + tag + "," + msg)
+      console.error(SPLogger.bastTag + tag + "," + msg);
     }
   }
 }

@@ -1,0 +1,15 @@
+{
+  "src": [
+    "MainAbility/pages/index/index",
+    "MainAbility/pages/promptAction/CustomDialogMask",
+    "MainAbility/pages/Menu/menu",
+    "MainAbility/pages/Menu/menufirst",
+    "MainAbility/pages/Menu/menusecond",
+    "MainAbility/pages/promptAction/ToastShowMode",
+    "MainAbility/pages/promptAction/prompt",
+    "MainAbility/pages/promptAction/Index",
+    "MainAbility/pages/AlertDialog/AlertDialog",
+    "MainAbility/pages/Panel/Panel",
+    "MainAbility/pages/panel/Index"
+  ]
+}

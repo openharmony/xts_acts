@@ -14,34 +14,35 @@
  */
 import pointer from '@ohos.multimodalInput.pointer';
 import window from '@ohos.window';
-import { BusinessError }  from '@ohos.base'
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct CursorControlExample {
-  @State num1: PointerStyle = pointer.PointerStyle.DEFAULT
-  controller: TextInputController = new TextInputController()
+  @State num1: PointerStyle = pointer.PointerStyle.DEFAULT;
+  controller: TextInputController = new TextInputController();
 
   build() {
-    Column({space:10}) {
-      Button('setCursor枚举值：'+`${this.num1}`)
-        .onClick(()=>{
-        window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
-          let windowId = win.getWindowProperties().id;
-          let style: pointer.PointerStyle = pointer.getPointerStyleSync(windowId);
-          this.num1=style
-        });
-      })
+    Column({ space: 10 }) {
+      Button('setCursor枚举值：' + `${this.num1}`)
+        .onClick(() => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = win.getWindowProperties().id;
+            let style: pointer.PointerStyle = pointer.getPointerStyleSync(windowId);
+            this.num1 = style
+          });
+        })
         .key('setCursor_1')
-        .margin({top:10})
+        .margin({ top: 10 })
       Button('setCursor')
-        .onClick(()=>{
-        cursorControl.setCursor(pointer.PointerStyle.SOUTH)
-      })
+        .onClick(() => {
+          cursorControl.setCursor(pointer.PointerStyle.SOUTH)
+        })
         .key('setCursor_2')
       Button('restoreDefault')
-        .onClick(()=>{
-        cursorControl.restoreDefault()
-      })
+        .onClick(() => {
+          cursorControl.restoreDefault()
+        })
         .key('setCursor_3')
     }.width('100%')
   }

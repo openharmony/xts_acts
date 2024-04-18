@@ -26,7 +26,7 @@ struct PinchTest {
         .objectFit(ImageFit.Auto)
         .height(200)
         .width(200)
-        .position({x:150, y:200})
+        .key('test_pict')
         .scale({ x: this.myscale, y: this.myscale, z: this.myscale })
         .gesture(
         PinchGesture()

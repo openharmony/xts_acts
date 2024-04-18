@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/utils/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function NavPathStackApi3() {
-  describe('NavPathStackApi3', function () {
-    beforeEach(async function (done) {
+  describe('NavPathStackApi3', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AttrApi/NavPathStackApi3',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AttrApi/NavPathStackApi3',
       }
       try {
         router.clear();
@@ -40,7 +40,7 @@ export default function NavPathStackApi3() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("NavPathStackApi3 after each called");
     });
@@ -51,11 +51,11 @@ export default function NavPathStackApi3() {
      * @tc.desc        Navigation pushDestinationByName test
      * @tc.level       Level 2
      */
-    it('NavPathStackApi3_001', 0, async function (done) {
+    it('NavPathStackApi3_001', 0, async (done: Function) => {
       console.info('[NavPathStackApi3_001] START');
       await Utils.sleep(1000);
 
-      let driver= Driver.create();
+      let driver = Driver.create();
       await Utils.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('NavPathStackApi3_pushDestinationByName'));
       await btn1.click()
@@ -63,14 +63,11 @@ export default function NavPathStackApi3() {
       console.info("[NavPathStackApi3_001] btn1")
 
       let strJson = getInspectorByKey('NavPathStackApi3_text_pageOne');
-      let obj = JSON.parse(strJson);
       await Utils.sleep(1000);
-      console.info("[NavPathStackApi3_001] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('pageOne3');
-
+      console.info("[NavPathStackApi3_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('pageOne3');
       console.info('[NavPathStackApi3_001] END');
       done();
-
     });
   })
 }

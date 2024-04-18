@@ -13,16 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 export default function Navigation1() {
-  describe('Navigation1', function () {
-    beforeEach(async function (done) {
+  describe('Navigation1', () => {
+    beforeEach(async (done: Function) => {
       console.info("appendChildTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/relativeApi11/Navigation1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/relativeApi11/Navigation1',
       }
       try {
         router.clear();
@@ -42,14 +55,14 @@ export default function Navigation1() {
     });
 
     /**
-     * @tc.number    Navigation1_0100
-     * @tc.name      Navigation1_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number Navigation1_0100
+     * @tc.name Navigation1_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('Navigation1_0100', 0, async function (done) {
+    it('Navigation1_0100', 0, async (done: Function) => {
       console.info('Navigation1_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -57,22 +70,21 @@ export default function Navigation1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('removeText');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.content).assertEqual('0');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('0');
       console.info('[Navigation1_0100] END');
       done();
     });
 
 
     /**
-     * @tc.number    Navigation1_0200
-     * @tc.name      Navigation1_0200
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number Navigation1_0200
+     * @tc.name Navigation1_0200
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('Navigation1_0200', 0, async function (done) {
+    it('Navigation1_0200', 0, async (done: Function) => {
       console.info('Navigation1_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -80,26 +92,24 @@ export default function Navigation1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('deleteText');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.content).assertEqual('0');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('0');
       console.info('[Navigation1_0200] END');
       done();
     });
 
 
     /**
-     * @tc.number    Navigation1_0300
-     * @tc.name      Navigation1_0300
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number Navigation1_0300
+     * @tc.name Navigation1_0300
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('Navigation1_0300', 0, async function (done) {
+    it('Navigation1_0300', 0, async (done: Function) => {
       console.info('Navigation1_0300 START');
       let strJson = getInspectorByKey('NavigationText');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.content).assertEqual('pageOne');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('pageOne');
       console.info('[Navigation1_0300] END');
       done();
     });

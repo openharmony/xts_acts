@@ -285,7 +285,7 @@ struct webAttribute {
         .initialScale(this.initialScale)
         .mixedMode(this.mixedMode)
         .userAgent("Mozila/5.0 (Linux; Andriod 9; VRD-AL10; HMSCore 6.3.0.331) AppleWebKit/537.36 " +
-        "(KHTML, like Gecko) Chrome/92.0.4515.105 HuaweiBrowser/12.0.4.1 MobileSafari/537.36")
+          "(KHTML, like Gecko) Chrome/92.0.4515.105 HuaweiBrowser/12.0.4.1 MobileSafari/537.36")
         .javaScriptProxy({
           object: this.jsObj,
           name: "backToEts",

@@ -26,6 +26,8 @@ import bluetoothViewModel, { ConnectionState } from '../model/BluetoothViewModel
 import BluetoothDevice from '../model/BluetoothDevice';
 import window from '@ohos.window';
 import emitter from '@ohos.events.emitter';
+import { Info } from '../../../ArkUI/InfoObj';
+import { BusinessError } from '@ohos.base';
 
 let path = globalThis.dir;
 const TAG = '[Screenshot]';
@@ -48,7 +50,8 @@ struct Ble {
   @State deviceList: Array<string> = []
   @State discoveryList: Array<string> = []
   @StorageLink('availableDevices') @Watch('onAvailableDevicesChange') availableDevices: Array<BluetoothDevice> = []
-  @StorageLink('connectBluetoothDevice') @Watch('onConnectBluetoothDeviceChange') connectBluetoothDevice: BluetoothDevice = {}
+  @StorageLink('connectBluetoothDevice') @Watch('onConnectBluetoothDeviceChange') connectBluetoothDevice: BluetoothDevice = {
+  }
   @State connectBluetoothDevice1: BluetoothDevice = {}
 
   onAvailableDevicesChange() {
@@ -61,7 +64,7 @@ struct Ble {
   }
 
   handlerClickButton = () => {
-    let context = getContext(this) as any
+    let context = getContext(this) as ESObject
     context.terminateSelf()
   }
   scroller: Scroller = new Scroller();
@@ -280,7 +283,7 @@ struct Ble {
                 .height(76)
                 .borderRadius(16)
                 .backgroundColor(Color.White)
-              }, item => item)
+              })
             }
             .padding({ left: 16, top: 16, right: 16, bottom: 0 })
             .width('100%')
@@ -341,12 +344,12 @@ struct Ble {
     })
   }
 
-  async savePicture(data: image.PixelMap, context: any) {
+  async savePicture(data: image.PixelMap, context: ESObject) {
     Logger.info(TAG, `savePicture`);
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -378,12 +381,12 @@ struct Ble {
       }
     }
     try {
-      screenshot.save(screenshotOptions, (err, data: image.PixelMap) => {
+      screenshot.save(screenshotOptions, (err: BusinessError, data: image.PixelMap) => {
         if (err) {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);

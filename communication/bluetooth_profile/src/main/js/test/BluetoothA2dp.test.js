@@ -107,9 +107,9 @@ describe('btA2dpConnTest', function () {
         let connState = bluetooth.getBtConnectionState();
         console.info('[bluetooth_js] get bt connection state result' + JSON.stringify(connState));
         expect(connState).assertEqual(bluetooth.ProfileConnectionState.STATE_DISCONNECTED);
-        expect(true).assertTrue(bluetooth.ProfileConnectionState.STATE_CONNECTING!= connState );
-        expect(true).assertTrue(bluetooth.ProfileConnectionState.STATE_CONNECTED!= connState );
-        expect(true).assertTrue(bluetooth.ProfileConnectionState.STATE_DISCONNECTING!= connState );
+        expect(true).assertEqual(bluetooth.ProfileConnectionState.STATE_CONNECTING != connState);
+        expect(true).assertEqual(bluetooth.ProfileConnectionState.STATE_CONNECTED != connState);
+        expect(true).assertEqual(bluetooth.ProfileConnectionState.STATE_DISCONNECTING != connState);
         done();
     })
 

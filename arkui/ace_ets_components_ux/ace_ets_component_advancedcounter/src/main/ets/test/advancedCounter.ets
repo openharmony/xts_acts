@@ -18,8 +18,8 @@ import { Driver, ON, Component } from '@ohos.UiTest'
 
 export default function abilityTest() {
   const SUITE = 'CounterComponent'
-  describe('ActsAceCounterComponentTest', function () {
-    beforeEach(async function (done) {
+  describe('ActsAceCounterComponentTest', () => {
+    beforeEach(async (done: Function) => {
       let options = {
         uri: "../testability/pages/Index",
       }
@@ -36,7 +36,7 @@ export default function abilityTest() {
       }
       done()
     })
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       let driver = Driver.create()
       await driver.delayMs(2);
       done()
@@ -47,27 +47,27 @@ export default function abilityTest() {
      * @tc.name         listCounter Component UI test
      * @tc.desc         Test listCounter Component UI
      */
-    it('Advanced_ui_counterComponent_0100', 0, async function (done) {
+    it('Advanced_ui_counterComponent_0100', 0, async (done: Function) => {
       let driver = Driver.create()
       let listCounterComponent = await driver.findComponent(ON.text('Number'))
       let type = await listCounterComponent.getType();
       expect(type).assertEqual('Text');
       done();
-      });
-    
+    });
+
     /*
      * @tc.number       Advanced_ui__counterComponent_0200     
      * @tc.name         compactCounter Component UI test
      * @tc.desc         Test compactCounter Component UI
      */
-    it('Advanced_ui_counterComponent_0200', 0, async function (done) {
+    it('Advanced_ui_counterComponent_0200', 0, async (done: Function) => {
       let driver = Driver.create()
       let compactCounter = await driver.findComponent(ON.text('Total'))
       let type = await compactCounter.getType();
       expect(type).assertEqual('Text');
       done();
-      });
-        
-    })
-  }
+    });
+
+  })
+}
 

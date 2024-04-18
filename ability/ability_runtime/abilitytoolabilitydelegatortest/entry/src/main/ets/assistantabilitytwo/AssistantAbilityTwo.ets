@@ -16,9 +16,11 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class AssistantAbilityTwo extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
   }
 
@@ -36,7 +38,7 @@ export default class AssistantAbilityTwo extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
+    })
   }
 
   onWindowStageDestroy() {
@@ -47,6 +49,10 @@ export default class AssistantAbilityTwo extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    setTimeout(() => {
+      hilog.info(0x0000, 'testTag', 'assistantabilitytwo terminateSelf start.');
+      this.context.terminateSelf()
+    }, 500)
   }
 
   onBackground() {

@@ -38,22 +38,21 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-
 struct getShadowColor {
   @State MyNodeController: MyNodeController = new MyNodeController();
-  @State sColor : number = 10;
+  @State sColor: number = 10;
 
   build() {
-    Column({space:10}){
+    Column({ space: 10 }) {
       NodeContainer(this.MyNodeController)
-      Text('shadowColor:'+ this.sColor).key('render_shadowColor')
+      Text('shadowColor:' + this.sColor).key('render_shadowColor')
       Button('set get shadowColor')
         .key('getSet_shadowColor')
-        .onClick(()=>{
+        .onClick(() => {
           this.sColor = renderNode.shadowColor
         })
     }
-    .margin({top:100})
+    .margin({ top: 100 })
     .width('100%')
     .height('100%')
   }

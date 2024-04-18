@@ -14,19 +14,19 @@
  */
 
 export class AppInfoItem {
-  public id: number
-  public packageName: string
-  public appName: string
-  public appVersion: String
-  public appIcon: string
-  public abilityName: string
+  public id: number;
+  public packageName: string;
+  public appName: string;
+  public appVersion: String;
+  public appIcon: string;
+  public abilityName: string;
 
   constructor(packageName: string, appName: string, appVersion: String, appIcon: string, abilityName: string) {
-    this.packageName = packageName
-    this.appName = appName
-    this.appVersion = appVersion
-    this.appIcon = appIcon
-    this.abilityName = abilityName
+    this.packageName = packageName;
+    this.appName = appName;
+    this.appVersion = appVersion;
+    this.appIcon = appIcon;
+    this.abilityName = abilityName;
   }
 }
 

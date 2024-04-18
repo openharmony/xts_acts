@@ -33,7 +33,7 @@ struct HeartRate {
   @State FillColor: string = '#FF000000';
   @State name: string = 'HeartRate';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有心率传感器' + '\n-点击开启按钮打开传感器,' +
-  '如果有传感器，请佩戴设备观察心率值变化，否则返回上一级' + '\n-预期结果：数值发生变化';
+    '如果有传感器，请佩戴设备观察心率值变化，否则返回上一级' + '\n-预期结果：数值发生变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
@@ -57,7 +57,7 @@ struct HeartRate {
           this.dataHeartRate = data.heartRate.toFixed(2);
           this.intervalNum = setInterval(() => {
             this.nextHeartRate = data.heartRate.toFixed(2);
-            if (this.nextHeartRate !== this.dataHeartRate ) {
+            if (this.nextHeartRate !== this.dataHeartRate) {
               this.Vue = true;
             }
           }, 500)
@@ -108,7 +108,7 @@ struct HeartRate {
     }
   }
 
-  async aboutToDisappear(){
+  async aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -139,7 +139,8 @@ struct HeartRate {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -163,7 +164,8 @@ struct HeartRate {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);

@@ -30,10 +30,10 @@ function ParseX509CertInfo(x509CertArray: Array<cert.X509Cert>) {
   let res: string = 'getCertificate success: len = ' + x509CertArray.length;
   for (let i = 0; i < x509CertArray.length; i++) {
     res += ', index = ' + i + ', issuer name = '
-    + Uint8ArrayToString(x509CertArray[i].getIssuerName().data) + ', subject name = '
-    + Uint8ArrayToString(x509CertArray[i].getSubjectName().data) + ', valid start = '
-    + x509CertArray[i].getNotBeforeTime()
-    + ', valid end = ' + x509CertArray[i].getNotAfterTime()
+      + Uint8ArrayToString(x509CertArray[i].getIssuerName().data) + ', subject name = '
+      + Uint8ArrayToString(x509CertArray[i].getSubjectName().data) + ', valid start = '
+      + x509CertArray[i].getNotBeforeTime()
+      + ', valid end = ' + x509CertArray[i].getNotAfterTime()
   }
   return res
 }
@@ -133,7 +133,7 @@ struct WebAttributeTest {
                 try {
                   this.initialScale = 100
                   await Utils.sleep(1000)
-                  this.initialScale = 80
+                  this.initialScale = 90
                   await Utils.sleep(1000)
                   this.controller.loadUrl("resource://rawfile/index.html");
                   await Utils.sleep(2000)
@@ -442,8 +442,8 @@ struct WebAttributeTest {
                   this.isDownloadStart = true
                   await Utils.sleep(1000)
                   this.controller.loadUrl('https://consumer.huawei.com/content/dam/' +
-                  'huawei-cbg-site/cn/mkt/mobileservices/2022/download/' +
-                  'PC107f1b3947c942ffaa14334a879065d8.2107261020.exe')
+                    'huawei-cbg-site/cn/mkt/mobileservices/2022/download/' +
+                    'PC107f1b3947c942ffaa14334a879065d8.2107261020.exe')
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
@@ -815,7 +815,7 @@ struct WebAttributeTest {
           .onSearchResultReceive(ret => {
             if (ret) {
               console.log("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
-              "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
+                "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
               this.searchResultCount = ret.numberOfMatches
             }
           })

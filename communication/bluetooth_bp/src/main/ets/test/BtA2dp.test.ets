@@ -85,6 +85,7 @@ describe('btA2dpTest', function() {
         console.info('beforeAll called')
         await clickRequestPermission();
         await openPhone();
+        await tryToEnableBt();
         A2dpSP = bluetooth.createA2dpSrcProfile();
         done();
     })

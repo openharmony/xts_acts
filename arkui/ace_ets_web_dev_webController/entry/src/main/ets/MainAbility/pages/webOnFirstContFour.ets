@@ -22,73 +22,76 @@ import Utils from '../../test/Utils';
 @Entry
 @Component
 struct webOnFirstContFour {
-    controller: WebController = new WebController();
-    @State str:string="emitRefreshOnfirstcontentfulpaintWebc";
-    @State firstId:number=428;
-    @State firstcontentfulpaint:boolean=false;
-    @State javaScriptAccess:boolean=true;
-    @State fileAccess:boolean=true;
-    @State domStorageAccess:boolean=false;
-    @State imageAccess:boolean=true;
-    @State onlineImageAccess:boolean=true;
-    @State databaseAccess:boolean=true;
-    @State userAgent:string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
+  controller: WebController = new WebController();
+  @State str: string = "emitRefreshOnfirstcontentfulpaintWebc";
+  @State firstId: number = 428;
+  @State firstcontentfulpaint: boolean = false;
+  @State javaScriptAccess: boolean = true;
+  @State fileAccess: boolean = true;
+  @State domStorageAccess: boolean = false;
+  @State imageAccess: boolean = true;
+  @State onlineImageAccess: boolean = true;
+  @State databaseAccess: boolean = true;
+  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
     " CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
-    @State firstBoo:boolean=false;
-    onPageShow(){
-        let valueChangeEvent={
-            eventId:10,
-            priority:events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
-    }
-    private valueChangeCallBack=(eventData)=>{
-        console.info("webOnFirstContFour page valueChangeCallBack");
-        if(eventData != null){
-                console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-                if(eventData.data.ACTION != null){
-                    this.str = eventData.data.ACTION;
-                }
-        }
-    }
+  @State firstBoo: boolean = false;
 
-    build() {
-        Column() {
-            Row() {
-                Button("web click").key('webOnFirstContFour').onClick(() => {
-                    console.info("key==>" + this.str)
-                    switch (this.str) {
-                        case "emitRefreshOnfirstcontentfulpaintWebc": {
-                            try {
-                                this.controller.clearHistory();
-                                this.controller.refresh();
-                                this.firstBoo = true
-                                console.log("action of emitRefreshOnfirstcontentfulpaintWebc is refresh");
-                            } catch (error) {
-                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                            }
-                            break;
-                        }
-                    }
-                })
-            }
-            Web({ src:'www.baidu.com', controller: this.controller })
-                .javaScriptAccess(this.javaScriptAccess)
-                .fileAccess(this.fileAccess)
-                .imageAccess(this.imageAccess)
-                .domStorageAccess(this.domStorageAccess)
-                .onlineImageAccess(this.onlineImageAccess)
-                .databaseAccess(this.databaseAccess)
-                .userAgent(this.userAgent)
-                .onFirstContentfulPaint(event => {
-                    console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" + 
-                        event.navigationStartTick + ", [firstContentfulPaintMs]:" + event.firstContentfulPaintMs + this.firstId)
-                    if (event.firstContentfulPaintMs > 0 && event.navigationStartTick > 0) {
-                        this.firstcontentfulpaint = true;
-                        Utils.emitEvent(this.firstcontentfulpaint, this.firstId)
-                        console.error("result of onFirstContentfulPaint is: "+ this.firstcontentfulpaint + this.firstId);
-                    }
-                })
-            }
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
+  }
+
+  private valueChangeCallBack = (eventData: ESObject) => {
+    console.info("webOnFirstContFour page valueChangeCallBack");
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
+        this.str = eventData.data.ACTION;
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button("web click").key('webOnFirstContFour').onClick(() => {
+          console.info("key==>" + this.str)
+          switch (this.str) {
+            case "emitRefreshOnfirstcontentfulpaintWebc": {
+              try {
+                this.controller.clearHistory();
+                this.controller.refresh();
+                this.firstBoo = true
+                console.log("action of emitRefreshOnfirstcontentfulpaintWebc is refresh");
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+          }
+        })
+      }
+
+      Web({ src: 'www.baidu.com', controller: this.controller })
+        .javaScriptAccess(this.javaScriptAccess)
+        .fileAccess(this.fileAccess)
+        .imageAccess(this.imageAccess)
+        .domStorageAccess(this.domStorageAccess)
+        .onlineImageAccess(this.onlineImageAccess)
+        .databaseAccess(this.databaseAccess)
+        .userAgent(this.userAgent)
+        .onFirstContentfulPaint(event => {
+          console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +
+          event.navigationStartTick + ", [firstContentfulPaintMs]:" + event.firstContentfulPaintMs + this.firstId)
+          if (event.firstContentfulPaintMs > 0 && event.navigationStartTick > 0) {
+            this.firstcontentfulpaint = true;
+            Utils.emitEvent(this.firstcontentfulpaint, this.firstId)
+            console.error("result of onFirstContentfulPaint is: " + this.firstcontentfulpaint + this.firstId);
+          }
+        })
+    }
+  }
 }

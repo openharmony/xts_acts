@@ -12,39 +12,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct SideBarContainerType_DefaultValue1 {
-  @State arr: number[] = [1, 2, 3]
-  @State current: number = 1
-  @State sideBarWidth: number = 150
-  @State minSideBarWidth: number = 100
-  @State maxSideBarWidth: number = 200
-  @State width1: number = 700
+  @State arr: number[] = [1, 2, 3];
+  @State current: number = 1;
+  @State sideBarWidth: number = 150;
+  @State minSideBarWidth: number = 100;
+  @State maxSideBarWidth: number = 200;
+  @State width1: number = 700;
+  messageManager: MessageManager<number> = new MessageManager();
 
-  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('SideBarContainerType_DefaultValue1 page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'sideBarWidth') {
         this.sideBarWidth = message.value;
-      }else if(message.name == 'minSideBarWidth'){
+      } else if (message.name == 'minSideBarWidth') {
         this.minSideBarWidth = message.value;
-      }else if(message.name == 'maxSideBarWidth'){
+      } else if (message.name == 'maxSideBarWidth') {
         this.maxSideBarWidth = message.value;
-      }else if(message.name == 'width1'){
+      } else if (message.name == 'width1') {
         this.width1 = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-
 
   build() {
     SideBarContainer(SideBarContainerType.AUTO) {
@@ -70,7 +70,6 @@ struct SideBarContainerType_DefaultValue1 {
       }
       .key("SideBarContainerType_DefaultValue1_sideBarContent_01")
 
-
     }
     .sideBarWidth(this.sideBarWidth)
     .minSideBarWidth(this.minSideBarWidth)
@@ -84,5 +83,4 @@ struct SideBarContainerType_DefaultValue1 {
     })
     .divider({ strokeWidth: '1vp', color: Color.Gray, startMargin: '4vp', endMargin: '4vp' })
   }
-
 }

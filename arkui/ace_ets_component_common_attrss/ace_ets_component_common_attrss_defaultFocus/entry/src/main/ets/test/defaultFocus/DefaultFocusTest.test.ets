@@ -17,6 +17,20 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  textComponentKey: string;
+  referenceComponentKey: string;
+  sharePage: boolean;
+}
+
+class TestValue {
+  describe: string;
+  setValue: boolean;
+}
+
 export default function DefaultFocusTest() {
   //A list of components that support the position attribute, which is required.
   let supportView = [
@@ -65,7 +79,7 @@ export default function DefaultFocusTest() {
 //    'TabContent'
   ]
   //Page config, this param is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testDefaultFocus',
     pageName: 'DefaultFocusPage',
     pageUrl: 'MainAbility/pages/defaultFocus/DefaultFocusPage',
@@ -74,7 +88,7 @@ export default function DefaultFocusTest() {
     sharePage: false
   }
   //Test values, looped to create cases, this param is required.
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetTrue',
     setValue: true,
   }, {
@@ -88,7 +102,7 @@ export default function DefaultFocusTest() {
 
   describe('DefaultFocusTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
 
       //Press the Tab key
 //      expect(Utils.performKeyEventDownUp(2049, 'Tab')).assertEqual(true);
@@ -97,16 +111,16 @@ export default function DefaultFocusTest() {
 
       if ('SetTrue' == data.testValue.describe) {
         //Confirm if the focus is on the target component
-        let firstComponent = Utils.getComponentByKey(data.pageConfig.textComponentKey);
+        let firstComponent: ESObject = Utils.getComponentByKey(data.pageConfig.textComponentKey);
         console.info('[' + data.caseTag + '] firstComponent.$attrs.content: ' + firstComponent.$attrs.content);
         expect(firstComponent.$attrs.content).assertEqual('onFocus');
         //Confirm if the focus is on the reference component
-        let firstReferenceComponent = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
+        let firstReferenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
         console.info('[' + data.caseTag + '] firstReferenceComponent.$attrs.label: ' +
         firstReferenceComponent.$attrs.label);
         expect(firstReferenceComponent.$attrs.label).assertEqual('');
         //Confirm target component attribute values
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] DefaultFocus is ' + viewObj.$attrs.defaultFocus + ' ');
         expect(viewObj.$attrs.defaultFocus).assertEqual(true);
 
@@ -119,11 +133,11 @@ export default function DefaultFocusTest() {
         console.info('[' + data.caseTag + '] Press Tab.');
 
         //Confirm if the focus is on the target component
-        let secondComponent = Utils.getComponentByKey(data.pageConfig.textComponentKey);
+        let secondComponent: ESObject = Utils.getComponentByKey(data.pageConfig.textComponentKey);
         console.info('[' + data.caseTag + '] secondComponent.$attrs.content: ' + secondComponent.$attrs.content);
         expect(secondComponent.$attrs.content).assertEqual('onFocus')
         //Confirm if the focus is on the reference component
-        let secondReferenceComponent = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
+        let secondReferenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
         console.info('[' + data.caseTag + '] secondReferenceComponent.$attrs.label: ' +
         secondReferenceComponent.$attrs.label);
         expect(secondReferenceComponent.$attrs.label).assertEqual('');
@@ -134,11 +148,11 @@ export default function DefaultFocusTest() {
 
       } else if ('SetFalse' == data.testValue.describe) {
         //Confirm if the focus is on the target component
-        let component = Utils.getComponentByKey(data.pageConfig.textComponentKey);
+        let component: ESObject = Utils.getComponentByKey(data.pageConfig.textComponentKey);
         console.info('[' + data.caseTag + '] component.$attrs.content: ' + component.$attrs.content);
         expect(component.$attrs.content).assertEqual('onFocus');
 
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] DefaultFocus is ' + viewObj.$attrs.defaultFocus + ' ');
         expect(viewObj.$attrs.defaultFocus).assertEqual(false);
       }

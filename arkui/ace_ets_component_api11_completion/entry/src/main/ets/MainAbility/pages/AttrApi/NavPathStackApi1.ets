@@ -21,20 +21,22 @@ import { BusinessError } from '@ohos.base';
 struct Navigation_NavPathStackTest1 {
   @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
 
-  @Builder pageOneTmp() {
+  @Builder
+  pageOneTmp() {
     NavDestination() {
-      Column({space:10}) {
-        Text('pageOne').id('NavPathStackApi1_text_pageOne')
+      Column({ space: 10 }) {
+        Text('pageOne')
+          .id('NavPathStackApi1_text_pageOne')
 
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageOne')
     .onBackPressed(() => {
       this.pageInfos.pop()
       return true
     })
   }
-
-
 
   @Builder
   PageMap(name: string) {
@@ -58,6 +60,8 @@ struct Navigation_NavPathStackTest1 {
           .id('NavPathStackApi1_pushDestination')
 
       }
-    }.title('NavIndex').navDestination(this.PageMap)
+    }
+    .title('NavIndex')
+    .navDestination(this.PageMap)
   }
 }

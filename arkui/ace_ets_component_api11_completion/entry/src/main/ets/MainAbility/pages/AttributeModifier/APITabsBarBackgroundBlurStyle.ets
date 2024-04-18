@@ -15,13 +15,14 @@
 @Entry
 @Component
 struct APITabsBarBackgroundBlurStyle {
-  @State fontColor: string = '#182431'
-  @State selectedFontColor: string = '#007DFF'
-  @State currentIndex: number = 0
-  private controller: TabsController = new TabsController()
-  @State text: string = ''
+  @State fontColor: string = '#182431';
+  @State selectedFontColor: string = '#007DFF';
+  @State currentIndex: number = 0;
+  private controller: TabsController = new TabsController();
+  @State text: string = '';
 
-  @Builder tabBuilder(index: number, name: string) {
+  @Builder
+  tabBuilder(index: number, name: string) {
     Column() {
       Text(name)
         .fontColor(this.currentIndex === index ? this.selectedFontColor : this.fontColor)
@@ -40,20 +41,36 @@ struct APITabsBarBackgroundBlurStyle {
     Column() {
       Tabs({ barPosition: BarPosition.Start, index: this.currentIndex, controller: this.controller }) {
         TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#00CB87')
-        }.tabBar(this.tabBuilder(0, 'green'))
+          Column()
+            .width('100%')
+            .height('100%')
+            .backgroundColor('#00CB87')
+        }
+        .tabBar(this.tabBuilder(0, 'green'))
 
         TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#007DFF')
-        }.tabBar(this.tabBuilder(1, 'blue'))
+          Column()
+            .width('100%')
+            .height('100%')
+            .backgroundColor('#007DFF')
+        }
+        .tabBar(this.tabBuilder(1, 'blue'))
 
         TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#FFBF00')
-        }.tabBar(this.tabBuilder(2, 'yellow'))
+          Column()
+            .width('100%')
+            .height('100%')
+            .backgroundColor('#FFBF00')
+        }
+        .tabBar(this.tabBuilder(2, 'yellow'))
 
         TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#E67C92')
-        }.tabBar(this.tabBuilder(3, 'pink'))
+          Column()
+            .width('100%')
+            .height('100%')
+            .backgroundColor('#E67C92')
+        }
+        .tabBar(this.tabBuilder(3, 'pink'))
       }
       .barBackgroundBlurStyle(BlurStyle.NONE)
       .vertical(false)
@@ -69,16 +86,6 @@ struct APITabsBarBackgroundBlurStyle {
       .margin({ top: 52 })
       .backgroundColor('#F1F3F5')
       .key('APITabsBarBackgroundBlurStyle01')
-
-      // TextArea({ text:this.text })
-      // Button('next page')
-      //   .onClick(() => { // 点击后滑到下一页
-      //     let strJson = getInspectorByKey('APITabsBarBackgroundBlurStyle01');
-      //     // this.text = JSON.stringify(JSON.parse(strJson))
-      //     this.text = JSON.parse(strJson).$attrs.barBackgroundBlurStyle + ''
-      //   })
-
-
     }.width('100%')
   }
 }

@@ -4871,9 +4871,37 @@ describe('UrlFunTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-        it('testUrlparseURL0026', 0, function () {
+    it('testUrlparseURL0026', 0, function () {
         let params2 =  Url.URL.parseURL('http://192.0x.9.')
         var result= params2.toString();
         expect(result).assertEqual('http://192.0.0.9/')
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29200
+   * @tc.name: testUrlparseURL0027
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0027', 0, function () {
+        let urlObj =  Url.URL.parseURL('../2/2.html', 'http://xxx.com/hem1/1/1.html')
+        var result = urlObj.toString();
+        expect(result).assertEqual('http://xxx.com/hem1/2/2.html')
+    })
+
+    /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29300
+   * @tc.name: testUrlparseURL0028
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0028', 0, function () {
+        let urlObj =  Url.URL.parseURL('../2/2.html', 'http://xxx.com')
+        var result = urlObj.toString();
+        expect(result).assertEqual('http://xxx.com/2/2.html')
     })
 })}

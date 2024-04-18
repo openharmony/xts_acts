@@ -20,7 +20,8 @@ import commonEvent from '@ohos.commonEventManager';
 import fs, { type Filter } from '@ohos.file.fs';
 
 const BUFSIZE = 1024;
-let DELAY_TIME = 300;
+let DELAY_TIME = 100;
+let CLEAN_TEMP_DELAY_TIME = 1000;
 let OFFSETNUMBER = 0;
 
 let message;
@@ -41,6 +42,7 @@ let actionStr;
 let tempDir;
 let applicationContext;
 let applicationTempDir;
+let currentContext;
 
 function getListFile(dir): number {
   class ListFileOption {
@@ -57,9 +59,9 @@ function getListFile(dir): number {
   return files.length;
 }
 
-function startAndTerminate(context, action): void {
+function startAndTerminate(action): void {
   setTimeout(() => {
-    context.startAbility(
+    currentContext.startAbility(
       {
         bundleName: 'com.acts.cleancachefilesreply',
         abilityName: 'SecondAbility',
@@ -70,7 +72,7 @@ function startAndTerminate(context, action): void {
         console.log(action + ' startAbility err: ' + JSON.stringify(err));
         if (action !== 'Acts_CleanTempFiles_0203') {
           setTimeout(() => {
-            context.terminateSelf().then(() => {
+            currentContext.terminateSelf().then(() => {
               console.log(action + 'rely terminateSelf end');
             }).catch((err) => {
               console.log(action + 'rely terminateSelf err: ' + JSON.stringify(err));
@@ -81,7 +83,7 @@ function startAndTerminate(context, action): void {
   }, DELAY_TIME);
 }
 
-function onForegroundInner(actionStr, context): void {
+function onForegroundInner(actionStr): void {
   if (actionStr === 'Acts_CleanTempFiles_0201') {
     let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let writeLen = fs.writeSync(file.fd, 'Try to write str.');
@@ -105,35 +107,37 @@ function onForegroundInner(actionStr, context): void {
     commonEventData.parameters.secondMessage = applicReadBuf;
     commonEvent.publish('Acts_CleanTempFiles_0201', commonEventData, (err) => {
       console.log('Acts_CleanTempFiles_0201 publish err: ' + JSON.stringify(err));
-      startAndTerminate(context, 'Acts_CleanTempFiles_0203');
+      startAndTerminate('Acts_CleanTempFiles_0203');
     });
   } else if (actionStr === 'Acts_CleanTempFiles_0202') {
-    let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    let buf = new ArrayBuffer(BUFSIZE);
-    let readLen = fs.readSync(file.fd, buf, {
-      offset: OFFSETNUMBER
-    });
-    fs.closeSync(file);
-    let readBuf = String.fromCharCode.apply(null, new Uint8Array(buf.slice(OFFSETNUMBER, readLen)));
-    commonEventData.parameters.message = readBuf;
+    setTimeout(() => {
+      let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      let buf = new ArrayBuffer(BUFSIZE);
+      let readLen = fs.readSync(file.fd, buf, {
+        offset: OFFSETNUMBER
+      });
+      fs.closeSync(file);
+      let readBuf = String.fromCharCode.apply(null, new Uint8Array(buf.slice(OFFSETNUMBER, readLen)));
+      commonEventData.parameters.message = readBuf;
 
-    let applicationFile = fs.openSync(applicationTempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    let applicationReadLen = fs.readSync(applicationFile.fd, buf, {
-      offset: OFFSETNUMBER
-    });
-    fs.closeSync(applicationFile);
-    let applicaReadBuf = String.fromCharCode.apply(null, new Uint8Array(buf.slice(OFFSETNUMBER, applicationReadLen)));
-    console.log('Acts_CleanTempFiles_0202 application Message: ' + JSON.stringify(applicationReadLen));
-    commonEventData.parameters.secondMessage = applicaReadBuf;
-    commonEvent.publish('Acts_CleanTempFiles_0202', commonEventData, (err) => {
-      console.log('Acts_CleanTempFiles_0202 publish err: ' + JSON.stringify(err));
-      startAndTerminate(context, 'Acts_CleanTempFiles_0204');
-    });
+      let applicationFile = fs.openSync(applicationTempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      let applicationReadLen = fs.readSync(applicationFile.fd, buf, {
+        offset: OFFSETNUMBER
+      });
+      fs.closeSync(applicationFile);
+      let applicaReadBuf = String.fromCharCode.apply(null, new Uint8Array(buf.slice(OFFSETNUMBER, applicationReadLen)));
+      console.log('Acts_CleanTempFiles_0202 application Message: ' + JSON.stringify(applicationReadLen));
+      commonEventData.parameters.secondMessage = applicaReadBuf;
+      commonEvent.publish('Acts_CleanTempFiles_0202', commonEventData, (err) => {
+        console.log('Acts_CleanTempFiles_0202 publish err: ' + JSON.stringify(err));
+        startAndTerminate('Acts_CleanTempFiles_0204');
+      });
+    }, CLEAN_TEMP_DELAY_TIME)
   }
-  cleanTempFiles(actionStr, context);
+  cleanTempFiles(actionStr);
 }
 
-function cleanTempFiles(actionStr, context): void {
+function cleanTempFiles(actionStr): void {
   if (actionStr === 'Acts_CleanTempFiles_0301') {
     AppStorage.setOrCreate('message', actionStr);
     let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -155,20 +159,22 @@ function cleanTempFiles(actionStr, context): void {
       }, DELAY_TIME);
     });
   } else if (actionStr === 'Acts_CleanTempFiles_0302') {
-    AppStorage.setOrCreate('message', actionStr);
-    let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    let buf = new ArrayBuffer(BUFSIZE);
-    let readLen = fs.readSync(file.fd, buf, {
-      offset: OFFSETNUMBER
-    });
-    fs.closeSync(file);
-    let readBuf = String.fromCharCode.apply(null, new Uint8Array(buf.slice(OFFSETNUMBER, readLen)));
-    console.log('Acts_CleanTempFiles_0302 Message: ' + JSON.stringify(readLen));
-    commonEventData.parameters.message = readBuf;
-    commonEvent.publish('Acts_CleanTempFiles_0302', commonEventData, (err) => {
-      console.log('Acts_CleanTempFiles_0302 publish err: ' + JSON.stringify(err));
-      context.terminateSelf();
-    });
+    setTimeout(() => {
+      AppStorage.setOrCreate('message', actionStr);
+      let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      let buf = new ArrayBuffer(BUFSIZE);
+      let readLen = fs.readSync(file.fd, buf, {
+        offset: OFFSETNUMBER
+      });
+      fs.closeSync(file);
+      let readBuf = String.fromCharCode.apply(null, new Uint8Array(buf.slice(OFFSETNUMBER, readLen)));
+      console.log('Acts_CleanTempFiles_0302 Message: ' + JSON.stringify(readLen));
+      commonEventData.parameters.message = readBuf;
+      commonEvent.publish('Acts_CleanTempFiles_0302', commonEventData, (err) => {
+        console.log('Acts_CleanTempFiles_0302 publish err: ' + JSON.stringify(err));
+        currentContext.terminateSelf();
+      });
+    }, CLEAN_TEMP_DELAY_TIME)
   }
 }
 
@@ -177,28 +183,29 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     actionStr = want.parameters.key;
     tempDir = this.context.tempDir;
+    currentContext = this.context;
     applicationContext = this.context.getApplicationContext();
     applicationTempDir = applicationContext.tempDir;
   }
 
   onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    hilog.info(0x0000, 'EntryAbility', '%{public}s', 'Ability onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    hilog.info(0x0000, 'EntryAbility', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: ', JSON.stringify(err) ?? '');
+        hilog.error(0x0000, 'EntryAbility', 'Failed to load the content. Cause: ', JSON.stringify(err) ?? '');
         return;
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: ', JSON.stringify(data) ?? '');
+      hilog.info(0x0000, 'EntryAbility', 'Succeeded in loading the content. Data: ', JSON.stringify(data) ?? '');
     });
   }
 
   onWindowStageDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+    hilog.info(0x0000, 'EntryAbility', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
@@ -224,35 +231,37 @@ export default class EntryAbility extends UIAbility {
       commonEventData.parameters.secondMessage = applicaReadBuf;
       commonEvent.publish('Acts_CleanTempFiles_0101', commonEventData, (err) => {
         console.log('Acts_CleanTempFiles_0101 publish err: ' + JSON.stringify(err));
-        startAndTerminate(this.context, 'Acts_CleanTempFiles_0103');
+        startAndTerminate('Acts_CleanTempFiles_0103');
       });
     } else if (actionStr === 'Acts_CleanTempFiles_0102') {
-      let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let buf = new ArrayBuffer(BUFSIZE);
-      let readLen = fs.readSync(file.fd, buf, {
-        offset: OFFSETNUMBER
-      });
-      fs.closeSync(file);
-      commonEventData.parameters.message = readLen;
-      let dir = tempDir.split('temp');
-      commonEventData.parameters.files = getListFile(dir[0]);
-      let applicationFile = fs.openSync(applicationTempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let applicationReadLen = fs.readSync(applicationFile.fd, buf, {
-        offset: OFFSETNUMBER
-      });
-      fs.closeSync(applicationFile);
-      commonEventData.parameters.secondMessage = applicationReadLen;
-      let secDir = tempDir.split('temp');
-      commonEventData.parameters.secFiles = getListFile(secDir[0]);
-      commonEvent.publish('Acts_CleanTempFiles_0102', commonEventData, (err) => {
-        console.log('Acts_CleanTempFiles_0102 publish err: ' + JSON.stringify(err));
-        startAndTerminate(this.context, 'Acts_CleanTempFiles_0104');
-      });
+      setTimeout(() => {
+        let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        let buf = new ArrayBuffer(BUFSIZE);
+        let readLen = fs.readSync(file.fd, buf, {
+          offset: OFFSETNUMBER
+        });
+        fs.closeSync(file);
+        commonEventData.parameters.message = readLen;
+        let dir = tempDir.split('temp');
+        commonEventData.parameters.files = getListFile(dir[0]);
+        let applicationFile = fs.openSync(applicationTempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        let applicationReadLen = fs.readSync(applicationFile.fd, buf, {
+          offset: OFFSETNUMBER
+        });
+        fs.closeSync(applicationFile);
+        commonEventData.parameters.secondMessage = applicationReadLen;
+        let secDir = tempDir.split('temp');
+        commonEventData.parameters.secFiles = getListFile(secDir[0]);
+        commonEvent.publish('Acts_CleanTempFiles_0102', commonEventData, (err) => {
+          console.log('Acts_CleanTempFiles_0102 publish err: ' + JSON.stringify(err));
+          startAndTerminate('Acts_CleanTempFiles_0104');
+        });
+      }, CLEAN_TEMP_DELAY_TIME)
     }
-    onForegroundInner(actionStr, this.context);
+    onForegroundInner(actionStr);
   }
 
   onBackground(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+    hilog.info(0x0000, 'EntryAbility', '%{public}s', 'Ability onBackground');
   }
 }

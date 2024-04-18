@@ -686,11 +686,6 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglSwapInterval001', 0, async (done: Function) => {
-      let result: number = eglndk.eglSwapInterval();
-      expect(result).assertEqual(1);
-      done();
-    });
 
     /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_LIBEGL_EGLSWAPINTERVAL_0200

@@ -20,13 +20,13 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import data_preferences from '@ohos.data.preferences';
 import MediaUtils from '../model/MediaUtils';
 
-const TAG = 'ParseXML';
-let path = globalThis.dir;
-let path1 = path + '/Player';
+const TAG: string = 'ParseXML';
+let path: string = globalThis.dir;
+let path1: string = path + '/Player';
 
-let VarColor = [];
-let ColorBackPath = path1 + '/PlayerNetWorkColorBack.txt';
-let txtPath = path1 + '/PlayerNetWorkReport.txt';
+let VarColor: string[] = [];
+let ColorBackPath: string = path1 + '/PlayerNetWorkColorBack.txt';
+let txtPath: string = path1 + '/PlayerNetWorkReport.txt';
 
 class NetWork {
   nameStr: string;
@@ -46,7 +46,7 @@ struct PlayNetWorkList {
   @State ClearAll: boolean = false;
   @State name: string = 'PlayerNetWork';
   @State Vue: boolean = false;
-  private  TestCaseList: Array<NetWork>
+  private TestCaseList: Array<NetWork>
     = [new NetWork('https', 'https:\/\/vd3.bdstatic.com\/mda-pdc2kmwtd2vxhiy4\/cae_h264\/1681502407203843413\/mda-pdc2kmwtd2vxhiy4.mp4')];
   private current: number = undefined;
   @State count: number = 0;
@@ -59,7 +59,7 @@ struct PlayNetWorkList {
     let Test = null;
     let context = null;
     context = globalThis.getContext();
-    let preferences;
+    let preferences: ESObject;
 
     let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
@@ -91,17 +91,18 @@ struct PlayNetWorkList {
     let opt = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buff = new ArrayBuffer(40960);
     fs.readSync(opt.fd, buff);
-    let ColorBack = String.fromCharCode.apply(null, new Uint8Array(buff));
-    let TestList = ColorBack.split(';');
+    let ColorBack: string = String.fromCharCode.apply(null, new Uint8Array(buff));
+    let TestList: string[] = ColorBack.split(';');
     for (let i = 0; i < Math.floor(TestList.length / 2); i++) {
       VarColor[i] = TestList[i * 2+1];
     }
     fs.closeSync(opt);
 
     if (this.count === 1) {
-      this.result = router.getParams()['result'];
-      let titles = router.getParams()['title'];
-      let name1 = '刚刚点进了哪个用例：' + titles;
+      let myRouter = router.getParams() as Record<string, string | number>
+      this.result = myRouter.result as string
+      let titles: string = myRouter.title as string;
+      let name1: string = '刚刚点进了哪个用例：' + titles;
       let results = this.result;
       let WriteTitle = (titles).toString();
       let number = WriteTitle.length + 11;
@@ -212,7 +213,7 @@ struct PlayNetWorkList {
       .backgroundColor(Color.Black)
 
       List({ space: 5 }) {
-        ForEach(this.TestCaseList, (item, index) => {
+        ForEach(this.TestCaseList, (item: NetWork, index) => {
           ListItem() {
             Row() {
               Text(item.nameStr)
@@ -236,7 +237,7 @@ struct PlayNetWorkList {
               })
             })
           }
-        }, item => item.title)
+        }, (item: NetWork) => item.nameStr)
       }
       .width('100%')
       .height('80%')
@@ -275,7 +276,8 @@ struct PlayNetWorkList {
         .onClick(() => {
           router.back({
             url: 'pages/Player/Player_index',
-            params: { result: 'false', title: this.name,
+            params: {
+              result: 'false', title: this.name,
             }
           })
           console.log('wwwwwwwwww' + this.Url)
@@ -312,27 +314,27 @@ struct PlayNetWorkList {
   }
 }
 
-function filewrite(name1, results, titles) {
+function filewrite(name1: string, results: string, titles: string) {
   let fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   let buf = new ArrayBuffer(4096);
   let RD = fs.readSync(fd.fd, buf);
   console.info("RRRRRRRRRRd" + RD);
-  let report = String.fromCharCode.apply(null, new Uint8Array(buf));
+  let report: ESObject = String.fromCharCode.apply(null, new Uint8Array(buf));
   let WriteTitle = (titles).toString();
   let WriteResult = (results).toString();
   let number = WriteTitle.length + WriteResult.length + 2;
-  let Index = report.indexOf(WriteTitle);
+  let Index: number = report.indexOf(WriteTitle);
   let Log = (titles + ";" + results + ";").toString();
   if (Index == -1) {
     fs.writeSync(fd.fd, Log);
   }
   else if (Index != -1) {
-    let key = report.substring(Index, Index + number);
+    let key: string = report.substring(Index, Index + number);
     let FD = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     report = report.replace(key, Log);
     let buffer = new ArrayBuffer(4096);
     let rd = fs.readSync(FD.fd, buffer);
-    let Report = report.substring(0, rd);
+    let Report: string = report.substring(0, rd);
     fs.closeSync(FD);
     let Fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.writeSync(Fd.fd, Report);

@@ -53,8 +53,7 @@ async function onShowProcess() {
         data: callBackData,
         parameters: {
             displayId: globalThis.abilityWant.parameters['ohos.aafwk.param.displayId'],
-            windowMode: globalThis.abilityWant.parameters['ohos.aafwk.param.windowMode'],
-}
+        }
     };
 
     console.log("AbilityMultiInstanceAppA abilityWant = " + JSON.stringify(abilityWant));

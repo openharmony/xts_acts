@@ -44,8 +44,8 @@ struct Wifi_index {
     { title: 'WifiScan', uri: 'pages/Wifi/WifiScan' }
   ]
   @State ColorObject: Object[] = VarColor;
-  @State ColorTrue: Object[] = [];
-  @State ColorTrue2: Object[] = [];
+  @State ColorTrue: number[] = [];
+  @State ColorTrue2: number[] = [];
 
   async onPageShow() {
     let Test = null;

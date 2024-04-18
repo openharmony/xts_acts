@@ -15,11 +15,11 @@
 @Entry
 @Component
 struct SheetTransitionExample {
-  @State isShow1:boolean = false
-  @State isShow2:boolean = false
-  @State isShow3:boolean = false
-  @State isShow4:boolean = false
-  @State isShow5:boolean = false
+  @State isShow1:boolean = false;
+  @State isShow2:boolean = false;
+  @State isShow3:boolean = false;
+  @State isShow4:boolean = false;
+  @State isShow5:boolean = false;
 
   @Builder myBuilder() {
     Column() {

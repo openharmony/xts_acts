@@ -122,6 +122,7 @@ describe('bluetoothBleTest', function() {
                     interval: 500,
                     dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_POWER,
                     matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
+                    phyType: bluetooth.PhyType.PHY_LE_1M
                 }
             );
         } catch (err) {
@@ -486,6 +487,24 @@ describe('bluetoothBleTest', function() {
             expect(err.code).assertEqual('2900099');
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1500
+     * @tc.name test constant PhyType
+     * @tc.desc Test constant PhyType api12
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1500', 0, async function (done) {
+        let PHY_LE_1M = bluetooth.PhyType.PHY_LE_1M;
+        console.info("[bluetooth_js]PHY_LE_1M : " + JSON.stringify(PHY_LE_1M));
+        expect(true).assertEqual(PHY_LE_1M == 1);
+
+        let PHY_LE_ALL_SUPPORTED = bluetooth.PhyType.PHY_LE_ALL_SUPPORTED;
+        console.info("[bluetooth_js]PHY_LE_ALL_SUPPORTED : " + JSON.stringify(PHY_LE_ALL_SUPPORTED));
+        expect(true).assertEqual(PHY_LE_ALL_SUPPORTED == 255);
         done();
     })
 })

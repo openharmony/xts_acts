@@ -118,15 +118,15 @@ export default function MarkAnchorTest() {
       if ('StringPercent' == data.testValue.describe) {
         //When setting the type to percentage, use the width/height of the parent container as the base.
         expect(Math.abs(Number(initialPosition.left - targetRectAfter.left) -
-          Number((targetRectAfter.right - targetRectAfter.left) * 0.5)) <= 1).assertTrue();
+        Number((targetRectAfter.right - targetRectAfter.left) * 0.5)) <= 1).assertTrue();
         expect(Math.abs(Number(initialPosition.top - targetRectAfter.top) -
-          Number((targetRectAfter.bottom - targetRectAfter.top) * 0.5)) <= 1).assertTrue();
+        Number((targetRectAfter.bottom - targetRectAfter.top) * 0.5)) <= 1).assertTrue();
       } else {
         //When set to the basic type, verify the calculated shifting
         expect(Math.abs(Number(initialPosition.left - targetRectAfter.left) -
-          Number(data.testValue.expectValue.left)) <= 1).assertTrue();
+        Number(data.testValue.expectValue.left)) <= 1).assertTrue();
         expect(Math.abs(Number(initialPosition.top - targetRectAfter.top) -
-          Number(data.testValue.expectValue.top)) <= 1).assertTrue();
+        Number(data.testValue.expectValue.top)) <= 1).assertTrue();
       }
     })
   })

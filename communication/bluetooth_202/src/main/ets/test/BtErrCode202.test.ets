@@ -17,7 +17,6 @@ import btA2dp from '@ohos.bluetooth.a2dp';
 import btHfp from '@ohos.bluetooth.hfp';
 import btAccess from '@ohos.bluetooth.access';
 import btHid from '@ohos.bluetooth.hid';
-import btPan from '@ohos.bluetooth.pan';
 import btConnection from '@ohos.bluetooth.connection';
 import btBaseProfile from '@ohos.bluetooth.baseProfile';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
@@ -88,15 +87,14 @@ export default function errCode202Test() {
   let a2dpSrc = null;
   let hfpSrc = null;
   let hidSrc = null;
-  let panSrc = null;
   describe('errCode202Test', function() {
     beforeAll(async function (done) {
-      await openPhone();
       await clickRequestPermission();
+      await openPhone();
+      await tryToEnableBt();
       a2dpSrc = btA2dp.createA2dpSrcProfile();
       hfpSrc = btHfp.createHfpAgProfile();
       hidSrc = btHid.createHidHostProfile();
-      panSrc = btPan.createPanProfile();
       console.info('beforeAll called')
       done();
     })
@@ -555,7 +553,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0100
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_0100
      * @tc.name test setConnectionStrategy callback.
      * @tc.desc Test setConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -563,7 +561,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0100', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_0100', 0, async function (done) {
         function setConnStr() {
             return new Promise<void>((resolve,reject) => {
             a2dpSrc.setConnectionStrategy('00:11:22:33:44:55', btBaseProfile.ConnectionStrategy.CONNECTION_STRATEGY_ALLOWED, (err, data)=> {
@@ -596,7 +594,7 @@ export default function errCode202Test() {
         })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0200
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_0200
      * @tc.name test setConnectionStrategy promise.
      * @tc.desc Test setConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -604,7 +602,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0200', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_0200', 0, async function (done) {
       try {
         await a2dpSrc.setConnectionStrategy("11:22:33:AA:BB:FF", btBaseProfile.ConnectionStrategy.CONNECTION_STRATEGY_ALLOWED).then((data) => {
           console.info('[bluetooth_js] setConnectionStrategy result:' + JSON.stringify(data));
@@ -623,7 +621,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0300
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_0300
      * @tc.name test getConnectionStrategy callback.
      * @tc.desc Test getConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -631,7 +629,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0300', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_0300', 0, async function (done) {
       try {
         function getConnStr() {
           return new Promise<void>((resolve,reject) => {
@@ -664,7 +662,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0400
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_0400
      * @tc.name test getConnectionStrategy promise.
      * @tc.desc Test getConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -672,7 +670,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0400', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_0400', 0, async function (done) {
       try {
         await a2dpSrc.getConnectionStrategy('00:11:22:33:44:55').then((data) => {
           console.info('[bluetooth_js] getConnectionStrategy result:' + JSON.stringify(data));
@@ -691,7 +689,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0500
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_0500
      * @tc.name test setConnectionStrategy callback.
      * @tc.desc Test setConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -699,7 +697,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0500', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_0500', 0, async function (done) {
       try {
         function setConnStr() {
           return new Promise<void>((resolve,reject) => {
@@ -732,7 +730,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0600
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_0600
      * @tc.name test setConnectionStrategy promise.
      * @tc.desc Test setConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -740,7 +738,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0600', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_0600', 0, async function (done) {
       try {
         await hfpSrc.setConnectionStrategy('00:11:22:33:44:55', btBaseProfile.ConnectionStrategy.CONNECTION_STRATEGY_ALLOWED).then((data) => {
           console.info('[bluetooth_js] setConnectionStrategy result:' + JSON.stringify(data));
@@ -759,7 +757,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0700
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_0700
      * @tc.name test getConnectionStrategy callback.
      * @tc.desc Test getConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -767,7 +765,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0700', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_0700', 0, async function (done) {
       try {
         function getConnStr() {
           return new Promise<void>((resolve,reject) => {
@@ -800,7 +798,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0800
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_0800
      * @tc.name test getConnectionStrategy promise.
      * @tc.desc Test getConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -808,7 +806,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0800', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_0800', 0, async function (done) {
       try {
         await hfpSrc.getConnectionStrategy('00:11:22:33:44:55').then((data) => {
           console.info('[bluetooth_js] getConnectionStrategy result:' + JSON.stringify(data));
@@ -827,7 +825,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0900
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_0900
      * @tc.name test setConnectionStrategy callback.
      * @tc.desc Test setConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -835,7 +833,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0900', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_0900', 0, async function (done) {
       try {
         function setConnStr() {
           return new Promise<void>((resolve,reject) => {
@@ -868,7 +866,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1000
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_1000
      * @tc.name test setConnectionStrategy promise.
      * @tc.desc Test setConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -876,7 +874,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1000', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_1000', 0, async function (done) {
       try {
         await hidSrc.setConnectionStrategy('00:11:22:33:44:55', btBaseProfile.ConnectionStrategy.CONNECTION_STRATEGY_ALLOWED).then((data) => {
           console.info('[bluetooth_js] setConnectionStrategy result:' + JSON.stringify(data));
@@ -895,7 +893,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1100
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_1100
      * @tc.name test getConnectionStrategy callback.
      * @tc.desc Test getConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -903,7 +901,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1100', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_1100', 0, async function (done) {
       try {
         function getConnStr() {
           return new Promise<void>((resolve,reject) => {
@@ -936,7 +934,7 @@ export default function errCode202Test() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1200
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_PROFILE_1200
      * @tc.name test getConnectionStrategy promise.
      * @tc.desc Test getConnectionStrategy of use invalided address.
      * @tc.size MEDIUM
@@ -944,7 +942,7 @@ export default function errCode202Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1200', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_PROFILE_1200', 0, async function (done) {
       try {
         await hidSrc.getConnectionStrategy('00:11:22:33:44:55').then((data) => {
           console.info('[bluetooth_js] getConnectionStrategy result:' + JSON.stringify(data));

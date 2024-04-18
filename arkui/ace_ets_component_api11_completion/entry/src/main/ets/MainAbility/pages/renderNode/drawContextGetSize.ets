@@ -40,7 +40,7 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-struct DrawContextGetSize{
+struct DrawContextGetSize {
   private MyNodeController: MyNodeController = new MyNodeController()
 
   build() {
@@ -50,7 +50,7 @@ struct DrawContextGetSize{
       Button('Graphics DrawContext get Size')
         .key('DrawContext_get_Size')
         .onClick(() => {
-          const child =new MyRenderNode()
+          const child = new MyRenderNode()
           width = child.size.width
         })
         .margin({ top: 100 })

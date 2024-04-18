@@ -60,6 +60,12 @@ HWTEST_F(QoSTestSuite, SetThreadQoSNdkTest, Function | MediumTest | Level1)
     EXPECT_EQ(ret, 0);
     ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_USER_INTERACTIVE);
     EXPECT_EQ(ret, 0);
+    ret = OH_QoS_SetThreadQoS(QoS_Level(-1));
+    EXPECT_EQ(ret, -1);
+    ret = OH_QoS_SetThreadQoS(QoS_Level(6));
+    EXPECT_EQ(ret, -1);
+    ret = OH_QoS_SetThreadQoS(QoS_Level(1024));
+    EXPECT_EQ(ret, -1);
 }
 
 /**
@@ -69,7 +75,32 @@ HWTEST_F(QoSTestSuite, SetThreadQoSNdkTest, Function | MediumTest | Level1)
  */
 HWTEST_F(QoSTestSuite, ResetThreadQoSNdkTest, Function | MediumTest | Level1)
 {
-    int ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_USER_INTERACTIVE);
+    int ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_BACKGROUND);
+    EXPECT_EQ(ret, 0);
+    ret = OH_QoS_ResetThreadQoS();
+    EXPECT_EQ(ret, 0);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_UTILITY);
+    EXPECT_EQ(ret, 0);
+    ret =  OH_QoS_ResetThreadQoS();
+    EXPECT_EQ(ret, 0);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_DEFAULT);
+    EXPECT_EQ(ret, 0);
+    ret =  OH_QoS_ResetThreadQoS();
+    EXPECT_EQ(ret, 0);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_USER_INITIATED);
+    EXPECT_EQ(ret, 0);
+    ret =  OH_QoS_ResetThreadQoS();
+    EXPECT_EQ(ret, 0);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_DEADLINE_REQUEST);
+    EXPECT_EQ(ret, 0);
+    ret =  OH_QoS_ResetThreadQoS();
+    EXPECT_EQ(ret, 0);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_USER_INTERACTIVE);
     EXPECT_EQ(ret, 0);
     ret = OH_QoS_ResetThreadQoS();
     EXPECT_EQ(ret, 0);
@@ -84,9 +115,72 @@ HWTEST_F(QoSTestSuite, GetThreadQoSNdkTest, Function | MediumTest | Level1)
 {
     int ret = OH_QoS_GetThreadQoS(nullptr);
     EXPECT_EQ(ret, -1);
-    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_USER_INTERACTIVE);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_BACKGROUND);
     EXPECT_EQ(ret, 0);
     enum QoS_Level level;
     ret = OH_QoS_GetThreadQoS(&level);
     EXPECT_EQ(ret, 0);
+    EXPECT_EQ(level, QoS_Level::QOS_BACKGROUND);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_UTILITY);
+    EXPECT_EQ(ret, 0);
+    ret = OH_QoS_GetThreadQoS(&level);
+    EXPECT_EQ(ret, 0);
+    EXPECT_EQ(level, QoS_Level::QOS_UTILITY);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_DEFAULT);
+    EXPECT_EQ(ret, 0);
+    ret = OH_QoS_GetThreadQoS(&level);
+    EXPECT_EQ(ret, 0);
+    EXPECT_EQ(level, QoS_Level::QOS_DEFAULT);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_USER_INITIATED);
+    EXPECT_EQ(ret, 0);
+    ret = OH_QoS_GetThreadQoS(&level);
+    EXPECT_EQ(ret, 0);
+    EXPECT_EQ(level, QoS_Level::QOS_USER_INITIATED);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_DEADLINE_REQUEST);
+    EXPECT_EQ(ret, 0);
+    ret = OH_QoS_GetThreadQoS(&level);
+    EXPECT_EQ(ret, 0);
+    EXPECT_EQ(level, QoS_Level::QOS_DEADLINE_REQUEST);
+
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_USER_INTERACTIVE);
+    EXPECT_EQ(ret, 0);
+    ret = OH_QoS_GetThreadQoS(&level);
+    EXPECT_EQ(ret, 0);
+    EXPECT_EQ(level, QoS_Level::QOS_USER_INTERACTIVE);
+
+    ret = OH_QoS_ResetThreadQoS();
+    EXPECT_EQ(ret, 0);
+    ret = OH_QoS_GetThreadQoS(&level);
+    EXPECT_EQ(ret, -1);
+}
+
+/**
+ * @tc.name: ThreadQoSNdkTest
+ * @tc.desc: Double Test ThreadQoSNDKTest function.
+ * @tc.type: FUNC
+ */
+HWTEST_F(QoSTestSuite, ThreadQoSNdkTest, Function | MediumTest | Level1)
+{
+    int ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_BACKGROUND);
+    EXPECT_EQ(ret, 0);
+    ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_BACKGROUND);
+    EXPECT_EQ(ret, 0);
+
+    enum QoS_Level level;
+    ret = OH_QoS_GetThreadQoS(&level);
+    EXPECT_EQ(ret, 0);
+    EXPECT_EQ(level, QoS_Level::QOS_BACKGROUND);
+    ret = OH_QoS_GetThreadQoS(&level);
+    EXPECT_EQ(ret, 0);
+    EXPECT_EQ(level, QoS_Level::QOS_BACKGROUND);
+
+    ret = OH_QoS_ResetThreadQoS();
+    EXPECT_EQ(ret, 0);
+    ret = OH_QoS_ResetThreadQoS();
+    EXPECT_EQ(ret, -1);
 }

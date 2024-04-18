@@ -23,13 +23,14 @@ import promptAction from '@ohos.promptAction';
 @Component
 struct playVideo {
   @State FillColor: string = '#FF000000';
-  @State name: string = router.getParams()['title'];
+  @State routers: Record<string, string | number> = router.getParams() as Record<string, string | number>
+  @State name: string = this.routers.title as string;
   @State StepTips: string = '测试目的：用于测试网络视频播放暂停seek\n预期结果：视频播放暂停seek功能正常，视频清晰度/流畅度正常，能正常播放完视频则通过。';
   @State netWorkStepTips: string = '请检查网络是否连接/网络是否可用！';
   @State isNetWork: boolean = false;
   private tag: string = 'qlw';
   @State Vue: boolean = false;
-  @State videoSrc: string = router.getParams()['url'];
+  @State videoSrc: string = this.routers.url as string;
   @State isAutoPlay: boolean = true;
   @State showControls: boolean = true;
   controller: VideoController = new VideoController();
@@ -48,7 +49,7 @@ struct playVideo {
         console.info('checkWifiState= linkInfo=', linkInfo.connState)
         console.info('checkWifiState= ConnState =', wf.ConnState.CONNECTED)
         await FirstDialog.ChooseDialog(this.StepTips, this.name);
-      }else {
+      } else {
         console.info('checkWifiState= else =', this.isNetWork)
         await FirstDialog.ChooseDialog(this.netWorkStepTips, this.name);
       }

@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import textAreaTest from './textarea'
+import textAreaTest from './textarea';
 
 export default function testsuite() {
-       textAreaTest()
+  textAreaTest();
 }

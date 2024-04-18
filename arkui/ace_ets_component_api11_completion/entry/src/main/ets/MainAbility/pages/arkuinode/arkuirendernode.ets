@@ -17,7 +17,7 @@ import { NodeController, BuilderNode, FrameNode, NodeRenderType } from "@ohos.ar
 import { UIContext } from '@ohos.arkui.UIContext';
 
 class Params {
-  text: string = ""
+  text: string = "";
 
   constructor(text: string) {
     this.text = text;
@@ -30,7 +30,8 @@ function buildText(params: Params) {
     Text(params.text)
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 }).key("nodetext")
+      .margin({ bottom: 36 })
+      .key("nodetext")
   }
 }
 
@@ -47,7 +48,10 @@ class TextNodeController extends NodeController {
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(context);
 
-    this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } ,type:NodeRenderType.RENDER_TYPE_TEXTURE });
+    this.textNode = new BuilderNode(context, {
+      selfIdealSize: { width: 150, height: 150 },
+      type: NodeRenderType.RENDER_TYPE_TEXTURE
+    });
     this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
     const textRenderNode = this.textNode?.getFrameNode()?.getRenderNode();
 
@@ -63,7 +67,7 @@ class TextNodeController extends NodeController {
 @Entry
 @Component
 struct IndexEvent {
-  @State message: string = "hello"
+  @State message: string = "hello";
 
   build() {
     Row() {

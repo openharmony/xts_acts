@@ -24,55 +24,57 @@ import Logger from '../../../model/Logger';
 import promptAction from '@ohos.promptAction';
 import router from '@ohos.router';
 import FirstDialog from '../../../model/FirstDialog';
+import { Info } from '../../../ArkUI/InfoObj';
+import { BusinessError } from '@ohos.base';
 
 let path = globalThis.dir;
-const TAG = '[Sample_Main]'
+const TAG = '[Sample_Main]';
 
 @Entry
 @Component
 struct Main {
-  @StorageLink('deviceId') @Watch('onDeviceIdChange') deviceId: string = ''
-  @StorageLink('bluetoothEnable') @Watch('onBluetoothEnableChange') bluetoothEnable: boolean = false
-  @State localName: string = ''
-  @State heartRate: number = -1
-  @State name: string = 'BleService'
-  @State intervalNum: number = 0
+  @StorageLink('deviceId') @Watch('onDeviceIdChange') deviceId: string = '';
+  @StorageLink('bluetoothEnable') @Watch('onBluetoothEnableChange') bluetoothEnable: boolean = false;
+  @State localName: string = '';
+  @State heartRate: number = -1;
+  @State name: string = 'BleService';
+  @State intervalNum: number = 0;
   @State StepTips: string = '操作步骤：\n1、点击按钮开启广播' + '\n预期结果：能够发送数据则通过';
   @State Vue: boolean = false;
-  @State startAdvertiserState: boolean = false
-  private mIntervalId: number
+  @State startAdvertiserState: boolean = false;
+  private mIntervalId: number;
 
   onDeviceIdChange() {
-    Log.info(TAG, `onDeviceIdChange: deviceId = ${this.deviceId}`)
+    Log.info(TAG, `onDeviceIdChange: deviceId = ${this.deviceId}`);
   }
 
   onBluetoothEnableChange() {
-    Log.info(TAG, `onBluetoothEnableChange: bluetoothEnable = ${this.bluetoothEnable}`)
+    Log.info(TAG, `onBluetoothEnableChange: bluetoothEnable = ${this.bluetoothEnable}`);
     if (this.bluetoothEnable) {
-      this.toggleAdvertiser()
+      this.toggleAdvertiser();
     }
   }
 
   toggleAdvertiser() {
     Log.info(TAG, `toggleAdvertiser: startAdvertiserState = ${this.startAdvertiserState}`)
     if (this.startAdvertiserState) {
-      advertiserBluetoothViewModel.stopAdvertiser()
-      this.toggleHeartRate(false)
-      this.startAdvertiserState = false
+      advertiserBluetoothViewModel.stopAdvertiser();
+      this.toggleHeartRate(false);
+      this.startAdvertiserState = false;
     } else {
       let ret = advertiserBluetoothViewModel.startAdvertiser()
       if (ret) {
-        this.localName = advertiserBluetoothViewModel.getLocalName()
-        this.toggleHeartRate(true)
-        this.startAdvertiserState = true
+        this.localName = advertiserBluetoothViewModel.getLocalName();
+        this.toggleHeartRate(true);
+        this.startAdvertiserState = true;
       } else {
-        Log.error(TAG, `toggleAdvertiser: ret = ${ret}`)
+        Log.error(TAG, `toggleAdvertiser: ret = ${ret}`);
       }
     }
   }
 
   toggleHeartRate(open: boolean) {
-    Log.info(TAG, `toggleHeartRate: open = ${open}, deviceId = ${this.deviceId}`)
+    Log.info(TAG, `toggleHeartRate: open = ${open}, deviceId = ${this.deviceId}`);
 
     clearInterval(this.mIntervalId)
 
@@ -102,9 +104,10 @@ struct Main {
     }, 1000)
   }
 
-  aboutToAppear(){
+  aboutToAppear() {
     FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
+
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
     if (this.Vue == false) {
@@ -287,7 +290,7 @@ struct Main {
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -319,12 +322,12 @@ struct Main {
       }
     }
     try {
-      screenshot.save(screenshotOptions, (err, data: image.PixelMap) => {
+      screenshot.save(screenshotOptions, (err: BusinessError, data: image.PixelMap) => {
         if (err) {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);

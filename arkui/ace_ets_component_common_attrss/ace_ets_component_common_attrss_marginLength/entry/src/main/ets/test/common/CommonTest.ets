@@ -18,7 +18,6 @@ import Utils from '../../MainAbility/common/Utils';
 import { expect, it, Level, Size, TestType } from '@ohos/hypium'
 
 export default class CommonTest {
-
   /**
    * init test
    * @param pageConfig   : page config
@@ -26,18 +25,18 @@ export default class CommonTest {
    * @param testValues   : test values
    * @param functions    : [0]:executeTest, [last] checkTestResult
    */
-  static initTest(pageConfig, supportView, testValues, ...functions) {
+  static initTest(pageConfig: ESObject, supportView: string[], testValues: ESObject, ...functions: ESObject) {
     supportView.forEach(targetView => {
 
       //Obtain the last index of cases that need to be executed.
       let lastIndex = 0;
-      testValues.forEach((temp, index) => {
+      testValues.forEach((temp: ESObject, index: number) => {
         if (temp.exceptView == undefined || temp.exceptView.indexOf(targetView) < 0) {
           lastIndex = index;
         }
       });
 
-      testValues.forEach((testValue, index) => {
+      testValues.forEach((testValue: ESObject, index: number) => {
 
         //If there are components that need to be excluded, do not generate cases.
         if (testValue.exceptView == undefined || testValue.exceptView.indexOf(targetView) < 0) {
@@ -59,11 +58,11 @@ export default class CommonTest {
 
           /**
            * @tc.number SUB_ACE_ETS_COMPONENT_COMMON_ATTRS_0100
-           * @tc.name   caseTag, like:testPositionAlphabetIndexerSetNumber
-           * @tc.desc   Test whether the state of different components
+           * @tc.name caseTag, like:testPositionAlphabetIndexerSetNumber
+           * @tc.desc Test whether the state of different components
            *            after modifying their properties meets expectations
            */
-          it(caseTag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done) => {
+          it(caseTag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             console.info('[' + caseTag + '] START');
             //Push page.
             console.info('[' + caseTag + ']' + ' test start, push page.');
@@ -81,14 +80,14 @@ export default class CommonTest {
               }
 
               //Execute test
-              let data = {
+              let data: ESObject = {
                 pageConfig: pageConfig,
                 caseTag: caseTag,
                 testValue: testValue,
               }
               if (functions.length > 1) {
                 if (functions[0] instanceof Function) {
-                  let customParams = await functions[0](data);
+                  let customParams: ESObject = await functions[0](data);
                   //Set custom params to data, can be used by check test result.
                   if (customParams) {
                     data['customParams'] = customParams;
@@ -127,7 +126,7 @@ export default class CommonTest {
     });
   }
 
-  static async back(caseTag, sharePage, currentIndex, lastIndex) {
+  static async back(caseTag: string, sharePage: boolean, currentIndex: number, lastIndex: number) {
     if (sharePage) {
       if (currentIndex == lastIndex) {
         console.info('[' + caseTag + ']' + ' last case, close page.');
@@ -142,10 +141,10 @@ export default class CommonTest {
     }
   }
 
-  static initTestByContainerView(pageConfig, containerView, supportView, testValues, ...functions) {
+  static initTestByContainerView(pageConfig: ESObject, containerView: string[], supportView: string[], testValues: ESObject[], ...functions: Function[]) {
     containerView.forEach(container => {
       pageConfig['containerView'] = container;
-      CommonTest.initTest(pageConfig, supportView, testValues, functions);
+      CommonTest.initTest(pageConfig, supportView, testValues, ...functions);
     });
   }
 }

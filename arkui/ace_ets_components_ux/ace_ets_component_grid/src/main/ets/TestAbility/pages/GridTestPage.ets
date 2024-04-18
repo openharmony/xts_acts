@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- //@ts-nocheck
+//@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
@@ -22,13 +22,13 @@ import testsuite from '../../test/List.test'
 @Entry
 @Component
 struct GridTestPage {
-  @State num: String[] = ['1', '2', '3', '4']
-  @State gridDirection: GridDirection = GridDirection.Row
-  @State editMode: boolean = false
-  @State multiSelectable: boolean = false
-  @State itemSelectable: boolean = false
+  @State num: String[] = ['1', '2', '3', '4'];
+  @State gridDirection: GridDirection = GridDirection.Row;
+  @State editMode: boolean = false;
+  @State multiSelectable: boolean = false;
+  @State itemSelectable: boolean = false;
 
-  aboutToAppear(){
+  aboutToAppear() {
   }
 
   build() {
@@ -36,21 +36,21 @@ struct GridTestPage {
       Grid() {
         ForEach(this.num, (value1: string) => {
           ForEach(this.num, (value2: string) => {
-            GridItem({style: GridItemStyle.NONE}) {
-              Text(value1+value2)
+            GridItem({ style: GridItemStyle.NONE }) {
+              Text(value1 + value2)
                 .fontSize(25)
                 .width('100%')
                 .height('100%')
                 .textAlign(TextAlign.Center)
             }
-            .border({width: 1})
+            .border({ width: 1 })
             .borderStyle(BorderStyle.Dashed)
             .selectable(this.itemSelectable)
-            .enabled((value1+value2)=='32' 
-              || (value1+value2)=='33' ? false : true)
+            .enabled((value1 + value2) == '32'
+              || (value1 + value2) == '33' ? false : true)
             .key('GridItemStyle_NONE_' + value1 + value2)
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr')
@@ -67,21 +67,21 @@ struct GridTestPage {
       Grid() {
         ForEach(this.num, (value1: string) => {
           ForEach(this.num, (value2: string) => {
-            GridItem({style: GridItemStyle.PLAIN}) {
-              Text(value1+value2)
+            GridItem({ style: GridItemStyle.PLAIN }) {
+              Text(value1 + value2)
                 .fontSize(25)
                 .width('100%')
                 .height('100%')
                 .textAlign(TextAlign.Center)
             }
-            .border({width: 1})
+            .border({ width: 1 })
             .borderStyle(BorderStyle.Dashed)
             .selectable(this.itemSelectable)
-            .enabled((value1+value2)=='32' 
-              || (value1+value2)=='33' ? false : true)
+            .enabled((value1 + value2) == '32'
+              || (value1 + value2) == '33' ? false : true)
             .key('GridItemStyle_PLAIN_' + value1 + value2)
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr')
@@ -96,22 +96,22 @@ struct GridTestPage {
       .key('Grid_GridItemStyle_PLAIN')
 
       Grid() {
-        GridItem({style: null}) {
+        GridItem({ style: null }) {
           Text('11').fontSize(25).width('100%').height('100%')
         }
         .key('GridItemStyle_EXCEPTION_NULL')
 
-        GridItem({style: undefined}) {
+        GridItem({ style: undefined }) {
           Text('11').fontSize(25).width('100%').height('100%')
         }
         .key('GridItemStyle_EXCEPTION_UNDEFINED')
 
-        GridItem({style: -1}) {
+        GridItem({ style: -1 }) {
           Text('11').fontSize(25).width('100%').height('100%')
         }
         .key('GridItemStyle_EXCEPTION_MINUS_ONE')
 
-        GridItem({style: 2}) {
+        GridItem({ style: 2 }) {
           Text('11').fontSize(25).width('100%').height('100%')
         }
         .key('GridItemStyle_EXCEPTION_TWO')
@@ -125,25 +125,25 @@ struct GridTestPage {
       .multiSelectable(this.multiSelectable)
       .padding('5vp')
       .key('Grid_GridItemStyle_EXCEPTION')
-      
+
       Grid() {
         ForEach(this.num, (value1: string) => {
           ForEach(this.num, (value2: string) => {
             GridItem() {
-              Text(value1+value2)
+              Text(value1 + value2)
                 .fontSize(25)
                 .width('100%')
                 .height('100%')
                 .textAlign(TextAlign.Center)
             }
-            .border({width: 1})
+            .border({ width: 1 })
             .borderStyle(BorderStyle.Dashed)
             .selectable(this.itemSelectable)
-            .enabled((value1+value2)=='32' 
-              || (value1+value2)=='33' ? false : true)
+            .enabled((value1 + value2) == '32'
+              || (value1 + value2) == '33' ? false : true)
             .key('GridItem_VALUE_NOT_SET_' + value1 + value2)
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr')

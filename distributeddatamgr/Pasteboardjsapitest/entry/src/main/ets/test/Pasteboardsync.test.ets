@@ -15,23 +15,22 @@
 import pasteboard from '@ohos.pasteboard';
 import { beforeEach, describe, expect, it } from '@ohos/hypium';
 
-let error = undefined
+let error: ESObject = undefined
 let tag = "PASTEBOARDSYNC--------------------"
 
-export default function pasteboardSyncTest(){
-  describe("pasteboardSyncTest", function (){
+export default function pasteboardSyncTest() {
+  describe("pasteboardSyncTest", () => {
     console.info("start#############################start")
-    beforeEach(function (){
+    beforeEach(() => {
       error = undefined
     })
-
 
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_PasteboardSync_0100
      * @tc.name clearDataSync interface test
      * @tc.desc Test clearDataSync when systemPasteBoard has data
      */
-    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0100", 0, function () {
+    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0100", 0, () => {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0100 ---------start")
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "pasteboard");
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -56,12 +55,12 @@ export default function pasteboardSyncTest(){
      * @tc.name setDataSync interface test
      * @tc.desc Test setDataSync in systemPasteBoard
      */
-    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0200", 0, function () {
+    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0200", 0, () => {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0200 ---------start")
-      let pasteData =  pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "pasteboard");
-      let systemPasteBoard =  pasteboard.getSystemPasteboard();
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "pasteboard");
+      let systemPasteBoard = pasteboard.getSystemPasteboard();
 
-      console.info(tag +`${systemPasteBoard}`);
+      console.info(tag + `${systemPasteBoard}`);
       systemPasteBoard.setDataSync(pasteData);
       console.info(tag + "Succeeded in setting PasteData");
       let result = systemPasteBoard.getDataSync();
@@ -78,17 +77,17 @@ export default function pasteboardSyncTest(){
      * @tc.name setDataSync interface test
      * @tc.desc Test setDataSync when parameter is null
      */
-    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0300", 0, function () {
+    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0300", 0, () => {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0300 ---------start")
-      let pasteData =  pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "pasteboard");
-      let systemPasteBoard =  pasteboard.getSystemPasteboard();
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "pasteboard");
+      let systemPasteBoard = pasteboard.getSystemPasteboard();
 
-      console.info(tag +`${systemPasteBoard}`)
-      try{
+      console.info(tag + `${systemPasteBoard}`)
+      try {
         systemPasteBoard.setDataSync(null);
         expect().assertFail()
         console.info(tag + "Succeeded in setting PasteData");
-      }catch(err){
+      } catch (err) {
         expect(err.code == 401).assertTrue();
       }
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0300 ---------end")
@@ -99,17 +98,17 @@ export default function pasteboardSyncTest(){
      * @tc.name setDataSync interface test
      * @tc.desc Test setDataSync parameter is undefined
      */
-    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0400", 0, function () {
+    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0400", 0, () => {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0400 ---------start")
-      let pasteData =  pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "pasteboard");
-      let systemPasteBoard =  pasteboard.getSystemPasteboard();
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "pasteboard");
+      let systemPasteBoard = pasteboard.getSystemPasteboard();
 
-      console.info(tag +`${systemPasteBoard}`);
-      try{
+      console.info(tag + `${systemPasteBoard}`);
+      try {
         systemPasteBoard.setDataSync(undefined);
         expect().assertFail()
         console.info(tag + "Succeeded in setting PasteData");
-      }catch(err){
+      } catch (err) {
         expect(err.code == 401).assertTrue();
       }
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0400 ---------end")
@@ -121,7 +120,7 @@ export default function pasteboardSyncTest(){
      * @tc.name getDataSync interface test
      * @tc.desc Test getDataSync when setDataSync in systemPasteBoard
      */
-    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0500", 0, function () {
+    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0500", 0, () => {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0500 ---------start")
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "pasteboard");
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -144,7 +143,7 @@ export default function pasteboardSyncTest(){
      * @tc.name hasDataSync interface test
      * @tc.desc Test hasDataSync when systemPasteBoard has parameter
      */
-    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0600", 0, function () {
+    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0600", 0, () => {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0600 ---------start")
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "pasteboard");
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -153,7 +152,8 @@ export default function pasteboardSyncTest(){
       console.info(tag + "Succeeded in setting PasteData");
       let result = systemPasteBoard.hasDataSync();
       expect(result).assertTrue();
-      console.info(tag + `Succeed in checking the PasteBoard. Result: ${result}`);;
+      console.info(tag + `Succeed in checking the PasteBoard. Result: ${result}`);
+      ;
 
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0600 ---------end");
 
@@ -164,7 +164,7 @@ export default function pasteboardSyncTest(){
      * @tc.name hasDataSync interface test
      * @tc.desc Test hasDataSync when systemPasteBoard is null
      */
-    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0700", 0, function () {
+    it("SUB_Pasteboard_Local_SDK_PasteboardSync_0700", 0, () => {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0700 ---------start")
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "");
       let systemPasteBoard = pasteboard.getSystemPasteboard();
@@ -179,4 +179,3 @@ export default function pasteboardSyncTest(){
 
   })
 }
-

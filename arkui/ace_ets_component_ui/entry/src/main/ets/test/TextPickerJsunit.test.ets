@@ -100,16 +100,19 @@ export default function TextPickerJsunit() {
 
     it('TextPickerJsunit_0300', 0, async function (done) {
       // Verify the functions of TextPicker component
+      await CommonFunc.sleep(500);
       console.info('[TextPickerJsunit_0300] START');
-      let component = CommonFunc.getComponentRect('textPicker');
+      let component = CommonFunc.getComponentRectOnScreen('textPicker');
       let bottom = component.bottom
       let right = component.right
+      let top = component.top
+      let middle = (top + bottom) / 2
       console.info("[TextPickerJsunit_0300] bottom: " + JSON.stringify(bottom));
       console.info("[TextPickerJsunit_0300] right: " + JSON.stringify(right));
-      await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
-      await driver.swipe(Math.round(right / 2), Math.round(bottom * 2 / 3), Math.round(right / 2), Math.round(bottom / 3));
       await CommonFunc.sleep(1000);
+      await driver.swipe(Math.round(right / 2), Math.round(middle + 50), Math.round(right / 2), Math.round(middle - 50));
+      await CommonFunc.sleep(6000);
       let strJson = getInspectorByKey('textContent1');
       let obj = JSON.parse(strJson);
       console.info("[TextPickerJsunit_0300] obj: " + JSON.stringify(obj));

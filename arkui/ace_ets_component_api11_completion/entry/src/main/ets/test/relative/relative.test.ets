@@ -15,11 +15,24 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function relativeCTest() {
-  describe('relativeCTest', function () {
-    beforeEach(async function (done) {
+  describe('relativeCTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("relativeCTest beforeEach start");
       try {
         router.clear();
@@ -27,7 +40,9 @@ export default function relativeCTest() {
         console.info("get relativeCTest state pages:" + JSON.stringify(pages));
         if (!("relative" == pages.name)) {
           console.info("get relativeCTest pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({url:"MainAbility/pages/relativecommon/relative"})
+          let result = await router.pushUrl({
+            url: "MainAbility/pages/relativecommon/relative"
+          })
           await CommonFunc.sleep(2000);
           console.info("push relativeCTest page result:" + JSON.stringify(result));
         }
@@ -37,20 +52,20 @@ export default function relativeCTest() {
       console.info("relativeCTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("relativeCTest after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_relativeCTest_0100
-     * @tc.desc      test basis
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_relativeCTest_0100
+     * @tc.desc test basis
+     * @tc.level Level 2
      * @tc.type
      * @tc.size
      */
 
-    it('relativeCTest_0100', 0, async function (done) {
+    it('relativeCTest_0100', 0, async (done: Function) => {
       console.info('[relativeCTest_0100] START');
       await CommonFunc.sleep(2000);
       let json = getInspectorByKey('row2common');
@@ -60,7 +75,7 @@ export default function relativeCTest() {
       let btleft1 = CommonFunc.getComponentRect('row2common');
       let left1 = btleft1.left
       let diff = Math.round(left1 - right)
-      expect(diff + "").assertEqual(vp2px(100)+ "");
+      expect(diff + "").assertEqual(vp2px(100) + "");
       done();
     });
 

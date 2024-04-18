@@ -16,21 +16,21 @@
 // PageOne.ets
 import { BusinessError } from '@ohos.base';
 
-class TmpClass{
-  count:number = 10
+class TmpClass {
+  count: number = 10;
 }
 
 class ParamWithOp {
-  operation: number = 1
-  count: number = 10
+  operation: number = 1;
+  count: number = 10;
 }
 
 @Component
 export struct PageOneTmp {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @State message: string = 'Hello World'
-  @State stack:NavPathStack = new NavPathStack()
-  @State text:string = '111'
+  @State message: string = 'Hello World';
+  @State stack: NavPathStack = new NavPathStack();
+  @State text: string = '111';
 
   build() {
     NavDestination() {
@@ -44,27 +44,33 @@ export struct PageOneTmp {
           .width('80%')
           .height(40)
           .margin(10)
-          .onClick(()=>{
-            this.pageInfo.pushPath({name: 'pageTwo', param: new ParamWithOp(), onPop: (popInfo: PopInfo)=>{
-              this.message = JSON.stringify(popInfo.result);
-            }}); // 将name指定的NavDestination页面信息入栈，传递的数据为param，添加接收处理结果的onPop回调。
-          }).id('pushPathButton')
+          .onClick(() => {
+            this.pageInfo.pushPath({
+              name: 'pageTwo', param: new ParamWithOp(), onPop: (popInfo: PopInfo) => {
+                this.message = JSON.stringify(popInfo.result);
+              }
+            }); // 将name指定的NavDestination页面信息入栈，传递的数据为param，添加接收处理结果的onPop回调。
+          })
+          .id('pushPathButton')
 
         Button('get parent of current stack')
           .width('80%')
           .height(40)
           .margin(10)
-          .onClick(()=>{
-            let fatherStack:NavPathStack | null = this.stack.getParent()
-            this.pageInfo.pushPath({name: 'pageTwo', param: new ParamWithOp(), onPop: (popInfo: PopInfo)=>{
-              this.message = JSON.stringify(popInfo.result);
-            }});
-          }).id('getParent')
+          .onClick(() => {
+            let fatherStack: NavPathStack | null = this.stack.getParent()
+            this.pageInfo.pushPath({
+              name: 'pageTwo', param: new ParamWithOp(), onPop: (popInfo: PopInfo) => {
+                this.message = JSON.stringify(popInfo.result);
+              }
+            });
+          })
+          .id('getParent')
 
       }.width('100%').height('100%')
     }.title('pageOne')
     .onBackPressed(() => {
-      this.pageInfo.pop({number: 1}) // 弹出路由栈栈顶元素。
+      this.pageInfo.pop({ number: 1 }) // 弹出路由栈栈顶元素。
       return true
     })
     .onReady((context: NavDestinationContext) => {

@@ -12,7 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct Tabs_Index {
@@ -20,30 +22,33 @@ struct Tabs_Index {
   @State selectedFontColor: string = '#007DFF';
   @State currentIndex: number = 0;
   private controller: TabsController = new TabsController();
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('Tabs_Index onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
+      name: 'messageManager', message: this.messageManager
     };
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'index') {
         this.currentIndex = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  @Builder TabBuilder(index: number, name: string) {
+
+  @Builder
+  TabBuilder(index: number, name: string) {
     Column() {
       Text(name)
         .fontColor((this.currentIndex < 0 ||
-                    this.currentIndex > 2 ? 0 : this.currentIndex) === index ? this.selectedFontColor : this.fontColor)
+          this.currentIndex > 2 ? 0 : this.currentIndex) === index ? this.selectedFontColor : this.fontColor)
         .fontSize(16)
         .fontWeight((this.currentIndex < 0 ||
-                     this.currentIndex > 2 ? 0 : this.currentIndex) === index ? 500 : 400)
+          this.currentIndex > 2 ? 0 : this.currentIndex) === index ? 500 : 400)
         .lineHeight(22)
-    }.width('100%').height('100%').key('Tabs_Index_'+ name)
+    }.width('100%').height('100%').key('Tabs_Index_' + name)
   }
 
   build() {

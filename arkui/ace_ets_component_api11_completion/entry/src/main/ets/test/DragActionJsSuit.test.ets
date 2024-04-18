@@ -12,18 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 export default function DragActionJsunit() {
-  describe('DragActionJsunit', function () {
-    beforeEach(async function (done) {
+  describe('DragActionJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("DragActionJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/DragAction',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/DragAction',
       }
       try {
         router.clear();
@@ -42,21 +55,20 @@ export default function DragActionJsunit() {
     });
 
     /**
-     * @tc.number	 SUB_ACE_TS_COMPONENT_DragAction_01
-     * @tc.name 	 DragActionJsunit_0100
-     * @tc.desc 	 Confirm if there is a callback
-	 * @tc.level     Level 2
+     * @tc.number SUB_ACE_TS_COMPONENT_DragAction_01
+     * @tc.name DragActionJsunit_0100
+     * @tc.desc Confirm if there is a callback
+     * @tc.level Level 2
      * @tc.type :
      * @tc.size :
      */
 
-    it('DragActionJsunit_0100', 0, async function (done) {
+    it('DragActionJsunit_0100', 0, async (done: Function) => {
       console.info('[DragActionJsunit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_value');
-      let obj = JSON.parse(strJson);
-      console.info("[DragActionJsunit_0100] obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content=='DragAction').assertTrue();
+      console.info("[DragActionJsunit_0100] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content == 'DragAction').assertTrue();
       console.info('[DragActionJsunit_0100] END');
       done();
     });

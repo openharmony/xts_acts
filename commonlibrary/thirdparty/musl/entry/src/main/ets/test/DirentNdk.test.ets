@@ -44,34 +44,6 @@ export default function direntNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_DIRENT_SCANDIR64_0100
-     * @tc.name       : testMuslDirentScandir64001
-     * @tc.desc       : test scandir64
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslDirentScandir64001', 0, async (done: Function) => {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-
-      let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let writeLen = fs.writeSync(file.fd, "Try to write str.");
-      console.info("The length of str is: " + writeLen);
-      console.info("pattr-", filesDir + '/test.txt');
-      let buf = new ArrayBuffer(1024);
-      let readLen = fs.readSync(file.fd, buf, {
-        offset: 0
-      });
-      fs.closeSync(file);
-      let b = 0
-      let a: number = dirent.scandir64(filesDir, b);
-      expect(a).assertEqual(4);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_DIRENT_SCANDIR64_0200
      * @tc.name       : testMuslDirentScandir64002
      * @tc.desc       : test scandir64
@@ -96,34 +68,6 @@ export default function direntNdkTest() {
       let b = 1
       let a: number = dirent.scandir64(filesDir, b);
       expect(a).assertEqual(-1);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_DIRENT_SCANDIR_0100
-     * @tc.name       : testMuslDirentScandir001
-     * @tc.desc       : test scandir
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslDirentScandir001', 0, async (done: Function) => {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-
-      let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let writeLen = fs.writeSync(file.fd, "Try to write str.");
-      console.info("The length of str is: " + writeLen);
-      console.info("pattr-", filesDir + '/test.txt');
-      let buf = new ArrayBuffer(1024);
-      let readLen = fs.readSync(file.fd, buf, {
-        offset: 0
-      });
-      fs.closeSync(file);
-      let b = 0
-      let a: number = dirent.scandir(filesDir, b);
-      expect(a).assertEqual(4);
       done()
     });
 

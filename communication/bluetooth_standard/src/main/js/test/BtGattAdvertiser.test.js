@@ -82,6 +82,7 @@ describe('btGattAdvertTest', function() {
     beforeAll(async function (done) {
         console.info('beforeAll called')
         await openPhone();
+        await tryToEnableBt();
         gattServer = bluetooth.BLE.createGattServer();
         console.info('bluetooth ble create gattserver result:' + gattServer);
         done();

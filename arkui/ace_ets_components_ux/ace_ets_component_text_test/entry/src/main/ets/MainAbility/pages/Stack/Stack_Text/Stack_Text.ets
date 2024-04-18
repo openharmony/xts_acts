@@ -24,22 +24,29 @@ struct Stack_Text {
     Column() {
       Text('15544889999').width('90%')
         .enableDataDetector(true).key('Stack_Text')
-        .dataDetectorConfig({types : this.types, onDetectResultUpdate: (result: string)=>{}})
+        .dataDetectorConfig({ types: this.types, onDetectResultUpdate: (result: string) => {
+        } })
 
-      TextInput({ text: this.text1 }).enableAutoFill(true).passwordRules('1111').key('Stack_TextInput')
+      TextInput({ text: this.text1 })
+        .enableAutoFill(true)
+        .passwordRules('1111')
+        .key('Stack_TextInput')
         .type(InputType.NEW_PASSWORD)
         .type(InputType.NUMBER_PASSWORD)
         .type(InputType.SCREEN_LOCK_PASSWORD)
         .type(InputType.NUMBER_DECIMAL)
         .type(InputType.USER_NAME)
-        .onSubmit(( enterKey: EnterKeyType,event: SubmitEvent ) => { // 用户名不正确会清空输入框和用户名并提示错误文本
+        .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => { // 用户名不正确会清空输入框和用户名并提示错误文本
           event.keepEditableState();
         })
 
       Row() {
-        Button('Emphasized', { controlSize: ControlSize.SMALL, buttonStyle: ButtonStyleMode.EMPHASIZED }).id('Stack_Text_Button1')
-        Button('Normal', { controlSize: ControlSize.NORMAL, buttonStyle: ButtonStyleMode.NORMAL }).id('Stack_Text_Button2')
-        Button('Textual', { controlSize: ControlSize.SMALL, buttonStyle: ButtonStyleMode.TEXTUAL }).id('Stack_Text_Button3')
+        Button('Emphasized', { controlSize: ControlSize.SMALL, buttonStyle: ButtonStyleMode.EMPHASIZED })
+          .id('Stack_Text_Button1')
+        Button('Normal', { controlSize: ControlSize.NORMAL, buttonStyle: ButtonStyleMode.NORMAL })
+          .id('Stack_Text_Button2')
+        Button('Textual', { controlSize: ControlSize.SMALL, buttonStyle: ButtonStyleMode.TEXTUAL })
+          .id('Stack_Text_Button3')
       }
     }
   }

@@ -16,19 +16,18 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { logGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
 import notificationManager from '@ohos.notificationManager';
-import Base from '@ohos.base';
 
 export default function notificationSlotTest() {
-  describe('ActsNotificationSlotTest', function () {
+  describe('ActsNotificationSlotTest', () => {
 
     const TAG = 'ActsNotificationSlotTest ===>';
     let log = logGenerator(TAG);
     log('ActsNotificationSlotTest START');
 
-    afterEach(async function (done) {
-      console.info(`${TAG} afterEach START`)
+    afterEach(async (done: Function) => {
+      console.info(`${TAG} afterEach START`);
       try {
-        await notificationManager.removeAllSlots((err) => {
+        notificationManager.removeAllSlots((err) => {
           if (err) {
             console.info(`${TAG} removeAllSlots errCode: ${err.code}, errMes: ${err.message}`);
             expect(false).assertTrue();
@@ -52,11 +51,11 @@ export default function notificationSlotTest() {
      * @tc.name: Test the NotificationSlot.notificationType property.
      * @tc.desc: Set NotificationSlot attribute parameters notificationManager.SlotType.SOCIAL_COMMUNICATION.
      */
-    it('Acts_NotificationSlot_0100', 0, async function (done) {
+    it('Acts_NotificationSlot_0100', 0, async (done: Function) => {
 
       console.info('Acts_NotificationSlot_0100 START');
 
-      await notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
+      notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
         if (err) {
           console.info(`addSlot SOCIAL_COMMUNICATION err: + ${err.code}`);
           expect(false).assertTrue();
@@ -67,7 +66,7 @@ export default function notificationSlotTest() {
         }
       })
 
-      await notificationManager.getSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err, NotificationSlot) => {
+      notificationManager.getSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err, NotificationSlot) => {
         if (err) {
           console.info(`${TAG} getSlot AsyncCallback err: ${err.code}`);
           expect(false).assertTrue();
@@ -86,11 +85,11 @@ export default function notificationSlotTest() {
      * @tc.name: Test the NotificationSlot.notificationType property.
      * @tc.desc: Set NotificationSlot attribute parameters notificationManager.SlotType.SERVICE_INFORMATION.
      */
-    it('Acts_NotificationSlot_0200', 0, async function (done) {
+    it('Acts_NotificationSlot_0200', 0, async (done: Function) => {
 
       console.info('Acts_NotificationSlot_0200 START');
 
-      await notificationManager.addSlot(notificationManager.SlotType.SERVICE_INFORMATION, (err) => {
+      notificationManager.addSlot(notificationManager.SlotType.SERVICE_INFORMATION, (err) => {
         if (err) {
           console.info(`addSlot SERVICE_INFORMATION err: + ${err.code}`);
           expect(false).assertTrue();
@@ -101,7 +100,7 @@ export default function notificationSlotTest() {
         }
       })
 
-      await notificationManager.getSlot(notificationManager.SlotType.SERVICE_INFORMATION, (err, NotificationSlot) => {
+      notificationManager.getSlot(notificationManager.SlotType.SERVICE_INFORMATION, (err, NotificationSlot) => {
         if (err) {
           console.info(`${TAG} getSlot AsyncCallback err: ${err.code}`);
           expect(false).assertTrue();
@@ -120,11 +119,11 @@ export default function notificationSlotTest() {
      * @tc.name: Test the NotificationSlot.notificationType property.
      * @tc.desc: Set NotificationSlot attribute parameters notificationManager.SlotType.CONTENT_INFORMATION.
      */
-    it('Acts_NotificationSlot_0300', 0, async function (done) {
+    it('Acts_NotificationSlot_0300', 0, async (done: Function) => {
 
       console.info('Acts_NotificationSlot_0300 START');
 
-      await notificationManager.addSlot(notificationManager.SlotType.CONTENT_INFORMATION, (err) => {
+      notificationManager.addSlot(notificationManager.SlotType.CONTENT_INFORMATION, (err) => {
         if (err) {
           console.info(`addSlot CONTENT_INFORMATION err: + ${err.code}`);
           expect(false).assertTrue();
@@ -135,7 +134,7 @@ export default function notificationSlotTest() {
         }
       })
 
-      await notificationManager.getSlot(notificationManager.SlotType.CONTENT_INFORMATION, (err, NotificationSlot) => {
+      notificationManager.getSlot(notificationManager.SlotType.CONTENT_INFORMATION, (err, NotificationSlot) => {
         if (err) {
           console.info(`${TAG} getSlot AsyncCallback err: ${err.code}`);
           expect(false).assertTrue();
@@ -154,11 +153,11 @@ export default function notificationSlotTest() {
      * @tc.name: Test the NotificationSlot.notificationType property.
      * @tc.desc: Set NotificationSlot attribute parameters notificationManager.SlotType.OTHER_TYPES.
      */
-    it('Acts_NotificationSlot_0400', 0, async function (done) {
+    it('Acts_NotificationSlot_0400', 0, async (done: Function) => {
 
       console.info('Acts_NotificationSlot_0400 START');
 
-      await notificationManager.addSlot(notificationManager.SlotType.OTHER_TYPES, (err) => {
+      notificationManager.addSlot(notificationManager.SlotType.OTHER_TYPES, (err) => {
         if (err) {
           console.info(`addSlot OTHER_TYPES err: + ${err.code}`);
           expect(false).assertTrue();
@@ -169,7 +168,7 @@ export default function notificationSlotTest() {
         }
       })
 
-      await notificationManager.getSlot(notificationManager.SlotType.OTHER_TYPES, (err, NotificationSlot) => {
+      notificationManager.getSlot(notificationManager.SlotType.OTHER_TYPES, (err, NotificationSlot) => {
         if (err) {
           console.info(`${TAG} getSlot AsyncCallback err: ${err.code}`);
           expect(false).assertTrue();

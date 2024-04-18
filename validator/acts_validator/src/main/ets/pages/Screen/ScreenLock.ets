@@ -32,7 +32,8 @@ struct ScreenLock {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
 
-  @Builder specificNoParam() {
+  @Builder
+  specificNoParam() {
     Column() {
       Scroll() {
         Column() {

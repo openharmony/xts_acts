@@ -375,13 +375,13 @@ describe('btBleServiceTest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0100
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0100
      * @tc.name test gattserver on blemtuchange
      * @tc.desc test gattserver on blemtuchange api10.
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0100', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0100', 0, async function (done) {
         try {
             gattServer.on('BLEMtuChange', (mtu: number)=> {
                 console.info('BLEMtuChange on value' + JSON.stringify(mtu));
@@ -395,13 +395,13 @@ describe('btBleServiceTest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0200
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0200
      * @tc.name test gattserver off blemtuchange
      * @tc.desc test gattserver off blemtuchange api10
      * @tc.type Function
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0200', 0, async function (done) {
+     it('SUB_COMMUNICATION_BLUETOOTHBLES_MTUCHANGE_0200', 0, async function (done) {
         gattServer.on('BLEMtuChange', (mtu: number)=> {
             console.info('BLEMtuChange on value' + JSON.stringify(mtu));
             })

@@ -1,0 +1,15 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/allowOverride/allowOverride",
+        "MainAbility/pages/Provide/provideBrother1",
+        "MainAbility/pages/Provide/provideBrother2",
+        "MainAbility/pages/Provide/provideComponent1",
+        "MainAbility/pages/Provide/provideComponent2",
+        "MainAbility/pages/Provide/provideParent2",
+        "MainAbility/pages/Provide/provideParent3",
+        "MainAbility/pages/Provide/provideParent4",
+        "MainAbility/pages/Provide/provideParent5",
+        "MainAbility/pages/Provide/provideParent6"
+    ]
+}

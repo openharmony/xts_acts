@@ -13,10 +13,13 @@
  * limitations under the License.
  */
 import { RenderNode, FrameNode, NodeController } from "@ohos.arkui.node"
+
 const renderNode = new RenderNode();
 renderNode.frame = { x: 50, y: 50, width: 100, height: 100 };
+
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     const rootRenderNode = this.rootNode.getRenderNode();
@@ -26,15 +29,17 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
 struct frame {
-  @State getX:number = 100
-  @State getY:number = 30
+  @State getX: number = 100;
+  @State getY: number = 30;
   private MyNodeController: MyNodeController = new MyNodeController();
+
   build() {
-    Column({space:5}){
-      Row(){
+    Column({ space: 5 }) {
+      Row() {
         Text(this.getX.toString())
           .id('text_getFrame')
           .height(100)
@@ -42,15 +47,16 @@ struct frame {
           .backgroundColor(0xF5DEB3)
           .textAlign(TextAlign.Center)
         Button('getFrame')
-          .onClick(()=>{
-            this.getX =  renderNode.frame.x
+          .onClick(() => {
+            this.getX = renderNode.frame.x
           })
           .id('getFrame_id')
           .width('60%')
           .height(100)
           .backgroundColor(0xD2B48C)
       }.width('100%')
-      Row(){
+
+      Row() {
         Text(this.getY.toString())
           .id('text_setFrame')
           .height(100)
@@ -58,15 +64,15 @@ struct frame {
           .backgroundColor(0xF5DEB3)
           .textAlign(TextAlign.Center)
         Button('setFrame')
-          .onClick(()=>{
+          .onClick(() => {
             renderNode.frame = { x: 50, y: 60, width: 100, height: 100 };
-            this.getY =  renderNode.frame.y
+            this.getY = renderNode.frame.y
           })
           .id('setFrame_id')
           .width('60%')
           .height(100)
           .backgroundColor(0xD2B48C)
       }.width('100%')
-    }.margin({top:20,left:20})
+    }.margin({ top: 20, left: 20 })
   }
 }

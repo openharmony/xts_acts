@@ -16,9 +16,10 @@
 @Entry
 @Component({ freezeWhenInactive: true })
 struct freezeInactiveTest {
-  @StorageLink('PropA')@Watch("first") storLink: number = 30;
-  first(){
-    console.info("first page "+ `${this.storLink}`)
+  @StorageLink('PropA') @Watch("first") storLink: number = 30;
+
+  first() {
+    console.info("first page " + `${this.storLink}`)
   }
 
   build() {

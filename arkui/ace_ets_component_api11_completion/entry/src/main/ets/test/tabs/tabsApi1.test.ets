@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function tabsApi1() {
-  describe('tabsApi1', function () {
-    beforeEach(async function (done) {
+  describe('tabsApi1', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsApi1 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/tabs/tabsApi1',
       }
       try {
@@ -40,19 +53,19 @@ export default function tabsApi1() {
       console.info("tabsApi1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("tabsApi1 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_tabsApi1_0100
-     * @tc.name      testRichEditor
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_tabsApi1_0100
+     * @tc.name testRichEditor
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('tabsApi1_0100', 0, async function (done) {
+    it('tabsApi1_0100', 0, async (done: Function) => {
       console.info('[tabsApi1_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -64,12 +77,9 @@ export default function tabsApi1() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('tabsApi1_text1');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('222');
-
+      expect(JSON.parse(text1).$attrs.content).assertEqual('222');
       console.info('[testRichEditor_0100] END');
       done();
     });
-
   })
 }

@@ -33,8 +33,8 @@ struct Gyroscope {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Gyroscope';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有校准的陀螺仪' +
-  '传感器' + '\n-点击开启按钮打开传感器,' +
-  '如果有传感器，请将设备放手上旋转观察旋转角速度变化，否则返回上一级' + '\n-预期结果：观察显示数值,跟随移动变化';
+    '传感器' + '\n-点击开启按钮打开传感器,' +
+    '如果有传感器，请将设备放手上旋转观察旋转角速度变化，否则返回上一级' + '\n-预期结果：观察显示数值,跟随移动变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
@@ -58,9 +58,9 @@ struct Gyroscope {
       Logger.info(TAG, 'enter')
       try {
         sensor.on(sensor.SensorId.GYROSCOPE, (data: sensor.GyroscopeResponse) => {
-          Logger.info(TAG,'Succeeded in getting the GyroscopeResponse: ' + data.x);
-          Logger.info(TAG,'Succeeded in getting the GyroscopeResponse: ' + data.y);
-          Logger.info(TAG,'Succeeded in getting the GyroscopeResponse: ' + data.z);
+          Logger.info(TAG, 'Succeeded in getting the GyroscopeResponse: ' + data.x);
+          Logger.info(TAG, 'Succeeded in getting the GyroscopeResponse: ' + data.y);
+          Logger.info(TAG, 'Succeeded in getting the GyroscopeResponse: ' + data.z);
           this.dataX = data.x.toFixed(2);
           this.dataY = data.y.toFixed(2);
           this.dataZ = data.z.toFixed(2);
@@ -76,7 +76,7 @@ struct Gyroscope {
         setTimeout(() => {
           sensor.off(sensor.SensorId.GYROSCOPE);
         }, 500);
-      }  catch (error) {
+      } catch (error) {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {
           this.isHave = false;
@@ -112,7 +112,7 @@ struct Gyroscope {
         // 关闭传感器
         sensor.off(sensor.SensorId.GYROSCOPE);
         Logger.info(TAG, 'onPageHide releaseSensor end');
-        clearInterval(this.intervalNum)// 关闭传感器
+        clearInterval(this.intervalNum) // 关闭传感器
         sensor.off(sensor.SensorId.GYROSCOPE);
         Logger.info(TAG, 'onPageHide releaseSensor end');
         clearInterval(this.intervalNum)
@@ -122,7 +122,7 @@ struct Gyroscope {
     }
   }
 
-  async aboutToDisappear(){
+  async aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -153,7 +153,8 @@ struct Gyroscope {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -177,7 +178,8 @@ struct Gyroscope {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);

@@ -13,23 +13,24 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-let TAG;
+let TAG: string;
+
 export default function shellCommandControlTest() {
-  describe('ShellCommandControlTest', function () {
-
+  describe('ShellCommandControlTest', () => {
     /**
      * @tc.number: Acts_Ability_ShellCommandControl__0100
      * @tc.name: Verify that the aa command aa help can be executed
-     * @tc.desc:  Error code 0 is returned
-     * @tc.level   0
+     * @tc.desc: Error code 0 is returned
+     * @tc.level 0
      */
-    it('Acts_Ability_ShellCommandControl__0100', 0, async function (done) {
+    it('Acts_Ability_ShellCommandControl__0100', 0, async (done: Function) => {
       TAG = 'Acts_Ability_ShellCommandControl__0100';
       console.log(`${TAG} --- start`);
-      let cmd = 'aa help'
-      globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
+      let cmd = 'aa help';
+      AppStorage.get<abilityDelegatorRegistry.AbilityDelegator>("abilityDelegator")!.executeShellCommand(cmd, (err, data) => {
         console.log(`${TAG} stdResult = ${data.stdResult}`);
         console.log(`${TAG} stdResult = ${JSON.stringify(err)}`);
         expect(data.exitCode).assertEqual(0);
@@ -41,14 +42,14 @@ export default function shellCommandControlTest() {
     /**
      * @tc.number: Acts_Ability_ShellCommandControl__0200
      * @tc.name: Verify that the aa command ls -l cannot be executed
-     * @tc.desc:  Error code -1 is returned
-     * @tc.level   3
+     * @tc.desc: Error code -1 is returned
+     * @tc.level 3
      */
-    it('Acts_Ability_ShellCommandControl__0200', 0, async function (done) {
+    it('Acts_Ability_ShellCommandControl__0200', 0, async (done: Function) => {
       TAG = 'Acts_Ability_ShellCommandControl__0200';
       console.log(`${TAG} --- start`);
       let cmd = 'ls -l';
-      globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
+      AppStorage.get<abilityDelegatorRegistry.AbilityDelegator>("abilityDelegator")!.executeShellCommand(cmd, (err, data) => {
         console.log(`${TAG} stdResult = ${data.stdResult}`);
         console.log(`${TAG} stdResult = ${JSON.stringify(err)}`);
         expect(data.exitCode).assertEqual(-1);

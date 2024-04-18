@@ -26,6 +26,7 @@ struct WebOnPermissionRequest {
   controller: webView.WebviewController = new webView.WebviewController();
   @State str: string = ""
   @State deny: boolean = false
+  @State userAgentPC:string = "";
   permissionRequest: PermissionRequest | null = null
 
   onPageShow() {
@@ -90,6 +91,11 @@ struct WebOnPermissionRequest {
                 break;
               }
               case "emitPermissionRequestGrant001": {
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent('"grant"', 70322)
+                  break;
+                }
                 try {
                   this.deny = false;
                   this.controller.runJavaScript("getMedia()", (error) => {

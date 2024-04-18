@@ -466,12 +466,12 @@ static napi_value PThreadBarrierInit(napi_env env, napi_callback_info info)
     napi_create_int32(env, ret, &result);
     return result;
 }
-
+int g_pthreadBarrierWaitResult;
 static void *PThreadBarrierWaitThread(void *arg)
 {
     pthread_barrier_t *pbarrier = (pthread_barrier_t *)arg;
-    int ret = pthread_barrier_wait(pbarrier);
-    return (void *)ret;
+    g_pthreadBarrierWaitResult = pthread_barrier_wait(pbarrier);
+    return nullptr;
 }
 
 static napi_value PThreadBarrierWait(napi_env env, napi_callback_info info)
@@ -485,9 +485,8 @@ static napi_value PThreadBarrierWait(napi_env env, napi_callback_info info)
     }
     int ret = pthread_barrier_wait(&barrier);
     for (unsigned int i = PARAM_0; i < threadnum; i++) {
-        int threadret;
-        pthread_join(threadIds[i], (void **)&threadret);
-        ret |= threadret;
+        pthread_join(threadIds[i], nullptr);
+        ret |= g_pthreadBarrierWaitResult;
     }
     pthread_barrier_destroy(&barrier);
     napi_value result = nullptr;
@@ -586,6 +585,7 @@ struct pthreadCondTimedWaitParam {
     pthread_cond_t cond;
     pthread_mutex_t mutex;
 };
+int g_pthreadCondTimedWaitResult;
 static void *PThreadCondTimedWaitThreadA(void *arg)
 {
     pthreadCondTimedWaitParam *pparam = (pthreadCondTimedWaitParam *)arg;
@@ -593,9 +593,9 @@ static void *PThreadCondTimedWaitThreadA(void *arg)
     pthread_mutex_lock(&(pparam->mutex));
     clock_gettime(CLOCK_REALTIME, &outtime);
     outtime.tv_sec += PARAM_5;
-    int ret = pthread_cond_timedwait(&(pparam->cond), &(pparam->mutex), &outtime);
+    g_pthreadCondTimedWaitResult = pthread_cond_timedwait(&(pparam->cond), &(pparam->mutex), &outtime);
     pthread_mutex_unlock(&(pparam->mutex));
-    return (void *)ret;
+    return nullptr;
 }
 static void *PThreadCondTimedWaitThreadB(void *arg)
 {
@@ -611,17 +611,16 @@ static napi_value PThreadCondTimedWait(napi_env env, napi_callback_info info)
     pthreadCondTimedWaitParam param;
     pthread_t threadIdA;
     pthread_t threadIdB;
-    int ret;
     pthread_cond_init(&param.cond, nullptr);
     pthread_mutex_init(&param.mutex, nullptr);
     pthread_create(&threadIdA, nullptr, PThreadCondTimedWaitThreadA, &param);
     pthread_create(&threadIdB, nullptr, PThreadCondTimedWaitThreadB, &param);
-    pthread_join(threadIdA, (void **)&ret);
+    pthread_join(threadIdA, nullptr);
     pthread_join(threadIdB, nullptr);
     pthread_cond_destroy(&param.cond);
     pthread_mutex_destroy(&param.mutex);
     napi_value result = nullptr;
-    napi_create_int32(env, ret, &result);
+    napi_create_int32(env, g_pthreadCondTimedWaitResult, &result);
     return result;
 }
 
@@ -629,13 +628,14 @@ struct pthreadCondWaitParam {
     pthread_cond_t cond;
     pthread_mutex_t mutex;
 };
+int g_pthreadCondWaitResult;
 static void *PThreadCondWaitThreadA(void *arg)
 {
     pthreadCondWaitParam *pparam = (pthreadCondWaitParam *)arg;
     pthread_mutex_lock(&(pparam->mutex));
-    int ret = pthread_cond_wait(&(pparam->cond), &(pparam->mutex));
+    g_pthreadCondWaitResult = pthread_cond_wait(&(pparam->cond), &(pparam->mutex));
     pthread_mutex_unlock(&(pparam->mutex));
-    return (void *)ret;
+    return nullptr;
 }
 static void *PThreadCondWaitThreadB(void *arg)
 {
@@ -651,17 +651,16 @@ static napi_value PThreadCondWait(napi_env env, napi_callback_info info)
     pthreadCondWaitParam param;
     pthread_t threadIdA;
     pthread_t threadIdB;
-    int ret;
     pthread_cond_init(&param.cond, nullptr);
     pthread_mutex_init(&param.mutex, nullptr);
     pthread_create(&threadIdA, nullptr, PThreadCondWaitThreadA, &param);
     pthread_create(&threadIdB, nullptr, PThreadCondWaitThreadB, &param);
-    pthread_join(threadIdA, (void **)&ret);
+    pthread_join(threadIdA, nullptr);
     pthread_join(threadIdB, nullptr);
     pthread_cond_destroy(&param.cond);
     pthread_mutex_destroy(&param.mutex);
     napi_value result = nullptr;
-    napi_create_int32(env, ret, &result);
+    napi_create_int32(env, g_pthreadCondWaitResult, &result);
     return result;
 }
 
@@ -799,22 +798,21 @@ static napi_value PThreadEqual(napi_env env, napi_callback_info info)
     napi_create_int32(env, ret, &result);
     return result;
 }
-
+int g_pthreadExitResult;
 static void *PThreadExitThread(void *arg)
 {
-    int ret = *static_cast<int *>(arg);
-    pthread_exit((void *)ret);
-    return (void *)ret;
+    g_pthreadExitResult = *static_cast<int *>(arg);
+    pthread_exit((void *)&g_pthreadExitResult);
+    return nullptr;
 }
 
 static napi_value PThreadExit(napi_env env, napi_callback_info info)
 {
     pthread_t threadId;
     int count = PARAM_1;
-    int threadRet;
     pthread_create(&threadId, nullptr, PThreadExitThread, &count);
-    pthread_join(threadId, (void **)&threadRet);
-    int ret = count != threadRet;
+    pthread_join(threadId, nullptr);
+    int ret = count != g_pthreadExitResult;
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -868,21 +866,20 @@ static napi_value PThreadGetSpecific(napi_env env, napi_callback_info info)
     napi_create_int32(env, ret, &result);
     return result;
 }
-
+int g_pthreadJoinResult;
 static void *PThreadJoinThread(void *arg)
 {
-    int ret = *static_cast<int *>(arg);
-    ret++;
-    return (void *)ret;
+    g_pthreadJoinResult = *static_cast<int *>(arg);
+    g_pthreadJoinResult++;
+    return nullptr;
 }
 
 static napi_value PThreadJoin(napi_env env, napi_callback_info info)
 {
     pthread_t threadId;
     int value = PARAM_0;
-    int threadRet = PARAM_0;
     pthread_create(&threadId, nullptr, PThreadJoinThread, static_cast<void *>(&value));
-    int ret = pthread_join(threadId, (void **)&threadRet);
+    int ret = pthread_join(threadId, nullptr);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -911,6 +908,7 @@ static napi_value PThreadKeyDelete(napi_env env, napi_callback_info info)
 static void PThreadKillHandler(int sig) { return; }
 
 struct sigaction actold;
+int g_pthreadKillResult;
 static void *PThreadKillThread(void *arg)
 {
     struct sigaction act;
@@ -920,20 +918,19 @@ static void *PThreadKillThread(void *arg)
     sigemptyset(&act.sa_mask);
     sigaction(SIGUSR1, &act, &actold);
     int sigret = sigpause(SIGUSR1);
-    int ret = (sigret == -1) && (errno == EINTR);
+    g_pthreadKillResult = (sigret == -1) && (errno == EINTR);
     sigaction(SIGUSR1, &actold, nullptr);
-    return (void *)ret;
+    return nullptr;
 }
 
 static napi_value PThreadKill(napi_env env, napi_callback_info info)
 {
     pthread_t threadId;
-    int threadRet;
     pthread_create(&threadId, nullptr, PThreadKillThread, nullptr);
     sleep(PARAM_1);
     int killRet = pthread_kill(threadId, SIGUSR1);
-    pthread_join(threadId, (void **)&threadRet);
-    int ret = (killRet == PARAM_0) && (threadRet == PARAM_1);
+    pthread_join(threadId, nullptr);
+    int ret = (killRet == PARAM_0) && (g_pthreadKillResult == PARAM_1);
     napi_value result = nullptr;
     napi_create_int32(env, !ret, &result);
     return result;
@@ -1123,23 +1120,18 @@ void PThreadOnceFunc(void)
     gOnceParam.count++;
     pthread_mutex_unlock(&gOnceParam.mutex);
 }
-
+int g_pthreadOnceResult;
 static void *PThreadOnceThread(void *arg)
 {
-    int ret = pthread_once(&gOnceParam.once, PThreadOnceFunc);
-    return (void *)ret;
+    g_pthreadOnceResult = pthread_once(&gOnceParam.once, PThreadOnceFunc);
+    return nullptr;
 }
-
 static napi_value PThreadOnce(napi_env env, napi_callback_info info)
 {
     pthread_t thread1;
     pthread_t thread2;
     pthread_t thread3;
     pthread_t thread4;
-    int ret1 = 0;
-    int ret2 = 0;
-    int ret3 = 0;
-    int ret4 = 0;
     pthread_mutex_init(&gOnceParam.mutex, nullptr);
     gOnceParam.once = PTHREAD_ONCE_INIT;
     gOnceParam.count = PARAM_0;
@@ -1148,11 +1140,11 @@ static napi_value PThreadOnce(napi_env env, napi_callback_info info)
     pthread_create(&thread2, nullptr, PThreadOnceThread, nullptr);
     pthread_create(&thread3, nullptr, PThreadOnceThread, nullptr);
     pthread_create(&thread4, nullptr, PThreadOnceThread, nullptr);
-    pthread_join(thread1, (void **)&ret1);
-    pthread_join(thread2, (void **)&ret2);
-    pthread_join(thread3, (void **)&ret3);
-    pthread_join(thread4, (void **)&ret4);
-    int ret = ret1 | ret2 | ret3 | ret4 | (gOnceParam.count != 1);
+    pthread_join(thread1, nullptr);
+    pthread_join(thread2, nullptr);
+    pthread_join(thread3, nullptr);
+    pthread_join(thread4, nullptr);
+    int ret = g_pthreadOnceResult | g_pthreadOnceResult | g_pthreadOnceResult | g_pthreadOnceResult | (gOnceParam.count != 1);
     pthread_mutex_destroy(&gOnceParam.mutex);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
@@ -1395,23 +1387,22 @@ static napi_value PThreadSetSpecific(napi_env env, napi_callback_info info)
     napi_create_int32(env, ret, &result);
     return result;
 }
-
+int g_pthreadSigMaskResult;
 static void *PThreadSigMaskThread(void *arg)
 {
     sigset_t set;
     sigaddset(&set, SIGUSR1);
-    int ret = pthread_sigmask(SIG_BLOCK, &set, nullptr);
-    return (void *)ret;
+    g_pthreadSigMaskResult = pthread_sigmask(SIG_BLOCK, &set, nullptr);
+    return nullptr;
 }
 
 static napi_value PThreadSigMask(napi_env env, napi_callback_info info)
 {
     pthread_t threadId;
-    int ret;
     pthread_create(&threadId, nullptr, PThreadSigMaskThread, nullptr);
-    pthread_join(threadId, (void **)&ret);
+    pthread_join(threadId, nullptr);
     napi_value result = nullptr;
-    napi_create_int32(env, ret, &result);
+    napi_create_int32(env, g_pthreadSigMaskResult, &result);
     return result;
 }
 

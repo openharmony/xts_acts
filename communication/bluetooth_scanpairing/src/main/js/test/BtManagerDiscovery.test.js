@@ -106,7 +106,7 @@ describe('btManagerDiscoveryTest', function() {
         function onReceiveEvent(data) {
             console.info('[bluetooth_js] Device' + JSON.stringify(data) +
             'length' + data.length);
-            expect(true).assertTrue(data.length > 0);
+            expect(data.length > 0).assertTrue();
         }
     try {
         bluetoothManager.on("bluetoothDeviceFind", onReceiveEvent);
@@ -117,7 +117,7 @@ describe('btManagerDiscoveryTest', function() {
         bluetoothManager.off('bluetoothDeviceFind', onReceiveEvent);
         result = bluetoothManager.stopBluetoothDiscovery();
         console.info('[bluetooth_js] stopDiscovery' + result);
-        expect(true).assertTrue();
+        expect(result).assertTrue();
     } catch (error) {
         console.error(`[bluetooth_js]bluetoothDeviceFin error, code is ${error.code}, 
         message is ${error.message}`);

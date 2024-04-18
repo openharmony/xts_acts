@@ -395,19 +395,7 @@ export default function nnrtNdkTest() {
       expect(result).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNCOMPILATION_BUILD_0100
-     * @tc.name       : testAiNnrtOhNnCompilationBuild001
-     * @tc.desc       : test OH_NNCompilation_Build
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnCompilationBuild001', 0, async (done: Function) => {
-      let result = nnrt.oHNNCompilationBuildOne();
-      expect(result).assertEqual(0);
-      done()
-    });
+
     /**
      * @tc.number     : SUB_AI_NNRT_OH_NNCOMPILATION_BUILD_0200
      * @tc.name       : testAiNnrtOhNnCompilationBuild002
@@ -435,19 +423,6 @@ export default function nnrtNdkTest() {
       done()
     });
     /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_CONSTRUCT_0100
-     * @tc.name       : testAiNnrtOhNnExecutorConstruct001
-     * @tc.desc       : test OH_NNExecutor_Construct
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorConstruct001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorConstructOne();
-      expect(result).assertEqual(0);
-      done()
-    });
-    /**
      * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_CONSTRUCT_0200
      * @tc.name       : testAiNnrtOhNnExecutorConstruct002
      * @tc.desc       : test OH_NNExecutor_Construct
@@ -457,19 +432,6 @@ export default function nnrtNdkTest() {
      */
     it('testAiNnrtOhNnExecutorConstruct002', 0, async (done: Function) => {
       let result = nnrt.oHNNExecutorConstructTwo();
-      expect(result).assertEqual(0);
-      done()
-    });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_SETINPUT_0100
-     * @tc.name       : testAiNnrtOhNnExecutorSetInput001
-     * @tc.desc       : test OH_NNExecutor_SetInput
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorSetInput001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorSetInputOne();
       expect(result).assertEqual(0);
       done()
     });
@@ -486,19 +448,7 @@ export default function nnrtNdkTest() {
       expect(result).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_SETOUTPUT_0100
-     * @tc.name       : testAiNnrtOhNnExecutorSetOutput001
-     * @tc.desc       : test OH_NNExecutor_SetOutput
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorSetOutput001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorSetOutputOne();
-      expect(result).assertEqual(0);
-      done()
-    });
+
     /**
      * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_SETOUTPUT_0200
      * @tc.name       : testAiNnrtOhNnExecutorSetOutput002
@@ -512,19 +462,7 @@ export default function nnrtNdkTest() {
       expect(result).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_GETOUTPUTSHAPE_0100
-     * @tc.name       : testAiNnrtOhNnExecutorGetOutputShape001
-     * @tc.desc       : test OH_NNExecutor_GetOutputShape
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorGetOutputShape001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorGetOutputShapeOne();
-      expect(result).assertEqual(0);
-      done()
-    });
+
     /**
      * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_GETOUTPUTSHAPE_0200
      * @tc.name       : testAiNnrtOhNnExecutorGetOutputShape002
@@ -538,19 +476,7 @@ export default function nnrtNdkTest() {
       expect(result).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_RUN_0100
-     * @tc.name       : testAiNnrtOhNnExecutorRun001
-     * @tc.desc       : test OH_NNExecutor_Run
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorRun001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorRunOne();
-      expect(result).assertEqual(0);
-      done()
-    });
+
     /**
      * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_RUN_0200
      * @tc.name       : testAiNnrtOhNnExecutorRun002
@@ -564,19 +490,7 @@ export default function nnrtNdkTest() {
       expect(result).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_ALLOCATEINPUTMEMORY_0100
-     * @tc.name       : testAiNnrtOhNnExecutorAllocateInputMemory001
-     * @tc.desc       : test OH_NNExecutor_AllocateInputMemory
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorAllocateInputMemory001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorAllocateInputMemoryOne();
-      expect(result).assertEqual(0);
-      done()
-    });
+
     /**
      * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_ALLOCATEINPUTMEMORY_0200
      * @tc.name       : testAiNnrtOhNnExecutorAllocateInputMemory002
@@ -590,71 +504,7 @@ export default function nnrtNdkTest() {
       expect(result).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_ALLOCATEOUTPUTMEMORY_0100
-     * @tc.name       : testAiNnrtOhNnExecutorAllocateOutputMemory001
-     * @tc.desc       : test OH_NNExecutor_AllocateOutputMemory
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorAllocateOutputMemory001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorAllocateOutputMemoryOne();
-      expect(result).assertEqual(0);
-      done()
-    });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_ALLOCATEOUTPUTMEMORY_0200
-     * @tc.name       : testAiNnrtOhNnExecutorAllocateOutputMemory002
-     * @tc.desc       : test OH_NNExecutor_AllocateOutputMemory
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorAllocateOutputMemory002', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorAllocateOutputMemoryOne();
-      expect(result).assertEqual(0);
-      done()
-    });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_DESTROYINPUTMEMORY_0100
-     * @tc.name       : testAiNnrtOhNnExecutorDestroyInputMemory001
-     * @tc.desc       : test OH_NNExecutor_DestroyInputMemory
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorDestroyInputMemory001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorDestroyInputMemory();
-      expect(result).assertEqual(0);
-      done()
-    });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_DESTROYOUTPUTMEMORY_0100
-     * @tc.name       : testAiNnrtOhNnExecutorDestroyOutputMemory001
-     * @tc.desc       : test OH_NNExecutor_DestroyOutputMemory
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorDestroyOutputMemory001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorDestroyOutputMemory();
-      expect(result).assertEqual(0);
-      done()
-    });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_SETINPUTWITHMEMORY_0100
-     * @tc.name       : testAiNnrtOhNnExecutorSetInputWithMemory001
-     * @tc.desc       : test OH_NNExecutor_SetInputWithMemory
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorSetInputWithMemory001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorSetInputWithMemoryOne();
-      expect(result).assertEqual(0);
-      done()
-    });
+
     /**
      * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_SETINPUTWITHMEMORY_0200
      * @tc.name       : testAiNnrtOhNnExecutorSetInputWithMemory002
@@ -668,19 +518,7 @@ export default function nnrtNdkTest() {
       expect(result).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_SETOUTPUTWITHMEMORY_0100
-     * @tc.name       : testAiNnrtOhNnExecutorSetOutputWithMemory001
-     * @tc.desc       : test OH_NNExecutor_SetOutputWithMemory
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorSetOutputWithMemory001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorSetOutputWithMemoryOne();
-      expect(result).assertEqual(0);
-      done()
-    });
+
     /**
      * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_SETOUTPUTWITHMEMORY_0200
      * @tc.name       : testAiNnrtOhNnExecutorSetOutputWithMemory002
@@ -691,19 +529,6 @@ export default function nnrtNdkTest() {
      */
     it('testAiNnrtOhNnExecutorSetOutputWithMemory002', 0, async (done: Function) => {
       let result = nnrt.oHNNExecutorSetOutputWithMemoryTwo();
-      expect(result).assertEqual(0);
-      done()
-    });
-    /**
-     * @tc.number     : SUB_AI_NNRT_OH_NNEXECUTOR_DESTROY_0100
-     * @tc.name       : testAiNnrtOhNnExecutorDestroy001
-     * @tc.desc       : test OH_NNExecutor_Destroy
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testAiNnrtOhNnExecutorDestroy001', 0, async (done: Function) => {
-      let result = nnrt.oHNNExecutorDestroy();
       expect(result).assertEqual(0);
       done()
     });

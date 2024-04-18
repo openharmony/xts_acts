@@ -15,21 +15,21 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
+import CommonFunc, {RectValue} from '../../../MainAbility/common/Common';
 export default function Stack_AlignContent() {
-  describe('Stack_AlignContent_Test', function () {
-    beforeEach(async function (done) {
+  describe('Stack_AlignContent_Test',  ()=> {
+    beforeEach(async  (done: Function)=> {
       console.info("Stack_AlignContent_Test beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Stack/Stack_alignContent/stack_alignContent",
-      }
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Stack_AlignContent state pages:" + JSON.stringify(pages));
         if (!("stack_alignContent" == pages.name)) {
           console.info("get stack_alignContent pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push stack_alignContent page result:" + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function Stack_AlignContent() {
       console.info("Stack_AlignContent_Test beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async  () =>{
       await CommonFunc.sleep(2000);
       console.info("stack_alignContent after each called")
     });
@@ -49,17 +49,17 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentNotConfig
      * @tc.desc      The stack component does not set alignContent
      */
-    it('testStackAlignContentCenter', 0, async function (done) {
+    it('testStackAlignContentCenter', 0, async  (done: Function)=> {
       console.info('[testStackAlignContentCenter] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Stack_AlignContent_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center');
-      let stack_alignContent_011 = CommonFunc.getComponentRect('Stack_AlignContent_011');
-      let stack_alignContent_012 = CommonFunc.getComponentRect('Stack_AlignContent_012');
-      let stack_alignContent_013 = CommonFunc.getComponentRect('Stack_AlignContent_013');
-      let stack_alignContent_01 = CommonFunc.getComponentRect('Stack_AlignContent_01');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Center');
+      let stack_alignContent_011:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_011');
+      let stack_alignContent_012:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_012');
+      let stack_alignContent_013:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_013');
+      let stack_alignContent_01:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_01');
       expect(Math.abs((stack_alignContent_011.left - stack_alignContent_01.left) - (stack_alignContent_01.right - stack_alignContent_011.right)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_012.left - stack_alignContent_01.left) - (stack_alignContent_01.right - stack_alignContent_012.right)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_013.left - stack_alignContent_01.left) - (stack_alignContent_01.right - stack_alignContent_013.right)) <= 1).assertTrue();
@@ -80,18 +80,18 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentTopStart
      * @tc.desc      The stack component sets alignContent to Alignment.TopStart
      */
-    it('testStackAlignContentTopStart', 0, async function (done) {
+    it('testStackAlignContentTopStart', 0, async  (done: Function)=> {
       console.info('[testStackAlignContentTopStart] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_AlignContent_02');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart');
-      let stack_alignContent_021 = CommonFunc.getComponentRect('Stack_AlignContent_021');
-      let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
-      let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
-      let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.TopStart');
+      let stack_alignContent_021:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_021');
+      let stack_alignContent_022:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_022');
+      let stack_alignContent_023:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_023');
+      let stack_alignContent_02:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_02');
       expect(Math.abs((stack_alignContent_021.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_022.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_023.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
@@ -112,18 +112,18 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentTop
      * @tc.desc      The stack component sets alignContent to Alignment.Top
      */
-    it('testStackAlignContentTop', 0, async function (done) {
+    it('testStackAlignContentTop', 0, async  (done: Function)=> {
       console.info('[testStackAlignContentTop] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Top });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_AlignContent_02');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top');
-      let stack_alignContent_021 = CommonFunc.getComponentRect('Stack_AlignContent_021');
-      let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
-      let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
-      let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Top');
+      let stack_alignContent_021:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_021');
+      let stack_alignContent_022:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_022');
+      let stack_alignContent_023:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_023');
+      let stack_alignContent_02:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_02');
       expect(Math.abs((stack_alignContent_021.left - stack_alignContent_02.left) - (stack_alignContent_02.right - stack_alignContent_021.right)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_022.left - stack_alignContent_02.left) - (stack_alignContent_02.right - stack_alignContent_022.right)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_023.left - stack_alignContent_02.left) - (stack_alignContent_02.right - stack_alignContent_023.right)) <= 1).assertTrue();
@@ -144,18 +144,18 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentTopEnd
      * @tc.desc      The stack component sets alignContent to Alignment.TopEnd
      */
-    it('testStackAlignContentTopEnd', 0, async function (done) {
+    it('testStackAlignContentTopEnd', 0, async  (done: Function)=> {
       console.info('[testStackAlignContentTopEnd] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_AlignContent_02');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd');
-      let stack_alignContent_021 = CommonFunc.getComponentRect('Stack_AlignContent_021');
-      let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
-      let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
-      let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.TopEnd');
+      let stack_alignContent_021:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_021');
+      let stack_alignContent_022:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_022');
+      let stack_alignContent_023:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_023');
+      let stack_alignContent_02:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_02');
       expect(Math.abs((stack_alignContent_021.top) - (stack_alignContent_02.top)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_022.top) - (stack_alignContent_02.top)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_023.top) - (stack_alignContent_02.top)) <= 1).assertTrue();
@@ -176,18 +176,18 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentStart
      * @tc.desc      The stack component sets alignContent to Alignment.Start
      */
-    it('testStackAlignContentStart', 0, async function (done) {
+    it('testStackAlignContentStart', 0, async  (done: Function)=> {
       console.info('[testStackAlignContentStart] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Start });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_AlignContent_02');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start');
-      let stack_alignContent_021 = CommonFunc.getComponentRect('Stack_AlignContent_021');
-      let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
-      let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
-      let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Start');
+      let stack_alignContent_021:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_021');
+      let stack_alignContent_022:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_022');
+      let stack_alignContent_023:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_023');
+      let stack_alignContent_02:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_02');
       expect(Math.abs((stack_alignContent_021.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_022.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_023.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
@@ -208,18 +208,18 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentCenter
      * @tc.desc      The stack component sets alignContent to Alignment.Center
      */
-    it('testStackAlignContentCenter', 0, async function (done) {
+    it('testStackAlignContentCenter', 0, async  (done: Function)=> {
       console.info('[testStackAlignContentCenter] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Center });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_AlignContent_02');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center');
-      let stack_alignContent_021 = CommonFunc.getComponentRect('Stack_AlignContent_021');
-      let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
-      let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
-      let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Center');
+      let stack_alignContent_021:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_021');
+      let stack_alignContent_022:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_022');
+      let stack_alignContent_023:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_023');
+      let stack_alignContent_02:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_02');
       expect(Math.abs((stack_alignContent_021.left - stack_alignContent_02.left) - (stack_alignContent_02.right - stack_alignContent_021.right)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_022.left - stack_alignContent_02.left) - (stack_alignContent_02.right - stack_alignContent_022.right)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_023.left - stack_alignContent_02.left) - (stack_alignContent_02.right - stack_alignContent_023.right)) <= 1).assertTrue();
@@ -240,18 +240,18 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentEnd
      * @tc.desc      The stack component sets alignContent to Alignment.End
      */
-    it('testStackAlignContentEnd', 0, async function (done) {
+    it('testStackAlignContentEnd', 0, async  (done: Function)=> {
       console.info('[testStackAlignContentEnd] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.End });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_AlignContent_02');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.End');
-      let stack_alignContent_021 = CommonFunc.getComponentRect('Stack_AlignContent_021');
-      let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
-      let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
-      let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.End');
+      let stack_alignContent_021:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_021');
+      let stack_alignContent_022:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_022');
+      let stack_alignContent_023:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_023');
+      let stack_alignContent_02:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_02');
       expect(Math.abs((stack_alignContent_021.right) - (stack_alignContent_02.right)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_022.right) - (stack_alignContent_02.right)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_023.right) - (stack_alignContent_02.right)) <= 1).assertTrue();
@@ -272,18 +272,18 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentBottomStart
      * @tc.desc      The stack component sets alignContent to Alignment.BottomStart
      */
-    it('testStackAlignContentBottomStart', 0, async function (done) {
+    it('testStackAlignContentBottomStart', 0, async  (done: Function)=> {
       console.info('[testStackAlignContentBottomStart] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_AlignContent_02');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart');
-      let stack_alignContent_021 = CommonFunc.getComponentRect('Stack_AlignContent_021');
-      let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
-      let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
-      let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.BottomStart');
+      let stack_alignContent_021:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_021');
+      let stack_alignContent_022:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_022');
+      let stack_alignContent_023:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_023');
+      let stack_alignContent_02:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_02');
       expect(Math.abs((stack_alignContent_021.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_022.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_023.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
@@ -304,18 +304,18 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentBottom
      * @tc.desc      The stack component sets alignContent to Alignment.Bottom
      */
-    it('testStackAlignContentBottom', 0, async function (done) {
+    it('testStackAlignContentBottom', 0, async  (done: Function)=> {
       console.info('[testStackAlignContentBottom] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_AlignContent_02');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom');
-      let stack_alignContent_021 = CommonFunc.getComponentRect('Stack_AlignContent_021');
-      let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
-      let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
-      let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Bottom');
+      let stack_alignContent_021:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_021');
+      let stack_alignContent_022:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_022');
+      let stack_alignContent_023:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_023');
+      let stack_alignContent_02:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_02');
       expect(Math.abs((stack_alignContent_021.bottom) - (stack_alignContent_02.bottom)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_022.bottom) - (stack_alignContent_02.bottom)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_023.bottom) - (stack_alignContent_02.bottom)) <= 1).assertTrue();
@@ -336,18 +336,18 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentBottomEnd
      * @tc.desc      The stack component sets alignContent to Alignment.BottomEnd
      */
-    it('testStackAlignContentBottomEnd', 0, async function (done) {
+    it('testStackAlignContentBottomEnd', 0, async  (done: Function)=> {
       console.info('[testStackAlignContentBottomEnd] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_AlignContent_02');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd');
-      let stack_alignContent_021 = CommonFunc.getComponentRect('Stack_AlignContent_021');
-      let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
-      let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
-      let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.BottomEnd');
+      let stack_alignContent_021:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_021');
+      let stack_alignContent_022:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_022');
+      let stack_alignContent_023:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_023');
+      let stack_alignContent_02:RectValue  = CommonFunc.getComponentRect('Stack_AlignContent_02');
       expect(Math.abs((stack_alignContent_021.bottom) - (stack_alignContent_02.bottom)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_022.bottom) - (stack_alignContent_02.bottom)) <= 1).assertTrue();
       expect(Math.abs((stack_alignContent_023.bottom) - (stack_alignContent_02.bottom)) <= 1).assertTrue();

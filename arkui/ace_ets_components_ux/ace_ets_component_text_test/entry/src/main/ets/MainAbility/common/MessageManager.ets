@@ -13,41 +13,41 @@
  * limitations under the License.
  */
 export interface Callback {
-  (message:any):void
+  onMessage(message: ESObject): void;
 }
 
 export class MessageManager {
-    callback?:Callback
-    callbacks:Map<string,Callback> = new Map()
+  callback?: Callback
+  callbacks: Map<string, Callback> = new Map()
 
-    constructor() {
+  constructor() {
 
-    }
+  }
 
-   registerCallback(callback:Callback , type?:string) {
+  registerCallback(callback: Callback, type?: string) {
     if (type == undefined) {
       console.error('registerCallback callback set')
       this.callback = callback
       return
     }
-    this.callbacks.set(type,callback)
+    this.callbacks.set(type, callback)
   }
 
-   notify(message:any, type?:string) {
+  notify(message: ESObject, type?: string) {
     if (type == undefined) {
-      this.callback?.(message)
+      this.callback?.onMessage(message)
       return
     }
 
-    let tmpCallback:Callback = this.callbacks.get(type)!
+    let tmpCallback: Callback = this.callbacks.get(type)!
     if (tmpCallback === undefined) {
       console.error('callbacks has no callback for type ' + type)
       return
     }
-    tmpCallback(message)
+    tmpCallback.onMessage(message)
   }
 
-   clear() {
+  clear() {
     this.callbacks.clear()
     this.callback = undefined
   }

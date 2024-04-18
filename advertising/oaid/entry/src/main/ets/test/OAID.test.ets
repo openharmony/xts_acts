@@ -17,24 +17,24 @@ import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import oaid from '@ohos.identifier.oaid';
 import { BY, UiDriver } from '@ohos.UiTest';
-import abilityAccessCtrl from "@ohos.abilityAccessCtrl";
+import abilityAccessCtrl, { Permissions } from "@ohos.abilityAccessCtrl";
 
 const ERR_INVALID_PARAM: number = 401;
 const TAG: string = 'OAIDTestTag';
 const Domain: number = 0x0000;
 
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default function OAIDTest(abilityContext) {
-  describe('ActsOAIDTest', function () {
+  describe('ActsOAIDTest', () => {
 
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    beforeAll(async function () {
+    beforeAll(async () => {
       console.log(TAG, `beforeAll case`);
 
       let atManager = abilityAccessCtrl.createAtManager();
-      let permissions = ["ohos.permission.APP_TRACKING_CONSENT"];
+      let permissions: Array<Permissions> = ["ohos.permission.APP_TRACKING_CONSENT"];
 
       try {
         atManager.requestPermissionsFromUser(abilityContext, permissions, (err, data) => {
@@ -62,7 +62,7 @@ export default function OAIDTest(abilityContext) {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("testGetOAIDByPromise", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async function () {
+    it("testGetOAIDByPromise", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async () => {
       let oaidResult: string = '';
       try {
         oaidResult = await oaid.getOAID();
@@ -82,7 +82,7 @@ export default function OAIDTest(abilityContext) {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("testGetOAIDByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async function (done) {
+    it("testGetOAIDByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
         oaid.getOAID((error, result) => {
           expect(result.length > 0).assertEqual(true);
@@ -103,7 +103,7 @@ export default function OAIDTest(abilityContext) {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it("testRepeatGetOAID", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL1, async function () {
+    it("testRepeatGetOAID", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL1, async () => {
       try {
         let oaidResult1 = await oaid.getOAID();
         let oaidResult2 = await oaid.getOAID();
@@ -122,7 +122,7 @@ export default function OAIDTest(abilityContext) {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it("testResetOAID", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL1, function () {
+    it("testResetOAID", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL1, () => {
       try {
         oaid.resetOAID();
       } catch (e) {
@@ -130,6 +130,6 @@ export default function OAIDTest(abilityContext) {
         expect().assertFail();
       }
     })
-    
+
   })
 }

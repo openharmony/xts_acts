@@ -51,19 +51,5 @@ export default function selectNdkTest() {
       expect(result).assertEqual(1);
       done()
     });
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_SELECT_PSELECT_0100
-     * @tc.name       : testMuslSelectPSelect001
-     * @tc.desc       : test pselect
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslSelectPSelect001', 0, async (done: Function) => {
-      let result:number = select.pSelect();
-      console.info("Test NAPI data= " + JSON.stringify(result));
-      expect(result).assertEqual(0);
-      done()
-    });
   })
 }

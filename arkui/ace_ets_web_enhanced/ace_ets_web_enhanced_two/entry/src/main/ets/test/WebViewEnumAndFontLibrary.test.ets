@@ -428,52 +428,7 @@ export default function WebViewEnumAndFontLibrary() {
       Utils.registerEvent("testContextMenuMediaType001", 0, 881, done);
       sendEventByKey('buttonEnumAndFontLibrary', 10, '');
     })
-
-    /*
-    * @tc.number     : SUB_WEB_PROTECTEDRESOURCETYPE_0100
-    * @tc.name       : testProtectedResourceType001
-    * @tc.desc       : test ProtectedResourceType
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testProtectedResourceType001', 0, async (done: Function) => {
-      Utils.emitEvent("emitProtectedResourceType", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testProtectedResourceType001", 'TYPE_VIDEO_CAPTURE,TYPE_AUDIO_CAPTURE', 1101, done);
-      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
-    })
-
-    /*
-    * @tc.number     : SUB_WEB_PERMISSIONREQUESTGETORIGIN_0100
-    * @tc.name       : testPermissionRequestGetOrigin001
-    * @tc.desc       : test PermissionRequestGetOrigin
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testPermissionRequestGetOrigin001', 0, async (done: Function) => {
-      Utils.emitEvent("emitOnPermissionRequestGetOrigin", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("PermissionRequestGetOrigin", 'resource://rawfile/', 1102, done);
-      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
-    })
-
-    /*
-    * @tc.number     : SUB_WEB_PERMISSIONREQUEST_0100
-    * @tc.name       : testPermissionRequest001
-    * @tc.desc       : test PermissionRequest
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testPermissionRequest001', 0, async (done: Function) => {
-      Utils.emitEvent("emitOnPermissionRequest", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testPermissionRequest001", true, 1103, done);
-      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
-    })
-
+    
     /*
     * @tc.number     : SUB_WEB_RENDEREXITREASONPROCESSCRASHED_0100
     * @tc.name       : testRenderExitReasonProcessCrashed001

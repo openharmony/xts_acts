@@ -13,18 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
 import CommonFunc from "../../../MainAbility/common/Common";
-import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
-
 
 export default function Stack_Text() {
-  describe('Stack_Text', function () {
-    beforeEach(async function (done) {
+  describe('Stack_Text', () => {
+    beforeEach(async (done: Function) => {
       console.info("Stack_Text beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Stack/Stack_Text/Stack_Text',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Stack/Stack_Text/Stack_Text',
       }
       try {
         router.clear();
@@ -32,7 +29,7 @@ export default function Stack_Text() {
         console.info("get Stack_Text state pages: " + JSON.stringify(pages));
         if (!("Stack_Text" == pages.name)) {
           console.info("get Stack_Text state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Stack_Text page result: " + JSON.stringify(result));
         }
@@ -51,13 +48,13 @@ export default function Stack_Text() {
       * @tc.type
       * @tc.size
       */
-    it('Stack_Text_001', 0, async function (done) {
+    it('Stack_Text_001', 0, async (done: Function) => {
 
       console.info('[Stack_Text_001] START');
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('Stack_TextInput');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[Stack_Text_001] Stack_Text obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
@@ -75,13 +72,13 @@ export default function Stack_Text() {
       * @tc.type
       * @tc.size
       */
-    it('Stack_Text_002', 0, async function (done) {
+    it('Stack_Text_002', 0, async (done: Function) => {
 
       console.info('[Stack_Text_002] START');
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('Stack_Text_Button1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[Stack_Text_002] Stack_Text obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
@@ -100,13 +97,13 @@ export default function Stack_Text() {
       * @tc.type
       * @tc.size
       */
-    it('Stack_Text_003', 0, async function (done) {
+    it('Stack_Text_003', 0, async (done: Function) => {
 
       console.info('[Stack_Text_003] START');
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('Stack_Text_Button2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[Stack_Text_003] Stack_Text obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
@@ -125,13 +122,13 @@ export default function Stack_Text() {
       * @tc.type
       * @tc.size
       */
-    it('Stack_Text_004', 0, async function (done) {
+    it('Stack_Text_004', 0, async (done: Function) => {
 
       console.info('[Stack_Text_004] START');
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('Stack_Text_Button3');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[Stack_Text_004] Stack_Text obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
@@ -149,13 +146,13 @@ export default function Stack_Text() {
       * @tc.type
       * @tc.size
       */
-    it('Stack_Text_005', 0, async function (done) {
+    it('Stack_Text_005', 0, async (done: Function) => {
 
       console.info('[Stack_Text_005] START');
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('Stack_Text');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[Stack_Text_005] Stack_Text obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
@@ -173,7 +170,7 @@ export default function Stack_Text() {
       * @tc.type
       * @tc.size
       */
-    // it('Stack_Text_006', 0, async function (done) {
+    // it('Stack_Text_006', 0, async (done: Function) => {
     //
     //   console.info('[Stack_Text_006] START');
     //   await CommonFunc.sleep(1000);
@@ -188,8 +185,6 @@ export default function Stack_Text() {
     //   console.info('[Stack_Text_006] END');
     //   done();
     // });
-
-
 
 
   })

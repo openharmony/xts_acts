@@ -33,7 +33,7 @@ struct Humidity {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Humidity';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有湿度传感器' + '\n-点击开启按钮打开传感器,' +
-  '如果有传感器，能够获取到湿度值，否则返回上一级' + '\n-预期结果：数值发生变化';
+    '如果有传感器，能够获取到湿度值，否则返回上一级' + '\n-预期结果：数值发生变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
@@ -57,7 +57,7 @@ struct Humidity {
           this.dataHumidity = data.humidity.toFixed(2);
           this.intervalNum = setInterval(() => {
             this.nextHumidity = data.humidity.toFixed(2);
-            if (this.nextHumidity || this.dataHumidity ) {
+            if (this.nextHumidity || this.dataHumidity) {
               this.Vue = true;
             }
           }, 500)
@@ -108,7 +108,7 @@ struct Humidity {
     }
   }
 
-  async aboutToDisappear(){
+  async aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -139,7 +139,8 @@ struct Humidity {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -163,7 +164,8 @@ struct Humidity {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);

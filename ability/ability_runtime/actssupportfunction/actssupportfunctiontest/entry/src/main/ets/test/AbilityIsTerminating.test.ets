@@ -179,14 +179,16 @@ export default function AbilityIsTerminatingTest() {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
           if (data.event == onCreate) {
-            let abilitydelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-            let cmd = "uinput -K -d 2 -u 2";
-            await abilitydelegator.executeShellCommand(cmd).then((data) => {
-              console.log(TAG + "executeShellCommand : data : " + data.stdResult);
-              console.log(TAG + "executeShellCommand : data : " + data.exitCode);
-            }).catch((error) => {
-              console.log(TAG + "executeShellCommand error : " + JSON.stringify(error));
-            })
+            setTimeout(async () => {
+              let abilitydelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+              let cmd = "uinput -K -d 2 -u 2";
+              await abilitydelegator.executeShellCommand(cmd).then((data) => {
+                console.log(TAG + "executeShellCommand : data : " + data.stdResult);
+                console.log(TAG + "executeShellCommand : data : " + data.exitCode);
+              }).catch((error) => {
+                console.log(TAG + "executeShellCommand error : " + JSON.stringify(error));
+              });
+            }, sleepTimeOne);
           }
 
           if (data.event == onDestroy) {

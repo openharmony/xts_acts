@@ -13,11 +13,13 @@
  * limitations under the License.
  */
 import promptAction from '@ohos.promptAction';
+
 @Entry
 @Component
 struct onChild {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-  @State text: string = 'Button'
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  @State text: string = 'Button';
+
   build() {
     Column() {
       List({ space: 2, initialIndex: 0 }) {
@@ -46,6 +48,7 @@ struct onChild {
       })
       .width('100%')
       .height('65%')
+
       Button(this.text)
         .width(312)
         .height(40)
@@ -64,7 +67,7 @@ struct onChild {
     .justifyContent(FlexAlign.End)
     .padding({ left: 12, right: 12, bottom: 24 })
     .onChildTouchTest((touchinfo) => {
-      this.text='onChildTouch'
+      this.text = 'onChildTouch'
       for (let info of touchinfo) {
         if (info.id == 'MyList') {
           return { id: info.id, strategy: TouchTestStrategy.FORWARD_COMPETITION }

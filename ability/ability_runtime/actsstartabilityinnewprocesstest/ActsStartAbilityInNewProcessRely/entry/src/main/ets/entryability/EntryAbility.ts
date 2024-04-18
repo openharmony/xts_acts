@@ -20,20 +20,64 @@ import Want from '@ohos.app.ability.Want';
 import StartOptions from '@ohos.app.ability.StartOptions';
 import { BusinessError } from '@ohos.base';
 import commonEvent from '@ohos.commonEventManager';
+import process from '@ohos.process';
 
 let START_ABILITY_IN_NEW_PROCESS_EVENT = "start_ability_in_new_process_event";
-let UPDATE_WANT_EVENT = "update_want_event";
+let START_ABILITY_EVENT = "start_ability_event";
 let FOREGROUND_EVENT = "foreground_event"
+let NOTIFY_PID_EVENT = "notify_pid_event";
+let KILL_PROCESS_EVENT = "kill_process_event";
 let tag = '[ACTS_StartAbilityInNewProcess EntryAbility]';
 let commonEventData = {
   parameters: {
-    num: -1
+    num: -1,
+    pid: -1
   }
 };
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want, launchParam) {
+  async onCreate(want, launchParam) {
     console.log(`${tag} onCreate, ${JSON.stringify(want)}`);
+    let subscribeInfo = {
+      events: [START_ABILITY_EVENT, KILL_PROCESS_EVENT],
+    };
+    let subscriber = await commonEvent.createSubscriber(subscribeInfo);
+    commonEvent.subscribe(subscriber, (err, data) => {
+      console.log(`${tag} data: ${JSON.stringify(data)}}`);
+      switch (data.event) {
+        case START_ABILITY_EVENT: {
+          if (data.parameters['targetPid'] !== process.pid) {
+            return;
+          }
+          this.startInNewProcess(data);
+          if (data.parameters['isDone'] as number == 1) {
+            commonEvent.unsubscribe(subscriber, (err, data) => {
+              console.info(`${tag} unsubscribe success`);
+            })
+          }
+        }
+          break;
+        case KILL_PROCESS_EVENT: {
+          if (data.parameters['targetPid'] !== process.pid) {
+            return;
+          }
+          if (data.parameters['isDone'] as number == 1) {
+            commonEvent.unsubscribe(subscriber, (err, data) => {
+              console.info(`${tag} unsubscribe success`);
+            })
+          }
+          this.context.terminateSelf();
+        }
+          break;
+        default:
+          break;
+      }
+    });
+    commonEventData.parameters.pid = process.pid;
+    console.log(`${tag} pid: ${commonEventData.parameters.pid}`);
+    commonEvent.publish(NOTIFY_PID_EVENT, commonEventData, (err)=>{
+      console.log(`${tag} publish NOTIFY_PID_EVENT err: ${JSON.stringify(err)}`);
+    });
   }
 
   onDestroy() {
@@ -55,29 +99,10 @@ export default class EntryAbility extends UIAbility {
   onWindowStageDestroy() {
   }
 
-  async onForeground() {
+  onForeground() {
     console.log(`${tag} onForeground`);
-    let subscribeInfo = {
-      events: [UPDATE_WANT_EVENT],
-    };
-    let subscriber = await commonEvent.createSubscriber(subscribeInfo);
-    commonEvent.subscribe(subscriber, (err, data) => {
-        console.log(`${tag} data: ${JSON.stringify(data)}}`);
-        switch (data.event) {
-          case UPDATE_WANT_EVENT: {
-            this.startInNewProcess(data);
-            if (data.parameters['isDone'] as number == 1) {
-              commonEvent.unsubscribe(subscriber, (err, data) => {
-                console.info(`${tag} unsubscribe success`);
-              })
-            }
-          }
-          break;
-          default:
-            break;
-        }
-    });
-    commonEvent.publish(FOREGROUND_EVENT, (err)=>{
+    commonEventData.parameters.pid = process.pid;
+    commonEvent.publish(FOREGROUND_EVENT, commonEventData, (err)=>{
       console.log(`${tag} publish FOREGROUND_EVENT err: ${JSON.stringify(err)}`);
     });
   }

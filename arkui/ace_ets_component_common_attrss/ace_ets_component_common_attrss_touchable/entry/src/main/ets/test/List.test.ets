@@ -13,12 +13,8 @@
  * limitations under the License.
  */
 
-
-
 import touchableTest from './touchable/TouchableTest.test';
 
 export default function testsuite() {
-
   touchableTest();
-
 }

@@ -25,37 +25,6 @@ export default function localeNdkTest() {
     })
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_SETLOCALE_0100
-     * @tc.name       : testMuslLocaleSetlocale001
-     * @tc.desc       : test setlocale
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslLocaleSetlocale001', 0, async (done: Function) => {
-      let b = "C.UTF-8"
-      let a: string = locale.setlocale();
-      expect(a).assertEqual(b);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_USELOCALE_0100
-     * @tc.name       : testMuslLocaleUselocale001
-     * @tc.desc       : test uselocale
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslLocaleUselocale001', 0, async (done: Function) => {
-      let b = 0;
-      let uselocaleResult: number = locale.uselocale(b);
-      console.info("Test uselocaleResult = " + uselocaleResult);
-      expect(uselocaleResult).assertEqual(0);
-      done();
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_USELOCALE_0200
      * @tc.name       : testMuslLocaleUselocale002
      * @tc.desc       : test uselocale

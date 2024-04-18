@@ -16,6 +16,22 @@
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetComponentHeight: number;
+  targetComponentWidth: number;
+  referenceComponentKey: string;
+  referenceText: string;
+}
+
+class TestValues {
+  describe: string;
+  setValue: number;
+  expectValue: ESObject;
+}
+
 export default function zIndexTest() {
   let supportView = [
     'AlphabetIndexer',
@@ -94,7 +110,7 @@ export default function zIndexTest() {
   let targetComponentWidth = 200;
   let targetComponentHeight = 200;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testZIndex',
     pageName: 'ZIndexPage',
     pageUrl: 'MainAbility/pages/zIndex/ZIndexPage',
@@ -104,7 +120,8 @@ export default function zIndexTest() {
     referenceText: 'referenceText'
   }
 
-  let testValues = [{
+
+  let testValues: TestValues[] = [{
     describe: 'SetUpperLayer',
     setValue: 3,
     expectValue: {
@@ -113,7 +130,7 @@ export default function zIndexTest() {
   }]
 
   describe('ZIndexTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       console.info('[' + data.caseTag + ']' + 'zIndex is:' + data.viewObj.$attrs.zIndex);
       expect(data.viewObj.$attrs.zIndex).assertEqual(data.testValue.expectValue.zIndex);
     });

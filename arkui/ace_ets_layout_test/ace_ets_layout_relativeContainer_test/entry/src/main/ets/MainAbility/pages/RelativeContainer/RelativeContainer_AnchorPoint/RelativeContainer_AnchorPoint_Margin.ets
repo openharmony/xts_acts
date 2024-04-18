@@ -21,19 +21,20 @@ struct RelativeContainer_AnchorPoint_Margin {
   }
 
   build() {
-    Row() {
-      RelativeContainer() {
-        Button("Button1")
-          .width(120)
-          .height(30)
-          .alignRules({
-            top: { anchor: "__container__", align: VerticalAlign.Top },
-            middle: { anchor: "__container__", align: HorizontalAlign.Center }
-          })
-          .key("RelativeContainer_AnchorPoint_Margin_bt1")
-          .id("RelativeContainer_AnchorPoint_Margin_bt1")
-          .borderWidth(5)
-          .borderColor(Color.Black)
+    Row(){
+      Row() {
+        RelativeContainer() {
+          Button("Button1")
+            .width(120)
+            .height(30)
+            .alignRules({
+              top: { anchor: "__container__", align: VerticalAlign.Top },
+              middle: { anchor: "__container__", align: HorizontalAlign.Center }
+            })
+            .key("RelativeContainer_AnchorPoint_Margin_bt1")
+            .id("RelativeContainer_AnchorPoint_Margin_bt1")
+            .borderWidth(5)
+            .borderColor(Color.Black)
 
         Text("This is text")
           .fontSize(20)
@@ -53,9 +54,11 @@ struct RelativeContainer_AnchorPoint_Margin {
       .key("RelativeContainer_AnchorPoint_Margin_r1")
       .width(300).height(300)
 
-    }
-    .key("RelativeContainer_AnchorPoint_Margin_row1")
-    .margin({ left: 100 })
-    .height('100%')
+      }
+      .key("RelativeContainer_AnchorPoint_Margin_row1")
+      .margin({ left: 100 })
+      .height('100%')
+    }.key("row_marginTest")
+
   }
 }

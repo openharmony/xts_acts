@@ -56,7 +56,6 @@ export default function AssetPerformanceNewtest() {
       await aw.assetAddFullAll(testAlias1, times);
       let endTime = new Date().getTime();
       expect((endTime - beginTime) / times).assertLess(120);
-
       done();
     });
 
@@ -170,7 +169,7 @@ export default function AssetPerformanceNewtest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Performance_0600
-     * @tc.name 查询100个关键资产时，JS API平均时延不大于7500ms
+     * @tc.name 查询500个关键资产时，JS API平均时延不大于7500ms
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func

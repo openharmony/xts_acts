@@ -31,7 +31,7 @@ export default function Router4() {
         let pages = router.getState();
         console.info("get " +
         " state pages:" + JSON.stringify(pages));
-        if (!("Router4" == pages.name)) {
+        if (!("pageA" == pages.name)) {
           console.info("get Router4 pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);

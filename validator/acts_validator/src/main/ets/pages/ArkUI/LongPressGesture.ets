@@ -13,46 +13,66 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {CustomContainer} from '../common/CustomContainer2';
+import { CustomContainer } from '../common/CustomContainer2';
 import FirstDialog from '../model/FirstDialog';
+
 @Entry
 @Component
 struct LongPressGestureExample {
   @State X: number = 0;
   @State name: string = 'LongPressGesture';
-  @State StepTips: string = '操作步骤：手指长按图像'+'\n'+'预期结果：长按动作触发计数增加，显示计数可大于10';
+  @State StepTips: string = '操作步骤：手指长按图像' + '\n' + '预期结果：长按动作触发计数增加，显示计数可大于10';
   @State Vue: boolean = false;
-  async aboutToAppear(){
-    await FirstDialog.ChooseDialog(this.StepTips,this.name);
+
+  async aboutToAppear() {
+    await FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
-  @Builder specificNoParam() {
+
+  @Builder
+  specificNoParam() {
     Column() {
       Scroll() {
         Column() {
-      Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Image($r("app.media.img")).height('60%').width('60%')
-      }
-      .height('350vp').width('350vp').padding(20)
-      .gesture(
-      LongPressGesture({ repeat: true })
-        .onAction((event: GestureEvent) => {
-          if (event.repeat) {
-            this.X++;
-            if(this.X >= 10){
-              this.Vue = true;
-            }
+          Flex({
+            direction: FlexDirection.Column,
+            alignItems: ItemAlign.Center,
+            justifyContent: FlexAlign.SpaceBetween
+          }) {
+            Image($r("app.media.img"))
+              .height('60%')
+              .width('60%')
           }
-        })
-        .onActionEnd(() => {
-          this.X = 0;
-        })
-      )
-      Text('长按动作连续触发:' + this.X).fontColor(Color.Black)
+          .height('350vp')
+          .width('350vp')
+          .padding(20)
+          .gesture(
+            LongPressGesture({ repeat: true })
+              .onAction((event: GestureEvent) => {
+                if (event.repeat) {
+                  this.X++;
+                  if (this.X >= 10) {
+                    this.Vue = true;
+                  }
+                }
+              })
+              .onActionEnd(() => {
+                this.X = 0;
+              })
+          )
+
+          Text('长按动作连续触发:' + this.X)
+            .fontColor(Color.Black)
         }
-      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
-    }.width('100%').height('80%').backgroundColor(Color.White)
+      }
+      .scrollBarWidth('6vp')
+      .scrollBarColor('#cccccc')
+    }
+    .width('100%')
+    .height('80%')
+    .backgroundColor(Color.White)
     .justifyContent(FlexAlign.SpaceEvenly)
   }
+
   build() {
     Column() {
       CustomContainer({
@@ -64,11 +84,15 @@ struct LongPressGestureExample {
         name: $name,
         Vue: $Vue,
       })
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/ArkUI/ArkUI_index',
+      url: 'pages/ArkUI/ArkUI_index',
     })
   }
 }

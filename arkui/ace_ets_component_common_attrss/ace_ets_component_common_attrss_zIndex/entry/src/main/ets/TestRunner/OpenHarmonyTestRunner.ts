@@ -14,6 +14,7 @@
  */
 import TestRunner from '@ohos.application.testRunner';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { BusinessError } from '@ohos.base';
 
 let abilityDelegator = undefined;
 let abilityDelegatorArguments = undefined;
@@ -37,7 +38,7 @@ async function onAbilityCreateCallback() {
   console.log('onAbilityCreateCallback');
 }
 
-async function addAbilityMonitorCallback(err: any) {
+async function addAbilityMonitorCallback(err: BusinessError) {
   console.info('addAbilityMonitorCallback : ' + JSON.stringify(err));
 }
 
@@ -60,7 +61,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     };
     abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
     let cmd = 'aa start -d 0 -a com.acts.arkui.component.common.attrs.test.MainAbility' +
-    ' -b ' + abilityDelegatorArguments.bundleName;
+      ' -b ' + abilityDelegatorArguments.bundleName;
     cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
     let debug = abilityDelegatorArguments.parameters['-D'];
     if (debug == 'true') {

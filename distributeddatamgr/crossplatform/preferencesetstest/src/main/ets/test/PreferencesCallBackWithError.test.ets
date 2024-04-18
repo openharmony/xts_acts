@@ -20,18 +20,18 @@ const NAME = "test_preferences_callback_with_error";
 const KEY_TEST_INT_ELEMENT = "key_test_int";
 const KEY_TEST_STRING_ELEMENT = "key_test_string";
 let mPreference = undefined;
-let context: common.UIAbilityContext ;
+let context: common.UIAbilityContext;
 
 export default function preferencesCallbackWithErrorTest() {
-  describe("preferencesCallbackWithErrorTest", function () {
-    beforeAll(async function () {
+  describe("preferencesCallbackWithErrorTest", () => {
+    beforeAll(async () => {
       console.info("beforeAll");
       context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
-      console.info("context=======>"+context);
+      console.info("context=======>" + context);
       mPreference = await data_preferences.getPreferences(context, NAME);
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info("afterAll");
       await data_preferences.deletePreferences(context, NAME);
     });
@@ -44,31 +44,31 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesCallbackWithError0000", 0, function (done) {
+    it("testPreferencesCallbackWithError0000", 0, (done: Function) => {
       console.log("testPreferencesCallbackWithError0000 begin.");
       try {
-        mPreference.clear(function (err, val) {
+        mPreference.clear((err, val) => {
           if (err) {
             console.log("clear err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
           }
-          mPreference.put(KEY_TEST_STRING_ELEMENT, "abc", function (err, ret) {
+          mPreference.put(KEY_TEST_STRING_ELEMENT, "abc", (err, ret) => {
             if (err) {
               console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
               expect(!err).assertTrue();
             }
-            mPreference.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+            mPreference.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, pre) => {
               if (err) {
                 console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
                 expect(!err).assertTrue();
               }
               expect("abc").assertEqual(pre);
-              mPreference.flush(function (err, val) {
+              mPreference.flush((err, val) => {
                 if (err) {
                   console.log("flush err =" + err + ", code =" + err.code + ", message =" + err.message);
                   expect(!err).assertTrue();
                 }
-                mPreference.delete(KEY_TEST_STRING_ELEMENT, function (err) {
+                mPreference.delete(KEY_TEST_STRING_ELEMENT, (err) => {
                   expect(!err).assertTrue();
                   console.log("Succeeded in deleting .");
                   done();
@@ -92,10 +92,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGet0000", 0, function (done) {
+    it("testMpreferencesGet0000", 0, (done: Function) => {
       console.log("testMpreferencesGet0000 begin.");
       try {
-        mPreference.get(123, function (err, val) {
+        mPreference.get(123, (err, val) => {
           console.log("get err");
           expect(!err).assertFail();
         });
@@ -116,10 +116,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGet0001", 0, function (done) {
+    it("testMpreferencesGet0001", 0, (done: Function) => {
       console.log("testMpreferencesGet0001 begin.");
       try {
-        mPreference.get(-1, 123, function (err, val) {
+        mPreference.get(-1, 123, (err, val) => {
           if (err) {
             console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
@@ -145,11 +145,11 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGet0002", 0, async function (done) {
+    it("testMpreferencesGet0002", 0, async (done: Function) => {
       console.log("testMpreferencesGet0002 begin.");
       try {
         await mPreference.put(KEY_TEST_INT_ELEMENT, 3);
-        mPreference.get(KEY_TEST_STRING_ELEMENT, 123, function (err, val) {
+        mPreference.get(KEY_TEST_STRING_ELEMENT, 123, (err, val) => {
           if (err) {
             console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
@@ -174,10 +174,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetALL0000", 0, function (done) {
+    it("testMpreferencesGetALL0000", 0, (done: Function) => {
       console.log("testMpreferencesGetALL0000 begin.");
       try {
-        mPreference.getAll(function (err, val) {
+        mPreference.getAll((err, val) => {
           if (err) {
             console.log("getAll err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
@@ -200,10 +200,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesHas0001", 0, function (done) {
+    it("testMpreferencesHas0001", 0, (done: Function) => {
       console.log("testMpreferencesHas0001 begin.");
       try {
-        mPreference.has(123, function (err, val) {
+        mPreference.has(123, (err, val) => {
           console.log("has err");
           expect(!err).assertFail();
         });
@@ -225,10 +225,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesHas0002", 0, function (done) {
+    it("testMpreferencesHas0002", 0, (done: Function) => {
       console.log("testMpreferencesHas0002 begin.");
       try {
-        mPreference.has(KEY_TEST_STRING_ELEMENT, function (err, val) {
+        mPreference.has(KEY_TEST_STRING_ELEMENT, (err, val) => {
           if (err) {
             console.log("has err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
@@ -252,10 +252,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPut0001", 0, function (done) {
+    it("testMpreferencesPut0001", 0, (done: Function) => {
       console.log("testMpreferencesPut0001 begin.");
       try {
-        mPreference.put(123, function (err) {
+        mPreference.put(123, (err) => {
           console.log("put err");
           expect(!err).assertFail();
         });
@@ -277,7 +277,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPut0002", 0, function (done) {
+    it("testMpreferencesPut0002", 0, (done: Function) => {
       console.log("testMpreferencesPut0002 begin.");
       try {
         mPreference.put(KEY_TEST_STRING_ELEMENT, "", async (err) => {
@@ -307,7 +307,7 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPut0003", 0, function (done) {
+    it("testMpreferencesPut0003", 0, (done: Function) => {
       console.log("testMpreferencesPut0003 begin.");
       try {
         mPreference.put(KEY_TEST_STRING_ELEMENT, " ", async (err) => {
@@ -336,10 +336,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPut0004", 0, function (done) {
+    it("testMpreferencesPut0004", 0, (done: Function) => {
       console.log("testMpreferencesPut0004 begin.");
       try {
-        mPreference.put(-1, 123, function (err) {
+        mPreference.put(-1, 123, (err) => {
           if (err) {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
@@ -366,10 +366,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPut0005", 0, function (done) {
+    it("testMpreferencesPut0005", 0, (done: Function) => {
       console.log("testMpreferencesPut0005 begin.");
       try {
-        mPreference.put(KEY_TEST_STRING_ELEMENT, null, function (err) {
+        mPreference.put(KEY_TEST_STRING_ELEMENT, null, (err) => {
           if (err) {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
@@ -396,10 +396,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesDelete0001", 0, function (done) {
+    it("testMpreferencesDelete0001", 0, (done: Function) => {
       console.log("testMpreferencesDelete0001 begin.");
       try {
-        mPreference.delete(1233, function (err) {
+        mPreference.delete(1233, (err) => {
           console.log("delete err");
           expect(!err).assertFail();
         });
@@ -421,10 +421,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesDelete0002", 0, function (done) {
+    it("testMpreferencesDelete0002", 0, (done: Function) => {
       console.log("testMpreferencesDelete0002 begin.");
       try {
-        mPreference.delete(KEY_TEST_STRING_ELEMENT, function (err) {
+        mPreference.delete(KEY_TEST_STRING_ELEMENT, (err) => {
           if (err) {
             console.log("delete err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
@@ -449,10 +449,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesClear0001", 0, function (done) {
+    it("testMpreferencesClear0001", 0, (done: Function) => {
       console.log("testMpreferencesClear0001 begin.");
       try {
-        mPreference.clear(function (err) {
+        mPreference.clear((err) => {
           if (err) {
             console.log("clear err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
@@ -476,10 +476,10 @@ export default function preferencesCallbackWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesFlush0001", 0, function (done) {
+    it("testMpreferencesFlush0001", 0, (done: Function) => {
       console.log("testMpreferencesFlush0001 begin.");
       try {
-        mPreference.flush(function (err) {
+        mPreference.flush((err) => {
           if (err) {
             console.log("flush err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();

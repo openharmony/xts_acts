@@ -63,7 +63,7 @@ export default function Grid_ReachStartAndEnd() {
      */
     it('Grid_ReachStartAndEnd_0100', 0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd_0100] START');
-      let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ReachStartAndEnd_grid')
+      let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ReachStartAndEnd_grid')
       let driver = Driver.create()
       await driver.swipe(
         Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
@@ -102,7 +102,7 @@ export default function Grid_ReachStartAndEnd() {
      */
     it('Grid_ReachStartAndEnd_0600', 0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd_0600] START');
-      let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ReachStartAndEnd_grid')
+      let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ReachStartAndEnd_grid')
       let driver = Driver.create()
       await driver.fling({
         x: Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),

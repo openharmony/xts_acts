@@ -19,21 +19,20 @@ import hilog from '@ohos.hilog';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
 import window from '@ohos.window';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default class TestAbility extends UIAbility {
-  onCreate(want, launchParam) {
-
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
     hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs = AbilityDelegatorRegistry.getArguments();
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-    globalThis.abilityDelegator = abilityDelegator
-    globalThis.context = this.context
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    AppStorage.setOrCreate<abilityDelegatorRegistry.AbilityDelegator>("abilityDelegator", abilityDelegator);
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
 
   onDestroy() {
@@ -49,7 +48,7 @@ export default class TestAbility extends UIAbility {
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
         JSON.stringify(data) ?? '');
-    });
+    })
   }
 
   onWindowStageDestroy() {

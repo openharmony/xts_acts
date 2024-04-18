@@ -588,5 +588,71 @@ export default function ApplicationContext() {
         done();
       }
     });
+
+    /**
+     * @tc.number    : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100
+     * @tc.name      : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100
+     * @tc.desc      : test createSystemHspModuleResourceManager failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100", 0, async (done: Function) => {
+      try {
+        console.info("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100 begin");
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
+        expect(abilityContext != null).assertTrue();
+
+        abilityContext.createSystemHspModuleResourceManager("bundleName", "module");
+      } catch (err) {
+        console.log(`SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100 fail: ` + err);
+        expect(err.code === 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200
+     * @tc.name      : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200
+     * @tc.desc      : test createSystemHspModuleResourceManager failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200", 0, async (done: Function) => {
+      try {
+        console.info("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200 begin");
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
+        expect(abilityContext != null).assertTrue();
+
+        abilityContext.createSystemHspModuleResourceManager("", "module");
+      } catch (err) {
+        console.log(`SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200 fail: ` + err);
+        expect(err.code === 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300
+     * @tc.name      : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300
+     * @tc.desc      : test createSystemHspModuleResourceManager failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300", 0, async (done: Function) => {
+      try {
+        console.info("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300 begin");
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
+        expect(abilityContext != null).assertTrue();
+
+        abilityContext.createSystemHspModuleResourceManager("bundleName", "");
+      } catch (err) {
+        console.log(`SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300 fail: ` + err);
+        expect(err.code === 401).assertTrue();
+        done();
+      }
+    });
   })
 }

@@ -30,7 +30,7 @@ export default class MainAbility extends Ability {
         // Main window is created, set main page for this ability
         console.info("ImExtAbility onWindowStageCreate");
         globalThis.abilityContext = this.context;
-        windowStage.setUIContent(this.context, "pages/index/index", null);
+        windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null);
         console.info("ImExtAbility onWindowStageCreate finish");
     }
 

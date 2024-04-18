@@ -12,43 +12,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.app.ability.UIAbility'
-import commonEvent from '@ohos.commonEvent'
+import Ability from '@ohos.app.ability.UIAbility';
+import commonEvent from '@ohos.commonEvent';
+import Want from '@ohos.app.ability.Want';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import window from '@ohos.window';
+
 function PublishCallBackOne() {
-    console.debug("====>Publish CallBack ACTS_Start_CommonEvent====>");
-    console.debug("====>close this context====>4====>");
+  console.debug("====>Publish CallBack ACTS_Start_CommonEvent====>");
+  console.debug("====>close this context====>4====>");
 }
+
 export default class MainAbility3 extends Ability {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.log("MainAbility3 onCreate");
+  }
 
-    onCreate(want, launchParam) {
-        console.log("MainAbility3 onCreate");
-    }
+  onDestroy() {
+    // Ability is destroying, release resources for this ability
+    console.log("MainAbility3 onDestroy");
+  }
 
-    onDestroy() {
-        // Ability is destroying, release resources for this ability
-        console.log("MainAbility3 onDestroy");
-    }
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.log("MainAbility3 onWindowStageCreate");
+    windowStage.loadContent( "pages/index3", null);
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("MainAbility3 onWindowStageCreate");
-        windowStage.setUIContent(this.context, "pages/index3", null);
-        globalThis.ability4Context = this.context;
-    }
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    console.log("MainAbility3 onWindowStageDestroy");
+  }
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log("MainAbility3 onWindowStageDestroy");
-    }
+  onForeground() {
+    // Ability has brought to foreground
+    console.log("MainAbility3 onForeground");
+    commonEvent.publish("ACTS_Start_CommonEvent", PublishCallBackOne);
+  }
 
-    onForeground() {
-        // Ability has brought to foreground
-        console.log("MainAbility3 onForeground");
-        commonEvent.publish("ACTS_Start_CommonEvent", PublishCallBackOne);
-    }
-
-    onBackground() {
-        // Ability has back to background
-        console.log("MainAbility3 onBackground");
-    }
-};
+  onBackground() {
+    // Ability has back to background
+    console.log("MainAbility3 onBackground");
+  }
+}

@@ -168,7 +168,7 @@ struct sslErrorHandler {
         .onSearchResultReceive(ret => {
           if (ret) {
             console.log("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
-            "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
+              "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
             this.cancel_result = ret.numberOfMatches
           }
         })

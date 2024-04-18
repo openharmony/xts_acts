@@ -20,22 +20,25 @@ import router from '@ohos.router'
 @Component
 struct MarginPageLength {
   @State _margin: number | string = 0
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State targetGroupView: string = router.getParams() ? router.getParams()['view']['targetGroupView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
-  @State referenceComponentKey: string = router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
-  @State childWidth: number = router.getParams() ? router.getParams()['view']['childWidth'] : 0
-  @State childHeight: number = router.getParams() ? router.getParams()['view']['childHeight'] : 0
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State targetGroupView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetGroupView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
+  @State referenceComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
+  @State childWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['childWidth'] : 0
+  @State childHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['childHeight'] : 0
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
 
   onPageShow() {
     console.info('Margin page show called ')
-    AttrsManager.registerDataChange(value => this._margin = value.margin)
+    AttrsManager.registerDataChange((value: ESObject) => {
+      this._margin = value.margin
+    })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .margin(this._margin)
     .width(this.childWidth)
     .height(this.childHeight)
@@ -200,7 +203,7 @@ struct MarginPageLength {
             Marquee({
               start: true,
               step: 50,
-              loop: Infinity,
+              loop: Number.MAX_VALUE,
               fromStart: true,
               src: 'Running Marquee starts rolling'
             }).commonStyle()
@@ -366,19 +369,19 @@ struct MarginPageLength {
           } else if (this.targetView == 'Scroll') {
             Scroll() {
               Column() {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                   Text('Scroll' + item.toString())
                     .width('90%')
                     .height(50)
                     .backgroundColor(Color.White)
                     .textAlign(TextAlign.Center)
-                }, item => item)
+                }, (item: number) => item.toString())
               }.width('100%')
             }.scrollBar(BarState.On).commonStyle()
           } else if (this.targetView == 'SideBarContainer') {
             SideBarContainer(SideBarContainerType.Embed) {
               Column() {
-                ForEach([1, 2, 3], (item) => {
+                ForEach([1, 2, 3], (item: number) => {
                   Column({ space: 5 }) {
                     Image($r('app.media.icon')).width(50).height(50)
                     Text('Index0' + item).fontSize(25)
@@ -395,9 +398,9 @@ struct MarginPageLength {
             }.commonStyle()
           } else if (this.targetView == 'Swiper') {
             Swiper() {
-              ForEach([1, 2, 3], (item: string) => {
+              ForEach([1, 2, 3], (item: number) => {
                 Text('Swiper' + item).width('90%').height(50)
-              }, item => item)
+              }, (item: number) => item.toString())
             }.indicator(true).backgroundColor(Color.White).commonStyle()
           } else if (this.targetView == 'Tabs') {
             Tabs() {
@@ -414,7 +417,7 @@ struct MarginPageLength {
                     Image($r('app.media.icon')).width(50).height(50).objectFit(ImageFit.Fill)
                   }
                 }
-              }, item => item)
+              }, (item: number) => item.toString())
             }.commonStyle()
           }
         }

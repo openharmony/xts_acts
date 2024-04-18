@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@observed
+@ObservedV2
 class InfoA {
-  @track selectedDate: Date = new Date('2021-08-08')
+  @Trace selectedDate: Date = new Date('2021-08-08')
 }
 
 @Entry

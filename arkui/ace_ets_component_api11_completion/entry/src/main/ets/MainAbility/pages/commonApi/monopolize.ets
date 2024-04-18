@@ -15,8 +15,8 @@
 @Entry
 @Component
 struct monopolize1 {
-  @State message: string = 'set monopolizeEvents false'
-  @State monopolize: boolean = false
+  @State message: string = 'set monopolizeEvents false';
+  @State monopolize: boolean = false;
 
   build() {
     Column() {
@@ -24,15 +24,15 @@ struct monopolize1 {
       Column() {
         Column()
           .key('monopolize_column')
-        .monopolizeEvents(this.monopolize)
-        .width('100%')
-        .height('40%')
-        .backgroundColor(Color.Blue)
-        .onTouch((event:TouchEvent)=>{
-          if (event.type == TouchType.Down) {
-            console.log("inner column touch down")
-          }
-        })
+          .monopolizeEvents(this.monopolize)
+          .width('100%')
+          .height('40%')
+          .backgroundColor(Color.Blue)
+          .onTouch((event: TouchEvent) => {
+            if (event.type == TouchType.Down) {
+              console.log("inner column touch down")
+            }
+          })
       }
     }
     .height('100%')

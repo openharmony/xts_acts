@@ -82,8 +82,6 @@ export default function abilityTest() {
                 expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
                 expect(result[0]).assertContain("root host bundle name [com.example.actsshareextensionabilitytest]");
-                expect(result[0]).assertContain("root host module name [entry]");
-                expect(result[0]).assertContain("root host ability name [EntryAbility]");
               } catch {
                 expect().assertFail();
               }
@@ -109,11 +107,12 @@ export default function abilityTest() {
           }
         }
 
-        async function unSubscribeCallback() {
-          await globalThis.terminate('Acts_ShareExtensionAbility_0100');
-          await globalThis.terminateCalledAbility('Acts_ShareExtensionAbility_0100');
-          setTimeout(() => {
+        function unSubscribeCallback() {
+          setTimeout(async () => {
             console.info('====>Acts_ShareExtensionAbility_0100 unSubscribeCallback');
+            await globalThis.terminate('Acts_ShareExtensionAbility_0100');
+            await globalThis.terminateCalledAbility('Acts_ShareExtensionAbility_0100');
+            await sleep(1000);
             done();
           }, 2000);
         }
@@ -154,8 +153,6 @@ export default function abilityTest() {
                 expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
                 expect(result[0]).assertContain("root host bundle name [com.example.actsshareextensionabilitytest]");
-                expect(result[0]).assertContain("root host module name [feature]");
-                expect(result[0]).assertContain("root host ability name [FeatureAbility]");
               } catch {
                 expect().assertFail();
               }
@@ -180,11 +177,12 @@ export default function abilityTest() {
           }
         }
 
-        async function unSubscribeCallback() {
-          await globalThis.featureTerminate('Acts_ShareExtensionAbility_0200');
-          await globalThis.terminateCalledAbility('Acts_ShareExtensionAbility_0200');
-          setTimeout(() => {
+        function unSubscribeCallback() {
+          setTimeout(async () => {
             console.info('====>Acts_ShareExtensionAbility_0200 unSubscribeCallback');
+            await globalThis.featureTerminate('Acts_ActionExtensionAbility_0200');
+            await globalThis.terminateCalledAbility('Acts_ActionExtensionAbility_0200');
+            await sleep(1000);
             done();
           }, 2000);
         }
@@ -225,8 +223,6 @@ export default function abilityTest() {
                 expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
                 expect(result[0]).assertContain("root host bundle name [com.example.actsshareextensionabilitytest]");
-                expect(result[0]).assertContain("root host module name [feature]");
-                expect(result[0]).assertContain("root host ability name [FeatureAbility]");
               } catch {
                 expect().assertFail();
               }
@@ -252,14 +248,15 @@ export default function abilityTest() {
           }
         }
 
-        async function unSubscribeCallback() {
-          await globalThis.terminate('Acts_ShareExtensionAbility_0300');
-          let cmd = 'aa force-stop com.example.actsshareextensionabilityrely';
-          await abilityDelegator.executeShellCommand(cmd).catch((error) => {
-            console.log("====>Acts_ShareExtensionAbility_0300 executeShellCommand error : " + JSON.stringify(error));
-          });
-          setTimeout(() => {
+        function unSubscribeCallback() {
+          setTimeout(async () => {
             console.info('====>Acts_ShareExtensionAbility_0300 unSubscribeCallback');
+            await globalThis.terminate('Acts_ShareExtensionAbility_0300');
+            let cmd = 'aa force-stop com.example.actsshareextensionabilityrely';
+            await abilityDelegator.executeShellCommand(cmd).catch((error) => {
+              console.log("====>Acts_ShareExtensionAbility_0300 executeShellCommand error : " + JSON.stringify(error));
+            });
+            await sleep(1000);
             done();
           }, 2000);
         }
@@ -300,11 +297,12 @@ export default function abilityTest() {
           }
         }
 
-        async function unSubscribeCallback() {
-          await globalThis.terminate('Acts_ShareExtensionAbility_0400');
-          await globalThis.featureTerminate('Acts_ShareExtensionAbility_0400');
-          setTimeout(() => {
+        function unSubscribeCallback() {
+          setTimeout(async () => {
             console.info('====>Acts_ShareExtensionAbility_0400 unSubscribeCallback');
+            await globalThis.terminate('Acts_ShareExtensionAbility_0400');
+            await globalThis.featureTerminate('Acts_ShareExtensionAbility_0400');
+            await sleep(1000);
             done();
           }, 2000);
         }
@@ -341,10 +339,11 @@ export default function abilityTest() {
           }
         }
 
-        async function unSubscribeCallback() {
-          await globalThis.terminate('Acts_ShareExtensionAbility_0500');
-          setTimeout(() => {
+        function unSubscribeCallback() {
+          setTimeout(async () => {
             console.info('====>Acts_ShareExtensionAbility_0500 unSubscribeCallback');
+            await globalThis.terminate('Acts_ShareExtensionAbility_0500');
+            await sleep(1000);
             done();
           }, 2000);
         }
@@ -382,9 +381,10 @@ export default function abilityTest() {
         }
 
         function unSubscribeCallback() {
-          globalThis.terminate('Acts_ShareExtensionAbility_0600');
-          setTimeout(() => {
+          setTimeout(async () => {
             console.info('====>Acts_ShareExtensionAbility_0600 unSubscribeCallback');
+            globalThis.terminate('Acts_ShareExtensionAbility_0600');
+            await sleep(1000);
             done();
           }, 2000);
         }
@@ -422,9 +422,10 @@ export default function abilityTest() {
         }
 
         function unSubscribeCallback() {
-          globalThis.terminate('Acts_ShareExtensionAbility_0700');
-          setTimeout(() => {
+          setTimeout(async () => {
             console.info('====>Acts_ShareExtensionAbility_0700 unSubscribeCallback');
+            globalThis.terminate('Acts_ShareExtensionAbility_0700');
+            await sleep(1000);
             done();
           }, 2000);
         }

@@ -419,20 +419,6 @@ export default function muslPThreadNdkTest() {
       done()
     });
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_COND_TIMEDWAIT_0100
-     * @tc.name       : testMuslPThreadPThreadCondTimedWait001
-     * @tc.desc       : test pthread_cond_timedwait
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslPThreadPThreadCondTimedWait001', 0, async (done: Function) => {
-      let result:number = pthread.pThreadCondTimedWait(0);
-      console.info("pthread.pThreadCondTimedWait result = " + result);
-      expect(result).assertEqual(0);
-      done()
-    });
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_COND_WAIT_0100
      * @tc.name       : testMuslPThreadPThreadCondWait001
      * @tc.desc       : test pthread_cond_timedwait

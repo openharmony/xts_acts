@@ -33,7 +33,7 @@ struct webViewControllerPart2 {
   @State FileSelectorParamGetGetMode: number = 100
   @State FileSelectorParamGetGetAcceptType: Array<String> = []
   @State userAgent: string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 " +
-  "(KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
+    "(KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
   @State uri: string = "file://docs/storage/Users/currentUser/Documents/1.json";
   @State FileSelectorParamGetIsCapture: boolean = true
   @State FileSelectorResultHandleFileList: Array<String> = []
@@ -111,7 +111,7 @@ struct webViewControllerPart2 {
               try {
                 this.controller.loadData(
                   "<html><head><title>LoadData</title></head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
+                    "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
                   "text/html",
                   "UTF-8"
                 );
@@ -483,7 +483,7 @@ struct webViewControllerPart2 {
         .onSearchResultReceive(ret => {
           if (ret) {
             console.log("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
-            "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
+              "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
             this.numberOfMatches = ret.numberOfMatches
             this.searchNext = true
           }

@@ -106,6 +106,23 @@ export default function requestUploadJSUnit() {
           console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 uploadFile: " + uploadTask);
           try{
             expect(true).assertEqual(uploadTask != undefined);
+            uploadTask.on('fail', (TaskState) => {
+              try {
+                for (let i = 0; i < TaskState.length; i++) {
+                  console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 fail TaskState = " + JSON.stringify(TaskState[i]));
+                  console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 fail TaskState.path = " + TaskState[i].path);
+                  console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 fail TaskState.responseCode = " + TaskState[i].responseCode);
+                  console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 fail TaskState.TaskState.message = " + TaskState[i].message);
+                  expect(typeof (TaskState[i].path) == "string").assertEqual(true);
+                  expect(typeof (TaskState[i].responseCode) == "number").assertEqual(true);
+                  expect(typeof (TaskState[i].message) == "string").assertEqual(true);
+                }
+                console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 TaskState is correct");
+              } catch (err) {
+                console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 TaskState err: " + JSON.stringify(err));
+              }
+            });
+            uploadTask.off('fail');
           }catch(e){
             console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 except error: " + e);
           }
