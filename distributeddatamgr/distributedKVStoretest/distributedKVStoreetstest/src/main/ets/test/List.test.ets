@@ -21,6 +21,8 @@ import kvStoreBackupCallbackJsunittest from './KvStoreBackupCallbackEtsTest';
 import SingleKvStoreCallbackTest from './SingleKvStoreKVCallbackEtsTest';
 import SingleKvStorePromiseTest from './SingleKvStoreKVPromiseEtsTest';
 import singleKvStoreEnumTest from './SingleKvStoreKVPromiseEtsTest';
+import KVManagerPromiseTest from './KvManagerKVPromiseEtsTest';
+import kvManagerCallbackTest from './KvManagerKVCallbackEts';
 
 export default function testsuite() {
   deviceKvStoreCallbackTest()
@@ -31,4 +33,6 @@ export default function testsuite() {
   SingleKvStoreCallbackTest()
   SingleKvStorePromiseTest()
     singleKvStoreEnumTest()
+  KVManagerPromiseTest()
+  kvManagerCallbackTest()
 }
