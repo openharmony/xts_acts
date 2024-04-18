@@ -14,6 +14,11 @@
  */
 import XComponentNodeChageJsSuit from './XComponentTest/XComponentNodeChageJsSuit.test';
 
+import videoJsunit from './video/VideoJsunit.test';
+
 export default function testsuite() {
   XComponentNodeChageJsSuit()
+
+  videoJsunit()
+
 }

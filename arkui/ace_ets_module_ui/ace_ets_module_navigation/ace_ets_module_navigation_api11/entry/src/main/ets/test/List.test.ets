@@ -26,6 +26,10 @@ import NavigationAttr from './NavigationTest/NavigationAttr.test'
 import navigationApi1 from './NavigationTest/navigationApi/navigationApi1.test'
 import sidebar from './SideBarContainerTest/SideBar.test'
 
+import navigationJsunit from './NavigationTest/NavigationJsunit.test'
+import stepperJsunit1 from './stepperTest/StepperJsunit1.test'
+import navigatorJsunit from './Navigator/NavigatorJsunit.test'
+
 export default function testsuite() {
   stepperJsunit();
   NavigationParamTest();
@@ -40,5 +44,9 @@ export default function testsuite() {
   NavigationAttr()
   navigationApi1()
   sidebar()
+
+  navigationJsunit()
+  stepperJsunit1()
+  navigatorJsunit()
 
 }

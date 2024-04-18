@@ -542,6 +542,15 @@ import Grid_Row_Breakpoints_Incremental
 import Grid_Row_Breakpoints_Negative from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Negative.test';
 import Grid_Row_Breakpoints_Quantity from './GridTest/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Quantity.test';
 import GridRow_onBreakpoint from './GridTest/Grid_Row/onBreakpointChange/onBreakpointChange.test';
+
+import colorGradientJsunit from './Row/ColorGradientJsunit.test';
+import enumsImageJsunit from './Row/EnmusImageJsunit.test';
+import enumsVerticalAlignJsunit from './Row/EnmusVerticalAlignJsunit.test';
+import enmusHorizontalAlignJsunit from './Column/EnmusHorizontalAlignJsunit.test';
+import transFormJsunit from './Row/TransFormJsunit.test';
+import VisibilityJsunit from './Row/VisibilityJsunit.test';
+import rowJsunit from './Row/RowJsunit.test';
+
 import Grid_Col_Span_Default from './GridColTest/Grid_Col_Span/Grid_Col_Span_Default.test.ets';
 import Grid_Col_Span_Number from './GridColTest/Grid_Col_Span/Grid_Col_Span_Number.test.ets';
 import Grid_Col_Span_GridColColumnOption from './GridColTest/Grid_Col_Span/Grid_Col_Span_GridColColumnOption.test.ets';
@@ -1007,6 +1016,14 @@ export default function testsuite() {
   Grid_Row_Breakpoints_Negative()
   Grid_Row_Breakpoints_Quantity()
   GridRow_onBreakpoint()
+
+  colorGradientJsunit()
+  enumsImageJsunit()
+  enmusHorizontalAlignJsunit()
+  transFormJsunit()
+  VisibilityJsunit()
+  rowJsunit()
+  
   Grid_Col_Span_Default()
   Grid_Col_Span_Number()
   Grid_Col_Span_GridColColumnOption()

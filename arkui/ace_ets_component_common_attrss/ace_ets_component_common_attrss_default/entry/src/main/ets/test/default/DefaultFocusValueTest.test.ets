@@ -16,6 +16,20 @@
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  parentWidth: number;
+  parentHeight: number;
+}
+
+class TestValue {
+  describe: string;
+  expectValue: ESObject;
+}
+
 export default function defaultFocusValueTest() {
 
   //Component to be tested
@@ -69,7 +83,7 @@ export default function defaultFocusValueTest() {
   let parentWidth = 300;
   let parentHeight = 600;
 
-  let pageConfig = {
+  let pageConfig:PageConfig = {
     testName: 'test',
     pageName: 'DefaultFocusValuePage',
     pageUrl: 'MainAbility/pages/default/DefaultFocusValuePage',
@@ -79,7 +93,7 @@ export default function defaultFocusValueTest() {
   }
 
   //Test content and expected results
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'TabIndex',
     expectValue: {
       tabIndex: 0
@@ -103,7 +117,7 @@ export default function defaultFocusValueTest() {
 
 
   describe('DefaultFocusValueTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       if (data.testValue.describe == 'TabIndex') {
         // Test tabIndex defaults
         console.info('[' + data.caseTag + ']data.viewObj.$attrs.tabIndex:' + data.viewObj.$attrs.tabIndex);
