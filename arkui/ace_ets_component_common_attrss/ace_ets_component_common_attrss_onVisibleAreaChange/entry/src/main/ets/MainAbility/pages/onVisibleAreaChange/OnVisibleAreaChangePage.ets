@@ -23,19 +23,19 @@ struct OnVisibleAreaChangePage {
   @State _ratiosLeft: number = 0.0;
   @State _ratiosRight: number = 0.0;
   @State _compositionValue: string = '';
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State compareTextKey: string = router.getParams() ? router.getParams()['view']['compareTextKey'] : ''
-  @State compareTextWidth: number = router.getParams() ? router.getParams()['view']['compareTextWidth'] : 0
-  @State compareTextHeight: number = router.getParams() ? router.getParams()['view']['compareTextHeight'] : 0
-  @State scrollWidth: number = router.getParams() ? router.getParams()['view']['scrollWidth'] : 0
-  @State scrollHeight: number = router.getParams() ? router.getParams()['view']['scrollHeight'] : 0
-  @State columnWidth: number = router.getParams() ? router.getParams()['view']['columnWidth'] : 0
-  @State columnHeight: number = router.getParams() ? router.getParams()['view']['columnHeight'] : 0
-  @State buttonWidth: number = router.getParams() ? router.getParams()['view']['buttonWidth'] : 0
-  @State buttonHeight: number = router.getParams() ? router.getParams()['view']['buttonHeight'] : 0
-  @State componentWidth: number = router.getParams() ? router.getParams()['view']['componentWidth'] : 0
-  @State componentHeight: number = router.getParams() ? router.getParams()['view']['componentHeight'] : 0
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State compareTextKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['compareTextKey'] : ''
+  @State compareTextWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['compareTextWidth'] : 0
+  @State compareTextHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['compareTextHeight'] : 0
+  @State scrollWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['scrollWidth'] : 0
+  @State scrollHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['scrollHeight'] : 0
+  @State columnWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['columnWidth'] : 0
+  @State columnHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['columnHeight'] : 0
+  @State buttonWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['buttonWidth'] : 0
+  @State buttonHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['buttonHeight'] : 0
+  @State componentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['componentWidth'] : 0
+  @State componentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['componentHeight'] : 0
   textTimerController: TextTimerController = new TextTimerController() //Use by TextTimer
   private scroller: Scroller = new Scroller()
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G']; //Use by AlphabetIndexer TextPicker
@@ -43,7 +43,7 @@ struct OnVisibleAreaChangePage {
 
   onPageShow() {
     console.info('OnVisibleAreaChangePage show called ')
-    AttrsManager.registerDataChange(value => {
+    AttrsManager.registerDataChange((value: ESObject) => {
       if (value.yOffSetValueLeave != undefined) {
         this._yOffSetValue = value.yOffSetValueLeave
       }
@@ -64,7 +64,8 @@ struct OnVisibleAreaChangePage {
   /*
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .key(this.componentKey)
     .width(this.componentWidth)
     .height(this.componentHeight)
@@ -360,22 +361,25 @@ struct OnVisibleAreaChangePage {
           } else if (this.targetView == 'Scroll') {
             Scroll() {
               Column() {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item:string) => {
                   Text('Scroll' + item.toString())
                     .width('90%')
                     .height(150)
                     .backgroundColor(Color.White)
                     .textAlign(TextAlign.Center)
-                }, item => item)
+                }, (item:string) => item)
               }.width('100%')
             }.scrollBar(BarState.On).commonStyle()
           } else if (this.targetView == 'SideBarContainer') {
             SideBarContainer(SideBarContainerType.Embed) {
               Column() {
-                ForEach([1, 2, 3], (item) => {
+                ForEach([1, 2, 3], (item:string) => {
                   Column({ space: 5 }) {
-                    Image($r('app.media.icon')).width(50).height(50)
-                    Text('Index0' + item).fontSize(25)
+                    Image($r('app.media.icon'))
+                      .width(50)
+                      .height(50)
+                    Text('Index0' + item)
+                      .fontSize(25)
                   }
                 })
               }.width('100%')
@@ -383,7 +387,8 @@ struct OnVisibleAreaChangePage {
               .backgroundColor(Color.Green)
 
               Column() {
-                Text('SideBarContainer content').fontSize(25)
+                Text('SideBarContainer content')
+                  .fontSize(25)
               }.backgroundColor(Color.Orange)
             }.commonStyle()
           } else if (this.targetView == 'Stack') {
@@ -394,7 +399,7 @@ struct OnVisibleAreaChangePage {
             Swiper() {
               ForEach([1, 2, 3], (item: string) => {
                 Text('Swiper' + item)
-              }, item => item)
+              }, (item:string) => item)
             }
             .indicator(true)
             .backgroundColor(Color.Pink)

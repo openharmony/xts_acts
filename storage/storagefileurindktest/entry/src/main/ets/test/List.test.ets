@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import getpathfromuriNDKTest from './getpathfromuri.test'
+import ActsStorageFileUriNdkTest from './getpathfromuri.test'
 export default function testsuite() {
-  getpathfromuriNDKTest()
+  ActsStorageFileUriNdkTest()
 }

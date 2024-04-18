@@ -7966,8 +7966,8 @@ describe('DecodeEncodeTest', function () {
      */
     it('testEncodeInto042', 0, function () {
         let that = new util.TextEncoder('euc-jp');
-        let result = that.encodeInto('abc哈熠');
-        let res = new Uint8Array([97,98,99,210,253,143,202,170]);
+        let result = that.encodeInto('こんにちは、世界!');
+        let res = new Uint8Array([164,179,164,243,164,203,164,193,164,207,161,162,192,164,179,166,33]);
         for (let i = 0; i < result.length; i++) {
           expect(result[i]).assertEqual(res[i]);
         }
@@ -7983,8 +7983,8 @@ describe('DecodeEncodeTest', function () {
      */
     it('testEncodeInto043', 0, function () {
         let that = new util.TextEncoder('euc-kr');
-        let result = that.encodeInto('abc哈熠');
-        let res = new Uint8Array([97,98,99,249,235,175,254]);
+        let result = that.encodeInto('안녕, 세상!');
+        let res = new Uint8Array([190,200,179,231,44,32,188,188,187,243,33]);
         for (let i = 0; i < result.length; i++) {
           expect(result[i]).assertEqual(res[i]);
         }

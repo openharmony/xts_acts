@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-@Styles function itemStyle() {
+@Styles
+function itemStyle() {
   .width(336)
   .height(621)
   .margin({ top: 48, left: 12 })
@@ -21,7 +22,8 @@
   .backgroundColor('#FFFFFF')
 }
 
-@Extend(Text) function itemTextStyle() {
+@Extend(Text)
+function itemTextStyle() {
   .fontColor('#182431')
   .fontSize(36)
   .fontWeight(500)
@@ -62,6 +64,7 @@ export struct StepperItemView {
       .status(this.firstState)
       .position(this._position)
       .key(this.componentKey)
+
       StepperItem() {
         Column() {
           Text('Page Two')

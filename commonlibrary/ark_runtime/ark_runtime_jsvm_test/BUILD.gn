@@ -25,7 +25,16 @@ ohos_js_hap_suite("ActsArkRuntimeJsvmTest") {
   hap_name = "ActsArkRuntimeJsvmTest"
   subsystem_name = "arkui"
   part_name = "napi"
-  shared_libraries = [ "./entry/src/main/cpp:jsvmtest" ]
+  shared_libraries = [
+    "./entry/src/main/cpp:jsvmtest",
+    ":libcppsharedso",
+  ]
+}
+
+ohos_prebuilt_shared_library("libcppsharedso") {
+  source = rebase_path(libcxx_ndk_shared_file)
+  subsystem_name = "arkui"
+  part_name = "napi"
 }
 
 ohos_js_assets("ace_third_ets_assets") {
