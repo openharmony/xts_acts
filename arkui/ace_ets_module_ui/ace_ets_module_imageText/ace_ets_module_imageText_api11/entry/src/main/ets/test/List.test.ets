@@ -140,6 +140,7 @@ import propJsunit from './textTest/PropJsunit.test';
 import imageJsunit from './imageTest/ImageJsunit.test';
 import spanJsunit from './spanTest/SpanJsunit.test';
 import textJsunit from './textTest/TextJsunit.test';
+import outline from './textTest/outline.test';
 
 export default function testsuite() {
   TextStateJsunit();
@@ -264,4 +265,5 @@ export default function testsuite() {
   imageJsunit()
   spanJsunit()
   textJsunit()
+  outline()
 }

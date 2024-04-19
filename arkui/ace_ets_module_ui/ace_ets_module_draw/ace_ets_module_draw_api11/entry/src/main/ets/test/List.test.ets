@@ -20,6 +20,8 @@ import CanvasShaderTest from './CanvasText/CanvasShader.test'
 import CanvasColorTest from './CanvasText/CanvasColor.test'
 import OffScreenCanvasTest from './OffScreenCanvasTest/OffScreenCanvas.test'
 
+import drawCanvas from './CanvasText/drawCanvas.test'
+
 export default function testsuite() {
   ellipseJsunit();
   CanvasAPIUnitTest();
@@ -28,4 +30,5 @@ export default function testsuite() {
   CanvasShaderTest();
   CanvasColorTest();
   OffScreenCanvasTest();
+  drawCanvas()
 }

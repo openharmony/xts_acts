@@ -568,6 +568,7 @@ import flexJsunit from './FlexTest/FlexJsunit.test';
 import gridContainerJsunit from './GridTest/GridContainerJsunit.test';
 import rowSplitJsunit from './RowTest/RowSplitJsunit.test';
 import StackJsunit from './Stack/StackJsunit.test';
+import useShadowBatching from './ColumnTest/useShadowBatching.test';
 import RelativeContainer_Level from './RelativeContainer/RelativeContainer_Level/RelativeContainer_Level.test.ets';
 import RelativeContainer_Vertical
   from './RelativeContainer/RelativeContainer_Vertical/RelativeContainer_Vertical.test.ets';
@@ -1072,6 +1073,7 @@ export default function testsuite() {
   gridContainerJsunit()
   rowSplitJsunit()
   StackJsunit()
+  useShadowBatching()
   RelativeContainer_Level()
   RelativeContainer_Vertical()
   RelativeContainer_AnchorPoint_Absent()
