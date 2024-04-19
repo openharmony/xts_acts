@@ -1,6 +1,9 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+        "MainAbility/pages/text/stageFont",
+        "MainAbility/pages/text/stageMediaquery",
+
         "MainAbility/pages/text/textStyle",
         "MainAbility/pages/text/TextState",
         "MainAbility/pages/marquee/marquee",
