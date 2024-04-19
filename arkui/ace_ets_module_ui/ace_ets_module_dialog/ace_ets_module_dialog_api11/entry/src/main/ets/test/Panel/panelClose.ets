@@ -25,7 +25,7 @@ export default function panelTest() {
       // This API supports only one parameter: preset action function.
       console.info("panel beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/panel/Index',
+        url: 'MainAbility/pages/Panel/Index',
       }
       try {
         router.clear();
