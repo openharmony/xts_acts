@@ -21,8 +21,10 @@
     "description": "$string:module_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
+      "tablet",
       "default",
-      "tablet"
+      "phone",
+      "2in1"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -37,6 +39,7 @@
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
+        "orientation": "portrait",
         "skills": [
           {
             "entities": [
