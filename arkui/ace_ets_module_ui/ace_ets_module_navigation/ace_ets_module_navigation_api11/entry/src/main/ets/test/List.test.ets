@@ -72,7 +72,11 @@ import navigationJsunit from './NavigationTest/NavigationJsunit.test'
 import stepperJsunit1 from './stepperTest/StepperJsunit1.test'
 import navigatorJsunit from './Navigator/NavigatorJsunit.test'
 
+import navigationTypeTest from './NavigationTest/navigationType.test'
+
 export default function testsuite() {
+  navigationTypeTest();
+
   stepperJsunit();
   NavigationParamTest();
   NavigationApi();

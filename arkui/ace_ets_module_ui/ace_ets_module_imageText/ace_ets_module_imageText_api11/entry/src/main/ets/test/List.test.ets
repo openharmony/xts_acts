@@ -142,7 +142,14 @@ import spanJsunit from './spanTest/SpanJsunit.test';
 import textJsunit from './textTest/TextJsunit.test';
 import outline from './textTest/outline.test';
 
+import stageFontTest from './textTest/stageFont.test';
+import stageMediaquery from './textTest/stageMediaquery.test';
+
+
 export default function testsuite() {
+  stageFontTest();
+  stageMediaquery();
+
   TextStateJsunit();
   richEditorApi4();
   richEditorApi5();

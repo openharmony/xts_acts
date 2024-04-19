@@ -47,7 +47,17 @@ import AlertDialog1 from './alertDialogTest/AlertDialog1.test'
 import AlertDialogFalse from './alertDialogTest/AlertDialogFalse.test'
 import AlertDialogTrue from './alertDialogTest/AlertDialogTrue.test'
 
+import bindPopupOffsetTest from './promptActionTest/bindPopupOffset.test'
+import stagePromptTest from './promptActionTest/stagePrompt.test'
+import stageActionSheet from './actionSheetTest/stageActionSheet.test'
+import stageAlertDialog from './alertDialogTest/stageAlertDialog.test'
+
 export default function testsuite() {
+  bindPopupOffsetTest();
+  stagePromptTest();
+  stageActionSheet();
+  stageAlertDialog();
+
   CustomDialogMaskTest()
   menu()
   menuTest()

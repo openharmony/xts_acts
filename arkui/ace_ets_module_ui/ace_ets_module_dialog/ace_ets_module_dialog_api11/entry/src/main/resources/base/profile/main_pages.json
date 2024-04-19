@@ -1,6 +1,10 @@
 {
   "src": [
     "MainAbility/pages/index/index",
+    "MainAbility/pages/promptAction/bindPopupOffset",
+    "MainAbility/pages/promptAction/stagePrompt",
+    "MainAbility/pages/actionSheet/stageActionSheet",
+    "MainAbility/pages/AlertDialog/stageAlertDialog",
     "MainAbility/pages/promptAction/CustomDialogMask",
     "MainAbility/pages/Menu/menu",
     "MainAbility/pages/Menu/menufirst",
