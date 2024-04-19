@@ -22,7 +22,16 @@ import accessVNTest from './AccessibleTest/accessVNTest.test';
 import dymaticTest from "./attributeModifierTest/dymatic.test"
 import outlineTest from './outlineTest/outlineTest.test';
 
+
+
+import noBarrierComponentsTest from './noBarrierComponents.test';
+import noBarriersGroupTest from './noBarriersGroup.test';
+
 export default function testsuite() {
+  noBarrierComponentsTest();
+  noBarriersGroupTest();
+
+
   overLayJsunit();
   zIndexJsunit();
   visibilityJsunit();

@@ -3,6 +3,8 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/geometryTransition/geometryTransition",
         "MainAbility/pages/RouteType/RouteType1",
-        "MainAbility/pages/RouteType/RouteType2"
+        "MainAbility/pages/RouteType/RouteType2",
+        "MainAbility/pages/animateto",
+        "MainAbility/pages/animationCurve"
     ]
 }

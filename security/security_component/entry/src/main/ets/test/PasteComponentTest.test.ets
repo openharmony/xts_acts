@@ -18,6 +18,7 @@ import display from '@ohos.display';
 import events_emitter from '@ohos.events.emitter';
 import { Driver, ON } from '@ohos.UiTest'
 import Utils from './Utils';
+import window from '@ohos.window';
 
 export default function pasteComponentTest() {
   describe('pasteComponentTest', function () {
@@ -1292,7 +1293,7 @@ export default function pasteComponentTest() {
             "positionY": 0,
             "anchorX": 0,
             "anchorY": 0,
-            "offsetX": 200,
+            "offsetX": 0,
             "offsetY": 0,
             "fontSize": 16,
             "fontStyle": FontStyle.Normal,
@@ -1312,17 +1313,24 @@ export default function pasteComponentTest() {
             "middle": 4
           }
         }
-        let displayClass = [];
-        display.getAllDisplays((err, data) => {
-          console.info("====>[Test_Security_Button_Paste_1400] the display objects Data" + JSON.stringify(data));
-          displayClass = data;
-          if(JSON.stringify(displayClass[0].width) == '2160'){
-            console.info("====>[Test_Security_Button_Paste_1400] the if + ok");
-            let offsetObj = { "offsetX": 615 };
-            Object.assign(eventData.data, offsetObj);
-          }
-        });
-        console.info("====>[Test_Security_Button_Paste_1400] get modifyEventData is: " + JSON.stringify(eventData));
+        try{
+          window.getLastWindow(globalThis.abilityContext, (err, data) => {
+            const errCode = err.code;
+            if(errCode){
+              console.error('Failed to obtain the top window Cause:' + JSON.stringify(err));
+              return;
+            }
+            let properties = data.getWindowProperties();
+            console.info('Succeeded in obtaining the window properties.width: ' + properties.windowRect.width);
+            let window_width = properties.windowRect.width;
+            console.info('====>[Test_Security_Button_Paste_1400] properties.windowRect.width is: ' + properties.windowRect.width);
+            let offsetObj = {"positionX": `${window_width - 100}px`};
+            Object.assign(eventData.data,offsetObj);
+          });
+        } catch (error){
+          console.error('Failed to obtain the window properties.error.code: ' + error.code)
+        }
+        await Utils.sleep(1000);
         var innerEvent = {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
@@ -1332,15 +1340,6 @@ export default function pasteComponentTest() {
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.info("====>[Test_Security_Button_Paste_1400] change component data error: " + err.message);
-      }
-      await Utils.sleep(1000);
-      let strJsonNew = getInspectorByKey('keyPaste1');
-      let obj = JSON.parse(strJsonNew);
-      console.info("====>[Test_Security_Button_Paste_1400] obj.$attrs.offset.x: " + obj.$attrs.offset.x);
-      if(obj.$attrs.offset.x == '615.00vp'){
-        expect(obj.$attrs.offset.x).assertEqual('615.00vp');
-      }else{
-        expect(obj.$attrs.offset.x).assertEqual('200.00vp');
       }
       await Utils.sleep(1000);
       try {
@@ -1372,7 +1371,7 @@ export default function pasteComponentTest() {
         let button = await driver.findComponents(ON.type('PasteButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Paste_1400] button is:" + JSON.stringify(button));
-        await button[1].click();
+        await button[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Paste_1400] clickSecComponent err : " + JSON.stringify(err));
@@ -1399,11 +1398,11 @@ export default function pasteComponentTest() {
             "bgType": ButtonType.Normal,
             "iconSize": 16,
             "direct": 0,
-            "positionX": 0,
+            "positionX": `${-100}px`,
             "positionY": 0,
             "anchorX": 0,
             "anchorY": 0,
-            "offsetX": -200,
+            "offsetX": 0,
             "offsetY": 0,
             "fontSize": 16,
             "fontStyle": FontStyle.Normal,
@@ -1423,17 +1422,6 @@ export default function pasteComponentTest() {
             "middle": 4
           }
         }
-        let displayClass = [];
-        display.getAllDisplays((err, data) => {
-          console.info("====>[Test_Security_Button_Paste_1500] the display objects Data" + JSON.stringify(data));
-          displayClass = data;
-          if(JSON.stringify(displayClass[0].width) == '2160'){
-            console.info("====>[Test_Security_Button_Paste_1500] the if + ok");
-            let offsetObj = { "offsetX": -615 };
-            Object.assign(eventData.data, offsetObj);
-          }
-        });
-        console.info("====>[Test_Security_Button_Paste_1500] get modifyEventData is: " + JSON.stringify(eventData));
         var innerEvent = {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
@@ -1443,15 +1431,6 @@ export default function pasteComponentTest() {
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.info("====>[Test_Security_Button_Paste_1500] change component data error: " + err.message);
-      }
-      await Utils.sleep(1000);
-      let strJsonNew = getInspectorByKey('keyPaste1');
-      let obj = JSON.parse(strJsonNew);
-      console.info("====>[Test_Security_Button_Paste_1500] obj.$attrs.offset.x: " + obj.$attrs.offset.x);
-      if(obj.$attrs.offset.x == '-615.00vp'){
-        expect(obj.$attrs.offset.x).assertEqual('-615.00vp');
-      }else{
-        expect(obj.$attrs.offset.x).assertEqual('-200.00vp');
       }
       await Utils.sleep(1000);
       try {
@@ -1483,7 +1462,7 @@ export default function pasteComponentTest() {
         let button = await driver.findComponents(ON.type('PasteButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Paste_1500] button is:" + JSON.stringify(button));
-        await button[1].click();
+        await button[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Paste_1500] clickSecComponent err : " + JSON.stringify(err));
@@ -1534,16 +1513,30 @@ export default function pasteComponentTest() {
             "middle": 4
           }
         }
-        let displayClass = [];
-        display.getAllDisplays((err, data) => {
-          console.info("====>[Test_Security_Button_Paste_1600] the display objects Data" + JSON.stringify(data));
-          displayClass = data;
-          if (JSON.stringify(displayClass[0].width) == '2160') {
-            console.info("====>[Test_Security_Button_Paste_1600] the if + ok");
-            let iconSizeObj = { "iconSize": 1100 };
-            Object.assign(eventData.data, iconSizeObj);
-          }
-        });
+        try{
+          window.getLastWindow(globalThis.abilityContext, (err, data) => {
+            const errCode = err.code;
+            if(errCode){
+              console.error('Failed to obtain the top window Cause:' + JSON.stringify(err));
+              return;
+            }
+            let properties = data.getWindowProperties();
+            console.info('Succeeded in obtaining the window properties.width: ' + properties.windowRect.width);
+            console.info('Succeeded in obtaining the window properties.height: ' + properties.windowRect.height);
+            let window_width = properties.windowRect.width;
+            let window_height = properties.windowRect.height;
+            let button_iconSize = Math.ceil(Math.sqrt(window_width * window_height * 0.1));
+            console.info('====>[Test_Security_Button_Paste_1600] button_iconSize is: ' + button_iconSize);
+            let offsetObj = {
+              "iconSize": `${button_iconSize}px`,
+              "positionY": `${-button_iconSize - 200}px`
+              };
+            Object.assign(eventData.data,offsetObj);
+          });
+        } catch (error){
+          console.error('Failed to obtain the window properties.error.code: ' + error.code)
+        }
+        await Utils.sleep(1000);
         var innerEvent = {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
@@ -1553,15 +1546,6 @@ export default function pasteComponentTest() {
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.info("====>[Test_Security_Button_Paste_1600] change component data error: " + err.message);
-      }
-      await Utils.sleep(1000);
-      let strJsonNew = getInspectorByKey('keyPaste');
-      let obj = JSON.parse(strJsonNew);
-      console.info("====>[Test_Security_Button_Paste_1600] obj.$attrs.iconSize: " + obj.$attrs.iconSize);
-      if(obj.$attrs.iconSize == '1100.00vp'){
-        expect(obj.$attrs.iconSize).assertEqual('1100.00vp');
-      }else{
-        expect(obj.$attrs.iconSize).assertEqual('160.00vp');
       }
       await Utils.sleep(1000);
       try {

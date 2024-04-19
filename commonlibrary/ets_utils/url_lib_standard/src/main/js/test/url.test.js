@@ -1764,7 +1764,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_09800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_09900
    * @tc.name: testUrlDelete005
    * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
    * @tc.size: MediumTest
@@ -1780,7 +1780,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_09900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10000
    * @tc.name: testUrlEntries001
    * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
    * @tc.size: MediumTest
@@ -1802,7 +1802,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10100
    * @tc.name: testUrlEntries002
    * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
    * @tc.size: MediumTest
@@ -1823,7 +1823,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10200
    * @tc.name: testUrlEntries003
    * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
    * @tc.size: MediumTest
@@ -1845,7 +1845,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10300
    * @tc.name: testUrlEntries004
    * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
    * @tc.size: MediumTest
@@ -1866,7 +1866,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10400
    * @tc.name: testUrlEntries005
    * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
    * @tc.size: MediumTest
@@ -1888,7 +1888,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10500
    * @tc.name: testUrl[Symbol.iterator]001
    * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
    * @tc.size: MediumTest
@@ -1909,7 +1909,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10600
    * @tc.name: testUrl[Symbol.iterator]002
    * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
    * @tc.size: MediumTest
@@ -1930,7 +1930,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10700
    * @tc.name: testUrl[Symbol.iterator]003
    * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
    * @tc.size: MediumTest
@@ -1952,7 +1952,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10800
    * @tc.name: testUrl[Symbol.iterator]004
    * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
    * @tc.size: MediumTest
@@ -1973,7 +1973,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10900
    * @tc.name: testUrl[Symbol.iterator]005
    * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
    * @tc.size: MediumTest
@@ -1995,7 +1995,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_10900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11000
    * @tc.name: testUrlForEach001
    * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
    * @tc.size: MediumTest
@@ -2016,7 +2016,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11100
    * @tc.name: testUrlForEach002
    * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
    * @tc.size: MediumTest
@@ -2037,7 +2037,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11200
    * @tc.name: testUrlForEach003
    * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
    * @tc.size: MediumTest
@@ -2059,7 +2059,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11300
    * @tc.name: testUrlForEach004
    * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
    * @tc.size: MediumTest
@@ -2080,7 +2080,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11400
    * @tc.name: testUrlForEach005
    * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
    * @tc.size: MediumTest
@@ -2102,7 +2102,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11500
    * @tc.name: testUrlForEach006
    * @tc.desc: The second parameter of forEach is undefined or null.
    * @tc.size: MediumTest
@@ -2127,7 +2127,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11600
    * @tc.name: testUrlGet001
    * @tc.desc: Returns the first value associated to the given search parameter.
    * @tc.size: MediumTest
@@ -2141,7 +2141,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11700
    * @tc.name: testUrlGet002
    * @tc.desc: Returns the first value associated to the given search parameter.
    * @tc.size: MediumTest
@@ -2155,7 +2155,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11800
    * @tc.name: testUrlGet003
    * @tc.desc: Returns the first value associated to the given search parameter.
    * @tc.size: MediumTest
@@ -2170,7 +2170,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11900
    * @tc.name: testUrlGet004
    * @tc.desc: Returns the first value associated to the given search parameter.
    * @tc.size: MediumTest
@@ -2184,7 +2184,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_11900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12000
    * @tc.name: testUrlGet005
    * @tc.desc: Returns the first value associated to the given search parameter.
    * @tc.size: MediumTest
@@ -2199,7 +2199,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12100
    * @tc.name: testUrlGetAll001
    * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
    * @tc.size: MediumTest
@@ -2214,7 +2214,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12200
    * @tc.name: testUrlGetAll002
    * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
    * @tc.size: MediumTest
@@ -2229,7 +2229,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12300
    * @tc.name: testUrlGetAll003
    * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
    * @tc.size: MediumTest
@@ -2244,7 +2244,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12400
    * @tc.name: testUrlGetAll004
    * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
    * @tc.size: MediumTest
@@ -2259,7 +2259,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12500
    * @tc.name: testUrlGetAll005
    * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
    * @tc.size: MediumTest
@@ -2274,7 +2274,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12600
    * @tc.name: testUrlHas001
    * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
    * @tc.size: MediumTest
@@ -2288,7 +2288,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12700
    * @tc.name: testUrlHas002
    * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
    * @tc.size: MediumTest
@@ -2302,7 +2302,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12800
    * @tc.name: testUrlHas003
    * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
    * @tc.size: MediumTest
@@ -2317,7 +2317,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12900
    * @tc.name: testUrlHas004
    * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
    * @tc.size: MediumTest
@@ -2331,7 +2331,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_12900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13000
    * @tc.name: testUrlHas005
    * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
    * @tc.size: MediumTest
@@ -2346,7 +2346,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13100
    * @tc.name: testUrlHas006
    * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
    * @tc.size: MediumTest
@@ -2367,7 +2367,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13200
    * @tc.name: testUrlKeys001
    * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
    * @tc.size: MediumTest
@@ -2386,7 +2386,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13300
    * @tc.name: testUrlKeys002
    * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
    * @tc.size: MediumTest
@@ -2405,7 +2405,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13400
    * @tc.name: testUrlKeys003
    * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
    * @tc.size: MediumTest
@@ -2424,7 +2424,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13500
    * @tc.name: testUrlKeys004
    * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
    * @tc.size: MediumTest
@@ -2443,7 +2443,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13600
    * @tc.name: testUrlKeys005
    * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
    * @tc.size: MediumTest
@@ -2462,7 +2462,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13700
    * @tc.name: testUrlSet001
    * @tc.desc: Sets the value associated with a given search parameter to the given value.
    * If there were several matching values, this method deletes the others.
@@ -2480,7 +2480,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13800
    * @tc.name: testUrlSet002
    * @tc.desc: Sets the value associated with a given search parameter to the given value.
    * If there were several matching values, this method deletes the others.
@@ -2497,7 +2497,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13900
    * @tc.name: testUrlSet003
    * @tc.desc: Sets the value associated with a given search parameter to the given value.
    * If there were several matching values, this method deletes the others.
@@ -2514,7 +2514,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_13900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14000
    * @tc.name: testUrlSet004
    * @tc.desc: Sets the value associated with a given search parameter to the given value.
    * If there were several matching values, this method deletes the others.
@@ -2532,7 +2532,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14100
    * @tc.name: testUrlSet005
    * @tc.desc: Sets the value associated with a given search parameter to the given value.
    * If there were several matching values, this method deletes the others.
@@ -2549,7 +2549,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14200
    * @tc.name: testUrlSet006
    * @tc.desc: Sets the value associated with a given search parameter to the given value.
    * If there were several matching values, this method deletes the others.
@@ -2571,7 +2571,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14300
    * @tc.name: testUrlSet006
    * @tc.desc: Sets the value associated with a given search parameter to the given value.
    * If there were several matching values, this method deletes the others.
@@ -2588,7 +2588,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14400
    * @tc.name: testUrlSort001
    * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
    * @tc.size: MediumTest
@@ -2603,7 +2603,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14500
    * @tc.name: testUrlSort002
    * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
    * @tc.size: MediumTest
@@ -2618,7 +2618,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14600
    * @tc.name: testUrlSort003
    * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
    * @tc.size: MediumTest
@@ -2634,7 +2634,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14700
    * @tc.name: testUrlSort004
    * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
    * @tc.size: MediumTest
@@ -2649,7 +2649,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14800
    * @tc.name: testUrlSort005
    * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
    * @tc.size: MediumTest
@@ -2664,7 +2664,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14900
    * @tc.name: testUrlValues001
    * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
    * @tc.size: MediumTest
@@ -2683,7 +2683,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_14900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15000
    * @tc.name: testUrlValues002
    * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
    * @tc.size: MediumTest
@@ -2702,7 +2702,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15100
    * @tc.name: testUrlValues003
    * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
    * @tc.size: MediumTest
@@ -2722,7 +2722,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15200
    * @tc.name: testUrlValues004
    * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
    * @tc.size: MediumTest
@@ -2741,7 +2741,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15300
    * @tc.name: testUrlValues005
    * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
    * @tc.size: MediumTest
@@ -2760,7 +2760,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15400
    * @tc.name: testUrlSearchParamsToString001
    * @tc.desc: Returns a query string suitable for use in a URL.
    * @tc.size: MediumTest
@@ -2774,7 +2774,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15500
    * @tc.name: testUrlSearchParamsToString002
    * @tc.desc: Returns a query string suitable for use in a URL.
    * @tc.size: MediumTest
@@ -2789,7 +2789,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15600
    * @tc.name: testUrlSearchParamsToString003
    * @tc.desc: Returns a query string suitable for use in a URL.
    * @tc.size: MediumTest
@@ -2804,7 +2804,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15700
    * @tc.name: testUrlSearchParamsToString004
    * @tc.desc: Returns a query string suitable for use in a URL.
    * @tc.size: MediumTest
@@ -2818,7 +2818,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15800
    * @tc.name: testUrlSearchParamsToString005
    * @tc.desc: Returns a query string suitable for use in a URL.
    * @tc.size: MediumTest
@@ -2833,7 +2833,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15900
    * @tc.name: testUrlSearchParamsConstruction001
    * @tc.desc:  A parameterized constructor used to create an URLSearchParams instance.
    * @tc.size: MediumTest
@@ -2847,7 +2847,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_15900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16000
    * @tc.name: testUrlSearchParamsConstruction002
    * @tc.desc:  A parameterized constructor used to create an URLSearchParams instance.
    * @tc.size: MediumTest
@@ -2864,7 +2864,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16100
    * @tc.name: testUrlSearchParamsConstruction003
    * @tc.desc:  A parameterized constructor used to create an URLSearchParams instance.
    * @tc.size: MediumTest
@@ -2882,7 +2882,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16200
    * @tc.name: testUrlSearchParamsConstruction004
    * @tc.desc:  A parameterized constructor used to create an URLSearchParams instance.
    * @tc.size: MediumTest
@@ -2899,7 +2899,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16300
    * @tc.name: testUrlSearchParamsConstruction005
    * @tc.desc:  A parameterized constructor used to create an URLSearchParams instance.
    * @tc.size: MediumTest
@@ -2918,7 +2918,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16400
    * @tc.name: testUrlSearchParamsConstruction006
    * @tc.desc:  A parameterized constructor used to create an URLSearchParams instance.
    * @tc.size: MediumTest
@@ -2933,7 +2933,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16500
    * @tc.name: testUrlSearchParamsConstruction007
    * @tc.desc:  A parameterized constructor used to create an URLSearchParams instance.
    * @tc.size: MediumTest
@@ -2949,7 +2949,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16600
    * @tc.name: testUrlSearchParamsConstruction008
    * @tc.desc:  A parameterized constructor used to create an URLSearchParams instance.
    * @tc.size: MediumTest
@@ -2964,7 +2964,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16700
    * @tc.name: testNewUrl001
    * @tc.desc:  The second parameter of Url construction is undefined or null.
    * @tc.size: MediumTest
@@ -2981,7 +2981,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16800
    * @tc.name: testUrlToString001
    * @tc.desc:  Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -2995,7 +2995,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16900
    * @tc.name: testUrlToString002
    * @tc.desc:  Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -3009,7 +3009,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_16900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17000
    * @tc.name: testUrlToString003
    * @tc.desc:  Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -3023,7 +3023,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17100
    * @tc.name: testUrlToString004
    * @tc.desc:  Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -3037,7 +3037,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17200
    * @tc.name: testUrlToString005
    * @tc.desc:  Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -3051,7 +3051,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17300
    * @tc.name: testUrlToString006
    * @tc.desc:  Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -3065,7 +3065,7 @@ describe('UrlFunTest', function () {
     })
     
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17400
    * @tc.name: testUrlToString007
    * @tc.desc:  Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -3079,7 +3079,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17500
    * @tc.name: testUrlToString008
    * @tc.desc:  Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -3093,7 +3093,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17600
    * @tc.name: testUrlToString009
    * @tc.desc:  Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -3107,7 +3107,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17700
    * @tc.name: testUrlHref001
    * @tc.desc:  Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -3121,7 +3121,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17800
    * @tc.name: testUrlHref002
    * @tc.desc:  Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -3135,7 +3135,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17900
    * @tc.name: testUrlHref003
    * @tc.desc:  Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -3149,7 +3149,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_17900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18000
    * @tc.name: testUrlHref004
    * @tc.desc:  Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -3164,7 +3164,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18100
    * @tc.name: testUrlHref005
    * @tc.desc:  Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -3179,7 +3179,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18200
    * @tc.name: testUrlOrigin001
    * @tc.desc:  Gets the read-only serialization of the URL's origin.
    * @tc.size: MediumTest
@@ -3193,7 +3193,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18300
    * @tc.name: testUrlOrigin002
    * @tc.desc:  Gets the read-only serialization of the URL's origin.
    * @tc.size: MediumTest
@@ -3207,7 +3207,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18400
    * @tc.name: testUrlOrigin003
    * @tc.desc:  Gets the read-only serialization of the URL's origin.
    * @tc.size: MediumTest
@@ -3221,7 +3221,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18500
    * @tc.name: testUrlOrigin004
    * @tc.desc:  Gets the read-only serialization of the URL's origin.
    * @tc.size: MediumTest
@@ -3235,7 +3235,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18600
    * @tc.name: testUrlOrigin005
    * @tc.desc:  Gets the read-only serialization of the URL's origin.
    * @tc.size: MediumTest
@@ -3249,7 +3249,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18700
    * @tc.name: testUrlProtocol001
    * @tc.desc: Gets and sets the protocol portion of the URL.
    * @tc.size: MediumTest
@@ -3263,7 +3263,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18800
    * @tc.name: testUrlProtocol002
    * @tc.desc: Gets and sets the protocol portion of the URL.
    * @tc.size: MediumTest
@@ -3277,7 +3277,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18900
    * @tc.name: testUrlProtocol003
    * @tc.desc: Gets and sets the protocol portion of the URL.
    * @tc.size: MediumTest
@@ -3291,7 +3291,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_18900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19000
    * @tc.name: testUrlProtocol004
    * @tc.desc: Gets and sets the protocol portion of the URL.
    * @tc.size: MediumTest
@@ -3306,7 +3306,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19100
    * @tc.name: testUrlProtocol005
    * @tc.desc: Gets and sets the protocol portion of the URL.
    * @tc.size: MediumTest
@@ -3321,7 +3321,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19200
    * @tc.name: testUrlUsername001
    * @tc.desc: Gets and sets the username portion of the URL.
    * @tc.size: MediumTest
@@ -3335,7 +3335,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19300
    * @tc.name: testUrlUsername002
    * @tc.desc: Gets and sets the username portion of the URL.
    * @tc.size: MediumTest
@@ -3349,7 +3349,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19400
    * @tc.name: testUrlUsername003
    * @tc.desc: Gets and sets the username portion of the URL.
    * @tc.size: MediumTest
@@ -3364,7 +3364,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19500
    * @tc.name: testUrlUsername004
    * @tc.desc: Gets and sets the username portion of the URL.
    * @tc.size: MediumTest
@@ -3379,7 +3379,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19600
    * @tc.name: testUrlUsername005
    * @tc.desc: Gets and sets the username portion of the URL.
    * @tc.size: MediumTest
@@ -3393,7 +3393,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19700
    * @tc.name: testUrlPassword001
    * @tc.desc: Gets and sets the password portion of the URL.
    * @tc.size: MediumTest
@@ -3407,7 +3407,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19800
    * @tc.name: testUrlPassword002
    * @tc.desc: Gets and sets the password portion of the URL.
    * @tc.size: MediumTest
@@ -3421,7 +3421,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19900
    * @tc.name: testUrlPassword003
    * @tc.desc: Gets and sets the password portion of the URL.
    * @tc.size: MediumTest
@@ -3435,7 +3435,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_19900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20000
    * @tc.name: testUrlPassword004
    * @tc.desc: Gets and sets the password portion of the URL.
    * @tc.size: MediumTest
@@ -3450,7 +3450,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20100
    * @tc.name: testUrlPassword005
    * @tc.desc: Gets and sets the password portion of the URL.
    * @tc.size: MediumTest
@@ -3465,7 +3465,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20200
    * @tc.name: testUrlHost001
    * @tc.desc: Gets and sets the host portion of the URL.
    * @tc.size: MediumTest
@@ -3479,7 +3479,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20300
    * @tc.name: testUrlHost002
    * @tc.desc: Gets and sets the host portion of the URL.
    * @tc.size: MediumTest
@@ -3493,7 +3493,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20400
    * @tc.name: testUrlHost003
    * @tc.desc: Gets and sets the host portion of the URL.
    * @tc.size: MediumTest
@@ -3507,7 +3507,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20500
    * @tc.name: testUrlHost004
    * @tc.desc: Gets and sets the host portion of the URL.
    * @tc.size: MediumTest
@@ -3522,7 +3522,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20600
    * @tc.name: testUrlHost005
    * @tc.desc: Gets and sets the host portion of the URL.
    * @tc.size: MediumTest
@@ -3537,7 +3537,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20700
    * @tc.name: testUrlHostname001
    * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
    * @tc.size: MediumTest
@@ -3551,7 +3551,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20800
    * @tc.name: testUrlHostname002
    * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
    * @tc.size: MediumTest
@@ -3565,7 +3565,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20900
    * @tc.name: testUrlHostname003
    * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
    * @tc.size: MediumTest
@@ -3579,7 +3579,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_20900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21000
    * @tc.name: testUrlHostname004
    * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
    * @tc.size: MediumTest
@@ -3594,7 +3594,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21100
    * @tc.name: testUrlHostname005
    * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
    * @tc.size: MediumTest
@@ -3609,7 +3609,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21200
    * @tc.name: testUrlPort001
    * @tc.desc: Gets and sets the port portion of the URL.
    * @tc.size: MediumTest
@@ -3623,7 +3623,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21300
    * @tc.name: testUrlPort002
    * @tc.desc: Gets and sets the port portion of the URL.
    * @tc.size: MediumTest
@@ -3637,7 +3637,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21400
    * @tc.name: testUrlPort003
    * @tc.desc: Gets and sets the port portion of the URL.
    * @tc.size: MediumTest
@@ -3651,7 +3651,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21500
    * @tc.name: testUrlPort004
    * @tc.desc: Gets and sets the port portion of the URL.
    * @tc.size: MediumTest
@@ -3666,7 +3666,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21600
    * @tc.name: testUrlPort005
    * @tc.desc: Gets and sets the port portion of the URL.
    * @tc.size: MediumTest
@@ -3681,7 +3681,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21700
    * @tc.name: testUrlPathname001
    * @tc.desc: Gets and sets the path portion of the URL.
    * @tc.size: MediumTest
@@ -3695,7 +3695,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21800
    * @tc.name: testUrlPathname002
    * @tc.desc: Gets and sets the path portion of the URL.
    * @tc.size: MediumTest
@@ -3709,7 +3709,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21900
    * @tc.name: testUrlPathname003
    * @tc.desc: Gets and sets the path portion of the URL.
    * @tc.size: MediumTest
@@ -3723,7 +3723,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_21900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22000
    * @tc.name: testUrlPathname004
    * @tc.desc: Gets and sets the path portion of the URL.
    * @tc.size: MediumTest
@@ -3738,7 +3738,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22100
    * @tc.name: testUrlPathname005
    * @tc.desc: Gets and sets the path portion of the URL.
    * @tc.size: MediumTest
@@ -3753,7 +3753,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22200
    * @tc.name: testUrlSearch001
    * @tc.desc: Gets and sets the serialized query portion of the URL.
    * @tc.size: MediumTest
@@ -3767,7 +3767,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22300
    * @tc.name: testUrlSearch002
    * @tc.desc: Gets and sets the serialized query portion of the URL.
    * @tc.size: MediumTest
@@ -3781,7 +3781,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22400
    * @tc.name: testUrlSearch003
    * @tc.desc: Gets and sets the serialized query portion of the URL.
    * @tc.size: MediumTest
@@ -3795,7 +3795,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22500
    * @tc.name: testUrlSearch004
    * @tc.desc: Gets and sets the serialized query portion of the URL.
    * @tc.size: MediumTest
@@ -3810,7 +3810,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22600
    * @tc.name: testUrlSearch005
    * @tc.desc: Gets and sets the serialized query portion of the URL.
    * @tc.size: MediumTest
@@ -3825,7 +3825,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22700
    * @tc.name: testUrlHash001
    * @tc.desc: Gets and sets the fragment portion of the URL.
    * @tc.size: MediumTest
@@ -3839,7 +3839,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22800
    * @tc.name: testUrlHash002
    * @tc.desc: Gets and sets the fragment portion of the URL.
    * @tc.size: MediumTest
@@ -3854,7 +3854,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22900
    * @tc.name: testUrlHash003
    * @tc.desc: Gets and sets the fragment portion of the URL.
    * @tc.size: MediumTest
@@ -3868,7 +3868,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_22900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23000
    * @tc.name: testUrlHash004
    * @tc.desc: Gets and sets the fragment portion of the URL.
    * @tc.size: MediumTest
@@ -3882,7 +3882,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23100
    * @tc.name: testUrlHash005
    * @tc.desc: Gets and sets the fragment portion of the URL.
    * @tc.size: MediumTest
@@ -3897,7 +3897,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23200
    * @tc.name: testUrlSearchParams001
    * @tc.desc: Gets the SearchParams portion of the URL
    * @tc.size: MediumTest
@@ -3912,7 +3912,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23300
    * @tc.name: testUrlSearchParams002
    * @tc.desc: Gets the SearchParams portion of the URL
    * @tc.size: MediumTest
@@ -3928,7 +3928,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23400
    * @tc.name: testUrlSearchParams003
    * @tc.desc: Gets the SearchParams portion of the URL
    * @tc.size: MediumTest
@@ -3943,7 +3943,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23500
    * @tc.name: testUrlSearchParams004
    * @tc.desc: Gets the SearchParams portion of the URL
    * @tc.size: MediumTest
@@ -3959,7 +3959,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23600
    * @tc.name: testUrlSearchParams005
    * @tc.desc: Gets the SearchParams portion of the URL
    * @tc.size: MediumTest
@@ -3974,7 +3974,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23700
    * @tc.name: testUrlURLParams001
    * @tc.desc: Gets the SearchParams portion of the URL
    * @tc.size: MediumTest
@@ -3989,7 +3989,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23800
    * @tc.name: testUrlURLParams002
    * @tc.desc: Gets the SearchParams portion of the URL
    * @tc.size: MediumTest
@@ -4005,7 +4005,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23900
    * @tc.name: testUrlURLParams003
    * @tc.desc: Gets the SearchParams portion of the URL
    * @tc.size: MediumTest
@@ -4020,7 +4020,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_23900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24000
    * @tc.name: testUrlURLParams004
    * @tc.desc: Gets the SearchParams portion of the URL
    * @tc.size: MediumTest
@@ -4036,7 +4036,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24100
    * @tc.name: testUrlURLParams005
    * @tc.desc: Gets the SearchParams portion of the URL
    * @tc.size: MediumTest
@@ -4051,7 +4051,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24200
    * @tc.name: testUrlToJson001
    * @tc.desc: Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -4065,7 +4065,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24300
    * @tc.name: testUrlToJson002
    * @tc.desc: Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -4079,7 +4079,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24400
    * @tc.name: testUrlToJson003
    * @tc.desc: Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -4093,7 +4093,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24500
    * @tc.name: testUrlToJson004
    * @tc.desc: Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -4107,7 +4107,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24600
    * @tc.name: testUrlToJson005
    * @tc.desc: Returns the serialized URL as a string.
    * @tc.size: MediumTest
@@ -4121,7 +4121,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24700
    * @tc.name: testUrlIPv6001
    * @tc.desc: Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -4135,7 +4135,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24800
    * @tc.name: testUrlIPv6002
    * @tc.desc: Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -4149,7 +4149,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24900
    * @tc.name: testUrlIPv6003
    * @tc.desc: Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -4163,7 +4163,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_24900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25000
    * @tc.name: testUrlIPv4001
    * @tc.desc: Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -4177,7 +4177,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25100
    * @tc.name: testUrlIPv4002
    * @tc.desc: Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -4191,7 +4191,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25200
    * @tc.name: testUrlIPv4003
    * @tc.desc: Gets and sets the serialized URL.
    * @tc.size: MediumTest
@@ -4205,7 +4205,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25300
    * @tc.name: testUrlConstruction001
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4219,7 +4219,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25400
    * @tc.name: testUrlConstruction002
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4233,7 +4233,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25500
    * @tc.name: testUrlConstruction003
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4247,7 +4247,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25600
    * @tc.name: testUrlConstruction004
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4261,7 +4261,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25700
    * @tc.name: testUrlConstruction005
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4275,7 +4275,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25800
    * @tc.name: testUrlConstruction006
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4289,7 +4289,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25900
    * @tc.name: testUrlConstruction007
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4303,7 +4303,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_25900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26000
    * @tc.name: testUrlConstruction008
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4317,7 +4317,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26100
    * @tc.name: testUrlConstruction009
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4331,7 +4331,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26200
    * @tc.name: testUrlConstruction010
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4345,7 +4345,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26300
    * @tc.name: testUrlConstruction011
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4360,7 +4360,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26400
    * @tc.name: testUrlConstruction012
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4375,7 +4375,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26500
    * @tc.name: testUrlConstruction013
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4390,7 +4390,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26600
    * @tc.name: testUrlConstruction014
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4404,7 +4404,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26700
    * @tc.name: testUrlparseURL001
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4420,7 +4420,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26800
    * @tc.name: testUrlparseURL002
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4436,7 +4436,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26900
    * @tc.name: testUrlparseURL003
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4452,7 +4452,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_26900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27000
    * @tc.name: testUrlparseURL004
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4468,7 +4468,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27100
    * @tc.name: testUrlparseURL005
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4484,7 +4484,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27200
    * @tc.name: testUrlparseURL006
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4500,7 +4500,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27300
    * @tc.name: testUrlparseURL007
    * @tc.desc: URL constructor, BusinessError: Parameter error.
    * @tc.size: MediumTest
@@ -4522,7 +4522,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27400
    * @tc.name: testUrlparseURL008
    * @tc.desc: URL constructor, BusinessError: Parameter error.
    * @tc.size: MediumTest
@@ -4545,7 +4545,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27500
    * @tc.name: testUrlparseURL009
    * @tc.desc: URL constructor, BusinessError: Parameter error.
    * @tc.size: MediumTest
@@ -4568,7 +4568,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27600
    * @tc.name: testUrlparseURL0010
    * @tc.desc: URL constructor, BusinessError: Parameter error.
    * @tc.size: MediumTest
@@ -4591,7 +4591,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27700
    * @tc.name: testUrlparseURL0011
    * @tc.desc: The second parameter of parseURL is undefined or null.
    * @tc.size: MediumTest
@@ -4610,7 +4610,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27800
    * @tc.name: testUrlparseURL0012
    * @tc.desc: The second parameter of parseURL is undefined or null.
    * @tc.size: MediumTest
@@ -4626,7 +4626,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27900
    * @tc.name: testUrlparseURL0013
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4642,7 +4642,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_27900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28000
    * @tc.name: testUrlparseURL0014
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4658,7 +4658,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28100
    * @tc.name: testUrlparseURL0015
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4674,7 +4674,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28200
    * @tc.name: testUrlparseURL0016
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4690,7 +4690,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28300
    * @tc.name: testUrlparseURL0017
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4706,7 +4706,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28300
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28400
    * @tc.name: testUrlparseURL0018
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4722,7 +4722,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28400
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28500
    * @tc.name: testUrlparseURL0019
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4738,7 +4738,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28500
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28600
    * @tc.name: testUrlparseURL0020
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4754,7 +4754,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28600
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28700
    * @tc.name: testUrlparseURL0021
    * @tc.desc: URL constructor, throw BusinessError: Syntax Error. Invalid Url string.
    * @tc.size: MediumTest
@@ -4776,7 +4776,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28700
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28800
    * @tc.name: testUrlparseURL0022
    * @tc.desc: URL constructor, throw BusinessError: Syntax Error. Invalid Url string.
    * @tc.size: MediumTest
@@ -4798,7 +4798,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28800
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28900
    * @tc.name: testUrlparseURL0023
    * @tc.desc: URL constructor, throw BusinessError: Syntax Error. Invalid Url string.
    * @tc.size: MediumTest
@@ -4820,7 +4820,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_28900
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29000
    * @tc.name: testUrlparseURL0024
    * @tc.desc: URL constructor, throw BusinessError: Syntax Error. Invalid Url string.
    * @tc.size: MediumTest
@@ -4842,7 +4842,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29000
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29100
    * @tc.name: testUrlparseURL0025
    * @tc.desc: URL constructor, throw BusinessError: Syntax Error. Invalid Url string.
    * @tc.size: MediumTest
@@ -4864,7 +4864,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29100
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29200
    * @tc.name: testUrlparseURL0026
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4878,7 +4878,7 @@ describe('UrlFunTest', function () {
     })
 
    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29200
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29300
    * @tc.name: testUrlparseURL0027
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4891,8 +4891,8 @@ describe('UrlFunTest', function () {
         expect(result).assertEqual('http://xxx.com/hem1/2/2.html')
     })
 
-    /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29300
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29400
    * @tc.name: testUrlparseURL0028
    * @tc.desc: URL constructor, which is used to instantiate a URL object.
    * @tc.size: MediumTest
@@ -4903,5 +4903,83 @@ describe('UrlFunTest', function () {
         let urlObj =  Url.URL.parseURL('../2/2.html', 'http://xxx.com')
         var result = urlObj.toString();
         expect(result).assertEqual('http://xxx.com/2/2.html')
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29500
+   * @tc.name: testUrlparseURL0029
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0029', 0, function () {
+        let strUrl = "bytedance://large_image?url=https%3A%2F%2Fp3-sign.toutiaoimg.com%2Flarge%2Ftos-cn-i-6w9my0ksv" +
+        "p%2Fc2c8b671c3ea4f968ae3a89a21b5f952%3F_iz%3D67594%26from%3Darticle.detail%26x-expires%3D1703755589%26x" +
+        "-signature%3DFUbhPcvUfgI%252BJLdkCiaj1S1pBSQ%253D&index=0";
+        let res = "?url=https%3A%2F%2Fp3-sign.toutiaoimg.com%2Flarge%2Ftos-cn-i-6w9my0ksvp%2Fc2c8b671c3ea4f968ae3a89a21b" +
+        "5f952%3F_iz%3D67594%26from%3Darticle.detail%26x-expires%3D1703755589%26x-signature%3DFUbhPcvUfgI%252BJLdkCia" +
+        "j1S1pBSQ%253D&index=0";
+        let urlObj =  Url.URL.parseURL(strUrl)
+        var result = urlObj.search;
+        expect(result).assertEqual(res)
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29600
+   * @tc.name: testUrlparseURL0030
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0030', 0, function () {
+        let strUrl = "bytedance://large_image?url=https%3A%2F%2Fp3-sign.toutiaoimg.com%2Flarge%2Ftos-cn-i-6w9my0ksv" +
+        "p%2Fc2c8b671c3ea4f968ae3a89a21b5f952%3F_iz%3D67594%26from%3Darticle.detail%26x-expires%3D1703755589%26x" +
+        "-signature%3DFUbhPcvUfgI%252BJLdkCiaj1S1pBSQ%253D&index=0";
+        let res = "url=https%3A%2F%2Fp3-sign.toutiaoimg.com%2Flarge%2Ftos-cn-i-6w9my0ksvp%2Fc2c8b671c3ea4f968ae3a89" +
+        "a21b5f952%3F_iz%3D67594%26from%3Darticle.detail%26x-expires%3D1703755589%26x-signature%3DFUbhPcvUfgI%252BJ" +
+        "LdkCiaj1S1pBSQ%253D&index=0";
+        let urlObj =  Url.URL.parseURL(strUrl)
+        var result = urlObj.params.toString();
+        expect(result).assertEqual(res)
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29700
+   * @tc.name: testUrlparseURL0031
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0031', 0, function () {
+        let strUrl = "bytedance://large_image?url=https%3A%2F%2Fp3-sign.toutiaoimg.com%2Flarge%2Ftos-cn-i-6w9my0ksv" +
+        "p%2Fc2c8b671c3ea4f968ae3a89a21b5f952%3F_iz%3D67594%26from%3Darticle.detail%26x-expires%3D1703755589%26x" +
+        "-signature%3DFUbhPcvUfgI%252BJLdkCiaj1S1pBSQ%253D&index=0";
+        let res = "https://p3-sign.toutiaoimg.com/large/tos-cn-i-6w9my0ksvp/c2c8b671c3ea4f968ae3a89a21b5f952?_iz=" +
+        "67594&from=article.detail&x-expires=1703755589&x-signature=FUbhPcvUfgI%2BJLdkCiaj1S1pBSQ%3D"
+        let urlObj =  Url.URL.parseURL(strUrl)
+        var result = urlObj.params.get("url")
+        expect(result).assertEqual(res)
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29800
+   * @tc.name: testUrlparseURL0032
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0032', 0, function () {
+        let strUrl = "bytedance://large_image?url=https%3A%2F%2Fp3-sign.toutiaoimg.com%2Flarge%2Ftos-cn-i-6w9my0ksv" +
+        "p%2Fc22%3F_iz%3D67594%26from%3Dal%26x-expires%3D19%26x-sie%3DFI%252BJ&index=0&url=https%3A%2F%2Fssse?iz=67" +
+        "594&from=article.detail%26x-expires%3D17";
+        let res = '["https://p3-sign.toutiaoimg.com/large/tos-cn-i-6w9my0ksvp/c22?_iz=675' +
+        '94&from=al&x-expires=19&x-sie=FI%2BJ","https://ssse?iz=67594"]';
+        let urlObj =  Url.URL.parseURL(strUrl)
+        var result = JSON.stringify(urlObj.params.getAll("url"))
+        expect(result).assertEqual(res)
     })
 })}
