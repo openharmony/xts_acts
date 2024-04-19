@@ -1,6 +1,8 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/geometryTransition/geometryTransition"
+        "MainAbility/pages/geometryTransition/geometryTransition",
+        "MainAbility/pages/animateto",
+        "MainAbility/pages/animationCurve"
     ]
 }
