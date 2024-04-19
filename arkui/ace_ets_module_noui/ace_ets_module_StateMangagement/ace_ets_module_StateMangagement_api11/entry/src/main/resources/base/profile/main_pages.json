@@ -99,6 +99,12 @@
         "MainAbility/pages/@state/StateArray1",
         "MainAbility/pages/@state/StateColor",
         "MainAbility/pages/@state/StateHight",
-        "MainAbility/pages/@state/StateNumber"
+        "MainAbility/pages/@state/StateNumber",
+        "MainAbility/pages/Track/extendTrack",
+        "MainAbility/pages/Track/localTrack",
+        "MainAbility/pages/Track/nestTrack",
+        "MainAbility/pages/Track/provideTrack",
+        "MainAbility/pages/Track/StateTrack",
+        "MainAbility/pages/Track/storageTrack"
     ]
 }

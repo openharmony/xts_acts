@@ -108,6 +108,12 @@ import StateArray1 from './@stateTest/StateArray1.test.ets'
 import StateColor from './@stateTest/StateColor.test.ets'
 import StateHight from './@stateTest/StateHight.test.ets'
 import StateNumber from './@stateTest/StateNumber.test.ets'
+import extendTrackTest from './Track/extendTrackTest.test.ets';
+import localTrackTest from './Track/localTrackTest.test.ets';
+import provideTrackTest from './Track/provideTrackTest.test.ets';
+import StateTrackTest from './Track/StateTrackTest.test.ets';
+import nestTrackTest from './Track/nestTrackTest.test.ets';
+import storageTrackTest from './Track/storageTrackTest.test.ets';
 
 export default function testsuite() {
   allowOverride();
@@ -206,4 +212,10 @@ export default function testsuite() {
   StateColor();
   StateHight();
   StateNumber();
+  extendTrackTest();
+  localTrackTest();
+  provideTrackTest();
+  StateTrackTest();
+  nestTrackTest();
+  storageTrackTest();
 }
