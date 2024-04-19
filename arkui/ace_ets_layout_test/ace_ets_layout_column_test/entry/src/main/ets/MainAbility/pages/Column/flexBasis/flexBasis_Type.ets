@@ -18,18 +18,18 @@ import { MessageManager, Callback, Message } from './../../../common/MessageMana
 struct flexBasis_Type {
   @State addflexBasis1: number = 0
   @State addflexBasis2: string = '0'
-  messageManager: MessageManager<number> = new MessageManager()
+  messageManager: MessageManager<number|string> = new MessageManager()
   onPageShow() {
     console.info('flexBasis_Type onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback: Callback<number> = (message: Message<number>) => {
+    let callback: Callback<number|string> = (message: Message<number|string>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addflexBasis1') {
-        this.addflexBasis1 = message.value;
+        this.addflexBasis1 = message.value as number;
       }else if(message.name == 'addflexBasis2'){
-        this.addflexBasis2 = message.value.toString();
+        this.addflexBasis2 = message.value as string;
       }
     }
     this.messageManager.registerCallback(callback);

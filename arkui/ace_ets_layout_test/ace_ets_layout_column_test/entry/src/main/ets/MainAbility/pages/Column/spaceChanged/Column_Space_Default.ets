@@ -18,18 +18,18 @@ import { MessageManager, Callback, Message } from './../../../common/MessageMana
 struct Column_Space_Default {
   @State addSpace1:number=0
   @State addSpace2:string='0'
-  messageManager: MessageManager<number> = new MessageManager()
+  messageManager: MessageManager<number|string> = new MessageManager()
   onPageShow() {
     console.info('Column_Space_Default onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback: Callback<number> = (message: Message<number>) => {
+    let callback: Callback<number|string> = (message: Message<number|string>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addSpace1') {
-        this.addSpace1 = message.value;
+        this.addSpace1 = message.value as number;
       }else if(message.name == 'addSpace2'){
-        this.addSpace2 = message.value.toString();
+        this.addSpace2 = message.value as string;
       }
     }
     this.messageManager.registerCallback(callback);
