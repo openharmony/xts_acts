@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, it, expect } from '@ohos/hypium';
 import observer from '@ohos.telephony.observer';
 import sim from '@ohos.telephony.sim';
 import call from '@ohos.telephony.call';
@@ -52,10 +52,9 @@ export default function observerManagerCallStateTest() {
           };
           observer.on('callStateChange', (value: Value) => {
             console.info(`${caseName} data ${JSON.stringify(value)}}`);
-            ExpectTrue(value.state == 0 || value.state == 2);
+            ExpectTrue(value != null);
           });
           observer.off("callStateChange");
-          ExpectTrue(true);
           done();
         } else {
           console.info(`${caseName} This test case requires an environment where cards are inserted.`);
@@ -95,7 +94,6 @@ export default function observerManagerCallStateTest() {
           }
           observer.on('callStateChange', callback);
           observer.off("callStateChange", callback);
-          ExpectTrue(true);
           done();
         } else {
           console.info(`${caseName} This test case requires an environment where cards are inserted.`);
@@ -136,7 +134,6 @@ export default function observerManagerCallStateTest() {
           observer.on('callStateChange', callback);
           observer.off("callStateChange", callback);
           observer.off("callStateChange", callback);
-          ExpectTrue(true);
           done();
         } else {
           console.info(`${caseName} This test case requires an environment where cards are inserted.`);

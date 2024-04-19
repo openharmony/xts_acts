@@ -57,6 +57,9 @@
         "MainAbility/pages/Navigation/navigationNavbar02",
         "MainAbility/pages/Navigation/navigationPosition",
         "MainAbility/pages/Navigation/NavigationPage",
-        "MainAbility/pages/NavRouter/NavRouterPage"
+        "MainAbility/pages/NavRouter/NavRouterPage",
+        "MainAbility/pages/Navigation/Navigation",
+        "MainAbility/pages/stepper/Stepper1",
+        "MainAbility/pages/Navigator/Navigator"
     ]
 }
