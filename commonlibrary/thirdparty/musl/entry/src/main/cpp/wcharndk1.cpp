@@ -120,6 +120,7 @@ static napi_value Fputwc_One(napi_env env, napi_callback_info info)
 {
     wchar_t mb_one_bytes = L'h';
     FILE *fp = fopen(TEMP_FILE, "w");
+    NAPI_ASSERT(env, fp != nullptr, "Fputwc_One fopen Error");
     int ret = PARAM_0;
     if (fp) {
         ret = fputwc(mb_one_bytes, fp);
@@ -135,6 +136,7 @@ static napi_value Fputws_One(napi_env env, napi_callback_info info)
 {
     char wstr[SIZE_100] = {PARAM_0};
     FILE *fp = fopen(TEMP_FILE, "w+");
+    NAPI_ASSERT(env, fp != nullptr, "Fputws_One fopen Error");
     int ret = PARAM_0;
     int rsize = PARAM_0;
     if (fp) {
@@ -153,6 +155,7 @@ static napi_value Fwide_One(napi_env env, napi_callback_info info)
 {
     errno = PARAM_0;
     FILE *fp = fopen(TEMP_FILE, "w+");
+    NAPI_ASSERT(env, fp != nullptr, "Fwide_One fopen Error");
     int ret = PARAM_0;
     if (fp) {
         ret = fwide(fp, PARAM_5);
@@ -168,6 +171,7 @@ static napi_value Fwide_Two(napi_env env, napi_callback_info info)
 {
     errno = PARAM_0;
     FILE *fp = fopen(TEMP_FILE, "w+");
+    NAPI_ASSERT(env, fp != nullptr, "Fwide_Two fopen Error");
     int ret = PARAM_0;
     if (fp) {
         ret = fwide(fp, PARAM_0);
