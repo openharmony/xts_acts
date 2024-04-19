@@ -2,6 +2,12 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/List/list",
+        "MainAbility/pages/List/List07",
+        "MainAbility/pages/Swiper/Swiper07",
+        "MainAbility/pages/sidebarType",
+
+
+
         "MainAbility/pages/Swiper/swiper",
         "MainAbility/pages/List/ListDelete",
         "MainAbility/pages/List/ListSwipe",
@@ -35,6 +41,8 @@
         "MainAbility/pages/Tabs/IndexThird",
         "MainAbility/pages/AlphabetIndexer/Index",
         "MainAbility/pages/Refresh/Index",
+        "MainAbility/pages/grid/GridJC",
+        "MainAbility/pages/grid/gridScrollBar",
         "MainAbility/pages/Scroll/Index2",
 
         "MainAbility/pages/List/edgeEffect",
