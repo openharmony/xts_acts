@@ -44,7 +44,7 @@ struct StorageProp25 {
           this.kuB = storage25.get('PropB')
         })
 
-      Child1()
+      Child125()
       Text(`父组件ProC: ${storage25.get('PropC')}`).fontColor(Color.Green)
         .key("sPropC")
 
@@ -53,7 +53,7 @@ struct StorageProp25 {
 }
 
 @Component
-struct Child1 {
+struct Child125 {
   @LocalStorageProp('PropC') c1: number = 11;
   @State kuC: number = 0;
   build() {
@@ -74,13 +74,13 @@ struct Child1 {
           this.kuC = storage25.get('PropC');
         })
       // Text(`兄弟组件PropD${storage.get('PropD')}`).fontColor(Color.Red)
-      Child2()
+      Child225()
     }
   }
 }
 
 @Component
-struct Child2 {
+struct Child225 {
   @LocalStorageProp('PropD') d1: number = 22;
   @State kuD: number = storage25.get('PropD');
   build() {

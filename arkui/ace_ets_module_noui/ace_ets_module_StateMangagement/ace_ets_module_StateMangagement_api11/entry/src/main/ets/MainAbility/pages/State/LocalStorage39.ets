@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 AppStorage.clear()
-let storage1 = new LocalStorage({"PropA":47})
+let storage139 = new LocalStorage({"PropA":47})
 let storage39 = new LocalStorage();
 storage39['PropA'] = 47;
 storage39['PropB'] = 1;
