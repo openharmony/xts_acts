@@ -411,7 +411,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".php,.php3,.php4,.ph3,.ph4,.phtml");
-      expect(typeObj.mimeTypes.toString()).assertEqual("text/x-php-script, text/php, application/php");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/x-php-script,text/php,application/php");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1100 end");
     });
     /**
@@ -2118,7 +2118,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".tar");
-      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-tar, application/tar");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-tar,application/tar");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7200 end");
     });
     /**
@@ -2286,7 +2286,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_calendar");
       expect(typeObj.filenameExtensions.toString()).assertEqual("");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/calendar");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7800 end");
     });
     /**
@@ -4511,8 +4511,8 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Audio Interchange File Format.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".aifc,.aiff,.aif");
-      expect(typeObj.mimeTypes.toString()).assertEqual("audio/aiff,audio/x-aiff");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".aifc,.aif");
+      expect(typeObj.mimeTypes.toString()).assertEqual("audio/x-aiff");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0380 end");
     });
 
@@ -4599,7 +4599,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".docx,.docm");
-      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-office,document.wordprocessingml.document");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0420 end");
     });
 
@@ -4628,7 +4628,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".xlsx,.xlsm");
-      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-office,document.spreadsheetml.sheet");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0430 end");
     });
 
@@ -4657,7 +4657,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".pptx,.pptm");
-      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-office,document.presentationml.presentation");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.presentationml.presentation");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0440 end");
     });
 
@@ -4892,7 +4892,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".vcs");
-      expect(typeObj.mimeTypes.toString()).assertEqual("text/calendar");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vcs");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0530 end");
     });
 
@@ -4921,7 +4921,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".ics");
-      expect(typeObj.mimeTypes.toString()).assertEqual("text/calendar");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/ics");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0540 end");
     });
 
