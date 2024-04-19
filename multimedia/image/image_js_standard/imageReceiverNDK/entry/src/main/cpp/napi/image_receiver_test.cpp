@@ -38,92 +38,6 @@ static constexpr int32_t NUM_1000 = 1000;
 static constexpr int32_t NUM_2000 = 2000;
 static constexpr int32_t NUM_3000 = 3000;
 
-struct ImageReceiverContext {
-    napi_env env = nullptr;
-    napi_ref callbackRef = nullptr;
-    OH_ImageReceiverNative* receiver = nullptr;
-};
-
-static void Callback(uv_work_t *work, int status)
-{
-    ImageReceiverContext *context = reinterpret_cast<ImageReceiverContext *>(work->data);
-    if (context == nullptr) {
-        HiviewDFX::HiLog::Error(LABEL, "context is empty");
-    } else {
-        napi_value result[1] = {0};
-        napi_value retVal;
-        napi_value callback = nullptr;
-        if (context->env != nullptr && context->callbackRef != nullptr) {
-            napi_handle_scope scope = nullptr;
-            napi_open_handle_scope(context->env, &scope);
-            if (scope == nullptr) {
-                delete context;
-                delete work;
-                return;
-            }
-            napi_create_uint32(context->env, (int32_t)(uintptr_t)context->receiver, &result[0]);
-            napi_get_reference_value(context->env, context->callbackRef, &callback);
-            if (callback != nullptr) {
-                napi_call_function(context->env, nullptr, callback, 1, result, &retVal);
-            } else {
-                HiviewDFX::HiLog::Error(LABEL, "napi_get_reference_value callback is empty");
-            }
-            napi_close_handle_scope(context->env, scope);
-        } else {
-            HiviewDFX::HiLog::Error(LABEL, "env or callbackRef is empty");
-        }
-    }
-    delete context;
-    delete work;
-}
-
-class JSImageBufferAvaliableHandler {
-public:
-    JSImageBufferAvaliableHandler(napi_env env, napi_ref jsHandler)
-    {
-        handler_ = jsHandler;
-        env_ = env;
-        napi_get_uv_event_loop(env_, &loop_);
-        if (loop_ == nullptr) {
-            HiviewDFX::HiLog::Error(LABEL, "napi_get_uv_event_loop failed");
-            return;
-        }
-    }
-
-    ~JSImageBufferAvaliableHandler() = default;
-
-    static void OnBufferAvaliable(OH_ImageReceiverNative* receiver)
-    {
-        unique_ptr<uv_work_t> work = make_unique<uv_work_t>();
-        if (work == nullptr) {
-            HiviewDFX::HiLog::Error(LABEL, "DoCallBack: No memory");
-            return;
-        }
-        ImageReceiverContext *context = new ImageReceiverContext;
-        context->env = env_;
-        context->callbackRef = handler_;
-        context->receiver = receiver;
-        work->data = reinterpret_cast<void *>(context);
-        int ret = uv_queue_work(loop_, work.get(), [] (uv_work_t *work) {}, [] (uv_work_t *work, int status) {
-            Callback(work, status);
-        });
-        if (ret != 0) {
-            HiviewDFX::HiLog::Error(LABEL, "Failed to execute DoCallBack work queue");
-        } else {
-            work.release();
-        }
-    }
-
-private:
-    static napi_ref handler_;
-    static napi_env env_;
-    static uv_loop_s *loop_;
-};
-
-napi_ref JSImageBufferAvaliableHandler::handler_ = nullptr;
-napi_env JSImageBufferAvaliableHandler::env_ = nullptr;
-uv_loop_s *JSImageBufferAvaliableHandler::loop_ = nullptr;
-
 class MyMap
 {
 public:
@@ -166,6 +80,19 @@ public:
             return 0;
         }
         return itor->second;
+    }
+
+    /*
+     * 
+     */
+    int32_t find(uintptr_t ptr)
+    {
+        for (auto itor = map_.begin(); itor != map_.end(); ++itor) {
+            if (itor->second == ptr) {
+                return itor->first;
+            }
+        }
+        return 0;
     }
 
     /*
@@ -227,6 +154,93 @@ protected:
 static MyMap receiverMap(NUM_1000);
 static MyMap imageMap(NUM_2000);
 static MyMap optionMap(NUM_3000);
+
+struct ImageReceiverContext {
+    napi_env env = nullptr;
+    napi_ref callbackRef = nullptr;
+    OH_ImageReceiverNative* receiver = nullptr;
+};
+
+static void Callback(uv_work_t *work, int status)
+{
+    ImageReceiverContext *context = reinterpret_cast<ImageReceiverContext *>(work->data);
+    if (context == nullptr) {
+        HiviewDFX::HiLog::Error(LABEL, "context is empty");
+    } else {
+        napi_value result[1] = {0};
+        napi_value retVal;
+        napi_value callback = nullptr;
+        if (context->env != nullptr && context->callbackRef != nullptr) {
+            napi_handle_scope scope = nullptr;
+            napi_open_handle_scope(context->env, &scope);
+            if (scope == nullptr) {
+                delete context;
+                delete work;
+                return;
+            }
+            int32_t receiverKey = receiverMap.find((uintptr_t)context->receiver);
+            napi_get_reference_value(context->env, context->callbackRef, &callback);
+            napi_create_uint32(context->env, receiverKey, &result[0]);
+            if (callback != nullptr && receiverKey > NUM_1000) {
+                napi_call_function(context->env, nullptr, callback, 1, result, &retVal);
+            } else {
+                HiviewDFX::HiLog::Error(LABEL, "napi_get_reference_value callback is empty");
+            }
+            napi_close_handle_scope(context->env, scope);
+        } else {
+            HiviewDFX::HiLog::Error(LABEL, "env or callbackRef is empty");
+        }
+    }
+    delete context;
+    delete work;
+}
+
+class JSImageBufferAvaliableHandler {
+public:
+    JSImageBufferAvaliableHandler(napi_env env, napi_ref jsHandler)
+    {
+        handler_ = jsHandler;
+        env_ = env;
+        napi_get_uv_event_loop(env_, &loop_);
+        if (loop_ == nullptr) {
+            HiviewDFX::HiLog::Error(LABEL, "napi_get_uv_event_loop failed");
+            return;
+        }
+    }
+
+    ~JSImageBufferAvaliableHandler() = default;
+
+    static void OnBufferAvaliable(OH_ImageReceiverNative* receiver)
+    {
+        unique_ptr<uv_work_t> work = make_unique<uv_work_t>();
+        if (work == nullptr) {
+            HiviewDFX::HiLog::Error(LABEL, "DoCallBack: No memory");
+            return;
+        }
+        ImageReceiverContext *context = new ImageReceiverContext;
+        context->env = env_;
+        context->callbackRef = handler_;
+        context->receiver = receiver;
+        work->data = reinterpret_cast<void *>(context);
+        int ret = uv_queue_work(loop_, work.get(), [] (uv_work_t *work) {}, [] (uv_work_t *work, int status) {
+            Callback(work, status);
+        });
+        if (ret != 0) {
+            HiviewDFX::HiLog::Error(LABEL, "Failed to execute DoCallBack work queue");
+        } else {
+            work.release();
+        }
+    }
+
+private:
+    static napi_ref handler_;
+    static napi_env env_;
+    static uv_loop_s *loop_;
+};
+
+napi_ref JSImageBufferAvaliableHandler::handler_ = nullptr;
+napi_env JSImageBufferAvaliableHandler::env_ = nullptr;
+uv_loop_s *JSImageBufferAvaliableHandler::loop_ = nullptr;
 
 static bool CheckArgs(size_t argc, const napi_value* argv, size_t expectedCount)
 {
