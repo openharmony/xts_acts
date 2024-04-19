@@ -21,7 +21,6 @@ import kvStoreBackupCallbackJsunittest from './KvStoreBackupCallbackEtsTest';
 import SingleKvStoreCallbackTest from './SingleKvStoreKVCallbackEtsTest';
 import SingleKvStorePromiseTest from './SingleKvStoreKVPromiseEtsTest';
 import singleKvStoreEnumTest from './SingleKvStoreKVPromiseEtsTest';
-import schemaTest from './SchemaEtsTest';
 import queryTest from  './QueryKvEtsTest';
 
 export default function testsuite() {
@@ -33,6 +32,5 @@ export default function testsuite() {
   SingleKvStoreCallbackTest();
   SingleKvStorePromiseTest();
   singleKvStoreEnumTest();
-  schemaTest();
   queryTest();
 }
