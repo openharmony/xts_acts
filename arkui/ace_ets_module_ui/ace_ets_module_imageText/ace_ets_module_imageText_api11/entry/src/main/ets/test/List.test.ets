@@ -141,6 +141,9 @@ import imageJsunit from './imageTest/ImageJsunit.test';
 import spanJsunit from './spanTest/SpanJsunit.test';
 import textJsunit from './textTest/TextJsunit.test';
 import outline from './textTest/outline.test';
+import rotationTest from './RenderNodeTest/rotation.test.ets'
+import transformTest from './RenderNodeTest/transform.test.ets'
+import translationTest from './RenderNodeTest/translation.test.ets'
 
 export default function testsuite() {
   TextStateJsunit();
@@ -266,4 +269,7 @@ export default function testsuite() {
   spanJsunit()
   textJsunit()
   outline()
+  rotationTest()
+  transformTest()
+  translationTest()
 }

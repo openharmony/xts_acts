@@ -139,6 +139,9 @@
         "MainAbility/pages/image/Image",
         "MainAbility/pages/span/Span",
         "MainAbility/pages/text/Text",
-        "MainAbility/pages/text/outline"
+        "MainAbility/pages/text/outline",
+        "MainAbility/pages/RenderNode/rotation",
+        "MainAbility/pages/RenderNode/transform",
+        "MainAbility/pages/RenderNode/translation"
     ]
 }
