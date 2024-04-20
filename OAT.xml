@@ -71,6 +71,7 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.input" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.ms" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.out" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.output" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.abc" desc="all bin file have check"/>
 				<filteritem type="filename" name="*.ogg" desc="all bin file have check"/>
 				<filteritem type="filename" name="*.json" desc="all bin file have check"/>
