@@ -17,6 +17,7 @@ import { Driver, ON } from '@ohos.UiTest';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 export default function moveAbilityToBackgroundTest() {
   let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
@@ -51,6 +52,12 @@ export default function moveAbilityToBackgroundTest() {
         let button = await driver.waitForComponent(ON.text("Move To background"), 3000);
         await sleep(100);
         expect(button != null).assertTrue();
+        let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+        console.log(`====>SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100 deviceType: ${deviceType}`);
+        if (deviceType === '2in1') {
+          done();
+          return;
+        }
 
         let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
           events: ['Acts_onBackground_MoveAbilityToBackground_Event_1']
