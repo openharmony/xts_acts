@@ -32,6 +32,15 @@
         "MainAbility/pages/Rating/Rating",
         "MainAbility/pages/Slider/Slider",
         "MainAbility/pages/Select/menuBackgroundBlurStyle",
-        "MainAbility/pages/Select/menuBackgroundColor"
+        "MainAbility/pages/Select/menuBackgroundColor",
+
+        "MainAbility/pages/Select/SelectIndex",
+        "MainAbility/pages/Select/SelectMenu",
+        "MainAbility/pages/CalendarPicker/CalendarPickerIndex",
+        "MainAbility/pages/DatePicker/DatePicker",
+        "MainAbility/pages/DatePicker/DatePickerIndex",
+        "MainAbility/pages/Checkbox/CheckBox1",
+        "MainAbility/pages/Checkbox/CheckBoxIndex",
+        "MainAbility/pages/checkboxGroup/CheckBoxGroup1"
     ]
 }
