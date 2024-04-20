@@ -54,8 +54,8 @@ export default function state2() {
       let strJson = getInspectorByKey('stBtn1');
       let obj = JSON.parse(strJson);
       console.info("[state2_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[state2_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF007DFF');
+      console.info("[state2_0100] title: " + JSON.stringify(obj.$attrs.type));
+      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
       console.info('[state2_0100] END');
       done();
 
@@ -70,8 +70,8 @@ export default function state2() {
       let strJson = getInspectorByKey('stBtn2');
       let obj = JSON.parse(strJson);
       console.info("[state2_0200] component obj is: " + JSON.stringify(obj));
-      console.info("[state2_0200] title: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF007DFF');
+      console.info("[state2_0200] title: " + JSON.stringify(obj.$attrs.type));
+      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
       console.info('[state2_0200] END');
       done();
 
