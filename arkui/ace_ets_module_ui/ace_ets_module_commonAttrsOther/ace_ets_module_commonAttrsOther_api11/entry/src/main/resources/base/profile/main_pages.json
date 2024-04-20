@@ -16,6 +16,11 @@
         "MainAbility/pages/attributeModifier/AttributeModifierDemoAPI03",
         "MainAbility/pages/Accessible/accessVN",
         "MainAbility/pages/attributeModifier/attribute",
-        "MainAbility/pages/outline/outline"
+        "MainAbility/pages/outline/outline",
+        "MainAbility/pages/Hover/Hover5",
+        "MainAbility/pages/Hover/Hover11",
+        "MainAbility/pages/Hover/Hover17",
+        "MainAbility/pages/Hover/Hover23",
+        "MainAbility/pages/Hover/Hover25"
     ]
 }
