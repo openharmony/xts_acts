@@ -14,7 +14,7 @@
     "MainAbility/pages/promptAction/Index",
     "MainAbility/pages/AlertDialog/AlertDialog",
     "MainAbility/pages/Panel/Panel",
-    "MainAbility/pages/panel/Index",
+    "MainAbility/pages/Panel/Index",
     "MainAbility/pages/actionSheet/ActionSheet",
     "MainAbility/pages/actionSheet/ActionSheetFalse",
     "MainAbility/pages/actionSheet/ActionSheetTrue",

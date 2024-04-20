@@ -19,7 +19,7 @@ import hilog from '@ohos.hilog';
 
 @Entry
 @Component
-struct PanelExample {
+struct PanelCloseExample {
   @State show: boolean = true
   @State isShowCloseIcon: boolean = true
   
