@@ -93,7 +93,10 @@ import gridScrollbarUpdateTest from "./gridTest/gridScrollbarUpdate.test";
 import List07Test from './ListTest/List07.test';
 import Swiper07Test from './SwiperTest/Swiper07.test';
 import sidebarTypeTest from './sidebarType.test';
+import listUxTest from './ListTest/listux.test.ets'
+
 export default function testsuite() {
+  listUxTest()
   ActsGridTest();
   gridScrollbarUpdateTest();
   List07Test();
