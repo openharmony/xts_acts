@@ -13,20 +13,9 @@
  * limitations under the License.
  */
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World'
+import { appTasks } from '@ohos/hvigor-ohos-plugin';
 
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
+export default {
+    system: appTasks,  /* Built-in plugin of Hvigor. It cannot be modified. */
+    plugins:[]         /* Custom plugin to extend the functionality of Hvigor. */
 }

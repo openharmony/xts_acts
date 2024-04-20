@@ -12,21 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import worker, { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope } from '@ohos.worker';
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World'
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-    }
-    .height('100%')
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+workerPort.onmessage = (e: MessageEvents) => {
+  console.info(`worker: worker receive data ${e.data}`);
+  const func: Function = (): string => {
+    return "message";
   }
+  workerPort.postMessage(func);
+}
+
+workerPort.onerror = (err: ErrorEvent) => {
+  console.info(`worker: onerror ${JSON.stringify(err)}`);
+  workerPort.postMessage("workerPort.onerror Successfully processed");
 }
