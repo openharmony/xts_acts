@@ -209,6 +209,68 @@ function stringToNumber(str: string | number): number {
   return str === 'a' ? 2 : str === 'b' ? 4 : 0;
 }
 
+function sendDataCatch(num: number): number | (number | string)[] {
+  "use concurrent"
+  let res: number = num * 10;
+  console.info(`concurrentF: res1 ${res}`);
+  try {
+    taskpool.Task.sendData(res);
+  } catch (error) {
+    console.info(`sendDataCatch: catch error: err1 code => ${error.code} message => ${error.message}`);
+    let errorArray: (number | string)[] = [error.code, error.message];
+    console.info(`sendDataCatch: err2 ${JSON.stringify(errorArray)}`);
+    return errorArray;
+  }
+  console.info(`concurrentF: res2 ${res}`);
+  return num;
+}
+
+function sendDataFun(num: number): Promise<number | (number | string)[]> {
+  "use concurrent"
+  taskpool.Task.sendData(0);
+  return new Promise((resolve, reject) => {
+    let res1 = num * 20;
+    let errorArray: (number | string)[] = [];
+    try {
+      taskpool.Task.sendData(res1);
+      resolve(errorArray);
+    } catch (error) {
+      console.info(`sendDataFun: catch error: err1 code => ${error.code} message => ${error.message}`);
+      errorArray = [error.code, error.message];
+      console.info(`sendDataFun: err2 ${JSON.stringify(errorArray)}`);
+      reject(errorArray)
+    }
+  });
+}
+
+function concurrentF(num: number): number {
+  "use concurrent"
+  let res: number = num * 10;
+  console.info(`concurrentF: res1 ${res}`);
+  taskpool.Task.sendData(res);
+  console.info(`concurrentF: res2 ${res}`);
+  return num;
+}
+
+function spileString(value1: string, value2: string): string {
+  "use concurrent"
+  let str: string = value1 + value2;
+  taskpool.Task.sendData(str);
+  return str;
+}
+
+function funArray(value1: number[]): void {
+  "use concurrent"
+  console.info(`taskpool: data is: ${JSON.stringify(value1)} `);
+  taskpool.Task.sendData(value1);
+}
+
+function funDate(value1: object): void {
+  "use concurrent"
+  console.info(`taskpool: data is: ${JSON.stringify(value1)} `);
+  taskpool.Task.sendData(value1);
+}
+
 export {
   add,
   addOne,
@@ -240,5 +302,11 @@ export {
   testTransfer,
   testFunc,
   throwError,
-  stringToNumber
+  stringToNumber,
+  sendDataCatch,
+  sendDataFun,
+  concurrentF,
+  spileString,
+  funArray,
+  funDate
 }

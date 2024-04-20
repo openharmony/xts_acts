@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -55,33 +55,43 @@ export default function TaskpoolTestState() {
         let testTask3: taskpool.Task = new taskpool.Task(printLang, 300);
         taskpool.execute(testTask1).then((res: Object) => {
           console.info(`${caseName}: testTask1 return value: ${JSON.stringify(res)}`);
-          console.info(`${caseName}: state1: ${JSON.stringify(taskpool.getTaskPoolInfo().taskInfos[0].state)}`);
-          expect(taskpool.getTaskPoolInfo().taskInfos[0].state).assertEqual(2);
+          const taskInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
+          const state: taskpool.State = taskInfo.taskInfos[0]?.state;
+          console.info(`${caseName}: state1: ${state}`);
+          expect(state).assertEqual(2);
           isTerminate1 = true;
         });
         taskpool.execute(testTask2).then((res: Object) => {
           console.info(`${caseName}: testTask2 return value: ${JSON.stringify(res)}`);
-          console.info(`${caseName}: state2: ${JSON.stringify(taskpool.getTaskPoolInfo().taskInfos[0].state)}`);
-          expect(taskpool.getTaskPoolInfo().taskInfos[0].state).assertEqual(2);
+          const taskInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
+          const state: taskpool.State = taskInfo.taskInfos[0]?.state;
+          console.info(`${caseName}: state2: ${state}`);
+          expect(state).assertEqual(2);
           isTerminate2 = true;
         });
         taskpool.execute(testTask3).then((res: Object) => {
           console.info(`${caseName}: testTask3 return value: ${JSON.stringify(res)}`);
-          console.info(`${caseName}: state3: ${JSON.stringify(taskpool.getTaskPoolInfo().taskInfos[0].state)}`);
+          const taskInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
+          const state: taskpool.State = taskInfo.taskInfos[0]?.state;
+          console.info(`${caseName}: state3: ${state}`);
           try {
-            expect(taskpool.getTaskPoolInfo().taskInfos[0].state).assertEqual(2);
+            expect(state).assertEqual(2);
           } catch (error) {
             console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           }
           isTerminate3 = true;
         });
-        console.info(`${caseName}: stateing1: ${JSON.stringify(taskpool.getTaskPoolInfo().taskInfos[0].state)}`);
-        expect(taskpool.getTaskPoolInfo().taskInfos[0].state).assertEqual(1);
+        let taskInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
+        console.info(`${caseName}: stateing1 taskInfo: ${JSON.stringify(taskInfo)}`);
+        let state: taskpool.State = taskInfo.taskInfos[0]?.state;
+        console.info(`${caseName}: stateing1: ${JSON.stringify(state)}`);
+        expect(state).assertEqual(1);
         while (!(isTerminate1 && isTerminate2 && isTerminate3)) {
           await promiseCase();
         }
-        console.info(`${caseName}: statef1: ${JSON.stringify(taskpool.getTaskPoolInfo().taskInfos[0].state)}`)
-        expect(taskpool.getTaskPoolInfo().taskInfos[0].state).assertEqual(1);
+        taskInfo = taskpool.getTaskPoolInfo();
+        console.info(`${caseName}: statef1 taskInfo: ${JSON.stringify(taskInfo)}`);
+        expect(taskInfo.taskInfos.length).assertEqual(0);
         done();
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
