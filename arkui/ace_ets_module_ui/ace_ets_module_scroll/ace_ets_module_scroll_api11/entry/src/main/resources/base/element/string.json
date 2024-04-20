@@ -115,6 +115,27 @@
     {
       "name": "popupSpace",
       "value": "10"
+    },
+    {
+      "name": "module_test_desc",
+      "value": "test ability description"
+    },
+    {
+      "name": "nextMargin",
+      "value": "20"
+    },
+    {
+      "name": "prevMargin",
+      "value": "20"
+    },
+    {
+      "name": "nextMarginString",
+      "value": "20px"
+    },
+    {
+      "name": "prevMarginString",
+      "value": "20px"
     }
+    
   ]
 }
