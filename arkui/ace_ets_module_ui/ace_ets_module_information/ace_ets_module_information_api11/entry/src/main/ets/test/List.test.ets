@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import gaugeJsunit from './gaugeTest/GaugeJsunit.test';
+import GaugeUxTest from './gaugeTest/gaugeux.test';
 import CounterEnableTest from './CounterTest/CounterEnable.test'
 import progressTest from './ProgressTest/progress.test'
 import progressSecTest from './ProgressTest/progressSec.test'
@@ -36,4 +37,5 @@ export default function testsuite() {
   qrcodeJsunit()
   badgeTest();
   datapanelTest();
+  GaugeUxTest();
 }

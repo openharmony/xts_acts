@@ -135,6 +135,7 @@ import ohosMatrix4Jsunit from './imageTest/OhosMatrix4Jsunit.test';
 import positionSettingJsunit from './textTest/PositionSettingJsunit.test';
 import ShapeClippingJsunit from './imageTest/ShapeClippingJsunit.test';
 import textAreaJsunit from './TextAreaTest/TextAreaJsunit.test';
+import textAreaUxTest  from './TextAreaTest/textareaux.test';
 import textInputJsunit from './TextInputTest/TextInputJsunit.test';
 import propJsunit from './textTest/PropJsunit.test';
 import imageJsunit from './imageTest/ImageJsunit.test';
@@ -287,4 +288,5 @@ export default function testsuite() {
   textInputTest()
   textinputSec()
   segmentbuttonTest()
+  textAreaUxTest();
 }
