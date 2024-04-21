@@ -14,7 +14,7 @@
     "MainAbility/pages/promptAction/Index",
     "MainAbility/pages/AlertDialog/AlertDialog",
     "MainAbility/pages/Panel/Panel",
-    "MainAbility/pages/panel/Index",
+    "MainAbility/pages/Panel/Index",
     "MainAbility/pages/actionSheet/ActionSheet",
     "MainAbility/pages/actionSheet/ActionSheetFalse",
     "MainAbility/pages/actionSheet/ActionSheetTrue",
@@ -38,6 +38,22 @@
     "MainAbility/pages/promptAction/showDialog",
     "MainAbility/pages/AlertDialog/AlertDialog1",
     "MainAbility/pages/AlertDialog/AlertDialogFalse",
-    "MainAbility/pages/AlertDialog/AlertDialogTrue"
+    "MainAbility/pages/AlertDialog/AlertDialogTrue",
+    "MainAbility/pages/actionSheet/ActionsheetDialog",
+    "MainAbility/pages/AlertDialog/AlertDialogUI",
+    "MainAbility/pages/calendarPickerDialog/CalendarDialog",
+    "MainAbility/pages/customDialog/CustomDialogUI",
+    "MainAbility/pages/datePickerDialog/DatePickerDialogUI",
+    "MainAbility/pages/promptAction/Popup",
+    "MainAbility/pages/textPickerDialog/TextPickerDialogUI",
+    "MainAbility/pages/timePickerDialog/TimePickerDialogUI",
+    "MainAbility/pages/promptAction/PromptDialog",
+    "MainAbility/pages/AlertDialog/AlertDialogParam",
+    "MainAbility/pages/customDialog/CustomDialogControllerOptions",
+    "MainAbility/pages/datePickerDialog/DatePickerDialogOptions",
+    "MainAbility/pages/promptAction/ShowDialogOptions",
+    "MainAbility/pages/textPickerDialog/TextPickerDialogOptions",
+    "MainAbility/pages/timePickerDialog/TimePickerDialogOptions",
+    "MainAbility/pages/AlertDialog/DialogPage"
   ]
 }

@@ -22,6 +22,12 @@ import ForegroundColorJsSuit from './imageEffectsTest/ForegroundColorJsSuit.test
 import sheetSize1Jsunit from './imageEffectsTest/sheetSize1.test'
 import clickeffectTest from './clickeffectTest/clickeffect'
 
+import commonColorModeJsunit from './imageEffectsTest/common.test.ets';
+import enumsCancelJsunit from './imageEffectsTest/enums.test.ets';
+import hoverEffectJsunit from './imageEffectsTest/hoverEffect.test.ets';
+import hitTestModeJsunit from './imageEffectsTest/hitTestMode.test.ets';
+import commonBackgroundBlurStyleJsunit from './imageEffectsTest/common.test3';
+import common_ts_ets_apiStaticClearJsunit from './imageEffectsTest/common_ts_ets_api.test';
 export default function testsuite() {
   imageEffectsJsunit();
   backgroundEffectJsunit();
@@ -32,4 +38,9 @@ export default function testsuite() {
   ForegroundColorJsSuit();
   sheetSize1Jsunit()
   clickeffectTest();
+  commonColorModeJsunit()
+  hoverEffectJsunit()
+  hitTestModeJsunit()
+  commonBackgroundBlurStyleJsunit()
+  common_ts_ets_apiStaticClearJsunit()
 }

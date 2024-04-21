@@ -148,11 +148,14 @@ import translationTest from './RenderNodeTest/translation.test.ets'
 import stageFontTest from './textTest/stageFont.test';
 import stageMediaquery from './textTest/stageMediaquery.test';
 
-
+import buttonTest from './buttonTest/button'
+import textInputTest from './TextInputTest/textinput'
+import textinputSec from './TextInputTest/textinputSec'
+import segmentbuttonTest from './SegmentButtonTest/segmentbutton'
 export default function testsuite() {
   stageFontTest();
   stageMediaquery();
-
+  
   TextStateJsunit();
   richEditorApi4();
   richEditorApi5();
@@ -261,7 +264,7 @@ export default function testsuite() {
   TextfieldOtherTest()
   TextfieldSingleTest()
   TextfieldMultiTest()
-
+  
   CurveTest()
   backgroundAndSizeSettingJsunit()
   borderJsunit();
@@ -279,4 +282,9 @@ export default function testsuite() {
   rotationTest()
   transformTest()
   translationTest()
+
+  buttonTest();
+  textInputTest()
+  textinputSec()
+  segmentbuttonTest()
 }

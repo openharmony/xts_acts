@@ -23,7 +23,7 @@ import progressJsunit from './ProgressTest/ProgressJsunit.test';
 import qrcodeJsunit from './QrcodeTest/QrcodeJsunit.test';
 import badgeTest from './BadgeTest/badge'
 import datapanelTest from './DataPanelTest/datapanel'
-
+import advancedCounter from './advancedCounterTest/advancedCounter'
 export default function testsuite() {
   gaugeJsunit();
   CounterEnableTest();
@@ -36,4 +36,5 @@ export default function testsuite() {
   qrcodeJsunit()
   badgeTest();
   datapanelTest();
+  advancedCounter()
 }

@@ -11,6 +11,7 @@
         "MainAbility/pages/Progress/ProgressA",
         "MainAbility/pages/Qrcode/Qrcode",
         "MainAbility/pages/Badge/BadgeIndex",
-        "MainAbility/pages/DataPanel/DataPanel_001"
+        "MainAbility/pages/DataPanel/DataPanel_001",
+        "MainAbility/pages/advancedCounter/advancedCounterIndex"
     ]
 }

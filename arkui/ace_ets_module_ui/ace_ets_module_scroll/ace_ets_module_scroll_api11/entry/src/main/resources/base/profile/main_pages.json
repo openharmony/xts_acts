@@ -5,9 +5,6 @@
         "MainAbility/pages/List/List07",
         "MainAbility/pages/Swiper/Swiper07",
         "MainAbility/pages/sidebarType",
-
-
-
         "MainAbility/pages/Swiper/swiper",
         "MainAbility/pages/List/ListDelete",
         "MainAbility/pages/List/ListSwipe",
@@ -44,7 +41,6 @@
         "MainAbility/pages/grid/GridJC",
         "MainAbility/pages/grid/gridScrollBar",
         "MainAbility/pages/Scroll/Index2",
-
         "MainAbility/pages/List/edgeEffect",
         "MainAbility/pages/Swiper/Swipersec",
         "MainAbility/pages/Swiper/Swiper1",
@@ -56,7 +52,6 @@
         "MainAbility/pages/List/ListItem",
         "MainAbility/pages/Swiper/Swiper2",
         "MainAbility/pages/Tabs/Tab",
-
         "MainAbility/pages/Tabs/tabs_index/Tabs_index",
         "MainAbility/pages/Tabs/Tabs_ItemsChange/Tabs_itemPadMar",
         "MainAbility/pages/Tabs/Tabs_ItemsChange/Tabs_itemSize",
@@ -106,7 +101,6 @@
         "MainAbility/pages/grid/GridIndex",
         "MainAbility/pages/grid/GridTestPage",
         "MainAbility/pages/PatternLock/PatternLockIndex",
-        
         "MainAbility/pages/Swiper/swiperUI/swiperNextPrevMargin50",
         "MainAbility/pages/Swiper/swiperUI/swiperNextPrevMargin52",
         "MainAbility/pages/Swiper/swiperUI/swiperNextPrevMargin53",
@@ -167,6 +161,22 @@
         "MainAbility/pages/Scroll/richEditorCustomKeyBoard",
         "MainAbility/pages/Scroll/navigation_add",
         "MainAbility/pages/Scroll/navrouteradd",
-        "MainAbility/pages/Scroll/navition3"
+        "MainAbility/pages/Scroll/navition3",
+	    "MainAbility/pages/List/list_ux",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChange",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex3",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex03",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex04",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex05",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex06",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex07",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex08",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex09",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex10",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex11",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex12",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex13",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex14",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex15"
     ]
 }
