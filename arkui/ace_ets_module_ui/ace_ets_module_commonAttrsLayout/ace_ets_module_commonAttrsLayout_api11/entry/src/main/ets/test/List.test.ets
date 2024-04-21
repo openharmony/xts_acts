@@ -76,6 +76,10 @@ import ChipAction from './Chip/ChipAction.test';
 import ChipOnClose from './Chip/ChipOnClose.test';
 import ChipAction2 from './Chip/ChipAction2.test';
 import ChipOnClose2 from './Chip/ChipOnClose2.test';
+import MeasureJsunit from './MeasureSizeTest/MeasureJsunit.test';
+import onMeasureSize1 from './MeasureSizeTest/onMeasureSize1.test';
+import onMeasureSize2 from './MeasureSizeTest/onMeasureSize2.test';
+import onMeasureSize3 from './MeasureSizeTest/onMeasureSize3.test';
 
 
 export default function testsuite() {
@@ -142,4 +146,8 @@ export default function testsuite() {
   ChipOnClose();
   ChipAction2();
   ChipOnClose2();
+  onMeasureSize1();
+  onMeasureSize2();
+  onMeasureSize3();
+  MeasureJsunit();
 }

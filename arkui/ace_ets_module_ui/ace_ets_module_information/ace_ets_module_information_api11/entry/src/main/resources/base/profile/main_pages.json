@@ -13,6 +13,7 @@
         "MainAbility/pages/Qrcode/Qrcode",
         "MainAbility/pages/Badge/BadgeIndex",
         "MainAbility/pages/DataPanel/DataPanel_001",
-        "MainAbility/pages/advancedCounter/advancedCounterIndex"
+        "MainAbility/pages/advancedCounter/advancedCounterIndex",
+        "MainAbility/pages/Qrcode/QRCodePage" 
     ]
 }

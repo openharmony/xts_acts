@@ -63,6 +63,10 @@
         "MainAbility/pages/Chip/ChipAction",
         "MainAbility/pages/Chip/ChipOnClose",
         "MainAbility/pages/Chip/ChipAction2",
-        "MainAbility/pages/Chip/ChipOnClose2"
+        "MainAbility/pages/Chip/ChipOnClose2",
+        "MainAbility/pages/MeasureSize/measureSize",
+        "MainAbility/pages/MeasureSize/onMeasureSize1",
+        "MainAbility/pages/MeasureSize/onMeasureSize2",
+        "MainAbility/pages/MeasureSize/onMeasureSize3"
     ]
 }

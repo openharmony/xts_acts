@@ -28,6 +28,7 @@ import HoverJsunit11 from './HoverTest/HoverJsunit11.test.ets';
 import HoverJsunit17 from './HoverTest/HoverJsunit17.test.ets';
 import HoverJsunit23 from './HoverTest/HoverJsunit23.test.ets';
 import HoverJsunit25 from './HoverTest/HoverJsunit25.test.ets';
+import OverlayUIJsunit from './overlayTest/OverlayUIJsunit.test.ets';
 
 export default function testsuite() {
   noBarrierComponentsTest();
@@ -46,4 +47,5 @@ export default function testsuite() {
   HoverJsunit17();
   HoverJsunit23();
   HoverJsunit25();
+  OverlayUIJsunit();
 }

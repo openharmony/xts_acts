@@ -38,6 +38,8 @@ import selectJsunit from './SelectTest/SelectJsunit1.test';
 import sliderJsunit1 from './slider/SliderJsunit1.test';
 import menuBackgroundBlurStyle from './SelectTest/menuBackgroundBlurStyle.test.ets'
 import menuBackgroundColor from './SelectTest/menuBackgroundColor.test.ets'
+import RadioJsunit from './RadioTest/RadioJsunit.test';
+import RatingUIJsunit from './RatingTest/RatingUIJsunit.test.ets';
 
 import select from './SelectTest/Select';
 import selectmenuTest from './SelectTest/SelectMenu';
@@ -82,4 +84,6 @@ export default function testsuite() {
   datepicker()
   checkBoxTest1()
   checkBoxGroupTest()
+  RadioJsunit();
+  RatingUIJsunit();
 }

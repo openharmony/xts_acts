@@ -58,6 +58,10 @@
         "MainAbility/pages/lazyForeach/lazyForEach2",
         "MainAbility/pages/PanGesture/gesture",
         "MainAbility/pages/onGestureJudgeBegin/gestureMode",
-        "MainAbility/pages/onVisibleAreaChange/onVisibleAreaChange"
+        "MainAbility/pages/onVisibleAreaChange/onVisibleAreaChange",
+	"MainAbility/pages/PanGesture/PanGestureEvent",
+        "MainAbility/pages/PanGesture/gestureEnabled",
+        "MainAbility/pages/DragController/DragEventUI",
+        "MainAbility/pages/DragController/DragController"
     ]
 }

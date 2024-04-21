@@ -71,6 +71,10 @@ import uiAppearanceALWAYS_DARKJsunit from './onAppearTest/uiAppearance.test.ets'
 import gestureParallelJsunit from './GestureGroupTest/gesture.test.ets';
 import gestureSetDirectionJsunit from './PanGestureTest/gesture.test';
 import lazyForEachOnDataAddJsunit from './lazyForeachTest/lazyForEach.test';
+import PanGestureEventJsunit from './PanGestureTest/PanGestureEventJsunit.test.ets';
+import gestureEnabledJsunit from './PanGestureTest/gestureEnabledJsunit.test.ets'
+
+
 export default function testsuite() {
   touchJsunit();
   appearJsunit();
@@ -124,8 +128,9 @@ export default function testsuite() {
   GestureModeJsunit()
   PanDirectionJsunit()
   subscribedAbstractPropertyJsunit()
-  
   gestureParallelJsunit()
   gestureSetDirectionJsunit()
   lazyForEachOnDataAddJsunit()
+  PanGestureEventJsunit();
+  gestureEnabledJsunit();
 }

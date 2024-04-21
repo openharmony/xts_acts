@@ -41,6 +41,8 @@
         "MainAbility/pages/DatePicker/DatePickerIndex",
         "MainAbility/pages/Checkbox/CheckBox1",
         "MainAbility/pages/Checkbox/CheckBoxIndex",
-        "MainAbility/pages/checkboxGroup/CheckBoxGroup1"
+        "MainAbility/pages/checkboxGroup/CheckBoxGroup1",
+	"MainAbility/pages/Radio/RadioPage",
+        "MainAbility/pages/Rating/RatingPage"
     ]
 }
