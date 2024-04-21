@@ -18,6 +18,48 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 import { AttrsManager } from '../../MainAbility/common/AttrsManager';
 
+let flexGrow = 3;
+let compareFlexGrow = 1;
+
+class TestValue {
+  describe: string;
+  setValue: SetValue;
+  expectValue: ESObject;
+}
+
+class SetValue {
+  parentWidth: number;
+  parentHeight: number;
+  flexGrow: number;
+  compareFlexGrow: number;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  compareWidth: number;
+  compareHeight: number;
+  standardWidth: number;
+  standardHeight: number;
+  standardComponentKey: string;
+  compareComponentKey: string;
+  targetWidth: number;
+  targetHeight: number;
+}
+
+function expectForFlexGrow(space: number, countFlexGrow: number, realRect: number, targetSize: number, data: ESObject) {
+  console.info('[' + data.caseTag + '] call the expectForFlexGrow function.');
+  console.info('[' + data.caseTag + '] space : ' + space);
+  console.info('[' + data.caseTag + '] countFlexGrow : ' + countFlexGrow);
+  console.info('[' + data.caseTag + '] realRect : ' + realRect);
+  console.info('[' + data.caseTag + '] targetSize : ' + targetSize);
+  //Verify based on different parent container spindle directions
+  let ratio = countFlexGrow / (flexGrow + compareFlexGrow);
+  expect(Math.abs(Number(realRect) - Number(vp2px((space * ratio) + targetSize))) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] (space * ratio) + targetSize : ' + ((space * ratio) + targetSize));
+}
+
 
 export default function flexGrowTest() {
 
@@ -45,7 +87,7 @@ export default function flexGrowTest() {
     'ColumnSplit',
     'TextTimer',
     'Stepper',
-//    'Flex',
+    //    'Flex',
     'Progress',
     'QRCode',
     'Radio',
@@ -63,7 +105,7 @@ export default function flexGrowTest() {
     'Badge',
     'Column',
     'Counter',
-//    'GridRow',
+    //    'GridRow',
     'Grid',
     'List',
     'Panel',
@@ -92,12 +134,10 @@ export default function flexGrowTest() {
   let compareHeight = 100;
   let standardWidth = 100;
   let standardHeight = 100;
-  let flexGrow = 3;
-  let compareFlexGrow = 1;
   let targetWidth = 100;
   let targetHeight = 100;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testFlexGrow',
     pageName: 'FlexGrowPage',
     pageUrl: 'MainAbility/pages/flex/FlexGrowPage',
@@ -111,7 +151,7 @@ export default function flexGrowTest() {
     targetHeight: targetHeight
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetFlexGrow',
     setValue: {
       parentWidth: parentWidth,
@@ -135,7 +175,7 @@ export default function flexGrowTest() {
   }]
 
   describe('FlexGrowTest', () => {
-    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, null, async data => {
+    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, null, async (data: ESObject) => {
       //Get standard component rect in order to judge the standard component size not be changed
       let standardRectBefore = Utils.getComponentRect(data.pageConfig.standardComponentKey);
       AttrsManager.change(data.caseTag, data.testValue.setValue);
@@ -151,13 +191,13 @@ export default function flexGrowTest() {
       let compareRect = Utils.getComponentRect(data.pageConfig.compareComponentKey);
 
       //Verify the flexGrow attribute is set success
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       expect(Math.abs(viewObj.$attrs.flexGrow - data.testValue.expectValue.flexGrow) <= 1).assertTrue();
 
       //Abnormal case
       if (data.testValue.describe == 'SpaceNotEnough') {
         if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow'
-        || data.pageConfig.containerView == 'FlexRowReverse') {
+          || data.pageConfig.containerView == 'FlexRowReverse') {
           expect(Math.abs(Number(rect.right - rect.left) - Number(vp2px(targetWidth))) <= 1).assertTrue();
         } else {
           expect(Math.abs(Number(rect.bottom - rect.top) - Number(vp2px(targetHeight))) <= 1).assertTrue();
@@ -172,10 +212,10 @@ export default function flexGrowTest() {
 
         //Verify the target component and compare component, allocate remaining space in the correct proportion
         console.info('[' + data.caseTag + '] check the size of the component in the spindle ' +
-        'direction has been changed by flexGrow ');
+          'direction has been changed by flexGrow ');
 
         if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow'
-        || data.pageConfig.containerView == 'FlexRowReverse') {
+          || data.pageConfig.containerView == 'FlexRowReverse') {
 
           let widthSpace = parentWidth - standardWidth - compareWidth - targetWidth;
           console.info('[' + data.caseTag + '] widthSpace : ' + widthSpace);
@@ -183,7 +223,7 @@ export default function flexGrowTest() {
           expectForFlexGrow(widthSpace, flexGrow, rect.right - rect.left, targetWidth, data);
           expectForFlexGrow(widthSpace, compareFlexGrow, compareRect.right - compareRect.left, compareWidth, data);
         } else if (data.pageConfig.containerView == 'Column' || data.pageConfig.containerView == 'FlexColumn'
-        || data.pageConfig.containerView == 'FlexColumnReverse') {
+          || data.pageConfig.containerView == 'FlexColumnReverse') {
 
           let heightSpace = parentHeight - standardHeight - compareHeight - targetHeight;
           console.info('[' + data.caseTag + '] heightSpace : ' + heightSpace);
@@ -194,16 +234,4 @@ export default function flexGrowTest() {
       }
     })
   })
-
-  function expectForFlexGrow(space, countFlexGrow, realRect, targetSize, data) {
-    console.info('[' + data.caseTag + '] call the expectForFlexGrow function.');
-    console.info('[' + data.caseTag + '] space : ' + space);
-    console.info('[' + data.caseTag + '] countFlexGrow : ' + countFlexGrow);
-    console.info('[' + data.caseTag + '] realRect : ' + realRect);
-    console.info('[' + data.caseTag + '] targetSize : ' + targetSize);
-    //Verify based on different parent container spindle directions
-    let ratio = countFlexGrow / (flexGrow + compareFlexGrow);
-    expect(Math.abs(Number(realRect) - Number(vp2px((space * ratio) + targetSize))) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] (space * ratio) + targetSize : ' + ((space * ratio) + targetSize));
-  }
 }
