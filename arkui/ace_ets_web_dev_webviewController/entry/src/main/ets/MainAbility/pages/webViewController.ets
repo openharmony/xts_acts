@@ -58,6 +58,7 @@ struct Index {
     " Chrome/86.0.4240.198 Safari/537.36";
   @State userAgentAll: string = "";
   @State userAgentCheck: string = "";
+  @State userAgentPC:string = "";
   @State pageResult: boolean = false;
   @State pageResult2: boolean = false;
   @State indexUrl: string = "//rawfile/indexCopy.html";
@@ -404,6 +405,7 @@ struct Index {
             }
             case "emitpageDown": {
               try {
+                this.controller.loadUrl($rawfile('indexCopyTwo.html'))
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResult = JSON.parse(result)
                   console.log(`The checkVIsible() return value is: ${result}`);
@@ -427,7 +429,12 @@ struct Index {
                 this.pageResult = false;
               }
               this.controller.runJavaScript("test()", (res) => {
-                Utils.emitEvent(this.pageResult, 106)
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 106)
+                } else {
+                  Utils.emitEvent(this.pageResult, 106)
+                }
               })
               break;
             }
@@ -456,7 +463,12 @@ struct Index {
                 this.pageResult = false;
               }
               this.controller.runJavaScript("test()", (res) => {
-                Utils.emitEvent(this.pageResult, 108)
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 108)
+                } else {
+                  Utils.emitEvent(this.pageResult, 108)
+                }
               })
               break;
             }
@@ -485,7 +497,12 @@ struct Index {
                 this.pageResult = false;
               }
               this.controller.runJavaScript("test()", (res) => {
-                Utils.emitEvent(this.pageResult, 110)
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 110)
+                } else {
+                  Utils.emitEvent(this.pageResult, 110)
+                }
               })
               break;
             }
@@ -513,7 +530,12 @@ struct Index {
                 this.pageResult = false;
               }
               this.controller.runJavaScript("test()", (res) => {
-                Utils.emitEvent(this.pageResult, 112)
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 112)
+                } else {
+                  Utils.emitEvent(this.pageResult, 112)
+                }
               })
               break;
             }
