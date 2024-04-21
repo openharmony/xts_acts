@@ -19,8 +19,8 @@ import CanvasAPITest from './CanvasText/CanvasAPI.test'
 import CanvasShaderTest from './CanvasText/CanvasShader.test'
 import CanvasColorTest from './CanvasText/CanvasColor.test'
 import OffScreenCanvasTest from './OffScreenCanvasTest/OffScreenCanvas.test'
-
 import drawCanvas from './CanvasText/drawCanvas.test'
+import ParticlePropertyJsunit from './ParticleTest/ParticlePropertyJsunit.test.ets'
 
 export default function testsuite() {
   ellipseJsunit();
@@ -30,5 +30,6 @@ export default function testsuite() {
   CanvasShaderTest();
   CanvasColorTest();
   OffScreenCanvasTest();
-  drawCanvas()
+  drawCanvas();
+  ParticlePropertyJsunit();
 }

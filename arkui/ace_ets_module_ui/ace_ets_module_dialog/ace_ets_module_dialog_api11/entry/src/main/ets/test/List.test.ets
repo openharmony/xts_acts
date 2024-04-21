@@ -76,6 +76,8 @@ import ShowDialogJsunit from './promptActionTest/ShowDialogJsunit.test.ets';
 import TextPickerDialogJsunit from './textPickerDialogTest/TextPickerDialogJsunit.test.ets';
 import TimePickerDialogJsunit from './timePickerDialogTest/TimePickerDialogJsunit.test.ets';
 import DialogJsunit from './alertDialogTest/DialogJsunit.test.ets';
+import PanelUIJsunit from './Panel/PanelUIJsunit.test.ets';
+import ActionSheetJsunit from './actionSheetTest/ActionSheetJsunit.test.ets';
 
 export default function testsuite() {
   bindPopupOffsetTest();
@@ -142,4 +144,6 @@ export default function testsuite() {
   TextPickerDialogJsunit();
   TimePickerDialogJsunit();
   DialogJsunit();
+  PanelUIJsunit();
+  ActionSheetJsunit();
 }

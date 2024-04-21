@@ -121,6 +121,9 @@ import ScrollToIndexForGridJsunit01 from './ScrollTest/ScrollToIndex/ScrollToInd
 import ScrollToIndexForGridJsunit02 from './ScrollTest/ScrollToIndex/ScrollToIndexForGridJsunit02.test';
 import ScrollToIndexForGridJsunit03 from './ScrollTest/ScrollToIndex/ScrollToIndexForGridJsunit03.test';
 import ApiCommponentAddJsunit from './ScrollTest/ApiCommponentAddJsunit.test.ets';
+import ScrollBarJsunit from './ScrollTest/ScrollBarJsunit.test';
+import sliderJsunit from './SliderTest/sliderJsunit.test.ets';
+import swiperAnimationJsunit from './SwiperTest/swiperUI/swiperAnimationJsunit.test.ets'
 
 export default function testsuite() {
   listUxTest()
@@ -230,4 +233,7 @@ export default function testsuite() {
   tabsOnContentWillChangeIndex13JsunitTest()
   tabsOnContentWillChangeIndex14JsunitTest()
   tabsOnContentWillChangeIndex15JsunitTest()
+  ScrollBarJsunit();
+  sliderJsunit();
+  swiperAnimationJsunit();
 }

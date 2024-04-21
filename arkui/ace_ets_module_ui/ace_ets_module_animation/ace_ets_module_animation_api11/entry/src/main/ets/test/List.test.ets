@@ -19,6 +19,7 @@ import animationCurveTest from './animationCurve.test';
 import geometryTransitionJsunit from './geometryTransitionTest/GeometryTransitionJsunit.test';
 import animatorOnframeJsunit from './Animation/animator.test';
 import remoteWindowJsunit from './RemoteWindowTest/remoteWindow.test.ets'
+import AnimationJsunit from './AnimationTest/AnimationJsunit.test.ets';
 
 export default function testsuite() {
   animateToTest();
@@ -29,4 +30,5 @@ export default function testsuite() {
   geometryTransitionJsunit()
   animatorOnframeJsunit()
   remoteWindowJsunit()
+  AnimationJsunit();
 }

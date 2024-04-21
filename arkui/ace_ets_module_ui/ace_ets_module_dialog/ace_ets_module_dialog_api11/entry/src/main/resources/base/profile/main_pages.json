@@ -54,6 +54,9 @@
     "MainAbility/pages/promptAction/ShowDialogOptions",
     "MainAbility/pages/textPickerDialog/TextPickerDialogOptions",
     "MainAbility/pages/timePickerDialog/TimePickerDialogOptions",
-    "MainAbility/pages/AlertDialog/DialogPage"
+    "MainAbility/pages/AlertDialog/DialogPage",
+    "MainAbility/pages/actionSheet/ActionSheetOptions",
+    "MainAbility/pages/Menu/menuEnabled",
+    "MainAbility/pages/Menu/MenuItemGroupOptions"
   ]
 }

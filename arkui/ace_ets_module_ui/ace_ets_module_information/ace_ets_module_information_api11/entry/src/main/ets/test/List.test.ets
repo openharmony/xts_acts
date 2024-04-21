@@ -25,6 +25,8 @@ import qrcodeJsunit from './QrcodeTest/QrcodeJsunit.test';
 import badgeTest from './BadgeTest/badge'
 import datapanelTest from './DataPanelTest/datapanel'
 import advancedCounter from './advancedCounterTest/advancedCounter'
+import QRCodeUIJsunit from './QrcodeTest/QRCodeUIJsunit.test.ets';
+
 export default function testsuite() {
   gaugeJsunit();
   CounterEnableTest();
@@ -39,4 +41,5 @@ export default function testsuite() {
   datapanelTest();
   GaugeUxTest();
   advancedCounter()
+  QRCodeUIJsunit();
 }

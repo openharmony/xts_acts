@@ -30,7 +30,9 @@
         "MainAbility/pages/State/RouterPushThree",
         "MainAbility/pages/State/RouterUrlError",
         "MainAbility/pages/Router/pushUrlasync",
-        "MainAbility/pages/Router/stageRouter"
+        "MainAbility/pages/Router/stageRouter",
+	"MainAbility/pages/Router/deReplace",
+        "MainAbility/pages/Router/routerReplace"
 
     ]
 }

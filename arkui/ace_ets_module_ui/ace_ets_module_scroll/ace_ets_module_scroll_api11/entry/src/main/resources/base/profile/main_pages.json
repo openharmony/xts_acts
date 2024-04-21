@@ -177,6 +177,7 @@
         "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex12",
         "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex13",
         "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex14",
-        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex15"
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex15",
+	"MainAbility/pages/Swiper/swiperUI/swiperAnimation"
     ]
 }
