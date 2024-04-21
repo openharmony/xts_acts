@@ -46,6 +46,18 @@
         "MainAbility/pages/PanGesture/PanGesture3",
         "MainAbility/pages/LongPressGesture/LongPressGesture1",
         "MainAbility/pages/LongPressGesture/LongPressGesture2",
-        "MainAbility/pages/LongPressGesture/LongPressGesture3"
+        "MainAbility/pages/LongPressGesture/LongPressGesture3",
+        "MainAbility/pages/DragController/dragEvent",
+        "MainAbility/pages/DragController/dragEvent2",
+        "MainAbility/pages/enum/enumsLineCapStyle",
+        "MainAbility/pages/enum/enumsItemAlign",
+        "MainAbility/pages/PanGesture/panDirection",
+        "MainAbility/pages/lazyForeach/lazyForEach",
+        "MainAbility/pages/onAppear/uiAppearance",
+        "MainAbility/pages/GestureGroup/gesture",
+        "MainAbility/pages/lazyForeach/lazyForEach2",
+        "MainAbility/pages/PanGesture/gesture",
+        "MainAbility/pages/onGestureJudgeBegin/gestureMode",
+        "MainAbility/pages/onVisibleAreaChange/onVisibleAreaChange"
     ]
 }
