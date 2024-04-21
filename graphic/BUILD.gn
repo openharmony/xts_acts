@@ -16,6 +16,7 @@ group("graphic") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "LandscapeWindow:LandscapeWindow_Test",
       "effectKit:ActsEffectKitTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
       "graphicDrawing:ActsGraphicDrawingTest",
