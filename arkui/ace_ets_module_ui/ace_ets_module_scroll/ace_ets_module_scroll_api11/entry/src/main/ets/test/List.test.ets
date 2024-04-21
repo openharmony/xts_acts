@@ -44,7 +44,7 @@ import ScrollTest from './ScrollTest/Scroll.test'
 import tabs from './TabsTest/Tabs'
 import tabsSec from './TabsTest/TabsSec'
 import tabsThird from './TabsTest/TabsThird'
-import AlphabetIndexer from './AlphabetIndexerTest/AlphabetIndexer'
+import ActsAlphabetIndexerUxTest from './AlphabetIndexerTest/AlphabetIndexer.test'
 import RefreshTest from './RefreshTest/Refresh.test'
 import ScrollTest2 from './ScrollTest/Scroll2.test'
 import Tabs_itemPadMar from './TabsTest/Tabs_ItemsChange/Tabs_itemPadMar.test';
@@ -161,7 +161,7 @@ export default function testsuite() {
   tabs()
   tabsSec()
   tabsThird()
-  AlphabetIndexer()
+  ActsAlphabetIndexerUxTest()
   RefreshTest()
   ScrollTest2()
 

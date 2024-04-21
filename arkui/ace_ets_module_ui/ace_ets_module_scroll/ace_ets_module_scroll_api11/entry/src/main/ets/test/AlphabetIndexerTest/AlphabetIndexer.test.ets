@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
@@ -20,20 +19,20 @@ import Utils from '../Utils';
 
 let emitKey = "emitUserAgent";
 
-export default function AlphabetIndexer() {
-  describe('ActsAlphabetIndexerTest', function () {
+export default function ActsAlphabetIndexerUxTest() {
+  describe('ActsAlphabetIndexerUxTest', function () {
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/AlphabetIndexer/Index",
+        url: "MainAbility/pages/AlphabetIndexer/alphabetIndexerux",
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get AlphabetIndexer state success " + JSON.stringify(pages));
-        if (!("Index" == pages.name)) {
+        if (!("alphabetIndexerux" == pages.name)) {
           console.info("get AlphabetIndexer state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          await Utils.sleep(1000);
+          await Utils.sleep(2000);
           console.info("push AlphabetIndexer page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -55,7 +54,7 @@ export default function AlphabetIndexer() {
             "popupSpaceStr": '120',
             "popupSelectedColor": Color.Orange,
             "popupUnselectedColor": Color.Green,
-            "popupItemBackgroundColor": Color = Color.Pink,
+            "popupItemBackgroundColor": Color.Pink,
             "popupSelectedColorNum": 0x00CED1,
             "popupUnselectedColorNum": 0xC0FF3E,
             "popupItemBackgroundNum": 0x8470FF,
