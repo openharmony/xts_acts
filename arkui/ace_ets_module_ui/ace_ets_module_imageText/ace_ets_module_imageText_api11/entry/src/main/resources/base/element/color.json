@@ -19,6 +19,10 @@
     {
       "name": "textShadow_Color",
       "value": "#FFFD0000"
+    },
+    {
+      "name": "TextInput_Color",
+      "value": "#FFFD0000"
     }
   ]
 }
