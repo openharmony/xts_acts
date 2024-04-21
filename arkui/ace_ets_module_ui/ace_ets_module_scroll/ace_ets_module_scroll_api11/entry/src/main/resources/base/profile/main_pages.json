@@ -89,6 +89,21 @@
         "MainAbility/pages/Swiper/Swiper_ParmsChange/swiperPadding",
         "MainAbility/pages/Swiper/Swiper_ParmsChange/swiperVertical",
         "MainAbility/pages/Scroll/ScrollA",
-	"MainAbility/pages/List/list_ux"
+	"MainAbility/pages/List/list_ux",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChange",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex3",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex03",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex04",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex05",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex06",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex07",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex08",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex09",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex10",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex11",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex12",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex13",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex14",
+        "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex15"
     ]
 }
