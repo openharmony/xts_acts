@@ -13,13 +13,11 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 
 @Entry
 @Component
-struct AlphabetIndexerTest {
+struct AlphabetIndexerTestux {
   private arrayA: string[] = ['安', '爱', '奥']
   private arrayB: string[] = ['卜', '白', '包', '毕', '丙']
   private arrayC: string[] = ['曹', '成', '陈', '催']
@@ -148,12 +146,7 @@ struct AlphabetIndexerTest {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-    hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
+    console.info("AlphabetIndexerTest about to appear");
   }
 
   build() {

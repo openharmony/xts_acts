@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { Hypium } from '@ohos/hypium';
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import uiAppearance from '@ohos.uiAppearance'
 import { BusinessError } from '@ohos.base';
 import events_emitter from '@ohos.events.emitter';
@@ -22,16 +20,10 @@ import events_emitter from '@ohos.events.emitter';
 // xxx
 @Entry
 @Component
-struct Index {
+struct refreshux {
   aboutToAppear() {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-    hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'index aboutToAppear');
   }
 
   @State isRefreshingText: boolean = false
