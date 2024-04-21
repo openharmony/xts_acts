@@ -139,10 +139,6 @@
     {
       "name": "DataPanel_TrackShadow12",
       "value": "#FFFF0000"
-    },  
-    {
-      "name": "start_window_background",
-      "value": "#FFFFFF"
     },
     {
       "name": "gaugeColor1",
