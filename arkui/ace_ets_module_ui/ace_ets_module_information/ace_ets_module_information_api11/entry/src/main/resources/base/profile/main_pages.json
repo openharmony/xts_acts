@@ -2,6 +2,7 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/gauge/gauge",
+        "MainAbility/pages/gauge/gaugeUx",
         "MainAbility/pages/Counter/CounterEnable",
         "MainAbility/pages/Progress/Progress",
         "MainAbility/pages/Progress/ProgressSec",

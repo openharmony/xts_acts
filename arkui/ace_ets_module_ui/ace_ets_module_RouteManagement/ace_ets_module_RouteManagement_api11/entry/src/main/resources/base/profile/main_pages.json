@@ -28,6 +28,9 @@
         "MainAbility/pages/State/RouterPushOne",
         "MainAbility/pages/State/RouterPushTwo",
         "MainAbility/pages/State/RouterPushThree",
-        "MainAbility/pages/State/RouterUrlError"
+        "MainAbility/pages/State/RouterUrlError",
+        "MainAbility/pages/Router/pushUrlasync",
+        "MainAbility/pages/Router/stageRouter"
+
     ]
 }

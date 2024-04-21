@@ -11,6 +11,7 @@
         "MainAbility/pages/text/textDataDataDetectorConfig",
         "MainAbility/pages/TextArea/TextAreaCallback",
         "MainAbility/pages/TextArea/TextAreaSelect",
+        "MainAbility/pages/TextArea/textAreaux",
         "MainAbility/pages/NodeContainer/arkuinode/arkui_node",
         "MainAbility/pages/NodeContainer/arkuinode/arkuinodeEvent",
         "MainAbility/pages/NodeContainer/arkuinode/arkuirendernode",

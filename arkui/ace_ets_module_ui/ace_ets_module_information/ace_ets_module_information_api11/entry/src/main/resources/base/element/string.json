@@ -79,6 +79,10 @@
     {
       "name": "DataPanel_StrokeWidth",
       "value": "30.00vp"
+    },
+    {
+          "name": "num",
+          "value": "10"
     }
   ]
 }
