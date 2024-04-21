@@ -94,6 +94,21 @@ import List07Test from './ListTest/List07.test';
 import Swiper07Test from './SwiperTest/Swiper07.test';
 import sidebarTypeTest from './sidebarType.test';
 import listUxTest from './ListTest/listux.test.ets'
+import tabsOnContentWillChangeJsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChange.test'
+import tabsOnContentWillChangeIndex3JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex3.test'
+import tabsOnContentWillChangeIndex03JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex03.test'
+import tabsOnContentWillChangeIndex04JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex04.test'
+import tabsOnContentWillChangeIndex05JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex05.test'
+import tabsOnContentWillChangeIndex06JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex06.test'
+import tabsOnContentWillChangeIndex07JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex07.test'
+import tabsOnContentWillChangeIndex08JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex08.test'
+import tabsOnContentWillChangeIndex09JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex09.test'
+import tabsOnContentWillChangeIndex10JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex10.test'
+import tabsOnContentWillChangeIndex11JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex11.test'
+import tabsOnContentWillChangeIndex12JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex12.test'
+import tabsOnContentWillChangeIndex13JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex13.test'
+import tabsOnContentWillChangeIndex14JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex14.test'
+import tabsOnContentWillChangeIndex15JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex15.test'
 
 export default function testsuite() {
   listUxTest()
@@ -178,4 +193,19 @@ export default function testsuite() {
   swiperItemPadMar()
   swiperItemVisibility()
   ScrollJsunit()
+  tabsOnContentWillChangeJsunitTest()
+  tabsOnContentWillChangeIndex3JsunitTest()
+  tabsOnContentWillChangeIndex03JsunitTest()
+  tabsOnContentWillChangeIndex04JsunitTest()
+  tabsOnContentWillChangeIndex05JsunitTest()
+  tabsOnContentWillChangeIndex06JsunitTest()
+  tabsOnContentWillChangeIndex07JsunitTest()
+  tabsOnContentWillChangeIndex08JsunitTest()
+  tabsOnContentWillChangeIndex09JsunitTest()
+  tabsOnContentWillChangeIndex10JsunitTest()
+  tabsOnContentWillChangeIndex11JsunitTest()
+  tabsOnContentWillChangeIndex12JsunitTest()
+  tabsOnContentWillChangeIndex13JsunitTest()
+  tabsOnContentWillChangeIndex14JsunitTest()
+  tabsOnContentWillChangeIndex15JsunitTest()
 }
