@@ -21,6 +21,7 @@ import promptTest from './promptActionTest/promptTest.test';
 import DialogTest from './promptActionTest/Dialog.test';
 import panelJsunit from './Panel/PanelJsunit.test';
 import panelClose from './Panel/panelClose'
+import panelClose from './panelTest/panelClose'
 
 import ActionSheet from './actionSheetTest/ActionSheet.test'
 import ActionSheetFalse from './actionSheetTest/ActionSheetFalse.test'
@@ -51,6 +52,15 @@ import bindPopupOffsetTest from './promptActionTest/bindPopupOffset.test'
 import stagePromptTest from './promptActionTest/stagePrompt.test'
 import stageActionSheet from './actionSheetTest/stageActionSheet.test'
 import stageAlertDialog from './alertDialogTest/stageAlertDialog.test'
+import customDialogControllerJsunit from './customDialogTest/CustomDialogControllerJsunit.test';
+import calendarJsunit from './calendarPickerDialogTest/CalendarJsunit.test';
+import ohosPromptJsunit from './promptActionTest/OhosPromptJsunit.test';
+import textPickerJsunit from './textPickerDialogTest/TextPickerJsunit.test';
+
+import alertDialogCenterStartJsunit from './alertDialogTest/alertDialog.test';
+import responseTypeJsunit from './MenuTest/responseType.test.ets';
+import promptShowDialogJsunit from './promptActionTest/prompt.test.ets';
+
 import ActionsheetDialogAJsunit from './Dialog/ActionsheetDialogJsunit.test.ets';
 import AlertDialogAJsunit from './Dialog/AlertDialogAJsunit.test';
 import CalendarDialogAJsunit from './Dialog/CalendarDialogJsunit.test.ets';
@@ -108,6 +118,15 @@ export default function testsuite() {
   AlertDialog1();
   AlertDialogFalse();
   AlertDialogTrue()
+  customDialogControllerJsunit()
+  calendarJsunit()
+  ohosPromptJsunit()
+  textPickerJsunit()
+  
+  alertDialogCenterStartJsunit();
+  responseTypeJsunit()
+  promptShowDialogJsunit()
+  
   ActionsheetDialogAJsunit();
   AlertDialogAJsunit();
   CalendarDialogAJsunit();
