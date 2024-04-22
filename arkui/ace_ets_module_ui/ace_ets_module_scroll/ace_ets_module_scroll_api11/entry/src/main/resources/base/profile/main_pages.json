@@ -178,6 +178,23 @@
         "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex13",
         "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex14",
         "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex15",
-	"MainAbility/pages/Swiper/swiperUI/swiperAnimation"
+	"MainAbility/pages/Swiper/swiperUI/swiperAnimation",
+	
+	
+	"MainAbility/pages/AlphabetIndexer/Index",
+        "MainAbility/pages/Refresh/Index",
+	"MainAbility/pages/Refresh/refresh",
+        "MainAbility/pages/List/listtest2",
+        "MainAbility/pages/List/list_item_group",
+	"MainAbility/pages/Swiper/swiper6",
+	"MainAbility/pages/Refresh/refresh2",
+	"MainAbility/pages/gridItem/gridItem",
+        "MainAbility/pages/List/listNew",
+	"MainAbility/pages/List/list_item",
+	"MainAbility/pages/Scroll/scroll1",
+	"MainAbility/pages/SideBarContainer/sideBar",
+	"MainAbility/pages/Stack/stack",
+	"MainAbility/pages/Swiper/swiperNew",
+	"MainAbility/pages/Tabs/tabs2"
     ]
 }
