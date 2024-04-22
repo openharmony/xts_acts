@@ -22,6 +22,21 @@ import OffScreenCanvasTest from './OffScreenCanvasTest/OffScreenCanvas.test'
 import drawCanvas from './CanvasText/drawCanvas.test'
 import ParticlePropertyJsunit from './ParticleTest/ParticlePropertyJsunit.test.ets'
 
+import pathJsunit from './pathTest/PathJsunit.test';
+import polygonJsunit from './polygonTest/PolygonJsunit.test';
+import polylineJsunit from './polylineTest/PolylineJsunit.test';
+import canvasActualBoundingBoxAscentJsunit from './CanvasTest/canvas.test';
+
+import circleNewJsunit from './CircleTest/circle.test';
+import curvesStepsJsunit from './CanvasTest/curves.test';
+import ellipseNeJsunit from './EllipseTest/ellipse1.test';
+import lineNeJsunit from './lineTest/line.test';
+import panelBackgroundMaskJsunit from './panelTest/panel.test';
+import pathNewTest from './pathTest/path.test';
+import polygonNewJsunit from './polygonTest/polygon.test';
+import polyLineNeJsunit from './polylineTest/polyLine.test';
+import rectNeJsunit from './RectTest/rect.test';
+
 export default function testsuite() {
   ellipseJsunit();
   CanvasAPIUnitTest();
@@ -32,4 +47,18 @@ export default function testsuite() {
   OffScreenCanvasTest();
   drawCanvas();
   ParticlePropertyJsunit();
+  
+  pathJsunit()
+  polygonJsunit()
+  polylineJsunit()
+  canvasActualBoundingBoxAscentJsunit()
+  curvesStepsJsunit()
+  ellipseNeJsunit()
+  lineNeJsunit()
+  panelBackgroundMaskJsunit()
+  pathNewTest()
+  polygonNewJsunit()
+  polyLineNeJsunit()
+  rectNeJsunit()
+  circleNewJsunit()
 }
