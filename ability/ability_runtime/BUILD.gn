@@ -52,6 +52,7 @@ group("ability_runtime") {
       "actsstartabilityinnewprocesstest:actsstartabilityinnewprocesstest",
       "actsstartabilitywantparamtest:ActsStartAbilityWantParamTest",
       "actsstartrunnertest:ActsStartRunnerTest",
+      "actsstartupruleoptimizetest:actsstartupruleoptimizetest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "actssupportfunction:actssupportfunction",
       "actssystemapitest:ActsSystemAPITest",
