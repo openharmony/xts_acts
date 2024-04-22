@@ -105,6 +105,19 @@
         "MainAbility/pages/Track/nestTrack",
         "MainAbility/pages/Track/provideTrack",
         "MainAbility/pages/Track/StateTrack",
-        "MainAbility/pages/Track/storageTrack"
+        "MainAbility/pages/Track/storageTrack",
+
+        "MainAbility/pages/stateMangagement/StateMap",
+        "MainAbility/pages/stateMangagement/StateSet",
+        "MainAbility/pages/stateMangagement/PropMap",
+        "MainAbility/pages/stateMangagement/PropSet",
+        "MainAbility/pages/stateMangagement/ProvideMap",
+        "MainAbility/pages/stateMangagement/ProvideSet",
+        "MainAbility/pages/stateMangagement/LinkMap",
+        "MainAbility/pages/stateMangagement/LinkSet",
+        "MainAbility/pages/stateMangagement/ObjectLinkMap",
+        "MainAbility/pages/stateMangagement/ObjectLinkSet",
+        "MainAbility/pages/stateMangagement/stateManagement",
+        "MainAbility/pages/stateMangagement/stateManagementNew"
     ]
 }
