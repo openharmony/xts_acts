@@ -155,6 +155,39 @@ export default function SecurityCryptoFwMd5TestUnit() {
       }
       done();
     });
+    
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Md5_Func_0600
+     * @tc.name Test Md5. Callback style. Process success
+     * @tc.desc algorithm is Md5
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Md5_Func_0600", 0, async (done: Function) => {
+      try {
+        let msgLen: number = 1024;
+        let macAlgName:string = "MD5";
+        let message: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
+        let mac: cryptoFramework.Mac = cryptoFramework.createMac(macAlgName);
+        try {
+          await mac.update(message);
+        } catch (error) {
+          console.error(`HKDF No INIT “${error}“, error code: ${error.code}`);
+          expect(error.code).assertEqual(17630001);
+        }
+        try {
+          await mac.doFinal();
+        } catch (error) {
+          console.error(`HKDF No INIT “${error}“, error code: ${error.code}`);
+          expect(error.code).assertEqual(17630001);
+        }
+      } catch (error) {
+        console.error(`HKDF “${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
 
   });
 }
