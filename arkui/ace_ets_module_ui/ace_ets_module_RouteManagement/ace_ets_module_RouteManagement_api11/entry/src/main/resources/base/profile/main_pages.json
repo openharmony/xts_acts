@@ -32,7 +32,11 @@
         "MainAbility/pages/Router/pushUrlasync",
         "MainAbility/pages/Router/stageRouter",
 	"MainAbility/pages/Router/deReplace",
-        "MainAbility/pages/Router/routerReplace"
+        "MainAbility/pages/Router/routerReplace",
+	
+	"MainAbility/pages/Router/systemRouterA",
+        "MainAbility/pages/Router/systemRouterB",
+        "MainAbility/pages/ohosRouter/router"
 
     ]
 }
