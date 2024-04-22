@@ -44,7 +44,7 @@ import ScrollTest from './ScrollTest/Scroll.test'
 import tabs from './TabsTest/Tabs'
 import tabsSec from './TabsTest/TabsSec'
 import tabsThird from './TabsTest/TabsThird'
-import AlphabetIndexer from './AlphabetIndexerTest/AlphabetIndexer'
+import ActsAlphabetIndexerUxTest from './AlphabetIndexerTest/AlphabetIndexer.test'
 import RefreshTest from './RefreshTest/Refresh.test'
 import ScrollTest2 from './ScrollTest/Scroll2.test'
 import Tabs_itemPadMar from './TabsTest/Tabs_ItemsChange/Tabs_itemPadMar.test';
@@ -93,7 +93,40 @@ import gridScrollbarUpdateTest from "./gridTest/gridScrollbarUpdate.test";
 import List07Test from './ListTest/List07.test';
 import Swiper07Test from './SwiperTest/Swiper07.test';
 import sidebarTypeTest from './sidebarType.test';
+import listUxTest from './ListTest/listux.test.ets'
+import tabsOnContentWillChangeJsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChange.test'
+import tabsOnContentWillChangeIndex3JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex3.test'
+import tabsOnContentWillChangeIndex03JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex03.test'
+import tabsOnContentWillChangeIndex04JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex04.test'
+import tabsOnContentWillChangeIndex05JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex05.test'
+import tabsOnContentWillChangeIndex06JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex06.test'
+import tabsOnContentWillChangeIndex07JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex07.test'
+import tabsOnContentWillChangeIndex08JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex08.test'
+import tabsOnContentWillChangeIndex09JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex09.test'
+import tabsOnContentWillChangeIndex10JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex10.test'
+import tabsOnContentWillChangeIndex11JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex11.test'
+import tabsOnContentWillChangeIndex12JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex12.test'
+import tabsOnContentWillChangeIndex13JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex13.test'
+import tabsOnContentWillChangeIndex14JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex14.test'
+import tabsOnContentWillChangeIndex15JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex15.test'
+
+import GridTest from './gridTest/GridPage.test'
+import patternLock from './PatternLockTest/patternLock'
+
+import SwiperMinSize from './SwiperTest/swiperUI/SwiperMinSize.test.ets';
+import SwiperNextPrevMarginAddJsunit from './SwiperTest/swiperUI/SwiperNextPrevMarginAddJsunit.test.ets'
+import ScrollToIndexForWaterFlowJsunit01 from './ScrollTest/ScrollToIndex/ScrollToIndexForWaterFlowJsunit01.test';
+import ScrollToIndexForWaterFlowJsunit02 from './ScrollTest/ScrollToIndex/ScrollToIndexForWaterFlowJsunit02.test';
+import ScrollToIndexForGridJsunit01 from './ScrollTest/ScrollToIndex/ScrollToIndexForGridJsunit01.test';
+import ScrollToIndexForGridJsunit02 from './ScrollTest/ScrollToIndex/ScrollToIndexForGridJsunit02.test';
+import ScrollToIndexForGridJsunit03 from './ScrollTest/ScrollToIndex/ScrollToIndexForGridJsunit03.test';
+import ApiCommponentAddJsunit from './ScrollTest/ApiCommponentAddJsunit.test.ets';
+import ScrollBarJsunit from './ScrollTest/ScrollBarJsunit.test';
+import sliderJsunit from './SliderTest/sliderJsunit.test.ets';
+import swiperAnimationJsunit from './SwiperTest/swiperUI/swiperAnimationJsunit.test.ets'
+
 export default function testsuite() {
+  listUxTest()
   ActsGridTest();
   gridScrollbarUpdateTest();
   List07Test();
@@ -131,7 +164,7 @@ export default function testsuite() {
   tabs()
   tabsSec()
   tabsThird()
-  AlphabetIndexer()
+  ActsAlphabetIndexerUxTest()
   RefreshTest()
   ScrollTest2()
 
@@ -175,4 +208,32 @@ export default function testsuite() {
   swiperItemPadMar()
   swiperItemVisibility()
   ScrollJsunit()
+  GridTest()
+  patternLock()
+  SwiperMinSize();
+  SwiperNextPrevMarginAddJsunit();
+  ScrollToIndexForWaterFlowJsunit01();
+  ScrollToIndexForWaterFlowJsunit02();
+  ScrollToIndexForGridJsunit01();
+  ScrollToIndexForGridJsunit02();
+  ScrollToIndexForGridJsunit03();
+  ApiCommponentAddJsunit();
+  tabsOnContentWillChangeJsunitTest()
+  tabsOnContentWillChangeIndex3JsunitTest()
+  tabsOnContentWillChangeIndex03JsunitTest()
+  tabsOnContentWillChangeIndex04JsunitTest()
+  tabsOnContentWillChangeIndex05JsunitTest()
+  tabsOnContentWillChangeIndex06JsunitTest()
+  tabsOnContentWillChangeIndex07JsunitTest()
+  tabsOnContentWillChangeIndex08JsunitTest()
+  tabsOnContentWillChangeIndex09JsunitTest()
+  tabsOnContentWillChangeIndex10JsunitTest()
+  tabsOnContentWillChangeIndex11JsunitTest()
+  tabsOnContentWillChangeIndex12JsunitTest()
+  tabsOnContentWillChangeIndex13JsunitTest()
+  tabsOnContentWillChangeIndex14JsunitTest()
+  tabsOnContentWillChangeIndex15JsunitTest()
+  ScrollBarJsunit();
+  sliderJsunit();
+  swiperAnimationJsunit();
 }

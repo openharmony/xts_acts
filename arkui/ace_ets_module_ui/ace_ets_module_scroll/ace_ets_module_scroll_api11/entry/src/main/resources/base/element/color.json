@@ -43,6 +43,10 @@
     {
       "name": "swiper_BackgroundColor_test",
       "value": "#FFFF0000"
+    },
+    {
+      "name": "checkbox_Color",
+      "value": "#FFFD0000"
     }
   ]
 }

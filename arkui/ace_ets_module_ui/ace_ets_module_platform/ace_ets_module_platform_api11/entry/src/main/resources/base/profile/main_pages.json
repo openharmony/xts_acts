@@ -2,6 +2,8 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/XComponent/XComponentNodeChage",
-        "MainAbility/pages/video/Video"
+        "MainAbility/pages/video/Video",
+        "MainAbility/pages/XComponent/Xcomponent",
+        "MainAbility/pages/video/video1"
     ]
 }

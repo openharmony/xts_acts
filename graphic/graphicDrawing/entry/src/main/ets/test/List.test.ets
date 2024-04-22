@@ -13,11 +13,13 @@
  * limitations under the License.
  */
 import graphicDrawing from './graphicDrawing.test'
+import graphicTextClass from './graphicTextClass.test'
 import graphicTextEnum from './graphicTextEnum.test'
 import graphicTextInterface from './graphicTextInterface.test'
 
 export default function testsuite() {
   graphicDrawing(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
+  graphicTextClass(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
   graphicTextEnum(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
-  graphicTextInterface(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
+  graphicTextInterface(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage); 
 }

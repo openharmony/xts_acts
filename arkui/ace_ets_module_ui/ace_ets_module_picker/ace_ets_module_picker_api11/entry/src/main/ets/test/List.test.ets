@@ -38,7 +38,16 @@ import selectJsunit from './SelectTest/SelectJsunit1.test';
 import sliderJsunit1 from './slider/SliderJsunit1.test';
 import menuBackgroundBlurStyle from './SelectTest/menuBackgroundBlurStyle.test.ets'
 import menuBackgroundColor from './SelectTest/menuBackgroundColor.test.ets'
+import RadioJsunit from './RadioTest/RadioJsunit.test';
+import RatingUIJsunit from './RatingTest/RatingUIJsunit.test.ets';
 
+import select from './SelectTest/Select';
+import selectmenuTest from './SelectTest/SelectMenu';
+import calendarpicker from './CalendarPickerTest/calendarpicker';
+import datepicker from './DatePickerTest/DatePicker';
+import ActsDatePickerTest from './DatePickerTest/DatePicker.test';
+import checkBoxTest1 from './CheckboxTest/checkBox';
+import checkBoxGroupTest from './checkboxGroup/checkBoxGroup';
 export default function testsuite() {
   stageTimePickerDialog();
   stageTextPickerDialog();
@@ -67,4 +76,14 @@ export default function testsuite() {
   sliderJsunit()
   menuBackgroundBlurStyle()
   menuBackgroundColor()
+
+  select()
+  selectmenuTest()
+  calendarpicker()
+  ActsDatePickerTest()
+  datepicker()
+  checkBoxTest1()
+  checkBoxGroupTest()
+  RadioJsunit();
+  RatingUIJsunit();
 }
