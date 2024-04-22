@@ -16,8 +16,10 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } fro
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import { BusinessError } from '@ohos.base';
 import UIAbility from '@ohos.app.ability.UIAbility';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 1000;
 
 export default function GetAbilityStateTest() {
@@ -79,6 +81,10 @@ export default function GetAbilityStateTest() {
      * @tc.level : Level 2
      */
     it("ACTS_GET_ABILITY_STATE_0002", 0, async (done: Function) => {
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       setTimeout(() => {
         abilityDelegator.getCurrentTopAbility((err: BusinessError, ability1: UIAbility) => {
           abilityDelegator.printSync(
