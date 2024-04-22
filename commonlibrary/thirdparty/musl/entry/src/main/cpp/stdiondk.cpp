@@ -14,6 +14,7 @@
  */
 
 #include "common/napi_helper.cpp"
+#include "common/native_common.h"
 #include "napi/native_api.h"
 #include <cstdarg>
 #include <cstdio>
@@ -93,6 +94,7 @@ static napi_value Setbuf(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
     FILE *f = fopen(STR_VFSCANF_TXT, "w+");
+    NAPI_ASSERT(env, f != nullptr, "Setbuf fopen Error");
     setbuf(f, nullptr);
     fclose(f);
     napi_value result = nullptr;
@@ -104,6 +106,7 @@ static napi_value Setbuffer(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
     FILE *f = fopen(STR_VFSCANF_TXT, "w+");
+    NAPI_ASSERT(env, f != nullptr, "Setbuffer fopen Error");
     setbuffer(f, nullptr, BUFSIZ);
     fclose(f);
     napi_value result = nullptr;
@@ -115,6 +118,7 @@ static napi_value Setlinebuf(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
     FILE *f = fopen(STR_VFSCANF_TXT, "w+");
+    NAPI_ASSERT(env, f != nullptr, "Setlinebuf fopen Error");
     setlinebuf(f);
     fclose(f);
     napi_value result = nullptr;
@@ -172,6 +176,7 @@ static napi_value Feof(napi_env env, napi_callback_info info)
     char path[SBUF_SIZE] = "/data/storage/el2/base/files/Fzl.txt";
     int fileDescribe = SUCCESS;
     FILE *stream = fopen(path, "r");
+    NAPI_ASSERT(env, stream != nullptr, "Feof fopen Error");
     napi_value result = nullptr;
     fileDescribe = feof(stream);
     fclose(stream);
