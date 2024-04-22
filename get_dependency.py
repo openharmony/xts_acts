@@ -120,5 +120,6 @@ def run(precise_repo_xts_list):
 
 
 if __name__ == '__main__':
-    print("start")
+    print("counting dependencies start")
     run(precise_repo_xts.split(':'))
+    print("counting dependencies finished")
