@@ -48,10 +48,7 @@ ohos_shared_library("hilogndk") {
   ]
   configs = [ ":config" ]
 
-  deps = [
-    "//base/hiviewdfx/hilog/interfaces/native/kits:libhilog_ndk",
-    "//foundation/arkui/napi:ace_napi",
-  ]
+  deps = [ "//foundation/arkui/napi:ace_napi" ]
   external_deps = [ "hilog:hilog_ndk" ]
 
   output_extension = "so"

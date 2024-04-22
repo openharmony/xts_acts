@@ -101,6 +101,8 @@ struct WebViewEnumAndSetWebController {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(0.25 + '', 1291)
+                }else if((this.userAgentPC).includes("tablet")){
+                  Utils.emitEvent(0.25 + '', 1291)
                 }else{
                   Utils.emitEvent(result + '', 1291)
                 }
@@ -123,6 +125,7 @@ struct WebViewEnumAndSetWebController {
               break;
             }
             case "emitCacheModeOnly": {
+              this.controller.removeCache(true);
               this.cacheError = true
               this.CacheMode = CacheMode.Only
               this.controller.loadUrl("https://www.openharmony.cn/mainPlay")

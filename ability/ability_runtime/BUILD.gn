@@ -75,6 +75,7 @@ group("ability_runtime") {
       "registerjserror:registerjserror",
       "shareextensionability:actsshareextensionability",
       "stage:stage",
+      "startup:startup",
       "stopserviceextension:stopserviceextension",
       "want:want",
       "workercontextcover:workercontextcover",

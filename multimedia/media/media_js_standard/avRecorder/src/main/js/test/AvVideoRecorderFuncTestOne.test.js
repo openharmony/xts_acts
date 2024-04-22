@@ -228,6 +228,8 @@ export default function avVideoRecorderTestOne() {
         const ENCODER_INFO_PROMISE_EVENT = 'availableEncoderPromise';
         const MAX_AMPLITUDE_PROMISE_EVENT = 'maxAmplitudePromise';
 
+        const UPDATE_ROTATION_EVENT = 'updateRotationEvent';
+
         let cameraManager;
         let videoOutput;
         let captureSession;
@@ -523,6 +525,18 @@ export default function avVideoRecorderTestOne() {
                     toNextStep(avRecorder, avConfig, recorderTime, steps, done);
                 }
             })
+        });
+
+        eventEmitter.on(UPDATE_ROTATION_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            let rotation = 90
+            avRecorder.updateRotation(rotation).then(() => {
+                console.info('updateRotation success');
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            }).catch((error) => {
+                console.error('updateRotation failed and catch error is ' + error.message);
+                expect(false).assertEqual(true)
+            });
         });
 
         eventEmitter.on(PREPARE_PROMISE_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
@@ -8636,5 +8650,38 @@ export default function avVideoRecorderTestOne() {
         console.info('AVERR_AUDIO_INTERRUPTED:' + newErrorCode);
         done();
        })
+
+         /* *
+            * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_SET_UPDATE_ROTATION__0100
+            * @tc.name      : 13.AVRecorder updateRotation
+            * @tc.desc      : Recorder video
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level3
+        */
+        it('SUM_MULTIMEDIA_AVRECORDER_UPDATE_ROTATION__0100', 0, async function (done) {
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_UPDATE_ROTATION__0100 start')
+
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigOnlyAac.url = fdPath
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, 
+                //prepare avRecorder
+                PREPARE_CALLBACK_EVENT,
+                //update rotation
+                UPDATE_ROTATION_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigOnlyAac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_UPDATE_ROTATION__0100 end')
+        })
     })
 }

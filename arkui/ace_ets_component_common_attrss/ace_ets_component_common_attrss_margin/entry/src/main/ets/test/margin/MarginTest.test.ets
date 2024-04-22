@@ -15,11 +15,38 @@
 
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
-import Utils from '../../MainAbility/common/Utils';
+import Utils, { RectValue } from '../../MainAbility/common/Utils';
 import { AttrsManager } from '../../MainAbility/common/AttrsManager';
 
+class TestValue {
+  describe: string;
+  setValue: Margin;
+  expectValue: Margin;
+}
+
+class Margin {
+  margin?: ESObject;
+  top?: number;
+  right?: number;
+  bottom?: number;
+  left?: number;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  parentComponentKey: string;
+  buttonComponentKey: string;
+  childWidth: number;
+  childHeight: number;
+  parentWidth: number;
+  parentHeight: number;
+}
+
 export default function marginTest() {
-  let setInit = {
+  let setInit: RectValue = {
     top: 0, right: 0, bottom: 0, left: 0
   }
   let getInit = '0.00vp';
@@ -101,7 +128,7 @@ export default function marginTest() {
     'WaterFlow'
   ]
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testMargin',
     pageName: 'MarginPage',
     pageUrl: 'MainAbility/pages/margin/MarginPage',
@@ -114,7 +141,7 @@ export default function marginTest() {
     parentHeight: parentHeight
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetAll',
     setValue: {
       margin: {
@@ -126,7 +153,7 @@ export default function marginTest() {
     },
     expectValue: {
       margin: {
-        'top': '200.00vp', 'right': '100.00vp', 'bottom': '100.00vp', 'left': '100.00vp'
+        top: '200.00vp', right: '100.00vp', bottom: '100.00vp', left: '100.00vp'
       },
       top: vp2px(200),
       right: vp2px(100),
@@ -142,7 +169,7 @@ export default function marginTest() {
     },
     expectValue: {
       margin: {
-        'top': '200.00vp', 'right': '0.00vp', 'bottom': '0.00vp', 'left': '0.00vp'
+        top: '200.00vp', right: '0.00vp', bottom: '0.00vp', left: '0.00vp'
       },
       top: vp2px(200),
       right: vp2px(0),
@@ -158,7 +185,7 @@ export default function marginTest() {
     },
     expectValue: {
       margin: {
-        'top': '0.00vp', 'right': '200.00vp', 'bottom': '0.00vp', 'left': '0.00vp'
+        top: '0.00vp', right: '200.00vp', bottom: '0.00vp', left: '0.00vp'
       },
       top: vp2px(0),
       right: vp2px(200),
@@ -174,7 +201,7 @@ export default function marginTest() {
     },
     expectValue: {
       margin: {
-        'top': '0.00vp', 'right': '0.00vp', 'bottom': '200.00vp', 'left': '0.00vp'
+        top: '0.00vp', right: '0.00vp', bottom: '200.00vp', left: '0.00vp'
       },
       top: vp2px(0),
       right: vp2px(0),
@@ -190,7 +217,7 @@ export default function marginTest() {
     },
     expectValue: {
       margin: {
-        'top': '0.00vp', 'right': '0.00vp', 'bottom': '0.00vp', 'left': '200.00vp'
+        top: '0.00vp', right: '0.00vp', bottom: '0.00vp', left: '200.00vp'
       },
       top: vp2px(0),
       right: vp2px(0),
@@ -201,19 +228,19 @@ export default function marginTest() {
 
   describe('MarginTest', () => {
     //Create test cases by config.
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Initialize margin properties
       console.info('[' + data.caseTag + '] setValue : ' + setInit);
       AttrsManager.change(data.caseTag, setInit);
       await Utils.sleep(1000);
       //Confirm successful setting of margin attribute
-      let referenceRectBefore = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let referenceRectBefore: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       expect(referenceRectBefore.$attrs.margin).assertEqual(getInit);
       //Set test values
       console.info('[' + data.caseTag + '] setValue : ' + JSON.stringify(data.testValue.setValue));
       AttrsManager.change(data.caseTag, data.testValue.setValue.margin);
       await Utils.sleep(1000);
-      let referenceRectAfter = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let referenceRectAfter: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       //component
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
       //parentComponent
@@ -224,7 +251,7 @@ export default function marginTest() {
       let right = 0;
       let bottom = 0;
       if ((data.pageConfig.componentKey == 'ListItem')
-      || (data.pageConfig.componentKey == 'ListItemGroup')) {
+        || (data.pageConfig.componentKey == 'ListItemGroup')) {
         //Reference component
         let referenceRect = Utils.getComponentRect(data.pageConfig.buttonComponentKey);
         //Component to reference component and parent component margin calculation
@@ -252,10 +279,10 @@ export default function marginTest() {
         right = rectParent.right - rect.right;
         bottom = rectParent.bottom - rect.bottom;
       } else if ((data.pageConfig.componentKey == 'GridCol')
-      || (data.pageConfig.componentKey == 'FlowItem')
-      || (data.pageConfig.componentKey == 'GridItem')
-      || (data.pageConfig.componentKey == 'MenuItem')
-      || (data.pageConfig.componentKey == 'MenuItemGroup')) {
+        || (data.pageConfig.componentKey == 'FlowItem')
+        || (data.pageConfig.componentKey == 'GridItem')
+        || (data.pageConfig.componentKey == 'MenuItem')
+        || (data.pageConfig.componentKey == 'MenuItemGroup')) {
         //Component to  parent component margin calculation
         top = rect.top - rectParent.top;
         left = rect.left - rectParent.left;

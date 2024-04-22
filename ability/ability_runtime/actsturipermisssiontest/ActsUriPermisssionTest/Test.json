@@ -20,7 +20,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "reboot",
                 "power-shell wakeup",
                 "power-shell setmode 602",
                 "hilog -Q pidoff",

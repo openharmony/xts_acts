@@ -532,6 +532,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: false,
           navigationBarContentColor: tempColor,
+          enableStatusBarAnimation:false,
+          enableNavigationBarAnimation:false,         
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
@@ -585,6 +587,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: true,
           navigationBarContentColor: tempColor,
+          enableStatusBarAnimation:false,
+          enableNavigationBarAnimation:false,     
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
@@ -638,6 +642,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: false,
           navigationBarContentColor: tempColor,
+          enableStatusBarAnimation:false,
+          enableNavigationBarAnimation:false,     
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
@@ -1813,7 +1819,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         console.log(msgStr + " try begin")
         let options:ohosWindow.SubWindowOptions = {
           title: 'title',
-          decorEnabled: true
+          decorEnabled: true,
+          isModal: false,
         };
         let promise = windowStage.createSubWindowWithOptions('mySubWindow', options);
         promise.then((data) => {

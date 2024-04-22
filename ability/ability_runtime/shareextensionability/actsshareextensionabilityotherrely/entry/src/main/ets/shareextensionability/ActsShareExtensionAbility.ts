@@ -14,9 +14,11 @@
  */
 import ShareExtensionAbility from '@ohos.app.ability.ShareExtensionAbility';
 import commonEventManager from '@ohos.commonEventManager';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 let count = 0;
 const TIME_OUT = 500;
+const TIME_OUT1 = 2000;
 
 export default class ActsShareExtensionAbility extends ShareExtensionAbility {
   storage: LocalStorage;
@@ -37,6 +39,18 @@ export default class ActsShareExtensionAbility extends ShareExtensionAbility {
     };
     commonEventManager.publish('ACTS_TEST_FOREGROUND', options, function () {
     });
+    try {
+      let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+      console.log(`====>ActsShareExtensionAbility deviceType: ${deviceType}`);
+      if (deviceType === '2in1') {
+        console.log('====>ActsShareExtensionAbility terminateSelf start');
+        setTimeout(() => {
+          globalThis.session.terminateSelf();
+        }, TIME_OUT1)
+      }
+    } catch (error) {
+      console.error('====>ActsShareExtensionAbility getSync errCode:' + error.code + ',errMessage:' + error.message);
+    }
   }
 
   onBackground() {

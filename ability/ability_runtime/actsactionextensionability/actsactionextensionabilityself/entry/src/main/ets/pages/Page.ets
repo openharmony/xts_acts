@@ -12,14 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import Want from '@ohos.app.ability.Want';
 import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
 import commonEventManager from '@ohos.commonEventManager';
-import { BusinessError } from '@ohos.base';
 
 const sleepTimeOne = 1000;
-let storage = LocalStorage.GetShared();
+var storage = LocalStorage.GetShared();
 
 @Entry(storage)
 @Component
@@ -32,50 +30,50 @@ struct Page {
     parameters: {
       'ability.want.params.uiExtensionType': 'action'
     }
-  }
+  };
   private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session');
 
   aboutToAppear() {
-    let appearEvent = 'ACTS_UIExtension_AboutToAppear';
-    let terminateSelfWithResultEvent = 'ACTS_UIExtension_TerminateSelfWithResult';
-    let sendDataEvent = 'ACTS_UIExtension_SendData';
+    var appearEvent = 'ACTS_UIExtension_AboutToAppear';
+    var terminateSelfWithResultEvent = 'ACTS_UIExtension_TerminateSelfWithResult';
+    var sendDataEvent = 'ACTS_UIExtension_SendData';
 
-    let subscriber: commonEventManager.CommonEventSubscriber;
-    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+    var subscriber;
+    var subscribeInfo = {
       events: [terminateSelfWithResultEvent, sendDataEvent]
-    }
-    commonEventManager.createSubscriber(subscribeInfo)
-      .then(async (data) => {
-        console.log('createSubscriber data : ' + JSON.stringify(data));
-        subscriber = data;
-        commonEventManager.subscribe(subscriber, async (err, data) => {
-          console.log('SubscribeInfoCallback : ' + JSON.stringify(data));
-          if (data.event === terminateSelfWithResultEvent) {
-            this.session.terminateSelfWithResult({
-              'resultCode': 1,
-              'want': {
-                'action': 'ACTION'
-              }
-            });
-            commonEventManager.unsubscribe(subscriber, async (err, data) => {
-              console.log('UnSubscribeInfoCallback : ' + JSON.stringify(data));
-            });
-          } else if (data.event === sendDataEvent) {
-            this.session.sendData({
-              name: {
-                test: 'actionExtensionTest'
-              }
-            });
-            commonEventManager.unsubscribe(subscriber, async (err, data) => {
-              console.log('UnSubscribeInfoCallback : ' + JSON.stringify(data));
-            });
-          }
-        });
-      }).catch((error: BusinessError) => {
+    };
+    commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+      console.log('createSubscriber data : ' + JSON.stringify(data));
+      subscriber = data;
+
+      commonEventManager.subscribe(subscriber, async (err, data) => {
+        console.log('SubscribeInfoCallback : ' + JSON.stringify(data));
+        if (data.event === terminateSelfWithResultEvent) {
+          this.session.terminateSelfWithResult({
+            'resultCode': 1,
+            'want': {
+              'action': 'ACTION'
+            }
+          });
+          commonEventManager.unsubscribe(subscriber, async (err, data) => {
+            console.log('UnSubscribeInfoCallback : ' + JSON.stringify(data));
+          });
+        } else if (data.event === sendDataEvent) {
+          this.session.sendData({
+            name: {
+              test: 'actionExtensionTest'
+            }
+          });
+          commonEventManager.unsubscribe(subscriber, async (err, data) => {
+            console.log('UnSubscribeInfoCallback : ' + JSON.stringify(data));
+          });
+        }
+      });
+    }).catch((error) => {
       console.log('createSubscriber error : ' + JSON.stringify(error));
     })
     setTimeout(() => {
-      commonEventManager.publish(appearEvent, () => {});
+      commonEventManager.publish(appearEvent, function (){});
     }, sleepTimeOne);
   }
 
@@ -86,9 +84,9 @@ struct Page {
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
         UIExtensionComponent(this.want)
-          .size({ width: '100%', height: '100' })
-          .backgroundColor(Color.Blue)
-          .border({ width: 5, color: Color.Red })
+        .size({width:'100%',height:'100'})
+        .backgroundColor(Color.Blue)
+        .border({width:5,color:Color.Red})
       }
       .width('100%')
     }

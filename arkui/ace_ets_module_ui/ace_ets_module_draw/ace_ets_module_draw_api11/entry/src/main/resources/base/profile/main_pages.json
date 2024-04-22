@@ -8,6 +8,11 @@
         "MainAbility/pages/Canvas/CanvasAPI",
         "MainAbility/pages/Canvas/CanvasShader",
         "MainAbility/pages/Canvas/CanvasColor",
-        "MainAbility/pages/OffScreenCanvas/OffScreenCanvas"
+        "MainAbility/pages/OffScreenCanvas/OffScreenCanvas",
+        "MainAbility/pages/Canvas/drawCanvas",
+        "MainAbility/pages/Particle/ParticleOptions",
+        "MainAbility/pages/Particle/ParticleProperty",
+        "MainAbility/pages/Canvas/CanvasRenderer",
+        "MainAbility/pages/Canvas/drwableAdd"
     ]
 }

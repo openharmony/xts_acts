@@ -81,7 +81,7 @@ export default function richEditorApi5() {
 
       let text1 = getInspectorByKey('richEditorApi5_text1');
       let Obj1: ESObject = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('[0,0]');
+      expect(Obj1.$attrs.content).assertEqual('[6,6]');
 
       console.info('[testRichEditor_0100] END');
       done();

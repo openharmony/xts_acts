@@ -22,6 +22,7 @@ group("graphic") {
       "graphicEGL:ActsGraphicEglTest",
       "graphicGLES3:ActsGraphicGles3Test",
       "graphicGlesExtension:ActsGraphicGlesExtensionTest",
+      "graphicText:ActsGraphicTextTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
       "graphicvulkannapitest:ActsGraphicVulkanTest",
@@ -32,6 +33,7 @@ group("graphic") {
       "webGL:webGL_hap_test",
       "windowPermission:ActsWindowPermissionTest",
       "windowStage:ActsWindowStageTest",
+      "windowStageTwo:ActsWindowStageTwoTest",
       "windowstandard:window_hap_test",
     ]
     if (!(product_name == "ohcore")) {

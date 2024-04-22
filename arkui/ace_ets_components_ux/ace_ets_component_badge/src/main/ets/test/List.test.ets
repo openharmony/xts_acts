@@ -15,5 +15,5 @@
 import badgeTest from './badge'
 
 export default function testsuite() {
-       badgeTest()
+  badgeTest()
 }

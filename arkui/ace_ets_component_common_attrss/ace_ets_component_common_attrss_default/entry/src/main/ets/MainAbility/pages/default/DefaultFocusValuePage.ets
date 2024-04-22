@@ -18,11 +18,11 @@ import router from '@ohos.router';
 @Entry
 @Component
 struct DefaultFocusValuePage {
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State targetGroupView: string = router.getParams() ? router.getParams()['view']['targetGroupView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State targetGroupView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetGroupView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G']; //Use by AlphabetIndexer TextPicker
   controller: WebController = new WebController() //Use by Web
   textTimerController: TextTimerController = new TextTimerController() //Use by TextTimer
@@ -35,7 +35,8 @@ struct DefaultFocusValuePage {
   /*
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .key(this.componentKey)
   }
 
@@ -157,9 +158,9 @@ struct DefaultFocusValuePage {
         Stack().commonStyle()
       } else if (this.targetView == 'Swiper') {
         Swiper() {
-          ForEach([1, 2, 3], (item: string) => {
+          ForEach([1, 2, 3], (item: number) => {
             Text('Swiper' + item)
-          }, item => item)
+          }, (item: number) => item.toString())
         }
         .indicator(true)
         .backgroundColor(Color.Pink)

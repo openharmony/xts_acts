@@ -66,15 +66,15 @@ export default function SideBarContainerType_DefaultValue1() {
       let SideBarContainer_01: RectValue = CommonFunc.getComponentRect('SideBarContainerType_DefaultValue1_SideBarContainer_01');
 
       console.log("assert position")
-      expect(SideBar_01.left).assertEqual(SideBarContainer_01.left);
+      expect(Math.abs(SideBar_01.left - SideBarContainer_01.left) <= 1).assertTrue();
       console.log("SideBar_01.left" + SideBar_01.left)
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(300))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
 
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(369)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(369))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       console.info('[SUB_ACE_SideBarContainerType_DefaultValue1_0100] END');

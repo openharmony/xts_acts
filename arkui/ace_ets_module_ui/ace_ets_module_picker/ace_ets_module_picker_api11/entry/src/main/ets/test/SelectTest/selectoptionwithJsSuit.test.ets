@@ -29,7 +29,7 @@ export default function selectoptionwithJsSuit() {
         router.clear();
         let pages = router.getState();
         console.info("get selectoptionwithJsSuit state pages: " + JSON.stringify(pages));
-        if (!("overlay" == pages.name)) {
+        if (!("selectoptionwith" == pages.name)) {
           console.info("get selectoptionwithJsSuit state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
