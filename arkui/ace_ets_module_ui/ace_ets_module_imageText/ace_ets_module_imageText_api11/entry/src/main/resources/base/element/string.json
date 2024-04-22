@@ -87,6 +87,10 @@
     {
       "name": "Check_Mark_Size_test",
       "value": "50"
+    },
+    {
+      "name": "MainAbility_label",
+      "value": "MainAbility_label"
     }
   ]
 }
