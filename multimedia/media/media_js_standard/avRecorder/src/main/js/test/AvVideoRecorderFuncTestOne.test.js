@@ -169,7 +169,8 @@ export default function avVideoRecorderTestOne() {
             videoFrameWidth: 640,
             videoFrameHeight: 480,
             videoFrameRate: 30,
-            isHdr: false
+            isHdr: false,
+            enableTemporalScale: false
         }
         let avConfigH265Aac = {
             audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
@@ -8652,14 +8653,14 @@ export default function avVideoRecorderTestOne() {
        })
 
          /* *
-            * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_SET_UPDATE_ROTATION__0100
-            * @tc.name      : 13.AVRecorder updateRotation
+            * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_SET_UPDATE_ROTATION_0100
+            * @tc.name      : AVRecorder updateRotation
             * @tc.desc      : Recorder video
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level3
         */
-        it('SUM_MULTIMEDIA_AVRECORDER_UPDATE_ROTATION__0100', 0, async function (done) {
+        it('SUM_MULTIMEDIA_AVRECORDER_UPDATE_ROTATION_0100', 0, async function (done) {
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_UPDATE_ROTATION__0100 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
@@ -8682,6 +8683,43 @@ export default function avVideoRecorderTestOne() {
 
             eventEmitter.emit(mySteps[0], avRecorder, avConfigOnlyAac, recorderTime, mySteps, done);
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_UPDATE_ROTATION__0100 end')
+        })
+
+        /* *
+            * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_CREATE_0100
+            * @tc.name      : AVVideoRecorder
+            * @tc.desc      : Recorder video
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level3
+        */
+        it('SUM_MULTIMEDIA_AVRECORDER_CREATE_0100', 0, async function (done) {
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_CREATE_0100 start')
+            media.createVideoRecorder((videoRecorder) => {
+
+            })
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_CREATE_0100 end')
+            done();
+        })
+
+        /* *
+            * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_CREATE_0200
+            * @tc.name      : AVVideoRecorder
+            * @tc.desc      : Recorder video
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level3
+        */
+        it('SUM_MULTIMEDIA_AVRECORDER_CREATE_0200', 0, async function (done) {
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_CREATE_0200 start')
+            try {
+                media.createVideoRecorder();
+            } catch(error) {
+
+            }
+            
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_CREATE_0200 end')
+            done();
         })
     })
 }
