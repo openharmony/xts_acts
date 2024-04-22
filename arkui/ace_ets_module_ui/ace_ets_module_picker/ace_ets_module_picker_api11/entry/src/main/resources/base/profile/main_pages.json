@@ -43,6 +43,16 @@
         "MainAbility/pages/Checkbox/CheckBoxIndex",
         "MainAbility/pages/checkboxGroup/CheckBoxGroup1",
 	"MainAbility/pages/Radio/RadioPage",
-        "MainAbility/pages/Rating/RatingPage"
+        "MainAbility/pages/Rating/RatingPage",
+	
+	"MainAbility/pages/Checkbox/checkBox2",
+        "MainAbility/pages/Radio/radioFirst",
+        "MainAbility/pages/Checkbox/checkBoxGroup",
+        "MainAbility/pages/Slider/slider2",
+        "MainAbility/pages/DatePicker/datePicker",
+
+        "MainAbility/pages/checkboxGroup/checkBoxGroup2",
+        "MainAbility/pages/Select/select3",
+        "MainAbility/pages/TextPicker/textPicker"
     ]
 }
