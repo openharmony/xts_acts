@@ -11,12 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("networkmanager") {
+import("//build/ohos_var.gni")
+
+group("statistics") {
   testonly = true
-  deps = [
-    "fetch:fetch",
-    "http:http",
-    "socket:socket",
-    "statistics:statistics",
-  ]
+  if (is_standard_system) {
+    deps = [ "statisticswifi:ActsNetworkMgrStatisticsNetTest" ]
+  }
 }
