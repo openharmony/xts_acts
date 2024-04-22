@@ -80,9 +80,9 @@
         "MainAbility/pages/SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue1",
         "MainAbility/pages/SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue2",
         "MainAbility/pages/SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue3",
-        "MainAbility/pages/SideBarContainer/SideBarContainerDivider/SideBarContainerDivider"
+        "MainAbility/pages/SideBarContainer/SideBarContainerDivider/SideBarContainerDivider",
 	
-	"MainAbility/pages/SideBarContainer/sideBar",
+	    "MainAbility/pages/SideBarContainer/sideBar",
 
         "MainAbility/pages/Navigation/navigationType",
         "MainAbility/pages/Navigation/NavigationApiFirst",
