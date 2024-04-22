@@ -22,7 +22,7 @@ export default function datePickerLunarJsunit() {
     beforeEach(async (done:Function) => {
       console.info("flex beforeEach start");
       let options:router.RouterOptions = {
-        url: 'MainAbility/pages/DatePicker/datePicker',
+        url: 'MainAbility/pages/DatePicker/datePickerNew',
       }
       try {
         router.clear();
