@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ellipseJsunit from './EllipseText/EllipseJsunit.test';
-import CanvasAPIUnitTest from './CanvasText/CanvasAPIUnit.test'
-import CanvasAPICanvasRenderTest from './CanvasText/CanvasAPICanvasRender.test'
-import CanvasAPITest from './CanvasText/CanvasAPI.test'
-import CanvasShaderTest from './CanvasText/CanvasShader.test'
-import CanvasColorTest from './CanvasText/CanvasColor.test'
+import ellipseJsunit from './EllipseTest/EllipseJsunit.test';
+import CanvasAPIUnitTest from './CanvasTest/CanvasAPIUnit.test'
+import CanvasAPICanvasRenderTest from './CanvasTest/CanvasAPICanvasRender.test'
+import CanvasAPITest from './CanvasTest/CanvasAPI.test'
+import CanvasShaderTest from './CanvasTest/CanvasShader.test'
+import CanvasColorTest from './CanvasTest/CanvasColor.test'
 import OffScreenCanvasTest from './OffScreenCanvasTest/OffScreenCanvas.test'
-import drawCanvas from './CanvasText/drawCanvas.test'
+import drawCanvas from './CanvasTest/drawCanvas.test'
 import ParticlePropertyJsunit from './ParticleTest/ParticlePropertyJsunit.test.ets'
 
 import pathJsunit from './pathTest/PathJsunit.test';
