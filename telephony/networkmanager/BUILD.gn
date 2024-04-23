@@ -18,6 +18,7 @@ group("networkmanager") {
     "http:http",
     "network:network",
     "noNet:noNet",
+    "noNet:noNet",
     "noPermission:noPermission",
     "socket:socket",
   ]
