@@ -15,6 +15,16 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
+function sleep(time: number) {
+  return new Promise<string>((resolve, reject) => {
+    setTimeout(() => {
+      resolve("ok");
+    }, time);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  });
+}
+
 export default function progressTest() {
   describe('ActsProgressTest', () => {
 
@@ -29,13 +39,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_0100 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_0100 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_0100 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_0100 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#FF00FF00");
+
+          console.info("ArkUX_Stage_Progress_updateColor_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_0100 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_0100 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#FF00FF00");
           console.info('ArkUX_Stage_Progress_updateColor_0100 END ');
         } catch (err) {
           expect().assertFail();
@@ -60,13 +70,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_0200 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_0200 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_0200 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_0200 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#FFFD0000");
+
+          console.info("ArkUX_Stage_Progress_updateColor_0200 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_0200 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_0200 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#FFFD0000");
           console.info('ArkUX_Stage_Progress_updateColor_0200 END ');
         } catch (err) {
           expect().assertFail();
@@ -91,13 +101,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_0300 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_0300 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_0300 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_0300 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#FF8A2BE2");
+
+          console.info("ArkUX_Stage_Progress_updateColor_0300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_0300 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_0300 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#FF8A2BE2");
           console.info('ArkUX_Stage_Progress_updateColor_0300 END ');
         } catch (err) {
           expect().assertFail();
@@ -122,13 +132,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_0400 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_0400 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_0400 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_0400 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#FFFFC0CB");
+
+          console.info("ArkUX_Stage_Progress_updateColor_0400 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_0400 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_0400 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#FFFFC0CB");
           console.info('ArkUX_Stage_Progress_updateColor_0400 END ');
         } catch (err) {
           expect().assertFail();
@@ -153,13 +163,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_0500 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_0500 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_0500 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_0500 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#FFFD0000");
+
+          console.info("ArkUX_Stage_Progress_updateColor_0500 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_0500 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_0500 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#FFFD0000");
           console.info('ArkUX_Stage_Progress_updateColor_0500 END ');
         } catch (err) {
           expect().assertFail();
@@ -184,13 +194,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_0600 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_0600 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_0600 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_0600 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#FF006CDE");
+
+          console.info("ArkUX_Stage_Progress_updateColor_0600 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_0600 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_0600 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#FF006CDE");
           console.info('ArkUX_Stage_Progress_updateColor_0600 END ');
         } catch (err) {
           expect().assertFail();
@@ -215,13 +225,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_0700 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_0700 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_0700 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_0700 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#33006CDE");
+
+          console.info("ArkUX_Stage_Progress_updateColor_0700 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_0700 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_0700 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#33006CDE");
           console.info('ArkUX_Stage_Progress_updateColor_0700 END ');
         } catch (err) {
           expect().assertFail();
@@ -246,13 +256,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_0800 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_0800 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_0800 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_0800 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#CC006CDE");
+
+          console.info("ArkUX_Stage_Progress_updateColor_0800 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_0800 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_0800 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#CC006CDE");
           console.info('ArkUX_Stage_Progress_updateColor_0800 END ');
         } catch (err) {
           expect().assertFail();
@@ -277,13 +287,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_0900 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_0900 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_0900 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_0900 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#33006CDE");
+
+          console.info("ArkUX_Stage_Progress_updateColor_0900 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_0900 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_0900 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#33006CDE");
           console.info('ArkUX_Stage_Progress_updateColor_0900 END ');
         } catch (err) {
           expect().assertFail();
@@ -307,16 +317,16 @@ export default function progressTest() {
       setTimeout(async () => {
         try {
           let strJson_default = getInspectorByKey('ArkUX_Stage_Progress_updateColor_default');
-          let obj_default: ESObject = JSON.parse(strJson_default);
+
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1000 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_1000 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_1000 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_1000 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual(obj_default.$attrs.updateColor);
+
+          console.info("ArkUX_Stage_Progress_updateColor_1000 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_1000 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_1000 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual(JSON.parse(strJson_default).$attrs.updateColor);
           console.info('ArkUX_Stage_Progress_updateColor_1000 END ');
         } catch (err) {
           expect().assertFail();
@@ -340,16 +350,14 @@ export default function progressTest() {
       setTimeout(async () => {
         try {
           let strJson_default = getInspectorByKey('ArkUX_Stage_Progress_updateColor_default');
-          let obj_default: ESObject = JSON.parse(strJson_default);
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1100 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_1100 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_1100 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_1100 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual(obj_default.$attrs.updateColor);
+          console.info("ArkUX_Stage_Progress_updateColor_1100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_1100 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_1100 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual(JSON.parse(strJson_default).$attrs.updateColor);
           console.info('ArkUX_Stage_Progress_updateColor_1100 END ');
         } catch (err) {
           expect().assertFail();
@@ -373,16 +381,14 @@ export default function progressTest() {
       setTimeout(async () => {
         try {
           let strJson_default = getInspectorByKey('ArkUX_Stage_Progress_updateColor_default');
-          let obj_default: ESObject = JSON.parse(strJson_default);
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1200 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_1200 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_1200 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_1200 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual(obj_default.$attrs.updateColor);
+          console.info("ArkUX_Stage_Progress_updateColor_1200 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_1200 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_1200 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual(JSON.parse(strJson_default).$attrs.updateColor);
           console.info('ArkUX_Stage_Progress_updateColor_1200 END ');
         } catch (err) {
           expect().assertFail();
@@ -406,16 +412,14 @@ export default function progressTest() {
       setTimeout(async () => {
         try {
           let strJson_default = getInspectorByKey('ArkUX_Stage_Progress_updateColor_default');
-          let obj_default: ESObject = JSON.parse(strJson_default);
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1300 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_1300 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_1300 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_1300 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual(obj_default.$attrs.updateColor);
+          console.info("ArkUX_Stage_Progress_updateColor_1300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_1300 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_1300 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual(JSON.parse(strJson_default).$attrs.updateColor);
           console.info('ArkUX_Stage_Progress_updateColor_1300 END ');
         } catch (err) {
           expect().assertFail();
@@ -441,13 +445,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1400 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_1400 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_1400 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_1400 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#FFFFC0CB");
+
+          console.info("ArkUX_Stage_Progress_updateColor_1400 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_1400 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_1400 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#FFFFC0CB");
           console.info('ArkUX_Stage_Progress_updateColor_1400 END ');
         } catch (err) {
           expect().assertFail();
@@ -472,16 +476,16 @@ export default function progressTest() {
       setTimeout(async () => {
         try {
           let strJson_default = getInspectorByKey('ArkUX_Stage_Progress_updateColor_default');
-          let obj_default: ESObject = JSON.parse(strJson_default);
+
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1500 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_1500 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_1500 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_1500 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual(obj_default.$attrs.updateColor);
+
+          console.info("ArkUX_Stage_Progress_updateColor_1500 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_1500 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_1500 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual(JSON.parse(strJson_default).$attrs.updateColor);
           console.info('ArkUX_Stage_Progress_updateColor_1500 END ');
         } catch (err) {
           expect().assertFail();
@@ -508,13 +512,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1600 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateColor_1600 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateColor_1600 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateColor_1600 component obj.$attrs.updateColor is: " +
-          JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#FF00FF00");
+
+          console.info("ArkUX_Stage_Progress_updateColor_1600 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateColor_1600 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateColor_1600 component JSON.parse(strJson).$attrs.updateColor is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateColor));
+          expect(JSON.parse(strJson).$attrs.updateColor).assertEqual("#FF00FF00");
           console.info('ArkUX_Stage_Progress_updateColor_1600 END ');
         } catch (err) {
           expect().assertFail();
@@ -539,13 +543,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_0100 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_0100 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_0100 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_0100 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(0);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_0100 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_0100 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(0);
           console.info('ArkUX_Stage_Progress_updateProgress_0100 END ');
         } catch (err) {
           expect().assertFail();
@@ -570,13 +574,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_0200 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_0200 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_0200 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_0200 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(5);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_0200 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_0200 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_0200 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(5);
           console.info('ArkUX_Stage_Progress_updateProgress_0200 END ');
         } catch (err) {
           expect().assertFail();
@@ -601,13 +605,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_0300 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_0300 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_0300 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_0300 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(0);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_0300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_0300 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_0300 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(0);
           console.info('ArkUX_Stage_Progress_updateProgress_0300 END ');
         } catch (err) {
           expect().assertFail();
@@ -632,13 +636,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_0400 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_0400 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_0400 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_0400 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(0);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_0400 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_0400 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_0400 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(0);
           console.info('ArkUX_Stage_Progress_updateProgress_0400 END ');
         } catch (err) {
           expect().assertFail();
@@ -663,13 +667,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_0500 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_0500 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_0500 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_0500 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(0);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_0500 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_0500 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_0500 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(0);
           console.info('ArkUX_Stage_Progress_updateProgress_0500 END ');
         } catch (err) {
           expect().assertFail();
@@ -694,13 +698,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_0600 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_0600 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_0600 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_0600 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(0);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_0600 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_0600 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_0600 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(0);
           console.info('ArkUX_Stage_Progress_updateProgress_0600 END ');
         } catch (err) {
           expect().assertFail();
@@ -725,13 +729,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_0700 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_0700 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_0700 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_0700 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(0);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_0700 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_0700 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_0700 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(0);
           console.info('ArkUX_Stage_Progress_updateProgress_0700 END ');
         } catch (err) {
           expect().assertFail();
@@ -756,13 +760,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_0800 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_0800 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_0800 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_0800 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(0);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_0800 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_0800 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_0800 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(0);
           console.info('ArkUX_Stage_Progress_updateProgress_0800 END ');
         } catch (err) {
           expect().assertFail();
@@ -787,13 +791,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_0900 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_0900 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_0900 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_0900 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(1);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_0900 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_0900 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_0900 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(1);
           console.info('ArkUX_Stage_Progress_updateProgress_0900 END ');
         } catch (err) {
           expect().assertFail();
@@ -818,13 +822,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_1000 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_1000 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_1000 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_1000 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(0);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_1000 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_1000 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_1000 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(0);
           console.info('ArkUX_Stage_Progress_updateProgress_1000 END ');
         } catch (err) {
           expect().assertFail();
@@ -849,13 +853,13 @@ export default function progressTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateProgress_1100 START  :' + JSON.stringify(strJson));
-          let obj: ESObject = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_updateProgress_1100 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_updateProgress_1100 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_updateProgress_1100 component obj.$attrs.updateProgress is: " +
-          JSON.stringify(obj.$attrs.updateProgress));
-          expect(obj.$attrs.updateProgress).assertEqual(5);
+
+          console.info("ArkUX_Stage_Progress_updateProgress_1100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          console.info("ArkUX_Stage_Progress_updateProgress_1100 component JSON.parse(strJson).$attrs is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs));
+          console.info("ArkUX_Stage_Progress_updateProgress_1100 component JSON.parse(strJson).$attrs.updateProgress is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.updateProgress));
+          expect(JSON.parse(strJson).$attrs.updateProgress).assertEqual(5);
           console.info('ArkUX_Stage_Progress_updateProgress_1100 END ');
         } catch (err) {
           expect().assertFail();

@@ -24,7 +24,7 @@ export struct WaterFlowView {
   scroller: Scroller = new Scroller()
   private itemWidthArray: number[] = []
   private itemHeightArray: number[] = []
-
+  
   getSize() {
     let ret = Math.floor(Math.random() * this.maxSize)
     return (ret > this.minSize ? ret : this.minSize)
@@ -41,7 +41,8 @@ export struct WaterFlowView {
     this.getItemSizeArray()
   }
 
-  @Builder itemFoot() {
+  @Builder
+  itemFoot() {
     Column() {
       Text(`Footer`)
         .fontSize(10)
@@ -64,7 +65,7 @@ export struct WaterFlowView {
         .width(this.itemWidthArray[item])
         .height(this.itemHeightArray[item])
         .backgroundColor(this.colors[item % 5])
-      }, item => item)
+      }, (item: number) => item.toString())
     }
     .columnsTemplate('1fr 1fr 1fr 1fr')
     .itemConstraintSize({

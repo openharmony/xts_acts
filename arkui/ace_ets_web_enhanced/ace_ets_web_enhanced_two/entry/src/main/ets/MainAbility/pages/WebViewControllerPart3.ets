@@ -45,6 +45,7 @@ struct WebViewControllerPart3 {
   @State onScrollCallBack: boolean = false;
   @State onMessageEventCallBack: boolean = false
   @State ports: webView.WebMessagePort[] = [];
+  @State userAgentPC:string = "";
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -718,7 +719,12 @@ struct WebViewControllerPart3 {
 
             case "testPageDown001": {
               try {
-                this.controller.loadUrl($rawfile('indexCopy.html'))
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 100063)
+                  break;
+                }
+                this.controller.loadUrl($rawfile('indexCopyTwo.html'))
                 await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   if (error) {
@@ -727,6 +733,7 @@ struct WebViewControllerPart3 {
                   }
                   this.checkEleResult = JSON.parse(result)
                   console.log(`The checkVIsible() return value is: ${result}`);
+                  
                 })
                 this.controller.pageDown(false);
                 await Utils.sleep(1000)
@@ -754,7 +761,12 @@ struct WebViewControllerPart3 {
 
             case "testPageDown002": {
               try {
-                this.controller.loadUrl($rawfile('indexCopy.html'))
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 100064)
+                  break;
+                }
+                this.controller.loadUrl($rawfile('indexCopyTwo.html'))
                 await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   if (error) {
@@ -789,7 +801,12 @@ struct WebViewControllerPart3 {
 
             case "testPageUp001": {
               try {
-                this.controller.loadUrl($rawfile('indexCopy.html'))
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 100065)
+                  break;
+                }
+                this.controller.loadUrl($rawfile('indexCopyTwo.html'))
                 await Utils.sleep(3000)
                 this.controller.pageDown(false);
                 await Utils.sleep(1000)
@@ -827,7 +844,12 @@ struct WebViewControllerPart3 {
 
             case "testPageUp002": {
               try {
-                this.controller.loadUrl($rawfile('indexCopy.html'))
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 100066)
+                  break;
+                }
+                this.controller.loadUrl($rawfile('indexCopyTwo.html'))
                 await Utils.sleep(3000)
                 this.controller.pageDown(true);
                 await Utils.sleep(1000)

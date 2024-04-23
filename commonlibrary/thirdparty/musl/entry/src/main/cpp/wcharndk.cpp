@@ -1707,6 +1707,7 @@ static napi_value FGetWs(napi_env env, napi_callback_info info)
     wchar_t mystring[100];
     char str[] = "test";
     FILE *fp = fopen("/data/storage/el2/base/files/Fzl.txt", "w+");
+    NAPI_ASSERT(env, fp != nullptr, "FGetWs fopen Error");
     fwrite(str, sizeof(char), sizeof(str), fp);
     fseek(fp, ZEROVAL, SEEK_SET);
     wchar_t *ret = fgetws(mystring, SIZE_100, fp);
@@ -1724,6 +1725,7 @@ static napi_value FGetWc(napi_env env, napi_callback_info info)
 {
     setlocale(LC_ALL, "en_US.utf8");
     FILE *fp = fopen("/data/storage/el2/base/files/Fzl.txt", "w+");
+    NAPI_ASSERT(env, fp != nullptr, "FGetWc fopen Error");
     fputs("кошка\n", fp);
     wint_t wc;
     napi_value result = nullptr;
@@ -1766,6 +1768,7 @@ static napi_value Getwc(napi_env env, napi_callback_info info)
 {
     const char *ptr = "/data/storage/el2/base/files/test.txt";
     FILE *fptr = fopen(ptr, "w+");
+    NAPI_ASSERT(env, fptr != nullptr, "Getwc fopen Error");
     wchar_t wc = L'p';
     putwc(wc, fptr);
     rewind(fptr);

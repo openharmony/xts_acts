@@ -14,6 +14,7 @@
 group("ActsAceEtsModuleUITest") {
   testonly = true
   deps = [
+    "ace_ets_module_RouteManagement:ActsAceEtsModuleRouteManagementTest",
     "ace_ets_module_animation:ActsAceEtsModuleAnimationTest",
     "ace_ets_module_commonAttrsDialog:ActsAceEtsModuleCommonAttrsDialogTest",
     "ace_ets_module_commonAttrsEvents:ActsAceEtsModuleCommonAttrsEventsTest",

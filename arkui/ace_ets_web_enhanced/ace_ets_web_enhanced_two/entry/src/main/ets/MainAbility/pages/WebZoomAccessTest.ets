@@ -31,6 +31,7 @@ struct WebZoomAccessTest {
   @State zoomAccess: boolean = false;
   @State newScale: number = 0
   @State oldScale: number = 0
+  @State userAgentPC:string = "";
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -100,7 +101,12 @@ struct WebZoomAccessTest {
                 await Utils.sleep(2000)
                 await Utils.fingerZoom('WebZoomAccessTestWebView', true);
                 await Utils.sleep(2000)
-                await Utils.fingerZoom('WebZoomAccessTestWebView', false);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await Utils.pinchInComponent('WebZoomAccessTestWebView')
+                } else {
+                  await Utils.fingerZoom('WebZoomAccessTestWebView', false);
+                }
                 await Utils.sleep(2000)
                 Utils.emitEvent(this.oldScale > 0 && this.newScale > 0 && this.newScale < this.oldScale, 6506)
               } catch (error) {
@@ -113,6 +119,7 @@ struct WebZoomAccessTest {
       }
 
       Web({ src: $rawfile('second.html'), controller: this.controller })
+        .width('80%')
         .key('WebZoomAccessTestWebView')
         .javaScriptAccess(this.javaScriptAccess)
         .fileAccess(this.fileAccess)

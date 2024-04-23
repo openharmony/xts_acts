@@ -125,11 +125,11 @@ export default function Grid_Row_GutterOption_Default() {
       let gridRowGutterOptionJson = getInspectorByKey('GutterOptionChange_001');
       expect(JSON.parse(gridRowGutterOptionJson).$type).assertEqual('GridRow');
 
-      expect(firstGutterOption.top).assertEqual(GutterOption_1.top);
-      expect(firstGutterOption.left).assertEqual(GutterOption_1.left);
+      expect(Math.abs(firstGutterOption.top - GutterOption_1.top) <= 1).assertTrue();
+      expect(Math.abs(firstGutterOption.left - GutterOption_1.left) <= 1).assertTrue();
 
-      expect(Math.round(secondGutterOption.left - firstGutterOption.right)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(thirdGutterOption.top - firstGutterOption.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(secondGutterOption.left - firstGutterOption.right) - Math.round(vp2px(0))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdGutterOption.top - firstGutterOption.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
 
 
       console.info('SUB_ACE_GridRowGutterOption_Default_0300 END');

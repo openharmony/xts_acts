@@ -41,6 +41,7 @@ struct LongPressGestureExample {
             Image($r("app.media.img"))
               .height('60%')
               .width('60%')
+              .draggable(false)
           }
           .height('350vp')
           .width('350vp')

@@ -532,6 +532,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: false,
           navigationBarContentColor: tempColor,
+          enableStatusBarAnimation:false,
+          enableNavigationBarAnimation:false,         
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
@@ -585,6 +587,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: true,
           navigationBarContentColor: tempColor,
+          enableStatusBarAnimation:false,
+          enableNavigationBarAnimation:false,     
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
@@ -638,6 +642,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: false,
           navigationBarContentColor: tempColor,
+          enableStatusBarAnimation:false,
+          enableNavigationBarAnimation:false,     
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
@@ -1813,7 +1819,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         console.log(msgStr + " try begin")
         let options:ohosWindow.SubWindowOptions = {
           title: 'title',
-          decorEnabled: true
+          decorEnabled: true,
+          isModal: false,
         };
         let promise = windowStage.createSubWindowWithOptions('mySubWindow', options);
         promise.then((data) => {
@@ -1861,6 +1868,50 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
           expect(true).assertTrue()
           done()
+        } catch (exception) {
+          console.error(msgStr + ' Failed to get system bar properties. Cause: ' + JSON.stringify(exception));
+          expect().assertFail()
+          done()
+        }
+      })
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_WULTMNDOW_GET_WINDOWSYSTEMBARPROPERTIES_0100
+     * @tc.name      : test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties
+     * @tc.desc      : test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties", 0, async function(done){
+      let msgStr = "test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties";
+      let SystemBarProperties = {
+        statusBarColor: '#FF0000FF',
+        navigationBarColor: '#FF00FF00',
+        statusBarContentColor: '#FF00FFAA',
+        navigationBarContentColor: '#FF00FFFF'
+      };
+      console.log(msgStr + " begin");
+      ohosWindow.getLastWindow(context).then(async wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        try {
+          await wnd.setWindowSystemBarProperties(SystemBarProperties).then(() => {
+            console.info('Succeeded in setting the system bar properties.');
+            let systemBarProperty = wnd.getWindowSystemBarProperties();
+            console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
+            expect(systemBarProperty.statusBarColor).assertEqual('#FF0000FF');
+            expect(systemBarProperty.navigationBarColor).assertEqual('#FF00FF00');
+            expect(systemBarProperty.statusBarContentColor).assertEqual('#FF00FFAA');
+            expect(systemBarProperty.navigationBarContentColor).assertEqual('#FF00FFFF');
+            done()
+          }).catch((err) => {
+            console.error('Failed to set the system bar properties. Cause: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+            done()
+          });
+          
         } catch (exception) {
           console.error(msgStr + ' Failed to get system bar properties. Cause: ' + JSON.stringify(exception));
           expect().assertFail()

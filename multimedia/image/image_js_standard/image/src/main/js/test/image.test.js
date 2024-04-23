@@ -3342,5 +3342,83 @@ export default function imageJsTest() {
               done()
             }
         })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFERSYNC_0100
+         * @tc.name      : Test_ReadPixelsToBufferSync
+         * @tc.desc      : Read PixelMap to the Buffer in a synchronous way
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('Test_ReadPixelsToBufferSync', 0, async function (done) {
+            let color = new ArrayBuffer(96)
+            let InitializationOptions = {
+                editable: false,
+                pixelFormat: 4,
+                size: { height: 4, width: 6 },
+                alphaType: 3
+            }
+            let msg = 'Test_ReadPixelsToBufferSync'
+            image.createPixelMap(color, InitializationOptions).then((pixelmap) => {
+                console.log(msg + ' Succeed in calling image.createPixelMap')
+                let pixelMap = pixelmap
+                try{
+                    const readBuffer = new ArrayBuffer(96)
+                    console.log(msg + ' Succeed in calling ArrayBuffer ')
+                    let readPixelsToBufferSyncA = pixelMap.readPixelsToBufferSync(readBuffer)
+                    console.log(msg + ' Succeed in calling pixelMap.readPixelsToBufferSync ' + JSON.stringify(readPixelsToBufferSyncA))
+                    expect(true).assertTrue()
+                    done()
+                } catch(err){
+                    console.log(msg + ' Failed in calling pixelMap.readPixelsToBufferSync ' + JSON.stringify(err))
+                    expect().assertFail()
+                    done()
+                }
+            })
+        })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_SUB_GRAPHIC_IMAGE_WRITEPIXELSSYNC_0100
+         * @tc.name      : Test_WritePixelsSync
+         * @tc.desc      : Read PixelMap to the Buffer in a synchronous way
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('Test_WritePixelsSync', 0, async function (done) {
+            let msg = 'Test_WritePixelsSync'
+            let PositionArea = {
+                pixels: new ArrayBuffer(8),
+                offset: 0,
+                stride: 8,
+                region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+            };
+            let bufferArr = new Uint8Array(PositionArea.pixels);
+            let color = new ArrayBuffer(96)
+            let InitializationOptions = {
+                editable: false,
+                pixelFormat: 4,
+                size: { height: 4, width: 6 },
+                alphaType: 3
+            }
+            for (let i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            image.createPixelMap(color, InitializationOptions).then((pixelmap) => {
+                console.log(msg + ' Succeed in calling image.createPixelMap')
+                let pixelMap = pixelmap
+                try{
+                    let writePixelsSyncA = pixelMap.writePixelsSync(PositionArea);
+                    console.log(msg + ' Succeed in calling pixelMap.writePixelsSync ' + JSON.stringify(writePixelsSyncA))
+                    expect(true).assertTrue()
+                    done()
+                } catch(err){
+                    console.log(msg + ' Failed in calling pixelMap.readPixelsToBufferSync ' + JSON.stringify(err))
+                    expect().assertFail()
+                    done()
+                }
+            })
+        })
     })
 }

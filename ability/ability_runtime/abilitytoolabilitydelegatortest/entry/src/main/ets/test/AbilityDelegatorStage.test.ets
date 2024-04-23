@@ -18,13 +18,15 @@ import { describe, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError } from '@ohos.base';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 const TAG: string = 'ActsAbilityDelegatorTest';
 const TEST_SUITE_NAME: string = 'ActsAbilityDelegatorStageTest';
 const CODE_ERROR = 401;
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
 function sleep(time: number) {
-  return new Promise<void>((resolve) => setTimeout(resolve, time));
+  return new Promise < void> ((resolve) => setTimeout(resolve, time));
 }
 
 async function executeShellCmd(cmd: string, abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator) {
@@ -59,15 +61,24 @@ export default function AbilityDelegatorStageTest() {
           moduleName: AbilityDelegatorRegistry.getArguments().parameters['-m'],
           onAbilityForeground: (ability) => {
             console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ---onAbilityForegroundCallback`);
-            abilityDelegator.getCurrentTopAbility((err, data) => {
+            abilityDelegator.getCurrentTopAbility(async (err, data) => {
               console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> getCurrentTopAbility_0200 err: ${JSON.stringify(err)} data:  ${JSON.stringify(data)}`);
               let state = abilityDelegator.getAbilityState(ability);
               console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state --in Foregroundcallback: ${state}`);
               expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
-              abilityDelegator.doAbilityBackground(ability)
+              if (deviceType === '2in1') {
+                abilityDelegator.removeAbilityMonitor(monitor)
+                  .then(() => {
+                    console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
+                  })
+                await sleep(500);
+                done();
+              } else {
+                abilityDelegator.doAbilityBackground(ability)
                 .then(() => {
                   console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`);
                 })
+              }
             })
           },
           onAbilityBackground: (ability) => {
@@ -124,11 +135,18 @@ export default function AbilityDelegatorStageTest() {
               let state = abilityDelegator.getAbilityState(ability);
               console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>ACTS_GetAbilityState_0200 state --in Foregroundcallback: ${state}`);
               expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
-
-              abilityDelegator.doAbilityBackground(ability)
+              if (deviceType === '2in1') {
+                abilityDelegator.removeAbilityMonitor(monitor)
+                  .then(() => {
+                    console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
+                  })
+                done();
+              } else {
+                abilityDelegator.doAbilityBackground(ability)
                 .then(() => {
                   console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`);
                 })
+              }
             })
           },
           onAbilityBackground: (ability) => {
@@ -565,9 +583,9 @@ export default function AbilityDelegatorStageTest() {
             expect(data.stdResult).assertContain('start ability successfully');
             done();
           }).catch((err: BusinessError) => {
-          expect().assertFail();
-          done();
-        })
+            expect().assertFail();
+            done();
+          })
       } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         expect().assertFail();
@@ -655,9 +673,9 @@ export default function AbilityDelegatorStageTest() {
             expect(data.exitCode).assertEqual(-1);
             done();
           }).catch((err: BusinessError) => {
-          expect().assertFail();
-          done();
-        })
+            expect().assertFail();
+            done();
+          })
       } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         expect().assertFail();

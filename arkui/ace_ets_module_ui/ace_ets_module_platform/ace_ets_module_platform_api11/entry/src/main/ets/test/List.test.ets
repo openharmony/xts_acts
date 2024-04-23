@@ -14,6 +14,18 @@
  */
 import XComponentNodeChageJsSuit from './XComponentTest/XComponentNodeChageJsSuit.test';
 
+import videoJsunit from './video/VideoJsunit.test';
+import videoJsunit2 from './video/VideoJsunit2.test';
+
+import videoOnFullscreenChangeJsunit from './video/video.test';
+import xcomponentGetXComponentContextJsunit from './XComponentTest/xcomponent.test';
+
 export default function testsuite() {
   XComponentNodeChageJsSuit()
+
+  videoJsunit()
+  videoJsunit2()
+  videoOnFullscreenChangeJsunit()
+  xcomponentGetXComponentContextJsunit()
+
 }

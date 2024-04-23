@@ -26,16 +26,16 @@ struct OnAreaChangePage {
   @State sizeOldValue: string = '';
   @State sizeNewValue: string = '';
   @State _offset: Position = { x: 0, y: 0 };
-  @State parentMargin: number = router.getParams() ? router.getParams()['view']['parentMargin'] : 0
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State parentKey: string = router.getParams() ? router.getParams()['view']['parentKey'] : ''
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State targetGroupView: string = router.getParams() ? router.getParams()['view']['targetGroupView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State compareButtonKey: string = router.getParams() ? router.getParams()['view']['compareButtonKey'] : ''
-  @State compareOldTextKey: string = router.getParams() ? router.getParams()['view']['compareOldTextKey'] : ''
-  @State compareNewTextKey: string = router.getParams() ? router.getParams()['view']['compareNewTextKey'] : ''
+  @State parentMargin: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentMargin'] : 0
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State parentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State targetGroupView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetGroupView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State compareButtonKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['compareButtonKey'] : ''
+  @State compareOldTextKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['compareOldTextKey'] : ''
+  @State compareNewTextKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['compareNewTextKey'] : ''
   textTimerController: TextTimerController = new TextTimerController() //Use by TextTimer
   private scroller: Scroller = new Scroller()
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G']; //Use by AlphabetIndexer TextPicker
@@ -43,7 +43,7 @@ struct OnAreaChangePage {
 
   onPageShow() {
     console.info('OnAreaChangePage show called')
-    AttrsManager.registerDataChange(value => {
+    AttrsManager.registerDataChange((value: ESObject) => {
       if (value.width) {
         this._width = value.width
       }
@@ -67,7 +67,8 @@ struct OnAreaChangePage {
   /*
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .width(this._width)
     .height(this._height)
     .offset(this._offset)
@@ -126,9 +127,14 @@ struct OnAreaChangePage {
         .margin(this.parentMargin)
         .key(this.parentKey)
       } else if (this.targetView == 'StepperItem') {
-        Button('Button').width(this._compareButtonWidth).height(this._compareButtonHeight).key(this.compareButtonKey)
+        Button('Button')
+          .width(this._compareButtonWidth)
+          .height(this._compareButtonHeight)
+          .key(this.compareButtonKey)
         Stepper() {
-          StepperItem().backgroundColor(Color.Pink).commonStyle()
+          StepperItem()
+            .backgroundColor(Color.Pink)
+            .commonStyle()
         }
         .width(this._width)
         .height(this._height)
@@ -136,9 +142,14 @@ struct OnAreaChangePage {
         .margin(this.parentMargin)
         .key(this.parentKey)
       } else if (this.targetView == 'FlowItem') {
-        Button('Button').width(this._compareButtonWidth).height(this._compareButtonHeight).key(this.compareButtonKey)
+        Button('Button')
+          .width(this._compareButtonWidth)
+          .height(this._compareButtonHeight)
+          .key(this.compareButtonKey)
         WaterFlow() {
-          FlowItem().backgroundColor(Color.Pink).commonStyle()
+          FlowItem()
+            .backgroundColor(Color.Pink)
+            .commonStyle()
         }
         .width(this.parentWidth)
         .height(this.parentHeight)
@@ -146,11 +157,16 @@ struct OnAreaChangePage {
         .margin(this.parentMargin)
         .key(this.parentKey)
       } else if (this.targetView == 'GridCol') {
-        Button('Button').width(this._compareButtonWidth).height(this._compareButtonHeight).key(this.compareButtonKey)
+        Button('Button')
+          .width(this._compareButtonWidth)
+          .height(this._compareButtonHeight)
+          .key(this.compareButtonKey)
         GridRow() {
           GridCol() {
             Text('GridCol')
-          }.backgroundColor(Color.Pink).commonStyle()
+          }
+          .backgroundColor(Color.Pink)
+          .commonStyle()
         }
         .width(this.parentWidth)
         .height(this.parentHeight)
@@ -159,8 +175,13 @@ struct OnAreaChangePage {
         .key(this.parentKey)
       } else if (this.targetView == 'GridItem') {
         Grid() {
-          GridItem().width(this._compareButtonWidth).height(this._compareButtonHeight).key(this.compareButtonKey)
-          GridItem().backgroundColor(Color.Pink).commonStyle()
+          GridItem()
+            .width(this._compareButtonWidth)
+            .height(this._compareButtonHeight)
+            .key(this.compareButtonKey)
+          GridItem()
+            .backgroundColor(Color.Pink)
+            .commonStyle()
         }
         .width(this.parentWidth)
         .height(this.parentHeight)
@@ -171,7 +192,10 @@ struct OnAreaChangePage {
         List() {
           ListItem() {
             Button('ListItem')
-          }.width(this._compareButtonWidth).height(this._compareButtonHeight).key(this.compareButtonKey)
+          }
+          .width(this._compareButtonWidth)
+          .height(this._compareButtonHeight)
+          .key(this.compareButtonKey)
 
           ListItem() {
             Button('ListItem')
@@ -188,13 +212,18 @@ struct OnAreaChangePage {
         List() {
           ListItem() {
             Text('ListItem')
-          }.width(this._compareButtonWidth).height(this._compareButtonHeight).key(this.compareButtonKey)
+          }
+          .width(this._compareButtonWidth)
+          .height(this._compareButtonHeight)
+          .key(this.compareButtonKey)
 
           ListItemGroup() {
             ListItem() {
               Text('ListItemGroup')
             }
-          }.backgroundColor(Color.Pink).commonStyle()
+          }
+          .backgroundColor(Color.Pink)
+          .commonStyle()
         }
         .listDirection(Axis.Horizontal)
         .width(this.parentWidth)
@@ -203,11 +232,16 @@ struct OnAreaChangePage {
         .margin(this.parentMargin)
         .key(this.parentKey)
       } else if (this.targetView == 'TabContent') {
-        Button('Button').width(this._compareButtonWidth).height(this._compareButtonHeight).key(this.compareButtonKey)
+        Button('Button')
+          .width(this._compareButtonWidth)
+          .height(this._compareButtonHeight)
+          .key(this.compareButtonKey)
         Tabs() {
           TabContent() {
             Text('TabContent Test')
-          }.backgroundColor(Color.Pink).commonStyle()
+          }
+          .backgroundColor(Color.Pink)
+          .commonStyle()
         }
         .width(this._width)
         .height(this._height)
@@ -216,7 +250,10 @@ struct OnAreaChangePage {
         .key(this.parentKey)
       } else {
         Column() {
-          Button('Button').width(this._compareButtonWidth).height(this._compareButtonHeight).key(this.compareButtonKey)
+          Button('Button')
+            .width(this._compareButtonWidth)
+            .height(this._compareButtonHeight)
+            .key(this.compareButtonKey)
           if (this.targetView == 'AlphabetIndexer') {
             AlphabetIndexer({ arrayValue: this.value, selected: 0 })
               .backgroundColor(Color.Pink)
@@ -442,22 +479,25 @@ struct OnAreaChangePage {
           } else if (this.targetView == 'Scroll') {
             Scroll() {
               Column() {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: string) => {
                   Text('Scroll' + item.toString())
                     .width('90%')
                     .height(150)
                     .backgroundColor(Color.White)
                     .textAlign(TextAlign.Center)
-                }, item => item)
+                }, (item: string) => item)
               }.width('100%')
             }.scrollBar(BarState.On).commonStyle()
           } else if (this.targetView == 'SideBarContainer') {
             SideBarContainer(SideBarContainerType.Embed) {
               Column() {
-                ForEach([1, 2, 3], (item) => {
+                ForEach([1, 2, 3], (item: string) => {
                   Column({ space: 5 }) {
-                    Image($r('app.media.icon')).width(50).height(50)
-                    Text('Index0' + item).fontSize(25)
+                    Image($r('app.media.icon'))
+                      .width(50)
+                      .height(50)
+                    Text('Index0' + item)
+                      .fontSize(25)
                   }
                 })
               }.width('100%')
@@ -465,7 +505,8 @@ struct OnAreaChangePage {
               .backgroundColor(Color.Green)
 
               Column() {
-                Text('SideBarContainer content').fontSize(25)
+                Text('SideBarContainer content')
+                  .fontSize(25)
               }.backgroundColor(Color.Orange)
             }.commonStyle()
           } else if (this.targetView == 'Stack') {
@@ -476,7 +517,7 @@ struct OnAreaChangePage {
             Swiper() {
               ForEach([1, 2, 3], (item: string) => {
                 Text('Swiper' + item)
-              }, item => item)
+              }, (item: string) => item)
             }
             .indicator(true)
             .backgroundColor(Color.Pink)

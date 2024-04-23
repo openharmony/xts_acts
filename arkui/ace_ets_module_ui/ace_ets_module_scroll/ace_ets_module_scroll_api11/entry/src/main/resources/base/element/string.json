@@ -61,6 +61,42 @@
       "value": "12"
     },
     {
+      "name": "Divider_Stroke_Width",
+      "value": "10px"
+    },
+    {
+      "name": "Divider_Start_Margin",
+      "value": "5px"
+    },
+    {
+      "name": "Divider_End_Margin",
+      "value": "5px"
+    },
+    {
+      "name": "Indicator_Height",
+      "value": "10vp"
+    },
+    {
+      "name": "Indicator_Width",
+      "value": "30vp"
+    },
+    {
+      "name": "Indicator_Radius",
+      "value": "5vp"
+    },
+    {
+      "name": "Indicator_Sub_Radius",
+      "value": "20vp"
+    },
+    {
+      "name": "Indicator_Space",
+      "value": "10vp"
+    },
+    {
+      "name": "BottomTabBarStyleLabelStyle_family_Test",
+      "value": "HarmonyOS Sans"
+    },
+    {
       "name": "popupSelectedColor",
       "value": "#00C5CD"
     },
@@ -79,6 +115,27 @@
     {
       "name": "popupSpace",
       "value": "10"
+    },
+    {
+      "name": "module_test_desc",
+      "value": "test ability description"
+    },
+    {
+      "name": "nextMargin",
+      "value": "20"
+    },
+    {
+      "name": "prevMargin",
+      "value": "20"
+    },
+    {
+      "name": "nextMarginString",
+      "value": "20px"
+    },
+    {
+      "name": "prevMarginString",
+      "value": "20px"
     }
+    
   ]
 }

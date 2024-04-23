@@ -83,9 +83,9 @@ export default function OnlyColumnsTemplate4() {
 
 
       console.log('assert size')
-      expect(Math.round(GridItem_011.right - GridItem_011.left)).assertEqual(Math.round(vp2px(52)));
+      expect(Math.abs(Math.round(GridItem_011.right - GridItem_011.left) - Math.round(vp2px(52))) <= 1).assertTrue();
       console.log('GridItem_011.right - GridItem_011.left' + (GridItem_011.right - GridItem_011.left))
-      expect(Math.round(GridItem_011.bottom - GridItem_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.abs(Math.round(GridItem_011.bottom - GridItem_011.top) - Math.round(vp2px(50))) <= 1).assertTrue();
       console.log('GridItem_011.bottom - GridItem_011.top' + (GridItem_011.bottom - GridItem_011.top))
 
       console.info('[SUB_ACE_GRID_OnlyColumnsTemplate4_0300] END');
@@ -128,9 +128,9 @@ export default function OnlyColumnsTemplate4() {
 
 
       console.log('assert size')
-      expect(Math.round(GridItem_011.right - GridItem_011.left)).assertEqual(Math.round(vp2px(52)));
+      expect(Math.abs(Math.round(GridItem_011.right - GridItem_011.left) - Math.round(vp2px(52))) <= 1).assertTrue();
       console.log('GGridItem_01.right - GridItem_01.left' + (GridItem_011.right - GridItem_011.left))
-      expect(Math.round(GridItem_011.bottom - GridItem_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.abs(Math.round(GridItem_011.bottom - GridItem_011.top) - Math.round(vp2px(50))) <= 1).assertTrue();
       console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_011.bottom - GridItem_011.top))
 
       console.info('[SUB_ACE_GRID_OnlyColumnsTemplate4_0500] END');

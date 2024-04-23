@@ -29,12 +29,14 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "NativeDrawingCanvasTest.cpp",
     "NativeDrawingColorSpaceTest.cpp",
     "NativeDrawingColorTest.cpp",
+    "NativeDrawingGpuContextTest.cpp",
     "NativeDrawingMatrixTest.cpp",
     "NativeDrawingPathEffectTest.cpp",
     "NativeDrawingPathTest.cpp",
     "NativeDrawingPenTest.cpp",
     "NativeDrawingRectTest.cpp",
     "NativeDrawingRegionTest.cpp",
+    "NativeDrawingSurfaceTest.cpp",
     "NativeFontTest.cpp",
     "NativeImageTest.cpp",
     "OH_Drawing_FontCollectionTest.cpp",
@@ -51,7 +53,7 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "$comPath/rosen/modules/2d_engine",
     "//third_party/googletest/googletest/include",
   ]
-  enable_text_gine = false
+  enable_text_gine = true
   if (enable_text_gine) {
     include_dirs += [ "$comPath/rosen/modules/2d_engine/rosen_text/export" ]
     defines = [ "USE_GRAPHIC_TEXT_GINE" ]
@@ -62,6 +64,10 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "graphic_2d:2d_graphics",
     "graphic_2d:native_drawing_ndk",
     "hilog:libhilog",
+    "openssl:libcrypto_shared",
   ]
-  deps = [ "//third_party/googletest:gtest_main" ]
+  deps = [
+    "$comPath:libgl",
+    "//third_party/googletest:gtest_main",
+  ]
 }

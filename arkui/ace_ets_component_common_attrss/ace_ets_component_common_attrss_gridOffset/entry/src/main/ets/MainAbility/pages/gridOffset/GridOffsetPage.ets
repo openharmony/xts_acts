@@ -20,20 +20,23 @@ import router from '@ohos.router'
 @Component
 struct GridOffsetPage {
   @State _gridOffset: number = 0
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State columns: number = router.getParams() ? router.getParams()['view']['columns'] : 0
-  @State gutter: number = router.getParams() ? router.getParams()['view']['gutter'] : 0
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State columns: number = router.getParams() ? (router.getParams() as ESObject)['view']['columns'] : 0
+  @State gutter: number = router.getParams() ? (router.getParams() as ESObject)['view']['gutter'] : 0
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
 
   onPageShow() {
     console.info('gridOffset page show called ')
-    AttrsManager.registerDataChange(value => this._gridOffset = value)
+    AttrsManager.registerDataChange((value: ESObject) => {
+      this._gridOffset = value
+    })
   }
 
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .gridOffset(this._gridOffset)
     .height('100%')
     .gridSpan(1)
@@ -83,7 +86,7 @@ struct GridOffsetPage {
           Marquee({
             start: true,
             step: 50,
-            loop: Infinity,
+            loop: Number.MAX_VALUE,
             fromStart: true,
             src: 'Running Marquee starts rolling'
           }).commonStyle()
@@ -218,7 +221,7 @@ struct GridOffsetPage {
             direction: GridRowDirection.Row
           }) {
             ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green,
-            Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color) => {
+              Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color: Color) => {
               GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                 Row().width('100%').height('20vp')
               }.borderColor(color).borderWidth(2)
@@ -294,19 +297,19 @@ struct GridOffsetPage {
         } else if (this.targetView == 'Scroll') {
           Scroll() {
             Column() {
-              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+              ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                 Text('Scroll' + item.toString())
                   .width('90%')
                   .height(50)
                   .backgroundColor(Color.White)
                   .textAlign(TextAlign.Center)
-              }, item => item)
+              }, (item: number) => item.toString())
             }.width('100%')
           }.scrollBar(BarState.On).commonStyle()
         } else if (this.targetView == 'SideBarContainer') {
           SideBarContainer(SideBarContainerType.Embed) {
             Column() {
-              ForEach([1, 2, 3], (item) => {
+              ForEach([1, 2, 3], (item: number) => {
                 Column({ space: 5 }) {
                   Image($r('app.media.icon')).width(50).height(50)
                   Text('Index0' + item).fontSize(25)
@@ -323,9 +326,9 @@ struct GridOffsetPage {
           }.commonStyle()
         } else if (this.targetView == 'Swiper') {
           Swiper() {
-            ForEach([1, 2, 3], (item: string) => {
+            ForEach([1, 2, 3], (item: number) => {
               Text('Swiper' + item).width('90%').height(50)
-            }, item => item)
+            }, (item: number) => item.toString())
           }
           .indicator(true)
           .backgroundColor(Color.White)
@@ -354,7 +357,7 @@ struct GridOffsetPage {
                     .objectFit(ImageFit.Fill)
                 }
               }
-            }, item => item)
+            }, (item: number) => item.toString())
           }.commonStyle()
         } else if (this.targetView == 'StepperItem') {
           Stepper() {
@@ -397,7 +400,7 @@ struct GridOffsetPage {
               }
               .commonStyle()
               .backgroundColor(Color.Yellow)
-            }, item => item)
+            }, (item: number) => item.toString())
           }
           .backgroundColor(Color.Pink)
           .width('100%')
