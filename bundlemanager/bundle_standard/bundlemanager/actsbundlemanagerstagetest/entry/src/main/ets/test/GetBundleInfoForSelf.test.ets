@@ -1257,7 +1257,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
       expect(data.hapModulesInfo[0].installationFree).assertFalse();
       expect(data.hapModulesInfo[0].hashValue).assertEqual("");
-      expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("{\"src\": [\"MainAbility/pages/index/index\",\"MainAbility/pages/second/second\"]}");
+      expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("{\"src\":[\"MainAbility/pages/index/index\",\"MainAbility/pages/second/second\"]}");
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
       expect(data.signatureInfo).assertEqual(null);
