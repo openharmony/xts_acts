@@ -103,16 +103,21 @@ def run(precise_repo_xts_list):
         depends_tree = "all"
         depends_list = {"all"}
     else:
-        # 计算首层依赖map
-        get_f_dependes_dist(home)
-        # 首层依赖树打印
-        # write_file(dependency_dist, os.path.join(preloader_path,f_depends_name))
-        # 获取bundle_name_list
-        bundlelist = getbundname(precise_repo_xts_list)
-        print(bundlelist)
-        # 获取全部需要跑的bundlename
-        depends_list, depends_tree = get_all_dependencies(bundlelist,dependency_dist)
-        print(depends_list)
+        try:
+            # 获取bundle_name_list
+            bundlelist = getbundname(precise_repo_xts_list)
+            # 计算首层依赖map
+            get_f_dependes_dist(home)
+            # 首层依赖树打印
+            # write_file(dependency_dist, os.path.join(preloader_path,f_depends_name))
+            print(bundlelist)
+            # 获取全部需要跑的bundlename
+            depends_list, depends_tree = get_all_dependencies(bundlelist,dependency_dist)
+            print(depends_list)
+        except  Exception as e:
+            print("发生异常:", str(e))
+            depends_tree = "all"
+            depends_list = {"all"}
     # 依赖树输出
     write_file(depends_tree, os.path.join(preloader_path,depends_tree_name))
     # 写入gni文件
