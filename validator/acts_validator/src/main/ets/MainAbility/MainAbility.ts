@@ -53,7 +53,7 @@ export default class MainAbility extends Ability {
           "ohos.permission.GET_INSTALLED_BUNDLE_LIST",
           "ohos.permission.MEDIA_LOCATION","ohos.permission.WRITE_IMAGEVIDEO","ohos.permission.READ_IMAGEVIDEO","ohos.permission.LOCATION"
           , "ohos.permission.APPROXIMATELY_LOCATION",'ohos.permission.USE_BLUETOOTH','ohos.permission.DISCOVER_BLUETOOTH',
-          'ohos.permission.MANAGE_BLUETOOTH',"ohos.permission.ACCESS_BLUETOOTH"]).then(() => {})
+          'ohos.permission.MANAGE_BLUETOOTH',"ohos.permission.ACCESS_BLUETOOTH","ohos.permission.ACTIVITY_MOTION"]).then(() => {})
           try {
             notification.requestEnableNotification((err: Base.BusinessError) => {
               if (err) {
