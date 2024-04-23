@@ -14,8 +14,10 @@
 group("ActsAceEtsModuleNoUITest") {
   testonly = true
   deps = [
+    #"ace_ets_module_FrameNode:ActsAceEtsModuleFrameNodeTest",
     "ace_ets_module_StateMangagement:ActsAceEtsModuleStateMangagementTest",
     "ace_ets_module_UIContext:ActsAceEtsModuleUIContextTest",
+    "ace_ets_module_featureAbility:ActsAceEtsModuleFeatureAbilityTest",
     "ace_ets_module_global:ActsAceEtsModuleGlobalTest",
   ]
 }

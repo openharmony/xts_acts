@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,6 +16,7 @@
 #include "common/native_common.h"
 #include "napi/native_api.h"
 #include "napi/native_node_api.h"
+#include <pthread.h>
 #include "securec.h"
 #include <stdint.h>
 #include <string>
@@ -24,15 +25,36 @@
 #include <malloc.h>
 #include <ctime>
 #include <thread>
+#include <unistd.h>
 #include <uv.h>
 
 static napi_ref test_reference = NULL;
 const int TAG_NUMBER = 666;
 const int NUMBER_FIVE = 5;
+const int THREAD_NAME_LENGTH = 20;
+const int INVALID_PARAM_WITH_NOWAIT = 0;
+const int INVALID_PARAM_WITH_DEFAULT = 1;
+const int RUN_IN_MAIN_THREAD_WITH_NOWAIT = 2;
+const int RUN_IN_MAIN_THREAD_WITH_DEFAULT = 3;
+const int RUN_IN_WORKER_THREAD_WITH_NOWAIT = 4;
+const int RUN_IN_WORKER_THREAD_WITH_DEFAULT = 5;
+const int RUN_NAPI_LOOP_WITH_NOWAIT = 6;
+const int RUN_NAPI_LOOP_WITH_DEFAULT = 7;
+const int RUN_NAPI_LOOP_AFTER_RUN_FINISH = 8;
+const int WITHOUT_RUN_NAPI_LOOP = 9;
+const int DIFF_VALUE_ONE = 2;
+const int DIFF_VALUE_TWO = 4;
+const int PARAM_SIZE_TWO = 2;
+const int INVALID_PARAM_WITH_STOP_LOOP = 0;
+const int STOP_LOOP_IN_MAIN_THREAD = 1;
+const int STOP_LOOP_IN_WORKER_THREAD = 2;
+const int STOP_LOOP_BEFORE_RUN = 3;
+const int STOP_LOOP_AFTER_RUN = 4;
 static int g_delCount = 0;
 static int g_cleanupHookCount = 0;
 static napi_env g_sharedEnv = nullptr;
 static napi_deferred g_deferred = nullptr;
+static bool g_isTaskFinished = false;
 
 struct InstanceData {
     size_t value;
@@ -61,6 +83,34 @@ struct AddonData {
     double result = 0;
 };
 
+struct AsyncContext {
+    napi_env env;
+    napi_async_work asyncWork = nullptr;
+    napi_deferred deferred = nullptr;
+    int num1 = 0;
+    int num2 = 0;
+    int sum = 0;
+};
+
+static napi_value ResolvedCallback(napi_env env, napi_callback_info info)
+{
+    void *toStopTheLoop;
+    size_t argc = 0;
+    if (napi_get_cb_info(env, info, &argc, nullptr, nullptr, &toStopTheLoop) != napi_ok) {
+        return nullptr;
+    }
+    auto flag = reinterpret_cast<int *>(toStopTheLoop);
+    if (*flag == 1) {
+        napi_stop_event_loop(env);
+    }
+    return nullptr;
+}
+
+static napi_value RejectedCallback(napi_env env, napi_callback_info info)
+{
+    napi_stop_event_loop(env);
+    return nullptr;
+}
 static void add_returned_status(napi_env env,
                                 const char* key,
                                 napi_value object,
@@ -3558,6 +3608,100 @@ static napi_value MakeCallbackOne(napi_env env, napi_callback_info info)
     return result;
 }
 
+static void completeCb(napi_env env, napi_status status, void *data)
+{
+    g_isTaskFinished = true;
+    AsyncContext *callbackData = reinterpret_cast<AsyncContext *>(data);
+    napi_delete_async_work(env, callbackData->asyncWork);
+}
+
+static napi_value AsyncCallTest(napi_env env, napi_callback_info info)
+{
+    AsyncContext *context = new AsyncContext();
+    context->env = env;
+    napi_value resource = nullptr;
+    napi_create_string_utf8(env, "add async task", NAPI_AUTO_LENGTH, &resource);
+    napi_create_async_work(env, nullptr, resource, [](napi_env env, void *data) {}, completeCb,
+        context, &context->asyncWork);
+    napi_queue_async_work(env, context->asyncWork);
+    return nullptr;
+}
+
+static void *NewThreadFunc(void *arg)
+{
+    napi_env env = nullptr;
+    auto ret = napi_create_ark_runtime(&env);
+    NAPI_ASSERT(env, ret == napi_ok, "napi_create_ark_runtime failed");
+    NAPI_ASSERT(env, env != nullptr, "napi_create_ark_runtime failed");
+
+    napi_value objectUtils = nullptr;
+    napi_status status =
+        napi_load_module_with_info(env, "ets/pages/ObjectUtils", "com.acts.ace.napitest/entry", &objectUtils);
+    NAPI_ASSERT(env, status == napi_ok, "napi_load_module_with_info failed");
+    NAPI_ASSERT(env, objectUtils != nullptr, "napi_load_module_with_info failed");
+
+    auto str = reinterpret_cast<char *>(arg);
+    if (strcmp(str, "NewThread1") == 0) {
+        g_isTaskFinished = false;
+        napi_value asyncCallTest = nullptr;
+        napi_value args = nullptr;
+        status = napi_get_named_property(env, objectUtils, "AsyncCallTest", &asyncCallTest);
+        NAPI_ASSERT(env, status == napi_ok, "napi_get_named_property failed");
+
+        status = napi_call_function(env, objectUtils, asyncCallTest, 0, &args, nullptr);
+        NAPI_ASSERT(env, status == napi_ok, "napi_call_function failed");
+        while (!g_isTaskFinished) {
+            napi_run_event_loop(env, napi_event_mode_nowait);
+        }
+    } else if (strcmp(str, "NewThread2") == 0) {
+        // timer
+        napi_value SetTimeout;
+        napi_value promise;
+        status = napi_get_named_property(env, objectUtils, "SetTimeout", &SetTimeout);
+        NAPI_ASSERT(env, status == napi_ok, "napi_get_named_property failed");
+        status = napi_call_function(env, objectUtils, SetTimeout, 0, nullptr, &promise);
+        NAPI_ASSERT(env, status == napi_ok, "napi_call_function failed");
+        napi_value thenFunc = nullptr;
+        if (napi_get_named_property(env, promise, "then", &thenFunc) != napi_ok) {
+            return nullptr;
+        }
+        napi_value resolvedCallback;
+        napi_value rejectedCallback;
+        int32_t toStopTheLoop = 1;
+        napi_create_function(env, "resolvedCallback", NAPI_AUTO_LENGTH, ResolvedCallback, &toStopTheLoop,
+            &resolvedCallback);
+        napi_create_function(env, "rejectedCallback", NAPI_AUTO_LENGTH, RejectedCallback, nullptr,
+            &rejectedCallback);
+        napi_value argv[PARAM_SIZE_TWO] = {resolvedCallback, rejectedCallback};
+        status =  napi_call_function(env, promise, thenFunc, PARAM_SIZE_TWO, argv, nullptr);
+        NAPI_ASSERT(env, status == napi_ok, "napi_call_function failed");
+
+        napi_run_event_loop(env, napi_event_mode_default);
+    } else if (strcmp(str, "NewThread3") == 0) {
+        g_isTaskFinished = false;
+        napi_value asyncCallTest = nullptr;
+        napi_value args = nullptr;
+        status = napi_get_named_property(env, objectUtils, "AsyncCallTest", &asyncCallTest);
+        NAPI_ASSERT(env, status == napi_ok, "napi_get_named_property failed");
+        status = napi_call_function(env, objectUtils, asyncCallTest, 0, &args, nullptr);
+        NAPI_ASSERT(env, status == napi_ok, "napi_call_function failed");
+        while (!g_isTaskFinished) {
+            napi_run_event_loop(env, napi_event_mode_nowait);
+        }
+        napi_run_event_loop(env, napi_event_mode_nowait);
+    } else if (strcmp(str, "NewThread4") == 0) {
+        napi_value asyncCallTest = nullptr;
+        napi_value args = nullptr;
+
+        status = napi_get_named_property(env, objectUtils, "AsyncCallTest", &asyncCallTest);
+        NAPI_ASSERT(env, status == napi_ok, "napi_get_named_property failed");
+        status = napi_call_function(env, objectUtils, asyncCallTest, 0, &args, nullptr);
+        NAPI_ASSERT(env, status == napi_ok, "napi_call_function failed");
+    }
+    free(str);
+    return objectUtils;
+}
+
 static napi_value RunEventLoop(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -3568,17 +3712,121 @@ static napi_value RunEventLoop(napi_env env, napi_callback_info info)
     int32_t value;
     NAPI_CALL(env, napi_get_value_int32(env, args[0], &value));
 
-    napi_status status = napi_run_event_loop(env, static_cast<napi_event_mode>(value));
-    NAPI_ASSERT(env, status != napi_ok, "stop event loop successfully");
+    char *testCaseName = (char *)malloc(sizeof(char) * THREAD_NAME_LENGTH);
+    if (testCaseName == nullptr) {
+        return nullptr;
+    }
+    memset_s(testCaseName, THREAD_NAME_LENGTH, 0, THREAD_NAME_LENGTH);
+    pthread_t tid;
+
+    napi_status status = napi_ok;
+    if (value == INVALID_PARAM_WITH_NOWAIT || value == INVALID_PARAM_WITH_DEFAULT) {
+        status= napi_run_event_loop(nullptr, static_cast<napi_event_mode>(value));
+        NAPI_ASSERT(env, status == napi_invalid_arg, "stop event loop successfully");
+    } else if (value == RUN_IN_MAIN_THREAD_WITH_NOWAIT || value == RUN_IN_MAIN_THREAD_WITH_DEFAULT) {
+        status= napi_run_event_loop(env, static_cast<napi_event_mode>(value - DIFF_VALUE_ONE));
+        NAPI_ASSERT(env, status == napi_generic_failure, "stop event loop successfully");
+    } else if (value == RUN_IN_WORKER_THREAD_WITH_NOWAIT || value == RUN_IN_WORKER_THREAD_WITH_DEFAULT) {
+        status= napi_run_event_loop(env, static_cast<napi_event_mode>(value - DIFF_VALUE_TWO));
+        NAPI_ASSERT(env, status == napi_generic_failure, "stop event loop successfully");
+        char16_t resStr[] = u"napi_generic_failure";
+        napi_value resultValue = nullptr;
+        napi_create_string_utf16(env, resStr, NAPI_AUTO_LENGTH, &resultValue);
+        return resultValue;
+    } else if (value == RUN_NAPI_LOOP_WITH_NOWAIT) {
+        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread1");
+        pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
+        pthread_detach(tid);
+    } else if (value == RUN_NAPI_LOOP_WITH_DEFAULT) {
+        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread2");
+        pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
+        pthread_detach(tid);
+    } else if (value == RUN_NAPI_LOOP_AFTER_RUN_FINISH) {
+        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread3");
+        pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
+        pthread_detach(tid);
+    } else if (value == WITHOUT_RUN_NAPI_LOOP) {
+        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread4");
+        pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
+        pthread_detach(tid);
+    }
+    free(testCaseName);
     napi_value _value = 0;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
     return _value;
 }
 
+static void *CallBeforeRunningFunc(void *arg)
+{
+    napi_env env = nullptr;
+    auto ret = napi_create_ark_runtime(&env);
+    NAPI_ASSERT(env, ret == napi_ok, "napi_create_ark_runtime failed");
+    NAPI_ASSERT(env, env != nullptr, "napi_create_ark_runtime failed");
+
+    napi_status res = napi_stop_event_loop(env);
+    NAPI_ASSERT(env, res == napi_ok, "stop event loop failed");
+    napi_destroy_ark_runtime(&env);
+    return nullptr;
+}
+
+static void *CallAfterRunFunc(void *arg)
+{
+    napi_env env;
+    auto ret = napi_create_ark_runtime(&env);
+    NAPI_ASSERT(env, ret == napi_ok, "napi_create_ark_runtime failed");
+    NAPI_ASSERT(env, env != nullptr, "napi_create_ark_runtime failed");
+
+    napi_value objectUtils = nullptr;
+    napi_status status =
+        napi_load_module_with_info(env, "ets/pages/ObjectUtils", "com.acts.ace.napitest/entry", &objectUtils);
+    NAPI_ASSERT(env, status == napi_ok, "napi_load_module_with_info successfully");
+    NAPI_ASSERT(env, objectUtils != nullptr, "napi_load_module_with_info failed");
+    g_isTaskFinished = false;
+    napi_value asyncCallTest = nullptr;
+    napi_value args = nullptr;
+
+    status = napi_get_named_property(env, objectUtils, "AsyncCallTest", &asyncCallTest);
+    NAPI_ASSERT(env, status == napi_ok, "napi_get_named_property failed");
+    status = napi_call_function(env, objectUtils, asyncCallTest, 0, &args, nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "napi_call_function failed");
+    while (!g_isTaskFinished) {
+        napi_run_event_loop(env, napi_event_mode_nowait);
+    }
+
+    napi_status res = napi_stop_event_loop(env);
+    NAPI_ASSERT(env, res == napi_ok, "napi_stop_event_loop failed");
+    napi_destroy_ark_runtime(&env);
+    return objectUtils;
+}
+
 static napi_value StopEventLoop(napi_env env, napi_callback_info info)
 {
-    napi_status status = napi_stop_event_loop(env);
-    NAPI_ASSERT(env, status != napi_ok, "stop event loop successfully");
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    int32_t value;
+    NAPI_CALL(env, napi_get_value_int32(env, args[0], &value));
+
+    if (value == INVALID_PARAM_WITH_STOP_LOOP) {
+        napi_status status = napi_stop_event_loop(nullptr);
+        NAPI_ASSERT(env, status == napi_invalid_arg, "stop event loop successfully");
+    } else if (value == STOP_LOOP_IN_MAIN_THREAD || value == STOP_LOOP_IN_WORKER_THREAD) {
+        napi_status status = napi_stop_event_loop(env);
+        NAPI_ASSERT(env, status == napi_generic_failure, "stop event loop successfully");
+    } else if (value == STOP_LOOP_BEFORE_RUN) {
+        pthread_t tid;
+        napi_value result = nullptr;
+        pthread_create(&tid, nullptr, CallBeforeRunningFunc, &result);
+        pthread_detach(tid);
+    } else if (value == STOP_LOOP_AFTER_RUN) {
+        pthread_t tid;
+        napi_value result;
+        pthread_create(&tid, nullptr, CallAfterRunFunc, &result);
+        pthread_detach(tid);
+    }
+
     napi_value _value = 0;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
     return _value;
@@ -3679,6 +3927,280 @@ static napi_value NapiDeleteSerializationData(napi_env env, napi_callback_info i
     napi_delete_serialization_data(env, data);
 
     return number;
+}
+
+static napi_value NapiSerializeDate(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value num = nullptr;
+    double time = 1679839496000; // 2023.3.17 12:34:56 UTC
+    napi_create_date(env, time, &num);
+
+    void* data = nullptr;
+    napi_serialize(env, num, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    bool isDate = false;
+    napi_is_date(env, result1, &isDate);
+    NAPI_ASSERT(env, isDate, "napi_is_Date fail");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeString(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value num = nullptr;
+    const char* str = "abc";
+    napi_create_string_utf8(env, str, NAPI_AUTO_LENGTH, &num);
+
+    void* data = nullptr;
+    napi_serialize(env, num, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_string, "Wrong type of argment. Expects a string.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeArray(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value num = nullptr;
+    napi_create_array(env, &num);
+
+    void* data = nullptr;
+    napi_serialize(env, num, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    bool isArray = false;
+    napi_is_array(env, result1, &isArray);
+    NAPI_ASSERT(env, isArray, "napi_is_array fail");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeObject(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value result = nullptr;
+    napi_create_object(env, &result);
+
+    void* data = nullptr;
+    napi_serialize(env, result, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a object.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeArraybuffer(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value result = nullptr;
+    size_t byteLength = 1024;
+    void *data = nullptr;
+    napi_create_arraybuffer(env, byteLength, &data, &result);
+
+    void *dataVal = nullptr;
+    napi_serialize(env, result, undefined, undefined, &dataVal);
+    NAPI_ASSERT(env, dataVal != nullptr, " The dataVal is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, dataVal, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    bool retIsArrayBuffer = false;
+    napi_is_arraybuffer(env, result1, &retIsArrayBuffer);
+    NAPI_ASSERT(env, retIsArrayBuffer, "napi_is_arraybuffer fail");
+
+    napi_delete_serialization_data(env, dataVal);
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeTypearray(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    napi_value arrayBuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 16;
+    size_t typedArrayLength = 4;
+    napi_create_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    NAPI_ASSERT(env, arrayBufferPtr != nullptr, "getTypedArrayInfo napi_create_arraybuffer fail");
+    bool isArrayBuffer = false;
+    napi_is_arraybuffer(env, arrayBuffer, &isArrayBuffer);
+    NAPI_ASSERT(env, isArrayBuffer, "getTypedArrayInfo napi_is_arraybuffer fail");
+    napi_value result;
+    napi_create_typedarray(env, napi_int32_array, typedArrayLength, arrayBuffer, 0, &result);
+
+    void* data = nullptr;
+    napi_serialize(env, result, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    bool retIsTypedarray = false;
+    napi_is_typedarray(env, result1, &retIsTypedarray);
+    NAPI_ASSERT(env, retIsTypedarray, "napi_is_typedarray fail");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeSharedarraybuffer(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    size_t argc = 1;
+    napi_value args;
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    void* data = nullptr;
+    napi_serialize(env, args, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a object.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeSet(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+
+    size_t argc = 1;
+    napi_value args;
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    void* data = nullptr;
+    napi_serialize(env, args, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a object.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeMap(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    size_t argc = 1;
+    napi_value args;
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    void* data = nullptr;
+    napi_serialize(env, args, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a object.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiSerializeRegExp(napi_env env, napi_callback_info info)
+{
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    size_t argc = 1;
+    napi_value args;
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    void* data = nullptr;
+    napi_serialize(env, args, undefined, undefined, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+    napi_value result1 = nullptr;
+    napi_status status = napi_deserialize(env, data, &result1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result1, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a object.");
+    napi_delete_serialization_data(env, data);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
 }
 
 EXTERN_C_START
@@ -3830,6 +4352,17 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("napiSerialize", NapiSerialize),
         DECLARE_NAPI_FUNCTION("napiDeSerialize", NapiDeSerialize),
         DECLARE_NAPI_FUNCTION("napiDeleteSerializationData", NapiDeleteSerializationData),
+        DECLARE_NAPI_FUNCTION("napiSerializeDate", NapiSerializeDate),
+        DECLARE_NAPI_FUNCTION("napiSerializeString", NapiSerializeString),
+        DECLARE_NAPI_FUNCTION("napiSerializeArray", NapiSerializeArray),
+        DECLARE_NAPI_FUNCTION("napiSerializeObject", NapiSerializeObject),
+        DECLARE_NAPI_FUNCTION("napiSerializeArraybuffer", NapiSerializeArraybuffer),
+        DECLARE_NAPI_FUNCTION("napiSerializeTypearray", NapiSerializeTypearray),
+        DECLARE_NAPI_FUNCTION("napiSerializeSharedarraybuffer", NapiSerializeSharedarraybuffer),
+        DECLARE_NAPI_FUNCTION("napiSerializeSet", NapiSerializeSet),
+        DECLARE_NAPI_FUNCTION("napiSerializeMap", NapiSerializeMap),
+        DECLARE_NAPI_FUNCTION("napiSerializeRegExp", NapiSerializeRegExp),
+        DECLARE_NAPI_FUNCTION("asyncCallTest", AsyncCallTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 

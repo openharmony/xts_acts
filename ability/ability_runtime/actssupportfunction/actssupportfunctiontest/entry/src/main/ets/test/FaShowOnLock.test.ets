@@ -74,7 +74,7 @@ export default function FaShowOnLockTest() {
       setTimeout(() => {
         console.log(TAG1 + "beforeEach end");
         done();
-      }, sleepTimeOne);
+      }, sleepTimeTwo);
     })
 
     afterEach(async (done) => {

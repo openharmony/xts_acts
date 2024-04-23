@@ -54,7 +54,7 @@ export struct NavigationView {
               this.dex = index
             })
           }
-        }, item => item)
+        }, (item: number) => item.toString())
       }
       .height('100%')
       .width('100%')

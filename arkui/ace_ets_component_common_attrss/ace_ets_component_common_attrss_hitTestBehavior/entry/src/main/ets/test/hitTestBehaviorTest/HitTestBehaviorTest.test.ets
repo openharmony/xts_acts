@@ -17,6 +17,84 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class TestValue {
+  describe: string;
+  setValue: ESObject;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  referenceTargetComponentKey: string;
+  referenceBrotherComponentKey: string;
+  referenceChildComponentKey: string;
+}
+
+
+async function executeTouch(data: ESObject, hitTestBehavior: string, referenceTargetExpect: string, referenceBrotherExpect: string,
+                            referenceChildExpect: string) {
+
+  //Get object of target component.
+  let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
+  expect(viewObj.$attrs.hitTestBehavior).assertEqual(hitTestBehavior);
+  console.info('[' + data.caseTag + ']  ' + viewObj.$attrs.hitTestBehavior);
+
+  //Send touch event.
+  let touchResult: ESObject = Utils.performTouchComponentCenter(data.pageConfig.componentKey, TouchType.Down);
+  expect(touchResult).assertEqual(true);
+  await Utils.sleep(1000);
+
+  //Determine whether the target component responds to touch test control.
+  let referenceTargetComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceTargetComponentKey);
+  if (referenceTargetComponent.$attrs.content) {
+    expect(referenceTargetComponent.$attrs.content).assertEqual(referenceTargetExpect);
+    console.info('[' + data.caseTag + ']  referenceTargetComponent.$attrs.content :'
+      + referenceTargetComponent.$attrs.content);
+  }
+
+  //Special component,because Blank has not subcomponents,
+  //And the parent component can not be stack or relativeContainer
+  if (data.pageConfig.targetView == 'Blank') {
+    console.info('[' + data.caseTag + ']  targetView is Blank');
+    return;
+  }
+
+  //Determine if the sibling component responds to touch test control.
+  let referenceBrotherComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceBrotherComponentKey);
+  expect(referenceBrotherComponent.$attrs.content).assertEqual(referenceBrotherExpect);
+  console.info('[' + data.caseTag + ']  referenceBrotherComponent.$attrs.content :'
+    + referenceBrotherComponent.$attrs.content);
+
+  if (isContainerView(data)) {
+    //If there are subcomponents, determine whether the subcomponents respond to touch test control.
+    let referenceChildComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceChildComponentKey);
+    expect(referenceChildComponent.$attrs.content).assertEqual(referenceChildExpect);
+    console.info('[' + data.caseTag + ']  referenceChildComponent.$attrs.content :'
+      + referenceChildComponent.$attrs.content);
+  }
+}
+
+function isContainerView(data: ESObject): boolean {
+  //If the component has no subcomponents, do not validate
+  return data.pageConfig.componentKey == 'Badge' || data.pageConfig.componentKey == 'Column'
+    || data.pageConfig.componentKey == 'ColumnSplit' || data.pageConfig.componentKey == 'Counter'
+    || data.pageConfig.componentKey == 'Flex' || data.pageConfig.componentKey == 'FlowItem'
+    || data.pageConfig.componentKey == 'GridCol' || data.pageConfig.componentKey == 'GridRow'
+    || data.pageConfig.componentKey == 'Grid' || data.pageConfig.componentKey == 'GridItem'
+    || data.pageConfig.componentKey == 'List' || data.pageConfig.componentKey == 'ListItem'
+    || data.pageConfig.componentKey == 'ListItemGroup' || data.pageConfig.componentKey == 'Navigator'
+    || data.pageConfig.componentKey == 'Panel' || data.pageConfig.componentKey == 'Refresh'
+    || data.pageConfig.componentKey == 'RelativeContainer' || data.pageConfig.componentKey == 'Row'
+    || data.pageConfig.componentKey == 'RowSplit' || data.pageConfig.componentKey == 'Scroll'
+    || data.pageConfig.componentKey == 'SideBarContainer' || data.pageConfig.componentKey == 'Stack'
+    || data.pageConfig.componentKey == 'Swiper' || data.pageConfig.componentKey == 'Tabs'
+    || data.pageConfig.componentKey == 'TabContent' || data.pageConfig.componentKey == 'WaterFlow'
+    || data.pageConfig.componentKey == 'ScrollBar' || data.pageConfig.componentKey == 'Button'
+    || data.pageConfig.componentKey == 'Text' || data.pageConfig.componentKey == 'Toggle'
+    || data.pageConfig.componentKey == 'Shape';
+}
+
 /**
  * Test of common attribute: hitTestBehaviorTest
  */
@@ -98,7 +176,7 @@ export default function hitTestBehaviorTest() {
   let containerView = ['RelativeContainer', 'Stack']
 
   //Page related configuration, this parameter is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testHitTestBehavior',
     pageName: 'HitTestBehaviorPage',
     pageUrl: 'MainAbility/pages/hitTestBehavior/HitTestBehaviorPage',
@@ -108,7 +186,7 @@ export default function hitTestBehaviorTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetDefault',
     setValue: {
       HitTestMode: HitTestMode.Default
@@ -134,7 +212,7 @@ export default function hitTestBehaviorTest() {
    * Create test suite.
    */
   describe('HitTestBehaviorTest', () => {
-    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async data => {
+    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async (data: ESObject) => {
       //Determine whether the component that sets the hitTestBehaviorTest attribute can correctly affect its own,
       //sibling, and child node's touch response according to its enumeration type
       if (data.testValue.describe == 'SetDefault') {
@@ -149,66 +227,4 @@ export default function hitTestBehaviorTest() {
     })
   })
 
-  async function executeTouch(data, hitTestBehavior, referenceTargetExpect, referenceBrotherExpect,
-                              referenceChildExpect) {
-
-    //Get object of target component.
-    let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
-    expect(viewObj.$attrs.hitTestBehavior).assertEqual(hitTestBehavior);
-    console.info('[' + data.caseTag + ']  ' + viewObj.$attrs.hitTestBehavior);
-
-    //Send touch event.
-    let touchResult = Utils.performTouchComponentCenter(data.pageConfig.componentKey, TouchType.Down);
-    expect(touchResult).assertEqual(true);
-    await Utils.sleep(1000);
-
-    //Determine whether the target component responds to touch test control.
-    let referenceTargetComponent = Utils.getComponentByKey(data.pageConfig.referenceTargetComponentKey);
-    if (referenceTargetComponent.$attrs.content) {
-      expect(referenceTargetComponent.$attrs.content).assertEqual(referenceTargetExpect);
-      console.info('[' + data.caseTag + ']  referenceTargetComponent.$attrs.content :'
-      + referenceTargetComponent.$attrs.content);
-    }
-
-    //Special component,because Blank has not subcomponents,
-    //And the parent component can not be stack or relativeContainer
-    if (data.pageConfig.targetView == 'Blank') {
-      console.info('[' + data.caseTag + ']  targetView is Blank');
-      return;
-    }
-
-    //Determine if the sibling component responds to touch test control.
-    let referenceBrotherComponent = Utils.getComponentByKey(data.pageConfig.referenceBrotherComponentKey);
-    expect(referenceBrotherComponent.$attrs.content).assertEqual(referenceBrotherExpect);
-    console.info('[' + data.caseTag + ']  referenceBrotherComponent.$attrs.content :'
-    + referenceBrotherComponent.$attrs.content);
-
-    if (isContainerView(data)) {
-      //If there are subcomponents, determine whether the subcomponents respond to touch test control.
-      let referenceChildComponent = Utils.getComponentByKey(data.pageConfig.referenceChildComponentKey);
-      expect(referenceChildComponent.$attrs.content).assertEqual(referenceChildExpect);
-      console.info('[' + data.caseTag + ']  referenceChildComponent.$attrs.content :'
-      + referenceChildComponent.$attrs.content);
-    }
-  }
-
-  function isContainerView(data): boolean {
-    //If the component has no subcomponents, do not validate
-    return data.pageConfig.componentKey == 'Badge' || data.pageConfig.componentKey == 'Column'
-    || data.pageConfig.componentKey == 'ColumnSplit' || data.pageConfig.componentKey == 'Counter'
-    || data.pageConfig.componentKey == 'Flex' || data.pageConfig.componentKey == 'FlowItem'
-    || data.pageConfig.componentKey == 'GridCol' || data.pageConfig.componentKey == 'GridRow'
-    || data.pageConfig.componentKey == 'Grid' || data.pageConfig.componentKey == 'GridItem'
-    || data.pageConfig.componentKey == 'List' || data.pageConfig.componentKey == 'ListItem'
-    || data.pageConfig.componentKey == 'ListItemGroup' || data.pageConfig.componentKey == 'Navigator'
-    || data.pageConfig.componentKey == 'Panel' || data.pageConfig.componentKey == 'Refresh'
-    || data.pageConfig.componentKey == 'RelativeContainer' || data.pageConfig.componentKey == 'Row'
-    || data.pageConfig.componentKey == 'RowSplit' || data.pageConfig.componentKey == 'Scroll'
-    || data.pageConfig.componentKey == 'SideBarContainer' || data.pageConfig.componentKey == 'Stack'
-    || data.pageConfig.componentKey == 'Swiper' || data.pageConfig.componentKey == 'Tabs'
-    || data.pageConfig.componentKey == 'TabContent' || data.pageConfig.componentKey == 'WaterFlow'
-    || data.pageConfig.componentKey == 'ScrollBar' || data.pageConfig.componentKey == 'Button'
-    || data.pageConfig.componentKey == 'Text' || data.pageConfig.componentKey == 'Toggle'
-    || data.pageConfig.componentKey == 'Shape';
-  }
 }

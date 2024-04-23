@@ -18,8 +18,10 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import power from '@ohos.power';
 import {Driver, ON} from '@ohos.UiTest';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 let driver = Driver.create();
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -59,7 +61,12 @@ export default function OnAndOffScreenTest() {
     async function slideScreen(TAG) {
       await sleep(1500)
       console.log(TAG + "slideScreen start");
-      let cmd = 'uinput -T -m 300 2700 280 200';
+      let cmd = '';
+      if (deviceType === '2in1') {
+        cmd = 'uinput -T -d 1070 1070 -u 1070 1070';
+      } else {
+        cmd = 'uinput -T -m 300 2700 280 200';
+      }
       await executeShellCommand(cmd, TAG);
       await sleep(500)
       console.log(TAG + "slideScreen end");
@@ -138,8 +145,18 @@ export default function OnAndOffScreenTest() {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
           if (data.event == onActive) {
-            let cmd = "uinput -K -d 18 -u 18";
-            await executeShellCommand(cmd, TAG);
+            if (deviceType === '2in1') {
+              setTimeout(async () => {
+                commonEvent.unsubscribe(subscriber, async (err, data) => {
+                  console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+                  expect(status1).assertTrue();
+                  done();
+                });
+              }, 2500);
+            } else {
+              let cmd = "uinput -K -d 18 -u 18";
+              await executeShellCommand(cmd, TAG);
+            }
           }
 
           if (data.event == onHide) {
@@ -218,8 +235,18 @@ export default function OnAndOffScreenTest() {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
           if (data.event == onForeground) {
-            let cmd = "uinput -K -d 18 -u 18";
-            await executeShellCommand(cmd, TAG);
+            if (deviceType === '2in1') {
+              setTimeout(async () => {
+                commonEvent.unsubscribe(subscriber, async (err, data) => {
+                  console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+                  expect(status1).assertTrue();
+                  done();
+                });
+              }, 2500);
+            } else {
+              let cmd = "uinput -K -d 18 -u 18";
+              await executeShellCommand(cmd, TAG);
+            }
           }
 
           if (data.event == onBackground) {
@@ -299,9 +326,19 @@ export default function OnAndOffScreenTest() {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
           if (data.event == onForeground && !flag) {
-            let cmd = "uinput -K -d 18 -u 18";
-            await executeShellCommand(cmd, TAG);
-            flag = true;
+            if (deviceType === '2in1') {
+              setTimeout(async () => {
+                commonEvent.unsubscribe(subscriber, async (err, data) => {
+                  console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+                  expect(status1).assertTrue();
+                  done();
+                });
+              }, 2500);
+            } else {
+              let cmd = "uinput -K -d 18 -u 18";
+              await executeShellCommand(cmd, TAG);
+              flag = true;
+            }
           } else if (data.event == onForeground && flag) {
             lifeList = data.parameters.lifeList;
             setTimeout(async () => {
@@ -415,9 +452,19 @@ export default function OnAndOffScreenTest() {
           }
 
           if (data.event == onForeground2) {
-            await sleep(500)
-            let cmd = "uinput -K -d 18 -u 18";
-            await executeShellCommand(cmd, TAG);
+            if (deviceType === '2in1') {
+              setTimeout(async () => {
+                commonEvent.unsubscribe(subscriber, async (err, data) => {
+                  console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+                  expect(status1).assertTrue();
+                  done();
+                });
+              }, 2500);
+            } else {
+              await sleep(500)
+              let cmd = "uinput -K -d 18 -u 18";
+              await executeShellCommand(cmd, TAG);
+            }
           }
 
           if (data.event == onBackground2) {
@@ -527,10 +574,20 @@ export default function OnAndOffScreenTest() {
           }
 
           if (data.event == onForeground2 && !flag) {
-            await sleep(500)
-            let cmd = "uinput -K -d 18 -u 18";
-            await executeShellCommand(cmd, TAG);
-            flag = true;
+            if (deviceType === '2in1') {
+              setTimeout(async () => {
+                commonEvent.unsubscribe(subscriber, async (err, data) => {
+                  console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+                  expect(status1).assertTrue();
+                  done();
+                });
+              }, 2500);
+            } else {
+              await sleep(500)
+              let cmd = "uinput -K -d 18 -u 18";
+              await executeShellCommand(cmd, TAG);
+              flag = true;
+            }
           } else if (data.event == onForeground2 && flag) {
             setTimeout(async () => {
               commonEvent.unsubscribe(subscriber, async (err, data) => {

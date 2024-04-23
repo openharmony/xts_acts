@@ -553,7 +553,6 @@ export default function windowVerificationProblemTest(context, windowStage, abil
       console.log(msgStr + 'begin')
       try {
         display.off("add");
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();

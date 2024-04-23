@@ -19,17 +19,33 @@ import AttributeModifierDemoAPI01 from './attributeModifierTest/AttributeModifie
 import AttributeModifierDemoAPI02 from './attributeModifierTest/AttributeModifierDemoAPI02Jsunit.test';
 import AttributeModifierDemoAPI03 from './attributeModifierTest/AttributeModifierDemoAPI03Jsunit.test';
 import accessVNTest from './AccessibleTest/accessVNTest.test';
-import dymaticTest from "./attributeModifierTest/dymatic.test"
+import dymaticTest from "./attributeModifierTest/dymatic.test";
 import outlineTest from './outlineTest/outlineTest.test';
+import noBarrierComponentsTest from './noBarrierComponents.test';
+import noBarriersGroupTest from './noBarriersGroup.test';
+import HoverJsunit5 from './HoverTest/HoverJsunit5.test.ets';
+import HoverJsunit11 from './HoverTest/HoverJsunit11.test.ets';
+import HoverJsunit17 from './HoverTest/HoverJsunit17.test.ets';
+import HoverJsunit23 from './HoverTest/HoverJsunit23.test.ets';
+import HoverJsunit25 from './HoverTest/HoverJsunit25.test.ets';
+import OverlayUIJsunit from './overlayTest/OverlayUIJsunit.test.ets';
 
 export default function testsuite() {
+  noBarrierComponentsTest();
+  noBarriersGroupTest();
   overLayJsunit();
   zIndexJsunit();
   visibilityJsunit();
-  AttributeModifierDemoAPI01()
-  AttributeModifierDemoAPI02()
-  AttributeModifierDemoAPI03()
-  accessVNTest()
-  dymaticTest()
-  outlineTest()
+  AttributeModifierDemoAPI01();
+  AttributeModifierDemoAPI02();
+  AttributeModifierDemoAPI03();
+  accessVNTest();
+  dymaticTest();
+  outlineTest();
+  HoverJsunit5();
+  HoverJsunit11();
+  HoverJsunit17();
+  HoverJsunit23();
+  HoverJsunit25();
+  OverlayUIJsunit();
 }

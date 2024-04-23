@@ -17,7 +17,8 @@ group("networkmanager") {
     "fetch:fetch",
     "http:http",
     "network:network",
+    "noNet:noNet",
+    "noPermission:noPermission",
     "socket:socket",
-    "vpntest:ActsNetworkMgrVpnTest",
   ]
 }

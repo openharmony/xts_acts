@@ -20,24 +20,24 @@ import AttrsManager from '../../common/AttrsManager';
 @Component
 struct FlexGrowPage {
   @State _flexGrow: number = 2
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State containerView: string = router.getParams() ? router.getParams()['view']['containerView'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State containerView: string = router.getParams() ? (router.getParams() as ESObject)['view']['containerView'] : ''
   @State _parentWidth: number = 500
   @State _parentHeight: number = 500
-  @State compareWidth: number = router.getParams() ? router.getParams()['view']['compareWidth'] : 0
-  @State compareHeight: number = router.getParams() ? router.getParams()['view']['compareHeight'] : 0
-  @State standardWidth: number = router.getParams() ? router.getParams()['view']['standardWidth'] : 0
-  @State standardHeight: number = router.getParams() ? router.getParams()['view']['standardHeight'] : 0
-  @State compareComponentKey: string = router.getParams() ? router.getParams()['view']['compareComponentKey'] : ''
-  @State standardComponentKey: string = router.getParams() ? router.getParams()['view']['standardComponentKey'] : ''
-  @State targetWidth: number = router.getParams() ? router.getParams()['view']['targetWidth'] : 0
-  @State targetHeight: number = router.getParams() ? router.getParams()['view']['targetHeight'] : 0
+  @State compareWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['compareWidth'] : 0
+  @State compareHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['compareHeight'] : 0
+  @State standardWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['standardWidth'] : 0
+  @State standardHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['standardHeight'] : 0
+  @State compareComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['compareComponentKey'] : ''
+  @State standardComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['standardComponentKey'] : ''
+  @State targetWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetWidth'] : 0
+  @State targetHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetHeight'] : 0
   @State _compareFlexGrow: number = 1
 
   onPageShow() {
     console.info('[FlexGrow] page show called')
-    AttrsManager.registerDataChange(value => {
+    AttrsManager.registerDataChange((value: ESObject) => {
       if (value.flexGrow) {
         this._flexGrow = value.flexGrow
       }

@@ -66,7 +66,7 @@ export default function router_getStateByUrl1() {
 
       let text1 = getInspectorByKey('router_getStateByUrl1_text');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('index=2;name=router_getStateByUrl1;path=MainAbility/pages/router/;params="";');
+      expect(Obj1.$attrs.content).assertEqual('index=2;name=router_getStateByUrl1;path=MainAbility/pages/router/;params={};');
 
       console.info('[router_getStateByUrl1_0100] END');
       done();

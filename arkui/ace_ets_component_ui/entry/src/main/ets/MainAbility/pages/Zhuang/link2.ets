@@ -14,46 +14,57 @@
  */
 @Component
 struct  CompE{
-  @Link color1: Color | undefined | null
-  @Link color2: Color | undefined | null
+  @Link type1: ButtonType | undefined | null
+  @Link type2: ButtonType | undefined | null
   @Link number1: number | undefined | null
   @Link number2: number | undefined | null
   build(){
     Row({ space: 5 }){
       Column({ space: 20 }) {
-        Text("Link子组件颜色Red-->undefined")
-        Button('button')
-          .backgroundColor(this.color1)
-          .onClick(() => {
-            this.color1 = undefined
-          })
-          .key('linkBtn1')
 
-        Text("Link子组件颜色Red-->null")
-        Button('button')
-          .backgroundColor(this.color2)
-          .onClick(() => {
-            this.color2 = null
-          })
-          .key('linkBtn2')
+        Row(){
+          Column(){
+            Text("type-->undefined")
+            Button('button')
+              .type(this.type1)
+              .onClick(() => {
+                this.type1 = undefined
+              })
+              .key('linkBtn1')
+          }
 
-        Text("Link子组件文本100-->undefined")
-        Button('button')
-          .fontSize(this.number1)
-          .onClick(() => {
-            this.number1 = undefined
-          })
-          .key('linkBtn3')
+          Column(){
+            Text("type-->null")
+            Button('button')
+              .type(this.type2)
+              .onClick(() => {
+                this.type2 = null
+              })
+              .key('linkBtn2')
+          }
+        }
 
-        Text("Link子组件文本100-->null")
-        Button('button')
-          .fontSize(this.number2)
-          .onClick(() => {
-            this.number2 = null
-          })
-          .key('linkBtn4')
+        Row(){
+          Column(){
+            Text("文本10-->undefined")
+            Button('button')
+              .fontSize(this.number1)
+              .onClick(() => {
+                this.number1 = undefined
+              })
+              .key('linkBtn3')
+          }
 
-
+          Column(){
+            Text("文本10-->null")
+            Button('button')
+              .fontSize(this.number2)
+              .onClick(() => {
+                this.number2 = null
+              })
+              .key('linkBtn4')
+          }
+        }
 
       }.width('100%').margin({top:10})
     }
@@ -65,14 +76,13 @@ struct  CompE{
 
 
 
-
 @Entry
 @Component
 struct Link1 {
-  @State color1: Color | undefined | null = Color.Red
-  @State color2: Color | undefined | null = Color.Red
-  @State number1: number | undefined | null = 100
-  @State number2: number | undefined | null = 100
+  @State type1: ButtonType | undefined | null = ButtonType.Circle
+  @State type2: ButtonType | undefined | null = ButtonType.Circle
+  @State number1: number | undefined | null = 10
+  @State number2: number | undefined | null = 10
 
   build() {
     Row() {
@@ -80,39 +90,54 @@ struct Link1 {
         Row({ space: 5 }) {
 
           Column({ space: 20 }) {
-            Text("Link颜色Red-->undefined")
-            Button('button')
-              .backgroundColor(this.color1)
-              .onClick(() => {
-                this.color1 = undefined
-              })
-              .key('liBtn1')
 
-            Text("Link颜色Red-->null")
-            Button('button')
-              .backgroundColor(this.color2)
-              .onClick(() => {
-                this.color2 = null
-              })
-              .key('liBtn2')
+            Row(){
+              Column(){
+                Text("Link:type->undefined")
+                Button('button')
+                  .type(this.type1)
+                  .onClick(() => {
+                    this.type1 = undefined
+                  })
+                  .key('liBtn1')
+              }
+              Column(){
+                Text("Link:type-->null")
+                Button('button')
+                  .type(this.type2)
+                  .onClick(() => {
+                    this.type2 = null
+                  })
+                  .key('liBtn2')
+              }
 
-            Text("Link文本100-->undefined")
-            Button('button')
-              .fontSize(this.number1)
-              .onClick(() => {
-                this.number1 = undefined
-              })
-              .key('liBtn3')
+            }
 
-            Text("Link文本100-->null")
-            Button('button')
-              .fontSize(this.number2)
-              .onClick(() => {
-                this.number2 = null
-              })
-              .key('liBtn4')
+            Row(){
+              Column(){
+                Text("Link文本10-->undefined")
+                Button('button')
+                  .fontSize(this.number1)
+                  .onClick(() => {
+                    this.number1 = undefined
+                  })
+                  .key('liBtn3')
+              }
 
-            CompE({ color1:this.color1,color2:this.color2,number1:this.number1,number2:this.number2})
+              Column(){
+
+                Text("Link文本10-->null")
+                Button('button')
+                  .fontSize(this.number2)
+                  .onClick(() => {
+                    this.number2 = null
+                  })
+                  .key('liBtn4')
+              }
+
+            }
+
+            CompE({ type1:this.type1,type2:this.type2,number1:this.number1,number2:this.number2})
 
           }.width('100%').margin({top:10})
         }

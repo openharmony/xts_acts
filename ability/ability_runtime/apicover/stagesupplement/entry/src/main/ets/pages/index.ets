@@ -12,10 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World Stage'
+  @State message: string = 'Hello World Stage';
 
   build() {
     Row() {
