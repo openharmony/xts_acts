@@ -2129,7 +2129,7 @@ export default function inputMethodAbility() {
           let t = setTimeout(()=>{
             runCmd();
             clearTimeout(t)
-          }, 100)
+          }, 200)
         }
       }
 
@@ -2329,7 +2329,7 @@ export default function inputMethodAbility() {
             let windowId: number = 2000;
             await inputMethodController.setCallingWindow(windowId)
             clearTimeout(t)
-          }, 100)
+          }, 200)
         }
       }
 
@@ -2969,7 +2969,7 @@ export default function inputMethodAbility() {
         let t = setTimeout(async () => {
           clearTimeout(t);
           await inputMethod.switchCurrentInputMethodSubtype(inputStageService);
-        },100);
+        },300);
       } catch (err) {
         console.info("====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod fail" + JSON.stringify(err));
       }
@@ -2983,7 +2983,7 @@ export default function inputMethodAbility() {
           console.info("====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod fail" + JSON.stringify(err));
         }
         done();
-      },500);
+      },1000);
     });
 
     /*

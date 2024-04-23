@@ -909,7 +909,7 @@ export class KeyboardDelegate {
         let t = setTimeout(async () => {
             await this.keyboardController.hideKeyboard();
             console.info(TAG + '====>inputMethodAbility_test_071 hideKeyboard success');
-        }, 200);
+        }, 500);
         let t1 = setTimeout(() => {
             if(count === 1){
                 commonEventPublishData = {

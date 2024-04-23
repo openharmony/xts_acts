@@ -57,7 +57,7 @@ export default function inputMethodDrawnControlJSUnit() {
         }
         console.info('====>beforeAll inputMethodSwitch done');
         await driver.delayMs(1000);
-        let testWindow: UiWindow = await driver.findWindow({bundleName: "com.acts.inputmethodengine.test"});
+        let testWindow: UiWindow = await driver.findWindow({bundleName: "com.acts.inputmethoddrawncontrol.test"});
         console.info('====>beforeAll inputMethodSwitch switch window: ' + JSON.stringify(testWindow));
         await testWindow.focus();
         await driver.delayMs(1000);
@@ -897,7 +897,8 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.level   Level2
     */
     it('SUB_Misc_inputMethod_offEditorAttributeChanged_0160',0, async function (done) {
-      let inputAttribute = {textInputType:0,enterKeyType:0}
+      let inputAttribute = {textInputType:0,enterKeyType:3}
+      let inputAttribute1 = {textInputType:0,enterKeyType:0}
       let selection = {start: 2, end: 1000}
       const textConfig = {
         inputAttribute,
@@ -940,7 +941,7 @@ export default function inputMethodDrawnControlJSUnit() {
           try {
             await inputMethod.getController().attach(false, textConfig);
             console.info("====>SUB_Misc_inputMethod_offEditorAttributeChanged_0160 onEditorAttributeChanged attach");
-            await inputMethod.getController().updateAttribute(inputAttribute);
+            await inputMethod.getController().updateAttribute(inputAttribute1);
             console.info("====>SUB_Misc_inputMethod_offEditorAttributeChanged_0160 onEditorAttributeChanged updateAttribute");
           } catch (err) {
             console.info("====>SUB_Misc_inputMethod_offEditorAttributeChanged_0160 onEditorAttributeChanged catch err: " + JSON.stringify(err));
@@ -2225,41 +2226,28 @@ export default function inputMethodDrawnControlJSUnit() {
     */
     it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
-      async function publishCallback(err){
-        await sleep(200);
-        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 publishCallback start');
-        if (err){
-          console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 publishCallback failed:' + JSON.stringify(err));
-        } else {
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus start');
+        let sendKeyboardStatusCallback = async (keyBoardStatus) => {
           try {
-            await inputMethod.getController().attach(true, ATTRIBUTE);
-            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus start');
-            let sendKeyboardStatusCallback = async (keyBoardStatus) => {
-              try {
-                console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus success: ' + keyBoardStatus);
-                inputMethod.getController().off('sendKeyboardStatus')
-                expect(keyBoardStatus).assertEqual(2);
-                done();
-              } catch (err) {
-                console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus fail: ' + JSON.stringify(err));
-                done();
-              }
-            }
-            // @ts-ignore
-            inputMethod.getController().on('sendKeyboardStatus', sendKeyboardStatusCallback, 'a');
-            await inputMethod.getController().showSoftKeyboard();
-            await sleep(850);
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus success: ' + keyBoardStatus);
+            inputMethod.getController().off('sendKeyboardStatus')
+            expect(keyBoardStatus).assertEqual(2);
+            done();
           } catch (err) {
-            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus catch err: ' + JSON.stringify(err));
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus fail: ' + JSON.stringify(err));
             done();
           }
         }
+        // @ts-ignore
+        inputMethod.getController().on('sendKeyboardStatus', sendKeyboardStatusCallback, 'a');
+        await inputMethod.getController().showSoftKeyboard();
+        await sleep(850);
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus catch err: ' + JSON.stringify(err));
+        done();
       }
-
-      var commonEventPublishData = {
-        code:290
-      }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
     /*
