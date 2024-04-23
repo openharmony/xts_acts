@@ -27,6 +27,7 @@ group("security") {
       "crossplatform:crossplatform",
       "cryptoFramework",
       "dlp_permission_service:DlpTest",
+      "huks",
       "huks_napi_BasicTest:ActsHuksNAPITest",
       "huks_ndk_Test:ActsHuksNdkTest",
       "security_component:ActsSecComponentTest",
