@@ -34,7 +34,7 @@ export default function bindMenu() {
         router.clear();
         let pages = router.getState();
         console.info("get bindMenu state pages: " + JSON.stringify(pages));
-        if (!("bindMenu" == pages.name)) {
+        if (!("BindMenu1" == pages.name)) {
           console.info("get bindMenu state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
