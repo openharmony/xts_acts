@@ -23,13 +23,13 @@ export default function refreshDragJsunit() {
     beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Refresh/refresh2',
+        url: 'MainAbility/pages/Refresh/refreshAPI',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get refresh state success " + JSON.stringify(pages));
-        if (!("refresh2" == pages.name)) {
+        if (!("refreshAPI" == pages.name)) {
           console.info("get refresh state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
