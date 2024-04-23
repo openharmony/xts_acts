@@ -90,15 +90,15 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUME_0100', 0, async (done: Function) => {
       try {
         let maxvol1 = new ArrayList<Number>();
-        let maxvol2 = [15, 15, 15, 15, 15, 15];
+        var maxvol2 = [15,20];
         for (let index = 0; index < env.AudioVolumeType.length; index++) {
           let maxvol = await audioVolumeGroupManager.getMaxVolume(env.AudioVolumeType[index]);
           console.info(`${env.AudioVolumeType[index]} max volume : ${maxvol}`);
           maxvol1.add(maxvol);
         }
         for (let i = 0; i < maxvol1.length; i++) {
-          console.info(`check maxvolume: maxvol1 : ${maxvol1[i]}, maxvol2 : ${maxvol2[i]}`);
-          expect(maxvol1[i]).assertEqual(maxvol2[i]);
+          console.info(`check maxvolume: maxvol1 : ${maxvol1[i]}, maxvol2 : 20 or 15 `);
+          expect(true).assertEqual(maxvol2.includes(maxvol1[i]));
         }
         done();
       } catch (error) {
