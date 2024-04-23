@@ -17,6 +17,7 @@ group("networkmanager") {
     "fetch:fetch",
     "http:http",
     "noNet:noNet",
+    "noPermission:noPermission",
     "socket:socket",
   ]
 }

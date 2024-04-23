@@ -28,6 +28,7 @@ group("storage") {
       "storagefilesharejstest:storagefileshare_js_test",
       "storagefilesharendktest:storagefileshare_ndk_test",
       "storagefileurijstest:storagefileuri_js_test",
+      "storagefileurindktest:storagefileuri_ndk_test",
       "storagepickerjstest:storagepicker_js_test",
       "storagesecuritylabeljstest:storagesecuritylabel_js_test",
       "storagestatfsjstest:storagestatfs_js_test",

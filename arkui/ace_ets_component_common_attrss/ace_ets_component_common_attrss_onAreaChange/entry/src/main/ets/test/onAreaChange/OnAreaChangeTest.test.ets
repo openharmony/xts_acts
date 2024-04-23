@@ -18,6 +18,35 @@ import { describe, expect } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils';
 import { AttrsManager } from '../../MainAbility/common/AttrsManager';
 
+class SetValue {
+  compareButtonWidth?: number;
+  compareButtonHeight?: number;
+  width?: number;
+  height?: number;
+  offset?: ESObject;
+}
+
+class TestValues {
+  describe: string;
+  setValue: SetValue;
+  expectValue: ESObject;
+  exceptView?: ESObject;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  parentWidth: number;
+  parentHeight: number;
+  parentMargin: number;
+  parentKey: string;
+  compareButtonKey: string;
+  compareOldTextKey: string;
+  compareNewTextKey: string;
+}
+
 export default function onAreaChangeTest() {
 
   //Component to be tested
@@ -106,7 +135,7 @@ export default function onAreaChangeTest() {
   let compareOldTextKey = 'compareOldTextKey'
   let compareNewTextKey = 'compareNewTextKey'
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testOnAreaChange',
     pageName: 'OnAreaChangePage',
     pageUrl: 'MainAbility/pages/onAreaChange/OnAreaChangePage',
@@ -120,8 +149,9 @@ export default function onAreaChangeTest() {
     compareNewTextKey: compareNewTextKey
   }
 
+
   //Test content and expected results
-  let testValues = [{
+  let testValues: TestValues[] = [{
     describe: 'SetMove',
     setValue: {
       compareButtonWidth: 120,
@@ -155,16 +185,16 @@ export default function onAreaChangeTest() {
   }]
 
   describe('OnAreaChangeTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Get Information about the location of the target component before the change
       let parentRectBefore = Utils.getComponentRect(data.pageConfig.parentKey);
       let targetRectBefore = Utils.getComponentRect(data.pageConfig.componentKey);
       if ((data.pageConfig.componentKey == 'TabContent') || (data.pageConfig.componentKey == 'StepperItem')) {
         console.info('[' + data.caseTag + '] Find Parent Component Before');
-        let parentComponent = JSON.parse(JSON.stringify(getInspectorTree()))
+        let parentComponent: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[1];
-        parentComponent.$children.forEach(element => {
+        parentComponent.$children.forEach((element: ESObject) => {
           if ('Swiper' == element.$type) {
             parentRectBefore = Utils.getComponentRectByObj(element);
           }
@@ -181,14 +211,14 @@ export default function onAreaChangeTest() {
       let parentRectAfter = Utils.getComponentRect(data.pageConfig.parentKey);
       let targetRectAfter = Utils.getComponentRect(data.pageConfig.componentKey);
       let RectAfter = parentRectAfter
-      let compareOldTextComponent = Utils.getComponentByKey(data.pageConfig.compareOldTextKey);
-      let compareNewTextComponent = Utils.getComponentByKey(data.pageConfig.compareNewTextKey);
+      let compareOldTextComponent: ESObject = Utils.getComponentByKey(data.pageConfig.compareOldTextKey);
+      let compareNewTextComponent: ESObject = Utils.getComponentByKey(data.pageConfig.compareNewTextKey);
       if ((data.pageConfig.componentKey == 'TabContent') || (data.pageConfig.componentKey == 'StepperItem')) {
         console.info('[' + data.caseTag + '] Find Parent Component After');
-        let parentComponent = JSON.parse(JSON.stringify(getInspectorTree()))
+        let parentComponent: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[1];
-        parentComponent.$children.forEach(element => {
+        parentComponent.$children.forEach((element: ESObject) => {
           if ('Swiper' == element.$type) {
             parentRectAfter = Utils.getComponentRectByObj(element);
           }
@@ -218,66 +248,76 @@ export default function onAreaChangeTest() {
           await checkResults(data, compareOldTextComponent, compareNewTextComponent, targetRectBefore,
             targetRectAfter, parentRectBefore, parentRectAfter);
         } else if ((data.pageConfig.componentKey == 'TabContent') || (data.pageConfig.componentKey == 'StepperItem')) {
-          expect(Math.abs(px2vp(RectAfter.right - RectAfter.left) - data.testValue.expectValue.width) <= 1).assertTrue();
-          expect(Math.abs(px2vp(RectAfter.bottom - RectAfter.top) - data.testValue.expectValue.height) <= 1).assertTrue();
+          expect(Math.abs(px2vp(RectAfter.right - RectAfter.left) - data.testValue.expectValue.width) <= 1)
+            .assertTrue();
+          expect(Math.abs(px2vp(RectAfter.bottom - RectAfter.top) - data.testValue.expectValue.height) <= 1)
+            .assertTrue();
           await checkResults(data, compareOldTextComponent, compareNewTextComponent, targetRectBefore,
             targetRectAfter, parentRectBefore, parentRectAfter);
         } else {
-          expect(Math.abs(px2vp(targetRectAfter.right - targetRectAfter.left) - data.testValue.expectValue.width) <= 1).assertTrue();
-          expect(Math.abs(px2vp(targetRectAfter.bottom - targetRectAfter.top) - data.testValue.expectValue.height) <= 1).assertTrue();
+          expect(Math.abs(px2vp(targetRectAfter.right - targetRectAfter.left) - data.testValue.expectValue.width) <= 1)
+            .assertTrue();
+          expect(Math.abs(px2vp(targetRectAfter.bottom - targetRectAfter.top) - data.testValue.expectValue.height) <= 1)
+            .assertTrue();
           await checkResults(data, compareOldTextComponent, compareNewTextComponent, targetRectBefore,
             targetRectAfter, parentRectBefore, parentRectAfter);
         }
       } else if (data.testValue.describe == 'SetOffset') {
         console.info('[' + data.caseTag + '] data.testValue.describe: ' + data.testValue.describe);
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] viewObj.$attrs.offset.x: ' + viewObj.$attrs.offset.x);
         expect(viewObj.$attrs.offset.x).assertEqual(data.testValue.expectValue.x);
         console.info('[' + data.caseTag + '] viewObj.$attrs.offset.y: ' + viewObj.$attrs.offset.y);
         expect(viewObj.$attrs.offset.y).assertEqual(data.testValue.expectValue.y);
         expect(Math.abs(Number(targetRectAfter.left - targetRectBefore.left) -
-          Number(data.testValue.expectValue.left)) <= 1).assertTrue();
+        Number(data.testValue.expectValue.left)) <= 1).assertTrue();
         expect(Math.abs(Number(targetRectAfter.top - targetRectBefore.top) -
-          Number(data.testValue.expectValue.top)) <= 1).assertTrue();
+        Number(data.testValue.expectValue.top)) <= 1).assertTrue();
         expect(compareOldTextComponent.$attrs.content).assertEqual('');
         expect(compareNewTextComponent.$attrs.content).assertEqual('');
       }
     });
   })
 
-  async function checkResults(data, compareOldTextComponent, compareNewTextComponent, targetRectBefore,
-                              targetRectAfter, parentRectBefore, parentRectAfter) {
-    //Check that the position information before the change is correct
-    console.info('[' + data.caseTag + '] checkResults');
-    expect(compareOldTextComponent.$attrs.content != '').assertEqual(true);
-    expect(compareNewTextComponent.$attrs.content != '').assertEqual(true);
-    let compareOldTextObj = JSON.parse(compareOldTextComponent.$attrs.content);
-    let compareNewTextObj = JSON.parse(compareNewTextComponent.$attrs.content);
-    console.info('[' + data.caseTag + '] compareOldTextObj.width: ' + compareOldTextObj.width);
-    expect(Math.abs(compareOldTextObj.width - px2vp(targetRectBefore.right - targetRectBefore.left)) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] compareOldTextObj.height: ' + compareOldTextObj.height);
-    expect(Math.abs(compareOldTextObj.height - px2vp(targetRectBefore.bottom - targetRectBefore.top)) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] compareOldTextObj.position.x: ' + compareOldTextObj.position.x);
-    expect(Math.abs(compareOldTextObj.position.x - px2vp(targetRectBefore.left - parentRectBefore.left)) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] compareOldTextObj.position.y: ' + compareOldTextObj.position.y);
-    expect(Math.abs(compareOldTextObj.position.y - px2vp(targetRectBefore.top - parentRectBefore.top)) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] compareOldTextObj.globalPosition.x: ' + compareOldTextObj.globalPosition.x);
-    expect(Math.abs(compareOldTextObj.globalPosition.x - px2vp(targetRectBefore.left)) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] compareOldTextObj.globalPosition.y: ' + compareOldTextObj.globalPosition.y);
-    expect(Math.abs(compareOldTextObj.globalPosition.y - px2vp(targetRectBefore.top)) <= 1).assertTrue();
 
-    //Check whether the changed position information is correct
-    console.info('[' + data.caseTag + '] compareNewTextObj.width: ' + compareNewTextObj.width);
-    expect(Math.abs(compareNewTextObj.width - px2vp(targetRectAfter.right - targetRectAfter.left)) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] compareNewTextObj.height: ' + compareNewTextObj.height);
-    expect(Math.abs(compareNewTextObj.height - px2vp(targetRectAfter.bottom - targetRectAfter.top)) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] compareNewTextObj.position.x: ' + compareNewTextObj.position.x);
-    expect(Math.abs(compareNewTextObj.position.x - px2vp(targetRectAfter.left - parentRectAfter.left)) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] compareNewTextObj.position.y: ' + compareNewTextObj.position.y);
-    expect(Math.abs(compareNewTextObj.position.y - px2vp(targetRectAfter.top - parentRectAfter.top)) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] compareNewTextObj.globalPosition.x: ' + compareNewTextObj.globalPosition.x);
-    expect(Math.abs(compareNewTextObj.globalPosition.x - px2vp(targetRectAfter.left)) <= 1).assertTrue();
-    console.info('[' + data.caseTag + '] compareNewTextObj.globalPosition.y: ' + compareNewTextObj.globalPosition.y);
-    expect(Math.abs(compareNewTextObj.globalPosition.y - px2vp(targetRectAfter.top)) <= 1).assertTrue();
-  }
+}
+
+async function checkResults(data: ESObject, compareOldTextComponent: ESObject, compareNewTextComponent: ESObject, targetRectBefore: ESObject,
+                            targetRectAfter: ESObject, parentRectBefore: ESObject, parentRectAfter: ESObject) {
+  //Check that the position information before the change is correct
+  console.info('[' + data.caseTag + '] checkResults');
+  expect(compareOldTextComponent.$attrs.content != '').assertEqual(true);
+  expect(compareNewTextComponent.$attrs.content != '').assertEqual(true);
+  let compareOldTextObj: ESObject = JSON.parse(compareOldTextComponent.$attrs.content);
+  let compareNewTextObj: ESObject = JSON.parse(compareNewTextComponent.$attrs.content);
+  console.info('[' + data.caseTag + '] compareOldTextObj.width: ' + compareOldTextObj.width);
+  expect(Math.abs(compareOldTextObj.width - px2vp(targetRectBefore.right - targetRectBefore.left)) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] compareOldTextObj.height: ' + compareOldTextObj.height);
+  expect(Math.abs(compareOldTextObj.height - px2vp(targetRectBefore.bottom - targetRectBefore.top)) <= 1)
+    .assertTrue();
+  console.info('[' + data.caseTag + '] compareOldTextObj.position.x: ' + compareOldTextObj.position.x);
+  expect(Math.abs(compareOldTextObj.position.x - px2vp(targetRectBefore.left - parentRectBefore.left)) <= 1)
+    .assertTrue();
+  console.info('[' + data.caseTag + '] compareOldTextObj.position.y: ' + compareOldTextObj.position.y);
+  expect(Math.abs(compareOldTextObj.position.y - px2vp(targetRectBefore.top - parentRectBefore.top)) <= 1)
+    .assertTrue();
+  console.info('[' + data.caseTag + '] compareOldTextObj.globalPosition.x: ' + compareOldTextObj.globalPosition.x);
+  expect(Math.abs(compareOldTextObj.globalPosition.x - px2vp(targetRectBefore.left)) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] compareOldTextObj.globalPosition.y: ' + compareOldTextObj.globalPosition.y);
+  expect(Math.abs(compareOldTextObj.globalPosition.y - px2vp(targetRectBefore.top)) <= 1).assertTrue();
+
+  //Check whether the changed position information is correct
+  console.info('[' + data.caseTag + '] compareNewTextObj.width: ' + compareNewTextObj.width);
+  expect(Math.abs(compareNewTextObj.width - px2vp(targetRectAfter.right - targetRectAfter.left)) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] compareNewTextObj.height: ' + compareNewTextObj.height);
+  expect(Math.abs(compareNewTextObj.height - px2vp(targetRectAfter.bottom - targetRectAfter.top)) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] compareNewTextObj.position.x: ' + compareNewTextObj.position.x);
+  expect(Math.abs(compareNewTextObj.position.x - px2vp(targetRectAfter.left - parentRectAfter.left)) <= 1)
+    .assertTrue();
+  console.info('[' + data.caseTag + '] compareNewTextObj.position.y: ' + compareNewTextObj.position.y);
+  expect(Math.abs(compareNewTextObj.position.y - px2vp(targetRectAfter.top - parentRectAfter.top)) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] compareNewTextObj.globalPosition.x: ' + compareNewTextObj.globalPosition.x);
+  expect(Math.abs(compareNewTextObj.globalPosition.x - px2vp(targetRectAfter.left)) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] compareNewTextObj.globalPosition.y: ' + compareNewTextObj.globalPosition.y);
+  expect(Math.abs(compareNewTextObj.globalPosition.y - px2vp(targetRectAfter.top)) <= 1).assertTrue();
 }

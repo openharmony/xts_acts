@@ -16,4 +16,5 @@ import("//build/ohos_var.gni")
 group("noNet") {
   testonly = true
   deps = [ "mdns:ActsNetworkMgrMdnsNoNetTest" ]
+  deps = [ "networktest:ActsNetworkMgrSysNetworkNoNetTest" ]
 }

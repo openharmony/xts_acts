@@ -16,6 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 
 import napitest from 'libnapitest.so'
+import worker from '@ohos.worker';
 
 async function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -25,6 +26,16 @@ async function sleep(time: number) {
   }).then(() => {
     console.info(`sleep ${time} over...`)
   })
+}
+
+function promiseCase() {
+  let p = new Promise(function (resolve, reject) {
+      setTimeout(function () {
+          resolve(0)
+      }, 100)
+  }).then(undefined, (error) => {
+  })
+  return p
 }
 
 export default function nativeApiStringJsunit() {
@@ -1850,7 +1861,7 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0123', 0, async function (done) {
     console.info('aceNapiTest0123 START');
-      value = napitest.stopEventLoop()
+      value = napitest.stopEventLoop(0)
       console.info('aceNapiTest0123 testString result is: ' + value);
       expect(value).assertEqual(0)
       done();
@@ -1892,6 +1903,319 @@ export default function nativeApiStringJsunit() {
       value = napitest.napiDeleteSerializationData();
       console.info('aceNapiTest0126 testString result is: ' + value + "--" + JSON.stringify(value));
       expect(value).assertEqual(2000);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0127
+     * @tc.name aceNapiTest0127
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0127', 0, async (done: Function) => {
+      console.info('aceNapiTest0127 START');
+      value = napitest.napiSerializeDate();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0128
+     * @tc.name aceNapiTest0128
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0128', 0, async (done: Function) => {
+      console.info('aceNapiTest0128 START');
+      value = napitest.napiSerializeString();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0129
+     * @tc.name aceNapiTest0129
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0129', 0, async (done: Function) => {
+      console.info('aceNapiTest0129 START');
+      value = napitest.napiSerializeArray();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0130
+     * @tc.name aceNapiTest0130
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0130', 0, async (done: Function) => {
+      console.info('aceNapiTest0130 START');
+      value = napitest.napiSerializeObject();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0131
+     * @tc.name aceNapiTest0131
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0131', 0, async (done: Function) => {
+      console.info('aceNapiTest0131 START');
+      value = napitest.napiSerializeArraybuffer();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0132
+     * @tc.name aceNapiTest0132
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0132', 0, async (done: Function) => {
+      console.info('aceNapiTest0132 START');
+      value = napitest.napiSerializeTypearray();
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0133
+     * @tc.name aceNapiTest0133
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0133', 0, async (done: Function) => {
+      console.info('aceNapiTest0133 START');
+      let temp = new SharedArrayBuffer(20);
+      value = napitest.napiSerializeSharedarraybuffer(temp);
+      expect(value).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0134
+     * @tc.name aceNapiTest0134
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0134', 0, async (done: Function) => {
+      console.info('aceNapiTest0134 START');
+      let mapTemp = new Map();
+      value = napitest.napiSerializeMap(mapTemp);
+      expect(value).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0135
+     * @tc.name aceNapiTest0135
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0135', 0, async (done: Function) => {
+      console.info('aceNapiTest0135 START');
+      let setTemp = new Set();
+      value = napitest.napiSerializeSet(setTemp);
+      expect(value).assertEqual(0);
+      done();//let regexp: RegExp = new RegExp('\\[', 'g');
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0136
+     * @tc.name aceNapiTest0136
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0136', 0, async (done: Function) => {
+      console.info('aceNapiTest0136 START');
+      let regexp: RegExp = new RegExp('\\[', 'g');
+      value = napitest.napiSerializeRegExp(regexp);
+      expect(value).assertEqual(0);
+      done();
+  });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0137
+     * @tc.name aceNapiTest0137
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0137', 0, async (done: Function) => {
+      console.info('aceNapiTest0137 START');
+      value = napitest.runEventLoop(2);
+      console.info('aceNapiTest0137 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0138
+     * @tc.name aceNapiTest0138
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0138', 0, async (done: Function) => {
+      console.info('aceNapiTest0138 START');
+      value = napitest.runEventLoop(3);
+      console.info('aceNapiTest0138 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0139
+     * @tc.name aceNapiTest0139
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0139', 0, async function (done) {
+      console.info('aceNapiTest0139 START');
+      const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.js', {name:"first worker in Stage model"});
+      let isTerminate = false;
+      workerInstance.onexit = function () {
+        isTerminate = true;
+      }
+      expect(workerInstance != null).assertTrue();
+      workerInstance.onmessage = async (e) => {
+        console.info('aceNapiTest0139 testString result is: ' + e.data);
+        expect(e.data).assertEqual(0)
+        workerInstance.terminate();
+        while (!isTerminate) {
+          await promiseCase()
+        }
+      }
+      workerInstance.postMessage("call napi_run_event_loop with nowait");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0140
+     * @tc.name aceNapiTest0140
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0140', 0, async function (done) {
+      console.info('aceNapiTest0140 START');
+      const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.js', {name:"first worker in Stage model"});
+      let isTerminate = false;
+      workerInstance.onexit = function () {
+        isTerminate = true;
+      }
+      expect(workerInstance != null).assertTrue();
+      workerInstance.onmessage = async (e) => {
+        console.info('aceNapiTest0140 testString result is: ' + e.data);
+        expect(e.data).assertEqual(0)
+        workerInstance.terminate();
+        while (!isTerminate) {
+          await promiseCase()
+        }
+      }
+      workerInstance.postMessage("call napi_run_event_loop with nowait");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0141
+     * @tc.name aceNapiTest0141
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0141', 0, async (done: Function) => {
+      console.info('aceNapiTest0141 START');
+      value = napitest.runEventLoop(6);
+      console.info('aceNapiTest0141 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0142
+     * @tc.name aceNapiTest0142
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0142', 0, async (done: Function) => {
+      console.info('aceNapiTest0142 START');
+      value = napitest.runEventLoop(7);
+      console.info('aceNapiTest0142 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0143
+     * @tc.name aceNapiTest0143
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0143', 0, async (done: Function) => {
+      console.info('aceNapiTest0143 START');
+      value = napitest.runEventLoop(8);
+      console.info('aceNapiTest0143 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0144
+     * @tc.name aceNapiTest0144
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0144', 0, async (done: Function) => {
+      console.info('aceNapiTest0144 START');
+      value = napitest.runEventLoop(9);
+      console.info('aceNapiTest0144 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0145
+     * @tc.name aceNapiTest0145
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0145', 0, async function (done) {
+    console.info('aceNapiTest0145 START');
+      value = napitest.stopEventLoop(1)
+      console.info('aceNapiTest0145 testString result is: ' + value);
+      expect(value).assertEqual(0)
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0146
+     * @tc.name aceNapiTest0146
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0146', 0, async function (done) {
+      console.info('aceNapiTest0146 START');
+      const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.js', {name: "first worker in Stage model"});
+      let isTerminate = false;
+      workerInstance.onexit = function () {
+        isTerminate = true;
+      }
+      expect(workerInstance != null).assertTrue();
+      workerInstance.onmessage = async (e) => {
+        console.info('aceNapiTest0146 testString result is: ' + e.data);
+        expect(e.data).assertEqual(0);
+        workerInstance.terminate();
+        while (!isTerminate) {
+          await promiseCase()
+        }
+      }
+      workerInstance.postMessage("call napi_stop_event_loop");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0147
+     * @tc.name aceNapiTest0147
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0147', 0, async function (done) {
+      console.info('aceNapiTest0147 START');
+      value = napitest.stopEventLoop(3);
+      console.info('aceNapiTest0147 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0148
+     * @tc.name aceNapiTest0148
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0148', 0, async function (done) {
+      console.info('aceNapiTest0148 START');
+      value = napitest.stopEventLoop(4);
+      console.info('aceNapiTest0148 testString result is: ' + value);
+      expect(value).assertEqual(0);
       done();
     });
   })

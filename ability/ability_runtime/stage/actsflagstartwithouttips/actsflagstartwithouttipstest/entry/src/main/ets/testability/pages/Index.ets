@@ -28,6 +28,9 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+          .width('80%')
+          .id('TEST_PAGE_TEXT')
         Button() {
           Text('next page')
             .fontSize(20)

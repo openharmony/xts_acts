@@ -19,7 +19,9 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import commonEventManager from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 let ACTS_CallFunction: commonEvent.CommonEventSubscribeInfo = {
   events: ['ACTS_CALL_EVENT', 'ACTS_CALL_EVENT_ANOTHER']
@@ -157,12 +159,20 @@ export default function abilityTest() {
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
         .then(async (data) => {
-          console.info(`====>AsyncCallback_0300 createSubscriber  ${data}`);
+          console.info(`====>ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0300 createSubscriber  ${data}`);
           subscriber = data;
           commonEvent.subscribe(data, (err, data) => {
-            if (data.event == 'ACTS_CALL_EVENT') {
-              console.info(`====>AsyncCallback_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              expect(data.parameters.result).assertEqual(-1);
+            console.log(`====>ActsActionExtensionAbility deviceType: ${deviceType}`);
+            if (deviceType === '2in1') {
+              if (data.event == 'ACTS_CALL_EVENT') {
+                console.info(`====>AsyncCallback_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
+                expect(data.parameters.result).assertEqual(0);
+              }
+            } else {
+              if (data.event == 'ACTS_CALL_EVENT') {
+                console.info(`====>AsyncCallback_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
+                expect(data.parameters.result).assertEqual(-1);
+              }
             }
             if (data.event == 'ACTS_CALL_EVENT_ANOTHER') {
               console.info(`====>AsyncCallback_0300 subscribeCallBack 'ACTS_CALL_EVENT_ANOTHER'  ${data}`);
@@ -446,9 +456,17 @@ export default function abilityTest() {
           console.info(`====>Promise_0300 createSubscriber  ${data}`);
           subscriber = data;
           commonEvent.subscribe(data, (err, data) => {
-            if (data.event == 'ACTS_CALL_EVENT') {
-              console.info(`====>Promise_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
-              expect(data.parameters.result).assertEqual(-1);
+            console.log(`====>ActsActionExtensionAbility deviceType: ${deviceType}`);
+            if (deviceType === '2in1') {
+              if (data.event == 'ACTS_CALL_EVENT') {
+                console.info(`====>Promise_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
+                expect(data.parameters.result).assertEqual(0);
+              }
+            } else {
+              if (data.event == 'ACTS_CALL_EVENT') {
+                console.info(`====>Promise_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
+                expect(data.parameters.result).assertEqual(-1);
+              }
             }
             if (data.event == 'ACTS_CALL_EVENT_ANOTHER') {
               console.info(`====>Promise_0300 subscribeCallBack 'ACTS_CALL_EVENT_ANOTHER'  ${data}`);

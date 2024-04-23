@@ -14,6 +14,7 @@
  */
 import marqueeJsunit from './marqueeTest/MarqueeJsunit.test';
 import textStyleJsunit from './textTest/TextStyleJsunit.test';
+import TextStateJsunit from './textTest/TextStateJsunit.test';
 import ImageTextTest from './textTest/ImageText.test';
 import TextAreaCallbackTest from './TextAreaTest/TextAreaCallback.test';
 import TextAreaSelectTest from './TextAreaTest/TextAreaSelect.test';
@@ -126,8 +127,103 @@ import richEditorApi7 from './RichEditorTest/richEditorApi/richEditorApi7.test';
 import richEditorApi8 from './RichEditorTest/richEditorApi/richEditorApi8.test';
 import search from './SearchTest/SearchTest.test';
 
+import CurveTest from './textTest/CurveJsunit.test';
+import backgroundAndSizeSettingJsunit from './textTest/BackgroundAndSizeSettingJsunit.test';
+import borderJsunit from './textTest/BorderJsunit.test';
+import fillModeJsunit from './ImageAnimator/FillModeJsunit.test';
+import ohosMatrix4Jsunit from './imageTest/OhosMatrix4Jsunit.test';
+import positionSettingJsunit from './textTest/PositionSettingJsunit.test';
+import ShapeClippingJsunit from './imageTest/ShapeClippingJsunit.test';
+import textAreaJsunit from './TextAreaTest/TextAreaJsunit.test';
+import textAreaUxTest  from './TextAreaTest/textareaux.test';
+import textInputJsunit from './TextInputTest/TextInputJsunit.test';
+import propJsunit from './textTest/PropJsunit.test';
+import imageJsunit from './imageTest/ImageJsunit.test';
+import spanJsunit from './spanTest/SpanJsunit.test';
+import textJsunit from './textTest/TextJsunit.test';
+import outline from './textTest/outline.test';
+import rotationTest from './RenderNodeTest/rotation.test.ets'
+import transformTest from './RenderNodeTest/transform.test.ets'
+import translationTest from './RenderNodeTest/translation.test.ets'
 
+import stageFontTest from './textTest/stageFont.test';
+import stageMediaquery from './textTest/stageMediaquery.test';
+
+import buttonTest from './buttonTest/button'
+import textInputTest from './TextInputTest/textinput'
+import textinputSec from './TextInputTest/textinputSec'
+import segmentbuttonTest from './SegmentButtonTest/segmentbutton'
+import search_caret from './SearchTest/search_caret.test';
+import search_maxLength from './SearchTest/search_maxLength.test';
+import search_maxLength2 from './SearchTest/search_maxLength2.test';
+import search_top from './SearchTest/search_top.test.ets'
+import search_center from './SearchTest/search_center.test.ets'
+import search_bottom from './SearchTest/search_bottom.test.ets'
+import SearchJsunit from './SearchTest/SearchJsunit.test';
+import textAreaUIJsunit from './TextAreaTest/textAreaUIJsunit.test';
+import textArea_top from './TextAreaTest/textArea_top.test.ets'
+import textArea_center from './TextAreaTest/textArea_center.test.ets'
+import textArea_bottom from './TextAreaTest/textArea_bottom.test.ets'
+import textAreaBC1Jsunit from './TextAreaTest/textAreaBC1Jsunit.test';
+import textAenEnabledJsunit from './TextAreaTest/textAenEnabledJsunit.test';
+import imageOneJsunit from './imageTest/imageOneJsunit.test';
+import imageTwoJsunit from './imageTest/imageTwoJsunit.test';
+import imageThreeJsunit from './imageTest/imageThreeJsunit.test';
+import imageAnimatorJsunit from './ImageAnimator/imageAnimatorJsunit.test';
+import buttonJsunit from './buttonTest/ButtonJsunit.test';
+import buttonEnabledJsunit from './buttonTest/buttonEnabledJsunit.test';
+import checkBoxGroupUIJsunit from './CheckboxTest/checkBoxGroupUIJsunit.test';
+import CheckBoxJsunit from './CheckboxTest/CheckBoxJsunit.test';
+import TextClockJsunit from './TextClockTest/TextClockJsunit.test';
+import TextClockLongJsunit from './TextClockTest/TextClockLongJsunit.test';
+import TextInputPageJsunit from './TextInputTest/TextInputPageJsunit.test';
+import textInput_caret from './TextInputTest/textInput_caret.test';
+import textOneJsunit from './textTest/textOneJsunit.test';
+import textTwoJsunit from './textTest/textTwoJsunit.test';
+import textEnabledJsunit from './textTest/textEnabledJsunit.test';
+import textChangeEnabledJsunit from './textTest/textChangeEnabledJsunit.test';
+import datePickerJsunit from './DatePickerTest/datePickerJsunit.test.ets';
+import datelPanelJsunit from './datelPanelTest/datelPanelJsunit.test.ets';
+import loadingProgressJsunit from './ProgressTest/loadingProgressJsunit.test.ets';
+import ProgressJsunit from './ProgressTest/ProgressJsunit.test.ets';
+import gaugeJsunit from './gaugeTest/gaugeJsunit.test.ets';
+import TextPickerJsunit from './TextPickerTest/TextPickerJsunit.test.ets';
+import TextTimerJsunit from './TextTimerTest/TextTimerJsunit.test.ets';
+import TimePickerJsunit from './TimePickerTest/TimePickerJsunit.test.ets';
+import ToggleJsunit from './ToggleTest/ToggleJsunit.test.ets';
+import marqueeUIJsunit from './marqueeTest/marqueeUIJsunit.test.ets';
+import PatternLockJsunit from './PatternLockTest/PatternLockJsunit.test.ets';
+import SelectJsunit from './selectTest/SelectJsunit.test.ets';
+import RichEditor01 from './RichEditorTest/RichEditor01.test.ets';
+import RichTextJsunit from './RichEditorTest/RichTextJsunit.test.ets';
+import spanUIJsunit from './spanTest/spanUIJsunit.test.ets';
+import fontJsunit from './fontTest/fontJsunit.test.ets';
+import RenderFitJsunit from './RenderNodeTest/RenderFitJsunit.test.ets';
+import aboutToRecycleiamge from './imageTest/aboutToRecycleiamgeJS.test'
+
+import focusJsunit from './buttonTest/FocusJsunit.test';
+import imageJsunit55 from './imageTest/ImageJsunit55.test';
+import playModeJsunit from './buttonTest/PlayModeJsunit.test';
+import richTextJsunit from './RichEditorTest/RichTextJsunit.test';
+
+import textClockJsunit from './textTest/TextClockJsunit.test';
+import textTimerJsunit from './textTest/TextTimerJsunit.test';
+
+import unitsModuleNameJsunit from './textTest/units.test.ets';
+import ImageApi from './imageTest/ImageApi.test.ets';
+import appVersionCodeJsunit from './textTest/app.test';
+import colorEnumJsunit from './textTest/color.test';
+import copyOptionJsunit from './textTest/copyOption.test';
+import TextStyle2 from './textTest/TextApi/TextStyle2.test';
+
+import textMinFontSizeJsunit from './textTest/text.test';
+import textAreaOnCutJsunit from './TextAreaTest/textArea.test';
+import textInputOnEditChangeJsunit from './TextInputTest/textInput.test';
 export default function testsuite() {
+  stageFontTest();
+  stageMediaquery();
+  
+  TextStateJsunit();
   richEditorApi4();
   richEditorApi5();
   richEditorApi6();
@@ -235,4 +331,88 @@ export default function testsuite() {
   TextfieldOtherTest()
   TextfieldSingleTest()
   TextfieldMultiTest()
+  
+  CurveTest()
+  backgroundAndSizeSettingJsunit()
+  borderJsunit();
+  fillModeJsunit();
+  ohosMatrix4Jsunit();
+  positionSettingJsunit();
+  ShapeClippingJsunit();
+  textAreaJsunit();
+  textInputJsunit();
+  propJsunit();
+  imageJsunit()
+  spanJsunit()
+  textJsunit()
+  outline()
+  rotationTest()
+  transformTest()
+  translationTest()
+
+  buttonTest();
+  textInputTest()
+  textinputSec()
+  segmentbuttonTest()
+  textAreaUxTest();
+  search_caret();
+  search_maxLength();
+  search_maxLength2();  
+  search_top();
+  search_center();
+  search_bottom();
+  SearchJsunit();
+  textAreaUIJsunit();
+  textArea_top();
+  textArea_center();
+  textArea_bottom();
+  textAreaBC1Jsunit();
+  textAenEnabledJsunit();
+  imageOneJsunit();
+  imageTwoJsunit();
+  imageThreeJsunit();
+  imageAnimatorJsunit();
+  buttonJsunit();
+  buttonEnabledJsunit();
+  checkBoxGroupUIJsunit();
+  CheckBoxJsunit();
+  TextClockJsunit();
+  TextClockLongJsunit();
+  TextInputPageJsunit();
+  textInput_caret();
+  textOneJsunit();
+  textTwoJsunit();
+  textEnabledJsunit();
+  textChangeEnabledJsunit();
+  datePickerJsunit();
+  datelPanelJsunit();
+  loadingProgressJsunit();
+  ProgressJsunit();
+  gaugeJsunit();  
+  TextPickerJsunit();
+  TextTimerJsunit();
+  TimePickerJsunit();
+  ToggleJsunit();
+  marqueeUIJsunit();
+  PatternLockJsunit();
+  SelectJsunit();
+  RichTextJsunit();
+  RichEditor01();
+  spanUIJsunit();
+  fontJsunit();
+  RenderFitJsunit();
+  aboutToRecycleiamge();
+  
+  focusJsunit()
+  imageJsunit55()
+  playModeJsunit()
+  richTextJsunit()
+  textClockJsunit()
+  textTimerJsunit()
+  appVersionCodeJsunit();
+  colorEnumJsunit();
+  copyOptionJsunit();
+  TextStyle2()
+  unitsModuleNameJsunit()
+  ImageApi()
 }

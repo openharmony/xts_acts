@@ -16,20 +16,19 @@ import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 export default function abilityTest() {
-  describe('ActsAbilityTest', function () {
+  describe('ActsAbilityTest', () => {
 
     /**
-     * @tc.number    ArkUX_Stage_Popup_0100
-     * @tc.name      Popup added enableArrow and placement interface coverage
-     * @tc.desc      Popup added enableArrow and placement interface coverage
+     * @tc.number ArkUX_Stage_Popup_0100
+     * @tc.name Popup added enableArrow and placement interface coverage
+     * @tc.desc Popup added enableArrow and placement interface coverage
      */
-    it('ArkUX_Stage_Popup_0100', 0, async function (done) {
+    it('ArkUX_Stage_Popup_0100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Popup_0100 START');
       setTimeout(() => {
         try {
-          let obj = JSON.parse(getInspectorByKey('forPopup'));
-          console.info("ArkUX_Stage_Popup_0100 component obj is: " + JSON.stringify(obj));
-          expect(obj.$attrs.bindPopup).assertEqual(undefined);
+          console.info("ArkUX_Stage_Popup_0100 component obj is: " + JSON.stringify(JSON.parse(getInspectorByKey('forPopup'))));
+          expect(JSON.parse(getInspectorByKey('forPopup')).$attrs.bindPopup).assertEqual(undefined);
           console.info('ArkUX_Stage_Popup_0100 END ');
           done();
         } catch (err) {

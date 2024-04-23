@@ -18,6 +18,38 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  compareTextKey: string;
+  compareTextWidth: number;
+  compareTextHeight: number;
+  scrollWidth: number;
+  scrollHeight: number;
+  columnWidth: number;
+  columnHeight: number;
+  buttonWidth: number;
+  buttonHeight: number;
+  componentWidth: number;
+  componentHeight: number;
+}
+
+class TestValues {
+  describe: string;
+  setValue: SetValues;
+  expectValue: ExpectValue;
+}
+
+class SetValues {
+  leave: ESObject;
+  enter: ESObject;
+}
+
+class ExpectValue {
+  yOffSetMoveLength: ESObject;
+}
 
 export default function onVisibleAreaChangeTest() {
 
@@ -111,7 +143,7 @@ export default function onVisibleAreaChangeTest() {
   let buttonWidth = 100;
   let buttonHeight = 100;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testOnVisibleAreaChange',
     pageName: 'OnVisibleAreaChangePage',
     pageUrl: 'MainAbility/pages/onVisibleAreaChange/OnVisibleAreaChangePage',
@@ -130,7 +162,7 @@ export default function onVisibleAreaChangeTest() {
   }
 
   //Test content and expected results
-  let testValues = [
+  let testValues: TestValues[] = [
   //    {
   //    describe: 'Normal',
   //    setValue: {
@@ -165,7 +197,7 @@ export default function onVisibleAreaChangeTest() {
     }]
 
   describe('OnVisibleAreaChangeTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Get Information about the location of the target component before the change
       let targetRectBefore = Utils.getComponentRect(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + '] targetRectBefore: ' + targetRectBefore);
@@ -179,7 +211,7 @@ export default function onVisibleAreaChangeTest() {
       //Gets information about where the target component moved out
       let targetRectLeave = Utils.getComponentRect(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + '] targetRectLeave: ' + targetRectLeave);
-      let compareTextLeave = Utils.getComponentByKey(data.pageConfig.compareTextKey);
+      let compareTextLeave: ESObject = Utils.getComponentByKey(data.pageConfig.compareTextKey);
 
       //Set value
       AttrsManager.change(data.caseTag, data.testValue.setValue.enter);
@@ -190,7 +222,7 @@ export default function onVisibleAreaChangeTest() {
       //Gets information about where the target component enters
       let targetRectEnter = Utils.getComponentRect(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + '] targetRectEnter: ' + targetRectEnter);
-      let compareTextEnter = Utils.getComponentByKey(data.pageConfig.compareTextKey);
+      let compareTextEnter: ESObject = Utils.getComponentByKey(data.pageConfig.compareTextKey);
 
       //Check that the target component has moved the correct distance
       console.info('[' + data.caseTag + '] targetRectBefore.bottom: ' + targetRectBefore.bottom);
@@ -201,13 +233,13 @@ export default function onVisibleAreaChangeTest() {
       expect(px2vp(targetRectEnter.bottom - targetRectLeave.bottom))
         .assertEqual(data.testValue.expectValue.yOffSetMoveLength);
 
-      let ratiosRightNum = data.testValue.setValue.leave.ratiosRight;
-      let ratiosLeftNum = data.testValue.setValue.leave.ratiosLeft;
+      let ratiosRightNum: ESObject = data.testValue.setValue.leave.ratiosRight;
+      let ratiosLeftNum: ESObject = data.testValue.setValue.leave.ratiosLeft;
 
       //Check whether a callback is triggered and whether it contains data
       console.info('[' + data.caseTag + '] compareTextLeave.$attrs.content: ' +
       compareTextLeave.$attrs.content);
-      let compareTextLeaveStr = compareTextLeave.$attrs.content;
+      let compareTextLeaveStr: ESObject = compareTextLeave.$attrs.content;
       if (compareTextLeaveStr.indexOf('@') >= 0 && compareTextLeaveStr.indexOf('{') < 0) {
         expect('null').assertEqual('objects');
       }
@@ -226,7 +258,7 @@ export default function onVisibleAreaChangeTest() {
 
       //Check whether a callback is triggered and whether it contains data
       console.info('[' + data.caseTag + '] compareTextEnter.$attrs.content: ' + compareTextEnter.$attrs.content);
-      let compareTextEnterStr = compareTextEnter.$attrs.content;
+      let compareTextEnterStr: ESObject = compareTextEnter.$attrs.content;
       if (compareTextEnterStr.indexOf('@') >= 0 && compareTextEnterStr.indexOf('{') < 0) {
         expect('null').assertEqual('objects');
       }
@@ -245,59 +277,59 @@ export default function onVisibleAreaChangeTest() {
       }
     });
   })
+}
 
-  async function checkNormalLeaveResults(data, compareTextObj, ratiosRightNum) {
-    console.info('[' + data.caseTag + '] checkNormalLeaveResults');
-    for (let num: number = 0;num <= compareTextObj.length; num++) {
-      if (compareTextObj[num]) {
-        console.info('[' + data.caseTag + '] compareTextObj[' + num + ']:' + compareTextObj[num]);
-        console.info('[' + data.caseTag + '] JSON.parse(compareTextObj[num]).currentRatio:' +
+async function checkNormalLeaveResults(data: ESObject, compareTextObj: ESObject, ratiosRightNum: number) {
+  console.info('[' + data.caseTag + '] checkNormalLeaveResults');
+  for (let num: number = 0; num <= compareTextObj.length; num++) {
+    if (compareTextObj[num]) {
+      console.info('[' + data.caseTag + '] compareTextObj[' + num + ']:' + compareTextObj[num]);
+      console.info('[' + data.caseTag + '] JSON.parse(compareTextObj[num]).currentRatio:' +
+      JSON.parse(compareTextObj[num]).currentRatio);
+      console.info('[' + data.caseTag + '] JSON.parse(compareTextObj[num]).isVisible:' +
+      JSON.parse(compareTextObj[num]).isVisible);
+      if (JSON.parse(compareTextObj[num]).currentRatio > ratiosRightNum) {
+        expect(JSON.parse(compareTextObj[num]).isVisible).assertEqual('true');
+      } else if (JSON.parse(compareTextObj[num]).currentRatio < ratiosRightNum) {
+        expect(JSON.parse(compareTextObj[num]).isVisible).assertEqual('false');
+      } else {
+        console.info('[' + data.caseTag + '] Leave currentRatio is error:' +
         JSON.parse(compareTextObj[num]).currentRatio);
-        console.info('[' + data.caseTag + '] JSON.parse(compareTextObj[num]).isVisible:' +
-        JSON.parse(compareTextObj[num]).isVisible);
-        if (JSON.parse(compareTextObj[num]).currentRatio > ratiosRightNum) {
-          expect(JSON.parse(compareTextObj[num]).isVisible).assertEqual('true');
-        } else if (JSON.parse(compareTextObj[num]).currentRatio < ratiosRightNum) {
-          expect(JSON.parse(compareTextObj[num]).isVisible).assertEqual('false');
-        } else {
-          console.info('[' + data.caseTag + '] Leave currentRatio is error:' +
-          JSON.parse(compareTextObj[num]).currentRatio);
-        }
       }
     }
   }
+}
 
-  async function checkNormalEnterResults(data, compareTextObj, ratiosLeftNum) {
-    console.info('[' + data.caseTag + '] checkNormalEnterResults');
-    for (let num: number = 0;num <= compareTextObj.length; num++) {
-      if (compareTextObj[num]) {
-        console.info('[' + data.caseTag + '] compareTextObj[' + num + ']:' + compareTextObj[num]);
-        console.info('[' + data.caseTag + '] JSON.parse(compareTextObj[num]).currentRatio:' +
+async function checkNormalEnterResults(data: ESObject, compareTextObj: ESObject, ratiosLeftNum: number) {
+  console.info('[' + data.caseTag + '] checkNormalEnterResults');
+  for (let num: number = 0; num <= compareTextObj.length; num++) {
+    if (compareTextObj[num]) {
+      console.info('[' + data.caseTag + '] compareTextObj[' + num + ']:' + compareTextObj[num]);
+      console.info('[' + data.caseTag + '] JSON.parse(compareTextObj[num]).currentRatio:' +
+      JSON.parse(compareTextObj[num]).currentRatio);
+      console.info('[' + data.caseTag + '] JSON.parse(compareTextObj[num]).isVisible:' +
+      JSON.parse(compareTextObj[num]).isVisible);
+      if (JSON.parse(compareTextObj[num]).currentRatio > ratiosLeftNum) {
+        expect(JSON.parse(compareTextObj[num]).isVisible).assertEqual('true');
+      } else if (JSON.parse(compareTextObj[num]).currentRatio < ratiosLeftNum) {
+        expect(JSON.parse(compareTextObj[num]).isVisible).assertEqual('false');
+      } else {
+        console.info('[' + data.caseTag + '] Enter currentRatio is error:' +
         JSON.parse(compareTextObj[num]).currentRatio);
-        console.info('[' + data.caseTag + '] JSON.parse(compareTextObj[num]).isVisible:' +
-        JSON.parse(compareTextObj[num]).isVisible);
-        if (JSON.parse(compareTextObj[num]).currentRatio > ratiosLeftNum) {
-          expect(JSON.parse(compareTextObj[num]).isVisible).assertEqual('true');
-        } else if (JSON.parse(compareTextObj[num]).currentRatio < ratiosLeftNum) {
-          expect(JSON.parse(compareTextObj[num]).isVisible).assertEqual('false');
-        } else {
-          console.info('[' + data.caseTag + '] Enter currentRatio is error:' +
-          JSON.parse(compareTextObj[num]).currentRatio);
-        }
       }
     }
   }
+}
 
-  async function checkAbnormalResults(data, compareTextObj) {
-    console.info('[' + data.caseTag + '] checkAbnormalResults');
-    for (let num: number = 0;num <= compareTextObj.length; num++) {
-      if (compareTextObj[num]) {
-        console.info('[' + data.caseTag + '] compareTextObj[' + num + ']:' + compareTextObj[num]);
-        console.info('[' + data.caseTag + '] JSON.parse(compareTextObj[num]).currentRatio:' +
-        JSON.parse(compareTextObj[num]).currentRatio);
-        expect((JSON.parse(compareTextObj[num]).currentRatio >= 0) && (JSON.parse(compareTextObj[num])
-          .currentRatio <= 1)).assertEqual(true);
-      }
+async function checkAbnormalResults(data: ESObject, compareTextObj: ESObject) {
+  console.info('[' + data.caseTag + '] checkAbnormalResults');
+  for (let num: number = 0; num <= compareTextObj.length; num++) {
+    if (compareTextObj[num]) {
+      console.info('[' + data.caseTag + '] compareTextObj[' + num + ']:' + compareTextObj[num]);
+      console.info('[' + data.caseTag + '] JSON.parse(compareTextObj[num]).currentRatio:' +
+      JSON.parse(compareTextObj[num]).currentRatio);
+      expect((JSON.parse(compareTextObj[num]).currentRatio >= 0) && (JSON.parse(compareTextObj[num])
+        .currentRatio <= 1)).assertEqual(true);
     }
   }
 }

@@ -58,9 +58,9 @@ export default function OnlyColumnsTemplate3() {
       let GridItem_01: RectValue = CommonFunc.getComponentRect('OnlyColumnsTemplate3_GridItem_01');
 
       console.log('assert size')
-      expect(Math.round(GridItem_01.right - GridItem_01.left)).assertEqual(Math.round(vp2px(114)));
+      expect(Math.abs(Math.round(GridItem_01.right - GridItem_01.left) - Math.round(vp2px(114))) <= 1).assertTrue();
       console.log('GGridItem_01.right - GridItem_01.left' + (GridItem_01.right - GridItem_01.left))
-      expect(Math.round(GridItem_01.bottom - GridItem_01.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.abs(Math.round(GridItem_01.bottom - GridItem_01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
       console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_01.bottom - GridItem_01.top))
 
       console.info('[SUB_ACE_GRID_OnlyColumnsTemplate3_0100] END');

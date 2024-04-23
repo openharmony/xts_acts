@@ -14,6 +14,7 @@
  */
 
 #include "napi/native_api.h"
+#include "common/native_common.h"
 #include <cerrno>
 #include <cstdio>
 #include <cstring>
@@ -116,6 +117,7 @@ static napi_value Mmap(napi_env env, napi_callback_info info)
     int fd;
     void *start;
     FILE *fptr = fopen(ptr, "w+");
+    NAPI_ASSERT(env, fptr != nullptr, "Mmap fopen Error");
     struct stat statbuff;
     fwrite(ptr, sizeof(char), strlen(ptr), fptr);
     fseek(fptr, SIZE_0L, SEEK_SET);
