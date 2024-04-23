@@ -18,8 +18,8 @@ import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
 
-export default function stepperJsunit() {
-  describe('stepperTest', () => {
+export default function StepperJsunit11() {
+  describe('StepperJsunit11', () => {
     beforeEach(async (done:Function) => {
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/stepper/stepper',
