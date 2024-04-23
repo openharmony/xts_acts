@@ -49,7 +49,7 @@ ohos_shared_library("usbddkndk") {
   deps = [
     "${ext_mgr_path}/frameworks/ddk/base:ddk_base",
     "${ext_mgr_path}/frameworks/ddk/usb:usb_ndk",
-    ]
+  ]
 
   external_deps = [
     "hilog:libhilog",
