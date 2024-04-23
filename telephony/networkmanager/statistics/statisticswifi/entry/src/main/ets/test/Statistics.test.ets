@@ -44,6 +44,8 @@ async function getApplicationUid(): Promise<number> {
   }
 }
 
+const testUrl: string = "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk";
+
 export default function NetStatisticsTest() {
 
   describe('NetStatisticsTest', () => {
@@ -84,7 +86,7 @@ export default function NetStatisticsTest() {
         let connectionproperties: connection.ConnectionProperties = connection.getConnectionPropertiesSync(netHandle);
         let context: Context = AppStorage.get('context') as Context;
         await request.downloadFile(context, {
-          url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk'
+          url: testUrl
         });
         statistics.getIfaceRxBytes(connectionproperties.interfaceName, (error: BusinessError, stats: number) => {
           if (error) {
