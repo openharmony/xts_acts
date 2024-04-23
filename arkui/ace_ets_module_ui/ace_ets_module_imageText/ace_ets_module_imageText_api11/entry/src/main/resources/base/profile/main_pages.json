@@ -197,6 +197,27 @@
         "MainAbility/pages/span/spanUI",
         "MainAbility/pages/font/fontAdd",
         "MainAbility/pages/RenderNode/RenderFit",
-        "MainAbility/pages/image/aboutToRecycleiamge"
+        "MainAbility/pages/image/aboutToRecycleiamge",
+	
+	 "MainAbility/pages/button/focus",
+        "MainAbility/pages/image/image55",
+        "MainAbility/pages/button/playMode",
+        "MainAbility/pages/RichEditor/richText",
+
+        "MainAbility/pages/text/textTimer",
+        "MainAbility/pages/text/textClock",
+        "MainAbility/pages/TextArea/textArea3",
+        "MainAbility/pages/TextInput/textInput3",
+        
+        "MainAbility/pages/image/ImageApi",
+        "MainAbility/pages/text/TextApi/TextStyle2",
+        "MainAbility/pages/text/units",
+        "MainAbility/pages/text/app",
+        "MainAbility/pages/text/color",
+        "MainAbility/pages/text/copyOption",
+
+        "MainAbility/pages/TextInput/textInput6",
+        "MainAbility/pages/TextArea/textArea6",
+        "MainAbility/pages/text/text6"
     ]
 }

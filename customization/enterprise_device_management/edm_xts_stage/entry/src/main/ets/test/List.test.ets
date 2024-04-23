@@ -12,13 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import browserManagerTest from './browser/browser.test.ets';
+import browserManagerTest from './browser/browser.test.ets'
+import bluetoothManagerTest from './bluetoothManager/bluetoothManager.test.ets'
 import securityManagerTest from './securityManager/securityManager.test';
 import deviceSettingsTest from './deviceSettings/deviceSettings.test';
 import deviceInfoTest from './deviceInfo/deviceInfo.test';
 
 export default function testsuite() {
   browserManagerTest();
+  bluetoothManagerTest();
   securityManagerTest();
   deviceSettingsTest();
   deviceInfoTest();

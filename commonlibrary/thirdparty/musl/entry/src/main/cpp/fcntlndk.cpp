@@ -14,6 +14,7 @@
  */
 
 #include "napi/native_api.h"
+#include "common/native_common.h"
 #include <cstdio>
 #include <cstring>
 #include <fcntl.h>
@@ -286,6 +287,7 @@ static napi_value FwriteChk(napi_env env, napi_callback_info info)
     const char *msg = "This is a c";
     int len = SIZE_10;
     FILE *files = fopen("/data/storage/el2/base/files/test.txt", "w");
+    NAPI_ASSERT(env, files != nullptr, "FwriteChk fopen Error");
     int result = __fwrite_chk(msg, len, PARAM_0, files, strlen(msg));
     fclose(files);
     napi_value resultS = nullptr;

@@ -27,6 +27,12 @@ import datapanelTest from './DataPanelTest/datapanel'
 import advancedCounter from './advancedCounterTest/advancedCounter'
 import QRCodeUIJsunit from './QrcodeTest/QRCodeUIJsunit.test.ets';
 
+import patternLockJsunit from './patternLockTest/PatternLockJsunit.test';
+import loadingProgressCircularJsunit from './LoadingProgressTest/loadingProgress.test.ets';
+import progressScaleCountJsunit from './ProgressTest/progress3.test.ets';
+import gaugeColorsJsunit from './gaugeTest/gauge1.test';
+import progressStyleJsunit from './ProgressTest/progress2.test';
+
 export default function testsuite() {
   gaugeJsunit();
   CounterEnableTest();
@@ -42,4 +48,11 @@ export default function testsuite() {
   GaugeUxTest();
   advancedCounter()
   QRCodeUIJsunit();
+  
+  patternLockJsunit()
+  loadingProgressCircularJsunit()
+  progressScaleCountJsunit()
+
+  gaugeColorsJsunit()
+  progressStyleJsunit()
 }

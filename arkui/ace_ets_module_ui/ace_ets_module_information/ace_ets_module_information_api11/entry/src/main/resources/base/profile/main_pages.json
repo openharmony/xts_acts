@@ -14,6 +14,12 @@
         "MainAbility/pages/Badge/BadgeIndex",
         "MainAbility/pages/DataPanel/DataPanel_001",
         "MainAbility/pages/advancedCounter/advancedCounterIndex",
-        "MainAbility/pages/Qrcode/QRCodePage" 
+        "MainAbility/pages/Qrcode/QRCodePage",
+	
+	"MainAbility/pages/patternLock/patternLock",
+        "MainAbility/pages/LoadingProgress/loadingProgress",
+        "MainAbility/pages/Progress/progress3",
+        "MainAbility/pages/gauge/gauge1",
+        "MainAbility/pages/Progress/progress2"
     ]
 }

@@ -29,6 +29,9 @@ import RouterWithParamJsunit from './State/RouterWithParamJsunit.test';
 import RouterUrlErrorJsunit from './State/RouterUrlErrorJsunit.test';
 import routerReplaceJsunit from './Router/routerReplaceJsunit.test.ets';
 
+import systemRouterJsunit from './Router/SystemRouterJsunit.test';
+import routerStandardJsunit from './ohosRouterTest/router.test.ets';
+
 export default function testsuite() {
   pushPageInit();
   router_back1();
@@ -45,4 +48,7 @@ export default function testsuite() {
   RouterUrlErrorJsunit();
   stageRouterTest();
   routerReplaceJsunit();
+  
+  systemRouterJsunit()
+  routerStandardJsunit()
 }

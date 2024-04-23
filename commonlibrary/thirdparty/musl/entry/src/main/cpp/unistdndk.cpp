@@ -14,6 +14,7 @@
  */
 
 #include "common/napi_helper.cpp"
+#include "common/native_common.h"
 #include "napi/native_api.h"
 #include <cstdlib>
 #include <cstring>
@@ -1141,6 +1142,7 @@ static napi_value Fsync(napi_env env, napi_callback_info info)
 static napi_value Ftruncate(napi_env env, napi_callback_info info)
 {
     FILE *fptr = fopen("/data/storage/el2/base/files/Fzl.txt", "w");
+    NAPI_ASSERT(env, fptr != nullptr, "Ftruncate fopen Error");
     fprintf(fptr, "%s", "this is a sample!");
     int freturn = ftruncate(fileno(fptr), SIZE_100);
     fclose(fptr);
@@ -1152,6 +1154,7 @@ static napi_value Ftruncate(napi_env env, napi_callback_info info)
 static napi_value Ftruncate64(napi_env env, napi_callback_info info)
 {
     FILE *fptr = fopen("/data/storage/el2/base/files/Fzl.txt", "w");
+    NAPI_ASSERT(env, fptr != nullptr, "Ftruncate64 fopen Error");
     fprintf(fptr, "%s", "this is a sample!");
     int freturn = ftruncate64(fileno(fptr), SIZE_100);
     fclose(fptr);

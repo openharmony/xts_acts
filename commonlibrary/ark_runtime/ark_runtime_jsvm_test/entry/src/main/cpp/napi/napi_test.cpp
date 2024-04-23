@@ -55,6 +55,7 @@ const int DIFF_VALUE_EIGHTEEN = 18;
 const int DIFF_VALUE_NINETEEN = 19;
 const int DIFF_VALUE_TWENTY = 20;
 const int DIFF_VALUE_TWENTYONE = 21;
+#define EOK 0
 #define OPENCODE
 #ifdef OPENCODE
 static void addReturnedStatus(JSVM_Env env, const char *key, JSVM_Value object, const char *expected_message,
@@ -189,7 +190,10 @@ static JSVM_PropertyHandlerConfigurationStruct propertyCfg{
 
 static napi_value testEngineAndContext(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -197,8 +201,10 @@ static napi_value testEngineAndContext(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -206,7 +212,7 @@ static napi_value testEngineAndContext(napi_env env1, napi_callback_info info){
     JSVM_CallbackStruct param[1];
     param[0].data = nullptr;
     param[0].callback = assertEqual;
-    
+
 
     JSVM_PropertyDescriptor descriptor[] = {
         {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
@@ -238,7 +244,10 @@ static napi_value testEngineAndContext(napi_env env1, napi_callback_info info){
 }
 static napi_value testError(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -246,7 +255,10 @@ static napi_value testError(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -283,7 +295,10 @@ static napi_value testError(napi_env env1, napi_callback_info info){
 }
 static napi_value testTypeError(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -291,8 +306,10 @@ static napi_value testTypeError(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -330,7 +347,10 @@ static napi_value testTypeError(napi_env env1, napi_callback_info info){
 }
 static napi_value testRangeError(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -338,8 +358,10 @@ static napi_value testRangeError(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -377,7 +399,10 @@ static napi_value testRangeError(napi_env env1, napi_callback_info info){
 }
 static napi_value testSyntaxError(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -385,7 +410,10 @@ static napi_value testSyntaxError(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -423,7 +451,10 @@ static napi_value testSyntaxError(napi_env env1, napi_callback_info info){
 }
 static napi_value testClearError(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -431,7 +462,10 @@ static napi_value testClearError(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -487,7 +521,10 @@ static napi_value testClearError(napi_env env1, napi_callback_info info){
 }
 static napi_value testLifeCycle(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -495,7 +532,10 @@ static napi_value testLifeCycle(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -539,7 +579,10 @@ static napi_value testLifeCycle(napi_env env1, napi_callback_info info){
 }
 static napi_value testCreateData1(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -547,7 +590,10 @@ static napi_value testCreateData1(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -604,7 +650,10 @@ static napi_value testCreateData1(napi_env env1, napi_callback_info info){
 }
 static napi_value testCreateData2(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -612,7 +661,10 @@ static napi_value testCreateData2(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -670,7 +722,10 @@ static napi_value testCreateData2(napi_env env1, napi_callback_info info){
 }
 static napi_value testCreateData3(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -678,7 +733,10 @@ static napi_value testCreateData3(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -723,7 +781,10 @@ static napi_value testCreateData3(napi_env env1, napi_callback_info info){
 }
 static napi_value testCreateData4(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -731,7 +792,10 @@ static napi_value testCreateData4(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -765,7 +829,7 @@ static napi_value testCreateData4(napi_env env1, napi_callback_info info){
     uint64_t testValue = UINT64_MAX;
     JSVM_Value result = nullptr;
     OH_JSVM_CreateBigintUint64(env, testValue, &result);
-  
+
     uint64_t resultValue1 = 0;
     bool flag1 = false;
     OH_JSVM_GetValueBigintUint64(env, result, &resultValue1, &flag1);
@@ -785,7 +849,10 @@ static napi_value testCreateData4(napi_env env1, napi_callback_info info){
 }
 static napi_value testCreateData5(napi_env env1, napi_callback_info info) {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -793,7 +860,10 @@ static napi_value testCreateData5(napi_env env1, napi_callback_info info) {
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -848,7 +918,10 @@ static napi_value testCreateData5(napi_env env1, napi_callback_info info) {
 }
 static napi_value testGetData1(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -856,7 +929,10 @@ static napi_value testGetData1(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -888,7 +964,6 @@ static napi_value testGetData1(napi_env env1, napi_callback_info info){
     OH_JSVM_GetBoolean(env,value1,&boolValue);
     bool value2;
     OH_JSVM_GetValueBool(env,boolValue, &value2);
-    
     OH_JSVM_CloseHandleScope(env, handlescope);
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -900,7 +975,10 @@ static napi_value testGetData1(napi_env env1, napi_callback_info info){
 }
 static napi_value testGetData2(napi_env env1, napi_callback_info info) {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -908,7 +986,10 @@ static napi_value testGetData2(napi_env env1, napi_callback_info info) {
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -943,7 +1024,10 @@ static napi_value testGetData2(napi_env env1, napi_callback_info info) {
 }
 static napi_value testValueOperation(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -951,7 +1035,10 @@ static napi_value testValueOperation(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -992,7 +1079,10 @@ static napi_value testValueOperation(napi_env env1, napi_callback_info info){
 }
 static napi_value testValueOperation2(napi_env env1, napi_callback_info info) {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1000,7 +1090,10 @@ static napi_value testValueOperation2(napi_env env1, napi_callback_info info) {
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1051,7 +1144,10 @@ static napi_value testValueOperation2(napi_env env1, napi_callback_info info) {
 }
 static napi_value testGetPropertyNames(napi_env env1, napi_callback_info info) {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1059,7 +1155,10 @@ static napi_value testGetPropertyNames(napi_env env1, napi_callback_info info) {
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1096,7 +1195,10 @@ static napi_value testGetPropertyNames(napi_env env1, napi_callback_info info) {
 }
 static napi_value testGetAllPropertyNames(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1104,7 +1206,10 @@ static napi_value testGetAllPropertyNames(napi_env env1, napi_callback_info info
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1143,7 +1248,10 @@ static napi_value testGetAllPropertyNames(napi_env env1, napi_callback_info info
 }
 static napi_value testProperty(napi_env env1, napi_callback_info info) {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1151,7 +1259,10 @@ static napi_value testProperty(napi_env env1, napi_callback_info info) {
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1183,7 +1294,7 @@ static napi_value testProperty(napi_env env1, napi_callback_info info) {
     OH_JSVM_SetNamedProperty(env, result, "numberAttribute", numberAttribute);
     JSVM_Value propNames = nullptr;
     OH_JSVM_GetPropertyNames(env, result, &propNames);
-    
+
     bool isArray = false;
     OH_JSVM_IsArray(env, propNames, &isArray);
     uint32_t arrayLength = 0;
@@ -1214,7 +1325,10 @@ static napi_value testProperty(napi_env env1, napi_callback_info info) {
 }
 static napi_value testDefineProperties(napi_env env1, napi_callback_info info) {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1222,7 +1336,10 @@ static napi_value testDefineProperties(napi_env env1, napi_callback_info info) {
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1263,7 +1380,10 @@ static napi_value testDefineProperties(napi_env env1, napi_callback_info info) {
 }
 static napi_value testWrap(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1271,7 +1391,10 @@ static napi_value testWrap(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1321,7 +1444,10 @@ static napi_value testWrap(napi_env env1, napi_callback_info info){
 static JSVM_Deferred deferred = nullptr;
 static napi_value testOthers(napi_env env1, napi_callback_info info){
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1329,7 +1455,10 @@ static napi_value testOthers(napi_env env1, napi_callback_info info){
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1372,7 +1501,10 @@ static napi_value testOthers(napi_env env1, napi_callback_info info){
 
 static napi_value Add(napi_env env1, napi_callback_info info) {
         JSVM_InitOptions init_options;
-        memset(&init_options, 0, sizeof(init_options));
+        if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+            printf("memset_s failed");
+            return nullptr;
+        }
         init_options.externalReferences = externals;
         if (aa == 0) {
             OH_JSVM_Init(&init_options);
@@ -1380,8 +1512,10 @@ static napi_value Add(napi_env env1, napi_callback_info info) {
         }
         JSVM_VM vm;
         JSVM_CreateVMOptions options;
-        memset(&options, 0, sizeof(options));
-
+        if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+            printf("memset_s failed");
+            return nullptr;
+        }
         OH_JSVM_CreateVM(&options, &vm);
         JSVM_VMScope vm_scope;
         OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1475,7 +1609,10 @@ static JSVM_Value test(JSVM_Env env, JSVM_CallbackInfo info) {
 }
 static napi_value Add1(napi_env env1, napi_callback_info info) {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1483,7 +1620,10 @@ static napi_value Add1(napi_env env1, napi_callback_info info) {
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1524,42 +1664,49 @@ static JSVM_Value theSecondOperations(JSVM_Env env, JSVM_CallbackInfo info) {
     return nullptr;
 }
 static napi_value testSecondOperations(napi_env env1, napi_callback_info info) {
-        JSVM_InitOptions init_options;
-        memset(&init_options, 0, sizeof(init_options));
-        init_options.externalReferences = externals;
-        if (aa == 0) {
-            OH_JSVM_Init(&init_options);
-            aa++;
-        }
-        JSVM_VM vm;
-        JSVM_CreateVMOptions options;
-        memset(&options, 0, sizeof(options));
-        OH_JSVM_CreateVM(&options, &vm);
-        JSVM_VMScope vm_scope;
-        OH_JSVM_OpenVMScope(vm, &vm_scope);
-        JSVM_Env env;
-        JSVM_CallbackStruct param[1];
-        param[0].data = nullptr;
-        param[0].callback = theSecondOperations;
-        JSVM_PropertyDescriptor descriptor[] = {
-            {"theSecondOperations", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
-        };
-        OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
-        OH_JSVM_OpenInspector(env, "localhost", 9229);
-        OH_JSVM_WaitForDebugger(env, false);
-        JSVM_EnvScope envScope;
-        OH_JSVM_OpenEnvScope(env, &envScope);
-        JSVM_HandleScope handlescope;
-        OH_JSVM_OpenHandleScope(env, &handlescope);
-        OH_JSVM_CloseHandleScope(env, handlescope);
-        OH_JSVM_CloseInspector(env);
-        OH_JSVM_CloseEnvScope(env, envScope);
-        OH_JSVM_DestroyEnv(env);
-        OH_JSVM_CloseVMScope(vm, vm_scope);
-        OH_JSVM_DestroyVM(vm);
-        napi_value result11;
-        NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
-        return result11;
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = theSecondOperations;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"theSecondOperations", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    uint16_t num = 9229;
+    OH_JSVM_OpenInspector(env, "localhost", num);
+    OH_JSVM_WaitForDebugger(env, false);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseInspector(env);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
 }
 
 // ========= arguments check =========
@@ -1595,7 +1742,7 @@ static JSVM_Value checkArgs(JSVM_Env env, JSVM_CallbackInfo info)
     if (res == JSVM_INVALID_ARG) {
         JSVM_ASSERT(env, res == JSVM_INVALID_ARG, "OH_JSVM_DefineClassWithPropertyHandler failed due to nullptr constructor");
     }
-    
+
     // case 4. If the callback of the constructor is nullptr, return JSVM_INVALID_ARG.
     param.callback = nullptr;
     res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test1", NAPI_AUTO_LENGTH, &param, 0, nullptr,
@@ -1604,7 +1751,7 @@ static JSVM_Value checkArgs(JSVM_Env env, JSVM_CallbackInfo info)
         JSVM_ASSERT(env, res == JSVM_INVALID_ARG, "OH_JSVM_DefineClassWithPropertyHandler failed due to nullptr constructor callback");
     }
     param.callback = func;
-    
+
     // case 5. If propertyCount is greater than 0, properties are nullptr
     res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test1", NAPI_AUTO_LENGTH, &param, 1, nullptr, &propertyCfg,
                                                  &param, &testWrapClass);
@@ -1638,7 +1785,10 @@ static JSVM_Value checkArgs(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testCheckArgs(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1646,13 +1796,14 @@ static napi_value testCheckArgs(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
     JSVM_Env env;
-
     JSVM_CallbackStruct param[1];
     param[0].callback = nullptr;
     param[0].callback = checkArgs;
@@ -1687,7 +1838,7 @@ static JSVM_Value setProperty(JSVM_Env env, JSVM_CallbackInfo info)
     };
     param.data = nullptr;
     JSVM_Value testWrapClass = nullptr;
-    
+
     OH_JSVM_DefineClassWithPropertyHandler(env, "Test2", NAPI_AUTO_LENGTH, &param, 0, nullptr, &propertyCfg, nullptr,
                                            &testWrapClass);
     JSVM_Value instanceValue = nullptr;
@@ -1708,7 +1859,10 @@ static JSVM_Value setProperty(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testSetProperty(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1716,8 +1870,10 @@ static napi_value testSetProperty(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1777,7 +1933,10 @@ static JSVM_Value getProperty(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testGetProperty(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1785,18 +1944,17 @@ static napi_value testGetProperty(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
     JSVM_Env env;
-
     JSVM_CallbackStruct param[1];
-
     param[0].callback = nullptr;
     param[0].callback = getProperty;
-
     JSVM_PropertyDescriptor descriptor[] = {
         {"getProperty", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
     };
@@ -1861,7 +2019,10 @@ static JSVM_Value CallObjectAsFunction(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testCallFunction(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1869,8 +2030,10 @@ static napi_value testCallFunction(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -1924,7 +2087,6 @@ static JSVM_Value NameHandler(JSVM_Env env, JSVM_CallbackInfo info)
         return thisVar;
     };
     param.data = nullptr;
-    
     propertyCfg.genericNamedPropertySetterCallback = SetNamedPropertyCbInfo1;
     JSVM_CallbackStruct callbackStruct;
     callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
@@ -1932,7 +2094,6 @@ static JSVM_Value NameHandler(JSVM_Env env, JSVM_CallbackInfo info)
         return nullptr;
     };
     callbackStruct.data = nullptr;
-    
     JSVM_Value testWrapClass = nullptr;
     JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test4", NAPI_AUTO_LENGTH, &param, 0, nullptr, &propertyCfg, &callbackStruct, &testWrapClass);
     if (res == JSVM_OK) {
@@ -1941,7 +2102,6 @@ static JSVM_Value NameHandler(JSVM_Env env, JSVM_CallbackInfo info)
         printf("OH_JSVM_DefineClassWithPropertyHandler failed");
         return nullptr;
     }
-    
     JSVM_Value instanceValue = nullptr;
     OH_JSVM_NewInstance(env, testWrapClass, 0, nullptr, &instanceValue);
 
@@ -1958,7 +2118,10 @@ static JSVM_Value NameHandler(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testSetNamedProperty01(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -1966,8 +2129,10 @@ static napi_value testSetNamedProperty01(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -2040,7 +2205,10 @@ static JSVM_Value NameHandler1(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testSetNamedProperty02(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2048,8 +2216,10 @@ static napi_value testSetNamedProperty02(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -2101,7 +2271,7 @@ static JSVM_Value IndexHandler1(JSVM_Env env, JSVM_CallbackInfo info)
         return thisVar;
     };
     param.data = nullptr;
-    
+
     propertyCfg.genericIndexedPropertySetterCallback = SetIndexPropertyCbInfo1;
     JSVM_CallbackStruct callbackStruct;
     callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
@@ -2135,7 +2305,10 @@ static JSVM_Value IndexHandler1(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testSetIndexProperty01(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2143,8 +2316,10 @@ static napi_value testSetIndexProperty01(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -2217,7 +2392,10 @@ static JSVM_Value IndexHandler2(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testSetIndexProperty02(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2225,8 +2403,10 @@ static napi_value testSetIndexProperty02(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -2309,7 +2489,10 @@ static JSVM_Value NameHandler2(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testGetNamedProperty01(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2317,8 +2500,10 @@ static napi_value testGetNamedProperty01(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -2367,7 +2552,7 @@ static JSVM_Value NameHandler3(JSVM_Env env, JSVM_CallbackInfo info)
         return thisVar;
     };
     param.data = nullptr;
-    
+
     propertyCfg.genericNamedPropertyGetterCallback = GetNamedPropertyCbInfo2;
     JSVM_Value testWrapClass = nullptr;
     JSVM_Status res = OH_JSVM_DefineClassWithPropertyHandler(env, "Test9", NAPI_AUTO_LENGTH, &param, 0, nullptr,
@@ -2398,14 +2583,16 @@ static JSVM_Value NameHandler3(JSVM_Env env, JSVM_CallbackInfo info)
     size_t size2;
     OH_JSVM_GetValueStringUtf8(env, valueName, str2, strlen(str2), &size2);
     propertyCfg.genericNamedPropertyGetterCallback = nullptr;
-
     return valueName;
 }
 
 static napi_value testGetNamedProperty02(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2413,8 +2600,10 @@ static napi_value testGetNamedProperty02(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -2498,7 +2687,10 @@ static JSVM_Value IndexHandler3(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testGetIndexProperty01(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2506,13 +2698,14 @@ static napi_value testGetIndexProperty01(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
     JSVM_Env env;
-
     JSVM_CallbackStruct param[1];
     param[0].callback = nullptr;
     param[0].callback = IndexHandler3;
@@ -2594,7 +2787,10 @@ static JSVM_Value IndexHandler4(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testGetIndexProperty02(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2602,8 +2798,10 @@ static napi_value testGetIndexProperty02(napi_env env1, napi_callback_info info)
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
-
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -2691,7 +2889,10 @@ static JSVM_Value NameHandler4(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testDeleterNamedProperty01(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2699,7 +2900,10 @@ static napi_value testDeleterNamedProperty01(napi_env env1, napi_callback_info i
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -2725,7 +2929,7 @@ static napi_value testDeleterNamedProperty01(napi_env env1, napi_callback_info i
     NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
     return result11;
 }
-    
+
 // ===================== test return true for namedProperty handle =======================
 // case 34 when returning true, the deletion of the listening trigger is triggered, and the interception
 // is successful. The deletion of the attribute fails, and the output parameter of OH_JSVM_DeleteProperty is true.
@@ -2790,7 +2994,10 @@ static JSVM_Value NameHandler5(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testDeleterNamedProperty02(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2798,7 +3005,10 @@ static napi_value testDeleterNamedProperty02(napi_env env1, napi_callback_info i
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -2886,7 +3096,10 @@ static JSVM_Value NameHandler6(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testDeleterNamedProperty03(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2894,7 +3107,10 @@ static napi_value testDeleterNamedProperty03(napi_env env1, napi_callback_info i
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -2979,7 +3195,10 @@ static JSVM_Value IndexHandler5(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testDeleterIndexedProperty01(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -2987,7 +3206,10 @@ static napi_value testDeleterIndexedProperty01(napi_env env1, napi_callback_info
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -3066,7 +3288,10 @@ static JSVM_Value IndexHandler6(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testDeleterIndexedProperty02(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -3074,7 +3299,10 @@ static napi_value testDeleterIndexedProperty02(napi_env env1, napi_callback_info
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -3153,7 +3381,10 @@ static JSVM_Value IndexHandler7(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testDeleterIndexedProperty03(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -3161,7 +3392,10 @@ static napi_value testDeleterIndexedProperty03(napi_env env1, napi_callback_info
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -3260,7 +3494,10 @@ static JSVM_Value NameHandler7(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testEnumeratorNamedProperty01(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -3268,7 +3505,10 @@ static napi_value testEnumeratorNamedProperty01(napi_env env1, napi_callback_inf
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -3366,7 +3606,10 @@ static JSVM_Value NameHandler8(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testEnumeratorNamedProperty02(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -3374,7 +3617,10 @@ static napi_value testEnumeratorNamedProperty02(napi_env env1, napi_callback_inf
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -3477,7 +3723,10 @@ static JSVM_Value IndexHandler8(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testEnumeratorIndexedProperty01(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -3485,7 +3734,10 @@ static napi_value testEnumeratorIndexedProperty01(napi_env env1, napi_callback_i
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -3591,7 +3843,10 @@ static JSVM_Value IndexHandler9(JSVM_Env env, JSVM_CallbackInfo info)
 static napi_value testEnumeratorIndexedProperty02(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
-    memset(&init_options, 0, sizeof(init_options));
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     init_options.externalReferences = externals;
     if (aa == 0) {
         OH_JSVM_Init(&init_options);
@@ -3599,7 +3854,10 @@ static napi_value testEnumeratorIndexedProperty02(napi_env env1, napi_callback_i
     }
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    memset(&options, 0, sizeof(options));
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
     OH_JSVM_CreateVM(&options, &vm);
     JSVM_VMScope vm_scope;
     OH_JSVM_OpenVMScope(vm, &vm_scope);
@@ -3686,7 +3944,7 @@ static napi_value testDefinePropertyHandle(napi_env env, napi_callback_info info
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
-{ 
+{
     napi_property_descriptor properties[] = {
         DECLARE_NAPI_FUNCTION("testEngineAndContext",testEngineAndContext),
         DECLARE_NAPI_FUNCTION("testError",testError),

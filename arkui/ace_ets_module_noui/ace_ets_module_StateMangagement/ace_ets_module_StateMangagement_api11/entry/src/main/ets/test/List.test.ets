@@ -115,6 +115,20 @@ import StateTrackTest from './Track/StateTrackTest.test.ets';
 import nestTrackTest from './Track/nestTrackTest.test.ets';
 import storageTrackTest from './Track/storageTrackTest.test.ets';
 
+import StateMap from './stateMangagementTest/StateMap.test';
+import StateSet from './stateMangagementTest/StateSet.test';
+import PropMap from './stateMangagementTest/PropMap.test';
+import PropSet from './stateMangagementTest/PropSet.test';
+import ProvideMap from './stateMangagementTest/ProvideMap.test';
+import ProvideSet from './stateMangagementTest/ProvideSet.test';
+import LinkMap from './stateMangagementTest/LinkMap.test';
+import LinkSet from './stateMangagementTest/LinkSet.test';
+import ObjectLinkMap from './stateMangagementTest/ObjectLinkMap.test';
+import ObjectLinkSet from './stateMangagementTest/ObjectLinkSet.test';
+import stateManagementDARKJsunit from './stateMangagementTest/stateManagement.test';
+
+import stateManagementGetSharedJsunit from './stateMangagementTest/stateManagementNew.test';
+
 export default function testsuite() {
   allowOverride();
   appStorageJsunit();
@@ -218,4 +232,16 @@ export default function testsuite() {
   StateTrackTest();
   nestTrackTest();
   storageTrackTest();
+  StateMap();
+  StateSet();
+  PropMap();
+  PropSet();
+  ProvideMap();
+  ProvideSet();
+  LinkMap();
+  LinkSet();
+  ObjectLinkMap();
+  ObjectLinkSet();
+  stateManagementDARKJsunit()
+  stateManagementGetSharedJsunit()
 }
