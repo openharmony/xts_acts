@@ -1542,29 +1542,20 @@ export default function saveComponentTest() {
             "middle": 4
           }
         }
-        try{
-          window.getLastWindow(globalThis.abilityContext, (err, data) => {
-            const errCode = err.code;
-            if(errCode){
-              console.error('Failed to obtain the top window Cause:' + JSON.stringify(err));
-              return;
-            }
-            let properties = data.getWindowProperties();
-            console.info('Succeeded in obtaining the window properties.width: ' + properties.windowRect.width);
-            console.info('Succeeded in obtaining the window properties.height: ' + properties.windowRect.height);
-            let window_width = properties.windowRect.width;
-            let window_height = properties.windowRect.height;
-            let button_iconSize = Math.ceil(Math.sqrt(window_width * window_height * 0.1));
-            console.info('====>[Test_Security_Button_Save_1600] button_iconSize is: ' + button_iconSize);
-            let offsetObj = {
-              "iconSize": `${button_iconSize}px`,
-              "positionY": `${-button_iconSize - 200}px`
-              };
-            Object.assign(eventData.data,offsetObj);
-          });
-        } catch (error){
-          console.error('Failed to obtain the window properties.error.code: ' + error.code)
-        }
+        let displayClass = [];
+        display.getAllDisplays((err, data) => {
+          console.info('====>[Test_Security_Button_Save_1600] the window data[0].width: ' + data[0].width);
+          console.info('====>[Test_Security_Button_Save_1600] the window data[0].height: ' + data[0].height);
+          let window_width = data[0].width;
+          let window_height = data[0].height;
+          let button_iconSize = Math.ceil(Math.sqrt(window_width * window_height * 0.1));
+          console.info('====>[Test_Security_Button_Save_1600] button_iconSize is: ' + button_iconSize);
+          let offsetObj = {
+            "iconSize": `${button_iconSize}px`,
+            "positionY": `${-button_iconSize - 200}px`
+            };
+          Object.assign(eventData.data,offsetObj);
+        });
         await Utils.sleep(1000);
         var innerEvent = {
           eventId: 1,
