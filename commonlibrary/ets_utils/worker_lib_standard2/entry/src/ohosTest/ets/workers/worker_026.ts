@@ -12,21 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import worker, { MessageEvents, ThreadWorkerGlobalScope } from '@ohos.worker';
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World'
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
+workerPort.onmessage = (e: MessageEvents) => {
+  console.info(`worker: worker receive data ${e.data}`);
+  if (e.data === 'GlobalScope') {
+    const flag: boolean = workerPort.self.name === 'workerInstance' && workerPort.name === 'workerInstance';
+    workerPort.postMessage(flag);
+  } else if (e.data === 'ErrorEvent') {
+    const func: Function = (): string => {
+      return 'func';
     }
-    .height('100%')
+    workerPort.postMessage(func);
   }
 }
