@@ -38,6 +38,7 @@ ohos_shared_library("usbddkndk") {
   libs = [ rebase_path(libcxx_ndk_shared_file) ]
 
   include_dirs = [
+    "${ext_mgr_path}/interfaces/ddk/base",
     "${ext_mgr_path}/frameworks/ddk/usb",
     "${ext_mgr_path}/interfaces/ddk/usb",
     "./",
@@ -45,7 +46,10 @@ ohos_shared_library("usbddkndk") {
 
   configs = [ ":config" ]
 
-  deps = [ "${ext_mgr_path}/frameworks/ddk/usb:usb_ndk" ]
+  deps = [
+    "${ext_mgr_path}/frameworks/ddk/base:ddk_base",
+    "${ext_mgr_path}/frameworks/ddk/usb:usb_ndk",
+    ]
 
   external_deps = [
     "hilog:libhilog",
