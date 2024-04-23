@@ -160,6 +160,20 @@ export default function cryptoSymOptAADJsTestUnit() {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|PKCS7",
           "genGcmParamsSpecWithVariableLength", 8, 17);
+      } catch (err) {
+        console.error(`Security_CryptoFramework_SymOptAAD_Func_0600 catch error4: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      try {
+        await symCallback.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|PKCS7",
+          "genGcmParamsSpecWithVariableLength", 8, 128);
+      } catch (err) {
+        console.error(`Security_CryptoFramework_SymOptAAD_Func_0600 catch error4: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      try {
+        await symCallback.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|PKCS7",
+          "genGcmParamsSpecWithVariableLength", 8, 129);
         expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_SymOptAAD_Func_0600 catch error4: “${err}“, error code: ${err.code}`);
@@ -225,6 +239,20 @@ export default function cryptoSymOptAADJsTestUnit() {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|PKCS5",
           "genGcmParamsSpecWithVariableLength", 2049, 17);
+      } catch (err) {
+        console.error(`Security_CryptoFramework_SymOptAAD_Func_0800 catch error3: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      try {
+        await symCallback.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|PKCS5",
+          "genGcmParamsSpecWithVariableLength", 2049, 128);
+      } catch (err) {
+        console.error(`Security_CryptoFramework_SymOptAAD_Func_0800 catch error3: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      try {
+        await symCallback.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|PKCS5",
+          "genGcmParamsSpecWithVariableLength", 2049, 129);
         expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_SymOptAAD_Func_0800 catch error3: “${err}“, error code: ${err.code}`);
@@ -362,6 +390,20 @@ export default function cryptoSymOptAADJsTestUnit() {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|NoPadding",
           "genGcmParamsSpecWithVariableLength", 8, 17);
+      } catch (err) {
+        console.error(`Security_CryptoFramework_SymOptAAD_Func_1400 catch error4: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      try {
+        await symPromise.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|NoPadding",
+          "genGcmParamsSpecWithVariableLength", 8, 128);
+      } catch (err) {
+        console.error(`Security_CryptoFramework_SymOptAAD_Func_1400 catch error4: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      try {
+        await symPromise.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|NoPadding",
+          "genGcmParamsSpecWithVariableLength", 8, 129);
         expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_SymOptAAD_Func_1400 catch error4: “${err}“, error code: ${err.code}`);
@@ -427,6 +469,20 @@ export default function cryptoSymOptAADJsTestUnit() {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS5",
           "genGcmParamsSpecWithVariableLength", 2049, 17);
+      } catch (err) {
+        console.error(`Security_CryptoFramework_SymOptAAD_Func_1600 catch error3: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      try {
+        await symPromise.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS5",
+          "genGcmParamsSpecWithVariableLength", 2049, 128);
+      } catch (err) {
+        console.error(`Security_CryptoFramework_SymOptAAD_Func_1600 catch error3: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      try {
+        await symPromise.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS5",
+          "genGcmParamsSpecWithVariableLength", 2049, 129);
         expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_SymOptAAD_Func_1600 catch error3: “${err}“, error code: ${err.code}`);
