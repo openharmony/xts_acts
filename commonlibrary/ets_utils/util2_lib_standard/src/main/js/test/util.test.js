@@ -5129,6 +5129,109 @@ describe('RationalNumberTest', function () {
             expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
         }
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_001
+     * @tc.name: testUtilGetHash001
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash001', 0, function () {
+        let person = {
+          name: "Alice",
+          age: 30
+        };
+        let result1 = util.getHash(person);
+        let result2 = util.getHash(person);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_002
+     * @tc.name: testUtilGetHash002
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash002', 0, function () {
+        let numbers = [1, 2, 3, 4, 5];
+        let result1 = util.getHash(numbers);
+        let result2 = util.getHash(numbers);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_003
+     * @tc.name: testUtilGetHash003
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash003', 0, function () {
+        class Car {
+          make;
+          model;
+
+          constructor(make, model) {
+            this.make = make;
+            this.model = model;
+          }
+        }
+
+        let myCar = new Car("Toyota", "Corolla");
+        let result1 = util.getHash(myCar);
+        let result2 = util.getHash(myCar);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_004
+     * @tc.name: testUtilGetHash004
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash004', 0, function () {
+        let now = new Date();
+        let result1 = util.getHash(now);
+        let result2 = util.getHash(now);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_005
+     * @tc.name: testUtilGetHash005
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash005', 0, function () {
+        let regex = new RegExp("abc");
+        let result1 = util.getHash(regex);
+        let result2 = util.getHash(regex);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_006
+     * @tc.name: testUtilGetHash006
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash006', 0, function () {
+        let mathObject = Math;
+        let result1 = util.getHash(mathObject);
+        let result2 = util.getHash(mathObject);
+        expect(result1).assertEqual(result2);
+    })
 })
 
 describe('Base64HelperTest', function () {
