@@ -16,6 +16,7 @@ import("//build/ohos_var.gni")
 group("noPermission") {
   testonly = true
   deps = [
+    "connectiontest:ActsNetworkMgrConnectionNoPermissionTest",
     "networktest:ActsNetworkMgrSysNetworkNoPermissionTest",
     "websockettest:ActsNetworkMgrWsNoPermissionTest",
   ]
