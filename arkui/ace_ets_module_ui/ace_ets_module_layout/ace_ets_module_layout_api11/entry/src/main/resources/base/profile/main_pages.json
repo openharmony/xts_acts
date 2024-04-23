@@ -480,6 +480,16 @@
         "MainAbility/pages/RelativeContainer/RelativeContainer_AnchorPoint/RelativeContainer_AnchorPoint_Id_Null",
         "MainAbility/pages/RelativeContainer/RelativeContainer_AnchorPoint/RelativeContainer_AnchorPoint_Id_Undefined",
         "MainAbility/pages/RelativeContainer/RelativeContainer_AnchorPoint/RelativeContainer_AnchorPoint_Offset",
-        "MainAbility/pages/RelativeContainer/RelativeContainer_AnchorPoint/RelativeContainer_AnchorPoint_Position"
+        "MainAbility/pages/RelativeContainer/RelativeContainer_AnchorPoint/RelativeContainer_AnchorPoint_Position",
+        "MainAbility/pages/Flex/flexDirection",
+        "MainAbility/pages/Flex/flexWrap",
+        "MainAbility/pages/Row/gradientDirection",
+        "MainAbility/pages/Divider/dividerr",
+        "MainAbility/pages/Flex/direction2",
+        "MainAbility/pages/Flex/direction",
+        "MainAbility/pages/Flex/PieceCode",
+        "MainAbility/pages/Flex/placement",
+        "MainAbility/pages/Row/row2",
+        "MainAbility/pages/waterflow/WaterflowDemo"
     ]
 }

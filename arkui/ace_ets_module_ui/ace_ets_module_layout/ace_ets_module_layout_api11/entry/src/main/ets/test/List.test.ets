@@ -600,6 +600,17 @@ import RelativeContainer_AnchorPoint_Offset
   from './RelativeContainer/RelativeContainer_AnchorPoint/RelativeContainer_AnchorPoint_Offset.test.ets';
 import RelativeContainer_AnchorPoint_Position
   from './RelativeContainer/RelativeContainer_AnchorPoint/RelativeContainer_AnchorPoint_Position.test.ets';
+import flexWrapJsunit from './FlexTest/FlexWrapJsunit.test.ets';
+import gradientDirectionJsunit from './Row/GradientDirectionJsunit.test.ets';
+import dividerJsunitt from './DividerTest/DividerJsunitt.test.ets';
+
+import directionJsunit from './Flex/DirectionJsunit.test.ets';
+import direction2Jsunit from './Flex/Direction2Jsunit.test.ets';
+import pieceJsunit from './Flex/PieceJsunit.test.ets';
+import placementJsunit from './Flex/PlacementJsunit.test';
+import rowJsunit2 from './Row/RowJsunit2.test.ets';
+import waterFlowDemoJsunit from './waterflow/waterFlowDemo.test';
+import flexDirectionJsunit from './Flex/FlexDirectionJsunit.test.ets';
 export default function testsuite() {
   FolderStack3ApiJsunit()
   enumFolderTest()
@@ -1090,4 +1101,15 @@ export default function testsuite() {
   RelativeContainer_AnchorPoint_Id_Undefined()
   RelativeContainer_AnchorPoint_Offset()
   RelativeContainer_AnchorPoint_Position()
+  flexWrapJsunit();
+  gradientDirectionJsunit();
+  dividerJsunitt();
+  directionJsunit();
+  direction2Jsunit();
+  pieceJsunit();
+  placementJsunit();
+  rowJsunit2();
+  flexDirectionJsunit();
+  waterFlowDemoJsunit();
+  
 }

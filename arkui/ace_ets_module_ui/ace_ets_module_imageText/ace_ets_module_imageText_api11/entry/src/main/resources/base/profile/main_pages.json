@@ -218,6 +218,8 @@
 
         "MainAbility/pages/TextInput/textInput6",
         "MainAbility/pages/TextArea/textArea6",
-        "MainAbility/pages/text/text6"
+        "MainAbility/pages/text/text6",
+	"MainAbility/pages/ImageAnimator/imageAnimator2",
+        "MainAbility/pages/Progress/loadingProgress2"
     ]
 }

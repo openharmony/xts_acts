@@ -28,6 +28,7 @@ import webEditTextJsunit from './webTest/web.test.ets';
 
 import globalJsunit1 from './globalTest/global1.test';
 import webGetTitleJsunit from './webTest/web2.test';
+import configurationJsunit from './configuration/ConfigurationJsunit.test.ets';
 export default function testsuite() {
   globalJsunit();
   ResourceColor();
@@ -42,4 +43,5 @@ export default function testsuite() {
     webEditTextJsunit()
   globalJsunit1()
   webGetTitleJsunit()
+    configurationJsunit();
 }

@@ -32,6 +32,7 @@ import loadingProgressCircularJsunit from './LoadingProgressTest/loadingProgress
 import progressScaleCountJsunit from './ProgressTest/progress3.test.ets';
 import gaugeColorsJsunit from './gaugeTest/gauge1.test';
 import progressStyleJsunit from './ProgressTest/progress2.test';
+import searchJsunit from './SearchTest/SearchJsunit.test.ets';
 
 export default function testsuite() {
   gaugeJsunit();
@@ -55,4 +56,5 @@ export default function testsuite() {
 
   gaugeColorsJsunit()
   progressStyleJsunit()
+  searchJsunit();
 }

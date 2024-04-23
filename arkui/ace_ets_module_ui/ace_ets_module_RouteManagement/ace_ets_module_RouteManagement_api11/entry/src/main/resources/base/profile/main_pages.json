@@ -36,7 +36,9 @@
 	
 	"MainAbility/pages/Router/systemRouterA",
         "MainAbility/pages/Router/systemRouterB",
-        "MainAbility/pages/ohosRouter/router"
+        "MainAbility/pages/ohosRouter/router",
+	"MainAbility/pages/Router/ohosRouterA",
+        "MainAbility/pages/Router/ohosRouterB"
 
     ]
 }
