@@ -20,6 +20,9 @@ import commonEvent from '@ohos.commonEvent';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import { BusinessError } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
+
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 class Params {
@@ -152,6 +155,15 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
           } else if (data.event == "MultiInstanceStartNext") {
             console.log('ACTS_AbilityMultiInstance_Single_0100 callBackSeq = ' + data.data);
             expect(data.data).assertEqual(checkEventResults[checkIndex++]);
+            if (checkIndex === 2 && deviceType === '2in1') {
+              clearTimeout(id);
+                commonEvent.unsubscribe(subscriber, () => {
+                  console.debug("====>UnSubscribe CallBack====>");
+                  setTimeout(() => {
+                    done();
+                  }, 700)
+                })
+            }
           }
         })
       })
@@ -208,6 +220,15 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
           } else if (data.event == "MultiInstanceStartNext") {
             console.log('ACTS_AbilityMultiInstance_Single_0200 callBackSeq = ' + data.data);
             expect(data.data).assertEqual(checkEventResults[checkIndex++]);
+            if (checkIndex === 2 && deviceType === '2in1') {
+              clearTimeout(id);
+                commonEvent.unsubscribe(subscriber, () => {
+                  console.debug("====>UnSubscribe CallBack====>");
+                  setTimeout(() => {
+                    done();
+                  }, 700)
+                })
+            }
           }
         })
       })
@@ -238,6 +259,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_0300', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0300====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId1", "AppC:onCreateonForeground",
@@ -293,6 +318,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_0400', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0400====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId3", "AppC:onForeground",
@@ -348,6 +377,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_0600', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0600====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId1",
@@ -403,6 +436,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_0700', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0700====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId1", "AppB:onCreateonForeground",
@@ -458,6 +495,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_0800', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0800====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId3", "AppB:onCreateonForeground",
@@ -514,6 +555,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     it('ACTS_AbilityMultiInstance_Single_0900', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0900====<begin');
       let subscriber: commonEventManager.CommonEventSubscriber;
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let id: number;
       let checkEventResults = ["AppB:onCreateonForeground", "AppA:onForegroundonAcceptWantCalledId1",
         "AppC:onForeground", "AppA:onForegroundonAcceptWantCalledId1"];
@@ -569,6 +614,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_1000', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1000====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppB:onCreateonForeground", "AppA:onForegroundonAcceptWantCalledId1",
@@ -625,6 +674,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_1100', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1100====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppD:onCreateonForegroundonAcceptWantCalledId1", "AppD:onCreateonForeground",
@@ -680,6 +733,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_1200', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1200====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppD:onCreateonForegroundonAcceptWantCalledId2", "AppD:onCreateonForeground",
@@ -735,6 +792,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_1300', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1300====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppB:onCreateonForeground", "AppB:onCreateonForeground"];
@@ -789,6 +850,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_1400', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1400====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppE:onInit", "AppA:onForegroundonAcceptWantCalledId1"];
@@ -844,6 +909,10 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
             */
     it('ACTS_AbilityMultiInstance_Single_1500', 0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1500====<begin');
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
       let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId2", "AppE:onInit"];

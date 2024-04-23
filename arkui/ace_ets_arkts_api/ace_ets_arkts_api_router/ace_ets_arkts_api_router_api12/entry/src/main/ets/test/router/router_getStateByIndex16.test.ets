@@ -77,7 +77,7 @@ export default function router_getStateByIndex16() {
 
       let text1 = getInspectorByKey('router_getStateByIndex16b_text1');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('index=3;name=router_getStateByIndex16a;path=MainAbility/pages/router/;params="{\\"age\\":18}";');
+      expect(Obj1.$attrs.content).assertEqual('index=3;name=router_getStateByIndex16a;path=MainAbility/pages/router/;params={"age":18};');
 
       let btn4 = await driver.findComponent(ON.id('router_getStateByIndex16b_btn2'));
       await btn4.click();
@@ -86,7 +86,7 @@ export default function router_getStateByIndex16() {
 
       let text2 = getInspectorByKey('router_getStateByIndex16b_text2');
       let Obj2 = JSON.parse(text2);
-      expect(Obj2.$attrs.content).assertEqual('index=4;name=router_getStateByIndex16b;path=MainAbility/pages/router/;params="{\\"age\\":18}";');
+      expect(Obj2.$attrs.content).assertEqual('index=4;name=router_getStateByIndex16b;path=MainAbility/pages/router/;params={"age":18};');
 
       console.info('[router_getStateByIndex16_0100] END');
       done();

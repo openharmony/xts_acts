@@ -1285,6 +1285,7 @@ export default function observerManagerTest() {
     });
 
 
+
     /* *
     * @tc.number: SUB_Telephony_Observer_IccAccountInfoChangeOff_0400
     * @tc.name  : testTelephonyObserverIccAccountInfoChangeOff0400

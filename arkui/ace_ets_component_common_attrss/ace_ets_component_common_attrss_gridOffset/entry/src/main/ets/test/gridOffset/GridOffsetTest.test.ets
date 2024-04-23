@@ -16,6 +16,26 @@
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class TestValue {
+  describe: string;
+  setValue: number;
+  expectValue: ESObject;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetComponentHeight: number;
+  targetComponentWidth: number;
+  parentHeight: number;
+  parentWidth: number;
+  referenceComponentKey: string;
+  parentComponentKey: string;
+  gutter: number;
+  columns: number;
+}
+
 export default function gridOffsetTest() {
   let supportView = [
     'AlphabetIndexer',
@@ -97,7 +117,7 @@ export default function gridOffsetTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testGridOffset',
     pageName: 'GridOffsetPage',
     pageUrl: 'MainAbility/pages/gridOffset/GridOffsetPage',
@@ -111,7 +131,7 @@ export default function gridOffsetTest() {
     columns: columns
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetNumber',
     setValue: 2,
     expectValue: {
@@ -120,7 +140,7 @@ export default function gridOffsetTest() {
   }]
 
   describe('GridOffsetTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       console.info('[' + data.caseTag + ']' + 'gridOffset is:' + data.viewObj.$attrs.gridOffset);
       expect(data.viewObj.$attrs.gridOffset)
         .assertEqual(data.testValue.expectValue.gridOffset);

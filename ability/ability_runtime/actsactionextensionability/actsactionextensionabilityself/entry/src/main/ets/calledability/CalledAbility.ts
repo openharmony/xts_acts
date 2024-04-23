@@ -12,28 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import type window from '@ohos.window';
-import Want from '@ohos.app.ability.Want';
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class CalledAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CalledAbility onCreate');
     console.log('=====> first app CalledAbility =====>');
     const TIMEOUT = 50;
     globalThis.terminateCalledAbility = (str) => {
       setTimeout(() => {
-        this.context.terminateSelf()
-          .then(() => {
-            console.info('====>terminateSelf' + JSON.stringify(str) + ' end');
-          })
-          .catch((err) => {
-            console.info('====>terminateSelf ' + JSON.stringify(str) + ' err:' + JSON.stringify(err));
-          })
-      }, TIMEOUT)
+        this.context.terminateSelf().then(() => {
+          console.info('====>terminateSelf' + JSON.stringify(str) + ' end');
+        }).catch((err) => {
+          console.info('====>terminateSelf ' + JSON.stringify(str) + ' err:' + JSON.stringify(err));
+        });
+      }, TIMEOUT);
     };
 
     if (want.action === 'Acts_ActionExtensionAbility_1000') {
@@ -54,7 +49,7 @@ export default class CalledAbility extends UIAbility {
         }
       }, (err) => {
         console.log('=====> Acts_ActionExtensionAbility_1300 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
-      })
+      });
     }
 
     if (want.action === 'Acts_ActionExtensionAbility_1400') {
@@ -67,7 +62,7 @@ export default class CalledAbility extends UIAbility {
         }
       }, (err) => {
         console.log('=====> Acts_ActionExtensionAbility_1400 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
-      })
+      });
     }
   }
 
@@ -85,7 +80,7 @@ export default class CalledAbility extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    })
+    });
   }
 
   onWindowStageDestroy() {

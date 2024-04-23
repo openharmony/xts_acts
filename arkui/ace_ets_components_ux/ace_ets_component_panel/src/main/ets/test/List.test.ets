@@ -15,5 +15,5 @@
 import panelClose from './panelClose'
 
 export default function testsuite() {
-       panelClose()
+  panelClose()
 }

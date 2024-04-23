@@ -285,7 +285,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2360
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3850
      * @tc.name      : testHide_WindowStateAbnormal_Callback
      * @tc.desc      : Hidden window windowStateAbnormal
      * @tc.size      : MediumTest
@@ -323,7 +323,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2370
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3860
      * @tc.name      : testShowWindow_WindowStateAbnormal_Callback
      * @tc.desc      : show window windowStateAbnormal
      * @tc.size      : MediumTest
@@ -361,7 +361,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2380
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3870
      * @tc.name      : testDestroyWindow_WindowStateAbnormal_Promise
      * @tc.desc      : destroy window windowStateAbnormal
      * @tc.size      : MediumTest

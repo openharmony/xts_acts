@@ -15,8 +15,8 @@
 import TestRunner from '@ohos.application.testRunner';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-let abilityDelegator = undefined;
-let abilityDelegatorArguments = undefined;
+let abilityDelegator: any = undefined;
+let abilityDelegatorArguments: any = undefined;
 
 function translateParamsToString(parameters) {
   const keySet = new Set([
@@ -60,7 +60,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     };
     abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
     let cmd = 'aa start -d 0 -a com.acts.arkui.component.common.attrs.test.MainAbility' +
-    ' -b ' + abilityDelegatorArguments.bundleName;
+      ' -b ' + abilityDelegatorArguments.bundleName;
     cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
     let debug = abilityDelegatorArguments.parameters['-D'];
     if (debug == 'true') {

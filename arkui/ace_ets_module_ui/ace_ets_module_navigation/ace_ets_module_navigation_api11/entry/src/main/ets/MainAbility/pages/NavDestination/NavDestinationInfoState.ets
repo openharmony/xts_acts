@@ -53,7 +53,7 @@ struct NavDestinationInfoState {
   pageOneTmp(info: T32) {
     NavDestination() {
       Column() {
-        Button('pageOneTmp', { stateEffect: true, type: ButtonType.Capsule }).id('NavigationStack10pageOneTmpbut')
+        Button('pageOneTmp', { stateEffect: true, type: ButtonType.Capsule }).id('NavigationStack111pageOneTmpbut')
           .width('80%')
           .height(40)
           .onClick(() => {
@@ -66,7 +66,7 @@ struct NavDestinationInfoState {
   pageTwoTmp(info: T32) {
     NavDestination() {
       Column() {
-        Button('pageTwoTmp', { stateEffect: true, type: ButtonType.Capsule }).id('NavigationStack10pageTwoTmpbut')
+        Button('pageTwoTmp', { stateEffect: true, type: ButtonType.Capsule }).id('NavigationStack111pageTwoTmpbut')
           .width('80%')
           .height(40)
           .onClick(() => {
@@ -101,7 +101,7 @@ struct NavDestinationInfoState {
           .height(72)
           NavDestination() {
             Text('NavDestination').fontSize(26).fontWeight(700).fontColor(Color.Red)
-          }.backgroundColor('#0c182431').id('111')
+          }.backgroundColor('#0c182431').id('backgroundColor111')
         }.backgroundColor(Color.Orange)
       }
       .id('dfjaslgjsdfkljlsdfjakldfsdf')

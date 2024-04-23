@@ -12,16 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@ohos.router';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-import { Hypium } from '@ohos/hypium'
-import testsuite from '../../test/List.test'
 
 @Entry
 @Component
-struct Index {
-  @State message: string = 'MainAbility'
-  @State create: string = 'MainAbility'
+struct Index2 {
+  @State message: string = 'MainAbility';
+
   build() {
     Row() {
       Column() {

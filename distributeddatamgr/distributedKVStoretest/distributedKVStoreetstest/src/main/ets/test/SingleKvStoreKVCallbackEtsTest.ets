@@ -2203,7 +2203,11 @@ export default function SingleKvStoreCallbackTest(){
         await kvStore.getResultSet('test_key_string', 123, function (err, result) {
           console.info('SingleKvStoreGetResultSetCallbackTest003 getResultSet success: '+err);
           expect(err == undefined).assertTrue();
-          done();
+          kvStore.closeResultSet(result, function (err, data) {
+            console.info('yltest1SingleKvStoreGetResultSetCallbackTest003 closeResultSet success');
+            expect(err == undefined).assertTrue();
+            done();
+          })
         });
       }catch(e) {
         console.error('SingleKvStoreGetResultSetCallbackTest003 e ' + `, error code is ${e.code}, message is ${e.message}`);
@@ -2221,13 +2225,18 @@ export default function SingleKvStoreCallbackTest(){
     it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULT_CALLBACK_7800', 0, async function (done) {
       console.log('SingleKvStoreGetResultSetPredicatesCallbackTest001');
       try {
+        let resultSet;
         let query = new factory.Query();
         await kvStore.getResultSet(query).then((result) => {
           console.log('SingleKvStoreGetResultSetPredicatesCallbackTest001 getResultSet success');
+          resultSet = result;
         }).catch((err) => {
           console.error('SingleKvStoreGetResultSetPredicatesCallbackTest001 getResultSet fail ' + err`, error code is ${err.code}, message is ${err.message}`);
           expect(err == undefined).assertTrue();
         });
+        await kvStore.closeResultSet(resultSet, async function (err, data) {
+          console.info('SingleKvStoreGetResultSetPredicatesCallbackTest001 closeResultSet success');
+        })
       } catch(e) {
         console.error('SingleKvStoreGetResultSetPredicatesCallbackTest001 e ' + `, error code is ${e.code}, message is ${e.message}`);
         expect(null).assertFail();

@@ -5,7 +5,9 @@
     "description": "$string:module_test_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-      "phone"
+      "default",
+      "tablet",
+      "2in1"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

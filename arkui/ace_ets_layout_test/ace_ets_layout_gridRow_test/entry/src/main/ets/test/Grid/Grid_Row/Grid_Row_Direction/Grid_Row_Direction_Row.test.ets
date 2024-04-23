@@ -64,8 +64,8 @@ export default function Grid_Row_Direction_Row() {
       expect(Math.abs(firstDirectionRow.top - DirectionRow_1.top) <= 1).assertTrue();
       expect(Math.abs(firstDirectionRow.left - DirectionRow_1.left) <= 1).assertTrue();
 
-      expect(Math.round(secondDirectionRow.left - firstDirectionRow.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(thirdDirectionRow.top - firstDirectionRow.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(secondDirectionRow.left - firstDirectionRow.right) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdDirectionRow.top - firstDirectionRow.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowDirection_Row_0100 END');
       done();

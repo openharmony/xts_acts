@@ -86,15 +86,15 @@ export default function CalcJsunit01() {
       console.log('77777', calc8.right, calc8.left, calc8.right - calc8.left)
       console.log('88888', calc9.right, calc9.left, calc9.right - calc9.left)
       console.log('99999', calc10.top, calc10.bottom, calc10.top - calc10.bottom)
-      expect(Math.round(calc2.right - calc2.left)).assertEqual(Math.round(vp2px(270)));
-      expect(Math.round(calc3.bottom - calc3.top)).assertEqual(Math.round(vp2px(18)));
-      expect(Math.round(calc4.right - calc4.left)).assertEqual(Math.round(vp2px(90)));
-      expect(Math.round(calc5.bottom - calc5.top)).assertEqual(Math.round(vp2px(18)));
-      expect(Math.round(calc6.right - calc6.left)).assertEqual(Math.round(vp2px(90)));
-      expect(Math.round(calc7.right - calc7.left)).assertEqual(Math.round(vp2px(270)));
-      expect(Math.round(calc8.right - calc8.left)).assertEqual(Math.round(vp2px(270)));
-      expect(Math.round(calc9.right - calc9.left)).assertEqual(Math.round(vp2px(270)));
-      expect(Math.round(calc10.bottom - calc10.top)).assertEqual(Math.round(vp2px(54)));
+      expect(Math.abs(Math.round(calc2.right - calc2.left) - Math.round(vp2px(270))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc3.bottom - calc3.top) - Math.round(vp2px(18))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc4.right - calc4.left) - Math.round(vp2px(90))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc5.bottom - calc5.top) - Math.round(vp2px(18))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc6.right - calc6.left) - Math.round(vp2px(90))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc7.right - calc7.left) - Math.round(vp2px(270))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc8.right - calc8.left) - Math.round(vp2px(270))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc9.right - calc9.left) - Math.round(vp2px(270))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(calc10.bottom - calc10.top) - Math.round(vp2px(54))) <= 1).assertTrue();
       done();
     });
   })

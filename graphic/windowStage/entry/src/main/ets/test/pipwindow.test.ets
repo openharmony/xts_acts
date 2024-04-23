@@ -726,6 +726,195 @@ export default function pipWindowTest(context1) {
         done();
       }
     })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1600
+     * @tc.name       : create_Function_Promise
+     * @tc.desc       : To test the function of create
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level3
+     */
+    it('create_Function_Promise_5', 0, async function (done) {
+      console.log('www data create_Function_Promise begin')
+      let pipController = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_CALL,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+        controlGroup: [pipWindow.VideoCallControlGroup.MICROPHONE_SWITCH,pipWindow.VideoCallControlGroup.HANG_UP_BUTTON,pipWindow.VideoCallControlGroup.CAMERA_SWITCH]
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then((data) => {
+          pipController = data;
+          console.log(`www data Succeeded in creating pip controller. Data:${data}`)
+          expect(data != null).assertTrue();
+          done();
+        }).catch((err) => {
+          console.log('www data Failed1 to create pip controller. Cause' + JSON.stringify(err));
+          if(err.code == 801){
+            expect(true).assertTrue();
+            done();
+          } else{
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log('www data Failed2 to create pip controller. Cause' +JSON.stringify(error))
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1700
+     * @tc.name       : create_Function_Promise
+     * @tc.desc       : To test the function of create
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level3
+     */
+    it('create_Function_Promise_6', 0, async function (done) {
+      console.log('www data create_Function_Promise begin')
+      let pipController = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_MEETING,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+        controlGroup: [pipWindow.VideoMeetingControlGroup.HANG_UP_BUTTON,pipWindow.VideoMeetingControlGroup.CAMERA_SWITCH,pipWindow.VideoMeetingControlGroup.MUTE_SWITCH]
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then((data) => {
+          pipController = data;
+          console.log(`www data Succeeded in creating pip controller. Data:${data}`)
+          expect(data != null).assertTrue();
+          done();
+        }).catch((err) => {
+          console.log('www data Failed1 to create pip controller. Cause' + JSON.stringify(err));
+          if(err.code == 801){
+            expect(true).assertTrue();
+            done();
+          } else{
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log('www data Failed2 to create pip controller. Cause' +JSON.stringify(error))
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1800
+     * @tc.name       : create_Function_Promise
+     * @tc.desc       : To test the function of create
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level3
+     */
+    it('create_Function_Promise_7', 0, async function (done) {
+      console.log('www data create_Function_Promise begin')
+      let pipController = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+        controlGroup: pipWindow.VideoPlayControlGroup.VIDEO_PREVIOUS_NEXT
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then((data) => {
+          pipController = data;
+          console.log(`www data Succeeded in creating pip controller. Data:${data}`)
+          expect(data != null).assertTrue();
+          done();
+        }).catch((err) => {
+          console.log('www data Failed1 to create pip controller. Cause' + JSON.stringify(err));
+          if(err.code == 801){
+            expect(true).assertTrue();
+            done();
+          } else{
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log('www data Failed2 to create pip controller. Cause' +JSON.stringify(error))
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1900
+     * @tc.name       : create_Function_Promise
+     * @tc.desc       : To test the function of create
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level3
+     */
+    it('create_Function_Promise_8', 0, async function (done) {
+      console.log('www data create_Function_Promise begin')
+      let pipController = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+        controlGroup: pipWindow.VideoPlayControlGroup.FAST_FORWARD_BACKWARD
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then((data) => {
+          pipController = data;
+          console.log(`www data Succeeded in creating pip controller. Data:${data}`)
+          expect(data != null).assertTrue();
+          done();
+        }).catch((err) => {
+          console.log('www data Failed1 to create pip controller. Cause' + JSON.stringify(err));
+          if(err.code == 801){
+            expect(true).assertTrue();
+            done();
+          } else{
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log('www data Failed2 to create pip controller. Cause' +JSON.stringify(error))
+        expect().assertFail();
+        done();
+      }
+    })     
+
   })
 }
 

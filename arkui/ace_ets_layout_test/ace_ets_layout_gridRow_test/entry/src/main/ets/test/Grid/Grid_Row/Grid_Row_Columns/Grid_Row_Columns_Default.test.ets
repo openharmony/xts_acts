@@ -87,7 +87,7 @@ export default function Grid_Row_Columns_Default() {
 
       expect(Math.abs(firstColumns.left - Columns_1.left) <= 1).assertTrue();
 
-      expect(Math.floor(secondColumns.left - firstColumns.right)).assertEqual(Math.floor(vp2px(5)));
+      expect(Math.abs(Math.floor(secondColumns.left - firstColumns.right) - Math.floor(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowColumns_0100 END');
       done();

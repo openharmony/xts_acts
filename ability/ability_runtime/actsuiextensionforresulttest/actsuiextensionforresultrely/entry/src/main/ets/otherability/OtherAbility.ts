@@ -18,6 +18,7 @@ import hilog from '@ohos.hilog';
 import type window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 const CUMULATIVE = 2;
 
@@ -64,6 +65,28 @@ export default class OtherAbility extends UIAbility {
       }, (err) => {
         console.log('=====> OtherAbility CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
       });
+    }
+
+    try {
+      let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+      console.log(`====>OtherAbility deviceType: ${deviceType}`);
+      if (deviceType === '2in1') {
+        console.log('====>OtherAbility terminateSelfWithResult start');
+        setTimeout(() => {
+          this.context.terminateSelfWithResult({
+            resultCode: 0,
+            want: {
+              parameters: {
+                action: 'ACTION'
+              }
+            }
+          }, (err) => {
+            console.log('=====> OtherAbility CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
+          });
+        }, 500)
+      }
+    } catch (error) {
+      console.error('====>OtherAbility getSync errCode:' + error.code + ',errMessage:' + error.message);
     }
   }
 

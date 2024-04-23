@@ -7,6 +7,14 @@
     {
       "name":"font_world",
       "value":"20.0fp"
+    },
+    {
+      "name": "textShadowRadius",
+      "value": "5.0"
+    },
+    {
+      "name": "textShadowOffset",
+      "value": "5.0"
     }
   ]
 }

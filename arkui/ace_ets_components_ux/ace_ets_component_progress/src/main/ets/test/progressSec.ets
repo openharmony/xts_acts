@@ -17,13 +17,14 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { MessageManager, Callback } from './MessageManager';
 
 let emitKey = "emitUserAgent";
 
 export default function progressSecTest() {
   describe('ActsProgressSecTest', () => {
     beforeEach(async (done: Function) => {
-      let options: router.RouterOptions = {
+      let options:router.RouterOptions = {
         url: "TestAbility/pages/IndexSec",
       }
       try {
@@ -32,7 +33,7 @@ export default function progressSecTest() {
         console.info("get IndexSec state success " + JSON.stringify(pages));
         if (!("IndexSec" == pages.name)) {
           console.info("get IndexSec state success " + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options)
+          let result = await router.push(options)
           console.info("push IndexSec page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -107,7 +108,7 @@ export default function progressSecTest() {
       let progress_eclipse_enableSmoothEffect_boolean: boolean = false
 
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             'progress_capsule_borderWidth_number': progress_capsule_borderWidth_number,
             'progress_capsule_borderWidth_string': progress_capsule_borderWidth_string,
@@ -154,7 +155,7 @@ export default function progressSecTest() {
             'progress_eclipse_enableSmoothEffect_boolean': progress_eclipse_enableSmoothEffect_boolean,
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -179,11 +180,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + JSON.stringify(newJson));
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + JSON.stringify(newJsonDefault));
 
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefault: ESObject = JSON.parse(newJsonDefault);
-
-      let strColor = JSON.stringify(objDefault.$attrs.backgroundColor);
-      let strOpicity = JSON.stringify(objDefault.$attrs.padding);
+      let strColor = JSON.stringify(JSON.parse(newJsonDefault).$attrs.backgroundColor);
+      let strOpicity = JSON.stringify(JSON.parse(newJsonDefault).$attrs.padding);
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + strColor);
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + strOpicity);
 
@@ -192,15 +190,15 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + strColor_2);
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + strOpicity_2);
 
-      let calculatedOpicaty = Number.parseInt(strColor_2) * Number(strOpicity_2);
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + JSON.stringify(calculatedOpicaty));
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + calculatedOpicaty.toString(16));
 
       let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + finalResult);
 
-      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.backgroundColor));
+      expect(JSON.parse(newJson).$attrs.backgroundColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100] end");
       done();
     });
@@ -217,11 +215,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + JSON.stringify(newJson));
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + JSON.stringify(newJsonDefault));
 
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefault: ESObject = JSON.parse(newJsonDefault);
-
-      let strColor = JSON.stringify(objDefault.$attrs.color);
-      let strOpicity = JSON.stringify(objDefault.$attrs.margin);
+      let strColor = JSON.stringify(JSON.parse(newJsonDefault).$attrs.color);
+      let strOpicity = JSON.stringify(JSON.parse(newJsonDefault).$attrs.margin);
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + strColor);
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + strOpicity);
 
@@ -230,15 +225,15 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + strColor_2);
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + strOpicity_2);
 
-      let calculatedOpicaty = Number.parseInt(strColor_2) * Number(strOpicity_2);
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + JSON.stringify(calculatedOpicaty));
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + calculatedOpicaty.toString(16));
 
       let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + finalResult);
 
-      console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + JSON.stringify(obj.$attrs.color));
-      expect(obj.$attrs.color).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.color));
+      expect(JSON.parse(newJson).$attrs.color).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100] end");
       done();
     });
@@ -253,12 +248,9 @@ export default function progressSecTest() {
       let newJson = getInspectorByKey('progress_capsule_default');
       let newJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefault: ESObject = JSON.parse(newJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(newJson).$attrs.capsuleStyle.borderWidth).assertEqual(JSON.parse(newJsonDefault).$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100] end");
       done();
     });
@@ -275,12 +267,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_number = 3;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_number": progress_capsule_borderWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -293,10 +285,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("3.00vp");
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual("3.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200] end");
       done();
     });
@@ -313,12 +304,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_string = '3vp';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_string": progress_capsule_borderWidth_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -331,10 +322,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("3.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual("3.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300] end");
       done();
     });
@@ -356,11 +347,11 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_resource');
       let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objJudge: ESObject = JSON.parse(strJsonJudge);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objJudge.$attrs.capsuleStyle.borderWidth);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual(JSON.parse(strJsonJudge).$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400] end");
       done();
     });
@@ -377,12 +368,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_string = '9px';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_string": progress_capsule_borderWidth_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -395,10 +386,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("9.00px");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual("9.00px");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500] end");
       done();
     });
@@ -415,12 +406,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_string = '9vp';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_string": progress_capsule_borderWidth_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -433,10 +424,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("9.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual("9.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600] end");
       done();
     });
@@ -453,12 +444,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_string = '9fp';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_string": progress_capsule_borderWidth_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -471,10 +462,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("9.00fp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual("9.00fp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700] end");
       done();
     });
@@ -491,12 +482,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_string = '9lpx';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_string": progress_capsule_borderWidth_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -509,10 +500,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("9.00lpx");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual("9.00lpx");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800] end");
       done();
     });
@@ -529,12 +520,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_number = 0;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_number": progress_capsule_borderWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -547,10 +538,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("0.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual("0.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900] end");
       done();
     });
@@ -567,12 +558,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_number = -10;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_number": progress_capsule_borderWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -586,11 +577,10 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual(JSON.parse(strJsonDefault).$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000] end");
       done();
     });
@@ -607,12 +597,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_number = 10000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_number": progress_capsule_borderWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -625,10 +615,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("10000.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual("10000.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100] end");
       done();
     });
@@ -645,12 +635,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_number = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_number": progress_capsule_borderWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -664,11 +654,11 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual(JSON.parse(strJsonDefault).$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200] end");
       done();
     });
@@ -685,12 +675,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderWidth_number = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderWidth_number": progress_capsule_borderWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -704,11 +694,11 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderWidth).assertEqual(JSON.parse(strJsonDefault).$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300] end");
       done();
     });
@@ -725,11 +715,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(newJson));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(newJsonDefault));
 
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefault: ESObject = JSON.parse(newJsonDefault);
-
-      let strColor = JSON.stringify(objDefault.$attrs.capsuleStyle.borderColor);
-      let strOpicity = JSON.stringify(objDefault.$attrs.margin);
+      let strColor = JSON.stringify(JSON.parse(newJsonDefault).$attrs.capsuleStyle.borderColor);
+      let strOpicity = JSON.stringify(JSON.parse(newJsonDefault).$attrs.margin);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + strColor);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + strOpicity);
 
@@ -738,16 +725,16 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + strColor_2);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + strOpicity_2);
 
-      let calculatedOpicaty = Number.parseInt(strColor_2) * Number(strOpicity_2);
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(calculatedOpicaty));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + calculatedOpicaty.toString(16));
 
       let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + finalResult);
 
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.borderColor));
+      expect(JSON.parse(newJson).$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100] end");
       done();
     });
@@ -764,12 +751,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderColor_number = 0xFFFF0000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderColor_number": progress_capsule_borderColor_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -782,10 +769,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#FFFF0000");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderColor).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200] end");
       done();
     });
@@ -802,12 +789,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderColor_string = '#FFFF9535';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderColor_string": progress_capsule_borderColor_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -820,10 +807,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#FFFF9535");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderColor).assertEqual("#FFFF9535");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300] end");
       done();
     });
@@ -840,12 +827,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderColor_color = Color.Red;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderColor_color": progress_capsule_borderColor_color
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -858,10 +845,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#FFFF0000");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderColor).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400] end");
       done();
     });
@@ -885,11 +872,11 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_resource');
       let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objJudge: ESObject = JSON.parse(strJsonJudge);
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(objJudge.$attrs.capsuleStyle.borderColor);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderColor).assertEqual(JSON.parse(strJsonJudge).$attrs.capsuleStyle.borderColor);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500] end");
       done();
     });
@@ -906,12 +893,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderColor_string = 'abcdefghijk';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderColor_string": progress_capsule_borderColor_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -927,11 +914,11 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(strJson))
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(strJsonDefault));
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
+      
+      
 
-      let strColor = JSON.stringify(objDefault.$attrs.capsuleStyle.borderColor);
-      let strOpicity = JSON.stringify(objDefault.$attrs.margin);
+      let strColor = JSON.stringify(JSON.parse(strJsonDefault).$attrs.capsuleStyle.borderColor);
+      let strOpicity = JSON.stringify(JSON.parse(strJsonDefault).$attrs.margin);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + strColor);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + strOpicity);
 
@@ -940,16 +927,16 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + strColor_2);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + strOpicity_2);
 
-      let calculatedOpicaty = Number.parseInt(strColor_2) * Number(strOpicity_2);
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(calculatedOpicaty));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + calculatedOpicaty.toString(16));
 
       let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + finalResult);
 
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600] end");
       done();
     });
@@ -966,12 +953,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderColor_string = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderColor_string": progress_capsule_borderColor_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -987,11 +974,11 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(strJson))
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(strJsonDefault));
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
+      
+      
 
-      let strColor = JSON.stringify(objDefault.$attrs.capsuleStyle.borderColor);
-      let strOpicity = JSON.stringify(objDefault.$attrs.margin);
+      let strColor = JSON.stringify(JSON.parse(strJsonDefault).$attrs.capsuleStyle.borderColor);
+      let strOpicity = JSON.stringify(JSON.parse(strJsonDefault).$attrs.margin);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + strColor);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + strOpicity);
 
@@ -1000,16 +987,16 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + strColor_2);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + strOpicity_2);
 
-      let calculatedOpicaty = Number.parseInt(strColor_2) * Number(strOpicity_2);
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(calculatedOpicaty));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + calculatedOpicaty.toString(16));
 
       let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + finalResult);
 
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700] end");
       done();
     });
@@ -1026,12 +1013,12 @@ export default function progressSecTest() {
 
       let progress_capsule_borderColor_string = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_borderColor_string": progress_capsule_borderColor_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1047,11 +1034,11 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(strJson))
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(strJsonDefault));
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
+      
+      
 
-      let strColor = JSON.stringify(objDefault.$attrs.capsuleStyle.borderColor);
-      let strOpicity = JSON.stringify(objDefault.$attrs.margin);
+      let strColor = JSON.stringify(JSON.parse(strJsonDefault).$attrs.capsuleStyle.borderColor);
+      let strOpicity = JSON.stringify(JSON.parse(strJsonDefault).$attrs.margin);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + strColor);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + strOpicity);
 
@@ -1060,16 +1047,16 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + strColor_2);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + strOpicity_2);
 
-      let calculatedOpicaty = Number.parseInt(strColor_2) * Number(strOpicity_2);
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(calculatedOpicaty));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + calculatedOpicaty.toString(16));
 
       let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + finalResult);
 
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.borderColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800] end");
       done();
     });
@@ -1084,13 +1071,10 @@ export default function progressSecTest() {
       let newJson = getInspectorByKey('progress_capsule_default');
       let newJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefault: ESObject = JSON.parse(newJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(newJson).$attrs.capsuleStyle.font.size).assertEqual(JSON.parse(newJsonDefault).$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100] end");
       done();
     });
@@ -1107,12 +1091,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_number = 16;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_number": progress_capsule_fontSize_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1125,11 +1109,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("16.00fp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual("16.00fp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200] end");
       done();
     });
@@ -1146,12 +1130,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_string = '16vp';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_string": progress_capsule_fontSize_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1164,11 +1148,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("16.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual("16.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300] end");
       done();
     });
@@ -1192,12 +1176,10 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_resource');
       let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objJudge: ESObject = JSON.parse(strJsonJudge);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objJudge.$attrs.capsuleStyle.font.size);
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual(JSON.parse(strJsonJudge).$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400] end");
       done();
     });
@@ -1214,12 +1196,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_string = '18px';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_string": progress_capsule_fontSize_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1232,11 +1214,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("18.00px");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual("18.00px");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500] end");
       done();
     });
@@ -1253,12 +1235,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_string = '18vp';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_string": progress_capsule_fontSize_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1271,11 +1253,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("18.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual("18.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600] end");
       done();
     });
@@ -1292,12 +1274,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_string = '18fp';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_string": progress_capsule_fontSize_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1310,11 +1292,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("18.00fp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual("18.00fp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700] end");
       done();
     });
@@ -1331,12 +1313,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_string = '18lpx';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_string": progress_capsule_fontSize_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1349,11 +1331,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("18.00lpx");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual("18.00lpx");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800] end");
       done();
     });
@@ -1370,12 +1352,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_number = 0;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_number": progress_capsule_fontSize_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1388,11 +1370,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("0.00fp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual("0.00fp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900] end");
       done();
     });
@@ -1409,12 +1391,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_number = -10;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_number": progress_capsule_fontSize_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1428,12 +1410,12 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual(JSON.parse(strJsonDefault).$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000] end");
       done();
     });
@@ -1450,12 +1432,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_number = 10000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_number": progress_capsule_fontSize_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1468,11 +1450,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("10000.00fp");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual("10000.00fp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100] end");
       done();
     });
@@ -1489,12 +1471,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_number = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_number": progress_capsule_fontSize_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1508,12 +1490,12 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual(JSON.parse(strJsonDefault).$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200] end");
       done();
     });
@@ -1530,12 +1512,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontSize_number = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontSize_number": progress_capsule_fontSize_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1549,12 +1531,12 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_number');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.size));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.size).assertEqual(JSON.parse(strJsonDefault).$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300] end");
       done();
     });
@@ -1568,12 +1550,10 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(newJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100] end");
       done();
     });
@@ -1590,12 +1570,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_number = 700;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_number": progress_capsule_fontWeight_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1608,11 +1588,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("700");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("700");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200] end");
       done();
     });
@@ -1629,12 +1609,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_string = '700';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_string": progress_capsule_fontWeight_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1647,11 +1627,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("700");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("700");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300] end");
       done();
     });
@@ -1668,12 +1648,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_fontWeight = FontWeight.Lighter;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_fontWeight": progress_capsule_fontWeight_fontWeight
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1686,11 +1666,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Lighter");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Lighter");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400] end");
       done();
     });
@@ -1707,12 +1687,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_fontWeight = FontWeight.Normal;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_fontWeight": progress_capsule_fontWeight_fontWeight
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1725,11 +1705,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500] end");
       done();
     });
@@ -1746,12 +1726,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_fontWeight = FontWeight.Regular;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_fontWeight": progress_capsule_fontWeight_fontWeight
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1764,11 +1744,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Regular");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Regular");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600] end");
       done();
     });
@@ -1785,12 +1765,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_fontWeight = FontWeight.Medium;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_fontWeight": progress_capsule_fontWeight_fontWeight
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1803,11 +1783,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Medium");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Medium");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700] end");
       done();
     });
@@ -1824,12 +1804,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_fontWeight = FontWeight.Bold;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_fontWeight": progress_capsule_fontWeight_fontWeight
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1842,11 +1822,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Bold");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Bold");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800] end");
       done();
     });
@@ -1863,12 +1843,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_fontWeight = FontWeight.Bolder;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_fontWeight": progress_capsule_fontWeight_fontWeight
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1881,11 +1861,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Bolder");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Bolder");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900] end");
       done();
     });
@@ -1902,12 +1882,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_number = 0;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_number": progress_capsule_fontWeight_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1920,11 +1900,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000] end");
       done();
     });
@@ -1941,12 +1921,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_number = -10;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_number": progress_capsule_fontWeight_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1959,11 +1939,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100] end");
       done();
     });
@@ -1980,12 +1960,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_number = 10000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_number": progress_capsule_fontWeight_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1998,11 +1978,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200] end");
       done();
     });
@@ -2019,12 +1999,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_number = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_number": progress_capsule_fontWeight_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2037,11 +2017,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300] end");
       done();
     });
@@ -2058,12 +2038,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontWeight_number = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontWeight_number": progress_capsule_fontWeight_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2076,11 +2056,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.weight));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400] end");
       done();
     });
@@ -2094,12 +2074,10 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.style));
-      expect(obj.$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.font.style));
+      expect(JSON.parse(newJson).$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100] end");
       done();
     });
@@ -2116,12 +2094,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontStyle_fontStyle = FontStyle.Italic;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontStyle_fontStyle": progress_capsule_fontStyle_fontStyle
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2134,11 +2112,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.style));
-      expect(obj.$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Italic");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.style));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Italic");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200] end");
       done();
     });
@@ -2155,12 +2133,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontStyle_fontStyle = FontStyle.Normal;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontStyle_fontStyle": progress_capsule_fontStyle_fontStyle
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2173,11 +2151,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.style));
-      expect(obj.$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.style));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300] end");
       done();
     });
@@ -2194,12 +2172,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontStyle_fontStyle = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontStyle_fontStyle": progress_capsule_fontStyle_fontStyle
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2212,11 +2190,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.style));
-      expect(obj.$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.style));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400] end");
       done();
     });
@@ -2233,12 +2211,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontStyle_fontStyle = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontStyle_fontStyle": progress_capsule_fontStyle_fontStyle
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2251,11 +2229,11 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.style));
-      expect(obj.$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.font.style));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500] end");
       done();
     });
@@ -2270,12 +2248,9 @@ export default function progressSecTest() {
       let newJson = getInspectorByKey('progress_capsule_default');
       let newJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefault: ESObject = JSON.parse(newJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.fontColor));
+      expect(JSON.parse(newJson).$attrs.capsuleStyle.fontColor).assertEqual(JSON.parse(newJsonDefault).$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100] end");
       done();
     });
@@ -2292,12 +2267,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontColor_number = 0xFFFF0000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontColor_number": progress_capsule_fontColor_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2310,10 +2285,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FFFF0000");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.fontColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.fontColor).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200] end");
       done();
     });
@@ -2330,12 +2305,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontColor_string = '#FFFF9535';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontColor_string": progress_capsule_fontColor_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2348,10 +2323,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FFFF9535");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.fontColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.fontColor).assertEqual("#FFFF9535");
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300] end");
       done();
     });
@@ -2368,12 +2343,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontColor_color = Color.Red;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontColor_color": progress_capsule_fontColor_color
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2386,10 +2361,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_enum');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FFFF0000");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.fontColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.fontColor).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400] end");
       done();
     });
@@ -2414,11 +2389,11 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_resource');
       let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objJudge: ESObject = JSON.parse(strJsonJudge);
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objJudge.$attrs.capsuleStyle.fontColor);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.fontColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.fontColor).assertEqual(JSON.parse(strJsonJudge).$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500] end");
       done();
     });
@@ -2435,12 +2410,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontColor_string = 'abcdefghijk';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontColor_string": progress_capsule_fontColor_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2454,11 +2429,11 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_string');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.fontColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.fontColor).assertEqual(JSON.parse(strJsonDefault).$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600] end");
       done();
     });
@@ -2475,12 +2450,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontColor_string = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontColor_string": progress_capsule_fontColor_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2494,11 +2469,11 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_string');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.fontColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.fontColor).assertEqual(JSON.parse(strJsonDefault).$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700] end");
       done();
     });
@@ -2515,12 +2490,12 @@ export default function progressSecTest() {
 
       let progress_capsule_fontColor_string = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_fontColor_string": progress_capsule_fontColor_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2534,11 +2509,11 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_capsule_string');
       let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefault: ESObject = JSON.parse(strJsonDefault);
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.fontColor));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.fontColor).assertEqual(JSON.parse(strJsonDefault).$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800] end");
       done();
     });
@@ -2552,11 +2527,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0100] start");
       let newJson = getInspectorByKey('progress_capsule_showDefaultPercentage_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.content));
-      expect(obj.$attrs.capsuleStyle.content).assertEqual("60%");
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.content));
+      expect(JSON.parse(newJson).$attrs.capsuleStyle.content).assertEqual("60%");
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0100] end");
       done();
     });
@@ -2573,12 +2546,12 @@ export default function progressSecTest() {
 
       let progress_capsule_content_string = '下载';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_content_string": progress_capsule_content_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2591,10 +2564,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.content));
-      expect(obj.$attrs.capsuleStyle.content).assertEqual("下载");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.content));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.content).assertEqual("下载");
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0200] end");
       done();
     });
@@ -2611,12 +2584,12 @@ export default function progressSecTest() {
 
       let progress_capsule_content_string = '继续';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_content_string": progress_capsule_content_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2629,10 +2602,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.content));
-      expect(obj.$attrs.capsuleStyle.content).assertEqual("继续");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.content));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.content).assertEqual("继续");
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0300] end");
       done();
     });
@@ -2649,12 +2622,12 @@ export default function progressSecTest() {
 
       let progress_capsule_content_string = '安装中';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_content_string": progress_capsule_content_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2667,10 +2640,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.content));
-      expect(obj.$attrs.capsuleStyle.content).assertEqual("安装中");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.content));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.content).assertEqual("安装中");
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0400] end");
       done();
     });
@@ -2687,12 +2660,12 @@ export default function progressSecTest() {
 
       let progress_capsule_content_string = '打开';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_content_string": progress_capsule_content_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2705,10 +2678,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.content));
-      expect(obj.$attrs.capsuleStyle.content).assertEqual("打开");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.content));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.content).assertEqual("打开");
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0500] end");
       done();
     });
@@ -2725,12 +2698,12 @@ export default function progressSecTest() {
 
       let progress_capsule_content_string = '';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_content_string": progress_capsule_content_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2743,10 +2716,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0600]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.content));
-      expect(obj.$attrs.capsuleStyle.content).assertEqual("");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.content));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.content).assertEqual("");
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0600] end");
       done();
     });
@@ -2764,13 +2737,13 @@ export default function progressSecTest() {
       let progress_capsule_content_string = null;
       let progress_capsule_showDefaultPercentage_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_content_string": progress_capsule_content_string,
             "progress_capsule_showDefaultPercentage_boolean": progress_capsule_showDefaultPercentage_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2783,10 +2756,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0700]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.content));
-      expect(obj.$attrs.capsuleStyle.content).assertEqual("60%");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.content));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.content).assertEqual("60%");
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0700] end");
       done();
     });
@@ -2804,13 +2777,13 @@ export default function progressSecTest() {
       let progress_capsule_content_string = undefined;
       let progress_capsule_showDefaultPercentage_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_content_string": progress_capsule_content_string,
             "progress_capsule_showDefaultPercentage_boolean": progress_capsule_showDefaultPercentage_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2823,10 +2796,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_string');
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0800]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_Content_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.content));
-      expect(obj.$attrs.capsuleStyle.content).assertEqual("60%");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_Content_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.content));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.content).assertEqual("60%");
       console.info("[ArkUI_Stage_Progress_Capsule_Content_0800] end");
       done();
     });
@@ -2840,11 +2813,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
-      expect(obj.$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.enableScanEffect));
+      expect(JSON.parse(newJson).$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100] end");
       done();
     });
@@ -2861,12 +2832,12 @@ export default function progressSecTest() {
 
       let progress_capsule_enableScanEffect_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_enableScanEffect_boolean": progress_capsule_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2879,10 +2850,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
-      expect(obj.$attrs.capsuleStyle.enableScanEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.enableScanEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200] end");
       done();
     });
@@ -2899,12 +2870,12 @@ export default function progressSecTest() {
 
       let progress_capsule_enableScanEffect_boolean = false;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_enableScanEffect_boolean": progress_capsule_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2917,10 +2888,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
-      expect(obj.$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300] end");
       done();
     });
@@ -2937,12 +2908,12 @@ export default function progressSecTest() {
 
       let progress_capsule_enableScanEffect_boolean = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_enableScanEffect_boolean": progress_capsule_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2955,10 +2926,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
-      expect(obj.$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400] end");
       done();
     });
@@ -2975,12 +2946,12 @@ export default function progressSecTest() {
 
       let progress_capsule_enableScanEffect_boolean = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_enableScanEffect_boolean": progress_capsule_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -2993,10 +2964,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
-      expect(obj.$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500] end");
       done();
     });
@@ -3010,11 +2981,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
-      expect(obj.$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.capsuleStyle.showDefaultPercentage));
+      expect(JSON.parse(newJson).$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100] end");
       done();
     });
@@ -3031,12 +3000,12 @@ export default function progressSecTest() {
 
       let progress_capsule_showDefaultPercentage_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_showDefaultPercentage_boolean": progress_capsule_showDefaultPercentage_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3049,10 +3018,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
-      expect(obj.$attrs.capsuleStyle.showDefaultPercentage).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.showDefaultPercentage));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.showDefaultPercentage).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200] end");
       done();
     });
@@ -3069,12 +3038,12 @@ export default function progressSecTest() {
 
       let progress_capsule_showDefaultPercentage_boolean = false;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_showDefaultPercentage_boolean": progress_capsule_showDefaultPercentage_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3087,10 +3056,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
-      expect(obj.$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.showDefaultPercentage));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300] end");
       done();
     });
@@ -3107,12 +3076,12 @@ export default function progressSecTest() {
 
       let progress_capsule_showDefaultPercentage_boolean = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_showDefaultPercentage_boolean": progress_capsule_showDefaultPercentage_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3125,10 +3094,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
-      expect(obj.$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.showDefaultPercentage));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400] end");
       done();
     });
@@ -3145,12 +3114,12 @@ export default function progressSecTest() {
 
       let progress_capsule_showDefaultPercentage_boolean = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_showDefaultPercentage_boolean": progress_capsule_showDefaultPercentage_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3163,10 +3132,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
-      expect(obj.$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.capsuleStyle.showDefaultPercentage));
+      expect(JSON.parse(strJson).$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500] end");
       done();
     });
@@ -3182,16 +3151,12 @@ export default function progressSecTest() {
       let newJson = getInspectorByKey('progress_ring_default');
       let newJsonDefault = getInspectorByKey('progress_ring_default_default');
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefault: ESObject = JSON.parse(newJsonDefault);
-
-      let strColor = JSON.stringify(objDefault.$attrs.backgroundColor);
+      let strColor = JSON.stringify(JSON.parse(newJsonDefault).$attrs.backgroundColor);
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + strColor);
 
       let finalResult = "#08" + strColor.substr(4, 6);
-      console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.backgroundColor));
+      expect(JSON.parse(newJson).$attrs.backgroundColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100] end");
       done();
     });
@@ -3205,11 +3170,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0100] start");
       let newJson = getInspectorByKey('progress_ring_default');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0100]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0100]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("4.00vp");
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(newJson).$attrs.ringStyle.strokeWidth).assertEqual("4.00vp");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0100] end");
       done();
     });
@@ -3226,12 +3189,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_number = 10;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_number": progress_ring_strokeWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3244,10 +3207,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("10.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("10.00vp");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200] end");
       done();
     });
@@ -3264,12 +3227,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_string = '10vp';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_string": progress_ring_strokeWidth_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3282,10 +3245,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_string');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("10.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("10.00vp");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300] end");
       done();
     });
@@ -3310,11 +3273,11 @@ export default function progressSecTest() {
       let strJson = getInspectorByKey('progress_ring_resource');
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      let objJudge: ESObject = JSON.parse(strJsonJudge);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual(objJudge.$attrs.ringStyle.strokeWidth);
+      
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual(JSON.parse(strJsonJudge).$attrs.ringStyle.strokeWidth);
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400] end");
       done();
     });
@@ -3331,12 +3294,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_string = '20px';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_string": progress_ring_strokeWidth_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3349,10 +3312,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_string');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("20.00px");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("20.00px");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500] end");
       done();
     });
@@ -3369,12 +3332,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_string = '20vp';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_string": progress_ring_strokeWidth_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3387,10 +3350,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_string');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("20.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("20.00vp");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600] end");
       done();
     });
@@ -3407,12 +3370,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_string = '20fp';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_string": progress_ring_strokeWidth_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3425,10 +3388,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_string');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("20.00fp");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("20.00fp");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700] end");
       done();
     });
@@ -3445,12 +3408,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_string = '20lpx';
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_string": progress_ring_strokeWidth_string
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3463,10 +3426,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_string');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("20.00lpx");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("20.00lpx");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800] end");
       done();
     });
@@ -3483,12 +3446,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_number = 0;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_number": progress_ring_strokeWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3501,10 +3464,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("4.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("4.00vp");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900] end");
       done();
     });
@@ -3521,12 +3484,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_number = -10;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_number": progress_ring_strokeWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3539,10 +3502,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("4.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("4.00vp");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000] end");
       done();
     });
@@ -3559,12 +3522,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_number = 10000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_number": progress_ring_strokeWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3577,10 +3540,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("10000.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("10000.00vp");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100] end");
       done();
     });
@@ -3597,12 +3560,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_number = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_number": progress_ring_strokeWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3615,10 +3578,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("4.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("4.00vp");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200] end");
       done();
     });
@@ -3635,12 +3598,12 @@ export default function progressSecTest() {
 
       let progress_ring_strokeWidth_number = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_strokeWidth_number": progress_ring_strokeWidth_number
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3653,10 +3616,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("4.00vp");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.strokeWidth));
+      expect(JSON.parse(strJson).$attrs.ringStyle.strokeWidth).assertEqual("4.00vp");
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300] end");
       done();
     });
@@ -3671,10 +3634,9 @@ export default function progressSecTest() {
       let newJson = getInspectorByKey('progress_ring_default');
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0100]: " + JSON.stringify(newJson));
 
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0100]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0100]: " + JSON.stringify(obj.$attrs.ringStyle.shadow));
-      expect(obj.$attrs.ringStyle.shadow).assertEqual("false");
+      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.ringStyle.shadow));
+      expect(JSON.parse(newJson).$attrs.ringStyle.shadow).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0100] end");
       done();
     });
@@ -3691,12 +3653,12 @@ export default function progressSecTest() {
 
       let progress_ring_shadow_bool = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_shadow_bool": progress_ring_shadow_bool
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3709,10 +3671,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0200]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0200]: " + JSON.stringify(obj.$attrs.ringStyle.shadow));
-      expect(obj.$attrs.ringStyle.shadow).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.shadow));
+      expect(JSON.parse(strJson).$attrs.ringStyle.shadow).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0200] end");
       done();
     });
@@ -3729,12 +3691,12 @@ export default function progressSecTest() {
 
       let progress_ring_shadow_bool = false;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_shadow_bool": progress_ring_shadow_bool
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3747,10 +3709,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0300]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0300]: " + JSON.stringify(obj.$attrs.ringStyle.shadow));
-      expect(obj.$attrs.ringStyle.shadow).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.shadow));
+      expect(JSON.parse(strJson).$attrs.ringStyle.shadow).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0300] end");
       done();
     });
@@ -3767,12 +3729,12 @@ export default function progressSecTest() {
 
       let progress_ring_shadow_bool = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_shadow_bool": progress_ring_shadow_bool
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3785,10 +3747,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0400]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0400]: " + JSON.stringify(obj.$attrs.ringStyle.shadow));
-      expect(obj.$attrs.ringStyle.shadow).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.shadow));
+      expect(JSON.parse(strJson).$attrs.ringStyle.shadow).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0400] end");
       done();
     });
@@ -3805,12 +3767,12 @@ export default function progressSecTest() {
 
       let progress_ring_shadow_bool = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_shadow_bool": progress_ring_shadow_bool
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3823,10 +3785,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0500]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0500]: " + JSON.stringify(obj.$attrs.ringStyle.shadow));
-      expect(obj.$attrs.ringStyle.shadow).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_Shadow_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.shadow));
+      expect(JSON.parse(strJson).$attrs.ringStyle.shadow).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_Shadow_0500] end");
       done();
     });
@@ -3840,11 +3802,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Status_0100] start");
       let newJson = getInspectorByKey('progress_ring_default');
       console.info("[ArkUI_Stage_Progress_Ring_Status_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Status_0100]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_Status_0100]: " + JSON.stringify(obj.$attrs.ringStyle.status));
-      expect(obj.$attrs.ringStyle.status).assertEqual("ProgressStatus.PROGRESSING");
+      console.info("[ArkUI_Stage_Progress_Ring_Status_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_Status_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.ringStyle.status));
+      expect(JSON.parse(newJson).$attrs.ringStyle.status).assertEqual("ProgressStatus.PROGRESSING");
       console.info("[ArkUI_Stage_Progress_Ring_Status_0100] end");
       done();
     });
@@ -3861,12 +3821,12 @@ export default function progressSecTest() {
 
       let progress_ring_status_progressStatus = ProgressStatus.LOADING;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_status_progressStatus": progress_ring_status_progressStatus
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3879,10 +3839,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Status_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Status_0200]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_Status_0200]: " + JSON.stringify(obj.$attrs.ringStyle.status));
-      expect(obj.$attrs.ringStyle.status).assertEqual("ProgressStatus.LOADING");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Status_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_Status_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.status));
+      expect(JSON.parse(strJson).$attrs.ringStyle.status).assertEqual("ProgressStatus.LOADING");
       console.info("[ArkUI_Stage_Progress_Ring_Status_0200] end");
       done();
     });
@@ -3899,12 +3859,12 @@ export default function progressSecTest() {
 
       let progress_ring_status_progressStatus = ProgressStatus.PROGRESSING;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_status_progressStatus": progress_ring_status_progressStatus
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3917,10 +3877,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Status_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Status_0300]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_Status_0300]: " + JSON.stringify(obj.$attrs.ringStyle.status));
-      expect(obj.$attrs.ringStyle.status).assertEqual("ProgressStatus.PROGRESSING");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Status_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_Status_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.status));
+      expect(JSON.parse(strJson).$attrs.ringStyle.status).assertEqual("ProgressStatus.PROGRESSING");
       console.info("[ArkUI_Stage_Progress_Ring_Status_0300] end");
       done();
     });
@@ -3937,12 +3897,12 @@ export default function progressSecTest() {
 
       let progress_ring_status_progressStatus = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_status_progressStatus": progress_ring_status_progressStatus
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3955,10 +3915,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Status_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Status_0400]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_Status_0400]: " + JSON.stringify(obj.$attrs.ringStyle.status));
-      expect(obj.$attrs.ringStyle.status).assertEqual("ProgressStatus.PROGRESSING");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Status_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_Status_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.status));
+      expect(JSON.parse(strJson).$attrs.ringStyle.status).assertEqual("ProgressStatus.PROGRESSING");
       console.info("[ArkUI_Stage_Progress_Ring_Status_0400] end");
       done();
     });
@@ -3975,12 +3935,12 @@ export default function progressSecTest() {
 
       let progress_ring_status_progressStatus = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_status_progressStatus": progress_ring_status_progressStatus
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -3993,10 +3953,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Status_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Status_0500]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_Status_0500]: " + JSON.stringify(obj.$attrs.ringStyle.status));
-      expect(obj.$attrs.ringStyle.status).assertEqual("ProgressStatus.PROGRESSING");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Status_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_Status_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.status));
+      expect(JSON.parse(strJson).$attrs.ringStyle.status).assertEqual("ProgressStatus.PROGRESSING");
       console.info("[ArkUI_Stage_Progress_Ring_Status_0500] end");
       done();
     });
@@ -4012,14 +3972,9 @@ export default function progressSecTest() {
       let newJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
       let newJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(newJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(newJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-
-      console.info("[ArkUI_Stage_Progress_Ring_Color_0100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      let finalResult = "[{\"color\":\"" + JSON.parse(newJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(newJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      console.info("[ArkUI_Stage_Progress_Ring_Color_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.progressGradientColor));
+      expect(JSON.parse(newJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_0100] end");
       done();
     });
@@ -4036,12 +3991,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_purity = 0xFFFF0000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_purity": progress_ring_color_purity
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -4054,9 +4009,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_0200]: " + JSON.stringify(obj.$attrs.color));
-      expect(obj.$attrs.color).assertEqual("#FFFF0000");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.color));
+      expect(JSON.parse(strJson).$attrs.color).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Ring_Color_0200] end");
       done();
     });
@@ -4083,9 +4038,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_0300]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF0000\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_0300] end");
       done();
@@ -4114,9 +4069,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_linear_string');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_0400]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF9A35\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_0400] end");
       done();
@@ -4144,9 +4099,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_linear_color');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_0500]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF0000\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_0500] end");
       done();
@@ -4176,12 +4131,12 @@ export default function progressSecTest() {
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0600]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objJudge: ESObject = JSON.parse(strJsonJudge);
-      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
+      
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonJudge).$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonJudge).$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_0600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_Color_0600]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_0600] end");
       done();
     });
@@ -4198,12 +4153,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_linear_null = null
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_linear_null": progress_ring_color_linear_null
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -4218,14 +4173,9 @@ export default function progressSecTest() {
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
       let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0700]: " + JSON.stringify(strJson))
-
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-
-      console.info("[ArkUI_Stage_Progress_Ring_Color_0700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      console.info("[ArkUI_Stage_Progress_Ring_Color_0700]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_0700] end");
       done();
     });
@@ -4242,12 +4192,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_linear_undefined = undefined
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_linear_undefined": progress_ring_color_linear_undefined
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -4262,14 +4212,9 @@ export default function progressSecTest() {
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
       let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0800]: " + JSON.stringify(strJson))
-
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-
-      console.info("[ArkUI_Stage_Progress_Ring_Color_0800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      console.info("[ArkUI_Stage_Progress_Ring_Color_0800]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_0800] end");
       done();
     });
@@ -4285,14 +4230,9 @@ export default function progressSecTest() {
       let newJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
       let newJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(newJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(newJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-
-      console.info("[ArkUI_Stage_Progress_Ring_Color_1100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      let finalResult = "[{\"color\":\"" + JSON.parse(newJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(newJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      console.info("[ArkUI_Stage_Progress_Ring_Color_1100]: " + JSON.stringify(JSON.parse(newJson).$attrs.progressGradientColor));
+      expect(JSON.parse(newJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_1100] end");
       done();
     });
@@ -4309,12 +4249,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_purity = 0xFFFF0000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_purity": progress_ring_color_purity
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -4327,9 +4267,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_1200]: " + JSON.stringify(obj.$attrs.color));
-      expect(obj.$attrs.color).assertEqual("#FFFF0000");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_1200]: " + JSON.stringify(JSON.parse(strJson).$attrs.color));
+      expect(JSON.parse(strJson).$attrs.color).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Ring_Color_1200] end");
       done();
     });
@@ -4357,9 +4297,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_1300]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_1300]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF0000\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_1300] end");
       done();
@@ -4387,9 +4327,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_linear_string');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_1400]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_1400]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF9A35\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_1400] end");
       done();
@@ -4417,9 +4357,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_linear_color');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_1500]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_1500]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF0000\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_1500] end");
       done();
@@ -4450,12 +4390,12 @@ export default function progressSecTest() {
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1600]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objJudge: ESObject = JSON.parse(strJsonJudge);
-      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
+      
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonJudge).$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonJudge).$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_1600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_Color_1600]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_1600] end");
       done();
     });
@@ -4472,12 +4412,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_linear_null = null
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_linear_null": progress_ring_color_linear_null
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -4492,14 +4432,9 @@ export default function progressSecTest() {
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
       let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1700]: " + JSON.stringify(strJson))
-
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-
-      console.info("[ArkUI_Stage_Progress_Ring_Color_1700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      console.info("[ArkUI_Stage_Progress_Ring_Color_1700]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_1700] end");
       done();
     });
@@ -4516,12 +4451,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_linear_undefined = undefined
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_linear_undefined": progress_ring_color_linear_undefined
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -4536,14 +4471,9 @@ export default function progressSecTest() {
       let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
       let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1800]: " + JSON.stringify(strJson))
-
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-
-      console.info("[ArkUI_Stage_Progress_Ring_Color_1800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      console.info("[ArkUI_Stage_Progress_Ring_Color_1800]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_1800] end");
       done();
     });
@@ -4559,14 +4489,9 @@ export default function progressSecTest() {
       let newJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
       let newJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(newJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(newJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-
-      console.info("[ArkUI_Stage_Progress_Ring_Color_2100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      let finalResult = "[{\"color\":\"" + JSON.parse(newJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(newJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      console.info("[ArkUI_Stage_Progress_Ring_Color_2100]: " + JSON.stringify(JSON.parse(newJson).$attrs.progressGradientColor));
+      expect(JSON.parse(newJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_2100] end");
       done();
     });
@@ -4583,12 +4508,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_purity = 0xFFFF0000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_purity": progress_ring_color_purity
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -4601,9 +4526,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_2200]: " + JSON.stringify(obj.$attrs.color));
-      expect(obj.$attrs.color).assertEqual("#FFFF0000");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_2200]: " + JSON.stringify(JSON.parse(strJson).$attrs.color));
+      expect(JSON.parse(strJson).$attrs.color).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Ring_Color_2200] end");
       done();
     });
@@ -4631,9 +4556,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_2300]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_2300]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF0000\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_2300] end");
       done();
@@ -4662,9 +4587,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_string');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_2400]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_2400]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF9A35\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_2400] end");
       done();
@@ -4693,9 +4618,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_color');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_2500]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_2500]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF0000\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_2500] end");
       done();
@@ -4728,12 +4653,12 @@ export default function progressSecTest() {
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2600]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objJudge: ESObject = JSON.parse(strJsonJudge);
-      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
+      
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonJudge).$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonJudge).$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_2600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_Color_2600]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_2600] end");
       done();
     });
@@ -4750,12 +4675,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_linear_null = null
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_linear_null": progress_ring_color_linear_null
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -4771,13 +4696,11 @@ export default function progressSecTest() {
       let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2700]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_2700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_Color_2700]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_2700] end");
       done();
     });
@@ -4794,12 +4717,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_linear_undefined = undefined
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_linear_undefined": progress_ring_color_linear_undefined
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -4815,13 +4738,12 @@ export default function progressSecTest() {
       let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2800]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_2800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
+      console.info("[ArkUI_Stage_Progress_Ring_Color_2800]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_2800] end");
       done();
     });
@@ -4837,14 +4759,10 @@ export default function progressSecTest() {
       let newJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
       let newJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3100]: " + JSON.stringify(newJson));
+      let finalResult = "[{\"color\":\"" + JSON.parse(newJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(newJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(newJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(newJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-
-      console.info("[ArkUI_Stage_Progress_Ring_Color_3100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_Color_3100]: " + JSON.stringify(JSON.parse(newJson).$attrs.progressGradientColor));
+      expect(JSON.parse(newJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_3100] end");
       done();
     });
@@ -4861,12 +4779,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_purity = 0xFFFF0000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_purity": progress_ring_color_purity
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -4879,9 +4797,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_3200]: " + JSON.stringify(obj.$attrs.color));
-      expect(obj.$attrs.color).assertEqual("#FFFF0000");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_3200]: " + JSON.stringify(JSON.parse(strJson).$attrs.color));
+      expect(JSON.parse(strJson).$attrs.color).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Ring_Color_3200] end");
       done();
     });
@@ -4910,9 +4828,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_3300]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_3300]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF0000\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_3300] end");
       done();
@@ -4942,9 +4860,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_string');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_3400]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_3400]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF9A35\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_3400] end");
       done();
@@ -4973,9 +4891,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_color');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_3500]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_3500]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF0000\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_3500] end");
       done();
@@ -5008,12 +4926,12 @@ export default function progressSecTest() {
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3600]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objJudge: ESObject = JSON.parse(strJsonJudge);
-      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
+      
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonJudge).$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonJudge).$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_3600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_Color_3600]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_3600] end");
       done();
     });
@@ -5030,12 +4948,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_linear_null = null
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_linear_null": progress_ring_color_linear_null
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5051,13 +4969,12 @@ export default function progressSecTest() {
       let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3700]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_3700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
+      console.info("[ArkUI_Stage_Progress_Ring_Color_3700]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_3700] end");
       done();
     });
@@ -5074,12 +4991,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_linear_undefined = undefined
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_linear_undefined": progress_ring_color_linear_undefined
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5095,13 +5012,12 @@ export default function progressSecTest() {
       let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3800]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_3800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
+      console.info("[ArkUI_Stage_Progress_Ring_Color_3800]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_3800] end");
       done();
     });
@@ -5118,13 +5034,10 @@ export default function progressSecTest() {
       let newJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4100]: " + JSON.stringify(newJson));
 
-      let obj: ESObject = JSON.parse(newJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(newJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(newJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult = "[{\"color\":\"" + JSON.parse(newJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(newJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_4100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_Color_4100]: " + JSON.stringify(JSON.parse(newJson).$attrs.progressGradientColor));
+      expect(JSON.parse(newJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_4100] end");
       done();
     });
@@ -5141,12 +5054,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_purity = 0xFFFF0000;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_purity": progress_ring_color_purity
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5159,9 +5072,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_color_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_4200]: " + JSON.stringify(obj.$attrs.color));
-      expect(obj.$attrs.color).assertEqual("#FFFF0000");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_4200]: " + JSON.stringify(JSON.parse(strJson).$attrs.color));
+      expect(JSON.parse(strJson).$attrs.color).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Ring_Color_4200] end");
       done();
     });
@@ -5189,9 +5102,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_4300]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_4300]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF0000\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_4300] end");
       done();
@@ -5219,9 +5132,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_string');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_4400]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_4400]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF9A35\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_4400] end");
       done();
@@ -5250,9 +5163,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_color');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_Color_4500]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor)
+      
+      console.info("[ArkUI_Stage_Progress_Ring_Color_4500]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor)
         .assertEqual("[{\"color\":\"#FFFF0000\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
       console.info("[ArkUI_Stage_Progress_Ring_Color_4500] end");
       done();
@@ -5283,12 +5196,12 @@ export default function progressSecTest() {
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4600]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objJudge: ESObject = JSON.parse(strJsonJudge);
-      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
+      
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonJudge).$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonJudge).$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_4600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_Color_4600]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_4600] end");
       done();
     });
@@ -5305,12 +5218,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_linear_null = null
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_linear_null": progress_ring_color_linear_null
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5326,13 +5239,11 @@ export default function progressSecTest() {
       let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4700]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_4700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_Color_4700]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_4700] end");
       done();
     });
@@ -5349,12 +5260,12 @@ export default function progressSecTest() {
 
       let progress_ring_color_linear_undefined = undefined
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_color_linear_undefined": progress_ring_color_linear_undefined
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5370,13 +5281,11 @@ export default function progressSecTest() {
       let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4800]: " + JSON.stringify(strJson))
 
-      let obj: ESObject = JSON.parse(strJson);
-      let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
-      let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      
+      let finalResult = "[{\"color\":\"" + JSON.parse(strJsonDefaultColorEnd).$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + JSON.parse(strJsonDefaultColorBegin).$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
-      console.info("[ArkUI_Stage_Progress_Ring_Color_4800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
+      console.info("[ArkUI_Stage_Progress_Ring_Color_4800]: " + JSON.stringify(JSON.parse(strJson).$attrs.progressGradientColor));
+      expect(JSON.parse(strJson).$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_4800] end");
       done();
     });
@@ -5390,11 +5299,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100] start");
       let newJson = getInspectorByKey('progress_ring_default');
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
-      expect(obj.$attrs.ringStyle.enableScanEffect).assertEqual("false");
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.ringStyle.enableScanEffect));
+      expect(JSON.parse(newJson).$attrs.ringStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100] end");
       done();
     });
@@ -5411,12 +5318,12 @@ export default function progressSecTest() {
 
       let progress_ring_enableScanEffect_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_enableScanEffect_boolean": progress_ring_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5429,10 +5336,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
-      expect(obj.$attrs.ringStyle.enableScanEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.ringStyle.enableScanEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200] end");
       done();
     });
@@ -5449,12 +5356,12 @@ export default function progressSecTest() {
 
       let progress_ring_enableScanEffect_boolean = false;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_enableScanEffect_boolean": progress_ring_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5467,10 +5374,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
-      expect(obj.$attrs.ringStyle.enableScanEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.ringStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300] end");
       done();
     });
@@ -5487,12 +5394,12 @@ export default function progressSecTest() {
 
       let progress_ring_enableScanEffect_boolean = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_enableScanEffect_boolean": progress_ring_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5505,10 +5412,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
-      expect(obj.$attrs.ringStyle.enableScanEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.ringStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400] end");
       done();
     });
@@ -5525,12 +5432,12 @@ export default function progressSecTest() {
 
       let progress_ring_enableScanEffect_boolean = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_enableScanEffect_boolean": progress_ring_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5543,10 +5450,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
-      expect(obj.$attrs.ringStyle.enableScanEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.ringStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.ringStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500] end");
       done();
     });
@@ -5560,11 +5467,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100] start");
       let newJson = getInspectorByKey('progress_linear_color_default');
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.linearStyle));
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
-      expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("false");
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.linearStyle));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.linearStyle.enableScanEffect));
+      expect(JSON.parse(newJson).$attrs.linearStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100] end");
       done();
     });
@@ -5581,12 +5486,12 @@ export default function progressSecTest() {
 
       let progress_linear_enableScanEffect_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_linear_enableScanEffect_boolean": progress_linear_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5599,10 +5504,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.linearStyle));
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
-      expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.linearStyle));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.linearStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.linearStyle.enableScanEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200] end");
       done();
     });
@@ -5619,12 +5524,12 @@ export default function progressSecTest() {
 
       let progress_linear_enableScanEffect_boolean = false;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_linear_enableScanEffect_boolean": progress_linear_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5637,10 +5542,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.linearStyle));
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
-      expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.linearStyle));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.linearStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.linearStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300] end");
       done();
     });
@@ -5657,12 +5562,12 @@ export default function progressSecTest() {
 
       let progress_linear_enableScanEffect_boolean = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_linear_enableScanEffect_boolean": progress_linear_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5675,10 +5580,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.linearStyle));
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
-      expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.linearStyle));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.linearStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.linearStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400] end");
       done();
     });
@@ -5695,12 +5600,12 @@ export default function progressSecTest() {
 
       let progress_linear_enableScanEffect_boolean = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_linear_enableScanEffect_boolean": progress_linear_enableScanEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5713,10 +5618,10 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.linearStyle));
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
-      expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.linearStyle));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.linearStyle.enableScanEffect));
+      expect(JSON.parse(strJson).$attrs.linearStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500] end");
       done();
     });
@@ -5730,10 +5635,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100] start");
       let newJson = getInspectorByKey('progress_ring_default');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(newJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100] end");
       done();
     });
@@ -5750,12 +5653,12 @@ export default function progressSecTest() {
 
       let progress_ring_enableSmoothEffect_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_enableSmoothEffect_boolean": progress_ring_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5768,9 +5671,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200] end");
       done();
     });
@@ -5787,12 +5690,12 @@ export default function progressSecTest() {
 
       let progress_ring_enableSmoothEffect_boolean = false;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_enableSmoothEffect_boolean": progress_ring_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5805,9 +5708,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300] end");
       done();
     });
@@ -5824,12 +5727,12 @@ export default function progressSecTest() {
 
       let progress_ring_enableSmoothEffect_boolean = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_enableSmoothEffect_boolean": progress_ring_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5842,9 +5745,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400] end");
       done();
     });
@@ -5861,12 +5764,12 @@ export default function progressSecTest() {
 
       let progress_ring_enableSmoothEffect_boolean = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_ring_enableSmoothEffect_boolean": progress_ring_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5879,9 +5782,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500] end");
       done();
     });
@@ -5895,10 +5798,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100] start");
       let newJson = getInspectorByKey('progress_linear_color_default');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(newJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100] end");
       done();
     });
@@ -5915,12 +5816,12 @@ export default function progressSecTest() {
 
       let progress_linear_enableSmoothEffect_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_linear_enableSmoothEffect_boolean": progress_linear_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5933,9 +5834,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200] end");
       done();
     });
@@ -5952,12 +5853,12 @@ export default function progressSecTest() {
 
       let progress_linear_enableSmoothEffect_boolean = false;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_linear_enableSmoothEffect_boolean": progress_linear_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -5970,9 +5871,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300] end");
       done();
     });
@@ -5989,12 +5890,12 @@ export default function progressSecTest() {
 
       let progress_linear_enableSmoothEffect_boolean = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_linear_enableSmoothEffect_boolean": progress_linear_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6007,9 +5908,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400] end");
       done();
     });
@@ -6026,12 +5927,12 @@ export default function progressSecTest() {
 
       let progress_linear_enableSmoothEffect_boolean = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_linear_enableSmoothEffect_boolean": progress_linear_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6044,9 +5945,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500] end");
       done();
     });
@@ -6060,10 +5961,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(newJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100] end");
       done();
     });
@@ -6080,12 +5979,12 @@ export default function progressSecTest() {
 
       let progress_capsule_enableSmoothEffect_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_enableSmoothEffect_boolean": progress_capsule_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6098,9 +5997,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200] end");
       done();
     });
@@ -6117,12 +6016,12 @@ export default function progressSecTest() {
 
       let progress_capsule_enableSmoothEffect_boolean = false;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_enableSmoothEffect_boolean": progress_capsule_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6135,9 +6034,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300] end");
       done();
     });
@@ -6154,12 +6053,12 @@ export default function progressSecTest() {
 
       let progress_capsule_enableSmoothEffect_boolean = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_enableSmoothEffect_boolean": progress_capsule_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6172,9 +6071,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400] end");
       done();
     });
@@ -6191,12 +6090,12 @@ export default function progressSecTest() {
 
       let progress_capsule_enableSmoothEffect_boolean = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_capsule_enableSmoothEffect_boolean": progress_capsule_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6209,9 +6108,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500] end");
       done();
     });
@@ -6225,10 +6124,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100] start");
       let newJson = getInspectorByKey('progress_scaleRing_color_default');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(newJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100] end");
       done();
     });
@@ -6245,12 +6142,12 @@ export default function progressSecTest() {
 
       let progress_scaleRing_enableSmoothEffect_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_scaleRing_enableSmoothEffect_boolean": progress_scaleRing_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6263,9 +6160,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200] end");
       done();
     });
@@ -6282,12 +6179,12 @@ export default function progressSecTest() {
 
       let progress_scaleRing_enableSmoothEffect_boolean = false;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_scaleRing_enableSmoothEffect_boolean": progress_scaleRing_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6300,9 +6197,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300] end");
       done();
     });
@@ -6319,12 +6216,12 @@ export default function progressSecTest() {
 
       let progress_scaleRing_enableSmoothEffect_boolean = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_scaleRing_enableSmoothEffect_boolean": progress_scaleRing_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6337,9 +6234,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400] end");
       done();
     });
@@ -6356,12 +6253,12 @@ export default function progressSecTest() {
 
       let progress_scaleRing_enableSmoothEffect_boolean = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_scaleRing_enableSmoothEffect_boolean": progress_scaleRing_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6374,9 +6271,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500] end");
       done();
     });
@@ -6390,10 +6287,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100] start");
       let newJson = getInspectorByKey('progress_eclipse_color_default');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
-
-      let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100]: " + JSON.stringify(JSON.parse(newJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(newJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100] end");
       done();
     });
@@ -6410,12 +6305,12 @@ export default function progressSecTest() {
 
       let progress_eclipse_enableSmoothEffect_boolean = true;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_eclipse_enableSmoothEffect_boolean": progress_eclipse_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6428,9 +6323,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200] end");
       done();
     });
@@ -6447,12 +6342,12 @@ export default function progressSecTest() {
 
       let progress_eclipse_enableSmoothEffect_boolean = false;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_eclipse_enableSmoothEffect_boolean": progress_eclipse_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6465,9 +6360,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
+      
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300] end");
       done();
     });
@@ -6484,12 +6379,12 @@ export default function progressSecTest() {
 
       let progress_eclipse_enableSmoothEffect_boolean = null;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_eclipse_enableSmoothEffect_boolean": progress_eclipse_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6502,9 +6397,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400] end");
       done();
     });
@@ -6521,12 +6416,12 @@ export default function progressSecTest() {
 
       let progress_eclipse_enableSmoothEffect_boolean = undefined;
       try {
-        let eventData: events_emitter.EventData = {
+        let eventData:events_emitter.EventData = {
           data: {
             "progress_eclipse_enableSmoothEffect_boolean": progress_eclipse_enableSmoothEffect_boolean
           }
         }
-        let innerEvent: events_emitter.InnerEvent = {
+        let innerEvent: events_emitter.InnerEvent= {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -6539,9 +6434,9 @@ export default function progressSecTest() {
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
-      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500]: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSmoothEffect));
+      expect(JSON.parse(strJson).$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500] end");
       done();
     });

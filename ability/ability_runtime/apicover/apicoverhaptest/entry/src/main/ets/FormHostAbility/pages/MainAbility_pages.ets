@@ -12,14 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@ohos.router';
 
 @Entry
 @Component
-struct Index {
-  @State message: string = 'FormHostAbility'
+struct Index3 {
+  @State message: string = 'FormHostAbility';
   @State isShowing: boolean = true;
-
   @State formId: number = 0;
   @State bundle: string = "com.example.apicoverhaptest";
   @State ability: string = "FormAbility";
@@ -32,21 +30,21 @@ struct Index {
   build() {
     Row() {
       Column() {
-          FormComponent({
-            id: this.formId,
-            name: this.name,
-            bundle: this.bundle,
-            ability: this.ability,
-            module: this.moduleName,
-            dimension: this.dimension,
-            temporary: this.temporary,
-          })
+        FormComponent({
+          id: this.formId,
+          name: this.name,
+          bundle: this.bundle,
+          ability: this.ability,
+          module: this.moduleName,
+          dimension: this.dimension,
+          temporary: this.temporary,
+        })
           .allowUpdate(this.allowUpate)
           .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
-          .size({width:360,height:180})
+          .size({ width: 360, height: 180 })
           .onAcquired((form) => {
             console.log("[FormComponent.FormHostAbility] get form, form id:" + form.id);
-            globalThis.formId21 = form.id
+            AppStorage.setOrCreate<number>("formId21", form.id);
           })
           .onError((error) => {
             console.log("[FormComponent.FormHostAbility] error code:" + error.errcode);

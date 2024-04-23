@@ -12,19 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import ActionExtensionAbility from '@ohos.app.ability.ActionExtensionAbility';
 import commonEventManager from '@ohos.commonEventManager';
-import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
-
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 let count = 0;
 const TIME_OUT = 500;
+const TIME_OUT1 = 2000;
 
 export default class ActsActionExtensionAbility extends ActionExtensionAbility {
   storage: LocalStorage;
   message: string;
-
   onCreate() {
     console.log('====>ActsActionExtensionAbility onCreate called');
     count++;
@@ -39,17 +37,28 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
       }
     }
     commonEventManager.publish('ACTS_TEST_FOREGROUND', options,
-      function () {})
+      function () { })
+    try {
+      let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+      console.log(`====>ActsActionExtensionAbility deviceType: ${deviceType}`);
+      if (deviceType === '2in1') {
+        console.log('====>ActsActionExtensionAbility terminateSelf start');
+        setTimeout(() => {
+          globalThis.session.terminateSelf();
+        }, TIME_OUT1)
+      }
+    } catch (error) {
+      console.error('====>ActsActionExtensionAbility getSync errCode:' + error.code + ',errMessage:' + error.message);
+    }
   }
 
   onBackground() {
     console.log('====>ActsActionExtensionAbility onBackground called');
     count++;
-    commonEventManager.publish('ACTS_TEST_BACKGROUND', function () {
-    })
+    commonEventManager.publish('ACTS_TEST_BACKGROUND', function () {});
     setTimeout(() => {
-      AppStorage.get<UIExtensionContentSession>("session")!.terminateSelf();
-    }, TIME_OUT)
+      globalThis.session.terminateSelf();
+    }, TIME_OUT);
   }
 
   onSessionCreate(want, session) {
@@ -60,9 +69,9 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
       {
         'session': session,
         'messages': this.message
-      })
+      });
     session.loadContent('pages/PageThree', this.storage);
-    AppStorage.setOrCreate<UIExtensionContentSession>("session", session);
+    globalThis.session = session;
   }
 
   onDestroy() {
@@ -72,9 +81,8 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
       parameters: {
         'count': count
       }
-    }
-    commonEventManager.publish('ACTS_TEST_DESTROY', options,
-      function () {})
+    };
+    commonEventManager.publish('ACTS_TEST_DESTROY', options, function () {});
   }
 
   onSessionDestroy(session) {

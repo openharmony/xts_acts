@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 
+import HttpRequestOnTest from './HttpRequestOn.test';
 import HttpRequestOffTest from './HttpRequestOff.test';
 
 export default function testsuite() {
+  HttpRequestOnTest();
   HttpRequestOffTest();
 }
