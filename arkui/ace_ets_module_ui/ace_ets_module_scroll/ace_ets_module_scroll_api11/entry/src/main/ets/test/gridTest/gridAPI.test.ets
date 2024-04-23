@@ -23,13 +23,13 @@ export default function gridMaxCountJsunit() {
     beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/grid/grid',
+        uri: 'MainAbility/pages/grid/gridAPI',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get grid state success " + JSON.stringify(pages));
-        if (!("grid" == pages.name)) {
+        if (!("gridAPI" == pages.name)) {
           console.info("get grid state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await Utils.sleep(2000);

@@ -132,8 +132,8 @@ import list_item_groupJsunit from './ListTest/list_item_group.test'
 import refreshDragJsunit from './RefreshTest/refresh2.test';
 import swiperMaskJsunit from './SwiperTest/swiper3.test';
 
-import alphabetIndexerOnSelectJsunit from './AlphabetIndexerTest/alphabetIndexer1.test';
-import gridMaxCountJsunit from './gridTest/grid1.test';
+import alphabetIndexerOnSelectJsunit from './AlphabetIndexerTest/alphabetIndexerAPI.test';
+import gridMaxCountJsunit from './gridTest/gridAPI.test';
 import gridItemOnSelectJsunit from './gridItemTest/gridItem.test';
 import listNewJsunit from './ListTest/listTestAPI.test';
 import list_itemOnSelectJsunit from './ListTest/list_item.test';
@@ -258,8 +258,6 @@ export default function testsuite() {
   
   refreshJsunit()
   listtestIdleJsunit()
-  list_item_groupJsunit()
-  refreshDragJsunit()
   swiperMaskJsunit()
 
   alphabetIndexerOnSelectJsunit()

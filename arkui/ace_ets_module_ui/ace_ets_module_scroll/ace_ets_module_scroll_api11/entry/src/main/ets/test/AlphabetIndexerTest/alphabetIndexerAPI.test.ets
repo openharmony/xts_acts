@@ -23,13 +23,13 @@ export default function alphabetIndexerOnSelectJsunit() {
     beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/AlphabetIndexer/alphabetIndexer',
+        uri: 'MainAbility/pages/AlphabetIndexer/alphabetIndexerAPI',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get alphabetIndexer state success " + JSON.stringify(pages));
-        if (!("alphabetIndexer" == pages.name)) {
+        if (!("alphabetIndexerAPI" == pages.name)) {
           console.info("get alphabetIndexer state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await Utils.sleep(2000);

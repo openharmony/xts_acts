@@ -186,15 +186,19 @@
 	"MainAbility/pages/Refresh/refresh",
         "MainAbility/pages/List/listtest2",
         "MainAbility/pages/List/list_item_group",
-	"MainAbility/pages/Swiper/swiper6",
-	"MainAbility/pages/Refresh/refresh2",
-	"MainAbility/pages/gridItem/gridItem",
+        "MainAbility/pages/Swiper/swiper6",
+        "MainAbility/pages/Refresh/refreshAPI",
+
+        "MainAbility/pages/gridItem/gridItem",
         "MainAbility/pages/List/listNew",
-	"MainAbility/pages/List/list_item",
-	"MainAbility/pages/Scroll/scroll1",
-	"MainAbility/pages/SideBarContainer/sideBar",
-	"MainAbility/pages/Stack/stack",
-	"MainAbility/pages/Swiper/swiperNew",
-	"MainAbility/pages/Tabs/tabs2"
+        "MainAbility/pages/List/list_item",
+        "MainAbility/pages/Scroll/scroll1",
+        "MainAbility/pages/SideBarContainer/sideBar",
+        "MainAbility/pages/Stack/stack",
+        "MainAbility/pages/Swiper/swiperNew",
+        "MainAbility/pages/Tabs/tabs2",
+        "MainAbility/pages/grid/gridAPI",
+
+        "MainAbility/pages/AlphabetIndexer/alphabetIndexerAPI"
     ]
 }
