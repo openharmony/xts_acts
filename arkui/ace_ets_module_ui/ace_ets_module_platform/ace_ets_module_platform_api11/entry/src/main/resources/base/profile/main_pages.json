@@ -7,7 +7,6 @@
         "MainAbility/pages/video/video1",
 	
 	"MainAbility/pages/video/video2",
-        "MainAbility/pages/video/videoApI",
-        "MainAbility/pages/XComponent/xcomponent"
+        "MainAbility/pages/video/videoApI"
     ]
 }

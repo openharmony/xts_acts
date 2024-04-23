@@ -23,7 +23,7 @@ export default function xcomponentGetXComponentContextJsunit() {
     beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/XComponent/xcomponent',
+        uri: 'MainAbility/pages/XComponent/Xcomponent',
       }
       try {
         router.clear();
