@@ -16,8 +16,8 @@ group("networkmanager") {
   deps = [
     "fetch:fetch",
     "http:http",
-    "noNet:noNet",
     "network:network",
+    "noNet:noNet",
     "noNet:noNet",
     "noPermission:noPermission",
     "socket:socket",
