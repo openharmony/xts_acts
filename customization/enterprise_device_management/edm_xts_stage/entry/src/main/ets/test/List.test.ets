@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import browserManagerTest from './browser/browser.test.ets'
+import bluetoothManagerTest from './bluetoothManager/bluetoothManager.test.ets'
 
 export default function testsuite() {
   browserManagerTest();
+  bluetoothManagerTest();
 }
