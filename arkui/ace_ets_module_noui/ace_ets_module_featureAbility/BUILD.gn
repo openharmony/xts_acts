@@ -11,13 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsAceEtsModuleNoUITest") {
+group("ActsAceEtsModuleFeatureAbilityTest") {
   testonly = true
-  deps = [
-    #"ace_ets_module_FrameNode:ActsAceEtsModuleFrameNodeTest",
-    "ace_ets_module_StateMangagement:ActsAceEtsModuleStateMangagementTest",
-    "ace_ets_module_UIContext:ActsAceEtsModuleUIContextTest",
-    "ace_ets_module_featureAbility:ActsAceEtsModuleFeatureAbilityTest",
-    "ace_ets_module_global:ActsAceEtsModuleGlobalTest",
-  ]
+  deps = [ "ace_ets_module_featureAbility_api11:ActsAceEtsModuleFeatureAbilityApi11Test" ]
 }
