@@ -167,6 +167,12 @@ describe('VideoPlayerEnumTest', function () {
         expect(media.MediaDescriptionKey.MD_KEY_FRAME_RATE).assertEqual("frame_rate");
         expect(media.MediaDescriptionKey.MD_KEY_AUD_CHANNEL_COUNT).assertEqual("channel_count");
         expect(media.MediaDescriptionKey.MD_KEY_AUD_SAMPLE_RATE).assertEqual("sample_rate");
+        if (media.MediaDescriptionKey.MD_KEY_AUD_SAMPLE_DEPTH == undefined) {
+            console.info('Please update the SDK to the latest version')
+        } else {
+            expect(media.MediaDescriptionKey.MD_KEY_AUD_SAMPLE_DEPTH).assertEqual("sample_depth");
+        }
+        
         done();
     })
 
