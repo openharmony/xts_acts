@@ -21,7 +21,7 @@ struct CountDownComponent {
 
   build() {
     Row({ space: 5 }){
-      Column({ space: 20 }) {
+      Column({ space: 5 }) {
         Text("Prop子组件颜色undefined-->Pink")
         Button('button')
           .backgroundColor(this.color1)
@@ -74,7 +74,7 @@ struct ParentComponent {
       Scroll() {
         Row({ space: 5 }) {
 
-          Column({ space: 20 }) {
+          Column({ space: 5 }) {
             Text("Prop父组件颜色undefined-->Pink")
             Button('button')
               .backgroundColor(this.color1)
