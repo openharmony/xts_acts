@@ -259,6 +259,51 @@ export default function unistdNdkTest() {
       done();
     });
     /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_CRYPT_0100
+     * @tc.name       : testMuslUnistdCrypt001
+     * @tc.desc       : test crypt
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslUnistdCrypt001', 0, async (done: Function) => {
+      let salt: String = "$1$";
+      let c: String = unistd.crypt(salt);
+      let d: String = unistd.crypt(salt);
+      expect(c).assertEqual(d);
+      done();
+    });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_CRYPT_0200
+     * @tc.name       : testMuslUnistdCrypt002
+     * @tc.desc       : test crypt
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslUnistdCrypt002', 0, async (done: Function) => {
+      let salt: String = "$2$";
+      let c: String = unistd.crypt(salt);
+      let d: String = unistd.crypt(salt);
+      expect(c).assertEqual(d);
+      done();
+    });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_CRYPT_0300
+     * @tc.name       : testMuslUnistdCrypt003
+     * @tc.desc       : test crypt
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslUnistdCrypt003', 0, async (done: Function) => {
+      let salt: String = "$5$";
+      let c: String = unistd.crypt(salt);
+      let d: String = unistd.crypt(salt);
+      expect(c).assertEqual(d);
+      done();
+    });
+    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_GETPGID_0100
      * @tc.name       : testMuslUnistdGetPGid001
      * @tc.desc       : test getpgrd
@@ -774,6 +819,20 @@ export default function unistdNdkTest() {
      */
     it('testMuslUnistdAccess001', 0, async (done: Function) => {
       let a: number = unistd.access();
+      expect(a).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_EACCESS_0100
+     * @tc.name       : testMuslUnistdEaccess001
+     * @tc.desc       : test eaccess
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslUnistdEaccess001', 0, async (done: Function) => {
+      let a: number = unistd.eaccess();
       expect(a).assertEqual(0);
       done();
     });
