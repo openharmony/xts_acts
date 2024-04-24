@@ -104,7 +104,7 @@ const APP_IDS_1: Array<string> = [
   "ohos.sample.shopping_BNtg4JBClbl92Rgc3jm/RfcAdrHXaM8F0QOiwVEhnV5ebE5jNIYnAx+weFRT3QTyUjRNdhmc2aAzWyi+5t5CoBM=:",
   "ohos.samples.clock_BNtg4JBClbl92Rgc3jm/RfcAdrHXaM8F0QOiwVEhnV5ebE5jNIYnAx+weFRT3QTyUjRNdhmc2aAzWyi+5t5CoBM=:",
   "com.ohos.photos_BNtg4JBClbl92Rgc3jm/RfcAdrHXaM8F0QOiwVEhnV5ebE5jNIYnAx+weFRT3QTyUjRNdhmc2aAzWyi+5t5CoBM=:",
-  "com.ohos.note_BMH6dE9cFOolyIVBYFocagRkVSwHaD69UCQ7aarO8LgS8dJlcAEdD1N+Y2fkbZ7DanMi/OFWGkP7hWC3rEuGVA8=:",
+  "com.ohos.note_BMH6dE9cFOolyIVBYFocagRkVSwHaD69UCQ7aarO8LgS8dJlcAEdD1N+Y2fkbZ7DanMi/OFWGkP7hWC3rEuGVA8=:"
 ];
 
 let APP_IDS_200: Array<string> = new Array<string>(200);
