@@ -3209,7 +3209,7 @@ static napi_value queue_parallel_cancel_0001(napi_env env, napi_callback_info in
         result += 1;
     }
     ret = ffrt_queue_cancel(task1);
-    if (ret != -1) {
+    if (ret != 1) {
         result += 1;
     }
 
