@@ -28,7 +28,7 @@
 #include <fstream>
 #include <unistd.h>
 
-#define INVALID_FD -1
+#define INVALID_FD (-1)
 #define PARAM_0 0
 #define PARAM_1 1
 #define FAIL (-1)
