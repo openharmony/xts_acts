@@ -81,7 +81,7 @@ export default function richEditorApi1() {
       button1.click()
       await CommonFunc.sleep(1000);
 
-      await driver.longClick(Math.round((RichEditor1.right - RichEditor1.left) * 0.5 + RichEditor1.left),
+      await driver.click(Math.round((RichEditor1.right - RichEditor1.left) * 0.5 + RichEditor1.left),
         Math.round((RichEditor1.bottom - RichEditor1.top) * 0.5 + RichEditor1.top))
       await CommonFunc.sleep(2000);
 
