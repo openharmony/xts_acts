@@ -22,7 +22,7 @@ group("commonlibrary") {
       "toolchain:toolchain",
     ]
     if (target_cpu == "arm64") {
-      deps += [ "ark_runtime:ark_runtime" ]
+      #deps += [ "ark_runtime:ark_runtime" ]
     }
   }
 }
