@@ -28,6 +28,7 @@
 #include <fstream>
 #include <unistd.h>
 
+#define INVALID_FD -1
 #define PARAM_0 0
 #define PARAM_1 1
 #define FAIL (-1)
@@ -160,7 +161,7 @@ static napi_value OhAvPlayerSetFDSourceAbnormalTwo(napi_env env, napi_callback_i
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
-    OH_AVErrCode errCode = OH_AVPlayer_SetFDSource(player, PARAM_0, PARAM_0, PARAM_0);
+    OH_AVErrCode errCode = OH_AVPlayer_SetFDSource(player, INVALID_FD, PARAM_0, PARAM_0);
     if (errCode != AV_ERR_OK) {
         backParam = SUCCESS;
     }
