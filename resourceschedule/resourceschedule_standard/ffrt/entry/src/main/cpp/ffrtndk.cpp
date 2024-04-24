@@ -3334,10 +3334,8 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
     ffrt_queue_attr_set_max_concurrency(&queue_attr, maxConcurrency);
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
 
-    int temp = 0;
     int res = 3;
     ffrt_task_handle_t task;
-    std::function<void()> &&OnePlusFfrtSleepFunc = [&temp] () {OnePlusSleepForTest((void *)(&temp));};
     std::function<void()> &&DivFunc = [&res] () {DivForTest((void *)(&res));};
     std::function<void()> &&MultipleFunc = [&res] () {MultipleForTest((void *)(&res));};
     std::function<void()> &&OnePlusFunc = [&res] () {OnePlusForTest((void *)(&res));};
@@ -3353,10 +3351,6 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
         ffrt_task_attr_set_queue_priority(&task_attr[i], pri);
     }
 
-    for (int i = 0; i < maxConcurrency; ++i) {
-        ffrt_queue_submit(queue_handle, create_function_wrapper(OnePlusFfrtSleepFunc,
-            ffrt_function_kind_queue), nullptr);
-    }
     ffrt_queue_submit(queue_handle, create_function_wrapper(TwoSubFunc, ffrt_function_kind_queue), &task_attr[0]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr[1]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(DivFunc, ffrt_function_kind_queue), &task_attr[2]);
