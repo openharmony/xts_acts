@@ -75,7 +75,7 @@ export default function stepperJsunit() {
         console.info("stepperTest_0200 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("stepperTest_0200 change component data error: " + err.message);
+        console.log("stepperTest_0200 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJsonNew: string = getInspectorByKey('stepper');
@@ -131,7 +131,7 @@ export default function stepperJsunit() {
         console.info("stepperTest_0300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("stepperTest_0300 change component data error: " + err.message);
+        console.log("stepperTest_0300 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJsonNew: string = getInspectorByKey('stepper');

@@ -60,7 +60,7 @@ struct MarqueeExample {
             console.info("Onstart start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("Onstart emit action state err: " + JSON.stringify(err.message))
+            console.info("Onstart emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .onBounce(() => {
@@ -79,7 +79,7 @@ struct MarqueeExample {
             console.info("Onbounce start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("Onbounce emit action state err: " + JSON.stringify(err.message))
+            console.info("Onbounce emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .onFinish(() => {
@@ -99,7 +99,7 @@ struct MarqueeExample {
             console.info("Onfinish start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("Onfinish emit action state err: " + JSON.stringify(err.message))
+            console.info("Onfinish emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
       Button('start')
@@ -119,7 +119,7 @@ struct MarqueeExample {
             console.info("start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("emit action state err: " + JSON.stringify(err.message))
+            console.info("emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .width(200)

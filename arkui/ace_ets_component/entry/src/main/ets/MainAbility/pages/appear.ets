@@ -64,7 +64,7 @@ struct AppearExample {
             console.info("appearFlag start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("appearFlag emit action state err: " + JSON.stringify(err?.message))
+            console.info("appearFlag emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .margin(3)
@@ -89,7 +89,7 @@ struct AppearExample {
               console.info("appearFlag start to emit action state")
               events_emitter.emit(backEvent2, backData2)
             } catch (err) {
-              console.info("appearFlag emit action state err: " + JSON.stringify(err?.message))
+              console.info("appearFlag emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
           .onDisAppear(() => {
@@ -110,7 +110,7 @@ struct AppearExample {
               console.info("disAppearFlag start to emit action state")
               events_emitter.emit(backEvent1, backData1)
             } catch (err) {
-              console.info("disAppearFlag emit action state err: " + JSON.stringify(err?.message))
+              console.info("disAppearFlag emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
       }

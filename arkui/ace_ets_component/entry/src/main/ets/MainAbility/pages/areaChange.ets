@@ -44,7 +44,7 @@ struct AreaExample {
             console.info("onClick start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("onClick emit action state err: " + JSON.stringify(err.message))
+            console.info("onClick emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .onAreaChange((oldValue: Area, newValue: Area) => {
@@ -65,7 +65,7 @@ struct AreaExample {
             console.info("onAreaChange start to emit action state")
             events_emitter.emit(backEvent1, backData1)
           } catch (err) {
-            console.info("onAreaChange emit action state err: " + JSON.stringify(err.message))
+            console.info("onAreaChange emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
       Text('new area is: \n' + this._size)

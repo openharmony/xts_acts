@@ -56,7 +56,7 @@ struct TouchAbleExample {
             console.info("[TouchAble] start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("[TouchAble] emit action state err: " + JSON.stringify(err.message))
+            console.info("[TouchAble] emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .overlay(this.text2, { align: Alignment.Bottom, offset: { x: 0, y: 20 } })

@@ -79,7 +79,7 @@ export default function listJsunit() {
         console.info("[testList02] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList02] change component data error: " + err.message);
+        console.log("[testList02] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('list');
@@ -105,7 +105,7 @@ export default function listJsunit() {
         console.info("[testList03] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList03] change component data error: " + err.message);
+        console.log("[testList03] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('list');
@@ -131,7 +131,7 @@ export default function listJsunit() {
         console.info("[testList04] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList04] change component data error: " + err.message);
+        console.log("[testList04] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('list');
@@ -157,7 +157,7 @@ export default function listJsunit() {
         console.info("[testList05] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList05] change component data error: " + err.message);
+        console.log("[testList05] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('list');
@@ -183,7 +183,7 @@ export default function listJsunit() {
         console.info("[testList06] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList06] change component data error: " + err.message);
+        console.log("[testList06] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('list');
@@ -209,7 +209,7 @@ export default function listJsunit() {
         console.info("[testList07] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList07] change component data error: " + err.message);
+        console.log("[testList07] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('list');
@@ -235,7 +235,7 @@ export default function listJsunit() {
         console.info("[testList08] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList08] change component data error: " + err.message);
+        console.log("[testList08] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('list');
@@ -261,7 +261,7 @@ export default function listJsunit() {
         console.info("[testList09] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList09] change component data error: " + err.message);
+        console.log("[testList09] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('list');
@@ -287,7 +287,7 @@ export default function listJsunit() {
         console.info("[testList10] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList10] change component data error: " + err.message);
+        console.log("[testList10] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('list');
@@ -313,7 +313,7 @@ export default function listJsunit() {
         console.info("[testList11] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList11] change component data error: " + err.message);
+        console.log("[testList11] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('list');
@@ -339,7 +339,7 @@ export default function listJsunit() {
         console.info("[testList12] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testList12] change component data error: " + err.message);
+        console.log("[testList12] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('list');
