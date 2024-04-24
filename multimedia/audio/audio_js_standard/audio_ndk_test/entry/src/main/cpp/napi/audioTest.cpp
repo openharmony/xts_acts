@@ -37,6 +37,26 @@ const int32_t g_sampleFormat = 1;
 const int32_t g_frameSize = 240; // 240:g_frameSize value
 bool g_flag = false;
 bool g_mark = false;
+static std::string g_filePath = "/data/storage/el2/base/haps/entry/files/test_44100_2.wav";
+FILE *g_file = nullptr;
+bool g_readEnd = false;
+
+static int32_t AudioRendererOnMarkReachedWriteData(OH_AudioRenderer* capturer,
+    void* userData,
+    void* buffer,
+    int32_t bufferLen)
+{
+    size_t readCount = fread(buffer, bufferLen, 1, g_file);
+    if (!readCount) {
+        if (ferror(g_file)) {
+            printf("Error reading myfile");
+        } else if (feof(g_file)) {
+            printf("EOF found");
+            g_readEnd = true;
+        }
+    }
+    return 0;
+}
 
 static napi_value CreateAudioStreamBuilder(napi_env env, napi_callback_info info)
 {
@@ -1327,6 +1347,97 @@ static napi_value AudioRendererSetOnMarkReached_04(napi_env env, napi_callback_i
 
 static napi_value AudioRendererSetOnMarkReached_05(napi_env env, napi_callback_info info)
 {
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    uint32_t samplePos = 4294967295; // 4294967295:uint32_t 2^32 - 1
+    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
+    OH_AudioStream_Result result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_05 result is: %d", result);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRendererSetOnMarkReached_06(napi_env env, napi_callback_info info)
+{
+    g_flag = false;
+    g_file = fopen(g_filePath.c_str(), "rb");
+    if (g_file == nullptr) {
+        LOG(false, "fopen fail. g_file: %p\n", g_file);
+    }
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
+    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnMarkReachedWriteData;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
+    // set buffer size to g_frameSize
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    uint32_t samplePos = 10538568; // 10538568:Test_44100_2.wav The total number of frames in the audio file
+    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
+    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_06 result is: %d", result);
+    OH_AudioRenderer_Start(audioRenderer);
+    sleep(220); // 220:Play the entire music
+    OH_AudioRenderer_Stop(audioRenderer);
+    if (!g_flag) {
+        result = AUDIOSTREAM_ERROR_SYSTEM;
+    }
+    OH_AudioRenderer_Release(audioRenderer);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRendererSetOnMarkReached_07(napi_env env, napi_callback_info info)
+{
+    g_flag = false;
+    g_file = fopen(g_filePath.c_str(), "rb");
+    if (g_file == nullptr) {
+        LOG(false, "fopen fail. g_file: %p\n", g_file);
+    }
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
+    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
+    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
+    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnMarkReachedWriteData;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
+    // set buffer size to g_frameSize
+    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    uint32_t samplePos = 10538570; // 10538570:Test_44100_2.wav The total number of frames in the audio file + 2
+    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
+    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
+    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_07 result is: %d", result);
+    OH_AudioRenderer_Start(audioRenderer);
+    sleep(10); // 10:Play for 10 seconds
+    OH_AudioRenderer_Stop(audioRenderer);
+    if (!g_flag) {
+        result = AUDIOSTREAM_ERROR_SYSTEM;
+    }
+    OH_AudioRenderer_Release(audioRenderer);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRendererSetOnMarkReached_08(napi_env env, napi_callback_info info)
+{
     g_flag = false;
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
 
@@ -1347,43 +1458,9 @@ static napi_value AudioRendererSetOnMarkReached_05(napi_env env, napi_callback_i
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_04 result is: %d", result);
+    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_08 result is: %d", result);
     OH_AudioRenderer_Start(audioRenderer);
-    sleep(2); // 2:sleep 2 seconds
-    OH_AudioRenderer_Stop(audioRenderer);
-    if (!g_flag) {
-        result = AUDIOSTREAM_ERROR_SYSTEM;
-    }
-    OH_AudioRenderer_Release(audioRenderer);
-    OH_AudioStreamBuilder_Destroy(builder);
-    napi_value res;
-    napi_create_int32(env, result, &res);
-    return res;
-}
-
-static napi_value AudioRendererSetOnMarkReached_06(napi_env env, napi_callback_info info)
-{
-    g_flag = false;
-    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
-
-    OH_AudioStreamBuilder_SetSamplingRate(builder, g_samplingRate);
-    OH_AudioStreamBuilder_SetChannelCount(builder, g_channelCount);
-    OH_AudioStreamBuilder_SetLatencyMode(builder, (OH_AudioStream_LatencyMode)g_latencyMode);
-    OH_AudioStreamBuilder_SetSampleFormat(builder, (OH_AudioStream_SampleFormat)g_sampleFormat);
-    OH_AudioRenderer_Callbacks callbacks;
-    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
-    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
-    // set buffer size to g_frameSize
-    OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
-
-    OH_AudioRenderer *audioRenderer;
-    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-    uint32_t samplePos = 1000;
-    OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
-    result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
-    LOG(false, "OH_Audio_Renderer_SetOnMarkReached_06result is: %d", result);
-    OH_AudioRenderer_Start(audioRenderer);
-    sleep(2); // 2:sleep 2 seconds
+    sleep(2);
     OH_AudioRenderer_Stop(audioRenderer);
     if (!g_flag) {
         result = AUDIOSTREAM_ERROR_SYSTEM;
@@ -3145,6 +3222,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"audioRendererSetOnMarkReached_05", nullptr, AudioRendererSetOnMarkReached_05,
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRendererSetOnMarkReached_06", nullptr, AudioRendererSetOnMarkReached_06,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetOnMarkReached_07", nullptr, AudioRendererSetOnMarkReached_07,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRendererSetOnMarkReached_08", nullptr, AudioRendererSetOnMarkReached_08,
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRendererCancelMark_01", nullptr, AudioRendererCancelMark_01,
             nullptr, nullptr, nullptr, napi_default, nullptr},

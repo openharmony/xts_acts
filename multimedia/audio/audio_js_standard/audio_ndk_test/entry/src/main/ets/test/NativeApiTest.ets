@@ -1251,13 +1251,13 @@ export default function audioNDK() {
     })
 
     /*
-        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0500
-        * @tc.name      : set markPosition with AUDIOSTREAM_TYPE_RENDERER
-        * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level0
-    */
+            * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0500
+            * @tc.name      : set markPosition with AUDIOSTREAM_TYPE_RENDERER
+            * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level0
+        */
     it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0500', 0, async function (done) {
         let a = myaudioNdk.audioRendererSetOnMarkReached_05();
         console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0500 audioRendererSetOnMarkReached: ${a}`);
@@ -1276,6 +1276,36 @@ export default function audioNDK() {
     it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0600', 0, async function (done) {
         let a = myaudioNdk.audioRendererSetOnMarkReached_06();
         console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0600 audioRendererSetOnMarkReached: ${a}`);
+        expect(a).assertEqual(0)
+        done()
+    })
+
+    /*
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0700
+        * @tc.name      : set markPosition with AUDIOSTREAM_TYPE_RENDERER
+        * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0700', 0, async function (done) {
+        let a = myaudioNdk.audioRendererSetOnMarkReached_07();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0700 audioRendererSetOnMarkReached: ${a}`);
+        expect(a).assertEqual(3)
+        done()
+    })
+
+    /*
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0800
+        * @tc.name      : set markPosition with AUDIOSTREAM_TYPE_RENDERER
+        * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0800', 0, async function (done) {
+        let a = myaudioNdk.audioRendererSetOnMarkReached_08();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0800 audioRendererSetOnMarkReached: ${a}`);
         expect(a).assertEqual(0)
         done()
     })
