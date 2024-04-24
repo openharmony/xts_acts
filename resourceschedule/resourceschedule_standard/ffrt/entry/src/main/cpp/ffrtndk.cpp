@@ -3309,19 +3309,19 @@ static napi_value queue_parallel_0001(napi_env env, napi_callback_info info)
 inline void DivForTest(void *data)
 {
     const int div = 3;
-    *(int *)data /= div;
+    (*static_cast<int*>(data)) /= div;
 }
 
 inline void TwoPlusForTest(void *data)
 {
     const int plus = 2;
-    *(int *)data += plus;
+    (*static_cast<int*>(data)) += plus;
 }
 
 inline void TwoSubForTest(void *data)
 {
     const int sub = 2;
-    *(int *)data -= sub;
+    (*static_cast<int*>(data)) -= sub;
 }
 
 static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
@@ -3357,11 +3357,11 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
         ffrt_queue_submit(queue_handle, create_function_wrapper(OnePlusFfrtSleepFunc,
             ffrt_function_kind_queue), nullptr);
     }
-    ffrt_queue_submit(queue_handle,create_function_wrapper(TwoSubFunc, ffrt_function_kind_queue), &task_attr[0]);
+    ffrt_queue_submit(queue_handle, create_function_wrapper(TwoSubFunc, ffrt_function_kind_queue), &task_attr[0]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr[1]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(DivFunc, ffrt_function_kind_queue), &task_attr[2]);
-
-    task = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SubFunc, ffrt_function_kind_queue), &task_attr[3]);
+    int waitIdex = 3;
+    task = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SubFunc, ffrt_function_kind_queue), &task_attr[waitIdex]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(MultipleFunc, ffrt_function_kind_queue), &task_attr[4]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(TwoPlusFunc, ffrt_function_kind_queue), &task_attr[5]);
 
