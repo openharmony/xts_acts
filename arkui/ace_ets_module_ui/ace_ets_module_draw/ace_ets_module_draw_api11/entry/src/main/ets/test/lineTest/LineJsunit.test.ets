@@ -21,7 +21,7 @@ export default function LineJsunit() {
   describe('LineTest', () => {
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Line/line',
+        url: 'MainAbility/pages/line/line3',
       }
       try {
         router.clear();

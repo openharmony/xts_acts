@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
-=======
-/*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
->>>>>>> 8820cdecda8336713d6c47417c43ad0443c1b0aa
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-<<<<<<< HEAD
 import events_emitter from '@ohos.events.emitter'
 
 @Entry
@@ -107,56 +101,3 @@ struct ShapeExample {
     }.width('100%').margin({ top: 15 })
   }
 }
-=======
-
-import Log from '../../common/Log';
-
-let my_shape = new Shape()
-const TAG = 'ets_apiLack_add';
-
-@Entry
-@Component
-struct ShapeNe {
-  aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear ShapeNe start`)
-  }
-
-  aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear ShapeNe end`)
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-
-      Text("shape-Ne")
-        .width(100)
-        .height(70)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("neText")
-
-      Shape() {
-        Path().width(300).height(10).commands('M0 0 L900 0')
-      }
-      .viewPort({ x: 0, y: -5, width: 300, height: 20 })
-      .stroke(0xEE8443)
-      .strokeWidth(10)
-      .strokeDashArray([20])
-      .strokeDashOffset(10)
-
-      Shape() {
-        Path().width(300).height(10).commands('M0 0 L900 0')
-      }.viewPort({ x: 0, y: -5, width: 300, height: 20 }).stroke(0xEE8443).strokeWidth(10).strokeOpacity(0.5)
-
-    }.width("100%").height("100%")
-  }
-}
-
->>>>>>> 8820cdecda8336713d6c47417c43ad0443c1b0aa
