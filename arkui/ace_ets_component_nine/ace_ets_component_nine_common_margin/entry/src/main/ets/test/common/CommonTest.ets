@@ -26,7 +26,7 @@ export default class CommonTest {
    * @param testValues   : test values
    * @param functions    : [0]:executeTest, [last] checkTestResult
    */
-  static initTest(pageConfig, supportView, testValues, ...functions) {
+  static initTest(pageConfig: Record<string, ESObject>, supportView: Array<string>, testValues:  Array<Record<string, ESObject>>, ...functions: Function[]) {
     supportView.forEach(targetView => {
 
       //Obtain the last index of cases that need to be executed.
@@ -63,7 +63,7 @@ export default class CommonTest {
            * @tc.desc   Test whether the state of different components
            *            after modifying their properties meets expectations
            */
-          it(caseTag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done) => {
+          it(caseTag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             console.info('[' + caseTag + '] START');
             //Push page.
             console.info('[' + caseTag + ']' + ' test start, push page.');
@@ -81,14 +81,14 @@ export default class CommonTest {
               }
 
               //Execute test
-              let data = {
-                pageConfig: pageConfig,
-                caseTag: caseTag,
-                testValue: testValue,
+              let data: Record<string, ESObject> = {
+                'pageConfig': pageConfig,
+                'caseTag': caseTag,
+                'testValue': testValue,
               }
               if (functions.length > 1) {
                 if (functions[0] instanceof Function) {
-                  let customParams = await functions[0](data);
+                  let customParams: ESObject = await functions[0](data);
                   //Set custom params to data, can be used by check test result.
                   if (customParams) {
                     data['customParams'] = customParams;
@@ -127,7 +127,7 @@ export default class CommonTest {
     });
   }
 
-  static async back(caseTag, sharePage, currentIndex, lastIndex) {
+  static async back(caseTag: string, sharePage: boolean, currentIndex: number, lastIndex: number) {
     if (sharePage) {
       if (currentIndex == lastIndex) {
         console.info('[' + caseTag + ']' + ' last case, close page.');

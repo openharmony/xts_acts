@@ -27,16 +27,16 @@ class MarginButtonModifier implements AttributeModifier<CommonAttribute> {
 @Component
 struct MarginPage {
   @State _marginButtonModifier: MarginButtonModifier = new MarginButtonModifier()
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State targetComponentWidth: number = router.getParams() ? router.getParams()['view']['targetComponentWidth'] : 0
-  @State targetComponentHeight: number = router.getParams() ? router.getParams()['view']['targetComponentHeight'] : 0
-  @State referenceComponentKey: string = router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.targetView : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.componentKey : ''
+  @State targetComponentWidth: number = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.targetComponentWidth : 0
+  @State targetComponentHeight: number = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.targetComponentHeight : 0
+  @State referenceComponentKey: string = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.referenceComponentKey : ''
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as Record<string, ESObject>).view.parentComponentKey : ''
 
   onPageShow() {
     console.info('margin page show called ')
-    AttrsManager.registerDataChange(value => {
+    AttrsManager.registerDataChange((value : ESObject) => {
       this._marginButtonModifier.mMargin = value
     })
   }
@@ -339,7 +339,7 @@ struct MarginPage {
               direction: GridRowDirection.Row
             }) {
               ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green,
-                Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color) => {
+                Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color: Color) => {
                 GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                   Row().width('100%').height('20vp')
                 }.borderColor(color).borderWidth(2)
@@ -408,19 +408,19 @@ struct MarginPage {
           } else if (this.targetView == 'Scroll') {
             Scroll() {
               Column() {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
                   Text('Scroll' + item.toString())
                     .width('90%')
                     .height(50)
                     .backgroundColor(Color.White)
                     .textAlign(TextAlign.Center)
-                }, item => item)
+                }, (item: number) => item.toString())
               }.width('100%')
             }.scrollBar(BarState.On).commonStyle()
           } else if (this.targetView == 'SideBarContainer') {
             SideBarContainer(SideBarContainerType.Embed) {
               Column() {
-                ForEach([1, 2, 3], (item) => {
+                ForEach([1, 2, 3], (item: number) => {
                   Column({ space: 5 }) {
                     Image($r('app.media.icon')).width(50).height(50)
                     Text('Index0' + item).fontSize(25)
@@ -438,9 +438,9 @@ struct MarginPage {
             }.commonStyle()
           } else if (this.targetView == 'Swiper') {
             Swiper() {
-              ForEach([1, 2, 3], (item: string) => {
+              ForEach([1, 2, 3], (item: number) => {
                 Text('Swiper' + item).width('90%').height(50)
-              }, item => item)
+              }, (item: number) => item.toString())
             }
             .indicator(true)
             .backgroundColor(Color.White)
@@ -463,7 +463,7 @@ struct MarginPage {
                       .objectFit(ImageFit.Fill)
                   }
                 }
-              }, item => item)
+              }, (item: number) => item.toString())
             }.commonStyle()
           }
           Text('referenceComponentKey')
