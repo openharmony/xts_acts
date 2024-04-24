@@ -28,6 +28,7 @@ import PopupOptionsFalse from './popupControlTest/PopupOptionsFalse.test';
 import PopupOptionsTrue from './popupControlTest/PopupOptionsTrue.test';
 import bindContextMenu from './menuControlTest/bindContextMenu.test';
 import BindMenu from './menuControlTest/BindMenu1.test';
+import aboutToDisappearJsunit from './menuControlTest/AboutToDisappearJsunit.test';
 
 export default function testsuite() {
   BindMenuTest();
@@ -47,4 +48,5 @@ export default function testsuite() {
   PopupOptionsTrue()
   bindContextMenu()
   BindMenu()
+  aboutToDisappearJsunit();
 }
