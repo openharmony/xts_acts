@@ -160,7 +160,7 @@ static napi_value OhAvPlayerSetFDSourceAbnormalTwo(napi_env env, napi_callback_i
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
-    OH_AVErrCode errCode = OH_AVPlayer_SetFDSource(player, PARAM_0, PARAM_0, PARAM_0);
+    OH_AVErrCode errCode = OH_AVPlayer_SetFDSource(player, -1, PARAM_0, PARAM_0);
     if (errCode != AV_ERR_OK) {
         backParam = SUCCESS;
     }
