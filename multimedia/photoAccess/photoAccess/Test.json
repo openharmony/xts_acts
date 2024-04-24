@@ -56,7 +56,12 @@
             "pre-push": [],
             "push": [
                 "./resource/medialibrary/01.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
-                "./resource/medialibrary/01.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/"
+                "./resource/medialibrary/01.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
+                "./resource/medialibrary/error_mp4.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
+                "./resource/medialibrary/error_jpg.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
+                "./resource/medialibrary/01.gif ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
+                "./resource/medialibrary/01.png ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
+                "./resource/medialibrary/01.mpeg ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/"
             ]
         },
         {

@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,35 +11,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("photoAccess_js_hap") {
+ohos_js_hap_suite("ActsNetworkMgrStatisticsNetTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":photoAccess_js_assets",
-    ":photoAccess_resources",
+    ":statistics_demo_resources",
+    ":statistics_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsPhotoAccessTest"
-  shared_libraries = [ "./entry/src/main/cpp:mediaAssetManager" ]
-  part_name = "media_library"
-  subsystem_name = "multimedia"
-}
+  hap_name = "ActsNetworkMgrStatisticsNetTest"
 
-ohos_app_scope("photoAccess_app_profile") {
+  part_name = "sms_mms"
+  subsystem_name = "telephony"
+}
+ohos_app_scope("statistics_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
-
-ohos_js_assets("photoAccess_js_assets") {
+ohos_js_assets("statistics_resources") {
   source_dir = "entry/src/main/ets"
 }
-
-ohos_resources("photoAccess_resources") {
+ohos_resources("statistics_demo_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":photoAccess_app_profile" ]
+  deps = [ ":statistics_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }
