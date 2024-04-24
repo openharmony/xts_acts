@@ -20,6 +20,7 @@ import CameraService from '../model/CameraService';
 import { CustomContainer } from '../common/CameraPreviewFormatContainer';
 import FirstDialog from '../model/FirstDialog';
 import router from '@ohos.router';
+import promptAction from '@ohos.promptAction';
 
 class Obj {
   format: number;
@@ -153,6 +154,27 @@ struct cameraFormat {
       .height('10%')
       .width('100%')
       .justifyContent(FlexAlign.SpaceBetween)
+
+      Column() {
+        Row(){
+          Column(){
+            Button(`设备无相机`)
+              .borderRadius(8)
+              .backgroundColor(0x317aff)
+              .width('50%')
+              .onClick(()=>{
+                this.Vue = true;
+                router.back({
+                  url: 'pages/Camera/Camera_index',
+                  params: { result: 'true ', title: this.name }
+                });
+                promptAction.showToast({
+                  message: '当前设备无相机', duration: 1000
+                });
+              })
+          }
+        }
+      }
 
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround, direction: FlexDirection.Column }) {
         Scroll() {
