@@ -3361,7 +3361,8 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
     ffrt_queue_submit(queue_handle, create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr[1]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(DivFunc, ffrt_function_kind_queue), &task_attr[2]);
     int waitIdex = 3;
-    task = ffrt_queue_submit_h(queue_handle, create_function_wrapper(SubFunc, ffrt_function_kind_queue), &task_attr[waitIdex]);
+    task = ffrt_queue_submit_h(queue_handle, create_function_wrapper(
+        SubFunc, ffrt_function_kind_queue), &task_attr[waitIdex]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(MultipleFunc, ffrt_function_kind_queue), &task_attr[4]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(TwoPlusFunc, ffrt_function_kind_queue), &task_attr[5]);
 
