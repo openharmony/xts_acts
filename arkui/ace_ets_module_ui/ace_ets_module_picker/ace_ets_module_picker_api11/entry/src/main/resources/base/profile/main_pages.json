@@ -53,6 +53,9 @@
 
         "MainAbility/pages/checkboxGroup/checkBoxGroup2",
         "MainAbility/pages/Select/select3",
-        "MainAbility/pages/TextPicker/textPicker"
+        "MainAbility/pages/TextPicker/textPicker",
+	 "MainAbility/pages/Radio/radio2",
+        "MainAbility/pages/systemPrompt",
+	"MainAbility/pages/DatePicker/datePickerneww"
     ]
 }

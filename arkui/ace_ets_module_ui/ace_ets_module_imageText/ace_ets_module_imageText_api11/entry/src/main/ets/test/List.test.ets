@@ -219,6 +219,9 @@ import TextStyle2 from './textTest/TextApi/TextStyle2.test';
 import textMinFontSizeJsunit from './textTest/text.test';
 import textAreaOnCutJsunit from './TextAreaTest/textArea.test';
 import textInputOnEditChangeJsunit from './TextInputTest/textInput.test';
+
+import imageAnimatorJsunitt from './ImageAnimator/ImageAnimatorJsunit2.test.ets'
+import loadingProgressJsunit2 from './ProgressTest/LoadingProgressJsunit2.test.ets';
 export default function testsuite() {
   stageFontTest();
   stageMediaquery();
@@ -415,4 +418,6 @@ export default function testsuite() {
   TextStyle2()
   unitsModuleNameJsunit()
   ImageApi()
+  imageAnimatorJsunitt();
+  loadingProgressJsunit2();
 }

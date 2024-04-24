@@ -142,6 +142,8 @@ import sideBarShowSideBarJsunit from './SideBarContainerTest/sideBar.test';
 import stackAlignContentJsunit from './StackTest/stack.test';
 import swiperCurveJsunit from './SwiperTest/swiper1.test';
 import tabsBarPositionJsunit from './TabsTest/tabs.test';
+import scrollBarJsunitt from './ScrollBar/ScrollBarJsunitt.test.ets';
+import listItemJsunit2 from './ListTest/ListItemJsunit2.test';
 
 export default function testsuite() {
   listUxTest()
@@ -270,4 +272,7 @@ export default function testsuite() {
   stackAlignContentJsunit()
   swiperCurveJsunit()
   tabsBarPositionJsunit()
+  
+  scrollBarJsunitt()
+  listItemJsunit2()
 }

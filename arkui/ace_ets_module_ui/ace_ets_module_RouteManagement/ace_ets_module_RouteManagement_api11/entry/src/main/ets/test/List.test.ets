@@ -31,6 +31,7 @@ import routerReplaceJsunit from './Router/routerReplaceJsunit.test.ets';
 
 import systemRouterJsunit from './Router/SystemRouterJsunit.test';
 import routerStandardJsunit from './ohosRouterTest/router.test.ets';
+import ohosRouterJsunit from './Router/OhosRouterJsnuit.test.ets';
 
 export default function testsuite() {
   pushPageInit();
@@ -51,4 +52,6 @@ export default function testsuite() {
   
   systemRouterJsunit()
   routerStandardJsunit()
+  ohosRouterJsunit();
+
 }

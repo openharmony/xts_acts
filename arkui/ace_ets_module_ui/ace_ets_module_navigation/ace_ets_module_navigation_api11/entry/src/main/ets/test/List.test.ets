@@ -88,6 +88,8 @@ import NavigationApiOther from './NavigationTest/NavigationApiOther.test.ets';
 import navigatorTargetJsunit from './NavigationTest/navigator.test'
 import pageRouteTest from './pageRouteTest/pageRoute.test'
 import searchOnCutJsunit from './SearchTest/search.test'
+import navigationJsunittt from './Navigation/NavigationJsunittt.test.ets';
+import navigatorCodeJsunit from './Navigation/NavigatorCodeJsunit.test.ets';
 
 export default function testsuite() {
   navigationTypeTest();
@@ -168,4 +170,6 @@ export default function testsuite() {
   navigatorTargetJsunit()
   pageRouteTest()
   searchOnCutJsunit()
+   navigationJsunittt();
+  navigatorCodeJsunit();
 }

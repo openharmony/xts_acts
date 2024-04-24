@@ -39,6 +39,7 @@ import sliderJsunit1 from './slider/SliderJsunit1.test';
 import menuBackgroundBlurStyle from './SelectTest/menuBackgroundBlurStyle.test.ets'
 import menuBackgroundColor from './SelectTest/menuBackgroundColor.test.ets'
 import RadioJsunit from './RadioTest/RadioJsunit.test';
+import radioJsunit2 from './RadioTest/RadioJsunit2.test.ets';
 import RatingUIJsunit from './RatingTest/RatingUIJsunit.test.ets';
 
 import select from './SelectTest/Select';
@@ -57,6 +58,8 @@ import datePickerLunarJsunit from './DatePicker/datePicker.test';
 import checkBoxGroupSelectAllJsunit from './checkboxGroup/checkBoxGroup.test';
 import selectOnSelectJsunit from './SelectTest/select3.test';
 import textPickerDefaultPickerItemHeightJsunit from './TextPicker/textPicker.test';
+import datePickerJsunit from './DatePickerTest/DatePickerJsunit.test.ets';
+import systempromptJsunit from './SystempromptJsunit.test.ets';
 export default function testsuite() {
   stageTimePickerDialog();
   stageTextPickerDialog();
@@ -94,6 +97,7 @@ export default function testsuite() {
   checkBoxTest1()
   checkBoxGroupTest()
   RadioJsunit();
+  radioJsunit2();
   RatingUIJsunit();
   
   checkBoxGroupJsunit2()
@@ -105,4 +109,6 @@ export default function testsuite() {
   checkBoxGroupSelectAllJsunit()
   textPickerDefaultPickerItemHeightJsunit()
   selectOnSelectJsunit()
+    datePickerJsunit();
+  systempromptJsunit();
 }

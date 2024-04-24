@@ -199,6 +199,8 @@
         "MainAbility/pages/Tabs/tabs2",
         "MainAbility/pages/grid/gridAPI",
 
-        "MainAbility/pages/AlphabetIndexer/alphabetIndexerAPI"
+        "MainAbility/pages/AlphabetIndexer/alphabetIndexerAPI",
+	"MainAbility/pages/ScrollBar/scrollBarr",
+       "MainAbility/pages/List/listItem2"
     ]
 }

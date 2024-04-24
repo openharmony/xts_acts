@@ -10,6 +10,7 @@
         "MainAbility/pages/Resource/ResourceString",
 	"MainAbility/pages/global/global1",
         "MainAbility/pages/web/web",
-        "MainAbility/pages/web/web2"
+        "MainAbility/pages/web/web2",
+	 "MainAbility/pages/configuration/configuration"
     ]
 }
