@@ -233,6 +233,7 @@ export default function RdbStoreValueTypeTest() {
           resultSet = null;
         }).catch((err) => {
           console.log("query error " + err);
+          expect(null).assertFail();
         })
         await store.delete(predicates).then(async (rows) => {
           console.log(TAG + "delete start")
@@ -240,6 +241,7 @@ export default function RdbStoreValueTypeTest() {
           expect(1).assertEqual(rows);
         }).catch((err) => {
           console.info("delete error " + err)
+          expect(null).assertFail();
         })
         await store.query(predicates).then(async (resultSet) => {
           console.log(TAG + "query start")
@@ -249,6 +251,7 @@ export default function RdbStoreValueTypeTest() {
           resultSet = null;
         }).catch((err) => {
           console.log("query error " + err);
+          expect(null).assertFail();
         })
         done()
       } catch (err) {
@@ -327,6 +330,7 @@ export default function RdbStoreValueTypeTest() {
           console.info(TAG+'update table done.');
         }).catch((err) => {
           console.log(TAG+`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          expect(null).assertFail();
         })
         let resultSet1 = await store.querySql("select value1 from bigint_table");
         console.log(TAG + "query" + resultSet1);
@@ -343,6 +347,7 @@ export default function RdbStoreValueTypeTest() {
           console.info(TAG+'Delete table done.');
         }).catch((err) => {
           console.log(TAG+`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          expect(null).assertFail();
         })
 
         let resultSet2 = await store.querySql("select value1 from bigint_table");
