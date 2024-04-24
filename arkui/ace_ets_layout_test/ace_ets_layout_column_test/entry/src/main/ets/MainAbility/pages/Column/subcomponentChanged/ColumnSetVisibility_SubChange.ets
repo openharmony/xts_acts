@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../common/MessageManager';
+import { MessageManager, Callback, Message }from '../../../common/MessageManager';
 @Entry
 @Component
 struct ColumnSetVisibilityTest {
   @State testVisibility1: number = Visibility.Visible
   @State testVisibility2: number = Visibility.Visible
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager()
   private content: string = "ColumnSetVisibility Page";
   onPageShow() {
     console.info('ColumnSetVisibility onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'testVisibility1') {
         this.testVisibility1 = message.value;
