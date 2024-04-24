@@ -52,6 +52,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
   console.log('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
   describe('windowPromise_test', () => {
     console.log('describe window_api_test start!!!')
+    let WindowStage:ohosWindow.WindowStage;
     const TRUE_FLAG: boolean = true;
     let commonRGBColorArr: Array<string> = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(255,255,255)', 'rgb(0,0,0)', 'rgb(249,0,230)', 'rgb(102,102,102)', 'rgb(255,247,0)'];
     let commonNUMBERColorArr: Array<string> = ['#00FF0000', '#0000FF00', '#000000FF', '#00FFFFFF', '#00000000', '#00F900E6', '#00666666', '#00FFF700'];
@@ -72,6 +73,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.log('jsUnittest beforeAll systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
+      WindowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+      console.log('WindowStage' +JSON.stringify(WindowStage));
     })
 
     /**
@@ -1919,6 +1922,134 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         }
       })
     })
+
+  /**
+     * @tc.number    : SUB_BASIC_WMS_WULTMNDOW_GET_WINDOWSYSTEMBARPROPERTIES_0200
+     * @tc.name      : test_subWindow_GetWindowSystemBarProperties_1300004
+     * @tc.desc      : test_subWindow_GetWindowSystemBarProperties_1300004
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("test_subWindow_GetWindowSystemBarProperties_1300004", 2, async function(done){
+      let msgStr = "test_subWindow_GetWindowSystemBarProperties_1300004";
+      console.log(msgStr + " begin");
+      try{
+        await WindowStage.createSubWindow('mySubWindow').then((data) => {
+        let SubWindowClass = data;
+        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        try {
+        let systemBarProperty = SubWindowClass.getWindowSystemBarProperties();
+        console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
+      } catch (err) {
+        console.error('Failed to get system bar properties. Code: ' + JSON.stringify(err)+ err.code);
+        expect(err.code).assertEqual(1300004)
+        done();
+      }
+      }).catch((err) => {
+        console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+          done()
+      });
+    } catch (exception) {
+      console.error('test_subWindow_GetWindowSystemBarProperties_1300004 Failed. Cause: ' + JSON.stringify(exception));
+        expect(false).assertTrue();
+        done()
+    }
+
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_WULTMNDOW_SET_WINDOWSYSTEMBARPROPERTIES_0100
+     * @tc.name      : test_subWindow_SetWindowSystemBarProperties
+     * @tc.desc      : test_subWindow_GetWindowSystemBarProperties
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("test_subWindow_SetWindowSystemBarProperties", 2, async function(done){
+      let msgStr = "test_subWindow_GetWindowSystemBarProperties_1300004";
+      console.log(msgStr + " begin");
+      let SystemBarProperties = {
+        statusBarColor: '#ff00ff',
+        navigationBarColor: '#00ff00',
+        statusBarContentColor: '#ffffff',
+        navigationBarContentColor: '#00ffff'
+      };
+      try{
+        await WindowStage.createSubWindow('mySubWindow2').then((data) => {
+          let SubWindowClass = data;
+          console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          try {
+            SubWindowClass.setWindowSystemBarProperties(SystemBarProperties).then(() => {
+              console.info('Succeeded in setting the system bar properties.');
+              expect(true).assertTrue();
+              done();
+            }).catch((err) => {
+              console.error('Failed to set the system bar properties. Cause: ' + JSON.stringify(err));
+              expect(false).assertTrue();
+              done();
+            });
+          } catch (err) {
+            console.error('Failed to setWindowSystemBarProperties. Code: ' + JSON.stringify(err)+ err.code);
+            expect(false).assertTrue();
+            done();
+          }
+        }).catch((err) => {
+          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+          done()
+        });
+      } catch (exception) {
+        console.error('test_subWindow_GetWindowSystemBarProperties_1300004 Failed. Cause: ' + JSON.stringify(exception));
+        expect(false).assertTrue();
+        done()
+      }
+
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1180
+     * @tc.name      : testSetWindowLimits_Function_Promise
+     * @tc.desc      : test the function of setWindowLimits
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testSetWindowLimits_Function_Promise', 4, async function (done){
+      let tag = 'setWindowLimits_Function_Promise '
+      console.log(tag + 'begin')
+      try {
+          let WindowLimits = {
+              maxWidth: 1500,
+              maxHeight: 1000,
+              minWidth: 500,
+              minHeight: 400
+          };
+          let windowClass = await ohosWindow.getLastWindow(context);
+          let promise = windowClass.setWindowLimits(WindowLimits);
+          promise.then((data) => {
+              console.log(tag + 'Succeeded in setWindowLimits. Cause:' + JSON.stringify(data));
+              expect(true).assertTrue();
+              done();
+          }).catch((error) => {
+              console.log(tag + 'www data Failed to setWindowLimits. Cause: ' + JSON.stringify(error));
+              if (error.code == 801) {
+                  expect(true).assertTrue()
+                  done()
+              } else {
+                  expect().assertFail();
+                  done();
+              }
+          });
+          
+        } catch (error) {
+            console.log(tag + 'Failed to change the window limits out. Cause:' + JSON.stringify(error));
+            expect().assertFail();
+            done();
+        }
+  })
+
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4000
      * @tc.name      : testEnableLandscapeMultiWindow_Function

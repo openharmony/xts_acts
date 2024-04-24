@@ -28,7 +28,9 @@ export default class MainAbility extends Ability {
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
-        console.log("[Demo] MainAbility onWindowStageCreate windowStage="+ windowStage)
+        console.log("[Demo] MainAbility onWindowStageCreate windowStage="+ windowStage);
+        AppStorage.setOrCreate('windowStage',windowStage);
+        console.log('windowStage:' +JSON.stringify(windowStage));
         globalThis.windowStage = windowStage
         globalThis.abilityContext = this.context
         windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)
