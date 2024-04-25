@@ -23,7 +23,7 @@ import arkuiNodeEventTest from './NodeContainerTest/arkuinode/arkuinodeEnvent.te
 import arkuiNodeRenderTest from './NodeContainerTest/arkuinode/arkuinodeRender.test';
 import Image_QRCode_Api from './textTest/Image_QRCode_Api.test';
 import RichEditorApi from './RichEditorTest/RichEditorApi.test';
-import RichEditorApi2 from './RichEditorTest/RichEditorApi2.test';
+import RichEditorApi222 from './RichEditorTest/RichEditorApi222.test';
 import APIgetUIFontConfigJsunit from './fontTest/APIgetUIFontConfigJsunit.test';
 import APITextBackgroundStyleJsunit from './ContainerSpanTest/APITextBackgroundStyleJsunit.test'
 import SXrenderingStrategyJsunit from './RichEditorTest/SXrenderingStrategyJsunit.test';
@@ -242,7 +242,7 @@ export default function testsuite() {
   arkuiNodeRenderTest();
   Image_QRCode_Api();
   RichEditorApi();
-  RichEditorApi2();
+  RichEditorApi222();
   APIgetUIFontConfigJsunit();
   APITextBackgroundStyleJsunit();
   SXrenderingStrategyJsunit();
