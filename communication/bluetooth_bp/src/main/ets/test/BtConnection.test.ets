@@ -1282,5 +1282,62 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
         }
         done();
     })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1400
+     * @tc.name getRemoteProfileUuids callback.
+     * @tc.desc Test getRemoteProfileUuids callback.
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1400', 0, async function (done) {
+        try {
+        function getRemoProUid() {
+          return new Promise<void>((resolve,reject) => {
+            bluetooth.getRemoteProfileUuids('44:55:66:77:88:99', (err, data)=> {
+              if (err) {
+                console.info('getRemoProUid failed' + err);
+                reject(err.code);
+              } else
+              {
+                console.info('[bluetooth_js]getRemoProUid info:'+JSON.stringify(data));
+              }
+              resolve();
+            });
+          });
+        }
+        await getRemoProUid().then((data) => {
+          console.info("[bluetooth_js]09 connection done");
+          done();
+        })
+        .catch(e => {
+                console.info("[bluetooth_js]getRemoteProfileUuids failed" + e);
+                expect(2900099).assertEqual(e);
+                done();
+            })
+      } catch (error) {
+        console.info("[bluetooth_js] error code connection -> " + error.code + " error info connection  -> " + error.message);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1500
+     * @tc.name getRemoteProfileUuids promise.
+     * @tc.desc Test getRemoteProfileUuids promise.
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1500', 0, async function (done) {
+        try {
+        await bluetooth.getRemoteProfileUuids('44:55:66:77:88:99').then((data) => {
+          console.info('[bluetooth_js] getRemoteProfileUuids result:' + JSON.stringify(data));
+        });
+      } catch (error) {
+        console.info("[bluetooth_js] error code connection -> " + error.code + " error info connection  -> " + error.message);
+        expect(error.code).assertEqual(2900099);
+      }
+      done();
+    })
 })
 }
