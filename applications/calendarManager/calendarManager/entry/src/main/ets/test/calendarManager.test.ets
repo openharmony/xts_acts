@@ -78,7 +78,7 @@ export default function CalendarManagerTest() {
       } catch (error) {
         console.info(`getPermission failed, error: ${error}`);
       }
-      sleep(3000);
+      sleep(500);
       calendarMgr = calendarManager.getCalendarManager(globalThis.context);
     });
 
