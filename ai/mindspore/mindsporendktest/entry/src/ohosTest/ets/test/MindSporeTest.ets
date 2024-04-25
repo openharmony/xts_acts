@@ -74,7 +74,7 @@ export default function mindSporeTest() {
     }
 
     console.info("[rawfile_copy_to_sandbox] sandbox path:" + dir);
-    await Utils.sleep(2000)
+    await Utils.sleep(500)
   })
 
   beforeEach(async () => {
@@ -91,7 +91,7 @@ export default function mindSporeTest() {
       console.info("MindSporeDemo ml_face_isface.ms file does not exists! access failed with error message: " +
       err.message + ", error code: " + err.code);
     });
-    await Utils.sleep(2000)
+    await Utils.sleep(500)
     await fs.stat(ml_face_model_input).then(async (res) => {
       if (res) {
         console.info("MindSporeDemo ml_face_isface.input file exists");
