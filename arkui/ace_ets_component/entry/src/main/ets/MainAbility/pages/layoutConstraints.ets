@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,15 +27,20 @@ class ChildInfo {
 }
 ;
 
+interface PriorityChild {
+  text: string
+  priority: number
+}
+
 @Entry
 @Component
 struct LayoutConstraints {
   private children: string[] = ['1', '2', '3', '4', '5', '6'];
-  @State aspectRatio: number = 1.5;
+  @State _aspectRatio: number = 1.5;
   private container: ContainerInfo[] = [
     { label: 'Big container', size: '97%' },
     { label: 'Small container', size: '30%' }];
-  @State priorityChildren: any[] = [
+  @State priorityChildren: PriorityChild[] = [
     { text: '1\n(priority:1)', priority: 1 },
     { text: '2\n(priority:2)', priority: 2 },
     { text: '3\n(priority:3)', priority: 3 },
@@ -54,12 +58,12 @@ struct LayoutConstraints {
           Text(item)
             .backgroundColor(0xbbb2cb)
             .fontSize(20)
-            .aspectRatio(this.aspectRatio)
+            .aspectRatio(this._aspectRatio)
             .height(60)
           Text(item)
             .backgroundColor(0xbbb2cb)
             .fontSize(20)
-            .aspectRatio(this.aspectRatio)
+            .aspectRatio(this._aspectRatio)
             .width(60)
             .key('aspectRatio')
         }, (item: string) => item)
@@ -78,7 +82,7 @@ struct LayoutConstraints {
             Text(item)
               .backgroundColor(0xbbb2cb)
               .fontSize(40)
-              .aspectRatio(this.aspectRatio)
+              .aspectRatio(this._aspectRatio)
           }
         }, (item: string) => item)
       }
@@ -93,7 +97,7 @@ struct LayoutConstraints {
         .fontColor(Color.Black)
         .width('100%')
       Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-        ForEach(this.priorityChildren, (item) => {
+        ForEach(this.priorityChildren, (item: PriorityChild) => {
           if (item.priority === 1 || item.priority === 5) {
             Text(`1\n(priority:${item.priority})`)
               .width(135)
@@ -112,7 +116,7 @@ struct LayoutConstraints {
               .backgroundColor(0xbbb2cb)
               .displayPriority(item.priority)
           }
-        }, item => item.text)
+        }, (item: PriorityChild) => item.text)
       }
       .width(this.container[this.currentIndex].size)
       .backgroundColor(0xd2cab3)
@@ -142,10 +146,10 @@ struct LayoutConstraints {
   stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("LayoutConstraints page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData) {
-      if (eventData.data.aspectRatio) {
-        this.aspectRatio = eventData.data.aspectRatio;
-      } else if (eventData.data.displayPriority) {
-        let priority = JSON.parse(JSON.stringify(this.priorityChildren));
+      if (eventData.data?.aspectRatio) {
+        this._aspectRatio = eventData.data.aspectRatio;
+      } else if (eventData.data?.displayPriority) {
+        let priority: PriorityChild[] = JSON.parse(JSON.stringify(this.priorityChildren));
         priority[0].priority = eventData.data.displayPriority;
         this.priorityChildren = [];
         this.priorityChildren = priority;

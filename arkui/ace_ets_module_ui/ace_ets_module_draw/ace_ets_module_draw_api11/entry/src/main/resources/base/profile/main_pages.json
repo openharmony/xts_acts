@@ -14,13 +14,16 @@
         "MainAbility/pages/Particle/ParticleProperty",
         "MainAbility/pages/Canvas/CanvasRenderer",
         "MainAbility/pages/Canvas/drwableAdd",
-	
+	"MainAbility/pages/Canvas/canvas2",
+        "MainAbility/pages/Shape/shape3",
+        "MainAbility/pages/Circle/circle3",
+        "MainAbility/pages/Canvas/canvas3",
+        "MainAbility/pages/line/line3",
 	 "MainAbility/pages/path/path",
         "MainAbility/pages/polygon/polygon",
         "MainAbility/pages/polyline/polyline",
         "MainAbility/pages/Canvas/canvas",
         "MainAbility/pages/Canvas/curves2",
-
         "MainAbility/pages/Canvas/curves",
         "MainAbility/pages/Ellipse/ellipse1",
         "MainAbility/pages/line/line",

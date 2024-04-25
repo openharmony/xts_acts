@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,52 +18,44 @@ import events_emitter from '@ohos.events.emitter'
 @Entry
 @Component
 struct FlexExample {
-  @State direction: FlexDirection = FlexDirection.Row
-  private flexBasis: ESObject = null
-  private flexGrow: ESObject = null
-  private flexShrink: ESObject = null
-  private alignSelf: ItemAlign = null
+  @State _direction: FlexDirection = FlexDirection.Row
+  private _flexBasis: ESObject|null = null
+  private _flexGrow: ESObject|null = null
+  private _flexShrink: ESObject|null = null
+  private _alignSelf: ItemAlign|null = null
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Flex page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.flexBasis != null) {
-        this.flexBasis = eventData.data.flexBasis;
+      if (eventData.data?.flexBasis != null) {
+        this._flexBasis = eventData.data.flexBasis;
       }
-      if (eventData.data.flexGrow != null) {
-        this.flexGrow = eventData.data.flexGrow;
+      if (eventData.data?.flexGrow != null) {
+        this._flexGrow = eventData.data.flexGrow;
       }
-      if (eventData.data.flexShrink != null) {
-        this.flexShrink = eventData.data.flexShrink;
+      if (eventData.data?.flexShrink != null) {
+        this._flexShrink = eventData.data.flexShrink;
       }
-      if (eventData.data.alignSelf != null) {
-        this.alignSelf = eventData.data.alignSelf;
-      }
-    }
-  }
-  private stateChangCallBack = (eventData: events_emitter.EventData) => {
-    if (eventData != null) {
-      console.info("Flex page state change called:" + JSON.stringify(eventData));
-      switch (eventData.data.alignSelf) {
+      switch (eventData.data?.alignSelf) {
         case 'Auto':
-          this.alignSelf = ItemAlign.Auto;
+          this._alignSelf = ItemAlign.Auto;
           break;
         case 'Start':
-          this.alignSelf = ItemAlign.Start;
+          this._alignSelf = ItemAlign.Start;
           break;
         case 'Center':
-          this.alignSelf = ItemAlign.Center;
+          this._alignSelf = ItemAlign.Center;
           break;
         case 'End':
-          this.alignSelf = ItemAlign.End;
+          this._alignSelf = ItemAlign.End;
           break;
         case 'Stretch':
-          this.alignSelf = ItemAlign.Stretch;
+          this._alignSelf = ItemAlign.Stretch;
           break;
         case 'Baseline':
-          this.alignSelf = ItemAlign.Baseline;
+          this._alignSelf = ItemAlign.Baseline;
           break;
         default:
-          this.alignSelf = ItemAlign.Auto;
+          this._alignSelf = ItemAlign.Auto;
       }
     }
   }

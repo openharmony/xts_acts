@@ -21,13 +21,13 @@ export default function CheckboxTest() {
     beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Checkbox/Index',
+        url: 'MainAbility/pages/Checkbox/CheckboxTest',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Index state success " + JSON.stringify(pages));
-        if (!("Index" == pages.name)) {
+        if (!("CheckboxTest" == pages.name)) {
           console.info("get Index state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           console.info("push Index page success " + JSON.stringify(result));

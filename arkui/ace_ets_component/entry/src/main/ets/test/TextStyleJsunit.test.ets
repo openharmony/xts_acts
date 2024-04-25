@@ -72,7 +72,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle007] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle007] change component data error: " + err.message);
+        console.log("[testTextStyle007] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('fontSize');
@@ -98,7 +98,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle008] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle008] change component data error: " + err.message);
+        console.log("[testTextStyle008] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('fontSize');
@@ -124,7 +124,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle009] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle009] change component data error: " + err.message);
+        console.log("[testTextStyle009] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('fontSize');
@@ -150,7 +150,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle010] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle010] change component data error: " + err.message);
+        console.log("[testTextStyle010] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('fontSize');
@@ -187,7 +187,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle012] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle012] change component data error: " + err.message);
+        console.log("[testTextStyle012] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson: string = getInspectorByKey('fontStyle');
@@ -213,7 +213,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle013] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle013] change component data error: " + err.message);
+        console.log("[testTextStyle013] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson: string = getInspectorByKey('fontStyle');
@@ -239,7 +239,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle014] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle014] change component data error: " + err.message);
+        console.log("[testTextStyle014] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson: string = getInspectorByKey('fontStyle');
@@ -265,7 +265,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle015] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle015] change component data error: " + err.message);
+        console.log("[testTextStyle015] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson: string = getInspectorByKey('fontStyle');
@@ -302,7 +302,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle017] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle017] change component data error: " + err.message);
+        console.log("[testTextStyle017] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson: string = getInspectorByKey('fontWeight');
@@ -328,7 +328,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle018] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle018] change component data error: " + err.message);
+        console.log("[testTextStyle018] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson: string = getInspectorByKey('fontWeight');
@@ -354,7 +354,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle019] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle019] change component data error: " + err.message);
+        console.log("[testTextStyle019] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson: string = getInspectorByKey('fontWeight');
@@ -380,7 +380,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle020] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle020] change component data error: " + err.message);
+        console.log("[testTextStyle020] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson: string = getInspectorByKey('fontWeight');
@@ -417,7 +417,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle022] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle022] change component data error: " + err.message);
+        console.log("[testTextStyle022] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson: string = getInspectorByKey('fontFamily');
@@ -443,7 +443,7 @@ export default function textStyleJsunit() {
         console.info("[testTextStyle023] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testTextStyle023] change component data error: " + err.message);
+        console.log("[testTextStyle023] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson: string = getInspectorByKey('fontFamily');

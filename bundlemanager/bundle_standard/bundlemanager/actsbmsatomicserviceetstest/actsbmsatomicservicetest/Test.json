@@ -13,7 +13,8 @@
             "test-file-name": [
                 "BmsAtomicService1.hap",
                 "BmsAtomicServiceShared.hap",
-                "ActsBmsAtomicServiceTest.hap" 
+                "ActsBmsAtomicServiceTest.hap",
+                "bmsAccessTokenTest1.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

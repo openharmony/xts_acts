@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +19,7 @@ import events_emitter from '@ohos.events.emitter'
 @Entry
 @Component
 struct zIndexExample {
-  @State zIndex: number = 1;
+  @State _zIndex: number = 1;
 
   onPageShow() {
     console.info('[zIndex] page show called ');
@@ -42,8 +41,8 @@ struct zIndexExample {
     console.info("[stateChangCallBack] stateChangCallBack ");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.zIndex != null) {
-        this.zIndex = eventData.data.zIndex
+      if (eventData.data?.zIndex != null) {
+        this._zIndex = eventData.data.zIndex
       }
     }
   }
@@ -63,7 +62,7 @@ struct zIndexExample {
           .size({ width: '70%', height: '50%' })
           .backgroundColor(0xc1cbac)
           .align(Alignment.TopStart)
-          .zIndex(this.zIndex)
+          .zIndex(this._zIndex)
           .key('zIndex')
       }
     }

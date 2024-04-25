@@ -67,6 +67,7 @@
         "MainAbility/pages/MeasureSize/measureSize",
         "MainAbility/pages/MeasureSize/onMeasureSize1",
         "MainAbility/pages/MeasureSize/onMeasureSize2",
-        "MainAbility/pages/MeasureSize/onMeasureSize3"
+        "MainAbility/pages/MeasureSize/onMeasureSize3",
+        "MainAbility/pages/Background/background"
     ]
 }

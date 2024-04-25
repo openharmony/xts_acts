@@ -70,7 +70,7 @@ export default function enableJsunit() {
         console.info("[testEnable03] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testEnable03] change component data error: " + err.message);
+        console.log("[testEnable03] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('enabled');
@@ -95,7 +95,7 @@ export default function enableJsunit() {
         console.info("testEnable04 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testEnable04 change component data error: " + err.message);
+        console.log("testEnable04 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let objNew: string = getInspectorByKey('enabled');
@@ -120,7 +120,7 @@ export default function enableJsunit() {
         console.info("[testEnable02] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testEnable02] change component data error: " + err.message);
+        console.log("[testEnable02] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('enabled');

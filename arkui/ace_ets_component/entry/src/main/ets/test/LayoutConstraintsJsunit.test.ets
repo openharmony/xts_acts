@@ -71,7 +71,7 @@ export default function layoutConstraintsJsunit() {
         console.info("[testLayoutConstraints002] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testLayoutConstraints002] change component data error: " + err.message);
+        console.log("[testLayoutConstraints002] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('aspectRatio');
@@ -106,7 +106,7 @@ export default function layoutConstraintsJsunit() {
         console.info("[testLayoutConstraints004] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testLayoutConstraints004] change component data error: " + err.message);
+        console.log("[testLayoutConstraints004] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('displayPriority');
@@ -131,7 +131,7 @@ export default function layoutConstraintsJsunit() {
         console.info("[testLayoutConstraints005] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testLayoutConstraints005] change component data error: " + err.message);
+        console.log("[testLayoutConstraints005] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('aspectRatio');
@@ -156,7 +156,7 @@ export default function layoutConstraintsJsunit() {
         console.info("[testLayoutConstraints006] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testLayoutConstraints006] change component data error: " + err.message);
+        console.log("[testLayoutConstraints006] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('aspectRatio');

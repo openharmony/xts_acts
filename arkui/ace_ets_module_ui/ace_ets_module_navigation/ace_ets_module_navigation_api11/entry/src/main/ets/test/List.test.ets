@@ -81,6 +81,8 @@ import SideBarContainerType_DefaultValue2 from './SideBarContainerTest/SideBarCo
 import SideBarContainerType_DefaultValue3 from './SideBarContainerTest/SideBarContainerType/SideBarContainerType_DefaultValue3.test';
 import SideBarContainerDivider from './SideBarContainerTest/SideBarContainerDivider/SideBarContainerDivider.test';
 import stepperUIJsunit from './stepperTest/stepperUIJsunit.test.ets';
+import transitionJsunit from './Navigator/TransitionJsunit.test';
+import sharedTransitionJsunit from './Navigator/SharedTransitionJsunit.test';
 import NavigationApiFirst from './NavigationTest/NavigationApiFirst.test';
 import sidebarIconsJsunit from './SideBarContainerTest/sidebarfirst.test'
 import stepperItemDisabledJsunit from './stepperTest/stepperItem.test';
@@ -161,6 +163,8 @@ export default function testsuite() {
   SideBarContainerType_DefaultValue3();
   SideBarContainerDivider();
   stepperUIJsunit();
+  transitionJsunit();
+  sharedTransitionJsunit();
   
   navigationTypeTest();
   NavigationApiFirst()

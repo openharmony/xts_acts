@@ -36,6 +36,7 @@ group("ability_runtime") {
       "actscleantemptest:cleantempfiles",
       "actscrosscall:actscrosscall",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
+      "actsdelegatorfaabilitytest:ActsDelegatorFAAbilityTest",
       "actsfaabilitydisplayorientationtest:ActsFAAbilityDisplayOrientationTest",
       "actsfwkdataaccessortest:dataability",
       "actslastexitreason:actslastexitreason",
