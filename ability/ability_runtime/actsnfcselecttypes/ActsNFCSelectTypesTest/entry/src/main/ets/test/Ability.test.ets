@@ -84,7 +84,7 @@ export default function abilityTest() {
         await cancel.click();
       } else {
         let cmd = "uinput -K -d 2 -u 2";
-        await abilitydelegator.executeShellCommand(cmd);
+        await abilityDelegator.executeShellCommand(cmd);
       }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0100 end');
       done();
@@ -127,7 +127,7 @@ export default function abilityTest() {
         await cancel.click();
       } else {
         let cmd = "uinput -K -d 2 -u 2";
-        await abilitydelegator.executeShellCommand(cmd);
+        await abilityDelegator.executeShellCommand(cmd);
       }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0200 end');
       done();
@@ -202,7 +202,7 @@ export default function abilityTest() {
         await cancel.click();
       } else {
         let cmd = "uinput -K -d 2 -u 2";
-        await abilitydelegator.executeShellCommand(cmd);
+        await abilityDelegator.executeShellCommand(cmd);
       }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0400 end');
       done();
@@ -329,7 +329,7 @@ export default function abilityTest() {
         await cancel.click();
       } else {
         let cmd = "uinput -K -d 2 -u 2";
-        await abilitydelegator.executeShellCommand(cmd);
+        await abilityDelegator.executeShellCommand(cmd);
       }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0700 end');
       done();
@@ -374,7 +374,7 @@ export default function abilityTest() {
         await cancel.click();
       } else {
         let cmd = "uinput -K -d 2 -u 2";
-        await abilitydelegator.executeShellCommand(cmd);
+        await abilityDelegator.executeShellCommand(cmd);
       }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0800 end');
       done();
