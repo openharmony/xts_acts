@@ -369,6 +369,7 @@ export default function abilityTest() {
       console.info('startAbility MulHapSecond exist');
       let HapThird = await driver.findComponent(ON.text("MulHapThird"));
       expect(HapThird === null).assertTrue();
+      let cancel = await driver.findComponent(ON.text("取消"));
       if (cancel) {
         await cancel.click();
       } else {
