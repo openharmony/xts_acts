@@ -85,8 +85,12 @@ export default function CalendarManagerTest() {
 
     /*
      * @tc.number  SUB_Application_CalendarManagerApi_test_0100
-     * @tc.name    Test Enumeration of CalendarType types.
+     * @tc.name    test_enumeration_of_calendarType_types.
      * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+
      */
     it("SUB_Application_CalendarManagerApi_test_0100", 0, () => {
       expect(calendarManager.CalendarType.LOCAL == 'local').assertTrue();
