@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,10 +21,11 @@ struct ListExample {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   @State listDirection: Axis = Axis.Vertical;
   @State editMode: boolean = false;
+  @State editFlag: boolean = false;
   @State edgeEffect: EdgeEffect = EdgeEffect.None;
   @State chainAnimation: boolean = false;
   @State strokeWidth: number = 2.000000;
-  @State color: string = 0xFFFFFF;
+  @State color: number = 0xFFFFFF;
   @State startMargin: number = 20.000000;
   @State endMargin: number = 20.000000;
 
@@ -66,16 +66,16 @@ struct ListExample {
     console.info("[stateChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.listDirection != null) {
+      if (eventData.data?.listDirection != null) {
         this.listDirection = eventData.data.listDirection;
       }
-      if (eventData.data.editMode != null) {
+      if (eventData.data?.editMode != null) {
         this.editMode = eventData.data.editMode;
       }
-      if (eventData.data.edgeEffect != null) {
+      if (eventData.data?.edgeEffect != null) {
         this.edgeEffect = eventData.data.edgeEffect;
       }
-      if (eventData.data.chainAnimation != null) {
+      if (eventData.data?.chainAnimation != null) {
         this.chainAnimation = eventData.data.chainAnimation;
       }
     }
@@ -84,16 +84,16 @@ struct ListExample {
     console.info("[stateChangCallBackTwo] stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBackTwo] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.strokeWidth != null) {
+      if (eventData.data?.strokeWidth != null) {
         this.strokeWidth = eventData.data.strokeWidth;
       }
-      if (eventData.data.color != null) {
+      if (eventData.data?.color != null) {
         this.color = eventData.data.color;
       }
-      if (eventData.data.startMargin != null) {
+      if (eventData.data?.startMargin != null) {
         this.startMargin = eventData.data.startMargin;
       }
-      if (eventData.data.endMargin != null) {
+      if (eventData.data?.endMargin != null) {
         this.endMargin = eventData.data.endMargin;
       }
     }

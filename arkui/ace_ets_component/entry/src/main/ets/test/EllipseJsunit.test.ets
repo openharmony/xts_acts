@@ -71,7 +71,7 @@ export default function ellipseJsunit() {
         console.info("[testEllipse02] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testEllipse02] change component data error: " + err.message);
+        console.log("[testEllipse02] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('ellipse');
@@ -96,7 +96,7 @@ export default function ellipseJsunit() {
         console.info("[testEllipse03] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testEllipse03] change component data error: " + err.message);
+        console.log("[testEllipse03] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('ellipse');
@@ -121,7 +121,7 @@ export default function ellipseJsunit() {
         console.info("[testEllipse04] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testEllipse04] change component data error: " + err.message);
+        console.log("[testEllipse04] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('ellipse');
@@ -146,7 +146,7 @@ export default function ellipseJsunit() {
         console.info("[testEllipse05] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testEllipse05] change component data error: " + err.message);
+        console.log("[testEllipse05] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('ellipse');
@@ -171,7 +171,7 @@ export default function ellipseJsunit() {
         console.info("[testEllipse06] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testEllipse06] change component data error: " + err.message);
+        console.log("[testEllipse06] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('ellipse');
@@ -196,7 +196,7 @@ export default function ellipseJsunit() {
         console.info("[testEllipse07] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testEllipse07] change component data error: " + err.message);
+        console.log("[testEllipse07] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('ellipse');

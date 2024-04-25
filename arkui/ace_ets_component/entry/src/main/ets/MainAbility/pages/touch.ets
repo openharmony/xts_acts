@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,13 +36,13 @@ struct TouchExample {
     console.info("[touch] page stateChangCallBack");
     if (eventData != null) {
       console.info("[touch] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.text != null) {
+      if (eventData.data?.text != null) {
         this.text = eventData.data.text;
       }
-      if (eventData.data.eventType != null) {
+      if (eventData.data?.eventType != null) {
         this.eventType = eventData.data.eventType;
       }
-      if (eventData.data.touchFlag != null) {
+      if (eventData.data?.touchFlag != null) {
         this.touchFlag = eventData.data.touchFlag
       }
     }
@@ -56,7 +55,7 @@ struct TouchExample {
         .height(40)
         .width(80)
         .key('touch')
-        .onTouch((event: Touch) => {
+        .onTouch((event: TouchEvent) => {
           if (event.type === TouchType.Down) {
             this.eventType = 'Down'
             console.info("[touch] eventType is Down")
@@ -98,7 +97,7 @@ struct TouchExample {
             console.info("touchFlag start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("touchFlag emit action state err: " + JSON.stringify(err.message))
+            console.info("touchFlag emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
       Text(this.text)
