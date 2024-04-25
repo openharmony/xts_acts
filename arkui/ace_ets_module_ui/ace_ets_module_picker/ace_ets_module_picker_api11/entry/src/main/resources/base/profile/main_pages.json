@@ -14,7 +14,7 @@
 
         "MainAbility/pages/Select/Select",
         "MainAbility/pages/Radio/Radio",
-        "MainAbility/pages/Checkbox/Index",
+        "MainAbility/pages/Checkbox/CheckboxTest",
         "MainAbility/pages/TextPicker/TextPickerSec",
         "MainAbility/pages/TextPicker/Index",
         "MainAbility/pages/TextPicker/TextPickerMulti",
