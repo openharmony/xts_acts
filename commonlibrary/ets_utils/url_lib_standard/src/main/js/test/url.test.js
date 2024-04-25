@@ -4982,4 +4982,27 @@ describe('UrlFunTest', function () {
         var result = JSON.stringify(urlObj.params.getAll("url"))
         expect(result).assertEqual(res)
     })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29900
+   * @tc.name: testUrlparseURL0033
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0033', 0, function () {
+        let strUrl = "?newsId=HB-1-snhs/index_v2-s&urlInfo=%7B%22hot_topic%22%3A%221%22%2C%22keyword%22%3A%22%25" +
+          "E5%25B8%2583%25E6%259E%2597%25E8%2582%25AF%25E6%258A%25B5%25E8%25BE%25BE%25E4%25B8%258A%25E6%25" +
+          "B5%25B7%25E5%25BC%2580%25E5%2590%25AF%25E8%25AE%25BF%25E5%258D%258E%22%2C%22query_class%22%3A%22" +
+          "%25E5%259B%25BD%25E9%2599%2585%22%2C%22query_id%22%3A%227VO3B%22%2C%22query_rank%22%3A%2234%22%2C%22" +
+          "query_resultVersion%22%3A%220%22%2C%22query_wordType%22%3A%22harmony%22%2C%22searchFrom%22" +
+          "%3A%22hot_topic%22%7D";
+        let res = '{"hot_topic":"1","keyword":"%E5%B8%83%E6%9E%97%E8%82%AF%E6%8A%B5%E8%BE%BE%E4%B8%8A%E6%B5' +
+        '%B7%E5%BC%80%E5%90%AF%E8%AE%BF%E5%8D%8E","query_class":"%E5%9B%BD%E9%99%85","query_id":"7VO3B",' +
+        '"query_rank":"34","query_resultVersion":"0","query_wordType":"harmony","searchFrom":"hot_topic"}';
+        let urlObj = new Url.URLParams(strUrl)
+        var result = urlObj.get("urlInfo")
+        expect(result).assertEqual(res)
+    })
 })}
