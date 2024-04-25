@@ -195,23 +195,20 @@ describe('btConnectionTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0400', 0, async function (done) {
         function BondStateParam(data) {
             console.info("[bluetooth_js] bondStateChange on:" + JSON.stringify(data)
-            +'bondStateChange deviceId:' + data.deviceId + 'bondStateChange state:' + data.state);
+            +'bondStateChange deviceId:' + data.deviceId + 'bondStateChange state:' + data.state + 'bondStateChange cause:' + data.cause);
         }
         try {
             bluetooth.on('bondStateChange', BondStateParam);
-            bluetooth.pairDevice("11:22:55:66:33:44", err => {
-                if (err) {
-                    console.info('pairDevice errCode: ' + err.code + ', errMessage: ' + err.message);
-                }
-                console.info('pairDevice, err: ' + JSON.stringify(err));
+            await bluetooth.pairDevice("11:22:55:66:33:44").then(() => {
+                console.info('pairDevice success');
             });
-            bluetooth.off('bondStateChange', BondStateParam);
+            await sleep(900);
             expect(bluetooth.BondState.BOND_STATE_INVALID == 0).assertTrue();
             expect(bluetooth.BondState.BOND_STATE_BONDING == 1).assertTrue();
             expect(bluetooth.BondState.BOND_STATE_BONDED == 2).assertTrue();
         } catch (err) {
             console.info("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual('2900099');
+            expect(err.code).assertEqual(2900099);
         }
         bluetooth.off('bondStateChange', BondStateParam);
         done();
@@ -1148,7 +1145,57 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
             expect(TRANSPORT_LE).assertEqual(1);
         } catch (err) {
             console.info("BluetoothTransport errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual('2900099');
+            expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0200
+     * @tc.name DeviceChargeState
+     * @tc.desc Test DeviceChargeState api12
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0200', 0, async function (done) {
+        try {
+            let deviceNormalChargeNotCharged = bluetooth.DeviceChargeState.DEVICE_NORMAL_CHARGE_NOT_CHARGED;
+            let deviceNormalChargeInCharging = bluetooth.DeviceChargeState.DEVICE_NORMAL_CHARGE_IN_CHARGING;
+            let deviceSuperChargeNotCharged = bluetooth.DeviceChargeState.DEVICE_SUPER_CHARGE_NOT_CHARGED;
+            let deviceSuperChargeInCharging = bluetooth.DeviceChargeState.DEVICE_SUPER_CHARGE_IN_CHARGING;
+            expect(deviceNormalChargeNotCharged).assertEqual(0);
+            expect(deviceNormalChargeInCharging).assertEqual(1);
+            expect(deviceSuperChargeNotCharged).assertEqual(2);
+            expect(deviceSuperChargeInCharging).assertEqual(3);
+        } catch (err) {
+            console.info("DeviceChargeState errCode:" + err.code + ",errMessage:" + err.message);
+            expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0300
+     * @tc.name UnbondCause
+     * @tc.desc Test UnbondCause api12
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_CONSTANT_0300', 0, async function (done) {
+        try {
+            let userRemoved = bluetooth.UnbondCause.USER_REMOVED;
+            let RemoteDeviceDown = bluetooth.UnbondCause.REMOTE_DEVICE_DOWN;
+            let authFailure = bluetooth.UnbondCause.AUTH_FAILURE;
+            let authRejected = bluetooth.UnbondCause.AUTH_REJECTED;
+            let internalRrror = bluetooth.UnbondCause.INTERNAL_ERROR;
+            expect(userRemoved).assertEqual(0);
+            expect(RemoteDeviceDown).assertEqual(1);
+            expect(authFailure).assertEqual(2);
+            expect(authRejected).assertEqual(3);
+            expect(internalRrror).assertEqual(4);
+        } catch (err) {
+            console.info("UnbondCause errCode:" + err.code + ",errMessage:" + err.message);
+            expect().assertFail();
         }
         done();
     })
@@ -1187,6 +1234,51 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async function (don
         } catch (err) {
             console.info("getPairState errCode:" + err.code + ",errMessage:" + err.message);
             expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1200
+     * @tc.name setRemoteDeviceName
+     * @tc.desc Test setRemoteDeviceName api12
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1200', 0, async function (done) {
+        try {
+            await bluetooth.setRemoteDeviceName('11:22:33:44:55:66', 'RemoteDeviceName').then(() => {
+                console.info('setRemoteDeviceName success');
+            });
+        } catch (err) {
+            console.info("setRemoteDeviceName errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual(401);
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1300
+     * @tc.name getRemoteDeviceBatteryInfo
+     * @tc.desc Test getRemoteDeviceBatteryInfo api12
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_1300', 0, async function (done) {
+        try {
+            await bluetooth.getRemoteDeviceBatteryInfo('11:22:33:44:55:66').then((data) => {
+                console.info('getRemoteDeviceBatteryInfo success, BatteryInfo:' + JSON.stringify(data));
+                console.info('getRemoteDeviceBatteryInfo success, BatteryInfo batteryLevel:' + JSON.stringify(data.batteryLevel));
+                console.info('getRemoteDeviceBatteryInfo success, BatteryInfo leftEarBatteryLevel:' + JSON.stringify(data.leftEarBatteryLevel));
+                console.info('getRemoteDeviceBatteryInfo success, BatteryInfo leftEarChargeState:' + JSON.stringify(data.leftEarChargeState));
+                console.info('getRemoteDeviceBatteryInfo success, BatteryInfo rightEarBatteryLevel:' + JSON.stringify(data.rightEarBatteryLevel));
+                console.info('getRemoteDeviceBatteryInfo success, BatteryInfo rightEarChargeState:' + JSON.stringify(data.rightEarChargeState));
+                console.info('getRemoteDeviceBatteryInfo success, BatteryInfo boxBatteryLevel:' + JSON.stringify(data.boxBatteryLevel));
+                console.info('getRemoteDeviceBatteryInfo success, BatteryInfo boxChargeState:' + JSON.stringify(data.boxChargeState));
+            });
+        } catch (err) {
+            console.info("getRemoteDeviceBatteryInfo errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual(2900099);
         }
         done();
     })
