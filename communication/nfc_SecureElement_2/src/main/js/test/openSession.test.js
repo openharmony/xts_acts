@@ -26,23 +26,21 @@ let Reader = null;
 let Session = null;
 let getReader = null;
 let nfcSEService = null;
-let readerIsPresent = null;
 
 async function getSEService() {
-    return new Promise((resolve, reject) => {
-        Service = secureElement.newSEService("serviceState", (state) => {
-            if (state == secureElement.ServiceState.DISCONNECTED) {
-                console.info("[nfc_test] getSEService newService state is Disconnected");
-                let err = null;
-                err.code = -1;
-                err.message = "newSEService failed, service is not connected"
-                reject(err);
-            } else {
-                console.info("[nfc_test] getSEService newService state is Connected");
-                resolve(Service);
-            }
-        });
-    });
+
+    console.info("openSessionTest createService start getSEService");
+     await secureElement.createService().then( (data) => {
+         console.info("openSessionTest start  createService data is" + data);
+         Service = data;
+         console.info("openSessionTest start  createService Service is" + Service);
+         let connect = Service.isConnected()
+         console.info("openSessionTest createService success = " + connect);
+     })
+     .catch((err) => {
+         console.info("openSessionTest createService createService err = " + err);
+     })
+    
 }
 
 export default function openSessionTest() {
@@ -83,7 +81,7 @@ export default function openSessionTest() {
                     }
                 }
             }).catch((err) =>{
-                console.info("[NFC_test] getSEService err.code " + err.code + "err.message " + err.message);
+                console.info("[NFC_test] openSessionTest err.code " + err.code + "err.message " + err.message);
             })
             done();
         })
@@ -101,74 +99,74 @@ export default function openSessionTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_secureElement_js_0600
+         * @tc.number SUB_Communication_NFC_secureElement_js_1100
          * @tc.name Test getReader
          * @tc.desc Obtains the reader that provides the session.
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_secureElement_js_0600', 0, function () {
+        it('SUB_Communication_NFC_secureElement_js_1100', 0, function () {
             try {
                 if (getReader == undefined) {
-                    console.info("[NFC_test]6 This function is not supported because the phone NFC chip is ST chip.");
+                    console.info("[NFC_test]11 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
                     let getNfcreader = Session.getReader();
-                    console.info("[NFC_test]6 Reader result of this session: " + getNfcreader);
+                    console.info("[NFC_test]11 Reader result of this session: " + getNfcreader);
                     expect(getNfcreader instanceof Object).assertTrue();
                 }
             } catch (error) {
-                console.info("[NFC_test]6 The reader result of the session is abnormal:" + error);
+                console.info("[NFC_test]11 The reader result of the session is abnormal:" + error);
                 expect().assertFail();
             }
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_secureElement_js_0700
+         * @tc.number SUB_Communication_NFC_secureElement_js_1200
          * @tc.name Test getATR
          * @tc.desc Obtain the ATR of the SE.
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_secureElement_js_0700', 0, function ()  {
+        it('SUB_Communication_NFC_secureElement_js_1200', 0, function ()  {
             try {
                 if (getReader == undefined) {
-                    console.info("[NFC_test]7 This function is not supported because the phone NFC chip is ST chip.");
+                    console.info("[NFC_test]12 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
                     let nfcGetart = Session.getATR();
                     expect(nfcGetart).assertInstanceOf('Array');
                     expect(!nfcGetart == false ).assertTrue();
-                    console.info("[NFC_test]7 Get the ATR of this SE: " + nfcGetart);
+                    console.info("[NFC_test]12 Get the ATR of this SE: " + nfcGetart);
                 }
             } catch (error) {
-                console.info("[NFC_test]7 Get the ATR of this SE occurs exception:" + error);
+                console.info("[NFC_test]10 Get the ATR of this SE occurs exception:" + error);
                 expect().assertFail();
             }
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_secureElement_js_0800
+         * @tc.number SUB_Communication_NFC_secureElement_js_1300
          * @tc.name Test close Session
          * @tc.desc Close a single session.
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_secureElement_js_0800', 0, async function (done) {
+        it('SUB_Communication_NFC_secureElement_js_1300', 0, async function (done) {
             try {
                 if (getReader == undefined) {
-                    console.info("[NFC_test]8 This function is not supported because the phone NFC chip is ST chip.");
+                    console.info("[NFC_test]13 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
                     let isopenSession = Session.isClosed();
-                    console.info("[NFC_test]8 Check the first one session is open: " + isopenSession);
+                    console.info("[NFC_test]13 Check the first one session is open: " + isopenSession);
                     expect(isopenSession).assertFalse();
                     Session.close();
                     sleep(900)
-                    console.info("[NFC_test]8 second session is closed successfully");
+                    console.info("[NFC_test]13 second session is closed successfully");
                     let iscloseSession = Session.isClosed();
-                    console.info("[NFC_test]8 After close Check the first one session is open: " + iscloseSession);
+                    console.info("[NFC_test]13 After close Check the first one session is open: " + iscloseSession);
                     expect(iscloseSession).assertTrue();
                 }
             } catch (error) {
-                console.info("[NFC_test]8 0800 occurs exception:" + error);
+                console.info("[NFC_test]13 0800 occurs exception:" + error);
                 expect().assertFail();
             }
             done();

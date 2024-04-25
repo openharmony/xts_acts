@@ -22,20 +22,18 @@ function sleep(delay) {
 }
 
 async function getSEService() {
-    return new Promise((resolve, reject) => {
-        Service = secureElement.newSEService("serviceState", (state) => {
-            if (state == secureElement.ServiceState.DISCONNECTED) {
-                console.info("[nfc_test] getSEService newService state is Disconnected");
-                let err = null;
-                err.code = -1;
-                err.message = "newSEService failed, service is not connected"
-                reject(err);
-            } else {
-                console.info("[nfc_test] getSEService newService state is Connected");
-                resolve(Service);
-            }
-        });
-    });
+    console.info("channelCallbacktest createService start getSEService");
+     await secureElement.createService().then( (data) => {
+         console.info("channelCallbacktest start  createService data is" + data);
+         Service = data;
+         console.info("channelCallbacktest start  createService Service is" + Service);
+         let connect = Service.isConnected()
+         console.info("channelCallbacktest createService success = " + connect);
+     })
+     .catch((err) => {
+         console.info("channelCallbacktest createService createService err = " + err);
+     })
+    
 }
 
 let Service = null;
@@ -86,7 +84,7 @@ export default function channelCallbacktest() {
                     }
                 }
             }).catch((err) =>{
-                console.info("[NFC_test] getSEService err.code " + err.code + "err.message " + err.message);
+                console.info("[NFC_test] channelCallbacktest err.code " + err.code + "err.message " + err.message);
             })
             done();
             console.info('beforeAll called');
