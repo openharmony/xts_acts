@@ -71,6 +71,18 @@
     {
       "name": "strokeWidth",
       "value": "20"
+    },
+    {
+        "name": "gutter_10",
+        "value": "10"
+    },
+    {
+        "name": "number",
+        "value": "200"
+    },
+    {
+        "name": "color",
+        "value": "#FF008000"
     }
   ]
 }

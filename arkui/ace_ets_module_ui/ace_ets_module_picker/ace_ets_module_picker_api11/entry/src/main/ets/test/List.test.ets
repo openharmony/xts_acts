@@ -49,6 +49,8 @@ import datepicker from './DatePickerTest/DatePicker';
 import ActsDatePickerTest from './DatePickerTest/DatePicker.test';
 import checkBoxTest1 from './CheckboxTest/checkBox';
 import checkBoxGroupTest from './checkboxGroup/checkBoxGroup';
+import toggle3Jsunit from './Toggle/Toggle3Jsunit.test';
+import rating3Jsunit from './RatingTest/Rating3Jsunit.test';
 
 import checkBoxGroupJsunit2 from './CheckboxTest/checkBoxFirst.test';
 import checkBoxGroupPartJsunit from './CheckboxTest/checkBoxGroup.test';
@@ -99,6 +101,8 @@ export default function testsuite() {
   RadioJsunit();
   radioJsunit2();
   RatingUIJsunit();
+  toggle3Jsunit();
+  rating3Jsunit();
   
   checkBoxGroupJsunit2()
   checkBoxGroupPartJsunit()

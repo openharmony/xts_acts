@@ -73,7 +73,13 @@ import gestureSetDirectionJsunit from './PanGestureTest/gesture.test';
 import lazyForEachOnDataAddJsunit from './lazyForeachTest/lazyForEach.test';
 import PanGestureEventJsunit from './PanGestureTest/PanGestureEventJsunit.test.ets';
 import gestureEnabledJsunit from './PanGestureTest/gestureEnabledJsunit.test.ets'
-
+import PanGesture3Jsunit from './PanGestureTest/PanGestureJsunit.test.ets';
+import longPressGestureJsUnit from './LongPressGestureTest/LongPressGesture.test.ets';
+import tapGestureTest from './TapGestureTest/TapGesture.test.ets';
+import priorityGestureJsunit from './TapGestureTest/PriorityGestureJsunit.test.ets';
+import parallelGestureJsunit from './TapGestureTest/ParallelGestureJsunit.test.ets';
+import commonJsunit from './CommonJsunit.test.ets';
+import motionPathJsunit from './MotionPathJsunit.test.ets';
 
 export default function testsuite() {
   touchJsunit();
@@ -133,4 +139,11 @@ export default function testsuite() {
   lazyForEachOnDataAddJsunit()
   PanGestureEventJsunit();
   gestureEnabledJsunit();
+  PanGesture3Jsunit();
+  tapGestureTest();
+  longPressGestureJsUnit();
+  priorityGestureJsunit();
+  parallelGestureJsunit();
+  commonJsunit();
+  motionPathJsunit();
 }
