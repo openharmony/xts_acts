@@ -207,5 +207,30 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       })
     }) 
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0050
+     * @tc.name      : testRectChangeReason_enum
+     * @tc.desc      : Test the function value of RectChangeReason
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */ 
+    it("testRectChangeReason_enum", 0, async function(done){
+      let msgStr = "testRectChangeReason_enum";
+      console.log(msgStr + "begin");
+      try {
+        expect(2).assertEqual(ohosWindow.RectChangeReason.RECOVER);
+        expect(3).assertEqual(ohosWindow.RectChangeReason.MOVE);
+        expect(4).assertEqual(ohosWindow.RectChangeReason.DRAG);
+        expect(5).assertEqual(ohosWindow.RectChangeReason.DRAG_START);
+        expect(6).assertEqual(ohosWindow.RectChangeReason.DRAG_END);
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to testRectChangeReason_enum'+JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+
   })
 }
