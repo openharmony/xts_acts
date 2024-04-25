@@ -34,7 +34,7 @@ export const aliasTooLong = "0123456789123456".repeat(16) + '1';
 
 
 export const labelLong = "0123456789123456".repeat(32);
-export const string2k = "0123456789123456".repeat(128);
+
 export const labelTooLong = "0123456789123456".repeat(128) + '1';
 
 export class retAll {
@@ -151,7 +151,7 @@ export async function assetAddFullAll(testAlias1: string, times: number) {
 
 export async function assetAddAttr(attr: asset.AssetMap) {
   try {
-    await asset.add(attr);
+    await asset.addAsUser(100,attr);
     return 0
   } catch (e) {
     return e.code
@@ -175,7 +175,7 @@ export async function assetRemove(alias: string) {
 
 export async function assetRemoveAttr(attr: asset.AssetMap) {
   try {
-    await asset.remove(attr);
+    await asset.removeAsUser(100,attr);
     return 0
   } catch (e) {
     return e.code
@@ -184,7 +184,7 @@ export async function assetRemoveAttr(attr: asset.AssetMap) {
 
 export async function assetQueryAttr(attr: asset.AssetMap): Promise<asset.AssetMap[] | number> {
   try {
-    return await asset.query(attr);
+    return await asset.queryAsUser(100,attr);
   } catch (e) {
     return e.code
   }
@@ -234,7 +234,7 @@ export async function assetQueryAll(alias: string, targetSecret: string) {
 
 export async function assetQueryNum(attr: asset.AssetMap) {
   try {
-    let ret: asset.AssetMap[] = await asset.query(attr);
+    let ret: asset.AssetMap[] = await asset.queryAsUser(100,attr);
     return ret.length
   } catch (e) {
     return e.code
@@ -247,7 +247,7 @@ export async function assetUpdate(alias: string) {
   let attr2: asset.AssetMap = new Map();
   attr2.set(asset.Tag.SECRET, StringToArray(updateSecret));
   try {
-    await asset.update(attr, attr2);
+    await asset.updateAsUser(100,attr, attr2);
     return 0
   } catch (e) {
     return e.code
@@ -260,7 +260,7 @@ export async function assetUpdateEasy(alias: string, newSecret: string) {
   let attr2: asset.AssetMap = new Map();
   attr2.set(asset.Tag.SECRET, StringToArray(newSecret));
   try {
-    await asset.update(attr, attr2);
+    await asset.updateAsUser(100,attr, attr2);
     return 0
   } catch (e) {
     return e.code
@@ -269,7 +269,7 @@ export async function assetUpdateEasy(alias: string, newSecret: string) {
 
 export async function assetUpdateAttrs(attr: asset.AssetMap, attr2: asset.AssetMap) {
   try {
-    await asset.update(attr, attr2);
+    await asset.updateAsUser(100,attr, attr2);
     return 0
   } catch (e) {
     return e.code
@@ -278,7 +278,7 @@ export async function assetUpdateAttrs(attr: asset.AssetMap, attr2: asset.AssetM
 
 export async function assetPreQuery(attr: asset.AssetMap): Promise<Uint8Array | number> {
   try {
-    let challenge: Uint8Array = await asset.preQuery(attr);
+    let challenge: Uint8Array = await asset.preQueryAsUser(100,attr);
     return challenge;
   } catch (e) {
     return e.code
@@ -287,7 +287,7 @@ export async function assetPreQuery(attr: asset.AssetMap): Promise<Uint8Array | 
 
 export async function assetPreQueryExpect(attr: asset.AssetMap): Promise<Uint8Array | number> {
   try {
-    await asset.preQuery(attr);
+    await asset.preQueryAsUser(100,attr);
     return 0;
   } catch (e) {
     return e.code
@@ -297,7 +297,7 @@ export async function assetPreQueryExpect(attr: asset.AssetMap): Promise<Uint8Ar
 export async function assetPreQueryEasy(): Promise<Uint8Array | number> {
   let attr: asset.AssetMap = new Map();
   try {
-    let challenge: Uint8Array = await asset.preQuery(attr);
+    let challenge: Uint8Array = await asset.preQueryAsUser(100,attr);
     return challenge;
   } catch (e) {
     return e.code
@@ -308,7 +308,16 @@ export async function assetPostQuery(challenge: Uint8Array) {
   try {
     let attr: asset.AssetMap = new Map();
     attr.set(asset.Tag.AUTH_CHALLENGE, challenge)
-    await asset.postQuery(attr);
+    await asset.postQueryAsUser(100,attr);
+    return 0;
+  } catch (e) {
+    return e.code
+  }
+}
+
+export async function assetPostQueryAttr(attr: asset.AssetMap) {
+  try {
+    await asset.postQueryAsUser(100,attr);
     return 0;
   } catch (e) {
     return e.code
@@ -323,12 +332,12 @@ export async function basicCRUD(attr: asset.AssetMap) {
   let attr4: asset.AssetMap = new Map();
   attr4.set(asset.Tag.SECRET, StringToArray(updateSecret));
   try {
-    await asset.add(attr);
-    await asset.remove(attr2);
-    await asset.add(attr);
-    await asset.update(attr2, attr4);
+    await asset.addAsUser(100,attr);
+    await asset.removeAsUser(100,attr2);
+    await asset.addAsUser(100,attr);
+    await asset.updateAsUser(100,attr2, attr4);
     attr2.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL)
-    await asset.query(attr2);
+    await asset.queryAsUser(100,attr2);
     return 0
   } catch (e) {
     return e.code
@@ -346,10 +355,10 @@ export async function basicCRUD2(attr: asset.AssetMap) {
   let attr4: asset.AssetMap = new Map();
   attr4.set(asset.Tag.SECRET, StringToArray(updateSecret));
   try {
-    await asset.add(attr);
-    await asset.query(attr2);
-    await asset.update(attr3, attr4);
-    await asset.remove(attr2);
+    await asset.addAsUser(100,attr);
+    await asset.queryAsUser(100,attr2);
+    await asset.updateAsUser(100,attr3, attr4);
+    await asset.removeAsUser(100,attr2);
     return 0
   } catch (e) {
     return e.code

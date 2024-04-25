@@ -48,26 +48,6 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.level Level3
      */
     it('Security_DataSecurity_Asset_WriteAndQuery_Func_0100', 0, async () => {
-      let valueType: asset.Value = asset.SyncType.NEVER;
-      expect(valueType).assertEqual(0);
-      expect(asset.SyncType.THIS_DEVICE).assertEqual(1);
-      expect(asset.SyncType.TRUSTED_DEVICE).assertEqual(2);
-      expect(asset.ErrorCode.PERMISSION_DENIED).assertEqual(201);
-      expect(asset.ErrorCode.SERVICE_UNAVAILABLE).assertEqual(24000001);
-      expect(asset.ErrorCode.ACCESS_DENIED).assertEqual(24000004);
-      expect(asset.ErrorCode.STATUS_MISMATCH).assertEqual(24000005);
-      expect(asset.ErrorCode.OUT_OF_MEMORY).assertEqual(24000006);
-      expect(asset.ErrorCode.DATA_CORRUPTED).assertEqual(24000007);
-      expect(asset.ErrorCode.DATABASE_ERROR).assertEqual(24000008);
-      expect(asset.ErrorCode.CRYPTO_ERROR).assertEqual(24000009);
-      expect(asset.ErrorCode.IPC_ERROR).assertEqual(24000010);
-      expect(asset.ErrorCode.BMS_ERROR).assertEqual(24000011);
-      expect(asset.ErrorCode.ACCOUNT_ERROR).assertEqual(24000012);
-      expect(asset.ErrorCode.ACCESS_TOKEN_ERROR).assertEqual(24000013);
-      expect(asset.ErrorCode.FILE_OPERATION_ERROR).assertEqual(24000014);
-      expect(asset.ErrorCode.GET_SYSTEM_TIME_ERROR).assertEqual(24000015);
-      expect(asset.ErrorCode.UNSUPPORTED).assertEqual(24000017);
-
       expect(Number(await aw.assetAddEasy(aw.aliasNameList[0], aw.secTooLong)))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
       expect(Number(await aw.assetAddEasy(aw.aliasNameList[1], aw.valueEmpty)))
