@@ -204,7 +204,7 @@ import aboutToRecycleiamge from './imageTest/aboutToRecycleiamgeJS.test'
 import focusJsunit from './buttonTest/FocusJsunit.test';
 import imageJsunit55 from './imageTest/ImageJsunit55.test';
 import playModeJsunit from './buttonTest/PlayModeJsunit.test';
-import richTextJsunit from './RichEditorTest/RichTextJsunit.test';
+import richTextJsunitFOUR from './RichEditorTest/RichTextJsunitFOUR.test';
 
 import textClockJsunit from './textTest/TextClockJsunit.test';
 import textTimerJsunit from './textTest/TextTimerJsunit.test';
@@ -409,7 +409,7 @@ export default function testsuite() {
   focusJsunit()
   imageJsunit55()
   playModeJsunit()
-  richTextJsunit()
+  richTextJsunitFOUR()
   textClockJsunit()
   textTimerJsunit()
   appVersionCodeJsunit();
