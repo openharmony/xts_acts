@@ -20,6 +20,9 @@
     "MainAbility/pages/CalendarPickerDialog/CalendarDialogCallback",
     "MainAbility/pages/DatePickerDialog/DatePickerDialogCallback",
     "MainAbility/pages/TextPickerDialog/TextPickerDialogCallback",
-    "MainAbility/pages/TimePickerDialog/TimePickerDialogCallback"
+    "MainAbility/pages/TimePickerDialog/TimePickerDialogCallback",
+    "MainAbility/pages/promptAction/closeCustomDialog",
+    "MainAbility/pages/promptAction/openCustomDialog",
+    "MainAbility/pages/promptAction/updateCustomDialog"
   ]
 }
