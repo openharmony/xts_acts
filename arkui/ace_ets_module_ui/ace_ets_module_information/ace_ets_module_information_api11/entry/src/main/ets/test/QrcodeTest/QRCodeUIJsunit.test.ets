@@ -24,7 +24,7 @@ export default function QRCodeUIJsunit() {
     beforeEach(async function (done) {
       console.info("QRCodeUIJsunit beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/QRCode/QRCodePage',
+        uri: 'MainAbility/pages/Qrcode/QRCodePage',
       }
       try {
         router.clear();
