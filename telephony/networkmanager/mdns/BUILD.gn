@@ -11,18 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("networkmanager") {
+import("//build/ohos_var.gni")
+
+group("mdns") {
   testonly = true
-  deps = [
-    "connection:connection",
-    "fetch:fetch",
-    "http:http",
-    "mdns:mdns",
-    "network:network",
-    "noNet:noNet",
-    "noPermission:noPermission",
-    "socket:socket",
-    "statistics:statistics",
-    "websocket:websocket",
-  ]
+  if (is_standard_system) {
+    deps = [ "mdnstest:ActsNetworkMgrMdnsTest" ]
+  }
 }
