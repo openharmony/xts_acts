@@ -239,7 +239,9 @@ export default function actsWifiManagerFunctionsTest() {
                                 + "macType: " + result.macType + "rxLinkSpeed: " + result.rxLinkSpeed
                                 + "maxSupportedTxLinkSpeed: " + result.maxSupportedTxLinkSpeed
                                 + "maxSupportedRxLinkSpeed: " + result.maxSupportedRxLinkSpeed
-                                + "wifiStandard: " + result.wifiStandard);
+                                + "wifiStandard: " + result.wifiStandard
+                                + " supportedWifiCategory :"+result.supportedWifiCategory
+                                + " isHiLinkNetwork: "+result.isHiLinkNetwork);
                             let standard = wifiMg.getLinkedInfo().WifiStandard;
                             if (standard == wifiMg.WifiStandard.WIFI_STANDARD_UNDEFINED) {
                                 expect(true).assertEqual(standard == 0);
@@ -315,15 +317,16 @@ export default function actsWifiManagerFunctionsTest() {
             }
             await sleep(3000);
             let getScanInfoListResult = wifiMg.getScanResultsSync();
-            console.info("[wifi_test]wifi getScanInfoList  result : " + JSON.stringify(getScanInfoListResult));
-            let getScanInfoResult = wifiMg.getScanInfoList();
-            console.info("[wifi_test]wifi getScanInfoList  result : " + JSON.stringify(getScanInfoResult));
             let clen = Object.keys(getScanInfoListResult).length;
+            console.info("[wifi_test]wifi getScanInfoListResult length  result : " + JSON.stringify(clen));
+            let getScanInfoResult = wifiMg.getScanInfoList();
+            //console.info("[wifi_test]wifi getScanInfoList  result : " + JSON.stringify(getScanInfoResult));
+            clen = Object.keys(getScanInfoResult).length;
             console.info("[wifi_test]wifi getScanInfoList length  result : " + JSON.stringify(clen));
             let result = getScanInfoListResult;
             if (clen >= 0) {
                 expect(true).assertEqual(clen >= 0);
-                for (let j = 0; j < clen; ++j) {
+                for (let j = 0; j < clen && j<3; ++j) {
                     console.info("ssid: " + result[j].ssid + "bssid: " + result[j].bssid + 
                         "bssidType: " + result[j].bssidType +
                         "securityType: " + result[j].securityType +
@@ -332,7 +335,8 @@ export default function actsWifiManagerFunctionsTest() {
                         "timestamp" + result[j].timestamp + "capabilities" + result[j].capabilities
                         + "centerFrequency0: " + result[j].centerFrequency0
                         + "centerFrequency1: " + result[j].centerFrequency1
-                        + "eid: " + result[j].infoElems.eid + "content: " + result[j].infoElems.content);
+                        + "eid: " + result[j].infoElems.eid + "content: " + result[j].infoElems.content
+                        +" supportedWifiCategory: "+result[j].supportedWifiCategory+" isHiLinkNetwork: "+result[j].isHiLinkNetwork);
                 }
             }
             done();
