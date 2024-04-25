@@ -213,7 +213,7 @@ struct MetaViewport {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
               setTimeout(() => {
-                Uthis.userAgentPC = this.controller.getUserAgent();
+                this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 3706)
                 }else{
