@@ -111,6 +111,58 @@ export default function abilityTest() {
       })
     })
 
+    it('Acts_ReportDrawnCompleted_AsyncCallback_001',0, async function (done) {
+      console.log('====>Acts_ReportDrawnCompleted_AsyncCallback_001 expect start ');
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let reportDrawnCompletedEvent = 'ACTS_UIExtension_ReportDrawnCompleted';
+      let grepLog = "DRAWN_COMPLETED";
+      let cmd = "hilog -x | grep " + grepLog;
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      var subscribeInfo = {
+        events: [appearEvent]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        globalscribe = data;
+        commonEventManager.subscribe(globalscribe, async (err, data) => {
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(reportDrawnCompletedEvent, (err) => {
+              if (err) {
+                console.log(`publish Acts_ReportDrawnCompleted_AsyncCallback_001 failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                setTimeout(function () {
+                  console.log('publish Acts_ReportDrawnCompleted_AsyncCallback_001 success');
+                  abilityDelegator.executeShellCommand(cmd, (err, data) => {
+                    console.log('====>Acts_ReportDrawnCompleted_AsyncCallback_001 executeShellCommand err : ' + JSON.stringify(err));
+                    if (data.stdResult) {
+                      console.log('====>Acts_ReportDrawnCompleted_AsyncCallback_001 data.stdResult : ' + JSON.stringify(data.stdResult));
+                    try {
+                      expect(data.stdResult).assertContain("DRAWN_COMPLETED");
+                      expect(data.stdResult).assertContain("com.acts.uiextensionprovider");
+                      expect(data.stdResult).assertContain("UIExtAbility");
+                    } catch {
+                      expect().assertFail();
+                      done();
+                    }
+                      done();
+                    } else {
+                      expect().assertFail();
+                      done();
+                    }
+                  });
+                }, 100);
+              }
+            });
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    })
+
     /*
      * @tc.number  : ACTS_UIExtension_ConnectAbility_001
      * @tc.name    : UIExtension connect serviceAbility
@@ -658,11 +710,11 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_DifferentApp_007
      * @tc.name    : test UIExtension in DifferentApp 007
      * @tc.desc    : UIExtension connect service visable and invisible with START_ABILITY_ABILITY Permission  in foreground
-     */   
+     */
     it('ACTS_UIExtension_DifferentApp_007',0, async function (done) {
       TAG = 'ACTS_UIExtension_DifferentApp_007 == ';
       console.log(TAG + "begin");
-      router.back()  
+      router.back()
       await Utils.sleep(500);
       let options = {
         url: 'TestAbility/pages/p2',
@@ -724,7 +776,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_DifferentApp_008
      * @tc.name    : test UIExtension in DifferentApp 008
      * @tc.desc    : UIExtension connect service visable and invisible with no Permission  in background
-     */   
+     */
     it('ACTS_UIExtension_DifferentApp_008',0, async function (done) {
       TAG = 'ACTS_UIExtension_DifferentApp_008 == ';
       console.log(TAG + "begin");
@@ -777,12 +829,12 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_DifferentApp_009
      * @tc.name    : test UIExtension in DifferentApp 009
      * @tc.desc    : UIExtension connect service visable and invisible with START_ABILITY_ABILITY Permission in background
-     */      
+     */
     it('ACTS_UIExtension_DifferentApp_009',0, async function (done) {
       TAG = 'ACTS_UIExtension_DifferentApp_009 == ';
       console.log(TAG + "begin");
 
-      router.back() 
+      router.back()
       await Utils.sleep(500);
       let options = {
         url: 'TestAbility/pages/p2',
@@ -844,12 +896,12 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_DifferentApp_010
      * @tc.name    : test UIExtension in DifferentApp 010
      * @tc.desc    : different UIExtension connect same service
-     */      
+     */
     it('ACTS_UIExtension_DifferentApp_010',0, async function (done) {
       TAG = 'ACTS_UIExtension_DifferentApp_010 == ';
       console.log(TAG + "begin");
 
-      router.back() 
+      router.back()
       await Utils.sleep(500);
       let options = {
         url: 'TestAbility/pages/p3',
@@ -909,12 +961,12 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_DifferentApp_011
      * @tc.name    : test UIExtension in DifferentApp 011
      * @tc.desc    : UIExtension connect service visable and invisible with START_ABILITY_ABILITY and START_ABILITIES_FROM_BACKGROUND Permission in background
-     */      
+     */
     it('ACTS_UIExtension_DifferentApp_011',0, async function (done) {
       TAG = 'ACTS_UIExtension_DifferentApp_011 == ';
       console.log(TAG + "begin");
 
-      router.back() 
+      router.back()
       await Utils.sleep(500);
       let options = {
         url: 'TestAbility/pages/p4',
@@ -974,7 +1026,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_Device_01
      * @tc.name    : test UIExtension back to desktop
      * @tc.desc    : UIExtension connect service successful back to desktop
-     */      
+     */
     it('ACTS_UIExtension_Device_01',0, async function (done) {
       TAG = 'ACTS_UIExtension_Device_01 == ';
       console.log(TAG + "begin");
@@ -1030,7 +1082,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_Device_02
      * @tc.name    : test UIExtension off the screen
      * @tc.desc    : UIExtension connect service successful then off the screen
-     */      
+     */
     it('ACTS_UIExtension_Device_02',0, async function (done) {
       TAG = 'ACTS_UIExtension_Device_02 == ';
       console.log(TAG + "begin");
@@ -1081,12 +1133,12 @@ export default function abilityTest() {
         done();
       })
     })
-  
+
     /*
      * @tc.number  : ACTS_UIExtension_StartAbilityByType001
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
-     */      
+     */
     it('ACTS_UIExtension_StartAbilityByType001',0, async function (done) {
       TAG = 'ACTS_UIExtension_StartAbilityByType001 == ';
       console.log(TAG + "begin");
@@ -1113,7 +1165,7 @@ export default function abilityTest() {
             });
           } else if (data.event == failStartAbilityByTypeEvent) {
             done();
-          } 
+          }
         });
       }).catch((error) => {
         console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
@@ -1126,7 +1178,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_StartAbilityByType002
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
-     */      
+     */
     it('ACTS_UIExtension_StartAbilityByType002',0, async function (done) {
       TAG = 'ACTS_UIExtension_StartAbilityByType002 == ';
       console.log(TAG + "begin");
@@ -1156,7 +1208,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_StartAbilityByType003
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
-     */      
+     */
     it('ACTS_UIExtension_StartAbilityByType003',0, async function (done) {
       TAG = 'ACTS_UIExtension_StartAbilityByType003 == ';
       console.log(TAG + "begin");
@@ -1184,7 +1236,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_RequestModalUIExtension001
      * @tc.name    : test request Modal UIExtension
      * @tc.desc    : request Modal UIExtension by want
-     */  
+     */
     it('ACTS_UIExtension_RequestModalUIExtension001',0, async function (done) {
       TAG = 'ACTS_UIExtension_RequestModalUIExtension001 == ';
       console.log(TAG + "begin");
@@ -1209,13 +1261,13 @@ export default function abilityTest() {
         expect().assertFail();
         done();
       }
-    })    
+    })
 
     /*
      * @tc.number  : ACTS_UIExtension_RequestModalUIExtension002
-     * @tc.name    : test request Modal UIExtension 
+     * @tc.name    : test request Modal UIExtension
      * @tc.desc    : request Modal UIExtension by want
-     */      
+     */
     it('ACTS_UIExtension_RequestModalUIExtension002',0, async function (done) {
       TAG = 'ACTS_UIExtension_RequestModalUIExtension002 == ';
       console.log(TAG + "begin");
