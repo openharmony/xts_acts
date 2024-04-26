@@ -26,6 +26,36 @@ let path = globalThis.dir;
 
 const TAG = '[Screenshot]';
 
+export class RectValue {
+  left: number = 0;
+  top: number = 0;
+  right: number = 0;
+  bottom: number = 0;
+}
+
+export default class RangeFunc {
+  static rect_left: number;
+  static rect_top: number;
+  static rect_right: number;
+  static rect_bottom: number;
+  static rect_value: RectValue;
+
+  static getComponentRect(key: string) {
+    let strJson = getInspectorByKey(key);
+    let obj: Record<string, Object> = JSON.parse(strJson);
+    let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']');
+    RangeFunc.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0];
+    RangeFunc.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1];
+    RangeFunc.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0];
+    RangeFunc.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1];
+    RangeFunc.rect_value = {
+      left: RangeFunc.rect_left, top: RangeFunc.rect_top, right: RangeFunc.rect_right, bottom: RangeFunc.rect_bottom
+    };
+    console.info(JSON.stringify(RangeFunc.rect_value));
+    return RangeFunc.rect_value;
+  }
+}
+
 @Builder
 function specificNoParam($$?: ABuilderParam) {
   Column() {

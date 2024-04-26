@@ -43,12 +43,16 @@ struct InputMonitor {
 
   onPageShow() {
     callback = (mouseEvent: MouseEvent) => {
+      let btn1: RectValue = RangeFunc.getComponentRect('btn1')
+      let btn2: RectValue = RangeFunc.getComponentRect('btn2')
+      let btn3: RectValue = RangeFunc.getComponentRect('btn3')
+      let btn4: RectValue = RangeFunc.getComponentRect('btn4')
       console.log(`Monitor on success onPageShow x 138 290  y 215 475  x 430 575 y 215 475`);
       console.log(`Monitor on success onPageShow x 138 290  y 770 922  x 430 575 y 770 922`);
       console.log(`Monitor on success onPageShow ${JSON.stringify(mouseEvent.screenX)}`);
       console.log(`Monitor on success onPageShow ${JSON.stringify(mouseEvent.screenY)}`);
       if (mouseEvent.action === 2) {
-        if ((138 < mouseEvent.screenX && mouseEvent.screenX < 290) && (215 < mouseEvent.screenY && mouseEvent.screenY < 475)) {
+        if ((btn1.left < mouseEvent.screenX && mouseEvent.screenX < btn1.right) && (btn1.top < mouseEvent.screenY && mouseEvent.screenY < btn1.bottom + 35)) {
           if (!(this.btnFour && this.btnThree && this.btnTwo && this.btnOne)) {
             this.btnOne = true
             promptAction.showToast({
@@ -57,7 +61,7 @@ struct InputMonitor {
             });
           }
         }
-        else if ((430 < mouseEvent.screenX && mouseEvent.screenX < 575) && (215 < mouseEvent.screenY && mouseEvent.screenY < 475)) {
+        else if ((btn2.left < mouseEvent.screenX && mouseEvent.screenX < btn2.right) && (btn2.top < mouseEvent.screenY && mouseEvent.screenY < btn2.bottom + 35)) {
           if (this.btnOne) {
             this.btnTwo = true
             promptAction.showToast({
@@ -66,7 +70,7 @@ struct InputMonitor {
             });
           }
         }
-        else if ((138 < mouseEvent.screenX && mouseEvent.screenX < 290) && (770 < mouseEvent.screenY && mouseEvent.screenY < 922)) {
+        else if ((btn3.left < mouseEvent.screenX && mouseEvent.screenX < btn3.right) && (btn3.top < mouseEvent.screenY && mouseEvent.screenY < btn3.bottom + 35)) {
           if (this.btnOne && this.btnTwo) {
             this.btnThree = true
             promptAction.showToast({
@@ -75,7 +79,7 @@ struct InputMonitor {
             });
           }
         }
-        else if ((430 < mouseEvent.screenX && mouseEvent.screenX < 575) && (770 < mouseEvent.screenY && mouseEvent.screenY < 922)) {
+        else if ((btn4.left < mouseEvent.screenX && mouseEvent.screenX < btn4.right) && (btn4.top < mouseEvent.screenY && mouseEvent.screenY < btn4.bottom + 35)) {
           if (this.btnOne && this.btnTwo && this.btnThree) {
             this.btnFour = true
             promptAction.showToast({
