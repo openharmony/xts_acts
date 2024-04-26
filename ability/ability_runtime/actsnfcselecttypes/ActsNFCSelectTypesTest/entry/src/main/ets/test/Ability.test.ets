@@ -80,12 +80,11 @@ export default function abilityTest() {
       let app4 = await driver.findComponent(ON.text("apptest4"));
       expect(app4 === null).assertTrue();
       let cancel = await driver.findComponent(ON.text("取消"));
-      let cancel1 = await driver.findComponent(ON.id('close_button'));
       if (cancel) {
         await cancel.click();
-      }
-      if (cancel1) {
-        await cancel1.click();
+      } else {
+        let cmd = "uinput -K -d 2 -u 2";
+        await abilityDelegator.executeShellCommand(cmd);
       }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0100 end');
       done();
@@ -124,12 +123,11 @@ export default function abilityTest() {
       let app4 = await driver.findComponent(ON.text("apptest4"));
       expect(app4 === null).assertTrue();
       let cancel = await driver.findComponent(ON.text("取消"));
-      let cancel1 = await driver.findComponent(ON.id('close_button'));
       if (cancel) {
         await cancel.click();
-      }
-      if (cancel1) {
-        await cancel1.click();
+      } else {
+        let cmd = "uinput -K -d 2 -u 2";
+        await abilityDelegator.executeShellCommand(cmd);
       }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0200 end');
       done();
@@ -200,12 +198,11 @@ export default function abilityTest() {
       expect(app2 === null).assertTrue();
       expect(app4 === null).assertTrue();
       let cancel = await driver.findComponent(ON.text("取消"));
-      let cancel1 = await driver.findComponent(ON.id('close_button'));
       if (cancel) {
         await cancel.click();
-      }
-      if (cancel1) {
-        await cancel1.click();
+      } else {
+        let cmd = "uinput -K -d 2 -u 2";
+        await abilityDelegator.executeShellCommand(cmd);
       }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0400 end');
       done();
@@ -328,12 +325,11 @@ export default function abilityTest() {
       let AblityThird = await driver.findComponent(ON.text("MulAbThird"));
       expect(AblityThird === null).assertTrue();
       let cancel = await driver.findComponent(ON.text("取消"));
-      let cancel1 = await driver.findComponent(ON.id('close_button'));
       if (cancel) {
         await cancel.click();
-      }
-      if (cancel1) {
-        await cancel1.click();
+      } else {
+        let cmd = "uinput -K -d 2 -u 2";
+        await abilityDelegator.executeShellCommand(cmd);
       }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0700 end');
       done();
@@ -374,12 +370,11 @@ export default function abilityTest() {
       let HapThird = await driver.findComponent(ON.text("MulHapThird"));
       expect(HapThird === null).assertTrue();
       let cancel = await driver.findComponent(ON.text("取消"));
-      let cancel1 = await driver.findComponent(ON.id('close_button'));
       if (cancel) {
         await cancel.click();
-      }
-      if (cancel1) {
-        await cancel1.click();
+      } else {
+        let cmd = "uinput -K -d 2 -u 2";
+        await abilityDelegator.executeShellCommand(cmd);
       }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0800 end');
       done();
