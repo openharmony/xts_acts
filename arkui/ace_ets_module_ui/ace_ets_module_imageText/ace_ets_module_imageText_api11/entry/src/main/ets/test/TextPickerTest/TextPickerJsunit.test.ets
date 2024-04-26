@@ -24,7 +24,7 @@ export default function TextPickerJsunit() {
     beforeEach(async function (done) {
       console.info("TextPicker beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/TextPickerTest/TextPickerPage',
+        uri: 'MainAbility/pages/TextPicker/TextPickerPage',
       }
       try {
         router.clear();

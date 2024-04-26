@@ -18,8 +18,8 @@ import Utils from "../../MainAbility/common/Common";
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 
 
-export default function RichEditorApi2() {
-  describe('RichEditorApi2', () => {
+export default function RichEditorApi222() {
+  describe('RichEditorApi222', () => {
     beforeEach(async (done: Function) => {
       console.info("RichEditorApi2 beforeEach start");
       let options: router.RouterOptions = {
