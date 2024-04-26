@@ -414,18 +414,26 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWritevFinish005', 0, () => {
+    it('testStreamWritableWritevFinish005', 0, async (done) => {
       let readableStream = new stream.Readable();
       readableStream.push('ok');
       readableStream.push(null);
       readableStream.doRead = () => {
       };
+      let errorCalled = false;
       let writableStream = new stream.Writable();
-      writableStream.on('finish', common.mustCall());
+      writableStream.on('finish', common.mustNotCall());
       writableStream.doWritev = (chunk: string[] | Uint8Array[], callback: Function) => {
-        callback(new Error('error'));
+        callback(new Error());
       };
+      writableStream.on('error', common.mustCall(() => {
+        errorCalled = true;
+      }));
       readableStream.pipe(writableStream);
+      setTimeout(() => {
+        expect(errorCalled).assertEqual(true);
+        done();
+      }, 10);
     });
 
     // Check the StreamWritableWritevFinish.
@@ -2291,6 +2299,543 @@ export default function StreamTest() {
       transform.write('A');
       transform.end();
       expect(endCalled).assertEqual(false);
+    });
+
+    // Check the StreamTransform.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_10800
+     * @tc.name: testStreamTransform003
+     * @tc.desc: The basic methods of transform.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransform003', 0, () => {
+      class MyTransform extends stream.Transform {
+        doInitialize(callback: Function) {
+          super.doInitialize(callback);
+          doInitializeCalled = true;
+        }
+
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+          super.doWrite(chunk, encoding, callback);
+        }
+      }
+
+      let doInitializeCalled = false;
+      let myTransform = new MyTransform();
+      myTransform.on('data', () => {
+      });
+      expect(doInitializeCalled).assertEqual(true);
+    });
+
+    // Check the StreamTransform.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_10900
+     * @tc.name: testStreamTransform004
+     * @tc.desc: The basic methods of transform.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransform004', 0, () => {
+      let transformStream = new stream.Transform();
+      let result = transformStream.setDefaultEncoding('utf8');
+      expect(result).assertEqual(true);
+    });
+
+    // Check the StreamTransform.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_11000
+     * @tc.name: testStreamTransform005
+     * @tc.desc: The basic methods of transform.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransform005', 0, () => {
+      let transformStream = new stream.Transform();
+      let dataSource = ["x"];
+      transformStream.doRead = (size) => {
+        let data = dataSource.shift();
+        transformStream.push(data);
+      }
+      transformStream.on("data", common.mustCall((chunk) => {
+        expect(chunk.data).assertEqual('x');
+      }));
+    });
+
+    // Check the StreamTransform.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_11100
+     * @tc.name: testStreamTransform006
+     * @tc.desc: The basic methods of transform.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransform006', 0, (done) => {
+      let transformStream = new stream.Transform();
+      let dataCalled = false;
+      transformStream.on('data', () => {
+        dataCalled = true;
+      });
+      transformStream.pause();
+      transformStream.push('test');
+      expect(transformStream.readable).assertEqual(true);
+      expect(transformStream.writable).assertEqual(true);
+      expect(transformStream.isPaused()).assertEqual(true);
+      setTimeout(() => {
+        expect(dataCalled).assertEqual(false);
+        done();
+      }, 10);
+    });
+
+    // Check the StreamTransform.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_11200
+     * @tc.name: testStreamTransform007
+     * @tc.desc: The basic methods of transform.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransform007', 0, (done) => {
+      let transformStream = new stream.Transform();
+      let dataCalled = false;
+      transformStream.on('data', () => {
+        dataCalled = true;
+      });
+      transformStream.pause();
+      transformStream.resume();
+      transformStream.push('test');
+      expect(transformStream.readable).assertEqual(true);
+      expect(transformStream.writable).assertEqual(true);
+      setTimeout(() => {
+        expect(dataCalled).assertEqual(true);
+        done();
+      }, 10);
+    });
+
+    // Check the StreamTransform.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_11300
+     * @tc.name: testStreamTransform008
+     * @tc.desc: The basic methods of transform.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransform008', 0, () => {
+      let transformStream = new stream.Transform();
+      let result = transformStream.setEncoding('utf8');
+      expect(result).assertEqual(true);
+    });
+
+    // Check the StreamTransform.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_11400
+     * @tc.name: testStreamTransform009
+     * @tc.desc: The basic methods of transform.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransform009', 0, () => {
+      let transformStream = new stream.Transform();
+      expect(transformStream.isPaused()).assertEqual(false);
+      transformStream.pause();
+      expect(transformStream.isPaused()).assertEqual(true);
+    });
+
+    // Check the StreamTransform.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_11500
+     * @tc.name: testStreamTransform010
+     * @tc.desc: The basic methods of transform.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransform010', 0, () => {
+      class MyRead extends stream.Readable {
+        doRead(size: number) {
+          this.push("hello");
+          this.push(null);
+        }
+      }
+
+      class MyTransform extends stream.Transform {
+        doTransform(chunk: any, encoding: any, callback: any) {
+          this.push(chunk.toUpperCase());
+          callback();
+        }
+      }
+
+      let read = new MyRead();
+      let tr = new MyTransform();
+      read.pipe(tr);
+      tr.on('data', common.mustCall((event) => {
+        expect(event.data).assertEqual('HELLO');
+      }));
+    });
+
+    // Check the StreamTransform.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_11600
+     * @tc.name: testStreamTransform011
+     * @tc.desc: The basic methods of transform.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransform011', 0, () => {
+      class MyRead extends stream.Readable {
+        doRead(size: number) {
+          this.push("hello");
+          this.push(null);
+        }
+      }
+
+      class MyTransform extends stream.Transform {
+        doTransform(chunk: any, encoding: any, callback: any) {
+          this.push(chunk.toUpperCase());
+          callback();
+        }
+      }
+
+      let dataCalled = false;
+      let read = new MyRead();
+      let tr = new MyTransform();
+      read.pipe(tr);
+      read.unpipe(tr);
+      tr.on('data', (event) => {
+        dataCalled = true;
+      });
+      setTimeout(() => {
+        expect(dataCalled).assertEqual(false);
+      }, 0);
+    });
+
+    // Check the StreamTransform.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_11700
+     * @tc.name: testStreamTransform012
+     * @tc.desc: The basic methods of transform.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransform012', 0, () => {
+      class TestTransform extends stream.Transform {
+        constructor() {
+          super();
+        }
+
+        doTransform(chunk, encoding, callback) {
+          callback();
+        }
+      }
+
+      let doReadCalled = false;
+      let transform = new TestTransform();
+      transform.on('data', () => {
+      });
+      transform.doRead = common.mustCall(() => {
+        doReadCalled = true;
+      });
+      setTimeout(() => {
+        expect(doReadCalled).assertEqual(true);
+      }, 0);
+    });
+
+    // Check the StreamTransformProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_11800
+     * @tc.name: testStreamTransformProperties001
+     * @tc.desc: Duplex Properties.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransformProperties001', 0, () => {
+      let transform = new stream.Transform();
+      expect(transform.writableHighWatermark).assertEqual(16 * 1024);
+    });
+
+    // Check the StreamTransformProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_11900
+     * @tc.name: testStreamTransformProperties002
+     * @tc.desc: Duplex Properties.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransformProperties002', 0, () => {
+      let transform = new stream.Transform();
+      expect(transform.readableHighWatermark).assertEqual(16 * 1024);
+    });
+
+    // Check the StreamTransformEvent.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_12000
+     * @tc.name: testStreamTransformEvent001
+     * @tc.desc: Event triggering of Transform stream.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransformEvent001', 0, () => {
+      let transform = new stream.Transform();
+      transform.doTransform = (chunk: string, encoding: string, callback: Function) => {
+        let transformedChunk = chunk.toString().toUpperCase();
+        transform.push(transformedChunk);
+        callback();
+      };
+      let transformedData = '';
+      transform.on('data', (chunk) => {
+        transformedData += chunk.data;
+      });
+      transform.on('end', () => {
+        expect(transformedData).assertEqual('TEST DATA');
+      });
+      transform.write('Test data');
+      transform.end();
+    });
+
+    // Check the StreamTransformEvent.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_12100
+     * @tc.name: testStreamTransformEvent002
+     * @tc.desc: Event triggering of Transform stream.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransformEvent002', 0, () => {
+      let transformStream = new stream.Transform();
+      transformStream.doTransform = common.mustCall((chunk: string, encoding: string, callback: Function) => {
+        expect(chunk).assertEqual('data1');
+        callback();
+      })
+      transformStream.cork();
+      transformStream.write('data1', 'utf8');
+      transformStream.uncork();
+      transformStream.end();
+      transformStream.on('finish', common.mustCall());
+    });
+
+    // Check the StreamTransformEvent.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_12200
+     * @tc.name: testStreamTransformEvent003
+     * @tc.desc: Event triggering of Transform stream.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransformEvent003', 0, () => {
+      let transformStream = new stream.Transform();
+      transformStream.doTransform = common.mustCall((chunk: string, encoding: string, callback: Function) => {
+        expect(chunk).assertEqual('test');
+        callback(new Error('Write error'));
+      });
+      transformStream.on('error', common.mustCall());
+      transformStream.write('test');
+    });
+
+    // Check the StreamTransformEvent.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_12300
+     * @tc.name: testStreamTransformEvent004
+     * @tc.desc: Event triggering of Transform stream.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransformEvent004', 0, () => {
+      let transformStream = new stream.Transform();
+      let testListenerCalled = false;
+      let testListener = () => {
+        testListenerCalled = true;
+      };
+      transformStream.setEncoding('utf8');
+      transformStream.on('readable', testListener);
+      transformStream.off('readable');
+      transformStream.push('test');
+      expect(testListenerCalled).assertEqual(false);
+    });
+
+    // Check the StreamTransformEvent.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_12400
+     * @tc.name: testStreamTransformEvent005
+     * @tc.desc: Event triggering of Transform stream.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamTransformEvent005', 0, (done) => {
+      let transformStream = new stream.Transform();
+      let testListener1Called = false;
+      let testListener2Called = false;
+      let testListener1 = () => {
+        testListener1Called = true;
+      };
+      let testListener2 = () => {
+        testListener2Called = true;
+      };
+      transformStream.setEncoding('utf8');
+      transformStream.on('readable', testListener1);
+      transformStream.on('readable', testListener2);
+      transformStream.off('readable');
+      transformStream.push('test');
+      setTimeout(() => {
+        expect(testListener1Called).assertEqual(false);
+        expect(testListener2Called).assertEqual(false);
+        done();
+      }, 0);
+    });
+
+    // Check the pipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_12500
+     * @tc.name: testStreamPipe001
+     * @tc.desc: Verify the use of pipe.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamPipe001', 0, () => {
+      class MyRead extends stream.Readable {
+        doRead(size: number) {
+          this.push("hello");
+          this.push(null);
+        }
+      }
+
+      class MyTransform extends stream.Transform {
+        doTransform(chunk: any, encoding: any, callback: any) {
+          this.push(chunk.toUpperCase());
+          callback();
+        }
+      }
+
+      let read = new MyRead();
+      let tr = new MyTransform();
+      read.pipe(tr);
+      tr.on('data', common.mustCall((event: emitter.EventData) => {
+        expect(event.data).assertEqual("HELLO")
+      }));
+      tr.on('error', common.mustNotCall());
+    });
+
+    // Check the pipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_12600
+     * @tc.name: testStreamPipe002
+     * @tc.desc: Verify the use of pipe.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamPipe002', 0, () => {
+      class MyRead extends stream.Readable {
+        doRead(size: number) {
+          this.push("hello");
+          this.push(null);
+        }
+      }
+
+      class MyTransform extends stream.Transform {
+        doTransform(chunk: any, encoding: any, callback: any) {
+          this.push(chunk.toUpperCase());
+          callback();
+        }
+      }
+
+      let read = new MyRead();
+      let tr = new MyTransform();
+      read.pipe(tr);
+      read.unpipe(tr);
+      tr.on('data', (data) => {
+        expect(data).assertFail();
+      });
+      tr.on('error', common.mustNotCall());
+    });
+
+    // Check the pipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_12700
+     * @tc.name: testStreamPipe003
+     * @tc.desc: Verify the use of pipe.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamPipe003', 0, () => {
+      let readable = new TestReadable();
+      readable.doRead = () => {
+        readable.push('test data');
+        readable.push(null);
+      };
+      let writable = new CustomWritable();
+      writable.doWrite = common.mustCall((chunk, encoding, callback) => {
+        expect(chunk).assertEqual('test data');
+        callback();
+      });
+      readable.pipe(writable);
+      writable.on('finish', common.mustCall());
+    });
+
+    // Check the pipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_12800
+     * @tc.name: testStreamPipe004
+     * @tc.desc: Verify the use of pipe.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamPipe004', 0, () => {
+      let readable = new TestReadable();
+      readable.doRead = () => {
+        readable.push('Some data');
+      };
+      let writable = new CustomWritable();
+      readable.pipe(writable);
+      writable.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
+        expect(chunk).assertEqual('Some data');
+      });
+    });
+
+    // Check the StreamDuplexProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_12900
+     * @tc.name: testStreamDuplexProperties002
+     * @tc.desc: Duplex Properties.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamDuplexProperties002', 0, () => {
+      let duplex = new stream.Duplex();
+      expect(duplex.writableHighWatermark).assertEqual(16 * 1024);
+    });
+
+    // Check the StreamDuplexProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13000
+     * @tc.name: testStreamDuplexProperties003
+     * @tc.desc: Duplex Properties.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamDuplexProperties003', 0, () => {
+      let duplex = new stream.Duplex();
+      expect(duplex.readableHighWatermark).assertEqual(16 * 1024);
     });
   })
 }
