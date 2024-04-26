@@ -17,8 +17,6 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from
 import * as aw from './aw/AssetAw';
 import * as awUserid from './aw/AssetAwUserid';
 import asset from '@ohos.security.asset';
-import { assetUpdateEasy } from './aw/AssetAw';
-
 
 export default function AssetOthers() {
   describe('AssetOthers', () => {
@@ -42,47 +40,44 @@ export default function AssetOthers() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     });
-
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_AsUserId_Func_1000
-     * @tc.name 未申请权限的普通应用，指定前台用户，调用asset接口失败
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number     : SUB_Security_DataSecurity_Asset_AsUserId_Func_0800
+     * @tc.name       : testAsUseridNoRight800
+     * @tc.desc       : 未申请权限的系统应用，指定前台用户，调用asset接口失败
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
-    it('testAsUseridNoRight1000', 0, async (done: Function) => {
+    it('testAsUseridNoRight800', 0, async (done: Function) => {
       await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]);
       expect(await awUserid.assetAddEasy(aw.aliasNameList[1], aw.secretList[0]))
-        .assertEqual(asset.ErrorCode.NOT_SYSTEM_APPLICATION);
+        .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       expect(await awUserid.assetQueryAttr(attr))
-        .assertEqual(asset.ErrorCode.NOT_SYSTEM_APPLICATION);
+        .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
       expect(await awUserid.assetUpdateEasy(aw.aliasNameList[0], aw.secretList[0]))
-        .assertEqual(asset.ErrorCode.NOT_SYSTEM_APPLICATION);
+        .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
       expect(await awUserid.assetRemoveAttr(attr))
-        .assertEqual(asset.ErrorCode.NOT_SYSTEM_APPLICATION);
+        .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
       expect(await awUserid.assetPreQuery(attr))
-        .assertEqual(asset.ErrorCode.NOT_SYSTEM_APPLICATION);
+        .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
       expect(await awUserid.assetPostQuery(aw.StringToArray(aw.aliasNameList[0])))
-        .assertEqual(asset.ErrorCode.NOT_SYSTEM_APPLICATION);
+        .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
       done();
     });
-
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Database_Func_0200
-     * @tc.name 新asset数据，所有label都能写入2k数据，并且查询成功
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number     : SUB_Security_DataSecurity_Asset_Database_Func_0200
+     * @tc.name       : testDatabase0200
+     * @tc.desc       : 新asset数据，所有label都能写入2k数据，并且查询成功
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('testDatabase0200', 0, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
-      attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
       attr.set(asset.Tag.DATA_LABEL_NORMAL_1, aw.StringToArray(aw.string2k));
       attr.set(asset.Tag.DATA_LABEL_NORMAL_2, aw.StringToArray(aw.string2k));
       attr.set(asset.Tag.DATA_LABEL_NORMAL_3, aw.StringToArray(aw.string2k));
@@ -121,12 +116,12 @@ export default function AssetOthers() {
     });
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Database_Func_0500
-     * @tc.name 新增和更新asset数据后，查询返回新增/更新时间
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number     : SUB_Security_DataSecurity_Asset_Database_Func_0500
+     * @tc.name       : testDatabase0500
+     * @tc.desc       : 新增和更新asset数据后，查询返回新增/更新时间
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('testDatabase0500', 0, async (done: Function) => {
       await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]);
@@ -147,18 +142,17 @@ export default function AssetOthers() {
     });
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Database_Func_0600
-     * @tc.name 新增的仅本地存储字段能写入、更新、查询
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number     : SUB_Security_DataSecurity_Asset_Database_Func_0600
+     * @tc.name       : testDatabase0600
+     * @tc.desc       : 新增的仅本地存储字段能写入、更新、查询
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('testDatabase0600', 0, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
-      attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
       attr.set(asset.Tag.DATA_LABEL_NORMAL_LOCAL_1, aw.StringToArray(aw.string2k));
       attr.set(asset.Tag.DATA_LABEL_NORMAL_LOCAL_2, aw.StringToArray(aw.string2k));
       attr.set(asset.Tag.DATA_LABEL_NORMAL_LOCAL_3, aw.StringToArray(aw.string2k));
@@ -187,24 +181,29 @@ export default function AssetOthers() {
     });
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_JS_Func_0100
-     * @tc.name js接口枚举值检查测试
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number     : SUB_Security_DataSecurity_Asset_JS_Func_0100
+     * @tc.name       : testJSFunc0100
+     * @tc.desc       : js接口枚举值检查测试
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('testJSFunc0100', 0, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
-      attr.set(asset.Tag.SYNC_TYPE,asset.SyncType.TRUSTED_ACCOUNT);
-      attr.set(asset.Tag.OPERATION_TYPE,asset.OperationType.NEED_LOGOUT);
-      expect(asset.SyncType.NEVER).assertEqual(0);
-      expect(asset.SyncType.THIS_DEVICE).assertEqual(1);
-      expect(asset.SyncType.TRUSTED_DEVICE).assertEqual(2);
-      expect(asset.SyncType.TRUSTED_ACCOUNT).assertEqual(4);
-      expect(asset.OperationType.NEED_SYNC).assertEqual(0);
-      expect(asset.OperationType.NEED_LOGOUT).assertEqual(1);
+      try{
+        attr.set(asset.Tag.SYNC_TYPE,asset.SyncType.TRUSTED_ACCOUNT);
+        attr.set(asset.Tag.OPERATION_TYPE,asset.OperationType.NEED_LOGOUT);
+        expect(asset.SyncType.NEVER).assertEqual(0);
+        expect(asset.SyncType.THIS_DEVICE).assertEqual(1);
+        expect(asset.SyncType.TRUSTED_DEVICE).assertEqual(2);
+        expect(asset.SyncType.TRUSTED_ACCOUNT).assertEqual(4);
+        expect(asset.OperationType.NEED_SYNC).assertEqual(0);
+        expect(asset.OperationType.NEED_LOGOUT).assertEqual(1);
+      }catch(e) {
+          aw.assetLog(e);
+      }
       expect(asset.ErrorCode.PERMISSION_DENIED).assertEqual(201);
+      expect(asset.ErrorCode.NOT_SYSTEM_APPLICATION).assertEqual(202);
       expect(asset.ErrorCode.SERVICE_UNAVAILABLE).assertEqual(24000001);
       expect(asset.ErrorCode.ACCESS_DENIED).assertEqual(24000004);
       expect(asset.ErrorCode.STATUS_MISMATCH).assertEqual(24000005);

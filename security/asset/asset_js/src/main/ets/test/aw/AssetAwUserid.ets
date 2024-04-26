@@ -120,8 +120,6 @@ export async function assetAddEasy(alias: string, secret: string) {
   attr.set(asset.Tag.ALIAS, StringToArray(alias));
   attr.set(asset.Tag.SECRET, StringToArray(secret));
 
-  attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
-
   return await assetAddAttr(attr);
 }
 
@@ -135,7 +133,6 @@ export async function assetAddFull(attr: asset.AssetMap) {
   attr.set(asset.Tag.DATA_LABEL_CRITICAL_2, StringToArray(labelLong));
   attr.set(asset.Tag.DATA_LABEL_CRITICAL_3, StringToArray(labelLong));
   attr.set(asset.Tag.DATA_LABEL_CRITICAL_4, StringToArray(labelLong));
-  attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
 
   return await assetAddAttr(attr);
 }
