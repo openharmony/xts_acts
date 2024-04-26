@@ -86,15 +86,15 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0010
-     * @tc.name: newAmbientLight_SensorJsTest001
+     * @tc.name: newAmbientLightSensorJsTest001
      * @tc.desc: Functional Use Cases
      * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newAmbientLight_SensorJsTest001--------------');
-        TAG = 'newAmbientLight_SensorJsTest001'
+    it("newAmbientLightSensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newAmbientLightSensorJsTest001--------------');
+        TAG = 'newAmbientLightSensorJsTest001'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -117,15 +117,15 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0020
-     * @tc.name: newAmbientLight_SensorJsTest002
+     * @tc.name: newAmbientLightSensorJsTest002
      * @tc.desc: Illegal ID passed in
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAmbientLight_SensorJsTest002--------------');
-        TAG = 'newAmbientLight_SensorJsTest002'
+    it("newAmbientLightSensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAmbientLightSensorJsTest002--------------');
+        TAG = 'newAmbientLightSensorJsTest002'
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
@@ -153,15 +153,15 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0030
-     * @tc.name: newAmbientLight_SensorJsTest003
+     * @tc.name: newAmbientLightSensorJsTest003
      * @tc.desc: For normal scenarios
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAmbientLight_SensorJsTest003--------------');
-        TAG = 'newAmbientLight_SensorJsTest003'
+    it("newAmbientLightSensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAmbientLightSensorJsTest003--------------');
+        TAG = 'newAmbientLightSensorJsTest003'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -171,9 +171,9 @@ describe("SensorJsTest_sensor_41", function () {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback, {'interval': 100000000});
                     setTimeout(()=>{
-                        console.info('---------newAmbientLight_SensorJsTest003 off in--------------');
+                        console.info('---------newAmbientLightSensorJsTest003 off in--------------');
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT);
-                        console.info('---------newAmbientLight_SensorJsTest003 off end--------------');
+                        console.info('---------newAmbientLightSensorJsTest003 off end--------------');
                         done();
                     }, 500);
                 }
@@ -186,15 +186,15 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0040
-     * @tc.name: newAmbientLight_SensorJsTest004
+     * @tc.name: newAmbientLightSensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAmbientLight_SensorJsTest004--------------');
-        TAG = 'newAmbientLight_SensorJsTest004'
+    it("newAmbientLightSensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAmbientLightSensorJsTest004--------------');
+        TAG = 'newAmbientLightSensorJsTest004'
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
@@ -217,9 +217,9 @@ describe("SensorJsTest_sensor_41", function () {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.AMBIENT_LIGHT, onSensorCallback, {'interval': 100000000}, 5);
                     setTimeout(()=>{
-                        console.info('---------newAmbientLight_SensorJsTest004 off in--------------');
+                        console.info('---------newAmbientLightSensorJsTest004 off in--------------');
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT);
-                        console.info('---------newAmbientLight_SensorJsTest004 off end--------------');
+                        console.info('---------newAmbientLightSensorJsTest004 off end--------------');
                         done();
                     }, 500);
                 }
@@ -232,14 +232,14 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0050
-     * @tc.name: newAmbientLight_SensorJsTest005
+     * @tc.name: newAmbientLightSensorJsTest005
      * @tc.desc: Once Normal Subscription Scenario Use Case
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAmbientLight_SensorJsTest005'
+    it("newAmbientLightSensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAmbientLightSensorJsTest005'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -262,14 +262,14 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0060
-     * @tc.name: newAmbientLight_SensorJsTest006
+     * @tc.name: newAmbientLightSensorJsTest006
      * @tc.desc: Use case of illegal parameter passed into once interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAmbientLight_SensorJsTest006'
+    it("newAmbientLightSensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAmbientLightSensorJsTest006'
         function onceSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
@@ -300,14 +300,14 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0070
-     * @tc.name: newAmbientLight_SensorJsTest007
+     * @tc.name: newAmbientLightSensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAmbientLight_SensorJsTest007'
+    it("newAmbientLightSensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAmbientLightSensorJsTest007'
         function onceSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
@@ -340,14 +340,14 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0080
-     * @tc.name: newAmbientLight_SensorJsTest008
+     * @tc.name: newAmbientLightSensorJsTest008
      * @tc.desc: Use case of illegal parameter passed into off interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAmbientLight_SensorJsTest008'
+    it("newAmbientLightSensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAmbientLightSensorJsTest008'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -373,14 +373,14 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0090
-     * @tc.name: newAmbientLight_SensorJsTest009
+     * @tc.name: newAmbientLightSensorJsTest009
      * @tc.desc: Unsubscribe directly without waiting after starting subscription
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAmbientLight_SensorJsTest009'
+    it("newAmbientLightSensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAmbientLightSensorJsTest009'
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
@@ -416,14 +416,14 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0100
-     * @tc.name: newAmbientLight_SensorJsTest010
+     * @tc.name: newAmbientLightSensorJsTest010
      * @tc.desc:SensorId1000000 of incoming exception
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAmbientLight_SensorJsTest010'
+    it("newAmbientLightSensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAmbientLightSensorJsTest010'
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
@@ -451,14 +451,14 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0110
-     * @tc.name: newAmbientLight_SensorJsTest011
+     * @tc.name: newAmbientLightSensorJsTest011
      * @tc.desc:Call interface multiple times
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAmbientLight_SensorJsTest011'
+    it("newAmbientLightSensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAmbientLightSensorJsTest011'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -493,9 +493,9 @@ describe("SensorJsTest_sensor_41", function () {
                         expect(typeof (data.timestamp)).assertEqual("number");
                     });
                     setTimeout(()=>{
-                        console.info('---------newAmbientLight_SensorJsTest011 off in--------------');
+                        console.info('---------newAmbientLightSensorJsTest011 off in--------------');
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT);
-                        console.info('---------newAmbientLight_SensorJsTest011 off end--------------');
+                        console.info('---------newAmbientLightSensorJsTest011 off end--------------');
                         done();
                     }, 1000);
                 }
@@ -508,14 +508,14 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0120
-     * @tc.name: newAmbientLight_SensorJsTest012
+     * @tc.name: newAmbientLightSensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        TAG = 'newAmbientLight_SensorJsTest012'
+    it("newAmbientLightSensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        TAG = 'newAmbientLightSensorJsTest012'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -541,15 +541,15 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0130
-     * @tc.name: newAmbientLight_SensorJsTest013
+     * @tc.name: newAmbientLightSensorJsTest013
      * @tc.desc:Call on interface and once interface respectively, and use an off interface to close
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAmbientLight_SensorJsTest013--------------');
-        TAG = 'newAmbientLight_SensorJsTest013'
+    it("newAmbientLightSensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAmbientLightSensorJsTest013--------------');
+        TAG = 'newAmbientLightSensorJsTest013'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -584,9 +584,9 @@ describe("SensorJsTest_sensor_41", function () {
                         expect(typeof (data.timestamp)).assertEqual("number");
                     });
                     setTimeout(()=>{
-                        console.info('---------newAmbientLight_SensorJsTest013 off in--------------');
+                        console.info('---------newAmbientLightSensorJsTest013 off in--------------');
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT);
-                        console.info('---------newAmbientLight_SensorJsTest013 off end--------------');
+                        console.info('---------newAmbientLightSensorJsTest013 off end--------------');
                         done();
                     }, 1000);
                 }
@@ -599,15 +599,15 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0140
-     * @tc.name: newAmbientLight_SensorJsTest014
+     * @tc.name: newAmbientLightSensorJsTest014
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAmbientLight_SensorJsTest014--------------');
-        TAG = 'newAmbientLight_SensorJsTest014'
+    it("newAmbientLightSensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAmbientLightSensorJsTest014--------------');
+        TAG = 'newAmbientLightSensorJsTest014'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -643,9 +643,9 @@ describe("SensorJsTest_sensor_41", function () {
                         expect(typeof (data.timestamp)).assertEqual("number");
                     }, {'interval': 100000000});
                     setTimeout(()=>{
-                        console.info('---------newAmbientLight_SensorJsTest014 off in--------------');
+                        console.info('---------newAmbientLightSensorJsTest014 off in--------------');
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT);
-                        console.info('---------newAmbientLight_SensorJsTest014 off end--------------');
+                        console.info('---------newAmbientLightSensorJsTest014 off end--------------');
                         done();
                     }, 1000);
                 }
@@ -658,15 +658,15 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0150
-     * @tc.name: newAmbientLight_SensorJsTest015
+     * @tc.name: newAmbientLightSensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAmbientLight_SensorJsTest015--------------');
-        TAG = 'newAmbientLight_SensorJsTest015'
+    it("newAmbientLightSensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAmbientLightSensorJsTest015--------------');
+        TAG = 'newAmbientLightSensorJsTest015'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -708,15 +708,15 @@ describe("SensorJsTest_sensor_41", function () {
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0160
-     * @tc.name: newAmbientLight_SensorJsTest016
+     * @tc.name: newAmbientLightSensorJsTest016
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAmbientLight_SensorJsTest016--------------');
-        TAG = 'newAmbientLight_SensorJsTest016'
+    it("newAmbientLightSensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAmbientLightSensorJsTest016--------------');
+        TAG = 'newAmbientLightSensorJsTest016'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -727,18 +727,18 @@ describe("SensorJsTest_sensor_41", function () {
                     sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback);
                     sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback2);
                     setTimeout(() => {
-                        console.info('----------------------newAmbientLight_SensorJsTest016 off in--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest016 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.AMBIENT_LIGHT, callback);
                         } catch (error) {
                             console.info(TAG + ' catch error:' + error);
                         }
-                        console.info('----------------------newAmbientLight_SensorJsTest016 off end--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest016 off end--------------');
                     }, 500);
                     setTimeout(() => {
-                        console.info('----------------------newAmbientLight_SensorJsTest016 off in--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest016 off in--------------');
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT, callback2);
-                        console.info('----------------------newAmbientLight_SensorJsTest016 off end--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest016 off end--------------');
                         done();
                     }, 1000);
                 }
@@ -751,15 +751,15 @@ describe("SensorJsTest_sensor_41", function () {
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0170
-     * @tc.name: newAmbientLight_SensorJsTest017
+     * @tc.name: newAmbientLightSensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAmbientLight_SensorJsTest017--------------');
-        TAG = 'newAmbientLight_SensorJsTest017'
+    it("newAmbientLightSensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAmbientLightSensorJsTest017--------------');
+        TAG = 'newAmbientLightSensorJsTest017'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -770,18 +770,18 @@ describe("SensorJsTest_sensor_41", function () {
                     sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback, { 'interval': 100000000 });
                     sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback2, { 'interval': 100000000 });
                     setTimeout(() => {
-                        console.info('----------------------newAmbientLight_SensorJsTest017 off in--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest017 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.AMBIENT_LIGHT, callback);
                         } catch (error) {
                             console.info(TAG + ' catch error:' + error);
                         }
-                        console.info('----------------------newAmbientLight_SensorJsTest017 off end--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest017 off end--------------');
                     }, 500);
                     setTimeout(() => {
-                        console.info('----------------------newAmbientLight_SensorJsTest017_2 off in--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest017_2 off in--------------');
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT, callback2);
-                        console.info('----------------------newAmbientLight_SensorJsTest017_2 off end--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest017_2 off end--------------');
                         done();
                     }, 1000);
                 }
@@ -794,15 +794,15 @@ describe("SensorJsTest_sensor_41", function () {
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0180
-     * @tc.name: newAmbientLight_SensorJsTest018
+     * @tc.name: newAmbientLightSensorJsTest018
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAmbientLight_SensorJsTest018--------------');
-        TAG = 'newAmbientLight_SensorJsTest018'
+    it("newAmbientLightSensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAmbientLightSensorJsTest018--------------');
+        TAG = 'newAmbientLightSensorJsTest018'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -810,10 +810,10 @@ describe("SensorJsTest_sensor_41", function () {
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
-                    console.info('----------------------newAmbientLight_SensorJsTest018 off in--------------');
+                    console.info('----------------------newAmbientLightSensorJsTest018 off in--------------');
                     try{
                         sensor.off(-1, callback);
-                        console.info('----------------------newAmbientLight_SensorJsTest018 off end--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest018 off end--------------');
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
                         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
@@ -830,15 +830,15 @@ describe("SensorJsTest_sensor_41", function () {
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0190
-     * @tc.name: newAmbientLight_SensorJsTest019
+     * @tc.name: newAmbientLightSensorJsTest019
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAmbientLight_SensorJsTest019--------------');
-        TAG = 'newAmbientLight_SensorJsTest019'
+    it("newAmbientLightSensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAmbientLightSensorJsTest019--------------');
+        TAG = 'newAmbientLightSensorJsTest019'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -847,9 +847,9 @@ describe("SensorJsTest_sensor_41", function () {
                 } else {
                     try {
                         sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback, {'interval': -100000000});
-                        console.info('----------------------newAmbientLight_SensorJsTest019 off in---------------------------');
+                        console.info('----------------------newAmbientLightSensorJsTest019 off in---------------------------');
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT);
-                        console.info('----------------------newAmbientLight_SensorJsTest019 off end---------------------------');
+                        console.info('----------------------newAmbientLightSensorJsTest019 off end---------------------------');
                         done();
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
@@ -867,15 +867,15 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0200
-     * @tc.name: newAmbientLight_SensorJsTest020
+     * @tc.name: newAmbientLightSensorJsTest020
      * @tc.desc: Functional Use Cases
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newAmbientLight_SensorJsTest020--------------');
-        TAG = 'newAmbientLight_SensorJsTest020'
+    it("newAmbientLightSensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newAmbientLightSensorJsTest020--------------');
+        TAG = 'newAmbientLightSensorJsTest020'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -886,7 +886,7 @@ describe("SensorJsTest_sensor_41", function () {
                     sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback, { 'interval': undefined });
                     sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback2, { 'interval': undefined });
                     setTimeout(() => {
-                        console.info('----------------------newAmbientLight_SensorJsTest020 off in--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest020 off in--------------');
                         try {
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT, callback);
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT, callback2);
@@ -894,7 +894,7 @@ describe("SensorJsTest_sensor_41", function () {
                         console.info(TAG + ' catch error:' + error);
                         expect(false).assertTrue();
                         }
-                        console.info('----------------------newAmbientLight_SensorJsTest020 off end--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest020 off end--------------');
                         done()
                     }, 1000);
                 }
@@ -907,14 +907,14 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0210
-     * @tc.name: newAmbientLight_SensorJsTest021
+     * @tc.name: newAmbientLightSensorJsTest021
      * @tc.desc: Illegal ID passed in
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAmbientLight_SensorJsTest021'
+    it("newAmbientLightSensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAmbientLightSensorJsTest021'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -929,7 +929,7 @@ describe("SensorJsTest_sensor_41", function () {
                         console.info(TAG + ' catch error:' + error);
                     }
                     setTimeout(() => {
-                        console.info('----------------------newAmbientLight_SensorJsTest021 off in--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest021 off in--------------');
                         try {
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT);
                         } catch (error) {
@@ -948,15 +948,15 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0220
-     * @tc.name: newAmbientLight_SensorJsTest022
+     * @tc.name: newAmbientLightSensorJsTest022
      * @tc.desc: For normal scenarios
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAmbientLight_SensorJsTest022--------------');
-        TAG = 'newAmbientLight_SensorJsTest022'
+    it("newAmbientLightSensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAmbientLightSensorJsTest022--------------');
+        TAG = 'newAmbientLightSensorJsTest022'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -971,7 +971,7 @@ describe("SensorJsTest_sensor_41", function () {
                             console.info(TAG + ' catch error:' + error);
                         }
                     setTimeout(() => {
-                        console.info('----------------------newAmbientLight_SensorJsTest022 off in--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest022 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.AMBIENT_LIGHT);
                         } catch (error) {
@@ -990,15 +990,15 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0230
-     * @tc.name: newAmbientLight_SensorJsTest023
+     * @tc.name: newAmbientLightSensorJsTest023
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAmbientLight_SensorJsTest023--------------');
-        TAG = 'newAmbientLight_SensorJsTest023'
+    it("newAmbientLightSensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAmbientLightSensorJsTest023--------------');
+        TAG = 'newAmbientLightSensorJsTest023'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -1008,7 +1008,7 @@ describe("SensorJsTest_sensor_41", function () {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback, { 'interval': null });
                     setTimeout(() => {
-                        console.info('----------------------newAmbientLight_SensorJsTest023 off in--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest023 off in--------------');
                         try {
                         sensor.off(sensor.SensorId.AMBIENT_LIGHT);
                         } catch (error) {
@@ -1027,14 +1027,14 @@ describe("SensorJsTest_sensor_41", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0240
-     * @tc.name: newAmbientLight_SensorJsTest024
+     * @tc.name: newAmbientLightSensorJsTest024
      * @tc.desc: Once Normal Subscription Scenario Use Case
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAmbientLight_SensorJsTest024'
+    it("newAmbientLightSensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAmbientLightSensorJsTest024'
         try{
            sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
                 if (error) {
@@ -1049,14 +1049,14 @@ describe("SensorJsTest_sensor_41", function () {
                             console.info(TAG + ' catch error:' + error);
                         }
                     setTimeout(() => {
-                        console.info('----------------------newAmbientLight_SensorJsTest024 off in--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest024 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.AMBIENT_LIGHT);
                             } catch (error) {
                             console.info(TAG + ' catch error:' + error);
                             expect(false).assertTrue();
                             }
-                        console.info('----------------------newAmbientLight_SensorJsTest024 off end--------------');
+                        console.info('----------------------newAmbientLightSensorJsTest024 off end--------------');
                             done();
                     }, 1000);
                 }
