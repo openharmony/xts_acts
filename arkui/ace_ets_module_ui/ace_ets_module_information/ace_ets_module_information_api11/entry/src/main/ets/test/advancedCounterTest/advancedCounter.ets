@@ -16,7 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@system.router'
 import { Driver, ON, Component } from '@ohos.UiTest'
 import Utils from '../Utils';
-export default function advancedCounter() {
+export default function abilityTest() {
   const SUITE = 'CounterComponent'
   describe('ActsAceCounterComponentTest', () => {
     beforeEach(async (done: Function) => {
