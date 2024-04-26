@@ -205,11 +205,11 @@ struct cameraFormat {
                     let indexOf = value.indexOf('x')
                     let objW = Number(value.slice(0, indexOf))
                     let objH = Number(value.slice(indexOf + 1))
-                    let obj = {
+                    let obj: Obj = {
                       format: 1003,
                       size: {
-                        "width": objW,
-                        "height": objH
+                        width: objW,
+                        height: objH
                       }
                     }
                     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, undefined, undefined, obj)
