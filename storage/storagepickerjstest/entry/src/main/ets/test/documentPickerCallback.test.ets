@@ -178,6 +178,54 @@ export default function documentPickerCallback(abilityContext: Context) {
       option.selectMode = picker.DocumentSelectMode.MIXED;
       await selectWithOption(testNum, done, option);
     });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_1100
+     * @tc.name   : documentpicker_select_callback_011
+     * @tc.desc   : select with option authMode
+     * @tc.size   : MEDIUM
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("documentpicker_select_callback_011", 1, async (done: Function) => {
+      let testNum = "documentpicker_select_callback_011";
+      let option = new picker.DocumentSelectOptions();
+      option.authMode = false;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_1200
+     * @tc.name   : documentpicker_select_callback_012
+     * @tc.desc   : select with option authMode
+     * @tc.size   : MEDIUM
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("documentpicker_select_callback_012", 1, async (done: Function) => {
+      let testNum = "documentpicker_select_callback_012";
+      let option = new picker.DocumentSelectOptions();
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_1300
+     * @tc.name   : documentpicker_select_callback_013
+     * @tc.desc   : select with option authMode
+     * @tc.size   : MEDIUM
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("documentpicker_select_callback_013", 1, async (done: Function) => {
+      let testNum = "documentpicker_select_callback_013";
+      let option1 = new picker.DocumentSelectOptions();
+      let option2 = new picker.DocumentSelectOptions();
+      option1.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1";
+      option2.authMode = false;
+      await selectWithOption(testNum, done, option1);
+      await selectWithOption(testNum, done, option2);
+    });
+
     /**
      * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SAVE_CALLBACK_0000
      * @tc.name   : documentpicker_save_callback_000
