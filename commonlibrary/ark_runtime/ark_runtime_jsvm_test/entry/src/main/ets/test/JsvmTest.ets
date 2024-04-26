@@ -606,6 +606,30 @@ export default function JsvmJsunit() {
       expect(value).assertEqual(0);
       done();
     });
+      /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0048
+     * @tc.name      JsvmTest048
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest048', 0, async function (done) {
+      console.info('JsvmTest048 START');
+      value = napitest.testValueOperation3()
+      console.info('JsvmTest048 testString result is:'+ value + "--" + JSON.stringify(value) );
+      expect(value).assertEqual(0);
+      done();
+    });
+      /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0049
+     * @tc.name      JsvmTest049
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest049', 0, async function (done) {
+      console.info('JsvmTest049 START');
+      value = napitest.testValueOperation4()
+      console.info('JsvmTest049 testString result is:'+ value + "--" + JSON.stringify(value) );
+      expect(value).assertEqual(0);
+      done();
+    });
   })
 }
 
