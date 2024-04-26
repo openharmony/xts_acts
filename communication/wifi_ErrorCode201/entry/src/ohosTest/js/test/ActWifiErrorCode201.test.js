@@ -706,7 +706,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`wifiStateChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })
@@ -733,7 +733,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`wifiConnectionChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })
@@ -760,7 +760,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`wifiScanStateChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })
@@ -787,7 +787,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`wifiRssiChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })
@@ -814,7 +814,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`hotspotStateChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })
@@ -841,7 +841,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`p2pStateChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })
@@ -868,7 +868,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`p2pConnectionChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })
@@ -895,7 +895,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`p2pDeviceChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })
@@ -922,7 +922,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`p2pPeerDeviceChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })
@@ -949,7 +949,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`p2pPersistentGroupChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })
@@ -976,7 +976,7 @@ export default function actsWifiErrorCode201Test() {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
             } catch (error) {
                 console.error(`p2pDiscoveryChange off failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201")
+                expect(error.code).assertEqual("2501000")
             }
             done();
         })

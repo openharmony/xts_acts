@@ -8,6 +8,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 const NOT_PERMISSION = 201;
 //parameter error
 const PARAMETER_ERROR = 401
+const OPERATION_FAILED = 2501000
 
 export default function wifiManagerTest() {
   describe('wifiManagerTest', () => {
@@ -74,7 +75,7 @@ export default function wifiManagerTest() {
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pDiscoveryChange_Callback_Nop failed ' + JSON.stringify(error));
-        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED);
         done();
       }
     });
@@ -123,7 +124,7 @@ export default function wifiManagerTest() {
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pPersistentGroupChange_Callback_Nop failed ' + JSON.stringify(error));
-        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED);
         done();
       }
     });
@@ -222,7 +223,7 @@ export default function wifiManagerTest() {
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pConnectionChange_Callback_Nop failed ' + JSON.stringify(error));
-        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED);
         done();
       }
     });
@@ -269,7 +270,7 @@ export default function wifiManagerTest() {
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pStateChange_Callback_Nop failed ' + JSON.stringify(error));
-        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED);
         done();
       }
     });
@@ -317,7 +318,7 @@ export default function wifiManagerTest() {
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_HotspotStateChange_Callback_Nop failed ' + JSON.stringify(error));
-        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED);
         done();
       }
     });
@@ -365,7 +366,7 @@ export default function wifiManagerTest() {
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_WifiRssiChange_Callback_Nop failed ' + JSON.stringify(error));
-        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED);
         done();
       }
     });
