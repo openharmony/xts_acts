@@ -19,5 +19,6 @@ group("noNet") {
     "connectiontest:ActsNetworkMgrConnectionNoNetTest",
     "mdns:ActsNetworkMgrMdnsNoNetTest",
     "networktest:ActsNetworkMgrSysNetworkNoNetTest",
+    "statisticstest:ActsNetworkMgrStatisticsNoDataTest",
   ]
 }
