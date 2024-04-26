@@ -118,7 +118,7 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_AddExtension_Config_To_Com
          Function | MediumTest | Level1)
 {
     OH_NNCompilation *compilation = nullptr;
-    OH_NNModel *model = nullptr; 
+    OH_NNModel *model = nullptr;
     ConstructCompilation(&compilation, &model);
 
     const void *configValue = reinterpret_cast<const void*>(10);
@@ -138,7 +138,7 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_AddExtension_Config_To_Com
          Function | MediumTest | Level1)
 {
     OH_NNCompilation *compilation = nullptr;
-    OH_NNModel *model = nullptr; 
+    OH_NNModel *model = nullptr;
     ConstructCompilation(&compilation, &model);
 
     const char *configName = "";
@@ -161,7 +161,7 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_AddExtension_Config_To_Com
          Function | MediumTest | Level1)
 {
     OH_NNCompilation *compilation = nullptr;
-    OH_NNModel *model = nullptr; 
+    OH_NNModel *model = nullptr;
     ConstructCompilation(&compilation, &model);
 
     const char *configName = "test";
@@ -181,7 +181,7 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_AddExtension_Config_To_Com
          Function | MediumTest | Level1)
 {
     OH_NNCompilation *compilation = nullptr;
-    OH_NNModel *model = nullptr; 
+    OH_NNModel *model = nullptr;
     ConstructCompilation(&compilation, &model);
 
     const char *configName = "test";
@@ -278,7 +278,7 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_Export_Compilation_Cache_T
          Function | MediumTest | Level1)
 {
     OH_NNCompilation *compilation = nullptr;
-    OH_NNModel *model = nullptr; 
+    OH_NNModel *model = nullptr;
     ConstructCompilation(&compilation, &model);
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_Build(compilation));
@@ -302,7 +302,7 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_Import_Compilation_Cache_F
          Function | MediumTest | Level1)
 {
     OH_NNCompilation *compilation = nullptr;
-    OH_NNModel *model = nullptr; 
+    OH_NNModel *model = nullptr;
     ConstructCompilation(&compilation, &model);
 
     const void *buffer = nullptr;
@@ -322,7 +322,7 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_Import_Compilation_Cache_F
          Function | MediumTest | Level1)
 {
     OH_NNCompilation *compilation = nullptr;
-    OH_NNModel *model = nullptr; 
+    OH_NNModel *model = nullptr;
     ConstructCompilation(&compilation, &model);
     const char *any = "123456789";
     const void *buffer = reinterpret_cast<const void*>(any);
@@ -342,7 +342,7 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_Import_Compilation_Cache_F
          Function | MediumTest | Level1)
 {
     OH_NNCompilation *compilation = nullptr;
-    OH_NNModel *model = nullptr; 
+    OH_NNModel *model = nullptr;
     ConstructCompilation(&compilation, &model);
 
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_SetCache(compilation, CACHE_DIR.c_str(), CACHEVERSION));
