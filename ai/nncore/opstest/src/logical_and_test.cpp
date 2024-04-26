@@ -27,7 +27,6 @@ struct LogicalAndModel1 {
     int64_t input0Value[3] = {1, 0, 1};
     int64_t input1Value[3] = {0, 1, 1};
     bool outputValue[3] = {false};
-    bool expectValue[3] = {false, false, true};
 
     OHNNOperandTest input0 = {OH_NN_INT64, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(int64_t)};
     OHNNOperandTest input1 = {OH_NN_INT64, OH_NN_TENSOR, tensor_shape, input1Value, 3*sizeof(int64_t)};
@@ -44,7 +43,6 @@ struct LogicalAndModel2 {
     int64_t input0Value[3] = {1, 0, 1};
     bool input1Value[1] = {false};
     bool outputValue[3] = {false};
-    bool expectValue[3] = {false, false, false};
 
     OHNNOperandTest input0 = {OH_NN_INT64, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(int64_t)};
     OHNNOperandTest input1 = {OH_NN_BOOL, OH_NN_TENSOR, {1}, input1Value, sizeof(bool)};
@@ -61,7 +59,6 @@ struct LogicalAndModel3 {
     bool input0Value[2] = {true, false};
     bool input1Value[1] = {true};
     bool outputValue[2] = {false};
-    bool expectValue[2] = {true, false};
 
     OHNNOperandTest input0 = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, input0Value, 2*sizeof(bool)};
     OHNNOperandTest input1 = {OH_NN_BOOL, OH_NN_TENSOR, {1}, input1Value, sizeof(bool)};
@@ -78,7 +75,6 @@ struct LogicalAndModel4 {
     bool input0Value[1] = {false};
     bool input1Value[2] = {true, false};
     bool outputValue[2] = {false};
-    bool expectValue[2] = {false, false};
 
     OHNNOperandTest input0 = {OH_NN_BOOL, OH_NN_TENSOR, {1}, input0Value, sizeof(bool)};
     OHNNOperandTest input1 = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, input1Value, 2*sizeof(bool)};
@@ -95,7 +91,6 @@ struct LogicalAndModel5 {
     bool input0Value[3] = {true, false, true};
     bool input1Value[3] = {false, false, true};
     bool outputValue[3] = {false};
-    bool expectValue[3] = {false, false, true};
 
     OHNNOperandTest input0 = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(bool)};
     OHNNOperandTest input1 = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, input1Value, 3*sizeof(bool)};
@@ -380,7 +375,6 @@ HWTEST_F(LogicalAndTest, SUB_AI_NNRt_Func_North_LogicalAnd_Model_SetOperandValue
     LogicalAndModel1 logicalAndModel;
     OHNNGraphArgs graphArgs = logicalAndModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -391,7 +385,7 @@ HWTEST_F(LogicalAndTest, SUB_AI_NNRt_Func_North_LogicalAnd_Model_SetOperandValue
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -417,7 +411,6 @@ HWTEST_F(LogicalAndTest, SUB_AI_NNRt_Func_North_LogicalAnd_Model_SetOperandValue
     LogicalAndModel1 logicalAndModel;
     OHNNGraphArgs graphArgs = logicalAndModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -428,7 +421,7 @@ HWTEST_F(LogicalAndTest, SUB_AI_NNRt_Func_North_LogicalAnd_Model_SetOperandValue
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -453,7 +446,6 @@ HWTEST_F(LogicalAndTest, SUB_AI_NNRt_Func_North_LogicalAnd_Model_SetOperandValue
     LogicalAndModel1 logicalAndModel;
     OHNNGraphArgs graphArgs = logicalAndModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -464,7 +456,7 @@ HWTEST_F(LogicalAndTest, SUB_AI_NNRt_Func_North_LogicalAnd_Model_SetOperandValue
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

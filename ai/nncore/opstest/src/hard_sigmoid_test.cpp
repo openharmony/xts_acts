@@ -26,7 +26,6 @@ struct HardSigmoidModel1 {
     const std::vector<int32_t> tensor_shape = {1, 4};
     float inputValue[1][4] = {{0, 0, 0, 0}};
     float outputValue[1][4] = {0};
-    float expectValue[1][4] = {{0.5, 0.5, 0.5, 0.5}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 4*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 4*sizeof(float)};
@@ -42,8 +41,6 @@ struct HardSigmoidModel2 {
     const std::vector<int32_t> tensor_shape = {1, 4};
     float inputValue[1][4] = {{1, 1, 1, 1}};
     float outputValue[1][4] = {0};
-    float expectValue[1][4] = {{0.6667, 0.6667, 0.6667, 0.6667}};
-
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 4*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 4*sizeof(float)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_HARD_SIGMOID,
@@ -237,7 +234,6 @@ HWTEST_F(HardSigmoidTest, SUB_AI_NNRt_Func_North_HardSigmoid_Model_SetOperandVal
     HardSigmoidModel1 hardSigmoidModel;
     OHNNGraphArgs graphArgs = hardSigmoidModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -248,7 +244,7 @@ HWTEST_F(HardSigmoidTest, SUB_AI_NNRt_Func_North_HardSigmoid_Model_SetOperandVal
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -274,7 +270,6 @@ HWTEST_F(HardSigmoidTest, SUB_AI_NNRt_Func_North_HardSigmoid_Model_SetOperandVal
     HardSigmoidModel1 hardSigmoidModel;
     OHNNGraphArgs graphArgs = hardSigmoidModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -285,7 +280,7 @@ HWTEST_F(HardSigmoidTest, SUB_AI_NNRt_Func_North_HardSigmoid_Model_SetOperandVal
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -310,7 +305,6 @@ HWTEST_F(HardSigmoidTest, SUB_AI_NNRt_Func_North_HardSigmoid_Model_SetOperandVal
     HardSigmoidModel1 hardSigmoidModel;
     OHNNGraphArgs graphArgs = hardSigmoidModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -321,7 +315,7 @@ HWTEST_F(HardSigmoidTest, SUB_AI_NNRt_Func_North_HardSigmoid_Model_SetOperandVal
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

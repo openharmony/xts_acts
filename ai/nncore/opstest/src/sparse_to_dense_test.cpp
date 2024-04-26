@@ -31,7 +31,6 @@ struct SparseToDenseModel1 {
     float valueValue[2] = {1, 2};
     float sparseShapeValue[2] = {2, 3};
     float outputValue[2][3] = {0};
-    float expectValue[2][3] = {{1, 0, 0}, {0, 0, 2}};
 
     OHNNOperandTest indices = {OH_NN_FLOAT32, OH_NN_TENSOR, indices_shape, indicesValue, 4*sizeof(bool)};
     OHNNOperandTest value = {OH_NN_FLOAT32, OH_NN_TENSOR, value_shape, valueValue, 2*sizeof(float)};
@@ -54,7 +53,6 @@ struct SparseToDenseModel2 {
     float valueValue[3] = {3, 4, 5};
     float sparseShapeValue[3] = {2, 3};
     float outputValue[2][3] = {0};
-    float expectValue[2][3] = {{0, 3, 0}, {0, 4, 5}};
 
     OHNNOperandTest indices = {OH_NN_FLOAT32, OH_NN_TENSOR, indices_shape, indicesValue, 6*sizeof(bool)};
     OHNNOperandTest value = {OH_NN_FLOAT32, OH_NN_TENSOR, value_shape, valueValue, 3*sizeof(float)};
@@ -76,7 +74,6 @@ struct SparseToDenseModel3 {
     float valueValue[2] = {9, 10};
     float sparseShapeValue[2] = {3, 4};
     float outputValue[3][4] = {0};
-    float expectValue[3][4] = {{0, 0, 0, 10}, {9, 0, 0, 0}, {0, 0, 0, 0}};
 
     OHNNOperandTest indices = {OH_NN_FLOAT32, OH_NN_TENSOR, indices_shape, indicesValue, 4*sizeof(bool)};
     OHNNOperandTest value = {OH_NN_FLOAT32, OH_NN_TENSOR, value_shape, valueValue, 2*sizeof(float)};
@@ -458,7 +455,6 @@ HWTEST_F(SparseToDenseTest, SUB_AI_NNRt_Func_North_SparseToDense_Model_SetOperan
     SparseToDenseModel1 sparseToDenseModel;
     OHNNGraphArgs graphArgs = sparseToDenseModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -469,7 +465,7 @@ HWTEST_F(SparseToDenseTest, SUB_AI_NNRt_Func_North_SparseToDense_Model_SetOperan
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -496,7 +492,6 @@ HWTEST_F(SparseToDenseTest, SUB_AI_NNRt_Func_North_SparseToDense_Model_SetOperan
     SparseToDenseModel1 sparseToDenseModel;
     OHNNGraphArgs graphArgs = sparseToDenseModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -507,7 +502,7 @@ HWTEST_F(SparseToDenseTest, SUB_AI_NNRt_Func_North_SparseToDense_Model_SetOperan
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -533,7 +528,6 @@ HWTEST_F(SparseToDenseTest, SUB_AI_NNRt_Func_North_SparseToDense_Model_SetOperan
     SparseToDenseModel1 sparseToDenseModel;
     OHNNGraphArgs graphArgs = sparseToDenseModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -544,7 +538,7 @@ HWTEST_F(SparseToDenseTest, SUB_AI_NNRt_Func_North_SparseToDense_Model_SetOperan
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
