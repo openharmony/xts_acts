@@ -17,8 +17,8 @@ import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
 
-export default function ratingJsunit() {
-  describe('ratingTest', () => {
+export default function rating3Jsunit() {
+  describe('rating3Jsunit', () => {
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Rating/rating3',
