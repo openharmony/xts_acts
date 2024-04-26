@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -49,180 +49,208 @@ describe("SensorJsTest_sensor_26", function () {
          */
         console.info('afterEach called')
     })
-	
-	let BarometerId = 8
-	
+
+    let BarometerId = 8
+
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0010
-     * @tc.name:subscribeBarometer_SensorJsTest001
+     * @tc.name:subscribeBarometerSensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("subscribeBarometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('----------------------subscribeBarometer_SensorJsTest001---------------------------');
-		try{
-		   sensor.getSingleSensor(BarometerId ,(error, data) => {			
-				sensor.subscribeBarometer({
-					success: function (data) {
-						console.info("subscribeBarometer_SensorJsTest001 success" + JSON.stringify(data));
-						expect(typeof (data.pressure)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.error('subscribeBarometer_SensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
-						expect(code).assertEqual(1001);
-					},
-				});
-				setTimeout(() => {
-				  sensor.unsubscribeBarometer();
-				  done();
-				}, 1000);
-			})
-		} catch (error) {
-            console.info('subscribeBarometer_SensorJsTest001 Device does not support! ');
+    it("subscribeBarometerSensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('----------------------subscribeBarometerSensorJsTest001---------------------------');
+        try{
+           sensor.getSingleSensor(BarometerId ,(error, data) => {
+                if (error) {
+                    console.info('subscribeBarometerSensorJsTest005 error');
+                    done();
+                } else {
+                sensor.subscribeBarometer({
+                    success: function (data) {
+                        console.info("subscribeBarometerSensorJsTest001 success" + JSON.stringify(data));
+                        expect(typeof (data.pressure)).assertEqual("number");
+                    },
+                    fail: function (data, code) {
+                        console.error('subscribeBarometerSensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
+                        expect(code).assertEqual(1001);
+                    },
+                });
+                setTimeout(() => {
+                  sensor.unsubscribeBarometer();
+                  done();
+                }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('subscribeBarometerSensorJsTest001 Device does not support! ');
             done();
         }
     })
-	
+
      /*
      * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0020
-     * @tc.name: subscribeBarometer_SensorJsTest002
+     * @tc.name: subscribeBarometerSensorJsTest002
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("subscribeBarometer_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeBarometer_SensorJsTest002---------------------------');
-		try{
-		   sensor.getSingleSensor(BarometerId ,(error, data) => {	        
-				sensor.subscribeBarometer({
-					success: function (data) {
-						console.info("subscribeBarometer_SensorJsTest002 success:" + JSON.stringify(data));
-						expect(typeof (data.pressure)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.error('subscribeBarometer_SensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
-						expect(code).assertEqual(1001);
-					},
-				});
-				sensor.subscribeBarometer({
-					success: function (data) {
-						console.info("subscribeBarometer_SensorJsTest002_1 success:" + JSON.stringify(data));
-						expect(typeof (data.pressure)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.error('subscribeBarometer_SensorJsTest002_1 failed. Code: ' + code + '; Data: ' + data);
-						expect(code).assertEqual(1001);
-					},
-				});
-				setTimeout(() => {
-				   sensor.unsubscribeBarometer();
-				   done();
-				}, 1000);
-			})
-		} catch (error) {
-            console.info('subscribeBarometer_SensorJsTest002 Device does not support! ');
+    it("subscribeBarometerSensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeBarometerSensorJsTest002---------------------------');
+        try{
+           sensor.getSingleSensor(BarometerId ,(error, data) => {
+                if (error) {
+                    console.info('subscribeBarometerSensorJsTest005 error');
+                    done();
+                } else {
+                sensor.subscribeBarometer({
+                    success: function (data) {
+                        console.info("subscribeBarometerSensorJsTest002 success:" + JSON.stringify(data));
+                        expect(typeof (data.pressure)).assertEqual("number");
+                    },
+                    fail: function (data, code) {
+                        console.error('subscribeBarometerSensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
+                        expect(code).assertEqual(1001);
+                    },
+                });
+                sensor.subscribeBarometer({
+                    success: function (data) {
+                        console.info("subscribeBarometerSensorJsTest002_1 success:" + JSON.stringify(data));
+                        expect(typeof (data.pressure)).assertEqual("number");
+                    },
+                    fail: function (data, code) {
+                        console.error('subscribeBarometerSensorJsTest002_1 failed. Code: ' + code + '; Data: ' + data);
+                        expect(code).assertEqual(1001);
+                    },
+                });
+                setTimeout(() => {
+                   sensor.unsubscribeBarometer();
+                   done();
+                }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('subscribeBarometerSensorJsTest002 Device does not support! ');
             done();
         }
     })
-	
+
      /*
      * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0030
-     * @tc.name: subscribeBarometer_SensorJsTest003
+     * @tc.name: subscribeBarometerSensorJsTest003
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("subscribeBarometer_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeBarometer_SensorJsTest003---------------------------');
-		try{
-		   sensor.getSingleSensor(BarometerId,(error, data) => {	       
-			   sensor.subscribeBarometer({
-					success: function (data) {
-						console.info("subscribeBarometer_SensorJsTest003 success:" + JSON.stringify(data));
-						expect(typeof (data.pressure)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.error('subscribeBarometer_SensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
-						expect(code).assertEqual(1001);
-					},
-				});
-				setTimeout(() => {
-					sensor.unsubscribeBarometer();
-					done();
-				}, 500);
-			})
-		} catch (error) {
-            console.info('subscribeBarometer_SensorJsTest003 Device does not support! ');
+    it("subscribeBarometerSensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeBarometerSensorJsTest003---------------------------');
+        try{
+           sensor.getSingleSensor(BarometerId ,(error, data) => {
+                if (error) {
+                    console.info('subscribeBarometerSensorJsTest005 error');
+                    done();
+                } else {
+               sensor.subscribeBarometer({
+                    success: function (data) {
+                        console.info("subscribeBarometerSensorJsTest003 success:" + JSON.stringify(data));
+                        expect(typeof (data.pressure)).assertEqual("number");
+                    },
+                    fail: function (data, code) {
+                        console.error('subscribeBarometerSensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
+                        expect(code).assertEqual(1001);
+                    },
+                });
+                setTimeout(() => {
+                    sensor.unsubscribeBarometer();
+                    done();
+                }, 500);
+                }
+            })
+        } catch (error) {
+            console.info('subscribeBarometerSensorJsTest003 Device does not support! ');
             done();
         }
-    })	
+    })
 
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0040
-     * @tc.name: subscribeBarometer_SensorJsTest004
+     * @tc.name: subscribeBarometerSensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("subscribeBarometer_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeBarometer_SensorJsTest004---------------------------');
-		try{
-		   sensor.getSingleSensor(BarometerId ,(error, data) => {	
-				if (error) {
-					console.info('subscribeBarometer_SensorJsTest004 error');
-					expect(false).assertTrue();
+    it("subscribeBarometerSensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeBarometerSensorJsTest004---------------------------');
+        try{
+           sensor.getSingleSensor(BarometerId ,(error, data) => {
+                if (error) {
+                    console.info('subscribeBarometerSensorJsTest004 error');
                     done();
-				} else {		   
-					sensor.subscribeBarometer({
-						success: function (data) {
-							console.info("subscribeBarometer_SensorJsTest004 success" + JSON.stringify(data));
-							expect(typeof (data.pressure)).assertEqual("number");
-						},
-						fail: undefined,
-					});
-			
-					sensor.subscribeBarometer({
-						success: function (data) {
-							console.info("subscribeBarometer_SensorJsTest004_1 success" + JSON.stringify(data));
-							expect(typeof (data.pressure)).assertEqual("number");
-						},
-						fail: null,
-					});
-					setTimeout(() => {
-					sensor.unsubscribeBarometer();
-					done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('subscribeBarometer_SensorJsTest004 Device does not support! ');
+                } else {
+                    sensor.subscribeBarometer({
+                        success: function (data) {
+                            console.info("subscribeBarometerSensorJsTest004 success" + JSON.stringify(data));
+                            expect(typeof (data.pressure)).assertEqual("number");
+                        },
+                        fail: undefined,
+                    });
+
+                    sensor.subscribeBarometer({
+                        success: function (data) {
+                            console.info("subscribeBarometerSensorJsTest004_1 success" + JSON.stringify(data));
+                            expect(typeof (data.pressure)).assertEqual("number");
+                        },
+                        fail: null,
+                    });
+                    setTimeout(() => {
+                    sensor.unsubscribeBarometer();
+                    done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('subscribeBarometerSensorJsTest004 Device does not support! ');
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0050
-     * @tc.name: subscribeBarometer_SensorJsTest005
+     * @tc.name: subscribeBarometerSensorJsTest005
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("subscribeBarometer_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeBarometer_SensorJsTest005---------------------------');
-		try{
-		   sensor.getSingleSensor(BarometerId ,(error, data) => {	
-				if (error) {
-					console.info('subscribeBarometer_SensorJsTest005 error');
-					expect(false).assertTrue();
+    it("subscribeBarometerSensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeBarometerSensorJsTest005---------------------------');
+        try{
+           sensor.getSingleSensor(BarometerId ,(error, data) => {
+                if (error) {
+                    console.info('subscribeBarometerSensorJsTest005 error');
                     done();
-				} else {		   
-					sensor.subscribeBarometer({
-						success: function (data) {
-							console.info("subscribeBarometer_SensorJsTest005 success" + JSON.stringify(data));
-							expect(typeof (data.pressure)).assertEqual("number");
-						},
-						fail: undefined,
-					});
-					setTimeout(() => {
-					sensor.unsubscribeBarometer();
-					done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('subscribeBarometer_SensorJsTest005 Device does not support! ');
+                } else {
+                    sensor.subscribeBarometer({
+                        success: function (data) {
+                            console.info("subscribeBarometerSensorJsTest005 success" + JSON.stringify(data));
+                            expect(typeof (data.pressure)).assertEqual("number");
+                        },
+                        fail: undefined,
+                    });
+                    setTimeout(() => {
+                    sensor.unsubscribeBarometer();
+                    done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('subscribeBarometerSensorJsTest005 Device does not support! ');
             done();
         }
-    })		
+    })
 })}
