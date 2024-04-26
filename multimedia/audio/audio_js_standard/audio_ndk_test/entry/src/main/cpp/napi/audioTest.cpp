@@ -199,6 +199,7 @@ static napi_value AudioCaptureReleaseErr(napi_env env, napi_callback_info info)
     OH_AudioCapturer *audioCapturer;
     OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
     OH_AudioCapturer_Release(audioCapturer);
+    audioCapturer = nullptr;
     OH_AudioStream_Result result = OH_AudioCapturer_Release(audioCapturer);
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
@@ -644,6 +645,7 @@ static napi_value AudioRenderReleaseErr(napi_env env, napi_callback_info info)
     OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
     OH_AudioRenderer_Release(audioRenderer);
+    audioRenderer = nullptr;
     OH_AudioStream_Result result = OH_AudioRenderer_Release(audioRenderer);
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
