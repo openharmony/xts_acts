@@ -14,7 +14,7 @@
 */
 
 import router from '@ohos.router';
-import { CustomContainerClick } from '../common/CustomContainerClick';
+import RangeFunc, { RectValue,CustomContainerClick } from '../common/CustomContainerClick';
 import FirstDialog from '../model/FirstDialog';
 import { MouseEvent } from '@ohos.multimodalInput.mouseEvent';
 import inputMonitor from '@ohos.multimodalInput.inputMonitor';
