@@ -23,6 +23,7 @@
             "run-command": [
                 "power-shell wakeup",
                 "power-shell setmode 602",
+                "power-shell timeout -o 846000000",
                 "param set persist.sys.abilityms.support.start_other_app true",
                 "uinput -T -c 1080 1080",
                 "uinput -T -d 654 2750 -m 654 2750 654 2284 -u 300 2284"
