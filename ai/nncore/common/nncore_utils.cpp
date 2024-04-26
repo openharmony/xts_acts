@@ -104,6 +104,7 @@ int BuildMultiOpGraph(OH_NNModel *model, const OHNNGraphArgsMulti &graphArgs)
                 LOGE("[NNRtTest] OH_NNModel_SetTensorData failed! ret=%d\n", ret);
                 return ret;
             }
+            OH_NNTensorDesc_Destroy(&tensorDesc);
         }
         auto paramIndices = TransformUInt32Array(graphArgs.paramIndices[j]);
         auto inputIndices = TransformUInt32Array(graphArgs.inputIndices[j]);
@@ -176,6 +177,7 @@ int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
                 return ret;
             }
         }
+        OH_NNTensorDesc_Destroy(&tensorDesc);
     }
     ret = SingleModelBuildEndStep(model, graphArgs);
     return ret;
@@ -217,6 +219,7 @@ int BuildSingleOpGraphWithQuantParams(OH_NNModel *model, const OHNNGraphArgs &gr
                 return ret;
             }
         }
+        OH_NNTensorDesc_Destroy(&tensorDesc);
     }
     ret = SingleModelBuildEndStep(model, graphArgs);
     return ret;
@@ -513,12 +516,10 @@ void ConstructAddModel(OH_NNModel **model)
 }
 
 //定长模型创建compilation
-void ConstructCompilation(OH_NNCompilation **compilation)
+void ConstructCompilation(OH_NNCompilation **compilation, OH_NNModel **model)
 {
-    // todo model什么时候释放
-    OH_NNModel* model = nullptr;
-    ConstructAddModel(&model);
-    *compilation = OH_NNCompilation_Construct(model);
+    ConstructAddModel(model);
+    *compilation = OH_NNCompilation_Construct(*model);
     ASSERT_NE(nullptr, *compilation);
 }
 
@@ -526,7 +527,8 @@ void ConstructCompilation(OH_NNCompilation **compilation)
 void CreateExecutor(OH_NNExecutor **executor)
 {
     OH_NNCompilation *compilation = nullptr;
-    ConstructCompilation(&compilation);
+    OH_NNModel *model = nullptr;
+    ConstructCompilation(&compilation, &model);
     OHNNCompileParam compileParam{
         .performanceMode = OH_NN_PERFORMANCE_HIGH,
         .priority = OH_NN_PRIORITY_HIGH,
@@ -534,6 +536,7 @@ void CreateExecutor(OH_NNExecutor **executor)
     ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
     *executor = OH_NNExecutor_Construct(compilation);
     ASSERT_NE(nullptr, *executor);
+    OH_NNModel_Destroy(&model);
     OH_NNCompilation_Destroy(&compilation);
 }
 
