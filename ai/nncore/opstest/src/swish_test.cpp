@@ -26,7 +26,6 @@ struct SwishModel1 {
     const std::vector<int32_t> tensor_shape = {3, 3};
     float inputValue[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     float outputValue[3][3] = {0};
-    float expectValue[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 9*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 9*sizeof(float)};
@@ -41,7 +40,6 @@ struct SwishModel2 {
     const std::vector<int32_t> tensor_shape = {2, 3};
     float inputValue[2][3] = {{-1, 0, 1}, {2, -2, 3}};
     float outputValue[2][3] = {0};
-    float expectValue[2][3] = {{-0.26894143, 0.00000000, 0.73105857}, {1.76159416, -1.2384052, 2.90514898}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 6*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 6*sizeof(float)};
@@ -56,7 +54,6 @@ struct SwishModel3 {
     const std::vector<int32_t> tensor_shape = {2, 3};
     float inputValue[2][2] = {{0, 0}, {0, 0}};
     float outputValue[2][2] = {0};
-    float expectValue[2][2] = {{0, 0}, {0, 0}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 4*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 4*sizeof(float)};
@@ -280,7 +277,6 @@ HWTEST_F(SwishTest, SUB_AI_NNRt_Func_North_Swish_Model_SetOperandValue_01, Funct
     SwishModel1 swishModel;
     OHNNGraphArgs graphArgs = swishModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -291,7 +287,7 @@ HWTEST_F(SwishTest, SUB_AI_NNRt_Func_North_Swish_Model_SetOperandValue_01, Funct
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -317,7 +313,6 @@ HWTEST_F(SwishTest, SUB_AI_NNRt_Func_North_Swish_Model_SetOperandValue_02, Funct
     SwishModel1 swishModel;
     OHNNGraphArgs graphArgs = swishModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -328,7 +323,7 @@ HWTEST_F(SwishTest, SUB_AI_NNRt_Func_North_Swish_Model_SetOperandValue_02, Funct
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -353,7 +348,6 @@ HWTEST_F(SwishTest, SUB_AI_NNRt_Func_North_Swish_Model_SetOperandValue_03, Funct
     SwishModel1 swishModel;
     OHNNGraphArgs graphArgs = swishModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -364,7 +358,7 @@ HWTEST_F(SwishTest, SUB_AI_NNRt_Func_North_Swish_Model_SetOperandValue_03, Funct
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

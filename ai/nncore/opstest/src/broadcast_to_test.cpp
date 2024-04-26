@@ -28,7 +28,6 @@ struct BroadcastToModel1 {
     std::vector<int64_t> shapeValue = {3, 3};
     float inputValue[3] = {1, 2, 3};
     float outputValue[9] = {0};
-    float expectValue[9] = {1, 2, 3, 1, 2, 3, 1, 2, 3};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 9*sizeof(float)};
@@ -46,7 +45,6 @@ struct BroadcastToModel2 {
     std::vector<int64_t> shapeValue = {2, 2};
     float inputValue[3] = {1, 2, 3};
     float* outputValue = {};
-    float* expectValue = {};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 4*sizeof(float)};
@@ -64,7 +62,6 @@ struct BroadcastToModel3 {
     std::vector<int64_t> shapeValue = {0, 3};
     float inputValue[3] = {1, 2, 3};
     float* outputValue = {};
-    float* expectValue = {};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 3*sizeof(float)};
@@ -293,7 +290,6 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -304,7 +300,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -330,7 +326,6 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -341,7 +336,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -366,7 +361,6 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -377,7 +371,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

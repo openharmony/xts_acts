@@ -29,7 +29,6 @@ struct AssertModel1 {
     bool conditionValue[1] = {false};
     int64_t inputValue[2][3] = {{1, 2, 3}, {4, 5, 6}};
     int64_t outputValue[2][3] = {0};
-    int64_t expectValue[2][3] = {{1, 2, 3}, {4, 5, 6}};
 
     OHNNOperandTest input = {OH_NN_INT64, OH_NN_TENSOR, tensor_shape, inputValue, 6*sizeof(int64_t)};
     OHNNOperandTest condition = {OH_NN_BOOL, OH_NN_TENSOR, condition_shape, conditionValue, sizeof(bool)};
@@ -250,7 +249,6 @@ HWTEST_F(AssertTest, SUB_AI_NNRt_Func_North_Assert_Model_SetOperandValue_01, Fun
     AssertModel1 assertModel;
     OHNNGraphArgs graphArgs = assertModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
@@ -259,7 +257,7 @@ HWTEST_F(AssertTest, SUB_AI_NNRt_Func_North_Assert_Model_SetOperandValue_01, Fun
                                      (uint32_t) operandTem.shape.size(),
                                      operandTem.dataType, operandTem.format);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -285,7 +283,6 @@ HWTEST_F(AssertTest, SUB_AI_NNRt_Func_North_Assert_Model_SetOperandValue_02, Fun
     AssertModel1 assertModel;
     OHNNGraphArgs graphArgs = assertModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -296,7 +293,7 @@ HWTEST_F(AssertTest, SUB_AI_NNRt_Func_North_Assert_Model_SetOperandValue_02, Fun
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -321,7 +318,6 @@ HWTEST_F(AssertTest, SUB_AI_NNRt_Func_North_Assert_Model_SetOperandValue_03, Fun
     AssertModel1 assertModel;
     OHNNGraphArgs graphArgs = assertModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -332,7 +328,7 @@ HWTEST_F(AssertTest, SUB_AI_NNRt_Func_North_Assert_Model_SetOperandValue_03, Fun
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

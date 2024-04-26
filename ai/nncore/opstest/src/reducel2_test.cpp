@@ -418,7 +418,6 @@ HWTEST_F(ReduceL2Test, SUB_AI_NNRt_Func_North_ReduceL2_Model_SetOperandValue_01,
     ReduceL2Model1 reduceL2Model;
     OHNNGraphArgs graphArgs = reduceL2Model.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -429,7 +428,7 @@ HWTEST_F(ReduceL2Test, SUB_AI_NNRt_Func_North_ReduceL2_Model_SetOperandValue_01,
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -455,7 +454,6 @@ HWTEST_F(ReduceL2Test, SUB_AI_NNRt_Func_North_ReduceL2_Model_SetOperandValue_02,
     ReduceL2Model1 reduceL2Model;
     OHNNGraphArgs graphArgs = reduceL2Model.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -466,7 +464,7 @@ HWTEST_F(ReduceL2Test, SUB_AI_NNRt_Func_North_ReduceL2_Model_SetOperandValue_02,
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -491,7 +489,6 @@ HWTEST_F(ReduceL2Test, SUB_AI_NNRt_Func_North_ReduceL2_Model_SetOperandValue_03,
     ReduceL2Model1 reduceL2Model;
     OHNNGraphArgs graphArgs = reduceL2Model.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -502,7 +499,7 @@ HWTEST_F(ReduceL2Test, SUB_AI_NNRt_Func_North_ReduceL2_Model_SetOperandValue_03,
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
