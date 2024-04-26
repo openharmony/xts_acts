@@ -68,21 +68,23 @@ parse_args()
     done
 }
 
+shift
+remaining_params=("$@")
 
 do_make()
 {
     cd $BASE_HOME
     if [[ ${match_status} == false || "$xts_targets" =~ "xts_acts" ]];then
         if [ -z "$CACHE_TYPE" ]; then
-	        ./test/xts/acts/build.sh product_name=rk3568 system_size=standard
+	        ./test/xts/acts/build.sh product_name=rk3568 system_size=standard $remaining_params
         else
-            ./test/xts/acts/build.sh product_name=rk3568 system_size=standard cache_type=$CACHE_TYPE
+            ./test/xts/acts/build.sh product_name=rk3568 system_size=standard $remaining_params cache_type=$CACHE_TYPE
         fi
     else
         if [ -z "$CACHE_TYPE" ]; then
-            ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${xts_targets}
+            ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${xts_targets} $remaining_params
         else
-            ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${xts_targets} cache_type=$CACHE_TYPE
+            ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${xts_targets} $remaining_params cache_type=$CACHE_TYPE
         fi
     fi
 }
