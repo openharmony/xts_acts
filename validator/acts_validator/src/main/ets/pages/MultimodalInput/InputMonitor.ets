@@ -52,7 +52,7 @@ struct InputMonitor {
       console.log(`Monitor on success onPageShow ${JSON.stringify(mouseEvent.screenX)}`);
       console.log(`Monitor on success onPageShow ${JSON.stringify(mouseEvent.screenY)}`);
       if (mouseEvent.action === 2) {
-        if ((btn1.left < mouseEvent.screenX && mouseEvent.screenX < btn1.right) && (btn1.top < mouseEvent.screenY && mouseEvent.screenY < btn1.bottom + 35)) {
+        if ((btn1.left < mouseEvent.screenX && mouseEvent.screenX < btn1.right) && (btn1.top < mouseEvent.screenY && mouseEvent.screenY < btn1.bottom + 100)) {
           if (!(this.btnFour && this.btnThree && this.btnTwo && this.btnOne)) {
             this.btnOne = true
             promptAction.showToast({
@@ -61,7 +61,7 @@ struct InputMonitor {
             });
           }
         }
-        else if ((btn2.left < mouseEvent.screenX && mouseEvent.screenX < btn2.right) && (btn2.top < mouseEvent.screenY && mouseEvent.screenY < btn2.bottom + 35)) {
+        else if ((btn2.left < mouseEvent.screenX && mouseEvent.screenX < btn2.right) && (btn2.top < mouseEvent.screenY && mouseEvent.screenY < btn2.bottom + 100)) {
           if (this.btnOne) {
             this.btnTwo = true
             promptAction.showToast({
@@ -70,7 +70,7 @@ struct InputMonitor {
             });
           }
         }
-        else if ((btn3.left < mouseEvent.screenX && mouseEvent.screenX < btn3.right) && (btn3.top < mouseEvent.screenY && mouseEvent.screenY < btn3.bottom + 35)) {
+        else if ((btn3.left < mouseEvent.screenX && mouseEvent.screenX < btn3.right) && (btn3.top < mouseEvent.screenY && mouseEvent.screenY < btn3.bottom + 100)) {
           if (this.btnOne && this.btnTwo) {
             this.btnThree = true
             promptAction.showToast({
@@ -79,7 +79,7 @@ struct InputMonitor {
             });
           }
         }
-        else if ((btn4.left < mouseEvent.screenX && mouseEvent.screenX < btn4.right) && (btn4.top < mouseEvent.screenY && mouseEvent.screenY < btn4.bottom + 35)) {
+        else if ((btn4.left < mouseEvent.screenX && mouseEvent.screenX < btn4.right) && (btn4.top < mouseEvent.screenY && mouseEvent.screenY < btn4.bottom + 100)) {
           if (this.btnOne && this.btnTwo && this.btnThree) {
             this.btnFour = true
             promptAction.showToast({
