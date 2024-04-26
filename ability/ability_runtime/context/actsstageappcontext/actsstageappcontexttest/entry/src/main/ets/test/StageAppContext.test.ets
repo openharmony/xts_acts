@@ -36,10 +36,9 @@ export default function stageAppContextTest(abilityContext) {
             TestUiAbility = await abilityDelegator.getCurrentTopAbility();
         })
 
-        afterEach(async (done) => {
+        afterEach(async () => {
             console.log("ActsStageContextPropertiesTest run afterEach with await");
             await sleep(2000);
-            done()
         })
 
         /**
