@@ -432,5 +432,55 @@ describe('btConstantTest', () =>  {
         expect(true).assertEqual(HEALTH_PERSONAL_MOBILITY_DEVICE == 0x093C);
         done();
     })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0500
+     * @tc.name test constant
+     * @tc.desc Test constant api12
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0500', 0, async (done : Function) => {
+        let hfpAg = bluetooth.ProfileUuids.PROFILE_UUID_HFP_AG;
+        console.info("[bluetooth_js]PROFILE_UUID_HFP_AG : " + JSON.stringify(hfpAg));
+        expect('0000111F-0000-1000-8000-00805F9B34FB').assertEqual(hfpAg);
+
+        let hfpHf = bluetooth.ProfileUuids.PROFILE_UUID_HFP_HF;
+        console.info("[bluetooth_js]PROFILE_UUID_HFP_HF : " + JSON.stringify(hfpHf));
+        expect('0000111E-0000-1000-8000-00805F9B34FB').assertEqual(hfpHf);
+
+        let hspAg = bluetooth.ProfileUuids.PROFILE_UUID_HSP_AG;
+        console.info("[bluetooth_js]PROFILE_UUID_HSP_AG : " + JSON.stringify(hspAg));
+        expect('00001112-0000-1000-8000-00805F9B34FB').assertEqual(hspAg);
+
+        let hspHs = bluetooth.ProfileUuids.PROFILE_UUID_HSP_HS;
+        console.info("[bluetooth_js]PROFILE_UUID_HSP_HS : " + JSON.stringify(hspHs));
+        expect('00001108-0000-1000-8000-00805F9B34FB').assertEqual(hspHs);
+
+        let a2dpSrc = bluetooth.ProfileUuids.PROFILE_UUID_A2DP_SRC;
+        console.info("[bluetooth_js]PROFILE_UUID_A2DP_SRC : " + JSON.stringify(a2dpSrc));
+        expect('0000110A-0000-1000-8000-00805F9B34FB').assertEqual(a2dpSrc);
+
+        let a2dpSink = bluetooth.ProfileUuids.PROFILE_UUID_A2DP_SINK;
+        console.info("[bluetooth_js]PROFILE_UUID_A2DP_SINK : " + JSON.stringify(a2dpSink));
+        expect('0000110B-0000-1000-8000-00805F9B34FB').assertEqual(a2dpSink);
+
+        let avrcpCt = bluetooth.ProfileUuids.PROFILE_UUID_AVRCP_CT;
+        console.info("[bluetooth_js]PROFILE_UUID_AVRCP_CT : " + JSON.stringify(avrcpCt));
+        expect('0000110E-0000-1000-8000-00805F9B34FB').assertEqual(avrcpCt);
+
+        let avrcpTg = bluetooth.ProfileUuids.PROFILE_UUID_AVRCP_TG;
+        console.info("[bluetooth_js]PROFILE_UUID_AVRCP_TG : " + JSON.stringify(avrcpTg));
+        expect('0000110C-0000-1000-8000-00805F9B34FB').assertEqual(avrcpTg);
+
+        let hid = bluetooth.ProfileUuids.PROFILE_UUID_HID;
+        console.info("[bluetooth_js]PROFILE_UUID_HID : " + JSON.stringify(hid));
+        expect('00001124-0000-1000-8000-00805F9B34FB').assertEqual(hid);
+
+        let hogp = bluetooth.ProfileUuids.PROFILE_UUID_HOGP;
+        console.info("[bluetooth_js]PROFILE_UUID_HOGP : " + JSON.stringify(hogp));
+        expect('00001812-0000-1000-8000-00805F9B34FB').assertEqual(hogp);
+        done();
+    })
 })
 }

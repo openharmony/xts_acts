@@ -114,7 +114,7 @@ describe('btManagerMError401Test', function() {
         } catch(error) {
             console.error('[bluetooth_js]error.code:'+JSON.stringify(error.code)+
             'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -132,7 +132,7 @@ describe('btManagerMError401Test', function() {
         } catch(error) {
             console.error(`[bluetooth_js]setBLEMtuSize3 failed, code is ${error.code}, 
               message is ${error.message}`);
-              expect(error.code).assertEqual('401');
+              expect(error.code).assertEqual(401);
         }
     })
 
@@ -160,7 +160,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue1 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -185,7 +185,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue2 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -225,7 +225,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue3 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -265,7 +265,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue4 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -304,7 +304,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue5 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -344,7 +344,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue6 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -380,7 +380,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue7 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -417,7 +417,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue8 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -447,7 +447,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue9 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
         done();
     })
@@ -478,7 +478,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue10 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -518,7 +518,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue11 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -558,7 +558,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue12 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -597,7 +597,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue13 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -637,7 +637,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue14 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -676,7 +676,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue15 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }
     })
@@ -713,7 +713,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue16 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }
     })
@@ -733,7 +733,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]readCharacteValue17 failed, error.code:'
             +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }
     })
@@ -763,7 +763,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue18 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }
     })
@@ -791,7 +791,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue1 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }       
     })
@@ -822,7 +822,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue2 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }       
     })
@@ -860,7 +860,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue3 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }       
     })
@@ -898,7 +898,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue4 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }       
     })
@@ -935,7 +935,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue5 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }       
     })
@@ -973,7 +973,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue6 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }       
     })
@@ -1010,7 +1010,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue7 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }       
     })
@@ -1048,7 +1048,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue8 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }       
     })
@@ -1082,7 +1082,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue9 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }       
     })
@@ -1120,7 +1120,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue10 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }       
     })
@@ -1140,7 +1140,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue11 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }        
     })
@@ -1170,7 +1170,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue12 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }   
     })
@@ -1189,7 +1189,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue1 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1207,7 +1207,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue2 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1239,7 +1239,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue3 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
     
@@ -1271,7 +1271,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue4 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1302,7 +1302,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue5 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1334,7 +1334,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue6 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1363,7 +1363,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue7 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1392,7 +1392,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue8 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1416,7 +1416,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue9 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1440,7 +1440,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue10 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1472,7 +1472,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue11 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1504,7 +1504,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue12 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1535,7 +1535,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue13 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1567,7 +1567,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue14 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1599,7 +1599,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue15 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1631,7 +1631,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue16 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1663,7 +1663,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue17 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1692,7 +1692,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue18 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1710,7 +1710,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue1 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1728,7 +1728,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue2 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1752,7 +1752,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue3 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1776,7 +1776,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue4 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1799,7 +1799,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue5 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
   
@@ -1823,7 +1823,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue6 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1846,7 +1846,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue7 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1870,7 +1870,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue8 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1891,7 +1891,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue9 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1912,7 +1912,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue10 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1930,7 +1930,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged1 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1948,7 +1948,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged2 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -1981,7 +1981,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged3 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -2014,7 +2014,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged4 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -2047,7 +2047,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged5 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -2079,7 +2079,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged6 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -2112,7 +2112,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged7 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -2144,7 +2144,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged8 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -2174,7 +2174,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged9 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -2198,7 +2198,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged10 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
 
@@ -2223,7 +2223,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged11 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
     })
     
@@ -2242,7 +2242,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]createGattClientDevice01 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }
        
@@ -2263,7 +2263,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]createGattClientDevice02 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done()
         }
        

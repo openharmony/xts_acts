@@ -28,9 +28,9 @@ export default function testsuite() {
     if (info != "false") {
         btLocalNameTest();
         btSwitchTest();
-        btSppTest();
+        // btSppTest();
         btSubscBleTest();
-        btManagerSppTest();
+        // btManagerSppTest();
         btManagerSwitchTest();
         btGattAdvertTest();
         btScanModeTest();

@@ -131,7 +131,7 @@ describe('btBleServiceTest', function() {
             done();
         } catch (error) {
             console.error(`[bluetooth_js]Connect_0100 failed, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual('2900099');
+            expect(error.code).assertEqual(2900099);
         }
         done();
     })
@@ -166,7 +166,7 @@ describe('btBleServiceTest', function() {
             gattServer.addService(gattService);
         } catch (error) {
             console.error(`[bluetooth_js]AddService2 failed, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual('2900099');
+            expect(error.code).assertEqual(2900099);
         }
         done(); 
     })
@@ -237,7 +237,7 @@ describe('btBleServiceTest', function() {
             })
         } catch (error) {
             console.error(`[bluetooth_js]notifyCharacteristicChanged error, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual('2900099');
+            expect(error.code).assertEqual(2900099);
         }
         done();
     })
@@ -274,7 +274,7 @@ describe('btBleServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]notifyCharacteristicChanged2 failed, code:'
             +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900099');
+            expect(error.code).assertEqual(2900099);
         }
         done();
     })
@@ -299,7 +299,7 @@ describe('btBleServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]sendResponse1 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual('2900099');
+            expect(error.code).assertEqual(2900099);
             done();
         }
     })
@@ -324,7 +324,7 @@ describe('btBleServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]sendResponse2 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual('2900099');
+            expect(error.code).assertEqual(2900099);
             done();
         }
     })
@@ -344,7 +344,7 @@ describe('btBleServiceTest', function() {
         } catch (error) {
             console.error('[bluetooth_js]sendResponse3 error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
             done();
         }
     })
@@ -369,7 +369,7 @@ describe('btBleServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]sendResponse4 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(error.code).assertEqual('2900099');
+            expect(error.code).assertEqual(2900099);
             done();
         } 
     })
@@ -388,7 +388,7 @@ describe('btBleServiceTest', function() {
             })
         } catch (err) {
             console.error("bluetooth mtu changed on errCode:" + err.code + ",bluetooth mtu changed on errMessage:" + err.message);
-            expect(err.code).assertEqual('2900099');
+            expect(err.code).assertEqual(2900099);
         }
         gattServer.off('BLEMtuChange');
         done();
@@ -409,7 +409,7 @@ describe('btBleServiceTest', function() {
             gattServer.off('BLEMtuChange');
         } catch (err) {
             console.error("bluetooth mtu changed off errCode:" + err.code + ",bluetooth mtu changed off errMessage:" + err.message);
-            expect(err.code).assertEqual('2900099');
+            expect(err.code).assertEqual(2900099);
         }
         done();
     })
