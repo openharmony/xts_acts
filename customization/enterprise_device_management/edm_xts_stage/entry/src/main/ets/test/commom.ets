@@ -75,7 +75,13 @@ let INSTALL_PARAM_WITH_USER_ID: installer.InstallParam = {
   installFlag: 1,
 };
 
-const SUBSCRIBE_EVENTS: Array<number> = [0, 1];
+const SUBSCRIBE_EVENTS: Array<adminManager.ManagedEvent> = [
+  adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED,
+  adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED,
+  adminManager.ManagedEvent.MANAGED_EVENT_APP_START,
+  adminManager.ManagedEvent.MANAGED_EVENT_APP_STOP,
+  adminManager.ManagedEvent.MANAGED_EVENT_SYSTEM_UPDATE,
+];
 const SUBSCRIBE_INVALID_EVENTS: Array<number> = [20, 21];
 
 const TEST_APP_ID_1: string = "test_app_id_1";
@@ -119,7 +125,7 @@ function appIdsInit(){
 }
 
 export {
-  WANT1, ENTINFO1, SELFWANT, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2, ENTINFO2,
+  WANT1, ENTINFO1, SELFWANT, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2, ENTINFO2, NETWORK_ETH_LOCAL,
   DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID, SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS,
   HAP_FILE_PATH, HAP_FILE_PATH_ERROR, EMPTY_HAP_FILE_PATH, isMultipleUserEnabled,
   SetIsMultipleUserEnabled, SetTestUserId, appIdsInit, EDM_INSTALL_PARAM, APP_IDS_1,
