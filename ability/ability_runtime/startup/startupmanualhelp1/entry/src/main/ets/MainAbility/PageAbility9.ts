@@ -49,8 +49,8 @@ export default class PageAbility9 extends UIAbility {
     setTimeout(()=>{
       if (!customConfig) {
         startupManager.run(['Sample_017']).then(()=>{
-          let result = startupManager.isStartupTaskInitialized('Sample_016');
-          console.info("默认配置 StartupTest PageAbility9 Sample_016 线程等待收到加载完毕，查询加载结果 result = "
+          let result = startupManager.isStartupTaskInitialized('Sample_017');
+          console.info("默认配置 StartupTest PageAbility9 Sample_017 线程等待收到加载完毕，查询加载结果 result = "
             + result);
           commonEventManager.publish('show_msg', {
             parameters:{
@@ -100,8 +100,8 @@ export default class PageAbility9 extends UIAbility {
           'startupListener': startupListener
         }
         startupManager.run(['Sample_017'], config).then(()=>{
-          let result = startupManager.isStartupTaskInitialized('Sample_016');
-          console.info("StartupTest PageAbility9 Sample_016 线程等待收到加载完毕，查询加载结果 result = " + result);
+          let result = startupManager.isStartupTaskInitialized('Sample_017');
+          console.info("StartupTest PageAbility9 Sample_017 线程等待收到加载完毕，查询加载结果 result = " + result);
           commonEventManager.publish('show_msg', {
             parameters:{
               msg: '自定义配置 线程等待收到加载完毕，查询加载结果 result = ' + result

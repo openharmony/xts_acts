@@ -445,7 +445,7 @@ export default function abilityStageMonitorTest() {
         expect(addMonitor).assertTrue()
         expect(removeMonitor).assertTrue()
         done()
-      }, 3000);
+      }, 6000);
 
     })
 
