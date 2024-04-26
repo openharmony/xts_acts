@@ -54,7 +54,7 @@ export default class SecondOtherAbility extends UIAbility {
   onForeground(): void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
-    if (param === 'AbilityStage_OnDestroy_0400_OtherAbility') {
+    if (param === 'AbilityStage_OnDestroy_0500_OtherAbility') {
       setTimeout(() => {
         this.context.terminateSelf().then(() => {
           console.info(param, 'SecondOtherAbility terminateSelf success');

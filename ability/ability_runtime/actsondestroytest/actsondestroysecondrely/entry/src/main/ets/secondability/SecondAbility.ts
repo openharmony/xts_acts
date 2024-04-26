@@ -44,14 +44,14 @@ export default class SecondAbility extends UIAbility {
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
-    if (param === 'AbilityStage_OnDestroy_0400_EntryAbility') {
+    if (param === 'AbilityStage_OnDestroy_0500_EntryAbility') {
       setTimeout(() => {
         this.context.startAbility({
           bundleName: 'com.example.abilitystageondestroytest',
           moduleName: 'entry',
           abilityName: 'OtherAbility',
           parameters: {
-            parameter: 'AbilityStage_OnDestroy_0400_SecondAbility'
+            parameter: 'AbilityStage_OnDestroy_0500_SecondAbility'
           }
         }).then(() => {
           console.info(param, 'SecondAbility startAbility success');

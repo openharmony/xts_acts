@@ -17,7 +17,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import commonEvent from '@ohos.commonEventManager';
-import {Driver, ON} from '@ohos.UiTest'
+import { Driver, ON } from '@ohos.UiTest'
+
 let driver = Driver.create();
 
 const TAG = 'SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy';
@@ -26,14 +27,16 @@ const MULTIPLE_CASE_TIMEOUT = 6000;
 const AFTER_EACH_CASE_TIMEOUT = 1500;
 let ACTS_OnDestroy: commonEvent.CommonEventSubscribeInfo = {
   events: ['Acts_EntryOnDestroy', 'Acts_SecondOnDestroy', 'Acts_EntryAbilityTerminate', 'Acts_OtherAbilityTerminate',
-           'Acts_SecondOtherAbilityTerminate']
+    'Acts_SecondOtherAbilityTerminate']
 };
 
 export default function abilityTest() {
   describe('ActsOnDestroyTest', () => {
 
     beforeEach(async (done) => {
-      setTimeout(() => { done(); }, 3000)
+      setTimeout(() => {
+        done();
+      }, 3000)
     })
 
     afterEach((done: () => void) => {
@@ -52,7 +55,7 @@ export default function abilityTest() {
      * @tc.level Level 1
      */
     it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0100', 0, async (done: () => void) => {
-      
+
       console.info(TAG + '_0100 start');
       let subscriber: commonEvent.CommonEventSubscriber;
 
@@ -94,7 +97,7 @@ export default function abilityTest() {
           if (allowed) {
             console.log("find button");
             let point = await allowed.getBoundsCenter();
-            console.log('point.x : ' + point.x +'point.y : '+ point.y);
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
             await driver.click(point.x, point.y);
           }
         } catch (err) {
@@ -164,7 +167,7 @@ export default function abilityTest() {
           if (allowed) {
             console.log("find button");
             let point = await allowed.getBoundsCenter();
-            console.log('point.x : ' + point.x +'point.y : '+ point.y);
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
             await driver.click(point.x, point.y);
           }
         } catch (err) {
@@ -230,7 +233,7 @@ export default function abilityTest() {
           if (allowed) {
             console.log("find button");
             let point = await allowed.getBoundsCenter();
-            console.log('point.x : ' + point.x +'point.y : '+ point.y);
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
             await driver.click(point.x, point.y);
           }
         } catch (err) {
@@ -243,8 +246,7 @@ export default function abilityTest() {
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0400
      * @tc.name: AbilityStage support onDestroy.
-     * @tc.desc: Under multiple ability of a single module, only a normal exit from a single ability cannot trigger
-     *           the OnDestroy of AbilityStage.
+     * @tc.desc: Normal exit in multiple modules can trigger OnDestroy of all AbilityStage
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level Level 1
@@ -252,14 +254,12 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0400', 0, async (done: () => void) => {
       console.info(TAG + '_0400 start');
       let subscriber: commonEvent.CommonEventSubscriber;
-      let isTerminate = ['isOtherTerminte', 'isSecondOtherTerminte'];
 
-      setTimeout(() => {
-        console.info(TAG + '_0400 timeout');
-        expect(isTerminate['isOtherTerminte']).assertTrue();
-        expect(isTerminate['isSecondOtherTerminte']).assertTrue();
-        commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-      }, MULTIPLE_CASE_TIMEOUT);
+      let id = setTimeout(() => {
+        console.error(TAG + '_0400 timeout');
+        expect().assertFail();
+        done();
+      }, CASE_TIMEOUT);
 
       let unSubscribeCallback = (() => {
         console.info(TAG + '_0400 unSubscribeCallback');
@@ -269,36 +269,107 @@ export default function abilityTest() {
       let subscribeCallBack = ((err: BusinessError, data: commonEvent.CommonEventData) => {
         console.info(TAG + `_0400 subscribeCallBack data is: ${JSON.stringify(data)}`);
         if (data.event === 'Acts_EntryOnDestroy') {
-          console.error(TAG + '_0400 event is Acts_EntryOnDestroy');
-          expect().assertFail();
-          done();
-        }
-        if (data.event === 'Acts_SecondOnDestroy') {
-          console.info(TAG + '_0400 event is Acts_SecondOnDestroy');
-          expect().assertFail();
-          done();
-        }
-        if (data.event === 'Acts_OtherAbilityTerminate') {
-          isTerminate['isOtherTerminte'] = true;
-          console.info(TAG + '_0400 event is Acts_OtherAbilityTerminate');
-        }
-        if (data.event === 'Acts_SecondOtherAbilityTerminate') {
-          isTerminate['isSecondOtherTerminte'] = true;
-          console.info(TAG + '_0400 event is Acts_SecondOtherAbilityTerminate');
+          console.info(TAG + '_0400 event is Acts_EntryOnDestroy');
+          clearTimeout(id);
+          console.info(TAG + '_0400 start unSubscribe');
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       })
 
       commonEvent.createSubscriber(ACTS_OnDestroy).then(async (data) => {
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
-        console.info(TAG + '_0400 startAbility');
+        console.info(TAG + '_0500 startAbility');
+        let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+        let want = {
+          bundleName: 'com.example.abilitystageondestroytest',
+          moduleName: 'entry',
+          abilityName: 'EntryAbility',
+          parameters: {
+            param: 'AbilityStage_OnDestroy_0400',
+          }
+        }
+
+        await context.startAbility(want).then((data) => {
+          console.log(TAG + "_0500 startAbility data : " + JSON.stringify(data));
+        }).catch((err) => {
+          console.log(TAG + "_0500 startAbility err : " + JSON.stringify(err));
+        })
+
+        try {
+          let allowed = await driver.waitForComponent(ON.text("打开"), 2000);
+          if (allowed) {
+            console.log("find button");
+            let point = await allowed.getBoundsCenter();
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
+            await driver.click(point.x, point.y);
+          }
+        } catch (err) {
+          console.error('waitForComponent error' + JSON.stringify(err));
+          done();
+        }
+      })
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0500
+     * @tc.name: AbilityStage support onDestroy.
+     * @tc.desc: Under multiple ability of a single module, only a normal exit from a single ability cannot trigger
+     *           the OnDestroy of AbilityStage.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level Level 1
+     */
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0500', 0, async (done: () => void) => {
+      console.info(TAG + '_0500 start');
+      let subscriber: commonEvent.CommonEventSubscriber;
+      let isTerminate = ['isOtherTerminte', 'isSecondOtherTerminte'];
+
+      setTimeout(() => {
+        console.info(TAG + '_0500 timeout');
+        expect(isTerminate['isOtherTerminte']).assertTrue();
+        expect(isTerminate['isSecondOtherTerminte']).assertTrue();
+        commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+      }, MULTIPLE_CASE_TIMEOUT);
+
+      let unSubscribeCallback = (() => {
+        console.info(TAG + '_0500 unSubscribeCallback');
+        done();
+      })
+
+      let subscribeCallBack = ((err: BusinessError, data: commonEvent.CommonEventData) => {
+        console.info(TAG + `_0500 subscribeCallBack data is: ${JSON.stringify(data)}`);
+        if (data.event === 'Acts_EntryOnDestroy') {
+          console.error(TAG + '_0500 event is Acts_EntryOnDestroy');
+          expect().assertFail();
+          done();
+        }
+        if (data.event === 'Acts_SecondOnDestroy') {
+          console.info(TAG + '_0500 event is Acts_SecondOnDestroy');
+          expect().assertFail();
+          done();
+        }
+        if (data.event === 'Acts_OtherAbilityTerminate') {
+          isTerminate['isOtherTerminte'] = true;
+          console.info(TAG + '_0500 event is Acts_OtherAbilityTerminate');
+        }
+        if (data.event === 'Acts_SecondOtherAbilityTerminate') {
+          isTerminate['isSecondOtherTerminte'] = true;
+          console.info(TAG + '_0500 event is Acts_SecondOtherAbilityTerminate');
+        }
+      })
+
+      commonEvent.createSubscriber(ACTS_OnDestroy).then(async (data) => {
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        console.info(TAG + '_0500 startAbility');
         let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
         context.startAbility({
           bundleName: 'com.example.abilitystageondestroytest',
           moduleName: 'entry',
           abilityName: 'EntryAbility',
           parameters: {
-            param: 'AbilityStage_OnDestroy_0400'
+            param: 'AbilityStage_OnDestroy_0500'
           }
         })
         try {
@@ -306,7 +377,7 @@ export default function abilityTest() {
           if (allowed) {
             console.log("find button");
             let point = await allowed.getBoundsCenter();
-            console.log('point.x : ' + point.x +'point.y : '+ point.y);
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
             await driver.click(point.x, point.y);
           }
         } catch (err) {

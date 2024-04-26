@@ -32,7 +32,7 @@ export default class OtherAbility extends UIAbility {
   }
 
   onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Other Ability onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -55,14 +55,24 @@ export default class OtherAbility extends UIAbility {
         })
       }, CLEAN_TIMEOUT)
     }
-    if (param === 'AbilityStage_OnDestroy_0400_SecondAbility') {
+    if (param === 'AbilityStage_OnDestroy_0400') {
+      setTimeout(() => {
+        this.context.terminateSelf().then(() => {
+          console.info(param, 'OtherAbility terminateSelf success');
+        }).catch((err) => {
+          console.error(param, `OtherAbility terminateSelf failed, err is: ${JSON.stringify(err)}`);
+        })
+      }, TERMIN_TIMEOUT)
+    }
+
+    if (param === 'AbilityStage_OnDestroy_0500_SecondAbility') {
       setTimeout(() => {
         this.context.startAbility({
           bundleName: 'com.example.abilitystageondestroytest',
           moduleName: 'second',
           abilityName: 'SecondOtherAbility',
           parameters: {
-            parameter: 'AbilityStage_OnDestroy_0400_OtherAbility'
+            parameter: 'AbilityStage_OnDestroy_0500_OtherAbility'
           }
         }).then(() => {
           console.info(param, 'OtherAbility startAbility success');

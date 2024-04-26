@@ -75,6 +75,30 @@ function OnDestroy_0300(context): void {
   }, TERMIN_TIMEOUT)
 }
 
+function OnDestroy_0400(context): void {
+  setTimeout(() => {
+    context.startAbility({
+      bundleName: 'com.example.abilitystageondestroytest',
+      moduleName: 'entry',
+      abilityName: 'OtherAbility',
+      parameters: {
+        parameter: param
+      }
+    }).then(() => {
+      hilog.info(0x0000, 'testTag', '%{public}s', `OnDestroy_0500 EntryAbility startAbility success`);
+    }).catch((err) => {
+      console.error(param, `OnDestroy_0500 EntryAbility startAbility failed, err is: ${JSON.stringify(err)}`);
+    })
+  }, START_TIMEOUT)
+  setTimeout(() => {
+    context.terminateSelf().then(() => {
+      hilog.info(0x0000, 'testTag', '%{public}s', `OnDestroy_0500 EntryAbility terminateSelf success`);
+    }).catch((err) => {
+      hilog.info(0x0000, 'testTag', '%{public}s', `OnDestroy_0500 EntryAbility terminateSelf failed, err is : ${JSON.stringify(err)}`);
+    })
+  }, TERMIN_TIMEOUT)
+}
+
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', `Ability onCreate want: ${JSON.stringify(Want)}`);
@@ -83,7 +107,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Entry Ability onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -100,21 +124,24 @@ export default class EntryAbility extends UIAbility {
     if (param === 'AbilityStage_OnDestroy_0300') {
       OnDestroy_0300(this.context);
     }
-    if (param === 'AbilityStage_OnDestroy_0400') {
+    if (param === 'AbilityStage_OnDestroy_0500') {
       setTimeout(() => {
         this.context.startAbility({
           bundleName: 'com.example.abilitystageondestroytest',
           moduleName: 'second',
           abilityName: 'SecondAbility',
           parameters: {
-            parameter: 'AbilityStage_OnDestroy_0400_EntryAbility'
+            parameter: 'AbilityStage_OnDestroy_0500_EntryAbility'
           }
         }).then(() => {
-          hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage_OnDestroy_0400 Ability onDestroy');
+          hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage_OnDestroy_0500 Ability onDestroy');
         }).catch((err) => {
-          hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage_OnDestroy_0400 EntryAbility startAbility failed, err is: ${JSON.stringify(err)}');
+          hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage_OnDestroy_0500 EntryAbility startAbility failed, err is: ${JSON.stringify(err)}');
         })
       }, START_TIMEOUT)
+    }
+    if (param === 'AbilityStage_OnDestroy_0400') {
+      OnDestroy_0400(this.context);
     }
   }
 
