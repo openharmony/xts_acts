@@ -45,6 +45,7 @@ struct Index {
         preferencesDir: context.preferencesDir,
         bundleCodeDir: context.bundleCodeDir,
         distributedFilesDir: context.distributedFilesDir,
+        cloudFileDir: context.cloudFileDir,
         stageMode: context.stageMode,
         area: context.area,
         eventHub: context.eventHub

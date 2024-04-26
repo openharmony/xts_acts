@@ -416,6 +416,8 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_AMS_Context_0100', 0, async (done: Function) => {
+      let bundleName = "com.example.apicoverhaptest";
+      let userId = 100;
       expect("/data/storage/el2/base/haps/phone/cache")
         .assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.cacheDir);
       expect("/data/storage/el2/base/haps/phone/temp")
@@ -430,6 +432,8 @@ export default function ApiCoverTest() {
         .assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.bundleCodeDir);
       expect("/data/storage/el2/distributedfiles")
         .assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.distributedFilesDir);
+      expect("/data/service/el2/" + userId + "/hmdfs/cloud/data/" + bundleName)
+        .assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.cloudFileDir);
       expect(1).assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.area);
       if (AppStorage.get<common.UIAbilityContext>("abilityContext")!.resourceDir != "") {
         fs.access(AppStorage.get<common.UIAbilityContext>("abilityContext")!.resourceDir, (err, res) => {
@@ -660,6 +664,46 @@ export default function ApiCoverTest() {
       expect(0).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND);
       expect(1).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND);
       console.info("SUB_AA_Test_InsightIntent_0100:" + insightIntent.ExecuteMode.UI_EXTENSION_ABILITY);
+      // expect(2).assertEqual(insightIntent.ExecuteMode.UI_EXTENSION_ABILITY)
+      AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(startWant, startOp, (err, data) => {
+        if (err.code == 0) {
+          console.info("SUB_AA_FMS_AbilityStage_0100===CreateSubscriberCallback===");
+          expect().assertFail();
+          done();
+        } else {
+          console.info("SUB_AA_FMS_AbilityStage_0100===failed===");
+          expect(err.code).assertEqual(EXTENSION_INFO_ERR);
+          done();
+        }
+      })
+    });
+
+    /*
+     * @tc.number  SUB_AA_Test_StartOptions_0100
+     * @tc.name    Test insightIntent.ExecuteMode and startOptions.
+     * @tc.desc    Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   3
+     */
+    it('SUB_AA_Test_StartOptions_0100', 0, async (done: Function) => {
+      let startOp: startOptions = {
+        withAnimation: false,
+        displayId: 0,
+        windowLeft: 100,
+        windowTop: 100,
+        windowWidth: 100,
+        windowHeight: 100,
+        windowFocused: true,
+      }
+      let startWant: Want = {
+        deviceId: "",
+        bundleName: "ohos.acts.aafwk.test.stagesupplementerr",
+        abilityName: "MainAbility3",
+      }
+      expect(0).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND);
+      expect(1).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND);
+      console.info("SUB_AA_Test_StartOptions_0100:" + insightIntent.ExecuteMode.UI_EXTENSION_ABILITY);
       // expect(2).assertEqual(insightIntent.ExecuteMode.UI_EXTENSION_ABILITY)
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(startWant, startOp, (err, data) => {
         if (err.code == 0) {
