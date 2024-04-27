@@ -430,7 +430,8 @@ export default function actsWifiManagerFunctionsTest() {
             + "randomGlobalIpv6Address: " + ipv6InfoResult.randomGlobalIpv6Address +
             "gateway: " + ipv6InfoResult.gateway +
             "netmask: " + ipv6InfoResult.netmask + "primaryDns:" + ipv6InfoResult.primaryDNS +
-            "secondDns: " + ipv6InfoResult.secondDNS);
+            "secondDns: " + ipv6InfoResult.secondDNS + "uniqueIpv6Address" + ipv6InfoResult.uniqueIpv6Address +
+            "randomUniqueIpv6Address" + ipv6InfoResult.randomUniqueIpv6Address);
         })
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
