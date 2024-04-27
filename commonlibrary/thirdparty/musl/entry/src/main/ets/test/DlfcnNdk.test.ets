@@ -36,6 +36,18 @@ export default function dlfcnNdkTest() {
       expect(dlfcnndk.dlsym()).assertEqual(0);
       done()
     });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_DLFCN_DLVSYM_0100
+     * @tc.name       : testMuslDlFcnDlVSym001
+     * @tc.desc       : test dlvsym
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslDlFcnDlVSym001', 0, async (done: Function) => {
+      expect(dlfcnndk.dlvsym()).assertEqual(0);
+      done()
+    });
 
   })
 }
