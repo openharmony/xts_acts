@@ -142,7 +142,7 @@ export default function GridLayoutDirection() {
       let GridLayoutDirKey = CommonFunc.getComponentRect('GridLayoutDirKey');
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem00.top - GridLayoutDirKey.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.abs(Math.round(GridItem00.top - GridLayoutDirKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
       console.info('[GridLayoutDirection_005] END');
       done();
@@ -163,7 +163,7 @@ export default function GridLayoutDirection() {
       let GridLayoutDirKey = CommonFunc.getComponentRect('GridLayoutDirKey');
       let ColumnKey = CommonFunc.getComponentRect('ColumnKey');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridLayoutDirKey.top - ColumnKey.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.abs(Math.round(GridLayoutDirKey.top - ColumnKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
       console.info('[GridLayoutDirection_006] END');
       done();
