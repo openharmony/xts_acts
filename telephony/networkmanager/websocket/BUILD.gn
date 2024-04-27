@@ -11,17 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("networkmanager") {
+import("//build/ohos_var.gni")
+
+group("websocket") {
   testonly = true
-  deps = [
-    "connection:connection",
-    "fetch:fetch",
-    "http:http",
-    "network:network",
-    "noNet:noNet",
-    "noPermission:noPermission",
-    "socket:socket",
-    "statistics:statistics",
-    "websocket:websocket",
-  ]
+  deps = [ "websocketalltest:ActsNetworkMgrWebsocketTest" ]
 }
