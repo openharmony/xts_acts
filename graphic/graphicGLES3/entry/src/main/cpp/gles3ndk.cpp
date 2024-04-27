@@ -59,12 +59,14 @@
 #define SUB_DATA_SIZE 32
 #define COMPUTE_VAL 10
 #define POINT_LIGHT_COUNT 4
+#define MATRIX_2 2
 #define MATRIX_3 3
 #define MATRIX_4 4
 #define MATRIX_6 6
 #define MATRIX_8 8
 #define MATRIX_9 9
 #define MATRIX_12 12
+#define MATRIX_15 15
 #define MATRIX_16 16
 #define IMAGE2D_LEVEL_ONE 1
 #define TIME_OUT 1000000000
@@ -1123,13 +1125,18 @@ static napi_value GLCopyTexSubImage3D(napi_env env, napi_callback_info info)
     initGLES();
     GLuint texture;
     glGenTextures(CREAT_NUM_ONE, &texture);
-    glBindTexture(GL_TEXTURE_2D_ARRAY, texture);
-    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexImage3D(GL_TEXTURE_2D_ARRAY, INT_INIT_VAL, GL_RGB, SUB_DATA_SIZE, SUB_DATA_SIZE, CREAT_NUM_ONE, INT_INIT_VAL,
-                 GL_RGB, GL_UNSIGNED_BYTE, nullptr);
-    glCopyTexSubImage3D(GL_TEXTURE_2D_ARRAY, INT_INIT_VAL, INT_INIT_VAL, INT_INIT_VAL, INT_INIT_VAL, INT_INIT_VAL,
-                        INT_INIT_VAL, SUB_DATA_SIZE, SUB_DATA_SIZE);
+    glBindTexture(GL_TEXTURE_3D, texture);
+    glTexImage3D(GL_TEXTURE_3D, INT_INIT_VAL, GL_R8, MATRIX_8, MATRIX_8, MATRIX_8, INT_INIT_VAL,
+                 GL_RED, GL_UNSIGNED_BYTE, nullptr);
+    GLuint framebuffer;
+    glGenFramebuffers(CREAT_NUM_ONE, &framebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, texture, INT_INIT_VAL, MATRIX_8);
+    glGenerateMipmap(GL_TEXTURE_3D);
+    glTexImage3D(GL_TEXTURE_3D, INT_INIT_VAL, GL_R8UI, MATRIX_16, MATRIX_16, MATRIX_16, INT_INIT_VAL,
+                 GL_RED_INTEGER, GL_UNSIGNED_BYTE, nullptr);
+    glCopyTexSubImage3D(GL_TEXTURE_3D, INT_INIT_VAL, INT_INIT_VAL, INT_INIT_VAL, MATRIX_2, MATRIX_2,
+                        MATRIX_15, MATRIX_16, MATRIX_16);
     GLenum glError = glGetError();
     destroyGLES();
     return getError(env, glError);
@@ -4107,9 +4114,9 @@ static napi_value GLReadBuffer(napi_env env, napi_callback_info info)
 static napi_value GLReadnPixels(napi_env env, napi_callback_info info)
 {
     initGLES();
-    GLubyte pixels[INIT_WIDTH * INIT_WIDTH * VERTEX_NUM] = {INT_INIT_VAL};
-    glReadnPixels(INT_INIT_VAL, INT_INIT_VAL, INIT_WIDTH, INIT_WIDTH, GL_RGB, GL_UNSIGNED_BYTE,
-                  INIT_WIDTH * INIT_WIDTH * VERTEX_NUM, (void *)pixels);
+    GLubyte *pixelData = new GLubyte[MATRIX_4 * MATRIX_4 * MATRIX_4];
+    glReadnPixels(INT_INIT_VAL, INT_INIT_VAL, MATRIX_4, MATRIX_4, GL_RGBA, GL_UNSIGNED_BYTE,
+                  MATRIX_4 * MATRIX_4 * MATRIX_4, pixelData);
     GLenum glError = glGetError();
     destroyGLES();
     return getError(env, glError);
@@ -4118,8 +4125,8 @@ static napi_value GLReadnPixels(napi_env env, napi_callback_info info)
 static napi_value GLReadPixels(napi_env env, napi_callback_info info)
 {
     initGLES();
-    GLubyte pixels[INIT_WIDTH * INIT_WIDTH * VERTEX_NUM] = {INT_INIT_VAL};
-    glReadPixels(INT_INIT_VAL, INT_INIT_VAL, INIT_WIDTH, INIT_WIDTH, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+    GLubyte *pixels = new GLubyte[MATRIX_4 * MATRIX_4 * MATRIX_4];
+    glReadPixels(INT_INIT_VAL, INT_INIT_VAL, MATRIX_4, MATRIX_4, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
     GLenum glError = glGetError();
     destroyGLES();
     return getError(env, glError);
