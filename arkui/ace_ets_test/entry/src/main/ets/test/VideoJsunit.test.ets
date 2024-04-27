@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -32,8 +32,8 @@ export default function videoJsunit() {
   describe('VideoAppInfoTest', () => {
 
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/Video',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Video',
       }
       try {
         router.clear();

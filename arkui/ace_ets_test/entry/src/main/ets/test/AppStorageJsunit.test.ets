@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -31,8 +31,8 @@ export default function appStorageJsunit() {
 
   describe('appStorageTest', () => {
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/AppStorage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AppStorage',
       }
       try {
         router.clear();
