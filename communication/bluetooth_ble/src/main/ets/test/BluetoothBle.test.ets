@@ -20,6 +20,10 @@ import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPatter
 
 export default function bluetoothBleTest() {
 describe('bluetoothBleTest', function() {
+
+    let PERMISSION_TEXT:string = "允许";
+    let OPEN_BT_TEXT:string = "开启";
+
     function sleep(delay) {
         return new Promise(resovle => setTimeout(resovle, delay))
     }
@@ -43,7 +47,7 @@ describe('bluetoothBleTest', function() {
         switch(sta){
             case 0:
                 btAccess.enableBluetooth();
-                await clickRequestPermission();
+                await clickRequestPermission(OPEN_BT_TEXT);
                 await sleep(10000);
                 let sta1 = btAccess.getState();
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta1));
@@ -57,7 +61,7 @@ describe('bluetoothBleTest', function() {
                 break;
             case 3:
                 btAccess.enableBluetooth();
-                await clickRequestPermission();
+                await clickRequestPermission(OPEN_BT_TEXT);
                 await sleep(10000);
                 let sta2 = btAccess.getState();
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta2));
@@ -67,12 +71,12 @@ describe('bluetoothBleTest', function() {
         }
     }
 
-    async function clickRequestPermission() {
+    async function clickRequestPermission(text:string) {
         try {
             console.info('[bluetooth_js] clickRequestPermission start');
             let driver = Driver.create();
             await driver.delayMs(3000);
-            let button = await driver.findComponent(ON.text("允许"));
+            let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
@@ -82,7 +86,7 @@ describe('bluetoothBleTest', function() {
     }
 
     beforeAll(async function (done) {
-        await clickRequestPermission();
+        await clickRequestPermission(PERMISSION_TEXT);
         await openPhone();
         console.info('beforeAll called')
         done();
