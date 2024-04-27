@@ -49,7 +49,10 @@ export default function HoverJsunit5() {
 
       console.info('HoverJsunit_0200 START');
       let driver = await Driver.create()
-      await driver.mouseMoveTo({x:200, y:300})
+      let buttonCl = await driver.findComponent(ON.id('columnAA'));
+      await CommonFunc.sleep(500);
+      let point = await buttonCl.getBoundsCenter();
+      await driver.mouseMoveTo({x:point.x + globalThis.winLeft, y:point.y + globalThis.winTop})
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('hover5');
       let obj = JSON.parse(strJson);
@@ -64,7 +67,10 @@ export default function HoverJsunit5() {
 
       console.info('HoverJsunit_0200 START');
       let driver = await Driver.create()
-      await driver.mouseMoveTo({x:500, y:300})
+      let buttonCl = await driver.findComponent(ON.id('columnBB'));
+      await CommonFunc.sleep(500);
+      let point = await buttonCl.getBoundsCenter();
+      await driver.mouseMoveTo({x:point.x + globalThis.winLeft, y:point.y + globalThis.winTop})
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('hover5');
       let obj = JSON.parse(strJson);
@@ -79,7 +85,10 @@ export default function HoverJsunit5() {
 
       console.info('HoverJsunit_0300 START');
       let driver = await Driver.create()
-      await driver.mouseMoveTo({x:800, y:300})
+      let buttonCl = await driver.findComponent(ON.id('columnBB'));
+      await CommonFunc.sleep(500);
+      let point = await buttonCl.getBoundsCenter();
+      await driver.mouseMoveTo({x:point.x + globalThis.winLeft, y:point.y + globalThis.winTop})
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('hover5');
       let obj = JSON.parse(strJson);
