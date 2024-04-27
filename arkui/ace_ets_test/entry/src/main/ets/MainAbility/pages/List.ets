@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,19 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-interface  ItemDragInfo {
-  x: 5,
-  y: 5
-}
 
 @Entry
 @Component
 struct ListExample {
   private arr1: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  private arr2: number[] = ['a', 'b', 'c', 'd', 'e', 'f']
+  private arr2: string[] = ['a', 'b', 'c', 'd', 'e', 'f']
   @State editFlag: boolean = false
   @State bool1: boolean = false
   @State bool2: boolean = false
+  @State text: number = 0
+
+  @Builder pixelMapBuilder() {
+    Column() {
+      Text(`${this.text}`)
+      .width('50%').height(60).fontSize(16).borderRadius(10)
+      .textAlign(TextAlign.Center).backgroundColor(Color.Yellow)
+    }
+  }
 
   build() {
     Stack({ alignContent: Alignment.TopStart }) {

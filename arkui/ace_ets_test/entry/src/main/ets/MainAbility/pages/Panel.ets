@@ -43,8 +43,8 @@ struct PanelExample {
       .fullHeight(500)
       .halfHeight(250)
       .miniHeight(100)
-      .onChange((value: any) => {
-        console.info(`width:${value.width},height:${value.height},mode:${value.mode}`)
+      .onChange((width: number, height: number, mode: PanelMode) => {
+        console.info(`width:${width},height:${height},mode:${mode}`)
       })
 
       Panel(this.show) {
@@ -61,8 +61,8 @@ struct PanelExample {
       .fullHeight(500)
       .halfHeight(250)
       .miniHeight(100)
-      .onChange((value: any) => {
-        console.info(`width:${value.width},height:${value.height},mode:${value.mode}`)
+      .onChange((width: number, height: number, mode: PanelMode) => {
+        console.info(`width:${width},height:${height},mode:${mode}`)
       })
 
       Panel(false) {
@@ -79,8 +79,8 @@ struct PanelExample {
       .fullHeight(500)
       .halfHeight(250)
       .miniHeight(100)
-      .onChange((value: any) => {
-        console.info(`width:${value.width},height:${value.height},mode:${value.mode}`)
+      .onChange((width: number, height: number, mode: PanelMode) => {
+        console.info(`width:${width},height:${height},mode:${mode}`)
       })
     }.width('100%').height('50%').backgroundColor(0xDCDCDC).padding({ top: 5 })
   }

@@ -36,8 +36,8 @@ struct FormComponentPage {
         .dimension(this.dimension)
         .allowUpdate(true)
         .visibility(Visibility.Visible)
-        .onAcquired((e) => {
-          console.log('onAcquired id : ' + e.id)
+        .onAcquired((info: FormCallbackInfo) => {
+          console.log('onAcquired id : ' + info.id)
         })
         .onRouter(() => {
           console.log('onRouter : ')
