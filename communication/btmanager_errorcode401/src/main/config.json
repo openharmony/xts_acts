@@ -16,11 +16,10 @@
         "package": "ohos.acts.communication.bluetooth.bluetoothhost",
         "name": ".entry",
         "deviceType": [
-            "tablet",
-            "default",
+      "tablet",
+      "default",
             "phone",
-            "2in1",
-            "wearable"
+            "2in1"
         ],
         "distro": {
             "deliveryWithInstall": true,
