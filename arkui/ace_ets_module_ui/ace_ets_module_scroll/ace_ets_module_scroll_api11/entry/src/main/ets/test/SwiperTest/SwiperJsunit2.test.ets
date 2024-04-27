@@ -53,7 +53,7 @@ async function backToIndex() {
 export default function swiperJsunit2() {
 
 
-  describe('swiperTest', () => {
+  describe('swiper2Test', () => {
 
     beforeEach(async () => {
       let options = {

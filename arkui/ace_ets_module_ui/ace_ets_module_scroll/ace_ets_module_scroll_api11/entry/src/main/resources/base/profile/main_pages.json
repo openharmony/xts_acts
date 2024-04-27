@@ -200,6 +200,7 @@
         "MainAbility/pages/grid/gridAPI",
         "MainAbility/pages/AlphabetIndexer/alphabetIndexerAPI",
 	"MainAbility/pages/ScrollBar/scrollBarr",
-       "MainAbility/pages/List/listItem2"
+       "MainAbility/pages/List/listItem2",
+        "MainAbility/pages/Slider/slider"
     ]
 }

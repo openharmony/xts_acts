@@ -19,57 +19,57 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 const waitUiReadyMs = 1000;
 
-export default function  datePickerJsunit() {
-  describe('datePickerJsunit', function () {
+export default function  datePickerUIJsunit() {
+  describe('datePickerUIJsunit', function () {
     beforeEach(async function (done) {
-      console.info("datePickerJsunit beforeEach start");
+      console.info("datePickerUIJsunit beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/DatePicker/datePicker',
+        uri: 'MainAbility/pages/DatePicker/datePickerUI',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get datePickerJsunit state pages:" + JSON.stringify(pages));
-        if (!("datePicker" == pages.name)) {
-          console.info("get datePickerJsunit state pages.name:" + JSON.stringify(pages.name));
+        console.info("get datePickerUIJsunit state pages:" + JSON.stringify(pages));
+        if (!("datePickerUI" == pages.name)) {
+          console.info("get datePickerUIJsunit state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
-          console.info("push datePickerJsunit success " + JSON.stringify(result));
+          console.info("push datePickerUIJsunit success " + JSON.stringify(result));
         }
       } catch (err) {
-          console.error("push datePickerJsunit page error:" + err);
+          console.error("push datePickerUIJsunit page error:" + err);
 	        expect().assertFail();
       }
       done();
     });
 
-    it('datePickerJsunit_0100', 0, async function (done) {
-       console.info('datePickerJsunit_0100 START');
+    it('datePickerUIJsunit_0100', 0, async function (done) {
+       console.info('datePickerUIJsunit_0100 START');
        await CommonFunc.sleep(1000);
        // get the datePicker component and test attribute to confirm
-       let strJson = getInspectorByKey('datePicker');
+       let strJson = getInspectorByKey('datePickerUI');
        let obj = JSON.parse(strJson);
         console.info("obj is: " + JSON.stringify(obj));
-       console.info("datePickerJsunit_0100'] component obj is: " + obj.$attrs.options + "---" + obj.$attrs.startDate);
-       console.info("datePickerJsunit_0100'] component obj is: " + obj.$attrs.start + "--" + obj.$attrs.end + "--" + obj.$attrs.selected);
+       console.info("datePickerUIJsunit_0100 component obj is: " + obj.$attrs.options + "---" + obj.$attrs.startDate);
+       console.info("datePickerUIJsunit_0100 component obj is: " + obj.$attrs.start + "--" + obj.$attrs.end + "--" + obj.$attrs.selected);
        expect(obj.$attrs.lunar).assertEqual('false');
        done();
     });
 
-   it('datePickerJsunit_0200', 0, async function (done) {
-      console.info('datePickerJsunit_0200 START');
+   it('datePickerUIJsunit_0200', 0, async function (done) {
+      console.info('datePickerUIJsunit_0200 START');
       // modify the type attribute normal value of datePicker dynamically
       globalThis.value.message.notify({name:'isLunar',value:true})
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
-      let strJson = getInspectorByKey('datePicker');
+      let strJson = getInspectorByKey('datePickerUI');
       let obj = JSON.parse(strJson);
-      console.info("[datePicker'] component obj is: " + JSON.stringify(obj));
+      console.info("[datePickerUIJsunit_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.lunar).assertEqual('true');
       globalThis.value.message.notify({name:'isLunar',value:false})
       await CommonFunc.sleep(2000);
-       let strJson2 = getInspectorByKey('datePicker');
+       let strJson2 = getInspectorByKey('datePickerUI');
       let obj2 = JSON.parse(strJson2);
-      console.info("[datePicker'] component obj2 is: " + JSON.stringify(obj2));
+      console.info("[datePickerUIJsunit_0200] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.lunar).assertEqual('false'); 
       done();
     });
