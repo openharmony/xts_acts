@@ -17,8 +17,8 @@ ohos_js_hap_suite("ActsNetworkMgrWsNoPermissionTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":websockettest_demo_ets_resources",
-    ":websockettest_demo_ets_test_resources",
+    ":websockettest_resources",
+    ":websockettest_test_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
@@ -31,10 +31,10 @@ ohos_app_scope("websockettest_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
-ohos_js_assets("websockettest_demo_ets_resources") {
+ohos_js_assets("websockettest_resources") {
   source_dir = "entry/src/main/ets"
 }
-ohos_resources("websockettest_demo_ets_test_resources") {
+ohos_resources("websockettest_test_resources") {
   sources = [ "entry/src/main/resources" ]
   deps = [ ":websockettest_app_profile" ]
   hap_profile = "entry/src/main/module.json"
