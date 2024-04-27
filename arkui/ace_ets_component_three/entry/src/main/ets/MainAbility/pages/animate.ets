@@ -26,27 +26,27 @@ struct AnimationExample {
   @State tempo: number= 1000
   @State playmode: PlayMode = PlayMode.Normal
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<number|string|PlayMode>()
   onPageShow() {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number|string|PlayMode> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'duration') {
-        this.duration = message.value
+        this.duration = message.value as number
       }
       if (message.name == 'curve') {
-        this.curve = message.value
+        this.curve = message.value as string
       }
       if (message.name == 'iteration') {
-        this.iteration = message.value
+        this.iteration = message.value as number
       }
       if (message.name == 'tempo') {
-        this.tempo = message.value
+        this.tempo = message.value as number
       }
       if (message.name == 'playmode') {
-        this.playmode = message.value
+        this.playmode = message.value as PlayMode
       }
     }
     this.messageManager.registerCallback(callback)
@@ -65,12 +65,12 @@ struct AnimationExample {
         .key('button1')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "duration": this.duration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 51,
               priority: events_emitter.EventPriority.LOW
             }
@@ -94,12 +94,12 @@ struct AnimationExample {
         .key('button11')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "duration": this.duration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 151,
               priority: events_emitter.EventPriority.LOW
             }
@@ -123,12 +123,12 @@ struct AnimationExample {
         .key('button12')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "curve": this.curve,
               }
             }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
               eventId: 152,
               priority: events_emitter.EventPriority.LOW
             }
@@ -151,12 +151,12 @@ struct AnimationExample {
         .key('button2')
         .onClick(() => {
           try {
-            var backDataOne = {
+            let backDataOne: events_emitter.EventData = {
               data: {
                 "curve": this.curve,
               }
             }
-            var backEventOne = {
+            let backEventOne: events_emitter.InnerEvent = {
               eventId: 52,
               priority: events_emitter.EventPriority.LOW
             }
@@ -179,12 +179,12 @@ struct AnimationExample {
         .key('button3')
         .onClick(() => {
           try {
-            var backDataTwo = {
+            let backDataTwo: events_emitter.EventData = {
               data: {
                 "iterations": this.iteration,
               }
             }
-            var backEventTwo = {
+            let backEventTwo: events_emitter.InnerEvent = {
               eventId: 53,
               priority: events_emitter.EventPriority.LOW
             }
@@ -207,12 +207,12 @@ struct AnimationExample {
         .key('button13')
         .onClick(() => {
           try {
-            var backDataTwo = {
+            let backDataTwo: events_emitter.EventData = {
               data: {
                 "iterations": this.iteration,
               }
             }
-            var backEventTwo = {
+            let backEventTwo: events_emitter.InnerEvent = {
               eventId: 153,
               priority: events_emitter.EventPriority.LOW
             }
@@ -235,12 +235,12 @@ struct AnimationExample {
         .key('button4')
         .onClick(() => {
           try {
-            var backDataThree = {
+            let backDataThree: events_emitter.EventData = {
               data: {
                 "tempo": this.tempo
               }
             }
-            var backEventThree = {
+            let backEventThree: events_emitter.InnerEvent = {
               eventId: 54,
               priority: events_emitter.EventPriority.LOW
             }
@@ -263,12 +263,12 @@ struct AnimationExample {
         .key('button14')
         .onClick(() => {
           try {
-            var backDataThree = {
+            let backDataThree: events_emitter.EventData = {
               data: {
                 "tempo": this.tempo
               }
             }
-            var backEventThree = {
+            let backEventThree: events_emitter.InnerEvent = {
               eventId: 154,
               priority: events_emitter.EventPriority.LOW
             }
@@ -291,12 +291,12 @@ struct AnimationExample {
         .key('button5')
         .onClick(() => {
           try {
-            var backDataFour = {
+            let backDataFour: events_emitter.EventData = {
               data: {
                 "playmode": this.playmode,
               }
             }
-            var backEventFour = {
+            let backEventFour: events_emitter.InnerEvent = {
               eventId: 55,
               priority: events_emitter.EventPriority.LOW
             }
@@ -319,12 +319,12 @@ struct AnimationExample {
         .key('button15')
         .onClick(() => {
           try {
-            var backDataFour = {
+            let backDataFour: events_emitter.EventData = {
               data: {
                 "playmode": this.playmode,
               }
             }
-            var backEventFour = {
+            let backEventFour: events_emitter.InnerEvent = {
               eventId: 155,
               priority: events_emitter.EventPriority.LOW
             }
@@ -347,12 +347,12 @@ struct AnimationExample {
         .key('button6')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "duration": this.duration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1001,
               priority: events_emitter.EventPriority.LOW
             }
@@ -375,12 +375,12 @@ struct AnimationExample {
         .key('button7')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "duration": this.duration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1002,
               priority: events_emitter.EventPriority.LOW
             }
@@ -403,12 +403,12 @@ struct AnimationExample {
         .key('button8')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "curve": this.curve,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1003,
               priority: events_emitter.EventPriority.LOW
             }
@@ -431,12 +431,12 @@ struct AnimationExample {
         .key('button9')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "curve": this.curve,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1004,
               priority: events_emitter.EventPriority.LOW
             }
@@ -459,12 +459,12 @@ struct AnimationExample {
         .key('button10')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "iteration": this.iteration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1005,
               priority: events_emitter.EventPriority.LOW
             }
@@ -487,12 +487,12 @@ struct AnimationExample {
         .key('button111')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "iteration": this.iteration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1006,
               priority: events_emitter.EventPriority.LOW
             }
@@ -515,12 +515,12 @@ struct AnimationExample {
         .key('button121')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "tempo": this.tempo,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1007,
               priority: events_emitter.EventPriority.LOW
             }
@@ -543,12 +543,12 @@ struct AnimationExample {
         .key('button131')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "tempo": this.tempo,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1008,
               priority: events_emitter.EventPriority.LOW
             }
@@ -571,12 +571,12 @@ struct AnimationExample {
         .key('button141')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "playmode": this.playmode,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1009,
               priority: events_emitter.EventPriority.LOW
             }
@@ -599,12 +599,12 @@ struct AnimationExample {
         .key('button151')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "playmode": this.playmode,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1010,
               priority: events_emitter.EventPriority.LOW
             }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -135,7 +134,7 @@ export default function spanJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "textCaseValue": a
+            "textCaseValue": 0xa
           }
         }
         let indexEvent: events_emitter.InnerEvent = {

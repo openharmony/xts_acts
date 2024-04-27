@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -63,12 +62,12 @@ struct TimerComponent {
       clearTimeout(this.timerId)
       console.info('ting--1');
       try {
-        var backData = {
+        let backData: events_emitter.EventData = {
           data: {
             "ACTION": this.onActionCalled,
           }
         }
-        var backEvent = {
+        let backEvent: events_emitter.InnerEvent = {
           eventId: 49,
           priority: events_emitter.EventPriority.LOW
         }

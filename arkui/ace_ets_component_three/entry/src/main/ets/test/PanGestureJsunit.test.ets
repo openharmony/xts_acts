@@ -90,8 +90,8 @@ export default function PanGestureJsunit() {
       }
       let callbackTwo = (eventDataOne: events_emitter.EventData) => {
         console.info("[testPanGesture02] get event state result is: " + JSON.stringify(eventDataOne));
-        expect(eventDataOne.data.ACTION).assertEqual(true)
-        expect(eventDataOne.data.EVENT_TYPE).assertEqual('Move')
+        expect(eventDataOne.data?.ACTION).assertEqual(true)
+        expect(eventDataOne.data?.EVENT_TYPE).assertEqual('Move')
       }
       let innerEventTwo: events_emitter.InnerEvent = {
         eventId: 24,

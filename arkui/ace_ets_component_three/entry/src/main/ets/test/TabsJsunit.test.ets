@@ -271,7 +271,7 @@ export default function tabsJsunit() {
       await Utils.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testTabs_1400 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.ACTION).assertEqual(true);
+        expect(indexEvent.data?.ACTION).assertEqual(true);
         done();
       }
       let indexEvent: events_emitter.InnerEvent = {

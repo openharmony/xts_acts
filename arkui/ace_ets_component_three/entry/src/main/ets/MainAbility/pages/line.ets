@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,19 +27,19 @@ struct LineExample {
     }.margin({ top: 5 })
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("line page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.startPoint != null) {
+      if (eventData.data?.startPoint != null) {
         this.startPoint[0] = eventData.data.startPoint;
       }
-      if (eventData.data.startPointOne != null) {
+      if (eventData.data?.startPointOne != null) {
         this.startPoint[1] = eventData.data.startPointOne;
       }
-      if (eventData.data.endPointOne != null) {
+      if (eventData.data?.endPointOne != null) {
         this.endPoint[1] = eventData.data.endPointOne;
       }
-      if (eventData.data.endPoint != null) {
+      if (eventData.data?.endPoint != null) {
         this.endPoint[0] = eventData.data.endPoint;
       }
     }
@@ -48,10 +47,12 @@ struct LineExample {
 
   onPageShow() {
     console.info('line page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 131,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 }
+
+type Point = [number, number];

@@ -167,7 +167,7 @@ export default function scrollCodeJsunit() {
       await Utils.sleep(1000)
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_scrollCode_06] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.scrollToIndex).assertEqual(10)
+        expect(eventData.data?.scrollToIndex).assertEqual(10)
       }
       let innerEvent: events_emitter.InnerEvent = {
         eventId: 189,

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,62 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
 
 @Entry
 @Component
 struct BackgroundExample {
-  @State width: string = "200px";
-  @State height: string = "200px";
-  @State color: Array = [[0x080808], [0xEEEE00], [0xFF0000]];
-  private stateChangCallBack = (eventData) => {
-    if (eventData != null) {
-      console.info("gauge page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.colorValues != null) {
-        this.colorValues = JSON.parse(eventData.data.colorValues);
-      }
-      if (eventData.data.width != null) {
-        this.width = eventData.data.width;
-      }
-      if (eventData.data.height != null) {
-        this.height = eventData.data.height;
-      }
-      if (eventData.data.srcValue != null) {
-        this.srcValue = eventData.data.srcValue;
-      }
-    }
-  }
-  private stateChangCallBackTwo = (eventData) => {
-    if (eventData != null) {
-      console.info("Background page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.backgroundColor != null) {
-        this.backgroundColor = eventData.data.backgroundColor;
-      }
-      if (eventData.data.backgroundImage != null) {
-        this.backgroundImage = eventData.data.backgroundImage;
-      }
-      if (eventData.data.backgroundImageSize != null) {
-        this.backgroundImageSize = eventData.data.backgroundImageSize;
-      }
-      if (eventData.data.backgroundImagePosition != null) {
-        this.backgroundImagePosition = eventData.data.backgroundImagePosition;
-      }
-    }
-  }
-
   onPageShow() {
     console.info('background page show called');
-    var stateChangeEvent = {
-      eventId: 1,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-
-    var stateChangeEventTwo = {
-      eventId: 2,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBackTwo);
   }
 
   build() {

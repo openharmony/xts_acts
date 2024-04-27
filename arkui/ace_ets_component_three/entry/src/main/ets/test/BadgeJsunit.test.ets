@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -242,7 +241,7 @@ export default function badgeJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "colorValue": ab88,
+            "colorValue": 0xab88,
           }
         }
         let innerEvent: events_emitter.InnerEvent = {

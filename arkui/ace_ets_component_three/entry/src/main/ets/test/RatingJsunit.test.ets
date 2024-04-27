@@ -96,7 +96,7 @@ export default function ratingJsunit() {
           priority: events_emitter.EventPriority.LOW
         }
         console.info("testRating_300 start to publish emit");
-        console.info("eventData.data.rating value" + eventData.data.rating);
+        console.info("eventData.data.rating value" + eventData.data?.rating);
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testRating_300 change component data error: " + err.message);

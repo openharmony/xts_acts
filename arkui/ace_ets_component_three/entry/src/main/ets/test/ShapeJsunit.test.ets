@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -178,7 +177,7 @@ export default function shapeJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "antiAlias": aaaaa,
+            "antiAlias": 0xaaaaa,
           }
         }
         let innerEvent: events_emitter.InnerEvent = {

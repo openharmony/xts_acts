@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,60 +17,60 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct ToggleExample {
-  @State selectedColor: Color = '#330A59F7';
+  @State selectedColor: string = '#330A59F7';
   @State toggleType: ToggleType = ToggleType.Button;
   @State isOn: boolean = false;
 
   onPageShow() {
     console.info('[toggle] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 231,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 232,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
 
-    var stateChangeEventthree = {
+    let stateChangeEventthree: events_emitter.InnerEvent = {
       eventId: 1033,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventthree, this.stateChangCallBack);
 
-    var stateChangeEventfour = {
+    let stateChangeEventfour: events_emitter.InnerEvent = {
       eventId: 1034,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventfour, this.stateChangCallBack);
 
-    var stateChangeEventfive = {
+    let stateChangeEventfive: events_emitter.InnerEvent = {
       eventId: 1035,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventfive, this.stateChangCallBack);
 
-    var stateChangeEventsix = {
+    let stateChangeEventsix: events_emitter.InnerEvent = {
       eventId: 1036,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventsix, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[toggle] page stateChangCallBack");
     if (eventData != null) {
       console.info("[toggle] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.selectedColor != null) {
+      if (eventData.data?.selectedColor != null) {
         this.selectedColor = eventData.data.selectedColor;
       }
-      if (eventData.data.toggleType != null) {
+      if (eventData.data?.toggleType != null) {
         this.toggleType = eventData.data.toggleType;
       }
-      if (eventData.data.isOn != null) {
+      if (eventData.data?.isOn != null) {
         this.isOn = eventData.data.isOn;
       }
     }

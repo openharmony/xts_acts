@@ -66,7 +66,7 @@ export default function transitionJsunit() {
       await Utils.sleep(1000);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("transitionTest_0200 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.btn1).assertEqual(false);
+        expect(indexEvent.data?.btn1).assertEqual(false);
       }
       try {
         events_emitter.on(indexEvent, callback);

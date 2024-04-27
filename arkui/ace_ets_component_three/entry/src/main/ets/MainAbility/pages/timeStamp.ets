@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,12 +27,12 @@ struct ClickExample {
           this.text = event.timestamp.toString()
           console.info(this.text)
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "Text": this.text,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 230,
               priority: events_emitter.EventPriority.LOW
             }

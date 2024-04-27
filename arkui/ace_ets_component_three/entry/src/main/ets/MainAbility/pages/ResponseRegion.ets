@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,24 +17,24 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct ResponseRegionExample {
-  @State touchable: boolean = false;
+  @State _touchable: boolean = false;
   @State isTouched: boolean = false;
   @State eventType: string = ''
 
   onPageShow() {
-    let ChangeEvent = {
+    let ChangeEvent: events_emitter.InnerEvent = {
       eventId: 30,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(ChangeEvent, this.ChangCallBack)
   }
 
-  private ChangCallBack = (eventData) => {
+  private ChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[ResponseRegion] ChangCallBack stateChangCallBack");
     if (eventData != null) {
       console.info("[ResponseRegion] ChangCallBack state change called:" + JSON.stringify(eventData));
-      if (eventData.data.touchable != null) {
-        this.touchable = eventData.data.touchable;
+      if (eventData.data?.touchable != null) {
+        this._touchable = eventData.data.touchable;
       }
     }
   }
@@ -54,7 +53,7 @@ struct ResponseRegionExample {
     .height('100%')
     .margin({ top: 5 })
     .key('region')
-    .touchable(this.touchable)
+    .touchable(this._touchable)
     .onTouch((event: TouchEvent) => {
       this.isTouched = true
       if (event.type === TouchType.Down) {
@@ -68,13 +67,13 @@ struct ResponseRegionExample {
       }
       console.info('[ResponseRegion] TouchType:' + this.eventType)
       try {
-        var backData = {
+        let backData: events_emitter.EventData = {
           data: {
             "ACTION": this.isTouched,
             "EVENT_TYPE": this.eventType
           }
         }
-        var backEvent = {
+        let backEvent: events_emitter.InnerEvent = {
           eventId: 31,
           priority: events_emitter.EventPriority.LOW
         }
