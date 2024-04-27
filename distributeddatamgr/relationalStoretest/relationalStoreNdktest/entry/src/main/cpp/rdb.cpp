@@ -31,6 +31,7 @@
 #define MPARAM_1 (-1)
 int g_rdbEInvalidArgs = E_BASE + 1;
 int g_invalidFile = E_BASE + 11;
+int g_sqliteError = E_BASE + 55;
 OH_Rdb_Config GetConfig()
 {
     static OH_Rdb_Config config;
@@ -710,7 +711,7 @@ static napi_value ExecuteFour(napi_env env, napi_callback_info)
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
     napi_value result = nullptr;
-    napi_create_int32(env, returnValue == -1, &result);
+    napi_create_int32(env, returnValue == g_sqliteError, &result);
     return result;
 }
 
