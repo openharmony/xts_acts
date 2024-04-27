@@ -27,7 +27,6 @@ struct LogSoftmaxModel1 {
     int64_t axisValue[1] = {1};
     float inputValue[4][2] = {{1, 2}, {3, 4}, {5, 6}, {7, 8}};
     float outputValue[4][2] = {0};
-    float expectValue[4][2] = {{-1.3133, -0.3133}, {-1.3133, -0.3133}, {-1.3133, -0.3133}, {-1.3133, -0.3133}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 8*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 8*sizeof(float)};
@@ -44,7 +43,6 @@ struct LogSoftmaxModel2 {
     int64_t axisValue[1] = {0};
     float inputValue[4][2] = {{1, 2}, {3, 4}, {5, 6}, {7, 8}};
     float outputValue[4][2] = {0};
-    float expectValue[4][2] = {{-1.3133, -0.3133}, {-1.3133, -0.3133}, {-1.3133, -0.3133}, {-1.3133, -0.3133}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 8*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 8*sizeof(float)};
@@ -61,7 +59,6 @@ struct LogSoftmaxModel3 {
     int64_t axisValue[1] = {2};
     float inputValue[4][2] = {{1, 2}, {3, 4}, {5, 6}, {7, 8}};
     float outputValue[4][2] = {0};
-    float expectValue[4][2] = {{-1.3133, -0.3133}, {-1.3133, -0.3133}, {-1.3133, -0.3133}, {-1.3133, -0.3133}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 8*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 8*sizeof(float)};
@@ -290,7 +287,6 @@ HWTEST_F(LogSoftmaxTest, SUB_AI_NNRt_Func_North_LogSoftmax_Model_SetOperandValue
     LogSoftmaxModel1 logSoftmaxModel;
     OHNNGraphArgs graphArgs = logSoftmaxModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -301,7 +297,7 @@ HWTEST_F(LogSoftmaxTest, SUB_AI_NNRt_Func_North_LogSoftmax_Model_SetOperandValue
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -327,7 +323,6 @@ HWTEST_F(LogSoftmaxTest, SUB_AI_NNRt_Func_North_LogSoftmax_Model_SetOperandValue
     LogSoftmaxModel1 logSoftmaxModel;
     OHNNGraphArgs graphArgs = logSoftmaxModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -338,7 +333,7 @@ HWTEST_F(LogSoftmaxTest, SUB_AI_NNRt_Func_North_LogSoftmax_Model_SetOperandValue
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -363,7 +358,6 @@ HWTEST_F(LogSoftmaxTest, SUB_AI_NNRt_Func_North_LogSoftmax_Model_SetOperandValue
     LogSoftmaxModel1 logSoftmaxModel;
     OHNNGraphArgs graphArgs = logSoftmaxModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -374,7 +368,7 @@ HWTEST_F(LogSoftmaxTest, SUB_AI_NNRt_Func_North_LogSoftmax_Model_SetOperandValue
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

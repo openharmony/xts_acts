@@ -120,7 +120,10 @@
                 "rm -rf /data/local/tmp/libc-test/poll_sup",
                 "rm -rf /data/local/tmp/libc-test/ipc_msg",
                 "rm -rf /data/local/tmp/libc-test/ipc_sem",
-                "rm -rf /data/local/tmp/libc-test/ipc_shm"
+                "rm -rf /data/local/tmp/libc-test/ipc_shm",
+                "rm -rf /data/local/tmp/libc-test/splice",
+                "rm -rf /data/local/tmp/libc-test/vmsplice",
+                "rm -rf /data/local/tmp/libc-test/setns"
             ],
             "cleanup-apps": true
         }

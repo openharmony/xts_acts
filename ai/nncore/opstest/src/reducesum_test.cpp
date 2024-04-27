@@ -31,7 +31,6 @@ struct ReduceSumModel1 {
     float inputValue[2][3] = {{1, 2, 3}, {4, 5, 6}};
     float axisValue[1] = {0};
     float outputValue[1][3] = {0};
-    float expectValue[1][3] = {{5, 7, 9}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 6*sizeof(float)};
     OHNNOperandTest axis = {OH_NN_FLOAT32, OH_NN_TENSOR, {1}, axisValue, sizeof(float)};
@@ -54,7 +53,6 @@ struct ReduceSumModel2 {
     float inputValue[2][3] = {{1, 2, 3}, {4, 5, 6}};
     float axisValue[1] = {1};
     float outputValue[2] = {0};
-    float expectValue[2] = {6, 15};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 6*sizeof(float)};
     OHNNOperandTest axis = {OH_NN_FLOAT32, OH_NN_TENSOR, {1}, axisValue, sizeof(float)};
@@ -77,7 +75,6 @@ struct ReduceSumModel3 {
     float inputValue[2][3] = {{1, 2, 3}, {4, 5, 6}};
     float axisValue = {};
     float outputValue[2][3] = {0};
-    float expectValue[2][3] = {{1, 2, 3}, {4, 5, 6}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 6*sizeof(float)};
     OHNNOperandTest axis = {OH_NN_FLOAT32, OH_NN_TENSOR, {}, &axisValue, 0*sizeof(float)};
@@ -100,7 +97,6 @@ struct ReduceSumModel4 {
     float inputValue[2][3] = {{1, 2, 3}, {4, 5, 6}};
     float axisValue[1] = {1};
     float outputValue[2][1] = {0};
-    float expectValue[2][1] = {{6}, {15}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 6*sizeof(float)};
     OHNNOperandTest axis = {OH_NN_FLOAT32, OH_NN_TENSOR, {1}, &axisValue, sizeof(float)};
@@ -123,7 +119,6 @@ struct ReduceSumModel5 {
     float inputValue[2][3] = {{1, 2, 3}, {4, 5, 6}};
     float axisValue[1] = {1};
     float outputValue[1] = {0};
-    float expectValue[1] = {1};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 6*sizeof(float)};
     OHNNOperandTest axis = {OH_NN_FLOAT32, OH_NN_TENSOR, {1}, axisValue, sizeof(float)};
@@ -413,7 +408,6 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SetOperandValue_0
     ReduceSumModel1 reduceSumModel;
     OHNNGraphArgs graphArgs = reduceSumModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -424,7 +418,7 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SetOperandValue_0
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -450,7 +444,6 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SetOperandValue_0
     ReduceSumModel1 reduceSumModel;
     OHNNGraphArgs graphArgs = reduceSumModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -461,7 +454,7 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SetOperandValue_0
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -486,7 +479,6 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SetOperandValue_0
     ReduceSumModel1 reduceSumModel;
     OHNNGraphArgs graphArgs = reduceSumModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -497,7 +489,7 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SetOperandValue_0
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

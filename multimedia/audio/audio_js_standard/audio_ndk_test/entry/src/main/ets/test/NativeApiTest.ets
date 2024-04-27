@@ -55,6 +55,7 @@ export default function audioNDK() {
       await getPermission();
       await sleep(100);
       await driveFn();
+      await sleep(1000);
       console.info('beforeAll case');
     })
 

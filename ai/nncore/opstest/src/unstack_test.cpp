@@ -359,7 +359,6 @@ HWTEST_F(UnstackTest, SUB_AI_NNRt_Func_North_Unstack_Model_SetOperandValue_01, F
     UnstackModel1 unstackModel;
     OHNNGraphArgs graphArgs = unstackModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -370,7 +369,7 @@ HWTEST_F(UnstackTest, SUB_AI_NNRt_Func_North_Unstack_Model_SetOperandValue_01, F
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -396,7 +395,6 @@ HWTEST_F(UnstackTest, SUB_AI_NNRt_Func_North_Unstack_Model_SetOperandValue_02, F
     UnstackModel1 unstackModel;
     OHNNGraphArgs graphArgs = unstackModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -407,7 +405,7 @@ HWTEST_F(UnstackTest, SUB_AI_NNRt_Func_North_Unstack_Model_SetOperandValue_02, F
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -432,7 +430,6 @@ HWTEST_F(UnstackTest, SUB_AI_NNRt_Func_North_Unstack_Model_SetOperandValue_03, F
     UnstackModel1 unstackModel;
     OHNNGraphArgs graphArgs = unstackModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -443,7 +440,7 @@ HWTEST_F(UnstackTest, SUB_AI_NNRt_Func_North_Unstack_Model_SetOperandValue_03, F
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

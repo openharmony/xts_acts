@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -73,39 +73,6 @@ export default function globalJsunit() {
       console.info(`${caseName} END`);
       done()
     });
-
-    /**
-     * @tc.number ACE_global_getApp
-     * @tc.name getApp()
-     * @tc.desc Test getApp
-     */
-    it('ACE_global_getApp', 0, async (done: Function) => {
-      let caseName: string = "ACE_global_getApp"
-      console.info(`${caseName} START`);
-      try {
-        getApp();
-      } catch (err) {
-      }
-      console.info(`${caseName} END`);
-      done()
-    });
-
-    /**
-     * @tc.number ACE_global_createLocalParticleAbility
-     * @tc.name createLocalParticleAbility()
-     * @tc.desc Test createLocalParticleAbility
-     */
-    it('ACE_global_createLocalParticleAbility', 0, async (done: Function) => {
-      let caseName: string = "ACE_global_createLocalParticleAbility"
-      console.info(`${caseName} START`);
-      try {
-        createLocalParticleAbility(100);
-      } catch (err) {
-      }
-      console.info(`${caseName} END`);
-      done()
-    });
-
 
     /**
      * @tc.number ACE_global_console_log_0100

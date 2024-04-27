@@ -132,27 +132,26 @@ if __name__ == '__main__':
                 break
             j += 1
         if isfind == False:
-            notfindlist.append(mustpasslist[i]+"@@@false@@@run")
+            notfindlist.append(f"{mustpasslist[i]}@@@false@@@run")
             failcnt += 1
             total += 1
         i += 1
     testcaselist += notfindlist
     #将testcase信息生成文件
-    xmlfile = open(tmpfile, mode='w+')
-    xmlfile.write("<?xml version='1.0' encoding='UTF-8'?>\n")
-    xmlfile.write("<testsuites name=\"{}\" timestamp=\"{}\" time=\"0.0\" errors=\"0\" disabled=\"0\" failures=\"{}\" tests=\"{}\" ignored=\"0\" unavailable=\"{}\" productinfo=\"{}\">\n".format(suitename, curtime, failcnt, total, unavailablecnt, "{}"))
-    xmlfile.write("  <testsuite name=\"{}\" time=\"0.0\" errors=\"0\" disabled=\"0\" failures=\"{}\" ignored=\"0\" tests=\"{}\" message=\"\">\n".format(suitename, failcnt, total))
-    for casename in testcaselist:
-        casename = casename.replace("\n","")
-        loccasename = casename.split("@@@")
-        # print("loccasename : ", loccasename)
-        recasename = loccasename[0]
-        caseresult = loccasename[1]
-        casestate = loccasename[2]
-        xmlfile.write("    <testcase name=\"{}\" status=\"{}\" time=\"0.0\" classname=\"{}\" result=\"{}\" level=\"1\" message=\"\" />\n".format(recasename, casestate, suitename, caseresult))
-    xmlfile.write("  </testsuite>\n")
-    xmlfile.write("</testsuites>\n")
-    xmlfile.close()
+    with open(tmpfile, mode='w+') as f:
+        f.write("<?xml version='1.0' encoding='UTF-8'?>\n")
+        f.write("<testsuites name=\"{}\" timestamp=\"{}\" time=\"0.0\" errors=\"0\" disabled=\"0\" failures=\"{}\" tests=\"{}\" ignored=\"0\" unavailable=\"{}\" productinfo=\"{}\">\n".format(suitename, curtime, failcnt, total, unavailablecnt, "{}"))
+        f.write("  <testsuite name=\"{}\" time=\"0.0\" errors=\"0\" disabled=\"0\" failures=\"{}\" ignored=\"0\" tests=\"{}\" message=\"\">\n".format(suitename, failcnt, total))
+        for casename in testcaselist:
+            casename = casename.replace("\n","")
+            loccasename = casename.split("@@@")
+            # print("loccasename : ", loccasename)
+            recasename = loccasename[0]
+            caseresult = loccasename[1]
+            casestate = loccasename[2]
+            f.write("    <testcase name=\"{}\" status=\"{}\" time=\"0.0\" classname=\"{}\" result=\"{}\" level=\"1\" message=\"\" />\n".format(recasename, casestate, suitename, caseresult))
+        f.write("  </testsuite>\n")
+        f.write("</testsuites>\n")
     #将tmp文件替换xts框架的result
     if os.path.exists(latestpath+"/result") == False:
         os.mkdir(latestpath+"/result")

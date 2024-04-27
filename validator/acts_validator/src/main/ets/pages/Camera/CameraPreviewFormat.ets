@@ -155,30 +155,25 @@ struct cameraFormat {
       .width('100%')
       .justifyContent(FlexAlign.SpaceBetween)
 
-      Column() {
-        Row(){
-          Column(){
-            Button(`设备无相机`)
-              .borderRadius(8)
-              .backgroundColor(0x317aff)
-              .width('50%')
-              .onClick(()=>{
-                this.Vue = true;
-                router.back({
-                  url: 'pages/Camera/Camera_index',
-                  params: { result: 'true ', title: this.name }
-                });
-                promptAction.showToast({
-                  message: '当前设备无相机', duration: 1000
-                });
-              })
-          }
-        }
-      }
-
-      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround, direction: FlexDirection.Column }) {
-        Scroll() {
+      Scroll() {
           Column() {
+            Row() {
+              Button(`设备无相机`)
+                .borderRadius(8)
+                .backgroundColor(0x317aff)
+                .width('50%')
+                .onClick(()=>{
+                  this.Vue = true;
+                  router.back({
+                    url: 'pages/Camera/Camera_index',
+                    params: { result: 'true ', title: this.name }
+                  });
+                  promptAction.showToast({
+                    message: '当前设备无相机', duration: 1000
+                  });
+                })
+            }
+            Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround, direction: FlexDirection.Column }) {
             Column() {
               XComponent({
                 id: 'componentId',
@@ -195,7 +190,6 @@ struct cameraFormat {
                 .size({ width: '100%', height: '70%' })
               Text('预览').fontSize('20fp').fontColor(Color.White)
             }.size({ width: '80%' })
-
             Column() {
               Row() {
                 Select(this.resolution)
@@ -236,7 +230,7 @@ struct cameraFormat {
                     this.cameraInit()
                   })
                   .backgroundColor(Color.Black)
-              }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
+              }.size({ width: '100%', height: '30%' }).justifyContent(FlexAlign.SpaceEvenly)
 
               Row() {
                 Select([{ value: 'YUV' }])
@@ -261,18 +255,12 @@ struct cameraFormat {
                   .onClick(async () => {
                     this.nextClickFn()
                   })
-              }
-              .size({ width: '100%', height: '50%' })
-              .justifyContent(FlexAlign.SpaceEvenly)
-            }
-            .size({ width: '100%', height: '20%' })
+              }.size({ width: '100%', height: '30%' }).justifyContent(FlexAlign.SpaceEvenly)
+            }.size({ width: '100%', height: '20%' })
           }
-
-        }.scrollBarColor(Color.White) // 滚动条颜色
-        .scrollBarWidth(10)
-      }
-      .height('80%')
-      .width('100%')
+        }.height('80%').width('100%')
+      }.scrollBarColor(Color.White) // 滚动条颜色
+      .scrollBarWidth(10)
 
       CustomContainer({
         title: this.name,

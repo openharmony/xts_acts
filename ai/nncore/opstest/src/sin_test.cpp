@@ -26,7 +26,6 @@ struct SinModel1 {
     const std::vector<int32_t> tensor_shape = {3};
     float inputValue[3] = {0, 1, 2};
     float outputValue[3] = {0};
-    float expectValue[3] = {0, 0.84147098, 0.90929743};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 3*sizeof(float)};
@@ -42,7 +41,6 @@ struct SinModel2 {
     const std::vector<int32_t> tensor_shape = {2};
     bool inputValue[2] = {false, true};
     float outputValue[2] = {0};
-    float expectValue[2] = {0, 0.8413};
 
     OHNNOperandTest input = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, inputValue, 2*sizeof(bool)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 2*sizeof(float)};
@@ -237,7 +235,6 @@ HWTEST_F(SinTest, SUB_AI_NNRt_Func_North_Sin_Model_SetOperandValue_01, Function 
     SinModel1 sinModel;
     OHNNGraphArgs graphArgs = sinModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -248,7 +245,7 @@ HWTEST_F(SinTest, SUB_AI_NNRt_Func_North_Sin_Model_SetOperandValue_01, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -274,7 +271,6 @@ HWTEST_F(SinTest, SUB_AI_NNRt_Func_North_Sin_Model_SetOperandValue_02, Function 
     SinModel1 sinModel;
     OHNNGraphArgs graphArgs = sinModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -285,7 +281,7 @@ HWTEST_F(SinTest, SUB_AI_NNRt_Func_North_Sin_Model_SetOperandValue_02, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -310,7 +306,6 @@ HWTEST_F(SinTest, SUB_AI_NNRt_Func_North_Sin_Model_SetOperandValue_03, Function 
     SinModel1 sinModel;
     OHNNGraphArgs graphArgs = sinModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -321,7 +316,7 @@ HWTEST_F(SinTest, SUB_AI_NNRt_Func_North_Sin_Model_SetOperandValue_03, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

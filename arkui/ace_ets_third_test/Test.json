@@ -4,13 +4,14 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
 	"bundle-name": "com.example.actsaceetstest",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "600000"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsAceEtsThirdTest.hap"
+                "ActsAceEtsThirdTest.hap",
+                "ActsAceEtsThirdTestMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

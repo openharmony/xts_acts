@@ -16,7 +16,7 @@ import huks from '@ohos.security.huks';
 import { HksTag, HksKeyStorageType, HksKeyAlg } from '../publicParam';
 import { HuksAgreeECDH } from './publicAgreeParam.js';
 import { stringToUint8Array } from '../publicFunc.js';
-import { expect } from 'deccjsunit/index';
+import { expect } from '@ohos/hypium';
 
 let exportKeyFrist;
 let exportKeySecond;

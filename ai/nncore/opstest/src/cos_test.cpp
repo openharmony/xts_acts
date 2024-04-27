@@ -26,7 +26,6 @@ struct CosModel1 {
     const std::vector<int32_t> tensor_shape = {3};
     int64_t inputValue[3] = {0, 1, 2};
     float outputValue[3] = {0};
-    float expectValue[3] = {1, 0.54030231, -0.41614684};
 
     OHNNOperandTest input = {OH_NN_INT64, OH_NN_TENSOR, tensor_shape, inputValue, 3*sizeof(int64_t)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 3*sizeof(float)};
@@ -41,7 +40,6 @@ struct CosModel2 {
     const std::vector<int32_t> tensor_shape = {2};
     bool inputValue[2] = {false, true};
     float outputValue[2] = {0};
-    float expectValue[2] = {1, 0.5405};
 
     OHNNOperandTest input = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, inputValue, 2*sizeof(bool)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 2*sizeof(float)};
@@ -236,7 +234,6 @@ HWTEST_F(CosTest, SUB_AI_NNRt_Func_North_Cos_Model_SetOperandValue_01, Function 
     CosModel1 cosModel;
     OHNNGraphArgs graphArgs = cosModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -247,7 +244,7 @@ HWTEST_F(CosTest, SUB_AI_NNRt_Func_North_Cos_Model_SetOperandValue_01, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -273,7 +270,6 @@ HWTEST_F(CosTest, SUB_AI_NNRt_Func_North_Cos_Model_SetOperandValue_02, Function 
     CosModel1 cosModel;
     OHNNGraphArgs graphArgs = cosModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -284,7 +280,7 @@ HWTEST_F(CosTest, SUB_AI_NNRt_Func_North_Cos_Model_SetOperandValue_02, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -309,7 +305,6 @@ HWTEST_F(CosTest, SUB_AI_NNRt_Func_North_Cos_Model_SetOperandValue_03, Function 
     CosModel1 cosModel;
     OHNNGraphArgs graphArgs = cosModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -320,7 +315,7 @@ HWTEST_F(CosTest, SUB_AI_NNRt_Func_North_Cos_Model_SetOperandValue_03, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

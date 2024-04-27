@@ -29,7 +29,6 @@ struct QuantDTypeCastModel1 {
     std::vector<int64_t> dstValue = {1};
     int32_t inputValue[4] = {0.5, 1.0, 1.5, 2.0};
     int32_t outputValue[4] = {0};
-    int32_t expectValue[4] = {15, 20, 25, 30};
 
     OHNNOperandTest input = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, inputValue, 4*sizeof(int32_t)};
     OHNNOperandTest output = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, outputValue, 4*sizeof(int32_t)};
@@ -50,7 +49,6 @@ struct QuantDTypeCastModel2 {
     std::vector<int64_t> dstValue = {1};
     int32_t inputValue[4] = {0.5, 1.0, 1.5, 2.0};
     int32_t outputValue[4] = {0};
-    int32_t expectValue[4] = {15, 20, 25, 30};
 
     OHNNOperandTest input = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, inputValue, 4*sizeof(int32_t)};
     OHNNOperandTest output = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, outputValue, 4*sizeof(int32_t)};
@@ -303,7 +301,6 @@ HWTEST_F(QuantDTypeCastTest, SUB_AI_NNRt_Func_North_QuantDTypeCast_Model_SetOper
     QuantDTypeCastModel1 quantDTypeCastModel;
     OHNNGraphArgs graphArgs = quantDTypeCastModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -314,7 +311,7 @@ HWTEST_F(QuantDTypeCastTest, SUB_AI_NNRt_Func_North_QuantDTypeCast_Model_SetOper
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -341,7 +338,6 @@ HWTEST_F(QuantDTypeCastTest, SUB_AI_NNRt_Func_North_QuantDTypeCast_Model_SetOper
     QuantDTypeCastModel1 quantDTypeCastModel;
     OHNNGraphArgs graphArgs = quantDTypeCastModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -352,7 +348,7 @@ HWTEST_F(QuantDTypeCastTest, SUB_AI_NNRt_Func_North_QuantDTypeCast_Model_SetOper
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -378,7 +374,6 @@ HWTEST_F(QuantDTypeCastTest, SUB_AI_NNRt_Func_North_QuantDTypeCast_Model_SetOper
     QuantDTypeCastModel1 quantDTypeCastModel;
     OHNNGraphArgs graphArgs = quantDTypeCastModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -389,7 +384,7 @@ HWTEST_F(QuantDTypeCastTest, SUB_AI_NNRt_Func_North_QuantDTypeCast_Model_SetOper
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

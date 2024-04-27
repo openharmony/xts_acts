@@ -70,7 +70,7 @@ export default function zIndexJsunit() {
         console.info("[testZIndex02] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testZIndex02] change component data error: " + err.message);
+        console.log("[testZIndex02] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('zIndex');
@@ -95,7 +95,7 @@ export default function zIndexJsunit() {
         console.info("[testZIndex03] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testZIndex03] change component data error: " + err.message);
+        console.log("[testZIndex03] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('zIndex');
@@ -120,7 +120,7 @@ export default function zIndexJsunit() {
         console.info("[testZIndex04] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testZIndex04] change component data error: " + err.message);
+        console.log("[testZIndex04] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('zIndex');

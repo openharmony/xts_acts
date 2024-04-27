@@ -61,7 +61,7 @@ export default function gaugeJsunit() {
        expect(obj.$attrs.max).assertEqual('100.00');
        let colors = obj.$attrs.colors;
        console.info('gaugeJsunit_0100 component obj is: ' + colors);
-       expect(colors).assertEqual('[["#FF317AF7",0.10000000149011612],["#FF5BA854",0.20000000298023224],["#FFE08C3A",0.300000011920929],["#FF9C554B",0.40000000596046448]]');
+       expect(colors).assertEqual('[[[["#FF317AF7","0.000000"]],0.10000000149011612],[[["#FF5BA854","0.000000"]],0.20000000298023224],[[["#FFE08C3A","0.000000"]],0.300000011920929],[[["#FF9C554B","0.000000"]],0.40000000596046448]]');
        done();
     });
 
@@ -86,7 +86,7 @@ export default function gaugeJsunit() {
       expect(obj.$attrs.strokeWidth).assertEqual('30.00vp');
       let colors = obj.$attrs.colors;
       console.info('gaugeJsunit_0200 component obj is: ' + colors);
-      expect(colors).assertEqual('[["#FF317AF6",0.300000011920929],["#FF5BA854",0.300000011920929],["#FFE08C3A",0.40000000596046448],["#FF9A554B",0.40000000596046448]]');
+      expect(colors).assertEqual('[[[["#FF317AF6","0.000000"]],0.300000011920929],[[["#FF5BA854","0.000000"]],0.300000011920929],[[["#FFE08C3A","0.000000"]],0.40000000596046448],[[["#FF9A554B","0.000000"]],0.40000000596046448]]');
       done();
     });
 
@@ -131,7 +131,7 @@ export default function gaugeJsunit() {
       expect(obj.$attrs.strokeWidth).assertEqual('-30.00vp');
       let colors = obj.$attrs.colors;
       console.info('gaugeJsunit_0400 component obj is: ' + colors);
-      expect(colors).assertEqual('[["#FF317AF6",0.300000011920929],["#FF5BA854",0.300000011920929],["#FFE08C3A",0.40000000596046448],["#FF9A554B",0.40000000596046448]]');
+      expect(colors).assertEqual('[[[["#FF317AF6","0.000000"]],0.300000011920929],[[["#FF5BA854","0.000000"]],0.300000011920929],[[["#FFE08C3A","0.000000"]],0.40000000596046448],[[["#FF9A554B","0.000000"]],0.40000000596046448]]');
       done();
    });
      

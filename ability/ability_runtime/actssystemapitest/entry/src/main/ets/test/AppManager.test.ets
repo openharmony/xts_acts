@@ -43,7 +43,13 @@ export default function appManagerTest() {
         },
         onProcessStateChanged(processData) {
           console.log(TAG + '------------ onProcessStateChanged -----------', processData);
-        }
+        },
+        onAppStarted(appStateData) {
+          console.log(TAG + '------------ onAppStarted -----------', appStateData);
+        },
+        onAppStopped(appStateData) {
+          console.log(TAG + '------------ onAppStopped -----------', appStateData);
+        },
       }
       try {
         const observerCode = appManager.on("applicationState", applicationStateObserver);
@@ -78,7 +84,13 @@ export default function appManagerTest() {
         },
         onProcessStateChanged(processData) {
           console.log(TAG + '------------ onProcessStateChanged -----------', processData);
-        }
+        },
+        onAppStarted(appStateData) {
+          console.log(TAG + '------------ onAppStarted -----------', appStateData);
+        },
+        onAppStopped(appStateData) {
+          console.log(TAG + '------------ onAppStopped -----------', appStateData);
+        },
       }
       let bundleNameList = ['bundleName1', 'bundleName2'];
       try {
