@@ -318,7 +318,7 @@ export default function flagstartwithouttipstest() {
           hilog.info(0x0000, TAG, 'text at this success %{public}s ', JSON.stringify(data));
           openViewData = true;
           await sleep(100);
-          await data.click();
+          !!data?.click && await data?.click();
         }).catch(() => {
           hilog.info(0x0000, TAG, '%{public}s', 'findComponent failed');
         })
@@ -360,7 +360,7 @@ export default function flagstartwithouttipstest() {
           hilog.info(0x0000, TAG, 'text at this success %{public}s ', JSON.stringify(data));
           openViewData = true;
           await sleep(100);
-          await data.click();
+          !!data?.click && await data?.click();
         }).catch(() => {
           hilog.info(0x0000, TAG, '%{public}s', 'findComponent failed');
         })
