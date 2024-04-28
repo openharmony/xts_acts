@@ -61,7 +61,7 @@ export default function btProfileNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `getConnectionState error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PARAM_ERROR_CODE);
+        expect(Number(error.code)).assertEqual(PARAM_ERROR_CODE);
       }
       done();
     })
@@ -81,7 +81,7 @@ export default function btProfileNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `getConnectedDevices error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -101,7 +101,7 @@ export default function btProfileNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `getPlayingState error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PARAM_ERROR_CODE);
+        expect(Number(error.code)).assertEqual(PARAM_ERROR_CODE);
       }
       done();
     })

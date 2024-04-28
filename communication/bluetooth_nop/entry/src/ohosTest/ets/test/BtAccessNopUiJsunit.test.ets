@@ -59,7 +59,7 @@ export default function btAccessNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getState error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })

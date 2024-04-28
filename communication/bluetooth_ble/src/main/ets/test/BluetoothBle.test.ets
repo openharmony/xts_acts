@@ -140,7 +140,7 @@ describe('bluetoothBleTest', function() {
             );
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off("BLEDeviceFind", onReceiveEvent);
         done();
@@ -159,7 +159,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.stopBLEScan();
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -180,7 +180,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.on('BLEDeviceFind', onReceiveEvent);
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();
@@ -203,7 +203,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.off('BLEDeviceFind', onReceiveEvent);
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         done();
     })
@@ -227,7 +227,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.stopBLEScan();
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();
@@ -254,7 +254,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.stopBLEScan();
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();
@@ -281,7 +281,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.stopBLEScan();
          } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();
@@ -308,7 +308,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.stopBLEScan();
          } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();
@@ -342,7 +342,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.stopBLEScan();
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();
@@ -374,7 +374,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.stopBLEScan();
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();
@@ -408,7 +408,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.stopBLEScan();
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();
@@ -442,7 +442,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.stopBLEScan();
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();
@@ -476,7 +476,7 @@ describe('bluetoothBleTest', function() {
             bluetooth.stopBLEScan();
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();
@@ -510,7 +510,7 @@ describe('bluetoothBleTest', function() {
         bluetooth.stopBLEScan();
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual(2900099);
+            expect(Number(err.code)).assertEqual(2900099);
         }
         bluetooth.off('BLEDeviceFind', onReceiveEvent);
         done();

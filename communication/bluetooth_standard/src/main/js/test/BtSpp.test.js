@@ -262,7 +262,7 @@ describe('btSppTest', function() {
             bluetooth.sppAccept(serverNumber, acceptClientSocket);
         } catch (error) {
             console.error(`[bluetooth_js]SPPAccept error05, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
         done();
     })

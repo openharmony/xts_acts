@@ -60,7 +60,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `isBluetoothDiscovering error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -90,7 +90,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `callback setDevicePinCode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -109,7 +109,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getBluetoothScanMode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -128,7 +128,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `setBluetoothScanMode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -147,7 +147,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getLocalName error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -166,7 +166,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getProfileConnectionState error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -185,7 +185,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getRemoteDeviceClass error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -203,7 +203,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `setDevicePinCode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })

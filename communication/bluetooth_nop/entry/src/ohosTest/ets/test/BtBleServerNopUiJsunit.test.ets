@@ -71,7 +71,7 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattServer sendResponse error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -99,7 +99,7 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattServer notifyCharacteristicChanged error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -139,7 +139,7 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `callback gattServer notifyCharacteristicChanged error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -159,7 +159,7 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattServer close error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })

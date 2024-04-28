@@ -104,7 +104,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `stopAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -135,7 +135,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback stopAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -157,7 +157,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise enableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE)
+        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE)
       }
       done();
     })
@@ -191,7 +191,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback enableAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -210,7 +210,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise startAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -240,7 +240,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback startAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -263,7 +263,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise disableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -297,7 +297,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback disableAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -316,7 +316,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `stopBLEScan error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
