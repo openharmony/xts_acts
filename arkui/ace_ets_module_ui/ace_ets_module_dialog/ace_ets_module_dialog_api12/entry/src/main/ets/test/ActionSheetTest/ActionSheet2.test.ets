@@ -96,7 +96,7 @@ export default function ActionSheet2() {
       await button.click();
       await CommonFunc.sleep(1000);
 
-      await driver.click(200,200);
+      await driver.click(Math.round(globalThis.winLeft+200), Math.round(globalThis.winTop+200));
       await CommonFunc.sleep(1000);
 
       let windowClass: window.Window | undefined = undefined;

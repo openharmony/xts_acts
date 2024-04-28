@@ -56,7 +56,7 @@ struct ActionSheet2Example {
 
               }
             },
-            alignment: DialogAlignment.Bottom,
+            alignment: DialogAlignment.Center,
             offset: { dx: 0, dy: -10 },
             sheets: [
               {
