@@ -13,33 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router'
+import router from '@ohos.router';
 import { Driver, ON, Component } from '@ohos.UiTest'
-
+import Utils from '../Utils';
 export default function abilityTest() {
   const SUITE = 'CounterComponent'
   describe('ActsAceCounterComponentTest', () => {
     beforeEach(async (done: Function) => {
-      let options = {
-        uri: "MainAbility/pages/advancedCounter/advancedCounterIndex",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/advancedCounter/advancedCounterIndex",
       }
       try {
         router.clear();
         let pages = router.getState();
-        if (pages == null || !("Index" == pages.name)) {
-          let driver = Driver.create()
-          await router.push(options);
-          await driver.delayMs(2000);
+        console.info("get ActsAceCounterComponentTest state success " + JSON.stringify(pages));
+        if (!("advancedCounterIndex" == pages.name)) {
+          console.info("get ActsAceCounterComponentTest state success " + JSON.stringify(pages.name));
+          let result = await router.pushUrl(options)
+          console.info("push ActsAceCounterComponentTest page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));
+        console.error("push ActsAceCounterComponentTest page error " + JSON.stringify(err));
       }
-      done()
-    })
-    afterEach(async (done: Function) => {
-      let driver = Driver.create()
-      await driver.delayMs(2);
-      done()
+      await Utils.sleep(2000);
+      done();
     })
 
     /*
