@@ -1,0 +1,8 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/AlphabetIndexer/PopupAlpha",
+        "MainAbility/pages/Scroll/ListScroll",
+        "MainAbility/pages/List/ListMainChildren"
+    ]
+}
