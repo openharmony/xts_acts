@@ -818,5 +818,109 @@ export default function windowVerificationProblemTest(context, windowStage, abil
       expect(properties.windowRect.height !== 10).assertEqual(true)
       await tempWnd.destroyWindow();
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4280
+     * @tc.name      : testGetPreferredOrientation_AutoRotationUnspecified
+     * @tc.desc      : Sets the display direction property of the window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetPreferredOrientation_AutoRotationUnspecified', 0, async () => {
+      let caseName: string = 'testGetPreferredOrientation_AutoRotationUnspecified';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let tempMainWin: ohosWindow.Window | void = await windowStage.getMainWindow().catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      let mainWin: ohosWindow.Window = tempMainWin as ohosWindow.Window;
+      console.log(msgStr + 'windowStage.getMainWindow :' + JSON.stringify(mainWin));
+      expect(!!mainWin).assertTrue();
+      await mainWin.setPreferredOrientation(ohosWindow.Orientation.AUTO_ROTATION_UNSPECIFIED).then(() => {
+        console.log(msgStr + 'success set window.setPreferredOrientation : AUTO_ROTATION_UNSPECIFIED');
+      }).catch((err: BusinessError) => {
+        console.log(msgStr + 'window.setPreferredOrientation failed set error:'+JSON.stringify(err));
+        expect().assertFail();
+      });
+      try {
+        let currentOrientation = mainWin.getPreferredOrientation();
+        expect(currentOrientation).assertEqual(12)
+      } catch (exception) {
+        console.error(`Failed to get window orientation. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+      }
+      await mainWin.setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED).catch((err: BusinessError) => {
+        console.log(msgStr + 'window.setPreferredOrientation failed set error:'+JSON.stringify(err));
+        expect().assertFail();
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4290
+     * @tc.name      : testGetPreferredOrientation_UserRotationPortrait
+     * @tc.desc      : Sets the display direction property of the window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetPreferredOrientation_UserRotationPortrait', 0, async () => {
+      let caseName: string = 'testGetPreferredOrientation_UserRotationPortrait';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let tempMainWin: ohosWindow.Window | void = await windowStage.getMainWindow().catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      let mainWin: ohosWindow.Window = tempMainWin as ohosWindow.Window;
+      console.log(msgStr + 'windowStage.getMainWindow :' + JSON.stringify(mainWin));
+      expect(!!mainWin).assertTrue();
+      await mainWin.setPreferredOrientation(ohosWindow.Orientation.USER_ROTATION_PORTRAIT).then(() => {
+        console.log(msgStr + 'success set window.setPreferredOrientation : USER_ROTATION_PORTRAIT');
+      }).catch((err: BusinessError) => {
+        console.log(msgStr + 'window.setPreferredOrientation failed set error:'+JSON.stringify(err));
+        expect().assertFail();
+      });
+      try {
+        let currentOrientation = mainWin.getPreferredOrientation();
+        expect(currentOrientation).assertEqual(13)
+      } catch (exception) {
+        console.error(`Failed to get window orientation. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+      }
+      await mainWin.setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED).catch((err: BusinessError) => {
+        console.log(msgStr + 'window.setPreferredOrientation failed set error:'+JSON.stringify(err));
+        expect().assertFail();
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4290
+     * @tc.name      : testGetPreferredOrientation_WindowAbnormal
+     * @tc.desc      : Sets the display direction property of the window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetPreferredOrientation_WindowAbnormal', 0, async () => {
+      let caseName: string = 'testGetPreferredOrientation_WindowAbnormal';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowId: string = "testGetPreferredOrientation_WindowAbnormal"
+      let windowConfig: ohosWindow.Configuration = {
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
+      };
+      let windowClass: ohosWindow.Window | void;
+      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
+        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+        expect().assertFail();
+      })
+      expect(!!windowClass).assertTrue();
+      let Win: ohosWindow.Window = windowClass as ohosWindow.Window;
+      await (Win as ohosWindow.Window).destroyWindow();
+      try {
+        let currentOrientation = Win.getPreferredOrientation();
+        expect().assertFail();
+      } catch (exception) {
+        console.error(`Failed to get window orientation. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(exception.code).assertEqual(1300002);
+      }
+    })
   })
 }

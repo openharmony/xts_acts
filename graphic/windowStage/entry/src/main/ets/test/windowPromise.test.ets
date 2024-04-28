@@ -146,7 +146,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let wndId = 'listenerTest2';
       let baseType = ohosWindow.WindowType.TYPE_FLOAT;
       let changedModel = 102;
-      let resizeValue = 200;
+      let resizeValue = 1000;
       console.log(msgStr + 'begin');
       let flag = false;
       let tempWindow: ohosWindow.Window | undefined = undefined;
@@ -187,7 +187,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         await tempWnd.resetSize(resizeValue, resizeValue).catch((err: BusinessError) => {
           unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ')', done);
         });
-        await sleep(1500);
+        await sleep(900);
         console.log(msgStr + 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ') success');
       }
 
@@ -286,14 +286,14 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         await sleep(1000);
         tempWindow.on('windowSizeChange', async (sizeData: ohosWindow.Size) => {
           console.log(msgStr + 'tempWnd.on windowSizeChange, sizeData : ' + JSON.stringify(sizeData));
-          expect(sizeData.width === 100).assertTrue();
-          expect(sizeData.height === 100).assertTrue();
+          expect(sizeData.width === 1000).assertTrue();
+          expect(sizeData.height === 1000).assertTrue();
           tempWindow.off('windowSizeChange');
           await tempWindow.destroy();
           done();
         })
         console.log(msgStr + 'tempWnd.on windowSizeChange finished');
-        await tempWindow.resetSize(100, 100).then(() => {
+        await tempWindow.resetSize(1000, 1000).then(() => {
           listenerOffFlag = true;
           console.log(msgStr + 'listenerOffFlag:' + listenerOffFlag);
         }).catch((err: BusinessError) => {
@@ -1198,7 +1198,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let num = 0
       let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED',
         'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE',
-        'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED',
+        'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED','AUTO_ROTATION_UNSPECIFIED',
         'USER_ROTATION_PORTRAIT', 'USER_ROTATION_LANDSCAPE','USER_ROTATION_PORTRAIT_INVERTED','USER_ROTATION_LANDSCAPE_INVERTED','UNSPECIFIED'];
       for (let i = 0; i < orientationItem.length; i++) {
         let orientation: ohosWindow.Orientation = ohosWindow.Orientation[orientationItem[i]]
