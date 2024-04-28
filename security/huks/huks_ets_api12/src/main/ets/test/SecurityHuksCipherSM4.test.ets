@@ -64,12 +64,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_0100
-     * @tc.name test sm4 CFB module cipher by three steps finish, 240B data, process success
-     * @tc.desc generate key, encrypt, decrypt
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level2
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_0100
+     * @tc.name   : test sm4 CFB module cipher by three steps finish, 240B data, process success
+     * @tc.desc   : generate key, encrypt, decrypt
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level2
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0100', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0100";
@@ -88,12 +88,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_0200
-     * @tc.name test sm4 CFB module cipher by three steps abort, 240B data, process success
-     * @tc.desc generate key, encrypt, decrypt
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_0200
+     * @tc.name   : test sm4 CFB module cipher by three steps abort, 240B data, process success
+     * @tc.desc   : generate key, encrypt, decrypt
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0200', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0200";
@@ -110,12 +110,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_0300
-     * @tc.name test sm4 CFB module cipher by two steps finish, 240B data, process success
-     * @tc.desc generate key, encrypt, decrypt
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_0300
+     * @tc.name   : test sm4 CFB module cipher by two steps finish, 240B data, process success
+     * @tc.desc   : generate key, encrypt, decrypt
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0300', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0300";
@@ -132,12 +132,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_0400
-     * @tc.name test sm4 CFB module cipher by three steps finish, 64KB data, process success
-     * @tc.desc generate key, encrypt, decrypt
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_0400
+     * @tc.name   : test sm4 CFB module cipher by three steps finish, 64KB data, process success
+     * @tc.desc   : generate key, encrypt, decrypt
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0400', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0400";
@@ -154,12 +154,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_0500
-     * @tc.name test sm4 CFB module cipher by three steps finish, 240B data, callback style, process success
-     * @tc.desc generate key, encrypt, decrypt
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_0500
+     * @tc.name   : test sm4 CFB module cipher by three steps finish, 240B data, callback style, process success
+     * @tc.desc   : generate key, encrypt, decrypt
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0500', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0500";
@@ -176,12 +176,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_0600
-     * @tc.name test sm4 CFB module cipher with unsupported padding pkcs7, process fail
-     * @tc.desc generate key, init
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_0600
+     * @tc.name   : test sm4 CFB module cipher with unsupported padding pkcs7, process fail
+     * @tc.desc   : generate key, init
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0600', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0600";
@@ -198,12 +198,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_0700
-     * @tc.name test sm4 CFB module cipher without iv tag, process fail
-     * @tc.desc generate key, init
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_0700
+     * @tc.name   : test sm4 CFB module cipher without iv tag, process fail
+     * @tc.desc   : generate key, init
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0700', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0700";
@@ -221,12 +221,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_0800
-     * @tc.name test sm4 OFB module cipher by three steps finish, 240B data, process success
-     * @tc.desc generate key, encrypt, decrypt
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level2
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_0800
+     * @tc.name   : test sm4 OFB module cipher by three steps finish, 240B data, process success
+     * @tc.desc   : generate key, encrypt, decrypt
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level2
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0800', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0800";
@@ -245,12 +245,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_0900
-     * @tc.name test sm4 OFB module cipher by three steps abort, 240B data, process success
-     * @tc.desc generate key, encrypt, decrypt
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_0900
+     * @tc.name   : test sm4 OFB module cipher by three steps abort, 240B data, process success
+     * @tc.desc   : generate key, encrypt, decrypt
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0900', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0900";
@@ -267,12 +267,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_1000
-     * @tc.name test sm4 OFB module cipher by two steps finish, 240B data, process success
-     * @tc.desc generate key, encrypt, decrypt
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_1000
+     * @tc.name   : test sm4 OFB module cipher by two steps finish, 240B data, process success
+     * @tc.desc   : generate key, encrypt, decrypt
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1000', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1000";
@@ -289,12 +289,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_1100
-     * @tc.name test sm4 OFB module cipher by three steps finish, 64KB data, process success
-     * @tc.desc generate key, encrypt, decrypt
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_1100
+     * @tc.name   : test sm4 OFB module cipher by three steps finish, 64KB data, process success
+     * @tc.desc   : generate key, encrypt, decrypt
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1100', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1100";
@@ -311,12 +311,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_1200
-     * @tc.name test sm4 OFB module cipher by three steps finish, 240B data, callback style, process success
-     * @tc.desc generate key, encrypt, decrypt
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_1200
+     * @tc.name   : test sm4 OFB module cipher by three steps finish, 240B data, callback style, process success
+     * @tc.desc   : generate key, encrypt, decrypt
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1200', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1200";
@@ -333,12 +333,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_1300
-     * @tc.name test sm4 OFB module cipher with unsupported padding pkcs7, process fail
-     * @tc.desc generate key, init
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_1300
+     * @tc.name   : test sm4 OFB module cipher with unsupported padding pkcs7, process fail
+     * @tc.desc   : generate key, init
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1300', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1300";
@@ -355,12 +355,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_1400
-     * @tc.name test sm4 OFB module cipher without iv tag, process fail
-     * @tc.desc generate key, init
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_1400
+     * @tc.name   : test sm4 OFB module cipher without iv tag, process fail
+     * @tc.desc   : generate key, init
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1400', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1400";
@@ -378,12 +378,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_1500
-     * @tc.name test sm4 CFB module cipher with empty iv tag, process fail
-     * @tc.desc generate key, init
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_1500
+     * @tc.name   : test sm4 CFB module cipher with empty iv tag, process fail
+     * @tc.desc   : generate key, init
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1500', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1500";
@@ -401,12 +401,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_1600
-     * @tc.name test sm4 CFB module cipher with empty salt tag, process fail
-     * @tc.desc generate key, init
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_1600
+     * @tc.name   : test sm4 CFB module cipher with empty salt tag, process fail
+     * @tc.desc   : generate key, init
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1600', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1600";
@@ -424,12 +424,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_1700
-     * @tc.name test sm4 OFB module cipher with empty iv tag, process fail
-     * @tc.desc generate key, init
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_1700
+     * @tc.name   : test sm4 OFB module cipher with empty iv tag, process fail
+     * @tc.desc   : generate key, init
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1700', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1700";
@@ -447,12 +447,12 @@ export default function SecurityHuksCipherSM4Test() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_Cipher_SM4_API12_Func_1800
-     * @tc.name test sm4 OFB module cipher with empty salt tag, process fail
-     * @tc.desc generate key, init
-     * @tc.size small
-     * @tc.type func
-     * @tc.level level3
+     * @tc.number : SUB_Security_HUKS_Cipher_SM4_API12_Func_1800
+     * @tc.name   : test sm4 OFB module cipher with empty salt tag, process fail
+     * @tc.desc   : generate key, init
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1800', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1800";
