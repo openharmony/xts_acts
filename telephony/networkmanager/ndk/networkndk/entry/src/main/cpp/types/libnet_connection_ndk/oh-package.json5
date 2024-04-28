@@ -1,0 +1,6 @@
+{
+  "name": "libnet_connection_ndk.so",
+  "types": "./index.d.ts",
+  "version": "",
+  "description": "Please describe the basic information."
+}
