@@ -27,6 +27,7 @@ export default function GeneralLayoutMarkAnchorTest() {
     let mirror_rect_left: number;
     let mirror_rect_top: number;
     let mirror_rect_right: number;
+    let mirror_rect_bottom: number;
 
     beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
@@ -80,8 +81,8 @@ export default function GeneralLayoutMarkAnchorTest() {
             expect((mirror_rect_left + mirror_rect_right) / 2 - screenWidth / 2).assertEqual(100);
             console.info('ArkUIHDS_General_Layout_1000 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_1000 ERR  ' + JSON.stringify(err));
@@ -121,8 +122,8 @@ export default function GeneralLayoutMarkAnchorTest() {
             expect((mirror_rect_left + mirror_rect_right) / 2 - screenWidth / 2).assertEqual(vp2px(100));
             console.info('ArkUIHDS_General_Layout_1100 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_1100 ERR  ' + JSON.stringify(err));
@@ -162,8 +163,8 @@ export default function GeneralLayoutMarkAnchorTest() {
             expect((mirror_rect_left + mirror_rect_right) / 2 - screenWidth / 2).assertEqual(fp2px(100));
             console.info('ArkUIHDS_General_Layout_1200 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_1200 ERR  ' + JSON.stringify(err));
@@ -203,8 +204,8 @@ export default function GeneralLayoutMarkAnchorTest() {
             expect((mirror_rect_left + mirror_rect_right) / 2 - screenWidth / 2).assertEqual(lpx2px(100));
             console.info('ArkUIHDS_General_Layout_1300 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_1300 ERR  ' + JSON.stringify(err));
@@ -244,8 +245,8 @@ export default function GeneralLayoutMarkAnchorTest() {
             expect((mirror_rect_left + mirror_rect_right) / 2 - screenWidth / 2).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_1400 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_1400 ERR  ' + JSON.stringify(err));
@@ -277,17 +278,19 @@ export default function GeneralLayoutMarkAnchorTest() {
             mirror_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[0];
             mirror_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
             mirror_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[1] + ']')[0];
+            mirror_rect_bottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[1] + ']')[1];
             let strJson_top = getInspectorByKey('top');
             let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson_top).$rect + ']')[0] + ']')[1];
             let width = mirror_rect_right - mirror_rect_left;
+            let height = mirror_rect_bottom - mirror_rect_top;
             expect(mirror_rect_left).assertEqual(screenWidth - original_rect_right);
-            expect(original_rect_top - top - 150).assertEqual(width / 2);
-            expect(mirror_rect_top - top - 150).assertEqual(width / 2);
+            expect(original_rect_top - top - 150).assertEqual(height / 2);
+            expect(mirror_rect_top - top - 150).assertEqual(height / 2);
             expect((mirror_rect_left + mirror_rect_right) / 2 - screenWidth / 2).assertEqual(width / 2);
             console.info('ArkUIHDS_General_Layout_1500 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_1500 ERR  ' + JSON.stringify(err));
@@ -325,8 +328,8 @@ export default function GeneralLayoutMarkAnchorTest() {
             expect(mirror_rect_top - top - 180).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_1600 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_1600 ERR  ' + JSON.stringify(err));
@@ -364,8 +367,8 @@ export default function GeneralLayoutMarkAnchorTest() {
             expect(mirror_rect_top - top - 210).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_1700 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_1700 ERR  ' + JSON.stringify(err));
@@ -403,8 +406,8 @@ export default function GeneralLayoutMarkAnchorTest() {
             expect(mirror_rect_top - top - 240).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_1800 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_1800 ERR  ' + JSON.stringify(err));

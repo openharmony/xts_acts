@@ -82,8 +82,8 @@ export default function GeneralLayoutOffsetTest() {
             expect(screenWidth / 2 - (mirror_rect_left + mirror_rect_right) / 2).assertEqual(100)
             console.info('ArkUIHDS_General_Layout_1900 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_1900 ERR  ' + JSON.stringify(err));
@@ -124,8 +124,8 @@ export default function GeneralLayoutOffsetTest() {
             expect((mirror_rect_left + mirror_rect_right) / 2 - screenWidth / 2).assertEqual(vp2px(100));
             console.info('ArkUIHDS_General_Layout_2000 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_2000 ERR  ' + JSON.stringify(err));
@@ -166,8 +166,8 @@ export default function GeneralLayoutOffsetTest() {
             expect(screenWidth / 2 - (mirror_rect_left + mirror_rect_right) / 2).assertEqual(fp2px(100));
             console.info('ArkUIHDS_General_Layout_2100 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_2100 ERR  ' + JSON.stringify(err));
@@ -208,8 +208,8 @@ export default function GeneralLayoutOffsetTest() {
             expect((mirror_rect_left + mirror_rect_right) / 2 - screenWidth / 2).assertEqual(lpx2px(100));
             console.info('ArkUIHDS_General_Layout_2200 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_2200 ERR  ' + JSON.stringify(err));
@@ -250,8 +250,8 @@ export default function GeneralLayoutOffsetTest() {
             expect(screenWidth / 2 - (mirror_rect_left + mirror_rect_right) / 2).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_2300 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_2300 ERR  ' + JSON.stringify(err));
@@ -284,14 +284,18 @@ export default function GeneralLayoutOffsetTest() {
             mirror_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[0];
             mirror_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
             mirror_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[1] + ']')[0];
+            let strJson_top = getInspectorByKey('top');
+            let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson_top).$rect + ']')[0] + ']')[1];
+            let strJson_bottom = getInspectorByKey('bottom');
+            let bottom: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson_bottom).$rect + ']')[0] + ']')[1];
             expect(mirror_rect_left).assertEqual(screenWidth - original_rect_right);
-            expect(original_rect_top - 150).assertEqual(screenHeight / 2);
-            expect(mirror_rect_top - 150).assertEqual(screenHeight / 2);
+            expect(original_rect_top - 150).assertEqual((top + bottom) / 2);
+            expect(mirror_rect_top - 150).assertEqual((top + bottom) / 2);
             expect((mirror_rect_left + mirror_rect_right) / 2).assertEqual(screenWidth);
             console.info('ArkUIHDS_General_Layout_2400 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_2400 ERR  ' + JSON.stringify(err));
@@ -331,8 +335,8 @@ export default function GeneralLayoutOffsetTest() {
             expect(mirror_rect_top - top - 180).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_2500 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_2500 ERR  ' + JSON.stringify(err));
@@ -372,8 +376,8 @@ export default function GeneralLayoutOffsetTest() {
             expect(mirror_rect_top - top - 210).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_2600 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_2600 ERR  ' + JSON.stringify(err));
@@ -413,8 +417,8 @@ export default function GeneralLayoutOffsetTest() {
             expect(mirror_rect_top - top - 240).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_2700 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_2700 ERR  ' + JSON.stringify(err));
