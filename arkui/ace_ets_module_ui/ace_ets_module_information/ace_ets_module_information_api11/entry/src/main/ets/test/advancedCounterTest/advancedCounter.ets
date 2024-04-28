@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router'
+import router from '@ohos.router';
 import { Driver, ON, Component } from '@ohos.UiTest'
 import Utils from '../Utils';
 export default function abilityTest() {
   const SUITE = 'CounterComponent'
   describe('ActsAceCounterComponentTest', () => {
     beforeEach(async (done: Function) => {
-      let options = {
-        uri: "MainAbility/pages/advancedCounter/advancedCounterIndex",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/advancedCounter/advancedCounterIndex",
       }
       try {
         router.clear();
