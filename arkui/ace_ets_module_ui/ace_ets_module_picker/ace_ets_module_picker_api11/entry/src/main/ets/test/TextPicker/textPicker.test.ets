@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import Utils from '../../MainAbility/common/Utils'
 
 export default function textPickerDefaultPickerItemHeightJsunit() {
-  describe('textPickerDefaultPickerItemHeightTest', () => {
+  describe('textPickerDefaultPickerItemHeightJsunit', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {

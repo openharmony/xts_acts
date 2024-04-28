@@ -19,7 +19,7 @@ import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
 export default function GridTest() {
   const SUITE = 'GridTest'
 
-  describe('GridTest', function () {
+  describe('GridPageTest', function () {
 
     beforeEach(async function (done) {
       let options = {

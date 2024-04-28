@@ -171,14 +171,10 @@
         "MainAbility/pages/text/textTwo",
         "MainAbility/pages/text/textEnabled",
         "MainAbility/pages/text/textChangeEnabled",
-        "MainAbility/pages/DatePicker/datePicker",
         "MainAbility/pages/DatePanel/DatelPanel",
         "MainAbility/pages/Progress/loadingprogress",
         "MainAbility/pages/Progress/ProgressPage",
-        "MainAbility/pages/gauge/gauge",
-        "MainAbility/pages/TextPicker/TextPickerPage",
         "MainAbility/pages/TextTimer/TextTimerPage",
-        "MainAbility/pages/TimePicker/TimePickerPage",
         "MainAbility/pages/Toggle/TogglePage",
         "MainAbility/pages/marquee/marqueeUI",
         "MainAbility/pages/PatternLock/PatternLockPage",
@@ -210,7 +206,6 @@
         "MainAbility/pages/button/button3",
         "MainAbility/pages/span/span3",
         "MainAbility/pages/text/text3",
-        "MainAbility/pages/TimePicker/timeStamp",
 	"MainAbility/pages/ImageAnimator/imageAnimator2",
         "MainAbility/pages/Progress/loadingProgress2"
     ]

@@ -34,6 +34,8 @@ import progressStyleJsunit from './ProgressTest/progress2.test';
 import badge3Jsunit from './BadgeTest/Badge3Jsunit.test';
 import qrCode3Jsunit from './QrcodeTest/QrCode3Jsunit.test';
 import searchJsunit from './SearchTest/SearchJsunit.test.ets';
+import gauge3Jsunit from './gaugeTest/gauge3Jsunit.test.ets';
+import datalPanelUIJsunit from './DataPanelTest/datalPanelUIJsunit.test.ets';
 
 
 export default function testsuite() {
@@ -59,4 +61,6 @@ export default function testsuite() {
   badge3Jsunit();
   qrCode3Jsunit();
   searchJsunit();
+  gauge3Jsunit();
+  datalPanelUIJsunit();
 }

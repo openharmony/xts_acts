@@ -18,7 +18,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function gridJsunit() {
-  describe('gridTest', () => {
+  describe('grid3Test', () => {
     beforeEach(async (done: Function) => {
       console.info('beforeEach ===================grid test beforeEach called===================');
       let options: router.RouterOptions = {
