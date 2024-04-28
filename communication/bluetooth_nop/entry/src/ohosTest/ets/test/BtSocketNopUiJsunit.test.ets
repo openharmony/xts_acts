@@ -46,7 +46,7 @@ export default function btSocketNopUiJsunit() {
     })
     /**
      * @tc.number: testSppListenNop
-     * @tc.name: testSppListenNop
+     * @tc.name: testSppListen
      * @tc.desc: test sppListen without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -73,13 +73,13 @@ export default function btSocketNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `sppListen error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testSppSppConnectNop
-     * @tc.name: testSppSppConnectNop
+     * @tc.name: testSppConnect
      * @tc.desc: test sppConnect without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -106,7 +106,7 @@ export default function btSocketNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `sppConnect error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })

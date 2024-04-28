@@ -40,17 +40,25 @@ describe('btManagerAdvertError401Test', function() {
  }
 
  async function clickTheWindow() {
-     try {
-          console.info('[bluetooth_js] clickRequestPermission start');
-          let driver = Driver.create();
-          await driver.delayMs(3000);
-          let button = await driver.findComponent(ON.text("开启"));
-          await button.click();
-          await driver.delayMs(3000);
-          console.info('[bluetooth_js] clickRequestPermission end');
-      } catch (err) {
-          console.info('[bluetooth_js] clickRequestPermission failed');
-      }
+     console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
+        try {
+            let button = await driver.findComponent(ON.text("开启"));
+            await button.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 开启 end');
+        } catch (err) {
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
+        }
  }
 
     async function tryToEnableBt() {
@@ -104,6 +112,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - parameters setting is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3000', 0, async function (done) {
@@ -146,7 +155,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error('[bluetooth_js]startAdvertising30 error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-               expect(error.code).assertEqual(401);
+                   expect(Number(error.code)).assertEqual(401);
           }
           done();
      })
@@ -156,6 +165,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - parameters setting is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3100', 0, async function (done) {
@@ -198,7 +208,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error('[bluetooth_js]startAdvertising31 error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-               expect(error.code).assertEqual(401);
+               expect(Number(error.code)).assertEqual(401);
           }
           done();
      })
@@ -208,6 +218,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - interval of setting is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3200', 0, async function (done) {
@@ -244,7 +255,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising32 failed, code is ${error.code},
                    message is ${error.message}`);
-               expect(error.code).assertEqual(401);
+                   expect(Number(error.code)).assertEqual(401);
           }
           done();
      })
@@ -254,6 +265,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - txPower of setting is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
      it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3300', 0, async function (done) {
@@ -290,7 +302,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising33 failed, code is ${error.code},
                    message is ${error.message}`);
-               expect(error.code).assertEqual(401);
+                   expect(Number(error.code)).assertEqual(401);
           }
           done();
      })
@@ -300,6 +312,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - connectable of setting is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
      it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3400', 0, async function (done) {
@@ -336,7 +349,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising34 failed, code is ${error.code},
                    message is ${error.message}`);
-               expect(error.code).assertEqual(401);
+                   expect(Number(error.code)).assertEqual(401);
           }
           done();
      })
@@ -346,6 +359,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - parameters advData is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3500', 0, async function (done) { 
@@ -371,7 +385,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising35 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual(401);
+                  expect(Number(error.code)).assertEqual(401);
           }
           done();
      })
@@ -381,6 +395,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - serviceUuids of advData is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3600', 0, async function (done) {
@@ -416,7 +431,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising36 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual(401);
+                  expect(Number(error.code)).assertEqual(401);
           }
           done();
      })
@@ -426,6 +441,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - manufactureData of advData is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3700', 0, async function (done) {
@@ -458,7 +474,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising37 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual(401);
+                  expect(Number(error.code)).assertEqual(401);
           }
           done();
      })
@@ -468,6 +484,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - serviceData of advData is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3800', 0, async function (done) {
@@ -500,7 +517,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising38 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual(401);
+                  expect(Number(error.code)).assertEqual(401);
           }
           done();
      })
@@ -510,6 +527,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - manufactureValue of advData is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3900', 0, async function (done) {
@@ -541,7 +559,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising39 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual(401);
+                  expect(Number(error.code)).assertEqual(401);
           }
           done();
      })
@@ -551,6 +569,7 @@ describe('btManagerAdvertError401Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test api 401 - serviceValue of advData is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_4000', 0, async function (done) {
@@ -582,7 +601,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising40 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual(401);
+                  expect(Number(error.code)).assertEqual(401);
           }
           done();
      })

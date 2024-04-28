@@ -47,7 +47,7 @@ export default function btConnectionNopUiJsunit() {
     })
     /**
      * @tc.number: testIsBluetoothDiscoveringNop
-     * @tc.name: testIsBluetoothDiscoveringNop
+     * @tc.name: testIsBluetoothDiscovering
      * @tc.desc: test isBluetoothDiscovering without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -60,13 +60,13 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `isBluetoothDiscovering error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testSetDevicePinCodeAsyncCallbackNop
-     * @tc.name: testSetDevicePinCodeAsyncCallbackNop
+     * @tc.name: testSetDevicePinCode
      * @tc.desc: test setDevicePinCode by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -90,13 +90,13 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `callback setDevicePinCode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testGetBluetoothScanModeNop
-     * @tc.name: testGetBluetoothScanModeNop
+     * @tc.name: testGetBluetoothScanMode
      * @tc.desc: test getBluetoothScanMode without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -109,13 +109,13 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getBluetoothScanMode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testSetBluetoothScanModeNop
-     * @tc.name: testSetBluetoothScanModeNop
+     * @tc.name: testSetBluetoothScanMode
      * @tc.desc: test setBluetoothScanMode without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -128,13 +128,13 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `setBluetoothScanMode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testGetLocalNameNop
-     * @tc.name: testGetLocalNameNop
+     * @tc.name: testGetLocalName
      * @tc.desc: test getLocalName without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -147,13 +147,13 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getLocalName error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testGetProfileConnectionStateNop
-     * @tc.name: testGetProfileConnectionStateNop
+     * @tc.name: testGetProfileConnectionState
      * @tc.desc: test getProfileConnectionState without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -166,13 +166,13 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getProfileConnectionState error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testGetRemoteDeviceClassNop
-     * @tc.name: testGetRemoteDeviceClassNop
+     * @tc.name: testGetRemoteDeviceClass
      * @tc.desc: test getRemoteDeviceClass without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -185,13 +185,13 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getRemoteDeviceClass error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testSetDevicePinCodeNop
-     * @tc.name: testSetDevicePinCodeNop
+     * @tc.name: testSetDevicePinCode
      * @tc.desc: test setDevicePinCode by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -203,7 +203,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `setDevicePinCode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })

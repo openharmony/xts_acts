@@ -38,16 +38,24 @@ describe('btManagerDiscoveryTest', function() {
     }
 
     async function clickTheWindow() {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] clickRequestPermission end');
+            console.info('[bluetooth_js] click 开启 end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -97,9 +105,10 @@ describe('btManagerDiscoveryTest', function() {
     })
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_DISCOVERY_0100
-     * @tc.name TEST bluetoothDeviceFind on&off 
+     * @tc.name testStartBluetoothDiscovery
      * @tc.desc TEST bluetoothDeviceFind
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BTMANAGER_DISCOVERY_0100', 0, async function (done) {

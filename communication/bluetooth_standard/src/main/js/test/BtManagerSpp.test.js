@@ -38,16 +38,24 @@ describe('btManagerSppTest', function() {
     }
 
     async function clickTheWindow() {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] clickRequestPermission end');
+            console.info('[bluetooth_js] click 开启 end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -98,9 +106,10 @@ describe('btManagerSppTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SPP_0100
-     * @tc.name test  SppListen
+     * @tc.name testSppListen
      * @tc.desc Test  SppListen 
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SPP_0100', 0, async function (done) {
@@ -132,6 +141,7 @@ describe('btManagerSppTest', function() {
      * @tc.name testSppAccept
      * @tc.desc Test SppAccept api 
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SPP_0200', 0, async function (done) {
@@ -156,15 +166,17 @@ describe('btManagerSppTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]SPPAccept error, code is ${error.code}, 
         message is ${error.message}`);
+        expect(true).assertEqual(error != null);
         }
         done();
     })
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SPP_0300
-     * @tc.name test SppConnect
+     * @tc.name testSppConnect
      * @tc.desc Test SppConnect api 8 
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SPP_0300', 0, async function (done) {
@@ -191,9 +203,10 @@ describe('btManagerSppTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SPP_0400
-     * @tc.name test sppReadOn 
+     * @tc.name testSppReadOn 
      * @tc.desc Test On and Off Api
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SPP_0400', 0, async function (done) {
@@ -214,6 +227,7 @@ describe('btManagerSppTest', function() {
             bluetoothManager.off('sppRead', clientNumber);
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
+            expect(Number(err.code)).assertEqual(401);
         }
         done();
     })

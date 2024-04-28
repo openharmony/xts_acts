@@ -91,7 +91,7 @@ export default function btBleNopUiJsunit() {
     });
     /**
      * @tc.number: testStopAdvertisingNop
-     * @tc.name: testStopAdvertisingNop
+     * @tc.name: testStopAdvertising
      * @tc.desc: test stopAdvertising by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -104,13 +104,13 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `stopAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testStopAdvertisingAsyncCallbackNop
-     * @tc.name: testStopAdvertisingAsyncCallbackNop
+     * @tc.name: testStopAdvertising
      * @tc.desc: test stopAdvertising by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -135,13 +135,13 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback stopAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testEnableAdvertisingNop
-     * @tc.name: testEnableAdvertisingNop
+     * @tc.name: testEnableAdvertising
      * @tc.desc: test enableAdvertising by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -157,13 +157,13 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise enableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE)
+        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE)
       }
       done();
     })
     /**
      * @tc.number: testEnableAdvertisingAsyncCallbackNop
-     * @tc.name: testEnableAdvertisingAsyncCallbackNop
+     * @tc.name: testEnableAdvertising
      * @tc.desc: test enableAdvertising by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -191,13 +191,13 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback enableAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testStartAdvertisingNop
-     * @tc.name: testStartAdvertisingNop
+     * @tc.name: testStartAdvertising
      * @tc.desc: test startAdvertising by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -210,13 +210,13 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise startAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testStartAdvertisingAsyncCallbackNop
-     * @tc.name: testStartAdvertisingAsyncCallbackNop
+     * @tc.name: testStartAdvertising
      * @tc.desc: test startAdvertising by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -240,13 +240,13 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback startAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testDisableAdvertisingNop
-     * @tc.name: testDisableAdvertisingNop
+     * @tc.name: testDisableAdvertising
      * @tc.desc: test disableAdvertising by promise without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -263,13 +263,13 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise disableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testDisableAdvertisingAsyncCallbackNop
-     * @tc.name: testDisableAdvertisingAsyncCallbackNop
+     * @tc.name: testDisableAdvertising
      * @tc.desc: test disableAdvertising by async callback without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -297,13 +297,13 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback disableAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
     /**
      * @tc.number: testStopBLEScanNop
-     * @tc.name: testStopBLEScanNop
+     * @tc.name: testStopBLEScan
      * @tc.desc: test stopBLEScan without permission
      * @tc.size: LargeTest
      * @tc.type: Function
@@ -316,7 +316,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `stopBLEScan error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })

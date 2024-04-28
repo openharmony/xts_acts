@@ -39,16 +39,24 @@ describe('btManagerMError401Test', function() {
     }
 
     async function clickTheWindow() {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] clickRequestPermission end');
+            console.info('[bluetooth_js] click 开启 end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -105,6 +113,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetBLEMtuSize
      * @tc.desc Test api 401 - Invalid null parameters.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_ERROR_0200', 0, function () {
@@ -114,7 +123,7 @@ describe('btManagerMError401Test', function() {
         } catch(error) {
             console.error('[bluetooth_js]error.code:'+JSON.stringify(error.code)+
             'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -123,6 +132,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetBLEMtuSize
      * @tc.desc Test api 401 -error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_ERROR_0300', 0, function () {
@@ -132,7 +142,7 @@ describe('btManagerMError401Test', function() {
         } catch(error) {
             console.error(`[bluetooth_js]setBLEMtuSize3 failed, code is ${error.code}, 
               message is ${error.message}`);
-              expect(error.code).assertEqual(401);
+              expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -141,6 +151,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - Invalid null parameters.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0100', 0, async function (done) {
@@ -160,7 +171,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue1 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -170,6 +181,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - Invalid null parameters.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0200', 0, async function (done) {
@@ -185,7 +197,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue2 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -195,6 +207,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - null serviceUuid.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0300', 0, async function (done) {
@@ -225,7 +238,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue3 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -235,6 +248,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - if serviceUuid type is error.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0400', 0, async function (done) {
@@ -265,7 +279,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue4 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -275,6 +289,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - null characteristicUuid.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0500', 0, async function (done) {
@@ -304,7 +319,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue5 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -314,6 +329,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - if characteristicUuid is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0600', 0, async function (done) {
@@ -344,7 +360,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue6 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -354,6 +370,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - null characteristicValue.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0700', 0, async function (done) {
@@ -380,7 +397,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue7 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -390,6 +407,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - if characteristicValue is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0800', 0, async function (done) {
@@ -417,7 +435,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue8 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -427,6 +445,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - null descriptors.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0900', 0, async function (done) {
@@ -447,7 +466,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue9 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
         done();
     })
@@ -457,6 +476,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - if descriptors type is error.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
       it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1000', 0, async function (done) {
@@ -478,7 +498,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue10 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -488,6 +508,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - if serviceUuid of descriptors is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1100', 0, async function (done) {
@@ -518,7 +539,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue11 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -528,6 +549,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - if serviceUuid of descriptors is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1200', 0, async function (done) {
@@ -558,7 +580,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue12 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -568,6 +590,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - if descriptorUuid of descriptors is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1300', 0, async function (done) {
@@ -597,7 +620,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue13 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -607,6 +630,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - if descriptorUuid of descriptors is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1400', 0, async function (done) {
@@ -637,7 +661,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue14 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done();
         }
     })
@@ -647,6 +671,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - if descriptorValue of descriptors is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1500', 0, async function (done) {
@@ -676,7 +701,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue15 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
     })
@@ -686,6 +711,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - if descriptorValue of descriptors is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1600', 0, async function (done) {
@@ -713,7 +739,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue16 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
     })
@@ -723,6 +749,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 -null api by callback.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1700', 0, async function(done) {      
@@ -733,7 +760,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error('[bluetooth_js]readCharacteValue17 failed, error.code:'
             +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
     })
@@ -743,6 +770,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 -null readCharacteristicValue by callback.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1800', 0, async function(done) {      
@@ -763,7 +791,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue18 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
     })
@@ -773,6 +801,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - null descriptor.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0100', 0, async function (done) {
@@ -791,7 +820,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue1 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -801,6 +830,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - descriptor is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0200', 0, async function (done) {
@@ -822,7 +852,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue2 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -832,6 +862,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - serviceUuid of descriptor is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0300', 0, async function (done) {
@@ -860,7 +891,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue3 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -870,6 +901,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - serviceUuid of descriptor is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0400', 0, async function (done) {
@@ -898,7 +930,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue4 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -908,6 +940,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - characteristicUuid of descriptor is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0500', 0, async function (done) {
@@ -935,7 +968,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue5 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -945,6 +978,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - characteristicUuid of descriptor is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0600', 0, async function (done) {
@@ -973,7 +1007,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue6 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -983,6 +1017,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - descriptorUuid of descriptor is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0700', 0, async function (done) {
@@ -1010,7 +1045,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue7 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -1020,6 +1055,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - descriptorUuid of descriptor is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0800', 0, async function (done) {
@@ -1048,7 +1084,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue8 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -1058,6 +1094,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - descriptorValue of descriptor is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0900', 0, async function (done) {
@@ -1082,7 +1119,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue9 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -1092,6 +1129,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 - descriptorValue of descriptor is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_1000', 0, async function (done) {
@@ -1120,7 +1158,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue10 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }       
     })
@@ -1130,6 +1168,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 -null readDescriptorValue by callback.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_1100', 0, async function (done) {   
@@ -1140,7 +1179,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue11 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }        
     })
@@ -1150,6 +1189,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test 401 -null readDescriptorValue by callback.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_1200', 0, async function (done) {   
@@ -1170,7 +1210,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue12 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }   
     })
@@ -1180,6 +1220,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 - api of null parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0100', 0, function () {
@@ -1189,7 +1230,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue1 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1198,6 +1239,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -  api of error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0200', 0, function () {
@@ -1207,7 +1249,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue2 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1216,6 +1258,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -null serviceUuid.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0300', 0, function () {
@@ -1239,7 +1282,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue3 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
     
@@ -1248,6 +1291,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -serviceUuid is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0400', 0, function () {
@@ -1271,7 +1315,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue4 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1280,6 +1324,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 - null characteristicUuid.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0500', 0, function () {
@@ -1302,7 +1347,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue5 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1311,6 +1356,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 - characteristicUuid is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0600', 0, function () {
@@ -1334,7 +1380,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue6 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1343,6 +1389,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 - null characteristicValue.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0700', 0, function () {
@@ -1363,7 +1410,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue7 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1372,6 +1419,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 - characteristicValue is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0800', 0, function () {
@@ -1392,7 +1440,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue8 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1401,6 +1449,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 - null descriptors.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0900', 0, function () {
@@ -1416,7 +1465,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue9 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1425,6 +1474,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -descriptors is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1000', 0, function () {
@@ -1440,7 +1490,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue10 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1449,6 +1499,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -null serviceUuid of descriptors.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1100', 0, function () {
@@ -1472,7 +1523,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue11 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1481,6 +1532,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -serviceUuid of descriptors is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1200', 0, function () {
@@ -1504,7 +1556,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue12 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1513,6 +1565,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -characteristicUuid of descriptors is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1300', 0, function () {
@@ -1535,7 +1588,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue13 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1544,6 +1597,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -characteristicUuid of descriptors is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1400', 0, function () {
@@ -1567,7 +1621,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue14 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1576,6 +1630,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -descriptorUuid of descriptors is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1500', 0, function () {
@@ -1599,7 +1654,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue15 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1608,6 +1663,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -descriptorUuid of descriptors is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1600', 0, function () {
@@ -1631,7 +1687,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue16 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1640,6 +1696,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -descriptorValue of descriptors is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1700', 0, function () {
@@ -1663,7 +1720,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue17 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1672,6 +1729,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test 401 -descriptorValue of descriptors is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1800', 0, function () {
@@ -1692,7 +1750,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]readCharacteValue18 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1701,6 +1759,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test 401 - api is null parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0100', 0, function () {
@@ -1710,7 +1769,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue1 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1719,6 +1778,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test 401 -  api is error parameter.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0200', 0, function () {
@@ -1728,7 +1788,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue2 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1737,6 +1797,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test 401 -  null serviceUuid.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0300', 0,  function () {
@@ -1752,7 +1813,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue3 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1761,6 +1822,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test 401 - serviceUuid is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0400', 0,  function () {
@@ -1776,7 +1838,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue4 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1785,6 +1847,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test 401 -  characteristicUuid is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0500', 0,  function () {
@@ -1799,7 +1862,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue5 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
   
@@ -1808,6 +1871,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test 401 - characteristicUuid is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0600', 0,  function () {
@@ -1823,7 +1887,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue6 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1832,6 +1896,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test 401 - descriptorUuid is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0700', 0,  function () {
@@ -1846,7 +1911,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue7 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1855,6 +1920,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test 401 - descriptorUuid is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0800', 0,  function () {
@@ -1870,7 +1936,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue8 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1879,6 +1945,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test 401 - descriptorValue is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0900', 0,  function () {
@@ -1891,7 +1958,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue9 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1900,6 +1967,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test 401 - descriptorValue is error type.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_1000', 0,  function () {
@@ -1912,7 +1980,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue10 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1921,6 +1989,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - parameter of api is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0100', 0, function () {
@@ -1930,7 +1999,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged1 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1939,6 +2008,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - first parameter of api is error type .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0200', 0, function () {
@@ -1948,7 +2018,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged2 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1957,6 +2027,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - second parameter of api is null .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0300', 0, function () {
@@ -1981,7 +2052,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged3 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -1990,6 +2061,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - serviceUuid is null .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0400', 0, function () {
@@ -2014,7 +2086,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged4 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -2023,6 +2095,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - serviceUuid is error type .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0500', 0, function () {
@@ -2047,7 +2120,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged5 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -2056,6 +2129,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - characteristicUuid is null .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0600', 0, function () {
@@ -2079,7 +2153,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged6 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -2088,6 +2162,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - characteristicUuid is error type .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0700', 0, function () {
@@ -2112,7 +2187,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged7 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -2121,6 +2196,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - characteristicValue is null .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0800', 0, function () {
@@ -2144,7 +2220,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged8 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -2153,6 +2229,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - characteristicValue is error type .
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0900', 0, function () {
@@ -2174,7 +2251,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged9 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -2183,6 +2260,7 @@ describe('btManagerMError401Test', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - descriptors is null.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_1000', 0, function () {
@@ -2198,7 +2276,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged10 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
 
@@ -2206,7 +2284,7 @@ describe('btManagerMError401Test', function() {
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_1100
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test 401 - descriptors is error type.
-     * @tc.size MEDIUM
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -2223,15 +2301,16 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]setNotifyCharacteristicChanged11 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
         }
     })
     
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_CREATEGATTCLIDEV_ERROR_0100
-     * @tc.name test createGattClientDevice
+     * @tc.name testCreateGattClientDevice
      * @tc.desc Test createGattClientDevice 401.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_CREATEGATTCLIDEV_ERROR_0100', 0, async function (done) {
@@ -2242,7 +2321,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]createGattClientDevice01 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
        
@@ -2250,9 +2329,10 @@ describe('btManagerMError401Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_CREATEGATTCLIDEV_ERROR_0200
-     * @tc.name test createGattClientDevice
+     * @tc.name testCreateGattClientDevice
      * @tc.desc Test createGattClientDevice 401.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_CREATEGATTCLIDEV_ERROR_0200', 0, async function (done) {
@@ -2263,7 +2343,7 @@ describe('btManagerMError401Test', function() {
         } catch (error) {
             console.error(`[bluetooth_js]createGattClientDevice02 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(error.code).assertEqual(401);
+            expect(Number(error.code)).assertEqual(401);
             done()
         }
        
