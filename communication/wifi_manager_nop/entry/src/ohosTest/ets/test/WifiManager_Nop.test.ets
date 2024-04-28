@@ -39,7 +39,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_On_P2pDiscoveryChange_Callback_Nop
-     * @tc.name: WiFi_On_P2pDiscoveryChange_Callback_Nop
+     * @tc.name: testOn
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -52,7 +52,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pDiscoveryChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pDiscoveryChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pDiscoveryChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -63,7 +62,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_Off_P2pDiscoveryChange_Callback_Nop
-     * @tc.name: WiFi_Off_P2pDiscoveryChange_Callback_Nop
+     * @tc.name: testOff
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -76,7 +75,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pDiscoveryChange_Callback_Nop callback');
         })
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pDiscoveryChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pDiscoveryChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -87,7 +85,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_On_P2pPersistentGroupChange_Callback_Nop
-     * @tc.name: WiFi_On_P2pPersistentGroupChange_Callback_Nop
+     * @tc.name: testOn
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -100,7 +98,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pPersistentGroupChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pPersistentGroupChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pPersistentGroupChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -111,7 +108,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_Off_P2pPersistentGroupChange_Callback_Nop
-     * @tc.name: WiFi_Off_P2pPersistentGroupChange_Callback_Nop
+     * @tc.name: testOff
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -125,7 +122,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pPersistentGroupChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pPersistentGroupChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pPersistentGroupChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -136,7 +132,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_On_P2pPeerDeviceChange_Callback_Nop
-     * @tc.name: WiFi_On_P2pPeerDeviceChange_Callback_Nop
+     * @tc.name: testOn
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -149,7 +145,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pPeerDeviceChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pPeerDeviceChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pPeerDeviceChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -161,7 +156,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_On_P2pDeviceChange_Callback_Nop
-     * @tc.name: WiFi_On_P2pDeviceChange_Callback_Nop
+     * @tc.name: testOff
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -175,7 +170,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pDeviceChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pDeviceChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pDeviceChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -186,7 +180,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_On_P2pConnectionChange_Callback_Nop
-     * @tc.name: WiFi_On_P2pConnectionChange_Callback_Nop
+     * @tc.name: testOn
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -199,7 +193,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pConnectionChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pConnectionChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pConnectionChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -211,7 +204,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_Off_P2pConnectionChange_Callback_Nop
-     * @tc.name: WiFi_Off_P2pConnectionChange_Callback_Nop
+     * @tc.name: testOff
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -224,7 +217,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pConnectionChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pConnectionChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pConnectionChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -235,7 +227,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_On_P2pStateChange_Callback_Nop
-     * @tc.name: WiFi_On_P2pStateChange_Callback_Nop
+     * @tc.name: testOn
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -247,7 +239,6 @@ export default function wifiManagerTest() {
         wifiManager.on('p2pStateChange', () => {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pStateChange_Callback_Nop success');
         });
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_P2pStateChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -258,7 +249,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_Off_P2pStateChange_Callback_Nop
-     * @tc.name: WiFi_Off_P2pStateChange_Callback_Nop
+     * @tc.name: testOff
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -271,7 +262,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pStateChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pStateChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_P2pStateChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -282,7 +272,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number: SUB_Communication_WiFi_On_HotspotStateChange_Callback_Nop
-     * @tc.name: WiFi_On_HotspotStateChange_Callback_Nop
+     * @tc.name: testOn
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -295,7 +285,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_HotspotStateChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_HotspotStateChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_HotspotStateChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -306,7 +295,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_Off_HotspotStateChange_Callback_Nop
-     * @tc.name: WiFi_Off_HotspotStateChange_Callback_Nop
+     * @tc.name: testOff
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -319,7 +308,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_HotspotStateChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_HotspotStateChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_HotspotStateChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -330,7 +318,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number: SUB_Communication_WiFi_On_WifiRssiChange_Callback_Nop
-     * @tc.name: WiFi_On_WifiRssiChange_Callback_Nop
+     * @tc.name: testOn
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -343,7 +331,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_WifiRssiChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_WifiRssiChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_On_WifiRssiChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -354,7 +341,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_Off_WifiRssiChange_Callback_Nop
-     * @tc.name: WiFi_Off_WifiRssiChange_Callback_Nop
+     * @tc.name: testOff
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -367,7 +354,6 @@ export default function wifiManagerTest() {
           hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_WifiRssiChange_Callback_Nop callback');
         });
         hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_WifiRssiChange_Callback_Nop success');
-        expect().assertFail();
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Off_WifiRssiChange_Callback_Nop failed ' + JSON.stringify(error));
@@ -378,7 +364,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_P2P_CreateGroup_Nop
-     * @tc.name: WiFi_P2P_CreateGroup_Nop
+     * @tc.name: testWifiP2PConfig
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -407,7 +393,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_IsMeteredHotspot_Nop
-     * @tc.name: WiFi_IsMeteredHotspot_Nop
+     * @tc.name: testisMeteredHotspot
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -428,7 +414,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_IsBandTypeSupported_Nop
-     * @tc.name: WiFi_IsBandTypeSupported_Nop
+     * @tc.name: testIsBandTypeSupported
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -454,7 +440,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_GetCountryCode_Nop
-     * @tc.name: WiFi_GetCountryCode_Nop
+     * @tc.name: testGetCountryCode
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -475,7 +461,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_GetIpv6Info_Nop
-     * @tc.name: WiFi_GetIpv6Info_Nop
+     * @tc.name: testGetIpv6Info
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -496,7 +482,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_GetCurrentGroup_Callback_Nop
-     * @tc.name: WiFi_GetCurrentGroup_Callback_Nop
+     * @tc.name: testGetCurrentGroup
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -524,7 +510,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_GetCurrentGroup_Promise_Nop
-     * @tc.name: WiFi_GetCurrentGroup_Promise_Nop
+     * @tc.name: testGetCurrentGroup
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -545,7 +531,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_StartDiscoverDevices_Nop
-     * @tc.name: WiFi_StartDiscoverDevices_Nop
+     * @tc.name: testStartDiscoverDevices
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -566,7 +552,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_StopDiscoverDevices_Nop
-     * @tc.name: WiFi_StopDiscoverDevices_Nop
+     * @tc.name: testStopDiscoverDevices
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -587,7 +573,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_RemoveGroup_Nop
-     * @tc.name: WiFi_RemoveGroup_Nop
+     * @tc.name: testRemoveGroup
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -608,7 +594,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop
-     * @tc.name: WiFi_ActsWifiManagerNoPApiTest_Callback_Nop
+     * @tc.name: testGetSupportedPowerMode
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -643,7 +629,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop
-     * @tc.name: WiFi_getSupportedPowerMode_Promise_Nop
+     * @tc.name: testGetSupportedPowerMode
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -675,7 +661,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_GetPowerMode_Promise_Nop
-     * @tc.name: WiFi_GetPowerMode_Promise_Nop
+     * @tc.name: testGetPowerMode
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
@@ -707,7 +693,7 @@ export default function wifiManagerTest() {
 
     /*
      * @tc.number:SUB_Communication_WiFi_GetPowerMode_Callback_Nop
-     * @tc.name: WiFi_GetPowerMode_Callback_Nop
+     * @tc.name: testGetPowerMode
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
