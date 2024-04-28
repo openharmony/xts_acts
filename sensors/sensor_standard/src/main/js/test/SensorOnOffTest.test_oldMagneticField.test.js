@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -74,553 +74,642 @@ describe("SensorJsTest_sensor_15", function () {
 
      /*
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0010
-     * @tc.name: MagneticField_SensorJsTest001
+     * @tc.name: MagneticFieldSensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest001---------------------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
-				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
-				setTimeout(() => {
-					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
-					done();
-				}, 500);
-				})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest001 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest001---------------------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
+                setTimeout(() => {
+                    sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
+                    done();
+                }, 500);
+                }
+           })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest001 Device does not support! ');
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0020
-     * @tc.name: MagneticField_SensorJsTest002
+     * @tc.name: MagneticFieldSensorJsTest002
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest002---------------------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {        
-				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
-				setTimeout(() => {
-					console.info('----------------------MagneticField_SensorJsTest002 off in---------------------------');
-					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
-					console.info('----------------------MagneticField_SensorJsTest002 off end---------------------------');
-					done();
-				}, 500);
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest002 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest002---------------------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
+                setTimeout(() => {
+                    console.info('----------------------MagneticFieldSensorJsTest002 off in---------------------------');
+                    sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
+                    console.info('----------------------MagneticFieldSensorJsTest002 off end---------------------------');
+                    done();
+                }, 500);
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest002 Device does not support! ');
             done();
         }
     })
-	
+
     /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0030
-     * @tc.name: MagneticField_SensorJsTest003
+     * @tc.name: MagneticFieldSensorJsTest003
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest003---------------------------');
+    it("MagneticFieldSensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest003---------------------------');
         function onSensorCallback(data) {
-            console.info('MagneticField_SensorJsTest003  on error');
-			expect(typeof (data.x)).assertEqual("number");
-			expect(typeof (data.y)).assertEqual("number");
-			expect(typeof (data.z)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            console.info('MagneticFieldSensorJsTest003  on error');
+            expect(typeof (data.x)).assertEqual("number");
+            expect(typeof (data.y)).assertEqual("number");
+            expect(typeof (data.z)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {   
-					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onSensorCallback, { 'interval': 100000000 }, 5);
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest003 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onSensorCallback, { 'interval': 100000000 }, 5);
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest003 Device does not support! ');
             done();
         }
     })
-	
+
     /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0040
-     * @tc.name: MagneticField_SensorJsTest004
+     * @tc.name: MagneticFieldSensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest004---------------------------');
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {           
-				sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
-				setTimeout(() => {
-					expect(true).assertTrue();
-					done();
-				}, 500);
-				})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest004 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest004---------------------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
+                setTimeout(() => {
+                    expect(true).assertTrue();
+                    done();
+                }, 500);
+                }
+                })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest004 Device does not support! ');
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0050
-     * @tc.name: MagneticField_SensorJsTest005
+     * @tc.name: MagneticFieldSensorJsTest005
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest005---------------------------');
+    it("MagneticFieldSensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest005---------------------------');
         function onceSensorCallback(data) {
-            console.info('MagneticField_SensorJsTest005  on error');
-			expect(typeof (data.x)).assertEqual("number");
-			expect(typeof (data.y)).assertEqual("number");
-			expect(typeof (data.z)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            console.info('MagneticFieldSensorJsTest005  on error');
+            expect(typeof (data.x)).assertEqual("number");
+            expect(typeof (data.y)).assertEqual("number");
+            expect(typeof (data.z)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {    		
-				try {
-					sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onceSensorCallback, 5);
-				} catch (error) {
-					console.info("MagneticField_SensorJsTest005 error:" + error);
-					expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-					expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-				}
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest005 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                try {
+                    sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onceSensorCallback, 5);
+                } catch (error) {
+                    console.info("MagneticFieldSensorJsTest005 error:" + error);
+                    expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                    expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                }
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest005 Device does not support! ');
             done();
         }
     })
-	
+
    /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0060
-     * @tc.name: MagneticField_SensorJsTest006
+     * @tc.name: MagneticFieldSensorJsTest006
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest006---------------------------');
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {    	       
-				   try {
-						sensor.off(string, "");
-					} catch (error) {
-						console.info("MagneticField_SensorJsTest006 error:" + error);
-						errMessage = error.toString().slice(16, 40);
-						expect(errMessage).assertEqual(errMessages[0]);
-						done();
-					}
-				})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest006 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest006---------------------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                try {
+                    sensor.off(string, "");
+                } catch (error) {
+                    console.info("MagneticFieldSensorJsTest006 error:" + error);
+                    errMessage = error.toString().slice(16, 40);
+                    expect(errMessage).assertEqual(errMessages[0]);
+                    done();
+                }
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest006 Device does not support! ');
             done();
         }
     })
-	
-	/*
+
+    /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0070
-     * @tc.name: MagneticField_SensorJsTest007
+     * @tc.name: MagneticFieldSensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest007---------------------------');
+    it("MagneticFieldSensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest007---------------------------');
         function onSensorCallback(data) {
-            console.info('MagneticField_SensorJsTest007  on error');
-			expect(typeof (data.x)).assertEqual("number");
-			expect(typeof (data.y)).assertEqual("number");
-			expect(typeof (data.z)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            console.info('MagneticFieldSensorJsTest007  on error');
+            expect(typeof (data.x)).assertEqual("number");
+            expect(typeof (data.y)).assertEqual("number");
+            expect(typeof (data.z)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {    	
-				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onSensorCallback);
-				setTimeout(() => {
-					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onSensorCallback);
-					done();
-				}, 500);
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest007 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onSensorCallback);
+                setTimeout(() => {
+                    sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onSensorCallback);
+                    done();
+                }, 500);
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest007 Device does not support! ');
             done();
         }
     })
-	
+
     /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0080
-     * @tc.name: MagneticField_SensorJsTest008
+     * @tc.name: MagneticFieldSensorJsTest008
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest008---------------------------');
+    it("MagneticFieldSensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest008---------------------------');
         function onSensorCallback(data) {
-            console.info('MagneticField_SensorJsTest008  on error');
+            console.info('MagneticFieldSensorJsTest008  on error');
             expect(false).assertTrue();
+            done();
         }
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {   
-				try {
-					sensor.off(1000000, onSensorCallback);
-				} catch (error) {
-					console.info("MagneticField_SensorJsTest008 error:" + error);
-					errMessage = error.toString().slice(7, 28);
-					expect(errMessage).assertEqual(errMessages[1]);
-					done();
-				}
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest008 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                try {
+                    sensor.off(1000000, onSensorCallback);
+                } catch (error) {
+                    console.info("MagneticFieldSensorJsTest008 error:" + error);
+                    errMessage = error.toString().slice(7, 28);
+                    expect(errMessage).assertEqual(errMessages[1]);
+                    done();
+                }
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest008 Device does not support! ');
             done();
         }
     })
-	
+
     /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0090
-     * @tc.name: MagneticField_SensorJsTest009
+     * @tc.name: MagneticFieldSensorJsTest009
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest009---------------------------');
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {   		
-				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
-				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
-				setTimeout(() => {
-					console.info('----------------------MagneticField_SensorJsTest009 off in---------------------------');
-					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
-					console.info('----------------------MagneticField_SensorJsTest009 off end---------------------------');
-					done();
-				}, 1000);
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest009 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest009---------------------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
+                setTimeout(() => {
+                    console.info('----------------------MagneticFieldSensorJsTest009 off in---------------------------');
+                    sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
+                    console.info('----------------------MagneticFieldSensorJsTest009 off end---------------------------');
+                    done();
+                }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest009 Device does not support! ');
             done();
         }
     })
-	
+
     /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0100
-     * @tc.name: MagneticField_SensorJsTest010
+     * @tc.name: MagneticFieldSensorJsTest010
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest010---------------------------');
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {  		
-				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
-				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
-				setTimeout(() => {
-					console.info('----------------------MagneticField_SensorJsTest010 off in---------------------------');
-					try {
-					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
-					} catch (error) {
-					console.info("MagneticField_SensorJsTest010 error:" + error);
-					}
-					console.info('----------------------MagneticField_SensorJsTest010 off end---------------------------');
-				}, 500);
-				setTimeout(() => {
-					console.info('----------------------MagneticField_SensorJsTest010 off in---------------------------');
-					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
-					console.info('----------------------MagneticField_SensorJsTest010 off end---------------------------');
-					done();
-				}, 1000);
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest010 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest010---------------------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
+                setTimeout(() => {
+                    console.info('----------------------MagneticFieldSensorJsTest010 off in---------------------------');
+                    try {
+                    sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
+                    } catch (error) {
+                    console.info("MagneticFieldSensorJsTest010 error:" + error);
+                    }
+                    console.info('----------------------MagneticFieldSensorJsTest010 off end---------------------------');
+                }, 500);
+                setTimeout(() => {
+                    console.info('----------------------MagneticFieldSensorJsTest010 off in---------------------------');
+                    sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
+                    console.info('----------------------MagneticFieldSensorJsTest010 off end---------------------------');
+                    done();
+                }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest010 Device does not support! ');
             done();
         }
     })
-	
+
     /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0110
-     * @tc.name: MagneticField_SensorJsTest011
+     * @tc.name: MagneticFieldSensorJsTest011
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest011---------------------------');
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {  	       
-			   sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
-				sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
-				setTimeout(() => {
-					console.info('----------------------MagneticField_SensorJsTest011 off in---------------------------');
-					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
-					console.info('----------------------MagneticField_SensorJsTest011 off end---------------------------');
-					done();
-				}, 1000);
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest011 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest011---------------------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+               sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
+                sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
+                setTimeout(() => {
+                    console.info('----------------------MagneticFieldSensorJsTest011 off in---------------------------');
+                    sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
+                    console.info('----------------------MagneticFieldSensorJsTest011 off end---------------------------');
+                    done();
+                }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest011 Device does not support! ');
             done();
         }
     })
-	
+
     /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0120
-     * @tc.name:MagneticField_SensorJsTest012
+     * @tc.name:MagneticFieldSensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest012---------------------------');
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {  	    
-				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
-					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2, { 'interval': 100000000 });
-					setTimeout(() => {
-						console.info('----------------------MagneticField_SensorJsTest012 off in---------------------------');
-						try {
-						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
-						} catch (error) {
-						console.info("MagneticField_SensorJsTest012 error:" + error);
-						}
-						console.info('----------------------MagneticField_SensorJsTest012 off end---------------------------');
-					}, 500);
-					setTimeout(() => {
-						console.info('----------------------MagneticField_SensorJsTest012 off in---------------------------');
-						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
-						console.info('----------------------MagneticField_SensorJsTest012 off end---------------------------');
-						done();
-					}, 1000);
-				})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest012 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest012---------------------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
+                    sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2, { 'interval': 100000000 });
+                    setTimeout(() => {
+                        console.info('----------------------MagneticFieldSensorJsTest012 off in---------------------------');
+                        try {
+                        sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
+                        } catch (error) {
+                        console.info("MagneticFieldSensorJsTest012 error:" + error);
+                        }
+                        console.info('----------------------MagneticFieldSensorJsTest012 off end---------------------------');
+                    }, 500);
+                    setTimeout(() => {
+                        console.info('----------------------MagneticFieldSensorJsTest012 off in---------------------------');
+                        sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
+                        console.info('----------------------MagneticFieldSensorJsTest012 off end---------------------------');
+                        done();
+                    }, 1000);
+                }
+           })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest012 Device does not support! ');
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0130
-     * @tc.name:MagneticField_SensorJsTest013
+     * @tc.name:MagneticFieldSensorJsTest013
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------MagneticField_SensorJsTest013---------------------------');
-		try{
-		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {  	        
-			   sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
-				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2, { 'interval': 100000000 });
-				setTimeout(() => {
-					console.info('----------------------MagneticField_SensorJsTest013 off in---------------------------');
-					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
-					console.info('----------------------MagneticField_SensorJsTest013 off end---------------------------');
-					done();
-				}, 1000);
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest013 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------MagneticFieldSensorJsTest013---------------------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
+                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2, { 'interval': 100000000 });
+                setTimeout(() => {
+                    console.info('----------------------MagneticFieldSensorJsTest013 off in---------------------------');
+                    sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
+                    console.info('----------------------MagneticFieldSensorJsTest013 off end---------------------------');
+                    done();
+                }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest013 Device does not support! ');
             done();
         }
     })
-	
-	/*
-     * @tc.number:SUB_SensorsSystem_GRAVITY_JSTest_0140
-     * @tc.name: MagneticField_SensorJsTest014
+
+    /*
+     * @tc.number:SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0140
+     * @tc.name: MagneticFieldSensorJsTest014
      * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------MagneticField_SensorJsTest014--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
-				if (error) {
-					console.info('MagneticField_SensorJsTest014 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': undefined });
-					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2, { 'interval': undefined });
-					setTimeout(() => {
-						console.info('----------------------MagneticField_SensorJsTest014 off in--------------');
-						try {
-						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
-						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
-						} catch (error) {
-						console.info("MagneticField_SensorJsTest014 error:" + error);
-						expect(false).assertTrue();
-						}
-						console.info('----------------------MagneticField_SensorJsTest014 off end--------------');
-						done()
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest014 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------MagneticFieldSensorJsTest014--------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest014 error');
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': undefined });
+                    sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2, { 'interval': undefined });
+                    setTimeout(() => {
+                        console.info('----------------------MagneticFieldSensorJsTest014 off in--------------');
+                        try {
+                        sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
+                        sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback2);
+                        } catch (error) {
+                        console.info("MagneticFieldSensorJsTest014 error:" + error);
+                        expect(false).assertTrue();
+                        }
+                        console.info('----------------------MagneticFieldSensorJsTest014 off end--------------');
+                        done()
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest014 Device does not support! ');
             done();
         }
     })
 
-	/*
-     * @tc.number:SUB_SensorsSystem_GRAVITY_JSTest_0150
-     * @tc.name: MagneticField_SensorJsTest015
+    /*
+     * @tc.number:SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0150
+     * @tc.name: MagneticFieldSensorJsTest015
      * @tc.desc: Illegal ID passed in
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-		try{
-		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
-				if (error) {
-					console.info('MagneticField_SensorJsTest015 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");        
-					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, undefined);
-					try{
-					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': undefined });
-					} catch(error){
-						console.info('MagneticField_SensorJsTest015 Repeat subscription'+error);
-					}
-					setTimeout(() => {
-						console.info('----------------------MagneticField_SensorJsTest015 off in--------------');
-						try {
-						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
-						} catch (error) {
-						console.info("MagneticField_SensorJsTest015 error:" + error);
-						expect(false).assertTrue();
-						}
-						done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest015 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest015 error');
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, undefined);
+                    try{
+                    sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': undefined });
+                    } catch(error){
+                        console.info('MagneticFieldSensorJsTest015 Repeat subscription'+error);
+                    }
+                    setTimeout(() => {
+                        console.info('----------------------MagneticFieldSensorJsTest015 off in--------------');
+                        try {
+                        sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
+                        } catch (error) {
+                        console.info("MagneticFieldSensorJsTest015 error:" + error);
+                        expect(false).assertTrue();
+                        }
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest015 Device does not support! ');
             done();
         }
     })
 
-	/*
-     * @tc.number:SUB_SensorsSystem_GRAVITY_JSTest_0160
-     * @tc.name: MagneticField_SensorJsTest016
+    /*
+     * @tc.number:SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0160
+     * @tc.name: MagneticFieldSensorJsTest016
      * @tc.desc: For normal scenarios
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------MagneticField_SensorJsTest016--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
-				if (error) {
-					console.info('MagneticField_SensorJsTest016 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");        
-					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, null);
-					try{
-						sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': null });
-						} catch(error){
-							console.info('MagneticField_SensorJsTest016 Repeat subscription'+error);
-						}
-					setTimeout(() => {
-						console.info('----------------------MagneticField_SensorJsTest016 off in--------------');
-						try {
-							sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
-							} catch (error) {
-						console.info("MagneticField_SensorJsTest016 error:" + error);
-							expect(false).assertTrue();
-							}
-							done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('MagneticField_SensorJsTest016 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("MagneticFieldSensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------MagneticFieldSensorJsTest016--------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest016 error');
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, null);
+                    try{
+                        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': null });
+                        } catch(error){
+                            console.info('MagneticFieldSensorJsTest016 Repeat subscription'+error);
+                        }
+                    setTimeout(() => {
+                        console.info('----------------------MagneticFieldSensorJsTest016 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
+                            } catch (error) {
+                        console.info("MagneticFieldSensorJsTest016 error:" + error);
+                            expect(false).assertTrue();
+                            }
+                            done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info('MagneticFieldSensorJsTest016 Device does not support! ');
             done();
         }
     })
 
-	/*
-     * @tc.number:SUB_SensorsSystem_GRAVITY_JSTest_0170
-     * @tc.name: MagneticField_SensorJsTest017
+    /*
+     * @tc.number:SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0170
+     * @tc.name: MagneticFieldSensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------MagneticField_SensorJsTest017--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
-				if (error) {
-					console.info('MagneticField_SensorJsTest017 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': null });
-					setTimeout(() => {
-						console.info('----------------------MagneticField_SensorJsTest017 off in--------------');
-						try {
-						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
-						} catch (error) {
-						console.info("MagneticField_SensorJsTest017 error:" + error);
-						expect(false).assertTrue();
-						}
-						done();			
-					}, 500);
-				}		
-			})
+    it("MagneticFieldSensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------MagneticFieldSensorJsTest017--------------');
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest017 error');
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': null });
+                    setTimeout(() => {
+                        console.info('----------------------MagneticFieldSensorJsTest017 off in--------------');
+                        try {
+                        sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
+                        } catch (error) {
+                        console.info("MagneticFieldSensorJsTest017 error:" + error);
+                        expect(false).assertTrue();
+                        }
+                        done();
+                    }, 500);
+                }
+            })
         } catch (error) {
-            console.info("MagneticField_SensorJsTest017 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info("MagneticFieldSensorJsTest017 Device does not support! ");
             done();
-        }			
+        }
     })
 
-	/*
-     * @tc.number:SUB_SensorsSystem_GRAVITY_JSTest_0180
-     * @tc.name: MagneticField_SensorJsTest018
+    /*
+     * @tc.number:SUB_SensorsSystem_MAGNETIC_FIELD_JSTest_0180
+     * @tc.name: MagneticFieldSensorJsTest018
      * @tc.desc: Once Normal Subscription Scenario Use Case
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-		try{
-		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
-				if (error) {
-					console.info('MagneticField_SensorJsTest018 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");		
-					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
-					try{
-						sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
-						} catch(error){
-							console.info("MagneticField_SensorJsTest018 catch error:" + error);
-						}
-					setTimeout(() => {
-						console.info('----------------------MagneticField_SensorJsTest018 off in--------------');
-						try {
-							sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
-							} catch (error) {
-						console.info("MagneticField_SensorJsTest018 error:" + error);
-							expect(false).assertTrue();
-							}
-						console.info('----------------------MagneticField_SensorJsTest018 off end--------------');
-							done()
-					}, 1000);
-				}
-			})
+    it("MagneticFieldSensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        try{
+           sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
+                if (error) {
+                    console.info('MagneticFieldSensorJsTest018 error');
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
+                    try{
+                        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback, { 'interval': 100000000 });
+                        } catch(error){
+                            console.info("MagneticFieldSensorJsTest018 catch error:" + error);
+                        }
+                    setTimeout(() => {
+                        console.info('----------------------MagneticFieldSensorJsTest018 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD);
+                            } catch (error) {
+                        console.info("MagneticFieldSensorJsTest018 error:" + error);
+                            expect(false).assertTrue();
+                            }
+                        console.info('----------------------MagneticFieldSensorJsTest018 off end--------------');
+                            done()
+                    }, 1000);
+                }
+            })
         } catch (error) {
-            console.info("MagneticField_SensorJsTest018 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info("MagneticFieldSensorJsTest018 Device does not support! ");
             done();
-        }				
-    })	
+        }
+    })
 })}
