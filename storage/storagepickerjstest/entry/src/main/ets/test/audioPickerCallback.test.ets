@@ -20,7 +20,8 @@ import { afterEach, describe, expect, it } from 'deccjsunit/index'
 async function select(testNum: string, done: Function, dirName: string, fileName: string) {
   try {
     let audioPicker = new picker.AudioViewPicker();
-    audioPicker.select((err: picker.AudioSelectOptions, result: AsyncCallback<Array<string>>) => {
+    let audioSelectOptions = new picker.AudioSelectOptions();
+    audioPicker.select(audioSelectOptions, (err, result) => {
       if (err != undefined) {
         console.info(`${testNum}::select fail, err: ${JSON.stringify(err)}`);
         expect(false).assertTrue();
