@@ -45,7 +45,7 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "$comPath/rosen/modules/2d_engine",
     "//third_party/googletest/googletest/include",
   ]
-  enable_text_gine = false
+  enable_text_gine = true
   if (enable_text_gine) {
     include_dirs += [ "$comPath/rosen/modules/2d_engine/rosen_text/export" ]
     defines = [ "USE_GRAPHIC_TEXT_GINE" ]
