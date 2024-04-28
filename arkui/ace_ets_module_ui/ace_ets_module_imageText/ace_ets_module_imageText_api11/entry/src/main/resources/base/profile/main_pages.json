@@ -3,7 +3,6 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/text/stageFont",
         "MainAbility/pages/text/stageMediaquery",
-
         "MainAbility/pages/text/textStyle",
         "MainAbility/pages/text/TextState",
         "MainAbility/pages/marquee/marquee",
@@ -26,21 +25,14 @@
         "MainAbility/pages/ContainerSpan/APITextBackgroundStyle",
         "MainAbility/pages/SymbolGlyph/SXSymbolGlyphSINGLE01",
         "MainAbility/pages/button/buttonControlSize",
-
         "MainAbility/pages/button/getcomponent",
         "MainAbility/pages/button/getcomponentadd",
-
         "MainAbility/pages/RichEditor/RichEditor/RichEditor",
         "MainAbility/pages/text/textObscured",
         "MainAbility/pages/text/textSpanFont",
-
-
         "MainAbility/pages/image/imageObscuredTest",
         "MainAbility/pages/button/stageAnimator",
         "MainAbility/pages/button/ButtonHover",
-
-
-
         "MainAbility/pages/RelativeContainer/RelativeGuideLine",
         "MainAbility/pages/RelativeContainer/RelativeGuideLine2",
         "MainAbility/pages/RelativeContainer/RelativeGuideLine3",
@@ -107,8 +99,8 @@
         "MainAbility/pages/RichEditor/richEditorApi/richEditorApi4",
         "MainAbility/pages/RichEditor/richEditorApi/richEditorApi5",
         "MainAbility/pages/RichEditor/richEditorApi/richEditorApi6",
-         "MainAbility/pages/RichEditor/richEditorApi/richEditorApi7",
-         "MainAbility/pages/RichEditor/richEditorApi/richEditorApi8",
+        "MainAbility/pages/RichEditor/richEditorApi/richEditorApi7",
+        "MainAbility/pages/RichEditor/richEditorApi/richEditorApi8",
         "MainAbility/pages/RichEditor/RichEditor/RichEditor",
         "MainAbility/pages/span/spanApi/spanApi1",
         "MainAbility/pages/SymbolGlyph/symbolGlyphApi/symbolGlyphApi1",
@@ -129,7 +121,6 @@
         "MainAbility/pages/text/TextfieldMulti",
         "MainAbility/pages/text/TextfieldOther",
         "MainAbility/pages/text/TextfieldSingle",
-
         "MainAbility/pages/text/curve",
         "MainAbility/pages/text/backgroundAndSizeSetting",
         "MainAbility/pages/text/border",
@@ -180,14 +171,10 @@
         "MainAbility/pages/text/textTwo",
         "MainAbility/pages/text/textEnabled",
         "MainAbility/pages/text/textChangeEnabled",
-        "MainAbility/pages/DatePicker/datePicker",
         "MainAbility/pages/DatePanel/DatelPanel",
         "MainAbility/pages/Progress/loadingprogress",
         "MainAbility/pages/Progress/ProgressPage",
-        "MainAbility/pages/gauge/gauge",
-        "MainAbility/pages/TextPicker/TextPickerPage",
         "MainAbility/pages/TextTimer/TextTimerPage",
-        "MainAbility/pages/TimePicker/TimePickerPage",
         "MainAbility/pages/Toggle/TogglePage",
         "MainAbility/pages/marquee/marqueeUI",
         "MainAbility/pages/PatternLock/PatternLockPage",
@@ -198,27 +185,27 @@
         "MainAbility/pages/font/fontAdd",
         "MainAbility/pages/RenderNode/RenderFit",
         "MainAbility/pages/image/aboutToRecycleiamge",
-	
-	 "MainAbility/pages/button/focus",
+	"MainAbility/pages/button/focus",
         "MainAbility/pages/image/image55",
         "MainAbility/pages/button/playMode",
         "MainAbility/pages/RichEditor/richText",
-
         "MainAbility/pages/text/textTimer",
         "MainAbility/pages/text/textClock",
         "MainAbility/pages/TextArea/textArea3",
         "MainAbility/pages/TextInput/textInput3",
-        
         "MainAbility/pages/image/ImageApi",
         "MainAbility/pages/text/TextApi/TextStyle2",
         "MainAbility/pages/text/units",
         "MainAbility/pages/text/app",
         "MainAbility/pages/text/color",
         "MainAbility/pages/text/copyOption",
-
         "MainAbility/pages/TextInput/textInput6",
         "MainAbility/pages/TextArea/textArea6",
         "MainAbility/pages/text/text6",
+        "MainAbility/pages/Progress/progress3",
+        "MainAbility/pages/button/button3",
+        "MainAbility/pages/span/span3",
+        "MainAbility/pages/text/text3",
 	"MainAbility/pages/ImageAnimator/imageAnimator2",
         "MainAbility/pages/Progress/loadingProgress2"
     ]

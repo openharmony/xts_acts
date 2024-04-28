@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +18,7 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct VisibilityExample {
-  @State visibility: Visibility = Visibility.Visible;
+  @State _visibility: Visibility = Visibility.Visible;
 
   onPageShow() {
     let hiddenChangeEvent: events_emitter.InnerEvent = {
@@ -45,8 +44,8 @@ struct VisibilityExample {
     console.info("[hiddenChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[hiddenChangCallBack] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.visibility != null) {
-        this.visibility = eventData.data.visibility;
+      if (eventData.data?.visibility != null) {
+        this._visibility = eventData.data.visibility;
       }
     }
   }
@@ -54,8 +53,8 @@ struct VisibilityExample {
     console.info("[noneChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[noneChangCallBack] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.visibility != null) {
-        this.visibility = eventData.data.visibility;
+      if (eventData.data?.visibility != null) {
+        this._visibility = eventData.data.visibility;
       }
     }
   }
@@ -68,7 +67,7 @@ struct VisibilityExample {
           .width('90%')
           .fontColor(0xCCCCCC)
         Row()
-          .visibility(this.visibility)
+          .visibility(this._visibility)
           .width('90%')
           .height(80)
           .backgroundColor(0xAFEEEE)

@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct Column_WidthHeight_ChangeParent {
   @State testHeight: number = 150
   @State testWidth: number = 450
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager()
   private content: string = "Column_WidthHeight_ChangeParent Page"
   
   onPageShow() {
@@ -27,7 +27,7 @@ struct Column_WidthHeight_ChangeParent {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'height') {
         this.testHeight = message.value;

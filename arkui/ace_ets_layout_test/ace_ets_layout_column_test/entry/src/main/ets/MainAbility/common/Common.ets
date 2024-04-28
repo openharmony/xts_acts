@@ -23,7 +23,7 @@ export default class CommonFunc {
   static rect_value: RectValue;
 
   static sleep(time: number) {
-    return new Promise((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
       setTimeout(() => {
         resolve("ok")
       }, time)

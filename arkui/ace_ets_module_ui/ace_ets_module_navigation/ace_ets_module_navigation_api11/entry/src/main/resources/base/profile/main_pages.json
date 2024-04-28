@@ -82,15 +82,15 @@
         "MainAbility/pages/SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue2",
         "MainAbility/pages/SideBarContainer/SideBarContainerType/SideBarContainerType_DefaultValue3",
         "MainAbility/pages/SideBarContainer/SideBarContainerDivider/SideBarContainerDivider",
-	
-	    "MainAbility/pages/SideBarContainer/sideBar",
-
+	"MainAbility/pages/Navigator/transition",
+        "MainAbility/pages/Navigator/sharedTransition",
+        "MainAbility/pages/Navigator/sharedTransition2",
+	"MainAbility/pages/SideBarContainer/sideBar",
         "MainAbility/pages/Navigation/navigationType",
         "MainAbility/pages/Navigation/NavigationApiFirst",
         "MainAbility/pages/SideBarContainer/sidebar2",
         "MainAbility/pages/stepper/stepperItem",
         "MainAbility/pages/Navigation/NavigationApiOther",
-
         "MainAbility/pages/Navigation/navigator2",
         "MainAbility/pages/pageRoute/pageRoute",
         "MainAbility/pages/pageRoute/router",

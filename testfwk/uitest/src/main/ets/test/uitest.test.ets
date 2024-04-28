@@ -1437,7 +1437,7 @@ export default function UiTest() {
             let bounds1 = await image1.getBounds()
             let left = bounds1.left
             let right = bounds1.right
-            let centerY = (bounds1.top + bounds1.bottom) / 2
+            let centerY = Math.floor((bounds1.top + bounds1.bottom) / 2)
             let pointer = PointerMatrix.create(2,11)
             await driver.delayMs(300)
             for (let step = 0; step < 11; step++) {

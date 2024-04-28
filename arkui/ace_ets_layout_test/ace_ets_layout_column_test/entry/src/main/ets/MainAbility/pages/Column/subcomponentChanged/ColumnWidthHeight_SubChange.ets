@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../common/MessageManager';
+import { MessageManager, Callback, Message }from '../../../common/MessageManager';
 @Entry
 @Component
 struct ColumnSetWidthHeightTest {
   @State testHeight: number = 50
   @State testWidth: number = 300
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager()
   private content: string = "ColumnWidthHeight Page";
   onPageShow() {
     console.info('ColumnWidthHeight onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'height') {
         this.testHeight = message.value;

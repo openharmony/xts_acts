@@ -27,7 +27,6 @@ struct LessModel1 {
     float input0Value[3] = {1, 2, 3};
     float input1Value[3] = {3, 2, 1};
     bool outputValue[3] = {0};
-    bool expectValue[3] = {true, false, false};
 
     OHNNOperandTest input0 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(float)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input1Value, 3*sizeof(float)};
@@ -45,7 +44,6 @@ struct LessModel2 {
     float input0Value[3] = {1, 2, 3};
     float input1Value[3][1] = {{3}, {2}, {1}};
     bool outputValue[3] = {0};
-    bool expectValue[3] = {true, false, false};
 
     OHNNOperandTest input0 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(float)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, input1_shape, input1Value, 3*sizeof(float)};
@@ -79,7 +77,6 @@ struct LessModel4 {
     float* input0Value = {};
     float* input1Value = {};
     bool* outputValue = {};
-    bool* expectValue = {};
 
     OHNNOperandTest input0 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input0Value, 0*sizeof(float)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input1Value, 0*sizeof(float)};
@@ -333,7 +330,6 @@ HWTEST_F(LessTest, SUB_AI_NNRt_Func_North_Less_Model_SetOperandValue_01, Functio
     LessModel1 lessModel;
     OHNNGraphArgs graphArgs = lessModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -344,7 +340,7 @@ HWTEST_F(LessTest, SUB_AI_NNRt_Func_North_Less_Model_SetOperandValue_01, Functio
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -370,7 +366,6 @@ HWTEST_F(LessTest, SUB_AI_NNRt_Func_North_Less_Model_SetOperandValue_02, Functio
     LessModel1 lessModel;
     OHNNGraphArgs graphArgs = lessModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -381,7 +376,7 @@ HWTEST_F(LessTest, SUB_AI_NNRt_Func_North_Less_Model_SetOperandValue_02, Functio
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -406,7 +401,6 @@ HWTEST_F(LessTest, SUB_AI_NNRt_Func_North_Less_Model_SetOperandValue_03, Functio
     LessModel1 lessModel;
     OHNNGraphArgs graphArgs = lessModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -417,7 +411,7 @@ HWTEST_F(LessTest, SUB_AI_NNRt_Func_North_Less_Model_SetOperandValue_03, Functio
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

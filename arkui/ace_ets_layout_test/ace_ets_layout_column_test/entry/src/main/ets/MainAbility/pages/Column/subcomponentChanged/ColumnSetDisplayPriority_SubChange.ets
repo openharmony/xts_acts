@@ -12,21 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 @Entry
 @Component
 struct ColumnSetDisplayPriorityTest {
   @State testDisplayPriority1: number = 0
   @State testDisplayPriority2: number = 0
   @State testDisplayPriority3: number = 0
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager()
   private content: string = "SetDisplayPriority Page";
   onPageShow() {
     console.info('SetDisplayPriority onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'testpriority1') {
         this.testDisplayPriority1 = message.value;

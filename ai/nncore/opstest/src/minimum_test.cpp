@@ -27,7 +27,6 @@ struct MinimumModel1 {
     float input0Value[3] = {1, 3, 5};
     float input1Value[3] = {2, 2, 4};
     float outputValue[3] = {0};
-    float expectValue[3] = {1, 2, 4};
 
     OHNNOperandTest input0 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(float)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input1Value, 3*sizeof(float)};
@@ -44,7 +43,6 @@ struct MinimumModel2 {
     bool input0Value[3] = {true, false, true};
     bool input1Value[1] = {false};
     bool outputValue[3] = {false};
-    bool expectValue[3] = {false, false, false};
 
     OHNNOperandTest input0 = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(bool)};
     OHNNOperandTest input1 = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, input1Value, sizeof(bool)};
@@ -285,7 +283,6 @@ HWTEST_F(MinimumTest, SUB_AI_NNRt_Func_North_Minimum_Model_SetOperandValue_01, F
     MinimumModel1 minimumModel;
     OHNNGraphArgs graphArgs = minimumModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -296,7 +293,7 @@ HWTEST_F(MinimumTest, SUB_AI_NNRt_Func_North_Minimum_Model_SetOperandValue_01, F
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -322,7 +319,6 @@ HWTEST_F(MinimumTest, SUB_AI_NNRt_Func_North_Minimum_Model_SetOperandValue_02, F
     MinimumModel1 minimumModel;
     OHNNGraphArgs graphArgs = minimumModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -333,7 +329,7 @@ HWTEST_F(MinimumTest, SUB_AI_NNRt_Func_North_Minimum_Model_SetOperandValue_02, F
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -358,7 +354,6 @@ HWTEST_F(MinimumTest, SUB_AI_NNRt_Func_North_Minimum_Model_SetOperandValue_03, F
     MinimumModel1 minimumModel;
     OHNNGraphArgs graphArgs = minimumModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -369,7 +364,7 @@ HWTEST_F(MinimumTest, SUB_AI_NNRt_Func_North_Minimum_Model_SetOperandValue_03, F
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

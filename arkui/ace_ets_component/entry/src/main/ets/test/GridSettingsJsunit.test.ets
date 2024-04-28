@@ -82,7 +82,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings002] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings002] change component data error: " + err.message);
+        console.log("[testGridSettings002] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('gridRow');
@@ -120,7 +120,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings003] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings003] change component data error: " + err.message);
+        console.log("[testGridSettings003] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridRow');
@@ -148,7 +148,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings004] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings004] change component data error: " + err.message);
+        console.log("[testGridSettings004] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridRow');
@@ -176,7 +176,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings005] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings005] change component data error: " + err.message);
+        console.log("[testGridSettings005] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridRow');
@@ -214,7 +214,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings007] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings007] change component data error: " + err.message);
+        console.log("[testGridSettings007] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridOffset');
@@ -240,7 +240,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings008] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings008] change component data error: " + err.message);
+        console.log("[testGridSettings008] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridOffset');
@@ -266,7 +266,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings009] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings009] change component data error: " + err.message);
+        console.log("[testGridSettings009] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridOffset');
@@ -292,7 +292,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings010] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings010] change component data error: " + err.message);
+        console.log("[testGridSettings010] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridOffset');
@@ -327,7 +327,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings012] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings012] change component data error: " + err.message);
+        console.log("[testGridSettings012] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridSpan');
@@ -352,7 +352,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings013] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings013] change component data error: " + err.message);
+        console.log("[testGridSettings013] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridSpan');
@@ -377,7 +377,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings014] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings014] change component data error: " + err.message);
+        console.log("[testGridSettings014] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridSpan');
@@ -402,7 +402,7 @@ export default function gridSettingsJsunit() {
         console.info("[testGridSettings015] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testGridSettings015] change component data error: " + err.message);
+        console.log("[testGridSettings015] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridSpan');

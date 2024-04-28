@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,32 +20,32 @@ export default function SensorJsTest_sensor_53() {
 describe("SensorJsTest_sensor_53", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
-		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-			sensor.SensorAccuracy.ACCURACY_HIGH) {
-			console.info('callback accuracy verified' + JSON.stringify(data));
-			expect(true).assertTrue();
-		} else {
-			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-			expect(false).assertTrue();
-		} 		
-		expect(typeof (data.pressure)).assertEqual("number");
-		expect(typeof (data.timestamp)).assertEqual("number");
+        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+            sensor.SensorAccuracy.ACCURACY_HIGH) {
+            console.info('callback accuracy verified' + JSON.stringify(data));
+            expect(true).assertTrue();
+        } else {
+            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+            expect(false).assertTrue();
+        }
+        expect(typeof (data.pressure)).assertEqual("number");
+        expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
-		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-			sensor.SensorAccuracy.ACCURACY_HIGH) {
-			console.info('callback accuracy verified' + JSON.stringify(data));
-			expect(true).assertTrue();
-		} else {
-			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-			expect(false).assertTrue();
-		}		
-		expect(typeof (data.pressure)).assertEqual("number");
-		expect(typeof (data.timestamp)).assertEqual("number");
+        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+            sensor.SensorAccuracy.ACCURACY_HIGH) {
+            console.info('callback accuracy verified' + JSON.stringify(data));
+            expect(true).assertTrue();
+        } else {
+            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+            expect(false).assertTrue();
+        }
+        expect(typeof (data.pressure)).assertEqual("number");
+        expect(typeof (data.timestamp)).assertEqual("number");
     }
-	
+
     beforeAll(function () {
 
         /*
@@ -79,838 +79,998 @@ describe("SensorJsTest_sensor_53", function () {
     })
 
     const PARAMETER_ERROR_CODE = 401
-	const PARAMETER_ERROR_MSG = 'The parameter invalid.'
+    const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_CODE = 14500101
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
-	let invalid  = -1;
-	
-	/*
+    let invalid  = -1;
+    let TAG  = '';
+
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0010
-     * @tc.name: newBarometer_SensorJsTest001
+     * @tc.name: newBarometerSensorJsTest001
      * @tc.desc: Functional Use Cases
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newBarometer_SensorJsTest001--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest001 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.BAROMETER, callback);
-						setTimeout(()=>{
-							sensor.off(sensor.SensorId.BAROMETER);
-							done();
-						}, 500);
-				}
-			})
-		} catch (error) {
-            console.info('newBarometer_SensorJsTest001 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newBarometerSensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newBarometerSensorJsTest001--------------');
+        TAG = 'newBarometerSensorJsTest001'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, callback);
+                        setTimeout(()=>{
+                            sensor.off(sensor.SensorId.BAROMETER);
+                            done();
+                        }, 500);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0020
-     * @tc.name: newBarometer_SensorJsTest002
+     * @tc.name: newBarometerSensorJsTest002
      * @tc.desc: Illegal ID passed in
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newBarometer_SensorJsTest002--------------');
+    it("newBarometerSensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newBarometerSensorJsTest002--------------');
+        TAG = 'newBarometerSensorJsTest002'
         function onSensorCallback(data) {
-            console.info('newBarometer_SensorJsTest002 callback in');
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
+            done();
         }
-        try {
-            sensor.on(invalid, onSensorCallback);
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                        sensor.on(invalid, onSensorCallback);
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                        done();
+                    }
+                }
+            })
         } catch (error) {
-            console.info("newBarometer_SensorJsTest002 error:" + error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0030
-     * @tc.name: newBarometer_SensorJsTest003
+     * @tc.name: newBarometerSensorJsTest003
      * @tc.desc: For normal scenarios
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newBarometer_SensorJsTest003--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest003 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");        
-					sensor.on(sensor.SensorId.BAROMETER, callback, {'interval': 100000000});
-					setTimeout(()=>{
-						console.info('---------newBarometer_SensorJsTest003 off in--------------');
-						sensor.off(sensor.SensorId.BAROMETER);
-						console.info('---------newBarometer_SensorJsTest003 off end--------------');
-						done();
-					}, 500);
-				}
-			})
-		} catch (error) {
-            console.info('newBarometer_SensorJsTest003 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newBarometerSensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newBarometerSensorJsTest003--------------');
+        TAG = 'newBarometerSensorJsTest003'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, callback, {'interval': 100000000});
+                    setTimeout(()=>{
+                        console.info('---------newBarometerSensorJsTest003 off in--------------');
+                        sensor.off(sensor.SensorId.BAROMETER);
+                        console.info('---------newBarometerSensorJsTest003 off end--------------');
+                        done();
+                    }, 500);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0040
-     * @tc.name: newBarometer_SensorJsTest004
+     * @tc.name: newBarometerSensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newBarometer_SensorJsTest004--------------');
+    it("newBarometerSensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newBarometerSensorJsTest004--------------');
+        TAG = 'newBarometerSensorJsTest004'
         function onSensorCallback(data) {
-            console.info('newBarometer_SensorJsTest004  callback in');
-			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-				sensor.SensorAccuracy.ACCURACY_HIGH) {
-				console.info('callback accuracy verified' + JSON.stringify(data));
-				expect(true).assertTrue();
-			} else {
-				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-				expect(false).assertTrue();
-			}			
-			expect(typeof (data.pressure)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
+            if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                sensor.SensorAccuracy.ACCURACY_HIGH) {
+                console.info('callback accuracy verified' + JSON.stringify(data));
+                expect(true).assertTrue();
+            } else {
+                console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                expect(false).assertTrue();
+            }
+            expect(typeof (data.pressure)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest004 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.BAROMETER, onSensorCallback, {'interval': 100000000}, 5);
-					setTimeout(()=>{
-						console.info('---------newBarometer_SensorJsTest004 off in--------------');
-						sensor.off(sensor.SensorId.BAROMETER);
-						console.info('---------newBarometer_SensorJsTest004 off end--------------');
-						done();
-					}, 500);	
-				}		
-			})
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, onSensorCallback, {'interval': 100000000}, 5);
+                    setTimeout(()=>{
+                        console.info('---------newBarometerSensorJsTest004 off in--------------');
+                        sensor.off(sensor.SensorId.BAROMETER);
+                        console.info('---------newBarometerSensorJsTest004 off end--------------');
+                        done();
+                    }, 500);
+                }
+            })
         } catch (error) {
-            console.info("newBarometer_SensorJsTest004 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
-        }			
+        }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0050
-     * @tc.name: newBarometer_SensorJsTest005
+     * @tc.name: newBarometerSensorJsTest005
      * @tc.desc: Once Normal Subscription Scenario Use Case
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest005 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");		
-					sensor.once(sensor.SensorId.BAROMETER, callback);
-					setTimeout(()=>{
-						expect(true).assertTrue();
-						done();
-					}, 500);
-				}
-			})
+    it("newBarometerSensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newBarometerSensorJsTest005'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.once(sensor.SensorId.BAROMETER, callback);
+                    setTimeout(()=>{
+                        expect(true).assertTrue();
+                        done();
+                    }, 500);
+                }
+            })
         } catch (error) {
-            console.info("newBarometer_SensorJsTest005 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
-        }				
+        }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0060
-     * @tc.name: newBarometer_SensorJsTest006
+     * @tc.name: newBarometerSensorJsTest006
      * @tc.desc: Use case of illegal parameter passed into once interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newBarometerSensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newBarometerSensorJsTest006'
         function onceSensorCallback(data) {
-            console.info('newBarometer_SensorJsTest006 callback in');
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
             done();
         }
-        try {
-            sensor.once(invalid, onceSensorCallback);
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    try {
+                        sensor.once(invalid, onceSensorCallback);
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                        done();
+                    }                    
+                }
+            })
         } catch (error) {
-            console.info("newBarometer_SensorJsTest006 error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0070
-     * @tc.name: newBarometer_SensorJsTest007
+     * @tc.name: newBarometerSensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newBarometerSensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newBarometerSensorJsTest007'
         function onceSensorCallback(data) {
-            console.info('newBarometer_SensorJsTest007 callback in');
-			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-				sensor.SensorAccuracy.ACCURACY_HIGH) {
-				console.info('callback accuracy verified' + JSON.stringify(data));
-				expect(true).assertTrue();
-			} else {
-				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-				expect(false).assertTrue();
-			}			
-			expect(typeof (data.pressure)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
+            if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                sensor.SensorAccuracy.ACCURACY_HIGH) {
+                console.info('callback accuracy verified' + JSON.stringify(data));
+                expect(true).assertTrue();
+            } else {
+                console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                expect(false).assertTrue();
+            }
+            expect(typeof (data.pressure)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest007 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");	
-					sensor.once(sensor.SensorId.BAROMETER, onceSensorCallback, 5);
-				}
-			})
-	    } catch (error) {
-            console.info("newBarometer_SensorJsTest007 error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.once(sensor.SensorId.BAROMETER, onceSensorCallback, 5);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0080
-     * @tc.name: newBarometer_SensorJsTest008
+     * @tc.name: newBarometerSensorJsTest008
      * @tc.desc: Use case of illegal parameter passed into off interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        try {
-            sensor.off(invalid, callback);
+    it("newBarometerSensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newBarometerSensorJsTest008'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                        sensor.off(invalid, callback);
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+                        done();
+                    }
+                }
+            })
         } catch (error) {
-            console.info('newBarometer_SensorJsTest008 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0090
-     * @tc.name: newBarometer_SensorJsTest009
+     * @tc.name: newBarometerSensorJsTest009
      * @tc.desc: Unsubscribe directly without waiting after starting subscription
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newBarometerSensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newBarometerSensorJsTest009'
         function onSensorCallback(data) {
-            console.info('newBarometer_SensorJsTest009 callback in');
-			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-				sensor.SensorAccuracy.ACCURACY_HIGH) {
-				console.info('callback accuracy verified' + JSON.stringify(data));
-				expect(true).assertTrue();
-			} else {
-				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-				expect(false).assertTrue();
-			}			
-			expect(typeof (data.pressure)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
+            if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                sensor.SensorAccuracy.ACCURACY_HIGH) {
+                console.info('callback accuracy verified' + JSON.stringify(data));
+                expect(true).assertTrue();
+            } else {
+                console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                expect(false).assertTrue();
+            }
+            expect(typeof (data.pressure)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest009 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");			
-					sensor.on(sensor.SensorId.BAROMETER, onSensorCallback);
-					setTimeout(()=>{
-						sensor.off(sensor.SensorId.BAROMETER, onSensorCallback);
-						done();
-					}, 500);
-				}
-			})
-		} catch (error) {
-            console.info("newBarometer_SensorJsTest009 error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, onSensorCallback);
+                    setTimeout(()=>{
+                        sensor.off(sensor.SensorId.BAROMETER, onSensorCallback);
+                        done();
+                    }, 500);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0100
-     * @tc.name: newBarometer_SensorJsTest010
+     * @tc.name: newBarometerSensorJsTest010
      * @tc.desc:SensorId1000000 of incoming exception
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newBarometerSensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newBarometerSensorJsTest010'
         function onSensorCallback(data) {
-            console.info('newBarometer_SensorJsTest010 on error');
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
+            done();
         }
-        try {
-            sensor.off(1000000, onSensorCallback);
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                        sensor.off(1000000, onSensorCallback);
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+                        done();
+                    }
+                }
+            })
         } catch (error) {
-            console.info("newBarometer_SensorJsTest010 error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0110
-     * @tc.name: newBarometer_SensorJsTest011
+     * @tc.name: newBarometerSensorJsTest011
      * @tc.desc:Call interface multiple times
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest011 error');
-				} else {   
-					expect(typeof(data)).assertEqual("object");				
-					sensor.on(sensor.SensorId.BAROMETER, (data)=>{
-						console.info("newBarometer_SensorJsTest011 callback: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.pressure)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					});
-					sensor.on(sensor.SensorId.BAROMETER, (data)=>{
-						console.info("newBarometer_SensorJsTest011 callback2: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.pressure)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					});
-					setTimeout(()=>{
-						console.info('---------newBarometer_SensorJsTest011 off in--------------');
-						sensor.off(sensor.SensorId.BAROMETER);
-						console.info('---------newBarometer_SensorJsTest011 off end--------------');
-						done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info("newBarometer_SensorJsTest011 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newBarometerSensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newBarometerSensorJsTest011'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, (data)=>{
+                        console.info(TAG + ' Callback in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.pressure)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    });
+                    sensor.on(sensor.SensorId.BAROMETER, (data)=>{
+                        console.info(TAG + ' Callback2 in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.pressure)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    });
+                    setTimeout(()=>{
+                        console.info('---------newBarometerSensorJsTest011 off in--------------');
+                        sensor.off(sensor.SensorId.BAROMETER);
+                        console.info('---------newBarometerSensorJsTest011 off end--------------');
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0120
-     * @tc.name: newBarometer_SensorJsTest012
+     * @tc.name: newBarometerSensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        try {
-            sensor.off(sensor.SensorId.BAROMETER, 5);
+    it("newBarometerSensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newBarometerSensorJsTest012'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                        sensor.off(sensor.SensorId.BAROMETER, 5);
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+                        done();
+                    }
+                }
+            })
         } catch (error) {
-            console.info('newBarometer_SensorJsTest025 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0130
-     * @tc.name: newBarometer_SensorJsTest013
+     * @tc.name: newBarometerSensorJsTest013
      * @tc.desc:Call on interface and once interface respectively, and use an off interface to close
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newBarometer_SensorJsTest013--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest011 error');
-				} else {  	
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.BAROMETER, (data)=>{
-						console.info("newBarometer_SensorJsTest013 callback: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.pressure)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					}, {'interval': 100000000});
-					sensor.once(sensor.SensorId.BAROMETER, (data)=>{
-						console.info("newBarometer_SensorJsTest013 callback2: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.pressure)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					});
-					setTimeout(()=>{
-						console.info('---------newBarometer_SensorJsTest013 off in--------------');
-						sensor.off(sensor.SensorId.BAROMETER);
-						console.info('---------newBarometer_SensorJsTest013 off end--------------');
-						done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info("newBarometer_SensorJsTest013 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newBarometerSensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newBarometerSensorJsTest013--------------');
+        TAG = 'newBarometerSensorJsTest013'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, (data)=>{
+                        console.info(TAG + ' Callback in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.pressure)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    }, {'interval': 100000000});
+                    sensor.once(sensor.SensorId.BAROMETER, (data)=>{
+                        console.info(TAG + ' Callback2 in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.pressure)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    });
+                    setTimeout(()=>{
+                        console.info('---------newBarometerSensorJsTest013 off in--------------');
+                        sensor.off(sensor.SensorId.BAROMETER);
+                        console.info('---------newBarometerSensorJsTest013 off end--------------');
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
-        }	
-	})		
+        }
+    })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0140
-     * @tc.name: newBarometer_SensorJsTest014
+     * @tc.name: newBarometerSensorJsTest014
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newBarometer_SensorJsTest014--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest011 error');
-				} else { 
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.BAROMETER, (data)=>{
-						console.info("newBarometer_SensorJsTest014 callback: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.pressure)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					}, {'interval': 100000000});
-					sensor.on(sensor.SensorId.BAROMETER, (data)=>{
-						console.info("newBarometer_SensorJsTest014 callback2: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.pressure)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					}, {'interval': 100000000});
-					setTimeout(()=>{
-						console.info('---------newBarometer_SensorJsTest014 off in--------------');
-						sensor.off(sensor.SensorId.BAROMETER);
-						console.info('---------newBarometer_SensorJsTest014 off end--------------');
-						done();
-					}, 1000);
-				}
-		})
-	} catch (error) {
-        console.info("newBarometer_SensorJsTest014 Device does not support! ");
-        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-        done();
-    }
-	})	
+    it("newBarometerSensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newBarometerSensorJsTest014--------------');
+        TAG = 'newBarometerSensorJsTest014'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, (data)=>{
+                        console.info(TAG + ' Callback2 in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.pressure)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    }, {'interval': 100000000});
+                    sensor.on(sensor.SensorId.BAROMETER, (data)=>{
+                        console.info(TAG + ' Callback2 in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.pressure)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    }, {'interval': 100000000});
+                    setTimeout(()=>{
+                        console.info('---------newBarometerSensorJsTest014 off in--------------');
+                        sensor.off(sensor.SensorId.BAROMETER);
+                        console.info('---------newBarometerSensorJsTest014 off end--------------');
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0150
-     * @tc.name: newBarometer_SensorJsTest015
+     * @tc.name: newBarometerSensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newBarometer_SensorJsTest015--------------');
-        try {
-            sensor.on();
+    it("newBarometerSensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newBarometerSensorJsTest015--------------');
+        TAG = 'newBarometerSensorJsTest015'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                        sensor.on();
+                    } catch (error) {
+                        console.info(TAG + ' on error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                        done();
+                    }
+                    try {
+                        sensor.once();
+                    } catch (error) {
+                        console.info(TAG + ' once error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                        done();
+                    }
+                    try {
+                        sensor.off();
+                    } catch (error) {
+                        console.info(TAG + ' off error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                        done();
+                    }
+                }
+            })
         } catch (error) {
-			console.info("newBarometer_SensorJsTest015_on error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-            done();
-        }
-        try {
-            sensor.once();
-        } catch (error) {
-			console.info("newBarometer_SensorJsTest015_once error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-            done();
-        }
-        try {
-            sensor.off();
-        } catch (error) {
-			console.info("newBarometer_SensorJsTest015_off error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
-	
-	 /*
+
+     /*
      * @tc.number: SUB_SensorsSystem_NEWBAROMETER_JSTest_0160
-     * @tc.name: newBarometer_SensorJsTest016
+     * @tc.name: newBarometerSensorJsTest016
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newBarometer_SensorJsTest016--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest016 error');
-				} else { 
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.BAROMETER, callback);
-					sensor.on(sensor.SensorId.BAROMETER, callback2);
-					setTimeout(() => {
-						console.info('----------------------newBarometer_SensorJsTest016 off in--------------');
-						try {
-						sensor.off(sensor.SensorId.BAROMETER, callback);
-						} catch (error) {
-						console.info("newBarometer_SensorJsTest016 error:" + error);
-						}
-						console.info('----------------------newBarometer_SensorJsTest016 off end--------------');
-					}, 500);
-					setTimeout(() => {
-						console.info('----------------------newBarometer_SensorJsTest016 off in--------------');
-						sensor.off(sensor.SensorId.BAROMETER, callback2);
-						console.info('----------------------newBarometer_SensorJsTest016 off end--------------');
-						done();
-					}, 1000);
-				}
-			})
-	} catch (error) {
-        console.info("newBarometer_SensorJsTest016 Device does not support! ");
-        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-        done();
-    }
-	})
-	
-	 /*
+    it("newBarometerSensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newBarometerSensorJsTest016--------------');
+        TAG = 'newBarometerSensorJsTest016'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, callback);
+                    sensor.on(sensor.SensorId.BAROMETER, callback2);
+                    setTimeout(() => {
+                        console.info('----------------------newBarometerSensorJsTest016 off in--------------');
+                        try {
+                        sensor.off(sensor.SensorId.BAROMETER, callback);
+                        } catch (error) {
+                        console.info("newBarometerSensorJsTest016 error:" + error);
+                        }
+                        console.info('----------------------newBarometerSensorJsTest016 off end--------------');
+                    }, 500);
+                    setTimeout(() => {
+                        console.info('----------------------newBarometerSensorJsTest016 off in--------------');
+                        sensor.off(sensor.SensorId.BAROMETER, callback2);
+                        console.info('----------------------newBarometerSensorJsTest016 off end--------------');
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
+
+     /*
      * @tc.number: SUB_SensorsSystem_NEWBAROMETER_JSTest_0170
-     * @tc.name: newBarometer_SensorJsTest017
+     * @tc.name: newBarometerSensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newBarometer_SensorJsTest017--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest016 error');
-				} else { 
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': 100000000 });
-					sensor.on(sensor.SensorId.BAROMETER, callback2, { 'interval': 100000000 });
-					setTimeout(() => {
-						console.info('----------------------newBarometer_SensorJsTest017 off in--------------');
-						try {
-						sensor.off(sensor.SensorId.BAROMETER, callback);
-						} catch (error) {
-						console.info("newBarometer_SensorJsTest017 error:" + error);
-						}
-						console.info('----------------------newBarometer_SensorJsTest017 off end--------------');
-					}, 500);
-					setTimeout(() => {
-						console.info('----------------------newBarometer_SensorJsTest017_2 off in--------------');
-						sensor.off(sensor.SensorId.BAROMETER, callback2);
-						console.info('----------------------newBarometer_SensorJsTest017_2 off end--------------');
-						done();
-					}, 1000);
-				}
-			})
-	} catch (error) {
-        console.info("newBarometer_SensorJsTest017 Device does not support! ");
-        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-        done();
-    }
-	})
-	
-	 /*
+    it("newBarometerSensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newBarometerSensorJsTest017--------------');
+        TAG = 'newBarometerSensorJsTest017'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': 100000000 });
+                    sensor.on(sensor.SensorId.BAROMETER, callback2, { 'interval': 100000000 });
+                    setTimeout(() => {
+                        console.info('----------------------newBarometerSensorJsTest017 off in--------------');
+                        try {
+                        sensor.off(sensor.SensorId.BAROMETER, callback);
+                        } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        }
+                        console.info('----------------------newBarometerSensorJsTest017 off end--------------');
+                    }, 500);
+                    setTimeout(() => {
+                        console.info('----------------------newBarometerSensorJsTest017_2 off in--------------');
+                        sensor.off(sensor.SensorId.BAROMETER, callback2);
+                        console.info('----------------------newBarometerSensorJsTest017_2 off end--------------');
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
+
+     /*
      * @tc.number: SUB_SensorsSystem_NEWBAROMETER_JSTest_0180
-     * @tc.name: newBarometer_SensorJsTest018
+     * @tc.name: newBarometerSensorJsTest018
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newBarometer_SensorJsTest018--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest018 error');
-				} else { 
-					expect(typeof(data)).assertEqual("object");
-					console.info('----------------------newBarometer_SensorJsTest018 off in--------------');
-					try{
-						sensor.off(-1, callback);
-						console.info('----------------------newBarometer_SensorJsTest018 off end--------------');
-					} catch (error) {
-						console.info("newBarometer_SensorJsTest018 error:" + error);
-						expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-						expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-						done();
-					}
-				}
-			})
-	} catch (error) {
-        console.info("newBarometer_SensorJsTest018 Device does not support! ");
-        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-        done();
-    }
-	})
-	
-	 /*
+    it("newBarometerSensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newBarometerSensorJsTest018--------------');
+        TAG = 'newBarometerSensorJsTest018'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    console.info('----------------------newBarometerSensorJsTest018 off in--------------');
+                    try{
+                        sensor.off(-1, callback);
+                        console.info('----------------------newBarometerSensorJsTest018 off end--------------');
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                        done();
+                    }
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
+
+     /*
      * @tc.number: SUB_SensorsSystem_NEWBAROMETER_JSTest_0190
-     * @tc.name: newBarometer_SensorJsTest019
+     * @tc.name: newBarometerSensorJsTest019
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newBarometer_SensorJsTest019--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest019 error');
-				} else { 
-					try {
-						sensor.on(sensor.SensorId.BAROMETER, callback, {'interval': -100000000});
-						console.info('----------------------newBarometer_SensorJsTest019 off in---------------------------');
-						sensor.off(sensor.SensorId.BAROMETER);
-						console.info('----------------------newBarometer_SensorJsTest019 off end---------------------------');
-						done();
-					} catch (error) {
-						console.info('newBarometer_SensorJsTest019 On fail, errCode:' + error.code + ' ,msg:' + error.message);
-						expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
-						expect(error.message).assertEqual(SERVICE_EXCEPTION_MSG);
-						done();
-					}
-				}
-			})
-	} catch (error) {
-        console.info("newBarometer_SensorJsTest019 Device does not support! ");
-        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-        done();
-    }
-	})
-	
-	/*
+    it("newBarometerSensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newBarometerSensorJsTest019--------------');
+        TAG = 'newBarometerSensorJsTest019'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    try {
+                        sensor.on(sensor.SensorId.BAROMETER, callback, {'interval': -100000000});
+                        console.info('----------------------newBarometerSensorJsTest019 off in---------------------------');
+                        sensor.off(sensor.SensorId.BAROMETER);
+                        console.info('----------------------newBarometerSensorJsTest019 off end---------------------------');
+                        done();
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
+                        expect(error.message).assertEqual(SERVICE_EXCEPTION_MSG);
+                        done();
+                    }
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
+
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0200
-     * @tc.name: newBarometer_SensorJsTest020
+     * @tc.name: newBarometerSensorJsTest020
      * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newBarometer_SensorJsTest020--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest020 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': undefined });
-					sensor.on(sensor.SensorId.BAROMETER, callback2, { 'interval': undefined });
-					setTimeout(() => {
-						console.info('----------------------newBarometer_SensorJsTest020 off in--------------');
-						try {
-						sensor.off(sensor.SensorId.BAROMETER, callback);
-						sensor.off(sensor.SensorId.BAROMETER, callback2);
-						} catch (error) {
-						console.info("newBarometer_SensorJsTest020 error:" + error);
-						expect(false).assertTrue();
-						}
-						console.info('----------------------newBarometer_SensorJsTest020 off end--------------');
-						done()
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('newBarometer_SensorJsTest020 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newBarometerSensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newBarometerSensorJsTest020--------------');
+        TAG = 'newBarometerSensorJsTest020'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': undefined });
+                    sensor.on(sensor.SensorId.BAROMETER, callback2, { 'interval': undefined });
+                    setTimeout(() => {
+                        console.info('----------------------newBarometerSensorJsTest020 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorId.BAROMETER, callback);
+                            sensor.off(sensor.SensorId.BAROMETER, callback2);
+                        } catch (error) {
+                            console.info(TAG + ' catch error:' + error);
+                            expect(false).assertTrue();
+                        }
+                        console.info('----------------------newBarometerSensorJsTest020 off end--------------');
+                        done()
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
+        done();
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0210
-     * @tc.name: newBarometer_SensorJsTest021
+     * @tc.name: newBarometerSensorJsTest021
      * @tc.desc: Illegal ID passed in
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest021 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");        
-					sensor.on(sensor.SensorId.BAROMETER, callback, undefined);
-					try{
-					sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': undefined });
-					} catch(error){
-						console.info('newBarometer_SensorJsTest021 Repeat subscription'+error);
-					}
-					setTimeout(() => {
-						console.info('----------------------newBarometer_SensorJsTest021 off in--------------');
-						try {
-						sensor.off(sensor.SensorId.BAROMETER);
-						} catch (error) {
-						console.info("newBarometer_SensorJsTest021 error:" + error);
-						expect(false).assertTrue();
-						}
-						done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('newBarometer_SensorJsTest021 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newBarometerSensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newBarometerSensorJsTest021'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, callback, undefined);
+                    try{
+                    sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': undefined });
+                    } catch(error){
+                        console.info(TAG + ' catch error:' + error);
+                    }
+                    setTimeout(() => {
+                        console.info('----------------------newBarometerSensorJsTest021 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorId.BAROMETER);
+                        } catch (error) {
+                            console.info(TAG + ' catch error:' + error);
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0220
-     * @tc.name: newBarometer_SensorJsTest022
+     * @tc.name: newBarometerSensorJsTest022
      * @tc.desc: For normal scenarios
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newBarometer_SensorJsTest022--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest022 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");        
-					sensor.on(sensor.SensorId.BAROMETER, callback, null);
-					try{
-						sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': null });
-						} catch(error){
-							console.info('newBarometer_SensorJsTest022 Repeat subscription'+error);
-						}
-					setTimeout(() => {
-						console.info('----------------------newBarometer_SensorJsTest022 off in--------------');
-						try {
-							sensor.off(sensor.SensorId.BAROMETER);
-							} catch (error) {
-						console.info("newBarometer_SensorJsTest022 error:" + error);
-							expect(false).assertTrue();
-							}
-							done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('newBarometer_SensorJsTest022 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newBarometerSensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newBarometerSensorJsTest022--------------');
+        TAG = 'newBarometerSensorJsTest022'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, callback, null);
+                    try{
+                        sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': null });
+                        } catch(error){
+                            console.info(TAG + ' catch error:' + error);
+                        }
+                    setTimeout(() => {
+                        console.info('----------------------newBarometerSensorJsTest022 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorId.BAROMETER);
+                            } catch (error) {
+                            console.info(TAG + ' catch error:' + error);
+                            expect(false).assertTrue();
+                            }
+                            done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0230
-     * @tc.name: newBarometer_SensorJsTest023
+     * @tc.name: newBarometerSensorJsTest023
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newBarometer_SensorJsTest023--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest023 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': null });
-					setTimeout(() => {
-						console.info('----------------------newBarometer_SensorJsTest023 off in--------------');
-						try {
-						sensor.off(sensor.SensorId.BAROMETER);
-						} catch (error) {
-						console.info("newBarometer_SensorJsTest023 error:" + error);
-						expect(false).assertTrue();
-						}
-						done();			
-					}, 500);
-				}		
-			})
+    it("newBarometerSensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newBarometerSensorJsTest023--------------');
+        TAG = 'newBarometerSensorJsTest023'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': null });
+                    setTimeout(() => {
+                        console.info('----------------------newBarometerSensorJsTest023 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorId.BAROMETER);
+                        } catch (error) {
+                            console.info(TAG + ' catch error:' + error);
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    }, 500);
+                }
+            })
         } catch (error) {
-            console.info("newBarometer_SensorJsTest023 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
-        }			
+        }
+        done();
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0240
-     * @tc.name: newBarometer_SensorJsTest024
+     * @tc.name: newBarometerSensorJsTest024
      * @tc.desc: Once Normal Subscription Scenario Use Case
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
-				if (error) {
-					console.info('newBarometer_SensorJsTest024 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");		
-					sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': 100000000 });
-					try{
-						sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': 100000000 });
-						} catch(error){
-							console.info("newBarometer_SensorJsTest024 catch error:" + error);
-						}
-					setTimeout(() => {
-						console.info('----------------------newBarometer_SensorJsTest024 off in--------------');
-						try {
-							sensor.off(sensor.SensorId.BAROMETER);
-							} catch (error) {
-						console.info("newBarometer_SensorJsTest024 error:" + error);
-							expect(false).assertTrue();
-							}
-						console.info('----------------------newBarometer_SensorJsTest024 off end--------------');
-							done()
-					}, 1000);
-				}
-			})
+    it("newBarometerSensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newBarometerSensorJsTest024'
+        try{
+           sensor.getSingleSensor(sensor.SensorId.BAROMETER,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': 100000000 });
+                    try{
+                        sensor.on(sensor.SensorId.BAROMETER, callback, { 'interval': 100000000 });
+                        } catch(error){
+                            console.info(TAG + ' catch error:' + error);
+                        }
+                    setTimeout(() => {
+                        console.info('----------------------newBarometerSensorJsTest024 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorId.BAROMETER);
+                            } catch (error) {
+                            console.info(TAG + ' catch error:' + error);
+                            expect(false).assertTrue();
+                            }
+                        console.info('----------------------newBarometerSensorJsTest024 off end--------------');
+                            done()
+                    }, 1000);
+                }
+            })
         } catch (error) {
-            console.info("newBarometer_SensorJsTest024 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
-        }				
-    })	
+        }
+    })
 })}

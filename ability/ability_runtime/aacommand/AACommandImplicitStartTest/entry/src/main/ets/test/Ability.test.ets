@@ -46,7 +46,7 @@ export default function aaImplicitStartTest() {
         hilog.info(0x0000, 'aaimplicitstarttest', '%{public}s',
           'beforeEach AACommandImplicitStartTest hilog -r err is: ' + JSON.stringify(err));
       });
-      await sleep(2000);
+      await sleep(800);
     })
     afterEach(() => {})
     afterAll(async () => {

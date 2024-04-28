@@ -58,6 +58,7 @@
     "MainAbility/pages/actionSheet/ActionSheetOptions",
     "MainAbility/pages/Menu/menuEnabled",
     "MainAbility/pages/Menu/MenuItemGroupOptions",
+    "MainAbility/pages/Menu/ResponseRegion",
     "MainAbility/pages/Menu/bindMenuu",
     "MainAbility/pages/Menu/bindPopup"
   ]

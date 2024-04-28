@@ -23,7 +23,7 @@ import arkuiNodeEventTest from './NodeContainerTest/arkuinode/arkuinodeEnvent.te
 import arkuiNodeRenderTest from './NodeContainerTest/arkuinode/arkuinodeRender.test';
 import Image_QRCode_Api from './textTest/Image_QRCode_Api.test';
 import RichEditorApi from './RichEditorTest/RichEditorApi.test';
-import RichEditorApi2 from './RichEditorTest/RichEditorApi2.test';
+import RichEditorApi222 from './RichEditorTest/RichEditorApi222.test';
 import APIgetUIFontConfigJsunit from './fontTest/APIgetUIFontConfigJsunit.test';
 import APITextBackgroundStyleJsunit from './ContainerSpanTest/APITextBackgroundStyleJsunit.test'
 import SXrenderingStrategyJsunit from './RichEditorTest/SXrenderingStrategyJsunit.test';
@@ -62,15 +62,12 @@ import RelativeBarrier7 from './RelativeContainerTest/RelativeBarrier7.test'
 import RelativeBarrier8 from './RelativeContainerTest/RelativeBarrier8.test'
 import RelativeBorder from './RelativeContainerTest/RelativeBorder.test'
 import RelativePadding from './RelativeContainerTest/RelativePadding.test'
-
 import Navigation1 from './RelativeContainerTest/relativeApi11/Navigation1.test'
 import Navigation2 from './RelativeContainerTest/relativeApi11/Navigation2.test'
 import Navigation3 from './RelativeContainerTest/relativeApi11/Navigation3.test'
 import Navigation4 from './RelativeContainerTest/relativeApi11/Navigation4.test'
 import RelativeContainer from './RelativeContainerTest/relativeApi11/RelativeContainer.test'
-
 import relativeCTest from "./RelativeContainerTest/relative/relative.test"
-
 import getClipToFrameJsunit from './RenderNodeTest/RenderNodeTest_001/getClipToFrameJsunit.test'
 import getOpacityJsunit from './RenderNodeTest/RenderNodeTest_001/getOpacityJsunit.test'
 import getSizeJsunit from './RenderNodeTest/RenderNodeTest_001/getSizeJsunit.test'
@@ -84,7 +81,6 @@ import frame from './RenderNodeTest/RenderNodeTest_001/frame.test';
 import getPosition from './RenderNodeTest/RenderNodeTest_001/getPosition.test';
 import pivot from './RenderNodeTest/RenderNodeTest_001/pivot.test';
 import scale from './RenderNodeTest/RenderNodeTest_001/scale.test';
-
 import RenderNodeInvalidateJsSuit from './RenderNodeTest/RenderNodeInvalidateJsSuit.test';
 import RenderNodeDrawJsSuit from './RenderNodeTest/RenderNodeDrawJsSuit.test';
 import RenderNodeShadowElevationJsSuit from './RenderNodeTest/RenderNodeShadowElevation.test';
@@ -92,12 +88,10 @@ import RenderNodeShadowRadiusJsSuit from './RenderNodeTest/RenderNodeShadowRadiu
 import shadowAlphaJsunit from './RenderNodeTest/shadowAlphaJsunit.test';
 import shadowColorJsunit from './RenderNodeTest/shadowColorJsunit.test';
 import shadowOffsetJsunit from './RenderNodeTest/shadowOffsetJsunit.test';
-
 import appendChildTest from './RenderNodeTest/renderNode/appendChild.test';
 import drawContextGetSizeTest from './RenderNodeTest/renderNode/drawContextGetSize.test';
 import keyframeTest from './RenderNodeTest/renderNode/keyframe.test';
 import pixelRoundTest from './RenderNodeTest/renderNode/pixelRoundTest.test'
-
 import richEditorApi1 from './RichEditorTest/richEditorApi/richEditorApi1.test'
 import richEditorApi2 from './RichEditorTest/richEditorApi/richEditorApi2.test'
 import richEditorApi3 from './RichEditorTest/richEditorApi/richEditorApi3.test'
@@ -126,7 +120,6 @@ import richEditorApi6 from './RichEditorTest/richEditorApi/richEditorApi6.test';
 import richEditorApi7 from './RichEditorTest/richEditorApi/richEditorApi7.test';
 import richEditorApi8 from './RichEditorTest/richEditorApi/richEditorApi8.test';
 import search from './SearchTest/SearchTest.test';
-
 import CurveTest from './textTest/CurveJsunit.test';
 import backgroundAndSizeSettingJsunit from './textTest/BackgroundAndSizeSettingJsunit.test';
 import borderJsunit from './textTest/BorderJsunit.test';
@@ -145,10 +138,8 @@ import outline from './textTest/outline.test';
 import rotationTest from './RenderNodeTest/rotation.test.ets'
 import transformTest from './RenderNodeTest/transform.test.ets'
 import translationTest from './RenderNodeTest/translation.test.ets'
-
 import stageFontTest from './textTest/stageFont.test';
 import stageMediaquery from './textTest/stageMediaquery.test';
-
 import buttonTest from './buttonTest/button'
 import textInputTest from './TextInputTest/textinput'
 import textinputSec from './TextInputTest/textinputSec'
@@ -182,14 +173,9 @@ import textOneJsunit from './textTest/textOneJsunit.test';
 import textTwoJsunit from './textTest/textTwoJsunit.test';
 import textEnabledJsunit from './textTest/textEnabledJsunit.test';
 import textChangeEnabledJsunit from './textTest/textChangeEnabledJsunit.test';
-import datePickerJsunit from './DatePickerTest/datePickerJsunit.test.ets';
-import datelPanelJsunit from './datelPanelTest/datelPanelJsunit.test.ets';
 import loadingProgressJsunit from './ProgressTest/loadingProgressJsunit.test.ets';
 import ProgressJsunit from './ProgressTest/ProgressJsunit.test.ets';
-import gaugeJsunit from './gaugeTest/gaugeJsunit.test.ets';
-import TextPickerJsunit from './TextPickerTest/TextPickerJsunit.test.ets';
 import TextTimerJsunit from './TextTimerTest/TextTimerJsunit.test.ets';
-import TimePickerJsunit from './TimePickerTest/TimePickerJsunit.test.ets';
 import ToggleJsunit from './ToggleTest/ToggleJsunit.test.ets';
 import marqueeUIJsunit from './marqueeTest/marqueeUIJsunit.test.ets';
 import PatternLockJsunit from './PatternLockTest/PatternLockJsunit.test.ets';
@@ -200,39 +186,39 @@ import spanUIJsunit from './spanTest/spanUIJsunit.test.ets';
 import fontJsunit from './fontTest/fontJsunit.test.ets';
 import RenderFitJsunit from './RenderNodeTest/RenderFitJsunit.test.ets';
 import aboutToRecycleiamge from './imageTest/aboutToRecycleiamgeJS.test'
-
 import focusJsunit from './buttonTest/FocusJsunit.test';
 import imageJsunit55 from './imageTest/ImageJsunit55.test';
 import playModeJsunit from './buttonTest/PlayModeJsunit.test';
-import richTextJsunit from './RichEditorTest/RichTextJsunit.test';
-
+import richTextJsunitFOUR from './RichEditorTest/RichTextJsunitFOUR.test';
 import textClockJsunit from './textTest/TextClockJsunit.test';
 import textTimerJsunit from './textTest/TextTimerJsunit.test';
-
 import unitsModuleNameJsunit from './textTest/units.test.ets';
 import ImageApi from './imageTest/ImageApi.test.ets';
 import appVersionCodeJsunit from './textTest/app.test';
 import colorEnumJsunit from './textTest/color.test';
 import copyOptionJsunit from './textTest/copyOption.test';
 import TextStyle2 from './textTest/TextApi/TextStyle2.test';
-
 import textMinFontSizeJsunit from './textTest/text.test';
 import textAreaOnCutJsunit from './TextAreaTest/textArea.test';
 import textInputOnEditChangeJsunit from './TextInputTest/textInput.test';
-
+import progress3Jsunit from './ProgressTest/Progress3Jsunit.test';
+import text3Jsunit from './textTest/Text3Jsunit.test';
+import span3Jsunit from './spanTest/Span3Jsunit.test';
+import button3Jsunit from './buttonTest/Button3Jsunit.test';
 import imageAnimatorJsunitt from './ImageAnimator/ImageAnimatorJsunit2.test.ets'
 import loadingProgressJsunit2 from './ProgressTest/LoadingProgressJsunit2.test.ets';
+
+
 export default function testsuite() {
   stageFontTest();
   stageMediaquery();
-  
   TextStateJsunit();
   richEditorApi4();
   richEditorApi5();
   richEditorApi6();
   richEditorApi7();
   richEditorApi8();
-   search();
+  search();
   textStyleJsunit();
   marqueeJsunit();
   ImageTextTest();
@@ -250,7 +236,7 @@ export default function testsuite() {
   arkuiNodeRenderTest();
   Image_QRCode_Api();
   RichEditorApi();
-  RichEditorApi2();
+  RichEditorApi222();
   APIgetUIFontConfigJsunit();
   APITextBackgroundStyleJsunit();
   SXrenderingStrategyJsunit();
@@ -334,7 +320,6 @@ export default function testsuite() {
   TextfieldOtherTest()
   TextfieldSingleTest()
   TextfieldMultiTest()
-  
   CurveTest()
   backgroundAndSizeSettingJsunit()
   borderJsunit();
@@ -352,7 +337,6 @@ export default function testsuite() {
   rotationTest()
   transformTest()
   translationTest()
-
   buttonTest();
   textInputTest()
   textinputSec()
@@ -387,14 +371,9 @@ export default function testsuite() {
   textTwoJsunit();
   textEnabledJsunit();
   textChangeEnabledJsunit();
-  datePickerJsunit();
-  datelPanelJsunit();
   loadingProgressJsunit();
   ProgressJsunit();
-  gaugeJsunit();  
-  TextPickerJsunit();
   TextTimerJsunit();
-  TimePickerJsunit();
   ToggleJsunit();
   marqueeUIJsunit();
   PatternLockJsunit();
@@ -405,11 +384,10 @@ export default function testsuite() {
   fontJsunit();
   RenderFitJsunit();
   aboutToRecycleiamge();
-  
   focusJsunit()
   imageJsunit55()
   playModeJsunit()
-  richTextJsunit()
+  richTextJsunitFOUR()
   textClockJsunit()
   textTimerJsunit()
   appVersionCodeJsunit();
@@ -418,6 +396,10 @@ export default function testsuite() {
   TextStyle2()
   unitsModuleNameJsunit()
   ImageApi()
+  progress3Jsunit();
+  text3Jsunit();
+  button3Jsunit();
+  span3Jsunit();
   imageAnimatorJsunitt();
   loadingProgressJsunit2();
 }

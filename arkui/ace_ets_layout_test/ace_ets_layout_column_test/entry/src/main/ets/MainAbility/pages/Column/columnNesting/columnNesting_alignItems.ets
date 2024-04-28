@@ -12,18 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from './../../../common/MessageManager';
+import { MessageManager, Callback, Message } from './../../../common/MessageManager';
 @Entry
 @Component
 struct columnNesting_alignItems {
   @State addSpace: string = '10vp'
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<string> = new MessageManager()
   onPageShow() {
     console.info('columnNesting_alignItems onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<string> = (message: Message<string>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addSpace') {
         this.addSpace = message.value;

@@ -206,6 +206,140 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         }
       })
     }) 
+    
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0010
+     * @tc.name      : testSetDefaultDensityEnabled_true
+     * @tc.desc      : Test the function value of setDefaultDensityEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */ 
+    it("testSetDefaultDensityEnabled_true", 0, async function(done){
+      let msgStr = "testSetDefaultDensityEnabled_true";
+      console.log(msgStr + "begin");
+      try{
+        windowStage.setDefaultDensityEnabled(true);
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log('Failed to set default density enabled. Cause:' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    }) 
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0020
+     * @tc.name      : testSetDefaultDensityEnabled_true
+     * @tc.desc      : Test the function value of setDefaultDensityEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */ 
+    it("testSetDefaultDensityEnabled_false", 0, async function(done){
+      let msgStr = "testSetDefaultDensityEnabled_false";
+      console.log(msgStr + "begin");
+      try{
+        windowStage.setDefaultDensityEnabled(false);
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log('Failed to set default density enabled. Cause:' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })   
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0030
+     * @tc.name      : testRectChangeOptions_on
+     * @tc.desc      : Test the function value of testRectChangeOptions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */ 
+    it("testRectChangeOptions_on", 0, async function(done){
+      let msgStr = "testRectChangeOptions_on";
+      console.log(msgStr + "begin");
+      try{
+        let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
+        let rect: ohosWindow.Rect= {
+          left: 10,
+          top: 10,
+          width: 10,
+          height: 10
+        }
+        let reason: ohosWindow.RectChangeReason;
+        windowClass.on('windowRectChange', (data: ohosWindow.RectChangeOptions) => {
+          console.log(msgStr + 'Succeeded window rect changes. Data: ' + JSON.stringify(data));
+          expect(true).assertTrue();
+          done();
+        });
+        expect(true).assertTrue();
+        done();
+      } catch (error){
+        console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    }) 
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0040
+     * @tc.name      : testRectChangeOptions_off
+     * @tc.desc      : Test the function value of testRectChangeOptions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */   
+    it("testRectChangeOptions_off", 0, async function(done){
+      let msgStr = "testRectChangeOptions_off";
+      console.log(msgStr + "begin");  
+      try {
+        let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
+        let rect: ohosWindow.Rect= {
+          left: 10,
+          top: 10,
+          width: 10,
+          height: 10
+        }
+        let reason: ohosWindow.RectChangeReason;
+        windowClass.off('windowRectChange');
+        console.log(msgStr + 'Succeeded window rect changes' );
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }   
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0050
+     * @tc.name      : testRectChangeReason_enum
+     * @tc.desc      : Test the function value of RectChangeReason
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */ 
+    it("testRectChangeReason_enum", 0, async function(done){
+      let msgStr = "testRectChangeReason_enum";
+      console.log(msgStr + "begin");
+      try {
+        expect(2).assertEqual(ohosWindow.RectChangeReason.RECOVER);
+        expect(3).assertEqual(ohosWindow.RectChangeReason.MOVE);
+        expect(4).assertEqual(ohosWindow.RectChangeReason.DRAG);
+        expect(5).assertEqual(ohosWindow.RectChangeReason.DRAG_START);
+        expect(6).assertEqual(ohosWindow.RectChangeReason.DRAG_END);
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to testRectChangeReason_enum'+JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
 
   })
 }

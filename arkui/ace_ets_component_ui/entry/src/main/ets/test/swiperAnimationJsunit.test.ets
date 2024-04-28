@@ -26,26 +26,26 @@ export default function swiperAnimationJsunit() {
       done();
       try {
         ohosrouter.clear();
-         await CommonFunc.sleep(500);
-       let pages = ohosrouter.getState();
+        await CommonFunc.sleep(500);
+        let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/second/second',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/second/second',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
 
     });
@@ -60,29 +60,29 @@ export default function swiperAnimationJsunit() {
     it('swiperAnimationJsunit_0024', 0, async function (done) {
       console.info('swiperAnimationJsunit_0024');
       try {
-         ohosrouter.back({url:'MainAbility/pages/second/second'});
-         await CommonFunc.sleep(500);
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
         ohosrouter.clear();
-         await CommonFunc.sleep(500);
-       let pages = ohosrouter.getState();
+        await CommonFunc.sleep(500);
+        let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
       await CommonFunc.sleep(1000);
       // get the rect of swiper
@@ -97,7 +97,7 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(1000);
       // check the onAnimation triggers
       let strJson = getInspectorByKey('animationEnd');
@@ -106,8 +106,8 @@ export default function swiperAnimationJsunit() {
       expect(obj.$attrs.content).assertEqual('End2-->');
       done();
     });
-   
-    
+
+
     /* *
     * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0012
     * @tc.name  : swiperAnimationJsunit_0012
@@ -115,52 +115,52 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0012', 0, async function (done) {
+    it('swiperAnimationJsunit_0012', 0, async function (done) {
       console.info('swiperAnimationJsunit_0012 START');
       await CommonFunc.sleep(1000);
       try {
-         ohosrouter.back({url:'MainAbility/pages/second/second'});
-         await CommonFunc.sleep(500);
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
         ohosrouter.clear();
-         await CommonFunc.sleep(500);
+        await CommonFunc.sleep(500);
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0012 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       // to swiper
       let driver2 = await Driver.create();
       await CommonFunc.sleep(500);
-     await driver2.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver2.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-     await driver2.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver2.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-       // check the onAnimation triggers
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0012'] component obj is: " + obj.$attrs.content);
@@ -175,35 +175,35 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0027', 0, async function (done) {
+    it('swiperAnimationJsunit_0027', 0, async function (done) {
       console.info('swiperAnimationJsunit_0027 START');
       await CommonFunc.sleep(1000);
       try {
-         ohosrouter.back({url:'MainAbility/pages/second/second'});
-         await CommonFunc.sleep(500);
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
         ohosrouter.clear();
-         await CommonFunc.sleep(500);
+        await CommonFunc.sleep(500);
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
@@ -211,7 +211,7 @@ export default function swiperAnimationJsunit() {
 
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0027 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       //to autoplay
@@ -223,58 +223,58 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(200);
       await driver3.longClick(Math.round(right/2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-       // check the onAnimation triggers
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('animationEnd');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0027'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('End2-->');
       done();
     });
-     
-     /* *
-    * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0019
-    * @tc.name  : swiperAnimationJsunit_0019
-    * @tc.desc  : test whether the onAnimationStart function triggered when autoplay
-    * @tc.level : Level 2
-    */
 
-   it('swiperAnimationJsunit_0019', 0, async function (done) {
+    /* *
+   * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0019
+   * @tc.name  : swiperAnimationJsunit_0019
+   * @tc.desc  : test whether the onAnimationStart function triggered when autoplay
+   * @tc.level : Level 2
+   */
+
+    it('swiperAnimationJsunit_0019', 0, async function (done) {
       console.info('swiperAnimationJsunit_0019 START');
       await CommonFunc.sleep(1000);
       try {
-       
-  ohosrouter.back({url:'MainAbility/pages/second/second'});
-  await CommonFunc.sleep(500);
-  ohosrouter.clear();
-  await CommonFunc.sleep(500);
+
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
+        ohosrouter.clear();
+        await CommonFunc.sleep(500);
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0019 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       //to autoplay
@@ -286,13 +286,13 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(200);
       await driver.longClick(Math.round(right/2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-     // to swipe for duration
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      // to swipe for duration
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
 
-       // check the onAnimation triggers
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0019'] component obj is: " + obj.$attrs.content);
@@ -300,55 +300,55 @@ export default function swiperAnimationJsunit() {
       done();
     });
 
-     /* *
-    * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0022
-    * @tc.name  : swiperAnimationJsunit_0022
-    * @tc.desc  : test whether the onAnimationEnd function triggered when autoplay
-    * @tc.level : Level 2
-    */
+    /* *
+   * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0022
+   * @tc.name  : swiperAnimationJsunit_0022
+   * @tc.desc  : test whether the onAnimationEnd function triggered when autoplay
+   * @tc.level : Level 2
+   */
 
-   it('swiperAnimationJsunit_0022', 0, async function (done) {
+    it('swiperAnimationJsunit_0022', 0, async function (done) {
       console.info('swiperAnimationJsunit_0019 START');
       await CommonFunc.sleep(1000);
       try {
         ohosrouter.back({url:'MainAbility/pages/second/second'});
-      await CommonFunc.sleep(500);
-      ohosrouter.clear();
-      await CommonFunc.sleep(500);
+        await CommonFunc.sleep(500);
+        ohosrouter.clear();
+        await CommonFunc.sleep(500);
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0022 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       //to autoplay
       globalThis.value.message.notify({name:'autoPlay',value:true})
       await CommonFunc.sleep(5000);
-       // check the onAnimation triggers
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0022'] component obj is: " + obj.$attrs.content);
@@ -356,50 +356,50 @@ export default function swiperAnimationJsunit() {
       done();
     });
 
-     /* *
-    * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0023
-    * @tc.name  : swiperAnimationJsunit_0023
-    * @tc.desc  : test whether the onAnimationEnd function triggered 
-    * @tc.level : Level 2
-    */
+    /* *
+   * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0023
+   * @tc.name  : swiperAnimationJsunit_0023
+   * @tc.desc  : test whether the onAnimationEnd function triggered
+   * @tc.level : Level 2
+   */
 
-   it('swiperAnimationJsunit_0023', 0, async function (done) {
+    it('swiperAnimationJsunit_0023', 0, async function (done) {
       console.info('swiperAnimationJsunit_0023 START');
       await CommonFunc.sleep(1000);
       try {
-       
-             ohosrouter.back({url:'MainAbility/pages/second/second'});
-  await CommonFunc.sleep(500);
-  ohosrouter.clear();
-  await CommonFunc.sleep(500);
+
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
+        ohosrouter.clear();
+        await CommonFunc.sleep(500);
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0023 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       // click the previous Button
@@ -408,13 +408,13 @@ export default function swiperAnimationJsunit() {
       let showNext = await driver.findComponent(ON.id('showNext'));
       await showNext.click();
       await CommonFunc.sleep(1000);
-      
+
       let showPrevious = await driver.findComponent(ON.id('showPrevious'));
       await  showPrevious.click();
       await CommonFunc.sleep(1000);
 
-     
-       // check the onAnimation triggers
+
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('animationEnd');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0023'] component obj is: " + obj.$attrs.content);
@@ -425,46 +425,46 @@ export default function swiperAnimationJsunit() {
     /* *
     * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0011
     * @tc.name  : swiperAnimationJsunit_0011
-    * @tc.desc  : test whether the onAnimationStart function triggered 
+    * @tc.desc  : test whether the onAnimationStart function triggered
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0011', 0, async function (done) {
+    it('swiperAnimationJsunit_0011', 0, async function (done) {
       console.info('swiperAnimationJsunit_0011 START');
       await CommonFunc.sleep(1000);
       try {
-              ohosrouter.back({url:'MainAbility/pages/second/second'});
-  await CommonFunc.sleep(500);
-  ohosrouter.clear();
-  await CommonFunc.sleep(500);
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
+        ohosrouter.clear();
+        await CommonFunc.sleep(500);
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0011 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       // click the previous Button
@@ -473,7 +473,7 @@ export default function swiperAnimationJsunit() {
       let showNext = await driver.findComponent(ON.id('showNext'));
       await showNext.click();
       await CommonFunc.sleep(1000);
-      
+
       let showPrevious = await driver.findComponent(ON.id('showPrevious'));
       await  showPrevious.click();
       await CommonFunc.sleep(1000);
@@ -481,8 +481,8 @@ export default function swiperAnimationJsunit() {
       let showNext2 = await driver.findComponent(ON.id('showNext'));
       await showNext2.click();
       await CommonFunc.sleep(1000);
-       
-       // check the onAnimation triggers
+
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0011'] component obj is: " + obj.$attrs.content);
@@ -490,48 +490,48 @@ export default function swiperAnimationJsunit() {
       done();
     });
 
-     /* *
-    * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0028
-    * @tc.name  : swiperAnimationJsunit_0028
-    * @tc.desc  : test whether the onAnimationEnd function triggered
-    * @tc.level : Level 2
-    */
+    /* *
+   * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0028
+   * @tc.name  : swiperAnimationJsunit_0028
+   * @tc.desc  : test whether the onAnimationEnd function triggered
+   * @tc.level : Level 2
+   */
 
-   it('swiperAnimationJsunit_0028', 0, async function (done) {
+    it('swiperAnimationJsunit_0028', 0, async function (done) {
       console.info('swiperAnimationJsunit_0011 START');
       await CommonFunc.sleep(1000);
       try {
-       
-              ohosrouter.back({url:'MainAbility/pages/second/second'});
-  await CommonFunc.sleep(500);
-  ohosrouter.clear();
-  await CommonFunc.sleep(500);
+
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
+        ohosrouter.clear();
+        await CommonFunc.sleep(500);
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0028 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       // click the previous Button
@@ -540,7 +540,7 @@ export default function swiperAnimationJsunit() {
       let showNext = await driver.findComponent(ON.id('showNext'));
       await showNext.click();
       await CommonFunc.sleep(1000);
-      
+
       let showPrevious = await driver.findComponent(ON.id('showPrevious'));
       await  showPrevious.click();
       await CommonFunc.sleep(1000);
@@ -549,64 +549,64 @@ export default function swiperAnimationJsunit() {
       await showNext2.click();
       await CommonFunc.sleep(1000);
 
-     // press screen to swipe
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
-      await CommonFunc.sleep(500);  
+      // press screen to swipe
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
+      await CommonFunc.sleep(500);
 
 
-       // check the onAnimation triggers
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('animationEnd');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0028'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('End3-->');
-             
+
       done();
     });
 
-     /* *
-    * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0020
-    * @tc.name  : swiperAnimationJsunit_0020
-    * @tc.desc  : test whether the onAnimationStart function triggered
-    * @tc.level : Level 2
-    */
+    /* *
+   * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPJ_0020
+   * @tc.name  : swiperAnimationJsunit_0020
+   * @tc.desc  : test whether the onAnimationStart function triggered
+   * @tc.level : Level 2
+   */
 
-   it('swiperAnimationJsunit_0020', 0, async function (done) {
+    it('swiperAnimationJsunit_0020', 0, async function (done) {
       console.info('swiperAnimationJsunit_0011 START');
       await CommonFunc.sleep(1000);
       try {
-              ohosrouter.back({url:'MainAbility/pages/second/second'});
-  await CommonFunc.sleep(500);
-  ohosrouter.clear();
-  await CommonFunc.sleep(500);
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
+        ohosrouter.clear();
+        await CommonFunc.sleep(500);
 
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0020 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       // click the previous Button
@@ -615,7 +615,7 @@ export default function swiperAnimationJsunit() {
       let showNext = await driver.findComponent(ON.id('showNext'));
       await showNext.click();
       await CommonFunc.sleep(1000);
-      
+
       let showPrevious = await driver.findComponent(ON.id('showPrevious'));
       await  showPrevious.click();
       await CommonFunc.sleep(1000);
@@ -624,14 +624,14 @@ export default function swiperAnimationJsunit() {
       await showNext2.click();
       await CommonFunc.sleep(1000);
 
-     // press screen to swipe
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      // press screen to swipe
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(3000);
-     await driver.swipe(Math.round(left + width*0.1),Math.round(bottom + height/2),Math.round(left + width*0.1),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(left + width*0.1),Math.round(bottom + height/2),Math.round(left + width*0.1),Math.round(bottom + height/2));
 
       await CommonFunc.sleep(500);
 
-       // check the onAnimation triggers
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0020'] component obj is: " + obj.$attrs.content);
@@ -641,60 +641,60 @@ export default function swiperAnimationJsunit() {
     });
 
     /**
-    * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPL_0016
-    * @tc.name  : swiperAnimationGestureJsunit_0016
-    * @tc.desc  : test whether the onGestureSwipe function triggered when swipe
-    * @tc.level : Level 2
-    */
+     * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPL_0016
+     * @tc.name  : swiperAnimationGestureJsunit_0016
+     * @tc.desc  : test whether the onGestureSwipe function triggered when swipe
+     * @tc.level : Level 2
+     */
 
-   it('swiperAnimationGestureJsunit_0016', 0, async function (done) {
+    it('swiperAnimationGestureJsunit_0016', 0, async function (done) {
       console.info('swiperAnimationGestureJsunit_0016 START');
       await CommonFunc.sleep(1000);
       try {
-       
-  ohosrouter.back({url:'MainAbility/pages/second/second'});
-  await CommonFunc.sleep(500);
-  ohosrouter.clear();
-  await CommonFunc.sleep(500);
+
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
+        ohosrouter.clear();
+        await CommonFunc.sleep(500);
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationGestureJsunit_0016 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
-    
+
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-     // getComponentRectOnScreen
-     await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      // getComponentRectOnScreen
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
 
       await CommonFunc.sleep(1000);
-       // check the onAnimation triggers
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationGestureJsunit_0016] component obj is: " + obj.$attrs.content);
@@ -703,57 +703,57 @@ export default function swiperAnimationJsunit() {
     });
 
     /**
-    * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPL_0017
-    * @tc.name  : swiperAnimationGestureJsunit_0017
-    * @tc.desc  : test whether the onGestureSwipe function triggered when swipe
-    * @tc.level : Level 2
-    */
+     * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPL_0017
+     * @tc.name  : swiperAnimationGestureJsunit_0017
+     * @tc.desc  : test whether the onGestureSwipe function triggered when swipe
+     * @tc.level : Level 2
+     */
 
-   it('swiperAnimationGestureJsunit_0017', 0, async function (done) {
+    it('swiperAnimationGestureJsunit_0017', 0, async function (done) {
       console.info('swiperAnimationGestureJsunit_0017 START');
       await CommonFunc.sleep(1000);
       try {
-       
-  ohosrouter.back({url:'MainAbility/pages/second/second'});
-  await CommonFunc.sleep(500);
-  ohosrouter.clear();
-  await CommonFunc.sleep(500);
+
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
+        ohosrouter.clear();
+        await CommonFunc.sleep(500);
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0017 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-       // check the onAnimation triggers
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0017'] component obj2 is: " + obj.$attrs.content);
@@ -766,51 +766,51 @@ export default function swiperAnimationJsunit() {
       expect(obj2.$attrs.content).assertEqual('GestureSwipe index: 1');
       done();
     });
-    
-    /**
-    * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPL_0019
-    * @tc.name  : swiperAnimationGestureJsunit_0019
-    * @tc.desc  : test whether the onGestureSwipe function triggered when swipe
-    * @tc.level : Level 2
-    */
 
-   it('swiperAnimationGestureJsunit_0019', 0, async function (done) {
+    /**
+     * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPL_0019
+     * @tc.name  : swiperAnimationGestureJsunit_0019
+     * @tc.desc  : test whether the onGestureSwipe function triggered when swipe
+     * @tc.level : Level 2
+     */
+
+    it('swiperAnimationGestureJsunit_0019', 0, async function (done) {
       console.info('swiperAnimationGestureJsunit_0019 START');
       await CommonFunc.sleep(1000);
       try {
-       
-  ohosrouter.back({url:'MainAbility/pages/second/second'});
-  await CommonFunc.sleep(500);
-  ohosrouter.clear();
-  await CommonFunc.sleep(500);
+
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
+        ohosrouter.clear();
+        await CommonFunc.sleep(500);
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          }).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        }).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0019 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       //to autoplay
@@ -819,9 +819,9 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-       // check the onAnimation triggers
+      // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0019'] component obj2 is: " + obj.$attrs.content);
@@ -835,50 +835,50 @@ export default function swiperAnimationJsunit() {
       done();
     });
 
-     /**
-    * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPL_0020
-    * @tc.name  : swiperAnimationGestureJsunit_0020
-    * @tc.desc  : test whether the onGestureSwipe function triggered when swipe
-    * @tc.level : Level 2
-    */
+    /**
+     * @tc.number: SUB_ACE_TS_COMPONENT_SR000IAHPL_0020
+     * @tc.name  : swiperAnimationGestureJsunit_0020
+     * @tc.desc  : test whether the onGestureSwipe function triggered when swipe
+     * @tc.level : Level 2
+     */
 
-   it('swiperAnimationGestureJsunit_0020', 0, async function (done) {
+    it('swiperAnimationGestureJsunit_0020', 0, async function (done) {
       console.info('swiperAnimationGestureJsunit_0020 START');
       await CommonFunc.sleep(1000);
       try {
-       
-  ohosrouter.back({url:'MainAbility/pages/second/second'});
-  await CommonFunc.sleep(500);
-  ohosrouter.clear();
-  await CommonFunc.sleep(500);
+
+        ohosrouter.back({url:'MainAbility/pages/second/second'});
+        await CommonFunc.sleep(500);
+        ohosrouter.clear();
+        await CommonFunc.sleep(500);
         let pages = ohosrouter.getState();
         console.info("swiperAnimationJsunit " + JSON.stringify(pages));
         ohosrouter.pushUrl({
-            url: 'MainAbility/pages/swiperAnimation',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              }
+          url: 'MainAbility/pages/swiperAnimation',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
             }
-          } ).then(() => {
-              // success
-            })
-            .catch(err => {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-            })
-         await CommonFunc.sleep(2000);
+          }
+        } ).then(() => {
+          // success
+        })
+          .catch(err => {
+            console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        await CommonFunc.sleep(2000);
       } catch (err) {
-         console.error("push circle page error: " + err);
+        console.error("push circle page error: " + err);
       }
-            // get the rect of swiper
+      // get the rect of swiper
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('swiperAnimation');
       let top = swiperAnimation.top;
       let right = swiperAnimation.right;
       let left = swiperAnimation.left;
       let bottom = swiperAnimation.bottom;
       console.info("swiperAnimationJsunit_0020 value is" + left + " --" + right + "--" + top + "--" + bottom);
-       
+
       let height = top -bottom;
       let width = right - left;
       let driver = await Driver.create();
@@ -886,7 +886,7 @@ export default function swiperAnimationJsunit() {
       let showNext = await driver.findComponent(ON.id('showNext'));
       await showNext.click();
       await CommonFunc.sleep(1000);
-      
+
       let showPrevious = await driver.findComponent(ON.id('showPrevious'));
       await  showPrevious.click();
       await CommonFunc.sleep(1000);
@@ -896,9 +896,9 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(1000);
 
       // to swiper
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(3000);
-       //check the onAnimation triggers
+      //check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
       let obj = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0020'] component obj2 is: " + obj.$attrs.content);

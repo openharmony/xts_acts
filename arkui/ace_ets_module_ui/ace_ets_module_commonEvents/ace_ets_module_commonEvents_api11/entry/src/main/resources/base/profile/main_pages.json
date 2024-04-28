@@ -62,6 +62,12 @@
 	"MainAbility/pages/PanGesture/PanGestureEvent",
         "MainAbility/pages/PanGesture/gestureEnabled",
         "MainAbility/pages/DragController/DragEventUI",
-        "MainAbility/pages/DragController/DragController"
+        "MainAbility/pages/DragController/DragController",
+        "MainAbility/pages/LongPressGesture/longPressGesture",
+        "MainAbility/pages/PanGesture/PanGesture",
+        "MainAbility/pages/TapGesture/tapGesture",
+        "MainAbility/pages/TapGesture/priorityGesture",
+        "MainAbility/pages/TapGesture/parallelGesture",
+        "MainAbility/pages/motionPath"
     ]
 }

@@ -15,7 +15,7 @@
 
 class MyDataSource implements IDataSource {
   private list: number[] = []
-  private listener: DataChangeListener
+  private listener: DataChangeListener|undefined = undefined
 
   constructor(list: number[]) {
     this.list = list
@@ -44,9 +44,9 @@ struct SwiperExample {
   private data: MyDataSource = new MyDataSource([])
 
   aboutToAppear(): void {
-    let list = []
+    let list: number[] = []
     for (let i = 1; i <= 10; i++) {
-      list.push(i.toString());
+      list.push(i);
     }
     this.data = new MyDataSource(list)
   }

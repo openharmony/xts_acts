@@ -122,7 +122,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_0600 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_0600 change component data error: " + err.message);
+        console.log("swiperTest_0600 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew: string = getInspectorByKey('swiper');
@@ -148,7 +148,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_0700 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_0700 change component data error: " + err.message);
+        console.log("swiperTest_0700 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
@@ -164,7 +164,7 @@ export default function swiperJsunit() {
       await Utils.sleep(1500);
       let callback = (InnerEvent: events_emitter.EventData) => {
         console.info("swiperTest_0800 get state result is: " + JSON.stringify(InnerEvent));
-        expect(InnerEvent.data.ACTION).assertEqual(true);
+        expect(InnerEvent.data?.ACTION).assertEqual(true);
         done()
       }
       let InnerEvent: events_emitter.InnerEvent = {
@@ -187,7 +187,7 @@ export default function swiperJsunit() {
       await Utils.sleep(1500);
       let callback = (InnerEvent: events_emitter.EventData) => {
         console.info("swiperTest_0900 get state result is: " + JSON.stringify(InnerEvent));
-        expect(InnerEvent.data.ACTION).assertEqual(true);
+        expect(InnerEvent.data?.ACTION).assertEqual(true);
         done()
       }
       let InnerEvent: events_emitter.InnerEvent = {
@@ -209,7 +209,7 @@ export default function swiperJsunit() {
       await Utils.sleep(1500);
       let callbackOne = (InnerEventOne: events_emitter.EventData) => {
         console.info("swiperTest_1000 get state result is: " + JSON.stringify(InnerEventOne));
-        expect(InnerEventOne.data.ACTION).assertEqual(true);
+        expect(InnerEventOne.data?.ACTION).assertEqual(true);
         done()
       }
       let innerEvent: events_emitter.InnerEvent = {
@@ -225,7 +225,7 @@ export default function swiperJsunit() {
       await Utils.sleep(1500);
       let callback = (InnerEvent: events_emitter.EventData) => {
         console.info("swiperTest_1000 get state result is: " + JSON.stringify(InnerEvent));
-        expect(InnerEvent.data.ACTION).assertEqual(true);
+        expect(InnerEvent.data?.ACTION).assertEqual(true);
         done()
       }
       let InnerEvent: events_emitter.InnerEvent = {
@@ -255,7 +255,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_1100 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_1100 change component data error: " + err.message);
+        console.log("swiperTest_1100 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJsonNew: string = getInspectorByKey('swiper');
@@ -281,7 +281,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_1200 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_1200 change component data error: " + err.message);
+        console.log("swiperTest_1200 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJsonNew: string = getInspectorByKey('swiper');
@@ -307,7 +307,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_1300 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_1300 change component data error: " + err.message);
+        console.log("swiperTest_1300 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
@@ -333,7 +333,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_1400 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_1400 change component data error: " + err.message);
+        console.log("swiperTest_1400 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
@@ -358,7 +358,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_1500 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_1500 change component data error: " + err.message);
+        console.log("swiperTest_1500 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
@@ -384,7 +384,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_1600 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_1600 change component data error: " + err.message);
+        console.log("swiperTest_1600 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
@@ -410,7 +410,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_1700 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_1700 change component data error: " + err.message);
+        console.log("swiperTest_1700 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJsonNew = getInspectorByKey('swiper');
@@ -436,7 +436,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_1800 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_1800 change component data error: " + err.message);
+        console.log("swiperTest_1800 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
@@ -462,7 +462,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_1900 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_1900 change component data error: " + err.message);
+        console.log("swiperTest_1900 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
@@ -488,7 +488,7 @@ export default function swiperJsunit() {
         console.info("swiperTest_2000 start to publish emit");
         events_emitter.emit(InnerEvent, eventData);
       } catch (err) {
-        console.log("swiperTest_2000 change component data error: " + err.message);
+        console.log("swiperTest_2000 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');

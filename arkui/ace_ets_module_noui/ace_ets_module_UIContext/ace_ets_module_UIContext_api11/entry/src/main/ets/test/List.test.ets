@@ -20,7 +20,6 @@ import mediaQueryOffJsunit from './mediaqueryTest/mediaQuery.test';
 export default function testsuite() {
   getUIObserver()
   getDragController()
-  atomicServiceBarTest()
-  
   mediaQueryOffJsunit()
+  atomicServiceBarTest()
 }

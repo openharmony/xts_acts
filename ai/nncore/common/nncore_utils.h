@@ -169,7 +169,7 @@ bool CreateFolder(const std::string &path);
 
 //nncore创建相关
 void ConstructAddModel(OH_NNModel **model);
-void ConstructCompilation(OH_NNCompilation **compilation);
+void ConstructCompilation(OH_NNCompilation **compilation, OH_NNModel **model);
 void CreateExecutor(OH_NNExecutor **executor);
 void CreateDynamicExecutor(OH_NNExecutor **executor);
 void GetExecutorInputOutputTensorDesc(OH_NNExecutor* executor,

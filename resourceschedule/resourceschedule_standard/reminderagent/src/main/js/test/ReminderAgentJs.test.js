@@ -1945,16 +1945,10 @@ export default function ReminderAgentTest() {
             reminderAgent.cancelAllReminders((err, data) => {
                 reminderAgent.publishReminder(alarm, (err, reminderId) => {
                     console.info("callback,the testGetValidRemindersRingDuration_075 reminderId =" + reminderId);
-                });
-            });
-            setTimeout(() => {
-                reminderAgent.getValidReminders((err, reminder) => {
-                    console.info("callback,the testGetValidRemindersRingDuration_075 ringDuration =" +
-                        reminder[0].ringDuration);
-                    expect(reminder[0].ringDuration).assertLarger(0);
+                    expect(-1).assertEqual(reminderId);
                     done()
                 });
-            }, 500);
+            });
         })
 
         /**

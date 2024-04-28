@@ -27,8 +27,6 @@ struct ErfModel1 {
     const std::vector<int32_t> tensor_shape = {4};
     float inputValue[4] = {0, -1, 1, 10};
     float outputValue[4] = {0};
-    float expectValue[4] = {0.0000, -0.8427, 0.8427, 1.0000};
-
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 4*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 4*sizeof(float)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_ERF,
@@ -42,7 +40,6 @@ struct ErfModel2 {
     const std::vector<int32_t> tensor_shape = {};
     float* inputValue = {};
     float* outputValue = {};
-    float* expectValue = {};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 0*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 0*sizeof(float)};
@@ -58,7 +55,6 @@ struct ErfModel3 {
     float inputValue[5] = {std::numeric_limits<float>::quiet_NaN(), std::numeric_limits<float>::infinity(),
                            -std::numeric_limits<float>::infinity(), 1.0e20f, -1.0e20f};
     float outputValue[5] = {0};
-    float expectValue[5] = {};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 5*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 5*sizeof(float)};
@@ -282,7 +278,6 @@ HWTEST_F(ErfTest, SUB_AI_NNRt_Func_North_Erf_Model_SetOperandValue_01, Function 
     ErfModel1 erfModel;
     OHNNGraphArgs graphArgs = erfModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -293,7 +288,7 @@ HWTEST_F(ErfTest, SUB_AI_NNRt_Func_North_Erf_Model_SetOperandValue_01, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -319,7 +314,6 @@ HWTEST_F(ErfTest, SUB_AI_NNRt_Func_North_Erf_Model_SetOperandValue_02, Function 
     ErfModel1 erfModel;
     OHNNGraphArgs graphArgs = erfModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -330,7 +324,7 @@ HWTEST_F(ErfTest, SUB_AI_NNRt_Func_North_Erf_Model_SetOperandValue_02, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -355,7 +349,6 @@ HWTEST_F(ErfTest, SUB_AI_NNRt_Func_North_Erf_Model_SetOperandValue_03, Function 
     ErfModel1 erfModel;
     OHNNGraphArgs graphArgs = erfModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -366,7 +359,7 @@ HWTEST_F(ErfTest, SUB_AI_NNRt_Func_North_Erf_Model_SetOperandValue_03, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

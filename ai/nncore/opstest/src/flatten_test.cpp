@@ -27,7 +27,6 @@ struct FlattenModel1 {
     const std::vector<int32_t> output_shape = {9};
     float inputValue[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     float outputValue[9] = {0};
-    float expectValue[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 9*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 9*sizeof(float)};
@@ -43,7 +42,6 @@ struct FlattenModel2 {
     const std::vector<int32_t> output_shape = {8};
     float inputValue[2][2][2] = {{{1, 2}, {3, 4}}, {{5, 6}, {7, 8}}};
     float outputValue[8] = {0};
-    float expectValue[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 8*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 8*sizeof(float)};
@@ -59,7 +57,6 @@ struct FlattenModel3 {
     const std::vector<int32_t> output_shape = {9};
     float inputValue[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     float outputValue[9] = {0};
-    float expectValue[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 9*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 9*sizeof(float)};
@@ -74,7 +71,6 @@ struct FlattenModel4 {
     const std::vector<int32_t> tensor_shape = {};
     float* inputValue = {};
     float* outputValue = {};
-    float* expectValue = {};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 0*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 0*sizeof(float)};
@@ -327,7 +323,6 @@ HWTEST_F(FlattenTest, SUB_AI_NNRt_Func_North_Flatten_Model_SetOperandValue_01, F
     FlattenModel1 flattenModel;
     OHNNGraphArgs graphArgs = flattenModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -338,7 +333,7 @@ HWTEST_F(FlattenTest, SUB_AI_NNRt_Func_North_Flatten_Model_SetOperandValue_01, F
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -364,7 +359,6 @@ HWTEST_F(FlattenTest, SUB_AI_NNRt_Func_North_Flatten_Model_SetOperandValue_02, F
     FlattenModel1 flattenModel;
     OHNNGraphArgs graphArgs = flattenModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -375,7 +369,7 @@ HWTEST_F(FlattenTest, SUB_AI_NNRt_Func_North_Flatten_Model_SetOperandValue_02, F
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -400,7 +394,6 @@ HWTEST_F(FlattenTest, SUB_AI_NNRt_Func_North_Flatten_Model_SetOperandValue_03, F
     FlattenModel1 flattenModel;
     OHNNGraphArgs graphArgs = flattenModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -411,7 +404,7 @@ HWTEST_F(FlattenTest, SUB_AI_NNRt_Func_North_Flatten_Model_SetOperandValue_03, F
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

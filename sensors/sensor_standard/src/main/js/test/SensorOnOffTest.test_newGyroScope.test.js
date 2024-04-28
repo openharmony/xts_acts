@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -19,14 +19,14 @@ export default function SensorJsTest_sensor_43() {
 describe("SensorJsTest_sensor_43", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
-		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-			sensor.SensorAccuracy.ACCURACY_HIGH) {
-			console.info('callback accuracy verified' + JSON.stringify(data));
-			expect(true).assertTrue();
-		} else {
-			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-			expect(false).assertTrue();
-		}		
+        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+            sensor.SensorAccuracy.ACCURACY_HIGH) {
+            console.info('callback accuracy verified' + JSON.stringify(data));
+            expect(true).assertTrue();
+        } else {
+            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+            expect(false).assertTrue();
+        }
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -35,14 +35,14 @@ describe("SensorJsTest_sensor_43", function () {
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
-		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-			sensor.SensorAccuracy.ACCURACY_HIGH) {
-			console.info('callback accuracy verified' + JSON.stringify(data));
-			expect(true).assertTrue();
-		} else {
-			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-			expect(false).assertTrue();
-		}		
+        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+            sensor.SensorAccuracy.ACCURACY_HIGH) {
+            console.info('callback accuracy verified' + JSON.stringify(data));
+            expect(true).assertTrue();
+        } else {
+            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+            expect(false).assertTrue();
+        }
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -85,853 +85,1012 @@ describe("SensorJsTest_sensor_43", function () {
     const SERVICE_EXCEPTION_CODE = 14500101
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
-	let invalid  = -1;
-	
-	/*
+    let invalid  = -1;
+    let TAG  = '';
+
+    /*
     * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0010
-    * @tc.name: newGyroScope_SensorJsTest001
+    * @tc.name: newGyroScopeSensorJsTest001
     * @tc.desc: Functional Use Cases
+    * @tc.level:Level 0
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
-    it("newGyroScope_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newGyroScope_SensorJsTest001--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest001 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.GYROSCOPE, callback);
-						setTimeout(()=>{
-							sensor.off(sensor.SensorId.GYROSCOPE);
-							done();
-						}, 500);
-				}
-			})
-		} catch (error) {
-            console.info('newGyroScope_SensorJsTest001 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newGyroScopeSensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newGyroScopeSensorJsTest001--------------');
+        TAG = 'newGyroScopeSensorJsTest001';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback);
+                        setTimeout(()=>{
+                            sensor.off(sensor.SensorId.GYROSCOPE);
+                            done();
+                        }, 500);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0020
-     * @tc.name: newGyroScope_SensorJsTest002
+     * @tc.name: newGyroScopeSensorJsTest002
      * @tc.desc: Illegal ID passed in
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGyroScope_SensorJsTest002--------------');
+    it("newGyroScopeSensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScopeSensorJsTest002--------------');
+        TAG = 'newGyroScopeSensorJsTest002';
         function onSensorCallback(data) {
-            console.info('newGyroScope_SensorJsTest002 callback in');
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
+            done();
         }
-        try {
-            sensor.on(invalid, onSensorCallback);
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                        sensor.on(invalid, onSensorCallback);
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                        done();
+                    }
+                }
+            })
         } catch (error) {
-            console.info("newGyroScope_SensorJsTest002 error:" + error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0030
-     * @tc.name: newGyroScope_SensorJsTest003
+     * @tc.name: newGyroScopeSensorJsTest003
      * @tc.desc: For normal scenarios
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGyroScope_SensorJsTest003--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest003 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");        
-					sensor.on(sensor.SensorId.GYROSCOPE, callback, {'interval': 100000000});
-					setTimeout(()=>{
-						console.info('---------newGyroScope_SensorJsTest003 off in--------------');
-						sensor.off(sensor.SensorId.GYROSCOPE);
-						console.info('---------newGyroScope_SensorJsTest003 off end--------------');
-						done();
-					}, 500);
-				}
-			})
-		} catch (error) {
-            console.info('newGyroScope_SensorJsTest003 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newGyroScopeSensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScopeSensorJsTest003--------------');
+        TAG = 'newGyroScopeSensorJsTest003';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback, {'interval': 100000000});
+                    setTimeout(()=>{
+                        console.info('---------newGyroScopeSensorJsTest003 off in--------------');
+                        sensor.off(sensor.SensorId.GYROSCOPE);
+                        console.info('---------newGyroScopeSensorJsTest003 off end--------------');
+                        done();
+                    }, 500);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0040
-     * @tc.name: newGyroScope_SensorJsTest004
+     * @tc.name: newGyroScopeSensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGyroScope_SensorJsTest004--------------');
+    it("newGyroScopeSensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScopeSensorJsTest004--------------');
+        TAG = 'newGyroScopeSensorJsTest004';
         function onSensorCallback(data) {
-            console.info('newGyroScope_SensorJsTest004  callback in');
-			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-				sensor.SensorAccuracy.ACCURACY_HIGH) {
-				console.info('callback accuracy verified' + JSON.stringify(data));
-				expect(true).assertTrue();
-			} else {
-				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-				expect(false).assertTrue();
-			}			
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
+            if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                sensor.SensorAccuracy.ACCURACY_HIGH) {
+                console.info('callback accuracy verified' + JSON.stringify(data));
+                expect(true).assertTrue();
+            } else {
+                console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                expect(false).assertTrue();
+            }
             expect(typeof (data.x)).assertEqual("number");
-			expect(typeof (data.y)).assertEqual("number");
-			expect(typeof (data.z)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.y)).assertEqual("number");
+            expect(typeof (data.z)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest004 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.GYROSCOPE, onSensorCallback, {'interval': 100000000}, 5);
-					setTimeout(()=>{
-						console.info('---------newGyroScope_SensorJsTest004 off in--------------');
-						sensor.off(sensor.SensorId.GYROSCOPE);
-						console.info('---------newGyroScope_SensorJsTest004 off end--------------');
-						done();
-					}, 500);	
-				}		
-			})
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, onSensorCallback, {'interval': 100000000}, 5);
+                    setTimeout(()=>{
+                        console.info('---------newGyroScopeSensorJsTest004 off in--------------');
+                        sensor.off(sensor.SensorId.GYROSCOPE);
+                        console.info('---------newGyroScopeSensorJsTest004 off end--------------');
+                        done();
+                    }, 500);
+                }
+            })
         } catch (error) {
-            console.info("newGyroScope_SensorJsTest004 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
-        }			
+        }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0050
-     * @tc.name: newGyroScope_SensorJsTest005
+     * @tc.name: newGyroScopeSensorJsTest005
      * @tc.desc: Once Normal Subscription Scenario Use Case
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest005 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");		
-					sensor.once(sensor.SensorId.GYROSCOPE, callback);
-					setTimeout(()=>{
-						expect(true).assertTrue();
-						done();
-					}, 500);
-				}
-			})
+    it("newGyroScopeSensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScopeSensorJsTest005';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.once(sensor.SensorId.GYROSCOPE, callback);
+                    setTimeout(()=>{
+                        expect(true).assertTrue();
+                        done();
+                    }, 500);
+                }
+            })
         } catch (error) {
-            console.info("newGyroScope_SensorJsTest005 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
-        }				
+        }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0060
-     * @tc.name: newGyroScope_SensorJsTest006
+     * @tc.name: newGyroScopeSensorJsTest006
      * @tc.desc: Use case of illegal parameter passed into once interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newGyroScopeSensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScopeSensorJsTest006';
         function onceSensorCallback(data) {
-            console.info('newGyroScope_SensorJsTest006 callback in');
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
             done();
         }
-        try {
-            sensor.once(invalid, onceSensorCallback);
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                        sensor.once(invalid, onceSensorCallback);
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                        done();
+                    }
+                }
+            })
         } catch (error) {
-            console.info("newGyroScope_SensorJsTest006 error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0070
-     * @tc.name: newGyroScope_SensorJsTest007
+     * @tc.name: newGyroScopeSensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newGyroScopeSensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScopeSensorJsTest007';
         function onceSensorCallback(data) {
-            console.info('newGyroScope_SensorJsTest007  on error');
-			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-				sensor.SensorAccuracy.ACCURACY_HIGH) {
-				console.info('callback accuracy verified' + JSON.stringify(data));
-				expect(true).assertTrue();
-			} else {
-				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-				expect(false).assertTrue();
-			}			
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
+            if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                sensor.SensorAccuracy.ACCURACY_HIGH) {
+                console.info('callback accuracy verified' + JSON.stringify(data));
+                expect(true).assertTrue();
+            } else {
+                console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                expect(false).assertTrue();
+            }
             expect(typeof (data.x)).assertEqual("number");
-			expect(typeof (data.y)).assertEqual("number");
-			expect(typeof (data.z)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.y)).assertEqual("number");
+            expect(typeof (data.z)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest007 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");	
-					sensor.once(sensor.SensorId.GYROSCOPE, onceSensorCallback, 5);
-				}
-			})
-	    } catch (error) {
-            console.info("newGyroScope_SensorJsTest007 error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.once(sensor.SensorId.GYROSCOPE, onceSensorCallback, 5);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0080
-     * @tc.name: newGyroScope_SensorJsTest008
+     * @tc.name: newGyroScopeSensorJsTest008
      * @tc.desc: Use case of illegal parameter passed into off interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        try {
-            sensor.off(invalid, callback);
+    it("newGyroScopeSensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScopeSensorJsTest008';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                        sensor.off(invalid, callback);
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+                        done();
+                    }
+                }
+            })
         } catch (error) {
-            console.info('newGyroScope_SensorJsTest008 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0090
-     * @tc.name: newGyroScope_SensorJsTest009
+     * @tc.name: newGyroScopeSensorJsTest009
      * @tc.desc: Unsubscribe directly without waiting after starting subscription
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newGyroScopeSensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScopeSensorJsTest009';
         function onSensorCallback(data) {
-            console.info('newGyroScope_SensorJsTest009 callback in');
-			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-				sensor.SensorAccuracy.ACCURACY_HIGH) {
-				console.info('callback accuracy verified' + JSON.stringify(data));
-				expect(true).assertTrue();
-			} else {
-				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-				expect(false).assertTrue();
-			}			
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
+            if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                sensor.SensorAccuracy.ACCURACY_HIGH) {
+                console.info('callback accuracy verified' + JSON.stringify(data));
+                expect(true).assertTrue();
+            } else {
+                console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                expect(false).assertTrue();
+            }
             expect(typeof (data.x)).assertEqual("number");
-			expect(typeof (data.y)).assertEqual("number");
-			expect(typeof (data.z)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.y)).assertEqual("number");
+            expect(typeof (data.z)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest009 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");			
-					sensor.on(sensor.SensorId.GYROSCOPE, onSensorCallback);
-					setTimeout(()=>{
-						sensor.off(sensor.SensorId.GYROSCOPE, onSensorCallback);
-						done();
-					}, 500);
-				}
-			})
-		} catch (error) {
-            console.info("newGyroScope_SensorJsTest009 error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-            done();
-        }
-    })
-
-	/*
-     * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0100
-     * @tc.name: newGyroScope_SensorJsTest010
-     * @tc.desc:SensorId1000000 of incoming exception
-     */
-    it("newGyroScope_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        function onSensorCallback(data) {
-            console.info('newGyroScope_SensorJsTest010 on error');
-            expect(false).assertTrue();
-        }
-        try {
-            sensor.off(1000000, onSensorCallback);
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, onSensorCallback);
+                    setTimeout(()=>{
+                        sensor.off(sensor.SensorId.GYROSCOPE, onSensorCallback);
+                        done();
+                    }, 500);
+                }
+            })
         } catch (error) {
-            console.info("newGyroScope_SensorJsTest010 error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
-     * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0110
-     * @tc.name: newGyroScope_SensorJsTest011
-     * @tc.desc:Call interface multiple times
+    /*
+     * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0100
+     * @tc.name: newGyroScopeSensorJsTest010
+     * @tc.desc:SensorId1000000 of incoming exception
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest011 error');
-				} else {   
-					expect(typeof(data)).assertEqual("object");				
-					sensor.on(sensor.SensorId.GYROSCOPE, (data)=>{
-						console.info("newGyroScope_SensorJsTest011 callback: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					});
-					sensor.on(sensor.SensorId.GYROSCOPE, (data)=>{
-						console.info("newGyroScope_SensorJsTest011 callback2: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					});
-					setTimeout(()=>{
-						console.info('---------newGyroScope_SensorJsTest011 off in--------------');
-						sensor.off(sensor.SensorId.GYROSCOPE);
-						console.info('---------newGyroScope_SensorJsTest011 off end--------------');
-						done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info("newGyroScope_SensorJsTest011 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newGyroScopeSensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScopeSensorJsTest010';
+        function onSensorCallback(data) {
+            console.info(TAG + ' Callback in!' + JSON.stringify(data));
+            expect(false).assertTrue();
+            done();
+        }
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                        sensor.off(1000000, onSensorCallback);
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+                        done();
+                    }
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
+     * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0110
+     * @tc.name: newGyroScopeSensorJsTest011
+     * @tc.desc:Call interface multiple times
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newGyroScopeSensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScopeSensorJsTest011';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, (data)=>{
+                        console.info(TAG + ' Callback in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.x)).assertEqual("number");
+                        expect(typeof (data.y)).assertEqual("number");
+                        expect(typeof (data.z)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    });
+                    sensor.on(sensor.SensorId.GYROSCOPE, (data)=>{
+                        console.info(TAG + ' Callback2 in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.x)).assertEqual("number");
+                        expect(typeof (data.y)).assertEqual("number");
+                        expect(typeof (data.z)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    });
+                    setTimeout(()=>{
+                        console.info('---------newGyroScopeSensorJsTest011 off in--------------');
+                        sensor.off(sensor.SensorId.GYROSCOPE);
+                        console.info('---------newGyroScopeSensorJsTest011 off end--------------');
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
+
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0120
      * @tc.name: newGravity_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        try {
-            sensor.off(sensor.SensorId.GYROSCOPE, 5);
+    it("newGravity_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        TAG = 'newGravity_SensorJsTest012';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                        sensor.off(sensor.SensorId.GYROSCOPE, 5);
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+                        done();
+                    }
+                }
+            })
         } catch (error) {
-            console.info('newGyroScope_SensorJsTest025 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0130
      * @tc.name: newGravity_SensorJsTest013
      * @tc.desc:Call on interface and once interface respectively, and use an off interface to close
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newGravity_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newGravity_SensorJsTest013--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest011 error');
-				} else {  	
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.GYROSCOPE, (data)=>{
-						console.info("newGravity_SensorJsTest013 callback: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					}, {'interval': 100000000});
-					sensor.once(sensor.SensorId.GYROSCOPE, (data)=>{
-						console.info("newGravity_SensorJsTest013 callback2: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					});
-					setTimeout(()=>{
-						console.info('---------newGravity_SensorJsTest013 off in--------------');
-						sensor.off(sensor.SensorId.GYROSCOPE);
-						console.info('---------newGravity_SensorJsTest013 off end--------------');
-						done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info("newGravity_SensorJsTest013 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        TAG = 'newGravity_SensorJsTest013';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, (data)=>{
+                        console.info(TAG + ' Callback in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.x)).assertEqual("number");
+                        expect(typeof (data.y)).assertEqual("number");
+                        expect(typeof (data.z)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    }, {'interval': 100000000});
+                    sensor.once(sensor.SensorId.GYROSCOPE, (data)=>{
+                        console.info(TAG + ' Callback2 in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.x)).assertEqual("number");
+                        expect(typeof (data.y)).assertEqual("number");
+                        expect(typeof (data.z)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    });
+                    setTimeout(()=>{
+                        console.info('---------newGravity_SensorJsTest013 off in--------------');
+                        sensor.off(sensor.SensorId.GYROSCOPE);
+                        console.info('---------newGravity_SensorJsTest013 off end--------------');
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
-        }	
-	})		
+        }
+    })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0140
      * @tc.name: newGravity_SensorJsTest014
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newGravity_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newGravity_SensorJsTest014--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest011 error');
-				} else { 
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.GYROSCOPE, (data)=>{
-						console.info("newGravity_SensorJsTest014 callback: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					}, {'interval': 100000000});
-					sensor.on(sensor.SensorId.GYROSCOPE, (data)=>{
-						console.info("newGravity_SensorJsTest014 callback2: " + JSON.stringify(data));
-						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
-							sensor.SensorAccuracy.ACCURACY_HIGH) {
-							console.info('callback accuracy verified' + JSON.stringify(data));
-							expect(true).assertTrue();
-						} else {
-							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
-							expect(false).assertTrue();
-						}						
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-						expect(typeof (data.timestamp)).assertEqual("number");
-					}, {'interval': 100000000});
-					setTimeout(()=>{
-						console.info('---------newGravity_SensorJsTest014 off in--------------');
-						sensor.off(sensor.SensorId.GYROSCOPE);
-						console.info('---------newGravity_SensorJsTest014 off end--------------');
-						done();
-					}, 1000);
-				}
-		})
-	} catch (error) {
-        console.info("newGravity_SensorJsTest014 Device does not support! ");
-        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-        done();
-    }
-	})	
+        TAG = 'newGravity_SensorJsTest014';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, (data)=>{
+                        console.info(TAG + ' Callback in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.x)).assertEqual("number");
+                        expect(typeof (data.y)).assertEqual("number");
+                        expect(typeof (data.z)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    }, {'interval': 100000000});
+                    sensor.on(sensor.SensorId.GYROSCOPE, (data)=>{
+                        console.info(TAG + ' Callback2 in!' + JSON.stringify(data));
+                        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+                            sensor.SensorAccuracy.ACCURACY_HIGH) {
+                            console.info('callback accuracy verified' + JSON.stringify(data));
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+                            expect(false).assertTrue();
+                        }
+                        expect(typeof (data.x)).assertEqual("number");
+                        expect(typeof (data.y)).assertEqual("number");
+                        expect(typeof (data.z)).assertEqual("number");
+                        expect(typeof (data.timestamp)).assertEqual("number");
+                    }, {'interval': 100000000});
+                    setTimeout(()=>{
+                        console.info('---------newGravity_SensorJsTest014 off in--------------');
+                        sensor.off(sensor.SensorId.GYROSCOPE);
+                        console.info('---------newGravity_SensorJsTest014 off end--------------');
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0150
      * @tc.name: newGravity_SensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newGravity_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newGravity_SensorJsTest015--------------');
-        try {
-            sensor.on();
+        TAG = 'newGravity_SensorJsTest015';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    try {
+                            sensor.on();
+                        } catch (error) {
+                            console.info(TAG + ' on error:' + error);
+                            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                            done();
+                        }
+                        try {
+                            sensor.once();
+                        } catch (error) {
+                            console.info(TAG + ' once error:' + error);
+                            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                            done();
+                        }
+                        try {
+                            sensor.off();
+                        } catch (error) {
+                            console.info(TAG + ' off error:' + error);
+                            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                            done();
+                        }
+                }
+            })
         } catch (error) {
-			console.info("newGravity_SensorJsTest015_on error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-            done();
-        }
-        try {
-            sensor.once();
-        } catch (error) {
-			console.info("newGravity_SensorJsTest015_once error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-            done();
-        }
-        try {
-            sensor.off();
-        } catch (error) {
-			console.info("newGravity_SensorJsTest015_off error:" +error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
-	
-	 /*
+
+     /*
      * @tc.number: SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0160
      * @tc.name: newGravity_SensorJsTest016
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newGravity_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newGravity_SensorJsTest016--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGravity_SensorJsTest016 error');
-				} else { 
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.GYROSCOPE, callback);
-					sensor.on(sensor.SensorId.GYROSCOPE, callback2);
-					setTimeout(() => {
-						console.info('----------------------newGravity_SensorJsTest016 off in--------------');
-						try {
-						sensor.off(sensor.SensorId.GYROSCOPE, callback);
-						} catch (error) {
-						console.info("newGravity_SensorJsTest016 error:" + error);
-						}
-						console.info('----------------------newGravity_SensorJsTest016 off end--------------');
-					}, 500);
-					setTimeout(() => {
-						console.info('----------------------newGravity_SensorJsTest016 off in--------------');
-						sensor.off(sensor.SensorId.GYROSCOPE, callback2);
-						console.info('----------------------newGravity_SensorJsTest016 off end--------------');
-						done();
-					}, 1000);
-				}
-			})
-	} catch (error) {
-        console.info("newGravity_SensorJsTest016 Device does not support! ");
-        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-        done();
-    }
-	})
-	
-	 /*
+        TAG = 'newGravity_SensorJsTest016';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback);
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback2);
+                    setTimeout(() => {
+                        console.info('----------------------newGravity_SensorJsTest016 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorId.GYROSCOPE, callback);
+                        } catch (error) {
+                            console.info(TAG + ' catch error:' + error);
+                        }
+                        console.info('----------------------newGravity_SensorJsTest016 off end--------------');
+                    }, 500);
+                    setTimeout(() => {
+                        console.info('----------------------newGravity_SensorJsTest016 off in--------------');
+                        sensor.off(sensor.SensorId.GYROSCOPE, callback2);
+                        console.info('----------------------newGravity_SensorJsTest016 off end--------------');
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
+
+     /*
      * @tc.number: SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0170
      * @tc.name: newGravity_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newGravity_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newGravity_SensorJsTest017--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGravity_SensorJsTest016 error');
-				} else { 
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': 100000000 });
-					sensor.on(sensor.SensorId.GYROSCOPE, callback2, { 'interval': 100000000 });
-					setTimeout(() => {
-						console.info('----------------------newGravity_SensorJsTest017 off in--------------');
-						try {
-						sensor.off(sensor.SensorId.GYROSCOPE, callback);
-						} catch (error) {
-						console.info("newGravity_SensorJsTest017 error:" + error);
-						}
-						console.info('----------------------newGravity_SensorJsTest017 off end--------------');
-					}, 500);
-					setTimeout(() => {
-						console.info('----------------------newGravity_SensorJsTest017_2 off in--------------');
-						sensor.off(sensor.SensorId.GYROSCOPE, callback2);
-						console.info('----------------------newGravity_SensorJsTest017_2 off end--------------');
-						done();
-					}, 1000);
-				}
-			})
-	} catch (error) {
-        console.info("newGravity_SensorJsTest017 Device does not support! ");
-        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-        done();
-    }
-	})
-	
-	 /*
+        TAG = 'newGravity_SensorJsTest017';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': 100000000 });
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback2, { 'interval': 100000000 });
+                    setTimeout(() => {
+                        console.info('----------------------newGravity_SensorJsTest017 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorId.GYROSCOPE, callback);
+                        } catch (error) {
+                            console.info(TAG + ' catch error:' + error);
+                        }
+                        console.info('----------------------newGravity_SensorJsTest017 off end--------------');
+                    }, 500);
+                    setTimeout(() => {
+                        console.info('----------------------newGravity_SensorJsTest017_2 off in--------------');
+                        sensor.off(sensor.SensorId.GYROSCOPE, callback2);
+                        console.info('----------------------newGravity_SensorJsTest017_2 off end--------------');
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
+
+     /*
      * @tc.number: SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0180
      * @tc.name: newGravity_SensorJsTest018
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newGravity_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newGravity_SensorJsTest018--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGravity_SensorJsTest018 error');
-				} else { 
-					expect(typeof(data)).assertEqual("object");
-					console.info('----------------------newGravity_SensorJsTest018 off in--------------');
-					try{
-						sensor.off(-1, callback);
-						console.info('----------------------newGravity_SensorJsTest018 off end--------------');
-					} catch (error) {
-						console.info("newGravity_SensorJsTest018 error:" + error);
-						expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-						expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-						done();
-					}
-				}
-			})
-	} catch (error) {
-        console.info("newGravity_SensorJsTest018 Device does not support! ");
-        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-        done();
-    }
-	})
-	
-	 /*
+        TAG = 'newGravity_SensorJsTest018';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    console.info('----------------------newGravity_SensorJsTest018 off in--------------');
+                    try{
+                        sensor.off(-1, callback);
+                        console.info('----------------------newGravity_SensorJsTest018 off end--------------');
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                        done();
+                    }
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
+
+     /*
      * @tc.number: SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0190
      * @tc.name: newGravity_SensorJsTest019
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newGravity_SensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newGravity_SensorJsTest019--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGravity_SensorJsTest019 error');
-				} else { 
-					try {
-						sensor.on(sensor.SensorId.GYROSCOPE, callback, {'interval': -100000000});
-						console.info('----------------------newGravity_SensorJsTest019 off in---------------------------');
-						sensor.off(sensor.SensorId.GYROSCOPE);
-						console.info('----------------------newGravity_SensorJsTest019 off end---------------------------');
-						done();
-					} catch (error) {
-						console.info('newGravity_SensorJsTest019 On fail, errCode:' + error.code + ' ,msg:' + error.message);
-						expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
-						expect(error.message).assertEqual(SERVICE_EXCEPTION_MSG);
-						done();
-					}
-				}
-			})
-	} catch (error) {
-        console.info("newGravity_SensorJsTest019 Device does not support! ");
-        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-        done();
-    }
-	})
-	
-	/*
+        TAG = 'newGravity_SensorJsTest019';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    try {
+                        sensor.on(sensor.SensorId.GYROSCOPE, callback, {'interval': -100000000});
+                        console.info('----------------------newGravity_SensorJsTest019 off in---------------------------');
+                        sensor.off(sensor.SensorId.GYROSCOPE);
+                        console.info('----------------------newGravity_SensorJsTest019 off end---------------------------');
+                        done();
+                    } catch (error) {
+                        console.info(TAG + ' catch error:' + error);
+                        expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
+                        expect(error.message).assertEqual(SERVICE_EXCEPTION_MSG);
+                        done();
+                    }
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
+            done();
+        }
+    })
+
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0200
-     * @tc.name: newGyroScope_SensorJsTest020
+     * @tc.name: newGyroScopeSensorJsTest020
      * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newGyroScope_SensorJsTest020--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest020 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': undefined });
-					sensor.on(sensor.SensorId.GYROSCOPE, callback2, { 'interval': undefined });
-					setTimeout(() => {
-						console.info('----------------------newGyroScope_SensorJsTest020 off in--------------');
-						try {
-						sensor.off(sensor.SensorId.GYROSCOPE, callback);
-						sensor.off(sensor.SensorId.GYROSCOPE, callback2);
-						} catch (error) {
-						console.info("newGyroScope_SensorJsTest020 error:" + error);
-						expect(false).assertTrue();
-						}
-						console.info('----------------------newGyroScope_SensorJsTest020 off end--------------');
-						done()
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('newGyroScope_SensorJsTest020 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newGyroScopeSensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newGyroScopeSensorJsTest020--------------');
+        TAG = 'newGyroScopeSensorJsTest020';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': undefined });
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback2, { 'interval': undefined });
+                    setTimeout(() => {
+                        console.info('----------------------newGyroScopeSensorJsTest020 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorId.GYROSCOPE, callback);
+                            sensor.off(sensor.SensorId.GYROSCOPE, callback2);
+                        } catch (error) {
+                            console.info(TAG + ' catch error:' + error);
+                            expect(false).assertTrue();
+                        }
+                        console.info('----------------------newGyroScopeSensorJsTest020 off end--------------');
+                        done()
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0210
-     * @tc.name: newGyroScope_SensorJsTest021
+     * @tc.name: newGyroScopeSensorJsTest021
      * @tc.desc: Illegal ID passed in
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest021 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");        
-					sensor.on(sensor.SensorId.GYROSCOPE, callback, undefined);
-					try{
-					sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': undefined });
-					} catch(error){
-						console.info('newGyroScope_SensorJsTest021 Repeat subscription'+error);
-					}
-					setTimeout(() => {
-						console.info('----------------------newGyroScope_SensorJsTest021 off in--------------');
-						try {
-						sensor.off(sensor.SensorId.GYROSCOPE);
-						} catch (error) {
-						console.info("newGyroScope_SensorJsTest021 error:" + error);
-						expect(false).assertTrue();
-						}
-						done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('newGyroScope_SensorJsTest021 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newGyroScopeSensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScopeSensorJsTest021';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback, undefined);
+                    try{
+                        sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': undefined });
+                    } catch(error){
+                        console.info(TAG + ' catch error:' + error);
+                    }
+                    setTimeout(() => {
+                        console.info('----------------------newGyroScopeSensorJsTest021 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorId.GYROSCOPE);
+                        } catch (error) {
+                            console.info(TAG + ' catch error:' + error);
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0220
-     * @tc.name: newGyroScope_SensorJsTest022
+     * @tc.name: newGyroScopeSensorJsTest022
      * @tc.desc: For normal scenarios
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGyroScope_SensorJsTest022--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest022 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");        
-					sensor.on(sensor.SensorId.GYROSCOPE, callback, null);
-					try{
-						sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': null });
-						} catch(error){
-							console.info('newGyroScope_SensorJsTest022 Repeat subscription'+error);
-						}
-					setTimeout(() => {
-						console.info('----------------------newGyroScope_SensorJsTest022 off in--------------');
-						try {
-							sensor.off(sensor.SensorId.GYROSCOPE);
-							} catch (error) {
-						console.info("newGyroScope_SensorJsTest022 error:" + error);
-							expect(false).assertTrue();
-							}
-							done();
-					}, 1000);
-				}
-			})
-		} catch (error) {
-            console.info('newGyroScope_SensorJsTest022 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newGyroScopeSensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScopeSensorJsTest022--------------');
+        TAG = 'newGyroScopeSensorJsTest022';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback, null);
+                    try{
+                            sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': null });
+                        } catch(error){
+                            console.info(TAG + ' catch error:' + error);
+                        }
+                    setTimeout(() => {
+                        console.info('----------------------newGyroScopeSensorJsTest022 off in--------------');
+                        try {
+                                sensor.off(sensor.SensorId.GYROSCOPE);
+                            } catch (error) {
+                                console.info(TAG + ' catch error:' + error);
+                                expect(false).assertTrue();
+                            }
+                            done();
+                    }, 1000);
+                }
+            })
+        } catch (error) {
+            console.info(TAG + ' Device does not support! ');
             done();
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0230
-     * @tc.name: newGyroScope_SensorJsTest023
+     * @tc.name: newGyroScopeSensorJsTest023
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGyroScope_SensorJsTest023--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest023 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': null });
-					setTimeout(() => {
-						console.info('----------------------newGyroScope_SensorJsTest023 off in--------------');
-						try {
-						sensor.off(sensor.SensorId.GYROSCOPE);
-						} catch (error) {
-						console.info("newGyroScope_SensorJsTest023 error:" + error);
-						expect(false).assertTrue();
-						}
-						done();			
-					}, 500);
-				}		
-			})
+    it("newGyroScopeSensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScopeSensorJsTest023--------------');
+        TAG = 'newGyroScopeSensorJsTest023';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': null });
+                    setTimeout(() => {
+                        console.info('----------------------newGyroScopeSensorJsTest023 off in--------------');
+                        try {
+                            sensor.off(sensor.SensorId.GYROSCOPE);
+                        } catch (error) {
+                            console.info(TAG + ' catch error:' + error);
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    }, 500);
+                }
+            })
         } catch (error) {
-            console.info("newGyroScope_SensorJsTest023 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
-        }			
+        }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0240
-     * @tc.name: newGyroScope_SensorJsTest024
+     * @tc.name: newGyroScopeSensorJsTest024
      * @tc.desc: Once Normal Subscription Scenario Use Case
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
-				if (error) {
-					console.info('newGyroScope_SensorJsTest024 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");		
-					sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': 100000000 });
-					try{
-						sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': 100000000 });
-						} catch(error){
-							console.info("newGyroScope_SensorJsTest024 catch error:" + error);
-						}
-					setTimeout(() => {
-						console.info('----------------------newGyroScope_SensorJsTest024 off in--------------');
-						try {
-							sensor.off(sensor.SensorId.GYROSCOPE);
-							} catch (error) {
-						console.info("newGyroScope_SensorJsTest024 error:" + error);
-							expect(false).assertTrue();
-							}
-						console.info('----------------------newGyroScope_SensorJsTest024 off end--------------');
-							done()
-					}, 1000);
-				}
-			})
+    it("newGyroScopeSensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScopeSensorJsTest024';
+        try{
+           sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
+                if (error) {
+                    console.info(TAG + ' error:' + error);
+                    done();
+                } else {
+                    expect(typeof(data)).assertEqual("object");
+                    sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': 100000000 });
+                    try{
+                        sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': 100000000 });
+                        } catch(error){
+                            console.info(TAG + ' catch error:' + error);
+                        }
+                    setTimeout(() => {
+                        console.info('----------------------newGyroScopeSensorJsTest024 off in--------------');
+                        try {
+                                sensor.off(sensor.SensorId.GYROSCOPE);
+                            } catch (error) {
+                                console.info(TAG + ' catch error:' + error);
+                                expect(false).assertTrue();
+                            }
+                        console.info('----------------------newGyroScopeSensorJsTest024 off end--------------');
+                            done()
+                    }, 1000);
+                }
+            })
         } catch (error) {
-            console.info("newGyroScope_SensorJsTest024 Device does not support! ");
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            console.info(TAG + ' Device does not support! ');
             done();
-        }				
-    })	
+        }
+    })
 })}

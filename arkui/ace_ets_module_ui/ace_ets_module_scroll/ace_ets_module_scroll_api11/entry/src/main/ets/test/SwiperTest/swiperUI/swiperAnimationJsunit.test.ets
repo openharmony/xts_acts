@@ -15,8 +15,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosrouter from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../../MainAbility/utils/Common1';
+import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager1';
 const waitUiReadyMs = 1000;
 
 export default function swiperAnimationJsunit() {

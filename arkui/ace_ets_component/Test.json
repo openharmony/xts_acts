@@ -4,14 +4,15 @@
         "type": "OHJSUnitTest",
         "test-timeout": "1200000",
 	    "bundle-name": "com.open.harmony.acetest",
-	    "module-name": "phone",
+	    "module-name": "entry_test",
 	    "shell-timeout": "1200000",
 	    "testcase-timeout": "180000"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsAceEtsComponentTest.hap"
+                "ActsAceEtsComponentTest.hap",
+                "ActsAceEtsComponentTestMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

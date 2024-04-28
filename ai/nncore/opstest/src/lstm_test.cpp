@@ -45,8 +45,6 @@ struct LSTMModel1 {
     float hyValue[2][2] = {0};
     float cyValue[2][2] = {0};
 
-    float expectValue[9] = {1, 2, 3, 1, 2, 3, 1, 2, 3};
-
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 100*sizeof(float)};
     OHNNOperandTest wih = {OH_NN_FLOAT32, OH_NN_TENSOR, wih_shape, wihValue, 80*sizeof(float)};
     OHNNOperandTest whh = {OH_NN_FLOAT32, OH_NN_TENSOR, whh_shape, whhValue, 16*sizeof(float)};
@@ -232,7 +230,6 @@ HWTEST_F(LSTMTest, SUB_AI_NNRt_Func_North_LSTM_Model_SetOperandValue_01, Functio
     LSTMModel1 lSTMModel;
     OHNNGraphArgs graphArgs = lSTMModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -243,7 +240,7 @@ HWTEST_F(LSTMTest, SUB_AI_NNRt_Func_North_LSTM_Model_SetOperandValue_01, Functio
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -269,7 +266,6 @@ HWTEST_F(LSTMTest, SUB_AI_NNRt_Func_North_LSTM_Model_SetOperandValue_02, Functio
     LSTMModel1 lSTMModel;
     OHNNGraphArgs graphArgs = lSTMModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -280,7 +276,7 @@ HWTEST_F(LSTMTest, SUB_AI_NNRt_Func_North_LSTM_Model_SetOperandValue_02, Functio
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -305,7 +301,6 @@ HWTEST_F(LSTMTest, SUB_AI_NNRt_Func_North_LSTM_Model_SetOperandValue_03, Functio
     LSTMModel1 lSTMModel;
     OHNNGraphArgs graphArgs = lSTMModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -316,7 +311,7 @@ HWTEST_F(LSTMTest, SUB_AI_NNRt_Func_North_LSTM_Model_SetOperandValue_03, Functio
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

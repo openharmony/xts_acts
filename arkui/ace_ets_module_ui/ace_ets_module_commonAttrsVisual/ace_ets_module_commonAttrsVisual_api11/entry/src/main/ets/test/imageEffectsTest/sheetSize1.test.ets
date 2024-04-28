@@ -78,7 +78,8 @@ export default function sheetSize1Jsunit() {
       let button: Component = await driver.findComponent(ON.id('bindSheet_SheetSize1'));
       await button.click();
       await CommonFunc.sleep(1000);
-      await driver.click(100, 100);
+      let button2: Component = await driver.findComponent(ON.id('bindSheet_SheetSize1'));
+      await button2.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('bindSheet_dismiss1');
       let obj = JSON.parse(strJson);

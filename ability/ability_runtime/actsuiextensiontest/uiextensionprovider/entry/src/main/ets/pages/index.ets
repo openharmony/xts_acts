@@ -82,6 +82,7 @@ struct Index {
     let deviceEvent01 = 'ACTS_UIExtension_Device_Event_01';
     let deviceEvent02 = 'ACTS_UIExtension_Device_Event_02';
     let startAbilityByTypeEvent001 = 'ACTS_UIExtension_StartAbilityByType001';
+    let getUIExtensionWindowProxy001 = 'ACTS_UIExtension_GetUIExtensionWindowProxy001';
     var subscriber;
     var startresult = false;
     var subscribeInfo = {
@@ -376,6 +377,9 @@ struct Index {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.startAbilityByTypeEvent001();
+        } else if (data.event == getUIExtensionWindowProxy001) {
+          let windowProxy = this.session.getUIExtensionWindowProxy();
+          console.log(TAG + "UIExtAbility onSessionCreate, windowProxy: " + JSON.stringify(windowProxy));
         }
       });
     }).catch((error) => {

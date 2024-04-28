@@ -76,8 +76,6 @@ public:
     int32_t PrepareModelFromModelCache(const std::vector<SharedBuffer>& modelCache, const ModelConfig& config,
          sptr<IPreparedModel>& preparedModel) override;
 
-    int32_t MemoryCopy(float* data, uint32_t length);
-
     void SetFP16Supported(bool isSupported);
 
     void SetPerformanceSupported(bool isSupported);
@@ -96,7 +94,7 @@ public:
     virtual ~MockIDevice();
 
 private:
-    std::unordered_map<int, sptr<Ashmem>> m_ashmems;
+    std::unordered_map<int, Ashmem> m_ashmems;
     int m_bufferFd;
     bool m_fp16 = true;
     bool m_performance = true;

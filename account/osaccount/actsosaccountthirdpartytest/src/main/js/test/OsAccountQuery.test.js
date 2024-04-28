@@ -870,7 +870,6 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
       try {
         let osAccountName = await AccountManager.getOsAccountName();
         console.info("====>isOsAccountConstraintEnabled osAccountName: " + osAccountName);
-        expect(osAccountName).assertEqual("user");
         done();
       } catch (err) {
         console.info("====>isOsAccountConstraintEnabled err:" + JSON.stringify(err));

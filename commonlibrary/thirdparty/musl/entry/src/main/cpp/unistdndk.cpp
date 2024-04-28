@@ -194,6 +194,21 @@ static napi_value GetPGrp(napi_env env, napi_callback_info info)
     napi_create_int32(env, getInfo, &result);
     return result;
 }
+static napi_value Crypt(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    const char *key = "password";
+    size_t lenA;
+    size_t lenV = PARAM_32;
+    char *salt = static_cast<char *>(malloc(sizeof(char) * lenV));
+    napi_get_value_string_utf8(env, args[PARAM_0], salt, lenV, &lenA);
+    char *cryptResult = crypt(key, salt);
+    napi_value result = nullptr;
+    napi_create_string_utf8(env, cryptResult, NAPI_AUTO_LENGTH, &result);
+    return result;
+}
 static napi_value GetPGid(napi_env env, napi_callback_info info)
 {
     int ret = FAIL;
@@ -843,6 +858,17 @@ static napi_value Access(napi_env env, napi_callback_info info)
     errno = ERRON_0;
     int fd = open("/data/storage/el2/base/files/fzl.txt", O_CREAT, PARAM_0777);
     int returnValue = access("/data/storage/el2/base/files/fzl.txt", F_OK);
+    close(fd);
+    napi_value result = nullptr;
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
+static napi_value Eaccess(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    int fd = open("/data/storage/el2/base/files/fzl.txt", O_CREAT, PARAM_0777);
+    int returnValue = eaccess("/data/storage/el2/base/files/fzl.txt", F_OK);
     close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, returnValue, &result);
@@ -2117,6 +2143,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"tcsetpgrp", nullptr, Tcsetpgrp, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"setpgid", nullptr, Setpgid, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"setpgrp", nullptr, Setpgrp, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"crypt", nullptr, Crypt, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"setresuid", nullptr, Setresuid, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"read", nullptr, Read, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"readlink", nullptr, Readlink, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2130,6 +2157,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"ttyname", nullptr, Ttyname, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ttyname_r", nullptr, Ttyname_r, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"access", nullptr, Access, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eaccess", nullptr, Eaccess, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"close", nullptr, Close, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ctermid", nullptr, CTerMid, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"copy_file_range", nullptr, Copy_file_range, nullptr, nullptr, nullptr, napi_default, nullptr},

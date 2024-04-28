@@ -33,6 +33,10 @@ import DatePickerDialogCallback from './DatePickerDialogTest/DatePickerDialogCal
 import TextPickerDialogCallback from './TextPickerDialogTest/TextPickerDialogCallback.test.ets'
 import TimePickerDialogCallback from './TimePickerDialogTest/TimePickerDialogCallback.test.ets'
 
+import closeCustomDialog from './promptActionTest/closeCustomDialog.test'
+import openCustomDialog from './promptActionTest/openCustomDialog.test'
+import updateCustomDialog from './promptActionTest/updateCustomDialog.test'
+
 export default function testsuite() {
   TextPickerDialog()
   DatePickerDialog()
@@ -54,4 +58,8 @@ export default function testsuite() {
   DatePickerDialogCallback();
   TextPickerDialogCallback();
   TimePickerDialogCallback();
+
+  closeCustomDialog()
+  openCustomDialog()
+  updateCustomDialog()
 }
