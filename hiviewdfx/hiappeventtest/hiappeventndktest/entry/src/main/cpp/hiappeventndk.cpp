@@ -27,6 +27,20 @@ const double DOUBLE_123_22 = 123.22;
 const double DOUBLE_30949_374 = 30949.374;
 const double DOUBLE_131312_46464 = 131312.46464;
 
+static struct HiAppEvent_Watcher *watcher;
+
+static void OnReceiver(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupSize)
+{
+}
+
+static void OnTrigger(int row, int size)
+{
+};
+
+static void OnTake(const char *const *events, uint32_t eventLen)
+{
+}
+
 static napi_value OHHiAppEventWrite(napi_env env, napi_callback_info info)
 {
     ParamList list = OH_HiAppEvent_CreateParamList();
@@ -245,6 +259,190 @@ static napi_value OHHiAppEventCreateParamList(napi_env env, napi_callback_info i
     return result;
 }
 
+static napi_value SetAppEventFilter(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    int32_t code = OH_HiAppEvent_SetAppEventFilter(watcher, "testDomain", 0b1000, {}, 0);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value SetAppEventFilterInvName(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    int32_t code = OH_HiAppEvent_SetAppEventFilter(watcher, "nullptr", 0b1000, {}, 1);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value SetAppEventFilterInvDomain(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    int32_t code = OH_HiAppEvent_SetAppEventFilter(watcher, nullptr, 0b1000, {}, 0);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value SetAppEventFilterInvWatcher(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher(nullptr);
+    int32_t code = OH_HiAppEvent_SetAppEventFilter(watcher, "testDomain", 0b1000, {}, 0);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value SetTriggerCondition(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    int32_t code = OH_HiAppEvent_SetTriggerCondition(watcher, 1, 0, 0);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value SetTriggerConditionInvWatcher(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher(nullptr);
+    int32_t code = OH_HiAppEvent_SetTriggerCondition(watcher, 1, 0, 0);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value SetWatcherOnTrigger(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    int32_t code = OH_HiAppEvent_SetWatcherOnTrigger(watcher, OnTrigger);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value SetWatcherOnTriggerInvWatcher(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher(nullptr);
+    int32_t code = OH_HiAppEvent_SetWatcherOnTrigger(watcher, OnTrigger);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value SetWatcherOnReceive(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    int32_t code = OH_HiAppEvent_SetWatcherOnReceive(watcher, OnReceiver);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value SetWatcherOnReceiveInvWatcher(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher(nullptr);
+    int32_t code = OH_HiAppEvent_SetWatcherOnReceive(watcher, OnReceiver);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value TakeWatcherData(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    OH_HiAppEvent_AddWatcher(watcher);
+    int32_t code = OH_HiAppEvent_TakeWatcherData(watcher, 1, OnTake);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value TakeWatcherDataInvWatcher(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher(nullptr);
+    OH_HiAppEvent_AddWatcher(watcher);
+    int32_t code = OH_HiAppEvent_TakeWatcherData(watcher, 1, OnTake);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+static napi_value TakeWatcherDataInvOperation(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    int32_t code = OH_HiAppEvent_TakeWatcherData(watcher, 1, OnTake);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value AddWatcher(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    int32_t code = OH_HiAppEvent_AddWatcher(watcher);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value AddWatcherInvWatcher(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher(nullptr);
+    int32_t code = OH_HiAppEvent_AddWatcher(watcher);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    OH_HiAppEvent_AddWatcher(watcher);
+    int32_t code = OH_HiAppEvent_RemoveWatcher(watcher);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value RemoveWatcherInvWatcher(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher(nullptr);
+    OH_HiAppEvent_AddWatcher(watcher);
+    int32_t code = OH_HiAppEvent_RemoveWatcher(watcher);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+static napi_value RemoveWatcherInvOperation(napi_env env, napi_callback_info info)
+{
+    napi_value ret;
+    watcher = OH_HiAppEvent_CreateWatcher("testWatcher");
+    int32_t code = OH_HiAppEvent_RemoveWatcher(watcher);
+    OH_HiAppEvent_DestroyWatcher(watcher);
+    OH_HiAppEvent_ClearData();
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -284,7 +482,43 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHHiAppEventAddStringArrayParam", nullptr, OHHiAppEventAddStringArrayParam, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"oHHiAppEventCreateParamList", nullptr, OHHiAppEventCreateParamList, nullptr, nullptr, nullptr,
-         napi_default, nullptr}};
+         napi_default, nullptr},
+        { "setAppEventFilter", nullptr, SetAppEventFilter, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "setAppEventFilterInvName", nullptr, SetAppEventFilterInvName, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "setAppEventFilterInvDomain", nullptr, SetAppEventFilterInvDomain, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "setAppEventFilterInvWatcher", nullptr, SetAppEventFilterInvWatcher, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "setTriggerCondition", nullptr, SetTriggerCondition, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "setTriggerConditionInvWatcher", nullptr, SetTriggerConditionInvWatcher, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "setWatcherOnTrigger", nullptr, SetWatcherOnTrigger, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "setWatcherOnTriggerInvWatcher", nullptr, SetWatcherOnTriggerInvWatcher, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "setWatcherOnReceive", nullptr, SetWatcherOnReceive, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "setWatcherOnReceiveInvWatcher", nullptr, SetWatcherOnReceiveInvWatcher, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "takeWatcherData", nullptr, TakeWatcherData, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "takeWatcherDataInvWatcher", nullptr, TakeWatcherDataInvWatcher, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "takeWatcherDataInvOperation", nullptr, TakeWatcherDataInvOperation, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "addWatcher", nullptr, AddWatcher, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "addWatcherInvWatcher", nullptr, AddWatcherInvWatcher, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "removeWatcher", nullptr, RemoveWatcher, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "removeWatcherInvWatcher", nullptr, RemoveWatcherInvWatcher, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        { "removeWatcherInvOperation", nullptr, RemoveWatcherInvOperation, nullptr, nullptr, nullptr,
+         napi_default, nullptr }};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
