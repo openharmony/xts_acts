@@ -24,6 +24,8 @@
         "MainAbility/pages/Image/onComplete",
         "MainAbility/pages/Text/clearStyles",
         "MainAbility/pages/Text/removeStyles",
-        "MainAbility/pages/Text/StyledString"
+        "MainAbility/pages/Text/StyledString",
+        "MainAbility/pages/Text/TextStyle",
+        "MainAbility/pages/Marquee/MarqueeApi"
     ]
 }

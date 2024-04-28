@@ -37,6 +37,8 @@ import onComplete from './ImageTest/onComplete.test'
 import removeStyles from './TextTest/removeStyles.test'
 import StyledStringTest from './TextTest/StyledStringTest.test'
 import clearStyles from './TextTest/clearStyles.test'
+import TextStyle from './TextTest/TextStyle.test';
+import MarqueeApi from './Marquee/MarqueeApi.test';
 export default function testsuite() {
   onSelectionChange1();
   onSelectionChange2();
@@ -62,5 +64,7 @@ export default function testsuite() {
   removeStyles()
   clearStyles()
   StyledStringTest()
+  TextStyle();
+  MarqueeApi();
   
 }
