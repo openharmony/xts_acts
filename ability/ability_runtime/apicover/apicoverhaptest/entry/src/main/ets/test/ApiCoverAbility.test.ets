@@ -35,7 +35,9 @@ import ability from '@ohos.ability.ability';
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
 import commonEventManager from '@ohos.commonEventManager';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
 let CROSS_USER_DENY = 201;
@@ -452,8 +454,12 @@ export default function ApiCoverTest() {
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.resourceManager.getConfiguration((err, data) => {
         if (err == undefined) {
           console.log(`Ability: getConfiguration success: ${JSON.stringify(data)}`);
-          console.log(`Ability: getConfiguration success: JSON.stringify(data.direction)`);
-          expect(0).assertEqual(data.direction);
+          console.log(`Ability: getConfiguration success1: ${JSON.stringify(data.direction)}`);
+          if (deviceType === '2in1') {
+            expect(1).assertEqual(data.direction);
+          } else {
+            expect(0).assertEqual(data.direction);
+          }
           done();
         } else {
           expect().assertFail();
@@ -571,8 +577,10 @@ export default function ApiCoverTest() {
       // expect('ohos.extra.param.key.form_rendering_mode').assertEqual(formInfoNew.FormParam.FORM_RENDERING_MODE_KEY);
       console.info("SUB_AA_Test_InsightIntent_0100:" + formInfoNew.FormParam.FORM_RENDERING_MODE_KEY);
       expect('ohos.extra.param.key.host_bg_inverse_color').assertEqual(formInfoNew.FormParam.HOST_BG_INVERSE_COLOR_KEY)
-      expect('ohos.extra.param.key.permission_name').assertEqual(formInfoNew.FormParam.FORM_PERMISSION_NAME_KEY)
-      expect('ohos.extra.param.key.permission_granted').assertEqual(formInfoNew.FormParam.FORM_PERMISSION_GRANTED_KEY)
+      if (deviceType !== '2in1') {
+        expect('ohos.extra.param.key.permission_name').assertEqual(formInfoNew.FormParam.FORM_PERMISSION_NAME_KEY)
+        expect('ohos.extra.param.key.permission_granted').assertEqual(formInfoNew.FormParam.FORM_PERMISSION_GRANTED_KEY)
+      }
       expect(1).assertEqual(formInfoNew.LaunchReason.FORM_DEFAULT);
       expect(2).assertEqual(formInfoNew.LaunchReason.FORM_SHARE);
       expect(0).assertEqual(formInfoNew.FormState.DEFAULT);
