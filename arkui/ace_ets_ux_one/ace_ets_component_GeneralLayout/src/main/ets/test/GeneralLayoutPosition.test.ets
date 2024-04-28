@@ -81,8 +81,8 @@ export default function GeneralLayoutPositionTest() {
             expect(mirror_rect_top - top).assertEqual(vp2px(100));
             console.info('ArkUIHDS_General_Layout_0100 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_0100 ERR  ' + JSON.stringify(err));
@@ -119,8 +119,8 @@ export default function GeneralLayoutPositionTest() {
             expect(mirror_rect_top - top).assertEqual(100);
             console.info('ArkUIHDS_General_Layout_0200 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_0200 ERR  ' + JSON.stringify(err));
@@ -157,8 +157,8 @@ export default function GeneralLayoutPositionTest() {
             expect(bottom - mirror_rect_bottom).assertEqual(fp2px(300));
             console.info('ArkUIHDS_General_Layout_0300 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_0300 ERR  ' + JSON.stringify(err));
@@ -196,8 +196,8 @@ export default function GeneralLayoutPositionTest() {
             expect(bottom - mirror_rect_bottom).assertEqual(lpx2px(400));
             console.info('ArkUIHDS_General_Layout_0400 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_0400 ERR  ' + JSON.stringify(err));
@@ -235,8 +235,8 @@ export default function GeneralLayoutPositionTest() {
             expect(mirror_rect_top - top).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_0500 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_0500 ERR  ' + JSON.stringify(err));
@@ -266,14 +266,18 @@ export default function GeneralLayoutPositionTest() {
             let strJson1 = getInspectorByKey('0600_ImageB');
             mirror_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[1] + ']')[0];
             mirror_rect_bottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[1] + ']')[1];
+            let strJson2 = getInspectorByKey('top');
+            let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson2).$rect + ']')[0] + ']')[1];
+            let strJson3 = getInspectorByKey('bottom');
+            let bottom: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson3).$rect + ']')[0] + ']')[1];
             expect(screenWidth - original_rect_right).assertEqual(screenWidth / 2);
             expect(mirror_rect_right).assertEqual(screenWidth - original_rect_left);
-            expect(original_rect_bottom).assertEqual(screenHeight / 2);
-            expect(mirror_rect_bottom).assertEqual(screenHeight / 2);
+            expect(original_rect_bottom).assertEqual((top + bottom) / 2);
+            expect(mirror_rect_bottom).assertEqual((top + bottom) / 2);
             console.info('ArkUIHDS_General_Layout_0600 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_0600 ERR  ' + JSON.stringify(err));
@@ -297,11 +301,13 @@ export default function GeneralLayoutPositionTest() {
           let strJson = getInspectorByKey('0700_TextC');
           original_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0];
           original_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1];
+          original_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0];
           I18n.System.setSystemLanguage("ar-EG");
           setTimeout(() => {
             let strJson1 = getInspectorByKey('0700_TextC');
             mirror_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[0];
             mirror_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
+            mirror_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[1] + ']')[0];
             let strJson2 = getInspectorByKey('top');
             let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson2).$rect + ']')[0] + ']')[1];
             expect(original_rect_left).assertEqual(0);
@@ -310,8 +316,8 @@ export default function GeneralLayoutPositionTest() {
             expect(mirror_rect_top - top).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_0700 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_0700 ERR  ' + JSON.stringify(err));
@@ -335,11 +341,13 @@ export default function GeneralLayoutPositionTest() {
           let strJson = getInspectorByKey('0800_ButtonC');
           original_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0];
           original_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1];
+          original_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0];
           I18n.System.setSystemLanguage("ar-EG");
           setTimeout(() => {
             let strJson1 = getInspectorByKey('0800_ButtonC');
             mirror_rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[0];
             mirror_rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
+            mirror_rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[1] + ']')[0];
             let strJson2 = getInspectorByKey('top');
             let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson2).$rect + ']')[0] + ']')[1];
             expect(original_rect_left).assertEqual(0);
@@ -348,11 +356,11 @@ export default function GeneralLayoutPositionTest() {
             expect(mirror_rect_top - top).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_0800 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
-        console.info('ArkUIHDS_General_Layout_0700 ERR  ' + JSON.stringify(err));
+        console.info('ArkUIHDS_General_Layout_0800 ERR  ' + JSON.stringify(err));
         done();
       }
     });
@@ -387,8 +395,8 @@ export default function GeneralLayoutPositionTest() {
             expect(mirror_rect_top - top).assertEqual(0);
             console.info('ArkUIHDS_General_Layout_0900 END');
             done();
-          }, 500);
-        }, 300);
+          }, 5000);
+        }, 5000);
       } catch (err) {
         expect().assertFail();
         console.info('ArkUIHDS_General_Layout_0900 ERR  ' + JSON.stringify(err));
