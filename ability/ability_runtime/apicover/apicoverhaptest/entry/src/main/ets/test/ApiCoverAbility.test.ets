@@ -33,6 +33,7 @@ import insightIntent from '@ohos.app.ability.insightIntent';
 import startOptions from '@ohos.app.ability.StartOptions';
 import ability from '@ohos.ability.ability';
 import Want from '@ohos.app.ability.Want';
+import wantConstant from '@ohos.app.ability.wantConstant';
 import { BusinessError } from '@ohos.base';
 import commonEventManager from '@ohos.commonEventManager';
 
@@ -46,7 +47,6 @@ let createModuleContext: ESObject;
 function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time));
 }
-
 
 function func1(a: string, b: string) {
   array.push(a);
@@ -1079,5 +1079,17 @@ export default function ApiCoverTest() {
       }
     });
 
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_URI_FLAG_0100
+     * @tc.name   : Check if value of FLAG_AUTH_PERSISTABLE_URI_PERMISSION is as expected
+     * @tc.desc   : Uri Flag api cover
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : 1
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_URI_FLAG_0100', 0, async (done: Function) => {
+      expect(wantConstant.Flags.FLAG_AUTH_PERSISTABLE_URI_PERMISSION).assertEqual(0x00000040);
+      done();
+    });
   })
 }
