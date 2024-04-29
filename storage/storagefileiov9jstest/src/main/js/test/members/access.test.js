@@ -101,8 +101,8 @@ describe('fileIO_fs_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_access_sync_000', 0, async function () {
-    let fpath = await nextFileName('fileIO_test_access_sync_000');
+  it('fileIO_test_access_sync_003', 0, async function () {
+    let fpath = await nextFileName('fileIO_test_access_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -115,7 +115,7 @@ describe('fileIO_fs_access', function () {
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
-      console.log('fileIO_test_access_sync_000 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_access_sync_003 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
@@ -429,8 +429,8 @@ describe('fileIO_fs_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESS_ASYNC_0900
-   * @tc.name fileIO_test_access_async_009
+   * @tc.number SUB_DF_FILEIO_ACCESS_ASYNC_0800
+   * @tc.name fileIO_test_access_async_008
    * @tc.desc Test access() interface. Promise.
    * Use promise to test that the file is exist. AccessModeType = READ.
    * @tc.size MEDIUM
@@ -438,8 +438,8 @@ describe('fileIO_fs_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_access_async_009', 0, async function (done) {
-    let fpath = await nextFileName('fileIO_test_access_async_009');
+  it('fileIO_test_access_async_008', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_test_access_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -453,14 +453,14 @@ describe('fileIO_fs_access', function () {
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
-      console.log('fileIO_test_access_async_009 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_access_async_008 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESS_ASYNC_1000
-   * @tc.name fileIO_test_access_async_010
+   * @tc.number SUB_DF_FILEIO_ACCESS_ASYNC_0900
+   * @tc.name fileIO_test_access_async_009
    * @tc.desc Test access() interface. Promise.
    * Use promise to test that the file is exist. AccessModeType = READ_WRITE.
    * @tc.size MEDIUM
@@ -468,8 +468,8 @@ describe('fileIO_fs_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_access_async_010', 0, async function (done) {
-    let fpath = await nextFileName('fileIO_test_access_async_010');
+  it('fileIO_test_access_async_009', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_test_access_async_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -483,7 +483,7 @@ describe('fileIO_fs_access', function () {
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
-      console.log('fileIO_test_access_async_010 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_access_async_009 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
