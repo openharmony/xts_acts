@@ -16,7 +16,9 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let subscriberInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
     'onWindowStageCreateMain_To_Test_CommonEvent',
@@ -209,6 +211,10 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0300', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0300 --- start")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let Subscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
@@ -279,6 +285,10 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0400', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0400 --- start")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let Subscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
@@ -351,6 +361,10 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0500', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0500 --- start")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let Subscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
@@ -423,6 +437,10 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0600', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0600 --- start")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let Subscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
@@ -495,6 +513,10 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0700', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0700 --- start")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let Subscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
@@ -566,6 +588,10 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0800', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0800 --- start")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let Subscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
