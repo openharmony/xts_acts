@@ -43,6 +43,7 @@ import MarqueeApi from './Marquee/MarqueeApi.test';
 import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
 import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
 import RichEditorApi5 from './RichEditor/RichEditorApi5.test'
+import RichEditorChangeCallback from './RichEditor/RichEditorChangeCallback.test'
 export default function testsuite() {
   onSelectionChange1();
   onSelectionChange2();
@@ -70,8 +71,9 @@ export default function testsuite() {
   StyledStringTest()
   TextStyle();
   MarqueeApi();
-  
+
   RichEditorApi1();
   RichEditorApi3();
   RichEditorApi5();
+  RichEditorChangeCallback();
 }
