@@ -47,7 +47,6 @@ struct RichEditorChangeCallback {
           return true
         })
         .onDidChange(()=>{
-          console.log('onDidChange: '+JSON.stringify(value))
           this.text = this.text + 'onDidChange'
         })
 
