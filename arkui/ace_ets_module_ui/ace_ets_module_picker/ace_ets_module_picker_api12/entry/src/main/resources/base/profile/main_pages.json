@@ -4,6 +4,8 @@
         "MainAbility/pages/TextPicker/gradientHeight",
         "MainAbility/pages/CheckboxGroup/CheckBoxShape",
         "MainAbility/pages/Checkbox/contentModifier",
-        "MainAbility/pages/Checkbox/triggerChange"
+        "MainAbility/pages/Checkbox/triggerChange",
+        "MainAbility/pages/Button/ButtonApi1",
+        "MainAbility/pages/Button/ButtonApi2"
     ]
 }

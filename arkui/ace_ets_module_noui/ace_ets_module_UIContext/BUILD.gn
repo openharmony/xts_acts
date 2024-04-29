@@ -13,5 +13,8 @@
 
 group("ActsAceEtsModuleUIContextTest") {
   testonly = true
-  deps = [ "ace_ets_module_UIContext_api11:ActsAceEtsModuleUIContextApi11Test" ]
+  deps = [
+    "ace_ets_module_UIContext_api11:ActsAceEtsModuleUIContextApi11Test",
+    "ace_ets_module_UIContext_api12:ActsAceEtsModuleUIContextApi12Test",
+  ]
 }

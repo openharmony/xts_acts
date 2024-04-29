@@ -12,19 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import gradientHeight from './TextPickerTest/gradientHeight.test';
-import contentModifier from './CheckboxTest/contentModifier.test';
-import triggerChange from './CheckboxTest/triggerChange.test';
-import CheckBoxShape from './CheckboxGroupTest/CheckBoxShape.test';
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-import ButtonApi1 from './Button/ButtonApi1.test'
-import ButtonApi2 from './Button/ButtonApi2.test'
-export default function testsuite() {
-    gradientHeight()
-    contentModifier()
-    triggerChange()
-    CheckBoxShape()
-    
-    ButtonApi1();
-    ButtonApi2();
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("[Demo] MyAbilityStage onCreate")
+        globalThis.stageOnCreateRun = 1;
+        globalThis.stageContext = this.context;
+    }
 }
