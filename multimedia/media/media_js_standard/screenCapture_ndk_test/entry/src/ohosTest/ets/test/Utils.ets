@@ -51,10 +51,7 @@ export default class Utils {
   
   static async confirmScreenCapture() {
     console.info('IN confirmScreenCapture...')
-	//let driver = await Driver.create(); 
-	//driver.delayMs(2000);
 	// 判断是否有授权弹窗
-	//let btn = await driver.findComponent(ON.text("确定"));
     let btn = await driver.waitForComponent(ON.text("确定"), 10000);
 	btn.click();
     console.info('OUT confirmScreenCapture end...')
@@ -62,8 +59,6 @@ export default class Utils {
 
   static async allowScreenCapture() {
     console.info('IN allowScreenCapture...')
-	//let driver = await Driver.create(); 
-	//await driver.delayMs(2000);
 	let btn = await driver.waitForComponent(ON.text("允许"), 2000);	
 	await btn.click();
     btn = await driver.waitForComponent(ON.text("允许"), 2000);
