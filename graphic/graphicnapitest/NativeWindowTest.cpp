@@ -516,7 +516,7 @@ void NativeWindowAttachBuffer003Test(NativeWindow *nativeWindowTmp, NativeWindow
     int code = GET_BUFFERQUEUE_SIZE;
     int32_t queueSize = 0;
     ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindowTmp, code, &queueSize), OHOS::GSERROR_OK);
-    ASSERT_EQ(queueSize, 3);
+    ASSERT_EQ(queueSize, 3);    // 3 : check num
 
     ASSERT_EQ(OH_NativeWindow_NativeWindowDetachBuffer(nativeWindowTmp, nativeWindowBuffer1), OHOS::GSERROR_OK);
     ASSERT_EQ(OH_NativeWindow_NativeWindowDetachBuffer(nativeWindowTmp, nativeWindowBuffer2), OHOS::GSERROR_OK);
