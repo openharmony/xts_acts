@@ -1,4 +1,4 @@
-# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2023 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,30 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("screenCapture_xts_ndk_hap") {
-  hap_profile = "./entry/src/main/config.json"
-  deps = [
-    ":pixelmap_ets_assets",
-    ":pixelmap_ets_resources",
-    ":pixelmap_ets_test_assets",
-  ]
-  ets2abc = true
+
+ohos_app_assist_suite("ActsNativeAVScreenCapture_ndk_main") {
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsScreenCaptureNdkTest"
-  shared_libraries = [ "./entry/src/main/cpp:screenCaptureNdkTest" ]
-  part_name = "player_framework"
+  hap_name = "ActsNativeAVScreenCaptureMainTest"
   subsystem_name = "multimedia"
+  part_name = "player_framework"
 }
 
-ohos_js_assets("pixelmap_ets_assets") {
-  source_dir = "./entry/src/main/ets/MainAbility"
-}
-ohos_js_assets("pixelmap_ets_test_assets") {
-  source_dir = "./entry/src/main/ets/TestAbility"
-}
-ohos_resources("pixelmap_ets_resources") {
-  sources = [ "./entry/src/main/resources" ]
-  hap_profile = "./entry/src/main/config.json"
+ohos_js_app_suite("ActsNativeAVScreenCaptureTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsNativeAVScreenCaptureTest"
+  subsystem_name = "multimedia"
+  part_name = "player_framework"
+  deps = [ ":ActsNativeAVScreenCapture_ndk_main" ]
 }
