@@ -85,7 +85,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('city')
@@ -107,7 +107,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('province')
@@ -129,7 +129,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('country')
@@ -151,7 +151,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('full name')
@@ -173,7 +173,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 5 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('lastname')
@@ -195,7 +195,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 5 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('firstname')
@@ -217,7 +217,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 5 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('phone')
@@ -239,7 +239,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 5 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('country id')
@@ -261,7 +261,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('full phone')
@@ -283,7 +283,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('email')
@@ -305,7 +305,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('card')
@@ -327,7 +327,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('id')
@@ -349,7 +349,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('nick name')
@@ -371,7 +371,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('detail info')
@@ -393,7 +393,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('address')
@@ -415,7 +415,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
 
       Row() {
         Text('undefined')
@@ -437,7 +437,7 @@ struct textAreaAutoFill {
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
       }
-      .margin({ top: 10 })
+      .margin({ top: '1px' })
     }
   }
 }
