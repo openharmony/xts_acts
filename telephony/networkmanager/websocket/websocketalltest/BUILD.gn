@@ -13,29 +13,29 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsNetworkMgrConnectionNoNetTest") {
+ohos_js_hap_suite("ActsNetworkMgrWebsocketTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":httpconcurrent_resources",
-    ":httpconcurrent_test_resources",
+    ":websockettest_demo_resources",
+    ":websockettest_test_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsNetworkMgrConnectionNoNetTest"
+  hap_name = "ActsNetworkMgrWebsocketTest"
 
   part_name = "sms_mms"
   subsystem_name = "telephony"
 }
-ohos_app_scope("httpconcurrent_app_profile") {
+ohos_app_scope("websockettest_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
-ohos_js_assets("httpconcurrent_resources") {
+ohos_js_assets("websockettest_demo_resources") {
   source_dir = "entry/src/main/ets"
 }
-ohos_resources("httpconcurrent_test_resources") {
+ohos_resources("websockettest_test_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":httpconcurrent_app_profile" ]
+  deps = [ ":websockettest_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }

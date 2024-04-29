@@ -17,8 +17,8 @@ ohos_js_hap_suite("ActsNetworkMgrSysNetworkWiFiTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":networktest_demo_ets_resources",
-    ":networktest_demo_ets_test_resources",
+    ":networktest_resources",
+    ":networktest_test_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
@@ -31,10 +31,10 @@ ohos_app_scope("networktest_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
-ohos_js_assets("networktest_demo_ets_resources") {
+ohos_js_assets("networktest_resources") {
   source_dir = "entry/src/main/ets"
 }
-ohos_resources("networktest_demo_ets_test_resources") {
+ohos_resources("networktest_test_resources") {
   sources = [ "entry/src/main/resources" ]
   deps = [ ":networktest_app_profile" ]
   hap_profile = "entry/src/main/module.json"

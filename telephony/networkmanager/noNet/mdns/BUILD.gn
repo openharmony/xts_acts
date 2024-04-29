@@ -17,8 +17,8 @@ ohos_js_hap_suite("ActsNetworkMgrMdnsNoNetTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":mdnstest_demo_ets_resources",
-    ":mdnstest_demo_ets_test_resources",
+    ":mdns_resources",
+    ":mdns_test_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
@@ -27,15 +27,15 @@ ohos_js_hap_suite("ActsNetworkMgrMdnsNoNetTest") {
   part_name = "sms_mms"
   subsystem_name = "telephony"
 }
-ohos_app_scope("mdnstest_app_profile") {
+ohos_app_scope("mdns_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
-ohos_js_assets("mdnstest_demo_ets_resources") {
+ohos_js_assets("mdns_resources") {
   source_dir = "entry/src/main/ets"
 }
-ohos_resources("mdnstest_demo_ets_test_resources") {
+ohos_resources("mdns_test_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":mdnstest_app_profile" ]
+  deps = [ ":mdns_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }

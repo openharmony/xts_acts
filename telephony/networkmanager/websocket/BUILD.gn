@@ -13,9 +13,7 @@
 
 import("//build/ohos_var.gni")
 
-group("connection") {
+group("websocket") {
   testonly = true
-  if (is_standard_system) {
-    deps = [ "connectiontest:ActsNetworkMgrConnectionTest" ]
-  }
+  deps = [ "websocketalltest:ActsNetworkMgrWebsocketTest" ]
 }
