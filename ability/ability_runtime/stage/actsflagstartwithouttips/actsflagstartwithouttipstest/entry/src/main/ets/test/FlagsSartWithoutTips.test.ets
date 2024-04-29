@@ -211,14 +211,13 @@ export default function flagstartwithouttipstest() {
           hilog.info(0x0000, TAG, '%{public}s text at it', JSON.stringify(error));
         }
         if (!popupCorrect) {
-          await driver.assertComponentExist(ON.text('选择打开方式')).then((data) => {
+          getCloseBtn = true;
+          await driver.assertComponentExist(ON.text('选择打开方式', 1)).then((data) => {
             hilog.info(0x0000, TAG, 'text at this success %{public}s', JSON.stringify(data));
             popupCorrect = true;
           })
-          await driver.click(rectLeft, rectTop);
-          await sleep(1000);
-          let textComponent = await driver.findComponent(ON.id('TEST_PAGE_TEXT'));
-          textComponent && (getCloseBtn = true);
+          let cmd = "uinput -K -d 2 -u 2";
+          await abilityDelegator.executeShellCommand(cmd);
         }
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s get popup info error', JSON.stringify(error));
@@ -270,14 +269,14 @@ export default function flagstartwithouttipstest() {
           hilog.info(0x0000, TAG, '%{public}s text at it', JSON.stringify(error));
         }
         if (!popupCorrect) {
-          await driver.assertComponentExist(ON.text('选择打开方式')).then((data) => {
+          getCloseBtn = true;
+          await driver.assertComponentExist(ON.text('选择打开方式', 1)).then((data) => {
             hilog.info(0x0000, TAG, 'text at this success %{public}s', JSON.stringify(data));
             popupCorrect = true;
           })
           await driver.click(rectLeft, rectTop);
-          await sleep(1000);
-          let textComponent = await driver.findComponent(ON.id('TEST_PAGE_TEXT'));
-          textComponent && (getCloseBtn = true);
+          let cmd = "uinput -K -d 2 -u 2";
+          await abilityDelegator.executeShellCommand(cmd);
         }
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s get popup info error', JSON.stringify(error));
