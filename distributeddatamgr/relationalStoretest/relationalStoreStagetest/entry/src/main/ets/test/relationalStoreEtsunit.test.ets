@@ -52,24 +52,15 @@ export default function relationalStoreTest(context){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100', 0, async function (done) {
+        it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100', 0, async function () {
             console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100 start *************");
             let config = {
                 name: "secure.db",
                 securityLevel: dataRdb.SecurityLevel.S1
             }
-            let storePromise = dataRdb.getRdbStore(context, config);
-            storePromise.then(async (store) => {
-                try {
-                    await store.executeSql(CREATE_TABLE_TEST);
-                } catch (err) {
-                    expect(null).assertFail();
-                }
-                await dataRdb.deleteRdbStore(context,"secure.db");
-                done();
-            }).catch((err) => {
-                expect(null).assertFail();
-            })
+            let store = await dataRdb.getRdbStore(context, config);
+            await store.executeSql(CREATE_TABLE_TEST);
+            await dataRdb.deleteRdbStore(context,"secure.db");
             console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100 end   *************");
         })
 

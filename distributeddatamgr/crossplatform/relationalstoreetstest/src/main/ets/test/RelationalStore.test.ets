@@ -805,8 +805,8 @@ export default function relationalStoreTest() {
         expect().assertFail();
       }).catch((err: BusinessError) => {
         console.log(TAG + " testConflictResolution001 insert with wrong valuebucket2 and ConflictResolution is default");
-        expect(err.code == 14800000).assertTrue();
         done();
+        expect(err.code == 14800032).assertTrue();
       })
 
       console.log(TAG + "************* testConflictResolution001 end   *************");
@@ -1631,7 +1631,7 @@ export default function relationalStoreTest() {
       rdbStore.insert("test", valueBucket2, relationalStore.ConflictResolution.ON_CONFLICT_NONE, async (err, ret) => {
         if (err) {
           console.log(TAG + " testConflictResolution012 insert with wrong valuebucket2 and ConflictResolution is default");
-          expect(err.code == 14800000).assertTrue();
+          expect(err.code == 14800032).assertTrue();
           done();
           return;
         }

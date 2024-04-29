@@ -181,7 +181,7 @@ export default function InsertTest() {
       rdbStore.insert("test1", valueBucket, async (err, rowId) => {
         if (err) {
           console.error(`testRdbStoreInsertError0011:Insert is failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code == 14800000).assertTrue();
+          expect(err.code == 14800021).assertTrue();
           done();
           return;
         }
@@ -209,7 +209,7 @@ export default function InsertTest() {
       rdbStore.insert("test", valueBucket, async (err, rowId) => {
         if (err) {
           console.error(`testRdbStoreInsertError0012:Insert is failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code == 14800000).assertTrue();
+          expect(err.code == 14800021).assertTrue();
           done();
           return;
         }
@@ -286,7 +286,7 @@ export default function InsertTest() {
         done();
       }).catch((err: BusinessError) => {
         console.error(`testRdbStoreInsertError0021:Insert is failed, code is ${err.code},message is ${err.message}`);
-        expect(err.code == 14800000).assertTrue();
+        expect(err.code == 14800021).assertTrue();
         done();
       });
       console.info(TAG + "************* testRdbStoreInsertError0021 end *************");
@@ -315,7 +315,7 @@ export default function InsertTest() {
         done();
       }).catch((err: BusinessError) => {
         console.error(`testRdbStoreInsertError0022:Insert is failed, code is ${err.code},message is ${err.message}`);
-        expect(err.code == 14800000).assertTrue();
+        expect(err.code == 14800021).assertTrue();
         done();
       });
       console.info(TAG + "************* testRdbStoreInsertError0022 end *************");
@@ -400,7 +400,7 @@ export default function InsertTest() {
       rdbStore.insert("test1", valueBucket, relationalStore.ConflictResolution.ON_CONFLICT_ROLLBACK, async (err, rowId) => {
         if (err) {
           console.error(`testRdbStoreInsertError0031:Insert is failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code == 14800000).assertTrue();
+          expect(err.code == 14800021).assertTrue();
           done();
           return;
         }
@@ -429,7 +429,7 @@ export default function InsertTest() {
       rdbStore.insert("test", valueBucket, relationalStore.ConflictResolution.ON_CONFLICT_ROLLBACK, async (err, rowId) => {
         if (err) {
           console.error(`testRdbStoreInsertError0032:Insert is failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code == 14800000).assertTrue();
+          expect(err.code == 14800021).assertTrue();
           done();
           return;
         }
@@ -507,7 +507,7 @@ export default function InsertTest() {
         done();
       }).catch((err: BusinessError) => {
         console.error(`testRdbStoreInsertError0041:Insert is failed, code is ${err.code},message is ${err.message}`);
-        expect(err.code == 14800000).assertTrue();
+        expect(err.code == 14800021).assertTrue();
         done();
       });
 
@@ -537,7 +537,7 @@ export default function InsertTest() {
         done();
       }).catch((err: BusinessError) => {
         console.error(`testRdbStoreInsertError0042:Insert is failed, code is ${err.code},message is ${err.message}`);
-        expect(err.code == 14800000).assertTrue();
+        expect(err.code == 14800021).assertTrue();
         done();
       });
       console.info(TAG + "************* testRdbStoreInsertError0042 end *************");

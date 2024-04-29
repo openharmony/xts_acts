@@ -145,7 +145,7 @@ export default function rdbStoreDeleteTest() {
       rdbStore.delete(predicates, async (err, rows) => {
         if (err) {
           console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code === 14800000).assertTrue();
+          expect(err.code === 14800021).assertTrue();
           console.info(TAG + "delete with wrong conditions");
           let predicates = new relationalStore.RdbPredicates("test");
           predicates.equalTo("age", 18);
@@ -244,7 +244,7 @@ export default function rdbStoreDeleteTest() {
         })
         .catch(async (err: BusinessError) => {
           console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code === 14800000).assertTrue();
+          expect(err.code === 14800021).assertTrue();
           console.info(TAG + "delete with wrong conditions");
           let predicates = new relationalStore.RdbPredicates("test");
           predicates.equalTo("age", 18);
