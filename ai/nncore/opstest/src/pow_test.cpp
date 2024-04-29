@@ -29,7 +29,6 @@ struct PowModel1 {
     float input0Value[2] = {1, 2};
     float input1Value[2] = {2, 3};
     float outputValue[2] = {0};
-    float expectValue[2] = {16, 64};
 
     OHNNOperandTest input0 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input0Value, 2*sizeof(float)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input1Value, 2*sizeof(float)};
@@ -50,7 +49,6 @@ struct PowModel2 {
     float input0Value[1] = {2};
     float input1Value[1] = {3};
     float outputValue[1] = {0};
-    float expectValue[1] = {8};
 
     OHNNOperandTest input0 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input0Value, sizeof(float)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input1Value, sizeof(float)};
@@ -72,7 +70,6 @@ struct PowModel3 {
     float input0Value[2] = {0, 1};
     float input1Value[1] = {2};
     float outputValue[2] = {0};
-    float expectValue[2] = {2, 4.5};
 
     OHNNOperandTest input0 = {OH_NN_FLOAT32, OH_NN_TENSOR, input0_shape, input0Value, 2*sizeof(float)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, input1_shape, input1Value, sizeof(float)};
@@ -304,7 +301,6 @@ HWTEST_F(PowTest, SUB_AI_NNRt_Func_North_Pow_Model_SetOperandValue_01, Function 
     PowModel1 powModel;
     OHNNGraphArgs graphArgs = powModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -315,7 +311,7 @@ HWTEST_F(PowTest, SUB_AI_NNRt_Func_North_Pow_Model_SetOperandValue_01, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -341,7 +337,6 @@ HWTEST_F(PowTest, SUB_AI_NNRt_Func_North_Pow_Model_SetOperandValue_02, Function 
     PowModel1 powModel;
     OHNNGraphArgs graphArgs = powModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -352,7 +347,7 @@ HWTEST_F(PowTest, SUB_AI_NNRt_Func_North_Pow_Model_SetOperandValue_02, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -377,7 +372,6 @@ HWTEST_F(PowTest, SUB_AI_NNRt_Func_North_Pow_Model_SetOperandValue_03, Function 
     PowModel1 powModel;
     OHNNGraphArgs graphArgs = powModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -388,7 +382,7 @@ HWTEST_F(PowTest, SUB_AI_NNRt_Func_North_Pow_Model_SetOperandValue_03, Function 
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

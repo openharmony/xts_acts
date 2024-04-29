@@ -51,7 +51,7 @@ export default function appearJsunit() {
       try {
         let callBackAppear1 = (backData: events_emitter.EventData) => {
           console.info("testAppear01 get appearEvent result is: " + JSON.stringify(backData));
-          expect(backData.data.ACTION).assertEqual(false);
+          expect(backData.data?.ACTION).assertEqual(false);
           done()
         }
         let appearEvent1: events_emitter.InnerEvent = {
@@ -70,8 +70,8 @@ export default function appearJsunit() {
       try {
         let callBackDisAppear = (backData1: events_emitter.EventData) => {
           console.info("testAppear02 get disAppearEvent result is: " + JSON.stringify(backData1));
-          console.info("testAppear02 get backData1.data.ACTION result is: " + backData1.data.ACTION);
-          expect(backData1.data.ACTION).assertEqual(true);
+          console.info("testAppear02 get backData1.data?.ACTION result is: " + backData1.data?.ACTION);
+          expect(backData1.data?.ACTION).assertEqual(true);
           done()
         }
         let disAppearEvent: events_emitter.InnerEvent = {
@@ -87,8 +87,8 @@ export default function appearJsunit() {
       console.info('[testAppear03] START');
       let callBackAppear2 = (backData2: events_emitter.EventData) => {
         console.info("testAppear03 get appearEvent result is: " + JSON.stringify(backData2));
-        console.info("testAppear03 get backData2.data.APPEAR: " + backData2.data.APPEAR);
-        expect(backData2.data.APPEAR).assertEqual("appearStatusOn");
+        console.info("testAppear03 get backData2.data?.APPEAR: " + backData2.data?.APPEAR);
+        expect(backData2.data?.APPEAR).assertEqual("appearStatusOn");
         done()
       }
       let appearEvent2: events_emitter.InnerEvent = {

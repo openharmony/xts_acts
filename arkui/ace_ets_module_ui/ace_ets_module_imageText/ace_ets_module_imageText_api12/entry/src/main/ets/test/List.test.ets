@@ -33,6 +33,12 @@ import onSelectionChange17 from './onSelectionChange/onSelectionChange17.test'
 import onSelectionChange18 from './onSelectionChange/onSelectionChange18.test'
 import onSelectionChange19 from './onSelectionChange/onSelectionChange19.test'
 import MediaCachedImageTest from './MediaCachedImageTest.test';
+import onComplete from './ImageTest/onComplete.test'
+import removeStyles from './TextTest/removeStyles.test'
+import StyledStringTest from './TextTest/StyledStringTest.test'
+import clearStyles from './TextTest/clearStyles.test'
+import TextStyle from './TextTest/TextStyle.test';
+import MarqueeApi from './Marquee/MarqueeApi.test';
 export default function testsuite() {
   onSelectionChange1();
   onSelectionChange2();
@@ -54,5 +60,11 @@ export default function testsuite() {
   onSelectionChange18();
   onSelectionChange19();
   MediaCachedImageTest();
+  onComplete()
+  removeStyles()
+  clearStyles()
+  StyledStringTest()
+  TextStyle();
+  MarqueeApi();
   
 }

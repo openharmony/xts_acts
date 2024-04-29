@@ -656,6 +656,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Input_TensorD
     for (size_t i = 0; i < inputCount; i++) {
         tensorDesc = OH_NNExecutor_CreateInputTensorDesc(executor, i);
         ASSERT_NE(nullptr, tensorDesc);
+        OH_NNTensorDesc_Destroy(&tensorDesc);
     }
     OH_NNExecutor_Destroy(&executor);
 }
@@ -709,6 +710,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Output_Tensor
     for (size_t i = 0; i < outputCount; i++) {
         tensorDesc = OH_NNExecutor_CreateOutputTensorDesc(executor, i);
         ASSERT_NE(nullptr, tensorDesc);
+        OH_NNTensorDesc_Destroy(&tensorDesc);
     }
     OH_NNExecutor_Destroy(&executor);
 }

@@ -2856,6 +2856,7 @@ describe('threadWorkerTest', function () {
             return res
         }
     }
+
     // Check the CallObject of worker.
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0003
@@ -3027,6 +3028,93 @@ describe('threadWorkerTest', function () {
           await promiseCase();
         }
         expect(res).assertEqual("The globalCallObject is not registered");
+        done();
+    })
+
+    // Check the timer in worker thread.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0008
+     * @tc.name: threadWorker_timer_test_001
+     * @tc.desc: Check whether the timer in the worker thread is normal.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_timer_test_001', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_035.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+        ss.postMessage("1");
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("123");
+        done();
+    })
+
+    // Check the nested call in worker thread.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0009
+     * @tc.name: threadWorker_nestedCall_test_001
+     * @tc.desc: Check whether nested call in the worker thread is normal.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_nestedCall_test_001', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_036.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+        ss.postMessage("1");
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("456");
+        done();
+    })
+
+    // Check the napi_queue_async_work_with_qos in worker thread.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0009
+     * @tc.name: threadWorke_async_call_test_001
+     * @tc.desc: Check whether napi_queue_async_work_with_qos in the worker thread is normal.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorke_async_call_test_001', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_038.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+        ss.postMessage("1");
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("97,98,99");
         done();
     })
 })

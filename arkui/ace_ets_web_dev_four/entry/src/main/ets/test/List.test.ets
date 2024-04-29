@@ -31,11 +31,13 @@ import WebNetError from './WebNetError.test';
 import webViewControllerAudioMedia from './WebViewControllerAudioMedia.test';
 import WebCameraApiNoCrash from './WebCameraApiNoCrash.test';
 import webViewOnSslErrorEvent from './webViewOnSslErrorEvent.test';
+import MetaViewport from './MetaViewport.test';
 
 
 export default function testsuite() {
        webJsunit()
        webTwoJsunit()
+       MetaViewport()
        webViewOnSslErrorEvent()
        WebCameraApiNoCrash()
        webViewControllerAudioMedia()

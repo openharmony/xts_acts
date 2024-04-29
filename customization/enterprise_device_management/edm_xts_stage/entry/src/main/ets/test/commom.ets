@@ -75,7 +75,13 @@ let INSTALL_PARAM_WITH_USER_ID: installer.InstallParam = {
   installFlag: 1,
 };
 
-const SUBSCRIBE_EVENTS: Array<number> = [0, 1];
+const SUBSCRIBE_EVENTS: Array<adminManager.ManagedEvent> = [
+  adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED,
+  adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED,
+  adminManager.ManagedEvent.MANAGED_EVENT_APP_START,
+  adminManager.ManagedEvent.MANAGED_EVENT_APP_STOP,
+  adminManager.ManagedEvent.MANAGED_EVENT_SYSTEM_UPDATE,
+];
 const SUBSCRIBE_INVALID_EVENTS: Array<number> = [20, 21];
 
 const TEST_APP_ID_1: string = "test_app_id_1";
@@ -95,10 +101,33 @@ function SetTestUserId(userId: number) {
   INSTALL_PARAM_WITH_USER_ID.userId = userId;
 }
 
+const EDM_INSTALL_PARAM : bundleManager.InstallParam = {
+  userId: 100,
+  installFlag: 0,
+};
+
+const APP_IDS_1: Array<string> = [
+  "ohos.sample.shopping_BNtg4JBClbl92Rgc3jm/RfcAdrHXaM8F0QOiwVEhnV5ebE5jNIYnAx+weFRT3QTyUjRNdhmc2aAzWyi+5t5CoBM=:",
+  "ohos.samples.clock_BNtg4JBClbl92Rgc3jm/RfcAdrHXaM8F0QOiwVEhnV5ebE5jNIYnAx+weFRT3QTyUjRNdhmc2aAzWyi+5t5CoBM=:",
+  "com.ohos.photos_BNtg4JBClbl92Rgc3jm/RfcAdrHXaM8F0QOiwVEhnV5ebE5jNIYnAx+weFRT3QTyUjRNdhmc2aAzWyi+5t5CoBM=:",
+];
+
+let APP_IDS_200: Array<string> = new Array<string>(200);
+let APP_IDS_201: Array<string> = new Array<string>(201);
+
+function appIdsInit(){
+  for (let i = 0; i < APP_IDS_201.length; i++) {
+    APP_IDS_201[i] = String(i);
+    if (i < APP_IDS_200.length) {
+      APP_IDS_200[i] = String(i);
+    }
+  }
+}
+
 export {
-  WANT1, ENTINFO1, SELFWANT, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2, ENTINFO2,
+  WANT1, ENTINFO1, SELFWANT, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2, ENTINFO2, NETWORK_ETH_LOCAL,
   DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID, SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS,
   HAP_FILE_PATH, HAP_FILE_PATH_ERROR, EMPTY_HAP_FILE_PATH, isMultipleUserEnabled,
-  SetIsMultipleUserEnabled, SetTestUserId,
-  TEST_APP_ID_1, TEST_APP_ID_2, TEST_POLICIES, TEST_POLICY_NAME, TEST_POLICY_VALUE
+  SetIsMultipleUserEnabled, SetTestUserId, appIdsInit, EDM_INSTALL_PARAM, APP_IDS_1,
+  APP_IDS_200, APP_IDS_201, TEST_APP_ID_1, TEST_APP_ID_2, TEST_POLICIES, TEST_POLICY_NAME, TEST_POLICY_VALUE
 }

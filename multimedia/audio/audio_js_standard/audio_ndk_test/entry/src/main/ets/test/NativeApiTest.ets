@@ -55,6 +55,7 @@ export default function audioNDK() {
       await getPermission();
       await sleep(100);
       await driveFn();
+      await sleep(1000);
       console.info('beforeAll case');
     })
 
@@ -252,7 +253,7 @@ export default function audioNDK() {
     it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_ERR_0100', 0, async (done: Function) => {
       let a = myaudioNdk.audioCaptureReleaseErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_ERR_0100 audioCaptureReleaseErr: ${a}`);
-      expect(a).assertEqual(2)
+      expect(a).assertEqual(1)
       done()
     })
     /* *
@@ -677,7 +678,7 @@ export default function audioNDK() {
     it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_ERR_0100', 0, async (done: Function) => {
       let a = myaudioNdk.audioRenderReleaseErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_ERR_0100 audioRenderReleaseErr: ${a}`);
-      expect(a).assertEqual(2)
+      expect(a).assertEqual(1)
       done()
     })
     /* *

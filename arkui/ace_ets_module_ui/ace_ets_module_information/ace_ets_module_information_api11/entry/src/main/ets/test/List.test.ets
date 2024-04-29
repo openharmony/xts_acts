@@ -26,13 +26,17 @@ import badgeTest from './BadgeTest/badge'
 import datapanelTest from './DataPanelTest/datapanel'
 import advancedCounter from './advancedCounterTest/advancedCounter'
 import QRCodeUIJsunit from './QrcodeTest/QRCodeUIJsunit.test.ets';
-
 import patternLockJsunit from './patternLockTest/PatternLockJsunit.test';
 import loadingProgressCircularJsunit from './LoadingProgressTest/loadingProgress.test.ets';
 import progressScaleCountJsunit from './ProgressTest/progress3.test.ets';
 import gaugeColorsJsunit from './gaugeTest/gauge1.test';
 import progressStyleJsunit from './ProgressTest/progress2.test';
+import badge3Jsunit from './BadgeTest/Badge3Jsunit.test';
+import qrCode3Jsunit from './QrcodeTest/QrCode3Jsunit.test';
 import searchJsunit from './SearchTest/SearchJsunit.test.ets';
+import gauge3Jsunit from './gaugeTest/gauge3Jsunit.test.ets';
+import datalPanelUIJsunit from './DataPanelTest/datalPanelUIJsunit.test.ets';
+
 
 export default function testsuite() {
   gaugeJsunit();
@@ -49,12 +53,14 @@ export default function testsuite() {
   GaugeUxTest();
   advancedCounter()
   QRCodeUIJsunit();
-  
   patternLockJsunit()
   loadingProgressCircularJsunit()
   progressScaleCountJsunit()
-
   gaugeColorsJsunit()
   progressStyleJsunit()
+  badge3Jsunit();
+  qrCode3Jsunit();
   searchJsunit();
+  gauge3Jsunit();
+  datalPanelUIJsunit();
 }

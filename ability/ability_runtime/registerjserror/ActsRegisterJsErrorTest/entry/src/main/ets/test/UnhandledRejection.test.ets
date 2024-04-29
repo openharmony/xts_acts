@@ -24,11 +24,11 @@ export default function unhandledRejectionTest() {
   describe('ActsUnhandledRejectionTest', function () {
     beforeEach(async () => {
       errorManager.off("unhandledRejection");
-      await sleep(1000);
+      await sleep(800);
     })
     afterEach(async () => {
       errorManager.off("unhandledRejection");
-      await sleep(1000);
+      await sleep(800);
     })    
 
     /*
@@ -57,7 +57,7 @@ export default function unhandledRejectionTest() {
         }
         done();
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -86,7 +86,7 @@ export default function unhandledRejectionTest() {
         }
         done();
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -119,7 +119,7 @@ export default function unhandledRejectionTest() {
         }
         done();
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -151,7 +151,7 @@ export default function unhandledRejectionTest() {
         }
         done();
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -178,7 +178,7 @@ export default function unhandledRejectionTest() {
         }
         done();
      }, 1000);
-     await sleep(1000);
+     await sleep(800);
     })
 
     /*
@@ -204,7 +204,7 @@ export default function unhandledRejectionTest() {
         }
         done();
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -271,7 +271,7 @@ export default function unhandledRejectionTest() {
         done();
       }, 1000);
 
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -323,7 +323,7 @@ export default function unhandledRejectionTest() {
         done();
       }, 1000);
 
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -341,7 +341,7 @@ export default function unhandledRejectionTest() {
       setTimeout(() => {
         errorManager.off("unhandledRejection", oldObserver)
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
 
       let flag = false;
       let newObserver: errorManager.UnhandledRejectionObserver = (reason: Error) => {
@@ -364,7 +364,7 @@ export default function unhandledRejectionTest() {
         }
         done();
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -390,7 +390,7 @@ export default function unhandledRejectionTest() {
       setTimeout(() => {
         errorManager.off("unhandledRejection")
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
 
       let flag = false;
       let newObserver: errorManager.UnhandledRejectionObserver = (reason: Error) => {
@@ -413,7 +413,7 @@ export default function unhandledRejectionTest() {
         }
         done();
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -435,7 +435,7 @@ export default function unhandledRejectionTest() {
       setTimeout(() => {
         done();
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -458,7 +458,7 @@ export default function unhandledRejectionTest() {
       setTimeout(() => {
         done();
       }, 1000);
-      await sleep(1000);
+      await sleep(800);
     })
 
     /*
@@ -484,7 +484,7 @@ export default function unhandledRejectionTest() {
         expect(Number(evt.data)).assertEqual(16200001);
         flag = !flag;
       }
-      await sleep(1000);
+      await sleep(800);
 
       setTimeout(() => {
         if (!flag) {
@@ -493,7 +493,7 @@ export default function unhandledRejectionTest() {
         done();
       }, 2000);
 
-      await sleep(1000);
+      await sleep(800);
     })
   })
 }

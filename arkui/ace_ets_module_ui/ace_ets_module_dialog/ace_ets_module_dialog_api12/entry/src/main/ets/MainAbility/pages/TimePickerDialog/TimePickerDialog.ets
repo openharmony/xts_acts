@@ -30,6 +30,7 @@ struct TimePickerDialogExample {
           .margin(20)
           .onClick(() => {
             TimePickerDialog.show({
+              alignment: DialogAlignment.Bottom,
               selected: this.selectTime,
               disappearTextStyle: { color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } },
               textStyle: { color: Color.Black, font: { size: 20, weight: FontWeight.Normal } },

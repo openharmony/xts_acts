@@ -71,7 +71,7 @@ export default function columnJsunit() {
         console.info("[testColumn02] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testColumn02] change component data error: " + err.message);
+        console.log("[testColumn02] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('alignItemsColumn');

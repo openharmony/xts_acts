@@ -32,7 +32,6 @@ struct CropModel1 {
     float inputValue[2][4][4] = {1};
     float shapeValue[3] = {2, 2, 2};
     float outputValue[2][2][2] = {0};
-    float expectValue[2][2][2] = {1};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 32*sizeof(float)};
     OHNNOperandTest shape = {OH_NN_FLOAT32, OH_NN_TENSOR, shape_shape, shapeValue, 3*sizeof(float)};
@@ -56,7 +55,6 @@ struct CropModel2 {
     float inputValue[3][2][2] = {1};
     float shapeValue[3] = {3, 2, 2};
     float outputValue[3][2][2] = {0};
-    float expectValue[3][2][2] = {1};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 12*sizeof(float)};
     OHNNOperandTest shape = {OH_NN_FLOAT32, OH_NN_TENSOR, shape_shape, shapeValue, 3*sizeof(float)};
@@ -311,7 +309,6 @@ HWTEST_F(CropTest, SUB_AI_NNRt_Func_North_Crop_Model_SetOperandValue_01, Functio
     CropModel1 cropModel;
     OHNNGraphArgs graphArgs = cropModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -322,7 +319,7 @@ HWTEST_F(CropTest, SUB_AI_NNRt_Func_North_Crop_Model_SetOperandValue_01, Functio
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -348,7 +345,6 @@ HWTEST_F(CropTest, SUB_AI_NNRt_Func_North_Crop_Model_SetOperandValue_02, Functio
     CropModel1 cropModel;
     OHNNGraphArgs graphArgs = cropModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -359,7 +355,7 @@ HWTEST_F(CropTest, SUB_AI_NNRt_Func_North_Crop_Model_SetOperandValue_02, Functio
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -384,7 +380,6 @@ HWTEST_F(CropTest, SUB_AI_NNRt_Func_North_Crop_Model_SetOperandValue_03, Functio
     CropModel1 cropModel;
     OHNNGraphArgs graphArgs = cropModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -395,7 +390,7 @@ HWTEST_F(CropTest, SUB_AI_NNRt_Func_North_Crop_Model_SetOperandValue_03, Functio
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

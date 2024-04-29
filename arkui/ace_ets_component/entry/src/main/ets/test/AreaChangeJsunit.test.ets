@@ -50,7 +50,7 @@ export default function areaChangeJsunit() {
       await Utils.sleep(1000);
       let callback = (backData: events_emitter.EventData) => {
         console.info("areaChangeTest_0300 get state result is: " + JSON.stringify(backData));
-        expect(backData.data.value).assertEqual('TextText');
+        expect(backData.data?.value).assertEqual('TextText');
         done()
       }
       let indexEvent: events_emitter.InnerEvent = {
@@ -67,7 +67,7 @@ export default function areaChangeJsunit() {
       await Utils.sleep(1000);
       let callback1 = (eventData: events_emitter.EventData) => {
         console.info("areaChangeTest_0400 get state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual(true);
+        expect(eventData.data?.ACTION).assertEqual(true);
       }
       let indexEvent1: events_emitter.InnerEvent = {
         eventId: 62,

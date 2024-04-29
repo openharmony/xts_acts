@@ -21,6 +21,11 @@ import CanvasColorTest from './CanvasTest/CanvasColor.test'
 import OffScreenCanvasTest from './OffScreenCanvasTest/OffScreenCanvas.test'
 import drawCanvas from './CanvasTest/drawCanvas.test'
 import ParticlePropertyJsunit from './ParticleTest/ParticlePropertyJsunit.test.ets'
+import canvasJsunit from './CanvasTest/CanvasJsunit.test';
+import canvas2Jsunit from './CanvasTest/Canvas2Jsunit.test';
+import shapeJsunit from './ShapeTest/ShapeJsunit.test';
+import circleJsunit from './CircleTest/CircleJsunit.test';
+import lineJsunit from './lineTest/LineJsunit.test';
 
 import pathJsunit from './pathTest/PathJsunit.test';
 import polygonJsunit from './polygonTest/PolygonJsunit.test';
@@ -47,7 +52,11 @@ export default function testsuite() {
   OffScreenCanvasTest();
   drawCanvas();
   ParticlePropertyJsunit();
-  
+  canvasJsunit();
+  canvas2Jsunit();
+  shapeJsunit();
+  circleJsunit();
+  lineJsunit();
   pathJsunit()
   polygonJsunit()
   polylineJsunit()

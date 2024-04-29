@@ -419,7 +419,11 @@
         ],
         "querySchemes": [
             "http",
-            "welink"
+            "welink",
+            "SCHEME",
+            "matchscheme1",
+            "matchscheme2",
+            "Matchscheme3"
         ]
     }
 }

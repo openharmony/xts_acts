@@ -15,9 +15,14 @@
 import frameNodeTest from './frameNodeTest/frameNodeTest.test';
 import frameNodeTest1 from './frameNodeTest/frameNodeTest1.test';
 import nodeContainerTest from './frameNodeTest/nodeContainerTest.test';
-
+import APIsetOnclickTest from './frameNodeTest/APIsetOnclickTest.test';
+import APIsetOnTouchTest from './frameNodeTest/APIsetOnTouchTest.test';
+import frameNodeGetInterfaceTest from './frameNodeTest/frameNodeTestGetInterface.test';
 export default function testsuite() {
+  APIsetOnclickTest();
+  APIsetOnTouchTest();
   frameNodeTest()
   frameNodeTest1()
   nodeContainerTest()
+  frameNodeGetInterfaceTest()
 }

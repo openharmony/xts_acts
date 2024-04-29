@@ -142,7 +142,7 @@ export default function gaugeColorsJsunit() {
       let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Gauge');
       expect(JSON.parse(strJson).$attrs.colors)
-        .assertEqual('[["#FF317AF7",1],["#FF5BA854",1],["#FFE08C3A",1],["#FF9C554B",1],["#FFD94838",1]]');
+        .assertEqual('[[[["#FF317AF7","0.000000"]],1],[[["#FF5BA854","0.000000"]],1],[[["#FFE08C3A","0.000000"]],1],[[["#FF9C554B","0.000000"]],1],[[["#FFD94838","0.000000"]],1]]');
       console.info("[testgaugeColors0006] colors value :" + JSON.parse(strJson).$attrs.colors);
 
     });

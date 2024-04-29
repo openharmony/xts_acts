@@ -58,7 +58,7 @@ struct DatePickerExample {
           this.selectedDate.setFullYear(value.year, value.month, value.day)
           console.info('select current date is: ' + JSON.stringify(value))
           this.message = JSON.stringify(value.year)
-        }).key('dataPicker')
+        }).key('datePicker')
 
     }.width('100%')
   }

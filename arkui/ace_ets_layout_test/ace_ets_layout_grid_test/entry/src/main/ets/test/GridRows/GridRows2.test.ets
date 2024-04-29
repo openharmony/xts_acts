@@ -18,8 +18,8 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function GridRows2() {
-  describe('GridRows2', function () {
-    beforeEach(async function (done) {
+  describe('GridRows2', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridRows2 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function GridRows2() {
       console.info("GridRows2 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("GridRows2 after each called");
     });
@@ -49,7 +49,7 @@ export default function GridRows2() {
      * @tc.type
      */
 
-    it('GridRows2_001', 0, async function (done) {
+    it('GridRows2_001', 0, async (done: Function) => {
       console.info('[GridRows2_001] START');
 
       await CommonFunc.sleep(1000);
@@ -79,7 +79,7 @@ export default function GridRows2() {
      * @tc.type
      */
 
-    it('GridRows2_002', 0, async function (done) {
+    it('GridRows2_002', 0, async (done: Function) => {
       console.info('[GridRows2_001] START');
 
       await CommonFunc.sleep(1000);
@@ -94,10 +94,10 @@ export default function GridRows2() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('GridRows2Text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("[GridRows2_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.content).assertEqual('');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('');
 
       console.info('[GridRows2_001] END');
       done();

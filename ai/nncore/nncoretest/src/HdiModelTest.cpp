@@ -54,6 +54,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_CreateQuantParam_0100, Function
 {
     NN_QuantParam* quantParam = OH_NNQuantParam_Create();
     ASSERT_NE(nullptr, quantParam);
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNQuantParam_Destroy(&quantParam));
 }
 
 /**
@@ -110,6 +111,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetQuantParam_0200, Function | 
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorQuantParams(model, 0, quantParam));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNQuantParam_Destroy(&quantParam));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -134,6 +136,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetQuantParam_0300, Function | 
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorQuantParams(model, 0, quantParam));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNQuantParam_Destroy(&quantParam));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -158,6 +161,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetQuantParam_0400, Function | 
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorQuantParams(model, 0, quantParam));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNQuantParam_Destroy(&quantParam));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -182,6 +186,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetQuantParam_0500, Function | 
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorQuantParams(model, 0, quantParam));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNQuantParam_Destroy(&quantParam));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -204,6 +209,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetQuantParam_0600, Function | 
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorQuantParams(model, 0, quantParam));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNQuantParam_Destroy(&quantParam));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -226,6 +232,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetQuantParam_0700, Function | 
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorQuantParams(model, 0, quantParam));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNQuantParam_Destroy(&quantParam));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -248,6 +255,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetQuantParam_0800, Function | 
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorQuantParams(model, 0, quantParam));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNQuantParam_Destroy(&quantParam));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -272,6 +280,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetQuantParam_0900, Function | 
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorQuantParams(model, 1, quantParam));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNQuantParam_Destroy(&quantParam));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -284,6 +293,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_AddTensorToModel_0100, Function
     int32_t inputDims[4] = {1, 1, 2, 3};
     NN_TensorDesc* tensorDesc = createTensorDesc(inputDims, 4, OH_NN_FLOAT32, OH_NN_FORMAT_NCHW);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddTensorToModel(nullptr, tensorDesc));
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -324,6 +334,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetTensorData_0200, Function | 
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 0, nullptr, sizeof(int8_t)));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -341,6 +352,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetTensorData_0300, Function | 
     int8_t activationValue{0};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 0, (void *)&activationValue, 0));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -358,6 +370,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetTensorData_0400, Function | 
     int8_t activationValue{0};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000, (void *)&activationValue, sizeof(int8_t)));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -384,6 +397,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetTensorType_0200, Function | 
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorType(model, 1000, OH_NN_TENSOR));
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }
 
 /**
@@ -402,4 +416,5 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_SetTensorType_0300, Function | 
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, 0, static_cast<OH_NN_TensorType>(tensorType)));
     }
     OH_NNModel_Destroy(&model);
+    OH_NNTensorDesc_Destroy(&tensorDesc);
 }

@@ -26,6 +26,7 @@ export default function pipWindowTest(context1) {
   describe('window_pipWindow_test', function () {
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG = true;
+    let tag = 'pipWindowTest'
 
     async function sleep(time) {
       let timeoutId = null;
@@ -725,195 +726,806 @@ export default function pipWindowTest(context1) {
         expect().assertFail();
         done();
       }
-    })
+    })  
     /**
-     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1600
-     * @tc.name       : create_Function_Promise
-     * @tc.desc       : To test the function of create
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_0100
+     * @tc.name       : test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT
+     * @tc.desc       : test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level3
+     * @tc.level      : Level 2
      */
-    it('create_Function_Promise_5', 0, async function (done) {
-      console.log('www data create_Function_Promise begin')
-      let pipController = undefined;
-      let mXComponentController = new XComponentController();
-      let navId = "";
-      let contentWidth = 400;
-      let contentHeight = 600;
-      let config = {
-        context: context1,
-        componentController: mXComponentController,
-        navigationId: navId,
-        templateType: pipWindow.PiPTemplateType.VIDEO_CALL,
-        contentWidth: contentWidth,
-        contentHeight: contentHeight,
-        controlGroup: [pipWindow.VideoCallControlGroup.MICROPHONE_SWITCH,pipWindow.VideoCallControlGroup.HANG_UP_BUTTON,pipWindow.VideoCallControlGroup.CAMERA_SWITCH]
-      };
-      try {
-        let promise = pipWindow.create(config);
-        promise.then((data) => {
-          pipController = data;
-          console.log(`www data Succeeded in creating pip controller. Data:${data}`)
-          expect(data != null).assertTrue();
-          done();
-        }).catch((err) => {
-          console.log('www data Failed1 to create pip controller. Cause' + JSON.stringify(err));
-          if(err.code == 801){
-            expect(true).assertTrue();
-            done();
-          } else{
-            expect().assertFail();
-            done();
-          }
-        });
-      } catch (error) {
-        console.log('www data Failed2 to create pip controller. Cause' +JSON.stringify(error))
-        expect().assertFail();
+  it('test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoPlayControlGroup.VIDEO_PREVIOUS_NEXT]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
         done();
-      }
-    })
-    /**
-     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1700
-     * @tc.name       : create_Function_Promise
-     * @tc.desc       : To test the function of create
-     * @tc.size       : MediumTestTest
-     * @tc.type       : Function
-     * @tc.level      : Level3
-     */
-    it('create_Function_Promise_6', 0, async function (done) {
-      console.log('www data create_Function_Promise begin')
-      let pipController = undefined;
-      let mXComponentController = new XComponentController();
-      let navId = "";
-      let contentWidth = 400;
-      let contentHeight = 600;
-      let config = {
-        context: context1,
-        componentController: mXComponentController,
-        navigationId: navId,
-        templateType: pipWindow.PiPTemplateType.VIDEO_MEETING,
-        contentWidth: contentWidth,
-        contentHeight: contentHeight,
-        controlGroup: [pipWindow.VideoMeetingControlGroup.HANG_UP_BUTTON,pipWindow.VideoMeetingControlGroup.CAMERA_SWITCH,pipWindow.VideoMeetingControlGroup.MUTE_SWITCH]
-      };
-      try {
-        let promise = pipWindow.create(config);
-        promise.then((data) => {
-          pipController = data;
-          console.log(`www data Succeeded in creating pip controller. Data:${data}`)
-          expect(data != null).assertTrue();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
           done();
-        }).catch((err) => {
-          console.log('www data Failed1 to create pip controller. Cause' + JSON.stringify(err));
-          if(err.code == 801){
-            expect(true).assertTrue();
-            done();
-          } else{
-            expect().assertFail();
-            done();
-          }
-        });
-      } catch (error) {
-        console.log('www data Failed2 to create pip controller. Cause' +JSON.stringify(error))
-        expect().assertFail();
-        done();
-      }
-    })
-    /**
-     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1800
-     * @tc.name       : create_Function_Promise
-     * @tc.desc       : To test the function of create
-     * @tc.size       : MediumTestTest
-     * @tc.type       : Function
-     * @tc.level      : Level3
-     */
-    it('create_Function_Promise_7', 0, async function (done) {
-      console.log('www data create_Function_Promise begin')
-      let pipController = undefined;
-      let mXComponentController = new XComponentController();
-      let navId = "";
-      let contentWidth = 400;
-      let contentHeight = 600;
-      let config = {
-        context: context1,
-        componentController: mXComponentController,
-        navigationId: navId,
-        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
-        contentWidth: contentWidth,
-        contentHeight: contentHeight,
-        controlGroup: pipWindow.VideoPlayControlGroup.VIDEO_PREVIOUS_NEXT
-      };
-      try {
-        let promise = pipWindow.create(config);
-        promise.then((data) => {
-          pipController = data;
-          console.log(`www data Succeeded in creating pip controller. Data:${data}`)
-          expect(data != null).assertTrue();
+        }
+        else {
+          expect().assertFail();
           done();
-        }).catch((err) => {
-          console.log('www data Failed1 to create pip controller. Cause' + JSON.stringify(err));
-          if(err.code == 801){
-            expect(true).assertTrue();
-            done();
-          } else{
-            expect().assertFail();
-            done();
-          }
-        });
-      } catch (error) {
-        console.log('www data Failed2 to create pip controller. Cause' +JSON.stringify(error))
-        expect().assertFail();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_0200
+   * @tc.name       : test_VideoPlayControlGroup_FAST_FORWARD_BACKWARD
+   * @tc.desc       : test_VideoPlayControlGroup_FAST_FORWARD_BACKWARD
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoPlayControlGroup_FAST_FORWARD_BACKWARD', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoPlayControlGroup_FAST_FORWARD_BACKWARD begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoPlayControlGroup.FAST_FORWARD_BACKWARD]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
         done();
-      }
-    })
-    /**
-     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1900
-     * @tc.name       : create_Function_Promise
-     * @tc.desc       : To test the function of create
-     * @tc.size       : MediumTestTest
-     * @tc.type       : Function
-     * @tc.level      : Level3
-     */
-    it('create_Function_Promise_8', 0, async function (done) {
-      console.log('www data create_Function_Promise begin')
-      let pipController = undefined;
-      let mXComponentController = new XComponentController();
-      let navId = "";
-      let contentWidth = 400;
-      let contentHeight = 600;
-      let config = {
-        context: context1,
-        componentController: mXComponentController,
-        navigationId: navId,
-        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
-        contentWidth: contentWidth,
-        contentHeight: contentHeight,
-        controlGroup: pipWindow.VideoPlayControlGroup.FAST_FORWARD_BACKWARD
-      };
-      try {
-        let promise = pipWindow.create(config);
-        promise.then((data) => {
-          pipController = data;
-          console.log(`www data Succeeded in creating pip controller. Data:${data}`)
-          expect(data != null).assertTrue();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
           done();
-        }).catch((err) => {
-          console.log('www data Failed1 to create pip controller. Cause' + JSON.stringify(err));
-          if(err.code == 801){
-            expect(true).assertTrue();
-            done();
-          } else{
-            expect().assertFail();
-            done();
-          }
-        });
-      } catch (error) {
-        console.log('www data Failed2 to create pip controller. Cause' +JSON.stringify(error))
-        expect().assertFail();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoPlayControlGroup_FAST_FORWARD_BACKWARD Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_0300
+   * @tc.name       : test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT_FAST_FORWARD_BACKWARD
+   * @tc.desc       : test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT_FAST_FORWARD_BACKWARD
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT_FAST_FORWARD_BACKWARD', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT_FAST_FORWARD_BACKWARD begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoPlayControlGroup.VIDEO_PREVIOUS_NEXT,pipWindow.VideoPlayControlGroup.FAST_FORWARD_BACKWARD]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(false).assertTrue();
         done();
-      }
-    })     
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT_FAST_FORWARD_BACKWARD Failed. Cause` + JSON.stringify(error) + error.code);
+      expect(error.code).assertEqual(401);
+      done();
+    }
+  })
+
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_0400
+   * @tc.name       : test_VideoCallControlGroup_MICROPHONE_SWITCH
+   * @tc.desc       : test_VideoCallControlGroup_MICROPHONE_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoCallControlGroup_MICROPHONE_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoCallControlGroup_MICROPHONE_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_CALL,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoCallControlGroup.MICROPHONE_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoCallControlGroup_MICROPHONE_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_0500
+   * @tc.name       : test_VideoCallControlGroup_HANG_UP_BUTTON
+   * @tc.desc       : test_VideoCallControlGroup_HANG_UP_BUTTON
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoCallControlGroup_HANG_UP_BUTTON', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoCallControlGroup_HANG_UP_BUTTON begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_CALL,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoCallControlGroup.HANG_UP_BUTTON]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoCallControlGroup_HANG_UP_BUTTON Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_0600
+   * @tc.name       : test_VideoCallControlGroup_CAMERA_SWITCH
+   * @tc.desc       : test_VideoCallControlGroup_CAMERA_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoCallControlGroup_CAMERA_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoCallControlGroup_CAMERA_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_CALL,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoCallControlGroup.CAMERA_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoCallControlGroup_CAMERA_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_0700
+   * @tc.name       : test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON
+   * @tc.desc       : test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_CALL,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoCallControlGroup.MICROPHONE_SWITCH,pipWindow.VideoCallControlGroup.HANG_UP_BUTTON]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_0800
+   * @tc.name       : test_VideoCallControlGroup_MICROPHONE_SWITCH_CAMERA_SWITCH
+   * @tc.desc       : test_VideoCallControlGroup_MICROPHONE_SWITCH_CAMERA_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoCallControlGroup_MICROPHONE_SWITCH_CAMERA_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoCallControlGroup_MICROPHONE_SWITCH_CAMERA_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_CALL,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoCallControlGroup.MICROPHONE_SWITCH,pipWindow.VideoCallControlGroup.CAMERA_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoCallControlGroup_MICROPHONE_SWITCH_CAMERA_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_0900
+   * @tc.name       : test_VideoCallControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH
+   * @tc.desc       : test_VideoCallControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoCallControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoCallControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_CALL,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoCallControlGroup.HANG_UP_BUTTON,pipWindow.VideoCallControlGroup.CAMERA_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoCallControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_1000
+   * @tc.name       : test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON_CAMERA_SWITCH
+   * @tc.desc       : test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON_CAMERA_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON_CAMERA_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON_CAMERA_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_CALL,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoCallControlGroup.MICROPHONE_SWITCH,pipWindow.VideoCallControlGroup.HANG_UP_BUTTON,pipWindow.VideoCallControlGroup.CAMERA_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON_CAMERA_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_1100
+   * @tc.name       : test_VideoMeetingControlGroup_HANG_UP_BUTTON
+   * @tc.desc       : test_VideoMeetingControlGroup_HANG_UP_BUTTON
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoMeetingControlGroup_HANG_UP_BUTTON', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoMeetingControlGroup_HANG_UP_BUTTON begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_MEETING,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoMeetingControlGroup.HANG_UP_BUTTON]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoMeetingControlGroup_HANG_UP_BUTTON Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_1200
+   * @tc.name       : test_VideoMeetingControlGroup_CAMERA_SWITCH
+   * @tc.desc       : test_VideoMeetingControlGroup_CAMERA_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoMeetingControlGroup_CAMERA_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoMeetingControlGroup_CAMERA_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_MEETING,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoMeetingControlGroup.CAMERA_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoMeetingControlGroup_CAMERA_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_1300
+   * @tc.name       : test_VideoMeetingControlGroup_MUTE_SWITCH
+   * @tc.desc       : test_VideoMeetingControlGroup_MUTE_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoMeetingControlGroup_MUTE_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoMeetingControlGroup_MUTE_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_MEETING,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoMeetingControlGroup.MUTE_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoMeetingControlGroup_MUTE_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_1400
+   * @tc.name       : test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH
+   * @tc.desc       : test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_MEETING,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoMeetingControlGroup.HANG_UP_BUTTON,pipWindow.VideoMeetingControlGroup.MUTE_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_1500
+   * @tc.name       : test_VideoMeetingControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH
+   * @tc.desc       : test_VideoMeetingControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoMeetingControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoMeetingControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_MEETING,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoMeetingControlGroup.HANG_UP_BUTTON,pipWindow.VideoMeetingControlGroup.CAMERA_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoMeetingControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_1600
+   * @tc.name       : test_VideoMeetingControlGroup_MUTE_SWITCH_CAMERA_SWITCH
+   * @tc.desc       : test_VideoMeetingControlGroup_MUTE_SWITCH_CAMERA_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoMeetingControlGroup_MUTE_SWITCH_CAMERA_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoMeetingControlGroup_MUTE_SWITCH_CAMERA_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_MEETING,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoMeetingControlGroup.MUTE_SWITCH,pipWindow.VideoMeetingControlGroup.CAMERA_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoMeetingControlGroup_MUTE_SWITCH_CAMERA_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })
+  /**
+   * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_1700
+   * @tc.name       : test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH_CAMERA_SWITCH
+   * @tc.desc       : test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH_CAMERA_SWITCH
+   * @tc.size       : MediumTestTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+  it('test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH_CAMERA_SWITCH', 2, async (done:Function) => {
+    console.log(tag + 'test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH_CAMERA_SWITCH begin');
+    let pipController:pipWindow.PiPController| undefined = undefined;
+    let mXComponentController = new XComponentController();
+    let navId = "";
+    let contentWidth = 400;
+    let contentHeight = 600;
+    let config:pipWindow.PiPConfiguration = {
+      context: context1,
+      componentController: mXComponentController,
+      navigationId: navId,
+      templateType: pipWindow.PiPTemplateType.VIDEO_MEETING,
+      contentWidth: contentWidth,
+      contentHeight: contentHeight,
+      controlGroups:[pipWindow.VideoMeetingControlGroup.HANG_UP_BUTTON,pipWindow.VideoMeetingControlGroup.MUTE_SWITCH,pipWindow.VideoMeetingControlGroup.CAMERA_SWITCH]
+    };
+    try {
+      pipWindow.create(config).then((data) => {
+        pipController = data;
+        console.log(`${tag} Succeeded in creating pip controller. Data:${data}`);
+        expect(data != null).assertTrue();
+        done();
+      }).catch((err:BusinessError) => {
+        console.log(`${tag} Failed1 to create pip controller. Cause` + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        }
+        else {
+          expect().assertFail();
+          done();
+        }
+      });
+    } catch (error) {
+      console.log(`${tag} test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH_CAMERA_SWITCH Failed. Cause` + JSON.stringify(error));
+      expect().assertFail();
+      done();
+    }
+  })   
 
   })
 }

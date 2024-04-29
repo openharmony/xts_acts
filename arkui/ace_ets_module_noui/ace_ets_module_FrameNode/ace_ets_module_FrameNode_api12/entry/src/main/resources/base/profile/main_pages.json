@@ -1,7 +1,10 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+	"MainAbility/pages/frameNode/APIsetOnclick",
+		"MainAbility/pages/frameNode/APIsetOnTouch",
 		"MainAbility/pages/frameNode/frameNode",
-		"MainAbility/pages/frameNode/nodeContainer"
+		"MainAbility/pages/frameNode/nodeContainer",
+		"MainAbility/pages/frameNode/frameNodeTestGetInterface"
     ]
 }

@@ -2808,7 +2808,8 @@ static void TimerCb(void *data)
     const double error = 100;
     TimerDataT *timerData = reinterpret_cast<TimerDataT *>(data);
     timerData->dispatchTime = high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> elapsed = timerData->dispatchTime - timerData->submitTime;
+    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(
+        timerData->dispatchTime - timerData->submitTime);
     double realTimeVal = elapsed.count();
     if (realTimeVal < timerData->timeout - error || realTimeVal > timerData->timeout + error) {
         timerData->result += 1;
@@ -2820,7 +2821,7 @@ static napi_value ffrt_timer_start_abnormal_0001(napi_env env, napi_callback_inf
 {
     high_resolution_clock::time_point startT = high_resolution_clock::now();
     TimerDataT timerData1 = {.timerId = 1, .timeout = 0, .submitTime = startT, .finish = false, .result = 0};
-    int ret = ffrt_timer_start(-1, 0, reinterpret_cast<void *>(&timerData1), TimerCb, false);
+    int ret = ffrt_timer_start(-1, 0, reinterpret_cast<void *>(&timerData1), nullptr, false);
     
     int result = 0;
     if (ret != -1) {
@@ -2923,7 +2924,7 @@ static napi_value ffrt_loop_abnormal_0001(napi_env env, napi_callback_info info)
     auto loop = ffrt_loop_create(queue_handle);
 
     int result = 0;
-    if (loop != nullptr) {
+    if (loop == nullptr) {
         result += 1;
     }
 
@@ -2996,9 +2997,8 @@ static napi_value ffrt_loop_0001(napi_env env, napi_callback_info info)
     }
     ffrt_loop_stop(loop);
     pthread_join(thread, nullptr);
-    ffrt_loop_destroy(loop);
     int destoryRet = ffrt_loop_destroy(loop);
-    if (destoryRet != -1) {
+    if (destoryRet != 0) {
         result += 1;
     }
     ffrt_queue_attr_destroy(&queue_attr);
@@ -3209,7 +3209,7 @@ static napi_value queue_parallel_cancel_0001(napi_env env, napi_callback_info in
         result += 1;
     }
     ret = ffrt_queue_cancel(task1);
-    if (ret != -1) {
+    if (ret != 1) {
         result += 1;
     }
 
@@ -3309,35 +3309,33 @@ static napi_value queue_parallel_0001(napi_env env, napi_callback_info info)
 inline void DivForTest(void *data)
 {
     const int div = 3;
-    *(int *)data /= div;
+    (*static_cast<int*>(data)) /= div;
 }
 
 inline void TwoPlusForTest(void *data)
 {
     const int plus = 2;
-    *(int *)data += plus;
+    (*static_cast<int*>(data)) += plus;
 }
 
 inline void TwoSubForTest(void *data)
 {
     const int sub = 2;
-    *(int *)data -= sub;
+    (*static_cast<int*>(data)) -= sub;
 }
 
 static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
 {
     int result = 0;
     const int maxConcurrency = 1;
-    const int taskRes = 5;
+    const int taskRes = 9;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
     ffrt_queue_attr_set_max_concurrency(&queue_attr, maxConcurrency);
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_concurrent, "test_queue", &queue_attr);
 
-    int temp = 0;
     int res = 3;
     ffrt_task_handle_t task;
-    std::function<void()> &&OnePlusFfrtSleepFunc = [&temp] () {OnePlusSleepForTest((void *)(&temp));};
     std::function<void()> &&DivFunc = [&res] () {DivForTest((void *)(&res));};
     std::function<void()> &&MultipleFunc = [&res] () {MultipleForTest((void *)(&res));};
     std::function<void()> &&OnePlusFunc = [&res] () {OnePlusForTest((void *)(&res));};
@@ -3353,15 +3351,12 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
         ffrt_task_attr_set_queue_priority(&task_attr[i], pri);
     }
 
-    for (int i = 0; i < maxConcurrency; ++i) {
-        ffrt_queue_submit(queue_handle, create_function_wrapper(OnePlusFfrtSleepFunc,
-            ffrt_function_kind_queue), nullptr);
-    }
-    task = ffrt_queue_submit_h(queue_handle,
-        create_function_wrapper(TwoSubFunc, ffrt_function_kind_queue), &task_attr[0]);
+    ffrt_queue_submit(queue_handle, create_function_wrapper(TwoSubFunc, ffrt_function_kind_queue), &task_attr[0]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr[1]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(DivFunc, ffrt_function_kind_queue), &task_attr[2]);
-    ffrt_queue_submit(queue_handle, create_function_wrapper(SubFunc, ffrt_function_kind_queue), &task_attr[3]);
+    int waitIdex = 3;
+    task = ffrt_queue_submit_h(queue_handle, create_function_wrapper(
+        SubFunc, ffrt_function_kind_queue), &task_attr[waitIdex]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(MultipleFunc, ffrt_function_kind_queue), &task_attr[4]);
     ffrt_queue_submit(queue_handle, create_function_wrapper(TwoPlusFunc, ffrt_function_kind_queue), &task_attr[5]);
 

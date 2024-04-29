@@ -14,7 +14,7 @@
  */
 
 import { describe, expect, it, Level } from '@ohos/hypium';
-import { ENTINFO1, SELFWANT, SELFHAPNAME } from '../commom';
+import { ENTINFO1, SELFWANT, SELFHAPNAME, NETWORK_ETH_LOCAL } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import networkManager from '@ohos.enterprise.networkManager';
@@ -23,6 +23,8 @@ export default function networkManagerTest() {
   describe('networkManager_test', () => {
     testGetAllNetworkInterfacesSync();
     testGetIpAddressSync();
+
+    testGetMacSync();
 
     testIsNetworkInterfaceDisabledSync();
     testSetNetworkInterfaceDisabledSync();
@@ -72,6 +74,26 @@ function testGetIpAddressSync() {
   it("test_get_ip_address_sync_0100", Level.LEVEL2, async (done: Function) => {
     try {
       networkManager.getIpAddressSync(SELFWANT, '1');
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+}
+
+function testGetMacSync() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_MAC_SYNC_JS_0100
+   * @tc.name      : test_get_mac_sync_0100
+   * @tc.desc      : test networkManager getMacSync without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_mac_sync_0100", Level.LEVEL2, async (done: Function) => {
+    try {
+      networkManager.getMacSync(SELFWANT, NETWORK_ETH_LOCAL);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200001).assertTrue();
@@ -184,6 +206,90 @@ function testAddFirewallRule() {
         direction: networkManager.Direction.OUTPUT,
         action: networkManager.Action.DENY,
         protocol: networkManager.Protocol.UDP
+      };
+      networkManager.addFirewallRule(SELFWANT, firewallRule);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_FIREWALL_RULE_JS_0200
+   * @tc.name      : test_add_firewall_rule_0200
+   * @tc.desc      : test networkManager addFirewallRule without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_firewall_rule_0200", Level.LEVEL2, async (done: Function) => {
+    try {
+      let firewallRule: networkManager.FirewallRule = {
+        srcAddr: '192.168.1.1-192.168.1.22',
+        destAddr: '192.168.2.1',
+        srcPort: '8080',
+        destPort: '8080',
+        appUid: '9696',
+        direction: networkManager.Direction.INPUT,
+        action: networkManager.Action.ALLOW,
+        protocol: networkManager.Protocol.ALL
+      };
+      networkManager.addFirewallRule(SELFWANT, firewallRule);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_FIREWALL_RULE_JS_0300
+   * @tc.name      : test_add_firewall_rule_0300
+   * @tc.desc      : test networkManager addFirewallRule without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_firewall_rule_0300", Level.LEVEL2, async (done: Function) => {
+    try {
+      let firewallRule: networkManager.FirewallRule = {
+        srcAddr: '192.168.1.1-192.168.1.22',
+        destAddr: '192.168.2.1',
+        srcPort: '8080',
+        destPort: '8080',
+        appUid: '9696',
+        direction: networkManager.Direction.INPUT,
+        action: networkManager.Action.ALLOW,
+        protocol: networkManager.Protocol.TCP
+      };
+      networkManager.addFirewallRule(SELFWANT, firewallRule);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_FIREWALL_RULE_JS_0400
+   * @tc.name      : test_add_firewall_rule_0400
+   * @tc.desc      : test networkManager addFirewallRule without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_firewall_rule_0400", Level.LEVEL2, async (done: Function) => {
+    try {
+      let firewallRule: networkManager.FirewallRule = {
+        srcAddr: '192.168.1.1-192.168.1.22',
+        destAddr: '192.168.2.1',
+        srcPort: '8080',
+        destPort: '8080',
+        appUid: '9696',
+        direction: networkManager.Direction.INPUT,
+        action: networkManager.Action.ALLOW,
+        protocol: networkManager.Protocol.ICMP
       };
       networkManager.addFirewallRule(SELFWANT, firewallRule);
       expect(false).assertTrue();

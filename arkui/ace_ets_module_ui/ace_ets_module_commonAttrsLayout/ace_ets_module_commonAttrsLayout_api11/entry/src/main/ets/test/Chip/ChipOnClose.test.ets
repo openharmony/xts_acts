@@ -54,8 +54,8 @@ export default function ChipOnClose() {
       console.info('ChipOnClose_001 START');
       let ChipActionCol = CommonFunc.getComponentRect('ChipOnCloseCol');
       await CommonFunc.sleep(200);
-      let right = ChipActionCol.right - vp2px(22);
-      let top = ChipActionCol.top + vp2px(18);
+      let right = ChipActionCol.right - vp2px(22) + globalThis.winLeft;
+      let top = ChipActionCol.top + vp2px(18) + globalThis.winTop;
       await CommonFunc.sleep(200);
       console.info('ChipOnClose_001 right：' + right + 'top:' + top);
       let driver = Driver.create();

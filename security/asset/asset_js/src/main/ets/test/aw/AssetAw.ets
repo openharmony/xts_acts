@@ -34,7 +34,7 @@ export const aliasTooLong = "0123456789123456".repeat(16) + '1';
 
 
 export const labelLong = "0123456789123456".repeat(32);
-
+export const string2k = "0123456789123456".repeat(128);
 export const labelTooLong = "0123456789123456".repeat(128) + '1';
 
 export class retAll {

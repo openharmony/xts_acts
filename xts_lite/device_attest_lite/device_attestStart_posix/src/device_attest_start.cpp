@@ -21,7 +21,7 @@
 
 #define ATTEST_SOFTWARE_RESULT_SIZE 5
 #define ACTS_DEVATTEST_SUCCESS 0
-#define SLEEP_TIMEOUT 4
+#define SLEEP_TIMEOUT 1
 
 using namespace std;
 using namespace testing::ext;
