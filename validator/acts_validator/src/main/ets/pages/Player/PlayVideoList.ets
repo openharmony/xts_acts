@@ -20,13 +20,13 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import data_preferences from '@ohos.data.preferences';
 import MediaUtils from '../model/MediaUtils'
 
-const TAG: string = 'ParseXML';
-let path: string = globalThis.dir;
-let path1: string = path + '/Player';
+const TAG = 'ParseXML';
+let path = globalThis.dir;
+let path1 = path + '/Player';
 
-let VarColor: string[] = [];
-let ColorBackPath: string = path1 + '/PlayerVideoColorBack.txt';
-let txtPath: string = path1 + '/PlayerVideoReport.txt';
+let VarColor = [];
+let ColorBackPath = path1 + '/PlayerVideoColorBack.txt';
+let txtPath = path1 + '/PlayerVideoReport.txt';
 
 @Entry
 @Component
@@ -47,7 +47,7 @@ struct videoNew {
     let Test = null;
     let context = null;
     context = globalThis.getContext();
-    let preferences: ESObject;
+    let preferences;
 
     let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
@@ -81,18 +81,17 @@ struct videoNew {
     let opt = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buff = new ArrayBuffer(40960);
     fs.readSync(opt.fd, buff);
-    let ColorBack: string = String.fromCharCode.apply(null, new Uint8Array(buff));
-    let TestList: string[] = ColorBack.split(';');
+    let ColorBack = String.fromCharCode.apply(null, new Uint8Array(buff));
+    let TestList = ColorBack.split(';');
     for (let i = 0; i < Math.floor(TestList.length / 2); i++) {
       VarColor[i] = TestList[i * 2+1];
     }
     fs.closeSync(opt);
 
     if (this.count === 1) {
-      let myRouter = router.getParams() as Record<string, string | number>
-      this.result = myRouter.result as string
-      let titles: string = myRouter.title as string;
-      let name1: string = '刚刚点进了哪个用例：' + titles;
+      this.result = router.getParams()['result'];
+      let titles = router.getParams()['title'];
+      let name1 = '刚刚点进了哪个用例：' + titles;
       let results = this.result;
       let WriteTitle = (titles).toString();
       let number = WriteTitle.length + 11;
@@ -140,12 +139,8 @@ struct videoNew {
     Column() {
       Row() {
         Button() {
-          Image($r('app.media.ic_public_back'))
-            .width('20vp')
-            .height('18vp')
-        }
-        .backgroundColor(Color.Black)
-        .size({ width: '40vp', height: '30vp' })
+          Image($r('app.media.ic_public_back')).width('20vp').height('18vp')
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
             url: 'pages/Player/Player_index',
@@ -157,9 +152,7 @@ struct videoNew {
           Text('Player Video')
             .fontColor(Color.White)
             .fontSize('22fp')
-        }
-        .justifyContent(FlexAlign.SpaceAround)
-        .backgroundColor(Color.Black)
+        }.justifyContent(FlexAlign.SpaceAround).backgroundColor(Color.Black)
 
         Row() {
           Button() {
@@ -234,9 +227,7 @@ struct videoNew {
       Row() {
         Blank()
         Button({ stateEffect: this.Vue }) {
-          Image($r('app.media.ic_public_pass'))
-            .width('20vp')
-            .height('20vp')
+          Image($r('app.media.ic_public_pass')).width('20vp').height('20vp')
         }
         .width('40%')
         .height('30vp')
@@ -246,8 +237,7 @@ struct videoNew {
         .onClick(() => {
           router.back({
             url: this.Url,
-            params: {
-              result: 'true ', title: this.name,
+            params: { result: 'true ', title: this.name,
             }
           })
           promptAction.showToast({
@@ -257,18 +247,12 @@ struct videoNew {
 
         Blank().width(40)
         Button() {
-          Image($r('app.media.ic_public_fail'))
-            .width('20vp')
-            .height('20vp')
-        }
-        .width('40%')
-        .height('30vp')
-        .backgroundColor(Color.Grey)
+          Image($r('app.media.ic_public_fail')).width('20vp').height('20vp')
+        }.width('40%').height('30vp').backgroundColor(Color.Grey)
         .onClick(() => {
           router.back({
             url: this.Url,
-            params: {
-              result: 'false', title: this.name,
+            params: { result: 'false', title: this.name,
             }
           })
           console.log('wwwwwwwwww' + this.Url)
@@ -278,15 +262,8 @@ struct videoNew {
         })
 
         Blank()
-      }
-      .width('100%')
-      .height('14%')
-      .backgroundColor(Color.Black)
-      .justifyContent(FlexAlign.Center)
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(Color.Black)
+      }.width('100%').height('14%').backgroundColor(Color.Black).justifyContent(FlexAlign.Center)
+    }.width('100%').height('100%').backgroundColor(Color.Black)
   }
 
   ClearText() {
@@ -307,27 +284,27 @@ struct videoNew {
   }
 }
 
-function filewrite(name1: string, results: string, titles: string) {
+function filewrite(name1, results, titles) {
   let fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   let buf = new ArrayBuffer(4096);
   let RD = fs.readSync(fd.fd, buf);
   console.info("RRRRRRRRRRd" + RD);
-  let report: ESObject = String.fromCharCode.apply(null, new Uint8Array(buf));
+  let report = String.fromCharCode.apply(null, new Uint8Array(buf));
   let WriteTitle = (titles).toString();
   let WriteResult = (results).toString();
   let number = WriteTitle.length + WriteResult.length + 2;
-  let Index: number = report.indexOf(WriteTitle);
+  let Index = report.indexOf(WriteTitle);
   let Log = (titles + ";" + results + ";").toString();
   if (Index == -1) {
     fs.writeSync(fd.fd, Log);
   }
   else if (Index != -1) {
-    let key: string = report.substring(Index, Index + number);
+    let key = report.substring(Index, Index + number);
     let FD = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     report = report.replace(key, Log);
     let buffer = new ArrayBuffer(4096);
     let rd = fs.readSync(FD.fd, buffer);
-    let Report: string = report.substring(0, rd);
+    let Report = report.substring(0, rd);
     fs.closeSync(FD);
     let Fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.writeSync(Fd.fd, Report);
