@@ -1142,6 +1142,447 @@ static napi_value testValueOperation2(napi_env env1, napi_callback_info info) {
     NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
     return result11;
 }
+void equals_test_1(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_GetUndefined(env, &lhs);
+    JSVM_Value rhs = nullptr;
+    OH_JSVM_GetUndefined(env, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_2(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_GetNull(env, &lhs);
+    JSVM_Value rhs = nullptr;
+    OH_JSVM_GetNull(env, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_3(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs = nullptr;
+    bool x = true;
+    OH_JSVM_GetBoolean(env, x, &lhs);
+    JSVM_Value rhs = nullptr;
+    bool y = true;
+    OH_JSVM_GetBoolean(env, y, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_4(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs = nullptr;
+    bool x = false;
+    OH_JSVM_GetBoolean(env, x, &lhs);
+    JSVM_Value rhs = nullptr;
+    bool y = false;
+    OH_JSVM_GetBoolean(env, y, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_5(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    const char testStr1[] = "foo";
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr1, strlen(testStr1), &lhs);
+    const char testStr2[] = "foo";
+    JSVM_Value rhs = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr2, strlen(testStr2), &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_6(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value result = NULL;
+    OH_JSVM_CreateObject(env, &result);
+    const char *testNameStr = "bar";
+    JSVM_Value propValue = nullptr;
+    JSVM_Value key;
+    OH_JSVM_CreateStringUtf8(env, "foo", JSVM_AUTO_LENGTH, &key);
+    OH_JSVM_CreateStringUtf8(env, testNameStr, strlen(testNameStr), &propValue);
+    OH_JSVM_SetProperty(env, result, key, propValue);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, result, result, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_7(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs;
+    OH_JSVM_CreateInt32(env, 0, &lhs);
+    JSVM_Value rhs;
+    OH_JSVM_CreateInt32(env, 0, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_8(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs;
+    OH_JSVM_CreateInt32(env, +0, &lhs);
+    JSVM_Value rhs;
+    OH_JSVM_CreateInt32(env, -0, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_9(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs;
+    OH_JSVM_CreateInt32(env, 0, &lhs);
+    JSVM_Value rhs = nullptr;
+    bool y = false;
+    OH_JSVM_GetBoolean(env, y, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_10(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    const char testStr[] = "";
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &lhs);
+    JSVM_Value rhs = nullptr;
+    bool y = false;
+    OH_JSVM_GetBoolean(env, y, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_11(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    const char testStr[] = "";
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &lhs);
+    JSVM_Value rhs;
+    OH_JSVM_CreateInt32(env, 0, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_12(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    const char testStr[] = "0";
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &lhs);
+    JSVM_Value rhs;
+    OH_JSVM_CreateInt32(env, 0, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_13(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    const char testStr[] = "1";
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &lhs);
+    JSVM_Value rhs;
+    OH_JSVM_CreateInt32(env, 1, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_14(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    size_t arrayLength = 2;
+    JSVM_Value lhs;
+    OH_JSVM_CreateArrayWithLength(env, arrayLength, &lhs);
+    for (uint32_t i = 0; i < arrayLength; i++) {
+        JSVM_Value element;
+        OH_JSVM_CreateUint32(env, i + 1, &element);
+        OH_JSVM_SetElement(env, lhs, i, element);
+    }
+    const char testStr[] = "1,2";
+    JSVM_Value rhs = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_15(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    const char testStr1[] = "foo";
+    JSVM_Value oldresult = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr1, strlen(testStr1), &oldresult);
+    JSVM_Value lhs;
+    OH_JSVM_CoerceToObject(env, oldresult, &lhs);
+    const char testStr2[] = "foo";
+    JSVM_Value rhs = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr2, strlen(testStr2), &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_16(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_GetNull(env, &lhs);
+    JSVM_Value rhs = nullptr;
+    OH_JSVM_GetUndefined(env, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_17(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_GetNull(env, &lhs);
+    JSVM_Value rhs = nullptr;
+    bool y = false;
+    OH_JSVM_GetBoolean(env, y, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_18(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_GetUndefined(env, &lhs);
+    JSVM_Value rhs = nullptr;
+    bool y = false;
+    OH_JSVM_GetBoolean(env, y, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_19(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs = NULL;
+    OH_JSVM_CreateObject(env, &lhs);
+    const char *testNameStr = "bar";
+    JSVM_Value propValue1 = nullptr;
+    JSVM_Value key1;
+    OH_JSVM_CreateStringUtf8(env, "foo", JSVM_AUTO_LENGTH, &key1);
+    OH_JSVM_CreateStringUtf8(env, testNameStr, strlen(testNameStr), &propValue1);
+    OH_JSVM_SetProperty(env, lhs, key1, propValue1);
+    JSVM_Value rhs = NULL;
+    OH_JSVM_CreateObject(env, &rhs);
+    JSVM_Value propValue2 = nullptr;
+    JSVM_Value key2;
+    OH_JSVM_CreateStringUtf8(env, "foo", JSVM_AUTO_LENGTH, &key2);
+    OH_JSVM_CreateStringUtf8(env, testNameStr, strlen(testNameStr), &propValue2);
+    OH_JSVM_SetProperty(env, rhs, key2, propValue2);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_20(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    const char testStr1[] = "foo";
+    JSVM_Value oldresult1 = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr1, strlen(testStr1), &oldresult1);
+    JSVM_Value lhs;
+    OH_JSVM_CoerceToObject(env, oldresult1, &lhs);
+    const char testStr2[] = "foo";
+    JSVM_Value oldresult2 = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr2, strlen(testStr2), &oldresult2);
+    JSVM_Value rhs;
+    OH_JSVM_CoerceToObject(env, oldresult2, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_21(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs;
+    OH_JSVM_CreateInt32(env, 0, &lhs);
+    JSVM_Value rhs = nullptr;
+    OH_JSVM_GetNull(env, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_22(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs;
+    OH_JSVM_CreateInt32(env, 0, &lhs);
+    JSVM_Value rhs;
+    OH_JSVM_CreateDouble(env, 0.0/0.0, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_23(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    const char testStr1[] = "foo";
+    JSVM_Value lhs = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr1, strlen(testStr1), &lhs);
+    JSVM_Value rhs;
+    OH_JSVM_CreateDouble(env, 0.0/0.0, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+void equals_test_24(JSVM_Env env)
+{
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value lhs;
+    OH_JSVM_CreateDouble(env, 0.0/0.0, &lhs);
+    JSVM_Value rhs;
+    OH_JSVM_CreateDouble(env, 0.0/0.0, &rhs);
+    bool isEquals = false;
+    OH_JSVM_Equals(env, lhs, rhs, &isEquals);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+}
+static napi_value testValueOperation3(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+
+    equals_test_1(env);
+    equals_test_2(env);
+    equals_test_3(env);
+    equals_test_4(env);
+    equals_test_5(env);
+    equals_test_6(env);
+    equals_test_7(env);
+    equals_test_8(env);
+    equals_test_9(env);
+    equals_test_10(env);
+    equals_test_11(env);
+    equals_test_12(env);
+
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+static napi_value testValueOperation4(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+
+    equals_test_13(env);
+    equals_test_14(env);
+    equals_test_15(env);
+    equals_test_16(env);
+    equals_test_17(env);
+    equals_test_18(env);
+    equals_test_19(env);
+    equals_test_20(env);
+    equals_test_21(env);
+    equals_test_22(env);
+    equals_test_23(env);
+    equals_test_24(env);
+
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
 static napi_value testGetPropertyNames(napi_env env1, napi_callback_info info) {
     JSVM_InitOptions init_options;
     if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
@@ -3962,6 +4403,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testGetData2",testGetData2),
         DECLARE_NAPI_FUNCTION("testValueOperation",testValueOperation),
         DECLARE_NAPI_FUNCTION("testValueOperation2",testValueOperation2),
+        DECLARE_NAPI_FUNCTION("testValueOperation3", testValueOperation3),
+        DECLARE_NAPI_FUNCTION("testValueOperation4", testValueOperation4),
         DECLARE_NAPI_FUNCTION("testGetPropertyNames",testGetPropertyNames),
         DECLARE_NAPI_FUNCTION("testGetAllPropertyNames",testGetAllPropertyNames),
         DECLARE_NAPI_FUNCTION("testProperty",testProperty),
