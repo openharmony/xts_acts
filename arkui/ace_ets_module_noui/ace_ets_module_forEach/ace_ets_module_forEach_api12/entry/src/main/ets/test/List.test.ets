@@ -13,6 +13,10 @@
  * limitations under the License.
  */
 import DataOperationTypeTest from './lazyforeachTest/DataOperationType.test';
+import lazyChangeJsunit from './lazyforeachTest/lazyChangeJsunit.test';
+import lazyReloadJsunit from './lazyforeachTest/lazyReloadJsunit.test';
 export default function testsuite() {
   DataOperationTypeTest()
+  lazyChangeJsunit()
+  lazyReloadJsunit()
 }
