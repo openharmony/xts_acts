@@ -106,7 +106,9 @@ describe('fileIO_fs_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = fileIO.accessSync(fpath, 0);
+      let ret = fileIO.accessSync(fpath, fileIO.AccessModeType.EXIST
+
+);
       expect(ret == true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();
@@ -135,7 +137,9 @@ describe('fileIO_fs_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = fileIO.accessSync(fpath, 2);
+      let ret = fileIO.accessSync(fpath, fileIO.AccessModeType.WRITE
+
+);
       expect(ret == true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();
@@ -164,7 +168,7 @@ describe('fileIO_fs_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = fileIO.accessSync(fpath, 4);
+      let ret = fileIO.accessSync(fpath, fileIO.AccessModeType.READ);
       expect(ret == true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();
@@ -193,7 +197,7 @@ describe('fileIO_fs_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = fileIO.accessSync(fpath, 6);
+      let ret = fileIO.accessSync(fpath, fileIO.AccessModeType.READ_WRITE);
       expect(ret == true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();
@@ -383,7 +387,7 @@ describe('fileIO_fs_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = await fileIO.access(fpath, 0);
+      let ret = await fileIO.access(fpath, fileIO.AccessModeType.EXIST);
       expect(ret === true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();
@@ -413,7 +417,7 @@ describe('fileIO_fs_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = await fileIO.access(fpath, 2);
+      let ret = await fileIO.access(fpath, fileIO.AccessModeType.WRITE);
       expect(ret === true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();
@@ -443,7 +447,7 @@ describe('fileIO_fs_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = await fileIO.access(fpath, 4);
+      let ret = await fileIO.access(fpath, fileIO.AccessModeType.READ);
       expect(ret === true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();
@@ -473,7 +477,7 @@ describe('fileIO_fs_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = await fileIO.access(fpath, 6);
+      let ret = await fileIO.access(fpath, fileIO.AccessModeType.READ_WRITE);
       expect(ret === true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();
