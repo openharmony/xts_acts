@@ -39,6 +39,10 @@ import StyledStringTest from './TextTest/StyledStringTest.test'
 import clearStyles from './TextTest/clearStyles.test'
 import TextStyle from './TextTest/TextStyle.test';
 import MarqueeApi from './Marquee/MarqueeApi.test';
+
+import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
+import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
+import RichEditorApi5 from './RichEditor/RichEditorApi5.test'
 export default function testsuite() {
   onSelectionChange1();
   onSelectionChange2();
@@ -67,4 +71,7 @@ export default function testsuite() {
   TextStyle();
   MarqueeApi();
   
+  RichEditorApi1();
+  RichEditorApi3();
+  RichEditorApi5();
 }

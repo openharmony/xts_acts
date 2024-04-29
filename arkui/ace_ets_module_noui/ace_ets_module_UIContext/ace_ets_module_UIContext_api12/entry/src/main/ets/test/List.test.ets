@@ -12,20 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import gradientHeight from './TextPickerTest/gradientHeight.test';
-import contentModifier from './CheckboxTest/contentModifier.test';
-import triggerChange from './CheckboxTest/triggerChange.test';
-import CheckBoxShape from './CheckboxGroupTest/CheckBoxShape.test';
-import dateTimeOptions from './TimePickerTest/dateTimeOptions.test';
-import ButtonApi1 from './Button/ButtonApi1.test'
-import ButtonApi2 from './Button/ButtonApi2.test'
+
+import UIContextApi1 from './UIContext/UIContextApi1.test'
 
 export default function testsuite() {
-    gradientHeight()
-    contentModifier()
-    triggerChange()
-    CheckBoxShape()
-    dateTimeOptions()
-    ButtonApi1();
-    ButtonApi2();
+  UIContextApi1();
+
 }
