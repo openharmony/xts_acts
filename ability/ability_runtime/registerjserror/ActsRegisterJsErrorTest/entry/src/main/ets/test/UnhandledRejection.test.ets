@@ -20,15 +20,18 @@ let sleep = (time: number) => {
   return new Promise<number>((resolve) => setTimeout(resolve, time));
 }
 
+const SLEEP_DURATION = 800;
+const TIMEOUT_DUARATION = 300;
+
 export default function unhandledRejectionTest() {
   describe('ActsUnhandledRejectionTest', function () {
     beforeEach(async () => {
       errorManager.off("unhandledRejection");
-      await sleep(800);
+      await sleep(SLEEP_DURATION);
     })
     afterEach(async () => {
       errorManager.off("unhandledRejection");
-      await sleep(800);
+      await sleep(SLEEP_DURATION);
     })    
 
     /*
@@ -56,8 +59,8 @@ export default function unhandledRejectionTest() {
           expect().assertFail();
         }
         done();
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -85,8 +88,8 @@ export default function unhandledRejectionTest() {
           expect().assertFail();
         }
         done();
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -118,8 +121,8 @@ export default function unhandledRejectionTest() {
           expect().assertFail();
         }
         done();
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -150,8 +153,8 @@ export default function unhandledRejectionTest() {
           expect().assertFail();
         }
         done();
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -177,8 +180,8 @@ export default function unhandledRejectionTest() {
           expect().assertFail();
         }
         done();
-     }, 1000);
-     await sleep(800);
+     }, TIMEOUT_DUARATION);
+     await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -203,8 +206,8 @@ export default function unhandledRejectionTest() {
           expect().assertFail();
         }
         done();
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -269,9 +272,9 @@ export default function unhandledRejectionTest() {
       setTimeout(() => {
         expect(flag).assertTrue();
         done();
-      }, 1000);
+      }, TIMEOUT_DUARATION);
 
-      await sleep(800);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -321,9 +324,9 @@ export default function unhandledRejectionTest() {
       setTimeout(() => {
         expect(flag).assertTrue();
         done();
-      }, 1000);
+      }, TIMEOUT_DUARATION);
 
-      await sleep(800);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -340,8 +343,8 @@ export default function unhandledRejectionTest() {
 
       setTimeout(() => {
         errorManager.off("unhandledRejection", oldObserver)
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
 
       let flag = false;
       let newObserver: errorManager.UnhandledRejectionObserver = (reason: Error) => {
@@ -363,8 +366,8 @@ export default function unhandledRejectionTest() {
           expect().assertFail();
         }
         done();
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -389,8 +392,8 @@ export default function unhandledRejectionTest() {
 
       setTimeout(() => {
         errorManager.off("unhandledRejection")
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
 
       let flag = false;
       let newObserver: errorManager.UnhandledRejectionObserver = (reason: Error) => {
@@ -412,8 +415,8 @@ export default function unhandledRejectionTest() {
           expect().assertFail();
         }
         done();
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -434,8 +437,8 @@ export default function unhandledRejectionTest() {
 
       setTimeout(() => {
         done();
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -457,8 +460,8 @@ export default function unhandledRejectionTest() {
 
       setTimeout(() => {
         done();
-      }, 1000);
-      await sleep(800);
+      }, TIMEOUT_DUARATION);
+      await sleep(SLEEP_DURATION);
     })
 
     /*
@@ -484,16 +487,16 @@ export default function unhandledRejectionTest() {
         expect(Number(evt.data)).assertEqual(16200001);
         flag = !flag;
       }
-      await sleep(800);
+      await sleep(SLEEP_DURATION);
 
       setTimeout(() => {
         if (!flag) {
           expect().assertFail();
         }
         done();
-      }, 2000);
+      }, SLEEP_DURATION);
 
-      await sleep(800);
+      await sleep(SLEEP_DURATION);
     })
   })
 }
