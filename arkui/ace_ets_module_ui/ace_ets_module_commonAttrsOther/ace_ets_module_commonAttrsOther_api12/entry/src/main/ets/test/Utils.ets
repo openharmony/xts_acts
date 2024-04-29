@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,17 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import gradientHeight from './TextPickerTest/gradientHeight.test';
-import contentModifier from './CheckboxTest/contentModifier.test';
-import triggerChange from './CheckboxTest/triggerChange.test';
-import CheckBoxShape from './CheckboxGroupTest/CheckBoxShape.test';
-import dateTimeOptions from './TimePickerTest/dateTimeOptions.test';
-import indicatorBuilderTest from './CheckboxTest/indicatorBuilderTest.test'
-export default function testsuite() {
-    gradientHeight()
-    contentModifier()
-    triggerChange()
-    CheckBoxShape()
-    dateTimeOptions()
-    indicatorBuilderTest()
+export default class Utils {
+
+  static sleep(time: number) {
+    return new Promise((resolve: (value: string) => void) => {
+      setTimeout(() => {
+        resolve()
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
+  }
 }
+
+
+
+

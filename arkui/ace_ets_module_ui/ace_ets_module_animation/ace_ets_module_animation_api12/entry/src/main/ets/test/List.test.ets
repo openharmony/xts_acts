@@ -12,17 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import gradientHeight from './TextPickerTest/gradientHeight.test';
-import contentModifier from './CheckboxTest/contentModifier.test';
-import triggerChange from './CheckboxTest/triggerChange.test';
-import CheckBoxShape from './CheckboxGroupTest/CheckBoxShape.test';
-import dateTimeOptions from './TimePickerTest/dateTimeOptions.test';
-import indicatorBuilderTest from './CheckboxTest/indicatorBuilderTest.test'
+
+import setExpectedFrameRateRangeTest from './AnimatorResultTest/setExpectedFrameRateRangeTest.test'
+import AnimatorResultTest from './AnimatorResultTest/AnimatorResultTest.test'
 export default function testsuite() {
-    gradientHeight()
-    contentModifier()
-    triggerChange()
-    CheckBoxShape()
-    dateTimeOptions()
-    indicatorBuilderTest()
+  AnimatorResultTest()
+  setExpectedFrameRateRangeTest()
 }
