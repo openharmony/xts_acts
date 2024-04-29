@@ -17,7 +17,7 @@
 #include <cstring>
 #include <iostream>
 #include <unistd.h>
-#include <stdio.h>
+#include <cstdio>
 #include <thread>
 #include <native_buffer/native_buffer.h>
 #include "hilog/log.h"
@@ -27,9 +27,15 @@
 #include "multimedia/player_framework/native_avscreen_capture_base.h"
 #include "multimedia/player_framework/native_avscreen_capture_errors.h"
 
-static struct OH_AVScreenCapture *g_avCapture = {};
+using namespace std;
 
-void SetConfig(OH_AVScreenCaptureConfig &config) {
+#define LOG(cond, fmt, ...)           \
+    if (!(cond)) {                                  \
+        (void)printf(fmt, ##__VA_ARGS__);           \
+    }
+
+void SetConfig(OH_AVScreenCaptureConfig &config)
+{
     int32_t width = 720;
     int32_t height = 1280;
     OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC};
@@ -51,40 +57,63 @@ void SetConfig(OH_AVScreenCaptureConfig &config) {
     };
 }
 
-void OnError(OH_AVScreenCapture *capture, int32_t errorCode, void *userData) {
+void OnError(OH_AVScreenCapture *capture, int32_t errorCode, void *userData)
+{
     (void)capture;
+    (void)errorCode;
     (void)userData;
 }
 
-void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData) {
+void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData)
+{
+    (void)capture;
+    (void)stateCode;
     (void)userData;
 }
 
 void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVScreenCaptureBufferType bufferType,
-                       int64_t timestamp, void *userData) {
+                       int64_t timestamp, void *userData)
+{
+    (void)capture;
+    (void)buffer;
+    (void)bufferType;
+    (void)timestamp;
+    (void)userData;
 }
 
-// OH_Media_Screen_Capture_Init_002
-static napi_value ScreenCaptureInitHeightErr(napi_env env, napi_callback_info info) {
+// SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100
+static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info info)
+{
     OH_AVScreenCapture *screenCapture = OH_AVScreenCapture_Create();
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
     config_.videoInfo.videoCapInfo.videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA;
-	
+
     bool isMicrophone = false;
-	OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
+    OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
     OH_AVScreenCapture_SetErrorCallback(screenCapture, OnError, nullptr);
     OH_AVScreenCapture_SetStateCallback(screenCapture, OnStateChange, nullptr);
     OH_AVScreenCapture_SetDataCallback(screenCapture, OnBufferAvailable, nullptr);
-    int res = OH_AVScreenCapture_Init(screenCapture, config_);
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCapture);
-    sleep(20);
+    int32_t recordTime = 10;
+    sleep(recordTime);
     OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_StopScreenCapture(screenCapture);
-	sleep(2);
+    int32_t intervalTime = 2;
+    sleep(intervalTime);
     OH_AVScreenCapture_Release(screenCapture);
-    napi_value result = nullptr;
-    napi_create_int32(env, res, &result);
-    return result;
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result1 == AV_SCREEN_CAPTURE_ERR_OK
+        && result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        LOG(false, "init/start/stop failed, init: %d, start: %d, stop: %d", result1, result2, result3);
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
 }
 
 
@@ -92,7 +121,7 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"initVideoHeightErr", nullptr, ScreenCaptureInitHeightErr, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureTest", nullptr, NormalAVScreenCaptureTest, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

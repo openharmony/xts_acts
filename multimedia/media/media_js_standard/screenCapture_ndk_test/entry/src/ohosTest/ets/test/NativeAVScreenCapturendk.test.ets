@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -77,17 +77,17 @@ export default function nativeDrawingNdkTest() {
 
 
     /**
-     * @tc.number     : NormalAVScreenCaptureTest
-     * @tc.name       : NormalAVScreenCaptureTest
-     * @tc.desc       : test normalAVScreenCaptureTest
+     * @tc.number     : SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100
+     * @tc.name       : Test OH_AVScreenCapture_Init
+     * @tc.desc       : Test OH_AVScreenCapture_Init
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('normalAVScreenCaptureTest', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100', 0, async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureTest-------------before click:");
       Utils.keepClick();
-	  let result: number = nativeDrawing.initVideoHeightErr();
+	  let result: number = nativeDrawing.normalAVScreenCaptureTest();
       console.info(Tag + "normalAVScreenCaptureTest-------------res:" + result);
       expect(result).assertEqual(0);
       done();
