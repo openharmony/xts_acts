@@ -67,12 +67,14 @@ function specificNoParam($$?: ABuilderParam) {
             .width('100vp')
             .height('100vp')
             .backgroundColor($$.paramA1 ? Color.Green : Color.Blue)
+            .key('btn1')
 
           Button('2')
             .fontSize(24)
             .width('100vp')
             .height('100vp')
             .backgroundColor($$.paramA2 ? Color.Green : Color.Blue)
+            .key('btn2')
         }
         .justifyContent(FlexAlign.SpaceEvenly)
         .width('100%')
@@ -84,12 +86,14 @@ function specificNoParam($$?: ABuilderParam) {
             .width('100vp')
             .height('100vp')
             .backgroundColor($$.paramA3 ? Color.Green : Color.Blue)
+            .key('btn3')
 
           Button('4')
             .fontSize(24)
             .width('100vp')
             .height('100vp')
             .backgroundColor($$.paramA4 ? Color.Green : Color.Blue)
+            .key('btn4')
         }
         .justifyContent(FlexAlign.SpaceEvenly)
         .width('100%')
