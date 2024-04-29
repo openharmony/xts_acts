@@ -42,6 +42,10 @@ import MarqueeApi from './Marquee/MarqueeApi.test';
 import srcIndexTest from './MatrixTest/srcIndexTest.test'
 import dstIndexTest from './MatrixTest/dstIndexTest.test'
 
+
+import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
+import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
+import RichEditorApi5 from './RichEditor/RichEditorApi5.test'
 export default function testsuite() {
   onSelectionChange1();
   onSelectionChange2();
@@ -71,4 +75,8 @@ export default function testsuite() {
   MarqueeApi();
   srcIndexTest();
   dstIndexTest();
+  
+  RichEditorApi1();
+  RichEditorApi3();
+  RichEditorApi5();
 }

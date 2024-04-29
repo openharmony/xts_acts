@@ -56,7 +56,7 @@ struct ActionSheet3Example {
                 dismissDialog.dismiss()
               }
             },
-            alignment: DialogAlignment.Bottom,
+            alignment: DialogAlignment.Center,
             offset: { dx: 0, dy: -10 },
             sheets: [
               {
