@@ -399,6 +399,7 @@ export default function StartAbilityForResultTest() {
         let cancel = await driver.findComponent(ON.text("label"));
         await cancel.click();
         if (deviceType === '2in1') {
+          await driver.delayMs(900);
           let cancel1 = await driver.findComponent(ON.text("仅此一次"));
           await cancel1.click();
         }
