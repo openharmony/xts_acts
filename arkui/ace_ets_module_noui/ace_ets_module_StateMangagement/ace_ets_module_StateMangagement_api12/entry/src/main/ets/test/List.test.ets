@@ -30,6 +30,7 @@ import Monitor3Test from './MonitorTest/Monitor3.test';
 import Monitor4Test from './MonitorTest/Monitor4.test';
 import Monitor5Test from './MonitorTest/Monitor5.test';
 import Monitor6Test from './MonitorTest/Monitor6.test';
+import RepeatEachJsunit from './RepeatTest/RepeatEachJsunit.test';
 export default function testsuite() {
   ExtendTrackTest();
   NestTrackTest();
@@ -49,4 +50,5 @@ export default function testsuite() {
   Monitor4Test()
   Monitor5Test()
   Monitor6Test()
+  RepeatEachJsunit();
 }
