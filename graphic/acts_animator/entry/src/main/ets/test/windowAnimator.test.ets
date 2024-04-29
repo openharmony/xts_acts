@@ -24,23 +24,6 @@ export default function windowAnimatorTest(context: common.UIAbilityContext, win
   console.log('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
   describe('windowAnimator_test', () => {
     console.log('describe window_api_test start!!!')
-    let systemWindowValueArr: Array<string> = [];
-    let systemWindowTypeArr: Array<string> = [];
-    let systemWindowTypeDicArr: Array<string> = [];
-    let systemWindowTypeDic: Record<string, number> = {
-      'TYPE_FLOAT': 8,
-    }
-    let currentDeviceIsRk = false;
-    beforeAll(() => {
-      let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
-      console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
-      systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
-      console.log('jsunittest beforeall systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
-      systemWindowValueArr = Object.keys(systemWindowTypeDic);
-      systemWindowTypeArr = Object.keys(systemWindowTypeDic);
-    })
 
     /**
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3970

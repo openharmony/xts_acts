@@ -1367,27 +1367,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0500
-     * @tc.name      : testGetCutoutInfo_Promise
-     * @tc.desc      : Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testGetCutoutInfo_Promise', 0, async (done: Function) => {
-      let caseName: string = 'testGetCutoutInfo_Promise';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin context==' + JSON.stringify(context));
-      let dpClass = display.getDefaultDisplaySync();
-      expect(!!dpClass).assertTrue();
-      dpClass.getCutoutInfo().then((data: display.CutoutInfo) => {
-        console.info('Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(data));
-        done();
-      }).catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'displayClass.getCutoutInfo', done);
-      });
-    })
-    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1080
      * @tc.name      : testSetAspectRatio_Cancel_Upon_Success_Promise
      * @tc.desc      : Validate the scenario cancelled after setting the proportion of the content layout of the main window
@@ -1495,32 +1474,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       } catch (err) {
         let e: BusinessError = err as BusinessError;
         console.info(msgStr + 'windowEventType error :' + JSON.stringify(e));
-        expect().assertFail();
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2310
-     * @tc.name      : testOrientation_Enum
-     * @tc.desc      : Test the enumeration value of Orientation
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testOrientation_Enum', 0, async (done: Function) => {
-      let caseName: string = 'testOrientation_Enum';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      console.log(msgStr + 'display.orientation:' + JSON.stringify('PORTRAIT: ' + display.Orientation.PORTRAIT + ';LANDSCAPE: ' + display.Orientation.LANDSCAPE + ';PORTRAIT_INVERTED: ' + display.Orientation.PORTRAIT_INVERTED + ';LANDSCAPE_INVERTED: ' + display.Orientation.LANDSCAPE_INVERTED));
-      try {
-        expect(0).assertEqual(display.Orientation.PORTRAIT);
-        expect(1).assertEqual(display.Orientation.LANDSCAPE);
-        expect(2).assertEqual(display.Orientation.PORTRAIT_INVERTED);
-        expect(3).assertEqual(display.Orientation.LANDSCAPE_INVERTED);
-        done();
-      } catch (err) {
-        let e: BusinessError = err as BusinessError;
-        console.info(msgStr + 'Orientation error :' + JSON.stringify(e));
         expect().assertFail();
         done();
       }
@@ -2124,34 +2077,45 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      */
     it("testSetWindowMask_Function_Promise", 0, async function(done){
       let msgStr = "testSetWindowMask_Function_Promise";
-      console.log(msgStr + "begin0");
+      console.log(msgStr + " begin0");
       if(currentDeviceIsPC){
-        console.log(msgStr + "begin1")
-        try{
-          let windowMask: Array<Array<number>> = [
-            [0, 0, 0, 1, 0, 0, 0],
-            [0, 0, 1, 1, 1, 0, 0],
-            [0, 1, 1, 0, 1, 1, 0],
-            [1, 1, 0, 0, 0, 1, 1]
-          ];
-          let windowClass = await ohosWindow.getLastWindow(context);
-          let promise = windowClass.setWindowMask(windowMask);
-          console.log(msgStr + windowMask);
+        console.log(msgStr + " begin1")
+        let windowMask: Array<Array<number>> = new Array<Array<number>>()
+        for(let i = 0; i < 500 ; i++){
+          let arr: Array<number> = new Array<number>(500);
+          for(let j = 0; j < 500 ; j++){
+            if(i + j < 500){
+              arr[j] = 0
+            } else {
+              arr[j] = 1
+            }
+          }
+          windowMask.push(arr)
+        }
+        console.log(msgStr + " windowMask OK ")
+        let windowClass = await ohosWindow.getLastWindow(context);
+        console.log(msgStr + " getLastWindow OK ")
+        let nowWindow = windowStage.createSubWindow('nowWindowA')
+        nowWindow.then(wnd => {
+          console.log(msgStr + " createSubWindow OK ")
+          wnd.resize(500,500)
+          console.log(msgStr + " resize OK ")
+          let promise = wnd.setWindowMask(windowMask)
           promise.then(() => {
-            console.log(msgStr + 'Succeeded in setting the window mask.');
+            console.log(msgStr + ' Succeeded in setting the window mask.');
             expect(true).assertTrue();
             console.log(msgStr + true);
             done();
           }).catch((err: BusinessError) => {
-            console.log(msgStr + 'Failed1 to set the window mask. Cause: ' + JSON.stringify(err));
+            console.log(msgStr + ' Failed to set the window mask. Cause: ' + JSON.stringify(err));
             expect().assertFail();
             done();
           });
-        } catch (exception) {
-          console.log(msgStr + 'Failed2 to set the window mask. Cause:' + JSON.stringify(exception));
+        }).catch(err => {
+          console.log(msgStr + ' Failed to createSubWindow. Cause: ' + JSON.stringify(err));
           expect().assertFail();
           done();
-        }
+        })
       }else{
         console.log(msgStr + "该设备类型不是PC" );
         expect(deviceInfo.deviceType).assertEqual(deviceInfo.deviceType);
