@@ -4,6 +4,7 @@
         "MainAbility/pages/TextPicker/gradientHeight",
         "MainAbility/pages/CheckboxGroup/CheckBoxShape",
         "MainAbility/pages/Checkbox/contentModifier",
-        "MainAbility/pages/Checkbox/triggerChange"
+        "MainAbility/pages/Checkbox/triggerChange",
+        "MainAbility/pages/TimePicker/dateTimeOptions"
     ]
 }

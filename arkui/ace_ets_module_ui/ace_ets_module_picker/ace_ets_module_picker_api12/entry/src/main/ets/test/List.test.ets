@@ -16,10 +16,12 @@ import gradientHeight from './TextPickerTest/gradientHeight.test';
 import contentModifier from './CheckboxTest/contentModifier.test';
 import triggerChange from './CheckboxTest/triggerChange.test';
 import CheckBoxShape from './CheckboxGroupTest/CheckBoxShape.test';
+import dateTimeOptions from './TimePickerTest/dateTimeOptions.test';
 
 export default function testsuite() {
     gradientHeight()
     contentModifier()
     triggerChange()
     CheckBoxShape()
+    dateTimeOptions()
 }
