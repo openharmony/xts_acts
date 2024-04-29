@@ -15,6 +15,7 @@
 
 import { describe, expect, it } from '@ohos/hypium'
 import hiappevent from 'libhiappeventndk.so'
+import { BusinessError } from '@ohos.base'
 
 export default function hiappeventNdkTest() {
   describe('HibiewdfxHiappeventTest', () => {
@@ -283,5 +284,192 @@ export default function hiappeventNdkTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Watcher_Code_0100
+     * @tc.name testHiAppEventWatcherCode01
+     * @tc.desc 验证hiappevent-OH_HiAppEvent_SetAppEventFilter所有场景返回值
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiAppEventWatcherCode01', 1, async (done: Function) => {
+      try {
+        let code = hiappevent.setAppEventFilter();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0100 code1 : ${code}`);
+        expect(code == 0).assertTrue();
+        code = hiappevent.setAppEventFilterInvName();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0100 code2 : ${code}`);
+        expect(code == -1).assertTrue();
+        code = hiappevent.setAppEventFilterInvDomain();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0100 code3 : ${code}`);
+        expect(code == -4).assertTrue();
+        code = hiappevent.setAppEventFilterInvWatcher();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0100 code4 : ${code}`);
+        expect(code == -5).assertTrue();
+        done();
+      } catch (err) {
+        console.error(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0100 > error code: ${(err as BusinessError).code},
+            error msg: ${(err as BusinessError).message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Watcher_Code_0200
+     * @tc.name testHiAppEventWatcherCode02
+     * @tc.desc 验证hiappevent-OH_HiAppEvent_SetTriggerCondition所有场景返回值
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiAppEventWatcherCode02', 1, async (done: Function) => {
+      try {
+        let code = hiappevent.setTriggerCondition();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0200 code1 : ${code}`);
+        expect(code == 0).assertTrue();
+        code = hiappevent.setTriggerConditionInvWatcher();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0200 code2 : ${code}`);
+        expect(code == -5).assertTrue();
+        done();
+      } catch (err) {
+        console.error(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0200 > error code: ${(err as BusinessError).code},
+            error msg: ${(err as BusinessError).message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Watcher_Code_0300
+     * @tc.name testHiAppEventWatcherCode03
+     * @tc.desc 验证hiappevent-OH_HiAppEvent_SetWatcherOnTrigger所有场景返回值
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiAppEventWatcherCode03', 1, async (done: Function) => {
+      try {
+        let code = hiappevent.setWatcherOnTrigger();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0300 code1 : ${code}`);
+        expect(code == 0).assertTrue();
+        code = hiappevent.setWatcherOnTriggerInvWatcher();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0300 code2 : ${code}`);
+        expect(code == -5).assertTrue();
+        done();
+      } catch (err) {
+        console.error(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0300 > error code: ${(err as BusinessError).code},
+            error msg: ${(err as BusinessError).message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Watcher_Code_0400
+     * @tc.name testHiAppEventWatcherCode04
+     * @tc.desc 验证hiappevent-OH_HiAppEvent_SetWatcherOnReceive所有场景返回值
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiAppEventWatcherCode04', 1, async (done: Function) => {
+      try {
+        let code = hiappevent.setWatcherOnReceive();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0400 code1 : ${code}`);
+        expect(code == 0).assertTrue();
+        code = hiappevent.setWatcherOnReceiveInvWatcher();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0400 code2 : ${code}`);
+        expect(code == -5).assertTrue();
+        done();
+      } catch (err) {
+        console.error(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0400 > error code: ${(err as BusinessError).code},
+            error msg: ${(err as BusinessError).message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Watcher_Code_0500
+     * @tc.name testHiAppEventWatcherCode05
+     * @tc.desc 验证hiappevent-OH_HiAppEvent_TakeWatcherData所有场景返回值
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiAppEventWatcherCode05', 1, async (done: Function) => {
+      try {
+        let code = hiappevent.takeWatcherData();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0500 code1 : ${code}`);
+        expect(code == 0).assertTrue();
+        code = hiappevent.takeWatcherDataInvWatcher();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0500 code2 : ${code}`);
+        expect(code == -5).assertTrue();
+        code = hiappevent.takeWatcherDataInvOperation();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0500 code2 : ${code}`);
+        expect(code == -6).assertTrue();
+        done();
+      } catch (err) {
+        console.error(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0500 > error code: ${(err as BusinessError).code},
+            error msg: ${(err as BusinessError).message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Watcher_Code_0600
+     * @tc.name testHiAppEventWatcherCode06
+     * @tc.desc 验证hiappevent-OH_HiAppEvent_AddWatcher所有场景返回值
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiAppEventWatcherCode06', 1, async (done: Function) => {
+      try {
+        let code = hiappevent.addWatcher();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0600 code1 : ${code}`);
+        expect(code == 0).assertTrue();
+        code = hiappevent.addWatcherInvWatcher();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0600 code2 : ${code}`);
+        expect(code == -5).assertTrue();
+        done();
+      } catch (err) {
+        console.error(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0600 > error code: ${(err as BusinessError).code},
+            error msg: ${(err as BusinessError).message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Watcher_Code_0700
+     * @tc.name testHiAppEventWatcherCode07
+     * @tc.desc 验证hiappevent-OH_HiAppEvent_RemoveWatcher所有场景返回值
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiAppEventWatcherCode07', 1, async (done: Function) => {
+      try {
+        let code = hiappevent.removeWatcher();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0700 code1 : ${code}`);
+        expect(code == 0).assertTrue();
+        code = hiappevent.removeWatcherInvWatcher();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0700 code2 : ${code}`);
+        expect(code == -5).assertTrue();
+        code = hiappevent.removeWatcherInvOperation();
+        console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0700 code3 : ${code}`);
+        expect(code == -6).assertTrue();
+        done();
+      } catch (err) {
+        console.error(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0700 > error code: ${(err as BusinessError).code},
+            error msg: ${(err as BusinessError).message}`);
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
