@@ -35,15 +35,6 @@ struct RichEditorChangeCallback {
           this.text = 'onWillChange'
           this.text2 = value.replacedSpans[0].value
 
-          value.originalSpans.forEach((item: RichEditorTextSpanResult) => {
-            console.log("spanPosition:" + JSON.stringify(item.spanPosition))
-            console.log("value:" + item.value)
-            console.log("textStyle:" + JSON.stringify(item.textStyle))
-            console.log("offsetInSpan:" + item.offsetInSpan)
-            console.log("valueResource:" + item.valueResource)
-            console.log("symbolSpanStyle:" +JSON.stringify( item.symbolSpanStyle))
-            console.log("paragraphStyle:" + JSON.stringify(item.paragraphStyle))
-          })
           value.replacedSpans.forEach((item: RichEditorTextSpanResult) => {
             console.log("spanPosition:" + JSON.stringify(item.spanPosition))
             console.log("value:" + item.value)
@@ -55,19 +46,9 @@ struct RichEditorChangeCallback {
           })
           return true
         })
-        .onDidChange((value: Array<RichEditorTextSpanResult>)=>{
+        .onDidChange(()=>{
           console.log('onDidChange: '+JSON.stringify(value))
           this.text = this.text + 'onDidChange'
-
-          value.forEach((item: RichEditorTextSpanResult) => {
-            console.log("spanPosition:" + JSON.stringify(item.spanPosition))
-            console.log("value:" + item.value)
-            console.log("textStyle:" + JSON.stringify(item.textStyle))
-            console.log("offsetInSpan:" + item.offsetInSpan)
-            console.log("valueResource:" + item.valueResource)
-            console.log("symbolSpanStyle:" +JSON.stringify( item.symbolSpanStyle))
-            console.log("paragraphStyle:" + JSON.stringify(item.paragraphStyle))
-          })
         })
 
       Text(this.text).id('RichEditorChangeCallback_text')
