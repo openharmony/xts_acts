@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+	"MainAbility/pages/TextInput/APIContentType",
         "MainAbility/pages/onSelectionChange/onSelectionChange1",
         "MainAbility/pages/onSelectionChange/onSelectionChange2",
         "MainAbility/pages/onSelectionChange/onSelectionChange3",
