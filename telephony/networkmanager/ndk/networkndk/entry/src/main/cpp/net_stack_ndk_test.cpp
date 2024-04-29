@@ -158,7 +158,7 @@ static napi_value OHNetStackCertVerification(napi_env env, napi_callback_info in
     }
     char *derCertPath = nullptr;
     size_t demBufSize  = 0;
-    napi_get_value_string_utf8(env, args[PARAM_INDEX_2], derCertPath, 0, &demBufSize );
+    napi_get_value_string_utf8(env, args[PARAM_INDEX_2], derCertPath, 0, &demBufSize);
     if (demBufSize  > 0) {
         derCertPath = new char[demBufSize  + 1]; // 加一用于存储字符串结束符
         napi_get_value_string_utf8(env, args[PARAM_INDEX_2], derCertPath, demBufSize  + 1, nullptr);
