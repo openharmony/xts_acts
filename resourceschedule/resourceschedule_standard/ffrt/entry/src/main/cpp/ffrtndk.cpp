@@ -311,8 +311,6 @@ static inline ffrt_function_header_t* ffrt_create_function_wrapper(const ffrt_fu
 
 template<class T>
 struct Function {
-    template<class CT>
-    Function(ffrt_function_header_t h, CT&& c) : header(h), closure(std::forward<CT>(c)) {}
     ffrt_function_header_t header;
     T closure;
 };
@@ -337,8 +335,10 @@ static inline ffrt_function_header_t* create_function_wrapper(T&& func,
 {
     using function_type = Function<std::decay_t<T>>;
     auto p = ffrt_alloc_auto_managed_function_storage_base(kind);
-    auto f =
-        new (p)function_type({ ExecFunctionWrapper<T>, DestroyFunctionWrapper<T>, { 0 } }, std::forward<T>(func));
+    auto f = new (p)function_type;
+    f->header.exec = ExecFunctionWrapper<T>;
+    f->header.destroy = DestroyFunctionWrapper<T>;
+    f->closure = std::forward<T>(func);
     return reinterpret_cast<ffrt_function_header_t*>(f);
 }
 
