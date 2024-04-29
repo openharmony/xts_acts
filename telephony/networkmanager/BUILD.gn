@@ -20,7 +20,6 @@ group("networkmanager") {
     "ndk:ndk",
     "network:network",
     "noNet:noNet",
-    "noNet:noNet",
     "noPermission:noPermission",
     "socket:socket",
     "statistics:statistics",

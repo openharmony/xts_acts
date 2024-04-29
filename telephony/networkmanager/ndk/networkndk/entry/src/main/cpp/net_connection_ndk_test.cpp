@@ -18,7 +18,7 @@
 #include <network/netmanager/net_connection.h>
 #include <network/netmanager/net_connection_type.h>
 
-#define NETWORK_LOG_TAG "NETWORK NDK"
+#define NETWORK_LOG_TAG "XTS_NETWORK_NDK"
 #define NETWORK_LOG_DOMAIN 0x0000
 #define DEFAULT_HOST_LEN 20
 #define DEFAULT_SERV_LEN 30
@@ -31,7 +31,7 @@
 #define CASE_INDEX_4 4
 
 // 通过netId获取DNS结果。
-static napi_value OHNetConnGetAddrInfo(napi_env env, napi_callback_info info) 
+static napi_value OHNetConnGetAddrInfo(napi_env env, napi_callback_info info)
 {
     size_t argc = 3;
     napi_value args[3] = {nullptr};
@@ -47,14 +47,13 @@ static napi_value OHNetConnGetAddrInfo(napi_env env, napi_callback_info info)
 
     struct addrinfo *res = nullptr;
     int status = OH_NetConn_GetAddrInfo(host, serv, nullptr, &res, netid);
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHNetConnGetAddrInfo: %{public}d  host:%{public}s serv:%{public}s netid:%{public}d", status, host, serv, netid);
     napi_value result = nullptr;
     napi_create_int32(env, status, &result);
     return result;
 }
 
 // 释放DNS结果
-static napi_value OHNetConnFreeDnsResult(napi_env env, napi_callback_info info) 
+static napi_value OHNetConnFreeDnsResult(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -72,14 +71,13 @@ static napi_value OHNetConnFreeDnsResult(napi_env env, napi_callback_info info)
     } else if (index == CASE_INDEX_3) {
         ret = OH_NetConn_FreeDnsResult(nullptr);
     }
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHNetConnFreeDnsResult: %{public}d", ret);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 // 查询所有激活的数据网络。
-static napi_value OHNetConnGetAllNets(napi_env env, napi_callback_info info) 
+static napi_value OHNetConnGetAllNets(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -94,14 +92,13 @@ static napi_value OHNetConnGetAllNets(napi_env env, napi_callback_info info)
     } else if (index == CASE_INDEX_2) {
         ret = OH_NetConn_GetAllNets(nullptr);
     }
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHNetConnGetAllNets: %{public}d", ret);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 // 查询是否有默认激活的数据网络。
-static napi_value OHNetConnHasDefaultNet(napi_env env, napi_callback_info info) 
+static napi_value OHNetConnHasDefaultNet(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -116,14 +113,13 @@ static napi_value OHNetConnHasDefaultNet(napi_env env, napi_callback_info info)
     } else if (index == CASE_INDEX_2) {
         ret = OH_NetConn_HasDefaultNet(nullptr);
     }
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHNetConnHasDefaultNet: %{public}d", ret);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 // 查询默认网络是否按流量计费。
-static napi_value OHNetConnIsDefaultNetMetered(napi_env env, napi_callback_info info) 
+static napi_value OHNetConnIsDefaultNetMetered(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -138,14 +134,13 @@ static napi_value OHNetConnIsDefaultNetMetered(napi_env env, napi_callback_info 
     } else if (index == CASE_INDEX_2) {
         ret = OH_NetConn_IsDefaultNetMetered(nullptr);
     }
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHNetConnIsDefaultNetMetered: %{public}d", ret);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 // 获取激活的默认的数据网络。
-static napi_value OHNetConnGetDefaultNet(napi_env env, napi_callback_info info) 
+static napi_value OHNetConnGetDefaultNet(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -160,14 +155,13 @@ static napi_value OHNetConnGetDefaultNet(napi_env env, napi_callback_info info)
     } else if (index == CASE_INDEX_2) {
         ret = OH_NetConn_GetDefaultNet(nullptr);
     }
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHNetConnGetAllNets: %{public}d", ret);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 // 查询某个数据网络的链路信息。
-static napi_value OHNetConnGetConnectionProperties(napi_env env, napi_callback_info info) 
+static napi_value OHNetConnGetConnectionProperties(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -191,14 +185,13 @@ static napi_value OHNetConnGetConnectionProperties(napi_env env, napi_callback_i
     } else if (index == CASE_INDEX_4) {
         ret = OH_NetConn_GetConnectionProperties(nullptr, nullptr);
     }
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHNetConnGetConnectionProperties: %{public}d", ret);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 // 查询某个网络的能力集。
-static napi_value OHNetConnGetNetCapabilities(napi_env env, napi_callback_info info) 
+static napi_value OHNetConnGetNetCapabilities(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -222,14 +215,13 @@ static napi_value OHNetConnGetNetCapabilities(napi_env env, napi_callback_info i
     } else if (index == CASE_INDEX_4) {
         ret = OH_NetConn_GetNetCapabilities(nullptr, nullptr);
     }
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHNetConnGetNetCapabilities: %{public}d", ret);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 // 查询默认的网络代理。
-static napi_value OHNetConnGetDefaultHttpProxy(napi_env env, napi_callback_info info) 
+static napi_value OHNetConnGetDefaultHttpProxy(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -244,20 +236,19 @@ static napi_value OHNetConnGetDefaultHttpProxy(napi_env env, napi_callback_info 
     } else if (index == CASE_INDEX_2) {
         ret = OH_NetConn_GetDefaultHttpProxy(nullptr);
     }
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHNetConnGetDefaultHttpProxy: %{public}d", ret);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 // 自定义 DNS 解析器
-int myCustomDnsResolver(const char *host, const char *serv, const struct addrinfo *hint, struct addrinfo **res) 
+int MyCustomDnsResolver(const char *host, const char *serv, const struct addrinfo *hint, struct addrinfo **res)
 {
     return 0;
 }
 
 // 注册自定义 DNS 解析器
-static napi_value OHOSNetConnRegisterDnsResolver(napi_env env, napi_callback_info info) 
+static napi_value OHOSNetConnRegisterDnsResolver(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -267,19 +258,18 @@ static napi_value OHOSNetConnRegisterDnsResolver(napi_env env, napi_callback_inf
 
     int ret = -1;
     if (index == CASE_INDEX_1) {
-        OH_NetConn_CustomDnsResolver customResolver = myCustomDnsResolver;
+        OH_NetConn_CustomDnsResolver customResolver = MyCustomDnsResolver;
         ret = OHOS_NetConn_RegisterDnsResolver(customResolver);
     } else if (index == CASE_INDEX_2) {
         ret = OHOS_NetConn_RegisterDnsResolver(nullptr);
     }
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHOSNetConnRegisterDnsResolver: %{public}d", ret);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 // 取消注册自定义 DNS 解析器。
-static napi_value OHOSNetConnUnregisterDnsResolver(napi_env env, napi_callback_info info) 
+static napi_value OHOSNetConnUnregisterDnsResolver(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -289,7 +279,7 @@ static napi_value OHOSNetConnUnregisterDnsResolver(napi_env env, napi_callback_i
 
     int ret = -1;
     if (index == CASE_INDEX_1) {
-        OH_NetConn_CustomDnsResolver customResolver = myCustomDnsResolver;
+        OH_NetConn_CustomDnsResolver customResolver = MyCustomDnsResolver;
         ret = OHOS_NetConn_RegisterDnsResolver(customResolver);
         ret = OHOS_NetConn_UnregisterDnsResolver();
     } else if (index == CASE_INDEX_2) {
@@ -298,27 +288,37 @@ static napi_value OHOSNetConnUnregisterDnsResolver(napi_env env, napi_callback_i
     } else if (index == CASE_INDEX_3) {
         ret = OHOS_NetConn_UnregisterDnsResolver();
     }
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, NETWORK_LOG_DOMAIN, NETWORK_LOG_TAG, "OHOSNetConnUnregisterDnsResolver: %{public}d", ret);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) 
+static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"OHNetConnGetAddrInfo", nullptr, OHNetConnGetAddrInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHNetConnFreeDnsResult", nullptr, OHNetConnFreeDnsResult, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHNetConnGetAllNets", nullptr, OHNetConnGetAllNets, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHNetConnHasDefaultNet", nullptr, OHNetConnHasDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHNetConnIsDefaultNetMetered", nullptr, OHNetConnIsDefaultNetMetered, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHNetConnGetDefaultNet", nullptr, OHNetConnGetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHNetConnGetConnectionProperties", nullptr, OHNetConnGetConnectionProperties, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHNetConnGetNetCapabilities", nullptr, OHNetConnGetNetCapabilities, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHNetConnGetDefaultHttpProxy", nullptr, OHNetConnGetDefaultHttpProxy, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHOSNetConnRegisterDnsResolver", nullptr, OHOSNetConnRegisterDnsResolver, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHOSNetConnUnregisterDnsResolver", nullptr, OHOSNetConnUnregisterDnsResolver, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnGetAddrInfo", nullptr, OHNetConnGetAddrInfo, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
+        {"OHNetConnFreeDnsResult", nullptr, OHNetConnFreeDnsResult, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
+        {"OHNetConnGetAllNets", nullptr, OHNetConnGetAllNets, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
+        {"OHNetConnHasDefaultNet", nullptr, OHNetConnHasDefaultNet, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
+        {"OHNetConnIsDefaultNetMetered", nullptr, OHNetConnIsDefaultNetMetered, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
+        {"OHNetConnGetDefaultNet", nullptr, OHNetConnGetDefaultNet, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
+        {"OHNetConnGetConnectionProperties", nullptr, OHNetConnGetConnectionProperties, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
+        {"OHNetConnGetNetCapabilities", nullptr, OHNetConnGetNetCapabilities, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
+        {"OHNetConnGetDefaultHttpProxy", nullptr, OHNetConnGetDefaultHttpProxy, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
+        {"OHOSNetConnRegisterDnsResolver", nullptr, OHOSNetConnRegisterDnsResolver, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
+        {"OHOSNetConnUnregisterDnsResolver", nullptr, OHOSNetConnUnregisterDnsResolver, nullptr, nullptr, nullptr, 
+    napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -335,7 +335,7 @@ static napi_module demoModule = {
     .reserved = {0},
 };
 
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void) 
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 {
     napi_module_register(&demoModule);
 }

@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import netConnection from 'libnet_connection_ndk.so'
+import ncAPI from 'libnet_connection_ndk.so'
 
 const CASE_INDEX_1 = 1;
 const CASE_INDEX_2 = 2;
@@ -52,7 +52,7 @@ export default function NetConnectionNDKTest() {
       let host = 'www.baidu.com';
       let serv = 'https';
       let netid = 0;
-      let re: number = netConnection.OHNetConnGetAddrInfo(host, serv, netid);
+      let re: number = ncAPI.OHNetConnGetAddrInfo(host, serv, netid);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -69,7 +69,7 @@ export default function NetConnectionNDKTest() {
       let host = 'www.baidu.com';
       let serv = '';
       let netid = 0;
-      let re: number = netConnection.OHNetConnGetAddrInfo(host, serv, netid);
+      let re: number = ncAPI.OHNetConnGetAddrInfo(host, serv, netid);
       expect(re).assertEqual(ERROR_CODE_2100002);
       done();
     });
@@ -86,7 +86,7 @@ export default function NetConnectionNDKTest() {
       let host = '';
       let serv = 'https';
       let netid = 0;
-      let re: number = netConnection.OHNetConnGetAddrInfo(host, serv, netid);
+      let re: number = ncAPI.OHNetConnGetAddrInfo(host, serv, netid);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -103,7 +103,7 @@ export default function NetConnectionNDKTest() {
       let host = 'www.baidu.com';
       let serv = 'https';
       let netid = 1;
-      let re: number = netConnection.OHNetConnGetAddrInfo(host, serv, netid);
+      let re: number = ncAPI.OHNetConnGetAddrInfo(host, serv, netid);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -120,7 +120,7 @@ export default function NetConnectionNDKTest() {
       let host = '';
       let serv = '';
       let netid = 0;
-      let re: number = netConnection.OHNetConnGetAddrInfo(host, serv, netid);
+      let re: number = ncAPI.OHNetConnGetAddrInfo(host, serv, netid);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -135,7 +135,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnFreeDnsResult_0100', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnFreeDnsResult(CASE_INDEX_1);
+      let re: number = ncAPI.OHNetConnFreeDnsResult(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -149,7 +149,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnFreeDnsResult_0200', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnFreeDnsResult(CASE_INDEX_2);
+      let re: number = ncAPI.OHNetConnFreeDnsResult(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -163,7 +163,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnFreeDnsResult_0300', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnFreeDnsResult(CASE_INDEX_2);
+      let re: number = ncAPI.OHNetConnFreeDnsResult(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -178,7 +178,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetAllNets_0100', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetAllNets(CASE_INDEX_1);
+      let re: number = ncAPI.OHNetConnGetAllNets(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -192,7 +192,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetAllNets_0200', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetAllNets(CASE_INDEX_2);
+      let re: number = ncAPI.OHNetConnGetAllNets(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -207,7 +207,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnHasDefaultNet_0100', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnHasDefaultNet(CASE_INDEX_1);
+      let re: number = ncAPI.OHNetConnHasDefaultNet(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -221,7 +221,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnHasDefaultNet_0200', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnHasDefaultNet(CASE_INDEX_2);
+      let re: number = ncAPI.OHNetConnHasDefaultNet(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -236,7 +236,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnIsDefaultNetMetered_0100', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnIsDefaultNetMetered(CASE_INDEX_1);
+      let re: number = ncAPI.OHNetConnIsDefaultNetMetered(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -250,7 +250,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnIsDefaultNetMetered_0200', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnIsDefaultNetMetered(CASE_INDEX_2);
+      let re: number = ncAPI.OHNetConnIsDefaultNetMetered(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -265,7 +265,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetDefaultNet_0100', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetDefaultNet(CASE_INDEX_1);
+      let re: number = ncAPI.OHNetConnGetDefaultNet(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -279,7 +279,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetDefaultNet_0200', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetDefaultNet(CASE_INDEX_2);
+      let re: number = ncAPI.OHNetConnGetDefaultNet(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -294,7 +294,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetConnectionProperties_0100', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetConnectionProperties(CASE_INDEX_1);
+      let re: number = ncAPI.OHNetConnGetConnectionProperties(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -308,7 +308,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetConnectionProperties_0200', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetConnectionProperties(CASE_INDEX_2);
+      let re: number = ncAPI.OHNetConnGetConnectionProperties(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -322,7 +322,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetConnectionProperties_0300', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetConnectionProperties(CASE_INDEX_3);
+      let re: number = ncAPI.OHNetConnGetConnectionProperties(CASE_INDEX_3);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -336,7 +336,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetConnectionProperties_0400', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetConnectionProperties(CASE_INDEX_4);
+      let re: number = ncAPI.OHNetConnGetConnectionProperties(CASE_INDEX_4);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -351,7 +351,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetNetCapabilities_0100', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetNetCapabilities(CASE_INDEX_1);
+      let re: number = ncAPI.OHNetConnGetNetCapabilities(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -365,7 +365,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetNetCapabilities_0200', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetNetCapabilities(CASE_INDEX_2);
+      let re: number = ncAPI.OHNetConnGetNetCapabilities(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -379,7 +379,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetNetCapabilities_0300', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetNetCapabilities(CASE_INDEX_3);
+      let re: number = ncAPI.OHNetConnGetNetCapabilities(CASE_INDEX_3);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -393,7 +393,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetNetCapabilities_0400', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetNetCapabilities(CASE_INDEX_4);
+      let re: number = ncAPI.OHNetConnGetNetCapabilities(CASE_INDEX_4);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -408,7 +408,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetDefaultHttpProxy_0100', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetDefaultHttpProxy(CASE_INDEX_1);
+      let re: number = ncAPI.OHNetConnGetDefaultHttpProxy(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -422,7 +422,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetConnGetDefaultHttpProxy_0200', 0, async (done: Function) => {
-      let re: number = netConnection.OHNetConnGetDefaultHttpProxy(CASE_INDEX_2);
+      let re: number = ncAPI.OHNetConnGetDefaultHttpProxy(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -437,7 +437,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHOSNetConnRegisterDnsResolver_0100', 0, async (done: Function) => {
-      let re: number = netConnection.OHOSNetConnRegisterDnsResolver(CASE_INDEX_1);
+      let re: number = ncAPI.OHOSNetConnRegisterDnsResolver(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -451,7 +451,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHOSNetConnRegisterDnsResolver_0200', 0, async (done: Function) => {
-      let re: number = netConnection.OHOSNetConnRegisterDnsResolver(CASE_INDEX_2);
+      let re: number = ncAPI.OHOSNetConnRegisterDnsResolver(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -466,7 +466,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHOSNetConnUnregisterDnsResolver_0100', 0, async (done: Function) => {
-      let re: number = netConnection.OHOSNetConnUnregisterDnsResolver(CASE_INDEX_1);
+      let re: number = ncAPI.OHOSNetConnUnregisterDnsResolver(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -480,7 +480,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHOSNetConnUnregisterDnsResolver_0200', 0, async (done: Function) => {
-      let re: number = netConnection.OHOSNetConnUnregisterDnsResolver(CASE_INDEX_2);
+      let re: number = ncAPI.OHOSNetConnUnregisterDnsResolver(CASE_INDEX_2);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -494,7 +494,7 @@ export default function NetConnectionNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHOSNetConnUnregisterDnsResolver_0300', 0, async (done: Function) => {
-      let re: number = netConnection.OHOSNetConnUnregisterDnsResolver(CASE_INDEX_3);
+      let re: number = ncAPI.OHOSNetConnUnregisterDnsResolver(CASE_INDEX_3);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });

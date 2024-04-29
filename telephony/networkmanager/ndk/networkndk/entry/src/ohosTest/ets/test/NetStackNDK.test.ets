@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs';
-import webSocket from 'libnet_stack_ndk.so'
+import wsAPI from 'libnet_stack_ndk.so'
 
 const WEBSOCKET_OK = 0;
 const CASE_INDEX_1 = 1;
@@ -115,7 +115,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_0100',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_1, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_1, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -128,7 +128,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_0200',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_2, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_2, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -141,7 +141,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_0300',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_3, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_3, pemPath, derPath);
       expect(result).assertEqual(ERROR_CODE_69);
     });
 
@@ -154,7 +154,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_0400',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_4, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_4, pemPath, derPath);
       expect(result).assertEqual(ERROR_CODE_69);
     });
 
@@ -167,7 +167,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_0500',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_5, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_5, pemPath, derPath);
       expect(result).assertEqual(ERROR_CODE_69);
     });
 
@@ -180,7 +180,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_0600',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_6, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_6, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -193,7 +193,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_0700',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_7, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_7, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -206,7 +206,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_0800',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_8, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_8, pemPath, derPath);
       expect(result).assertEqual(ERROR_CODE_69);
     });
 
@@ -219,7 +219,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_0900',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_9, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_9, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -232,7 +232,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_1000',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_10, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_10, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -245,7 +245,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHNetStackCertVerification_1100',0, () => {
-      let result : number = webSocket.OHNetStackCertVerification(CASE_INDEX_11, pemPath, derPath);
+      let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_11, pemPath, derPath);
       expect(result).assertEqual(ERROR_CODE_2305001);
     });
 
@@ -259,7 +259,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientConstruct_0100',0, () => {
-      let result : number = webSocket.OHWebSocketClientConstruct(CASE_INDEX_1);
+      let result : number = wsAPI.OHWebSocketClientConstruct(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -272,7 +272,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientConstruct_0200',0, () => {
-      let result : number = webSocket.OHWebSocketClientConstruct(CASE_INDEX_2);
+      let result : number = wsAPI.OHWebSocketClientConstruct(CASE_INDEX_2);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -285,7 +285,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientConstruct_0300',0, () => {
-      let result : number = webSocket.OHWebSocketClientConstruct(CASE_INDEX_3);
+      let result : number = wsAPI.OHWebSocketClientConstruct(CASE_INDEX_3);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -298,7 +298,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientConstruct_0400',0, () => {
-      let result : number = webSocket.OHWebSocketClientConstruct(CASE_INDEX_4);
+      let result : number = wsAPI.OHWebSocketClientConstruct(CASE_INDEX_4);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -311,7 +311,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientConstruct_0500',0, () => {
-      let result : number = webSocket.OHWebSocketClientConstruct(CASE_INDEX_5);
+      let result : number = wsAPI.OHWebSocketClientConstruct(CASE_INDEX_5);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -325,7 +325,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientAddHeader_0100',0, () => {
-      let result : number  = webSocket.OHWebSocketClientAddHeader(CASE_INDEX_1);
+      let result : number  = wsAPI.OHWebSocketClientAddHeader(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -338,7 +338,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientAddHeader_0200',0, () => {
-      let result : number  = webSocket.OHWebSocketClientAddHeader(CASE_INDEX_2);
+      let result : number  = wsAPI.OHWebSocketClientAddHeader(CASE_INDEX_2);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -351,7 +351,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientAddHeader_0300',0, () => {
-      let result : number  = webSocket.OHWebSocketClientAddHeader(CASE_INDEX_3);
+      let result : number  = wsAPI.OHWebSocketClientAddHeader(CASE_INDEX_3);
       expect(result).assertEqual(ERROR_CODE_1001);
     });
 
@@ -365,7 +365,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientConnect_0100',0, () => {
-      let result : number = webSocket.OHWebSocketClientConnect(CASE_INDEX_1);
+      let result : number = wsAPI.OHWebSocketClientConnect(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -378,7 +378,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientConnect_0200',0, () => {
-      let result : number = webSocket.OHWebSocketClientConnect(CASE_INDEX_2);
+      let result : number = wsAPI.OHWebSocketClientConnect(CASE_INDEX_2);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -391,7 +391,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientConnect_0300',0, () => {
-      let result : number = webSocket.OHWebSocketClientConnect(CASE_INDEX_3);
+      let result : number = wsAPI.OHWebSocketClientConnect(CASE_INDEX_3);
       expect(result).assertEqual(ERROR_CODE_1001);
     });
 
@@ -404,7 +404,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientConnect_0400',0, () => {
-      let result : number = webSocket.OHWebSocketClientConnect(CASE_INDEX_4);
+      let result : number = wsAPI.OHWebSocketClientConnect(CASE_INDEX_4);
       expect(result).assertEqual(ERROR_CODE_1006);
     });
 
@@ -418,7 +418,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientSend_0100',0, () => {
-      let result : number =webSocket.OHWebSocketClientSend(CASE_INDEX_1);
+      let result : number = wsAPI.OHWebSocketClientSend(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -431,7 +431,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientSend_0200',0, () => {
-      let result : number =webSocket.OHWebSocketClientSend(CASE_INDEX_2);
+      let result : number = wsAPI.OHWebSocketClientSend(CASE_INDEX_2);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -444,7 +444,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientSend_0300',0, () => {
-      let result : number =webSocket.OHWebSocketClientSend(CASE_INDEX_3);
+      let result : number = wsAPI.OHWebSocketClientSend(CASE_INDEX_3);
       expect(result).assertEqual(ERROR_CODE_1011);
     });
 
@@ -457,7 +457,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientSend_0400',0, () => {
-      let result : number =webSocket.OHWebSocketClientSend(CASE_INDEX_4);
+      let result : number = wsAPI.OHWebSocketClientSend(CASE_INDEX_4);
       expect(result).assertEqual(ERROR_CODE_1012);
     });
 
@@ -471,7 +471,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientClose_0100',0, () => {
-      let result : number = webSocket.OHWebSocketClientClose(CASE_INDEX_1);
+      let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
     /**
@@ -484,7 +484,7 @@ export default function NetStackNDKTest() {
      */
 
     it('testOHWebSocketClientClose_0200',0, () => {
-      let result : number = webSocket.OHWebSocketClientClose(CASE_INDEX_2);
+      let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_2);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -497,7 +497,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientClose_0300',0, () => {
-      let result : number = webSocket.OHWebSocketClientClose(CASE_INDEX_3);
+      let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_3);
       expect(result).assertEqual(ERROR_CODE_1017);
     });
 
@@ -510,7 +510,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientClose_0400',0, () => {
-      let result : number = webSocket.OHWebSocketClientClose(CASE_INDEX_4);
+      let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_4);
       expect(result).assertEqual(ERROR_CODE_1017);
     });
 
@@ -523,7 +523,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientClose_0500',0, () => {
-      let result : number = webSocket.OHWebSocketClientClose(CASE_INDEX_5);
+      let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_5);
       expect(result).assertEqual(ERROR_CODE_1017);
     });
 
@@ -537,7 +537,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientDestroy_0100',0, () => {
-      let result : number = webSocket.OHWebSocketClientDestroy(CASE_INDEX_1);
+      let result : number = wsAPI.OHWebSocketClientDestroy(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
@@ -550,7 +550,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientDestroy_0200',0, () => {
-      let result : number = webSocket.OHWebSocketClientDestroy(CASE_INDEX_2);
+      let result : number = wsAPI.OHWebSocketClientDestroy(CASE_INDEX_2);
       expect(result).assertEqual(ERROR_CODE_1018);
     });
 
@@ -563,7 +563,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientDestroy_0300',0, () => {
-      let result : number = webSocket.OHWebSocketClientDestroy(CASE_INDEX_3);
+      let result : number = wsAPI.OHWebSocketClientDestroy(CASE_INDEX_3);
       expect(result).assertEqual(ERROR_CODE_1018);
     });
 
@@ -576,7 +576,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
     it('testOHWebSocketClientDestroy_0400',0, () => {
-      let result : number = webSocket.OHWebSocketClientDestroy(CASE_INDEX_4);
+      let result : number = wsAPI.OHWebSocketClientDestroy(CASE_INDEX_4);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
 
