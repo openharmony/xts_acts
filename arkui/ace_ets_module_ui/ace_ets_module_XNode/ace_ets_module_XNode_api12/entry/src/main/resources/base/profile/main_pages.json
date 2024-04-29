@@ -1,0 +1,9 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/Graphics/borderRadiuses",
+        "MainAbility/pages/Graphics/borderStyles",
+        "MainAbility/pages/Graphics/edgeColors",
+        "MainAbility/pages/Graphics/edgeWidths"
+    ]
+}
