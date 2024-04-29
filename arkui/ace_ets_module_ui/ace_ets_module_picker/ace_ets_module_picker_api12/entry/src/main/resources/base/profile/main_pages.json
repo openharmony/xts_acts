@@ -5,8 +5,8 @@
         "MainAbility/pages/CheckboxGroup/CheckBoxShape",
         "MainAbility/pages/Checkbox/contentModifier",
         "MainAbility/pages/Checkbox/triggerChange",
+        "MainAbility/pages/TimePicker/dateTimeOptions",
         "MainAbility/pages/Button/ButtonApi1",
         "MainAbility/pages/Button/ButtonApi2"
-        "MainAbility/pages/TimePicker/dateTimeOptions"
     ]
 }
