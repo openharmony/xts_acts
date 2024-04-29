@@ -185,7 +185,7 @@ static intptr_t externals[] = {
 };
 
 static JSVM_PropertyHandlerConfigurationStruct propertyCfg{
-    nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr
+    nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr
 };
 
 static napi_value testEngineAndContext(napi_env env1, napi_callback_info info){
@@ -2425,7 +2425,6 @@ static JSVM_Value CallObjectAsFunction(JSVM_Env env, JSVM_CallbackInfo info)
     };
     param.data = nullptr;
 
-    JSVM_PropertyHandlerConfigurationStruct propertyCfg;
     JSVM_CallbackStruct callbackStruct;
     callbackStruct.callback = [](JSVM_Env env, JSVM_CallbackInfo info) -> JSVM_Value {
         JSVM_Value thisVar = nullptr;
@@ -2504,7 +2503,8 @@ static napi_value testCallFunction(napi_env env1, napi_callback_info info)
 
 // ============================= test nullptr return for namedProperty handle ====================================
 // cases 13-16, return nullptr, only listen without interception, successfully setProperty.
-static JSVM_Value SetNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value name, JSVM_Value property, JSVM_Value thisArg)
+static JSVM_Value SetNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value name, JSVM_Value property, JSVM_Value thisArg,
+    JSVM_Value data)
 {
     char strValue[100];
     size_t size;
@@ -2603,7 +2603,8 @@ static napi_value testSetNamedProperty01(napi_env env1, napi_callback_info info)
 
 // ============================= test non-nullptr return for namedProperty handle ================================
 // case 17 Return non null ptr, listen and intercept, failed to setProperty.
-static JSVM_Value SetNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value name, JSVM_Value property, JSVM_Value thisArg)
+static JSVM_Value SetNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value name, JSVM_Value property, JSVM_Value thisArg,
+    JSVM_Value data)
 {
     return property;
 }
@@ -2690,7 +2691,8 @@ static napi_value testSetNamedProperty02(napi_env env1, napi_callback_info info)
 
 // ============================= test nullptr return for indexedProperty handle ===================================
 // cases 18-21 return nullptr, only listen without interception, successfully setProperty.
-static JSVM_Value SetIndexPropertyCbInfo1(JSVM_Env env, JSVM_Value index, JSVM_Value property, JSVM_Value thisArg)
+static JSVM_Value SetIndexPropertyCbInfo1(JSVM_Env env, JSVM_Value index, JSVM_Value property, JSVM_Value thisArg,
+    JSVM_Value data)
 {
     uint32_t value;
     OH_JSVM_GetValueUint32(env, index, &value);
@@ -2790,7 +2792,8 @@ static napi_value testSetIndexProperty01(napi_env env1, napi_callback_info info)
 
 // ============================= test non-nullptr return for indexedProperty handle ==================================
 // //case 22 returns non nullptr, only listens and intercepts, property setting failed.
-static JSVM_Value SetIndexPropertyCbInfo2(JSVM_Env env, JSVM_Value index, JSVM_Value property, JSVM_Value thisArg)
+static JSVM_Value SetIndexPropertyCbInfo2(JSVM_Env env, JSVM_Value index, JSVM_Value property, JSVM_Value thisArg,
+    JSVM_Value data)
 {
     return property;
 }
@@ -2877,7 +2880,7 @@ static napi_value testSetIndexProperty02(napi_env env1, napi_callback_info info)
 
 // ============================= test nullptr return for namedProperty handle ===============
 // case 23~25
-static JSVM_Value GetNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg)
+static JSVM_Value GetNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg, JSVM_Value data)
 {
     char strValue[100];
     size_t size;
@@ -2974,7 +2977,7 @@ static napi_value testGetNamedProperty01(napi_env env1, napi_callback_info info)
 
 // ========================= test non-nullptr return for namedProperty handle ============
 // case 26
-static JSVM_Value GetNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg)
+static JSVM_Value GetNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg, JSVM_Value data)
 {
     JSVM_Value newResult = nullptr;
     if (g_temp) {
@@ -3074,7 +3077,7 @@ static napi_value testGetNamedProperty02(napi_env env1, napi_callback_info info)
 
 // ========================== test nullptr return for indexedProperty handle ================
 // case 27~29
-static JSVM_Value GetIndexPropertyCbInfo1(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg)
+static JSVM_Value GetIndexPropertyCbInfo1(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg, JSVM_Value data)
 {
     uint32_t value;
     OH_JSVM_GetValueUint32(env, index, &value);
@@ -3171,7 +3174,7 @@ static napi_value testGetIndexProperty01(napi_env env1, napi_callback_info info)
 
 // =====================test non-nullptr return for indexedProperty handle =========
 // case 30
-static JSVM_Value GetIndexPropertyCbInfo2(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg)
+static JSVM_Value GetIndexPropertyCbInfo2(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg, JSVM_Value data)
 {
     JSVM_Value newResult = nullptr;
     if (g_temp) {
@@ -3273,7 +3276,7 @@ static napi_value testGetIndexProperty02(napi_env env1, napi_callback_info info)
 // ======================== test nullptr return for namedProperty handle ==================
 //  cases 31-33 when returning nullptr, delete listening trigger, only listen without intercepting.
 //  The attribute deletion is successful, and the OH_JSVM_DeleteProperty output parameter is true.
-static JSVM_Value DeleterNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg)
+static JSVM_Value DeleterNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg, JSVM_Value data)
 {
     char strValue[100];
     size_t size;
@@ -3374,7 +3377,7 @@ static napi_value testDeleterNamedProperty01(napi_env env1, napi_callback_info i
 // ===================== test return true for namedProperty handle =======================
 // case 34 when returning true, the deletion of the listening trigger is triggered, and the interception
 // is successful. The deletion of the attribute fails, and the output parameter of OH_JSVM_DeleteProperty is true.
-static JSVM_Value DeleterNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg)
+static JSVM_Value DeleterNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg, JSVM_Value data)
 {
     char strValue[100];
     size_t size;
@@ -3396,7 +3399,6 @@ static JSVM_Value NameHandler5(JSVM_Env env, JSVM_CallbackInfo info)
     };
     param.data = nullptr;
 
-    JSVM_PropertyHandlerConfigurationStruct propertyCfg;
     propertyCfg.genericIndexedPropertyEnumeratorCallback = nullptr;
     propertyCfg.genericIndexedPropertyDeleterCallback = nullptr;
     propertyCfg.genericIndexedPropertySetterCallback = nullptr;
@@ -3478,7 +3480,7 @@ static napi_value testDeleterNamedProperty02(napi_env env1, napi_callback_info i
 // ======================= test return false for namedProperty handle ========================
 // case 35 when false is returned, the deletion of the listening trigger is triggered, and the
 // interception is successful. The attribute deletion fails, and the OH_JSVM_DeleteProperty output parameter is false.
-static JSVM_Value DeleterNamedPropertyCbInfo3(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg)
+static JSVM_Value DeleterNamedPropertyCbInfo3(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg, JSVM_Value data)
 {
     char strValue[100];
     size_t size;
@@ -3500,7 +3502,6 @@ static JSVM_Value NameHandler6(JSVM_Env env, JSVM_CallbackInfo info)
     };
     param.data = nullptr;
 
-    JSVM_PropertyHandlerConfigurationStruct propertyCfg;
     propertyCfg.genericIndexedPropertyEnumeratorCallback = nullptr;
     propertyCfg.genericIndexedPropertyDeleterCallback = nullptr;
     propertyCfg.genericIndexedPropertySetterCallback = nullptr;
@@ -3580,7 +3581,7 @@ static napi_value testDeleterNamedProperty03(napi_env env1, napi_callback_info i
 // ==================test nullptr return for indexedProperty handle =====================
 // cases 36-38, when returning nullptr, delete listening trigger, only listen without intercepting.
 // The attribute deletion is successful, and the OH_JSVM_DeleteProperty output parameter is true.
-static JSVM_Value DeleterIndexedPropertyCbInfo1(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg)
+static JSVM_Value DeleterIndexedPropertyCbInfo1(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg, JSVM_Value data)
 {
     uint32_t value;
     OH_JSVM_GetValueUint32(env, index, &value);
@@ -3679,7 +3680,7 @@ static napi_value testDeleterIndexedProperty01(napi_env env1, napi_callback_info
 // =================== test return true for indexedProperty handle ========================
 // case 39 When returning true, the deletion of the listening trigger is triggered, and the interception
 // is successful. The attribute deletion fails, and the OH_JSVM_DeleteProperty output parameter is true.
-static JSVM_Value DeleterIndexedPropertyCbInfo2(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg)
+static JSVM_Value DeleterIndexedPropertyCbInfo2(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg, JSVM_Value data)
 {
     uint32_t value;
     OH_JSVM_GetValueUint32(env, index, &value);
@@ -3772,7 +3773,7 @@ static napi_value testDeleterIndexedProperty02(napi_env env1, napi_callback_info
 // ============================= test return false for indexedProperty handle =======================
 // case 40 When returning false, the deletion of the listening trigger is triggered, and the interception
 // is successful.The attribute deletion fails, and the OH_JSVM_DeleteProperty output parameter is false.
-static JSVM_Value DeleterIndexedPropertyCbInfo3(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg)
+static JSVM_Value DeleterIndexedPropertyCbInfo3(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg, JSVM_Value data)
 {
     uint32_t value;
     OH_JSVM_GetValueUint32(env, index, &value);
@@ -3866,7 +3867,7 @@ static napi_value testDeleterIndexedProperty03(napi_env env1, napi_callback_info
 // case 41 and case 42
 // When returning nullptr, the enumerator listens and triggers, only listens but not
 // intercepts.OH_JSVM_GetAllPropertyNames can retrieve the property names that have already been set.
-static JSVM_Value EnumeratorNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value thisArg)
+static JSVM_Value EnumeratorNamedPropertyCbInfo1(JSVM_Env env, JSVM_Value thisArg, JSVM_Value data)
 {
     JSVM_Value gloablObj = nullptr;
     OH_JSVM_GetGlobal(env, &gloablObj);
@@ -3979,7 +3980,7 @@ static napi_value testEnumeratorNamedProperty01(napi_env env1, napi_callback_inf
 // case 43
 // When returning nullptr, the enumerator listens and triggers, only listens but not
 // intercepts. OH_JSVM_GetAllPropertyNames can retrieve the property names that have already been set.
-static JSVM_Value EnumeratorNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value thisArg)
+static JSVM_Value EnumeratorNamedPropertyCbInfo2(JSVM_Env env, JSVM_Value thisArg, JSVM_Value data)
 {
     uint32_t arrayLength = 2;
     JSVM_Value testArray = nullptr;
@@ -4091,7 +4092,7 @@ static napi_value testEnumeratorNamedProperty02(napi_env env1, napi_callback_inf
 // case 44 and case 45
 // When returning nullptr, the enumerator listens and triggers, only listens but not intercepts.
 // OH_JSVM_GetAllPropertyNames can retrieve the property names that have already been set
-static JSVM_Value EnumeratorIndexedPropertyCbInfo1(JSVM_Env env, JSVM_Value thisArg)
+static JSVM_Value EnumeratorIndexedPropertyCbInfo1(JSVM_Env env, JSVM_Value thisArg, JSVM_Value data)
 {
     JSVM_Value gloablObj = nullptr;
     OH_JSVM_GetGlobal(env, &gloablObj);
@@ -4209,7 +4210,7 @@ static napi_value testEnumeratorIndexedProperty01(napi_env env1, napi_callback_i
 // When returning the array, the enumerator listens and triggers, listens and intercepts, and
 // OH_JSVM_GetAllPropertyNames can retrieve the already set property names You can obtain the property
 // names set in the listening callback and in the array, but the property names set in the callback are not actual properties
-static JSVM_Value EnumeratorIndexedPropertyCbInfo2(JSVM_Env env, JSVM_Value thisArg)
+static JSVM_Value EnumeratorIndexedPropertyCbInfo2(JSVM_Env env, JSVM_Value thisArg, JSVM_Value data)
 {
     JSVM_Value testArray = nullptr;
     uint32_t arrayLength = 2;
