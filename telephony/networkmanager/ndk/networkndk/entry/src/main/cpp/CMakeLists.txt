@@ -10,10 +10,10 @@ endif()
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 # 声明一个产物libentry.so，SHARED表示产物为动态库，net_stack_ndk_test.cpp为产物的源代码
-add_library(net_stack_ndk SHARED net_stack_ndk_test.cpp)
+add_library(testNetStackNdk SHARED net_stack_ndk_test.cpp)
 # 声明产物entry链接时需要的三方库libace_napi.z.so
 # 这里直接写三方库的名称是因为它是在ndk中，已在链接寻址路径中，无需额外声明
-target_link_libraries(net_stack_ndk PUBLIC libace_napi.z.so libhilog_ndk.z.so libnet_websocket.so libnet_ssl.so)
+target_link_libraries(testNetStackNdk PUBLIC libace_napi.z.so libhilog_ndk.z.so libnet_websocket.so libnet_ssl.so)
 
-add_library(net_connection_ndk SHARED net_connection_ndk_test.cpp)
-target_link_libraries(net_connection_ndk PUBLIC libace_napi.z.so libhilog_ndk.z.so libnet_connection.so)
+add_library(testNetConnectNdk SHARED net_connection_ndk_test.cpp)
+target_link_libraries(testNetConnectNdk PUBLIC libace_napi.z.so libhilog_ndk.z.so libnet_connection.so)

@@ -18,7 +18,7 @@
 #include <network/netmanager/net_connection.h>
 #include <network/netmanager/net_connection_type.h>
 
-#define NETWORK_LOG_TAG "XTS_NETWORK_NDK"
+#define NETWORK_LOG_TAG "LogTagNetwork"
 #define NETWORK_LOG_DOMAIN 0x0000
 #define DEFAULT_HOST_LEN 20
 #define DEFAULT_SERV_LEN 30
@@ -297,28 +297,23 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"OHNetConnGetAddrInfo", nullptr, OHNetConnGetAddrInfo, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHNetConnFreeDnsResult", nullptr, OHNetConnFreeDnsResult, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHNetConnGetAllNets", nullptr, OHNetConnGetAllNets, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHNetConnHasDefaultNet", nullptr, OHNetConnHasDefaultNet, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHNetConnIsDefaultNetMetered", nullptr, OHNetConnIsDefaultNetMetered, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHNetConnGetDefaultNet", nullptr, OHNetConnGetDefaultNet, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHNetConnGetConnectionProperties", nullptr, OHNetConnGetConnectionProperties, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHNetConnGetNetCapabilities", nullptr, OHNetConnGetNetCapabilities, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHNetConnGetDefaultHttpProxy", nullptr, OHNetConnGetDefaultHttpProxy, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHOSNetConnRegisterDnsResolver", nullptr, OHOSNetConnRegisterDnsResolver, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHOSNetConnUnregisterDnsResolver", nullptr, OHOSNetConnUnregisterDnsResolver, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
+        {"OHNetConnGetAddrInfo", nullptr, OHNetConnGetAddrInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnFreeDnsResult", nullptr, OHNetConnFreeDnsResult, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnGetAllNets", nullptr, OHNetConnGetAllNets, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnHasDefaultNet", nullptr, OHNetConnHasDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnIsDefaultNetMetered", nullptr, OHNetConnIsDefaultNetMetered, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"OHNetConnGetDefaultNet", nullptr, OHNetConnGetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnGetConnectionProperties", nullptr, OHNetConnGetConnectionProperties, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"OHNetConnGetNetCapabilities", nullptr, OHNetConnGetNetCapabilities, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"OHNetConnGetDefaultHttpProxy", nullptr, OHNetConnGetDefaultHttpProxy, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"OHOSNetConnRegisterDnsResolver", nullptr, OHOSNetConnRegisterDnsResolver, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"OHOSNetConnUnregisterDnsResolver", nullptr, OHOSNetConnUnregisterDnsResolver, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -330,7 +325,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "net_connection_ndk",
+    .nm_modname = "testNetConnectNdk",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };

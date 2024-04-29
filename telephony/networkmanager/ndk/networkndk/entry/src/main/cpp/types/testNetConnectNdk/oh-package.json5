@@ -14,7 +14,7 @@
  */
  
 {
-  "name": "libnet_connection_ndk.so",
+  "name": "libtestNetConnectNdk.so",
   "types": "./index.d.ts",
   "version": "",
   "description": "Please describe the basic information."

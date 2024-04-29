@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs';
-import wsAPI from 'libnet_stack_ndk.so'
+import wsAPI from 'libtestNetStackNdk.so'
 
 const WEBSOCKET_OK = 0;
 const CASE_INDEX_1 = 1;

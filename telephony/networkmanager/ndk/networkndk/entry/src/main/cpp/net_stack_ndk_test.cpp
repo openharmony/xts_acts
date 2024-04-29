@@ -25,7 +25,7 @@
 #include <fstream>
 
 #define WEBSOCKET_ADDRESS "wss://echo.websocket.org"
-#define WEBSOCKET_LOG_TAG "XTS_NETWORK_NDK"
+#define WEBSOCKET_LOG_TAG "LogTagNetwork"
 #define WEBSOCKET_LOG_DOMAIN 0x0000
 #define MAX_DATA_LENGTH (4 * 1024 * 1024)
 #define PARAM_INDEX_2 2
@@ -44,22 +44,22 @@
 
 static const int CLOSE_RESULT_FROM_CLIENT_CODE = 1000;
 
-static void OnOpen(struct WebSocket *client, WebSocket_OpenResult openResult) 
+static void OnOpen(struct WebSocket *client, WebSocket_OpenResult openResult)
 {
     OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "WebSocket is OnOpen");
 }
 
-static void OnMessage(struct WebSocket *client, char *data, uint32_t length) 
+static void OnMessage(struct WebSocket *client, char *data, uint32_t length)
 {
     OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "WebSocket is OnMessage");
 }
 
-static void OnError(struct WebSocket *client, WebSocket_ErrorResult error) 
+static void OnError(struct WebSocket *client, WebSocket_ErrorResult error)
 {
     OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "WebSocket is OnError");
 }
 
-static void OnClose(struct WebSocket *client, WebSocket_CloseResult closeResult) 
+static void OnClose(struct WebSocket *client, WebSocket_CloseResult closeResult)
 {
     OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "WebSocket is OnClose");
 }
@@ -387,20 +387,18 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"OHNetStackCertVerification", nullptr, OHNetStackCertVerification, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHWebSocketClientConstruct", nullptr, OHWebSocketClientConstruct, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHWebSocketClientAddHeader", nullptr, OHWebSocketClientAddHeader, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHWebSocketClientConnect", nullptr, OHWebSocketClientConnect, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHWebSocketClientSend", nullptr, OHWebSocketClientSend, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHWebSocketClientClose", nullptr, OHWebSocketClientClose, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
-        {"OHWebSocketClientDestroy", nullptr, OHWebSocketClientDestroy, nullptr, nullptr, nullptr, 
-    napi_default, nullptr},
+        {"OHNetStackCertVerification", nullptr, OHNetStackCertVerification, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"OHWebSocketClientConstruct", nullptr, OHWebSocketClientConstruct, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"OHWebSocketClientAddHeader", nullptr, OHWebSocketClientAddHeader, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"OHWebSocketClientConnect", nullptr, OHWebSocketClientConnect, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"OHWebSocketClientSend", nullptr, OHWebSocketClientSend, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHWebSocketClientClose", nullptr, OHWebSocketClientClose, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHWebSocketClientDestroy", nullptr, OHWebSocketClientDestroy, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -412,7 +410,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "net_stack_ndk",
+    .nm_modname = "testNetStackNdk",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };

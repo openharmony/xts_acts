@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import ncAPI from 'libnet_connection_ndk.so'
+import ncAPI from 'libtestNetConnectNdk.so'
 
 const CASE_INDEX_1 = 1;
 const CASE_INDEX_2 = 2;

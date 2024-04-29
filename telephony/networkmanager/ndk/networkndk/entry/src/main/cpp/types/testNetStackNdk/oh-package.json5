@@ -14,7 +14,7 @@
  */
 
 {
-  "name": "libnet_stack_ndk.so",
+  "name": "libtestNetStackNdk.so",
   "types": "./index.d.ts",
   "version": "",
   "description": "Please describe the basic information."

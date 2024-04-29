@@ -21,7 +21,7 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "@types/libnet_stack_ndk": "file:./src/main/cpp/types/libnet_stack_ndk",
-    "@types/libnet_connection_ndk": "file:./src/main/cpp/types/libnet_connection_ndk"
+    "@types/libtestNetStackNdk.so": "file:./src/main/cpp/types/testNetStackNdk",
+    "@types/libtestNetConnectNdk.so": "file:./src/main/cpp/types/testNetConnectNdk"
   }
 }
