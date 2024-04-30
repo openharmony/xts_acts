@@ -33,6 +33,7 @@
     "MainAbility/pages/Matrix/dstIndex",
   "MainAbility/pages/RichEditor/RichEditorApi1",
   "MainAbility/pages/RichEditor/RichEditorApi3",
-  "MainAbility/pages/RichEditor/RichEditorApi5"
+  "MainAbility/pages/RichEditor/RichEditorApi5",
+        "MainAbility/pages/RichEditor/RichEditorChangeCallback"
   ]
 }
