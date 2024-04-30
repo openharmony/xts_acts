@@ -207,7 +207,16 @@ import span3Jsunit from './spanTest/Span3Jsunit.test';
 import button3Jsunit from './buttonTest/Button3Jsunit.test';
 import imageAnimatorJsunitt from './ImageAnimator/ImageAnimatorJsunit2.test.ets'
 import loadingProgressJsunit2 from './ProgressTest/LoadingProgressJsunit2.test.ets';
-
+import ButtonHoverTest from './buttonTest/ButtonHover.test';
+import ActsgetcomponentTest from './buttonTest/getcomponent.test';
+import ActsgetcomponentaddTest from './buttonTest/getcomponentadd.test';
+import stageAnimatorTest from './buttonTest/stageAnimator.test';
+import imageObscuredTest from './imageTest/imageObscuredTest.test';
+import ActsRichEditorTest from './RichEditorTest/RichEditor/Richeditor01.test';
+import textAreaJsunit3 from './TextAreaTest/TextAreaJsunit3.test';
+import textInputJsunit3 from './TextInputTest/TextInputJsunit3.test';
+import textObscuredTest from './textTest/textObscuredTest.test';
+import textSpanFontTest from './textTest/textSpanFont.test';
 
 export default function testsuite() {
   stageFontTest();
@@ -402,4 +411,17 @@ export default function testsuite() {
   span3Jsunit();
   imageAnimatorJsunitt();
   loadingProgressJsunit2();
+  textMinFontSizeJsunit();
+  textAreaOnCutJsunit();
+  textInputOnEditChangeJsunit();
+  ButtonHoverTest();
+  ActsgetcomponentTest();
+  ActsgetcomponentaddTest();
+  stageAnimatorTest();
+  imageObscuredTest();
+  ActsRichEditorTest();
+  textAreaJsunit3();
+  textInputJsunit3();
+  textObscuredTest();
+  textSpanFontTest();
 }
