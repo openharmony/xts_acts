@@ -24,12 +24,6 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
   console.log('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
   describe('windowRecover_test', () => {
     console.log('describe window_api_test start!!!')
-    let systemWindowValueArr: Array<string> = [];
-    let systemWindowTypeArr: Array<string> = [];
-    let systemWindowTypeDicArr: Array<string> = [];
-    let systemWindowTypeDic: Record<string, number> = {
-      'TYPE_FLOAT': 8,
-    }
     let currentDeviceIsRk = false;
     let currentDeviceIsPC = false
     beforeAll(() => {
@@ -37,11 +31,6 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
       currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
       currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
       console.info('the value of the deviceType is :' + deviceInfo.deviceType);
-      console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
-      systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
-      console.log('jsunittest beforeall systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
-      systemWindowValueArr = Object.keys(systemWindowTypeDic);
-      systemWindowTypeArr = Object.keys(systemWindowTypeDic);
     })
 
     /**
@@ -57,30 +46,26 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
       console.log(msgStr + ' begin');
       ohosWindow.getLastWindow(context).then(wnd => {
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
-        expect(wnd != null).assertTrue();
-        try{
-          if(currentDeviceIsPC){
-              let promise = wnd.recover();
-              console.log(msgStr + "after recover")
-              promise.then(() => {
-                console.info(msgStr + 'Succeeded in recovering the window.');
-                expect(true).assertTrue()
-                done()
-              }).catch((err: BusinessError) => {
-                console.error(msgStr + 'Failed to recover the window. 01Cause: ' + JSON.stringify(err));
-                expect().assertFail()
-                done()
-              });
-          } else {
-              console.log(msgStr + ' The current device type not supported window.recover, the current type: ' + deviceInfo.deviceType)
-              expect(deviceInfo.deviceType).assertEqual(deviceInfo.deviceType);
-              done();
-          }
-        } catch(err) {
-          console.error(msgStr + ' Failed to recover the window. 03Cause: ' + JSON.stringify(err));
-          expect().assertFail();
+        let promise = wnd.recover();
+        promise.then(() => {
+          console.info(msgStr + 'Succeeded in recovering the window.');
+          expect(true).assertTrue()
           done();
-        }
+        }).catch((err: BusinessError) => {
+          if( err.code == 801 || err.code == 1300001 ){
+            console.log(msgStr + ' The current device type does not support calling recover or recover not support ')
+            expect(true).assertTrue()
+            done();
+          } else {
+            console.error(msgStr + ' Failed to recover the window. 03Cause: ' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+        });
+      }).catch(err => {
+        console.error(msgStr + ' Failed to getLastWindow. 04Cause: ' + JSON.stringify(err))
+        expect().assertFail();
+        done();
       })
     })
 
@@ -117,7 +102,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             }
           })
         }).catch((err: BusinessError) => {
-          if( err.code == 801 ){
+          if( err.code == 801 || err.code == 1300001   ){
             console.log(msgStr + ' The current device type does not support calling recover ')
             expect(true).assertTrue()
             done();

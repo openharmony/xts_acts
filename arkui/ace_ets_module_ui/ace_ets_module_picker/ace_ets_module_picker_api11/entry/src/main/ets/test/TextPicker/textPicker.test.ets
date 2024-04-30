@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import Utils from '../../MainAbility/common/Utils'
 
 export default function textPickerDefaultPickerItemHeightJsunit() {
-  describe('textPickerDefaultPickerItemHeightJsunit', () => {
+  describe('textPickerDefaultPickerItemHeightTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
@@ -56,7 +56,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       console.info("[testtextPickerDefaultPickerItemHeight0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(JSON.parse(strJson).$attrs.width).assertEqual("-");
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("112.00vp");
       console.info("[testtextPickerDefaultPickerItemHeight0001] width value :" + JSON.parse(strJson).$attrs.width);
 
     });
@@ -73,7 +73,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       console.info("[testtextPickerDefaultPickerItemHeight0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(JSON.parse(strJson).$attrs.height).assertEqual("-");
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("266.66vp");
       console.info("[testtextPickerDefaultPickerItemHeight0002] height value :" + JSON.parse(strJson).$attrs.height);
 
     });

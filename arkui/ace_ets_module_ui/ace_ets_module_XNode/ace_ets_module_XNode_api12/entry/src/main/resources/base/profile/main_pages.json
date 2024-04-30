@@ -4,6 +4,7 @@
         "MainAbility/pages/Graphics/borderRadiuses",
         "MainAbility/pages/Graphics/borderStyles",
         "MainAbility/pages/Graphics/edgeColors",
-        "MainAbility/pages/Graphics/edgeWidths"
+        "MainAbility/pages/Graphics/edgeWidths",
+        "MainAbility/pages/renderNode/renderNodeSetGetInterface"
     ]
 }
