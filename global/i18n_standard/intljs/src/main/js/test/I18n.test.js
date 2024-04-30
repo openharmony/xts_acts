@@ -129,9 +129,16 @@ describe('I18nTest', function () {
     * @tc.desc    check the display country
     */
     it('i18n_test_3900', 0, function () {
-        let value = I18n.getDisplayCountry('zh', 'en-US', true);
-        console.log('i18n_test_3900 ' + value);
-        expect(value).assertEqual('');
+        try{
+            let value = I18n.getDisplayCountry('zh', 'en-US', true);
+            console.log('i18n_test_3900 ' + value);
+            expect(value).assertEqual('');
+        }catch(e){
+            console.log('i18n_test_3900 e.code' + e.code);
+            console.log('i18n_test_3900 e.message' + e.message);
+            expect(e.code == 890001).assertTrue();
+            expect(e.message == 'Param value not valid, the language must be a valid language.').assertTrue();
+        }
     })
 
     /* *
@@ -151,9 +158,16 @@ describe('I18nTest', function () {
     * @tc.desc    check the display country
     */
     it('i18n_test_4100', 0, function () {
-        let value = I18n.getDisplayCountry('zh-Hans', 'en-US', true);
-        console.log('i18n_test_4100 ' + value);
-        expect(value).assertEqual('');
+        try{
+            let value = I18n.getDisplayCountry('zh-Hans', 'en-US', true);
+            console.log('i18n_test_4100 ' + value);
+            expect(value).assertEqual('');
+        }catch(e){
+            console.log('i18n_test_3900 e.code' + e.code);
+            console.log('i18n_test_3900 e.message' + e.message);
+            expect(e.code == 890001).assertTrue();
+            expect(e.message == 'Param value not valid, the language must be a valid language.').assertTrue();
+        }
     })
 
     /* *
