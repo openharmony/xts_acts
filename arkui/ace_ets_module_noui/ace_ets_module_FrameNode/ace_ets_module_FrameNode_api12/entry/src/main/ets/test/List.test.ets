@@ -18,8 +18,6 @@ import nodeContainerTest from './frameNodeTest/nodeContainerTest.test';
 import APIsetOnclickTest from './frameNodeTest/APIsetOnclickTest.test';
 import APIsetOnTouchTest from './frameNodeTest/APIsetOnTouchTest.test';
 import frameNodeGetInterfaceTest from './frameNodeTest/frameNodeTestGetInterface.test';
-import disposeTest from './frameNodeTest/dispose.test';
-import getAttrsTest from './frameNodeTest/getAttrs.test';
 
 export default function testsuite() {
   APIsetOnclickTest();
@@ -28,6 +26,4 @@ export default function testsuite() {
   frameNodeTest1()
   nodeContainerTest()
   frameNodeGetInterfaceTest()
-  disposeTest();
-  getAttrsTest();
 }

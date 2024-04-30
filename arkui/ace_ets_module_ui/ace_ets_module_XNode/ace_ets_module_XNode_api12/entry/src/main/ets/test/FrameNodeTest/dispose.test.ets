@@ -23,7 +23,7 @@ export default function disposeTest() {
     beforeEach(async function (done) {
       console.info("disposeTest beforeEach start");
       let options = {
-        uri: "MainAbility/pages/frameNode/dispose",
+        uri: "MainAbility/pages/FrameNode/dispose",
       }
       try {
         router.clear();

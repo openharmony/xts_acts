@@ -22,7 +22,7 @@ export default function getAttrsTest() {
     beforeEach(async function (done) {
       console.info("getAttrsTest beforeEach start");
       let options = {
-        uri: "MainAbility/pages/frameNode/getAttrs",
+        uri: "MainAbility/pages/FrameNode/getAttrs",
       }
       try {
         router.clear();

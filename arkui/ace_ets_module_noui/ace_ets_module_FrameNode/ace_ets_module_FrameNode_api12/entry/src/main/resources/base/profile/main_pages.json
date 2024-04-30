@@ -5,8 +5,6 @@
 	"MainAbility/pages/frameNode/APIsetOnTouch",
 	"MainAbility/pages/frameNode/frameNode",
 	"MainAbility/pages/frameNode/nodeContainer",
-	"MainAbility/pages/frameNode/frameNodeTestGetInterface",
-        "MainAbility/pages/frameNode/dispose",
-	"MainAbility/pages/frameNode/getAttrs"
+	"MainAbility/pages/frameNode/frameNodeTestGetInterface"
     ]
 }

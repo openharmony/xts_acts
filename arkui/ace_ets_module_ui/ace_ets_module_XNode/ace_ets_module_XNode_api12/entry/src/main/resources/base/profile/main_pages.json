@@ -5,6 +5,8 @@
         "MainAbility/pages/Graphics/borderStyles",
         "MainAbility/pages/Graphics/edgeColors",
         "MainAbility/pages/Graphics/edgeWidths",
-        "MainAbility/pages/renderNode/renderNodeSetGetInterface"
+        "MainAbility/pages/renderNode/renderNodeSetGetInterface",
+        "MainAbility/pages/FrameNode/dispose",
+	"MainAbility/pages/FrameNode/getAttrs"
     ]
 }
