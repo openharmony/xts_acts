@@ -35,7 +35,9 @@ struct UIfont {
         .onClick(()=>{
           let fontConfig = font.getUIFontConfig();
           console.log("font-dir -----------" + String(fontConfig.fontDir.length));
-          this.text = fontConfig.fontDir.length + ''
+          if (fontConfig.fontDir.length) {
+            this.text = '1'
+          }
         })
 
       Button("generic")
@@ -58,7 +60,9 @@ struct UIfont {
         .onClick(()=>{
           let fontConfig = font.getUIFontConfig();
           console.log("fallback------------" + String(fontConfig.fallbackGroups.length));
-          this.text = fontConfig.fallbackGroups.length + ''
+          if (fontConfig.fallbackGroups.length) {
+            this.text = '1'
+          }
         })
 
       Button("alias")
@@ -70,8 +74,10 @@ struct UIfont {
           let fontConfig = font.getUIFontConfig();
           for (let i = 0; i < fontConfig.generic.length; i ++){
             console.log("family:" + fontConfig.generic[i].family);
-            this.text = fontConfig.generic[0].alias.length + ''
-    
+            if (fontConfig.generic[i].alias.length) {
+              this.text = '5'
+            }
+
           }
         })
 
