@@ -14,7 +14,15 @@
  */
 
 
-require('./GeocoderErrorTest.test.js')
-require('./LocationErrorTest.test.js')
-require('./GetCountryCodeError.test.js')
-require('./ListeningError.test.js')
+
+import geolocationTest_GeoErr from './GeocoderErrorTest.test.js'
+import geolocationTest_LocErr from './LocationErrorTest.test.js'
+import geolocationTest_counterr from './GetCountryCodeError.test.js'
+import geolocationTest_6 from './ListeningError.test.js'
+
+export default function testsuite() {
+    geolocationTest_GeoErr()
+    geolocationTest_LocErr()
+    geolocationTest_counterr()
+    geolocationTest_6()
+}

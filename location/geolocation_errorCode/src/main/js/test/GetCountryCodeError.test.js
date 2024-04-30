@@ -17,7 +17,7 @@ import geolocationm from '@ohos.geoLocationManager';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -67,43 +67,46 @@ async function applyPermission() {
     }
 }
 
-describe('geolocationTest_counterr', function () {
-    beforeAll(async function (done) {
-        console.info('beforeAll case');
-        await applyPermission();
-        await changedLocationMode();
-        done();
+export default function geolocationTest_counterr(){
+    describe('geolocationTest_counterr', function () {
+        beforeAll(async function (done) {
+            console.info('beforeAll case');
+            await applyPermission();
+            await changedLocationMode();
+            done();
+        })
+    
+        beforeEach(async function (done) {
+            console.info('beforeEach case');
+            done();
+        })  
+    
+        /**
+         * @tc.number SUB_HSS_LocationSystem_CountryCodeErr_0100
+         * @tc.name Test getCountryCode
+         * @tc.desc Incorrect input parameter to obtain the country code information.
+         * @tc.type Function
+         * @tc.level since 9
+         */
+         it('SUB_HSS_LocationSystem_CountryCodeErr_0100', 0, async function (done) {
+            try {
+                geolocationm.getCountryCode("test",(err,data) => {
+                    if (err) {
+                        console.info('[lbs_js] getCountryCode callback err:' + JSON.stringify(err));
+                        expect(err.code).assertEqual("401");
+                        return;
+                    }
+                    console.info("[lbs_js] getCountryCode callback success"+ JSON.stringify(data));
+                    expect(true).assertFalse();
+                })
+            } catch (error) {
+                console.info('[lbs_js] getCountryCode callback try err:' + JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
+                expect(error.code).assertEqual("401");
+            }
+            await sleep(1000);
+            done();
+        })
+    
     })
+}
 
-    beforeEach(async function (done) {
-        console.info('beforeEach case');
-        done();
-    })  
-
-    /**
-     * @tc.number SUB_HSS_LocationSystem_CountryCodeErr_0100
-     * @tc.name Test getCountryCode
-     * @tc.desc Incorrect input parameter to obtain the country code information.
-     * @tc.type Function
-     * @tc.level since 9
-     */
-     it('SUB_HSS_LocationSystem_CountryCodeErr_0100', 0, async function (done) {
-        try {
-            geolocationm.getCountryCode("test",(err,data) => {
-                if (err) {
-                    console.info('[lbs_js] getCountryCode callback err:' + JSON.stringify(err));
-                    expect(err.code).assertEqual("401");
-                    return;
-                }
-                console.info("[lbs_js] getCountryCode callback success"+ JSON.stringify(data));
-                expect(true).assertFalse();
-            })
-        } catch (error) {
-            console.info('[lbs_js] getCountryCode callback try err:' + JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
-            expect(error.code).assertEqual("401");
-        }
-        await sleep(1000);
-        done();
-    })
-
-})
