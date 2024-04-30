@@ -21,6 +21,14 @@ import indicatorBuilderTest from './CheckboxTest/indicatorBuilderTest.test'
 import ButtonApi1 from './Button/ButtonApi1.test'
 import ButtonApi2 from './Button/ButtonApi2.test'
 
+import RadioContentModifier from './RadioTest/RadioContentModifier.test'
+import RadioIndicatorType from './RadioTest/RadioIndicatorType.test'
+import RatingContentModifier from './RatingTest/RatingContentModifier.test'
+import SliderAttrs from './SliderTest/SliderAttrs.test'
+import SliderContentModifier from './SliderTest/SliderContentModifier.test'
+import ToggleContentModifier from './ToggleTest/ToggleContentModifier.test'
+import ToggleSwitchStyle from './ToggleTest/ToggleSwitchStyle.test'
+
 export default function testsuite() {
     gradientHeight()
     contentModifier()
@@ -30,4 +38,12 @@ export default function testsuite() {
     indicatorBuilderTest()
     ButtonApi1();
     ButtonApi2();
+    RadioContentModifier();
+    RadioIndicatorType();
+    RatingContentModifier();
+    SliderAttrs();
+    SliderContentModifier();
+    ToggleContentModifier();
+    ToggleSwitchStyle();
+
 }
