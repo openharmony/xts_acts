@@ -580,7 +580,7 @@ describe('TimezoneInI18nTest', function () {
             console.log('timezone_test_3200 e.code' + e.code);
             console.log('timezone_test_3200 e.message' + e.message);
             expect(e.code == 401).assertTrue();
-            expect(e.message == 'Parameter error, the type of longitude or latitude must be number.').assertTrue();
+            expect(e.message == 'Parameter error, the type of latitude must be number.').assertTrue();
         }
     })
 
