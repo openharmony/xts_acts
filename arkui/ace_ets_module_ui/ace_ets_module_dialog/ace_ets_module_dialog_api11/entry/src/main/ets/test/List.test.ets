@@ -80,6 +80,12 @@ import bindMenuJsunitt from './MenuTest/BindMenuJsunitt.test.ets';
 import bindPopupJsunit from './MenuTest/BindPopupJsunit.test.ets';
 
 export default function testsuite() {
+  ActionSheetTrue()
+  CustomDialogTrue();
+  openCustomDialogTrue();
+  showActionMenuTrue();
+  showDialogTrue();
+  AlertDialogTrue()
   bindPopupOffsetTest();
   stagePromptTest();
   stageActionSheet();
@@ -95,28 +101,22 @@ export default function testsuite() {
   panelClose()
   ActionSheet();
   ActionSheetFalse();
-  ActionSheetTrue();
   CalendarPickerDialog();
   CustomDialog();
   CustomDialogFalse();
-  CustomDialogTrue();
   DatePickerDialog();
   TextPickerDialog();
   TimePickerDialog();
   openCustomDialog();
   openCustomDialogFalse();
   openCustomDialogNew();
-  openCustomDialogTrue();
   showActionMenu();
   showActionMenuFalse();
-  showActionMenuTrue();
   showDialog();
   showDialogFalse();
-  showDialogTrue();
   showToast();
   AlertDialog1();
   AlertDialogFalse();
-  AlertDialogTrue()
   customDialogControllerJsunit()
   calendarJsunit()
   ohosPromptJsunit()
@@ -146,4 +146,5 @@ export default function testsuite() {
   responseRegionJsunit();
   bindMenuJsunitt()
   bindPopupJsunit();
+
 }

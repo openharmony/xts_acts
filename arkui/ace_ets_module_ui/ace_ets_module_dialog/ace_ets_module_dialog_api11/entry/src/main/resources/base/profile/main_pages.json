@@ -60,6 +60,11 @@
     "MainAbility/pages/Menu/MenuItemGroupOptions",
     "MainAbility/pages/Menu/ResponseRegion",
     "MainAbility/pages/Menu/bindMenuu",
-    "MainAbility/pages/Menu/bindPopup"
+    "MainAbility/pages/Menu/bindPopup",
+    "MainAbility/pages/customDialog/customDialogController",
+    "MainAbility/pages/textPickerDialog/textPickerDialog2",
+    "MainAbility/pages/AlertDialog/alertDialog2",
+    "MainAbility/pages/Menu/responseType",
+    "MainAbility/pages/Panel/PanelUI"
   ]
 }
