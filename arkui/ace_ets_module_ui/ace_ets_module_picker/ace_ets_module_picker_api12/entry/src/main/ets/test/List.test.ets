@@ -17,6 +17,7 @@ import contentModifier from './CheckboxTest/contentModifier.test';
 import triggerChange from './CheckboxTest/triggerChange.test';
 import CheckBoxShape from './CheckboxGroupTest/CheckBoxShape.test';
 import dateTimeOptions from './TimePickerTest/dateTimeOptions.test';
+import indicatorBuilderTest from './CheckboxTest/indicatorBuilderTest.test'
 import ButtonApi1 from './Button/ButtonApi1.test'
 import ButtonApi2 from './Button/ButtonApi2.test'
 
@@ -26,6 +27,7 @@ export default function testsuite() {
     triggerChange()
     CheckBoxShape()
     dateTimeOptions()
+    indicatorBuilderTest()
     ButtonApi1();
     ButtonApi2();
 }

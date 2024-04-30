@@ -1,0 +1,12 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/UIContext/getOverlayManager",
+        "MainAbility/pages/UIContext/OverlayManager_001",
+        "MainAbility/pages/UIContext/OverlayManager_002",
+        "MainAbility/pages/UIContext/OverlayManager_003",
+        "MainAbility/pages/UIContext/OverlayManager_004",
+        "MainAbility/pages/UIContext/OverlayManager_005",
+        "MainAbility/pages/UIContext/OverlayManager_006"
+    ]
+}

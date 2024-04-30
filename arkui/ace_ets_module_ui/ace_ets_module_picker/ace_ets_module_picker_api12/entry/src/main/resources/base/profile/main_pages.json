@@ -6,6 +6,7 @@
         "MainAbility/pages/Checkbox/contentModifier",
         "MainAbility/pages/Checkbox/triggerChange",
         "MainAbility/pages/TimePicker/dateTimeOptions",
+        "MainAbility/pages/Checkbox/indicatorBuilder",
         "MainAbility/pages/Button/ButtonApi1",
         "MainAbility/pages/Button/ButtonApi2"
     ]
