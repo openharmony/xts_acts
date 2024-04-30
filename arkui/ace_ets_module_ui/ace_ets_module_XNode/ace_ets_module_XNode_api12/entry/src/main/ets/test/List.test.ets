@@ -16,10 +16,12 @@ import borderRadiuses from './GraphicsTest/borderRadiuses.test';
 import borderStyles from './GraphicsTest/borderStyles.test';
 import edgeColors from './GraphicsTest/edgeColors.test';
 import edgeWidths from './GraphicsTest/edgeWidths.test';
+import renderNodeGetInterfaceTest from './renderNode/renderNodeTestInterface.test';
 
 export default function testsuite() {
     borderRadiuses()
     borderStyles()
     edgeColors()
     edgeWidths()
+    renderNodeGetInterfaceTest()
 }
