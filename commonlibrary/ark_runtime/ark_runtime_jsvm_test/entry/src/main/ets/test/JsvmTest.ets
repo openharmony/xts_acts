@@ -630,6 +630,18 @@ export default function JsvmJsunit() {
       expect(value).assertEqual(0);
       done();
     });
+     /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0050
+     * @tc.name      JsvmTest0500
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest050', 0, async function (done) {
+      console.info('JsvmTest050 START');
+      value = napitest.testLifeCycle2()
+      console.info('JsvmTest050 testString result is:'+ value + "--" + JSON.stringify(value) );
+      expect(value).assertEqual(0);
+      done();
+    });
   })
 }
 
