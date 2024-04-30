@@ -23,6 +23,7 @@ ohos_js_hap_suite("ActsAceWebDevTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAceWebDevTest"
+  part_name = "webview"
 }
 
 ohos_app_scope("ace_ets_web_dev_app_profile") {

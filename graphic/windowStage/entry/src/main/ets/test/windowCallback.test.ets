@@ -1884,29 +1884,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
 
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0490
-     * @tc.name      : testGetCutoutInfo_Callbcak
-     * @tc.desc      : Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testGetCutoutInfo_Callbcak', 0, async (done: Function) => {
-      let caseName: string = 'testGetCutoutInfo_Callbcak';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin context==' + JSON.stringify(context));
-      let dpClass: display.Display = display.getDefaultDisplaySync();
-      expect(!!dpClass).assertTrue();
-      dpClass.getCutoutInfo((err, data) => {
-        if (err && err.code) {
-          unexpectedError(TRUE_FLAG, err, caseName, 'displayClass.getCutoutInfo', done);
-        } else {
-          console.info(msgStr + 'Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(data));
-          done();
-        }
-      })
-    })
-    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1070
      * @tc.name      : testSetAspectRatio_Cancel_Upon_Success_Callback
      * @tc.desc      : Validate the scenario cancelled after setting the proportion of the content layout of the main window

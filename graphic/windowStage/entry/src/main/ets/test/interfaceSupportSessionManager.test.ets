@@ -1284,8 +1284,8 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         }
       }
       if (!currentDeviceIsRk) {
-        let _width = windowLimits.minWidth - 10;
-        let _height = windowLimits.minHeight - 20;
+        let _width = windowLimits.minWidth - 1;
+        let _height = windowLimits.minHeight - 1;
         console.log(msgStr + 'width is: ' + _width + ' ' + "height is: " + _height);
         await subMin.resize(_width, _height).then(async () => {
           console.info(msgStr + 'Succeeded in changing the window size.');
