@@ -45,7 +45,9 @@ struct UIfont {
         .id('UIfont_generic')
         .onClick(()=>{
           let fontConfig = font.getUIFontConfig();
-          this.text = fontConfig.generic.length + ''
+          if (fontConfig.generic.length) {
+            this.text = '3'
+          }
         })
 
       Button("fallbackGroups")
