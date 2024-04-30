@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import { FrameNode, NodeController } from "@ohos.arkui.node"
 import { BusinessError } from '@ohos.base';
 const TEST_TAG : string = "FrameNode"
 
-class MyNodeController extends NodeController {
+class MyNodeControllerGet extends NodeController {
   public frameNode: FrameNode | null = null;
   public childList:Array<FrameNode> = new Array<FrameNode>();
   private rootNode: FrameNode | null = null;
@@ -210,8 +210,8 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-struct GetAttrs {
-  private myNodeController: MyNodeController = new MyNodeController();
+struct GetAttrsFrameNode {
+  private myNodeController: MyNodeControllerGet = new MyNodeControllerGet();
   @State node: FrameNode | null = null;
   @State uiContext: UIContext = this.getUIContext()
   @State getData: string = "Init";

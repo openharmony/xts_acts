@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import { FrameNode, NodeController, BuilderNode } from "@ohos.arkui.node"
 
 @Component
-struct TestComponent {
+struct TestComponentDispose {
   build() {
     Column() {
       Text('This is a BuilderNode.')
@@ -38,10 +38,10 @@ struct TestComponent {
 
 @Builder
 function buildComponent() {
-  TestComponent()
+  TestComponentDispose()
 }
 
-class MyNodeController extends NodeController {
+class MyNodeControllerDispose extends NodeController {
   private rootNode: FrameNode | null = null;
   private builderNode: BuilderNode<[]> | null = null;
 
@@ -87,7 +87,7 @@ class MyNodeController extends NodeController {
 @Entry
 @Component
 struct Dispose1 {
-  private myNodeController: MyNodeController = new MyNodeController();
+  private myNodeController: MyNodeControllerDispose = new MyNodeControllerDispose();
   @State flag: FrameNode | null = null
   @State result: string = "Init"
 
