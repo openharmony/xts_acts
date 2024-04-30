@@ -189,7 +189,7 @@ describe('SystemInI18nTest', function () {
         }catch(e){
             console.log('i18n_system_test_1000 ' + e.code);
             console.log('i18n_system_test_1000 ' + e.message);
-            expect(e.code).assertEqual('890001');
+            expect(e.code).assertEqual('401');
             expect(e.message).assertEqual('Param value not valid');
         }
     })
