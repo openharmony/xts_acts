@@ -39,6 +39,9 @@ import StyledStringTest from './TextTest/StyledStringTest.test'
 import clearStyles from './TextTest/clearStyles.test'
 import TextStyle from './TextTest/TextStyle.test';
 import MarqueeApi from './Marquee/MarqueeApi.test';
+import srcIndexTest from './MatrixTest/srcIndexTest.test'
+import dstIndexTest from './MatrixTest/dstIndexTest.test'
+
 
 import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
 import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
@@ -70,6 +73,8 @@ export default function testsuite() {
   StyledStringTest()
   TextStyle();
   MarqueeApi();
+  srcIndexTest();
+  dstIndexTest();
   
   RichEditorApi1();
   RichEditorApi3();
