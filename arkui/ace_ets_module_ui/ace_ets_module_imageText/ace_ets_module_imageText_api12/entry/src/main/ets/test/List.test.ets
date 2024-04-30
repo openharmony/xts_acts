@@ -39,6 +39,8 @@ import StyledStringTest from './TextTest/StyledStringTest.test'
 import clearStyles from './TextTest/clearStyles.test'
 import TextStyle from './TextTest/TextStyle.test';
 import MarqueeApi from './Marquee/MarqueeApi.test';
+import APIContentTypeTest from './TextInput/APIContentTypeTest.test';
+import APIUnderlineColorTest from './TextInput/APIUnderlineColorTest.test';
 import srcIndexTest from './MatrixTest/srcIndexTest.test'
 import dstIndexTest from './MatrixTest/dstIndexTest.test'
 
@@ -48,6 +50,8 @@ import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
 import RichEditorApi5 from './RichEditor/RichEditorApi5.test'
 import RichEditorChangeCallback from './RichEditor/RichEditorChangeCallback.test'
 export default function testsuite() {
+APIContentTypeTest();
+APIUnderlineColorTest();
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
