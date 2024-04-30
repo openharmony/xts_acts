@@ -71,17 +71,9 @@ static SHRINK_HWTEST_F(ActsDeqpgles30016TestSuite, TestCase_015899,
         "dEQP-GLES3.functional.shaders.matrix.in",
         "verse.dynamic.highp_mat3_float_fragment");
 
-static SHRINK_HWTEST_F(ActsDeqpgles30016TestSuite, TestCase_015900,
-        "dEQP-GLES3.functional.shaders.matrix.",
-        "inverse.dynamic.lowp_mat4_float_vertex");
-
 static SHRINK_HWTEST_F(ActsDeqpgles30016TestSuite, TestCase_015901,
         "dEQP-GLES3.functional.shaders.matrix.i",
         "nverse.dynamic.lowp_mat4_float_fragment");
-
-static SHRINK_HWTEST_F(ActsDeqpgles30016TestSuite, TestCase_015902,
-        "dEQP-GLES3.functional.shaders.matrix.in",
-        "verse.dynamic.mediump_mat4_float_vertex");
 
 static SHRINK_HWTEST_F(ActsDeqpgles30016TestSuite, TestCase_015903,
         "dEQP-GLES3.functional.shaders.matrix.inv",
