@@ -322,6 +322,35 @@ export class KeyboardDelegate {
                     console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0600 event:' + data.event);
                     that.Sub_Misc_Request_InputMethod_selectContext_0600();
                     break;
+               
+                case 340:
+                    console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0100 event:' + data.event);
+                    that.SUB_InputMethod_IsTextPreviewSupport_0100();
+                    break;
+                case 350:
+                    console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0200 event:' + data.event);
+                    that.SUB_InputMethod_IsTextPreviewSupport_0200();
+                    break;
+                case 360:
+                    console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0300 event:' + data.event);
+                    that.SUB_InputMethod_IsTextPreviewSupport_0300();
+                    break;
+                case 370:
+                    console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0400 event:' + data.event);
+                    that.SUB_InputMethod_IsTextPreviewSupport_0400();
+                    break;
+                case 380:
+                    console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_0500 event:' + data.event);
+                    that.SUB_InputMethod_IME_PrivateDateTransferred_0500();
+                    break;
+                case 390:
+                    console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_0600 event:' + data.event);
+                    that.SUB_InputMethod_IME_PrivateDateTransferred_0600();
+                    break;
+                case 400:
+                    console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_1100 event:' + data.event);
+                    that.SUB_InputMethod_IME_PrivateDateTransferred_1100();
+                    break;
             }
         }
 
@@ -1354,7 +1383,8 @@ export class KeyboardDelegate {
         let obj = this.InputClient.getEditorAttributeSync();
         console.info(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 getEditorAttributeSync enterKeyType: ' + JSON.stringify(obj.enterKeyType));
         console.info(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 getEditorAttributeSync inputPattern: ' + JSON.stringify(obj.inputPattern));
-        if(typeof(obj.enterKeyType) === "number" && typeof(obj.inputPattern) === "number"){
+        console.info(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 getEditorAttributeSync isTextPreviewSupported: ' + JSON.stringify(obj.isTextPreviewSupported));
+        if(typeof(obj.enterKeyType) === 'number' && typeof(obj.inputPattern) === 'number' && typeof(obj.isTextPreviewSupported) === 'boolean'){
             commonEventPublishData = {
                 data: "SUCCESS"
             };
@@ -1682,6 +1712,164 @@ export class KeyboardDelegate {
             console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0600 selectByRange throw_err:');
             commoneventmanager.publish('Sub_Misc_Request_InputMethod_selectContext_0600', commonEventPublishData, this.publishCallback);
         }
+    }
+
+    async SUB_InputMethod_IsTextPreviewSupport_0100() {
+        console.info(TAG + '====>receive SUB_InputMethod_IsTextPreviewSupport_0100 data');
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        try {
+            let range :  inputMethodEngine.Range = { start: 'bbb', end:'ccc'}
+            await this.InputClient.setPreviewText('adc|03',range);
+            console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0100 setPreviewText success:' );
+            commonEventPublishData = {
+                data: "FAILED"
+
+            };
+        } catch (err) {
+            console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0100 setPreviewText catch err: '+ JSON.stringify(err));
+            if(err.code === 401) {
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+        }
+        commoneventmanager.publish("SUB_InputMethod_IsTextPreviewSupport_0100", commonEventPublishData, this.publishCallback);
+    }
+
+    async SUB_InputMethod_IsTextPreviewSupport_0200() {
+        console.info(TAG + '====>receive SUB_InputMethod_IsTextPreviewSupport_0200 data');
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        let range :  inputMethodEngine.Range = { start: 'aa', end: 'aa'}
+        try {
+            this.InputClient.setPreviewTextSync('adc|03',range);
+            console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0100 setPreviewText success:' );
+            commonEventPublishData = {
+                data: "FAILED"
+
+            };
+        } catch (err) {
+            console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0200 setPreviewTextSync catch err:' + JSON.stringify(err));
+            if(err.code === 401) {
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish('SUB_InputMethod_IsTextPreviewSupport_0200', commonEventPublishData, this.publishCallback);
+        }
+    }
+
+    async SUB_InputMethod_IsTextPreviewSupport_0300() {
+        console.info(TAG + '====>receive SUB_InputMethod_IsTextPreviewSupport_0300 data');
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        try{
+           await this.InputClient.finishTextPreview();
+            console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0300 finishTextPreview success');
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                }
+        } catch (err) {
+            console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0300 finishTextPreview catch err:' + JSON.stringify(err));
+        }
+        commoneventmanager.publish("SUB_InputMethod_IsTextPreviewSupport_0300", commonEventPublishData, this.publishCallback);
+    }
+
+    async SUB_InputMethod_IsTextPreviewSupport_0400() {
+        console.info(TAG + '====>receive SUB_InputMethod_IsTextPreviewSupport_0400 data');
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        try {
+            this.InputClient.finishTextPreviewSync();
+            console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0400 finishTextPreviewSync success');
+            commonEventPublishData = {
+                data: "SUCCESS"
+            }
+
+        } catch (err) {
+            console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0400 finishTextPreviewSync catch err:' + JSON.stringify(err));
+        }
+        commoneventmanager.publish('SUB_InputMethod_IsTextPreviewSupport_0400', commonEventPublishData, this.publishCallback);
+    }
+
+    async SUB_InputMethod_IME_PrivateDateTransferred_0500() {
+        console.info(TAG + '====>receive SUB_InputMethod_IME_PrivateDateTransferred_0500 data');
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        let record: Record<string, inputMethodEngine.CommandDataType> = {
+            "valueString1": "abcdefg",
+            "valueString2": true,
+            "valueString3": 500,
+            "valueString1": "abcdefgg",
+            "valueString2": true,
+        }
+        try {
+            await this.InputClient.sendPrivateCommand(record);
+            console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_0500 setPreviewText success:' );
+            commonEventPublishData = {
+                data: "FAILED"
+
+            };
+        } catch (err) {
+            console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_0500 setPreviewTextSync catch err:' + JSON.stringify(err));
+            if(err.code === 12800010) {
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish('SUB_InputMethod_IME_PrivateDateTransferred_0500', commonEventPublishData, this.publishCallback);
+        }
+    }
+
+    async SUB_InputMethod_IME_PrivateDateTransferred_0600() {
+        console.info(TAG + '====>receive SUB_InputMethod_IME_PrivateDateTransferred_0600 data');
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        try{
+            inputMethodAbility.on('privateCommand', async (record : Record<string, inputMethodEngine.CommandDataType>) => {
+                console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_0600 on privateCommand into' );
+                inputMethodAbility.off('privateCommand');
+            })
+            console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_0600 privateCommand on success' );
+        } catch (err) {
+            if(err.code === 12800010) {
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_0600 on(privateCommand) err: ' + JSON.stringify(err));
+        }
+        commoneventmanager.publish("SUB_InputMethod_IME_PrivateDateTransferred_0600", commonEventPublishData, this.publishCallback);
+    }
+
+    async SUB_InputMethod_IME_PrivateDateTransferred_1100() {
+        console.info(TAG + '====>receive SUB_InputMethod_IME_PrivateDateTransferred_1100 data');
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        let want: Want ={
+            bundleName: 'aaa',
+            abilityName: 'aaa',
+        }
+        try{
+            await this.mContext.startAbility(want);
+            console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_1100 startAbility success' );
+        } catch (err) {
+            console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_1100 err: ' + JSON.stringify(err));
+            if(err.code === 16000001) {
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+        }
+        commoneventmanager.publish("SUB_InputMethod_IME_PrivateDateTransferred_1100", commonEventPublishData, this.publishCallback);
     }
 
 }

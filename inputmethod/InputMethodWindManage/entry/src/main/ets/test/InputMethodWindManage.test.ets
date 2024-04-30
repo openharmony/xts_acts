@@ -1734,5 +1734,66 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /**
+     * @tc.number   SUB_InputMethod_IME_SplitScreen_0100
+     * @tc.name     SUB_InputMethod_IME_SplitScreen_0100
+     * @tc.desc     getSecurityMode()
+     * @tc.size     MediumTest
+     * @tc.type     Function
+     * @tc.level    Level 0
+     */
+    it('SUB_InputMethod_IME_SplitScreen_0100', 0, async function (done) {
+      function unSubscriberCallback(err) {
+        console.info('====>SUB_InputMethod_IME_SplitScreen_0100 unSubscriberCallback start');
+        if (err) {
+          console.error('====>SUB_InputMethod_IME_SplitScreen_0100 unSubscriberCallback failed: ' + JSON.stringify(err));
+        } else {
+          console.info('====>SUB_InputMethod_IME_SplitScreen_0100 unSubscriberCallback finish');
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info('====>SUB_InputMethod_IME_SplitScreen_0100 subscriberCallback data: ' + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(async () => {
+          try {
+            expect(data.data).assertEqual('SUCCESS');
+            console.info('====>SUB_InputMethod_IME_SplitScreen_0100 success end<====');
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info('====>SUB_InputMethod_IME_SplitScreen_0100 catch end<====' + JSON.stringify(err));
+            clearTimeout(t)
+            done();
+          }
+        }, 500)
+      }
+
+      async function publishCallback(err) {
+        runCmd();
+        if (err) {
+          console.info('====>SUB_InputMethod_IME_SplitScreen_0100 end<====' + JSON.stringify(err));
+        } else {
+          console.info('====>SUB_InputMethod_IME_SplitScreen_0100 success ====' );
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ['SUB_InputMethod_IME_SplitScreen_0100']
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
+        subscriber = data;
+        console.info('====>SUB_InputMethod_IME_SplitScreen_0100 subscribe data: ' + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info('====>SUB_InputMethod_IME_SplitScreen_0100 subscribe finish====');
+
+        var commonEventPublishData = {
+          code: 216
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+    
   });
 };
