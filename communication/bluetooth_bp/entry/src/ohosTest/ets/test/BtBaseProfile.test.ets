@@ -74,24 +74,16 @@ import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPatter
     let OPEN_BT_TEXT:string = "开启";
 
     async function clickRequestPermission(text:string) {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -135,10 +127,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0100
-     * @tc.name testGetConnectedDevices
+     * @tc.name test getConnectedDevices
      * @tc.desc Test getConnectedDevices api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0100', 0, async (done : Function) =>  {
@@ -155,10 +146,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0200
-     * @tc.name testGetConnectionState
+     * @tc.name test getConnectionState
      * @tc.desc Test getConnectionState api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0200', 0, async (done : Function) =>  {
@@ -175,10 +165,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0300
-     * @tc.name testOnConnectionStateChange
+     * @tc.name test on type: 'connectionStateChange'
      * @tc.desc Test on type: 'connectionStateChange' api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0300', 0, async (done : Function) =>  {
@@ -194,10 +183,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0400
-     * @tc.name testOnConnectionStateChange
+     * @tc.name test off type: 'connectionStateChange'
      * @tc.desc Test off type: 'connectionStateChange' api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0400', 0, async (done : Function) =>  {
@@ -213,10 +201,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0500
-     * @tc.name testGetConnectedDevices
+     * @tc.name test getConnectedDevices
      * @tc.desc Test getConnectedDevices api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0500', 0, async (done : Function) =>  {
@@ -233,10 +220,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0600
-     * @tc.name testGetConnectionState
+     * @tc.name test getConnectionState
      * @tc.desc Test getConnectionState api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0600', 0, async (done : Function) =>  {
@@ -253,10 +239,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0700
-     * @tc.name testOnConnectionStateChange
+     * @tc.name test on type: 'connectionStateChange'
      * @tc.desc Test on type: 'connectionStateChange' api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0700', 0, async (done : Function) =>  {
@@ -272,10 +257,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0800
-     * @tc.name testOnConnectionStateChange
+     * @tc.name test off type: 'connectionStateChange'
      * @tc.desc Test off type: 'connectionStateChange' api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0800', 0, async (done : Function) =>  {
@@ -291,10 +275,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0900
-     * @tc.name testGetConnectedDevices
+     * @tc.name test getConnectedDevices
      * @tc.desc Test getConnectedDevices api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0900', 0, async (done : Function) =>  {
@@ -311,10 +294,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1000
-     * @tc.name testGetConnectionState
+     * @tc.name test getConnectionState
      * @tc.desc Test getConnectionState api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1000', 0, async (done : Function) =>  {
@@ -331,10 +313,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1100
-     * @tc.name testOnConnectionStateChange
+     * @tc.name test on type: 'connectionStateChange'
      * @tc.desc Test on type: 'connectionStateChange' api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1100', 0, async (done : Function) =>  {
@@ -350,10 +331,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1200
-     * @tc.name testOnConnectionStateChange
+     * @tc.name test off type: 'connectionStateChange'
      * @tc.desc Test off type: 'connectionStateChange' api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1200', 0, async (done : Function) =>  {
@@ -369,10 +349,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1300
-     * @tc.name testGetConnectedDevices
+     * @tc.name test getConnectedDevices
      * @tc.desc Test getConnectedDevices api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1300', 0, async (done : Function) =>  {
@@ -389,10 +368,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1400
-     * @tc.name testGetConnectionState
+     * @tc.name test getConnectionState
      * @tc.desc Test getConnectionState api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1400', 0, async (done : Function) =>  {
@@ -409,10 +387,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1500
-     * @tc.name testOnConnectionStateChange
+     * @tc.name test on type: 'connectionStateChange'
      * @tc.desc Test on type: 'connectionStateChange' api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1500', 0, async (done : Function) =>  {
@@ -428,10 +405,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1600
-     * @tc.name testOnConnectionStateChange
+     * @tc.name test off type: 'connectionStateChange'
      * @tc.desc Test off type: 'connectionStateChange' api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1600', 0, async (done : Function) =>  {
@@ -447,10 +423,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1700
-     * @tc.name testcreateSrcProfile
+     * @tc.name test createA2dpSrcProfile/createHfpAgProfile/createHidHostProfile/createPanProfile
      * @tc.desc Test createA2dpSrcProfile/createHfpAgProfile/createHidHostProfile/createPanProfile api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTHA2DP_STATE_1700', 0, async (done : Function) =>  {
@@ -472,10 +447,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_MAP_0100
-     * @tc.name testCreateMapMseProfile
+     * @tc.name test createMapMseProfile
      * @tc.desc Test createMapMseProfile api11.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_MAP_0100', 0, async (done : Function) =>  {
@@ -492,10 +466,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_PBAP_0100
-     * @tc.name testCreatePbapServerProfile
+     * @tc.name test createPbapServerProfile
      * @tc.desc Test createPbapServerProfile api11.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTH_PBAP_0100', 0, async (done : Function) =>  {
@@ -512,10 +485,9 @@ describe('btBaseProfileTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHPROFILE_CONSTANT_0100
-     * @tc.name testDisconnectCause
+     * @tc.name test DisconnectCause
      * @tc.desc Test DisconnectCause api12.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTHPROFILE_CONSTANT_0100', 0, async (done : Function) =>  {

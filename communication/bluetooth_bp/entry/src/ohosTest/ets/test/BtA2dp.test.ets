@@ -68,24 +68,16 @@ import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPatter
     let OPEN_BT_TEXT:string = "开启";
 
     async function clickRequestPermission(text:string) {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
     
@@ -117,10 +109,9 @@ describe('btA2dpTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHA2DP_STATE_0100
-     * @tc.name testGetPlayingState
+     * @tc.name test getPlayingState
      * @tc.desc Test getPlayingState api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHA2DP_STATE_0100', 0, async (done : Function) => {
@@ -136,10 +127,9 @@ describe('btA2dpTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHA2DP_STATE_0200
-     * @tc.name testPlayingState
+     * @tc.name test PlayingState
      * @tc.desc Test PlayingState api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTHA2DP_STATE_0200', 0, async (done : Function) => {
@@ -159,10 +149,9 @@ describe('btA2dpTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0100
-     * @tc.name testCodecType
+     * @tc.name test CodecType
      * @tc.desc Test CodecType api11.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0100', 0, async (done : Function) => {
@@ -191,10 +180,9 @@ describe('btA2dpTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0200
-     * @tc.name testCodecChannelMode
+     * @tc.name test CodecChannelMode
      * @tc.desc Test CodecChannelMode api11.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0200', 0, async (done : Function) => {
@@ -219,10 +207,9 @@ describe('btA2dpTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0300
-     * @tc.name testCodecBitsPerSample
+     * @tc.name test CodecBitsPerSample
      * @tc.desc Test CodecBitsPerSample api11.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0300', 0, async (done : Function) => {
@@ -251,10 +238,9 @@ describe('btA2dpTest', () => {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0400
-     * @tc.name testCodecSampleRate
+     * @tc.name test CodecSampleRate
      * @tc.desc Test CodecSampleRate api11.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
      it('SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0400', 0, async (done : Function) => {

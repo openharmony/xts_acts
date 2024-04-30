@@ -34,10 +34,9 @@ describe('btConstantTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0100
-     * @tc.name testProfileConnectionState
+     * @tc.name test constant
      * @tc.desc Test constant api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0100', 0, async (done : Function) => {
@@ -59,10 +58,9 @@ describe('btConstantTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0200
-     * @tc.name testProfileId
+     * @tc.name test constant
      * @tc.desc Test constant api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0200', 0, async (done : Function) => {
@@ -84,10 +82,9 @@ describe('btConstantTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0300
-     * @tc.name testMajorClass
+     * @tc.name test constant
      * @tc.desc Test constant api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0300', 0, async (done : Function) => {
@@ -129,10 +126,9 @@ describe('btConstantTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0400
-     * @tc.name testMajorMinorClass
+     * @tc.name test constant
      * @tc.desc Test constant api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0800', 0, async (done : Function) => {
@@ -439,10 +435,9 @@ describe('btConstantTest', () =>  {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0500
-     * @tc.name testProfileUuids
+     * @tc.name test constant
      * @tc.desc Test constant api12
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0500', 0, async (done : Function) => {

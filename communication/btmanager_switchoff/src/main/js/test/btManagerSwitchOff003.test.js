@@ -65,24 +65,16 @@ describe('btManagerError003Test', function() {
     }
 
     async function clickTheWindow() {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("关闭"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 关闭 end');
+            console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] click 关闭 failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
     
@@ -110,10 +102,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0100
-     * @tc.name test bluetoothGetBtConnectionState
+     * @tc.name test bluetooth Profile ConnectionState
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0100', 0, async function (done) {
@@ -136,10 +127,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0200
-     * @tc.name testPairDevice
+     * @tc.name Test pairDevice api
      * @tc.desc Test 2900003 - Bluetooth switch is off
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0200', 0, async function (done) {
@@ -157,10 +147,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0300
-     * @tc.name testGetRemoteDeviceName
+     * @tc.name test getRemoteDeviceName
      * @tc.desc Test 2900003 - Bluetooth switch is off
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0300', 0, async function (done) {
@@ -180,10 +169,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0400
-     * @tc.name testGetRemoteDeviceClass
+     * @tc.name test getRemoteDeviceClass
      * @tc.desc Test 2900003 - Bluetooth switch is off
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0400', 0, async function (done) {
@@ -204,10 +192,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0500
-     * @tc.name testGetPairedDevices
+     * @tc.name test get PairedDevices
      * @tc.desc Test 2900003 - Bluetooth switch is off
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0500', 0, async function (done) {
@@ -226,10 +213,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0600
-     * @tc.name testGetProfileConnectionState
+     * @tc.name test Get A2DP ConnectionState
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0600', 0, async function (done) {
@@ -248,10 +234,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0700
-     * @tc.name TestSetDevicePairing
+     * @tc.name Test setDevicePairing
      * @tc.desc Test 2900003 - Bluetooth switch is off
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0700', 0, async function (done) {
@@ -269,10 +254,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0800
-     * @tc.name testSetLocalName
+     * @tc.name setLocalName
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
      it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0800', 0, async function (done) {
@@ -291,10 +275,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0900
-     * @tc.name testSetBluetoothScanMode
+     * @tc.name TEST setBluetoothScanMode
      * @tc.desc TEST 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_0900', 0, async function (done) {
@@ -312,10 +295,9 @@ describe('btManagerError003Test', function() {
 
      /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1000
-     * @tc.name testGetBluetoothScanMode
+     * @tc.name TEST getBluetoothScanMode
      * @tc.desc TEST 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1000', 0, async function (done) {
@@ -334,10 +316,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1100
-     * @tc.name testStartBluetoothDiscovery
+     * @tc.name TEST startBluetoothDiscovery
      * @tc.desc TEST 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1100', 0, async function (done) {
@@ -355,10 +336,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1200
-     * @tc.name testStopBluetoothDiscovery
+     * @tc.name TEST stopBluetoothDiscovery
      * @tc.desc TEST 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1200', 0, async function (done) {
@@ -376,10 +356,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1600
-     * @tc.name testGetConnectionDevices
+     * @tc.name test getDevice HFP State.
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1600', 0, async function (done) {
@@ -399,10 +378,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1700
-     * @tc.name testGetDeviceState
+     * @tc.name test getDeviceState.
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1700', 0, async function (done) {
@@ -422,10 +400,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1800
-     * @tc.name testConnect
+     * @tc.name test A2DP Connect
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1800', 0, async function (done) {
@@ -445,10 +422,9 @@ describe('btManagerError003Test', function() {
    
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1900
-     * @tc.name testDisconnect
+     * @tc.name test A2DP disconnect
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_1900', 0, async function (done) {
@@ -467,10 +443,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2000
-     * @tc.name testGetPlayingState
+     * @tc.name test  get A2DP Playing State
      * @tc.desc Test  2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2000', 0, async function (done) {
@@ -491,10 +466,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2100
-     * @tc.name testConnect
+     * @tc.name test HFP Connect
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2100', 0, async function (done) {
@@ -514,10 +488,9 @@ describe('btManagerError003Test', function() {
    
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2200
-     * @tc.name testDisconnect
+     * @tc.name test HFP disconnect
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2200', 0, async function (done) {
@@ -540,7 +513,6 @@ describe('btManagerError003Test', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2800', 0, async function (done) {
@@ -572,7 +544,6 @@ describe('btManagerError003Test', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_2900', 0, async function (done) {
@@ -593,7 +564,6 @@ describe('btManagerError003Test', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3000', 0, async function (done) {
@@ -648,10 +618,9 @@ describe('btManagerError003Test', function() {
 
        /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3100
-     * @tc.name testStopAdvertising
+     * @tc.name teststopAdvertising
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3100', 0, async function (done) {
@@ -703,7 +672,6 @@ describe('btManagerError003Test', function() {
      * @tc.name testAddService
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SwitchOff_3200', 0, async function (done) {
@@ -739,10 +707,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3300
-     * @tc.name testRemoveService
+     * @tc.name test removeService
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3300', 0, async function (done) {
@@ -760,10 +727,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3400
-     * @tc.name testRemoveService
+     * @tc.name test removeService
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3400', 0, async function (done) {
@@ -781,10 +747,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3600
-     * @tc.name testSendResponse
+     * @tc.name testSendResponse success
      * @tc.desc Test 2900003 - Bluetooth switch is off.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3600', 0, async function (done) {
@@ -808,10 +773,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3700
-     * @tc.name testConnect 
+     * @tc.name test gatt connect 
      * @tc.desc Test 2900003 - Bluetooth switch is off
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3700', 0, async function (done) { 
@@ -829,10 +793,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3800
-     * @tc.name testDisconnect
+     * @tc.name test gatt disconnect
      * @tc.desc Test 2900003 - Bluetooth switch is off
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3800', 0, async function (done) {
@@ -849,10 +812,9 @@ describe('btManagerError003Test', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3900
-     * @tc.name testClose
+     * @tc.name test gatt close
      * @tc.desc Test 2900003 - Bluetooth switch is off
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_3900', 0, async function (done) {
@@ -872,7 +834,6 @@ describe('btManagerError003Test', function() {
     * @tc.name testClassicStartBLEScan
     * @tc.desc Test ClassicStartBLEScan api.
     * @tc.type Function
-    * @tc.size MediumTest
     * @tc.level Level 3
     */
     it('SUB_COMMUNICATION_BTMANAGER_BLESCAN_0800', 0, async function (done) {
@@ -922,7 +883,6 @@ describe('btManagerError003Test', function() {
          * @tc.name testClassicStartBLEScan
          * @tc.desc Test ClassicStartBLEScan api.
          * @tc.type Function
-         * @tc.size MediumTest
          * @tc.level Level 3
          */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCHOFF_4000', 0, async function (done) {
@@ -957,7 +917,6 @@ describe('btManagerError003Test', function() {
      * @tc.name testEnableBluetooth
      * @tc.desc Test EnableBluetooth api by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SWITCH_0400', 0, async function (done) {

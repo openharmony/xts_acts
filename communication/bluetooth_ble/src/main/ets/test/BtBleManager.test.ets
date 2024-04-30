@@ -70,24 +70,16 @@ describe('btBleManagerTest', function() {
     }
 
     async function clickRequestPermission(text:string) {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -124,7 +116,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTADVERT_0100', 0, async function (done) {
@@ -179,10 +170,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0100
-     * @tc.name testConnect
+     * @tc.name test gatt connect and disconnect
      * @tc.desc Test api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0100', 0, async function (done) { 
@@ -202,7 +192,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testGetConnectedBLEDevices
      * @tc.desc Test api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0200', 0, async function (done) {
@@ -220,10 +209,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0300
-     * @tc.name testBLEconnectStateChange
+     * test Client BLEconnectStateChange
      * @tc.desc Test on and off api10 
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
    it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0300', 0, async function (done) {
@@ -246,10 +234,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_GETRSSIVALUE_0100
-     * @tc.name testGetRssiValue
+     * @tc.name testgetRssiValue
      * @tc.desc Test getRssiValue api10 by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_GETRSSIVALUE_0100', 0, async function (done) {
@@ -280,7 +267,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testgetRssiValue
      * @tc.desc Test testGetDeviceName api10 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_GETRSSIVALUE_0200', 0, async function (done) {
@@ -320,7 +306,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testGetDeviceName
      * @tc.desc Test GetDeviceName api10 by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_GETDEVICENAME_0100', 0, async function (done) { 
@@ -346,7 +331,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testGetDeviceName
      * @tc.desc Test testGetDeviceName api10 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_GETDEVICENAME_0200', 0, async function (done) {
@@ -386,7 +370,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testGetServices
      * @tc.desc Test GetServices api10 by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_GETSERVICE_0100', 0, async function (done) {
@@ -411,7 +394,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testGetServices
      * @tc.desc Test GetServices api10 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_GETSERVICE_0200', 0, async function (done) {
@@ -451,7 +433,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testSetBLEMtuSize
      * @tc.desc Test SetBLEMtuSize api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_MTUSIZE_0100', 0, function (done) {
@@ -470,7 +451,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test ReadDescriptorValue api10 by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_1900', 0, async function (done) {
@@ -504,7 +484,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test ReadDescriptorValue api10 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_2000', 0, async function(done) {
@@ -544,10 +523,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_2100
-     * @tc.name testCharacteristicReadOn
+     * @tc.name test characteristicReadOn
      * @tc.desc Test On and off api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_2100', 0, async function (done) { 
@@ -585,7 +563,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test ReadDescriptorValue api10 by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1300', 0, async function (done) {
@@ -614,7 +591,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test ReadDescriptorValue api10 by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1400', 0, async function (done) {
@@ -649,10 +625,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1500
-     * @tc.name testReadDescriptorOn
+     * @tc.name test ReadDescriptorOn
      * @tc.desc Test On and Off api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1500', 0, async function (done) {
@@ -688,10 +663,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1800
-     * @tc.name testWriteCharacteristicValue
+     * @tc.name testWriteCharacteristicValue callback
      * @tc.desc Test Client WriteCharacteristicValue api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1800', 0, async function (done) {
@@ -744,10 +718,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1900
-     * @tc.name testWriteCharacteristicValue
+     * @tc.name testWriteCharacteristicValue promise
      * @tc.desc Test Client WriteCharacteristicValue api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1900', 0, async function (done) {
@@ -783,10 +756,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_2000
-     * @tc.name testCharacteristicWriteOn
+     * @tc.name test characteristicWriteOn
      * @tc.desc Test on and off api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_2000', 0, async function (done) { 
@@ -831,7 +803,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test Client WriteDescriptorValue promsie api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1000', 0, async function (done) {
@@ -865,7 +836,6 @@ describe('btBleManagerTest', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test Client WriteDescriptorValue callback api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1100', 0, async function (done) {
@@ -912,10 +882,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1200
-     * @tc.name testWriteDescriptorOn
+     * @tc.name test WriteDescriptorOn
      * @tc.desc Test on and off api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1200', 0, async function (done) {
@@ -955,10 +924,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SETNOTIFYCHARACTERISTIC_1400
-     * @tc.name testBLECharacteristicChangeON
+     * @tc.name test BLECharacteristicChangeON
      * @tc.desc Test On and off api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_SETNOTIFYCHARACTERISTIC_1400', 0, async function (done) {
@@ -994,10 +962,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0100
-     * @tc.name testSetCharacteristicChangeNotification
+     * @tc.name test setCharacteristicChangeNotification callback
      * @tc.desc Test setCharacteristicChangeNotification api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
      it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0100', 0, async function (done) {
@@ -1046,10 +1013,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0200
-     * @tc.name testSetCharacteristicChangeNotification
+     * @tc.name test setCharacteristicChangeNotification promise
      * @tc.desc Test setCharacteristicChangeNotification api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
      it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0200', 0, async function (done) {
@@ -1079,10 +1045,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0300
-     * @tc.name testSetCharacteristicChangeIndication
+     * @tc.name test setCharacteristicChangeIndication callback
      * @tc.desc Test setCharacteristicChangeIndication api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
      it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0300', 0, async function (done) {
@@ -1126,10 +1091,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0400
-     * @tc.name testSetCharacteristicChangeIndication
+     * @tc.name test setCharacteristicChangeIndication promise
      * @tc.desc Test setCharacteristicChangeIndication api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
      it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0400', 0, async function (done) {
@@ -1160,10 +1124,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0100
-     * @tc.name testOnBLEMtuChange
+     * @tc.name test GattClientDevice on blemtuchange
      * @tc.desc test GattClientDevice on blemtuchange api10.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0100', 0, async function (done) {
@@ -1182,10 +1145,9 @@ describe('btBleManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0200
-     * @tc.name testOnBLEMtuChange
+     * @tc.name test GattClientDevice off blemtuchange
      * @tc.desc test GattClientDevice off blemtuchange api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0200', 0, async function (done) {

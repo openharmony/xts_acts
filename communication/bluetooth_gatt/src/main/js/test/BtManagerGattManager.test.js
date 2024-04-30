@@ -40,24 +40,16 @@ describe('btManagerGattManagerTest', function() {
     }
 
     async function clickTheWindow() {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 开启 end');
+            console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -114,10 +106,9 @@ describe('btManagerGattManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_GATTCONNECT_0100
-     * @tc.name testConnect
+     * @tc.name test gatt connect and disconnect
      * @tc.desc Test api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTCONNECT_0100', 0, async function (done) { 
@@ -145,7 +136,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testGetConnectedBLEDevices
      * @tc.desc Test api 201 - Permission denied.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTCONNECT_0200', 0, async function (done) {
@@ -164,10 +154,9 @@ describe('btManagerGattManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_GATTCONNECT_0300
-     * @tc.name testBLEconnectStateChange
+     * test Client BLEconnectStateChange
      * @tc.desc Test on and off api 
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
    it('SUB_COMMUNICATION_BTMANAGER_GATTCONNECT_0300', 0, async function (done) {
@@ -194,10 +183,9 @@ describe('btManagerGattManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_GETRSSIVALUE_0100
-     * @tc.name testGetRssiValue
+     * @tc.name testgetRssiValue
      * @tc.desc Test getRssiValue api by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_GETRSSIVALUE_0100', 0, async function (done) {
@@ -227,10 +215,9 @@ describe('btManagerGattManagerTest', function() {
     
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_GETRSSIVALUE_0200
-     * @tc.name testGetRssiValue
+     * @tc.name testgetRssiValue
      * @tc.desc Test testGetDeviceName api by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_GETRSSIVALUE_0200', 0, async function (done) {
@@ -272,7 +259,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testGetDeviceName
      * @tc.desc Test GetDeviceName api by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_GETDEVICENAME_0100', 0, async function (done) {  
@@ -300,7 +286,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testGetDeviceName
      * @tc.desc Test testGetDeviceName api by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_GETDEVICENAME_0200', 0, async function (done) {
@@ -343,7 +328,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testGetServices
      * @tc.desc Test GetServices api by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_GETSERVICE_0100', 0, async function (done) {
@@ -370,7 +354,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testGetServices
      * @tc.desc Test GetServices api by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_GETSERVICE_0200', 0, async function (done) {
@@ -412,7 +395,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testSetBLEMtuSize
      * @tc.desc Test SetBLEMtuSize api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_0100', 0, function () {
@@ -432,7 +414,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testSetBLEMtuSize
      * @tc.desc Test SetBLEMtuSize api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
      it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_0200', 0, function () {
@@ -452,7 +433,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testSetBLEMtuSize
      * @tc.desc Test SetBLEMtuSize api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_0300', 0, function () {
@@ -472,7 +452,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testSetBLEMtuSize
      * @tc.desc Test SetBLEMtuSize api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_0400', 0, function () {
@@ -492,7 +471,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testSetBLEMtuSize
      * @tc.desc Test SetBLEMtuSize api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_0500', 0, function () {
@@ -512,7 +490,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test ReadDescriptorValue api by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_1900', 0, async function (done) {
@@ -557,7 +534,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test ReadDescriptorValue api by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_2000', 0, async function(done) {  
@@ -610,10 +586,9 @@ describe('btManagerGattManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_2100
-     * @tc.name testCharacteristicReadOn
+     * @tc.name test characteristicReadOn
      * @tc.desc Test On and off api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_2100', 0, async function (done) { 
@@ -647,7 +622,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test ReadDescriptorValue api by promise.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_1300', 0, async function (done) {
@@ -681,7 +655,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testReadDescriptorValue
      * @tc.desc Test ReadDescriptorValue api by callback.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_1400', 0, async function (done) {     
@@ -714,10 +687,9 @@ describe('btManagerGattManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_1500
-     * @tc.name testReadDescriptorOn
+     * @tc.name test ReadDescriptorOn
      * @tc.desc Test On and Off api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_1500', 0, async function (done) {
@@ -756,7 +728,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test Client WriteCharacteristicValue api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_1900', 0, function () {
@@ -788,10 +759,9 @@ describe('btManagerGattManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_2000
-     * @tc.name testCharacteristicWriteOn
+     * @tc.name test characteristicWriteOn
      * @tc.desc Test on and off api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_2000', 0, async function (done) { 
@@ -827,7 +797,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testWriteDescriptorValue
      * @tc.desc Test Client WriteDescriptorValue api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_1100', 0,  function () {
@@ -851,10 +820,9 @@ describe('btManagerGattManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_1200
-     * @tc.name testWriteDescriptorOn
+     * @tc.name test WriteDescriptorOn
      * @tc.desc Test on and off api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_1200', 0, async function (done) {
@@ -897,7 +865,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test SetNotifyCharacteristicChanged api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_1200', 0, async function (done) {
@@ -941,7 +908,6 @@ describe('btManagerGattManagerTest', function() {
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test SetNotifyCharacteristicChanged api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_1300', 0, async function (done) {
@@ -982,10 +948,9 @@ describe('btManagerGattManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_1400
-     * @tc.name testBLECharacteristicChangeON
+     * @tc.name test BLECharacteristicChangeON
      * @tc.desc Test On and off api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_1400', 0, async function (done) {
@@ -1023,10 +988,9 @@ describe('btManagerGattManagerTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_GATTCLOSE_0100
-     * @tc.name testGattClientClose
+     * @tc.name test gattClient close
      * @tc.desc Test close api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_GATTCLOSE_0100', 0, async function (done) {

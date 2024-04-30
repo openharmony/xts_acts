@@ -38,24 +38,16 @@ describe('btBleScanTest', function() {
     }
 
     async function clickTheWindow() {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 开启 end');
+            console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -109,7 +101,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_0100', 0, async function (done) {
@@ -131,7 +122,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_0200', 0, async function (done) {
@@ -154,7 +144,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_0300', 0, async function (done) {
@@ -177,7 +166,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_0400', 0, async function (done) {
@@ -200,7 +188,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_0500', 0, async function (done) {
@@ -230,7 +217,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_0600', 0, async function (done) {
@@ -258,7 +244,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_0700', 0, async function (done) {
@@ -287,7 +272,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_0900', 0, async function (done) {
@@ -317,7 +301,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_1000', 0, async function (done) {
@@ -347,7 +330,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_1100', 0, async function (done) {
@@ -377,7 +359,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_1200', 0, async function (done) {
@@ -407,7 +388,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_1300', 0, async function (done) {
@@ -440,7 +420,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 3
      */
       it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_1400', 0, async function (done) {
@@ -467,7 +446,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_1500', 0, async function (done) {
@@ -494,7 +472,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_1600', 0, async function (done) {
@@ -529,7 +506,6 @@ describe('btBleScanTest', function() {
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
       it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_1700', 0, async function (done) {
@@ -563,10 +539,9 @@ describe('btBleScanTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLESCAN_1800
-     * @tc.name testStartBLEScan
+     * @tc.name test gatt connect and disconnect
      * @tc.desc Test connect and disconnect api .
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLESCAN_1800', 0, async function (done) {

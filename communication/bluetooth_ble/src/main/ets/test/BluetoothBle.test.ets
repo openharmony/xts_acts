@@ -72,24 +72,16 @@ describe('bluetoothBleTest', function() {
     }
 
     async function clickRequestPermission(text:string) {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -113,10 +105,9 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0100
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name test startBLEScan
+     * @tc.desc Test startBLEScan api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0100', 0, async function (done) {
@@ -148,10 +139,9 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0200
-     * @tc.name testStopBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name test stopBLEScan
+     * @tc.desc Test stopBLEScan api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0200', 0, async function (done) {
@@ -166,10 +156,9 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0300
-     * @tc.name testOnBLEDeviceFind
-     * @tc.desc Test BLE api10
+     * @tc.name test on-BLEDeviceFind
+     * @tc.desc Test on-BLEDeviceFind api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0300', 0, async function (done) {
@@ -188,10 +177,9 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0400
-     * @tc.name testOnBLEDeviceFind
-     * @tc.desc Test BLE api10
+     * @tc.name test off-BLEDeviceFind
+     * @tc.desc Test off-BLEDeviceFind api10
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0400', 0, async function (done) {
@@ -210,10 +198,9 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0500
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0500', 0, async function (done) {
@@ -235,11 +222,10 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0600
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0600', 0, async function (done) {
         function onReceiveEvent(data)
@@ -262,11 +248,10 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0700
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0700', 0, async function (done) {
         function onReceiveEvent(data)
@@ -289,11 +274,10 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0800
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0800', 0, async function (done) {
         function onReceiveEvent(data)
@@ -316,11 +300,10 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0900
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_0900', 0, async function (done) {
         function onReceiveEvent(data)
@@ -350,11 +333,10 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1000
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1000', 0, async function (done) {
         function onReceiveEvent(data)
@@ -382,11 +364,10 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1100
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 3
      */
      it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1100', 0, async function (done) {
         function onReceiveEvent(data)
@@ -416,11 +397,10 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1200
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1200', 0, async function (done) {
         function onReceiveEvent(data)
@@ -450,11 +430,10 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1300
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1300', 0, async function (done) {
         function onReceiveEvent(data)
@@ -484,11 +463,10 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1400
-     * @tc.name testStartBLEScan
-     * @tc.desc Test BLE api10
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
      * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1400', 0, async function (done) {
         function onReceiveEvent(data)
@@ -518,11 +496,10 @@ describe('bluetoothBleTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1500
-     * @tc.name testPhyType
-     * @tc.desc Test BLE api10
+     * @tc.name test constant PhyType
+     * @tc.desc Test constant PhyType api12
      * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1500', 0, async function (done) {
         let PHY_LE_1M = bluetooth.PhyType.PHY_LE_1M;

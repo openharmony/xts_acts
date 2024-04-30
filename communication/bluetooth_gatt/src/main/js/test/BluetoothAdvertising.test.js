@@ -39,24 +39,16 @@ describe('bluetoothAdvertisingTest', function() {
     }
 
     async function clickTheWindow() {
-        console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
         try {
+            console.info('[bluetooth_js] clickRequestPermission start');
+            let driver = Driver.create();
+            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 开启 end');
+            console.info('[bluetooth_js] clickRequestPermission end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -144,10 +136,9 @@ describe('bluetoothAdvertisingTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0600
-     * @tc.name testStartAdvertising
+     * @tc.name test start/stopAdvertising callback/promise
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0600', 0, async function (done) {
@@ -178,10 +169,9 @@ describe('bluetoothAdvertisingTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0800
-     * @tc.name testStartAdvertising
+     * @tc.name test start/stopAdvertising callback/promise
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
-     * @tc.size MediumTest
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0800', 0, async function (done) {
