@@ -441,6 +441,31 @@ export default function actsWifiManagerFunctionsTest() {
             "secondDns: " + ipv6InfoResult.secondDNS + "uniqueIpv6Address" + ipv6InfoResult.uniqueIpv6Address +
             "randomUniqueIpv6Address" + ipv6InfoResult.randomUniqueIpv6Address);
         })
+
+        /**
+        * @tc.number Communication_WiFi_XTS_Sta_0099
+        * @tc.name testWifiCategory
+        * @tc.desc Test enum WifiCategory API12.
+        * @tc.type Function
+        * @tc.size LargeTest
+        * @tc.level Level 0
+        */
+        it('Communication_WiFi_XTS_Sta_0099', 0, function () {
+            try {
+                let WifiCategoryDefault = wifiMg.WifiCategory.DEFAULT;
+                console.info("[wifi_test]DEFAULT: " + JSON.stringify(WifiCategoryDefault));
+                expect(WifiCategoryDefault).assertEqual(1);
+                let WifiCategoryWifi6 = wifiMg.WifiCategory.WIFI6;
+                console.info("[wifi_test]WIFI6: " + JSON.stringify(WifiCategoryWifi6));
+                expect(WifiCategoryWifi6).assertEqual(2);
+                let WifiCategoryWifi6Plus = wifiMg.WifiCategory.WIFI6_PLUS;
+                console.info("[wifi_test]WIFI6_PLUS: " + JSON.stringify(WifiCategoryWifi6Plus));
+                expect(WifiCategoryWifi6Plus).assertEqual(3);
+            } catch (error) {
+                console.error('[wifi_test]testWifiCategory failed: ' + error);
+                expect(false).assertTrue();
+            }
+        })
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
