@@ -40,24 +40,24 @@ describe('bluetoothAdvertisingTest', function() {
 
     async function clickTheWindow() {
         console.info('[bluetooth_js] clickRequestPermission start');
-        let driver = Driver.create();
-        await driver.delayMs(3000);
-        try {
-            let button = await driver.findComponent(ON.text("开启"));
-            await button.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 开启 end');
-        } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
-        }
-        try {
-            let button1 = await driver.findComponent(ON.text("允许"));
-            await button1.click();
-            await driver.delayMs(3000);
-            console.info('[bluetooth_js] click 允许 end');
-        } catch (err) {
-            console.info('[bluetooth_js] click 允许 failed. ' + err);
-        }
+           let driver = Driver.create();
+           await driver.delayMs(3000);
+           try {
+               let button = await driver.findComponent(ON.text("开启"));
+               await button.click();
+               await driver.delayMs(3000);
+               console.info('[bluetooth_js] click 开启 end');
+           } catch (err) {
+               console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+           }
+           try {
+               let button1 = await driver.findComponent(ON.text("允许"));
+               await button1.click();
+               await driver.delayMs(3000);
+               console.info('[bluetooth_js] click 允许 end');
+           } catch (err) {
+               console.info('[bluetooth_js] click 允许 failed. ' + err);
+           }
     }
 
     async function tryToEnableBt() {
@@ -175,6 +175,40 @@ describe('bluetoothAdvertisingTest', function() {
         await sleep(2000);
         done();
     })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0700
+     * @tc.name testStartAdvertising
+     * @tc.desc Test bluetoothBle api11
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 0
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0700', 0, async function (done) {
+        let advertisingParams = {
+          advertisingSettings: setting,
+          advertisingData: advData,
+          advertisingResponse: advResponse,
+          duration: null,
+        }
+        let advHandle = 0xFF;
+        try {
+          bluetooth.startAdvertising(advertisingParams).then((outAdvHandle) => {
+            console.info('[bluetooth_js]startAdvertising promise info1:' + JSON.stringify(outAdvHandle));
+            advHandle = outAdvHandle;
+            console.info('[bluetooth_js]startAdvertising promise info2:'+JSON.stringify(advHandle));
+          });
+          await sleep(3000);
+          await bluetooth.stopAdvertising(advHandle).then((data) => {
+            console.info('[bluetooth_js] stopAdvertising promise result:' + JSON.stringify(data));
+          });
+        } catch (err) {
+          console.info("07errCode:" + err.code + ",07errMessage:" + err.message);
+          expect(Number(err.code)).assertEqual(401);
+        }
+        await sleep(2000);
+        done();
+      })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0800
