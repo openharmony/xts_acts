@@ -12,5 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
-export { hapTasks } from '@ohos/hvigor-ohos-plugin';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
