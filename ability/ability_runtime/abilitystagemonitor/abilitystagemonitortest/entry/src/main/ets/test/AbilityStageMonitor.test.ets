@@ -39,15 +39,6 @@ export default function abilityStageMonitorTest() {
 
     afterEach(async (done) => {
       console.log("SUB_AA_AbilityStageMonitor afterEach called");
-      let wantInfo = {
-        bundleName: "com.example.abilitystagemonitortest",
-        abilityName: "TestAbility"
-      }
-      await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
-        console.log("SUB_AA_AbilityStageMonitor startAbility data : " + JSON.stringify(data));
-      }).catch((err) => {
-        console.log("SUB_AA_AbilityStageMonitor startAbility err : " + JSON.stringify(err));
-      })
 
       setTimeout(function () {
         console.log("SUB_AA_AbilityStageMonitor afterEach called");
