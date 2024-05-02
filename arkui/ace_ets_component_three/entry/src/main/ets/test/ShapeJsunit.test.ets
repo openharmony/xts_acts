@@ -177,7 +177,7 @@ export default function shapeJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "antiAlias": 0xaaaaa,
+            "antiAlias": "aaaaa",
           }
         }
         let innerEvent: events_emitter.InnerEvent = {

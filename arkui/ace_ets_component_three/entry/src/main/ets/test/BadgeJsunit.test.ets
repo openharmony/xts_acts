@@ -241,7 +241,7 @@ export default function badgeJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "colorValue": 0xab88,
+            "colorValue": "#0000FF",
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
