@@ -64,7 +64,7 @@ async function clickRequestPermission() {
         console.info('[wifi_js] clickRequestPermission start');
         let driver = Driver.create();
         await driver.delayMs(3000);
-        let button = await driver.findComponent(ON.text("仅使用期间允许"));
+        let button = await driver.findComponent(ON.text("本次使用允许"));
         await button.click();
         await driver.delayMs(3000);
         console.info('[wifi_js] clickRequestPermission end');
