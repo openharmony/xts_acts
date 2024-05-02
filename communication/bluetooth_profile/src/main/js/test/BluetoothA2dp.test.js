@@ -14,6 +14,7 @@
  */
 
 import bluetooth from '@ohos.bluetooth';
+import a2dp from '@ohos.bluetooth.a2dp';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
@@ -286,7 +287,29 @@ describe('btA2dpConnTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_1100
+     * @tc.name testCodecType
+     * @tc.desc Test CodecType api.
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_1100', 0, async function (done) {
+        try {
+            let CODEC_TYPE_L2HCST = a2dp.CodecType.CODEC_TYPE_L2HCST;
+            console.info("[bluetooth_js]CODEC_TYPE_L2HCST: " + CODEC_TYPE_L2HCST);
+            expect(CODEC_TYPE_L2HCST).assertEqual(3);
 
+            let CODEC_TYPE_LDAC = a2dp.CodecType.CODEC_TYPE_LDAC;
+            console.info("[bluetooth_js]CODEC_TYPE_LDAC: " + CODEC_TYPE_LDAC);
+            expect(CODEC_TYPE_LDAC).assertEqual(4);
+        } catch (err) {
+            console.info("bluetooth a2dp CodecType errCode:" + err.code + ",bluetooth a2dp CodecType errMessage:" + err.message);
+            expect().assertFail();
+        }
+        done();
+    })
 })
 
 }
