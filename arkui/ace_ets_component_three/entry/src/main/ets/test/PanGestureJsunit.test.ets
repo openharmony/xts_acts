@@ -63,7 +63,7 @@ export default function PanGestureJsunit() {
         console.info("[testPanGesture01] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testPanGesture01] change component data error: " + err.message);
+        console.log("[testPanGesture01] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       console.info('[testPanGesture01] END');

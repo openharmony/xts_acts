@@ -73,7 +73,7 @@ export default function circleJsunit() {
         console.info("[circleTest_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[circleTest_0200] change component data error: " + err.message);
+        console.log("[circleTest_0200] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('circle');
@@ -101,7 +101,7 @@ export default function circleJsunit() {
         console.info("[circleTest_030] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[circleTest_030] change component data error: " + err.message);
+        console.log("[circleTest_030] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('circle');

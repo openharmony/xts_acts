@@ -104,7 +104,7 @@ export default function buttonJsunit() {
         console.info("[testButton05] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton05] change component data error: " + err.message);
+        console.log("[testButton05] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button');
@@ -130,7 +130,7 @@ export default function buttonJsunit() {
         console.info("[testButton06] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton06] change component data error: " + err.message);
+        console.log("[testButton06] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button2');
@@ -156,7 +156,7 @@ export default function buttonJsunit() {
         console.info("[testButton07] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton07] change component data error: " + err.message);
+        console.log("[testButton07] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button2');
@@ -182,7 +182,7 @@ export default function buttonJsunit() {
         console.info("[testButton08] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton08] change component data error: " + err.message);
+        console.log("[testButton08] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button2');
@@ -208,7 +208,7 @@ export default function buttonJsunit() {
         console.info("[testButton09] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton09] change component data error: " + err.message);
+        console.log("[testButton09] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button2');
@@ -233,7 +233,7 @@ export default function buttonJsunit() {
         console.info("testButton10 start to publish emit");
         events_emitter.emit(indexEventOne, eventData);
       } catch (err) {
-        console.log("testButton10 change component data error: " + err.message);
+        console.log("testButton10 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let indexEvent: events_emitter.InnerEvent = {
@@ -270,7 +270,7 @@ export default function buttonJsunit() {
         console.info("testButton11 start to publish emit");
         events_emitter.emit(indexEventOne, eventData);
       } catch (err) {
-        console.log("testButton11 change component data error: " + err.message);
+        console.log("testButton11 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let indexEvent: events_emitter.InnerEvent = {
@@ -356,7 +356,7 @@ export default function buttonJsunit() {
         console.info("[testButton13] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton13] change component data error: " + err.message);
+        console.log("[testButton13] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button');
@@ -384,7 +384,7 @@ export default function buttonJsunit() {
         console.info("[testButton14] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton14] change component data error: " + err.message);
+        console.log("[testButton14] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button');
@@ -411,7 +411,7 @@ export default function buttonJsunit() {
         console.info("testButton15 start to publish emit");
         events_emitter.emit(indexEventOne, eventData);
       } catch (err) {
-        console.log("testButton15 change component data error: " + err.message);
+        console.log("testButton15 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(500);
       let indexEvent: events_emitter.InnerEvent = {

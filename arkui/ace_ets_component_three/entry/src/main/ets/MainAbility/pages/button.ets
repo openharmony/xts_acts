@@ -89,7 +89,7 @@ struct ButtonExample {
               console.info("button2 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("button2 emit action state err: " + JSON.stringify(err.message))
+              console.info("button2 emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
         Button('ok!')
@@ -112,7 +112,7 @@ struct ButtonExample {
               console.info("button3 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("button3 emit action state err: " + JSON.stringify(err.message))
+              console.info("button3 emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
         Button('button4')
@@ -134,7 +134,7 @@ struct ButtonExample {
               console.info("button4 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("button4 emit action state err: " + JSON.stringify(err.message))
+              console.info("button4 emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
 
@@ -164,7 +164,7 @@ struct ButtonExample {
               console.info("click to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("click action state err: " + JSON.stringify(err.message))
+              console.info("click action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
           .key('buttonClick')

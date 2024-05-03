@@ -77,7 +77,7 @@ struct AnimationExample {
             console.info("button1 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button1 emit action state err: " + JSON.stringify(err.message))
+            console.info("button1 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button1 animateTo START")
           console.info("button1 duration value is : " + this.duration)
@@ -106,7 +106,7 @@ struct AnimationExample {
             console.info("button1 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button1 emit action state err: " + JSON.stringify(err.message))
+            console.info("button1 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button1 animateTo START")
           console.info("button1 duration value is : " + this.duration)
@@ -135,7 +135,7 @@ struct AnimationExample {
             console.info("button1 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button1 emit action state err: " + JSON.stringify(err.message))
+            console.info("button1 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button1 animateTo START")
           console.info("button1 duration value is : " + this.duration)
@@ -163,7 +163,7 @@ struct AnimationExample {
             console.info("button2 start to emit action state")
             events_emitter.emit(backEventOne, backDataOne)
           } catch (err) {
-            console.info("button2 emit action state err: " + JSON.stringify(err.message))
+            console.info("button2 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button2 animateTo START")
           console.info("button2 curve value is : " + this.curve)
@@ -191,7 +191,7 @@ struct AnimationExample {
             console.info("button3 start to emit action state")
             events_emitter.emit(backEventTwo, backDataTwo)
           } catch (err) {
-            console.info("button3 emit action state err: " + JSON.stringify(err.message))
+            console.info("button3 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button3 animateTo START")
           console.info("button3 iteration value is : " + this.iteration)
@@ -219,7 +219,7 @@ struct AnimationExample {
             console.info("button3 start to emit action state")
             events_emitter.emit(backEventTwo, backDataTwo)
           } catch (err) {
-            console.info("button3 emit action state err: " + JSON.stringify(err.message))
+            console.info("button3 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button3 animateTo START")
           console.info("button3 iteration value is : " + this.iteration)
@@ -247,7 +247,7 @@ struct AnimationExample {
             console.info("button4 start to emit action state")
             events_emitter.emit(backEventThree, backDataThree)
           } catch (err) {
-            console.info("button4 emit action state err: " + JSON.stringify(err.message))
+            console.info("button4 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button4 animateTo START")
           console.info("button4 tempo value is : " + this.duration)
@@ -275,7 +275,7 @@ struct AnimationExample {
             console.info("button4 start to emit action state")
             events_emitter.emit(backEventThree, backDataThree)
           } catch (err) {
-            console.info("button4 emit action state err: " + JSON.stringify(err.message))
+            console.info("button4 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button4 animateTo START")
           console.info("button4 tempo value is : " + this.duration)
@@ -303,7 +303,7 @@ struct AnimationExample {
             console.info("button5 start to emit action state")
             events_emitter.emit(backEventFour, backDataFour)
           } catch (err) {
-            console.info("button5 emit action state err: " + JSON.stringify(err.message))
+            console.info("button5 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button5 animateTo START")
           console.info("button5 playmode value is : " + this.playmode)
@@ -331,7 +331,7 @@ struct AnimationExample {
             console.info("button5 start to emit action state")
             events_emitter.emit(backEventFour, backDataFour)
           } catch (err) {
-            console.info("button5 emit action state err: " + JSON.stringify(err.message))
+            console.info("button5 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button5 animateTo START")
           console.info("button5 playmode value is : " + this.playmode)
@@ -359,7 +359,7 @@ struct AnimationExample {
             console.info("button6 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button6 emit action state err: " + JSON.stringify(err.message))
+            console.info("button6 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button6 animateTo START")
           console.info("button6 duration value is : " + this.duration)
@@ -387,7 +387,7 @@ struct AnimationExample {
             console.info("button7 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button7 emit action state err: " + JSON.stringify(err.message))
+            console.info("button7 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button7 animateTo START")
           console.info("button7 duration value is : " + this.duration)
@@ -415,7 +415,7 @@ struct AnimationExample {
             console.info("button8 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button8 emit action state err: " + JSON.stringify(err.message))
+            console.info("button8 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button8 animateTo START")
           console.info("button8 duration value is : " + this.duration)
@@ -443,7 +443,7 @@ struct AnimationExample {
             console.info("button9 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button9 emit action state err: " + JSON.stringify(err.message))
+            console.info("button9 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button9 animateTo START")
           console.info("button9 duration value is : " + this.duration)
@@ -471,7 +471,7 @@ struct AnimationExample {
             console.info("button10 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button10 emit action state err: " + JSON.stringify(err.message))
+            console.info("button10 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button10 animateTo START")
           console.info("button10 duration value is : " + this.duration)
@@ -499,7 +499,7 @@ struct AnimationExample {
             console.info("button11 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button11 emit action state err: " + JSON.stringify(err.message))
+            console.info("button11 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button11 animateTo START")
           console.info("button11 duration value is : " + this.duration)
@@ -527,7 +527,7 @@ struct AnimationExample {
             console.info("button12 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button12 emit action state err: " + JSON.stringify(err.message))
+            console.info("button12 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button12 animateTo START")
           console.info("button12 duration value is : " + this.duration)
@@ -555,7 +555,7 @@ struct AnimationExample {
             console.info("button13 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button13 emit action state err: " + JSON.stringify(err.message))
+            console.info("button13 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button13 animateTo START")
           console.info("button13 duration value is : " + this.duration)
@@ -583,7 +583,7 @@ struct AnimationExample {
             console.info("button14 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button14 emit action state err: " + JSON.stringify(err.message))
+            console.info("button14 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button14 animateTo START")
           console.info("button14 duration value is : " + this.duration)
@@ -611,7 +611,7 @@ struct AnimationExample {
             console.info("button15 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button15 emit action state err: " + JSON.stringify(err.message))
+            console.info("button15 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button15 animateTo START")
           console.info("button15 duration value is : " + this.duration)

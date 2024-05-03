@@ -80,7 +80,7 @@ struct ResponseRegionExample {
         console.info("[ResponseRegion] start to emit action state")
         events_emitter.emit(backEvent, backData)
       } catch (err) {
-        console.info("[ResponseRegion] emit action state err: " + JSON.stringify(err.message))
+        console.info("[ResponseRegion] emit action state err: " + JSON.stringify((err as Error)?.message))
       }
     })
   }

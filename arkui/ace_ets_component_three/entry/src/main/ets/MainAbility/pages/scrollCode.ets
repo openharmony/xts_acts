@@ -147,7 +147,7 @@ struct scrollCode {
             console.info("click to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("click action state err: " + JSON.stringify(err.message))
+            console.info("click action state err: " + JSON.stringify((err as Error)?.message))
           }
           this.scroller.scrollPage({ next: true })
         })

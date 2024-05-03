@@ -81,7 +81,7 @@ export default function spanJsunit() {
         console.info("[testSpan003] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testSpan003] change component data error: " + err.message);
+        console.log("[testSpan003] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('decoration');
@@ -118,7 +118,7 @@ export default function spanJsunit() {
         console.info("[testSpan005] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testSpan005] change component data error: " + err.message);
+        console.log("[testSpan005] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('fontColor');
@@ -144,7 +144,7 @@ export default function spanJsunit() {
         console.info("[testSpan006] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testSpan006] change component data error: " + err.message);
+        console.log("[testSpan006] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('decoration');
@@ -170,7 +170,7 @@ export default function spanJsunit() {
         console.info("[testSpan007] start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("[testSpan007] change component data error: " + err.message);
+        console.log("[testSpan007] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('decoration');

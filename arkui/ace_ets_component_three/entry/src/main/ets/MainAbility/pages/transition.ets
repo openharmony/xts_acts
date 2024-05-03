@@ -49,7 +49,7 @@ struct TransitionExample {
             console.info("transitionTest_0200 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("transitionTest_0200 emit action state err: " + JSON.stringify(err.message))
+            console.info("transitionTest_0200 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           animateTo({ duration: 3000 }, () => {
             this.btn1 = !this.btn1

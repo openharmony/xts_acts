@@ -46,7 +46,7 @@ struct MotionPathExample {
             console.info("button start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button emit action state err: " + JSON.stringify(err.message))
+            console.info("button emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           animateTo({ duration: 4000, curve: Curve.Linear }, () => {
             this.toggle = !this.toggle;
@@ -70,7 +70,7 @@ struct MotionPathExample {
             console.info("button1 position start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button1 position emit action state err: " + JSON.stringify(err.message))
+            console.info("button1 position emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
     }
