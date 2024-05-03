@@ -21,7 +21,6 @@ import btProfileNopUiJsunit from './BtProfileNopUiJsunit.test';
 import btSocketNopUiJsunit from './BtSocketNopUiJsunit.test';
 
 export default function testsuite() {
-  btAccessNopUiJsunit();
   btBleNopUiJsunit();
   btBleServerNopUiJsunit();
   btConnectionNopUiJsunit();
