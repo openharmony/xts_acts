@@ -986,28 +986,34 @@ export default function window_test() {
                 } else {
                     expect(data != null).assertTrue();
                     data.on('systemAvoidAreaChange', systemAvoidAreaChangeCallback);
-                    data.setFullScreen(true, (err) => {
-                        if (err.code != 0) {
-                            console.log(msgStr + ' setLayoutFullScreen callback fail ' + JSON.stringify(err));
-                            expect().assertFail();
-                            done();
-                        } else {
-                            setTimeout((async function () {
-                                expect(height == 0).assertTrue();
-                                data.off('systemAvoidAreaChange');
-                                data.setFullScreen(false, (err) => {
-                                    if (err.code != 0) {
-                                        console.log(msgStr + ' setLayoutFullScreen callback fail ' + JSON.stringify(err));
-                                        expect().assertFail();
-                                        done();
-                                    } else {
-                                        console.log(msgStr + ' off callback success');
+                    data.setLayoutFullScreen(false, (err) => {
+                        console.log(msgStr + ' setLayoutFullScreen(false) err info is ' + JSON.stringify(err));
+                        data.setLayoutFullScreen(true, (err) => {
+                            console.log(msgStr + ' setLayoutFullScreen(true) err info is ' + JSON.stringify(err));
+                            data.setFullScreen(true, (err) => {
+                                if (err.code != 0) {
+                                    console.log(msgStr + ' setFullScreen callback fail ' + JSON.stringify(err));
+                                    expect().assertFail();
+                                    done();
+                                } else {
+                                    setTimeout((async function () {
                                         expect(height == 0).assertTrue();
-                                        done();
-                                    }
-                                })
-                            }), 3000)
-                        }
+                                        data.off('systemAvoidAreaChange');
+                                        data.setFullScreen(false, (err) => {
+                                            if (err.code != 0) {
+                                                console.log(msgStr + ' setLayoutFullScreen callback fail ' + JSON.stringify(err));
+                                                expect().assertFail();
+                                                done();
+                                            } else {
+                                                console.log(msgStr + ' off callback success');
+                                                expect(height == 0).assertTrue();
+                                                done();
+                                            }
+                                        })
+                                    }), 3000)
+                                }
+                            })
+                        })
                     })
                 }
             })
