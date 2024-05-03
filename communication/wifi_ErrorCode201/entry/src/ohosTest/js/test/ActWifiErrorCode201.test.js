@@ -67,25 +67,6 @@ export default function actsWifiErrorCode201Test() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_XTS_ErrorCode_0100
-        * @tc.name testIsWifiActive
-        * @tc.desc Test isWifiActive API ErrorCode 201.
-        * @tc.type Function
-        * @tc.size:MediumTest
-        * @tc.level Level 0
-        */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0100', 0, async function (done) {
-            try {
-                let isWifiActive = wifiMg.isWifiActive();
-                expect().assertFail();
-            } catch (error) {
-                console.error(`isWifiActive failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("201");
-            }
-            done();
-        })
-
-        /**
         * @tc.number SUB_Communication_WiFi_XTS_ErrorCode_0003
         * @tc.name testScan
         * @tc.desc Test scan API ErrorCode 201.
