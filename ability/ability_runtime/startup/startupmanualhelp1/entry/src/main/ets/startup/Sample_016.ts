@@ -29,6 +29,7 @@ function sleep(time: number) {
   })
 }
 
+@Sendable
 export default class Sample_016 extends StartupTask {
 
   async init(context) {

@@ -18,6 +18,7 @@ import hilog from '@ohos.hilog';
 
 const NAME = "Sample_019";
 
+@Sendable
 export default class Sample_019 extends StartupTask {
 
   async init(context) {
