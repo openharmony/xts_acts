@@ -20,3 +20,29 @@ export function getParam(paramTag: huks.HuksTag, paramValue: boolean | number | 
     value: paramValue
   } as huks.HuksParam;
 }
+
+export function changeOrAddParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): void {
+  let properties: Array<huks.HuksParam> = huksOption.properties as Array<huks.HuksParam>;
+  deleteParam(huksOption, paramTag);
+  properties.push(getParam(paramTag, paramValue));
+}
+
+export function deleteParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag): void {
+  let properties: Array<huks.HuksParam> = huksOption.properties as Array<huks.HuksParam>;
+  for (let i = 0; i < properties.length; i++) {
+    if (properties[i].tag == paramTag) {
+      properties.splice(i, 1);
+      break;
+    }
+  }
+}
+
+export function getDataBySize(size: number): string {
+  if (size <= 0) {
+    return "";
+  }
+  let strArr: Array<string> = new Array(size);
+  strArr.fill("A");
+  return strArr.join("");
+}
+

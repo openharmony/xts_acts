@@ -19,3 +19,11 @@ export function stringToUint8Array(str: string) {
   }
   return new Uint8Array(arr);
 }
+
+export function uint8ArrayToString(fileData: Uint8Array) {
+  let str: string = "";
+  for (let i = 0; i < fileData.length; i++) {
+    str += String.fromCharCode(fileData[i]);
+  }
+  return str;
+}
