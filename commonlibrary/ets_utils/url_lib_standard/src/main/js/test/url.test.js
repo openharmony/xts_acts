@@ -5038,15 +5038,15 @@ describe('UrlFunTest', function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-    it('testUrlparseURL0035', 0, function () {
-        const u = Url.URL.parseURL(`https://a.cn?phone=lkasdjfj+dsa+=d+d`)
-        const phone = u.params.get('phone')
-        expect(u.params.toString()).assertEqual('phone=lkasdjfj+dsa+%3Dd+d')
-        expect(phone).assertEqual('lkasdjfj dsa =d d')
-        let url1=new Url.URLParams('MEYCIQDFq18GgOub1%2BDLIafKGY19uor8j0qCYc1Z9HzX2TEcPwIhAPg7VCBUPjOppJNbv' +
-            '9zoo0NqIIeHH4K0gFjm7oLLw8mD%3D=s+%2B')
-        expect(url1.toString()).assertEqual('MEYCIQDFq18GgOub1%2BDLIafKGY19uor8j0qCYc1Z9HzX2TEcPwIhAPg7V' +
-            'CBUPjOppJNbv9zoo0NqIIeHH4K0gFjm7oLLw8mD%3D=s+%2B')
+   it('testUrlparseURL0035', 0, function () {
+    const u = Url.URL.parseURL(`https://a.cn?phone=lkasdjfj+d sa+=d+d`)
+    const phone = u.params.get('phone')
+    expect(u.params.toString()).assertEqual('phone=lkasdjfj+d+sa+%3Dd+d')
+    expect(phone).assertEqual('lkasdjfj d sa =d d')
+    let url1 = new Url.URLParams('MEYCIQDFq18GgOub1%2BDLIafKGY19uor8j0qCYc1Z9HzX2TEcPwIhAPg7VCBUPjOpp' +
+        'JNbv9zoo0NqIIeHH4K0gFjm7oLLw8mD%3D=s+%2B')
+    expect(url1.toString()).assertEqual('MEYCIQDFq18GgOub1%2BDLIafKGY19uor8j0qCYc1Z9HzX2TEcPwIh' +
+        'APg7VCBUPjOppJNbv9zoo0NqIIeHH4K0gFjm7oLLw8mD%3D=s+%2B')
     })
 
    /**
@@ -5126,5 +5126,53 @@ describe('UrlFunTest', function () {
         expect(param[0]).assertEqual(srcKey)
         expect(param[1]).assertEqual(srcValue)
         }
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30600
+   * @tc.name: testUrlparseURL0040
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0040', 0, function () {
+        let urlString = '?url='
+        const params = new Url.URLParams(urlString)
+        expect(params.toString()).assertEqual('url=')
+        for (const param of params.entries()) {
+            expect(param[0]).assertEqual('url')
+            expect(param[1]).assertEqual('')
+        }
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30700
+   * @tc.name: testUrlparseURL0041
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0041', 0, function () {
+        const u2 = Url.URL.parseURL(`https://a.cn?phone=%2B86`)
+        const phone2 = u2.params.get('phone')
+        expect(u2.params.toString()).assertEqual('phone=%2B86')
+        expect(phone2.toString()).assertEqual('+86')
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30800
+   * @tc.name: testUrlparseURL0042
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0042', 0, function () {
+        const u2 = Url.URL.parseURL(`https://a.cn?phone=%2B86+9`)
+        const phone2 = u2.params.get('phone')
+        expect(u2.params.toString()).assertEqual('phone=%2B86+9')
+        expect(phone2.toString()).assertEqual('+86 9')
     })
 })}
