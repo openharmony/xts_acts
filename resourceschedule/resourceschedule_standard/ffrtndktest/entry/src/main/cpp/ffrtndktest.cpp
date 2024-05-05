@@ -34,36 +34,35 @@ inline void OnePlusForTestQos(void* arg)
 }
 template<class T>
 struct function {
-    template<class CT>
-    function(ffrt_function_header_t h, CT&& c) : header(h), closure(std::forward<CT>(c)) {}
     ffrt_function_header_t header;
     T closure;
 };
+
 template<class T>
 void exec_function_wrapper(void* t)
 {
-    auto f = (function<std::decay_t<T>>*)t;
+    auto f = reinterpret_cast<function<std::decay_t<T>>*>(t);
     f->closure();
 }
 
 template<class T>
 void destroy_function_wrapper(void* t)
 {
-    auto f = (function<std::decay_t<T>>*)t;
+    auto f = reinterpret_cast<function<std::decay_t<T>>*>(t);
     f->closure = nullptr;
 }
 template<class T>
-inline ffrt_function_header_t* create_function_wrapper(T&& func)
+inline ffrt_function_header_t* create_function_wrapper(T&& func,
+    ffrt_function_kind_t kind = ffrt_function_kind_general)
 {
     using function_type = function<std::decay_t<T>>;
-    static_assert(sizeof(function_type) <= ffrt_auto_managed_function_storage_size,
-        "size of function must be less than ffrt_auto_managed_function_storage_size");
 
-    auto p = ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_general);
-    auto f = new (p) function_type(
-        {exec_function_wrapper<T>, destroy_function_wrapper<T>},
-        std::forward<T>(func));
-    return (ffrt_function_header_t*)f;
+    auto p = ffrt_alloc_auto_managed_function_storage_base(kind);
+    auto f = new (p)function_type;
+    f->header.exec = exec_function_wrapper<T>;
+    f->header.destroy = destroy_function_wrapper<T>;
+    f->closure = std::forward<T>(func);
+    return reinterpret_cast<ffrt_function_header_t*>(f);
 }
 static napi_value FfrtThisTaskGetId(napi_env env, napi_callback_info info)
 {
