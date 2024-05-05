@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,19 +27,19 @@ struct ClickExample {
           this.text = event.timestamp.toString()
           console.info(this.text)
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "Text": this.text,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 230,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button emit action state err: " + JSON.stringify(err.message))
+            console.info("button emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
       Text(this.text).padding(15)

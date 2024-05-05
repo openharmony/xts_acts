@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +19,7 @@ import events_emitter from '@ohos.events.emitter'
 struct TransitionExample {
   @State btn1: boolean = false
   @State show: string = "show"
-  @State opacity: number = 1
+  @State _opacity: number = 1
   @State onActionCalled: boolean = false
   @State transitionTypeOne: TransitionType = TransitionType.Insert
   @State transitionTypeTwo: TransitionType = TransitionType.Delete
@@ -34,23 +33,23 @@ struct TransitionExample {
         .backgroundColor(0x317aff)
         .margin({ bottom: 50 })
         .key('button')
-        .opacity(this.opacity)
+        .opacity(this._opacity)
         .onClick(() => {
           this.onActionCalled = true;
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "btn1": this.btn1,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 233,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("transitionTest_0200 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("transitionTest_0200 emit action state err: " + JSON.stringify(err.message))
+            console.info("transitionTest_0200 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           animateTo({ duration: 3000 }, () => {
             this.btn1 = !this.btn1
@@ -64,27 +63,27 @@ struct TransitionExample {
       if (this.btn1) {
         Button() {
           Image($rawfile('test.png')).width("80%").height(300).key('image')
-        }.transition({ type: this.transitionTypeOne, scale: { x: 0, y: 1.0, z: 1.0 }, opacity: this.opacity })
+        }.transition({ type: this.transitionTypeOne, scale: { x: 0, y: 1.0, z: 1.0 }, opacity: this._opacity })
         .key('button1')
-        .transition({ type: this.transitionTypeTwo, scale: { x: 1.0, y: 0.0 }, opacity: this.opacity })
+        .transition({ type: this.transitionTypeTwo, scale: { x: 1.0, y: 0.0 }, opacity: this._opacity })
       }
     }.height(400).width("100%").padding({ top: 100 })
   }
 
   onPageShow() {
     console.info('transition page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 234,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("transition state change called:" + JSON.stringify(eventData));
-      if (eventData.data.opacity != null) {
-        this.opacity = parseInt(eventData.data.opacity);
+      if (eventData.data?.opacity != null) {
+        this._opacity = parseInt(eventData.data?.opacity);
       }
     }
   }

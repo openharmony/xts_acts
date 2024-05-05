@@ -131,7 +131,7 @@ export default function tabsJsunit() {
         console.info("testTabs_0800 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testTabs_0800 change component data error: " + err.message);
+        console.log("testTabs_0800 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
@@ -156,7 +156,7 @@ export default function tabsJsunit() {
         console.info("testTabs_0900 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testTabs_0900 change component data error: " + err.message);
+        console.log("testTabs_0900 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
@@ -181,7 +181,7 @@ export default function tabsJsunit() {
         console.info("testTabs_1000 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testTabs_1000 change component data error: " + err.message);
+        console.log("testTabs_1000 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
@@ -206,7 +206,7 @@ export default function tabsJsunit() {
         console.info("testTabs_1100 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testTabs_1100 change component data error: " + err.message);
+        console.log("testTabs_1100 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
@@ -231,7 +231,7 @@ export default function tabsJsunit() {
         console.info("testTabs_1200 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testTabs_1200 change component data error: " + err.message);
+        console.log("testTabs_1200 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
@@ -256,7 +256,7 @@ export default function tabsJsunit() {
         console.info("testTabs_1300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testTabs_1300 change component data error: " + err.message);
+        console.log("testTabs_1300 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
@@ -271,7 +271,7 @@ export default function tabsJsunit() {
       await Utils.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testTabs_1400 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.ACTION).assertEqual(true);
+        expect(indexEvent.data?.ACTION).assertEqual(true);
         done();
       }
       let indexEvent: events_emitter.InnerEvent = {

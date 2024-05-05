@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -74,7 +73,7 @@ export default function commonJsunit() {
 
     it('commonTest_0300', 0, async (done: Function) => {
       console.info('commonTest_0300 START');
-      let a = '30';
+      let a = getFakeNumber('30');
       let b = vp2px(a);
       console.info('commonTest_0300 vp2px result:' + b);
       expect(b == undefined).assertTrue();
@@ -106,7 +105,7 @@ export default function commonJsunit() {
 
     it('commonTest_0600', 0, async (done: Function) => {
       console.info('commonTest_0600 START');
-      let a = '80';
+      let a = getFakeNumber('80');
       let b = px2vp(a);
       console.info('commonTest_0600 px2vp result:' + b);
       expect(b == undefined).assertTrue();
@@ -138,7 +137,7 @@ export default function commonJsunit() {
 
     it('commonTest_0900', 0, async (done: Function) => {
       console.info('commonTest_0900 START');
-      let a = '70';
+      let a = getFakeNumber('70');
       let b = fp2px(a);
       console.info('commonTest_0900 fp2px result:' + b);
       expect(b == undefined).assertTrue();
@@ -170,7 +169,7 @@ export default function commonJsunit() {
 
     it('commonTest_1200', 0, async (done: Function) => {
       console.info('commonTest_1200 START');
-      let a = '60';
+      let a = getFakeNumber('60');
       let b = px2fp(a);
       console.info('commonTest_1200 px2fp result:' + b);
       expect(b == undefined).assertTrue();
@@ -181,7 +180,7 @@ export default function commonJsunit() {
 
     it('commonTest_1500', 0, async (done: Function) => {
       console.info('commonTest_1500 START');
-      let a = '50';
+      let a = getFakeNumber('50');
       let b = lpx2px(a);
       console.info('commonTest_1500 lpx2px result:' + b);
       expect(b == undefined).assertTrue();
@@ -191,7 +190,7 @@ export default function commonJsunit() {
 
     it('commonTest_1800', 0, async (done: Function) => {
       console.info('commonTest_1800 START');
-      let a = '40';
+      let a = getFakeNumber('40');
       let b = px2lpx(a);
       console.info('commonTest_1800 px2lpx result:' + b);
       expect(b == undefined).assertTrue();
@@ -199,4 +198,8 @@ export default function commonJsunit() {
       done();
     });
   })
+}
+
+function getFakeNumber(value: number|string) {
+  return value as number
 }

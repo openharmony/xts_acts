@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,16 +22,16 @@ struct ButtonExample {
   @State fontColorValue: Color = Color.Black;
   @State text: string = '';
   @State onClickValue: boolean = false;
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Button page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.fontSizeValue != null) {
+      if (eventData.data?.fontSizeValue != null) {
         this.fontSizeValue = eventData.data.fontSizeValue;
       }
-      if (eventData.data.fontColorValue != null) {
+      if (eventData.data?.fontColorValue != null) {
         this.fontColorValue = eventData.data.fontColorValue;
       }
-      if (eventData.data.buttonTypeValue != null) {
+      if (eventData.data?.buttonTypeValue != null) {
         this.buttonTypeValue = eventData.data.buttonTypeValue;
       }
     }
@@ -40,22 +39,22 @@ struct ButtonExample {
 
   onPageShow() {
     console.info('Button page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 70,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 74,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 75,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);
-    var stateChangeEventThree = {
+    let stateChangeEventThree: events_emitter.InnerEvent = {
       eventId: 76,
       priority: events_emitter.EventPriority.LOW
     }
@@ -78,19 +77,19 @@ struct ButtonExample {
           .fontColor(this.fontColorValue)
           .onClick(() => {
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "fontColorValue": this.fontColorValue,
                 }
               }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 71,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("button2 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("button2 emit action state err: " + JSON.stringify(err.message))
+              console.info("button2 emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
         Button('ok!')
@@ -101,19 +100,19 @@ struct ButtonExample {
           .width(90)
           .onClick(() => {
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "fontColorValue": this.fontColorValue,
                 }
               }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 72,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("button3 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("button3 emit action state err: " + JSON.stringify(err.message))
+              console.info("button3 emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
         Button('button4')
@@ -123,19 +122,19 @@ struct ButtonExample {
           .fontColor(this.fontColorValue)
           .onClick(() => {
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "fontColorValue": this.fontColorValue,
                 }
               }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 77996,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("button4 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("button4 emit action state err: " + JSON.stringify(err.message))
+              console.info("button4 emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
 
@@ -152,20 +151,20 @@ struct ButtonExample {
             + event.target.area.width + '\n  height：' + event.target.area.height);
             this.onClickValue = true;
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "ACTION": this.onClickValue,
                   "event": JSON.stringify(event)
                 }
               }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 4,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("click to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("click action state err: " + JSON.stringify(err.message))
+              console.info("click action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
           .key('buttonClick')

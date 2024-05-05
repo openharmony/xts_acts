@@ -50,7 +50,7 @@ export default function aboutToDisappearJsunit() {
       await Utils.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("aboutToDisappearTest_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.ACTION).assertEqual(false);
+        expect(indexEvent.data?.ACTION).assertEqual(false);
         done();
       }
       let indexEvent: events_emitter.InnerEvent = {

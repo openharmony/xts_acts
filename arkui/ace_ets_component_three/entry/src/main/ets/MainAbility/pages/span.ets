@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,20 +17,20 @@ import events_emitter from '@ohos.events.emitter'
 @Entry
 @Component
 struct SpanExample {
-  @State decorationValue: object= { type: TextDecorationType.None, color: Color.Red }
+  @State decorationValue: SpanDecoration = { type: TextDecorationType.None, color: Color.Red }
   @State textCaseValue: TextCase= TextCase.Normal
   @State fontSizeValue: number= 40
   @State fontColorValue: Color= 0xCCCCCC
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("span page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.decorationValue != null) {
+      if (eventData.data?.decorationValue != null) {
         this.decorationValue = JSON.parse(eventData.data.decorationValue);
       }
-      if (eventData.data.textCaseValue != null) {
+      if (eventData.data?.textCaseValue != null) {
         this.textCaseValue = eventData.data.textCaseValue;
       }
-      if (eventData.data.fontColorValue != null) {
+      if (eventData.data?.fontColorValue != null) {
         this.fontColorValue = eventData.data.fontColorValue;
       }
     }
@@ -39,43 +38,43 @@ struct SpanExample {
 
   onPageShow() {
     console.info('span page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 199,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 200,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
 
-    var stateChangeEvent3 = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 201,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
 
-    var stateChangeEvent4 = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 1029,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent4, this.stateChangCallBack);
 
-    var stateChangeEvent5 = {
+    let stateChangeEvent5: events_emitter.InnerEvent = {
       eventId: 1030,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent5, this.stateChangCallBack);
 
-    var stateChangeEvent6 = {
+    let stateChangeEvent6: events_emitter.InnerEvent = {
       eventId: 1031,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent6, this.stateChangCallBack);
 
-    var stateChangeEvent7 = {
+    let stateChangeEvent7: events_emitter.InnerEvent = {
       eventId: 1032,
       priority: events_emitter.EventPriority.LOW
     }
@@ -91,4 +90,9 @@ struct SpanExample {
       }
     }.width('100%').height(250).padding({ left: 35, right: 35, top: 35 })
   }
+}
+
+interface SpanDecoration {
+  type: TextDecorationType;
+  color?: ResourceColor;
 }

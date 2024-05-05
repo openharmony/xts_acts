@@ -73,7 +73,7 @@ export default function qrCodeJsunit() {
         console.info("[test_qrCode_002] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_qrCode_002] change component color error: " + err.message);
+        console.log("[test_qrCode_002] change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('QrCodeColor');
@@ -101,7 +101,7 @@ export default function qrCodeJsunit() {
         console.info("[test_qrCode_003] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_qrCode_003] change component color error: " + err.message);
+        console.log("[test_qrCode_003] change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('QrCodeBackgroundColor');
@@ -129,7 +129,7 @@ export default function qrCodeJsunit() {
         console.info("[test_qrCode_004] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_qrCode_004] change component color error: " + err.message);
+        console.log("[test_qrCode_004] change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('QrCodeColor');
@@ -161,7 +161,7 @@ export default function qrCodeJsunit() {
         console.info("[test_qrCode_005] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_qrCode_005] change component color error: " + err.message);
+        console.log("[test_qrCode_005] change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('QrCodeColor');
@@ -186,7 +186,7 @@ export default function qrCodeJsunit() {
         console.info("[test_qrCode_006] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_qrCode_006] change component color error: " + err.message);
+        console.log("[test_qrCode_006] change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('QrCodeColor');
@@ -221,7 +221,7 @@ export default function qrCodeJsunit() {
         console.info("[test_qrCode_007] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_qrCode_007] change component color error: " + err.message);
+        console.log("[test_qrCode_007] change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('QrCodeColor');
