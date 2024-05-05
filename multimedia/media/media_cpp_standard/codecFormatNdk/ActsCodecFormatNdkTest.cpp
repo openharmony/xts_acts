@@ -38,35 +38,47 @@ void ActsCodecFormatNdkTest::TearDownTestCase() {}
 void ActsCodecFormatNdkTest::SetUp() {}
 void ActsCodecFormatNdkTest::TearDown() {}
 
-bool CheckDecDesc(map<string, int> InDesc, OH_AVFormat* OutDesc)
+bool CheckDecDesc(map<string, std::pair<bool, int>> InDesc, OH_AVFormat* OutDesc)
 {
-    int32_t out ;
     for (const auto& t: InDesc) {
-        bool res = OH_AVFormat_GetIntValue(OutDesc, t.first.c_str(), &out);
-        cout << "key: " << t.first << "; out: " << out <<endl;
+        int32_t out_int32 = 0;
+        int64_t out_int64 = 0;
+        bool res = true;
+        if (t.second.first) {
+            res = OH_AVFormat_GetLongValue(OutDesc, t.first.c_str(), &out_int64);
+            out_int32 = out_int64;
+        } else {
+            res = OH_AVFormat_GetIntValue(OutDesc, t.first.c_str(), &out_int32);
+        }
+        cout << "key: " << t.first << "; out: " << out_int32 << endl;
         if (!res) {
-            cout << "OH_AVFormat_GetIntValue Fail. key:" << t.first << endl;
+            cout << "OH_AVFormat_Get Value Fail. key:" << t.first << endl;
             return false;
         }
-        if (out != t.second) {
-            cout << "OH_AVFormat_GetIntValue error. key: " << t.first
-            << "; expect: "<< t.second
-            << ", actual: "<< out << endl;
+        if (out_int32 != t.second.second) {
+            cout << "OH_AVFormat_Get Value error. key: " << t.first
+            << "; expect: " << t.second.second
+            << ", actual: " << out_int32 << endl;
             return false;
         }
-        out = 0;
     }
     return true;
 }
 
-bool SetFormat(struct OH_AVFormat *format, map<string, int> mediaDescription)
+bool SetFormat(struct OH_AVFormat *format, map<string, std::pair<bool, int>> mediaDescription)
 {
     const char *key;
     for (const auto& t: mediaDescription) {
         key = t.first.c_str();
-        if (not OH_AVFormat_SetIntValue(format, key, t.second)) {
-            cout << "OH_AV_FormatPutIntValue Fail. format key: " << t.first
-            << ", value: "<< t.second << endl;
+        bool ret = true;
+        if (t.second.first) {
+            ret = OH_AVFormat_SetLongValue(format, key, static_cast<int64_t>(t.second.second));
+        } else {
+            ret = OH_AVFormat_SetIntValue(format, key, static_cast<int32_t>(t.second.second));
+        }
+        if (!ret) {
+            cout << "OH_AV_Format Put Value Fail. format key: " << t.first
+            << ", value: "<< t.second.second << endl;
             return false;
         }
     }
@@ -85,17 +97,17 @@ HWTEST_F(ActsCodecFormatNdkTest, SUB_MULTIMEDIA_MEDIA_CODEC_FORMAT_0100, TestSiz
     ASSERT_NE(nullptr, codecFormatIn);
     OH_AVFormat *codecFormatOut = OH_AVFormat_Create();
     ASSERT_NE(nullptr, codecFormatOut);
-    map<string, int> CodecParam = {
-        {OH_ED_KEY_TIME_STAMP, 200}, // set timestamp 200ms
-        {OH_ED_KEY_EOS, 1}, // set end of stream
-        {OH_MD_KEY_TRACK_TYPE, 1}, // set track type video
-        {OH_MD_KEY_DURATION, 200}, // set key duration 200ms
-        {OH_MD_KEY_BITRATE, 48000}, // set key bitrate 48000
-        {OH_MD_KEY_MAX_INPUT_SIZE, 2000}, // set key max input size 2000
-        {OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, 0}, // set videoencoder bitrate mode CBR
-        {OH_MD_KEY_PROFILE, 1}, // set encode profile AVC_PROFILE_BASELINE
-        {OH_MD_KEY_I_FRAME_INTERVAL, 1}, // set key i frame 1ms
-        {OH_MD_KEY_ROTATION, 90}, // set key rotation 0 degree
+    map<string, std::pair<bool, int>> CodecParam = {
+        {OH_ED_KEY_TIME_STAMP, {true, 200}}, // set timestamp 200ms
+        {OH_ED_KEY_EOS, {false, 1}}, // set end of stream
+        {OH_MD_KEY_TRACK_TYPE, {false, 1}}, // set track type video
+        {OH_MD_KEY_DURATION, {true, 200}}, // set key duration 200ms
+        {OH_MD_KEY_BITRATE, {true, 48000}}, // set key bitrate 48000
+        {OH_MD_KEY_MAX_INPUT_SIZE, {false, 2000}}, // set key max input size 2000
+        {OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, {false, 0}}, // set videoencoder bitrate mode CBR
+        {OH_MD_KEY_PROFILE, {false, 1}}, // set encode profile AVC_PROFILE_BASELINE
+        {OH_MD_KEY_I_FRAME_INTERVAL, {false, 1}}, // set key i frame 1ms
+        {OH_MD_KEY_ROTATION, {false, 90}}, // set key rotation 0 degree
     };
     ASSERT_EQ(true, SetFormat(codecFormatIn, CodecParam));
     OH_AVFormat_Copy(codecFormatOut, codecFormatIn);
