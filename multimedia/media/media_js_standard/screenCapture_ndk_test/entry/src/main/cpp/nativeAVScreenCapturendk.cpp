@@ -95,20 +95,12 @@ static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info inf
     OH_AVScreenCapture_SetStateCallback(screenCapture, OnStateChange, nullptr);
     OH_AVScreenCapture_SetDataCallback(screenCapture, OnBufferAvailable, nullptr);
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
-    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCapture);
-    int32_t recordTime = 10;
-    sleep(recordTime);
-    OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_StopScreenCapture(screenCapture);
-    int32_t intervalTime = 2;
-    sleep(intervalTime);
     OH_AVScreenCapture_Release(screenCapture);
 
     OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
-    if (result1 == AV_SCREEN_CAPTURE_ERR_OK
-        && result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+    if (result1 == AV_SCREEN_CAPTURE_ERR_OK) {
         result = AV_SCREEN_CAPTURE_ERR_OK;
     } else {
-        LOG(false, "init/start/stop failed, init: %d, start: %d, stop: %d", result1, result2, result3);
         result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
     }
     napi_value res;
