@@ -19,7 +19,7 @@ import { BusinessError } from '@ohos.base'
 import { A, B, currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, setTransferListTest,
          testString, testTime, testNumber, testTaskPool, promiseCase, printArgs, asyncSum,
          printArgsFunc, Sum, delaySum, Add, StrCat, funcStrCat, arraySum, objectSum, Multi, AdditionDelay, WaitforRunner,
-        } from './testFunclist'
+         errorTest, testCancelDelayed, dependend, hashMapTest } from './testFunclist'
 
 export default function TaskPoolTest() {
   describe('ActsAbilityTest', () => {
@@ -34,7 +34,7 @@ export default function TaskPoolTest() {
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass001', 0, async (done: Function) => {
-      let ss: worker.ThreadWorker = new worker.ThreadWorker("entry/ets/workers/worker.ts")
+      let ss: worker.ThreadWorker = new worker.ThreadWorker("../workers/worker.ts")
       let res:number = 0
       let flag:boolean = false
       ss.onexit = () => {
@@ -154,7 +154,7 @@ export default function TaskPoolTest() {
       done();
     })
 
-    it('TaskPoolTestClass016 ', 0, async (done: Function) => {
+    it('TaskPoolTestClass016', 0, async (done: Function) => {
       let task: taskpool.Task = new taskpool.Task(StrCat, "abc", "def");
       let result: string = await taskpool.execute(task) as string;
       expect(result).assertEqual("abcdef");
@@ -2370,6 +2370,133 @@ export default function TaskPoolTest() {
         name = taskInfo.name;
       }
       expect(name != "").assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0115
+     * @tc.name      : TaskPoolTestClass115
+     * @tc.desc      : get name from taskInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass115', 0, async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(errorTest)
+      taskpool.execute(task).then((res)=>{
+        console.info("errTest res " + res)
+      }).catch((e:BusinessError)=>{
+        expect((e as BusinessError).toString()).assertContain("this is an error");
+      })
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0116
+     * @tc.name      : TaskPoolTestClass116
+     * @tc.desc      : get name from taskInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass116', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let task1: taskpool.Task = new taskpool.Task(testCancelDelayed);
+      let task2: taskpool.Task = new taskpool.Task(testCancelDelayed);
+      try {
+        taskpool.cancel(task1);
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
+      }
+
+      taskpool.execute(task2).then(()=>{
+      }).catch((e:BusinessError)=>{
+        isTerminate1 = true;
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: taskpool:: task has been canceled");
+      })
+      taskpool.cancel(task2);
+      while (!isTerminate1) {
+        await promiseCase()
+      }
+
+      try {
+        taskpool.cancel(task2);
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0117
+     * @tc.name      : TaskPoolTestClass117
+     * @tc.desc      : get name from taskInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass117', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let task: taskpool.Task = new taskpool.Task(printArgs)
+      taskpool.executeDelayed(1000, task).then(()=>{
+      }).catch((e:BusinessError)=>{
+        isTerminate1 = true;
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: taskpool:: task has been canceled");
+      })
+      taskpool.cancel(task);
+      while (!isTerminate1) {
+        await promiseCase()
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0118
+     * @tc.name      : TaskPoolTestClass118
+     * @tc.desc      : Register a callback of onExecutionFailed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass118', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let task: taskpool.Task = new taskpool.Task(hashMapTest, 1);
+      task.onExecutionFailed((e: Error)=>{
+        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+      })
+
+      taskpool.execute(task).then((res)=>{
+      }).catch((e:BusinessError)=>{
+        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+      })
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0119
+     * @tc.name      : TaskPoolTestClass119
+     * @tc.desc      : Register a callback of onEnqueued after execute
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass119', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let task: taskpool.Task = new taskpool.Task(printArgs, 1);
+
+      taskpool.execute(task).then(()=> {
+        isTerminate1 = true;
+      });
+
+      let onEnqueuedStr = "";
+      try {
+        task.onEnqueued(()=>{
+          onEnqueuedStr = "onEnqueued";
+        })
+      } catch(e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The executed task does not support the registration of listeners.");
+      }
+
       done();
     })
   })

@@ -16,6 +16,7 @@
 import taskpool from '@ohos.taskpool';
 import { BusinessError } from '@ohos.base'
 import { strCat } from './exportFunclist'
+import HashMap from '@ohos.util.HashMap';
 
 export class A {
   a: number;
@@ -213,4 +214,35 @@ export function AdditionDelay(delay: number): void {
 export function WaitforRunner(finalString: string): string {
   "use concurrent"
   return finalString;
+}
+
+export function errorTest() {
+  "use concurrent"
+  throw new Error("this is an error");
+}
+
+export function testCancelDelayed(a:string) {
+  "use concurrent"
+  let t = Date.now()
+  while ((Date.now() - t) < 1000) {
+    continue;
+  }
+  return 'a';
+}
+
+export function dependend(params:Number) {
+  "use concurrent"
+  if (params >= 100) {
+    let t = Date.now();
+    while ((Date.now() - t) < 1000) {
+      continue;
+    }
+  }
+}
+
+export function hashMapTest(args:number) {
+  "use concurrent"
+  let hashMap1: HashMap<string, number> = new HashMap();
+  hashMap1.set('a', 123);
+  return hashMap1;
 }
