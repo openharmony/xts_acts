@@ -10,20 +10,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//test/xts/tools/build/suite.gni")
 
-group("networkmanager") {
+group("ndk") {
   testonly = true
-  deps = [
-    "connection:connection",
-    "fetch:fetch",
-    "http:http",
-    "mdns:mdns",
-    "ndk:ndk",
-    "network:network",
-    "noNet:noNet",
-    "noPermission:noPermission",
-    "socket:socket",
-    "statistics:statistics",
-    "websocket:websocket",
-  ]
+  if (is_standard_system) {
+    deps = [ "networkndk:ActsNetWorkMgrStackNDKTest" ]
+  }
 }
