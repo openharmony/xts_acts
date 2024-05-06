@@ -519,7 +519,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Output_Shape_040
                                                                 &maxInputDims, &shapeLength));
         std::vector<int32_t> minInputDimsT;
         for (size_t j = 0; j < shapeLength; ++j) {
-            minInputDimsT.emplace_back(static_cast<int32_t>(minInputDimsT[j]));
+            minInputDimsT.emplace_back(static_cast<int32_t>(minInputDims[j]));
         }
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(inputTensorDescs[i], minInputDimsT.data(), shapeLength));
     }
@@ -797,7 +797,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
                                                                 &maxInputDims, &shapeLength));
         std::vector<int32_t> minInputDimsT;
         for (size_t j = 0; j < shapeLength; ++j) {
-            minInputDimsT.emplace_back(static_cast<int32_t>(minInputDimsT[j]));
+            minInputDimsT.emplace_back(static_cast<int32_t>(minInputDims[j]));
         }
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(inputTensorDescs[i], minInputDimsT.data(), shapeLength));
     }
@@ -845,7 +845,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
                                                                 &maxInputDims, &shapeLength));
         std::vector<int32_t> maxInputDimsT;
         for (size_t j = 0; j < shapeLength; ++j) {
-            maxInputDimsT.emplace_back(static_cast<int32_t>(maxInputDimsT[j]));
+            maxInputDimsT.emplace_back(static_cast<int32_t>(maxInputDims[j]));
         }
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(inputTensorDescs[i], maxInputDimsT.data(), shapeLength));
     }
@@ -893,7 +893,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
                                                                 &maxInputDims, &shapeLength));
         std::vector<int32_t> minInputDimsT;
         for (size_t j = 0; j < shapeLength; ++j) {
-            minInputDimsT.emplace_back(static_cast<int32_t>(minInputDimsT[j] - 1));
+            minInputDimsT.emplace_back(static_cast<int32_t>(minInputDims[j] - 1));
         }
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(inputTensorDescs[i], minInputDimsT.data(), shapeLength));
     }
@@ -941,7 +941,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
                                                                 &maxInputDims, &shapeLength));
         std::vector<int32_t> maxInputDimsT;
         for (size_t j = 0; j < shapeLength; ++j) {
-            maxInputDimsT.emplace_back(static_cast<int32_t>(maxInputDimsT[j] + 1));
+            maxInputDimsT.emplace_back(static_cast<int32_t>(maxInputDims[j] + 1));
         }
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(inputTensorDescs[i], maxInputDimsT.data(), shapeLength));
     }
@@ -989,7 +989,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
                                                                 &maxInputDims, &shapeLength));
         std::vector<int32_t> maxInputDimsT;
         for (size_t j = 0; j < shapeLength; ++j) {
-            maxInputDimsT.emplace_back(static_cast<int32_t>(maxInputDimsT[j]));
+            maxInputDimsT.emplace_back(static_cast<int32_t>(maxInputDims[j]));
         }
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(inputTensorDescs[i], maxInputDimsT.data(), shapeLength));
     }
