@@ -454,8 +454,7 @@ struct Index {
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResultAgain = JSON.parse(result)
                   console.log(`The checkVIsible() again return value is: ${result}`);
-                  if (JSON.parse(result)[3] == 0 && this.checkEleResult[3] >
-                    (JSON.parse(result)[1] / 4)) {
+                  if (JSON.parse(result)[3] == 0) {
                     this.pageResult = true;
                     console.log('emitpageUp result is :' + this.pageResult);
                   } else {
