@@ -406,12 +406,17 @@ struct Index {
             case "emitpageDown": {
               try {
                 this.controller.loadUrl($rawfile('indexCopyTwo.html'))
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("Tablet")) {
+                  this.controller.loadUrl($rawfile('indexCopyTwoTablet.html'))
+                  await Utils.sleep(3000)
+                }
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResult = JSON.parse(result)
                   console.log(`The checkVIsible() return value is: ${result}`);
                 })
                 this.controller.pageDown(false);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResultAgain = JSON.parse(result)
                   console.log(`The checkVIsible() again return value is: ${result}`);
@@ -445,7 +450,7 @@ struct Index {
                   console.log(`The checkVIsible() return value is: ${result}`);
                 })
                 this.controller.pageUp(false);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResultAgain = JSON.parse(result)
                   console.log(`The checkVIsible() again return value is: ${result}`);
@@ -479,7 +484,7 @@ struct Index {
                   console.log(`The checkVIsible() return value is: ${result}`);
                 })
                 this.controller.pageDown(true);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResultAgain = JSON.parse(result)
                   console.log(`The checkVIsible() again return value is: ${result}`);
@@ -513,7 +518,7 @@ struct Index {
                   console.log(`The checkVIsible() return value is: ${result}`);
                 })
                 this.controller.pageUp(true);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResultAgain = JSON.parse(result)
                   console.log(`The checkVIsible() again return value is: ${result}`);
@@ -631,7 +636,7 @@ struct Index {
               try {
                 this.controller.loadUrl($rawfile('indexCopy.html'))
                 this.controller.setNetworkAvailable(true);
-                await Utils.sleep(3000)
+                await Utils.sleep(7000)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
