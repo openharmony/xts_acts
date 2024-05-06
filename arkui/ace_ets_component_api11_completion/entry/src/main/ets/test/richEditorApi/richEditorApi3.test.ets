@@ -80,7 +80,7 @@ export default function richEditorApi3() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('richEditorApi3_text1');
-      expect(JSON.parse(text1).$attrs.content).assertEqual('{"textAlign":0,"leadingMargin":{"size":[16,0]}}');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('{"textAlign":0,"leadingMargin":{"size":["16.00vp","0.00vp"]}}');
       console.info('[testRichEditor_0100] END');
       done();
     });
