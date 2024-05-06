@@ -37,6 +37,9 @@ export default class MainAbility extends Ability {
 
     onForeground() {
         console.info('MainAbilityMonitor onForeground')
+        setTimeout(()=>{
+            this.context.terminateSelf()
+        }, 500)
     }
 
     onBackground() {
