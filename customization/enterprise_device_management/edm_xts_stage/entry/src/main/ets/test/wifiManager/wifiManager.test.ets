@@ -314,6 +314,7 @@ function testSetWifiProfileSync() {
       }
       let config: wifiManager.WifiProfile = {
         "ssid": "name",
+        "bssid": "00:1A:2B:3C:4D:5E",
         "isHiddenSsid": false,
         "creatorUid": 110,
         "disableReason": 1,
