@@ -22,6 +22,7 @@ ohos_js_hap_suite("ActsMindsporeJSTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsMindsporeJSTest"
+  part_name = "mindspore"
 }
 ohos_app_scope("mindspore_app_profile") {
   app_profile = "AppScope/app.json"
