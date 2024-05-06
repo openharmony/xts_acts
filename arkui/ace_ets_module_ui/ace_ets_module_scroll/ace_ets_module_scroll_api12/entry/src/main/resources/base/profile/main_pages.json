@@ -8,6 +8,9 @@
         "MainAbility/pages/List/listVisible",
         "MainAbility/pages/Scroll/scrollOffset",
         "MainAbility/pages/Swiper/swiperCustom",
-        "MainAbility/pages/Tabs/tabIcon"
+        "MainAbility/pages/Tabs/tabIcon",
+        "MainAbility/pages/ListFadeOut/ListFadeOut",
+        "MainAbility/pages/ListFadeOut/ListFadeOutEx",
+        "MainAbility/pages/ListFadeOut/ListFadeOutEx1"
     ]
 }
