@@ -32,9 +32,8 @@ public:
     void SetUp() override;
     void TearDown() override;
 
-private:
-   bool CheckDecDesc(map<string, std::pair<bool, int>> InDesc, OH_AVFormat* OutDesc);
-   bool SetFormat(struct OH_AVFormat *format, map<string, std::pair<bool, int>> mediaDescription);
+    bool CheckDecDesc(map<string, std::pair<bool, int>> InDesc, OH_AVFormat* OutDesc);
+    bool SetFormat(struct OH_AVFormat *format, map<string, std::pair<bool, int>> mediaDescription);
 };
 
 void ActsCodecFormatNdkTest::SetUpTestCase() {}
