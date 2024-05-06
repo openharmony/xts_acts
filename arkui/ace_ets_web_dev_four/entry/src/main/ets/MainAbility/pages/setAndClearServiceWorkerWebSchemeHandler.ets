@@ -68,10 +68,10 @@ struct setAndClearServiceWorkerWebSchemeHandler {
           switch (this.str) {
             case "setAndClearServiceWorkerWebSchemeHandler0100": {
               try {
+                this.webviewcontroller.setWebSchemeHandler('https', this.webSchemeHander);
                 web_webview.WebviewController.setServiceWorkerWebSchemeHandler('https', this.webSchemeHander);
                 this.webviewcontroller.loadUrl('https://www.example.com/service_worker.html')
                 await Utils.sleep(2000);
-                Utils.emitEvent(this.getRequestUrlResult, 8852)
                 Utils.emitEvent(this.getRequestMethodResult, 8854)
                 Utils.emitEvent(this.getReferrerResult, 8856)
                 Utils.emitEvent(this.isMainFrameResult, 8858)
@@ -83,6 +83,8 @@ struct setAndClearServiceWorkerWebSchemeHandler {
             }
             case "setAndClearServiceWorkerWebSchemeHandler0200": {
               try {
+                this.webviewcontroller.clearWebSchemeHandler();
+                web_webview.WebviewController.clearServiceWorkerWebSchemeHandler();
                 this.getRequestUrlResult = "lock";
                 this.getRequestMethodResult = "lock";
                 this.getReferrerResult = "lock";

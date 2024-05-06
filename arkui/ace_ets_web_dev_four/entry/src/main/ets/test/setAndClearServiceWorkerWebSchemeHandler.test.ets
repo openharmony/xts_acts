@@ -56,10 +56,9 @@ export default function setAndClearServiceWorkerWebSchemeHandler() {
     it('setAndClearServiceWorkerWebSchemeHandler0100', 0, async (done: Function) => {
       Utils.emitEvent("setAndClearServiceWorkerWebSchemeHandler0100", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("setAndClearServiceWorkerWebSchemeHandler0100", "https://browsercfg-drcn.cloud.dbankcloud.cn/security/v1/oh/securityurls", 8850, done);
-      Utils.registerEvent("setAndClearServiceWorkerWebSchemeHandler0100", "POST", 8854, done);
+      Utils.registerEvent("setAndClearServiceWorkerWebSchemeHandler0100", "GET", 8854, done);
       Utils.registerEvent("setAndClearServiceWorkerWebSchemeHandler0100", "", 8856, done);
-      Utils.registerEvent("setAndClearServiceWorkerWebSchemeHandler0100", false, 8858, done);
+      Utils.registerEvent("setAndClearServiceWorkerWebSchemeHandler0100", true, 8858, done);
       Utils.registerEvent("setAndClearServiceWorkerWebSchemeHandler0100", false, 8860, done);
       await Utils.sleep(2000);
       let driver = Driver.create();
