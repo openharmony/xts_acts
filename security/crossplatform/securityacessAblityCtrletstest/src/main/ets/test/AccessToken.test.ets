@@ -58,6 +58,7 @@ export default function AccessTokenTest() {
           done();
         } else {
           tokenID = 11;
+          done();
         }
       } catch (err) {
         console.log('beforeAll error' + JSON.stringify(err));
