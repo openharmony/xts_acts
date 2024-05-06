@@ -150,11 +150,11 @@
       },
       {
         "name": "MainAbility13_desc",
-        "value": "description"
+        "value": "description:onWindowStageWillDestory"
       },
       {
         "name": "MainAbility13_label",
-        "value": "label"
+        "value": "label:onWindowStageWillDestory"
       }
   ]
 }

@@ -12,6 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { Hypium } from '@ohos/hypium'
+import testsuite from '../../test/List.test'
 
 @Entry
 @Component
@@ -19,7 +23,7 @@ struct Index {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Text('Hello World')
+      Text('Hello World 13')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
       Button() {

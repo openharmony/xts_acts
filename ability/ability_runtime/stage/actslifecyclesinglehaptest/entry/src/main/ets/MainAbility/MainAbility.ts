@@ -13,11 +13,21 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { Hypium } from '@ohos/hypium'
+import testsuite from '../test/List.test'
 
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility onCreate")
         globalThis.abilityWant = want;
+        console.info("start run testcase!!!!")
+        var abilityDelegator: any
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        var abilityDelegatorArguments: any
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        console.info('start run testcase!!!')
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
     }
 
     onDestroy() {
