@@ -19,7 +19,7 @@ import common from '@ohos.app.ability.common';
 import EnvironmentCallback from '@ohos.app.ability.EnvironmentCallback';
 import { BusinessError } from '@ohos.base';
 
-let TAG:string = '';
+let TAG: string = '';
 let envCallback: EnvironmentCallback = {
   onConfigurationUpdated(config) {
     console.info(TAG, `envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`)
