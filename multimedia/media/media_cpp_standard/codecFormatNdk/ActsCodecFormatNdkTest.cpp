@@ -31,6 +31,10 @@ public:
     static void TearDownTestCase();
     void SetUp() override;
     void TearDown() override;
+
+private:
+   bool CheckDecDesc(map<string, std::pair<bool, int>> InDesc, OH_AVFormat* OutDesc);
+   bool SetFormat(struct OH_AVFormat *format, map<string, std::pair<bool, int>> mediaDescription);
 };
 
 void ActsCodecFormatNdkTest::SetUpTestCase() {}
@@ -38,7 +42,7 @@ void ActsCodecFormatNdkTest::TearDownTestCase() {}
 void ActsCodecFormatNdkTest::SetUp() {}
 void ActsCodecFormatNdkTest::TearDown() {}
 
-bool CheckDecDesc(map<string, std::pair<bool, int>> InDesc, OH_AVFormat* OutDesc)
+bool ActsCodecFormatNdkTest::CheckDecDesc(map<string, std::pair<bool, int>> InDesc, OH_AVFormat* OutDesc)
 {
     for (const auto& t: InDesc) {
         int32_t out_int32 = 0;
@@ -65,10 +69,10 @@ bool CheckDecDesc(map<string, std::pair<bool, int>> InDesc, OH_AVFormat* OutDesc
     return true;
 }
 
-bool SetFormat(struct OH_AVFormat *format, map<string, std::pair<bool, int>> mediaDescription)
+bool ActsCodecFormatNdkTest::SetFormat(struct OH_AVFormat *format, map<string, std::pair<bool, int>> mediaDesc)
 {
     const char *key;
-    for (const auto& t: mediaDescription) {
+    for (const auto& t: mediaDesc) {
         key = t.first.c_str();
         bool ret = true;
         if (t.second.first) {
