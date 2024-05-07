@@ -1321,7 +1321,7 @@ export default function OhCapturerTest() {
      */
     it('testOHAudioCapturerGetChannelCount0100', 0, async (done: Function) => {
       console.log(`testOHAudioCapturerGetChannelCount0100 test start `);
-      let re: number | null = testStreamBuilder.OHAudioCapturerGetChannelCount(1);
+      let re: number | null = testStreamBuilder.OHAudioCapturerGetChannelCount();
       expect(re).assertEqual(channelCount); // 正确结果：2
       console.log(`testOHAudioCapturerGetChannelCount0100 test end `);
       done();
@@ -1567,6 +1567,7 @@ export default function OhCapturerTest() {
       done();
     });
   });
+
   describe('OhAudioCapturerStateTest', () => {
     beforeAll(async (done: Function) => {
       await creatPcmFile();
