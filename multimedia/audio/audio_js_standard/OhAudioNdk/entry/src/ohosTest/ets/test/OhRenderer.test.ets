@@ -329,227 +329,227 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETCURRENTSTATE_0100
-     * @tc.name   ：testOHAudioRendererGetCurrentState0100
+     * @tc.name   ：testOHAudioRendererGetCurrentState001
      * @tc.desc   ：Query the current output audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetCurrentState0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetCurrentState0100 test start `);
+    it('testOHAudioRendererGetCurrentState001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetCurrentState001 test start `);
       let state: number | null = testStreamBuilder.OHAudioRendererGetCurrentState();
       expect(state).assertEqual(AUDIOSTREAM_STATE_PREPARED);
-      console.log(`testOHAudioRendererGetCurrentState0100 test end `);
+      console.log(`testOHAudioRendererGetCurrentState001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETSAMPLEFORMAT_0100
-     * @tc.name   ：testOHAudioRendererGetSampleFormat0100
+     * @tc.name   ：testOHAudioRendererGetSampleFormat001
      * @tc.desc   ：Query the current output audio stream sampling format.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetSampleFormat0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetSampleFormat0100 test start `);
+    it('testOHAudioRendererGetSampleFormat001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetSampleFormat001 test start `);
       let sampleFormat: number | null = testStreamBuilder.OHAudioRendererGetSampleFormat();
       expect(sampleFormat).assertEqual(0);
-      console.log(`testOHAudioRendererGetSampleFormat0100 test end `);
+      console.log(`testOHAudioRendererGetSampleFormat001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETSAMPLINGRATE_0100
-     * @tc.name   ：testOHAudioRendererGetSamplingRate0100
+     * @tc.name   ：testOHAudioRendererGetSamplingRate001
      * @tc.desc   ：Query the current output audio stream sampling rate.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetSamplingRate0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetSamplingRate0100 test start `);
+    it('testOHAudioRendererGetSamplingRate001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetSamplingRate001 test start `);
       let samplingRate: number | null = testStreamBuilder.OHAudioRendererGetSamplingRate();
       expect(samplingRate).assertEqual(number48000);
-      console.log(`testOHAudioRendererGetSamplingRate0100 test end `);
+      console.log(`testOHAudioRendererGetSamplingRate001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETSTREAMID_0100
-     * @tc.name   ：testOHAudioRendererGetStreamId0100
+     * @tc.name   ：testOHAudioRendererGetStreamId001
      * @tc.desc   ：Query the current output audio stream ID.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetStreamId0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetStreamId0100 test start `);
+    it('testOHAudioRendererGetStreamId001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetStreamId001 test start `);
       let re: number = testStreamBuilder.OHAudioRendererGetStreamId();
       expect(re).assertLarger(0);
-      console.log(`testOHAudioRendererGetStreamId0100 test end `);
+      console.log(`testOHAudioRendererGetStreamId001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETSPEED_0100
-     * @tc.name   ：testOHAudioRendererGetSpeed0100
+     * @tc.name   ：testOHAudioRendererGetSpeed001
      * @tc.desc   ：Get playback speed.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetSpeed0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetSpeed0100 test start `);
+    it('testOHAudioRendererGetSpeed001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetSpeed001 test start `);
       let speed: number | null = testStreamBuilder.OHAudioRendererGetSpeed();
       expect(speed).assertEqual(1);
-      console.log(`testOHAudioRendererGetSpeed0100 test end `);
+      console.log(`testOHAudioRendererGetSpeed001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETCHANNELCOUNT_0100
-     * @tc.name   ：testOHAudioRendererGetChannelCount0100
+     * @tc.name   ：testOHAudioRendererGetChannelCount001
      * @tc.desc   ：Query the current number of output audio channels.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetChannelCount0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetChannelCount0100 test start `);
+    it('testOHAudioRendererGetChannelCount001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetChannelCount001 test start `);
       let channelCount: number | null = testStreamBuilder.OHAudioRendererGetChannelCount();
       expect(channelCount).assertEqual(numberTwo);
-      console.log(`testOHAudioRendererGetChannelCount0100 test end `);
+      console.log(`testOHAudioRendererGetChannelCount001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETENCODINGTYPE_0100
-     * @tc.name   ：testOHAudioRendererGetEncodingType0100
+     * @tc.name   ：testOHAudioRendererGetEncodingType001
      * @tc.desc   ：Query the current output audio stream encoding type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetEncodingType0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetEncodingType0100 test start `);
+    it('testOHAudioRendererGetEncodingType001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetEncodingType001 test start `);
       let encodingType: number | null = testStreamBuilder.OHAudioRendererGetEncodingType();
       expect(encodingType).assertEqual(AUDIOSTREAM_ENCODING_TYPE_RAW);
-      console.log(`testOHAudioRendererGetEncodingType0100 test end `);
+      console.log(`testOHAudioRendererGetEncodingType001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETFRAMESIZEINCALLBACK_0100
-     * @tc.name   ：testOHAudioRendererGetFrameSizeInCallback0100
+     * @tc.name   ：testOHAudioRendererGetFrameSizeInCallback001
      * @tc.desc   ：Query the frame size in the callback, which is a fixed length that fills the flow every time the callback is performed.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetFrameSizeInCallback0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetFrameSizeInCallback0100 test start `);
+    it('testOHAudioRendererGetFrameSizeInCallback001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetFrameSizeInCallback001 test start `);
       let re: number | null = testStreamBuilder.OHAudioRendererGetFrameSizeInCallback();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioRendererGetFrameSizeInCallback0100 test end `);
+      console.log(`testOHAudioRendererGetFrameSizeInCallback001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETFRAMESWRITTEN_0100
-     * @tc.name   ：testOHAudioRendererGetFramesWritten0100
+     * @tc.name   ：testOHAudioRendererGetFramesWritten001
      * @tc.desc   ：Query the number of frames written since self created streaming
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetFramesWritten0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetFramesWritten0100 test start `);
+    it('testOHAudioRendererGetFramesWritten001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetFramesWritten001 test start `);
       let re: number | null = testStreamBuilder.OHAudioRendererGetFramesWritten();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioRendererGetFramesWritten0100 test end `);
+      console.log(`testOHAudioRendererGetFramesWritten001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETLATENCYMODE_0100
-     * @tc.name   ：testOHAudioRendererGetLatencyMode0100
+     * @tc.name   ：testOHAudioRendererGetLatencyMode001
      * @tc.desc   ：Query the current output audio stream delay mode.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetLatencyMode0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetLatencyMode0100 test start `);
+    it('testOHAudioRendererGetLatencyMode001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetLatencyMode001 test start `);
       let mode: number | null = testStreamBuilder.OHAudioRendererGetLatencyMode();
       expect(mode).assertEqual(AUDIOSTREAM_LATENCY_MODE_NORMAL);
-      console.log(`testOHAudioRendererGetLatencyMode0100 test end `);
+      console.log(`testOHAudioRendererGetLatencyMode001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETRENDERERINFO_0100
-     * @tc.name   ：testOHAudioRendererGetRendererInfo0100
+     * @tc.name   ：testOHAudioRendererGetRendererInfo001
      * @tc.desc   ：Query the current output audio stream workspace type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetRendererInfo0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetRendererInfo0100 test start `);
+    it('testOHAudioRendererGetRendererInfo001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetRendererInfo001 test start `);
       let usage: number | null = testStreamBuilder.OHAudioRendererGetRendererInfo();
       expect(usage).assertEqual(AUDIOSTREAM_USAGE_MUSIC );
-      console.log(`testOHAudioRendererGetRendererInfo0100 test end `);
+      console.log(`testOHAudioRendererGetRendererInfo001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERSTART_0100
-     * @tc.name   ：testOHAudioRendererStart0100
+     * @tc.name   ：testOHAudioRendererStart001
      * @tc.desc   ：Start outputting audio data.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererStart0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererStart0100 test start `);
+    it('testOHAudioRendererStart001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererStart001 test start `);
       let re: number | null = testStreamBuilder.OHAudioRendererStart();
       let state: number | null = testStreamBuilder.OHAudioRendererGetCurrentState();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       expect(state).assertEqual(AUDIOSTREAM_STATE_RUNNING);
-      console.log(`testOHAudioRendererStart0100 test end `);
+      console.log(`testOHAudioRendererStart001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETTIMESTAMP_0100
-     * @tc.name   ：testOHAudioRendererGetTimestamp0100
+     * @tc.name   ：testOHAudioRendererGetTimestamp001
      * @tc.desc   ：Stop outputting audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetTimestamp0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetTimestamp0100 test start `);
+    it('testOHAudioRendererGetTimestamp001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetTimestamp001 test start `);
       let state: number = testStreamBuilder.OHAudioRendererGetCurrentState();
       if (state > AUDIOSTREAM_STATE_PREPARED) {
         let re: number | null = testStreamBuilder.OHAudioRendererGetTimestamp();
         expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       }
-      console.log(`testOHAudioRendererGetTimestamp0100 test end `);
+      console.log(`testOHAudioRendererGetTimestamp001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERPAUSE_0100
-     * @tc.name   ：testOHAudioRendererPause0100
+     * @tc.name   ：testOHAudioRendererPause001
      * @tc.desc   ：Release the output audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererPause0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererPause0100 test start `);
+    it('testOHAudioRendererPause001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererPause001 test start `);
       let state: number | null = testStreamBuilder.OHAudioRendererGetCurrentState();
       if (state === AUDIOSTREAM_STATE_RUNNING) {
         let re: number | null = testStreamBuilder.OHAudioRendererPause();
@@ -557,20 +557,20 @@ export default function OhRendererTest() {
         expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
         expect(state).assertEqual(AUDIOSTREAM_STATE_PAUSED);
       }
-      console.log(`testOHAudioRendererPause0100 test end `);
+      console.log(`testOHAudioRendererPause001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERSTOP_0100
-     * @tc.name   ：testOHAudioRendererStop0100
+     * @tc.name   ：testOHAudioRendererStop001
      * @tc.desc   ：Stop outputting audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererStop0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererStop0100 test start `);
+    it('testOHAudioRendererStop001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererStop001 test start `);
       let state: number | null = testStreamBuilder.OHAudioRendererGetCurrentState();
       if (state === AUDIOSTREAM_STATE_STOPPED || state === AUDIOSTREAM_STATE_RUNNING) {
         let re: number | null = testStreamBuilder.OHAudioRendererStop();
@@ -578,95 +578,95 @@ export default function OhRendererTest() {
         expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
         expect(state).assertEqual(AUDIOSTREAM_STATE_STOPPED);
       }
-      console.log(`testOHAudioRendererStop0100 test end `);
+      console.log(`testOHAudioRendererStop001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERFLUSH_0100
-     * @tc.name   ：testOHAudioRendererFlush0100
+     * @tc.name   ：testOHAudioRendererFlush001
      * @tc.desc   ：Discard audio data that has already been written.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererFlush0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererFlush0100 test start `);
+    it('testOHAudioRendererFlush001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererFlush001 test start `);
       let re: number | null = testStreamBuilder.OHAudioRendererFlush();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioRendererFlush0100 test end `);
+      console.log(`testOHAudioRendererFlush001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERSETSPEED_0100
-     * @tc.name   ：testOHAudioRendererSetSpeed0100
+     * @tc.name   ：testOHAudioRendererSetSpeed001
      * @tc.desc   ：Set playback speed.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererSetSpeed0100', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererSetSpeed0100 test start `);
+    it('testOHAudioRendererSetSpeed001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererSetSpeed001 test start `);
       let re: number | null = testStreamBuilder.OHAudioRendererSetSpeed(numberFloute);
       let speed: number | null = testStreamBuilder.OHAudioRendererGetSpeed();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       expect(speed).assertEqual(numberTwo);
-      console.log(`testOHAudioRendererSetSpeed0100 test end `);
+      console.log(`testOHAudioRendererSetSpeed001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETCURRENTSTATE_0200
-     * @tc.name   ：testOHAudioRendererGetCurrentState0200
+     * @tc.name   ：testOHAudioRendererGetCurrentState001
      * @tc.desc   ：Query the current output audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetCurrentState0200', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetCurrentState0200 test start `);
+    it('testOHAudioRendererGetCurrentState001', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetCurrentState001 test start `);
       testStreamBuilder.OHAudioRendererStart();
       let state: number | null = testStreamBuilder.OHAudioRendererGetCurrentState();
       expect(state).assertEqual(AUDIOSTREAM_STATE_RUNNING);
-      console.log(`testOHAudioRendererGetCurrentState0200 test end `);
+      console.log(`testOHAudioRendererGetCurrentState001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETCURRENTSTATE_0300
-     * @tc.name   ：testOHAudioRendererGetCurrentState0300
+     * @tc.name   ：testOHAudioRendererGetCurrentState003
      * @tc.desc   ：Query the current output audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetCurrentState0300', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetCurrentState0300 test start `);
+    it('testOHAudioRendererGetCurrentState003', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetCurrentState003 test start `);
       testStreamBuilder.OHAudioRendererPause();
       let state: number | null = testStreamBuilder.OHAudioRendererGetCurrentState();
       expect(state).assertEqual(AUDIOSTREAM_STATE_PAUSED);
-      console.log(`testOHAudioRendererGetCurrentState0300 test end `);
+      console.log(`testOHAudioRendererGetCurrentState003 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETCURRENTSTATE_0400
-     * @tc.name   ：testOHAudioRendererGetCurrentState0400
+     * @tc.name   ：testOHAudioRendererGetCurrentState004
      * @tc.desc   ：Query the current output audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioRendererGetCurrentState0400', 0, async (done: Function) => {
-      console.log(`testOHAudioRendererGetCurrentState0400 test start `);
+    it('testOHAudioRendererGetCurrentState004', 0, async (done: Function) => {
+      console.log(`testOHAudioRendererGetCurrentState004 test start `);
       let state: number = testStreamBuilder.OHAudioRendererGetCurrentState();
       if (state > AUDIOSTREAM_STATE_PREPARED) {
         testStreamBuilder.OHAudioRendererStop();
         state = testStreamBuilder.OHAudioRendererGetCurrentState();
         expect(state).assertEqual(AUDIOSTREAM_STATE_STOPPED);
       }
-      console.log(`testOHAudioRendererGetCurrentState0400 test end `);
+      console.log(`testOHAudioRendererGetCurrentState004 test end `);
       done();
     });
   });
@@ -712,14 +712,14 @@ export default function OhRendererTest() {
     /**
      * start -> pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0100
-     * @tc.name   ：testCreatRendererAudioPlayer0100
+     * @tc.name   ：testCreatRendererAudioPlayer001
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer0100', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer0100 test start `);
+    it('testCreatRendererAudioPlayer001', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer001 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -740,21 +740,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer0100 test end `);
+      console.log(`testCreatRendererAudioPlayer001 test end `);
       done();
     });
 
     /**
      * start -> pause -> stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0200
-     * @tc.name   ：testCreatRendererAudioPlayer0200
+     * @tc.name   ：testCreatRendererAudioPlayer002
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer0200', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer0200 test start `);
+    it('testCreatRendererAudioPlayer002', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer002 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -780,21 +780,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer0200 test end `);
+      console.log(`testCreatRendererAudioPlayer002 test end `);
       done();
     });
 
     /**
      * start -> pause -> stop -> start -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0300
-     * @tc.name   ：testCreatRendererAudioPlayer0300
+     * @tc.name   ：testCreatRendererAudioPlayer003
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer0300', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer0300 test start `);
+    it('testCreatRendererAudioPlayer003', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer003 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -825,21 +825,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer0300 test end `);
+      console.log(`testCreatRendererAudioPlayer003 test end `);
       done();
     });
 
     /**
      * start -> pause -> stop -> start -> pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0400
-     * @tc.name   ：testCreatRendererAudioPlayer0400
+     * @tc.name   ：testCreatRendererAudioPlayer004
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer0400', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer0400 test start `);
+    it('testCreatRendererAudioPlayer004', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer004 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -875,21 +875,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer0400 test end `);
+      console.log(`testCreatRendererAudioPlayer004 test end `);
       done();
     });
 
     /**
      * start -> pause -> stop -> start -> stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0500
-     * @tc.name   ：testCreatRendererAudioPlayer0500
+     * @tc.name   ：testCreatRendererAudioPlayer005
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer0500', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer0500 test start `);
+    it('testCreatRendererAudioPlayer005', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer005 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -925,21 +925,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer0500 test end `);
+      console.log(`testCreatRendererAudioPlayer005 test end `);
       done();
     });
 
     /**
      * start -> pause -> start -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0600
-     * @tc.name   ：testCreatRendererAudioPlayer0600
+     * @tc.name   ：testCreatRendererAudioPlayer006
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer0600', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer0600 test start `);
+    it('testCreatRendererAudioPlayer006', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer006 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -965,21 +965,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer0600 test end `);
+      console.log(`testCreatRendererAudioPlayer006 test end `);
       done();
     });
 
     /**
      * start -> pause -> start -> pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0700
-     * @tc.name   ：testCreatRendererAudioPlayer0700
+     * @tc.name   ：testCreatRendererAudioPlayer007
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer0700', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer0700 test start `);
+    it('testCreatRendererAudioPlayer007', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer007 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1010,21 +1010,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer0700 test end `);
+      console.log(`testCreatRendererAudioPlayer007 test end `);
       done();
     });
 
     /**
      * start -> pause -> start -> stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0800
-     * @tc.name   ：testCreatRendererAudioPlayer0800
+     * @tc.name   ：testCreatRendererAudioPlayer008
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer0800', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer0800 test start `);
+    it('testCreatRendererAudioPlayer008', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer008 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1055,21 +1055,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer0800 test end `);
+      console.log(`testCreatRendererAudioPlayer008 test end `);
       done();
     });
 
     /**
      * start -> stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0900
-     * @tc.name   ：testCreatRendererAudioPlayer0900
+     * @tc.name   ：testCreatRendererAudioPlayer009
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer0900', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer0900 test start `);
+    it('testCreatRendererAudioPlayer009', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer009 test start `);
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -1090,21 +1090,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer0900 test end `);
+      console.log(`testCreatRendererAudioPlayer009 test end `);
       done();
     });
 
     /**
      * start -> stop -> start -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1000
-     * @tc.name   ：testCreatRendererAudioPlayer1000
+     * @tc.name   ：testCreatRendererAudioPlayer010
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer1000', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer1000 test start `);
+    it('testCreatRendererAudioPlayer010', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer010 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1130,21 +1130,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer1000 test end `);
+      console.log(`testCreatRendererAudioPlayer010 test end `);
       done();
     });
 
     /**
      * start -> stop -> start  -> pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1100
-     * @tc.name   ：testCreatRendererAudioPlayer1100
+     * @tc.name   ：testCreatRendererAudioPlayer011
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer1100', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer1100 test start `);
+    it('testCreatRendererAudioPlayer011', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer011 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1175,21 +1175,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer1100 test end `);
+      console.log(`testCreatRendererAudioPlayer011 test end `);
       done();
     });
 
     /**
      * start -> stop -> start  -> stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1200
-     * @tc.name   ：testCreatRendererAudioPlayer1200
+     * @tc.name   ：testCreatRendererAudioPlayer012
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer1200', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer1200 test start `);
+    it('testCreatRendererAudioPlayer012', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer012 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1220,21 +1220,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer1200 test end `);
+      console.log(`testCreatRendererAudioPlayer012 test end `);
       done();
     });
 
     /**
      * start -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1300
-     * @tc.name   ：testCreatRendererAudioPlayer1300
+     * @tc.name   ：testCreatRendererAudioPlayer013
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer1300', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer1300 test start `);
+    it('testCreatRendererAudioPlayer013', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer013 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1250,21 +1250,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer1300 test end `);
+      console.log(`testCreatRendererAudioPlayer013 test end `);
       done();
     });
 
     /**
      * release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1400
-     * @tc.name   ：testCreatRendererAudioPlayer1400
+     * @tc.name   ：testCreatRendererAudioPlayer014
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer1400', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer1400 test start `);
+    it('testCreatRendererAudioPlayer014', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer014 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1275,21 +1275,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer1400 test end `);
+      console.log(`testCreatRendererAudioPlayer014 test end `);
       done();
     });
 
     /**
      * start -> stop -> pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1500
-     * @tc.name   ：testCreatRendererAudioPlayer1500
+     * @tc.name   ：testCreatRendererAudioPlayer015
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer1500', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer1500 test start `);
+    it('testCreatRendererAudioPlayer015', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer015 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1315,21 +1315,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer1500 test end `);
+      console.log(`testCreatRendererAudioPlayer015 test end `);
       done();
     });
 
     /**
      * pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1600
-     * @tc.name   ：testCreatRendererAudioPlayer1600
+     * @tc.name   ：testCreatRendererAudioPlayer016
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer1600', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer1600 test start `);
+    it('testCreatRendererAudioPlayer016', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer016 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1345,21 +1345,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer1600 test end `);
+      console.log(`testCreatRendererAudioPlayer016 test end `);
       done();
     });
 
     /**
      * stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1700
-     * @tc.name   ：testCreatRendererAudioPlayer1700
+     * @tc.name   ：testCreatRendererAudioPlayer017
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer1700', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer1700 test start `);
+    it('testCreatRendererAudioPlayer017', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer017 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1375,21 +1375,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer1700 test end `);
+      console.log(`testCreatRendererAudioPlayer017 test end `);
       done();
     });
 
     /**
      * start -> start
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1800
-     * @tc.name   ：testCreatRendererAudioPlayer1800
+     * @tc.name   ：testCreatRendererAudioPlayer018
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer1800', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer1800 test start `);
+    it('testCreatRendererAudioPlayer018', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer018 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1406,20 +1406,20 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer1800 test end `);
+      console.log(`testCreatRendererAudioPlayer018 test end `);
       done();
     });
     /**
      * pause -> pause
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1900
-     * @tc.name   ：testCreatRendererAudioPlayer1900
+     * @tc.name   ：testCreatRendererAudioPlayer019
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer1900', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer1900 test start `);
+    it('testCreatRendererAudioPlayer019', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer019 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1438,21 +1438,21 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer1900 test end `);
+      console.log(`testCreatRendererAudioPlayer019 test end `);
       done();
     });
 
     /**
      * stop -> stop
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_2000
-     * @tc.name   ：testCreatRendererAudioPlayer2000
+     * @tc.name   ：testCreatRendererAudioPlayer020
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreatRendererAudioPlayer2000', 0, async (done: Function) => {
-      console.log(`testCreatRendererAudioPlayer2000 test start `);
+    it('testCreatRendererAudioPlayer020', 0, async (done: Function) => {
+      console.log(`testCreatRendererAudioPlayer020 test start `);
 
       let re: number = await testStreamBuilder.CreatRendererAudioPlayer();
       Utils.sleep(sleep1000);
@@ -1470,267 +1470,267 @@ export default function OhRendererTest() {
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
 
-      console.log(`testCreatRendererAudioPlayer2000 test end `);
+      console.log(`testCreatRendererAudioPlayer020 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0100
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo001
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0100 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo001 test start `);
       let re: number = await testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_UNKNOWN);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0200
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0200
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo002
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo0200', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0200 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo002', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo002 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_VOICE_COMMUNICATION);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0200 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo002 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0300
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0300
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo003
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo0300', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0300 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo003', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo003 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_VOICE_ASSISTANT);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0300 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo003 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0400
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0400
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo004
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo0400', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0400 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo004', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo004 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_ALARM);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0400 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo004 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0500
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0500
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo005
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo0500', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0500 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo005', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo005 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_MOVIE);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0500 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo005 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0600
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0600
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo006
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo0600', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0600 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo006', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo006 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_GAME);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0600 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo006 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0700
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0700
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo007
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo0700', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0700 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo007', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo007 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_AUDIOBOOK);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0700 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo007 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0800
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0800
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo008
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo0800', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0800 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo008', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo008 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_NAVIGATION);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0800 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo008 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0900
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0900
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo009
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo0900', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0900 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo009', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo009 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_VOICE_MESSAGE);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo0900 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo009 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_1000
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo1000
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo010
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo1000', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo1000 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo010', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo010 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_RINGTONE);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo1000 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo010 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_1100
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo1100
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo011
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo1100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo1100 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo011', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo011 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_NOTIFICATION);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo1100 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo011 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_1200
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo1200
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo012
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo1200', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo1200 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo012', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo012 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_ACE);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo1200 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo012 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_1300
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo1300
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo013
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererInfo1300', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererInfo1300 test start `);
+    it('testOHAudioStreamBuilderSetRendererInfo013', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererInfo013 test start `);
       let re: number | null = testStreamBuilder.TestRendererAudioStreamUsage(AUDIOSTREAM_USAGE_MUSIC);
       expect(re).assertEqual(CODE_SUCCESS);
       re = testStreamBuilder.OHAudioRendererStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       re = testStreamBuilder.OHAudioRendererRelease();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererInfo1300 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererInfo013 test end `);
       done();
     });
   });

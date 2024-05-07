@@ -282,913 +282,913 @@ export default function OhCapturerTest() {
     });
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERCREATE_0100
-     * @tc.name   ：testOHAudioStreamBuilderCreate0100
+     * @tc.name   ：testOHAudioStreamBuilderCreate001
      * @tc.desc   ：Create an audio stream constructor of input or output type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderCreate0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderCreate0100 test start `);
+    it('testOHAudioStreamBuilderCreate001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderCreate001 test start `);
       let re: number | null = await testStreamBuilder.OHAudioStreamBuilderCreate(AUDIOSTREAM_TYPE_CAPTURER);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderCreate0100 test end `);
+      console.log(`testOHAudioStreamBuilderCreate001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERCREATE_0200
-     * @tc.name   ：testOHAudioStreamBuilderCreate0200
+     * @tc.name   ：testOHAudioStreamBuilderCreate002
      * @tc.desc   ：Create an audio stream constructor of input or output type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderCreate0200', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderCreate0200 test start `);
+    it('testOHAudioStreamBuilderCreate002', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderCreate002 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderCreate(AUDIOSTREAM_TYPE_RENDERER);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderCreate0200 test end `);
+      console.log(`testOHAudioStreamBuilderCreate002 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERGENERATERENDERER_0100
-     * @tc.name   ：testOHAudioStreamBuilderGenerateRenderer0100
+     * @tc.name   ：testOHAudioStreamBuilderGenerateRenderer001
      * @tc.desc   ：Create an output audio stream instance.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderGenerateRenderer0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderGenerateRenderer0100 test start `);
+    it('testOHAudioStreamBuilderGenerateRenderer001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderGenerateRenderer001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderGenerateRenderer();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderGenerateRenderer0100 test end `);
+      console.log(`testOHAudioStreamBuilderGenerateRenderer001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERGENERATECAPTURER_0100
-     * @tc.name   ：testOHAudioStreamBuilderGenerateCapturer0100
+     * @tc.name   ：testOHAudioStreamBuilderGenerateCapturer001
      * @tc.desc   ：Create an input audio stream instance.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderGenerateCapturer0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderGenerateCapturer0100 test start `);
+    it('testOHAudioStreamBuilderGenerateCapturer001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderGenerateCapturer001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderGenerateCapturer();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderGenerateCapturer0100 test end `);
+      console.log(`testOHAudioStreamBuilderGenerateCapturer001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERCALLBACK_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetCapturerCallback0100
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerCallback001
      * @tc.desc   ：Set the callback for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetCapturerCallback0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetCapturerCallback0100 test start `);
+    it('testOHAudioStreamBuilderSetCapturerCallback001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetCapturerCallback001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetCapturerCallback();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetCapturerCallback0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetCapturerCallback001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0100
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount001
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetChannelCount0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetChannelCount0100 test start `);
+    it('testOHAudioStreamBuilderSetChannelCount001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetChannelCount001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetChannelCount(AUDIOSTREAM_TYPE_RENDERER, numberTwo);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetChannelCount0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetChannelCount001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0200
-     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0200
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount002
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetChannelCount0200', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetChannelCount0200 test start `);
+    it('testOHAudioStreamBuilderSetChannelCount002', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetChannelCount002 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetChannelCount(AUDIOSTREAM_TYPE_CAPTURER, numberTwo);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetChannelCount0200 test end `);
+      console.log(`testOHAudioStreamBuilderSetChannelCount002 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0300
-     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0300
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount003
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetChannelCount0300', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetChannelCount0300 test start `);
+    it('testOHAudioStreamBuilderSetChannelCount003', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetChannelCount003 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetChannelCount(AUDIOSTREAM_TYPE_RENDERER, numberFour);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetChannelCount0300 test end `);
+      console.log(`testOHAudioStreamBuilderSetChannelCount003 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0400
-     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0400
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount004
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetChannelCount0400', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetChannelCount0400 test start `);
+    it('testOHAudioStreamBuilderSetChannelCount004', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetChannelCount004 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetChannelCount(AUDIOSTREAM_TYPE_RENDERER, numberEight);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetChannelCount0400 test end `);
+      console.log(`testOHAudioStreamBuilderSetChannelCount004 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0500
-     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0500
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount005
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetChannelCount0500', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetChannelCount0500 test start `);
+    it('testOHAudioStreamBuilderSetChannelCount005', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetChannelCount005 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetChannelCount(AUDIOSTREAM_TYPE_RENDERER, numberNine);
       expect(re).assertEqual(1);
-      console.log(`testOHAudioStreamBuilderSetChannelCount0500 test end `);
+      console.log(`testOHAudioStreamBuilderSetChannelCount005 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0600
-     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0600
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount006
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetChannelCount0600', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetChannelCount0600 test start `);
+    it('testOHAudioStreamBuilderSetChannelCount006', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetChannelCount006 test start `);
       testStreamBuilder.CreateAudioCapturerRecorder(indexOne);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetChannelCount(AUDIOSTREAM_TYPE_CAPTURER, numberEight);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetChannelCount0600 test end `);
+      console.log(`testOHAudioStreamBuilderSetChannelCount006 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0700
-     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0700
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount007
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetChannelCount0700', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetChannelCount0700 test start `);
+    it('testOHAudioStreamBuilderSetChannelCount007', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetChannelCount007 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetChannelCount(AUDIOSTREAM_TYPE_CAPTURER, numberNine);
       expect(re).assertEqual(1);
-      console.log(`testOHAudioStreamBuilderSetChannelCount0700 test end `);
+      console.log(`testOHAudioStreamBuilderSetChannelCount007 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0100
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType001
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetEncodingType0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetEncodingType0100 test start `);
+    it('testOHAudioStreamBuilderSetEncodingType001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetEncodingType001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetEncodingType(AUDIOSTREAM_TYPE_RENDERER, AUDIOSTREAM_ENCODING_TYPE_OTHER);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetEncodingType0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetEncodingType001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0200
-     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0200
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType002
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetEncodingType0200', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetEncodingType0200 test start `);
+    it('testOHAudioStreamBuilderSetEncodingType002', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetEncodingType002 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetEncodingType(AUDIOSTREAM_TYPE_RENDERER, AUDIOSTREAM_ENCODING_INVALID);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetEncodingType0200 test end `);
+      console.log(`testOHAudioStreamBuilderSetEncodingType002 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0300
-     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0300
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType003
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetEncodingType0300', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetEncodingType0300 test start `);
+    it('testOHAudioStreamBuilderSetEncodingType003', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetEncodingType003 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetEncodingType(AUDIOSTREAM_TYPE_RENDERER, AUDIOSTREAM_ENCODING_TYPE_RAW);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetEncodingType0300 test end `);
+      console.log(`testOHAudioStreamBuilderSetEncodingType003 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0400
-     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0400
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType004
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetEncodingType0400', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetEncodingType0400 test start `);
+    it('testOHAudioStreamBuilderSetEncodingType004', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetEncodingType004 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetEncodingType(AUDIOSTREAM_TYPE_CAPTURER, AUDIOSTREAM_ENCODING_TYPE_RAW);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetEncodingType0400 test end `);
+      console.log(`testOHAudioStreamBuilderSetEncodingType004 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0500
-     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0500
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType005
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetEncodingType0500', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetEncodingType0500 test start `);
+    it('testOHAudioStreamBuilderSetEncodingType005', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetEncodingType005 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetEncodingType(AUDIOSTREAM_TYPE_CAPTURER, AUDIOSTREAM_ENCODING_INVALID);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetEncodingType0500 test end `);
+      console.log(`testOHAudioStreamBuilderSetEncodingType005 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0100
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback001
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetFrameSizeInCallback0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0100 test start `);
+    it('testOHAudioStreamBuilderSetFrameSizeInCallback001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetFrameSizeInCallback(AUDIOSTREAM_TYPE_CAPTURER, 0);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0200
-     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0200
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback002
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetFrameSizeInCallback0200', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0200 test start `);
+    it('testOHAudioStreamBuilderSetFrameSizeInCallback002', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback002 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetFrameSizeInCallback(AUDIOSTREAM_TYPE_RENDERER, numberTwo);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0200 test end `);
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback002 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0300
-     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0300
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback003
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetFrameSizeInCallback0300', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0300 test start `);
+    it('testOHAudioStreamBuilderSetFrameSizeInCallback003', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback003 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetFrameSizeInCallback(AUDIOSTREAM_TYPE_RENDERER, numberThree);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0300 test end `);
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback003 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0400
-     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0400
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback004
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetFrameSizeInCallback0400', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0400 test start `);
+    it('testOHAudioStreamBuilderSetFrameSizeInCallback004', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback004 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetFrameSizeInCallback(AUDIOSTREAM_TYPE_RENDERER, numberFour);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0400 test end `);
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback004 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0500
-     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0500
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback005
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetFrameSizeInCallback0500', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0500 test start `);
+    it('testOHAudioStreamBuilderSetFrameSizeInCallback005', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback005 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetFrameSizeInCallback(AUDIOSTREAM_TYPE_CAPTURER, 0);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0500 test end `);
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback005 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0600
-     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0600
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback006
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetFrameSizeInCallback0600', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0600 test start `);
+    it('testOHAudioStreamBuilderSetFrameSizeInCallback006', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback006 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetFrameSizeInCallback(AUDIOSTREAM_TYPE_CAPTURER, 1);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0600 test end `);
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback006 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0700
-     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0700
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback007
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetFrameSizeInCallback0700', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0700 test start `);
+    it('testOHAudioStreamBuilderSetFrameSizeInCallback007', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback007 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetFrameSizeInCallback(AUDIOSTREAM_TYPE_CAPTURER, numberTwo);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0700 test end `);
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback007 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0800
-     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0800
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback008
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetFrameSizeInCallback0800', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0800 test start `);
+    it('testOHAudioStreamBuilderSetFrameSizeInCallback008', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback008 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetFrameSizeInCallback(AUDIOSTREAM_TYPE_CAPTURER, numberThree);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0800 test end `);
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback008 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0900
-     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0900
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback009
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetFrameSizeInCallback0900', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0900 test start `);
+    it('testOHAudioStreamBuilderSetFrameSizeInCallback009', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback009 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetFrameSizeInCallback(AUDIOSTREAM_TYPE_CAPTURER, numberFour);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback0900 test end `);
+      console.log(`testOHAudioStreamBuilderSetFrameSizeInCallback009 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0100
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode001
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetLatencyMode0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0100 test start `);
+    it('testOHAudioStreamBuilderSetLatencyMode001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetLatencyMode001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetLatencyMode(AUDIOSTREAM_TYPE_RENDERER, AUDIOSTREAM_LATENCY_MODE_NORMAL);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetLatencyMode001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0200
-     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0200
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode002
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetLatencyMode0200', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0200 test start `);
+    it('testOHAudioStreamBuilderSetLatencyMode002', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetLatencyMode002 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetLatencyMode(AUDIOSTREAM_TYPE_RENDERER, AUDIOSTREAM_LATENCY_MODE_FAST);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0200 test end `);
+      console.log(`testOHAudioStreamBuilderSetLatencyMode002 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0300
-     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0300
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode003
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetLatencyMode0300', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0300 test start `);
+    it('testOHAudioStreamBuilderSetLatencyMode003', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetLatencyMode003 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetLatencyMode(AUDIOSTREAM_TYPE_RENDERER, numberTwo);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0300 test end `);
+      console.log(`testOHAudioStreamBuilderSetLatencyMode003 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0400
-     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0400
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode004
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetLatencyMode0400', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0400 test start `);
+    it('testOHAudioStreamBuilderSetLatencyMode004', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetLatencyMode004 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetLatencyMode(AUDIOSTREAM_TYPE_CAPTURER, AUDIOSTREAM_LATENCY_MODE_FAST);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0400 test end `);
+      console.log(`testOHAudioStreamBuilderSetLatencyMode004 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0500
-     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0500
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode005
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetLatencyMode0500', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0500 test start `);
+    it('testOHAudioStreamBuilderSetLatencyMode005', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetLatencyMode005 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetLatencyMode(AUDIOSTREAM_TYPE_CAPTURER, numberTwo);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0500 test end `);
+      console.log(`testOHAudioStreamBuilderSetLatencyMode005 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERCALLBACK_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererCallback0100
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererCallback001
      * @tc.desc   ：Set the callback for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererCallback0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererCallback0100 test start `);
+    it('testOHAudioStreamBuilderSetRendererCallback001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererCallback001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetRendererCallback();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererCallback0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererCallback001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0100
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat001
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSampleFormat0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0100 test start `);
+    it('testOHAudioStreamBuilderSetSampleFormat001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSampleFormat001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSampleFormat(AUDIOSTREAM_TYPE_RENDERER, AUDIOSTREAM_SAMPLE_U8);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetSampleFormat001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0200
-     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0200
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat002
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSampleFormat0200', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0200 test start `);
+    it('testOHAudioStreamBuilderSetSampleFormat002', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSampleFormat002 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSampleFormat(AUDIOSTREAM_TYPE_RENDERER, AUDIOSTREAM_SAMPLE_S16LE);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0200 test end `);
+      console.log(`testOHAudioStreamBuilderSetSampleFormat002 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0300
-     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0300
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat003
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSampleFormat0300', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0300 test start `);
+    it('testOHAudioStreamBuilderSetSampleFormat003', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSampleFormat003 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSampleFormat(AUDIOSTREAM_TYPE_RENDERER, AUDIOSTREAM_SAMPLE_S24LE);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0300 test end `);
+      console.log(`testOHAudioStreamBuilderSetSampleFormat003 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0400
-     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0400
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat004
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSampleFormat0400', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0400 test start `);
+    it('testOHAudioStreamBuilderSetSampleFormat004', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSampleFormat004 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSampleFormat(AUDIOSTREAM_TYPE_RENDERER, AUDIOSTREAM_SAMPLE_S32LE);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0400 test end `);
+      console.log(`testOHAudioStreamBuilderSetSampleFormat004 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0500
-     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0500
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat005
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSampleFormat0500', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0500 test start `);
+    it('testOHAudioStreamBuilderSetSampleFormat005', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSampleFormat005 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSampleFormat(AUDIOSTREAM_TYPE_RENDERER, numberFour);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0500 test end `);
+      console.log(`testOHAudioStreamBuilderSetSampleFormat005 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0600
-     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0600
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat006
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSampleFormat0600', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0600 test start `);
+    it('testOHAudioStreamBuilderSetSampleFormat006', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSampleFormat006 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSampleFormat(AUDIOSTREAM_TYPE_CAPTURER, AUDIOSTREAM_SAMPLE_U8);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0600 test end `);
+      console.log(`testOHAudioStreamBuilderSetSampleFormat006 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0700
-     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0700
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat007
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSampleFormat0700', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0700 test start `);
+    it('testOHAudioStreamBuilderSetSampleFormat007', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSampleFormat007 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSampleFormat(AUDIOSTREAM_TYPE_CAPTURER, AUDIOSTREAM_SAMPLE_S24LE);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0700 test end `);
+      console.log(`testOHAudioStreamBuilderSetSampleFormat007 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0800
-     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0800
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat008
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSampleFormat0800', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0800 test start `);
+    it('testOHAudioStreamBuilderSetSampleFormat008', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSampleFormat008 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSampleFormat(AUDIOSTREAM_TYPE_CAPTURER, AUDIOSTREAM_SAMPLE_S32LE);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0800 test end `);
+      console.log(`testOHAudioStreamBuilderSetSampleFormat008 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0900
-     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0900
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat009
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSampleFormat0900', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0900 test start `);
+    it('testOHAudioStreamBuilderSetSampleFormat009', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSampleFormat009 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSampleFormat(AUDIOSTREAM_TYPE_CAPTURER, numberNinety);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSampleFormat0900 test end `);
+      console.log(`testOHAudioStreamBuilderSetSampleFormat009 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0100
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate001
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSamplingRate0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0100 test start `);
+    it('testOHAudioStreamBuilderSetSamplingRate001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSamplingRate001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSamplingRate(AUDIOSTREAM_TYPE_CAPTURER , number44100);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetSamplingRate001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0200
-     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0200
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate002
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSamplingRate0200', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0200 test start `);
+    it('testOHAudioStreamBuilderSetSamplingRate002', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSamplingRate002 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSamplingRate(AUDIOSTREAM_TYPE_CAPTURER , -1);
       expect(re).assertEqual(1);
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0200 test end `);
+      console.log(`testOHAudioStreamBuilderSetSamplingRate002 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0300
-     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0300
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate003
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSamplingRate0300', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0300 test start `);
+    it('testOHAudioStreamBuilderSetSamplingRate003', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSamplingRate003 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSamplingRate(AUDIOSTREAM_TYPE_RENDERER, number44100);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0300 test end `);
+      console.log(`testOHAudioStreamBuilderSetSamplingRate003 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0400
-     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0400
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate004
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSamplingRate0400', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0400 test start `);
+    it('testOHAudioStreamBuilderSetSamplingRate004', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSamplingRate004 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSamplingRate(AUDIOSTREAM_TYPE_RENDERER, number48000);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0400 test end `);
+      console.log(`testOHAudioStreamBuilderSetSamplingRate004 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0500
-     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0500
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate005
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSamplingRate0500', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0500 test start `);
+    it('testOHAudioStreamBuilderSetSamplingRate005', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSamplingRate005 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSamplingRate(AUDIOSTREAM_TYPE_RENDERER, -1);
       expect(re).assertEqual(1);
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0500 test end `);
+      console.log(`testOHAudioStreamBuilderSetSamplingRate005 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDEREROUTPUTDEVICECHANGECALLBACK_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetRendererOutputDeviceChangeCallback0100
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererOutputDeviceChangeCallback001
      * @tc.desc   ：Set input stream device callback function.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetRendererOutputDeviceChangeCallback0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetRendererOutputDeviceChangeCallback0100 test start `);
+    it('testOHAudioStreamBuilderSetRendererOutputDeviceChangeCallback001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetRendererOutputDeviceChangeCallback001 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetRendererOutputDeviceChangeCallback();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetRendererOutputDeviceChangeCallback0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetRendererOutputDeviceChangeCallback001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0200
-     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0200
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo002
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetCapturerInfo0200', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0200 test start `);
+    it('testOHAudioStreamBuilderSetCapturerInfo002', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo002 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetCapturerInfo(AUDIOSTREAM_SOURCE_TYPE_INVALID);
       expect(re).assertEqual(AUDIOSTREAM_ERROR_INVALID_PARAM);
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0200 test end `);
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo002 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0300
-     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0300
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo003
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetCapturerInfo0300', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0300 test start `);
+    it('testOHAudioStreamBuilderSetCapturerInfo003', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo003 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetCapturerInfo(AUDIOSTREAM_SOURCE_TYPE_MIC);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS); // 正确结果：0
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0300 test end `);
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo003 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0400
-     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0400
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo004
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetCapturerInfo0400', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0400 test start `);
+    it('testOHAudioStreamBuilderSetCapturerInfo004', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo004 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetCapturerInfo(AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS); // 正确结果：0
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0400 test end `);
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo004 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0500
-     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0500
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo005
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetCapturerInfo0500', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0500 test start `);
+    it('testOHAudioStreamBuilderSetCapturerInfo005', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo005 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetCapturerInfo(AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0500 test end `);
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo005 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0600
-     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0600
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo006
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetCapturerInfo0600', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0600 test start `);
+    it('testOHAudioStreamBuilderSetCapturerInfo006', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo006 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetCapturerInfo(AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0600 test end `);
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo006 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0100
-     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0100
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo001
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetCapturerInfo0100', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0100 test start `);
+    it('testOHAudioStreamBuilderSetCapturerInfo001', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo001 test start `);
       let re: number = testStreamBuilder.OHAudioStreamBuilderSetCapturerInfo(AUDIOSTREAM_SOURCE_TYPE_MIC);
       expect(re === AUDIOSTREAM_SUCCESS).assertTrue();
-      console.log(`testOHAudioStreamBuilderSetCapturerInfo0100 test end `);
+      console.log(`testOHAudioStreamBuilderSetCapturerInfo001 test end `);
       done();
     });
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0600
-     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0600
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType006
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetEncodingType0600', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetEncodingType0600 test start `);
+    it('testOHAudioStreamBuilderSetEncodingType006', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetEncodingType006 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetEncodingType(AUDIOSTREAM_TYPE_CAPTURER, AUDIOSTREAM_ENCODING_TYPE_OTHER);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetEncodingType0600 test end `);
+      console.log(`testOHAudioStreamBuilderSetEncodingType006 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0600
-     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0600
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode006
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetLatencyMode0600', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0600 test start `);
+    it('testOHAudioStreamBuilderSetLatencyMode006', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetLatencyMode006 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetLatencyMode(AUDIOSTREAM_TYPE_CAPTURER, AUDIOSTREAM_LATENCY_MODE_NORMAL);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetLatencyMode0600 test end `);
+      console.log(`testOHAudioStreamBuilderSetLatencyMode006 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_1000
-     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat1000
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat010
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSampleFormat1000', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSampleFormat1000 test start `);
+    it('testOHAudioStreamBuilderSetSampleFormat010', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSampleFormat010 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSampleFormat(AUDIOSTREAM_TYPE_CAPTURER, 1);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSampleFormat1000 test end `);
+      console.log(`testOHAudioStreamBuilderSetSampleFormat010 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0600
-     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0600
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate006
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioStreamBuilderSetSamplingRate0600', 0, async (done: Function) => {
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0600 test start `);
+    it('testOHAudioStreamBuilderSetSamplingRate006', 0, async (done: Function) => {
+      console.log(`testOHAudioStreamBuilderSetSamplingRate006 test start `);
       let re: number | null = testStreamBuilder.OHAudioStreamBuilderSetSamplingRate(AUDIOSTREAM_TYPE_CAPTURER , number48000);
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioStreamBuilderSetSamplingRate0600 test end `);
+      console.log(`testOHAudioStreamBuilderSetSamplingRate006 test end `);
       done();
     });
   });
@@ -1215,355 +1215,355 @@ export default function OhCapturerTest() {
     });
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0100
-     * @tc.name   ：testOHAudioCapturerGetCurrentState0100
+     * @tc.name   ：testOHAudioCapturerGetCurrentState001
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetCurrentState0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetCurrentState0100 test start `);
+    it('testOHAudioCapturerGetCurrentState001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetCurrentState001 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       expect(re).assertEqual(CODE_SUCCESS);
       re = await testStreamBuilder.OHAudioCapturerGetCurrentState();
       expect(re).assertEqual(AUDIOSTREAM_STATE_PREPARED);
-      console.log(`testOHAudioCapturerGetCurrentState0100 test end `);
+      console.log(`testOHAudioCapturerGetCurrentState001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERSTART_0100
-     * @tc.name   ：testOHAudioCapturerStart0100
+     * @tc.name   ：testOHAudioCapturerStart001
      * @tc.desc   ：Start obtaining audio data.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerStart0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerStart0100 test start `);
+    it('testOHAudioCapturerStart001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerStart001 test start `);
       let re: number = testStreamBuilder.OHAudioCapturerStart();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
-      console.log(`testOHAudioCapturerStart0100 test end `);
+      console.log(`testOHAudioCapturerStart001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0200
-     * @tc.name   ：testOHAudioCapturerGetCurrentState0200
+     * @tc.name   ：testOHAudioCapturerGetCurrentState002
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetCurrentState0200', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetCurrentState0200 test start `);
+    it('testOHAudioCapturerGetCurrentState002', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetCurrentState002 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetCurrentState();
       expect(re === AUDIOSTREAM_STATE_RUNNING || re === AUDIOSTREAM_STATE_STOPPED).assertTrue();
-      console.log(`testOHAudioCapturerGetCurrentState0200 test end `);
+      console.log(`testOHAudioCapturerGetCurrentState002 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETSAMPLEFORMAT_0100
-     * @tc.name   ：testOHAudioCapturerGetSampleFormat0100
+     * @tc.name   ：testOHAudioCapturerGetSampleFormat001
      * @tc.desc   ：Query the current input audio stream sampling format.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetSampleFormat0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetSampleFormat0100 test start `);
+    it('testOHAudioCapturerGetSampleFormat001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetSampleFormat001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetSampleFormat();
       expect(re === AUDIOSTREAM_STATE_NEW || re === AUDIOSTREAM_STATE_PREPARED || re === numberTwo || re === numberThree).assertTrue();
-      console.log(`testOHAudioCapturerGetSampleFormat0100 test end `);
+      console.log(`testOHAudioCapturerGetSampleFormat001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERPAUSE_0100
-     * @tc.name   ：testOHAudioCapturerPause0100
+     * @tc.name   ：testOHAudioCapturerPause001
      * @tc.desc   ：Pause input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerPause0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerPause0100 test start `);
+    it('testOHAudioCapturerPause001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerPause001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerPause();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS); // 正确结果：0
-      console.log(`testOHAudioCapturerPause0100 test end `);
+      console.log(`testOHAudioCapturerPause001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0300
-     * @tc.name   ：testOHAudioCapturerGetCurrentState0300
+     * @tc.name   ：testOHAudioCapturerGetCurrentState003
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetCurrentState0300', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetCurrentState0300 test start `);
+    it('testOHAudioCapturerGetCurrentState003', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetCurrentState003 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetCurrentState();
       expect(re === AUDIOSTREAM_STATE_STOPPED || re === AUDIOSTREAM_STATE_PAUSED).assertTrue();
-      console.log(`testOHAudioCapturerGetCurrentState0300 test end `);
+      console.log(`testOHAudioCapturerGetCurrentState003 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCHANNELCOUNT_0100
-     * @tc.name   ：testOHAudioCapturerGetChannelCount0100
+     * @tc.name   ：testOHAudioCapturerGetChannelCount001
      * @tc.desc   ：Query the current number of audio channels.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetChannelCount0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetChannelCount0100 test start `);
+    it('testOHAudioCapturerGetChannelCount001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetChannelCount001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetChannelCount();
       expect(re).assertEqual(channelCount); // 正确结果：2
-      console.log(`testOHAudioCapturerGetChannelCount0100 test end `);
+      console.log(`testOHAudioCapturerGetChannelCount001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCAPTURERINFO_0100
-     * @tc.name   ：testOHAudioCapturerGetCapturerInfo0100
+     * @tc.name   ：testOHAudioCapturerGetCapturerInfo001
      * @tc.desc   ：Query the current audio streaming workspace type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetCapturerInfo0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetCapturerInfo0100 test start `);
+    it('testOHAudioCapturerGetCapturerInfo001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetCapturerInfo001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetCapturerInfo();
       expect(re === 0 || re === 1 || re === numberTwo || re === numberSeven).assertTrue(); // 正确结果：0、1、2、7
-      console.log(`testOHAudioCapturerGetCapturerInfo0100 test end `);
+      console.log(`testOHAudioCapturerGetCapturerInfo001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETENCODINGTYPE_0100
-     * @tc.name   ：testOHAudioCapturerGetEncodingType0100
+     * @tc.name   ：testOHAudioCapturerGetEncodingType001
      * @tc.desc   ：Query the current audio stream encoding type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetEncodingType0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetEncodingType0100 test start `);
+    it('testOHAudioCapturerGetEncodingType001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetEncodingType001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetEncodingType();
       expect(re).assertEqual(encodingType);
-      console.log(`testOHAudioCapturerGetEncodingType0100 test end `);
+      console.log(`testOHAudioCapturerGetEncodingType001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETFRAMESIZEINCALLBACK_0100
-     * @tc.name   ：testOHAudioCapturerGetFrameSizeInCallback0100
+     * @tc.name   ：testOHAudioCapturerGetFrameSizeInCallback001
      * @tc.desc   ：Query the frame size in the callback, which is the fixed length of the buffer returned by each callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetFrameSizeInCallback0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetFrameSizeInCallback0100 test start `);
+    it('testOHAudioCapturerGetFrameSizeInCallback001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetFrameSizeInCallback001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetFrameSizeInCallback();
       expect(re).assertLarger(0);
-      console.log(`testOHAudioCapturerGetFrameSizeInCallback0100 test end `);
+      console.log(`testOHAudioCapturerGetFrameSizeInCallback001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETFRAMESREAD_0100
-     * @tc.name   ：testOHAudioCapturerGetFramesRead0100
+     * @tc.name   ：testOHAudioCapturerGetFramesRead001
      * @tc.desc   ：Query the number of frames read since self created streaming.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetFramesRead0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetFramesRead0100 test start `);
+    it('testOHAudioCapturerGetFramesRead001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetFramesRead001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetFramesRead();
       expect(re).assertLarger(-1);
-      console.log(`testOHAudioCapturerGetFramesRead0100 test end `);
+      console.log(`testOHAudioCapturerGetFramesRead001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETLATENCYMODE_0200
-     * @tc.name   ：testOHAudioCapturerGetLatencyMode0200
+     * @tc.name   ：testOHAudioCapturerGetLatencyMode002
      * @tc.desc   ：Query the current audio stream delay mode.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetLatencyMode0200', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetLatencyMode0200 test start `);
+    it('testOHAudioCapturerGetLatencyMode002', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetLatencyMode002 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetLatencyMode();
       expect(re === AUDIOSTREAM_LATENCY_MODE_NORMAL || re === AUDIOSTREAM_LATENCY_MODE_FAST ).assertTrue();
-      console.log(`testOHAudioCapturerGetLatencyMode0200 test end `);
+      console.log(`testOHAudioCapturerGetLatencyMode002 test end `);
       done();
     });
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETSAMPLINGRATE_0100
-     * @tc.name   ：testOHAudioCapturerGetSamplingRate0100
+     * @tc.name   ：testOHAudioCapturerGetSamplingRate001
      * @tc.desc   ：Query the current input audio stream sampling rate.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetSamplingRate0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetSamplingRate0100 test start `);
+    it('testOHAudioCapturerGetSamplingRate001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetSamplingRate001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetSamplingRate();
       expect(re).assertEqual(rateValue);
-      console.log(`testOHAudioCapturerGetSamplingRate0100 test end `);
+      console.log(`testOHAudioCapturerGetSamplingRate001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETSTREAMID_0100
-     * @tc.name   ：testOHAudioCapturerGetStreamId0100
+     * @tc.name   ：testOHAudioCapturerGetStreamId001
      * @tc.desc   ：Query the current input audio stream ID.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetStreamId0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetStreamId0100 test start `);
+    it('testOHAudioCapturerGetStreamId001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetStreamId001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetStreamId();
       expect(re).assertLarger(0);
-      console.log(`testOHAudioCapturerGetStreamId0100 test end `);
+      console.log(`testOHAudioCapturerGetStreamId001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETTIMESTAMP_0100
-     * @tc.name   ：testOHAudioCapturerGetTimestamp0100
+     * @tc.name   ：testOHAudioCapturerGetTimestamp001
      * @tc.desc   ：Obtain input audio stream timestamp and location information.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetTimestamp0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetTimestamp0100 test start `);
+    it('testOHAudioCapturerGetTimestamp001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetTimestamp001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetTimestamp();
       expect(re).assertLarger(0);
-      console.log(`testOHAudioCapturerGetTimestamp0100 test end `);
+      console.log(`testOHAudioCapturerGetTimestamp001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETFRAMEPOSITION_0100
-     * @tc.name   ：testOHAudioCapturerGetFramePosition0100
+     * @tc.name   ：testOHAudioCapturerGetFramePosition001
      * @tc.desc   ：Obtain input audio stream timestamp and location information.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetFramePosition0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetFramePosition0100 test start `);
+    it('testOHAudioCapturerGetFramePosition001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetFramePosition001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetFramePosition();
       expect(re).assertLarger(-1);
-      console.log(`testOHAudioCapturerGetFramePosition0100 test end `);
+      console.log(`testOHAudioCapturerGetFramePosition001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERSTOP_0100
-     * @tc.name   ：testOHAudioCapturerStop0100
+     * @tc.name   ：testOHAudioCapturerStop001
      * @tc.desc   ：Stop input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerStop0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerStop0100 test start `);
+    it('testOHAudioCapturerStop001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerStop001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerStop();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS); // 正确结果：0
-      console.log(`testOHAudioCapturerStop0100 test end `);
+      console.log(`testOHAudioCapturerStop001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETLATENCYMODE_0100
-     * @tc.name   ：testOHAudioCapturerGetLatencyMode0100
+     * @tc.name   ：testOHAudioCapturerGetLatencyMode001
      * @tc.desc   ：Query the current audio stream delay mode.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetLatencyMode0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetLatencyMode0100 test start `);
+    it('testOHAudioCapturerGetLatencyMode001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetLatencyMode001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetLatencyMode();
       expect(re === AUDIOSTREAM_LATENCY_MODE_NORMAL  || re === AUDIOSTREAM_LATENCY_MODE_FAST ).assertTrue();
-      console.log(`testOHAudioCapturerGetLatencyMode0100 test end `);
+      console.log(`testOHAudioCapturerGetLatencyMode001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0400
-     * @tc.name   ：testOHAudioCapturerGetCurrentState0400
+     * @tc.name   ：testOHAudioCapturerGetCurrentState004
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetCurrentState0400', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetCurrentState0400 test start `);
+    it('testOHAudioCapturerGetCurrentState004', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetCurrentState004 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetCurrentState();
       expect(re === AUDIOSTREAM_STATE_STOPPED).assertTrue(); // 正确结果：0、1、2、3、4、5
-      console.log(`testOHAudioCapturerGetCurrentState0400 test end `);
+      console.log(`testOHAudioCapturerGetCurrentState004 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0500
-     * @tc.name   ：testOHAudioCapturerGetCurrentState0500
+     * @tc.name   ：testOHAudioCapturerGetCurrentState005
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetCurrentState0500', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetCurrentState0500 test start `);
+    it('testOHAudioCapturerGetCurrentState005', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetCurrentState005 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetCurrentState();
       expect(re === AUDIOSTREAM_STATE_NEW || re === AUDIOSTREAM_STATE_PREPARED || re === AUDIOSTREAM_STATE_RUNNING || re === AUDIOSTREAM_STATE_STOPPED || re === numberFour || re === AUDIOSTREAM_STATE_PAUSED)
         .assertTrue(); // 正确结果：0、1、2、3、4、5
-      console.log(`testOHAudioCapturerGetCurrentState0500 test end `);
+      console.log(`testOHAudioCapturerGetCurrentState005 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERFLUSH_0100
-     * @tc.name   ：testOHAudioCapturerFlush0100
+     * @tc.name   ：testOHAudioCapturerFlush001
      * @tc.desc   ：Discard the obtained audio data.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerFlush0100', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerFlush0100 test start `);
+    it('testOHAudioCapturerFlush001', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerFlush001 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerFlush();
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS); // 正确结果：0
-      console.log(`testOHAudioCapturerFlush0100 test end `);
+      console.log(`testOHAudioCapturerFlush001 test end `);
       done();
     });
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0600
-     * @tc.name   ：testOHAudioCapturerGetCurrentState0600
+     * @tc.name   ：testOHAudioCapturerGetCurrentState006
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHAudioCapturerGetCurrentState0600', 0, async (done: Function) => {
-      console.log(`testOHAudioCapturerGetCurrentState0600 test start `);
+    it('testOHAudioCapturerGetCurrentState006', 0, async (done: Function) => {
+      console.log(`testOHAudioCapturerGetCurrentState006 test start `);
       let re: number | null = testStreamBuilder.OHAudioCapturerGetCurrentState();
       expect(re === AUDIOSTREAM_STATE_INVALID).assertTrue(); // 正确结果：0、1、2、3、4、5
-      console.log(`testOHAudioCapturerGetCurrentState0600 test end `);
+      console.log(`testOHAudioCapturerGetCurrentState006 test end `);
       done();
     });
   });
@@ -1591,14 +1591,14 @@ export default function OhCapturerTest() {
     /**
      * start - stop - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0100
-     * @tc.name   ：testCreateAudioCapturerRecorder0100
+     * @tc.name   ：testCreateAudioCapturerRecorder001
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder0100', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder0100 test start `);
+    it('testCreateAudioCapturerRecorder001', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder001 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -1622,21 +1622,21 @@ export default function OhCapturerTest() {
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
       Utils.sleep(500);
-      console.log(`testCreateAudioCapturerRecorder0100 test end `);
+      console.log(`testCreateAudioCapturerRecorder001 test end `);
       done();
     });
 
     /**
      * start- pause - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0200
-     * @tc.name   ：testCreateAudioCapturerRecorder0200
+     * @tc.name   ：testCreateAudioCapturerRecorder002
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder0200', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder0200 test start `);
+    it('testCreateAudioCapturerRecorder002', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder002 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexOne);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -1659,21 +1659,21 @@ export default function OhCapturerTest() {
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       Utils.sleep(sleep500);
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCreateAudioCapturerRecorder0200 test end `);
+      console.log(`testCreateAudioCapturerRecorder002 test end `);
       done();
     });
 
     /**
      * start- release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0300
-     * @tc.name   ：testCreateAudioCapturerRecorder0300
+     * @tc.name   ：testCreateAudioCapturerRecorder003
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder0300', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder0300 test start `);
+    it('testCreateAudioCapturerRecorder003', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder003 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexTwo);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -1695,21 +1695,21 @@ export default function OhCapturerTest() {
       Utils.sleep(500);
 
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCreateAudioCapturerRecorder0300 test end `);
+      console.log(`testCreateAudioCapturerRecorder003 test end `);
       done();
     });
 
     /**
      * release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0400
-     * @tc.name   ：testCreateAudioCapturerRecorder0400
+     * @tc.name   ：testCreateAudioCapturerRecorder004
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder0400', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder0400 test start `);
+    it('testCreateAudioCapturerRecorder004', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder004 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexThree);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -1722,21 +1722,21 @@ export default function OhCapturerTest() {
       Utils.sleep(500);
 
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCreateAudioCapturerRecorder0400 test end `);
+      console.log(`testCreateAudioCapturerRecorder004 test end `);
       done();
     });
 
     /**
      * start - pause - stop - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0500
-     * @tc.name   ：testCreateAudioCapturerRecorder0500
+     * @tc.name   ：testCreateAudioCapturerRecorder005
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder0500', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder0500 test start `);
+    it('testCreateAudioCapturerRecorder005', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder005 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexFour);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -1766,21 +1766,21 @@ export default function OhCapturerTest() {
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCreateAudioCapturerRecorder0500 test end `);
+      console.log(`testCreateAudioCapturerRecorder005 test end `);
       done();
     });
 
     /**
      * start - stop - start - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0600
-     * @tc.name   ：testCreateAudioCapturerRecorder0600
+     * @tc.name   ：testCreateAudioCapturerRecorder006
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder0600', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder0600 test start `);
+    it('testCreateAudioCapturerRecorder006', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder006 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexFive);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -1809,21 +1809,21 @@ export default function OhCapturerTest() {
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCreateAudioCapturerRecorder0600 test end `);
+      console.log(`testCreateAudioCapturerRecorder006 test end `);
       done();
     });
 
     /**
      * start - pause - start - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0700
-     * @tc.name   ：testCreateAudioCapturerRecorder0700
+     * @tc.name   ：testCreateAudioCapturerRecorder007
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder0700', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder0700 test start `);
+    it('testCreateAudioCapturerRecorder007', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder007 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -1854,20 +1854,20 @@ export default function OhCapturerTest() {
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCreateAudioCapturerRecorder0700 test end `);
+      console.log(`testCreateAudioCapturerRecorder007 test end `);
       done();
     });
     /**
      * start - pause - stop - start - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0800
-     * @tc.name   ：testCreateAudioCapturerRecorder0800
+     * @tc.name   ：testCreateAudioCapturerRecorder008
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder0800', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder0800 test start `);
+    it('testCreateAudioCapturerRecorder008', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder008 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -1903,20 +1903,20 @@ export default function OhCapturerTest() {
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCreateAudioCapturerRecorder0800 test end `);
+      console.log(`testCreateAudioCapturerRecorder008 test end `);
       done();
     });
     /**
      * start - pause - start - stop - start - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0900
-     * @tc.name   ：testCreateAudioCapturerRecorder0900
+     * @tc.name   ：testCreateAudioCapturerRecorder009
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder0900', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder0900 test start `);
+    it('testCreateAudioCapturerRecorder009', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder009 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -1958,21 +1958,21 @@ export default function OhCapturerTest() {
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCreateAudioCapturerRecorder0900 test end `);
+      console.log(`testCreateAudioCapturerRecorder009 test end `);
       done();
     });
 
     /**
      * start - stop - start - pause - stop - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_1000
-     * @tc.name   ：testCreateAudioCapturerRecorder1000
+     * @tc.name   ：testCreateAudioCapturerRecorder010
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder1000', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder1000 test start `);
+    it('testCreateAudioCapturerRecorder010', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder010 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -2018,20 +2018,20 @@ export default function OhCapturerTest() {
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCreateAudioCapturerRecorder1000 test end `);
+      console.log(`testCreateAudioCapturerRecorder010 test end `);
       done();
     });
     /**
      * start - pause - stop - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_1100
-     * @tc.name   ：testCreateAudioCapturerRecorder1100
+     * @tc.name   ：testCreateAudioCapturerRecorder011
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCreateAudioCapturerRecorder1100', 0, async (done: Function) => {
-      console.log(`testCreateAudioCapturerRecorder1100 test start `);
+    it('testCreateAudioCapturerRecorder011', 0, async (done: Function) => {
+      console.log(`testCreateAudioCapturerRecorder011 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -2061,21 +2061,21 @@ export default function OhCapturerTest() {
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCreateAudioCapturerRecorder1100 test end `);
+      console.log(`testCreateAudioCapturerRecorder011 test end `);
       done();
     });
 
     /**
      * start - stop - pause - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0100
-     * @tc.name   ：testAbnormalOperationCapturer0100
+     * @tc.name   ：testAbnormalOperationCapturer001
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testAbnormalOperationCapturer0100', 0, async (done: Function) => {
-      console.log(`testAbnormalOperationCapturer0100 test start `);
+    it('testAbnormalOperationCapturer001', 0, async (done: Function) => {
+      console.log(`testAbnormalOperationCapturer001 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -2103,21 +2103,21 @@ export default function OhCapturerTest() {
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testAbnormalOperationCapturer0100 test end `);
+      console.log(`testAbnormalOperationCapturer001 test end `);
       done();
     });
 
     /**
      * stop - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0200
-     * @tc.name   ：testAbnormalOperationCapturer0200
+     * @tc.name   ：testAbnormalOperationCapturer002
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testAbnormalOperationCapturer0200', 0, async (done: Function) => {
-      console.log(`testAbnormalOperationCapturer0200 test start `);
+    it('testAbnormalOperationCapturer002', 0, async (done: Function) => {
+      console.log(`testAbnormalOperationCapturer002 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -2134,20 +2134,20 @@ export default function OhCapturerTest() {
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testAbnormalOperationCapturer0200 test end `);
+      console.log(`testAbnormalOperationCapturer002 test end `);
       done();
     });
     /**
      * pause - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0300
-     * @tc.name   ：testAbnormalOperationCapturer0300
+     * @tc.name   ：testAbnormalOperationCapturer003
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testAbnormalOperationCapturer0300', 0, async (done: Function) => {
-      console.log(`testAbnormalOperationCapturer0300 test start `);
+    it('testAbnormalOperationCapturer003', 0, async (done: Function) => {
+      console.log(`testAbnormalOperationCapturer003 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -2164,21 +2164,21 @@ export default function OhCapturerTest() {
       expect(re).assertEqual(AUDIOSTREAM_SUCCESS);
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testAbnormalOperationCapturer0300 test end `);
+      console.log(`testAbnormalOperationCapturer003 test end `);
       done();
     });
 
     /**
      * release - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0400
-     * @tc.name   ：testAbnormalOperationCapturer0400
+     * @tc.name   ：testAbnormalOperationCapturer004
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testAbnormalOperationCapturer0400', 0, async (done: Function) => {
-      console.log(`testAbnormalOperationCapturer0400 test start `);
+    it('testAbnormalOperationCapturer004', 0, async (done: Function) => {
+      console.log(`testAbnormalOperationCapturer004 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -2194,21 +2194,21 @@ export default function OhCapturerTest() {
 
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testAbnormalOperationCapturer0400 test end `);
+      console.log(`testAbnormalOperationCapturer004 test end `);
       done();
     });
 
     /**
      * pause - pause
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0500
-     * @tc.name   ：testAbnormalOperationCapturer0500
+     * @tc.name   ：testAbnormalOperationCapturer005
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testAbnormalOperationCapturer0500', 0, async (done: Function) => {
-      console.log(`testAbnormalOperationCapturer0500 test start `);
+    it('testAbnormalOperationCapturer005', 0, async (done: Function) => {
+      console.log(`testAbnormalOperationCapturer005 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -2228,21 +2228,21 @@ export default function OhCapturerTest() {
 
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testAbnormalOperationCapturer0500 test end `);
+      console.log(`testAbnormalOperationCapturer005 test end `);
       done();
     });
 
     /**
      * start - start
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0600
-     * @tc.name   ：testAbnormalOperationCapturer0600
+     * @tc.name   ：testAbnormalOperationCapturer006
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testAbnormalOperationCapturer0600', 0, async (done: Function) => {
-      console.log(`testAbnormalOperationCapturer0400 test start `);
+    it('testAbnormalOperationCapturer006', 0, async (done: Function) => {
+      console.log(`testAbnormalOperationCapturer006 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -2261,21 +2261,21 @@ export default function OhCapturerTest() {
 
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testAbnormalOperationCapturer0600 test end `);
+      console.log(`testAbnormalOperationCapturer006 test end `);
       done();
     });
 
     /**
      * stop - stop
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0700
-     * @tc.name   ：testAbnormalOperationCapturer0700
+     * @tc.name   ：testAbnormalOperationCapturer007
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testAbnormalOperationCapturer0700', 0, async (done: Function) => {
-      console.log(`testAbnormalOperationCapturer0700 test start `);
+    it('testAbnormalOperationCapturer007', 0, async (done: Function) => {
+      console.log(`testAbnormalOperationCapturer007 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -2300,21 +2300,21 @@ export default function OhCapturerTest() {
 
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testAbnormalOperationCapturer0700 test end `);
+      console.log(`testAbnormalOperationCapturer007 test end `);
       done();
     });
 
     /**
      * Capturer attribute get test
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CAPTURERRECORDERATTRIBUYE_0100
-     * @tc.name   ：testCapturerRecorderAttribute0100
+     * @tc.name   ：testCapturerRecorderAttribute001
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCapturerRecorderAttribute0100', 0, async (done: Function) => {
-      console.log(`testCapturerRecorderAttribute0100 test start `);
+    it('testCapturerRecorderAttribute001', 0, async (done: Function) => {
+      console.log(`testCapturerRecorderAttribute001 test start `);
       let re: number = await testStreamBuilder.CreateAudioCapturerRecorder(indexZero);
       Utils.sleep(sleep1000);
       expect(re).assertEqual(CODE_SUCCESS);
@@ -2354,21 +2354,21 @@ export default function OhCapturerTest() {
       expect(result).assertFalse();
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCapturerRecorderAttribute0100 test end `);
+      console.log(`testCapturerRecorderAttribute001 test end `);
       done();
     });
 
     /**
      * Capturer properties verification  test
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CAPTURERRECORDERATTRIBUYE_0200
-     * @tc.name   ：testCapturerRecorderAttribute0200
+     * @tc.name   ：testCapturerRecorderAttribute002
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCapturerRecorderAttribute0200', 0, async (done: Function) => {
-      console.log(`testCapturerRecorderAttribute0200 test start `);
+    it('testCapturerRecorderAttribute002', 0, async (done: Function) => {
+      console.log(`testCapturerRecorderAttribute002 test start `);
 
       rateValue = 48000;
       channelCount = 2;
@@ -2407,21 +2407,21 @@ export default function OhCapturerTest() {
 
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCapturerRecorderAttribute0200 test end `);
+      console.log(`testCapturerRecorderAttribute002 test end `);
       done();
     });
 
     /**
      * Capturer properties verification  test latencyMode = 1
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CAPTURERRECORDERATTRIBUYE_0300
-     * @tc.name   ：testCapturerRecorderAttribute0300
+     * @tc.name   ：testCapturerRecorderAttribute003
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCapturerRecorderAttribute0300', 0, async (done: Function) => {
-      console.log(`testCapturerRecorderAttribute0300 test start `);
+    it('testCapturerRecorderAttribute003', 0, async (done: Function) => {
+      console.log(`testCapturerRecorderAttribute003 test start `);
 
       rateValue = 48000;
       channelCount = 2;
@@ -2460,21 +2460,21 @@ export default function OhCapturerTest() {
 
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCapturerRecorderAttribute0300 test end `);
+      console.log(`testCapturerRecorderAttribute003 test end `);
       done();
     });
 
     /**
      * Capturer properties verification  test frameSizeValue = 240
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CAPTURERRECORDERATTRIBUYE_0400
-     * @tc.name   ：testCapturerRecorderAttribute0400
+     * @tc.name   ：testCapturerRecorderAttribute004
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testCapturerRecorderAttribute0400', 0, async (done: Function) => {
-      console.log(`testCapturerRecorderAttribute0400 test start `);
+    it('testCapturerRecorderAttribute004', 0, async (done: Function) => {
+      console.log(`testCapturerRecorderAttribute004 test start `);
 
       rateValue = 48000;
       channelCount = 2;
@@ -2513,7 +2513,7 @@ export default function OhCapturerTest() {
 
       let ret: number = await testStreamBuilder.CloseAudioCapture();
       expect(ret === AUDIOSTREAM_SUCCESS || ret === CODE_SUCCESS).assertTrue();
-      console.log(`testCapturerRecorderAttribute0400 test end `);
+      console.log(`testCapturerRecorderAttribute004 test end `);
       done();
     });
   });
