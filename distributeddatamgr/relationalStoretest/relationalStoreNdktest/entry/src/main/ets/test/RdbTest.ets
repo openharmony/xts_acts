@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -931,5 +931,51 @@ export default function rdbTest() {
       expect(data).assertEqual(1);
       done();
     });
+ 
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0620
+     * @tc.name       : testLockRow001
+     * @tc.desc       : OH_Rdb_LockRow Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+     it('testLockRow001', 0, async (done: Function) => {
+      let data = rdb.lockRowOne();
+      console.info("testLockRow001 Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(14800000);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0630
+     * @tc.name       : testUnLockRow001
+     * @tc.desc       : OH_Rdb_UnlockRow Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+     it('testUnLockRow001', 0, async (done: Function) => {
+      let data = rdb.unLockRowOne();
+      console.info("testUnLockRow001 Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(14800000);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0630
+     * @tc.name       : testQueryLockRow001
+     * @tc.desc       : OH_Rdb_QueryLockedRow Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+     it('testQueryLockRow001', 0, async (done: Function) => {
+      let data = rdb.queryLockRowOne();
+      console.info("testUnLockRow001 Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
   })
 }
