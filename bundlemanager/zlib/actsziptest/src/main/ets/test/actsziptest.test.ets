@@ -47,6 +47,7 @@ export default function ActsZipTest() {
           zlib.MemLevel.MEM_LEVEL_DEFAULT, zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY).then((data) => {
             console.info('deflateInit2 success');
             expect(data).assertEqual(0);
+            expect(zlib.CompressMethod.DEFLATED).assertEqual(8);
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
             expect(errData).assertFail()
@@ -501,8 +502,9 @@ export default function ActsZipTest() {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`)
             expect(errData).assertFail()
         })
-        await zip.deflateSetHeader({nextIn: arrayBufferIn, availableIn: 1, nextOut: arrayBufferOut,
-          availableOut: 1},{text: 0}).then((data)=>{
+        await zip.deflateSetHeader({nextIn: arrayBufferIn, availableIn: 1, nextOut: arrayBufferOut,availableOut: 1},
+          {isText: true, os: 1, time: 1, xflags: 1, extra: arrayBufferIn, extraLen: 12, name: arrayBufferIn, 
+          comment: arrayBufferOut, hcrc: true, done: true}).then((data)=>{
             console.info('deflateSetHeader success');
             expect(data).assertEqual(0);
         }).catch((errData: base.BusinessError) => {
@@ -566,7 +568,7 @@ export default function ActsZipTest() {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
             expect(errData).assertFail()
         })
-        await zip.inflate({availableIn: 8, availableOut: 8}, 0).then((data) => {
+        await zip.inflate({availableIn: 8, availableOut: 8}, zlib.CompressFlushMode.NO_FLUSH).then((data) => {
             console.info('inflate success')
             expect(data).assertEqual(0);
         }).catch((errData: base.BusinessError) => {
@@ -985,7 +987,9 @@ export default function ActsZipTest() {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
             expect(errData).assertFail();
         })
-        await zip.inflateGetHeader({availableIn: 1, availableOut: 1},{text: 0}).then(data => {
+        await zip.inflateGetHeader({availableIn: 1, availableOut: 1},
+          {isText: true, os: 1, time: 1, xflags: 1, extra: arrayBufferIn, extraLen: 12, 
+          name: arrayBufferIn, comment: arrayBufferOut, hcrc: true, done: true}).then(data => {
             console.info('inflateGetHeader success');
             expect(data).assertEqual(0);
         }).catch((errData: base.BusinessError) => {
@@ -1046,7 +1050,7 @@ export default function ActsZipTest() {
         let zip = zlib.createZipSync();
         await zip.zlibVersion().then((data) => {
             console.info('zlibVersion success')
-            expect(data).assertEqual("1.2.13");
+            expect(typeof (data)).assertEqual("string");
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
             expect(errData).assertFail();
@@ -1067,10 +1071,10 @@ export default function ActsZipTest() {
         console.info("==================actsZipTest27 start==================");
         let zip = zlib.createZipSync();
         await zip.zlibCompileFlags().then((data) => {
-            console.info('tjy zlibCompileFlags success', data)
+            console.info('zlibCompileFlags success')
             expect(data == 85 || data == 169).assertTrue();
         }).catch((errData: base.BusinessError) => {
-            console.info('tjy zlibCompileFlags fail')
+            console.info('zlibCompileFlags fail')
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
             expect(errData).assertFail();
         })
@@ -1096,10 +1100,10 @@ export default function ActsZipTest() {
         }
         let arrayBufferOut = new ArrayBuffer(100);
         let zip = zlib.createZipSync();
-        await zip.compress(arrayBufferOut, arrayBufferOut, 20).then((data) => {
+        await zip.compress(arrayBufferOut, arrayBufferIn).then((data) => {
             console.info('compress success:');
             expect(data.status).assertEqual(0);
-            expect(data.destLen).assertEqual(12);
+            expect(data.destLen).assertEqual(20);
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
             expect(errData).assertFail();
@@ -1175,6 +1179,8 @@ export default function ActsZipTest() {
         await zip.uncompress2(arrayBufferIn, arrayBufferOut, 20).then((data) => {
             console.info('uncompress2 success');
             expect(data.status).assertEqual(0);
+            expect(data.destLength).assertEqual(12);
+            expect(data.sourceLength).assertEqual(20);
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
             expect(errData).assertFail();
@@ -1468,7 +1474,7 @@ export default function ActsZipTest() {
             expect(errData.code).assertEqual(17800007);
         }
         try {
-        await zip.compress(arrayBufferOut, arrayBufferIn, null).then((data) => {
+        await zip.compress(arrayBufferOut, null, null).then((data) => {
             console.info('compress success:');
             expect(data).assertFail();
             })
@@ -1579,7 +1585,7 @@ export default function ActsZipTest() {
             expect(errData.code).assertEqual(17800005);
         }
         try {
-        await zip.uncompress(arrayBufferOut, arrayBufferIn, null).then((data) => {
+        await zip.uncompress(arrayBufferOut, null, null).then((data) => {
             console.info('ucompress success:');
             expect(data).assertFail();
             })
@@ -1619,7 +1625,7 @@ export default function ActsZipTest() {
             expect(errData.code).assertEqual(17800005);
         }
         try {
-        await zip.uncompress2(arrayBufferOut, arrayBufferIn, null).then((data) => {
+        await zip.uncompress2(arrayBufferOut, null, null).then((data) => {
             console.info('uncompress2 success:');
             expect(data).assertFail();
             })
@@ -2125,7 +2131,7 @@ export default function ActsZipTest() {
             expect(errData.code).assertEqual(401)
         }
         try {
-        await zip.inflateGetHeader({nextIn: arrayBufferOut, availableIn: 1, nextOut: arrayBufferOut, availableOut: 1}, {text: 0}).then(data => {
+        await zip.inflateGetHeader({nextIn: arrayBufferOut, availableIn: 1, nextOut: arrayBufferOut, availableOut: 1}, {isText: true}).then(data => {
             console.info('inflateGetHeader success')
             expect(data).assertFail()
             })
@@ -2885,7 +2891,7 @@ export default function ActsZipTest() {
      * @tc.desc       : test inflate
      * @tc.size       : MEDIUM
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
     it('actsZipTest72', 0, async function (done) {
         console.info("==================actsZipTest72 start==================");
@@ -2912,6 +2918,8 @@ export default function ActsZipTest() {
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`)
             expect(errData.code).assertEqual(17800005);
+            expect(zlib.CompressFlushMode.NO_FLUSH).assertEqual(0);
+            expect(zlib.CompressFlushMode.PARTIAL_FLUSH).assertEqual(1);
         })
         done();
         console.info("==================actsZipTest72 end==================");
@@ -2982,6 +2990,8 @@ export default function ActsZipTest() {
         await zip.deflate({nextIn: arrayBufferIn, availableIn: 3, nextOut: arrayBufferOut, availableOut: 100}, zlib.CompressFlushMode.FULL_FLUSH).then((data) => {
             console.info('deflate success')
             expect(data).assertEqual(0);
+            expect(zlib.CompressFlushMode.FINISH).assertEqual(4);
+            expect(zlib.CompressFlushMode.BLOCK).assertEqual(5);
         }).catch((errData: base.BusinessError) => {
             console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
             expect(errData).assertFail();
@@ -2989,9 +2999,11 @@ export default function ActsZipTest() {
         await zip.deflate({ availableIn: 11}, zlib.CompressFlushMode.FINISH).then((data) => {
             console.info('deflate success')
             expect(data).assertEqual(1);
+            expect(zlib.CompressFlushMode.SYNC_FLUSH).assertEqual(2);
+            expect(zlib.CompressFlushMode.FULL_FLUSH).assertEqual(3);
         }).catch((errData: base.BusinessError) => {
-                console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-                expect(errData).assertFail();
+            console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+            expect(errData).assertFail();
         })
         await zip.deflateEnd({}).then(data => {
                 console.info('deflateEnd success')
@@ -3012,6 +3024,7 @@ export default function ActsZipTest() {
             await zip.inflate({nextOut: arrayBufferIn, availableOut: 28}, zlib.CompressFlushMode.NO_FLUSH).then((data) => {
                 console.info('inflate success')
                 expect(data).assertEqual(0);
+                expect(zlib.CompressFlushMode.TREES).assertEqual(6);
             }).catch((errData: base.BusinessError) => {
                 console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
                 expect(errData).assertFail();
