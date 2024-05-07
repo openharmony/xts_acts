@@ -68,8 +68,9 @@ parse_args()
     done
 }
 
+pr_list=$1
 shift
-remaining_params=("$@")
+remaining_params=$@
 
 do_make()
 {
@@ -89,7 +90,7 @@ do_make()
     fi
 }
 echo $@
-parse_target_subsystem $1
+parse_target_subsystem $pr_list
 if [ $# -eq 0 ];then
     echo "no args; pass cache deal"
 else    
