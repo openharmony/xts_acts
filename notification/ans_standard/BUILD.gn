@@ -30,7 +30,7 @@ group("ans_standard") {
       "actsNotificationSystemLiveViewTest:ActsNotificationSystemLiveViewTest",
       "actsNotificationWantAgentTest:ActsNotificationWantAgentTest",
       "notificationManager:notificationManager",
-      "actsNotificationEmitterNewTest:ActsNotificationEmitterNewTest"
+      "actsNotificationEmitterNewTest:ActsNotificationEmitterNewTest",
     ]
   }
 }
