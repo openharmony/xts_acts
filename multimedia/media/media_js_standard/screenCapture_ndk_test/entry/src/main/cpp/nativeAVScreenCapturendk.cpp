@@ -28,11 +28,8 @@
 #include "multimedia/player_framework/native_avscreen_capture_errors.h"
 
 using namespace std;
+static int32_t g_recordTime = 3;
 
-#define LOG(cond, fmt, ...)           \
-    if (!(cond)) {                                  \
-        (void)printf(fmt, ##__VA_ARGS__);           \
-    }
 
 void SetConfig(OH_AVScreenCaptureConfig &config)
 {
@@ -40,8 +37,7 @@ void SetConfig(OH_AVScreenCaptureConfig &config)
     int32_t height = 1280;
     OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC};
     OH_AudioCaptureInfo innerCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_ALL_PLAYBACK};
-    OH_AudioEncInfo audioEncInfo = {.audioBitrate = 48000, .audioCodecformat = OH_AudioCodecFormat::OH_AAC_LC};
-    OH_AudioInfo audioInfo = {.micCapInfo = micCapInfo, .innerCapInfo = innerCapInfo, .audioEncInfo = audioEncInfo};
+    OH_AudioInfo audioInfo = {.micCapInfo = micCapInfo, .innerCapInfo = innerCapInfo};
 
     OH_VideoCaptureInfo videoCapInfo = {
         .videoFrameWidth = width, .videoFrameHeight = height, .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA};
@@ -88,13 +84,16 @@ static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info inf
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
     config_.videoInfo.videoCapInfo.videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA;
-
+	
     bool isMicrophone = false;
-    OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
+	OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
     OH_AVScreenCapture_SetErrorCallback(screenCapture, OnError, nullptr);
     OH_AVScreenCapture_SetStateCallback(screenCapture, OnStateChange, nullptr);
     OH_AVScreenCapture_SetDataCallback(screenCapture, OnBufferAvailable, nullptr);
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCapture);
+    sleep(g_recordTime);
+    OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_StopScreenCapture(screenCapture);
     OH_AVScreenCapture_Release(screenCapture);
 
     OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;

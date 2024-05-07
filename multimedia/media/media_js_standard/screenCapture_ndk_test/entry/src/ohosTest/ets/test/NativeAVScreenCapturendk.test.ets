@@ -55,8 +55,8 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context:common.
   })
 }
 
-export default function nativeDrawingNdkTest() {
-  describe('NativeDrawingNdkTest', () => {
+export default function nativeAVScreenCaptureNdkTest() {
+  describe('NativeAVScreenCaptureNdkTest', () => {
     beforeAll(async (done: Function) => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
@@ -87,7 +87,7 @@ export default function nativeDrawingNdkTest() {
     it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100', 0, async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureTest-------------before click:");
       Utils.keepClick();
-	  let result: number = nativeDrawing.normalAVScreenCaptureTest();
+      let result: number = nativeDrawing.normalAVScreenCaptureTest();
       console.info(Tag + "normalAVScreenCaptureTest-------------res:" + result);
       expect(result).assertEqual(0);
       done();

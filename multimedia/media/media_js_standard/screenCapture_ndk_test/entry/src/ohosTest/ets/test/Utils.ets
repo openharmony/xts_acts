@@ -34,35 +34,33 @@ export default class Utils {
 
   static async keepClick() {
     console.info('IN keepClick...')
-	let index =1;
+    let index =1;
     while (index < 10) {
-	  Utils.sleep(2000);
+      Utils.sleep(800);
       delegator.executeShellCommand(` uinput -T -c 880 1550 `).then(result => {
         console.info(`UiTestCase, touch abilityFinished: ${result}`)
       }).catch((err : BusinessError) => {
         console.error(`UiTestCase, touch abilityFailed: ${err}`)
       })
-      console.info(`Loop ${index} keepclick...`)
-	  index++;
+      console.info(`Loop ${index} keepClick...`)
+      index++;
     }
-
-    console.info('OUT keepClick...')
+    console.info('OUT keepClick end...')
   }
   
   static async confirmScreenCapture() {
     console.info('IN confirmScreenCapture...')
-	// 判断是否有授权弹窗
     let btn = await driver.waitForComponent(ON.text("确定"), 10000);
-	btn.click();
+    btn.click();
     console.info('OUT confirmScreenCapture end...')
   }
 
   static async allowScreenCapture() {
     console.info('IN allowScreenCapture...')
-	let btn = await driver.waitForComponent(ON.text("允许"), 2000);	
-	await btn.click();
+    let btn = await driver.waitForComponent(ON.text("允许"), 2000);
+    await btn.click();
     btn = await driver.waitForComponent(ON.text("允许"), 2000);
-	await btn.click();
+    await btn.click();
     console.info('OUT allowScreenCapture...')
   }
 }
