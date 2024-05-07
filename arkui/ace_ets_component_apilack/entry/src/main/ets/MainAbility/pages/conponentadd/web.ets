@@ -297,7 +297,7 @@ struct Index {
                   let result = 'succesful'
                   Utils.emitEvent(result, 446)
                 } catch (error) {
-                  console.info(`ErrorCode: ${error.code}, Message: ${error.message}`)
+                  console.info(`ErrorCode: ${(error as BusinessError)?.code}, Message: ${error.message}`)
                   let result = 'fail'
                   Utils.emitEvent(result, 446)
                 }
@@ -311,7 +311,7 @@ struct Index {
                   let result = 'succesful'
                   Utils.emitEvent(result, 446)
                 } catch (error) {
-                  console.info(`ErrorCode: ${error.code}, Message: ${error.message}`)
+                  console.info(`ErrorCode: ${(error as BusinessError)?.code}, Message: ${error.message}`)
                   let result = 'fail'
                   Utils.emitEvent(result, 446)
                 }
@@ -343,7 +343,7 @@ struct Index {
                   Utils.emitEvent('sucessful', 446)
                 }, 3000)
               } catch (error) {
-                console.info(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                console.info(`ErrorCode: ${(error as BusinessError)?.code}, Message: ${error.message}`);
                 Utils.emitEvent('fail', 446)
               }
               break;
@@ -361,7 +361,7 @@ struct Index {
                   })
                   Utils.emitEvent('sucessful', 446)
                 } catch (error) {
-                  console.info(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                  console.info(`ErrorCode: ${(error as BusinessError)?.code}, Message: ${error.message}`);
                 }
               }, 3000)
               break;
@@ -404,7 +404,7 @@ struct Index {
                   Utils.emitEvent('sucessful', 446)
 
                 } catch (error) {
-                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  console.error(`ErrorCode: ${(error as BusinessError)?.code},  Message: ${error.message}`);
                 }
               }, 3000)
               break;
@@ -417,7 +417,7 @@ struct Index {
                     console.info("received message from html5, on message:" + msg);
                   })
                 } catch (error) {
-                  console.info(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  console.info(`ErrorCode: ${(error as BusinessError)?.code},  Message: ${error.message}`);
                 }
                 Utils.emitEvent('sucessful', 446)
               }, 3000)
@@ -443,7 +443,7 @@ struct Index {
                   console.info("extra: " + hitValue.extra);
                   Utils.emitEvent('sucessful', 446)
                 } catch (error) {
-                  console.info(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  console.info(`ErrorCode: ${(error as BusinessError)?.code},  Message: ${error.message}`);
                 }
               }, 3000)
 
@@ -456,7 +456,7 @@ struct Index {
                   console.log("userAgent: " + userAgent);
                   Utils.emitEvent('sucessful', 446)
                 } catch (error) {
-                  console.info(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  console.info(`ErrorCode: ${(error as BusinessError)?.code},  Message: ${error.message}`);
                 }
               }, 3000)
 
@@ -468,7 +468,7 @@ struct Index {
                   this.ports = this.controller.createWebMessagePorts();
                   Utils.emitEvent('succesful', 446)
                 } catch (error) {
-                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  console.error(`ErrorCode: ${(error as BusinessError)?.code},  Message: ${error.message}`);
                 }
               }, 3000)
               break;
@@ -479,7 +479,7 @@ struct Index {
                   this.newcontroller.clearMatches();
                   Utils.emitEvent('succesful', 446)
                 } catch (error) {
-                  console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+                  console.error(`Errorcode: ${(error as BusinessError)?.code}, Message: ${error.message}`);
                 }
               }, 3000)
               break;
@@ -490,7 +490,7 @@ struct Index {
                   this.newcontroller.searchNext(true);
                   Utils.emitEvent('succesful', 446)
                 } catch (error) {
-                  console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+                  console.error(`Errorcode: ${(error as BusinessError)?.code}, Message: ${error.message}`);
                 }
               }, 3000)
 
@@ -503,7 +503,7 @@ struct Index {
                   Utils.emitEvent('succesful', 446)
 
                 } catch (error) {
-                  console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+                  console.error(`Errorcode: ${(error as BusinessError)?.code}, Message: ${error.message}`);
                 }
               }, 3000)
 
@@ -515,7 +515,7 @@ struct Index {
                   this.newcontroller.clearClientAuthenticationCache();
                   Utils.emitEvent('succesful', 446)
                 } catch (error) {
-                  console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+                  console.error(`Errorcode: ${(error as BusinessError)?.code}, Message: ${error.message}`);
                 }
               }, 3000)
 
@@ -528,7 +528,7 @@ struct Index {
                   Utils.emitEvent('succesful', 446)
                 }, 3000)
               } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                console.error(`ErrorCode: ${(error as BusinessError)?.code},  Message: ${error.message}`);
               }
 
               break;
@@ -556,7 +556,7 @@ struct Index {
           //                  this.controllerE.postMessageEvent();
           //                  Utils.emitEvent('succesful',446)
           //                } catch (error) {
-          //                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          //                  console.error(`ErrorCode: ${(error as BusinessError)?.code},  Message: ${error.message}`);
           //            }
           //                  })
           //      }
@@ -568,7 +568,7 @@ struct Index {
           //                  this.controllerE.postMessage();
           //                  Utils.emitEvent('succesful',446)
           //                } catch (error) {
-          //                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          //                  console.error(`ErrorCode: ${(error as BusinessError)?.code},  Message: ${error.message}`);
           //            }
           //                  })
           //      }

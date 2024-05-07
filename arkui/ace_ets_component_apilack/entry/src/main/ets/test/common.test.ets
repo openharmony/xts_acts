@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function commonBackgroundBlurStyleJsunit() {
   describe('commonBackgroundBlurStyleTest', () => {
     beforeEach(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/common',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/common',
       }
       try {
         router.clear();
@@ -57,21 +57,6 @@ export default function commonBackgroundBlurStyleJsunit() {
       let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
 
-      let targetValue = {
-        source: {
-          angle: 90,
-          direction: GradientDirection.Left,
-          colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]]
-        },
-        slice: {
-          top: 10, bottom: 10, left: 10, right: 10
-        },
-        width: {
-          top: "10px", bottom: "10px", left: "10px", right: "10px"
-        },
-        repeat: RepeatMode.Stretch,
-        fill: false
-      };
       let jsonObject: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.borderImage);
       expect(jsonObject.width).assertEqual("10.00px");
 
@@ -123,14 +108,6 @@ export default function commonBackgroundBlurStyleJsunit() {
       console.info("[testcommonBackgroundBlurStyle004] component alignRules strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      let targetValue = {
-        top: {
-          anchor: 'target', align: VerticalAlign.Bottom
-        },
-        right: {
-          anchor: "target", align: HorizontalAlign.Center
-        }
-      };
       expect(JSON.parse(strJson).$attrs.alignRules).assertEqual(undefined);
       console.info("[testcommonBackgroundBlurStyle004] alignRules value :" + JSON.stringify(JSON.parse(strJson)
         .$attrs

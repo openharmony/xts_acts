@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 import orouter from '@ohos.router';
@@ -21,8 +21,8 @@ import orouter from '@ohos.router';
 export default function OhosRouterJsunit() {
   describe('ohosRouterTest', () => {
     beforeEach(async () => {
-      let options = {
-        uri: 'pages/ohosRouterA',
+      let options: router.RouterOptions  = {
+        url: 'pages/ohosRouterA',
       }
       try {
         router.clear();
@@ -46,7 +46,7 @@ export default function OhosRouterJsunit() {
 
     it('ohosRouterTest001', 0, async () => {
       console.info('[ohosRouterTest001] START');
-      let options = {
+      let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA',
       }
       try {
@@ -66,7 +66,7 @@ export default function OhosRouterJsunit() {
 
     it('ohosRouterTest002', 0, async () => {
       console.info('[ohosRouterTest002] START');
-      let options = {
+      let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
       }
       try {
@@ -113,7 +113,7 @@ export default function OhosRouterJsunit() {
       console.info('[ohosRouterTest004] START');
       router.clear();
       await Utils.sleep(1000);
-      let options = {
+      let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
       }
       try {
@@ -141,7 +141,7 @@ export default function OhosRouterJsunit() {
 
     it('ohosRouterTest005', 0, async () => {
       console.info('[ohosRouterTest005] START');
-      let options = {
+      let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
       }
       try {
@@ -174,7 +174,7 @@ export default function OhosRouterJsunit() {
 
     it('ohosRouterTest006', 0, async () => {
       console.info('[ohosRouterTest006] START');
-      let options = {
+      let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
       }
       try {
@@ -206,7 +206,7 @@ export default function OhosRouterJsunit() {
 
     it('ohosRouterTest008', 0, async () => {
       console.info('[ohosRouterTest008] START');
-      let options = {
+      let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
       }
       try {
@@ -238,7 +238,7 @@ export default function OhosRouterJsunit() {
 
     it('ohosRouterTest007', 0, async () => {
       console.info('[ohosRouterTest007] START');
-      let options = {
+      let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
       }
       try {
@@ -269,7 +269,7 @@ export default function OhosRouterJsunit() {
     });
     it('ohosRouterTest009', 0, async () => {
       console.info('[ohosRouterTest009] START');
-      let options = {
+      let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
       }
       try {

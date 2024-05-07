@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils'
 
@@ -22,8 +22,8 @@ export default function pageRouteTest() {
   describe('pageRouteTest', () => {
     beforeEach(async () => {
       console.info("pageRouteTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/pageRoute',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/pageRoute',
       }
       // let result;
       try {
@@ -48,9 +48,9 @@ export default function pageRouteTest() {
 
     it('testOnPageHide01', 0, async () => {
       console.info('[testOnPageHide01] START');
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("[testOnPageHide01] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.value).assertEqual('onPageHide')
+        expect(eventData.data?.value).assertEqual('onPageHide')
 
       }
       let innerEvent: events_emitter.InnerEvent = {

@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
-import routery from '@ohos.router';
-
+import router from '@ohos.router';
 
 @Entry
 @Component
@@ -31,7 +29,7 @@ struct OhosRouterA {
         .margin({ top: 20 })
         .onClick(() => {
           router.push({
-            uri: 'pages/ohosRouterB',
+            url: 'pages/ohosRouterB',
             params: {
               data: 'B Page'
             }
@@ -44,7 +42,7 @@ struct OhosRouterA {
         .margin({ top: 20 })
         .onClick(() => {
           router.push({
-            uri: 'pages/ohosRouterB',
+            url: 'pages/ohosRouterB',
             params: {
               data: 'B Page'
             }
@@ -57,7 +55,7 @@ struct OhosRouterA {
         .margin({ top: 20 })
         .onClick(() => {
           try {
-            routery.pushUrl({
+            router.pushUrl({
               url: 'pages/routerpage2',
               params: {
                 data1: 'message',
@@ -73,7 +71,7 @@ struct OhosRouterA {
                 console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
               })
           } catch (error) {
-            console.error(`pushUrl args error code is ${error.code}, message is ${error.message}`);
+            console.error(`pushUrl args error code is ${(error as BusinessError)?.code}, message is ${error.message}`);
           }
           ;
         });
@@ -84,7 +82,7 @@ struct OhosRouterA {
         .margin({ top: 20 })
         .onClick(() => {
           try {
-            routery.pushUrl({
+            router.pushUrl({
               url: 'pages/routerpage2',
               params: {
                 data1: 'message',
@@ -92,7 +90,7 @@ struct OhosRouterA {
                   data3: [123, 456, 789]
                 },
               },
-            }, routery.RouterMode.Standard)
+            }, router.RouterMode.Standard)
               .then(() => {
                 // success
               })
@@ -100,7 +98,7 @@ struct OhosRouterA {
                 console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
               })
           } catch (error) {
-            console.error(`pushUrl args error code is ${error.code}, message is ${error.message}`);
+            console.error(`pushUrl args error code is ${(error as BusinessError)?.code}, message is ${error.message}`);
           }
           ;
         });
@@ -112,12 +110,12 @@ struct OhosRouterA {
         .margin({ top: 20 })
         .onClick(() => {
           try {
-            routery.replaceUrl({
+            router.replaceUrl({
               url: 'pages/detail',
               params: {
                 data1: 'message',
               },
-            }, routery.RouterMode.Standard)
+            }, router.RouterMode.Standard)
               .then(() => {
                 // success
               })
@@ -125,7 +123,7 @@ struct OhosRouterA {
                 console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
               })
           } catch (error) {
-            console.error(`replaceUrl args error code is ${error.code}, message is ${error.message}`);
+            console.error(`replaceUrl args error code is ${(error as BusinessError)?.code}, message is ${error.message}`);
           }
           ;
         });
@@ -136,7 +134,7 @@ struct OhosRouterA {
         .margin({ top: 20 })
         .onClick(() => {
           try {
-            routery.replaceUrl({
+            router.replaceUrl({
               url: 'pages/detail',
               params: {
                 data1: 'message',
@@ -149,7 +147,7 @@ struct OhosRouterA {
                 console.info(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
               })
           } catch (error) {
-            console.info(`replaceUrl args error code is ${error.code}, message is ${error.message}`);
+            console.info(`replaceUrl args error code is ${(error as BusinessError)?.code}, message is ${error.message}`);
           }
           ;
         });
@@ -174,7 +172,7 @@ struct OhosRouterA {
         .margin({ top: 20 })
         .onClick(() => {
           router.push({
-            uri: 'pages/ohosRouterB',
+            url: 'pages/ohosRouterB',
             params: {
               data: 'B Page'
             }
@@ -187,7 +185,7 @@ struct OhosRouterA {
         .margin({ top: 20 })
         .onClick(() => {
           router.push({
-            uri: 'pages/ohosRouterB',
+            url: 'pages/ohosRouterB',
             params: {
               data: 'B Page'
             }
@@ -204,7 +202,7 @@ struct OhosRouterA {
               message: 'Message Info'
             });
           } catch (error) {
-            console.error(`enableBackPageAlert failed, code is ${error.code}, message is ${error.message}`);
+            console.error(`enableBackPageAlert failed, code is ${(error as BusinessError)?.code}, message is ${error.message}`);
           }
         });
 
@@ -215,7 +213,7 @@ struct OhosRouterA {
         .margin({ top: 20 })
         .onClick(() => {
           router.push({
-            uri: 'pages/ohosRouterB',
+            url: 'pages/ohosRouterB',
             params: {
               data: 'B Page'
             }

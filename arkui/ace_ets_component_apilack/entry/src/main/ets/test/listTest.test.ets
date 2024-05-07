@@ -14,16 +14,16 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function listNewJsunit() {
   describe('listNewJsunit', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/list',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/list',
       }
       try {
         router.clear();
@@ -158,11 +158,11 @@ export default function listNewJsunit() {
         eventId: 60216,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         try {
           console.info("callback success");
-          console.info("testListNe0007 eventData.data.result result is: " + eventData.data.result);
-          expect(eventData.data.result).assertEqual("success");
+          console.info("testListNe0007 eventData.data.result result is: " + eventData.data?.result);
+          expect(eventData.data?.result).assertEqual("success");
           console.info("testListNe0007 end");
         } catch (err) {
           console.info("testListNe0007 on events_emitter err : " + JSON.stringify(err));

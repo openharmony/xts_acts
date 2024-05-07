@@ -45,10 +45,10 @@ struct Index {
         })
           .allowUpdate(this.allowUpate)
           .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
-          .onUninstall((info) => {
+          .onUninstall((info: FormCallbackInfo) => {
             console.log("[FormComponent] onUninstall:" + JSON.stringify(info));
           })
-          .onError((error) => {
+          .onError((error: ESObject) => {
             console.log("[FormComponent.host] error code:" + error.errcode);
             console.log("[FormComponent.host] error msg:" + error.msg);
           })

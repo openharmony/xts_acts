@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function sideBarShowSideBarJsunit() {
   describe('sideBarShowSideBarTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/sideBar',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/sideBar',
       }
       try {
         router.clear();
