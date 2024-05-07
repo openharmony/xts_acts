@@ -68,10 +68,10 @@ struct OhosRouterA {
                 // success
               })
               .catch(err => {
-                console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+                console.error(`pushUrl failed, code is ${err.code}, message is ${(err as Error)?.message}`);
               })
           } catch (error) {
-            console.error(`pushUrl args error code is ${(error as BusinessError)?.code}, message is ${error.message}`);
+            console.error(`pushUrl args error code is ${(error as BusinessError)?.code}, message is ${(error as Error)?.message}`);
           }
           ;
         });
@@ -95,10 +95,10 @@ struct OhosRouterA {
                 // success
               })
               .catch(err => {
-                console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+                console.error(`pushUrl failed, code is ${err.code}, message is ${(err as Error)?.message}`);
               })
           } catch (error) {
-            console.error(`pushUrl args error code is ${(error as BusinessError)?.code}, message is ${error.message}`);
+            console.error(`pushUrl args error code is ${(error as BusinessError)?.code}, message is ${(error as Error)?.message}`);
           }
           ;
         });
@@ -120,10 +120,10 @@ struct OhosRouterA {
                 // success
               })
               .catch(err => {
-                console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+                console.error(`replaceUrl failed, code is ${err.code}, message is ${(err as Error)?.message}`);
               })
           } catch (error) {
-            console.error(`replaceUrl args error code is ${(error as BusinessError)?.code}, message is ${error.message}`);
+            console.error(`replaceUrl args error code is ${(error as BusinessError)?.code}, message is ${(error as Error)?.message}`);
           }
           ;
         });
@@ -144,10 +144,10 @@ struct OhosRouterA {
                 // success
               })
               .catch(err => {
-                console.info(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+                console.info(`replaceUrl failed, code is ${err.code}, message is ${(err as Error)?.message}`);
               })
           } catch (error) {
-            console.info(`replaceUrl args error code is ${(error as BusinessError)?.code}, message is ${error.message}`);
+            console.info(`replaceUrl args error code is ${(error as BusinessError)?.code}, message is ${(error as Error)?.message}`);
           }
           ;
         });
@@ -202,7 +202,7 @@ struct OhosRouterA {
               message: 'Message Info'
             });
           } catch (error) {
-            console.error(`enableBackPageAlert failed, code is ${(error as BusinessError)?.code}, message is ${error.message}`);
+            console.error(`enableBackPageAlert failed, code is ${(error as BusinessError)?.code}, message is ${(error as Error)?.message}`);
           }
         });
 

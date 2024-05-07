@@ -137,7 +137,7 @@ export default function circleNewJsunit() {
         }
       }, (err) => {
         if (err) {
-          console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          console.error(`pushUrl failed, code is ${(err as BusinessError)?.code}, message is ${(err as Error)?.message}`);
           expect().assertFail();
         } else {
           console.info('pushUrl success');
