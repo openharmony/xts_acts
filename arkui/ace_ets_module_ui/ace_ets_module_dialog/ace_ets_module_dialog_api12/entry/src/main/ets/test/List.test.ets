@@ -36,7 +36,7 @@ import TimePickerDialogCallback from './TimePickerDialogTest/TimePickerDialogCal
 import closeCustomDialog from './promptActionTest/closeCustomDialog.test'
 import openCustomDialog from './promptActionTest/openCustomDialog.test'
 import updateCustomDialog from './promptActionTest/updateCustomDialog.test'
-
+import onHeightDidChange from './onHeightDidChange.test'
 export default function testsuite() {
   TextPickerDialog()
   DatePickerDialog()
@@ -58,7 +58,7 @@ export default function testsuite() {
   DatePickerDialogCallback();
   TextPickerDialogCallback();
   TimePickerDialogCallback();
-
+  onHeightDidChange();
   closeCustomDialog()
   openCustomDialog()
   updateCustomDialog()

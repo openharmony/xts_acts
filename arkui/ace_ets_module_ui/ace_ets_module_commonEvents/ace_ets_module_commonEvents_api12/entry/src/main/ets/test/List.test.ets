@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 import APIPreDragStatusTest from './DragController/APIPreDragStatusTest.test';
+import addGestureApplyGesture from './addGestureApplyGesture.test';
 export default function testsuite() {
   APIPreDragStatusTest();
-
+  addGestureApplyGesture();
 }

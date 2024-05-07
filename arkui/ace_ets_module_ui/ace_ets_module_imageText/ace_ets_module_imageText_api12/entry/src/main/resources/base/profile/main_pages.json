@@ -3,6 +3,7 @@
   "MainAbility/pages/index/index",
   "MainAbility/pages/TextInput/APIContentType",
   "MainAbility/pages/TextInput/APIUnderlineColor",
+    "MainAbility/pages/TextInput/underlineColor",
   "MainAbility/pages/RichEditor/onSelectionChange1",
   "MainAbility/pages/RichEditor/onSelectionChange2",
   "MainAbility/pages/RichEditor/onSelectionChange3",

@@ -43,7 +43,7 @@ import APIContentTypeTest from './TextInput/APIContentTypeTest.test';
 import APIUnderlineColorTest from './TextInput/APIUnderlineColorTest.test';
 import srcIndexTest from './MatrixTest/srcIndexTest.test'
 import dstIndexTest from './MatrixTest/dstIndexTest.test'
-
+import underlineColor from './TextInput/underlineColor.test'
 
 import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
 import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
@@ -78,7 +78,7 @@ APIUnderlineColorTest();
   StyledStringTest()
   TextStyle();
   MarqueeApi();
-
+  underlineColor();
   srcIndexTest();
   dstIndexTest();
   

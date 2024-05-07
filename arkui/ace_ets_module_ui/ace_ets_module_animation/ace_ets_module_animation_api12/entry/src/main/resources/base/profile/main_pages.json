@@ -2,6 +2,7 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/AnimatorResult/AnimatorResult",
-        "MainAbility/pages/AnimatorResult/setExpectedFrameRateRange"
+        "MainAbility/pages/AnimatorResult/setExpectedFrameRateRange",
+        "MainAbility/pages/setPolyToPoly"
     ]
 }

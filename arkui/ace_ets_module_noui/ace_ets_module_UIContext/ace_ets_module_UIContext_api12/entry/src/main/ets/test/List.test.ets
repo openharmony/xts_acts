@@ -14,8 +14,8 @@
  */
 
 import UIContextApi1 from './UIContext/UIContextApi1.test'
-
+import getContextMenuController from './getContextMenuController.test'
 export default function testsuite() {
   UIContextApi1();
-
+  getContextMenuController();
 }
