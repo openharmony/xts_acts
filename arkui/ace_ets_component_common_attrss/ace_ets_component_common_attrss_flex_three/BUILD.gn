@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAceEtsComponentCommonflexThreeTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAceEtsComponentCommonflexThreeTest"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
 }
 
 ohos_app_scope("ace_ets_component_common_attrss_flex_three_app_profile") {
