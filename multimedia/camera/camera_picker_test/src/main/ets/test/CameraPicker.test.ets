@@ -284,6 +284,16 @@ export default function cameraPicker() {
           expect(true).assertFalse();
         });
       await sleep(1000);
+      let driver = await UiDriver.create()
+      console.info(`drivePhotoFn is ${JSON.stringify(driver)}`)
+      await sleep(100)
+      console.info(`UiDriver start`);
+      let button = await driver.findComponent(BY.text(`同意`))
+      console.info(`button is ${JSON.stringify(button)}`)
+      await sleep(100);
+      if(button !== null){
+        await button.click();
+      }
       await driveVideoFn(videoDuration);
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100 ends here");
     });
