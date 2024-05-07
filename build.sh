@@ -46,8 +46,11 @@ parse_cmdline()
     UPLOAD_API_INFO=False
     SYSTEM_SIZE=standard
     PRODUCT_NAME=""
+    PR_PARTH_LIST=""
     USE_MUSL=false
     export PATH=${BASE_HOME}/prebuilts/python/linux-x86/3.8.3/bin:$PATH
+
+    system_build_params="build_xts=true"
 
     while [ -n "$1" ]
     do
@@ -71,6 +74,8 @@ parse_cmdline()
         system_size)      SYSTEM_SIZE="$PARAM"
                           ;;
         product_name)     PRODUCT_NAME="$PARAM"
+                          ;;
+        pr_path_list)     PR_PARTH_LIST="$PARAM"
                           ;;
         upload_api_info)  UPLOAD_API_INFO=$(echo $PARAM |tr [a-z] [A-Z])
                           ;;
@@ -108,10 +113,14 @@ do_make()
 		    fi
         fi
 	CACHE_ARG=""
+    
 	if [ "$CACHE_TYPE" == "xcache" ];then
             CACHE_ARG="--ccache false --xcache true"
-        fi
-       ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH --get-warning-list=false --stat-ccache=true --compute-overlap-rate=false --deps-guard=false $CACHE_ARG --gn-args skip_generate_module_list_file=true
+    fi
+    if [ "$PR_PARTH_LIST" != "" ]; then
+        system_build_params+=" pr_path_list=$PR_PARTH_LIST"
+    fi
+    ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH --get-warning-list=false --stat-ccache=true --compute-overlap-rate=false --deps-guard=false $CACHE_ARG --gn-args skip_generate_module_list_file=true
     else
        if [ "$BUILD_TARGET" = "acts acts_ivi acts_intellitv acts_wearable" ]; then
          ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target "acts" --build-target "acts_ivi" --build-target "acts_intellitv" --build-target "acts_wearable" --build-target "deploy_testtools"
