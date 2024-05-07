@@ -83,5 +83,23 @@ export default function wifiSta() {
 	        }
 	        done();
         })
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_Sta_0035
+         * @tc.name testIsHotspotActive
+         * @tc.desc Test isHotspotActive Sync API functionality.
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_WiFi_XTS_Sta_0035', 0, async (done:Function) =>{
+            try {
+		        let isHotspotActive = wifiMg.isHotspotActive();
+		        console.info("isHotspotActive:" + isHotspotActive);
+	        }catch(error){
+		        console.error("failed:" + JSON.stringify(error));
+                expect(true).assertFalse();
+	        }
+	        done();
+        })
   })
 }
