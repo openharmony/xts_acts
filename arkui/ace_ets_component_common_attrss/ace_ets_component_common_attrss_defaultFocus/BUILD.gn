@@ -25,7 +25,6 @@ ohos_js_hap_suite("ActsAceEtsComponentCommonAttrsdefaultFocusTest") {
   hap_name = "ActsAceEtsComponentCommonAttrsdefaultFocusTest"
   part_name = "ace_engine"
   subsystem_name = "arkui"
-
 }
 
 ohos_app_scope("ace_ets_component_common_attrss_defaultFocus_app_profile") {
