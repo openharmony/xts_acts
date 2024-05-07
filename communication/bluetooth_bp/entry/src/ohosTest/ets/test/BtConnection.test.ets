@@ -1413,5 +1413,25 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
         }
         done();
     })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_GETLASTCONNECTIONTIME_0100
+     * @tc.name testGetLastConnectionTime
+     * @tc.desc Test getLastConnectionTime promise.
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_GETLASTCONNECTIONTIME_0100', 0, async (done : Function) => {
+        try {
+            await bluetooth.getLastConnectionTime('11:22:33:AA:BB:FF').then((time: number) => {
+                console.info('[bluetooth_js] getLastConnectionTime result:' + JSON.stringify(time));
+            });
+        } catch (error) {
+            console.info("[bluetooth_js] error code getLastConnectionTime -> " + error.code + " error info getLastConnectionTime  -> " + error.message);
+            expect(Number(error.code)).assertEqual(2900099);
+        }
+        done();
+    })
 })
 }
