@@ -237,7 +237,6 @@ static napi_value NormalAVScreenCaptureSurfaceTest(napi_env env, napi_callback_i
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_PROFILE, profile);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, rateMode);
     OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, bitRate);
-    // OH_AVFormat_SetIntValue(format, OH_MD_KEY_QUALITY, quality);
     int result2 = OH_VideoEncoder_Configure(g_videoEnc, format);
     OH_AVFormat_Destroy(format);
 
