@@ -1888,7 +1888,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let msgStr = "test_subWindow_GetWindowSystemBarProperties_1300004";
       console.log(msgStr + " begin");
       try{
-        await WindowStage.createSubWindow('mySubWindow').then((data) => {
+        await WindowStage.createSubWindow('mySubWindow1').then((data) => {
         let SubWindowClass = data;
         console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
         try {
