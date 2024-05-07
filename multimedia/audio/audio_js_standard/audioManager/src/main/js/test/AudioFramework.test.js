@@ -354,7 +354,7 @@ export default function audioFramework() {
         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUMESYNC_0100', 1, async function (done) {
             try {
                 let data = audioVolumeGroupManager.getMaxVolumeSync(audio.AudioVolumeType.MEDIA);
-                if (data == 15) {
+                if (data == maxVol) {
                     console.info(`${TagFrmwk}: Media getVolumeSync : PASS :${data}`);
                     expect(true).assertTrue();
                     done();
