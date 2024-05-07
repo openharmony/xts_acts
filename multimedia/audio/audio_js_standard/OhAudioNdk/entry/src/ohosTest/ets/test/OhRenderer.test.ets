@@ -329,7 +329,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETCURRENTSTATE_0100
-     * @tc.name   ：TestOHAudioRendererGetCurrentState0100
+     * @tc.name   ：testOHAudioRendererGetCurrentState0100
      * @tc.desc   ：Query the current output audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -345,7 +345,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETSAMPLEFORMAT_0100
-     * @tc.name   ：TestOHAudioRendererGetSampleFormat0100
+     * @tc.name   ：testOHAudioRendererGetSampleFormat0100
      * @tc.desc   ：Query the current output audio stream sampling format.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -361,7 +361,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETSAMPLINGRATE_0100
-     * @tc.name   ：TestOHAudioRendererGetSamplingRate0100
+     * @tc.name   ：testOHAudioRendererGetSamplingRate0100
      * @tc.desc   ：Query the current output audio stream sampling rate.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -377,7 +377,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETSTREAMID_0100
-     * @tc.name   ：TestOHAudioRendererGetStreamId0100
+     * @tc.name   ：testOHAudioRendererGetStreamId0100
      * @tc.desc   ：Query the current output audio stream ID.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -393,7 +393,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETSPEED_0100
-     * @tc.name   ：TestOHAudioRendererGetSpeed0100
+     * @tc.name   ：testOHAudioRendererGetSpeed0100
      * @tc.desc   ：Get playback speed.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -409,7 +409,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETCHANNELCOUNT_0100
-     * @tc.name   ：TestOHAudioRendererGetChannelCount0100
+     * @tc.name   ：testOHAudioRendererGetChannelCount0100
      * @tc.desc   ：Query the current number of output audio channels.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -425,7 +425,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETENCODINGTYPE_0100
-     * @tc.name   ：TestOHAudioRendererGetEncodingType0100
+     * @tc.name   ：testOHAudioRendererGetEncodingType0100
      * @tc.desc   ：Query the current output audio stream encoding type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -441,7 +441,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETFRAMESIZEINCALLBACK_0100
-     * @tc.name   ：TestOHAudioRendererGetFrameSizeInCallback0100
+     * @tc.name   ：testOHAudioRendererGetFrameSizeInCallback0100
      * @tc.desc   ：Query the frame size in the callback, which is a fixed length that fills the flow every time the callback is performed.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -457,7 +457,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETFRAMESWRITTEN_0100
-     * @tc.name   ：TestOHAudioRendererGetFramesWritten0100
+     * @tc.name   ：testOHAudioRendererGetFramesWritten0100
      * @tc.desc   ：Query the number of frames written since self created streaming
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -473,7 +473,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETLATENCYMODE_0100
-     * @tc.name   ：TestOHAudioRendererGetLatencyMode0100
+     * @tc.name   ：testOHAudioRendererGetLatencyMode0100
      * @tc.desc   ：Query the current output audio stream delay mode.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -489,7 +489,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETRENDERERINFO_0100
-     * @tc.name   ：TestOHAudioRendererGetRendererInfo0100
+     * @tc.name   ：testOHAudioRendererGetRendererInfo0100
      * @tc.desc   ：Query the current output audio stream workspace type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -505,7 +505,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERSTART_0100
-     * @tc.name   ：TestOHAudioRendererStart0100
+     * @tc.name   ：testOHAudioRendererStart0100
      * @tc.desc   ：Start outputting audio data.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -523,7 +523,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETTIMESTAMP_0100
-     * @tc.name   ：TestOHAudioRendererGetTimestamp0100
+     * @tc.name   ：testOHAudioRendererGetTimestamp0100
      * @tc.desc   ：Stop outputting audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -542,7 +542,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERPAUSE_0100
-     * @tc.name   ：TesttestOHAudioRendererPause0100
+     * @tc.name   ：testOHAudioRendererPause0100
      * @tc.desc   ：Release the output audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -563,7 +563,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERSTOP_0100
-     * @tc.name   ：TestOHAudioRendererStop0100
+     * @tc.name   ：testOHAudioRendererStop0100
      * @tc.desc   ：Stop outputting audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -584,7 +584,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERFLUSH_0100
-     * @tc.name   ：TestOHAudioRendererFlush0100
+     * @tc.name   ：testOHAudioRendererFlush0100
      * @tc.desc   ：Discard audio data that has already been written.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -600,7 +600,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERSETSPEED_0100
-     * @tc.name   ：TestOHAudioRendererSetSpeed0100
+     * @tc.name   ：testOHAudioRendererSetSpeed0100
      * @tc.desc   ：Set playback speed.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -618,7 +618,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETCURRENTSTATE_0200
-     * @tc.name   ：TestOHAudioRendererGetCurrentState0200
+     * @tc.name   ：testOHAudioRendererGetCurrentState0200
      * @tc.desc   ：Query the current output audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -635,7 +635,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETCURRENTSTATE_0300
-     * @tc.name   ：TestOHAudioRendererGetCurrentState0300
+     * @tc.name   ：testOHAudioRendererGetCurrentState0300
      * @tc.desc   ：Query the current output audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -652,7 +652,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERGETCURRENTSTATE_0400
-     * @tc.name   ：TestOHAudioRendererGetCurrentState0400
+     * @tc.name   ：testOHAudioRendererGetCurrentState0400
      * @tc.desc   ：Query the current output audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -712,7 +712,7 @@ export default function OhRendererTest() {
     /**
      * start -> pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0100
-     * @tc.name   ：TestCreatRendererAudioPlayer0100
+     * @tc.name   ：testCreatRendererAudioPlayer0100
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -747,7 +747,7 @@ export default function OhRendererTest() {
     /**
      * start -> pause -> stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0200
-     * @tc.name   ：TestCreatRendererAudioPlayer0200
+     * @tc.name   ：testCreatRendererAudioPlayer0200
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -787,7 +787,7 @@ export default function OhRendererTest() {
     /**
      * start -> pause -> stop -> start -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0300
-     * @tc.name   ：TestCreatRendererAudioPlayer0300
+     * @tc.name   ：testCreatRendererAudioPlayer0300
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -832,7 +832,7 @@ export default function OhRendererTest() {
     /**
      * start -> pause -> stop -> start -> pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0400
-     * @tc.name   ：TestCreatRendererAudioPlayer0400
+     * @tc.name   ：testCreatRendererAudioPlayer0400
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -882,7 +882,7 @@ export default function OhRendererTest() {
     /**
      * start -> pause -> stop -> start -> stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0500
-     * @tc.name   ：TestCreatRendererAudioPlayer0500
+     * @tc.name   ：testCreatRendererAudioPlayer0500
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -932,7 +932,7 @@ export default function OhRendererTest() {
     /**
      * start -> pause -> start -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0600
-     * @tc.name   ：TestCreatRendererAudioPlayer0600
+     * @tc.name   ：testCreatRendererAudioPlayer0600
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -972,7 +972,7 @@ export default function OhRendererTest() {
     /**
      * start -> pause -> start -> pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0700
-     * @tc.name   ：TestCreatRendererAudioPlayer0700
+     * @tc.name   ：testCreatRendererAudioPlayer0700
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1017,7 +1017,7 @@ export default function OhRendererTest() {
     /**
      * start -> pause -> start -> stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0800
-     * @tc.name   ：TestCreatRendererAudioPlayer0800
+     * @tc.name   ：testCreatRendererAudioPlayer0800
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1062,7 +1062,7 @@ export default function OhRendererTest() {
     /**
      * start -> stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_0900
-     * @tc.name   ：TestCreatRendererAudioPlayer0900
+     * @tc.name   ：testCreatRendererAudioPlayer0900
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1097,7 +1097,7 @@ export default function OhRendererTest() {
     /**
      * start -> stop -> start -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1000
-     * @tc.name   ：TestCreatRendererAudioPlayer1000
+     * @tc.name   ：testCreatRendererAudioPlayer1000
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1137,7 +1137,7 @@ export default function OhRendererTest() {
     /**
      * start -> stop -> start  -> pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1100
-     * @tc.name   ：TestCreatRendererAudioPlayer1100
+     * @tc.name   ：testCreatRendererAudioPlayer1100
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1182,7 +1182,7 @@ export default function OhRendererTest() {
     /**
      * start -> stop -> start  -> stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1200
-     * @tc.name   ：TestCreatRendererAudioPlayer1200
+     * @tc.name   ：testCreatRendererAudioPlayer1200
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1227,7 +1227,7 @@ export default function OhRendererTest() {
     /**
      * start -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1300
-     * @tc.name   ：TestCreatRendererAudioPlayer1300
+     * @tc.name   ：testCreatRendererAudioPlayer1300
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1257,7 +1257,7 @@ export default function OhRendererTest() {
     /**
      * release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1400
-     * @tc.name   ：TestCreatRendererAudioPlayer1400
+     * @tc.name   ：testCreatRendererAudioPlayer1400
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1282,7 +1282,7 @@ export default function OhRendererTest() {
     /**
      * start -> stop -> pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1500
-     * @tc.name   ：TestCreatRendererAudioPlayer1500
+     * @tc.name   ：testCreatRendererAudioPlayer1500
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1322,7 +1322,7 @@ export default function OhRendererTest() {
     /**
      * pause -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1600
-     * @tc.name   ：TestCreatRendererAudioPlayer1600
+     * @tc.name   ：testCreatRendererAudioPlayer1600
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1352,7 +1352,7 @@ export default function OhRendererTest() {
     /**
      * stop -> release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1700
-     * @tc.name   ：TestCreatRendererAudioPlayer1700
+     * @tc.name   ：testCreatRendererAudioPlayer1700
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1382,7 +1382,7 @@ export default function OhRendererTest() {
     /**
      * start -> start
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1800
-     * @tc.name   ：TestCreatRendererAudioPlayer1700
+     * @tc.name   ：testCreatRendererAudioPlayer1800
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1412,7 +1412,7 @@ export default function OhRendererTest() {
     /**
      * pause -> pause
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_1900
-     * @tc.name   ：TestCreatRendererAudioPlayer1700
+     * @tc.name   ：testCreatRendererAudioPlayer1900
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1445,7 +1445,7 @@ export default function OhRendererTest() {
     /**
      * stop -> stop
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATRENDERERAUDIOPLAYER_2000
-     * @tc.name   ：TestCreatRendererAudioPlayer1700
+     * @tc.name   ：testCreatRendererAudioPlayer2000
      * @tc.desc   ：The state change of the state machine.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1476,7 +1476,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo0100
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0100
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1496,7 +1496,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0200
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo0200
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0200
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1516,7 +1516,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0300
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo0300
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0300
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1536,7 +1536,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0400
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo0400
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0400
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1556,7 +1556,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0500
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo0500
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0500
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1576,7 +1576,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0600
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo0600
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0600
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1596,7 +1596,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0700
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo0700
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0700
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1616,7 +1616,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0800
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo0800
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0800
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1636,7 +1636,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_0900
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo0900
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo0900
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1656,7 +1656,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_1000
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo1000
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo1000
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1676,7 +1676,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_1100
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo1100
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo1100
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1696,7 +1696,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_1200
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo1200
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo1200
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1716,7 +1716,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERINFO_1300
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererInfo1300
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererInfo1300
      * @tc.desc   ：Set the working scenario for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1754,7 +1754,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERPLAYLIST_0100
-     * @tc.name   ：TestOHAudioRendererPlayList0100
+     * @tc.name   ：testOHAudioRendererPlayList001
      * @tc.desc   ：Creating an audio player using Wav files.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1805,7 +1805,7 @@ export default function OhRendererTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERPLAYLIST_0200
-     * @tc.name   ：TestOHAudioRendererPlayList0200
+     * @tc.name   ：testOHAudioRendererPlayList002
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1882,7 +1882,7 @@ export default function OhRendererTest() {
     /**
      * Renderer properties verification  test
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIORENDERERPLAYLIST_0300
-     * @tc.name   ：TestOHAudioRendererPlayList0300
+     * @tc.name   ：testOHAudioRendererPlayList003
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function

@@ -282,7 +282,7 @@ export default function OhCapturerTest() {
     });
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERCREATE_0100
-     * @tc.name   ：TestOHAudioStreamBuilderCreate0100
+     * @tc.name   ：testOHAudioStreamBuilderCreate0100
      * @tc.desc   ：Create an audio stream constructor of input or output type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -298,7 +298,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERCREATE_0200
-     * @tc.name   ：TestOHAudioStreamBuilderCreate0200
+     * @tc.name   ：testOHAudioStreamBuilderCreate0200
      * @tc.desc   ：Create an audio stream constructor of input or output type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -314,7 +314,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERGENERATERENDERER_0100
-     * @tc.name   ：TestOHAudioStreamBuilderGenerateRenderer0100
+     * @tc.name   ：testOHAudioStreamBuilderGenerateRenderer0100
      * @tc.desc   ：Create an output audio stream instance.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -330,7 +330,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERGENERATECAPTURER_0100
-     * @tc.name   ：TestOHAudioStreamBuilderGenerateCapturer0100
+     * @tc.name   ：testOHAudioStreamBuilderGenerateCapturer0100
      * @tc.desc   ：Create an input audio stream instance.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -346,7 +346,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERCALLBACK_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetCapturerCallback0100
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerCallback0100
      * @tc.desc   ：Set the callback for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -362,7 +362,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetChannelCount0100
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0100
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -378,7 +378,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0200
-     * @tc.name   ：TestOHAudioStreamBuilderSetChannelCount0200
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0200
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -394,7 +394,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0300
-     * @tc.name   ：TestOHAudioStreamBuilderSetChannelCount0300
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0300
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -410,7 +410,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0400
-     * @tc.name   ：TestOHAudioStreamBuilderSetChannelCount0400
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0400
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -426,7 +426,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0500
-     * @tc.name   ：TestOHAudioStreamBuilderSetChannelCount0500
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0500
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -442,7 +442,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0600
-     * @tc.name   ：TestOHAudioStreamBuilderSetChannelCount0600
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0600
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -459,7 +459,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCHANNELCOUNT_0700
-     * @tc.name   ：TestOHAudioStreamBuilderSetChannelCount0700
+     * @tc.name   ：testOHAudioStreamBuilderSetChannelCount0700
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -475,7 +475,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetEncodingType0100
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0100
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -491,7 +491,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0200
-     * @tc.name   ：TestOHAudioStreamBuilderSetEncodingType0200
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0200
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -507,7 +507,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0300
-     * @tc.name   ：TestOHAudioStreamBuilderSetEncodingType0300
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0300
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -523,7 +523,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0400
-     * @tc.name   ：TestOHAudioStreamBuilderSetEncodingType0400
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0400
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -539,7 +539,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0500
-     * @tc.name   ：TestOHAudioStreamBuilderSetEncodingType0500
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0500
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -555,7 +555,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetFrameSizeInCallback0100
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0100
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -571,7 +571,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0200
-     * @tc.name   ：TestOHAudioStreamBuilderSetFrameSizeInCallback0200
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0200
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -587,7 +587,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0300
-     * @tc.name   ：TestOHAudioStreamBuilderSetFrameSizeInCallback0300
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0300
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -603,7 +603,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0400
-     * @tc.name   ：TestOHAudioStreamBuilderSetFrameSizeInCallback0400
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0400
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -619,7 +619,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0500
-     * @tc.name   ：TestOHAudioStreamBuilderSetFrameSizeInCallback0500
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0500
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -635,7 +635,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0600
-     * @tc.name   ：TestOHAudioStreamBuilderSetFrameSizeInCallback0600
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0600
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -651,7 +651,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0700
-     * @tc.name   ：TestOHAudioStreamBuilderSetFrameSizeInCallback0700
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0700
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -667,7 +667,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0800
-     * @tc.name   ：TestOHAudioStreamBuilderSetFrameSizeInCallback0800
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0800
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -683,7 +683,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETFRAMESIZEINCALLBACK_0900
-     * @tc.name   ：TestOHAudioStreamBuilderSetFrameSizeInCallback0900
+     * @tc.name   ：testOHAudioStreamBuilderSetFrameSizeInCallback0900
      * @tc.desc   ：Set the frame length for each callback, which should be at least the size of the data processed by the audio hardware once and less than half of the internal buffer capacity.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -699,7 +699,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetLatencyMode0100
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0100
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -715,7 +715,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0200
-     * @tc.name   ：TestOHAudioStreamBuilderSetLatencyMode0200
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0200
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -731,7 +731,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0300
-     * @tc.name   ：TestOHAudioStreamBuilderSetLatencyMode0300
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0300
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -747,7 +747,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0400
-     * @tc.name   ：TestOHAudioStreamBuilderSetLatencyMode0400
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0400
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -763,7 +763,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0500
-     * @tc.name   ：TestOHAudioStreamBuilderSetLatencyMode0600
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0500
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -779,7 +779,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDERERCALLBACK_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererCallback0100
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererCallback0100
      * @tc.desc   ：Set the callback for outputting audio streams.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -795,7 +795,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetSampleFormat0100
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0100
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -811,7 +811,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0200
-     * @tc.name   ：TestOHAudioStreamBuilderSetSampleFormat0200
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0200
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -827,7 +827,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0300
-     * @tc.name   ：TestOHAudioStreamBuilderSetSampleFormat0300
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0300
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -843,7 +843,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0400
-     * @tc.name   ：TestOHAudioStreamBuilderSetSampleFormat0400
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0400
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -859,7 +859,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0500
-     * @tc.name   ：TestOHAudioStreamBuilderSetSampleFormat0500
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0500
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -875,7 +875,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0600
-     * @tc.name   ：TestOHAudioStreamBuilderSetSampleFormat0600
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0600
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -891,7 +891,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0700
-     * @tc.name   ：TestOHAudioStreamBuilderSetSampleFormat0700
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0700
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -907,7 +907,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0800
-     * @tc.name   ：TestOHAudioStreamBuilderSetSampleFormat0800
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0800
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -923,7 +923,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_0900
-     * @tc.name   ：TestOHAudioStreamBuilderSetSampleFormat0900
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat0900
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -939,7 +939,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetSamplingRate0100
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0100
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -955,7 +955,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0200
-     * @tc.name   ：TestOHAudioStreamBuilderSetSamplingRate0200
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0200
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -971,7 +971,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0300
-     * @tc.name   ：TestOHAudioStreamBuilderSetSamplingRate0300
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0300
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -987,7 +987,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0400
-     * @tc.name   ：TestOHAudioStreamBuilderSetSamplingRate0400
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0400
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1003,7 +1003,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0500
-     * @tc.name   ：TestOHAudioStreamBuilderSetSamplingRate0500
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0500
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1019,7 +1019,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETRENDEREROUTPUTDEVICECHANGECALLBACK_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetRendererOutputDeviceChangeCallback0100
+     * @tc.name   ：testOHAudioStreamBuilderSetRendererOutputDeviceChangeCallback0100
      * @tc.desc   ：Set input stream device callback function.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1035,7 +1035,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0200
-     * @tc.name   ：TestOHAudioStreamBuilderSetCapturerInfo0200
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0200
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1051,7 +1051,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0300
-     * @tc.name   ：TestOHAudioStreamBuilderSetCapturerInfo0300
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0300
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1067,7 +1067,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0400
-     * @tc.name   ：TestOHAudioStreamBuilderSetCapturerInfo0400
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0400
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1083,7 +1083,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0500
-     * @tc.name   ：TestOHAudioStreamBuilderSetCapturerInfo0500
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0500
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1099,7 +1099,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0600
-     * @tc.name   ：TestOHAudioStreamBuilderSetCapturerInfo0600
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0600
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1115,7 +1115,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETCAPTURERINFO_0100
-     * @tc.name   ：TestOHAudioStreamBuilderSetCapturerInfo0100
+     * @tc.name   ：testOHAudioStreamBuilderSetCapturerInfo0100
      * @tc.desc   ：Set the working scenario for the input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1130,7 +1130,7 @@ export default function OhCapturerTest() {
     });
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETENCODINGTYPE_0600
-     * @tc.name   ：TestOHAudioStreamBuilderSetEncodingType0600
+     * @tc.name   ：testOHAudioStreamBuilderSetEncodingType0600
      * @tc.desc   ：Set the channel count property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1146,7 +1146,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETLATENCYMODE_0600
-     * @tc.name   ：TestOHAudioStreamBuilderSetLatencyMode0600
+     * @tc.name   ：testOHAudioStreamBuilderSetLatencyMode0600
      * @tc.desc   ：Set the delay mode for the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1162,7 +1162,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLEFORMAT_1000
-     * @tc.name   ：TestOHAudioStreamBuilderSetSampleFormat1000
+     * @tc.name   ：testOHAudioStreamBuilderSetSampleFormat1000
      * @tc.desc   ：Set the sampling format properties of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1178,7 +1178,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOSTREAMBUILDERSETSAMPLINGRATE_0600
-     * @tc.name   ：TestOHAudioStreamBuilderSetSamplingRate0600
+     * @tc.name   ：testOHAudioStreamBuilderSetSamplingRate0600
      * @tc.desc   ：Set the sampling rate property of the audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1215,7 +1215,7 @@ export default function OhCapturerTest() {
     });
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0100
-     * @tc.name   ：TestOHAudioCapturerGetCurrentState0100
+     * @tc.name   ：testOHAudioCapturerGetCurrentState0100
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1233,7 +1233,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERSTART_0100
-     * @tc.name   ：TestOHAudioCapturerStart0100
+     * @tc.name   ：testOHAudioCapturerStart0100
      * @tc.desc   ：Start obtaining audio data.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1249,7 +1249,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0200
-     * @tc.name   ：TestOHAudioCapturerGetCurrentState0200
+     * @tc.name   ：testOHAudioCapturerGetCurrentState0200
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1265,7 +1265,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETSAMPLEFORMAT_0100
-     * @tc.name   ：TestOHAudioCapturerGetSampleFormat0100
+     * @tc.name   ：testOHAudioCapturerGetSampleFormat0100
      * @tc.desc   ：Query the current input audio stream sampling format.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1281,7 +1281,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERPAUSE_0100
-     * @tc.name   ：TestOHAudioCapturerPause0100
+     * @tc.name   ：testOHAudioCapturerPause0100
      * @tc.desc   ：Pause input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1297,7 +1297,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0300
-     * @tc.name   ：TestOHAudioCapturerGetCurrentState0300
+     * @tc.name   ：testOHAudioCapturerGetCurrentState0300
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1313,7 +1313,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCHANNELCOUNT_0100
-     * @tc.name   ：TestOHAudioCapturerGetChannelCount0100
+     * @tc.name   ：testOHAudioCapturerGetChannelCount0100
      * @tc.desc   ：Query the current number of audio channels.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1329,7 +1329,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCAPTURERINFO_0100
-     * @tc.name   ：TestOHAudioCapturerGetCapturerInfo0100
+     * @tc.name   ：testOHAudioCapturerGetCapturerInfo0100
      * @tc.desc   ：Query the current audio streaming workspace type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1345,7 +1345,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETENCODINGTYPE_0100
-     * @tc.name   ：TestOHAudioCapturerGetEncodingType0100
+     * @tc.name   ：testOHAudioCapturerGetEncodingType0100
      * @tc.desc   ：Query the current audio stream encoding type.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1361,7 +1361,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETFRAMESIZEINCALLBACK_0100
-     * @tc.name   ：TestOHAudioCapturerGetFrameSizeInCallback0100
+     * @tc.name   ：testOHAudioCapturerGetFrameSizeInCallback0100
      * @tc.desc   ：Query the frame size in the callback, which is the fixed length of the buffer returned by each callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1377,7 +1377,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETFRAMESREAD_0100
-     * @tc.name   ：TestOHAudioCapturerGetFramesRead0100
+     * @tc.name   ：testOHAudioCapturerGetFramesRead0100
      * @tc.desc   ：Query the number of frames read since self created streaming.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1393,7 +1393,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETLATENCYMODE_0200
-     * @tc.name   ：TestOHAudioCapturerGetLatencyMode0200
+     * @tc.name   ：testOHAudioCapturerGetLatencyMode0200
      * @tc.desc   ：Query the current audio stream delay mode.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1408,7 +1408,7 @@ export default function OhCapturerTest() {
     });
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETSAMPLINGRATE_0100
-     * @tc.name   ：TestOHAudioCapturerGetSamplingRate0100
+     * @tc.name   ：testOHAudioCapturerGetSamplingRate0100
      * @tc.desc   ：Query the current input audio stream sampling rate.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1424,7 +1424,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETSTREAMID_0100
-     * @tc.name   ：TestOHAudioCapturerGetStreamId0100
+     * @tc.name   ：testOHAudioCapturerGetStreamId0100
      * @tc.desc   ：Query the current input audio stream ID.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1440,7 +1440,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETTIMESTAMP_0100
-     * @tc.name   ：TestOHAudioCapturerGetTimestamp0100
+     * @tc.name   ：testOHAudioCapturerGetTimestamp0100
      * @tc.desc   ：Obtain input audio stream timestamp and location information.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1456,7 +1456,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETFRAMEPOSITION_0100
-     * @tc.name   ：TestOHAudioCapturerGetFramePosition0100
+     * @tc.name   ：testOHAudioCapturerGetFramePosition0100
      * @tc.desc   ：Obtain input audio stream timestamp and location information.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1472,7 +1472,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERSTOP_0100
-     * @tc.name   ：TestOHAudioCapturerStop0100
+     * @tc.name   ：testOHAudioCapturerStop0100
      * @tc.desc   ：Stop input audio stream.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1488,7 +1488,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETLATENCYMODE_0100
-     * @tc.name   ：TestOHAudioCapturerGetLatencyMode0100
+     * @tc.name   ：testOHAudioCapturerGetLatencyMode0100
      * @tc.desc   ：Query the current audio stream delay mode.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1504,7 +1504,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0400
-     * @tc.name   ：TestOHAudioCapturerGetCurrentState0400
+     * @tc.name   ：testOHAudioCapturerGetCurrentState0400
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1520,7 +1520,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0500
-     * @tc.name   ：TestOHAudioCapturerGetCurrentState0500
+     * @tc.name   ：testOHAudioCapturerGetCurrentState0500
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1537,7 +1537,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERFLUSH_0100
-     * @tc.name   ：TestOHAudioCapturerFlush0100
+     * @tc.name   ：testOHAudioCapturerFlush0100
      * @tc.desc   ：Discard the obtained audio data.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1553,7 +1553,7 @@ export default function OhCapturerTest() {
 
     /**
      * @tc.number : SUB_MULTIMEDIA_AUDIO_OHAUDIOCAPTURERGETCURRENTSTATE_0600
-     * @tc.name   ：TestOHAudioCapturerGetCurrentState0600
+     * @tc.name   ：testOHAudioCapturerGetCurrentState0600
      * @tc.desc   ：Query the current audio stream status.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1591,7 +1591,7 @@ export default function OhCapturerTest() {
     /**
      * start - stop - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0100
-     * @tc.name   ：TestCreateAudioCapturerRecorder0100
+     * @tc.name   ：testCreateAudioCapturerRecorder0100
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1629,7 +1629,7 @@ export default function OhCapturerTest() {
     /**
      * start- pause - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0200
-     * @tc.name   ：TestCreateAudioCapturerRecorder0200
+     * @tc.name   ：testCreateAudioCapturerRecorder0200
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1666,7 +1666,7 @@ export default function OhCapturerTest() {
     /**
      * start- release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0300
-     * @tc.name   ：TestCreateAudioCapturerRecorder0300
+     * @tc.name   ：testCreateAudioCapturerRecorder0300
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1702,7 +1702,7 @@ export default function OhCapturerTest() {
     /**
      * release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0400
-     * @tc.name   ：TestCreateAudioCapturerRecorder0400
+     * @tc.name   ：testCreateAudioCapturerRecorder0400
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1729,7 +1729,7 @@ export default function OhCapturerTest() {
     /**
      * start - pause - stop - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0500
-     * @tc.name   ：TestCreateAudioCapturerRecorder0500
+     * @tc.name   ：testCreateAudioCapturerRecorder0500
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1773,7 +1773,7 @@ export default function OhCapturerTest() {
     /**
      * start - stop - start - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0600
-     * @tc.name   ：TestCreateAudioCapturerRecorder0600
+     * @tc.name   ：testCreateAudioCapturerRecorder0600
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1816,7 +1816,7 @@ export default function OhCapturerTest() {
     /**
      * start - pause - start - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0700
-     * @tc.name   ：TestCreateAudioCapturerRecorder0700
+     * @tc.name   ：testCreateAudioCapturerRecorder0700
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1860,7 +1860,7 @@ export default function OhCapturerTest() {
     /**
      * start - pause - stop - start - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0800
-     * @tc.name   ：TestCreateAudioCapturerRecorder0800
+     * @tc.name   ：testCreateAudioCapturerRecorder0800
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1909,7 +1909,7 @@ export default function OhCapturerTest() {
     /**
      * start - pause - start - stop - start - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_0900
-     * @tc.name   ：TestCreateAudioCapturerRecorder0900
+     * @tc.name   ：testCreateAudioCapturerRecorder0900
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1965,7 +1965,7 @@ export default function OhCapturerTest() {
     /**
      * start - stop - start - pause - stop - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_1000
-     * @tc.name   ：TestCreateAudioCapturerRecorder1000
+     * @tc.name   ：testCreateAudioCapturerRecorder1000
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2024,7 +2024,7 @@ export default function OhCapturerTest() {
     /**
      * start - pause - stop - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOCAPTURERRECORDER_1100
-     * @tc.name   ：TestCreateAudioCapturerRecorder1100
+     * @tc.name   ：testCreateAudioCapturerRecorder1100
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2068,7 +2068,7 @@ export default function OhCapturerTest() {
     /**
      * start - stop - pause - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0100
-     * @tc.name   ：TestCreateAudioCapturerRecorder0100
+     * @tc.name   ：testAbnormalOperationCapturer0100
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2110,7 +2110,7 @@ export default function OhCapturerTest() {
     /**
      * stop - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0200
-     * @tc.name   ：TestAbnormalOperationCapturer0200
+     * @tc.name   ：testAbnormalOperationCapturer0200
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2140,7 +2140,7 @@ export default function OhCapturerTest() {
     /**
      * pause - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0300
-     * @tc.name   ：TestAbnormalOperationCapturer0300
+     * @tc.name   ：testAbnormalOperationCapturer0300
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2171,7 +2171,7 @@ export default function OhCapturerTest() {
     /**
      * release - release
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0400
-     * @tc.name   ：TestAbnormalOperationCapturer0300
+     * @tc.name   ：testAbnormalOperationCapturer0400
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2201,7 +2201,7 @@ export default function OhCapturerTest() {
     /**
      * pause - pause
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0500
-     * @tc.name   ：TestAbnormalOperationCapturer0300
+     * @tc.name   ：testAbnormalOperationCapturer0500
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2235,7 +2235,7 @@ export default function OhCapturerTest() {
     /**
      * start - start
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0600
-     * @tc.name   ：TestAbnormalOperationCapturer0300
+     * @tc.name   ：testAbnormalOperationCapturer0600
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2268,7 +2268,7 @@ export default function OhCapturerTest() {
     /**
      * stop - stop
      * @tc.number : SUB_MULTIMEDIA_AUDIO_ABNOMALOPRATIONCAPTURER_0700
-     * @tc.name   ：TestAbnormalOperationCapturer0300
+     * @tc.name   ：testAbnormalOperationCapturer0700
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2307,7 +2307,7 @@ export default function OhCapturerTest() {
     /**
      * Capturer attribute get test
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CAPTURERRECORDERATTRIBUYE_0100
-     * @tc.name   ：TestCreateAudioCapturerRecorder0100
+     * @tc.name   ：testCapturerRecorderAttribute0100
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2361,7 +2361,7 @@ export default function OhCapturerTest() {
     /**
      * Capturer properties verification  test
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CAPTURERRECORDERATTRIBUYE_0200
-     * @tc.name   ：TestCreateAudioCapturerRecorder0200
+     * @tc.name   ：testCapturerRecorderAttribute0200
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2414,7 +2414,7 @@ export default function OhCapturerTest() {
     /**
      * Capturer properties verification  test latencyMode = 1
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CAPTURERRECORDERATTRIBUYE_0300
-     * @tc.name   ：TestCreateAudioCapturerRecorder0300
+     * @tc.name   ：testCapturerRecorderAttribute0300
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -2467,7 +2467,7 @@ export default function OhCapturerTest() {
     /**
      * Capturer properties verification  test frameSizeValue = 240
      * @tc.number : SUB_MULTIMEDIA_AUDIO_CAPTURERRECORDERATTRIBUYE_0400
-     * @tc.name   ：TestCreateAudioCapturerRecorder0400
+     * @tc.name   ：testCapturerRecorderAttribute0400
      * @tc.desc   ：Input streaming initialization method.
      * @tc.size   : MediumTest
      * @tc.type   : Function
