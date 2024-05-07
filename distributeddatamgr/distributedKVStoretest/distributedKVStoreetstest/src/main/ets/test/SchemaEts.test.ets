@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,20 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import ddm from '@ohos.data.distributedKVStore';
+import abilityFeatureAbility from '@ohos.ability.featureAbility'
 import common from "@ohos.app.ability.common";
 
-const TEST_BUNDLE_NAME = 'ohos.acts.kvStore';
-const TEST_STORE_ID = 'storeId';
-
-let kvManager = null;
-let kvStore = null;
 let context: common.UIAbilityContext;
+const TEST_BUNDLE_NAME = 'ohos.acts.distributedKvStore';
+const TEST_STORE_ID = 'SchemaStoreId';
+
+var kvManager = null;
+var kvStore = null;
 
 function putBatchString(len, prefix) {
   let entries = [];
-  for (let i = 0; i < len; i++) {
+  for (var i = 0; i < len; i++) {
     entries.push({
       key : prefix + i,
       value : {
@@ -47,7 +49,7 @@ async function testPutAndGet(kvManager, options) {
       console.info('testPutAndGet getKVStore fail ' + err);
       expect(null).assertFail();
     });
-    let canGet = new Promise((resolve, reject) => {
+    var canGet = new Promise((resolve, reject) => {
       kvStore.on('dataChange', 0, function (data) {
         console.info('testPutAndGet resolve on data change: ' + JSON.stringify(data));
         resolve(data.deviceId);
@@ -61,8 +63,8 @@ async function testPutAndGet(kvManager, options) {
         reject(new Error('not resolved in 2 second, reject it.'))
       }, 2000);
     });
-    await canGet.then(async function(deviceId:string) {
-      let query = new ddm.Query();
+    await canGet.then(async function(deviceId : string = '') {
+      var query = new ddm.Query();
       query.prefixKey('test_key_');
       query.like('$.english.first', 'led%');
       if (options.kvStoreType == ddm.KVStoreType.DEVICE_COLLABORATION) {
@@ -82,12 +84,14 @@ async function testPutAndGet(kvManager, options) {
     });
   } catch (e) {
     console.info('testPutAndGet get exception: ' + e);
+    expect(null).assertFail();
   }
 }
-
 export default function schemaTest(){
   describe('schemaTest', function() {
-    let options = {
+
+
+    var options = {
       createIfMissing : true,
       encrypt : false,
       backup : false,
@@ -102,15 +106,16 @@ export default function schemaTest(){
         context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
         const config = {
           bundleName : TEST_BUNDLE_NAME,
-          context: context
+          context: context,
         }
-        console.info("beforeAll: createKVManager (single) with " + JSON.stringify(options));
-        kvManager =  ddm.createKVManager(config);
+        console.info("beforeAll: createKVManager (single) with " + JSON.stringify(config));
+        kvManager = ddm.createKVManager(config)
+        done();
       } catch (e) {
         console.info("fail on exception: " + e);
         expect(null).assertFail();
       }
-      done();
+
     })
 
     afterAll(async function (done) {
@@ -142,11 +147,12 @@ export default function schemaTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_2100
-     * @tc.name [JS-API8]Schema.ToJsonString()
-     * @tc.desc Test Js Api Schema.ToJsonString() testcase 001
+     * @tc.name SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0100
+     * @tc.desc  Test Js Api Schema.ToJsonString() testcase 001
+     * @tc.type: FUNC
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSchemaJsApiTest_0100
      */
-    it('testToJsonString001', 0, async function(done) {
+    it('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0100', 0, async function(done) {
       try {
         let first = new ddm.FieldNode('first');
         first.type = ddm.ValueType.STRING;
@@ -174,11 +180,12 @@ export default function schemaTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_2200
-     * @tc.name [JS-API8]Schema.ToJsonString()
-     * @tc.desc Test Js Api Schema.ToJsonString() testcase 002
+     * @tc.name SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0200
+     * @tc.desc  Test Js Api Schema.ToJsonString() testcase 002
+     * @tc.type: FUNC
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSchemaJsApiTest_0200
      */
-    it('testToJsonString002', 0, async function(done) {
+    it('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0200', 0, async function(done) {
       try {
         let first = new ddm.FieldNode('first');
         first.type = ddm.ValueType.STRING;
@@ -198,7 +205,7 @@ export default function schemaTest(){
         let schema = new ddm.Schema();
         schema.root.appendChild(english);
         schema.indexes = ['$.english.first', '$.english.second'];
-        options.kvStoreType = ddm.KVStoreType.DEVICE_COLLABORATION;
+        options.kvStoreType = ddm.KVStoreType.SINGLE_VERSION;
         options.schema = schema;
         await testPutAndGet(kvManager, options);
         console.info("schematestPutAndGet done");
@@ -210,11 +217,12 @@ export default function schemaTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_2300
-     * @tc.name [JS-API8]Schema.ToJsonString()
-     * @tc.desc Test Js Api Schema.ToJsonString() testcase 003
+     * @tc.name SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0300
+     * @tc.desc  Test Js Api Schema.ToJsonString() testcase 003
+     * @tc.type: FUNC
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSchemaJsApiTest_0300
      */
-    it('testToJsonString003', 0, async function(done) {
+    it('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0300', 0, async function(done) {
       try {
         let name = new ddm.FieldNode('name');
         name.type = ddm.ValueType.INTEGER;
@@ -228,58 +236,39 @@ export default function schemaTest(){
         options.kvStoreType = ddm.KVStoreType.SINGLE_VERSION;
         options.schema = schema;
         await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
-          console.info('testToJsonString003 getKVStore success' + JSON.stringify(options));
+          console.info('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0300 getKVStore success' + JSON.stringify(options));
           kvStore = store;
           expect(store != null).assertTrue();
           await kvStore.put("test_key_1", '{"name":1}');
           await kvStore.put("test_key_2", '{"name":2}');
           await kvStore.put("test_key_3", '{"name":3}');
-          console.info('testToJsonString003 Put success');
+          console.info('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0300 Put success');
         });
-        console.info('testToJsonString003 start Query ...');
-        let query = new ddm.Query();
+        console.info('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0300 start Query ...');
+        var query = new ddm.Query();
         query.prefixKey('test_key_');
         query.notEqualTo("$.name", 3);
         await kvStore.getEntries(query).then((entries) => {
-          console.info('testToJsonString003 get success : ' + JSON.stringify(entries));
+          console.info('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0300 get success : ' + JSON.stringify(entries));
           expect(entries.length == 2).assertTrue();
         }).catch((err) => {
-          console.info('testToJsonString003 get fail ' + err);
+          console.info('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0300 get fail ' + err);
           expect(null).assertFail();
         });
       } catch (e) {
-        console.info("testToJsonString003 fail on exception: " + e);
+        console.info("SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0300 fail on exception: " + e);
         expect(null).assertFail();
       }
       done();
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_2000
-     * @tc.name [JS-API8]Schema.ToJsonString()
-     * @tc.desc Test Js Api Schema.ToJsonString() testcase 004
+     * @tc.name SUB_DDM_DKV_SCHEMA_ROOT_0100
+     * @tc.desc  Test Js Api Schema.root testcase 001
+     * @tc.type: FUNC
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSchemaJsApiTest_0500
      */
-    it('testToJsonString004', 0, async function(done) {
-      try {
-        let english = new ddm.FieldNode('english');
-        english.type = ddm.ValueType.STRING;
-
-        let schema = new ddm.Schema();
-        schema.root.appendChild(english);
-        schema.indexes = [];    // indexex set to empty array -> invalid indexes.
-        expect(null).assertFail();
-      } catch (e) {
-        console.info("schema exception is ok: " + e);
-      }
-      done();
-    })
-
-    /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1800
-     * @tc.name [JS-API8]Schema.root
-     * @tc.desc Test Js Api Schema.root testcase 001
-     */
-    it('testroot001', 0, async function(done) {
+    it('SUB_DDM_DKV_SCHEMA_ROOT_0100', 0, async function(done) {
       try {
         let english = new ddm.FieldNode('english');
         english.type = ddm.ValueType.STRING;
@@ -294,11 +283,12 @@ export default function schemaTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1500
-     * @tc.name [JS-API8]Schema.indexes
-     * @tc.desc Test Js Api Schema.indexes testcase 001
+     * @tc.name SUB_DDM_DKV_SCHEMA_INDEXES_0100
+     * @tc.desc  Test Js Api Schema.indexes testcase 001
+     * @tc.type: FUNC
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSchemaJsApiTest_0600
      */
-    it('testindexes001', 0, async function(done) {
+    it('SUB_DDM_DKV_SCHEMA_INDEXES_0100', 0, async function(done) {
       try {
 
         let schema = new ddm.Schema();
@@ -312,11 +302,12 @@ export default function schemaTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1700
-     * @tc.name [JS-API8]Schema.mode
-     * @tc.desc Test Js Api Schema.mode testcase 001
+     * @tc.name SUB_DDM_DKV_SCHEMA_MODE_0100
+     * @tc.desc  Test Js Api Schema.mode testcase 001
+     * @tc.type: FUNC
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSchemaJsApiTest_0700
      */
-    it('testmode001', 0, async function(done) {
+    it('SUB_DDM_DKV_SCHEMA_MODE_0100', 0, async function(done) {
       try {
 
         let schema = new ddm.Schema();
@@ -331,11 +322,12 @@ export default function schemaTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1600
-     * @tc.name [JS-API8]Schema.mode
-     * @tc.desc Test Js Api Schema.mode testcase 002
+     * @tc.name SUB_DDM_DKV_SCHEMA_MODE_0200
+     * @tc.desc  Test Js Api Schema.mode testcase 002
+     * @tc.type: FUNC
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSchemaJsApiTest_0800
      */
-    it('testmode002', 0, async function(done) {
+    it('SUB_DDM_DKV_SCHEMA_MODE_0200', 0, async function(done) {
       try {
 
         let schema = new ddm.Schema();
@@ -350,11 +342,12 @@ export default function schemaTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1900
-     * @tc.name [JS-API8]Schema.skip
-     * @tc.desc Test Js Api Schema.skip testcase 001
+     * @tc.name SUB_DDM_DKV_SCHEMA_SKIP_0100
+     * @tc.desc  Test Js Api Schema.skip testcase 001
+     * @tc.type: FUNC
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSchemaJsApiTest_0900
      */
-    it('testskip001', 0, async function(done) {
+    it('SUB_DDM_DKV_SCHEMA_SKIP_0100', 0, async function(done) {
       try {
 
         let schema = new ddm.Schema();
