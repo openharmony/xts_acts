@@ -50,7 +50,7 @@ struct ImageAnalyzer1 {
         })
       XComponent({
         id: 'xcomponent',
-        type: XComponentType.SURFACE,
+        type: XComponentType.TEXTURE,
         controller: this.xComponentController
       })
         .enableAnalyzer(true)

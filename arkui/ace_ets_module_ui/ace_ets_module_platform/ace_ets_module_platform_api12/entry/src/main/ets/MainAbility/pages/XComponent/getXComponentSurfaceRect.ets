@@ -28,7 +28,7 @@ struct getXComponentSurfaceRect1 {
         .fontSize(12)
       XComponent({
         id: 'xcomponent',
-        type: XComponentType.SURFACE,
+        type: XComponentType.TEXTURE,
         controller: this.xComponentController
       })
         .onLoad(() => {
