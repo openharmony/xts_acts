@@ -60,6 +60,8 @@ export default function audioFramework() {
             audioVolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID)
             if (audioVolumeGroupManager != null) {
                 console.info(`${TagFrmwk}: getVolumeGroupManager : PASS`);
+                maxVol = audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA)
+                minVol = audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA)
             } else {
                 console.info(`${TagFrmwk}: getVolumeGroupManager : FAIL`);
             }
