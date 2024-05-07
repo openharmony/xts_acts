@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import nativeDrawing from 'libnativeAVScreenCapturendk.so'
+import myScreenCaptureNdk from 'libnativeAVScreenCapturendk.so'
 import hilog from '@ohos.hilog';
 import featureAbility from '@ohos.ability.featureAbility';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
@@ -87,11 +87,29 @@ export default function nativeAVScreenCaptureNdkTest() {
     it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100', 0, async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureTest-------------before click:");
       Utils.keepClick();
-      let result: number = nativeDrawing.normalAVScreenCaptureTest();
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureTest();
       console.info(Tag + "normalAVScreenCaptureTest-------------res:" + result);
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200
+     * @tc.name       : Test OH_AVScreenCapture_Init
+     * @tc.desc       : Test OH_AVScreenCapture_Init
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200', 0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenRecordTest-------------before click:");
+      Utils.keepClick();
+      let result: number = myScreenCaptureNdk.normalAVScreenRecordTest();
+      console.info(Tag + "normalAVScreenRecordTest-------------res:" + result);
+      expect(result).assertEqual(0);
+      done();
+    });
+
 
   })
 }

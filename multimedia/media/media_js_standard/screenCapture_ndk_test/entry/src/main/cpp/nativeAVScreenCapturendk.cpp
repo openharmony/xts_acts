@@ -87,6 +87,8 @@ static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info inf
 	
     bool isMicrophone = false;
 	OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
+    bool isRotation = true;
+    OH_AVScreenCapture_SetCanvasRotation(screenCapture, isRotation);
     OH_AVScreenCapture_SetErrorCallback(screenCapture, OnError, nullptr);
     OH_AVScreenCapture_SetStateCallback(screenCapture, OnStateChange, nullptr);
     OH_AVScreenCapture_SetDataCallback(screenCapture, OnBufferAvailable, nullptr);
@@ -107,12 +109,43 @@ static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info inf
     return res;
 }
 
+// SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200
+static napi_value NormalAVScreenRecordTest(napi_env env, napi_callback_info info) {
+    OH_AVScreenCapture *screenCapture = OH_AVScreenCapture_Create();
+    OH_AVScreenCaptureConfig config_;
+    SetConfig(config_);
+    config_.videoInfo.videoCapInfo.videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA;
+
+    bool isMicrophone = false;
+    OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
+    OH_AVScreenCapture_SetErrorCallback(screenCapture, OnError, nullptr);
+    OH_AVScreenCapture_SetStateCallback(screenCapture, OnStateChange, nullptr);
+    OH_AVScreenCapture_SetDataCallback(screenCapture, OnBufferAvailable, nullptr);
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenRecording(screenCapture);
+    sleep(g_recordTime);
+    OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_StopScreenRecording(screenCapture);
+    OH_AVScreenCapture_Release(screenCapture);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result1 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"normalAVScreenCaptureTest", nullptr, NormalAVScreenCaptureTest, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"normalAVScreenRecordTest", nullptr, NormalAVScreenRecordTest, nullptr, nullptr, nullptr, napi_default,
             nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
