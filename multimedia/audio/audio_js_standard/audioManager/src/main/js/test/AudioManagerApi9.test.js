@@ -1531,7 +1531,7 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3001', 2, async function (done) {
             try {
-                await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 20);
+                await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 15);
                 await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
                 let data = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
                 if (data == false) {
@@ -1587,7 +1587,7 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3002', 2, async function (done) {
             try {
-                await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 21);
+                await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 16);
                 await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
                 let data = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
                 if (data == false) {
@@ -1663,9 +1663,9 @@ export default function audioManagerApi9() {
                             console.log(`${TagFrmwk}: Promise: Is Stream Mute ACCESSIBILITY: isMute: Fail:${data}`);
                         }
                     } else if(value == maxVolPc){
-                        let data2 = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
-                        console.info("data2 is " + data2);
-                        if (data2 == false) {
+                        let data1 = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
+                        console.info("data1 is " + data1);
+                        if (data1 == false) {
                             let MaxData = await audioManager.getMaxVolume(audio.AudioVolumeType.ACCESSIBILITY);
                             console.info('MaxData is ' + MaxData)
                             expect(MaxData).assertEqual(maxVolPc);
