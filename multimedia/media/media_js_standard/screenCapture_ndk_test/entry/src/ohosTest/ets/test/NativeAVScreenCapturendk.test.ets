@@ -78,8 +78,8 @@ export default function nativeAVScreenCaptureNdkTest() {
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100
-     * @tc.name       : Test OH_AVScreenCapture_Init
-     * @tc.desc       : Test OH_AVScreenCapture_Init
+     * @tc.name       : Test OH_AVScreenCapture_StartScreenCapture
+     * @tc.desc       : Test OH_AVScreenCapture_StartScreenCapture
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -95,8 +95,8 @@ export default function nativeAVScreenCaptureNdkTest() {
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200
-     * @tc.name       : Test OH_AVScreenCapture_Init
-     * @tc.desc       : Test OH_AVScreenCapture_Init
+     * @tc.name       : Test OH_AVScreenCapture_StartScreenRecording
+     * @tc.desc       : Test OH_AVScreenCapture_StartScreenRecording
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -110,6 +110,21 @@ export default function nativeAVScreenCaptureNdkTest() {
       done();
     });
 
-
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0300
+     * @tc.name       : Test OH_AVScreenCapture_StartScreenCaptureWithSurface
+     * @tc.desc       : Test OH_AVScreenCapture_StartScreenCaptureWithSurface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0300', 0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureSurfaceTest-------------before click:");
+      Utils.keepClick();
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureSurfaceTest();
+      console.info(Tag + "normalAVScreenCaptureSurfaceTest-------------res:" + result);
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }

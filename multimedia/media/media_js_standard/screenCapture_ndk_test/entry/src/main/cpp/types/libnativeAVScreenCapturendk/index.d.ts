@@ -14,3 +14,4 @@
  */
 export const normalAVScreenCaptureTest: () => number;
 export const normalAVScreenRecordTest: () => number;
+export const normalAVScreenCaptureSurfaceTest: () => number;

@@ -16,6 +16,8 @@
 #include <js_native_api.h>
 #include <cstring>
 #include <iostream>
+#include <multimedia/player_framework/native_avcapability.h>
+#include <multimedia/player_framework/native_avcodec_videoencoder.h>
 #include <unistd.h>
 #include <cstdio>
 #include <thread>
@@ -26,10 +28,21 @@
 #include "multimedia/player_framework/native_avscreen_capture.h"
 #include "multimedia/player_framework/native_avscreen_capture_base.h"
 #include "multimedia/player_framework/native_avscreen_capture_errors.h"
+#include "multimedia/player_framework/native_avcapability.h"
+#include "multimedia/player_framework/native_avcodec_base.h"
+#include "multimedia/player_framework/native_avformat.h"
+#include "multimedia/player_framework/native_avbuffer.h"
+#include <fstream>
+#include <memory>
+#include <unistd.h>
 
 using namespace std;
 static int32_t g_recordTime = 3;
 
+OH_AVCodec *g_videoEnc;
+constexpr uint32_t DEFAULT_WIDTH = 720;
+constexpr uint32_t DEFAULT_HEIGHT = 1280;
+constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
 
 void SetConfig(OH_AVScreenCaptureConfig &config)
 {
@@ -83,10 +96,9 @@ static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info inf
     OH_AVScreenCapture *screenCapture = OH_AVScreenCapture_Create();
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
-    config_.videoInfo.videoCapInfo.videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA;
 	
     bool isMicrophone = false;
-	OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
+    OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
     bool isRotation = true;
     OH_AVScreenCapture_SetCanvasRotation(screenCapture, isRotation);
     OH_AVScreenCapture_SetErrorCallback(screenCapture, OnError, nullptr);
@@ -110,11 +122,11 @@ static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info inf
 }
 
 // SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200
-static napi_value NormalAVScreenRecordTest(napi_env env, napi_callback_info info) {
+static napi_value NormalAVScreenRecordTest(napi_env env, napi_callback_info info)
+{
     OH_AVScreenCapture *screenCapture = OH_AVScreenCapture_Create();
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
-    config_.videoInfo.videoCapInfo.videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA;
 
     bool isMicrophone = false;
     OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
@@ -138,6 +150,126 @@ static napi_value NormalAVScreenRecordTest(napi_env env, napi_callback_info info
     return res;
 }
 
+void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
+{
+    (void)codec;
+    (void)errorCode;
+    (void)userData;
+}
+
+void OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
+{
+    (void)codec;
+    (void)format;
+    (void)userData;
+}
+
+void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)userData;
+    (void)index;
+    (void)buffer;
+}
+
+void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)codec;
+    OH_AVCodecBufferAttr info;
+    int32_t ret = OH_AVBuffer_GetBufferAttr(buffer, &info);
+    ret = OH_VideoEncoder_FreeOutputBuffer(codec, index);
+}
+
+// SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0300
+static napi_value NormalAVScreenCaptureSurfaceTest(napi_env env, napi_callback_info info)
+{
+    OH_AVScreenCapture *screenCapture = OH_AVScreenCapture_Create();
+    OH_AVScreenCaptureConfig config_;
+    SetConfig(config_);
+
+    bool isMicrophone = false;
+    OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
+    OH_AVScreenCapture_SetErrorCallback(screenCapture, OnError, nullptr);
+    OH_AVScreenCapture_SetStateCallback(screenCapture, OnStateChange, nullptr);
+    OH_AVScreenCapture_SetDataCallback(screenCapture, OnBufferAvailable, nullptr);
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
+
+
+    // 获取需要输入的Surface，以进行编码
+    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true);
+    const char *name = OH_AVCapability_GetName(capability);
+    g_videoEnc = OH_VideoEncoder_CreateByName(name);
+    // 配置异步回调，调用 OH_VideoEncoder_SetCallback 接口
+    int32_t ret =
+        OH_VideoEncoder_RegisterCallback(g_videoEnc,
+                                         {OnError, OnStreamChanged,
+                                          OnNeedInputBuffer, OnNewOutputBuffer},
+                                         nullptr);
+    // 配置视频帧速率
+    double frameRate = 30.0;
+    // 配置视频YUV值范围标志
+    bool rangeFlag = false;
+    // 配置视频原色
+    int32_t primary = static_cast<int32_t>(OH_ColorPrimary::COLOR_PRIMARY_BT709);
+    // 配置传输特性
+    int32_t transfer = static_cast<int32_t>(OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709);
+    // 配置最大矩阵系数
+    int32_t matrix = static_cast<int32_t>(OH_MatrixCoefficient::MATRIX_COEFFICIENT_IDENTITY);
+    // 配置编码Profile
+    int32_t profile = static_cast<int32_t>(OH_AVCProfile::AVC_PROFILE_BASELINE);
+    // 配置编码比特率模式
+    int32_t rateMode = static_cast<int32_t>(OH_VideoEncodeBitrateMode::CBR);
+    // 配置关键帧的间隔，单位为毫秒
+    int32_t iFrameInterval = 23000;
+    // 配置所需的编码质量。只有在恒定质量模式下配置的编码器才支持此配置
+    int32_t quality = 0;
+    // 配置比特率
+    int64_t bitRate = 3000000;
+    OH_AVFormat *format = OH_AVFormat_Create();
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, DEFAULT_WIDTH);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, DEFAULT_PIXELFORMAT);
+    OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, frameRate);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, rangeFlag);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_COLOR_PRIMARIES, primary);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_TRANSFER_CHARACTERISTICS, transfer);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, matrix);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, iFrameInterval);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_PROFILE, profile);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, rateMode);
+    OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, bitRate);
+    // OH_AVFormat_SetIntValue(format, OH_MD_KEY_QUALITY, quality);
+    int result2 = OH_VideoEncoder_Configure(g_videoEnc, format);
+    OH_AVFormat_Destroy(format);
+
+    // 从视频编码器获取输入Surface
+    OHNativeWindow *nativeWindow;
+    int result3 = OH_VideoEncoder_GetSurface(g_videoEnc, &nativeWindow);
+    if (result3 != AV_ERR_OK) {
+        OH_LOG_INFO(LOG_APP, "==DEMO== ScreenCapture Started OH_VideoEncoder_GetSurface ret=%{public}d", result3);
+    }
+    int result4 = OH_VideoEncoder_Prepare(g_videoEnc);
+    std::string_view outputFilePath = "/data/storage/el2/base/files/DemoSurface.h264";
+    std::unique_ptr<std::ofstream> outputFile = std::make_unique<std::ofstream>();
+    outputFile->open(outputFilePath.data(), std::ios::out | std::ios::binary | std::ios::ate);
+
+    // 启动编码器
+    int32_t retEnc = OH_VideoEncoder_Start(g_videoEnc);
+    // 指定surface开始录屏
+    OH_AVSCREEN_CAPTURE_ErrCode result5 = OH_AVScreenCapture_StartScreenCaptureWithSurface(screenCapture, nativeWindow);
+    sleep(g_recordTime);
+    OH_AVSCREEN_CAPTURE_ErrCode result6 = OH_AVScreenCapture_StopScreenCapture(screenCapture);
+    OH_AVScreenCapture_Release(screenCapture);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result1 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -147,6 +279,8 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr},
         {"normalAVScreenRecordTest", nullptr, NormalAVScreenRecordTest, nullptr, nullptr, nullptr, napi_default,
             nullptr},
+        {"normalAVScreenCaptureSurfaceTest", nullptr, NormalAVScreenCaptureSurfaceTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
