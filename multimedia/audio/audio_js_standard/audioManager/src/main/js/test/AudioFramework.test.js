@@ -5157,8 +5157,8 @@ export default function audioFramework() {
             console.info("audio.DeviceType.MIC:" + audio.DeviceType.MIC);
             expect(audio.DeviceType.USB_HEADSET).assertEqual(22);
             console.info("audio.DeviceType.USB_HEADSET:" + audio.DeviceType.USB_HEADSET);
-            // expect(audio.DeviceType.DISPLAY_PORT).assertEqual(23);
-            // console.info("audio.DeviceType.DISPLAY_PORT:" + audio.DeviceType.DISPLAY_PORT);
+            expect(audio.DeviceType.DISPLAY_PORT).assertEqual(23);
+            console.info("audio.DeviceType.DISPLAY_PORT:" + audio.DeviceType.DISPLAY_PORT);
             await sleep(50);
             done();
         })
