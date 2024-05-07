@@ -1335,9 +1335,9 @@ export default function audioManagerApi9() {
                             console.log(`${TagFrmwk}: Promise: Is Stream Mute ALARM: isMute: Fail:${data}`);
                         }
                     } else if(value == maxVolPc){
-                        let data2 = await audioManager.isMute(audio.AudioVolumeType.ALARM);
-                        console.info("data2 is " + data2);
-                        if (data2 == false) {
+                        let data1 = await audioManager.isMute(audio.AudioVolumeType.ALARM);
+                        console.info("data1 is " + data1);
+                        if (data1 == false) {
                             let MaxData = await audioManager.getMaxVolume(audio.AudioVolumeType.ALARM);
                             console.info('MaxData is ' + MaxData)
                             expect(MaxData).assertEqual(maxVolPc);
@@ -1391,9 +1391,9 @@ export default function audioManagerApi9() {
                             console.log(`${TagFrmwk}: Promise: Is Stream Mute ALARM: isMute: Fail:${data}`);
                         }
                     } else if(value == maxVolPc) {
-                        let data2 = await audioManager.isMute(audio.AudioVolumeType.ALARM);
-                        console.info("data2 is " + data2);
-                        if (data2 == false) {
+                        let data1 = await audioManager.isMute(audio.AudioVolumeType.ALARM);
+                        console.info("data1 is " + data1);
+                        if (data1 == false) {
                             let MaxData = await audioManager.getMaxVolume(audio.AudioVolumeType.ALARM);
                             console.info('MaxData is ' + MaxData)
                             expect(MaxData).assertEqual(maxVolPc);
@@ -1448,9 +1448,9 @@ export default function audioManagerApi9() {
                             console.log(`${TagFrmwk}: Promise: Is Stream Mute ALARM: isMute: Fail:${data}`);
                         }
                     } else if(value == maxVolPc) {
-                        let data2 = await audioManager.isMute(audio.AudioVolumeType.ALARM);
-                        console.info("data2 is " + data2);
-                        if (data2 == false) {
+                        let data1 = await audioManager.isMute(audio.AudioVolumeType.ALARM);
+                        console.info("data1 is " + data1);
+                        if (data1 == false) {
                             let MaxData = await audioManager.getMaxVolume(audio.AudioVolumeType.ALARM);
                             console.info('MaxData is ' + MaxData)
                             expect(MaxData).assertEqual(maxVolPc);
@@ -1550,9 +1550,9 @@ export default function audioManagerApi9() {
                             console.log(`${TagFrmwk}: Promise: Is Stream Mute ACCESSIBILITY: isMute: Fail:${data}`);
                         }
                     } else if(value == maxVolPc) {
-                        let data2 = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
-                        console.info("data2 is " + data2);
-                        if (data2 == false) {
+                        let data1 = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
+                        console.info("data1 is " + data1);
+                        if (data1 == false) {
                             let MaxData = await audioManager.getMaxVolume(audio.AudioVolumeType.ACCESSIBILITY);
                             console.info('MaxData is ' + MaxData)
                             expect(MaxData).assertEqual(maxVolPc);
@@ -1606,9 +1606,9 @@ export default function audioManagerApi9() {
                             console.log(`${TagFrmwk}: Promise: Is Stream Mute ACCESSIBILITY: isMute: Fail:${data}`);
                         }
                     } else if(value == maxVolPc){
-                        let data2 = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
-                        console.info("data1 is " + data2);
-                        if (data2 == false) {
+                        let data1 = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
+                        console.info("data1 is " + data1);
+                        if (data1 == false) {
                             let MaxData = await audioManager.getMaxVolume(audio.AudioVolumeType.ACCESSIBILITY);
                             console.info('MaxData is ' + MaxData)
                             expect(MaxData).assertEqual(maxVolPc);
