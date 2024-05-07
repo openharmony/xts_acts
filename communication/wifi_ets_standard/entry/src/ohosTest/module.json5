@@ -25,24 +25,24 @@
       "2in1"
     ],
      "requestPermissions":[
-        {
-			"name" :"ohos.permission.GET_WIFI_INFO",
-		},
-       {
-			"name" : "ohos.permission.SET_WIFI_INFO",
-		},
-		{
-			"name" : "ohos.permission.MANAGE_WIFI_CONNECTION",
-		},
-		{
-			"name": "ohos.permission.LOCATION",
-			"usedScene": {
-             "abilities": [
-                 "ohos.acts.location.geolocation.function.MainAbility"
-             ],
-            "when": "inuse"
-         }
-     } 
+      {
+        "name" : "ohos.permission.GET_WIFI_INFO"
+		  },
+      {
+        "name" : "ohos.permission.SET_WIFI_INFO"
+		  },
+      {
+        "name" : "ohos.permission.SET_WIFI_CONFIG"
+		  },
+      {
+        "name" : "ohos.permission.GET_WIFI_CONFIG"
+		  },
+		  {
+        "name" : "ohos.permission.MANAGE_WIFI_CONNECTION"
+		  },
+      {
+        "name" : "ohos.permission.GET_WIFI_LOCAL_MAC"
+		  }
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

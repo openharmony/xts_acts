@@ -320,6 +320,55 @@ export default function btBleNopUiJsunit() {
       }
       done();
     })
+    /**
+     * @tc.number: testStartScanNop
+     * @tc.name: testStartScan
+     * @tc.desc: test startScan without permission
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testStartScanNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        let bleScanner: ble.BleScanner = ble.createBleScanner();
+        console.info('createBleScanner result:' + JSON.stringify(bleScanner));
+        expect(true).assertEqual(bleScanner != null);
+        await bleScanner.startScan([{}]).then(() => {
+          console.info('[bluetooth_js] bleScanner startScan success');
+        });
+        hilog.info(Domain, TAG, `BleScanner.startScan success without permission`);
+        expect(true).assertFalse();
+      } catch (error) {
+        hilog.error(Domain, TAG, `stopBLEScan error, error code is: ${error.code}, error message is: ${error.message}`);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number: testStopScanNop
+     * @tc.name: testStopScan
+     * @tc.desc: test stopScan without permission
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testStopScanNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        let bleScanner: ble.BleScanner = ble.createBleScanner();
+        console.info('createBleScanner result:' + JSON.stringify(bleScanner));
+        expect(true).assertEqual(bleScanner != null);
+        await bleScanner.stopScan().then(() => {
+          console.info('[bluetooth_js] bleScanner stopScan success');
+        });
+        hilog.info(Domain, TAG, `BleScanner.startScan success without permission`);
+        expect(true).assertFalse();
+      } catch (error) {
+        hilog.error(Domain, TAG, `stopBLEScan error, error code is: ${error.code}, error message is: ${error.message}`);
+        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
+      }
+      done();
+    })
   })
 }
 
