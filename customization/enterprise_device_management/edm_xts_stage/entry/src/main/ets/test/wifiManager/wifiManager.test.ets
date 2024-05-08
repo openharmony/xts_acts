@@ -14,7 +14,7 @@
  */
 
 import { describe, expect, it, Level } from '@ohos/hypium';
-import { ENTINFO1, SELFWANT, SELFHAPNAME } from '../commom';
+import { ENTINFO1, SELFWANT, SELFHAPNAME, INVALID_WANT } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import wifiManager from '@ohos.enterprise.wifiManager';
@@ -41,6 +41,69 @@ function testIsWifiActiveSync() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_IS_WIFI_ACTIVE_SYNC_JS_0101
+   * @tc.name      : test_is_wifi_active_sync_0101
+   * @tc.desc      : test wifiManager isWifiActiveSync with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_is_wifi_active_sync_0101", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      wifiManager.isWifiActiveSync(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_IS_WIFI_ACTIVE_SYNC_JS_0102
+   * @tc.name      : test_is_wifi_active_sync_0102
+   * @tc.desc      : test wifiManager isWifiActiveSync with invalid admin param
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_is_wifi_active_sync_0102", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      wifiManager.isWifiActiveSync(INVALID_WANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_IS_WIFI_ACTIVE_SYNC_JS_0103
+   * @tc.name      : test_is_wifi_active_sync_0103
+   * @tc.desc      : test wifiManager isWifiActiveSync
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_is_wifi_active_sync_0103", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let result: boolean = wifiManager.isWifiActiveSync(SELFWANT);
+      expect(result !== undefined).assertTrue();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });
@@ -727,6 +790,67 @@ function testSetWifiProfileSync() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_WIFI_PROFILE_SYNC_JS_0120
+   * @tc.name      : test_set_wifi_profile_sync_0120
+   * @tc.desc      : test wifiManager setWifiProfileSync with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_wifi_profile_sync_0120", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      let wifiProfile: wifiManager.WifiProfile = {
+        ssid: 'name',
+        preSharedKey: 'password',
+        securityType: wifiManager.WifiSecurityType.WIFI_SEC_TYPE_OPEN
+      }
+      wifiManager.setWifiProfileSync(SELFWANT, wifiProfile);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_WIFI_PROFILE_SYNC_JS_0121
+   * @tc.name      : test_set_wifi_profile_sync_0121
+   * @tc.desc      : test wifiManager setWifiProfileSync with param staticIp
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_wifi_profile_sync_0121", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let ipConfig: wifiManager.IpProfile = {
+        ipAddress: 1284752956,
+        gateway: 1284752936,
+        prefixLength: 2,
+        dnsServers: [0, 1],
+        domains: ['0', '1']
+      }
+      let wifiProfile: wifiManager.WifiProfile = {
+        ssid: 'name',
+        preSharedKey: 'password',
+        securityType: wifiManager.WifiSecurityType.WIFI_SEC_TYPE_WEP,
+        ipType: wifiManager.IpType.STATIC,
+        staticIp: ipConfig
+      }
+      wifiManager.setWifiProfileSync(SELFWANT, wifiProfile);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200007).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });

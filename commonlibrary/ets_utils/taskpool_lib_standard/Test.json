@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "800000",
         "bundle-name": "com.example.taskpool",
-        "module-name": "entry",
+        "module-name": "entry_test",
         "shell-timeout": "800000",
         "compile-mode": "esmodule"
     },

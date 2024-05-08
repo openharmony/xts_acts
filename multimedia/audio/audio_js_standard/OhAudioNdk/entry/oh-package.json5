@@ -15,7 +15,7 @@
 {
   "license": "",
   "devDependencies": {
-    "@types/libentry.so": "file:./src/main/cpp/types/libentry"
+    "libohaudiondk.so": "file:./src/main/cpp/types/libohaudiondk"
   },
   "author": "",
   "name": "entry",

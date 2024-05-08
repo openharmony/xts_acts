@@ -18,6 +18,7 @@ group("networkmanager") {
     "fetch:fetch",
     "http:http",
     "mdns:mdns",
+    "ndk:ndk",
     "network:network",
     "noNet:noNet",
     "noPermission:noPermission",

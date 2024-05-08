@@ -17,10 +17,23 @@ import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
 
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
+
 export default function SwiperMarginTest() {
 
   const SUITE: string = 'SwiperMargin'
   const waitUiReadyMs: number = 500;
+
+
   describe('SwiperMarginTest', () => {
 
     beforeEach(async (done: Function) => {
@@ -36,6 +49,7 @@ export default function SwiperMarginTest() {
           }).catch((error: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${error.code}, message is ${error.message}`);
           })
+         await sleep(2000);
         }
       } catch (err) {
         console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));

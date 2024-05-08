@@ -78,6 +78,8 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.wav" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.pcm" desc="all bin file have check"/>
 				<filteritem type="filename" name="*.amr" desc="all bin file have check"/>
+				<filteritem type="filename" name="*.pem" desc="all bin file have check"/>
+				<filteritem type="filename" name="*.der" desc="all bin file have check"/>
             </filefilter>
             <filefilter name="defaultFilter" desc="Filters for default" >
                 <filteritem type="filepath" name="global/global_stage/entry/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>

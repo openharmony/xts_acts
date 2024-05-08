@@ -25,7 +25,15 @@ ohos_js_hap_suite("Drm_Framework_NDK_test") {
   hap_name = "ActsDrmNDKTest"
   subsystem_name = "multimedia"
   part_name = "drm_framework"
-  shared_libraries = [ "./src/main/cpp:entry" ]
+  shared_libraries = [
+    "./src/main/cpp:entry",
+    ":libentry",
+  ]
+}
+ohos_prebuilt_shared_library("libentry") {
+  source = rebase_path(libcxx_ndk_shared_file)
+  subsystem_name = "multimedia"
+  part_name = "napi"
 }
 
 ohos_app_scope("hts_demo_ets_app_profile") {

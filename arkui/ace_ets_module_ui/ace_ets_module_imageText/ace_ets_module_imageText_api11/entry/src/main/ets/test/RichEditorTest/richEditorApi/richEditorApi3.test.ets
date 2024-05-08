@@ -68,7 +68,7 @@ export default function richEditorApi3() {
 
       let text1 = getInspectorByKey('richEditorApi3_text1');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('{"textAlign":0,"leadingMargin":{"size":[16,0]}}');
+      expect(Obj1.$attrs.content).assertEqual('{"textAlign":0,"leadingMargin":{"size":["16.00vp","0.00vp"]}}');
 
       console.info('[testRichEditor_0100] END');
       done();

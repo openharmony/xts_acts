@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAceEtsModuleForEachApi12Test") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAceEtsModuleForEachApi12Test"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
 }
 
 ohos_app_scope("ace_ets_module_forEach_api12_app_profile") {
