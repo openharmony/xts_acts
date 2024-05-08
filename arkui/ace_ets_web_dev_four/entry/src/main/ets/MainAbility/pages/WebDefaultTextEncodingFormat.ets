@@ -57,6 +57,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "UTF-8";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -80,6 +81,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "gb18030";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -103,6 +105,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "GBK";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -126,6 +129,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "Big5";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -149,6 +153,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "windows-1252";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -172,6 +177,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "macintosh";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -195,6 +201,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "EUC-KR";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -218,6 +225,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "ISO-2022-JP";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -241,6 +249,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "EUC-JP";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -264,6 +273,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "Shift_JIS";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -287,6 +297,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -310,6 +321,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = " ";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -333,6 +345,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "qwer123.";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -357,6 +370,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = null;
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -381,6 +395,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = undefined;
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -404,6 +419,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "ASCII";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -427,6 +443,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "ANSI";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
@@ -450,6 +467,7 @@ struct WebDefaultTextEncodingFormat {
               let value: string;
               try {
                 this.encoding = "utf-8";
+                await Utils.sleep(2000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript("getEncoding()", (err, res) => {
