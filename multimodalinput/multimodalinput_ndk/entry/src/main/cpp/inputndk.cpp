@@ -16,7 +16,8 @@
 #include "oh_input_manager.h"
 #include "oh_key_code.h"
 
-static napi_value CreateKeyState(napi_env env, napi_callback_info info) {
+static napi_value CreateKeyState(napi_env env, napi_callback_info info)
+{
     napi_value result;
     struct Input_KeyState *keyState = OH_Input_CreateKeyState();
     napi_create_int32(env, keyState != nullptr ? 1 : 0, &result);
@@ -24,7 +25,8 @@ static napi_value CreateKeyState(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value DestroyKeyState(napi_env env, napi_callback_info info) {
+static napi_value DestroyKeyState(napi_env env, napi_callback_info info)
+{
     napi_value result;
     struct Input_KeyState *keyState = OH_Input_CreateKeyState();
     OH_Input_DestroyKeyState(&keyState);
@@ -32,7 +34,8 @@ static napi_value DestroyKeyState(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value SetKeyCode(napi_env env, napi_callback_info info) {
+static napi_value SetKeyCode(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     
@@ -53,7 +56,8 @@ static napi_value SetKeyCode(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value SetKeyPressed(napi_env env, napi_callback_info info) {
+static napi_value SetKeyPressed(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     
@@ -73,7 +77,8 @@ static napi_value SetKeyPressed(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value SetKeySwitch(napi_env env, napi_callback_info info) {
+static napi_value SetKeySwitch(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     
@@ -94,7 +99,8 @@ static napi_value SetKeySwitch(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value GetKeyPressed(napi_env env, napi_callback_info info) {
+static napi_value GetKeyPressed(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     
@@ -116,7 +122,8 @@ static napi_value GetKeyPressed(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value GetKeySwitch(napi_env env, napi_callback_info info) {
+static napi_value GetKeySwitch(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     
@@ -138,7 +145,8 @@ static napi_value GetKeySwitch(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value GetKeyState(napi_env env, napi_callback_info info) {
+static napi_value GetKeyState(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     
@@ -160,14 +168,16 @@ static napi_value GetKeyState(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value CreateKeyEvent(napi_env env, napi_callback_info info) {
+static napi_value CreateKeyEvent(napi_env env, napi_callback_info info)
+{
     napi_value result;
     struct Input_KeyEvent *keyEvent = OH_Input_CreateKeyEvent();
     napi_create_int32(env, keyEvent != nullptr ? 1 : 0, &result);
     return result;
 }
 
-static napi_value InjectKeyEvent(napi_env env, napi_callback_info info) {
+static napi_value InjectKeyEvent(napi_env env, napi_callback_info info)
+{
     napi_value result;
     struct Input_KeyEvent *keyEvent = OH_Input_CreateKeyEvent();
     OH_Input_SetKeyEventAction(keyEvent, KEY_ACTION_DOWN);
@@ -179,7 +189,8 @@ static napi_value InjectKeyEvent(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value DestroyKeyEvent(napi_env env, napi_callback_info info) {
+static napi_value DestroyKeyEvent(napi_env env, napi_callback_info info)
+{
     napi_value result;
     struct Input_KeyEvent *keyEvent = OH_Input_CreateKeyEvent();
     OH_Input_SetKeyEventAction(keyEvent, KEY_ACTION_DOWN);
@@ -196,7 +207,8 @@ static napi_value DestroyKeyEvent(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value GetKeyEventAction(napi_env env, napi_callback_info info) {
+static napi_value GetKeyEventAction(napi_env env, napi_callback_info info)
+{
     napi_value result;
     struct Input_KeyEvent *keyEvent = OH_Input_CreateKeyEvent();
     OH_Input_SetKeyEventAction(keyEvent, KEY_ACTION_DOWN);
@@ -206,7 +218,8 @@ static napi_value GetKeyEventAction(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value GetKeyEventActionDestroy(napi_env env, napi_callback_info info) {
+static napi_value GetKeyEventActionDestroy(napi_env env, napi_callback_info info)
+{
     napi_value result;
     struct Input_KeyEvent *keyEvent = OH_Input_CreateKeyEvent();
     OH_Input_SetKeyEventAction(keyEvent, KEY_ACTION_DOWN);
@@ -216,7 +229,8 @@ static napi_value GetKeyEventActionDestroy(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value GetKeyEventKeyCode(napi_env env, napi_callback_info info) {
+static napi_value GetKeyEventKeyCode(napi_env env, napi_callback_info info)
+{
     napi_value result;
     struct Input_KeyEvent *keyEvent = OH_Input_CreateKeyEvent();
     OH_Input_SetKeyEventKeyCode(keyEvent, KEYCODE_A);
@@ -226,7 +240,8 @@ static napi_value GetKeyEventKeyCode(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value GetKeyEventKeyCodeDestroy(napi_env env, napi_callback_info info) {
+static napi_value GetKeyEventKeyCodeDestroy(napi_env env, napi_callback_info info)
+{
     napi_value result;
     struct Input_KeyEvent *keyEvent = OH_Input_CreateKeyEvent();
     OH_Input_SetKeyEventKeyCode(keyEvent, KEYCODE_A);
@@ -236,7 +251,8 @@ static napi_value GetKeyEventKeyCodeDestroy(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value GetKeyEventActionTime(napi_env env, napi_callback_info info) {
+static napi_value GetKeyEventActionTime(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     
@@ -257,7 +273,8 @@ static napi_value GetKeyEventActionTime(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value GetKeyEventActionTimeDestroy(napi_env env, napi_callback_info info) {
+static napi_value GetKeyEventActionTimeDestroy(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     
@@ -278,7 +295,8 @@ static napi_value GetKeyEventActionTimeDestroy(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value createTouchEvent(napi_env env, napi_callback_info info) {
+static napi_value createTouchEvent(napi_env env, napi_callback_info info)
+{
     struct Input_TouchEvent *touchEvent = OH_Input_CreateTouchEvent();
     napi_value result;
     napi_create_int32(env, touchEvent == nullptr, &result);
@@ -286,7 +304,8 @@ static napi_value createTouchEvent(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value destroyTouchEvent(napi_env env, napi_callback_info info) {
+static napi_value destroyTouchEvent(napi_env env, napi_callback_info info)
+{
     struct Input_TouchEvent *touchEvent = OH_Input_CreateTouchEvent();
     napi_value result;
     OH_Input_DestroyTouchEvent(&touchEvent);
@@ -294,7 +313,8 @@ static napi_value destroyTouchEvent(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value touchEventAction(napi_env env, napi_callback_info info) {
+static napi_value touchEventAction(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -314,7 +334,8 @@ static napi_value touchEventAction(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value touchEventFingerId(napi_env env, napi_callback_info info) {
+static napi_value touchEventFingerId(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -334,7 +355,8 @@ static napi_value touchEventFingerId(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value touchEventDisplayX(napi_env env, napi_callback_info info) {
+static napi_value touchEventDisplayX(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -354,7 +376,8 @@ static napi_value touchEventDisplayX(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value touchEventDisplayY(napi_env env, napi_callback_info info) {
+static napi_value touchEventDisplayY(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -374,7 +397,8 @@ static napi_value touchEventDisplayY(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value touchEventActionTime(napi_env env, napi_callback_info info) {
+static napi_value touchEventActionTime(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -394,7 +418,8 @@ static napi_value touchEventActionTime(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value injectTouchEvent(napi_env env, napi_callback_info info) {
+static napi_value injectTouchEvent(napi_env env, napi_callback_info info)
+{
 	size_t argc = 2;
     napi_value args[2] = {nullptr};
 	
@@ -422,7 +447,8 @@ static napi_value injectTouchEvent(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value createMouseEvent(napi_env env, napi_callback_info info) {
+static napi_value createMouseEvent(napi_env env, napi_callback_info info)
+{
     struct Input_MouseEvent *mouseEvent = OH_Input_CreateMouseEvent();
     napi_value result;
     napi_create_int32(env, mouseEvent == nullptr, &result);
@@ -430,7 +456,8 @@ static napi_value createMouseEvent(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value destroyMouseEvent(napi_env env, napi_callback_info info) {
+static napi_value destroyMouseEvent(napi_env env, napi_callback_info info)
+{
     struct Input_MouseEvent *mouseEvent = OH_Input_CreateMouseEvent();
     OH_Input_DestroyMouseEvent(&mouseEvent);
     napi_value result;
@@ -438,7 +465,8 @@ static napi_value destroyMouseEvent(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value mouseEventAction(napi_env env, napi_callback_info info) {
+static napi_value mouseEventAction(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -458,7 +486,8 @@ static napi_value mouseEventAction(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value mouseEventDisplayX(napi_env env, napi_callback_info info) {
+static napi_value mouseEventDisplayX(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -478,7 +507,8 @@ static napi_value mouseEventDisplayX(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value mouseEventDisplayY(napi_env env, napi_callback_info info) {
+static napi_value mouseEventDisplayY(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -498,7 +528,8 @@ static napi_value mouseEventDisplayY(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value mouseEventButton(napi_env env, napi_callback_info info) {
+static napi_value mouseEventButton(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -518,7 +549,8 @@ static napi_value mouseEventButton(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value mouseEventAxisType(napi_env env, napi_callback_info info) {
+static napi_value mouseEventAxisType(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -538,7 +570,8 @@ static napi_value mouseEventAxisType(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value mouseEventAxisValue(napi_env env, napi_callback_info info) {
+static napi_value mouseEventAxisValue(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -558,7 +591,8 @@ static napi_value mouseEventAxisValue(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value mouseEventActionTime(napi_env env, napi_callback_info info) {
+static napi_value mouseEventActionTime(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 	
@@ -578,7 +612,8 @@ static napi_value mouseEventActionTime(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value injectMouseEvent(napi_env env, napi_callback_info info) {
+static napi_value injectMouseEvent(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 	
