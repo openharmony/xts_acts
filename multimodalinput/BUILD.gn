@@ -20,6 +20,7 @@ group("multimodalinput") {
       "input_cpp_standard:ActsInputNativeTest",
       "input_js_standard:multimodalinput_js_test",
       "multimodalinput_ets_standard:ActsMultimodalInputEtsTest",
+      "multimodalinput_ndk:ActsMultimodalInputNdkTest",
     ]
   }
 }
