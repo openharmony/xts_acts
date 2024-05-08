@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
 import { describe, it, expect, afterEach } from '@ohos/hypium';
 import taskpool from '@ohos.taskpool';
 import { BusinessError } from '@ohos.base';
-import { printArgs } from '../utils';
+import { additionF, printArgs } from '../utils';
 
 const asyncSleep: Function = (time: number): Promise<Object> => {
   return new Promise(resolve => setTimeout(resolve, time));
@@ -99,19 +99,20 @@ export default function TaskpoolTestTask() {
         taskpool.execute(testTask3).then((res: Object) => {
           isTerminate3 = true;
         });
+        const taskInfo_0: taskpool.TaskInfo = taskpool.getTaskPoolInfo().taskInfos[0];
         while (!(isTerminate1 && isTerminate2 || isTerminate3)) {
           await promiseCase();
         }
-        console.info(`${caseName}: result1 taskId: ${JSON.stringify(typeof (taskpool.getTaskPoolInfo()
-          .taskInfos[0]
-          .taskId))}`);
-        expect(typeof (taskpool.getTaskPoolInfo().taskInfos[0].taskId) == 'number').assertTrue();
-        console.info(`${caseName}: result1 state: ${JSON.stringify(typeof (taskpool.getTaskPoolInfo()
-          .taskInfos[0]
-          .state))}`);
-        expect(typeof (taskpool.getTaskPoolInfo().taskInfos[0].state) == 'number').assertTrue();
-        expect(typeof (taskpool.getTaskPoolInfo().taskInfos[0].duration) == 'number').assertTrue();
-        expect(typeof (taskpool.getTaskPoolInfo().taskInfos[0].name) == 'string').assertTrue();
+        const type_taskId: string = typeof (taskInfo_0.taskId);
+        console.info(`${caseName}: result1 taskId: ${JSON.stringify(type_taskId)}`);
+        expect(type_taskId == 'number').assertTrue();
+        const type_state: string = typeof (taskInfo_0.state);
+        console.info(`${caseName}: result1 state: ${JSON.stringify(type_state)}`);
+        expect(type_state == 'number').assertTrue();
+        const type_duration: string = typeof (taskInfo_0.duration);
+        expect(type_duration == 'number').assertTrue();
+        const type_name: string = typeof (taskInfo_0.name);
+        expect(type_name == 'string').assertTrue();
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expect().assertFail();
@@ -139,10 +140,12 @@ export default function TaskpoolTestTask() {
         while (!(isTerminate1 && isTerminate2 || isTerminate3)) {
           await promiseCase();
         }
-        console.info(`${caseName}: `)
-        expect(typeof (taskpool.getTaskPoolInfo().threadInfos[0].tid) === 'number').assertTrue();
-        expect(Array.isArray(taskpool.getTaskPoolInfo().threadInfos[0].taskIds)).assertTrue();
-        expect(typeof (taskpool.getTaskPoolInfo().threadInfos[0].priority) === 'number').assertTrue();
+        const threadInfos: taskpool.ThreadInfo = taskpool.getTaskPoolInfo().threadInfos[0];
+        const type_tid: string = typeof (threadInfos.tid);
+        const type_priority: string = typeof (threadInfos.priority)
+        expect(type_tid === 'number').assertTrue();
+        expect(Array.isArray(threadInfos.taskIds)).assertTrue();
+        expect(type_priority === 'number').assertTrue();
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expect().assertFail();
@@ -163,13 +166,14 @@ export default function TaskpoolTestTask() {
         taskpool.execute(testTask3).then((res: Object) => {
           console.info(`${caseName}: testTask3 return value: ${JSON.stringify(res)}`);
         });
+        const taskPoolInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
         while (!(isTerminate1)) {
           await promiseCase();
         }
-        expect(Array.isArray(taskpool.getTaskPoolInfo().threadInfos)).assertTrue();
-        expect((taskpool.getTaskPoolInfo().threadInfos).length != 0).assertTrue();
-        expect(Array.isArray(taskpool.getTaskPoolInfo().taskInfos)).assertTrue();
-        expect((taskpool.getTaskPoolInfo().taskInfos).length != 0).assertTrue();
+        expect(Array.isArray(taskPoolInfo.threadInfos)).assertTrue();
+        expect((taskPoolInfo.threadInfos).length != 0).assertTrue();
+        expect(Array.isArray(taskPoolInfo.taskInfos)).assertTrue();
+        expect((taskPoolInfo.taskInfos).length != 0).assertTrue();
         done();
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
@@ -178,6 +182,5 @@ export default function TaskpoolTestTask() {
       }
       console.info(`${caseName} test end`);
     });
-
   });
 }

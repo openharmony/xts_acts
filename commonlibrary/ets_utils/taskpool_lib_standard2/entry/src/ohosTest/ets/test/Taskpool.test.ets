@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,41 +12,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect, afterEach, beforeAll } from '@ohos/hypium';
+
+import { afterEach, describe, expect, it } from '@ohos/hypium';
 import taskpool from '@ohos.taskpool';
 import { BusinessError } from '@ohos.base';
 import {
   add,
-  addOne,
-  printUndefined,
-  printNull,
-  funOne,
-  multiply,
-  dividing,
-  mathCeil,
-  mathFloor,
-  mathRound,
-  mathPow,
-  mathSqrt,
-  mathAbs,
-  mathMore,
-  mathMax,
-  mathMin,
+  addAdd,
   addition,
   additionF,
+  addOne,
   adds,
-  addAdd,
-  printString,
-  printArgs,
-  printABool,
+  concurrentF,
+  dividing,
+  funArray,
+  funDate,
+  funOne,
+  mathAbs,
+  mathCeil,
+  mathFloor,
+  mathMax,
+  mathMin,
+  mathMore,
+  mathPow,
+  mathRound,
+  mathSqrt,
+  multiply,
   printABig,
-  printSan,
+  printABool,
+  printArgs,
   printLang,
+  printNull,
+  printSan,
+  printString,
   printTime,
-  testTransfer,
+  printUndefined,
+  sendDataCatch,
+  sendDataFun,
+  spileString,
+  stringToNumber,
   testFunc,
-  throwError,
-  stringToNumber
+  testTransfer,
+  throwError
 } from '../utils';
 
 function asyncSleep(time: number): Promise<Object> {
@@ -56,7 +63,7 @@ function asyncSleep(time: number): Promise<Object> {
 function promiseCase(): Promise<void | Object> {
   let p: Promise<void | Object> = new Promise((resolve: Function, reject: Function) => {
     setTimeout(() => {
-      resolve(0);
+      resolve(1);
     }, 100);
   });
   return p;
@@ -76,6 +83,111 @@ export default function TaskpoolTest() {
     afterEach(async () => {
       await asyncSleep(1000);
     })
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_1300
+     * @tc.name      : testTaskpoolGetTaskPoolInfo001
+     * @tc.desc      : Obtain the internal information of the task pool, including thread information and task information
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testTaskpoolGetTaskPoolInfo001', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolGetTaskPoolInfo001';
+      console.info(`${caseName} test start`);
+      try {
+        let task1: taskpool.Task = new taskpool.Task(printArgs, 10);
+        let taskpoolInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
+        console.info(`${caseName}: taskpoolInfo: ${JSON.stringify(taskpoolInfo)}`);
+        expect(taskpoolInfo.threadInfos[0].tid != 0).assertTrue();
+        expect(taskpoolInfo.threadInfos[0].taskIds).assertDeepEquals([]);
+        expect(taskpoolInfo.taskInfos).assertDeepEquals([]);
+        expect(taskpoolInfo.threadInfos[0].priority).assertLargerOrEqual(0);
+        await promiseCase();
+        done();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+      console.info(`${caseName} test end`);
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_1400
+     * @tc.name      : testTaskpoolGetTaskPoolInfo002
+     * @tc.desc      : Obtain the internal information of the task pool, including thread information and task information
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testTaskpoolGetTaskPoolInfo002', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolGetTaskPoolInfo002';
+      console.info(`${caseName} test start`);
+      try {
+        let allCount: number = 300;
+        for (let i: number = 0; i < allCount; i++) {
+          let task1: taskpool.Task = new taskpool.Task(additionF);
+          let task2: taskpool.Task = new taskpool.Task(additionF);
+          let task3: taskpool.Task = new taskpool.Task(additionF);
+          taskpool.execute(task1, taskpool.Priority.LOW).then(() => {
+          }).catch((error: Error) => {
+            console.info(`${caseName}: low task error: ${error}`);
+          });
+          taskpool.execute(task2, taskpool.Priority.MEDIUM).then(() => {
+          }).catch((error: Error) => {
+            console.info(`${caseName}: medium task error: ${error}`);
+          });
+          taskpool.execute(task3, taskpool.Priority.HIGH).then(() => {
+          }).catch((error: Error) => {
+            console.info(`${caseName}: high task error: ${error}`);
+          });
+        }
+        let start: number = new Date().getTime();
+        while (new Date().getTime() - start < 1000) {
+          continue;
+        }
+        let taskpoolInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
+        let tid: number = 0;
+        let taskIds: number[] = [];
+        let priority: number = 0;
+        let taskId: number = 0;
+        let state: number = 0;
+        let duration: number = 0;
+        let threadIS: taskpool.ThreadInfo[] = Array.from(taskpoolInfo.threadInfos);
+        for (let threadInfo of threadIS) {
+          tid += threadInfo.tid;
+          if (threadInfo.taskIds != undefined && threadInfo.priority != undefined) {
+            taskIds.length = threadInfo.taskIds.length;
+            priority = threadInfo.priority;
+          }
+          console.info(`${caseName}: threadInfothreadInfo: ${threadInfo}`);
+        }
+
+        let taskIS: taskpool.TaskInfo[] = Array.from(taskpoolInfo.taskInfos);
+        for (let taskInfo of taskIS) {
+          console.info(`${caseName}: taskIdtaskIdtaskId: ${taskInfo}`);
+          taskId = taskInfo.taskId;
+          state = taskInfo.state;
+          if (taskInfo.duration != undefined) {
+            duration = taskInfo.duration;
+          }
+        }
+        console.info(`${caseName}: task duration is: ${duration}`);
+        expect(tid != 0).assertTrue();
+        expect(taskIds.length != 0).assertTrue();
+        expect(priority != -1).assertTrue();
+        expect(taskId != 0).assertTrue();
+        expect(state != 0).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+      console.info(`${caseName} test end`);
+    });
+
     /**
      * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_0100
      * @tc.name      : testTaskpoolExecute001
@@ -98,17 +210,29 @@ export default function TaskpoolTest() {
           console.info(`${caseName}: task1 return value: ${JSON.stringify(res)}`);
           isTerminate1 = true;
           expect(res as number).assertEqual(30);
-        }));
-        taskpool.execute(task2).then(((res: Object) => {
+        })).catch((error: BusinessError) => {
+          console.info(`${caseName}: task1 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        });
+        taskpool.execute(task2).then((res: Object) => {
           console.info(`${caseName}: task2 return value: ${JSON.stringify(res)}`);
           isTerminate2 = true;
           expect(res as number).assertEqual(50);
-        }));
-        taskpool.execute(task3).then(((res: Object) => {
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task2 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        });
+        taskpool.execute(task3).then((res: Object) => {
           console.info(`${caseName}: task3 return value: ${JSON.stringify(res)}`);
           isTerminate3 = true;
           expect(res as number).assertEqual(5);
-        }));
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task3 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        });
         while (!(isTerminate1 && isTerminate2 && isTerminate3)) {
           await promiseCase();
         }
@@ -139,21 +263,33 @@ export default function TaskpoolTest() {
         let task1: taskpool.Task = new taskpool.Task(addAdd, 'abc', 'def', 'hello');
         let task2: taskpool.Task = new taskpool.Task(addAdd, 'qwe', 'rty', 'hello');
         let task3: taskpool.Task = new taskpool.Task(addAdd, 'zxc', 'vbn', 'hello');
-        taskpool.execute(task1).then(((res: Object) => {
+        taskpool.execute(task1).then((res: Object) => {
           console.info(`${caseName}: task1 return value: ${JSON.stringify(res)}`);
           isTerminate1 = true;
           expect(res as string).assertEqual('abcdefhello');
-        }));
-        taskpool.execute(task2).then(((res: Object) => {
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task1 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        });
+        taskpool.execute(task2).then((res: Object) => {
           console.info(`${caseName}: task2 return value: ${JSON.stringify(res)}`);
           isTerminate2 = true;
           expect(res as string).assertEqual('qwertyhello');
-        }));
-        taskpool.execute(task3).then(((res: Object) => {
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task2 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        });
+        taskpool.execute(task3).then((res: Object) => {
           console.info(`${caseName}: task3 return value: ${JSON.stringify(res)}`);
           isTerminate3 = true;
           expect(res as string).assertEqual('zxcvbnhello');
-        }));
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task3 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        });
         while (!(isTerminate1 && isTerminate2 && isTerminate3)) {
           await promiseCase();
         }
@@ -181,11 +317,11 @@ export default function TaskpoolTest() {
         let num: number = 0;
         let count: number = 120;
         let taskArray: taskpool.Task[] = [];
-        for (let i: number = 0;i < count; i++) {
+        for (let i: number = 0; i < count; i++) {
           let taskExecute1: taskpool.Task = new taskpool.Task(printArgs, i);
           taskArray.push(taskExecute1);
         }
-        for (let i: number = 0;i < count; i++) {
+        for (let i: number = 0; i < count; i++) {
           taskpool.execute(taskArray[i], i % 3).then((res: Object) => {
             console.info(`${caseName}: result: ${i % 3}`);
             num++;
@@ -279,13 +415,13 @@ export default function TaskpoolTest() {
         let allCount: number = 99;
         let num: number = 0;
         let taskGroupArray: taskpool.TaskGroup[] = [];
-        for (let i: number = 0;i < allCount; i++) {
+        for (let i: number = 0; i < allCount; i++) {
           let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
           let taskExecute1: taskpool.Task = new taskpool.Task(printTime, 10);
           taskGroup.addTask(taskExecute1);
           taskGroupArray.push(taskGroup);
         }
-        for (let i: number = 0;i < allCount; i++) {
+        for (let i: number = 0; i < allCount; i++) {
           taskpool.execute(taskGroupArray[i], i % 3).then((res: Object) => {
             console.info(`${caseName}: result: ${i % 3}`);
             num++;
@@ -470,8 +606,8 @@ export default function TaskpoolTest() {
           isTerminate3 = true;
           result3 = res as number;
         });
-        expect(result3).assertDeepEquals(0);
         taskpool.cancel(taskExecute3);
+        expect(result3).assertDeepEquals(0);
         while (!(isTerminate1 && isTerminate2 || isTerminate3)) {
           await promiseCase();
         }
@@ -578,26 +714,34 @@ export default function TaskpoolTest() {
           result1 = res as number[];
           isTerminate1 = true;
           expect(result1).assertDeepEquals([8, 16, 64]);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: taskGroup1 execute catch error: ${JSON.stringify(error)}`);
+          expect(error).not().assertNull();
         });
+        taskpool.cancel(taskGroup1);
         expect(result1).assertDeepEquals([2, 2, 2]);
         taskpool.execute(taskGroup2).then((res: Object) => {
           console.info(`${caseName}: taskGroup2 return value: ${JSON.stringify(res)}`);
           result2 = res as number[];
           isTerminate2 = true;
           expect(result2).assertDeepEquals([3, 5, 6]);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: taskGroup2 execute catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
         });
-        taskpool.cancel(taskGroup1);
         while (!(isTerminate1 || isTerminate2)) {
           await promiseCase();
         }
         expect(taskpool.Task.isCanceled() == true);
+        console.info(`${caseName} test end`);
         done();
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        console.info(`${caseName} test end`);
         expect().assertFail();
         done();
       }
-      console.info(`${caseName} test end`);
     });
 
     /**
@@ -704,109 +848,6 @@ export default function TaskpoolTest() {
     });
 
     /**
-     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_1300
-     * @tc.name      : testTaskpoolGetTaskPoolInfo001
-     * @tc.desc      : Obtain the internal information of the task pool, including thread information and task information
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('testTaskpoolGetTaskPoolInfo001', 0, async (done: Function) => {
-      const caseName: string = 'testTaskpoolGetTaskPoolInfo001';
-      console.info(`${caseName} test start`);
-      try {
-        let task1: taskpool.Task = new taskpool.Task(printArgs, 10);
-        let taskpoolInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
-        console.info(`${caseName}: taskpoolInfo: ${JSON.stringify(taskpoolInfo)}`);
-        expect(taskpoolInfo.threadInfos[0].tid != 0).assertTrue();
-        expect(taskpoolInfo.threadInfos[0].priority).assertEqual(1);
-        expect(taskpoolInfo.threadInfos[0].taskIds).assertDeepEquals([]);
-        expect(taskpoolInfo.taskInfos).assertDeepEquals([]);
-        await promiseCase();
-        done();
-      } catch (error) {
-        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
-        done();
-      }
-      console.info(`${caseName} test end`);
-    });
-
-    /**
-     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_1400
-     * @tc.name      : testTaskpoolGetTaskPoolInfo002
-     * @tc.desc      : Obtain the internal information of the task pool, including thread information and task information
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('testTaskpoolGetTaskPoolInfo002', 0, async (done: Function) => {
-      const caseName: string = 'testTaskpoolGetTaskPoolInfo002';
-      console.info(`${caseName} test start`);
-      try {
-        let allCount: number = 300;
-        for (let i: number = 0; i < allCount; i++) {
-          let task1: taskpool.Task = new taskpool.Task(additionF);
-          let task2: taskpool.Task = new taskpool.Task(additionF);
-          let task3: taskpool.Task = new taskpool.Task(additionF);
-          taskpool.execute(task1, taskpool.Priority.LOW).then(() => {
-          }).catch((error: Error) => {
-            console.info(`${caseName}: low task error: ${error}`);
-          });
-          taskpool.execute(task2, taskpool.Priority.MEDIUM).then(() => {
-          }).catch((error: Error) => {
-            console.info(`${caseName}: medium task error: ${error}`);
-          });
-          taskpool.execute(task3, taskpool.Priority.HIGH).then(() => {
-          }).catch((error: Error) => {
-            console.info(`${caseName}: high task error: ${error}`);
-          });
-        }
-        let start: number = new Date().getTime();
-        while (new Date().getTime() - start < 1000) {
-          continue;
-        }
-        let taskpoolInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
-        let tid: number = 0;
-        let taskIds: number[] = [];
-        let priority: number = 0;
-        let taskId: number = 0;
-        let state: number = 0;
-        let duration: number = 0;
-        let threadIS: taskpool.ThreadInfo[] = Array.from(taskpoolInfo.threadInfos);
-        for (let threadInfo of threadIS) {
-          tid += threadInfo.tid;
-          if (threadInfo.taskIds != undefined && threadInfo.priority != undefined) {
-            taskIds.length = threadInfo.taskIds.length;
-            priority = threadInfo.priority;
-          }
-          console.info(`${caseName}: threadInfothreadInfo: ${threadInfo}`);
-        }
-
-        let taskIS: taskpool.TaskInfo[] = Array.from(taskpoolInfo.taskInfos);
-        for (let taskInfo of taskIS) {
-          console.info(`${caseName}: taskIdtaskIdtaskId: ${taskInfo}`);
-          taskId = taskInfo.taskId;
-          state = taskInfo.state;
-          if (taskInfo.duration != undefined) {
-            duration = taskInfo.duration;
-          }
-        }
-        console.info(`${caseName}: task duration is: ${duration}`);
-        expect(tid != 0).assertTrue();
-        expect(taskIds.length != 0).assertTrue();
-        expect(priority != -1).assertTrue();
-        expect(taskId != 0).assertTrue();
-        expect(state != 0).assertTrue();
-        done();
-      } catch (error) {
-        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
-        expect().assertFail();
-        done();
-      }
-      console.info(`${caseName} test end`);
-    });
-
-    /**
      * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_1500
      * @tc.name      : testTaskpoolPriority001
      * @tc.desc      : Indicates the priority of the task that you have created
@@ -825,11 +866,11 @@ export default function TaskpoolTest() {
         let mediumTime1: number = 0;
         let lowTime1: number = 0;
         let allCount1: number = 99;
-        for (let i: number = 0;i < allCount1; i++) {
+        for (let i: number = 0; i < allCount1; i++) {
           let taskExecute1: taskpool.Task = new taskpool.Task(printTime, 10);
           taskArray1.push(taskExecute1);
         }
-        for (let i: number = 0;i < allCount1; i++) {
+        for (let i: number = 0; i < allCount1; i++) {
           taskpool.execute(taskArray1[i], i % 3).then((res: Object) => {
             console.info(`${caseName}: result: ${i % 3}`);
             num1++;
@@ -1157,19 +1198,19 @@ export default function TaskpoolTest() {
           console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)}`);
           isTerminate1 = true;
           expect(res as string).assertEqual('40');
-          name1 = parseInt(taskConstructor1.name) / (res as number);
+          name1 = Number(taskConstructor1.name) / (res as number);
         });
         taskpool.execute(taskConstructor2).then((res: Object) => {
           console.info(`${caseName}: taskConstructor2 return value: ${JSON.stringify(res)}`);
           isTerminate2 = true;
           expect(res as string).assertEqual('50');
-          name2 = parseInt(taskConstructor2.name) / (res as number);
+          name2 = Number(taskConstructor2.name) / (res as number);
         });
         taskpool.execute(taskConstructor3).then((res: Object) => {
           console.info(`${caseName}: taskConstructor3 return value: ${JSON.stringify(res)}`);
           isTerminate3 = true;
           expect(res as string).assertEqual('25');
-          name3 = parseInt(taskConstructor3.name) / (res as number);
+          name3 = Number(taskConstructor3.name) / (res as number);
         });
         while (!(isTerminate1 && isTerminate2 && isTerminate3)) {
           await promiseCase();
@@ -1390,6 +1431,147 @@ export default function TaskpoolTest() {
         }
         console.info(`${caseName}: result11: ${arrayInt1[0]}`);
         console.info(`${caseName}: result22: ${arrayInt2[0]}`);
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+      console.info(`${caseName} test end`);
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_2600
+     * @tc.name      : testTaskpoolTaskSendData001
+     * @tc.desc      : Send a message to the host thread and trigger a callback during task execution
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testTaskpoolTaskSendData001', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolTaskSendData001';
+      console.info(`${caseName} test start`);
+      try {
+        let isTerminate1: boolean = false;
+        let isTerminate2: boolean = false;
+        let isTerminate3: boolean = false;
+        let isTerminate4: boolean = false;
+        let taskConstructor1: taskpool.Task = new taskpool.Task(concurrentF, 1);
+        let taskConstructor2: taskpool.Task = new taskpool.Task(spileString, 'q', 'e');
+        let taskConstructor3: taskpool.Task = new taskpool.Task(funArray, [1, 2, 3]);
+        let taskConstructor4: taskpool.Task = new taskpool.Task(funDate, new Date(2024, 0, 1));
+        taskConstructor1.onReceiveData((res: Object) => {
+          console.info(`${caseName}: taskConstructor5.onReceiveData res: ${JSON.stringify(res)}`);
+          expect(res as number).assertEqual(10);
+        });
+        taskConstructor2.onReceiveData((res: string) => {
+          console.info(`${caseName}: taskConstructor1.onReceiveData res: ${JSON.stringify(res)}`);
+          expect(res as string).assertEqual('qe');
+        });
+        taskConstructor3.onReceiveData((res: Object) => {
+          console.info(`${caseName}: taskConstructor2.onReceiveData res: ${JSON.stringify(res)}`);
+          expect(res as number[]).assertDeepEquals([1, 2, 3]);
+        });
+        taskConstructor4.onReceiveData((res: object) => {
+          console.info(`${caseName}: taskConstructor4.onReceiveData res: ${JSON.stringify(res)}`);
+          expect((res as Date).toString()).assertEqual('Mon Jan 01 2024 00:00:00 GMT+0800');
+        });
+        taskpool.execute(taskConstructor1).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)}`);
+          isTerminate1 = true;
+        });
+        taskpool.execute(taskConstructor2).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor2 return value: ${JSON.stringify(res)}`);
+          isTerminate2 = true;
+        });
+        taskpool.execute(taskConstructor3).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor4 return value: ${JSON.stringify(res)}`);
+          isTerminate3 = true;
+        });
+        taskpool.execute(taskConstructor4).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor5 return value: ${JSON.stringify(res)}`);
+          isTerminate4 = true;
+        });
+        while (!(isTerminate1 && isTerminate2 && isTerminate3 && isTerminate4)) {
+          await promiseCase();
+        }
+        done();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+      console.info(`${caseName} test end`);
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_2700
+     * @tc.name      : testTaskpoolTaskOnReceiveData001
+     * @tc.desc      : Register a callback function for a task to receive and process data from a task pool worker
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testTaskpoolTaskOnReceiveData001', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolTaskOnReceiveData001';
+      console.info(`${caseName} test start`);
+      try {
+        let isTerminate1: boolean = false;
+        let result2: number = 0;
+        let taskConstructor1: taskpool.Task = new taskpool.Task(concurrentF, 1);
+        taskConstructor1.onReceiveData((res: Object) => {
+          console.info(`${caseName}: taskConstructor1.onReceiveData res: ${JSON.stringify(res)}`);
+          result2 = res as number;
+        });
+        taskConstructor1.onReceiveData((res: Object) => {
+          console.info(`${caseName}: taskConstructor1.onReceiveData res: ${JSON.stringify(res)}`);
+          result2 = (res as number) + 1;
+        });
+        taskpool.execute(taskConstructor1).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)}`);
+          isTerminate1 = true;
+        });
+        while (!(isTerminate1)) {
+          await promiseCase();
+        }
+        expect(result2).assertEqual(11);
+        done();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+      console.info(`${caseName} test end`);
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_2800
+     * @tc.name      : testTaskpoolTaskOnReceiveData002
+     * @tc.desc      : Register a callback function for a task to receive and process data from a task pool worker
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testTaskpoolTaskOnReceiveData002', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolTaskOnReceiveData002';
+      console.info(`${caseName} test start`);
+      try {
+        let isTerminate1: boolean = false;
+        let result1: number = 0;
+        let taskConstructor1: taskpool.Task = new taskpool.Task(concurrentF, 5);
+        taskConstructor1.onReceiveData((res: Object) => {
+          result1 = res as number;
+        });
+        taskpool.execute(taskConstructor1).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)}`);
+          isTerminate1 = true;
+        });
+        taskpool.cancel(taskConstructor1);
+        while (isTerminate1) {
+          await promiseCase();
+        }
+        expect(result1).assertEqual(0);
+        console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(result1)}`);
+        done();
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expect().assertFail();
@@ -1690,19 +1872,19 @@ export default function TaskpoolTest() {
           console.info(`${caseName}: result1: ${JSON.stringify(res)}`);
           isTerminate1 = true;
           expect(res as number[]).assertDeepEquals([11, 11, 11]);
-          name1 = parseInt(taskConstructor1.name);
+          name1 = Number(taskConstructor1.name);
         });
         taskpool.execute(taskConstructor2).then((res: Object) => {
           console.info(`${caseName}: result1: ${JSON.stringify(res)}`);
           isTerminate2 = true;
           expect(res as number[]).assertDeepEquals([484, 484, 484]);
-          name2 = parseInt(taskConstructor2.name);
+          name2 = Number(taskConstructor2.name);
         });
         taskpool.execute(taskConstructor3).then((res: Object) => {
           console.info(`${caseName}: result1: ${JSON.stringify(res)}`);
           isTerminate3 = true;
           expect(res as number[]).assertDeepEquals([13, 13, 13]);
-          name3 = parseInt(taskConstructor3.name);
+          name3 = Number(taskConstructor3.name);
         });
         while (!(isTerminate1 && isTerminate2 && isTerminate3)) {
           await promiseCase();
@@ -2077,46 +2259,82 @@ export default function TaskpoolTest() {
           flag1 = true;
           finalNumber.push(res as number);
           console.info(`${caseName}: seqrunner: task1 done.`);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task1 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
         });
         runner1.execute(task2).then((res: Object) => {
           flag2 = true;
           finalNumber.push(res as number);
           console.info(`${caseName}: seqrunner: task2 done`);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task2 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
         });
         runner1.execute(task7).then((res: Object) => {
           flag7 = true;
           finalNumber.push(res as number);
-          console.info(`${caseName}: seqrunner: task2 done`);
+          console.info(`${caseName}: seqrunner: task7 done`);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task7 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
         });
         runner2.execute(task3).then((res: Object) => {
           flag3 = true;
           finalNumber.push(res as number);
           console.info(`${caseName}: seqrunner: task3 done.`);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task3 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
         });
         runner2.execute(task4).then((res: Object) => {
           flag4 = true;
           finalNumber.push(res as number);
           console.info(`${caseName}: seqrunner: task4 done`);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task4 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
         });
         runner1.execute(task8).then((res: Object) => {
           flag8 = true;
           finalNumber.push(res as number);
-          console.info(`${caseName}: seqrunner: task2 done`);
+          console.info(`${caseName}: seqrunner: task8 done`);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task2 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
         });
         runner3.execute(task5).then((res: Object) => {
           flag5 = true;
           finalNumber.push(res as number);
           console.info(`${caseName}: seqrunner: task5 done.`);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task5 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
         });
         runner3.execute(task6).then((res: Object) => {
           flag6 = true;
           finalNumber.push(res as number);
           console.info(`${caseName}: seqrunner: task6 done`);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task6 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
         });
         runner1.execute(task9).then((res: Object) => {
           flag9 = true;
           finalNumber.push(res as number);
-          console.info(`${caseName}: seqrunner: task2 done`);
+          console.info(`${caseName}: seqrunner: task9 done`);
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName}: task9 catch error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
         });
         while (!(flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag7 && flag8 && flag9)) {
           await promiseCase();
@@ -2153,15 +2371,15 @@ export default function TaskpoolTest() {
         let mediumTime: number = 0;
         let lowTime: number = 0;
         let allCount: number = 300;
-        for (let i: number = 0;i < allCount; i++) {
+        for (let i: number = 0; i < allCount; i++) {
           let taskSR: taskpool.SequenceRunner = new taskpool.SequenceRunner(i % 3);
           taskSRArray.push(taskSR);
         }
-        for (let i: number = 0;i < allCount; i++) {
+        for (let i: number = 0; i < allCount; i++) {
           let task: taskpool.Task = new taskpool.Task(printTime, 10);
           taskArray.push(task);
         }
-        for (let i: number = 0;i < allCount; i++) {
+        for (let i: number = 0; i < allCount; i++) {
           taskSRArray[i].execute(taskArray[i]).then((res: Object) => {
             console.info(`${caseName}: result: ${i % 3}`);
             num++;
@@ -2213,28 +2431,31 @@ export default function TaskpoolTest() {
         let runner1: taskpool.SequenceRunner = new taskpool.SequenceRunner();
         runner1.execute(task1).then((res: Object) => {
           console.info(`${caseName}: res: ${JSON.stringify(res)}`);
-          console.info(`${caseName}:  testSequenceRunnerExecute002: task1 done.`);
+          console.info(`${caseName}: task1 done.`);
           isTerminate1 = true;
           finalNumber.push(res as number);
         });
-        runner1.execute(task2).then((res: Object) => {
+        taskpool.execute(task2).then((res: Object) => {
           console.info(`${caseName}: res${JSON.stringify(res)}`);
-          console.info(`${caseName}: testSequenceRunnerExecute002: task2 done`);
+          console.info(`${caseName}: task2 done`);
           finalNumber.push(res as number);
-        });
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName} task2 error -> ${JSON.stringify(error)}`);
+          expect(error).not().assertNull();
+        })
+        taskpool.cancel(task2);
         runner1.execute(task3).then((res: Object) => {
           console.info(`${caseName}: res${JSON.stringify(res)}`);
-          console.info(`${caseName}: testSequenceRunnerExecute002: task3 done.`);
+          console.info(`${caseName}: task3 done.`);
           isTerminate3 = true;
           expect(res.toString()).assertEqual('null');
         });
         runner1.execute(task4).then((res: Object) => {
           console.info(`${caseName}: res${JSON.stringify(res)}`);
-          console.info(`${caseName}: testSequenceRunnerExecute002: task4 done.`);
+          console.info(`${caseName}: task4 done.`);
           isTerminate4 = true;
           finalNumber.push(res as number);
         });
-        taskpool.cancel(task2);
         while (!(isTerminate1 && isTerminate3 && isTerminate4)) {
           await promiseCase();
         }
@@ -2266,14 +2487,14 @@ export default function TaskpoolTest() {
         taskpool.execute(testTask1).then((res: Object) => {
           console.info(`${caseName}: testTask1 return value: ${JSON.stringify(res)}`);
         });
+        taskpool.cancel(testTask1);
         taskpool.execute(testTask2).then((res: Object) => {
           console.info(`${caseName}: testTask2 return value: ${JSON.stringify(res)}`);
         });
+        taskpool.cancel(testTask2);
         taskpool.execute(testTask3).then((res: Object) => {
           console.info(`${caseName}: testTask3 return value: ${JSON.stringify(res)}`);
         });
-        taskpool.cancel(testTask1);
-        taskpool.cancel(testTask2);
         taskpool.cancel(testTask3);
         console.info(`${caseName}:state4: ${JSON.stringify(taskpool.getTaskPoolInfo().taskInfos[0].state)}`);
         expect((taskpool.getTaskPoolInfo().taskInfos[0].state) == 3).assertTrue();
@@ -2285,6 +2506,287 @@ export default function TaskpoolTest() {
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expect().assertFail();
+        done();
+      }
+      console.info(`${caseName} test end`);
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_4400
+     * @tc.name      : testTaskpoolError001
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError001', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError001';
+      console.info(`${caseName} test start`);
+      try {
+        let task1: taskpool.Task = new taskpool.Task(printArgs, test1);
+        let runner1: taskpool.SequenceRunner = new taskpool.SequenceRunner();
+        runner1.execute(task1).then((res: Object) => {
+          console.info(`${caseName}: testSequenceRunnerExecute004: task1 done.`);
+        });
+        await promiseCase();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200006);
+        expect(error.message)
+          .assertContain("An exception occurred during serialization, taskpool: failed to serialize arguments.");
+      }
+      try {
+        let task1: taskpool.Task = new taskpool.Task(printArgs, test1);
+        taskpool.execute(task1).then((res: Object) => {
+          console.info(`${caseName}: task1 return value: ${JSON.stringify(res)}`);
+        });
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200006);
+        expect(error.message)
+          .assertContain("An exception occurred during serialization, taskpool: failed to serialize arguments.");
+      }
+      try {
+        let isTerminate1: boolean = false;
+        let isTerminate2: boolean = false;
+        let buffer: ArrayBuffer = new ArrayBuffer(8);
+        let view: Uint8Array = new Uint8Array(buffer);
+        let buffer1: ArrayBuffer = new ArrayBuffer(16);
+        let view1: Uint8Array = new Uint8Array(buffer1);
+        let buffer2: ArrayBuffer = new ArrayBuffer(4);
+        let view2: Uint8Array = new Uint8Array(buffer2);
+        let task1: taskpool.Task = new taskpool.Task(testTransfer, view, view1);
+        let task2: taskpool.Task = new taskpool.Task(testTransfer, view1, view2);
+        console.info(`view.buffer be  ${view.buffer}`);
+        task1.setTransferList([view.buffer, view1.buffer]);
+        console.info(`view.buffer al  ${view.buffer}`);
+        task2.setTransferList([view1.buffer, view2.buffer]);
+        taskpool.execute(task1).then((res: Object) => {
+          isTerminate1 = true;
+        });
+        taskpool.execute(task2).then((res: Object) => {
+          isTerminate2 = true;
+        });
+        while (!(isTerminate1 && isTerminate2)) {
+          await promiseCase();
+        }
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200006);
+        expect(error.message)
+          .assertContain("An exception occurred during serialization, taskpool: failed to serialize arguments.");
+      }
+      try {
+        let taskConstructor1: taskpool.Task = new taskpool.Task(printArgs, test1);
+        taskpool.execute(taskConstructor1).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)}`);
+        });
+        await promiseCase();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200006);
+        expect(error.message)
+          .assertContain("An exception occurred during serialization, taskpool: failed to serialize arguments.");
+      }
+      try {
+        let task1: taskpool.Task = new taskpool.Task(noConcurrent, 200);
+        taskpool.execute(task1).then((res: Object) => {
+          console.info(`${caseName}: gsegs result: ${JSON.stringify(res)}`);
+        });
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200014);
+        expect(error.message)
+          .assertContain('The function is not mark as concurrent, taskpool: failed to serialize function.');
+      }
+      try {
+        let isTerminate1: boolean = false;
+        let isTerminate2: boolean = false;
+        let taskConstructor1: taskpool.TaskGroup = new taskpool.TaskGroup();
+        taskConstructor1.addTask(noConcurrent, 12);
+        taskConstructor1.addTask(noConcurrent, 22);
+        taskConstructor1.addTask(noConcurrent, 32);
+        let taskConstructor2: taskpool.TaskGroup = new taskpool.TaskGroup();
+        taskConstructor2.addTask(addOne, 42);
+        taskConstructor2.addTask(addOne, 52);
+        taskConstructor2.addTask(addOne, 62);
+        taskpool.execute(taskConstructor1).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)}`);
+          isTerminate1 = true;
+        });
+        taskpool.execute(taskConstructor2).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor2 return value: ${JSON.stringify(res)}`);
+          isTerminate2 = true;
+        });
+        while (isTerminate1 && isTerminate2) {
+          await promiseCase();
+        }
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200014);
+        expect(error.message)
+          .assertContain("The function is not mark as concurrent, taskpool: failed to serialize function.");
+      }
+      try {
+        let task1: taskpool.Task = new taskpool.Task(printArgs, 100);
+        let task2: taskpool.Task = new taskpool.Task(printArgs, 200);
+        let task3: taskpool.Task = new taskpool.Task(printArgs, 300);
+        let task4: taskpool.Task = new taskpool.Task(printArgs, 400);
+        taskpool.execute(task1);
+        taskpool.execute(task2);
+        taskpool.execute(task3);
+        taskpool.cancel(task4);
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200015);
+        expect(error.message).assertContain("The task does not exist when it is canceled");
+      }
+      try {
+        let isTerminate1: boolean = false;
+        let isTerminate2: boolean = false;
+        let isTerminate3: boolean = false;
+        let taskConstructor1: taskpool.Task = new taskpool.Task(printArgs, 100);
+        let taskConstructor2: taskpool.Task = new taskpool.Task(printArgs, 200);
+        let taskConstructor3: taskpool.Task = new taskpool.Task(printArgs, 300);
+        taskpool.execute(taskConstructor1).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)}`);
+          isTerminate1 = true;
+          expect(res).assertEqual(100);
+        });
+        taskpool.execute(taskConstructor2).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor2 return value: ${JSON.stringify(res)}`);
+          isTerminate2 = true;
+          expect(res).assertEqual(200);
+        });
+        taskpool.execute(taskConstructor3).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor3 return value: ${JSON.stringify(res)}`);
+          isTerminate3 = true;
+          expect(res).assertEqual(300);
+        });
+        while (!(isTerminate1 && isTerminate2 && isTerminate3)) {
+          await promiseCase();
+        }
+        taskpool.cancel(taskConstructor1);
+        taskpool.cancel(taskConstructor2);
+        taskpool.cancel(taskConstructor3);
+        expect(taskpool.Task.isCanceled() == false).assertTrue();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200015);
+        expect(error.message).assertContain('The task does not exist when it is canceled');
+      }
+      try {
+        let task1: taskpool.Task = new taskpool.Task(mathRound, 10.5);
+        let task2: taskpool.Task = new taskpool.Task(mathRound, 20.8);
+        let task3: taskpool.Task = new taskpool.Task(mathRound, 30.4);
+        taskpool.executeDelayed(1000, task1).then(((res: Object) => {
+          console.info(`${caseName}: task1 return value: ${JSON.stringify(res)}`);
+        }));
+        taskpool.executeDelayed(1000, task2).then(((res: Object) => {
+          console.info(`${caseName}: task2 return value: ${JSON.stringify(res)}`);
+        }));
+        taskpool.executeDelayed(-1000, task3).then(((res: Object) => {
+          console.info(`${caseName}: task3 return value: ${JSON.stringify(res)}`);
+        }));
+        await promiseCase();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200028);
+        expect(error.message).assertContain("The delayTime is less than zero");
+      }
+      try {
+        let isTerminate1: boolean = false;
+        let buffer: ArrayBuffer = new ArrayBuffer(8);
+        let view: Uint8Array = new Uint8Array(buffer);
+        let buffer1: ArrayBuffer = new ArrayBuffer(16);
+        let view1: Uint8Array = new Uint8Array(buffer1);
+        let task1: taskpool.Task = new taskpool.Task(testTransfer, view, view1);
+        task1.setTransferList([view.buffer, view1.buffer]);
+        task1.setCloneList([buffer1]);
+        console.info(`buffer   ${buffer}`);
+        taskpool.execute(task1).then((res: Object) => {
+          isTerminate1 = true;
+          expect(res).assertEqual(24);
+          console.info(`buffer   ${buffer}`);
+        });
+        while (!(isTerminate1)) {
+          await promiseCase();
+        }
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200029);
+        expect(error.message).assertContain("Can not set an arraybuffer to both transferList and cloneList");
+      }
+      try {
+        let isTerminate1: boolean = false;
+        let isTerminate2: boolean = false;
+        let isTerminate3: boolean = false;
+        let taskConstructor1: taskpool.Task = new taskpool.Task(add, 1, 5);
+        let taskConstructor2: taskpool.Task = new taskpool.Task(add, 2, 5);
+        let taskConstructor3: taskpool.Task = new taskpool.Task(add, 3, 5);
+        taskConstructor1.removeDependency(taskConstructor2);
+        taskpool.execute(taskConstructor1).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)}`);
+          isTerminate1 = true;
+        });
+        taskpool.execute(taskConstructor2).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor2 return value: ${JSON.stringify(res)}`);
+          isTerminate2 = true;
+        });
+        taskpool.execute(taskConstructor3).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor3 return value: ${JSON.stringify(res)}`);
+          isTerminate3 = true;
+        });
+        while (!(isTerminate1 && isTerminate2 && isTerminate3)) {
+          await promiseCase();
+        }
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${JSON.stringify(error.message)}`);
+        expect(error.code).assertEqual(10200027);
+        expect(error.message).assertContain("The dependency does not exist");
+      }
+      try {
+        let result1: number | string = 0;
+        let result2: number | string = '';
+        let flag: boolean = false;
+        let taskConstructor1: taskpool.Task = new taskpool.Task(sendDataCatch, 1);
+        taskpool.execute(taskConstructor1).then((res: Object) => {
+          result1 = ((res as (number | string)[])[0]);
+          console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)} `);
+          console.info(`${caseName}: taskConstructor1 return value:  ${(res as (number | string)[])[0]}`);
+          console.info(`${caseName}: taskConstructor1 return value:  ${(res as (number | string)[])[1]}`);
+          result2 = ((res as (number | string)[])[1]);
+          flag = true;
+        });
+        while (!(flag)) {
+          await promiseCase();
+        }
+        console.info(`${caseName}: result1,2:  ${result1}; ${result2}`);
+        expect(result1).assertEqual(10200024);
+        expect(result2).assertContain("The callback is not registered on the host side");
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200024);
+        expect(error.message).assertContain("The callback is not registered on the host side");
+      }
+      try {
+        let isTerminate1: boolean = false;
+        let taskConstructor1: taskpool.Task = new taskpool.Task(sendDataFun, 5);
+        taskConstructor1.onReceiveData((res: Object) => {
+          console.info(`${caseName}: taskConstructor1 onReceiveData value: ${JSON.stringify(res)}`);
+          isTerminate1 = true;
+        });
+        taskpool.execute(taskConstructor1).then((res: Object) => {
+          console.info(`${caseName}: taskConstructor1 return value: ${JSON.stringify(res)}`);
+        });
+        while (!isTerminate1) {
+          await promiseCase();
+        }
+        done();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200023);
+        expect(error.message).assertContain("The function is not called in the concurrent function");
         done();
       }
       console.info(`${caseName} test end`);
