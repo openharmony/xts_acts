@@ -14,7 +14,7 @@
  */
 
 import prompt from '@ohos.prompt'
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
 import events_emitter from '@ohos.events.emitter';
 
 const TAG = 'ets_apiLack_add';
@@ -60,7 +60,7 @@ struct PromptShowDialog {
             console.info("showDialog start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("showDialog emit action state err: " + JSON.stringify(err.message))
+            console.info("showDialog emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 
@@ -91,7 +91,7 @@ struct PromptShowDialog {
             console.info("showActionMenu start to emit action state")
             events_emitter.emit(backEvent1, backData1)
           } catch (err) {
-            console.info("showActionMenu emit action state err: " + JSON.stringify(err.message))
+            console.info("showActionMenu emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 

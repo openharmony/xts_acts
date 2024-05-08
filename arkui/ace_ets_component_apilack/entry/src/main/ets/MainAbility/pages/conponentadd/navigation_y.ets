@@ -128,7 +128,7 @@ struct NavigationExample {
               console.info("navigationContent1 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("navigationContent1 emit action state err: " + JSON.stringify(err.message))
+              console.info("navigationContent1 emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
           .margin({ left: 135, top: 60 })

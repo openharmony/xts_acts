@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
 
 class MyDataSource implements IDataSource {
   private list: number[] = []
-  private listener: DataChangeListener
+  private listener: DataChangeListener | undefined = undefined
 
   constructor(list: number[]) {
     this.list = list
@@ -27,7 +27,7 @@ class MyDataSource implements IDataSource {
     return this.list.length
   }
 
-  getData(index: number): any {
+  getData(index: number): number {
     return this.list[index]
   }
 
@@ -50,9 +50,9 @@ struct SwiperCurve {
 
   aboutToAppear(): void {
     Log.showInfo(TAG, `aboutToAppear SwiperCurve start`)
-    let list = []
-    for (var i = 1; i <= 10; i++) {
-      list.push(i.toString());
+    let list: number[] = []
+    for (let i: number = 1; i <= 10; i++) {
+      list.push(i);
     }
     this.data = new MyDataSource(list)
   }
@@ -74,7 +74,7 @@ struct SwiperCurve {
               .backgroundColor(0xAFEEEE)
               .textAlign(TextAlign.Center)
               .fontSize(20)
-          }, item => item)
+          }, (item: string) => item)
         }
         .key("swiper")
         .cachedCount(2)

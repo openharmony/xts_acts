@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
 
 const TAG = 'ets_apiLack_add';
 
@@ -35,7 +35,7 @@ struct TextPickerDefaultPickerItemHeight {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       TextPicker({ range: this.fruits, selected: this.select })
-        .onChange((value: string, index: number) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index)
         })
         .defaultPickerItemHeight('80px')

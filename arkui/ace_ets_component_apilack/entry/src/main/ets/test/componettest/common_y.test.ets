@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function commonBackgroundBlurStyleJsunit() {
   describe('commonBackgroundBlurStyleTest1', () => {
     beforeEach(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'pages/common',
+      let options: router.RouterOptions  = {
+        url: 'pages/common',
       }
       try {
         router.clear();

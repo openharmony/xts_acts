@@ -14,7 +14,7 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
 
 const TAG = 'ets_apiLack_add';
 
@@ -60,14 +60,14 @@ struct VideoOnFullscreenChange {
                 "result": "success"
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60227,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("video_101 onClick start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("video_101 onClick emit action state err: " + JSON.stringify(err.message))
+            console.info("video_101 onClick emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .onPause(() => {

@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
 import events_emitter from '@ohos.events.emitter';
 
-let varA = AppStorage.Link('varA')
+let varA: number = AppStorage.Link('varA')
 
 //Environment.EnvProp("accessibilityEnabled", "default")
 PersistentStorage.PersistProp("highScore", 0)
@@ -54,7 +54,7 @@ struct Common_ts_ets_apiStaticClear {
         .textOverflow({ overflow: TextOverflow.None })
         .key("labelA")
         .onClick(() => {
-          AppStorage.Set<number>('varA', AppStorage.Get<number>('varA') + 1)
+          AppStorage.Set<number>('varA', AppStorage.Get<number>('varA')! + 1)
         })
 
       Text("common_ts_ets_api-StaticClear")
@@ -88,11 +88,11 @@ struct Common_ts_ets_apiStaticClear {
         .textOverflow({ overflow: TextOverflow.None })
         .key("EnvPropText")
         .onClick(() => {
-          let enable = AppStorage.Get("accessibilityEnabled");
+          let enable: boolean | undefined = AppStorage.Get("accessibilityEnabled");
           try {
             let backData: events_emitter.EventData = {
               data: {
-                "Result": (enable != null)
+                "Result": (enable != undefined)
               }
             }
             let backEvent: events_emitter.InnerEvent = {
@@ -102,7 +102,7 @@ struct Common_ts_ets_apiStaticClear {
             console.info("PersistProp start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("PersistProp emit action state err: " + JSON.stringify(err.message))
+            console.info("PersistProp emit action state err: " + JSON.stringify((err as Error)?.message))
           }
 
         })
@@ -135,7 +135,7 @@ struct Common_ts_ets_apiStaticClear {
             console.info("PersistProp start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("PersistProp emit action state err: " + JSON.stringify(err.message))
+            console.info("PersistProp emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
       Text("common_ts_ets_api-clear")

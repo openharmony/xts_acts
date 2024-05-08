@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
 import events_emitter from '@ohos.events.emitter';
 
 const TAG = 'ets_apiLack_add';
@@ -63,7 +63,7 @@ struct XcomponentGetXComponentContext {
             console.info("xcomponentController start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("xcomponentController emit action state err: " + JSON.stringify(err.message))
+            console.info("xcomponentController emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 

@@ -14,16 +14,16 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function stateManagementGetSharedJsunit() {
   describe('stateManagementGetSharedTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/stateManagement',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/stateManagement',
       }
       try {
         router.clear();
@@ -58,9 +58,9 @@ export default function stateManagementGetSharedJsunit() {
           eventId: 60223,
           priority: events_emitter.EventPriority.LOW
         }
-        let callbackOne = (eventData) => {
+        let callbackOne = (eventData: events_emitter.EventData) => {
           console.info("teststateManagementGetShared_0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual(false);
+          expect(eventData.data?.Result).assertEqual(false);
 
         }
         console.info("GetShared_0001 click result is: " + JSON.stringify(sendEventByKey('GetSharedText', 10, "")));
@@ -84,9 +84,9 @@ export default function stateManagementGetSharedJsunit() {
           eventId: 60224,
           priority: events_emitter.EventPriority.LOW
         }
-        let callbackTwo = (eventData) => {
+        let callbackTwo = (eventData: events_emitter.EventData) => {
           console.info("teststateManagementsetAndLink_0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual("callback2");
+          expect(eventData.data?.Result).assertEqual("callback2");
 
         }
         console.info("setAndLink_0001 click result is: " + JSON.stringify(sendEventByKey('setAndLinkText', 10, "")));
@@ -110,9 +110,9 @@ export default function stateManagementGetSharedJsunit() {
           eventId: 60225,
           priority: events_emitter.EventPriority.LOW
         }
-        let callbackThree = (eventData) => {
+        let callbackThree = (eventData: events_emitter.EventData) => {
           console.info("teststateManagementsetOrCreate_0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual("callback3");
+          expect(eventData.data?.Result).assertEqual("callback3");
 
         }
         console.info("setOrCreate_0001 click result is: " + JSON.stringify(sendEventByKey('setOrCreateText', 10, "")));
@@ -137,9 +137,9 @@ export default function stateManagementGetSharedJsunit() {
           eventId: 60226,
           priority: events_emitter.EventPriority.LOW
         }
-        let callbackFour = (eventData) => {
+        let callbackFour = (eventData: events_emitter.EventData) => {
           console.info("teststateManagementsetAndProp_0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual("callback4");
+          expect(eventData.data?.Result).assertEqual("callback4");
 
         }
         console.info("setAndProp_0001 click result is: " + JSON.stringify(sendEventByKey('setAndPropText', 10, "")));

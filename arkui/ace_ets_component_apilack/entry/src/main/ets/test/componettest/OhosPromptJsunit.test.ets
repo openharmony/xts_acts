@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -21,8 +21,8 @@ export default function ohosPromptJsunit() {
   describe('appInfoTest_four_3', () => {
     beforeEach(async () => {
       console.info("OhosPrompt beforeEach start");
-      let options = {
-        uri: 'pages/ohosPrompt',
+      let options: router.RouterOptions  = {
+        url: 'pages/ohosPrompt',
       }
       try {
         router.clear();
@@ -46,9 +46,9 @@ export default function ohosPromptJsunit() {
 
     it('test_OhosPrompt_001', 0, async () => {
       await Utils.sleep(1000)
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_OhosPrompt_001] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.matrix1).assertEqual("[100, 10]")
+        expect(eventData.data?.matrix1).assertEqual("[100, 10]")
       }
       let innerEvent: events_emitter.InnerEvent = {
         eventId: 142,
