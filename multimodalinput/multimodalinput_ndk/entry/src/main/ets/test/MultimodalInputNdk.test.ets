@@ -791,7 +791,7 @@ export default function MultimodalInputNdkTest() {
       let caseName = 'SUB_MMI_Api_Input_InjectTouchEvent_0100';
       console.info(`${caseName} start to test OH_Input_InjectTouchEvent`);
       try {
-        let data = input.injectTouchEvent(671, -10);
+        let data = input.injectTouchEvent(-671, -10);
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
         if (data == 401) {
           console.info(`${caseName} success`);
