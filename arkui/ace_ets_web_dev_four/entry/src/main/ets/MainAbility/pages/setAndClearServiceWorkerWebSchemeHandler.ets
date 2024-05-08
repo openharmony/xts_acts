@@ -74,7 +74,6 @@ struct setAndClearServiceWorkerWebSchemeHandler {
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.getRequestMethodResult, 8854)
                 Utils.emitEvent(this.getReferrerResult, 8856)
-                Utils.emitEvent(this.isMainFrameResult, 8858)
                 Utils.emitEvent(this.hasGestureResult, 8860)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
