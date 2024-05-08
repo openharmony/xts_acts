@@ -1,8 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/UIContext/UIContextApi1",
-        "MainAbility/pages/getContextMenuController"
+        "MainAbility/pages/UIContext/UIContextApi1"
 
     ]
 }

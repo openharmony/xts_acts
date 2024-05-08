@@ -12,10 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import UIContextApi1 from './UIContext/UIContextApi1.test'
-
+import backgroundImageResizableTest from './backgroundImageTest/backgroundImageResizable.test';
+import foregroundEffect from './foregroundEffect.test'
 export default function testsuite() {
-  UIContextApi1();
-
+  backgroundImageResizableTest();
+  foregroundEffect();
 }

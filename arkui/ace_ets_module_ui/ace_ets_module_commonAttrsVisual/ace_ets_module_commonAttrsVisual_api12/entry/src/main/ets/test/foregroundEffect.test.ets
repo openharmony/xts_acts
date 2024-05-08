@@ -18,25 +18,25 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 import router from '@system.router';
 import CommonFunc from '../MainAbility/utils/Common';
 
-export default function getContextMenuController() {
+export default function foregroundEffect() {
 
-  describe('getContextMenuController', function () {
+  describe('foregroundEffect', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'MainAbility/pages/getContextMenuController',
+        uri: 'MainAbility/pages/foregroundEffect',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get getContextMenuController state pages: " + JSON.stringify(pages));
-        if (!("getContextMenuController" == pages.name)) {
-          console.info("get getContextMenuController state pages.name: " + JSON.stringify(pages.name));
+        console.info("get foregroundEffect state pages: " + JSON.stringify(pages));
+        if (!("foregroundEffect" == pages.name)) {
+          console.info("get foregroundEffect state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push getContextMenuController success: " + JSON.stringify(result));
+          console.info("push foregroundEffect success: " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push getContextMenuController page error: " + err);
+        console.error("push foregroundEffect page error: " + err);
         expect().assertFail();
       }
       done();
@@ -44,7 +44,7 @@ export default function getContextMenuController() {
 
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      console.info("getContextMenuController after each called");
+      console.info("foregroundEffect after each called");
     });
 
     /**
@@ -56,26 +56,27 @@ export default function getContextMenuController() {
      * @tc.size :
      */
 
-    it('getContextMenuController_0100', 0, async function (done) {
-      console.info('getContextMenuController_0100 START');
+
+    it('foregroundEffect_0100', 0, async function (done) {
+      console.info('foregroundEffect_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let closeBtn = await driver.findComponent(ON.id('CloseMenu1'));
-      await closeBtn.click();
+      let button1 = await driver.findComponent(ON.id('foregroundEffect1'));
       await CommonFunc.sleep(1000);
-      let button1 = await driver.findComponent(ON.id('TextContextMenu1'));
-      await button1.longClick();
-      await CommonFunc.sleep(4000);
-      let strJson = getInspectorByKey('CloseMenu1');
+      let strJson = getInspectorByKey('foregroundEffect1');
       let obj = JSON.parse(strJson);
-      console.info("[link1_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[link1_0100] title: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual('启动定时器');
+      console.info("foregroundEffect_0100 obj is: " + JSON.stringify(obj));
+      console.info("foregroundEffect_0100 " + JSON.stringify(obj.$attrs.foregroundEffect));
+      expect(obj.$attrs.foregroundEffect.radius).assertEqual('20.000000');
       await CommonFunc.sleep(1000);
-      console.info('[getContextMenuController_0100] END');
-      await CommonFunc.sleep(1000);
+
+      console.info('[foregroundEffect_0100] END');
       done();
     });
+
+
+
+
 
   })
 }
