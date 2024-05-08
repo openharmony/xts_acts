@@ -82,6 +82,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0520
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_001', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_001----------------------------------");
@@ -120,6 +123,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_002
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0530
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_002', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_002----------------------------------");
@@ -159,6 +165,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_003
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0540
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_003', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_003----------------------------------");
@@ -189,6 +198,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_004
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0550
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_004', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_004----------------------------------");
@@ -220,6 +232,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_005
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0560
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_005', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_005----------------------------------");
@@ -251,6 +266,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_006
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0570
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_006', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_006----------------------------------");
@@ -280,6 +298,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_007
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0580
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_007', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_007----------------------------------");
@@ -302,6 +323,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_008
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0590
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_008', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_008----------------------------------");
@@ -324,6 +348,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_009
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0600
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_009', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_009----------------------------------");
@@ -346,6 +373,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_010
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0610
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_010', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_010----------------------------------");
@@ -368,6 +398,9 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.name:Sensor_GetGeomagneticInfo_011
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0620
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it('Sensor_GetGeomagneticInfo_011', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_011----------------------------------");
@@ -397,6 +430,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_012
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0630
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_012', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_012----------------------------------");
@@ -419,6 +455,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_013
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0640
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_013', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_013----------------------------------");
@@ -441,6 +480,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_014
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0650
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_014', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_014----------------------------------");
@@ -463,6 +505,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_015
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0660
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_015', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_015----------------------------------");
@@ -485,6 +530,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_016
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0670
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_016', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_016----------------------------------");
@@ -507,6 +555,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_017
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0680
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_017', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_017----------------------------------");
@@ -529,6 +580,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_018
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0690
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_018', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_018----------------------------------");
@@ -551,6 +605,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_019
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0700
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_019', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_019----------------------------------");
@@ -573,6 +630,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_020
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0710
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_020', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_020----------------------------------");
@@ -595,6 +655,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_021
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0720
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_021', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_021----------------------------------");
@@ -617,6 +680,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_022
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0730
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_022', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_022----------------------------------");
@@ -639,6 +705,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_023
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0740
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_023', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_023----------------------------------");
@@ -661,6 +730,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_024
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0750
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_024', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_024----------------------------------");
@@ -683,6 +755,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_025
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0760
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_025", 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_025----------------------------------");
@@ -708,6 +783,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_026
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0770
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_026", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_026---------------------------');
@@ -732,6 +810,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_027
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0780
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_027", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_027---------------------------');
@@ -757,6 +838,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_028
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0790
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_028", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_028---------------------------');
@@ -782,6 +866,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_029
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0800
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_029", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_029---------------------------');
@@ -807,6 +894,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_030
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0810
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_030", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_030---------------------------');
@@ -825,6 +915,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_031
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0820
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_031", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_031---------------------------');
@@ -842,6 +935,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_032
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0830
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_032", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_032---------------------------');
@@ -859,6 +955,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_033
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0840
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_033", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_033---------------------------');
@@ -876,6 +975,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_034
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0850
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_034", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_034---------------------------');
@@ -900,6 +1002,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_035
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0860
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_035", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_035---------------------------start');
@@ -917,6 +1022,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_036
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0870
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_036", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_036---------------------------');
@@ -934,6 +1042,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_037
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0880
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticInfo_037', 0, async function (done) {
         for (var i = 0; i < timeMillis.length; i++) {
@@ -959,6 +1070,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_038
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0890
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_038", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_038---------------------------');
@@ -976,6 +1090,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_039
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0900
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_039", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_039---------------------------');
@@ -993,6 +1110,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_040
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0910
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_040", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_040 max ---------------------------');
@@ -1010,6 +1130,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_041
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0920
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_041", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_041---------------------------');
@@ -1027,6 +1150,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_042
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0930
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_042", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_042---------------------------');
@@ -1044,6 +1170,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_043
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0940
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
    it('Sensor_GetGeomagneticInfo_043', 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_043---------------------------');
@@ -1070,6 +1199,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_044
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0950
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_044", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_044---------------------------');
@@ -1087,6 +1219,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_045
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0960
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_045", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_045---------------------------');
@@ -1104,6 +1239,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_046
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0970
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_046", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_046---------------------------');
@@ -1121,6 +1259,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_047
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0980
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_047", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_047---------------------------');
@@ -1138,6 +1279,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_048
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0990
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_048", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_048---------------------------');
@@ -1155,6 +1299,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_049
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1000
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_049", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_049---------------------------');
@@ -1172,6 +1319,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_050
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1010
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_050", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_050---------------------------');
@@ -1194,6 +1344,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_051
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1020
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_051", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_051---------------------------');
@@ -1216,6 +1369,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_052
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1030
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_052", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_052---------------------------');
@@ -1238,6 +1394,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_053
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1040
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_053", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_053---------------------------');
@@ -1260,6 +1419,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_054
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1050
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_054", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_054---------------------------');
@@ -1282,6 +1444,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_055
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1060
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_055", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_055---------------------------');
@@ -1304,6 +1469,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_056
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1070
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_056", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_056---------------------------');
@@ -1326,6 +1494,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticInfo_057
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1080
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetGeomagneticInfo_057", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_057---------------------------');
@@ -1411,6 +1582,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1090
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
      it('Sensor_CreateRotationMatrix_001', 0, async function (done) {
         sensor.getRotationMatrix(gravity[0], geomagnetic[0], (error,data)=>{
@@ -1429,6 +1603,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_002
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1100
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateRotationMatrix_002', 0, async function (done) {
         sensor.getRotationMatrix(gravity[2],geomagnetic[2],(error,data)=>{
@@ -1447,6 +1624,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_003
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1110
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
      it('Sensor_CreateRotationMatrix_003', 0, async function (done) {
         sensor.getRotationMatrix(gravity[0],geomagnetic[0]).then((data) => {
@@ -1463,6 +1643,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_004
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1120
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateRotationMatrix_004', 0, async function (done) {
         sensor.getRotationMatrix(gravity[1],geomagnetic[1]).then((data) => {
@@ -1486,6 +1669,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_005
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1130
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateRotationMatrix_005', 0, async function (done) {
         sensor.getRotationMatrix(gravity[2],geomagnetic[2]).then((data) => {
@@ -1502,6 +1688,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_006
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1140
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
      it('Sensor_CreateRotationMatrix_006', 0, async function (done) {
         try {
@@ -1518,6 +1707,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_007
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1150
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
      it('Sensor_CreateRotationMatrix_007', 0, async function (done) {
         try {
@@ -1534,6 +1726,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_008
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1160
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateRotationMatrix_008', 0, async function (done) {
         sensor.getRotationMatrix([-0.0245, 0.402, 0.0465], -1).then((data) => {
@@ -1552,6 +1747,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_009
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1170
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
      it('Sensor_CreateRotationMatrix_009', 0, async function (done) {
         try {
@@ -1574,6 +1772,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_010
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1180
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateRotationMatrix_010', 0, async function (done) {
         try {
@@ -1596,6 +1797,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_011
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1190
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateRotationMatrix_011', 0, async function (done) {
         sensor.getRotationMatrix([-0.0245, 0.402, 0.0465], -1).then((data) => {
@@ -1614,6 +1818,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_012
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1200
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateRotationMatrix_012', 0, async function (done) {
         console.info("Sensor_CreateRotationMatrix_012 start");
@@ -1637,6 +1844,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_013
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1210
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateRotationMatrix_013', 0,async function (done) {
         console.info('Sensor_CreateRotationMatrix_013 start')
@@ -1658,6 +1868,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateRotationMatrix_014
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1220
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateRotationMatrix_014', 0,async function (done) {
         console.info('Sensor_CreateRotationMatrix_014 start')
@@ -1679,6 +1892,9 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.name:Sensor_GetDirection_001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1230
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it('Sensor_GetDirection_001', 0, async function (done) {
         sensor.getOrientation(rotationMatrix[0],(error,data)=>{
@@ -1699,6 +1915,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetDirection_002
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1240
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetDirection_002', 0, async function (done) {
         sensor.getOrientation(rotationMatrix[1],function(error,data){
@@ -1719,6 +1938,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetDirection_003
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1250
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetDirection_003', 0, async function (done) {
         sensor.getOrientation(rotationMatrix[0]).then((data) => {
@@ -1737,6 +1959,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetDirection_004
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1260
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetDirection_004', 0, async function (done) {
         sensor.getOrientation(rotationMatrix[1]).then((data) => {
@@ -1755,6 +1980,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetDirection_005
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1270
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetDirection_005', 0, async function (done) {
         try  {
@@ -1781,6 +2009,9 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.name:Sensor_GetDirection_006
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1280
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
      it('Sensor_GetDirection_006', 0, async function (done) {
         try {
@@ -1797,6 +2028,9 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.name:Sensor_GetDirection_007
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1290
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
      it('Sensor_GetDirection_007', 0, async function (done) {
         try {
@@ -1813,6 +2047,9 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.name:Sensor_GetDirection_008
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1300
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
      it('Sensor_GetDirection_008', 0, async function (done) {
         try {
@@ -1829,6 +2066,9 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.name:Sensor_GetDirection_009
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1310
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
      it('Sensor_GetDirection_009', 0, async function (done) {
         try {
@@ -1851,6 +2091,9 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.name:Sensor_GetDirection_010
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1320
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it('Sensor_GetDirection_010', 0, async function (done) {
         try {
@@ -1873,6 +2116,9 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.name:Sensor_GetDirection_011
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1330
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
      it('Sensor_GetDirection_011', 0, async function (done) {
         try {
@@ -1902,6 +2148,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1340
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAngleModify_001', 0, async function (done) {
         console.info("SensorJsAPI--->Sensor_GetAngleModify_001");
@@ -1924,6 +2173,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_002
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1350
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAngleModify_002', 0, async function (done) {
         console.info("Sensor_GetAngleModify_002");
@@ -1948,6 +2200,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_003
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1360
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAngleModify_003', 0, async function (done) {
         console.info("Sensor_GetAngleModify_003 in");
@@ -1973,6 +2228,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_004
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1370
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAngleModify_004', 0, async function (done) {
         console.info("Sensor_GetAngleModify_004");
@@ -1996,6 +2254,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_005
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1380
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAngleModify_005', 0, async function (done) {
         console.info("Sensor_GetAngleModify_005 in");
@@ -2019,6 +2280,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_006
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1390
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAngleModify_006', 0, async function (done) {
         console.info("Sensor_GetAngleModify_006 in");
@@ -2039,6 +2303,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_007
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1400
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAngleModify_007', 0, async function (done) {
         console.info("Sensor_GetAngleModify_007 in");
@@ -2059,6 +2326,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_008
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1410
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAngleModify_008', 0, async function (done) {
         console.info("Sensor_GetAngleModify_008 in");
@@ -2081,6 +2351,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_009
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1420
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAngleModify_009', 0, async function (done) {
         console.info("Sensor_GetAngleModify_009 in");
@@ -2102,6 +2375,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_010
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1430
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAngleModify_010', 0, async function (done) {
         console.info("Sensor_GetAngleModify_010 in");
@@ -2122,6 +2398,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_011
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1440
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetAngleModify_011", 0, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_011---------------------------');
@@ -2144,6 +2423,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_012
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1450
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetAngleModify_012", 0, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_012---------------------------');
@@ -2166,6 +2448,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_013
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1460
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetAngleModify_013", 0, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_013---------------------------');
@@ -2188,6 +2473,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_014
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1470
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetAngleModify_014", 0, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_014---------------------------');
@@ -2210,6 +2498,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_015
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1480
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetAngleModify_015", 0, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_015---------------------------');
@@ -2232,6 +2523,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAngleModify_016
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1490
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_GetAngleModify_016", 0, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_016---------------------------');
@@ -2262,6 +2556,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1500
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_001', 0,async function (done) {
         console.info('Sensor_CreateQuaterniont_001 start')
@@ -2284,6 +2581,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_002
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1510
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_002', 0,async function (done) {
         console.info('Sensor_CreateQuaterniont_002 start')
@@ -2305,6 +2605,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_003
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1520
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_003', 0,async function (done) {
         console.info('Sensor_CreateQuaterniont_003 start')
@@ -2327,6 +2630,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_004
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1530
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_004', 0,async function (done) {
         console.info('Sensor_CreateQuaterniont_004 start')
@@ -2349,6 +2655,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_005
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1540
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_005', 0,async function (done) {
         console.info('Sensor_CreateQuaterniont_005 start')
@@ -2374,6 +2683,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_006
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1550
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_006', 0,async function (done) {
         console.info('Sensor_CreateQuaterniont_006 start')
@@ -2396,6 +2708,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_007
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1560
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_007', 0,async function (done) {
         console.info('Sensor_CreateQuaterniont_007 start')
@@ -2422,6 +2737,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_008
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1570
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_008', 0,async function (done) {
         console.info('Sensor_CreateQuaterniont_008 start')
@@ -2444,6 +2762,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_009
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1580
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_009', 0,async function (done) {
         console.info('Sensor_CreateQuaterniont_009 start')
@@ -2465,6 +2786,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_010
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1590
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_010', 0,async function (done) {
         console.info('Sensor_CreateQuaterniont_010 start')
@@ -2490,6 +2814,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_011
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1600
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
      it('Sensor_CreateQuaterniont_011', 0, async function (done) {
         try {
@@ -2506,6 +2833,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_012
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1610
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
      it('Sensor_CreateQuaterniont_012', 0, async function (done) {
         try {
@@ -2522,6 +2852,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_013
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1620
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_013', 0, async function (done) {
         sensor.createQuaternion([0.52, -0.336, -0.251], -1).then((data) => {
@@ -2542,6 +2875,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_014
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1630
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
      it('Sensor_CreateQuaterniont_014', 0, async function (done) {
         try {
@@ -2564,6 +2900,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_015
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1640
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_015', 0, async function (done) {
         try {
@@ -2586,6 +2925,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_CreateQuaterniont_016
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1650
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_CreateQuaterniont_016', 0, async function (done) {
         sensor.createQuaternion([0.52, -0.336, -0.251], -1).then((data) => {
@@ -2607,6 +2949,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticDip_001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1660
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticDip_001', 0, async function (done) {
         console.info('Sensor_GetGeomagneticDip_001 start')
@@ -2628,6 +2973,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticDip_002
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1670
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticDip_002', 0, async function (done) {
         console.info('Sensor_GetGeomagneticDip_002 start')
@@ -2653,6 +3001,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticDip_003
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1680
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticDip_003', 0, async function (done) {
         console.info('Sensor_GetGeomagneticDip_003 start')
@@ -2671,6 +3022,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticDip_004
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1690
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticDip_004', 0, async function (done) {
         console.info('Sensor_GetGeomagneticDip_004 start')
@@ -2699,6 +3053,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticDip_005
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1700
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticDip_005', 0, async function (done) {
         console.info('Sensor_GetGeomagneticDip_005 start')
@@ -2724,6 +3081,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetGeomagneticDip_006
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1710
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetGeomagneticDip_006', 0, async function (done) {
         console.info('Sensor_GetGeomagneticDip_006 start')
@@ -2749,6 +3109,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAltitude_001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1720
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAltitude_001', 0, async function (done) {
         console.info('Sensor_GetAltitude_001 start')
@@ -2769,6 +3132,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAltitude_002
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1730
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAltitude_002', 0, async function (done) {
         console.info('Sensor_GetAltitude_002 start')
@@ -2789,6 +3155,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAltitude_003
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1740
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAltitude_003', 0, async function (done) {
         sensor.getDeviceAltitude(0, 100).then((data)=>{
@@ -2806,6 +3175,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAltitude_004
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1750
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAltitude_004', 0, async function (done) {
         sensor.getDeviceAltitude(5, 0).then((data)=>{
@@ -2823,6 +3195,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAltitude_005
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1760
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAltitude_005', 0, async function (done) {
         console.info('Sensor_GetAltitude_005 start')
@@ -2841,6 +3216,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAltitude_006
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1770
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAltitude_006', 0, async function (done) {
         console.info('Sensor_GetAltitude_006 start')
@@ -2869,6 +3247,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAltitude_007
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1780
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAltitude_007', 0, async function (done) {
         console.info('Sensor_GetAltitude_007 start')
@@ -2894,6 +3275,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_GetAltitude_008
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1790
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_GetAltitude_008', 0, async function (done) {
         console.info('Sensor_GetAltitude_008 start')
@@ -2926,6 +3310,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_TransformCoordinateSystem_001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1800
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
      it('Sensor_TransformCoordinateSystem_001', 0, async function (done) {
         console.info("---------------------------Sensor_TransformCoordinateSystem_001----------------------------------");
@@ -2945,6 +3332,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_TransformCoordinateSystem_002
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1810
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_TransformCoordinateSystem_002', 0, async function (done) {
         console.info("---------------------------Sensor_TransformCoordinateSystem_002----------------------------------");
@@ -2965,6 +3355,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_TransformCoordinateSystem_003
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1820
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_TransformCoordinateSystem_003", 0, async function (done) {
         console.info("---------------------------Sensor_TransformCoordinateSystem_003----------------------------------");
@@ -2985,6 +3378,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_TransformCoordinateSystem_004
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1830
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it("Sensor_TransformCoordinateSystem_004", 0, async function (done) {
         console.info("---------------------------Sensor_TransformCoordinateSystem_004----------------------------------");
@@ -3006,6 +3402,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_TransformCoordinateSystem_005
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1840
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_TransformCoordinateSystem_005', 0, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_005 start')
@@ -3024,6 +3423,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_TransformCoordinateSystem_006
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1850
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_TransformCoordinateSystem_006', 0, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_006 start')
@@ -3051,6 +3453,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_TransformCoordinateSystem_007
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1860
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_TransformCoordinateSystem_007', 0, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_007 start')
@@ -3076,6 +3481,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_TransformCoordinateSystem_008
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1870
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_TransformCoordinateSystem_008', 0, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_008 start')
@@ -3101,6 +3509,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_TransformCoordinateSystem_009
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1880
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_TransformCoordinateSystem_009', 0, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_008 start')
@@ -3127,6 +3538,9 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.name:Sensor_TransformCoordinateSystem_010
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_1890
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
     */
     it('Sensor_TransformCoordinateSystem_010', 0, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_010 start')
