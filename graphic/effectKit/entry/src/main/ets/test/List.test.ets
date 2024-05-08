@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import effectKitTest from './effectKit.test';
+import effectKitBTest from './effectKit.test';
 
 export default function testsuite(context, windowStage, abilityStorage) {
   effectKitTest(context, windowStage, abilityStorage);
+  effectKitBTest(context, windowStage, abilityStorage);
 }
