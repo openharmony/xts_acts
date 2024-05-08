@@ -440,9 +440,15 @@ napi_value Freeaddrinfo(napi_env env, napi_callback_info info)
     struct addrinfo *ai, hint;
     hint.ai_flags = AI_PASSIVE;
     hint.ai_family = AF_UNSPEC;
-    if (getaddrinfo("127.0.0.1", nullptr, &hint, &ai) != NO_ERR) {
+    getaddrinfo("127.0.0.1", nullptr, &hint, &ai);
+    errno = NO_ERR;
+    try{
         freeaddrinfo(ai);
     }
+    catch(...)
+    {
+        errno = FAIL;
+    } 
     napi_value result = nullptr;
     napi_create_int32(env, errno, &result);
     return result;
