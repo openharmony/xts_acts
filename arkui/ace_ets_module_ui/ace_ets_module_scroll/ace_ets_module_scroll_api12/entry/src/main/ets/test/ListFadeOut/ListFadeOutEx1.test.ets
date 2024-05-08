@@ -54,7 +54,7 @@ export default function ListFadeOutEx1() {
     it('hore_race_test_003', 0, async (done: Function) => {
       console.info("hore_race_test_003 START");
       let strJson: string = getInspectorByKey('list3');
-      expect(JSON.parse(strJson).$attrs.fadingEdge);
+      expect(JSON.parse(strJson).$attrs.fadingEdge).assertFalse();
       console.info('hore_race_test_003 END');
       done()
     });
