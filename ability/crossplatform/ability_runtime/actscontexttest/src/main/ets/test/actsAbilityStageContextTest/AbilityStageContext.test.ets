@@ -460,7 +460,7 @@ export default function AbilityStageContext() {
         expect(moduleContext != null).assertTrue();
         done();
       } catch (err) {
-        let errLog = "Invalid input parameter"
+        let errLog = "Parse param moduleName failed, moduleName must be string."
         console.debug("testCreateModuleContext005 ====>e====>" + err.toString());
         expect(err.toString().indexOf(errLog) >= 0).assertTrue();
         done();
