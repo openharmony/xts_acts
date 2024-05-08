@@ -77,14 +77,14 @@ export default function nativeAVScreenCaptureNdkTest() {
 
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100
-     * @tc.name       : OH_AVScreenCapture_StartScreenCapture
-     * @tc.desc       : OH_AVScreenCapture_StartScreenCapture
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100
+     * @tc.name         OH_AVScreenCapture_StartScreenCapture
+     * @tc.desc         OH_AVScreenCapture_StartScreenCapture
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
      */
-    it('normalConfigure0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100', 0, async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureTest-------------before click:");
       Utils.keepClick();
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureTest();
@@ -94,14 +94,14 @@ export default function nativeAVScreenCaptureNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200
-     * @tc.name       : OH_AVScreenCapture_StartScreenRecording
-     * @tc.desc       : OH_AVScreenCapture_StartScreenRecording
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200
+     * @tc.name         OH_AVScreenCapture_StartScreenRecording
+     * @tc.desc         OH_AVScreenCapture_StartScreenRecording
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
      */
-    it('normalConfigure0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200', 0, async (done: Function) => {
       console.info(Tag + "normalAVScreenRecordTest-------------before click:");
       Utils.keepClick();
       let result: number = myScreenCaptureNdk.normalAVScreenRecordTest();
@@ -111,14 +111,14 @@ export default function nativeAVScreenCaptureNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0300
-     * @tc.name       : OH_AVScreenCapture_StartScreenCaptureWithSurface
-     * @tc.desc       : OH_AVScreenCapture_StartScreenCaptureWithSurface
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0300
+     * @tc.name         OH_AVScreenCapture_StartScreenCaptureWithSurface
+     * @tc.desc         OH_AVScreenCapture_StartScreenCaptureWithSurface
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
      */
-    it('normalConfigure0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0300', 0, async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureSurfaceTest-------------before click:");
       Utils.keepClick();
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureSurfaceTest();
