@@ -74,7 +74,7 @@ export default function scrollCodeJsunit() {
         console.info("[test_scrollCode_002] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_scrollCode_002] change scrollable error: " + err.message);
+        console.log("[test_scrollCode_002] change scrollable error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ScrollCode');
@@ -100,7 +100,7 @@ export default function scrollCodeJsunit() {
         console.info("[test_scrollCode_003] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_scrollCode_003] change scrollBar error: " + err.message);
+        console.log("[test_scrollCode_003] change scrollBar error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ScrollCode');
@@ -126,7 +126,7 @@ export default function scrollCodeJsunit() {
         console.info("[test_scrollCode_004] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_scrollCode_004] change scrollBar error: " + err.message);
+        console.log("[test_scrollCode_004] change scrollBar error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ScrollCode');
@@ -152,7 +152,7 @@ export default function scrollCodeJsunit() {
         console.info("[test_scrollCode_005] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[test_scrollCode_005] change scrollBar error: " + err.message);
+        console.log("[test_scrollCode_005] change scrollBar error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ScrollCode');
@@ -167,7 +167,7 @@ export default function scrollCodeJsunit() {
       await Utils.sleep(1000)
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_scrollCode_06] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.scrollToIndex).assertEqual(10)
+        expect(eventData.data?.scrollToIndex).assertEqual(10)
       }
       let innerEvent: events_emitter.InnerEvent = {
         eventId: 189,

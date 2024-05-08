@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,49 +26,46 @@ struct ShapeExample {
   @State antiAlias: boolean = true;
   @State strokeDashArray: Array<Length> = [20];
   @State fillOpacity: number = 0;
-  @State strokeValue: Color = '#FF000000';
-  private stateChangCallBack = (eventData) => {
+  @State strokeValue: string = '#FF000000';
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("text page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.strokeDashOffset != null) {
+      if (eventData.data?.strokeDashOffset != null) {
         this.strokeDashOffset = parseInt(eventData.data.strokeDashOffset);
       }
-      if (eventData.data.strokeLineCap != null) {
+      if (eventData.data?.strokeLineCap != null) {
         this.strokeLineCap = eventData.data.strokeLineCap;
       }
-      if (eventData.data.strokeLineJoin != null) {
+      if (eventData.data?.strokeLineJoin != null) {
         this.strokeLineJoin = eventData.data.strokeLineJoin;
       }
-      if (eventData.data.strokeMiterLimit != null) {
+      if (eventData.data?.strokeMiterLimit != null) {
         this.strokeMiterLimit = eventData.data.strokeMiterLimit;
       }
-      if (eventData.data.strokeOpacity != null) {
+      if (eventData.data?.strokeOpacity != null) {
         this.strokeOpacity = parseInt(eventData.data.strokeOpacity);
       }
-      if (eventData.data.fillOpacity != null) {
+      if (eventData.data?.fillOpacity != null) {
         this.fillOpacity = parseInt(eventData.data.fillOpacity);
       }
-      if (eventData.data.antiAlias != null) {
+      if (eventData.data?.antiAlias != null) {
         this.antiAlias = eventData.data.antiAlias;
       }
-      if (eventData.data.strokeDashArrayOne != null) {
+      if (eventData.data?.strokeDashArrayOne != null) {
         this.strokeDashArray[0] = parseInt(eventData.data.strokeDashArrayOne);
       }
-      if (eventData.data.strokeDashArrayTwo != null) {
+      if (eventData.data?.strokeDashArrayTwo != null) {
         this.strokeDashArray[1] = parseInt(eventData.data.strokeDashArrayTwo);
       }
-      if (eventData.data.strokeDashArrayThree != null) {
+      if (eventData.data?.strokeDashArrayThree != null) {
         this.strokeDashArray[2] = parseInt(eventData.data.strokeDashArrayThree);
-      }
-      if (eventData.data.stroke != null) {
-        this.stroke = eventData.data.stroke;
       }
     }
   }
 
   onPageShow() {
     console.info('qrCode page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 192,
       priority: events_emitter.EventPriority.LOW
     }

@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAceEtsComponentCommonSevenAttrsHeightTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAceEtsComponentCommonSevenAttrsHeightTest"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
 }
 
 ohos_app_scope("ace_ets_component_common_seven_attrs_height_app_profile") {

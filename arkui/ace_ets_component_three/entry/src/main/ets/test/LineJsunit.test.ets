@@ -98,7 +98,7 @@ export default function LineJsunit() {
         console.info("lineTest_0500 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("lineTest_0500 change component error: " + err.message);
+        console.log("lineTest_0500 change component error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line');
@@ -128,7 +128,7 @@ export default function LineJsunit() {
         console.info("lineTest_0600 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("lineTest_0600 change component error: " + err.message);
+        console.log("lineTest_0600 change component error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line');
@@ -158,7 +158,7 @@ export default function LineJsunit() {
         console.info("lineTest_0700 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("lineTest_0700 change component error: " + err.message);
+        console.log("lineTest_0700 change component error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line');
@@ -188,7 +188,7 @@ export default function LineJsunit() {
         console.info("lineTest_0800 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("lineTest_0800 change component error: " + err.message);
+        console.log("lineTest_0800 change component error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line');

@@ -15,10 +15,26 @@
 import ListScrollTest1 from './ScrollTest/ListScroll.test';
 import PopupAlphaTest from './AlphabetIndexerTest/PopupAlpha.test';
 import ListMainChildrenTest from './ListTest/ListMainChildren.test';
+import refreshOffsetJsunit from './RefreshTest/refreshOffsetJsunit.test';
+import listVisibleJsunit from './ListTest/listVisibleJsunit.test';
+import scrollOffsetJsunit from './ScrollTest/scrollOffsetJsunit.test';
+import swiperCustomJsunit from './SwiperTest/swiperCustomJsunit.test';
+import tabIconJsunit from './TabsTest/tabIconJsunit.test';
+import ListFadeOut from './ListFadeOut/ListFadeOut.test';
+import ListFadeOutEx from './ListFadeOut/ListFadeOutEx.test';
+import ListFadeOutEx1 from './ListFadeOut/ListFadeOutEx1.test';
 
 
 export default function testsuite() {
   ListScrollTest1()
   PopupAlphaTest()
   ListMainChildrenTest()
+  refreshOffsetJsunit();
+  listVisibleJsunit();
+  scrollOffsetJsunit();
+  swiperCustomJsunit();
+  tabIconJsunit();
+  ListFadeOut();
+  ListFadeOutEx();
+  ListFadeOutEx1();
 }

@@ -14,6 +14,9 @@
 group("UxOneTest") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "ace_ets_component_GeneralLayout:GeneralLayoutTest" ]
+    deps = [
+      "ace_ets_component_GeneralLayout:GeneralLayoutTest",
+      "ace_ets_component_PrivacySensitive:ActsAcePrivacySensitiveTest",
+    ]
   }
 }

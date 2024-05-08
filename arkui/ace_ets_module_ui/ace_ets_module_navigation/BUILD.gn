@@ -13,6 +13,8 @@
 
 group("ActsAceEtsModuleNavigationTest") {
   testonly = true
-  deps =
-      [ "ace_ets_module_navigation_api11:ActsAceEtsModuleNavigationApi11Test" ]
+  deps = [
+    "ace_ets_module_navigation_api11:ActsAceEtsModuleNavigationApi11Test",
+    "ace_ets_module_navigation_api12:ActsAceEtsModuleNavigationApi12Test",
+  ]
 }

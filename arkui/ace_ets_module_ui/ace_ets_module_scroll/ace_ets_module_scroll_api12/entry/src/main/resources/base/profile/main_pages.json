@@ -3,6 +3,14 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/AlphabetIndexer/PopupAlpha",
         "MainAbility/pages/Scroll/ListScroll",
-        "MainAbility/pages/List/ListMainChildren"
+        "MainAbility/pages/List/ListMainChildren",
+        "MainAbility/pages/Refresh/refreshOffset",
+        "MainAbility/pages/List/listVisible",
+        "MainAbility/pages/Scroll/scrollOffset",
+        "MainAbility/pages/Swiper/swiperCustom",
+        "MainAbility/pages/Tabs/tabIcon",
+        "MainAbility/pages/ListFadeOut/ListFadeOut",
+        "MainAbility/pages/ListFadeOut/ListFadeOutEx",
+        "MainAbility/pages/ListFadeOut/ListFadeOutEx1"
     ]
 }

@@ -94,16 +94,16 @@ export default function sharedTransitionJsunit() {
         events_emitter.emit(indexEvent, eventData);
         await Utils.sleep(2500);
       } catch (err) {
-        console.log("sharedTransitionTest_0400 change component data error: " + err.message);
+        console.log("sharedTransitionTest_0400 change component data error: " + (err as Error)?.message);
       }
       let callback = (indexEventOne: events_emitter.EventData) => {
         console.info("sharedTransitionTest_0400 get state result is: " + JSON.stringify(indexEventOne));
         try {
-          expect(indexEventOne.data.duration).assertEqual(2000);
-          expect(indexEventOne.data.delay).assertEqual(5);
-          expect(indexEventOne.data.type).assertEqual(SharedTransitionEffectType.Exchange);
+          expect(indexEventOne.data?.duration).assertEqual(2000);
+          expect(indexEventOne.data?.delay).assertEqual(5);
+          expect(indexEventOne.data?.type).assertEqual(SharedTransitionEffectType.Exchange);
         } catch (err) {
-          console.info("sharedTransitionTest_0400 error: " + err.message);
+          console.info("sharedTransitionTest_0400 error: " + (err as Error)?.message);
         }
 
       }

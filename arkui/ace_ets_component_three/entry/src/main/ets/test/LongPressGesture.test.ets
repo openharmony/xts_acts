@@ -50,7 +50,7 @@ export default function longPressGestureJsunit() {
       await Utils.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {
         console.info("testLongPressGesture01 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual('onAction')
+        expect(eventData.data?.ACTION).assertEqual('onAction')
         done();
       }
       let innerEvent: events_emitter.InnerEvent = {
@@ -74,7 +74,7 @@ export default function longPressGestureJsunit() {
       await Utils.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {
         console.info("testLongPressGesture02 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual('onActionEnd')
+        expect(eventData.data?.ACTION).assertEqual('onActionEnd')
         done();
       }
       let innerEvent: events_emitter.InnerEvent = {

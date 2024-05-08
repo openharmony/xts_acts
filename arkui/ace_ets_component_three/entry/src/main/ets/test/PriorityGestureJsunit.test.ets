@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +34,7 @@ export default function priorityGestureJsunit() {
           console.info("push priorityGesture page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push priorityGesture page error " + JSON.stringify(result));
+        console.error("push priorityGesture page error " + JSON.stringify(err));
       }
       done()
     });
@@ -54,10 +53,11 @@ export default function priorityGestureJsunit() {
       console.info("priorityGestureTest_0100 onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
       let point: TouchObject = {
         id: 11, x: x_value, y: y_value, type: TouchType.Move,
+        displayX: 0, displayY: 0, windowX: 0, windowY: 0, screenX: 0, screenY: 0,
       }
       let callback = (eventData: events_emitter.EventData) => {
         console.info("priorityGestureTest_0100 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.value).assertEqual('gesture onAction')
+        expect(eventData.data?.value).assertEqual('gesture onAction')
       }
       let innerEvent: events_emitter.InnerEvent = {
         eventId: 162,

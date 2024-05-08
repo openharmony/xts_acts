@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import { Hypium } from '@ohos/hypium';
-import testsuite from '../../../test/List.test';
+
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 import promptAction from '@ohos.promptAction';
@@ -33,7 +33,7 @@ struct Index {
     let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
+
   }
 
   @State textValue: string = '';

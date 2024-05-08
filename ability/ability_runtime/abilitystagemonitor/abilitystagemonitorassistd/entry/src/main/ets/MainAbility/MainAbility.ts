@@ -17,12 +17,12 @@ import Ability from '@ohos.app.ability.UIAbility'
 
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
-        console.info('MainAbilityMonitor onCreate')
+        console.info('MainAbility3Monitor onCreate')
     }
 
 
     onDestroy() {
-        console.info('MainAbilityMonitor onDestroy')
+        console.info('MainAbility3Monitor onDestroy')
     }
 
     onWindowStageCreate(windowStage) {
@@ -33,14 +33,17 @@ export default class MainAbility extends Ability {
     }
 
     onWindowStageDestroy() {
-        console.info('MainAbilityMonitor onWindowStageDestroy')
+        console.info('MainAbility3Monitor onWindowStageDestroy')
     }
 
     onForeground() {
-        console.info('MainAbilityMonitor onForeground')
+        console.info('MainAbility3Monitor onForeground')
+        setTimeout(()=>{
+            this.context.terminateSelf()
+        }, 500)
     }
 
     onBackground() {
-        console.info('MainAbilityMonitor onBackground')
+        console.info('MainAbility3Monitor onBackground')
     }
 };

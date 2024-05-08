@@ -106,8 +106,8 @@ export default function circleJsunit() {
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('circle');
       console.info("[circleTest_0300] component objNew is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.width).assertEqual('-');
-      expect(JSON.parse(strJson).$attrs.height).assertEqual('-');
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('0.00vp');
+      expect(JSON.parse(strJson).$attrs.height).assertEqual('0.00vp');
       console.info('circleTest_0300 END');
       done();
     });

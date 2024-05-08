@@ -22,21 +22,11 @@ ohos_app_assist_suite("OhAudio_ndk_main") {
   part_name = "audio_framework"
 }
 
-ohos_js_app_suite("OhRendererTest") {
+ohos_js_app_suite("OhAudioNdkTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "OhRendererTest"
-  subsystem_name = "multimedia"
-  part_name = "audio_framework"
-  deps = [ ":OhAudio_ndk_main" ]
-}
-
-ohos_js_app_suite("OhCapturerTest") {
-  test_hap = true
-  testonly = true
-  certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "OhCapturerTest"
+  hap_name = "OhAudioNdkTest"
   subsystem_name = "multimedia"
   part_name = "audio_framework"
   deps = [ ":OhAudio_ndk_main" ]

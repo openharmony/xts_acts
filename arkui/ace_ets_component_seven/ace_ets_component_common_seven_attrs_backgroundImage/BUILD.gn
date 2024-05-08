@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAceEtsComponentCommonSevenAttrsBackgroundImageTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAceEtsComponentCommonSevenAttrsBackgroundImageTest"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
 }
 
 ohos_app_scope(

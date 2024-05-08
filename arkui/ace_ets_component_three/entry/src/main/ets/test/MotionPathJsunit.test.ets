@@ -58,8 +58,8 @@ export default function motionPathJsunit() {
       console.info('motionPathTest_0200 START');
       let callback = (indexEventOne: events_emitter.EventData) => {
         console.info("motionPathTest_0200 get state result is: " + JSON.stringify(indexEventOne));
-        expect(indexEventOne.data.fromX).assertEqual(0);
-        expect(indexEventOne.data.toY).assertEqual(1);
+        expect(indexEventOne.data?.fromX).assertEqual(0);
+        expect(indexEventOne.data?.toY).assertEqual(1);
         done();
       }
       let indexEventOne: events_emitter.InnerEvent = {
@@ -82,7 +82,7 @@ export default function motionPathJsunit() {
       await Utils.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("motionPathTest_0300 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.ACTION).assertEqual(true);
+        expect(indexEvent.data?.ACTION).assertEqual(true);
         done();
       }
       let indexEvent: events_emitter.InnerEvent = {

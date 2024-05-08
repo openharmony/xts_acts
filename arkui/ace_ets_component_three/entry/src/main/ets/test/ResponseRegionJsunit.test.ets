@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,7 +63,7 @@ export default function ResponseRegionJsunit() {
         console.info("[testResponseRegion01] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testResponseRegion01] change component data error: " + err.message);
+        console.log("[testResponseRegion01] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       console.info('[testResponseRegion01] END');
@@ -82,11 +81,17 @@ export default function ResponseRegionJsunit() {
         x: x_value,
         y: y_value,
         type: TouchType.Down,
+        displayX: 0,
+        displayY: 0,
+        windowX: 0,
+        windowY: 0,
+        screenX: 0,
+        screenY: 0,
       }
       let callbackTwo = (eventData: events_emitter.EventData) => {
         console.info("[testResponseRegion02] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual(true)
-        expect(eventData.data.EVENT_TYPE).assertEqual('Down')
+        expect(eventData.data?.ACTION).assertEqual(true)
+        expect(eventData.data?.EVENT_TYPE).assertEqual('Down')
         done();
       }
       let innerEventTwo: events_emitter.InnerEvent = {

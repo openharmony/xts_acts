@@ -80,7 +80,7 @@ struct CustomDialogUser1 {
 
       }
     },
-    alignment: DialogAlignment.Bottom,
+    alignment: DialogAlignment.Center,
     offset: { dx: 0, dy: -20 },
     gridCount: 4,
     customStyle: false,

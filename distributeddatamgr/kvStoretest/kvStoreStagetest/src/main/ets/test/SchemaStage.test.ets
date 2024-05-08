@@ -219,7 +219,7 @@ export default function schemaTest(){
         let name = new ddm.FieldNode('name');
         name.type = ddm.ValueType.INTEGER;
         name.nullable = false;
-        name.default = "";
+        name.default = '0';
 
         let schema = new ddm.Schema();
         schema.root.appendChild(name);

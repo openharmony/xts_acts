@@ -541,5 +541,61 @@ export default function ffrtTest() {
       var flag = ffrtndk.queue_parallel_0002();
       expect(flag).assertEqual(0);
     })
+
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_8600
+     *@tc.name: ffrt_loop_abnormal_0003
+     *@tc.desc: test ffrt_loop_abnormal_0003 api
+     */
+    it('ffrt_loop_abnormal_0003',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_loop_abnormal_0003();
+      expect(flag).assertEqual(0);
+    })
+
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_8700
+     *@tc.name: ffrt_loop_normal_0003
+     *@tc.desc: test ffrt_loop_normal_0003 api
+     */
+    it('ffrt_loop_normal_0003',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_loop_normal_0003();
+      expect(flag).assertEqual(0);
+    })
+
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_8800
+     *@tc.name: ffrt_get_main_queue_0001
+     *@tc.desc: test ffrt_get_main_queue_0001 api
+     */
+    it('ffrt_get_main_queue_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_get_main_queue_0001();
+      expect(flag).assertEqual(0);
+    })
+
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_8900
+     *@tc.name: ffrt_get_current_queue_0001
+     *@tc.desc: test ffrt_get_current_queue_0001 api
+     */
+    it('ffrt_get_current_queue_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_get_current_queue_0001();
+      expect(flag).assertEqual(0);
+    })
+
+    /**
+     *@tc.number: SUB_KERNEL_DISPATCH_FFRTNDK_9000
+     *@tc.name: ffrt_this_task_get_qos_0001
+     *@tc.desc: test ffrt_this_task_get_qos_0001 api
+     */
+    it('ffrt_this_task_get_qos_0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrt_this_task_get_qos_0001();
+      expect(flag).assertEqual(0);
+    })
+
   })
 }

@@ -59,8 +59,12 @@ export default function HoverJsunit25() {
     it('HoverJsunit_0200', 0, async function (done) {
       console.info('HoverJsunit_0200 START');
       let driver = await Driver.create()
-      await driver.mouseMoveTo({x:50, y:80})
+      let buttonCl = await driver.findComponent(ON.id('hover25'));
+      await CommonFunc.sleep(500);
+      let point = await buttonCl.getBoundsCenter();
+      await driver.mouseMoveTo({x:point.x , y:point.y })
       await CommonFunc.sleep(1000);
+
       let strJson = getInspectorByKey('hover25');
       let obj = JSON.parse(strJson);
       console.info("[HoverJsunit_0200] component obj is: " + JSON.stringify(obj));

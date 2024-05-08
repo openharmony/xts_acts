@@ -26,27 +26,27 @@ struct AnimationExample {
   @State tempo: number= 1000
   @State playmode: PlayMode = PlayMode.Normal
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<number|string|PlayMode>()
   onPageShow() {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number|string|PlayMode> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'duration') {
-        this.duration = message.value
+        this.duration = message.value as number
       }
       if (message.name == 'curve') {
-        this.curve = message.value
+        this.curve = message.value as string
       }
       if (message.name == 'iteration') {
-        this.iteration = message.value
+        this.iteration = message.value as number
       }
       if (message.name == 'tempo') {
-        this.tempo = message.value
+        this.tempo = message.value as number
       }
       if (message.name == 'playmode') {
-        this.playmode = message.value
+        this.playmode = message.value as PlayMode
       }
     }
     this.messageManager.registerCallback(callback)
@@ -65,19 +65,19 @@ struct AnimationExample {
         .key('button1')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "duration": this.duration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 51,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button1 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button1 emit action state err: " + JSON.stringify(err.message))
+            console.info("button1 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button1 animateTo START")
           console.info("button1 duration value is : " + this.duration)
@@ -94,19 +94,19 @@ struct AnimationExample {
         .key('button11')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "duration": this.duration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 151,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button1 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button1 emit action state err: " + JSON.stringify(err.message))
+            console.info("button1 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button1 animateTo START")
           console.info("button1 duration value is : " + this.duration)
@@ -123,19 +123,19 @@ struct AnimationExample {
         .key('button12')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "curve": this.curve,
               }
             }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
               eventId: 152,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button1 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button1 emit action state err: " + JSON.stringify(err.message))
+            console.info("button1 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button1 animateTo START")
           console.info("button1 duration value is : " + this.duration)
@@ -151,19 +151,19 @@ struct AnimationExample {
         .key('button2')
         .onClick(() => {
           try {
-            var backDataOne = {
+            let backDataOne: events_emitter.EventData = {
               data: {
                 "curve": this.curve,
               }
             }
-            var backEventOne = {
+            let backEventOne: events_emitter.InnerEvent = {
               eventId: 52,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button2 start to emit action state")
             events_emitter.emit(backEventOne, backDataOne)
           } catch (err) {
-            console.info("button2 emit action state err: " + JSON.stringify(err.message))
+            console.info("button2 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button2 animateTo START")
           console.info("button2 curve value is : " + this.curve)
@@ -179,19 +179,19 @@ struct AnimationExample {
         .key('button3')
         .onClick(() => {
           try {
-            var backDataTwo = {
+            let backDataTwo: events_emitter.EventData = {
               data: {
                 "iterations": this.iteration,
               }
             }
-            var backEventTwo = {
+            let backEventTwo: events_emitter.InnerEvent = {
               eventId: 53,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button3 start to emit action state")
             events_emitter.emit(backEventTwo, backDataTwo)
           } catch (err) {
-            console.info("button3 emit action state err: " + JSON.stringify(err.message))
+            console.info("button3 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button3 animateTo START")
           console.info("button3 iteration value is : " + this.iteration)
@@ -207,19 +207,19 @@ struct AnimationExample {
         .key('button13')
         .onClick(() => {
           try {
-            var backDataTwo = {
+            let backDataTwo: events_emitter.EventData = {
               data: {
                 "iterations": this.iteration,
               }
             }
-            var backEventTwo = {
+            let backEventTwo: events_emitter.InnerEvent = {
               eventId: 153,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button3 start to emit action state")
             events_emitter.emit(backEventTwo, backDataTwo)
           } catch (err) {
-            console.info("button3 emit action state err: " + JSON.stringify(err.message))
+            console.info("button3 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button3 animateTo START")
           console.info("button3 iteration value is : " + this.iteration)
@@ -235,19 +235,19 @@ struct AnimationExample {
         .key('button4')
         .onClick(() => {
           try {
-            var backDataThree = {
+            let backDataThree: events_emitter.EventData = {
               data: {
                 "tempo": this.tempo
               }
             }
-            var backEventThree = {
+            let backEventThree: events_emitter.InnerEvent = {
               eventId: 54,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button4 start to emit action state")
             events_emitter.emit(backEventThree, backDataThree)
           } catch (err) {
-            console.info("button4 emit action state err: " + JSON.stringify(err.message))
+            console.info("button4 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button4 animateTo START")
           console.info("button4 tempo value is : " + this.duration)
@@ -263,19 +263,19 @@ struct AnimationExample {
         .key('button14')
         .onClick(() => {
           try {
-            var backDataThree = {
+            let backDataThree: events_emitter.EventData = {
               data: {
                 "tempo": this.tempo
               }
             }
-            var backEventThree = {
+            let backEventThree: events_emitter.InnerEvent = {
               eventId: 154,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button4 start to emit action state")
             events_emitter.emit(backEventThree, backDataThree)
           } catch (err) {
-            console.info("button4 emit action state err: " + JSON.stringify(err.message))
+            console.info("button4 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button4 animateTo START")
           console.info("button4 tempo value is : " + this.duration)
@@ -291,19 +291,19 @@ struct AnimationExample {
         .key('button5')
         .onClick(() => {
           try {
-            var backDataFour = {
+            let backDataFour: events_emitter.EventData = {
               data: {
                 "playmode": this.playmode,
               }
             }
-            var backEventFour = {
+            let backEventFour: events_emitter.InnerEvent = {
               eventId: 55,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button5 start to emit action state")
             events_emitter.emit(backEventFour, backDataFour)
           } catch (err) {
-            console.info("button5 emit action state err: " + JSON.stringify(err.message))
+            console.info("button5 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button5 animateTo START")
           console.info("button5 playmode value is : " + this.playmode)
@@ -319,19 +319,19 @@ struct AnimationExample {
         .key('button15')
         .onClick(() => {
           try {
-            var backDataFour = {
+            let backDataFour: events_emitter.EventData = {
               data: {
                 "playmode": this.playmode,
               }
             }
-            var backEventFour = {
+            let backEventFour: events_emitter.InnerEvent = {
               eventId: 155,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button5 start to emit action state")
             events_emitter.emit(backEventFour, backDataFour)
           } catch (err) {
-            console.info("button5 emit action state err: " + JSON.stringify(err.message))
+            console.info("button5 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button5 animateTo START")
           console.info("button5 playmode value is : " + this.playmode)
@@ -347,19 +347,19 @@ struct AnimationExample {
         .key('button6')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "duration": this.duration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1001,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button6 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button6 emit action state err: " + JSON.stringify(err.message))
+            console.info("button6 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button6 animateTo START")
           console.info("button6 duration value is : " + this.duration)
@@ -375,19 +375,19 @@ struct AnimationExample {
         .key('button7')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "duration": this.duration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1002,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button7 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button7 emit action state err: " + JSON.stringify(err.message))
+            console.info("button7 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button7 animateTo START")
           console.info("button7 duration value is : " + this.duration)
@@ -403,19 +403,19 @@ struct AnimationExample {
         .key('button8')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "curve": this.curve,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1003,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button8 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button8 emit action state err: " + JSON.stringify(err.message))
+            console.info("button8 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button8 animateTo START")
           console.info("button8 duration value is : " + this.duration)
@@ -431,19 +431,19 @@ struct AnimationExample {
         .key('button9')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "curve": this.curve,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1004,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button9 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button9 emit action state err: " + JSON.stringify(err.message))
+            console.info("button9 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button9 animateTo START")
           console.info("button9 duration value is : " + this.duration)
@@ -459,19 +459,19 @@ struct AnimationExample {
         .key('button10')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "iteration": this.iteration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1005,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button10 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button10 emit action state err: " + JSON.stringify(err.message))
+            console.info("button10 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button10 animateTo START")
           console.info("button10 duration value is : " + this.duration)
@@ -487,19 +487,19 @@ struct AnimationExample {
         .key('button111')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "iteration": this.iteration,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1006,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button11 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button11 emit action state err: " + JSON.stringify(err.message))
+            console.info("button11 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button11 animateTo START")
           console.info("button11 duration value is : " + this.duration)
@@ -515,19 +515,19 @@ struct AnimationExample {
         .key('button121')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "tempo": this.tempo,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1007,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button12 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button12 emit action state err: " + JSON.stringify(err.message))
+            console.info("button12 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button12 animateTo START")
           console.info("button12 duration value is : " + this.duration)
@@ -543,19 +543,19 @@ struct AnimationExample {
         .key('button131')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "tempo": this.tempo,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1008,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button13 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button13 emit action state err: " + JSON.stringify(err.message))
+            console.info("button13 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button13 animateTo START")
           console.info("button13 duration value is : " + this.duration)
@@ -571,19 +571,19 @@ struct AnimationExample {
         .key('button141')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "playmode": this.playmode,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1009,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button14 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button14 emit action state err: " + JSON.stringify(err.message))
+            console.info("button14 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button14 animateTo START")
           console.info("button14 duration value is : " + this.duration)
@@ -599,19 +599,19 @@ struct AnimationExample {
         .key('button151')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "playmode": this.playmode,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 1010,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button15 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("button15 emit action state err: " + JSON.stringify(err.message))
+            console.info("button15 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           console.info("button15 animateTo START")
           console.info("button15 duration value is : " + this.duration)

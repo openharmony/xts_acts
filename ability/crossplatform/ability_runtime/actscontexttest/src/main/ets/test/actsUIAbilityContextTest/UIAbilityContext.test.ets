@@ -1126,7 +1126,7 @@ export default function UIAbilityContext() {
         console.info('result: ' + JSON.stringify(result));
         expect(result[0]).assertEqual('MainAbility1 onCreate');
         let context1: common.UIAbilityContext = globalThis.ability1Context;
-        
+
         let res = undefined;
         await abilityDelegator
         .executeShellCommand('aa start -b com.example.contexttest -a TestAbility')
@@ -1606,7 +1606,7 @@ export default function UIAbilityContext() {
         expect(moduleContext != null).assertTrue();
         done();
       } catch (err) {
-        let errLog = "Invalid input parameter"
+        let errLog = "Parse param moduleName failed, moduleName must be string."
         console.debug("testCreateModuleContext005 ====>e====>" + err.toString());
         expect(err.toString().indexOf(errLog) >= 0).assertTrue();
         done();

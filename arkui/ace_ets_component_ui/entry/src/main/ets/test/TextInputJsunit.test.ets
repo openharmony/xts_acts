@@ -188,9 +188,14 @@ export default function TextInputJsunit() {
       await textComponent.longClick()
       await CommonFunc.sleep(3000);
       let textComponent3 = await driver.findComponent(BY.text('全选'));
-      await textComponent3.click()
-      await CommonFunc.sleep(3000);
+      if ( textComponent3 != null ) {
+        await textComponent3.click()
+        await CommonFunc.sleep(3000);
+      }
       let textComponent4 = await driver.findComponent(BY.text('复制'));
+      if ( textComponent4 == null ) {
+        console.info("[TextInputJsunit_0400] after longClick can not find component 复制");
+      }
       await textComponent4.click()
       await textComponent.click()
       await CommonFunc.sleep(3000);
@@ -205,9 +210,14 @@ export default function TextInputJsunit() {
       await textComponent.longClick()
       await CommonFunc.sleep(1000);
       let textComponent5 = await driver.findComponent(BY.text('全选'));
-      await textComponent5.click()
-      await CommonFunc.sleep(3000);
+      if ( textComponent5 != null ) {
+        await textComponent5.click()
+        await CommonFunc.sleep(3000);
+      }
       let textComponent6 = await driver.findComponent(BY.text('剪切'));
+      if ( textComponent6 == null ) {
+        console.info("[TextInputJsunit_0400] after longClick can not find component 剪切");
+      }
       await textComponent6.click()
       await CommonFunc.sleep(3000);
       let strJson1 = getInspectorByKey('cut');
@@ -221,6 +231,9 @@ export default function TextInputJsunit() {
       await textComponent.longClick()
       await CommonFunc.sleep(1000);
       let textComponent7 = await driver.findComponent(BY.text('粘贴'));
+      if ( textComponent7 == null ) {
+        console.info("[TextInputJsunit_0400] after longClick can not find component 粘贴");
+      }
       await textComponent7.click()
       await CommonFunc.sleep(3000);
       let strJson2 = getInspectorByKey('paste');

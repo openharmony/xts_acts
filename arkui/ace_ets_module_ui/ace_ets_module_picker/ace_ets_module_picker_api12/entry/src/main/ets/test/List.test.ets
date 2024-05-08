@@ -17,6 +17,17 @@ import contentModifier from './CheckboxTest/contentModifier.test';
 import triggerChange from './CheckboxTest/triggerChange.test';
 import CheckBoxShape from './CheckboxGroupTest/CheckBoxShape.test';
 import dateTimeOptions from './TimePickerTest/dateTimeOptions.test';
+import indicatorBuilderTest from './CheckboxTest/indicatorBuilderTest.test'
+import ButtonApi1 from './Button/ButtonApi1.test'
+import ButtonApi2 from './Button/ButtonApi2.test'
+
+import RadioContentModifier from './RadioTest/RadioContentModifier.test'
+import RadioIndicatorType from './RadioTest/RadioIndicatorType.test'
+import RatingContentModifier from './RatingTest/RatingContentModifier.test'
+import SliderAttrs from './SliderTest/SliderAttrs.test'
+import SliderContentModifier from './SliderTest/SliderContentModifier.test'
+import ToggleContentModifier from './ToggleTest/ToggleContentModifier.test'
+import ToggleSwitchStyle from './ToggleTest/ToggleSwitchStyle.test'
 
 export default function testsuite() {
     gradientHeight()
@@ -24,4 +35,15 @@ export default function testsuite() {
     triggerChange()
     CheckBoxShape()
     dateTimeOptions()
+    indicatorBuilderTest()
+    ButtonApi1();
+    ButtonApi2();
+    RadioContentModifier();
+    RadioIndicatorType();
+    RatingContentModifier();
+    SliderAttrs();
+    SliderContentModifier();
+    ToggleContentModifier();
+    ToggleSwitchStyle();
+
 }

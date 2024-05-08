@@ -81,7 +81,7 @@ export default function textJsunit() {
         console.info("testText_0300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testText_0300 change component data error: " + err.message);
+        console.log("testText_0300 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
@@ -118,7 +118,7 @@ export default function textJsunit() {
         console.info("testText_0500 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testText_0500 change component data error: " + err.message);
+        console.log("testText_0500 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
@@ -155,7 +155,7 @@ export default function textJsunit() {
         console.info("testText_0700 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testText_0700 change component data error: " + err.message);
+        console.log("testText_0700 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJsonNew = getInspectorByKey('text');
@@ -191,7 +191,7 @@ export default function textJsunit() {
         console.info("testText_0900 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testText_0900 change component data error: " + err.message);
+        console.log("testText_0900 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJsonNew = getInspectorByKey('text');
@@ -232,7 +232,7 @@ export default function textJsunit() {
         console.info("testText_1200 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testText_1200 change component data error: " + err.message);
+        console.log("testText_1200 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
@@ -260,7 +260,7 @@ export default function textJsunit() {
         console.info("testText_1300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testText_1300 change component data error: " + err.message);
+        console.log("testText_1300 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJsonNew = getInspectorByKey('text');
@@ -288,7 +288,7 @@ export default function textJsunit() {
         console.info("testText_1400 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testText_1400 change component data error: " + err.message);
+        console.log("testText_1400 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');

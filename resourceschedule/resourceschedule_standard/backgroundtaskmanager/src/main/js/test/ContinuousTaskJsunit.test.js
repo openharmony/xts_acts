@@ -275,4 +275,14 @@ describe("ContinuousTaskJsTest", function () {
         expect(value1).assertEqual(9);
         done();
     })
+
+    /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_017
+     * @tc.name:ContinuousTaskJsTest017
+     * @tc.desc:verify continuous task updateBackgroundRunning
+     */
+    it("ContinuousTaskJsTest017", 0, async function (done) {
+        console.info(TAG + '-----------------ContinuousTaskJsTest017 begin--------------------');
+        startAbilityWithOption({ events: ["updateTaskUseApi12Promise"] }, "testcase10", "updateTaskUseApi12Promise", done);
+    })
 })}

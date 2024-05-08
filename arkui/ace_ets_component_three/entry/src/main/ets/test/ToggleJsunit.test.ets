@@ -91,7 +91,7 @@ export default function ToggleJsunit() {
         console.info("testToggle04 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testToggle04 change component data error: " + err.message);
+        console.log("testToggle04 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('toggle');
@@ -116,7 +116,7 @@ export default function ToggleJsunit() {
         console.info("testToggle05 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testToggle05 change component data error: " + err.message);
+        console.log("testToggle05 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('toggle');
@@ -141,7 +141,7 @@ export default function ToggleJsunit() {
         console.info("testToggle04 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testToggle04 change component data error: " + err.message);
+        console.log("testToggle04 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('toggle');
@@ -166,7 +166,7 @@ export default function ToggleJsunit() {
         console.info("testToggle04 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("testToggle04 change component data error: " + err.message);
+        console.log("testToggle04 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('toggle');

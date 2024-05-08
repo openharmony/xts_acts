@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,19 +22,19 @@ struct gridPage {
   @State rowsGap: string= '2px'
   @State columnsTemplate: string = '1fr 1fr 1fr 1fr 1fr'
   @State rowsTemplate: string = '1fr 1fr 1fr 1fr 1fr'
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("on state change called " + JSON.stringify(eventData))
-      if (eventData.data.columnsGap != null) {
+      if (eventData.data?.columnsGap != null) {
         this.columnsGap = eventData.data.columnsGap
       }
-      if (eventData.data.rowsGap != null) {
+      if (eventData.data?.rowsGap != null) {
         this.rowsGap = eventData.data.rowsGap
       }
-      if (eventData.data.columnsTemplate != null) {
+      if (eventData.data?.columnsTemplate != null) {
         this.columnsTemplate = eventData.data.columnsTemplate
       }
-      if (eventData.data.rowsTemplate != null) {
+      if (eventData.data?.rowsTemplate != null) {
         this.rowsTemplate = eventData.data.rowsTemplate
       }
     }
@@ -58,7 +57,7 @@ struct gridPage {
               .textAlign(TextAlign.Center)
           }.rowStart(1).rowEnd(4)
 
-          ForEach(this.numbers, (item) => {
+          ForEach(this.numbers, (item: string) => {
             GridItem() {
               Text(item)
                 .fontSize(16)
@@ -67,7 +66,7 @@ struct gridPage {
                 .height('100%')
                 .textAlign(TextAlign.Center)
             }.forceRebuild(false)
-          }, item => item)
+          }, (item: string) => item)
           GridItem() {
             Text('5')
               .fontSize(16)
@@ -92,22 +91,22 @@ struct gridPage {
 
   onPageShow() {
     console.info('button page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 110,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 111,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack)
-    var stateChangeEvent3 = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 112,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBack)
-    var stateChangeEvent4 = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 113,
       priority: events_emitter.EventPriority.LOW
     }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,10 +18,10 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct BlankExample {
   @State colorValue: Color = Color.Blue;
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Blank page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.colorValue != null) {
+      if (eventData.data?.colorValue != null) {
         this.colorValue = eventData.data.colorValue;
       }
     }
@@ -30,7 +29,7 @@ struct BlankExample {
 
   onPageShow() {
     console.info('Blank page1 show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 69,
       priority: events_emitter.EventPriority.LOW
     }
