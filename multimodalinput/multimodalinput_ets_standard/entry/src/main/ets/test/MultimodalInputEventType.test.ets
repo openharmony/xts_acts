@@ -22,7 +22,7 @@ import { Key, KeyEvent } from '@ohos.multimodalInput.keyEvent'
 import { AxisValue, MouseEvent } from '@ohos.multimodalInput.mouseEvent'
 import { Touch, TouchEvent } from '@ohos.multimodalInput.touchEvent'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
-
+import infraredEmitter from '@ohos.multimodalInput.infraredEmitter'
 
 export default function MultimodalInputEventTypeTest() {
   describe('MultimodalInputEventTypeTest', () => {
@@ -585,5 +585,61 @@ export default function MultimodalInputEventTypeTest() {
 
       console.info(`MultimodalInput_InputEventTypeTest_0010 exit`);
     })
+
+    /**
+     * @tc.number    : MultimodalInput_InfradeEmirterTransmit_001
+     * @tc.name      : MultimodalInput_InfradeEmirterTransmit001
+     * @tc.desc      : first para is error
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+
+    it('MultimodalInput_InfradeEmirterTransmit_001', 0, () => {
+
+      console.info(`MultimodalInput_InfradeEmirterTransmit_001 enter`);
+      let infraredFrequency: number  = -3800;
+      let pattern:Array<number> = [100, 200, 300, 400,500, 600,700, 800, 900, 1000];
+      infraredEmitter.transmitInfrared(infraredFrequency, pattern); 
+      console.info(`MultimodalInput_InfradeEmirterTransmit_001 exit`);
+    })
+
+    /**
+     * @tc.number    : MultimodalInput_InfradeEmirterTransmit_002
+     * @tc.name      : MultimodalInput_InfradeEmirterTransmit_002
+     * @tc.desc      : size of the second para is error
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+
+    it('MultimodalInput_InfradeEmirterTransmit_002', 0, () => {
+
+      console.info(`MultimodalInput_InfradeEmirterTransmit_002 enter`);
+      let infraredFrequency: number  = 3800;
+      /****** size of second para is bigger than 50 ********/
+      let pattern:Array<number> = [100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000];
+      infraredEmitter.transmitInfrared(infraredFrequency, pattern); 
+      console.info(`MultimodalInput_InfradeEmirterTransmit_002 exit`);
+    })
+
+    /**
+     * @tc.number    : MultimodalInput_InfradeEmirterTransmit_003
+     * @tc.name      : MultimodalInput_InfradeEmirterTransmit_003
+     * @tc.desc      : first para is error
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+
+    it('MultimodalInput_InfradeEmirterTransmit_003', 0, () => {
+
+      console.info(`MultimodalInput_InfradeEmirterTransmit_003 enter`);
+      let infraredFrequency: number  = 3800;
+      let pattern:Array<number> = [100, 200, -100, 400,500, 600,700, 800, 900, 1000];
+      infraredEmitter.transmitInfrared(infraredFrequency, pattern); 
+      console.info(`MultimodalInput_InfradeEmirterTransmit_003 exit`);
+    })
+
   })
 }
