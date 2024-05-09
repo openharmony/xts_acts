@@ -650,13 +650,13 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWebResponse_SetHeaderByNmae', 0, async (done: Function) => {
+    it('testWebResponse_SetHeaderByName', 0, async (done: Function) => {
         
-        hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_SetHeaderByNmae PASS');
+        hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_SetHeaderByName PASS');
         
-        Utils.emitEvent("emitWebResponse_SetHeaderByNmae", 10)
+        Utils.emitEvent("emitWebResponse_SetHeaderByName", 10)
         await Utils.sleep(1000);
-        Utils.registerEvent("testWebResponse_SetHeaderByNmae", true, 7741, done);
+        Utils.registerEvent("testWebResponse_SetHeaderByName", true, 7741, done);
         sendEventByKey('webHostingButton', 10, '');
     })
     

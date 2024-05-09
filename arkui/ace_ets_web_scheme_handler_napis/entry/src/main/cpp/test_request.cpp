@@ -33,7 +33,7 @@ namespace {
     int ReadRawfileOnWorkerThread(void *userData) {
         TestRequest* testRequest = (TestRequest *)userData;
         if (testRequest) {
-            testRequest->ReadRawfileOnWorkerThread();
+            testRequest->ReadRawfileDataOnWorkerThread();
         }
         return 0;
     }
@@ -67,7 +67,7 @@ void TestRequest::ReadRawfileDataOnWorkerThread()
         setStatusText_ = OH_ArkWebResponse_SetStatusText(response(), "ok");
     }
     setMimeType_ = OH_ArkWebResponse_SetMimeType(response(), "text/javascript");
-    setCharSet_ = OH_ArkWebResponse_SetCharset(response(), "UTF-8");
+    setCharset_ = OH_ArkWebResponse_SetCharset(response(), "UTF-8");
     long len = OH_ResourceManager_GetRawFileSize(rawfile);
 
     setHeaderByName_ = OH_ArkWebResponse_SetHeaderByName(response(), "content-length", std::to_string(len).c_str(), false);
@@ -226,7 +226,7 @@ void TestRequest::Start()
         OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetHttpBodyStream true");
     }
     
-    ReadRawfileOnWorkerThread(reinterpret_cast<void*>this);
+    ReadRawfileOnWorkerThread(reinterpret_cast<void*>(this));
 }
 
 void TestRequest::Stop()

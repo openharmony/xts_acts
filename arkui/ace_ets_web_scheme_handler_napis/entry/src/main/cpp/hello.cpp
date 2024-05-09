@@ -29,8 +29,8 @@
 
 #define LOG_TAG "webtest"
 
-ArkWeb_ShemeHandler *g_schemeHandler;
-ArkWeb_ShemeHandler *g_scheme_handler_for_service_worker;
+ArkWeb_SchemeHandler *g_schemeHandler;
+ArkWeb_SchemeHandler *g_scheme_handler_for_service_worker;
 NativeResourceManager *g_resourceManager;
 
 std::string testUrl;
@@ -108,7 +108,7 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resourc
 
     int32_t p = 6;
     int* value = &p;
-    testSchemeHandlerSetUserData = OH_ArkWebSchemeHandler_SetUserData(g_scheme_handler, &value);
+    testSchemeHandlerSetUserData = OH_ArkWebSchemeHandler_SetUserData(g_schemeHandler, &value);
 
     *intercept = true;
 
@@ -171,7 +171,7 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resourc
     OH_LOG_INFO(LOG_APP, "testRequest->setRspError() %{public}d", testResponseSetError);
     OH_LOG_INFO(LOG_APP, "testRequest->setStatus() %{public}d", testResponseSetStatus);
     OH_LOG_INFO(LOG_APP, "testRequest->setStatusText() %{public}d", testResponseSetStatusText);
-    OH_LOG_INFO(LOG_APP, "testRequest->setMimeType() %{public}d", testResponseMimeType);
+    OH_LOG_INFO(LOG_APP, "testRequest->setMimeType() %{public}d", testResponseSetMimeType);
     OH_LOG_INFO(LOG_APP, "testRequest->setCharset() %{public}d", testResponseSetCharSet);
     OH_LOG_INFO(LOG_APP, "testRequest->setHeaderByName() %{public}d", testResponseSetHost);
 
@@ -224,13 +224,13 @@ void OnURLRequestStopForSW(const ArkWeb_SchemeHandler *schemeHandler, const ArkW
 static napi_value DestroySchemeHandler(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    OH_ArkWeb_DestroySchemeHandler(g_scheme_handler);
+    OH_ArkWeb_DestroySchemeHandler(g_schemeHandler);
     napi_create_int32(env, 0, &result);
 
     return result;
 }
 
-static napi_value SetNativeAPI(napi_env env, napi_callback_info info)
+static napi_value GetNativeAPI(napi_env env, napi_callback_info info)
 {
     napi_value result;
     ArkWeb_AnyNativeAPI* api = OH_ArkWeb_GetNativeAPI(ARKWEB_NATIVE_CONTROLLER);
@@ -245,31 +245,31 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     //  创建一个处理器
     OH_LOG_INFO(LOG_APP, "OH_ArkWeb_CreateSchemeHandler");
 
-    OH_ArkWeb_CreateSchemeHandler(&g_scheme_handler);
+    OH_ArkWeb_CreateSchemeHandler(&g_schemeHandler);
 
     OH_LOG_INFO(LOG_APP, "OH_ArkWeb_CreateSchemeHandler");
     OH_ArkWeb_CreateSchemeHandler(&g_scheme_handler_for_service_worker);
 
     // 给SchemeHandler创建回调函数
-    int32_t ret = OH_ArkWebSchemeHandler_SetOnRequestStart(g_scheme_handler, OnURLRequestStart);
+    int32_t ret = OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart);
     if (ret != ARKWEB_NET_OK) {
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "OH_ArkWebSchemeHandler_SetOnRequestStart %{public}d", ret);
 
-    ret = OH_ArkWebSchemeHandler_SetOnRequestStop(g_scheme_handler, OnURLRequestStop);
+    ret = OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
     if (ret != ARKWEB_NET_OK) {
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "OH_ArkWebSchemeHandler_SetOnRequestStop %{public}d", ret);
 
-    ret = OH_ArkWebSchemeHandler_SetOnRequestStart(g_scheme_handler_for_service_worker, OnURLRequestStartForSW);
+    ret = OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler_for_service_worker, OnURLRequestStartForSW);
     if (ret != ARKWEB_NET_OK) {
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "OH_ArkWebSchemeHandler_SetOnRequestStart service_worker %{public}d", ret);
 
-    ret = OH_ArkWebSchemeHandler_SetOnRequestStop(g_scheme_handler_for_service_worker, OnURLRequestStopForSW);
+    ret = OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler_for_service_worker, OnURLRequestStopForSW);
     if (ret != ARKWEB_NET_OK) {
         return nullptr;
     }
@@ -279,7 +279,7 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     bool isSuccess2 = false;
 
     // 设置SchemeHandler到内核.
-    isSuccess1 = OH_ArkWeb_SetSchemeHandler("custom", "scheme-handler", g_scheme_handler);
+    isSuccess1 = OH_ArkWeb_SetSchemeHandler("custom", "scheme-handler", g_schemeHandler);
     isSuccess2 = OH_ArkWebServiceWorker_SetSchemeHandler("custom", g_scheme_handler_for_service_worker);
 
     OH_LOG_INFO(LOG_APP, "OH_ArkWeb_SetSchemeHandler");
@@ -679,21 +679,21 @@ static napi_value Init(napi_env env, napi_value exports)
         {"responseGetUrl", nullptr, ResponseGetUrl, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseGetError", nullptr, ResponseGetError, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseGetStatus", nullptr, ResponseGetStatus, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"responseGetStatusTest", nullptr, ResponseGetStatusText, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseGetStatusText", nullptr, ResponseGetStatusText, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseGetMimeType", nullptr, ResponseGetMimeType, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"responseGetCharSet", nullptr, ResponseGetCharSet, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseGetCharset", nullptr, ResponseGetCharSet, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseGetHeaderByName", nullptr, ResponseGetHeaderByName, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseSetUrl", nullptr, ResponseSetUrl, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseSetError", nullptr, ResponseSetError, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseSetStatus", nullptr, ResponseSetStatus, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseSetStatusText", nullptr, ResponseSetStatusText, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseSetMimeType", nullptr, ResponseSetMimeType, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"responseSetCharSet", nullptr, ResponseSetCharSet, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseSetCharset", nullptr, ResponseSetCharSet, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseSetHeaderByName", nullptr, ResponseSetHeaderByName, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"createResponse", nullptr, CreateResponse, nullptr, nullptr, nullptr, napi_default, nullptr},
 
     };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]). desc);
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]),desc);
     return exports;
 }
 EXTERN_C_END

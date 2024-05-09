@@ -139,7 +139,7 @@ struct webRegisterCustomsComponent {
                         case "emitDestroySchemeHandler": {
                             await Utils.sleep(1000);
                             
-                            let result:number = testNapi.destroySchemeHandlers();                            
+                            let result:number = testNapi.destroySchemeHandler();                            
                             await Utils.sleep(1000);                            
                             console.log("emitDestroySchemeHandler ==>" + result);
                             
@@ -235,7 +235,7 @@ struct webRegisterCustomsComponent {
                             await Utils.sleep(1000);
                             console.log("emitWebRequestHeaderList_GetHeader ==>");
                             
-                            let result:number = testNapi.destroySchemeHandlers();                            
+                            let result:number = testNapi.getHeader();                            
                             await Utils.sleep(1000);                            
                             console.log("emitWebRequestHeaderList_GetHeader ==>" + result);
                             
@@ -491,7 +491,7 @@ struct webRegisterCustomsComponent {
                             await Utils.sleep(1000);  
                             console.log("emitWebResponse_GetCharset ==>");
                             
-                            let result:number = testNapi.responseGetCharSet();                            
+                            let result:number = testNapi.responseGetCharset();                            
                             await Utils.sleep(1000);                            
                             console.log("emitWebResponse_GetCharset ==>" + result);
                             
@@ -603,7 +603,7 @@ struct webRegisterCustomsComponent {
                             await Utils.sleep(1000);  
                             console.log("emitWebResponse_SetCharset ==>");
                             
-                            let result:number = testNapi.responseSetCharSet();                            
+                            let result:number = testNapi.responseSetCharset();                            
                             await Utils.sleep(1000);                            
                             console.log("emitWebResponse_SetCharset ==>" + result);
                             

@@ -106,7 +106,7 @@ private:
     int32_t setMimeType_{-1};
     int32_t setCharset_{-1};
     int32_t setHeaderByName_{-1};
-}
+};
     
     
-#endif ACE_ETS_WEB_NAPIS_TEST_REQUEST_H
+#endif //ACE_ETS_WEB_NAPIS_TEST_REQUEST_H
