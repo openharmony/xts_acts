@@ -23,7 +23,7 @@ export default function webviewApi() {
   describe('webRegisterCustoms', () => {
       
     beforeEach(async (done:Function) => {
-      await Utils.sleep(2000);
+      await Utils.sleep(1000);
       console.info("web beforeEach start");
       done();
     })
@@ -42,7 +42,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testRegisterCustoms PASS');
         
         Utils.emitEvent("emitRegisterCustoms", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testRegisterCustoms", true, 7707, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -60,7 +60,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testSetSchemeHandler PASS');
         
         Utils.emitEvent("emitSetSchemeHandler", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testSetSchemeHandler", true, 7708, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -78,7 +78,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testClearSchemeHandlers PASS');
         
         Utils.emitEvent("emitClearSchemeHandlers", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testClearSchemeHandlers", true, 7709, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -96,7 +96,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testServiceWorkerClearSchemeHandlers PASS');
         
         Utils.emitEvent("emitServiceWorkerClearSchemeHandlers", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testServiceWorkerClearSchemeHandlers", true, 7710, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -115,7 +115,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testDestroySchemeHandler PASS');
         
         Utils.emitEvent("emitDestroySchemeHandler", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testDestroySchemeHandler", true, 7711, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -133,7 +133,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testGetNativeAPI PASS');
         
         Utils.emitEvent("emitGetNativeAPI", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testGetNativeAPI", true, 7712, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -151,7 +151,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_GetUrl PASS');
         
         Utils.emitEvent("emitWebResourceRequest_GetUrl", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_GetUrl", true, 7713, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -169,7 +169,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_GetMethod PASS');
         
         Utils.emitEvent("emitWebResourceRequest_GetMethod", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_GetMethod", true, 7714, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -187,7 +187,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_GetHttpBodyStream PASS');
         
         Utils.emitEvent("emitWebResourceRequest_GetHttpBodyStream", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_GetHttpBodyStream", true, 7715, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -205,7 +205,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebRequestHeaderList_GetSize PASS');
         
         Utils.emitEvent("emitWebRequestHeaderList_GetSize", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebRequestHeaderList_GetSize", true, 7716, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -223,7 +223,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebRequestHeaderList_GetHeader PASS');
         
         Utils.emitEvent("emitWebRequestHeaderList_GetHeader", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebRequestHeaderList_GetHeader", true, 7717, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -241,7 +241,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebRequestHeaderList_Destroy PASS');
         
         Utils.emitEvent("emitWebRequestHeaderList_Destroy", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebRequestHeaderList_Destroy", true, 7718, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -259,7 +259,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_HasGesture PASS');
         
         Utils.emitEvent("emitWebResourceRequest_HasGesture", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_HasGesture", true, 7719, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -277,7 +277,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_IsMainFrame PASS');
         
         Utils.emitEvent("emitWebResourceRequest_IsMainFrame", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_IsMainFrame", true, 7720, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -295,7 +295,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_IsRedirect PASS');
         
         Utils.emitEvent("emitWebResourceRequest_IsRedirect", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_IsRedirect", true, 7721, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -313,7 +313,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebSchemeHandler_GetUserData PASS');
         
         Utils.emitEvent("emitWebSchemeHandler_GetUserData", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebSchemeHandler_GetUserData", true, 7722, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -331,7 +331,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebSchemeHandler_SetUserData PASS');
         
         Utils.emitEvent("emitWebSchemeHandler_SetUserData", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebSchemeHandler_SetUserData", true, 7723, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -349,7 +349,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_GetReferrer PASS');
         
         Utils.emitEvent("emitWebResourceRequest_GetReferrer", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_GetReferrer", true, 7724, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -367,7 +367,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_SetUserData PASS');
         
         Utils.emitEvent("emitWebResourceRequest_SetUserData", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_SetUserData", true, 7725, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -385,7 +385,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_GetUserData PASS');
         
         Utils.emitEvent("emitWebResourceRequest_GetUserData", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_GetUserData", true, 7726, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -403,7 +403,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_Destroy PASS');
         
         Utils.emitEvent("emitWebResourceRequest_Destroy", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_Destroy", true, 7727, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -421,7 +421,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_GetUrl PASS');
         
         Utils.emitEvent("emitWebResponse_GetUrl", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_GetUrl", true, 7728, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -439,7 +439,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_GetError PASS');
         
         Utils.emitEvent("emitWebResponse_GetError", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_GetError", true, 7729, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -457,7 +457,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_GetStatus PASS');
         
         Utils.emitEvent("emitWebResponse_GetStatus", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_GetStatus", true, 7730, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -475,7 +475,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_GetStatusText PASS');
         
         Utils.emitEvent("emitWebResponse_GetStatusText", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_GetStatusText", true, 7731, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -493,7 +493,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_GetMimeType PASS');
         
         Utils.emitEvent("emitWebResponse_GetMimeType", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_GetMimeType", true, 7732, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -511,7 +511,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_GetCharset PASS');
         
         Utils.emitEvent("emitWebResponse_GetCharset", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_GetCharset", true, 7733, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -529,7 +529,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_GetHeaderByName PASS');
         
         Utils.emitEvent("emitWebResponse_GetHeaderByName", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_GetHeaderByName", true, 7734, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -547,7 +547,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_SetUrl PASS');
         
         Utils.emitEvent("emitWebResponse_SetUrl", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_SetUrl", true, 7735, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -565,7 +565,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_SetError PASS');
         
         Utils.emitEvent("emitWebResponse_SetError", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_SetError", true, 7736, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -583,7 +583,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_SetStatus PASS');
         
         Utils.emitEvent("emitWebResponse_SetStatus", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_SetStatus", true, 7737, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -601,7 +601,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_SetStatusText PASS');
         
         Utils.emitEvent("emitWebResponse_SetStatusText", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_SetStatusText", true, 7738, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -619,7 +619,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_SetMimeType PASS');
         
         Utils.emitEvent("emitWebResponse_SetMimeType", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_SetMimeType", true, 7739, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -637,7 +637,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_SetCharset PASS');
         
         Utils.emitEvent("emitWebResponse_SetCharset", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_SetCharset", true, 7740, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -655,7 +655,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResponse_SetHeaderByNmae PASS');
         
         Utils.emitEvent("emitWebResponse_SetHeaderByNmae", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWebResponse_SetHeaderByNmae", true, 7741, done);
         sendEventByKey('webHostingButton', 10, '');
     })
@@ -673,7 +673,7 @@ export default function webviewApi() {
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_CreateResponse PASS');
         
         Utils.emitEvent("emitWeb_CreateResponse", 10)
-        await Utils.sleep(2000);
+        await Utils.sleep(1000);
         Utils.registerEvent("testWeb_CreateResponse", true, 7742, done);
         sendEventByKey('webHostingButton', 10, '');
     })

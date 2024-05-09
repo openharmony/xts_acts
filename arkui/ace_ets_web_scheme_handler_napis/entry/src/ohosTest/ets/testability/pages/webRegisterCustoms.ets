@@ -79,7 +79,7 @@ struct webRegisterCustomsComponent {
                     console.info("key==>" + this.str)
                     switch (this.str) {
                         case "emitRegisterCustoms": {
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             
                             console.log("emitRegisterCustoms ==>" + this.isRegister);
                             
@@ -92,7 +92,7 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitSetSchemeHandler": {
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             
                             console.log("emitSetSchemeHandler ==>" + this.isSet);
                             
@@ -105,13 +105,13 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitClearSchemeHandlers": {
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             
                             let result:number = testNapi.clearSchemeHandlers();
                             
                             console.log("emitClearSchemeHandlers ==>" + result);
                             
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             
                             if (result == 0) {
                                 Utils.emitEvent(true, 7709);
@@ -122,10 +122,10 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitServiceWorkerClearSchemeHandlers": {
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             
                             let result:number = testNapi.serviceWorkerClearSchemeHandlers();
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitServiceWorkerClearSchemeHandlers ==>" + result);
                             
                             if (result == 0) {
@@ -137,10 +137,10 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitDestroySchemeHandler": {
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             
                             let result:number = testNapi.destroySchemeHandlers();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitDestroySchemeHandler ==>" + result);
                             
                             if (result == 0) {
@@ -152,11 +152,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitGetNativeAPI": {
-                            await Utils.sleep(2000);       
+                            await Utils.sleep(1000);       
                             console.log("emitGetNativeAPI ==>");
                             
                             let result:number = testNapi.getNativeAPI();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitGetNativeAPI ==>" + result);
                             
                             if (result != 0) {
@@ -168,11 +168,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResourceRequest_GetUrl": {
-                            await Utils.sleep(2000);     
+                            await Utils.sleep(1000);     
                             console.log("emitWebResourceRequest_GetUrl ==>");
                             
                             let result:number = testNapi.getUrl();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResourceRequest_GetUrl ==>" + result);
                             
                             if (result == 0) {
@@ -184,11 +184,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResourceRequest_GetMethod": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResourceRequest_GetMethod ==>");
                             
                             let result:number = testNapi.getMethod();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResourceRequest_GetMethod ==>" + result);
                             
                             if (result == 0) {
@@ -200,11 +200,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResourceRequest_GetHttpBodyStream": {
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             console.log("emitWebResourceRequest_GetHttpBodyStream ==>");
                             
                             let result:number = testNapi.getHttpBodyStream();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResourceRequest_GetHttpBodyStream ==>" + result);
                             
                             if (result == 0) {
@@ -216,11 +216,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebRequestHeaderList_GetSize": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebRequestHeaderList_GetSize ==>");
                             
                             let result:number = testNapi.getHeaderListSize();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebRequestHeaderList_GetSize ==>" + result);
                             
                             if (result == 0) {
@@ -232,11 +232,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebRequestHeaderList_GetHeader": {
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             console.log("emitWebRequestHeaderList_GetHeader ==>");
                             
                             let result:number = testNapi.destroySchemeHandlers();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebRequestHeaderList_GetHeader ==>" + result);
                             
                             if (result == 0) {
@@ -248,11 +248,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebRequestHeaderList_Destroy": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebRequestHeaderList_Destroy ==>");
                             
                             let result:number = testNapi.destroyHeaderList();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebRequestHeaderList_Destroy ==>" + result);
                             
                             if (result == 0) {
@@ -264,11 +264,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResourceRequest_HasGesture": {
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             console.log("emitWebResourceRequest_HasGesture ==>");
                             
                             let result:number = testNapi.hasGesture();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResourceRequest_HasGesture ==>" + result);
                             
                             if (result == 0) {
@@ -280,11 +280,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResourceRequest_IsMainFrame": {
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             console.log("emitWebResourceRequest_IsMainFrame ==>");
                             
                             let result:number = testNapi.isMainFrame();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResourceRequest_IsMainFrame ==>" + result);
                             
                             if (result == 0) {
@@ -296,11 +296,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResourceRequest_IsRedirect": {
-                            await Utils.sleep(2000);
+                            await Utils.sleep(1000);
                             console.log("emitWebResourceRequest_IsRedirect ==>");
                             
                             let result:number = testNapi.isRedirect();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResourceRequest_IsRedirect ==>" + result);
                             
                             if (result == 0) {
@@ -312,11 +312,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebSchemeHandler_GetUserData": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebSchemeHandler_GetUserData ==>");
                             
                             let result:number = testNapi.schemeHandlerGetUserData();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebSchemeHandler_GetUserData ==>" + result);
                             
                             if (result == 0) {
@@ -328,11 +328,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebSchemeHandler_SetUserData": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebSchemeHandler_SetUserData ==>");
                             
                             let result:number = testNapi.schemeHandlerSetUserData();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebSchemeHandler_SetUserData ==>" + result);
                             
                             if (result == 0) {
@@ -344,11 +344,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResourceRequest_GetReferrer": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResourceRequest_GetReferrer ==>");
                             
                             let result:number = testNapi.getRef();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResourceRequest_GetReferrer ==>" + result);
                             
                             if (result == 0) {
@@ -360,11 +360,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResourceRequest_SetUserData": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResourceRequest_SetUserData ==>");
                             
                             let result:number = testNapi.resourceRequestSetUserData();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResourceRequest_SetUserData ==>" + result);
                             
                             if (result == 0) {
@@ -376,11 +376,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResourceRequest_GetUserData": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResourceRequest_GetUserData ==>");
                             
                             let result:number = testNapi.resourceRequestGetUserData();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResourceRequest_GetUserData ==>" + result);
                             
                             if (result == 0) {
@@ -392,11 +392,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResourceRequest_Destroy": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResourceRequest_Destroy ==>");
                             
                             let result:number = testNapi.resourceRequestDestroy();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResourceRequest_Destroy ==>" + result);
                             
                             if (result == 0) {
@@ -408,11 +408,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_GetUrl": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_GetUrl ==>");
                             
                             let result:number = testNapi.responseGetUrl();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_GetUrl ==>" + result);
                             
                             if (result == 0) {
@@ -424,11 +424,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_GetError": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_GetError ==>");
                             
                             let result:number = testNapi.responseGetError();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_GetError ==>" + result);
                             
                             if (result == 0) {
@@ -440,11 +440,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_GetStatus": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_GetStatus ==>");
                             
                             let result:number = testNapi.responseGetStatus();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_GetStatus ==>" + result);
                             
                             if (result == 0) {
@@ -456,11 +456,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_GetStatusText": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_GetStatusText ==>");
                             
                             let result:number = testNapi.responseGetStatusText();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_GetStatusText ==>" + result);
                             
                             if (result == 0) {
@@ -472,11 +472,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_GetMimeType": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_GetMimeType ==>");
                             
                             let result:number = testNapi.responseGetMimeType();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_GetMimeType ==>" + result);
                             
                             if (result == 0) {
@@ -488,11 +488,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_GetCharset": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_GetCharset ==>");
                             
                             let result:number = testNapi.responseGetCharSet();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_GetCharset ==>" + result);
                             
                             if (result == 0) {
@@ -504,11 +504,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_GetHeaderByName": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_GetHeaderByName ==>");
                             
                             let result:number = testNapi.responseGetHeaderByName();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_GetHeaderByName ==>" + result);
                             
                             if (result == 0) {
@@ -520,11 +520,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_SetUrl": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_SetUrl ==>");
                             
                             let result:number = testNapi.responseSetUrl();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_SetUrl ==>" + result);
                             
                             if (result == 0) {
@@ -536,11 +536,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_SetError": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_SetError ==>");
                             
                             let result:number = testNapi.responseSetError();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_SetError ==>" + result);
                             
                             if (result == 0) {
@@ -552,11 +552,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_SetStatus": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_SetStatus ==>");
                             
                             let result:number = testNapi.responseSetStatus();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_SetStatus ==>" + result);
                             
                             if (result == 0) {
@@ -568,11 +568,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_SetStatusText": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_SetStatusText ==>");
                             
                             let result:number = testNapi.responseSetStatusText();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_SetStatusText ==>" + result);
                             
                             if (result == 0) {
@@ -584,11 +584,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_SetMimeType": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_SetMimeType ==>");
                             
                             let result:number = testNapi.responseSetMimeType();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_SetMimeType ==>" + result);
                             
                             if (result == 0) {
@@ -600,11 +600,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_SetCharset": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_SetCharset ==>");
                             
                             let result:number = testNapi.responseSetCharSet();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_SetCharset ==>" + result);
                             
                             if (result == 0) {
@@ -616,11 +616,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWebResponse_SetHeaderByName": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWebResponse_SetHeaderByName ==>");
                             
                             let result:number = testNapi.responseSetHeaderByName();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWebResponse_SetHeaderByName ==>" + result);
                             
                             if (result == 0) {
@@ -632,11 +632,11 @@ struct webRegisterCustomsComponent {
                         }
                         
                         case "emitWeb_CreateResponse": {
-                            await Utils.sleep(2000);  
+                            await Utils.sleep(1000);  
                             console.log("emitWeb_CreateResponse ==>");
                             
                             let result:number = testNapi.createResponse();                            
-                            await Utils.sleep(2000);                            
+                            await Utils.sleep(1000);                            
                             console.log("emitWeb_CreateResponse ==>" + result);
                             
                             if (result == 0) {

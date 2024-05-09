@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsNativeWebSchemeHandlerOneCPPTest.hap",
+                "ActsNativeWebSchemeHandlerCPPOneTest.hap",
                 "ActsNativeWebSchemeHandlerOneTest.hap"
             ],
             "type": "AppInstallKit",
