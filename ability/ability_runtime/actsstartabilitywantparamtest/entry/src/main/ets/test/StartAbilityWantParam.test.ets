@@ -64,6 +64,13 @@ export default function startAbilityWantParamTest() {
   }
 
   describe('ActsStartAbilityWantParamTest', function () {
+
+    beforeEach(function (done) {
+      setTimeout(()=>{
+        done();
+      }, 1000)
+    })
+
     /**
      * @tc.number    : SUB_Ability_AbilityBase_WantParam_WantParametersJs_0800
      * @tc.name      : In the parameters carried by want, the type is FD and the value is -1
