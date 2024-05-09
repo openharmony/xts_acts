@@ -116,15 +116,6 @@ export default function locationComponentTest() {
                   console.info("====>[Test_Security_Button_Location_0100] textComponentClick err : " + JSON.stringify(err));
                 };
               }
-              let knowBtn = await driver.findComponent(ON.text('知道了'));
-              console.info("====>[Test_Security_Button_Location_0100] knowBtn is:" + JSON.stringify(knowBtn));
-              if(knowBtn !== null){
-                console.info("====>[Test_Security_Button_Location_0100] knowBtnClick START====");
-                await knowBtn.click();
-                console.info("====>[Test_Security_Button_Location_0100] reClick====" + i);
-              }else{
-                flag = true;
-              }
             }
             console.info("====>[Test_Security_Button_Location_0100] END====");
             done()
@@ -150,6 +141,15 @@ export default function locationComponentTest() {
         console.info("====>[Test_Security_Button_Location_0100] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
+        let knowBtn = await driver.findComponent(ON.text('知道了'));
+        console.info("====>[Test_Security_Button_Location_0100] knowBtn is:" + JSON.stringify(knowBtn));
+        if(knowBtn !== null){
+          console.info("====>[Test_Security_Button_Location_0100] knowBtnClick START====");
+          await knowBtn.click();
+          console.info("====>[Test_Security_Button_Location_0100] reClick====");
+        }else{
+          expect(false).assertTrue();
+        }
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_0100] clickSecComponent err : " + JSON.stringify(err));
       }
