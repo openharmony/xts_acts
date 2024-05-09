@@ -27,6 +27,8 @@
 
 namespace {
     const int blockSize = 1024 * 8;
+    const int SUCCESS = 200;
+    const int NET_NOT_FOUND = 404;
 
     int ReadRawfileOnWorkerThread(void *userData) {
         TestRequest* testRequest = (TestRequest *)userData;
@@ -56,12 +58,12 @@ void TestRequest::ReadRawfileDataOnWorkerThread()
 
     if (!rawfile) {
         OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetMethod rawfilePath_ 404");
-        setStatus_ = OH_ArkWebResponse_SetStatus(response(), 404);
+        setStatus_ = OH_ArkWebResponse_SetStatus(response(), NET_NOT_FOUND);
         setStatusText_ = OH_ArkWebResponse_SetStatusText(response(), "not found");
     }
     else {
         OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetMethod rawfilePath_ 200");
-        setStatus_ = OH_ArkWebResponse_SetStatus(response(), 200);
+        setStatus_ = OH_ArkWebResponse_SetStatus(response(), SUCCESS);
         setStatusText_ = OH_ArkWebResponse_SetStatusText(response(), "ok");
     }
     setMimeType_ = OH_ArkWebResponse_SetMimeType(response(), "text/javascript");
@@ -224,7 +226,7 @@ void TestRequest::Start()
         OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetHttpBodyStream true");
     }
     
-    ReadRawfileOnWorkerThread((void *)this);
+    ReadRawfileOnWorkerThread(reinterpret_cast<void*>this);
 }
 
 void TestRequest::Stop()

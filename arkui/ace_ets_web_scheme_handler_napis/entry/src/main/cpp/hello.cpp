@@ -63,6 +63,9 @@ int32_t testResponseSetMimeType = -1;
 int32_t testResponseSetCharSet = -1;
 int32_t testResponseSetHost = -1;
 
+const int NOT_FOUND = 404;
+const int OK = 200;
+
 static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info)
 {
     OH_LOG_INFO(LOG_APP, "register custom schemes start");
@@ -494,7 +497,7 @@ static napi_value ResponseGetError(napi_env env, napi_callback_info info)
 static napi_value ResponseGetStatus(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    if (testResponseStatus == 404 || testResponseStatus == 200) {
+    if (testResponseStatus == NOT_FOUND || testResponseStatus == OK) {
         napi_create_int32(env, 0, &result);
     } else {
         napi_create_int32(env, -1, &result);

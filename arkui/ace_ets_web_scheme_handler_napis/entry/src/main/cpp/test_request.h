@@ -18,7 +18,7 @@
 #include <bits/alltypes.h>
 #include <rawfile/raw_file_manager.h>
 #include <web/arkweb_scheme_handler.h>
-#endif //ACE_ETS_WEB_NAPIS_TEST_REQUEST_H
+
 
 class TestRequest
 {
@@ -109,7 +109,4 @@ private:
 }
     
     
-    
-    
-    
-    
+#endif ACE_ETS_WEB_NAPIS_TEST_REQUEST_H
