@@ -14,10 +14,19 @@
  */
 
 import AudioEffectTest from './AudioEffect.test'
-import audioRendererTest from './AudioRenderer.test'
+import audioRendererTest from './AudioRenderer.test'    
+import audioRendererTestPc from './AudioRendererPc.test'    
 import AudioRendererInterruptUnitTest from './AudioRenderInterrupt.test'
+import parameter from '@ohos.systemparameter';
+let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
 export default function testsuite() {
-  audioRendererTest()
-  AudioRendererInterruptUnitTest()
-  AudioEffectTest()
+    if (info != "false"){
+        audioRendererTest()
+        AudioRendererInterruptUnitTest()
+        AudioEffectTest()
+    }else{
+        audioRendererTestPc();
+    }
+        
+    
 }
