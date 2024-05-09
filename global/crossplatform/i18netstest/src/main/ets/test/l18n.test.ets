@@ -116,7 +116,7 @@ describe('I18nTest', function () {
             console.log('testGetDisplayCountry004 ' + e.code);
             console.log('testGetDisplayCountry004 ' + e.message);
             expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid');
+            expect(e.message).assertEqual('Param value not valid, the country must be a valid region.');
         }
     })
 
@@ -152,7 +152,7 @@ describe('I18nTest', function () {
             console.log('testGetDisplayCountry006 ' + e.code);
             console.log('testGetDisplayCountry006 ' + e.message);
             expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid');
+            expect(e.message).assertEqual('Param value not valid, the country must be a valid region.');
         }
     })
 
@@ -202,7 +202,7 @@ describe('I18nTest', function () {
             console.log('testGetDisplayCountry009 ' + e.code);
             console.log('testGetDisplayCountry009 ' + e.message);
             expect(e.code).assertEqual('401');
-            expect(e.message).assertEqual('Check param failed');
+            expect(e.message).assertEqual('Parameter error, the country or locale cannot be empty.');
         }
     })
 
@@ -223,8 +223,8 @@ describe('I18nTest', function () {
         }catch(e){
             console.log('testGetDisplayCountry010 ' + e.code);
             console.log('testGetDisplayCountry010 ' + e.message);
-            expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid');
+            expect(e.code).assertEqual('401');
+            expect(e.message).assertEqual('Parameter error, the type of locale must be string.');
         }
     })
 
@@ -372,7 +372,7 @@ describe('I18nTest', function () {
             console.log('testGetDisplayLanguage010 ' + e.code);
             console.log('testGetDisplayLanguage010 ' + e.message);
             expect(e.code).assertEqual('401');
-            expect(e.message).assertEqual('Check param failed');
+            expect(e.message).assertEqual('Parameter error, the language or locale cannot be empty.');
         }
     })
 
@@ -393,8 +393,8 @@ describe('I18nTest', function () {
         }catch(e){
             console.log('testGetDisplayLanguage011 ' + e.code);
             console.log('testGetDisplayLanguage011 ' + e.message);
-            expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid');
+            expect(e.code).assertEqual('401');
+            expect(e.message).assertEqual('Parameter error, the type of locale must be string.');
         }
     })
 
