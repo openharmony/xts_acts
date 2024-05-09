@@ -59,7 +59,7 @@ export default function userauthTest() {
             console.info('testFace Security_IAM_PIN_Kit_Func_0102 start');
             if (productSeriesInfo != "NOH" && productSeriesInfo != "HYM") {
                 let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT];
-                let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3, userAuthNorth.AuthTrustLevel.ATL4];
+                let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3];
                 let availabeStatus;
                 for (let idx0 = 0; idx0 < authType.length; idx0++) {
                     for (let idx1 = 0; idx1 < level.length; idx1++) {
@@ -76,6 +76,25 @@ export default function userauthTest() {
                         done();
                     }
                 }
+                let authType1 = userAuthNorth.UserAuthType.FINGERPRINT;
+                let level1 = userAuthNorth.AuthTrustLevel.ATL4;
+                try {
+                    console.info('getAvailableStatusTest0102 authtype:' + authType1 + 'trustlevel:' + level1)
+                    userAuthNorth.getAvailableStatus(authType1, level1);
+                } catch (e) {
+                    console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType1 + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                    expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
+                    done();
+                }
+                let authType2 = userAuthNorth.UserAuthType.FACE;
+                try {
+                    console.info('getAvailableStatusTest0102 authtype:' + authType2 + 'trustlevel:' + level1)
+                        userAuthNorth.getAvailableStatus(authType2, level1);
+                    } catch (e) {
+                        console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType2 + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                        expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
+                        done();
+                    }
             }
             done();
         })

@@ -173,7 +173,7 @@ describe('userAuthTestExecute', function () {
 
         /*
             * @tc.number    : Security_IAM_Nopermission_API9_Func_0104
-            * @tc.name      : getAvailabeStatus invalid parameters
+            * @tc.name      : getAvailableStatus invalid parameters
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
