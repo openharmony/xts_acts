@@ -263,13 +263,13 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     }
     OH_LOG_INFO(LOG_APP, "OH_ArkWebSchemeHandler_SetOnRequestStop %{public}d", ret);
 
-    ret = OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler_for_service_worker, OnURLRequestStartForSW);
+    ret = OH_ArkWebSchemeHandler_SetOnRequestStart(g_scheme_handler_for_service_worker, OnURLRequestStartForSW);
     if (ret != ARKWEB_NET_OK) {
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "OH_ArkWebSchemeHandler_SetOnRequestStart service_worker %{public}d", ret);
 
-    ret = OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler_for_service_worker, OnURLRequestStopForSW);
+    ret = OH_ArkWebSchemeHandler_SetOnRequestStop(g_scheme_handler_for_service_worker, OnURLRequestStopForSW);
     if (ret != ARKWEB_NET_OK) {
         return nullptr;
     }
@@ -693,7 +693,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"createResponse", nullptr, CreateResponse, nullptr, nullptr, nullptr, napi_default, nullptr},
 
     };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]),desc);
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
 EXTERN_C_END
