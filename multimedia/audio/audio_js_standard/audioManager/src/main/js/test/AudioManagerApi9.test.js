@@ -1316,7 +1316,7 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2901', 2, async function (done) {
             try {
-                await audioManager.setVolume(audio.AudioVolumeType.ALARM, 20);
+                await audioManager.setVolume(audio.AudioVolumeType.ALARM, 15);
                 await audioManager.mute(audio.AudioVolumeType.ALARM, true);
                 let data = await audioManager.isMute(audio.AudioVolumeType.ALARM);
                 if (data == false) {
@@ -1372,7 +1372,7 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2902', 2, async function (done) {
             try {
-                await audioManager.setVolume(audio.AudioVolumeType.ALARM, 20);
+                await audioManager.setVolume(audio.AudioVolumeType.ALARM, 16);
                 await audioManager.mute(audio.AudioVolumeType.ALARM, true);
                 let data = await audioManager.isMute(audio.AudioVolumeType.ALARM);
                 if (data == false) {
