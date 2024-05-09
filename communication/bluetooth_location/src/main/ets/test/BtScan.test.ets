@@ -215,6 +215,7 @@ describe('btScanTest', function() {
             await sleep(1000);
             console.info('[bluetooth_js] BLE scan off4');
             bluetooth.BLE.off('BLEDeviceFind', onReceiveEvent);
+            bluetooth.BLE.stopBLEScan();
             done();
         } catch (error) {
             console.error('[bluetooth_js]Scan_0400 error.code:'+JSON.stringify(error.code)+
@@ -320,6 +321,7 @@ describe('btScanTest', function() {
             await sleep(1000);
             console.info('[bluetooth_js] BLE scan off7');
             bluetooth.BLE.off('BLEDeviceFind', onReceiveEvent);
+            bluetooth.BLE.stopBLEScan();
             done();
         } catch (error) {
             console.error('[bluetooth_js]Scan_0700 error.code:'+JSON.stringify(error.code)+
