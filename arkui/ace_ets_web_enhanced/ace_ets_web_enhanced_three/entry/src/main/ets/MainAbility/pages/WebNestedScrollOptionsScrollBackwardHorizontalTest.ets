@@ -468,7 +468,7 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
       Scroll(this.scroller) {
         Row() {
           Column().width('20%').height('100%').backgroundColor(Color.Green)
-          Web({ src: $rawfile('nestedScroll.html'), controller: this.controller })
+          Web({ src: $rawfile('nestedScrollTwo.html'), controller: this.controller })
             .nestedScroll({
               scrollForward: this.scrollForwardEnums,
               scrollBackward: this.scrollBackwardEnums,
