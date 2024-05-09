@@ -17,7 +17,9 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import commonEvent from '@ohos.commonEvent'
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
+import {Driver, ON} from '@ohos.UiTest';
 
+let driver = Driver.create();
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let subscriberInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
@@ -42,6 +44,11 @@ export default function abilityTest() {
   describe('ActsNewWantTest', function () {
     let TAG1 = 'ACTS_NewWant_Test : '
     let id = undefined;
+
+    beforeEach(async (done) => {
+      setTimeout(() => { done(); }, 3000)
+    })
+
     beforeAll(async (done) => {
         console.log(TAG1 + "beforeAll called");
         let myReason = 'test ActsNewWantTest';
@@ -92,7 +99,15 @@ export default function abilityTest() {
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
 
-     
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text(""));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
+      
       function SubscribeCallBack(err, data) {
 
         console.debug("ACTS_NewWant_Test_0100====>Subscribe CallBack data:====>"
@@ -161,6 +176,15 @@ export default function abilityTest() {
         console.log('ACTS_NewWant_Test_0200 - startAbility start singleton: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+
+       await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text(""));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
       function SubscribeCallBack(err, data) {
 
@@ -236,6 +260,15 @@ export default function abilityTest() {
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
 
+       await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text(""));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
+
       function SubscribeCallBack(err, data) {
 
         console.debug("ACTS_NewWant_Test_0300====>Subscribe CallBack data:====>"
@@ -309,6 +342,15 @@ export default function abilityTest() {
         console.log('ACTS_NewWant_Test_0400 - startAbility start singleton: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+
+       await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text(""));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
       function SubscribeCallBack(err, data) {
 
@@ -385,6 +427,15 @@ export default function abilityTest() {
         console.log('ACTS_NewWant_Test_0500 - startAbility start HapB: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+
+       await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text(""));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
       function SubscribeCallBack(err, data) {
 
