@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 hawe Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -73,7 +73,7 @@ struct PrecompileJavaScriptTest {
           switch (this.str) {
             case "testPrecompileJavaScript001": {
               let msg = "testPrecompileJavaScript001"
-              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'huawei', {
+              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'hawe', {
                 responseHeaders: [
                   {
                     headerKey: "E-Tag",
@@ -90,7 +90,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript002": {
               let msg = "testPrecompileJavaScript002"
-              this.controller.precompileJavaScript("https://", 'huawei', {
+              this.controller.precompileJavaScript("https://", 'hawe', {
                 responseHeaders: [
                   {
                     headerKey: "E-Tag",
@@ -107,7 +107,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript003": {
               let msg = "testPrecompileJavaScript003"
-              this.controller.precompileJavaScript("adbfs12345", 'huawei', {
+              this.controller.precompileJavaScript("adbfs12345", 'hawe', {
                 responseHeaders: [
                   {
                     headerKey: "E-Tag",
@@ -124,7 +124,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript004": {
               let msg = "testPrecompileJavaScript004"
-              this.controller.precompileJavaScript("www.baidu.com", 'huawei', {
+              this.controller.precompileJavaScript("www.baidu.com", 'hawe', {
                 responseHeaders: [
                   {
                     headerKey: "E-Tag",
@@ -142,7 +142,7 @@ struct PrecompileJavaScriptTest {
             case "testPrecompileJavaScript005": {
               let msg = "testPrecompileJavaScript005"
               try {
-                this.controller.precompileJavaScript(null, 'huawei', {
+                this.controller.precompileJavaScript(null, 'hawe', {
                   responseHeaders: [
                     {
                       headerKey: "E-Tag",
@@ -163,7 +163,7 @@ struct PrecompileJavaScriptTest {
             case "testPrecompileJavaScript006": {
               let msg = "testPrecompileJavaScript006"
               try {
-                this.controller.precompileJavaScript(undefined, 'huawei', {
+                this.controller.precompileJavaScript(undefined, 'hawe', {
                   responseHeaders: [
                     {
                       headerKey: "E-Tag",
@@ -259,7 +259,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript011": {
               let msg = "testPrecompileJavaScript011"
-              this.controller.precompileJavaScript('https://exmaple.com/example.js', 'huawei', null).then((res) => {
+              this.controller.precompileJavaScript('https://exmaple.com/example.js', 'hawe', null).then((res) => {
                 console.info(msg + " precompile result: " + res);
                 Utils.emitEvent(res, 10102)
               }).catch((err: number) => {
@@ -269,7 +269,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript012": {
               let msg = "testPrecompileJavaScript012"
-              this.controller.precompileJavaScript('https://exmaple.com/example.js', 'huawei', undefined)
+              this.controller.precompileJavaScript('https://exmaple.com/example.js', 'hawe', undefined)
                 .then((res) => {
                   console.info(msg + " precompile result: " + res);
                   Utils.emitEvent(res, 10103)
@@ -281,7 +281,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript013": {
               let msg = "testPrecompileJavaScript013"
-              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'huawei', {
+              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'hawe', {
                 responseHeaders: [
                   {
                     headerKey: "E-Tag",
@@ -298,7 +298,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript014": {
               let msg = "testPrecompileJavaScript014"
-              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'huawei', {
+              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'hawe', {
                 responseHeaders: [
                   {
                     headerKey: "Last-Modified",
@@ -315,7 +315,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript015": {
               let msg = "testPrecompileJavaScript015"
-              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'huawei', {
+              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'hawe', {
                 responseHeaders: [
                   {
                     headerKey: "abc",
@@ -332,7 +332,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript016": {
               let msg = "testPrecompileJavaScript016"
-              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'huawei', {
+              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'hawe', {
                 responseHeaders: [
                   {
                     headerKey: "",
@@ -349,7 +349,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript017": {
               let msg = "testPrecompileJavaScript017"
-              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'huawei', {
+              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'hawe', {
                 responseHeaders: [
                   {
                     headerKey: " ",
@@ -366,7 +366,7 @@ struct PrecompileJavaScriptTest {
             }
             case "testPrecompileJavaScript018": {
               let msg = "testPrecompileJavaScript018"
-              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'huawei', {
+              this.controller.precompileJavaScript("https://exmaple.com/example.js", 'hawe', {
                 responseHeaders: [
                   {
                     headerKey: "中文",
