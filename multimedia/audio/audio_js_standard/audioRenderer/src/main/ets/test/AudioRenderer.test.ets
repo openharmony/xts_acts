@@ -2161,10 +2161,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-2C-48000-4SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -2194,10 +2196,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-1C-8000-2SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -2226,10 +2230,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-1C-16000-2SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -2259,10 +2265,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-2C-24000-3SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -2292,10 +2300,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-1C-44100-2SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -2325,10 +2335,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-2C-48000-4SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -2358,10 +2370,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-1C-8000-2SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -2390,10 +2404,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-1C-16000-2SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -2423,10 +2439,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-2C-24000-3SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -2456,10 +2474,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-1C-44100-2SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -2489,10 +2509,12 @@ export default function audioRendererTest() {
         streamInfo: audioStreamInfo,
         rendererInfo: audioRendererInfo
       }
+      let resultFlag = true;
       let readPath = 'StarWars10s-1C-44100-2SW.wav'
       await getFdRead(readPath, done);
       await play(audioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -12018,11 +12040,12 @@ export default function audioRendererTest() {
         streamInfo: AudioStreamInfo,
         rendererInfo: AudioRendererInfo
       }
-
+      let resultFlag = true;
       readPath = 'StarWars10s-1C-8000-2SW.wav'
       await getFdRead(readPath, done);
       await playbackPromise_92(AudioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
@@ -12053,11 +12076,12 @@ export default function audioRendererTest() {
         streamInfo: AudioStreamInfo,
         rendererInfo: AudioRendererInfo
       }
-
+      let resultFlag = true;
       readPath = 'StarWars10s-1C-16000-2SW.wav'
       await getFdRead(readPath, done);
       await playWithVideoStream(AudioRendererOptions, filePath, done);
       await sleep(100);
+      expect(resultFlag).assertTrue();
       await closeFileDescriptor(readPath);
       done();
     })
