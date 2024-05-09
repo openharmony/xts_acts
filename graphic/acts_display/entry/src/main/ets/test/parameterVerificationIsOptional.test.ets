@@ -383,37 +383,64 @@ export default function windowInterfaceOptionalParameterTest(context: common.UIA
         num++
         secondListenFlag = true
       }
-
+      if(canIUse("SyatemCapability.Sensors.Sensor")){
+        console.log('该设备支持SyatemCapability.Sensors.Sensor');
       display.on('change', firstCall);
       display.on('change', secondCall);
       let mainWindow: ohosWindow.Window | void;
-      mainWindow = await windowStage.getMainWindow().catch((err: BusinessError) => {
+      await windowStage.getMainWindow().then((data)=>{
+        mainWindow = data;
+        console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      }).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', TRUE_FLAG, done);
       });
       expect(!!mainWindow).assertTrue();
-      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.PORTRAIT_INVERTED)
-        .catch((err: BusinessError) => {
+      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.PORTRAIT_INVERTED).then(() => {
+        console.info('Succeeded in setting the window orientation.');
+        console.info('1:firstListenFlag'+firstListenFlag,'secondListenFlag:'+secondListenFlag);
+      }).catch((err: BusinessError) => {
           console.error(msgStr + 'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
       await sleep(1000);
+      console.info('2:firstListenFlag'+firstListenFlag,'secondListenFlag:'+secondListenFlag);
       display.off('change')
       firstListenFlag = false
       secondListenFlag = false
-      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED)
+      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED).then(() => {
+        console.info('Succeeded in setting the window orientation.');
+        console.info('3:firstListenFlag'+firstListenFlag,'secondListenFlag:'+secondListenFlag);
+      })
         .catch((err: BusinessError) => {
           console.error(msgStr + 'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
           expect(TRUE_FLAG).assertFail();
           done();
         });
       await sleep(1000);
+      console.info('4:firstListenFlag'+firstListenFlag,'secondListenFlag:'+secondListenFlag);
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         done();
       } else {
         expect(TRUE_FLAG).assertFail();
         done();
       }
+    }else{
+      console.log('该设备不支持SyatemCapability.Sensors.Sensor');
+        let mainWindow: ohosWindow.Window | void
+        await windowStage.getMainWindow().then((data)=>{
+        mainWindow = data;
+        console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+        expect(!!mainWindow).assertTrue();
+        let orientation = (mainWindow as ohosWindow.Window).getPreferredOrientation();
+        console.log('orientation:'+JSON.stringify(orientation));
+        expect(orientation).assertEqual(ohosWindow.Orientation.PORTRAIT);
+        done();
+      }).catch((err: BusinessError) => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', TRUE_FLAG, done);
+        done();
+      });
+    }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0370
@@ -439,25 +466,36 @@ export default function windowInterfaceOptionalParameterTest(context: common.UIA
         console.log(msgStr + "second listener trigger")
         secondListenFlag = true
       }
-
+      if(canIUse("SyatemCapability.Sensors.Sensor")){
+        console.log('该设备支持SyatemCapability.Sensors.Sensor');
       display.on('change', firstCall);
       display.on('change', secondCall);
       let mainWindow: ohosWindow.Window | void
-      mainWindow = await windowStage.getMainWindow().catch((err: BusinessError) => {
+      await windowStage.getMainWindow().then((data)=>{
+        mainWindow = data;
+        console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      }).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', TRUE_FLAG, done);
       });
       expect(!!mainWindow).assertTrue();
-      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.PORTRAIT_INVERTED)
-        .catch((err: BusinessError) => {
+
+      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.PORTRAIT_INVERTED).then(() => {
+        console.info('Succeeded in setting the window orientation.');
+        console.info('1:firstListenFlag'+firstListenFlag,'secondListenFlag:'+secondListenFlag);
+      }).catch((err: BusinessError) => {
           console.error(msgStr + 'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
       await sleep(1000);
+      console.info('2:firstListenFlag'+firstListenFlag,'secondListenFlag:'+secondListenFlag);
       display.off('change', firstCall)
       firstListenFlag = false
       secondListenFlag = false
-      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED)
+      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED).then(() => {
+        console.info('Succeeded in setting the window orientation.');
+        console.info('3:firstListenFlag'+firstListenFlag,'secondListenFlag:'+secondListenFlag);
+      })
         .catch((err: BusinessError) => {
           console.error(msgStr + 'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
           expect().assertFail();
@@ -465,11 +503,28 @@ export default function windowInterfaceOptionalParameterTest(context: common.UIA
         });
       await sleep(1000);
       display.off('change')
+      console.info('4:firstListenFlag'+firstListenFlag,'secondListenFlag:'+secondListenFlag);
       if (!firstListenFlag && secondListenFlag) {
         done();
       } else {
         expect(TRUE_FLAG).assertFail();
         done();
+      }}else{
+        console.log('该设备不支持SyatemCapability.Sensors.Sensor');
+        let mainWindow: ohosWindow.Window | void
+        await windowStage.getMainWindow().then((data)=>{
+        mainWindow = data;
+        console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+        expect(!!mainWindow).assertTrue();
+        let orientation = (mainWindow as ohosWindow.Window).getPreferredOrientation();
+        console.log('orientation:'+JSON.stringify(orientation));
+        expect(orientation).assertEqual(ohosWindow.Orientation.PORTRAIT);
+        done();
+      }).catch((err: BusinessError) => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', TRUE_FLAG, done);
+        done();
+      });
+      
       }
     })
   })
