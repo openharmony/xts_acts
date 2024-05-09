@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import APIPreDragStatusTest from './DragController/APIPreDragStatusTest.test';
-import addGestureApplyGesture from './addGestureApplyGesture.test';
+import backgroundImageResizableTest from './backgroundImageTest/backgroundImageResizable.test';
+import foregroundEffect from './foregroundEffect.test'
 export default function testsuite() {
-  APIPreDragStatusTest();
-  addGestureApplyGesture();
+  backgroundImageResizableTest();
+  foregroundEffect();
 }

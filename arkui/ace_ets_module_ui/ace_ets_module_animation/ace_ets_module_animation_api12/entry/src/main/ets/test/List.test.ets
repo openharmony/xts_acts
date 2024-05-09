@@ -15,7 +15,9 @@
 
 import setExpectedFrameRateRangeTest from './AnimatorResultTest/setExpectedFrameRateRangeTest.test'
 import AnimatorResultTest from './AnimatorResultTest/AnimatorResultTest.test'
+import setPolyToPoly from './setPolyToPoly.test'
 export default function testsuite() {
   AnimatorResultTest()
   setExpectedFrameRateRangeTest()
+  setPolyToPoly();
 }
