@@ -360,9 +360,9 @@ describe('I18nUtilInI18nTest', function () {
     */
     it('i18n_i18nutil_test_1900', 0, function () {
         console.log('i18n_i18nutil_test_1900 ' + 'start');
-        let value = I18n.I18NUtil.getDateOrder('jp');
+        let value = I18n.I18NUtil.getDateOrder('ja');
         console.log('i18n_i18nutil_test_1900 ' + value);
-        expect(value).assertEqual('LLL-d-y');
+        expect(value).assertEqual('y-LL-dd');
     })
 
     console.log('*************end I18nUtilInI18nTest*************');
