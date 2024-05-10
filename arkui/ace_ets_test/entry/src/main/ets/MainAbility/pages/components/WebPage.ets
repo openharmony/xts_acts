@@ -335,7 +335,7 @@ struct WebComponent {
           })
       }
 
-      Web({ src: $rawfile('indextest.html'), controller: this.controller })
+      Web({ src: "", controller: this.controller })
         .domStorageAccess(this.domStorageAccess)
         .fileAccess(this.fileAccess)
         .geolocationAccess(this.geolocationAccess)
