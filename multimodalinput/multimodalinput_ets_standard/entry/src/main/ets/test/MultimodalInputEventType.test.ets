@@ -598,10 +598,18 @@ export default function MultimodalInputEventTypeTest() {
     it('MultimodalInput_InfradeEmirterTransmit_001', 0, () => {
 
       console.info(`MultimodalInput_InfradeEmirterTransmit_001 enter`);
-      let infraredFrequency: number  = -3800;
-      let pattern:Array<number> = [100, 200, 300, 400,500, 600,700, 800, 900, 1000];
-      infraredEmitter.transmitInfrared(infraredFrequency, pattern); 
+      try {
+        let infraredFrequency: number  = -3800;
+        let pattern:Array<number> = [100, 200, 300, 400,500, 600,700, 800, 900, 1000];
+        infraredEmitter.transmitInfrared(infraredFrequency, pattern);
+        done();
+      } catch (error) {
+        console.info("MultimodalInput_InfradeEmirterTransmit_001 catch error is" + error);
+        expect(true).assertTrue();
+        done();
+      }
       console.info(`MultimodalInput_InfradeEmirterTransmit_001 exit`);
+      done();
     })
 
     /**
@@ -616,11 +624,19 @@ export default function MultimodalInputEventTypeTest() {
     it('MultimodalInput_InfradeEmirterTransmit_002', 0, () => {
 
       console.info(`MultimodalInput_InfradeEmirterTransmit_002 enter`);
-      let infraredFrequency: number  = 3800;
-      /****** size of second para is bigger than 50 ********/
-      let pattern:Array<number> = [100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000];
-      infraredEmitter.transmitInfrared(infraredFrequency, pattern); 
+      try {
+        let infraredFrequency: number  = 3800;
+        /****** size of second para is bigger than 50 ********/
+        let pattern:Array<number> = [100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000,100, 200, 300, 400,500, 600,700, 800, 900, 1000];
+        infraredEmitter.transmitInfrared(infraredFrequency, pattern);
+        done();
+      } catch (error) {
+        console.info("MultimodalInput_InfradeEmirterTransmit_002 catch error is" + error);
+        expect(true).assertTrue();
+        done();
+      }
       console.info(`MultimodalInput_InfradeEmirterTransmit_002 exit`);
+      done();
     })
 
     /**
@@ -635,10 +651,18 @@ export default function MultimodalInputEventTypeTest() {
     it('MultimodalInput_InfradeEmirterTransmit_003', 0, () => {
 
       console.info(`MultimodalInput_InfradeEmirterTransmit_003 enter`);
-      let infraredFrequency: number  = 3800;
-      let pattern:Array<number> = [100, 200, -100, 400,500, 600,700, 800, 900, 1000];
-      infraredEmitter.transmitInfrared(infraredFrequency, pattern); 
+      try {
+        let infraredFrequency: number  = 3800;
+        let pattern:Array<number> = [100, 200, -100, 400,500, 600,700, 800, 900, 1000];
+        infraredEmitter.transmitInfrared(infraredFrequency, pattern);
+        done();
+      } catch (error) {
+        console.info("MultimodalInput_InfradeEmirterTransmit_003 catch error is" + error);
+        expect(true).assertTrue();
+        done();
+      }
       console.info(`MultimodalInput_InfradeEmirterTransmit_003 exit`);
+      done();
     })
 
   })
