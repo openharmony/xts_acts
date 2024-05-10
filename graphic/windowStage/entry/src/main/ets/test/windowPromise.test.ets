@@ -86,7 +86,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.level     : Level3
      */
     it('testListener_Sys_AvoidAreaChange_Promise', 0, async (done: Function) => {
-      await sleep(1000)
+      await sleep(800)
       let caseName: string = 'testListener_Sys_AvoidAreaChange_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       let listenerOnFlag: boolean = false;
@@ -124,7 +124,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
       listenerOnFlag = true;
-      await sleep(1000);
+      await sleep(800);
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
@@ -140,7 +140,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.level     : Level3
      */
     it('testListener_windowSizeChange', 0, async (done: Function) => {
-      await sleep(1000)
+      await sleep(900)
       let caseName: string = 'testListener_windowSizeChange';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       let wndId = 'listenerTest2';
@@ -163,7 +163,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         let e: BusinessError = err as BusinessError;
         console.log(msgStr + 'ohosWindow.create catch err:' + JSON.stringify(e));
       }
-      await sleep(1000);
+      await sleep(900);
       if (tempWindow != undefined) {
         let tempWnd: ohosWindow.Window = tempWindow as ohosWindow.Window;
         tempWnd.on('windowSizeChange', async (sizeData) => {
@@ -188,6 +188,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ')', done);
         });
         await sleep(900);
+        await sleep(800);
         console.log(msgStr + 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ') success');
       }
 
@@ -201,7 +202,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.level     : Level3
      */
     it('testListener_SystemAvoidAreaChange_Off', 0, async (done: Function) => {
-      await sleep(1000)
+      await sleep(800)
       let caseName: string = 'testListener_SystemAvoidAreaChange_Off';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin 1');
@@ -252,7 +253,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.level     : Level3
      */
     it('testListener_windowSizeChange_Off', 0, async (done: Function) => {
-      await sleep(1000)
+      await sleep(900)
       let caseName: string = 'testListener_windowSizeChange_Off';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       let wndId: string = 'listenerTest4';
@@ -283,7 +284,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setWindowMode ' + changedModel, done);
         });
         console.log(msgStr + 'tempWnd.setWindowMode ' + changedModel + ' success');
-        await sleep(1000);
+        await sleep(800);
+        await sleep(800);
         tempWindow.on('windowSizeChange', async (sizeData: ohosWindow.Size) => {
           console.log(msgStr + 'tempWnd.on windowSizeChange, sizeData : ' + JSON.stringify(sizeData));
           expect(sizeData.width === 1000).assertTrue();
@@ -300,7 +302,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.resetSize(100, 100)', done);
         });
         console.log(msgStr + 'tempWnd.resetSize(100, 100) success');
-        await sleep(1500)
+        await sleep(800)
+        await sleep(800)
       }
     })
     /**
@@ -334,7 +337,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success');
-      await sleep(500);
+      await sleep(900);
       await tempWnd.setSystemBarEnable(['status']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
@@ -371,7 +374,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success');
-      await sleep(1000);
+      await sleep(800);
       await tempWnd.setSystemBarEnable(['navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([navigation])', done);
       });
@@ -409,7 +412,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      await sleep(500);
+      await sleep(900);
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
@@ -447,7 +450,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(500);
+      await sleep(900);
       await tempWnd.setSystemBarEnable([]).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
@@ -524,7 +527,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(500);
+      await sleep(900);
       let loopCount = commonRGBColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor = commonRGBColorArr[i];
@@ -579,7 +582,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(500);
+      await sleep(900);
       let loopCount: number = commonNUMBERColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor: string = commonNUMBERColorArr[i];
@@ -634,7 +637,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(500);
+      await sleep(900);
       let loopCount = commonKEYColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor = commonKEYColorArr[i];
@@ -1201,6 +1204,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED','AUTO_ROTATION_UNSPECIFIED',
         'USER_ROTATION_PORTRAIT', 'USER_ROTATION_LANDSCAPE','USER_ROTATION_PORTRAIT_INVERTED','USER_ROTATION_LANDSCAPE_INVERTED','UNSPECIFIED'];
       for (let i = 0; i < orientationItem.length; i++) {
+        await sleep(900)
+        await sleep(900)
         let orientation: ohosWindow.Orientation = ohosWindow.Orientation[orientationItem[i]]
         console.log(msgStr + 'i : ' + i + ' ,orientation : ' + orientation);
         console.log(msgStr + 'i : ' + i + ' ,ohosWindow.Orientation : ' + JSON.stringify(orientationItem[i]));
@@ -1211,7 +1216,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         }).catch((err: BusinessError) => {
           console.log(msgStr + 'window.setPreferredOrientation failed set error:' + orientation);
         });
-        await sleep(3000)
+        await sleep(900)
+        await sleep(300)
       }
     })
     /**
@@ -1263,7 +1269,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let mainWin: ohosWindow.Window = tempMainWin as ohosWindow.Window;
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
-      await sleep(2000)
+      await sleep(800)
       let snapshotData = await mainWin.snapshot().catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'mainWin.snapshot', done);
         console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));

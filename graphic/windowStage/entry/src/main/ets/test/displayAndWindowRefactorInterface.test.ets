@@ -19,37 +19,8 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
   console.log('windowTest context: ' + JSON.stringify(context))
   console.log('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
   describe('displayAndWindowRefactorInterface_test', function () {
-    console.log('describe window_api_test3 start!!!')
+    console.log('describe displayAndWindowRefactorInterface_test start!!!')
     const TRUE_FLAG = true;
-    var appWindowTypeArr = [];
-    var windowTypeArr = [];
-    var appWindowTypeDic = {
-      'TYPE_BASE': 0,
-      'TYPE_APP': 0,
-      'TYPE_APP_SUB_WINDOW': 1,
-    };
-    var systemWindowValueArr = [];
-    var systemWindowTypeArr = [];
-    var systemWindowTypeDicArr = [];
-    var systemWindowTypeDic = {
-      'TYPE_FLOAT': 8,
-    }
-    var windowLayoutModeArr = [];
-    var windowLayoutModeDic = {
-      'WINDOW_LAYOUT_MODE_TILE': 1,
-      'WINDOW_LAYOUT_MODE_CASCADE': 0
-    };
-    beforeAll(function () {
-      console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType));
-      systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
-      console.log('jsunittest beforeall systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
-      systemWindowValueArr = Object.keys(systemWindowTypeDic);
-      systemWindowTypeArr = Object.keys(systemWindowTypeDic);
-      for (var i in ohosWindow.WindowType) {
-        console.log('jsunittest beforeall i=' + i);
-        windowTypeArr.push(ohosWindow.WindowType[i])
-      }
-    })
 
     async function sleep(time) {
       let timeoutId = null;
@@ -73,32 +44,23 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testCreateWindow_Diff_Type_Wins_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let loopCount = systemWindowTypeDicArr.length;
-      console.log(msgStr + 'loopCount: ' + loopCount);
-      for (let i = 0; i < loopCount; i++) {
-        let tempType = Number(ohosWindow.WindowType[systemWindowTypeDicArr[i]])
-        let windId = 'createWindowTest1' + i;
-        console.log(msgStr + 'ohosWindow.createWindow:  ' + tempType + ' start');
-        let windowConfig = {
-          name: windId,
-          windowType: tempType,
-          ctx: context,
-          displayId: 0,
-          parentId: 0
-        };
-        let tempWnd;
-        tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-          console.log(msgStr + 'ohosWindow.createWindow ' + tempType + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-          return;
-        });
-        console.log(msgStr + 'ohosWindow.createWindow ' + tempType + 'finished, wnd: ' + JSON.stringify(tempWnd));
-        console.log(msgStr + 'ohosWindow.createWindow ' + tempType + 'finished, step: ' + i);
-        expect(!!tempWnd).assertTrue();
-        await tempWnd.destroyWindow();
-        if (i == loopCount - 1) done();
-      }
+      let windowConfig = {
+        name: "testCreateWindow_Diff_Type_Wins_Promise",
+        windowType: ohosWindow.WindowType.TYPE_FLOAT,
+        ctx: context,
+        displayId: 0,
+        parentId: 0
+      };
+      let tempWnd;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'ohosWindow.createWindow '+ 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+        return;
+      });
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.destroyWindow();
+      done();
     })
 
     /**
@@ -152,7 +114,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
      * @tc.level     : Level3
      */
     it('testCreateWindow_Not_Exist_WinType_Promise', 0, async function (done) {
-      sleep(1000)
       let caseName = 'testCreateWindow_Not_Exist_WinType_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
@@ -228,8 +189,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testCreateWindow_Type_Float_Win_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let loopCount = systemWindowTypeArr.length;
-      console.log('jsunittest loopCount: ' + loopCount);
       let tempType = ohosWindow.WindowType.TYPE_FLOAT;
       let windId = 'createWindowTest5';
       console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
