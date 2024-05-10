@@ -39,7 +39,7 @@ async function sleep(delay)  {
 export default function ApplicationInfoTest() {
 describe('ApplicationInfoTest', function () {
     var TAG = '';
-	beforeEach(asyc () => {
+    beforeEach(async () => {
         await sleep(1000);
     })
 
