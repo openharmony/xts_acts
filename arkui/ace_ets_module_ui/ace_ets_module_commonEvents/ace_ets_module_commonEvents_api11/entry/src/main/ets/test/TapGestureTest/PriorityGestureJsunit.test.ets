@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +14,7 @@
  */
 import { describe,  beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import Utils from '../Utils';
+import Utils from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter';
 
 export default function priorityGestureJsunit() {
