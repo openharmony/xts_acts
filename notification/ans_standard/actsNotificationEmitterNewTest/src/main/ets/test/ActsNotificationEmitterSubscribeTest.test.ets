@@ -251,5 +251,313 @@ export default function ActsNotificationEmitterSubscribeTest() {
         done();
       }
     })
+
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_2500
+      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_2500
+      * @tc.desc   : emitter.off with parameter null
+      * @tc.size   : MediumTest
+      * @tc.type   : Function
+      * @tc.level  : Level 3
+      */
+    it('Sub_Notification_Emitter_Subscribe_Capabilities_2500', 2, (done: Function) => {
+      const TEST_CASE_NAME = 'Sub_Notification_Emitter_Subscribe_Capabilities_2500'
+      let callback007 = (): void => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on success');
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+      try{
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case begin');
+        emitter.off(null, callback007);
+        done();
+      }catch(err){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on failed,data is: ', JSON.stringify(err));
+        expect(err.message).assertContain("type mismatch for parameter 1");
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_2600
+      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_2600
+      * @tc.desc   : emitter.off with parameter undefined
+      * @tc.size   : MediumTest
+      * @tc.type   : Function
+      * @tc.level  : Level 3
+      */
+    it('Sub_Notification_Emitter_Subscribe_Capabilities_2600', 2, (done: Function) => {
+      const TEST_CASE_NAME = 'Sub_Notification_Emitter_Subscribe_Capabilities_2600'
+      let callback008 = (): void => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on success');
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+      try{
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case begin');
+        emitter.off(undefined, callback008);
+        done();
+      }catch(err){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on failed,data is: ', JSON.stringify(err));
+        expect(err.message).assertContain("type mismatch for parameter 1");
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_2700
+      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_2700
+      * @tc.desc   : emitter.off with parameter ''
+      * @tc.size   : MediumTest
+      * @tc.type   : Function
+      * @tc.level  : Level 3
+      */
+    it('Sub_Notification_Emitter_Subscribe_Capabilities_2700', 3, (done: Function) => {
+      const TEST_CASE_NAME = 'Sub_Notification_Emitter_Subscribe_Capabilities_2700'
+      let callback009 = (): void => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on success');
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+      try{
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case begin');
+        emitter.off('', callback009);
+        done();
+      }catch(err){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on failed,data is: ', JSON.stringify(err));
+        expect(err.message).assertContain("type mismatch for parameter 1");
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_3500
+      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_3500
+      * @tc.desc   : emitter.emit with parameter null
+      * @tc.size   : MediumTest
+      * @tc.type   : Function
+      * @tc.level  : Level 3
+      */
+    it('Sub_Notification_Emitter_Subscribe_Capabilities_3500', 3, (done: Function) => {
+      const TEST_CASE_NAME = 'Sub_Notification_Emitter_Subscribe_Capabilities_3500'
+      let innerEvent: emitter.InnerEvent = {
+        eventId: null
+      };
+      let options: emitter.Options = {
+        priority: emitter.EventPriority.HIGH
+      };
+      try{
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case begin');
+        emitter.emit(innerEvent,options);
+        done();
+      }catch(err){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on failed,data is: ', JSON.stringify(err));
+        expect(err.message).assertContain("type mismatch for parameter 1");
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_3600
+      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_3600
+      * @tc.desc   : emitter.emit with parameter undefined
+      * @tc.size   : MediumTest
+      * @tc.type   : Function
+      * @tc.level  : Level 3
+      */
+    it('Sub_Notification_Emitter_Subscribe_Capabilities_3600', 3, (done: Function) => {
+      const TEST_CASE_NAME = 'Sub_Notification_Emitter_Subscribe_Capabilities_3600'
+      let innerEvent: emitter.InnerEvent = {
+        eventId: undefined
+      };
+      let options: emitter.Options = {
+        priority: emitter.EventPriority.HIGH
+      };
+      try{
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case begin');
+        emitter.emit(innerEvent,options);
+        done();
+      }catch(err){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on failed,data is: ', JSON.stringify(err));
+        expect(err.message).assertContain("type mismatch for parameter 1");
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_3700
+      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_3700
+      * @tc.desc   : emitter.emit with parameter ''
+      * @tc.size   : MediumTest
+      * @tc.type   : Function
+      * @tc.level  : Level 3
+      */
+    it('Sub_Notification_Emitter_Subscribe_Capabilities_3700', 3, (done: Function) => {
+      const TEST_CASE_NAME = 'Sub_Notification_Emitter_Subscribe_Capabilities_3700'
+      let innerEvent: emitter.InnerEvent = {
+        eventId: ''
+      };
+      let options: emitter.Options = {
+        priority: emitter.EventPriority.HIGH
+      };
+      try{
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case begin');
+        emitter.emit(innerEvent,options);
+        done();
+      }catch(err){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on failed,data is: ', JSON.stringify(err));
+        expect(err.message).assertContain("type mismatch for parameter 1");
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_3900
+      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_3900
+      * @tc.desc   : emitter.emit with parameter '',eventData (id=null) and options
+      * @tc.size   : MediumTest
+      * @tc.type   : Function
+      * @tc.level  : Level 3
+      */
+    it('Sub_Notification_Emitter_Subscribe_Capabilities_3900', 3, (done: Function) => {
+      const TEST_CASE_NAME = 'Sub_Notification_Emitter_Subscribe_Capabilities_3900'
+      let innerEvent: emitter.InnerEvent = {
+        eventId: 39
+      };
+      let eventData: emitter.EventData = {
+        data: {
+          "content": "c",
+          "id": null,
+        }
+      };
+      let options: emitter.Options = {
+        priority: emitter.EventPriority.HIGH
+      };
+      try{
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case begin');
+        emitter.on(innerEvent);
+        emitter.emit(innerEvent,options,eventData);
+        done();
+      }catch(err){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on failed,data is: ', JSON.stringify(err));
+        expect(err.message).assertContain("type mismatch for parameter 1");
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_4000
+      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_4000
+      * @tc.desc   : emitter.emit with parameter '',eventData (id=undefined) and options
+      * @tc.size   : MediumTest
+      * @tc.type   : Function
+      * @tc.level  : Level 3
+      */
+    it('Sub_Notification_Emitter_Subscribe_Capabilities_4000', 3, (done: Function) => {
+      const TEST_CASE_NAME = 'Sub_Notification_Emitter_Subscribe_Capabilities_4000'
+      let innerEvent: emitter.InnerEvent = {
+        eventId: 40
+      };
+      let eventData: emitter.EventData = {
+        data: {
+          "content": "c",
+          "id": undefined,
+        }
+      };
+      let options: emitter.Options = {
+        priority: emitter.EventPriority.HIGH
+      };
+      try{
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case begin');
+        emitter.on(innerEvent);
+        emitter.emit(innerEvent,options,eventData);
+        done();
+      }catch(err){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on failed,data is: ', JSON.stringify(err));
+        expect(err.message).assertContain("type mismatch for parameter 1");
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_4100
+      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_4100
+      * @tc.desc   : emitter.emit with parameter '',eventData and options(null)
+      * @tc.size   : MediumTest
+      * @tc.type   : Function
+      * @tc.level  : Level 3
+      */
+    it('Sub_Notification_Emitter_Subscribe_Capabilities_4100', 3, (done: Function) => {
+      const TEST_CASE_NAME = 'Sub_Notification_Emitter_Subscribe_Capabilities_4100'
+      let innerEvent: emitter.InnerEvent = {
+        eventId: 41
+      };
+      let eventData: emitter.EventData = {
+        data: {
+          "content": "c",
+          "id": '',
+        }
+      };
+      let options: emitter.Options = {
+        priority: null
+      };
+      try{
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case begin');
+        emitter.on(innerEvent);
+        emitter.emit(innerEvent,options,eventData);
+        done();
+      }catch(err){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on failed,data is: ', JSON.stringify(err));
+        expect(err.message).assertContain("type mismatch for parameter 2");
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_4200
+      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_4200
+      * @tc.desc   : emitter.emit with parameter '',eventData and options(undefined)
+      * @tc.size   : MediumTest
+      * @tc.type   : Function
+      * @tc.level  : Level 3
+      */
+    it('Sub_Notification_Emitter_Subscribe_Capabilities_4200', 3, (done: Function) => {
+      const TEST_CASE_NAME = 'Sub_Notification_Emitter_Subscribe_Capabilities_4200'
+      let innerEvent: emitter.InnerEvent = {
+        eventId: 42
+      };
+      let eventData: emitter.EventData = {
+        data: {
+          "content": "c",
+          "id": '',
+        }
+      };
+      let options: emitter.Options = {
+        priority: undefined
+      };
+      try{
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case begin');
+        emitter.on(innerEvent);
+        emitter.emit(innerEvent,options,eventData);
+        done();
+      }catch(err){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on failed,data is: ', JSON.stringify(err));
+        expect(err.message).assertContain("type mismatch for parameter 2");
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
   })
 }
