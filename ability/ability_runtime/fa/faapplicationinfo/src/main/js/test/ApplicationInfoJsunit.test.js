@@ -26,9 +26,22 @@ var getCallingBundleUri = {
 var getCallingBundleType = {
     events: ['SUB_AA_OpenHarmony_Want_0300_CommonEvent']
 }
+
+async function sleep(delay)  {
+    let timeoutId = null;
+    var promise = new Promise((resolve, reject) => {
+        timeoutId = setTimeout(() =>  resolve("done!"), delay);
+    });
+    await promise;
+    clearTimeout(timeoutId);
+}
+
 export default function ApplicationInfoTest() {
 describe('ApplicationInfoTest', function () {
     var TAG = '';
+    beforeEach(async () => {
+        await sleep(1000);
+    })
 
     /*
      * @tc.number  SUB_AA_OpenHarmony_FormBase_1000
