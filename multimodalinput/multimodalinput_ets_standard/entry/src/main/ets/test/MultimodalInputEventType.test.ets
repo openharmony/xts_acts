@@ -595,9 +595,9 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_InfradeEmirterTransmit_001', 0, () => {
+    it('MultimodalInput_InfradeEmirterTransmit_0100', 0, () => {
 
-      console.info(`MultimodalInput_InfradeEmirterTransmit_001 enter`);
+      console.info(`MultimodalInput_InfradeEmirterTransmit_0100 enter`);
       try {
         let infraredFrequency: number  = -3800;
         let pattern:Array<number> = [100, 200, 300, 400,500, 600,700, 800, 900, 1000];
@@ -605,17 +605,17 @@ export default function MultimodalInputEventTypeTest() {
         expect(true).assertTrue();
         done();
       } catch (error) {
-        console.info("MultimodalInput_InfradeEmirterTransmit_001 catch error is" + error);
+        console.info("MultimodalInput_InfradeEmirterTransmit_0100 catch error is" + error);
         expect(true).assertTrue();
         done();
       }
-      console.info(`MultimodalInput_InfradeEmirterTransmit_001 exit`);
+      console.info(`MultimodalInput_InfradeEmirterTransmit_0100 exit`);
       expect(true).assertTrue();
       done();
     })
 
     /**
-     * @tc.number    : MultimodalInput_InfradeEmirterTransmit_002
+     * @tc.number    : MultimodalInput_InfradeEmirterTransmit_0200
      * @tc.name      : testInfradeEmirterTransmit002
      * @tc.desc      : size of the second para is error
      * @tc.size      : MediumTest
@@ -623,9 +623,9 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_InfradeEmirterTransmit_002', 0, () => {
+    it('MultimodalInput_InfradeEmirterTransmit_0200', 0, () => {
 
-      console.info(`MultimodalInput_InfradeEmirterTransmit_002 enter`);
+      console.info(`MultimodalInput_InfradeEmirterTransmit_0200 enter`);
       try {
         let infraredFrequency: number  = 3800;
         /****** size of second para is bigger than 50 ********/
@@ -634,17 +634,17 @@ export default function MultimodalInputEventTypeTest() {
         expect(true).assertTrue();
         done();
       } catch (error) {
-        console.info("MultimodalInput_InfradeEmirterTransmit_002 catch error is" + error);
+        console.info("MultimodalInput_InfradeEmirterTransmit_0200 catch error is" + error);
         expect(true).assertTrue();
         done();
       }
-      console.info(`MultimodalInput_InfradeEmirterTransmit_002 exit`);
+      console.info(`MultimodalInput_InfradeEmirterTransmit_0200 exit`);
       expect(true).assertTrue();
       done();
     })
 
     /**
-     * @tc.number    : MultimodalInput_InfradeEmirterTransmit_003
+     * @tc.number    : MultimodalInput_InfradeEmirterTransmit_0300
      * @tc.name      : testInfradeEmirterTransmit003
      * @tc.desc      : first para is error
      * @tc.size      : MediumTest
@@ -652,9 +652,9 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_InfradeEmirterTransmit_003', 0, () => {
+    it('MultimodalInput_InfradeEmirterTransmit_0300', 0, () => {
 
-      console.info(`MultimodalInput_InfradeEmirterTransmit_003 enter`);
+      console.info(`MultimodalInput_InfradeEmirterTransmit_0300 enter`);
       try {
         let infraredFrequency: number  = 3800;
         let pattern:Array<number> = [100, 200, -100, 400,500, 600,700, 800, 900, 1000];
@@ -662,11 +662,11 @@ export default function MultimodalInputEventTypeTest() {
         expect(true).assertTrue();
         done();
       } catch (error) {
-        console.info("MultimodalInput_InfradeEmirterTransmit_003 catch error is" + error);
+        console.info("MultimodalInput_InfradeEmirterTransmit_0300 catch error is" + error);
         expect(true).assertTrue();
         done();
       }
-      console.info(`MultimodalInput_InfradeEmirterTransmit_003 exit`);
+      console.info(`MultimodalInput_InfradeEmirterTransmit_0300 exit`);
       expect(true).assertTrue();
       done();
     })
