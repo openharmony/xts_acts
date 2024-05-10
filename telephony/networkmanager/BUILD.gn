@@ -20,11 +20,11 @@ group("networkmanager") {
     "mdns:mdns",
     "ndk:ndk",
     "network:network",
+    "networksecurity:networksecurity",
     "noNet:noNet",
     "noPermission:noPermission",
     "socket:socket",
     "statistics:statistics",
     "websocket:websocket",
-	"networksecurity:networksecurity"
   ]
 }
