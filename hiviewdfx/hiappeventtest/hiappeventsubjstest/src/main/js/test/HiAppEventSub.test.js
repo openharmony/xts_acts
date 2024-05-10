@@ -124,7 +124,8 @@ describe('HiAppEventSubTest', function () {
             }, 10000)
         } catch (err) {
             console.error(`HiAppEventSub67 > error code: ${err.code}, error msg: ${err.message}`);
-            expect(false).assertTrue()
+            expect(false).assertTrue();
+            done();
         }
     });
 
@@ -196,7 +197,8 @@ describe('HiAppEventSubTest', function () {
             }, 10000)
         } catch (err) {
             console.error(`HiAppEventSub68 > error code: ${err.code}, error msg: ${err.message}`);
-            expect(false).assertTrue()
+            expect(false).assertTrue();
+            done();
         }
     })
 
@@ -272,7 +274,8 @@ describe('HiAppEventSubTest', function () {
             }, 10000)
         } catch (err) {
             console.error(`HiAppEventSub69 > error code: ${err.code}, error msg: ${err.message}`);
-            expect(false).assertTrue()
+            expect(false).assertTrue();
+            done();
         }
     })
 
