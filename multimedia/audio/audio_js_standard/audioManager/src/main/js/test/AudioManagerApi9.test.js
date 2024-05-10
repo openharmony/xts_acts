@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import parameter from '@ohos.systemparameter';
 
 import audio from '@ohos.multimedia.audio';
 import {
@@ -49,7 +50,8 @@ export default function audioManagerApi9() {
         let onMicStateChangeFlag3 = null
         let onMicStateChangeFlag4 = null
         let onMicStateChangeFlag5 = null
-
+        let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
+        
         function displayVolumeGroupProp(value, index, array) {
             console.info('audioManagerApi9Test: volume group networkId:' + value.networkId);
             volNetworkId = value.networkId;
@@ -1316,7 +1318,11 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2901', 2, async function (done) {
             try {
-                await audioManager.setVolume(audio.AudioVolumeType.ALARM, 15);
+                if (info != "false"){
+                    await audioManager.setVolume(audio.AudioVolumeType.ALARM, 15);
+                }else{
+                    await audioManager.setVolume(audio.AudioVolumeType.ALARM, 20);
+                }
                 await audioManager.mute(audio.AudioVolumeType.ALARM, true);
                 let data = await audioManager.isMute(audio.AudioVolumeType.ALARM);
                 if (data == false) {
@@ -1372,7 +1378,11 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2902', 2, async function (done) {
             try {
-                await audioManager.setVolume(audio.AudioVolumeType.ALARM, 16);
+                if (info != "false"){
+                    await audioManager.setVolume(audio.AudioVolumeType.ALARM, 16);
+                }else{
+                    await audioManager.setVolume(audio.AudioVolumeType.ALARM, 21);
+                }
                 await audioManager.mute(audio.AudioVolumeType.ALARM, true);
                 let data = await audioManager.isMute(audio.AudioVolumeType.ALARM);
                 if (data == false) {
@@ -1531,7 +1541,11 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3001', 2, async function (done) {
             try {
-                await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 15);
+                if (info != "false"){
+                    await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 15);
+                }else{
+                    await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 20);
+                }
                 await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
                 let data = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
                 if (data == false) {
@@ -1587,7 +1601,11 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3002', 2, async function (done) {
             try {
-                await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 16);
+                if (info != "false"){
+                    await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 16);
+                }else{
+                    await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 21);
+                }
                 await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
                 let data = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
                 if (data == false) {
