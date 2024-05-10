@@ -12,59 +12,80 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import Log from './Log';
+import events_emitter from '@ohos.events.emitter';
+
+const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-struct XComponentType1 {
-  @State XComponentType1: XComponentType = XComponentType.SURFACE
-  private surfaceId : string =''
+struct XcomponentGetXComponentContext {
   xcomponentController: XComponentController = new XComponentController()
 
+  aboutToAppear() {
+    Log.showInfo(TAG, `aboutToAppear XcomponentGetXComponentContext start`)
+  }
+
+  aboutToDisappear() {
+    Log.showInfo(TAG, `aboutToDisAppear XcomponentGetXComponentContext end`)
+  }
+
   build() {
-    Column() {
-      XComponent({
-        id: 'xcomponent1',
-        type: XComponentType.SURFACE,
-        controller: this.xcomponentController
-      }).id('xcomponent_1')
-        .onLoad(() => {
-          this.xcomponentController.setXComponentSurfaceSize({surfaceWidth:1920,surfaceHeight:1080});
-          this.surfaceId = this.xcomponentController.getXComponentSurfaceId()
-          console.log(this.surfaceId)
-        })
-        .width('640px')
-        .height('480px')
-        .margin(5)
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      XComponent({
-        id: 'xcomponent2',
-        type: XComponentType.COMPONENT,
-        controller: this.xcomponentController
-      }).id('xcomponent_2')
-        .onLoad(() => {
-          this.xcomponentController.setXComponentSurfaceSize({surfaceWidth:1920,surfaceHeight:1080});
-          this.surfaceId = this.xcomponentController.getXComponentSurfaceId()
-          console.log(this.surfaceId)
+      Text("xcomponent-GetXComponentContext")
+        .width(100)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("getXComponentContextText")
+        .onClick(() => {
+          try {
+            Log.showInfo(TAG, 'xcomponentController.getXComponentContext' + JSON.stringify(this.xcomponentController.getXComponentContext()))
+            let result = (this.xcomponentController.getXComponentContext() != null)
+            let backData: events_emitter.EventData = {
+              data: {
+                "STATUS": "callBackSuccess"
+              }
+            }
+            let backEvent: events_emitter.InnerEvent = {
+              eventId: 60228,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("xcomponentController start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("xcomponentController emit action state err: " + JSON.stringify((err as Error)?.message))
+          }
         })
-        .width('640px')
-        .height('480px')
-        .margin(5)
 
-      XComponent({
-        id: 'xcomponent3',
-        type: XComponentType.TEXTURE,
-        controller: this.xcomponentController
-      }).id('xcomponent_3')
-        .onLoad(() => {
-          this.xcomponentController.setXComponentSurfaceSize({surfaceWidth:1920,surfaceHeight:1080});
-          this.surfaceId = this.xcomponentController.getXComponentSurfaceId()
-          console.log(this.surfaceId)
+      Text("xcomponent-SetXComponentSurfaceSize")
+        .width(100)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("setXComponentSurfaceSizeText")
+        .onClick(() => {
+          this.xcomponentController.setXComponentSurfaceSize({
+            surfaceWidth: 200,
+            surfaceHeight: 200
+          })
         })
-        .width('640px')
-        .height('480px')
-        .margin(5)
-    }
-    .backgroundColor(Color.Black)
-    .position({x: 0, y: 48})
+
+    }.width("100%").height("100%")
   }
 }
