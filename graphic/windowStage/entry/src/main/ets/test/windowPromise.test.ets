@@ -188,7 +188,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ')', done);
         });
         await sleep(900);
-        await sleep(800);
         console.log(msgStr + 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ') success');
       }
 

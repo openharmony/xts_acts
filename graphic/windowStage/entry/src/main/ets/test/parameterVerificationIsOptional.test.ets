@@ -241,6 +241,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await sleep(800);
       await sleep(800);
       await sleep(800);
+      await sleep(600);
       await buttonClick("点击pageOne", msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
@@ -454,7 +455,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done();
       })
       console.error(msgStr + 'num : ' + num);
-      await sleep(900);
+      await sleep(500);
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await (tempWnd as ohosWindow.Window).destroyWindow();
         done();
@@ -521,7 +522,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         await (tempWnd as ohosWindow.Window).destroyWindow();
         done();
       })
-      await sleep(900);
+      await sleep(500);
       if (!firstListenFlag && secondListenFlag) {
         (tempWnd as ohosWindow.Window).off('windowSizeChange');
         await (tempWnd as ohosWindow.Window).destroyWindow();
@@ -579,7 +580,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (tempWnd as ohosWindow.Window).setSystemBarEnable([]).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([navigation])', TRUE_FLAG, done);
       });
-      await sleep(900);
+      await sleep(500);
       await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', TRUE_FLAG, done);
       });
