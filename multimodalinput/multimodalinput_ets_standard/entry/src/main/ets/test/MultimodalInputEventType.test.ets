@@ -587,8 +587,8 @@ export default function MultimodalInputEventTypeTest() {
     })
 
     /**
-     * @tc.number    : MultimodalInput_InfradeEmirterTransmit_001
-     * @tc.name      : Verify that the transmitInfrared interface whether can deal the wrong parameter while the first parameter is negative
+     * @tc.number    : MultimodalInput_InfradeEmirterTransmit_0100
+     * @tc.name      : testInfradeEmirterTransmit001
      * @tc.desc      : first para is error
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -616,7 +616,7 @@ export default function MultimodalInputEventTypeTest() {
 
     /**
      * @tc.number    : MultimodalInput_InfradeEmirterTransmit_002
-     * @tc.name      : Verify that the transmitInfrared interface whether can deal the wrong parameter while size of array is bigger than 50
+     * @tc.name      : testInfradeEmirterTransmit002
      * @tc.desc      : size of the second para is error
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -645,7 +645,7 @@ export default function MultimodalInputEventTypeTest() {
 
     /**
      * @tc.number    : MultimodalInput_InfradeEmirterTransmit_003
-     * @tc.name      : Verify that the transmitInfrared interface whether can deal the wrong parameter while array has negative nubmer.
+     * @tc.name      : testInfradeEmirterTransmit003
      * @tc.desc      : first para is error
      * @tc.size      : MediumTest
      * @tc.type      : Function
