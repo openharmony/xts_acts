@@ -232,7 +232,7 @@ export default function wantSupportModuleNameTest() {
           .then(async () => {
             await installFeatureHap(installFeatureHapCmd)
               .then(async data => {
-				await sleep(1000)
+                await sleep(1000)
                 await executeShellCmd(startAbilityFeatureCmd)
                   .then(result => {
                     hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbilityFeature ablilityresult : ${JSON.stringify(result)}`);
@@ -300,7 +300,7 @@ export default function wantSupportModuleNameTest() {
           .then(async () => {
             await installFeatureHap(installFeatureHapCmd)
               .then(async data => {
-				await sleep(1000)
+                await sleep(1000)
                 await executeShellCmd(startAbilityFeatureCmd)
                   .then(result => {
                     hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbilityFeature result : ${JSON.stringify(result)}`);
