@@ -761,12 +761,11 @@ struct WebViewControllerPart3 {
 
             case "testPageDown002": {
               try {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("tablet")) {
-                  Utils.emitEvent(true, 100064)
-                  break;
-                }
                 this.controller.loadUrl($rawfile('indexCopyTwo.html'))
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("Tablet")) {
+                  this.controller.loadUrl($rawfile('indexCopyTablet.html'))
+                }
                 await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   if (error) {
@@ -776,7 +775,7 @@ struct WebViewControllerPart3 {
                   console.log(`The checkVIsible() return value is: ${result}`);
                 })
                 this.controller.pageDown(true);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   if (error) {
                     console.error(`The checkVIsible() return value is: error`);
@@ -844,15 +843,14 @@ struct WebViewControllerPart3 {
 
             case "testPageUp002": {
               try {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("tablet")) {
-                  Utils.emitEvent(true, 100066)
-                  break;
-                }
                 this.controller.loadUrl($rawfile('indexCopyTwo.html'))
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("Tablet")) {
+                  this.controller.loadUrl($rawfile('indexCopyTablet.html'))
+                }
                 await Utils.sleep(3000)
                 this.controller.pageDown(true);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   if (error) {
                     console.error(`The checkVIsible() return value is: error`);
@@ -862,7 +860,7 @@ struct WebViewControllerPart3 {
                   this.checkEleResult = JSON.parse(result)
                 })
                 this.controller.pageUp(true);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   if (error) {
                     console.error(`The checkVIsible() return value is: error`);
