@@ -63,14 +63,15 @@ struct cameraOrientation {
       // 图像置为黑色
       this.assetUri = ''
       this.imageRotation = this.imageRotation + 90
+      if (this.imageRotation > 270 && this.clickFrequency > 3) {
+        this.imageRotation = 0
+      }
       if (this.cameraListLength > 1) {
         if (this.imageRotation > 270 && this.clickFrequency > 3) {
           this.imageRotation = 0
           this.cameraDeviceIndex = 1
           CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex)
         }
-      } else {
-          this.imageRotation = 0
       }
     }
   }
