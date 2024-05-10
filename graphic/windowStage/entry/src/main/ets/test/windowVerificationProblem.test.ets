@@ -545,7 +545,7 @@ export default function windowVerificationProblemTest(context, windowStage, abil
         console.log(msgStr + 'tempWnd.resize failed Cause: ' + JSON.stringify(err));
         expect().assertFail();
       });
-      await sleep(1000)
+      await sleep(800)
       let properties = tempWnd.getWindowProperties();
       console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
       expect(properties.windowRect.width !== 10).assertEqual(true)

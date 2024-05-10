@@ -523,7 +523,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
             return;
           }
           console.info(msgStr + 'Succeeded in moving the window.');
-          await sleep(1000)
+          await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.left).assertEqual(100)
@@ -586,7 +586,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
             return;
           }
           console.info(msgStr + 'Succeeded in moving the window.');
-          await sleep(1000)
+          await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.left).assertEqual(205)
@@ -649,7 +649,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
             return;
           }
           console.info(msgStr + 'Succeeded in moving the window.');
-          await sleep(1000)
+          await sleep(900)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.left).assertEqual(-105)
@@ -705,7 +705,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.left).assertEqual(100)
@@ -758,7 +758,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.left).assertEqual(205)
@@ -811,7 +811,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.left).assertEqual(-105)
@@ -945,7 +945,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error('Failed to change the window size. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(100)
@@ -998,7 +998,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error('Failed to change the window size. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(205)
@@ -1052,7 +1052,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error('Failed to change the window size. Cause: ' + JSON.stringify(err));
           expect(err.code).assertEqual(401)
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(0)
@@ -1112,7 +1112,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
             return;
           }
           console.info(msgStr + 'Succeeded in changing the window size.');
-          await sleep(1000)
+          await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.width).assertEqual(100)
@@ -1175,7 +1175,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
             return;
           }
           console.info(msgStr + 'Succeeded in changing the window size.');
-          await sleep(1000)
+          await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.width).assertEqual(205)
@@ -2533,7 +2533,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
             return;
           }
           console.info(msgStr + 'Succeeded in moving the window.');
-          await sleep(1000)
+          await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.left).assertEqual(100)
@@ -2596,7 +2596,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
             return;
           }
           console.info(msgStr + 'Succeeded in moving the window.');
-          await sleep(1000)
+          await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.left).assertEqual(205)
@@ -2659,7 +2659,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
             return;
           }
           console.info(msgStr + 'Succeeded in moving the window.');
-          await sleep(1000)
+          await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.left).assertEqual(-105)
@@ -2715,7 +2715,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.left).assertEqual(100)
@@ -2768,7 +2768,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.left).assertEqual(205)
@@ -2821,7 +2821,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.left).assertEqual(-105)
@@ -2955,7 +2955,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error('Failed to change the window size. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width!==100).assertEqual(true)
@@ -3009,7 +3009,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           console.error('Failed to change the window size. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width!==205).assertEqual(true)
@@ -3121,7 +3121,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
             return;
           }
           console.info(msgStr + 'Succeeded in changing the window size.');
-          await sleep(1000)
+          await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.width!==100).assertEqual(true)
@@ -3185,7 +3185,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
             return;
           }
           console.info(msgStr + 'Succeeded in changing the window size.');
-          await sleep(1000)
+          await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.width!==205).assertEqual(true)

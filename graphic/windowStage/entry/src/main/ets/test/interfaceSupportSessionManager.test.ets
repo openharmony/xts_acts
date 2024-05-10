@@ -719,7 +719,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.log(msgStr + 'tempWnd.resize failed Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(900)
         let properties = tempWnd.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(windowLimits.maxWidth)
@@ -1023,7 +1023,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.log(msgStr + 'tempWnd.resize failed Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(900)
         let properties = tempWnd.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(windowLimits.maxWidth)
@@ -1092,7 +1092,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
             return;
           }
           console.info(msgStr + 'Succeeded in changing the window size.');
-          await sleep(1000)
+          await sleep(900)
           let properties = subMin.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.width).assertEqual(_width)
@@ -1166,7 +1166,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
             return;
           }
           console.info(msgStr + 'Succeeded in changing the window size.');
-          await sleep(1000)
+          await sleep(900)
           let properties = subMin.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.width).assertEqual(_width)
@@ -1232,7 +1232,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(900)
         let properties = subMin.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(windowLimits.maxWidth)
@@ -1293,7 +1293,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(900)
         let properties = subMin.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(windowLimits.minWidth)
