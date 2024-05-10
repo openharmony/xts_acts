@@ -19,6 +19,7 @@ import commonEventManager from '@ohos.commonEventManager';
 
 const NAME = "Sample_002";
 
+@Sendable
 export default class Sample_002 extends StartupTask {
   async init(context) {
     hilog.info(0x0000, 'StartupTest', '%{public}s', NAME);

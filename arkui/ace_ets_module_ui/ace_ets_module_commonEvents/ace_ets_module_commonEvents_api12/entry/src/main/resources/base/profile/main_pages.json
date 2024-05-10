@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/DragController/APIPreDragStatus"
+        "MainAbility/pages/DragController/APIPreDragStatus",
+        "MainAbility/pages/addGestureApplyGesture"
     ]
 }

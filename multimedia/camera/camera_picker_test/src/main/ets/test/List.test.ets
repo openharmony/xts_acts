@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 import cameraPicker from './CameraPicker.test'
+import cameraPickerPc from './CameraPickerPc.test'
+import parameter from '@ohos.systemparameter';
+let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
 
-export default function testsuite() {
-  cameraPicker()
+export default async function testsuite() {
+    if (info != "false"){
+        cameraPicker()
+    }else{
+        cameraPickerPc()
+    }
 }

@@ -71,9 +71,9 @@ export default function relationalStoreDataGroupIdCallback() {
             console.info(TAG, `Get RdbStore failed.` + `  rdbStore = ${rdbStore} , err = ${err}`);
             expect().assertFail();
           }
+          done();
           expect(rdbStore != undefined).assertTrue();
           await relationalStore.deleteRdbStore(context, STORE_CONFIG);
-		  done();
         })
       } catch (errInfo) {
         console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
@@ -105,7 +105,7 @@ export default function relationalStoreDataGroupIdCallback() {
           }
           expect(rdbStore != undefined).assertTrue();
           await relationalStore.deleteRdbStore(context, STORE_CONFIG);
-		  done();
+          done();
         })
       } catch (errInfo) {
         console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);

@@ -104,7 +104,7 @@ export default function buttonJsunit() {
         console.info("[testButton05] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton05] change component data error: " + err.message);
+        console.log("[testButton05] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button');
@@ -130,7 +130,7 @@ export default function buttonJsunit() {
         console.info("[testButton06] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton06] change component data error: " + err.message);
+        console.log("[testButton06] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button2');
@@ -156,7 +156,7 @@ export default function buttonJsunit() {
         console.info("[testButton07] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton07] change component data error: " + err.message);
+        console.log("[testButton07] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button2');
@@ -182,7 +182,7 @@ export default function buttonJsunit() {
         console.info("[testButton08] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton08] change component data error: " + err.message);
+        console.log("[testButton08] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button2');
@@ -208,7 +208,7 @@ export default function buttonJsunit() {
         console.info("[testButton09] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton09] change component data error: " + err.message);
+        console.log("[testButton09] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button2');
@@ -233,7 +233,7 @@ export default function buttonJsunit() {
         console.info("testButton10 start to publish emit");
         events_emitter.emit(indexEventOne, eventData);
       } catch (err) {
-        console.log("testButton10 change component data error: " + err.message);
+        console.log("testButton10 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let indexEvent: events_emitter.InnerEvent = {
@@ -242,7 +242,7 @@ export default function buttonJsunit() {
       }
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testButton10 get state result is: " + JSON.stringify(indexEvent))
-        expect(indexEvent.data.fontColorValue).assertEqual(Color.Pink)
+        expect(indexEvent.data?.fontColorValue).assertEqual(Color.Pink)
         done();
       }
       try {
@@ -270,16 +270,16 @@ export default function buttonJsunit() {
         console.info("testButton11 start to publish emit");
         events_emitter.emit(indexEventOne, eventData);
       } catch (err) {
-        console.log("testButton11 change component data error: " + err.message);
+        console.log("testButton11 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 71,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testButton11 get state result is: " + JSON.stringify(indexEvent))
-        expect(indexEvent.data.fontColorValue).assertEqual(332)
+        expect(indexEvent.data?.fontColorValue).assertEqual(332)
         done();
       }
       try {
@@ -305,21 +305,21 @@ export default function buttonJsunit() {
       await Utils.sleep(500);
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[testButton12] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual(true)
-        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data.event)
+        expect(eventData.data?.ACTION).assertEqual(true)
+        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data?.event)
           .screenY));
-        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data.event)
+        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data?.event)
           .screenX));
-        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data.event).x));
-        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data.event).y));
+        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data?.event).x));
+        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data?.event).y));
 
-        let ScreenX = JSON.parse(eventData.data.event).screenX
-        let ScreenY  = JSON.parse(eventData.data.event).screenY
+        let ScreenX: number = JSON.parse(eventData.data?.event).screenX
+        let ScreenY: number = JSON.parse(eventData.data?.event).screenY
         try {
             expect(Math.abs(vp2px(ScreenX) - point.x + globalThis.winLeft) <= 1).assertTrue()
             expect(Math.abs(vp2px(ScreenY) - point.y + globalThis.winTop)  <= 1).assertTrue()
-            expect(Math.trunc(JSON.parse(eventData.data.event).x)).assertEqual(100)
-            expect(Math.trunc(JSON.parse(eventData.data.event).y)).assertEqual(50)
+            expect(Math.trunc(JSON.parse(eventData.data?.event).x)).assertEqual(100)
+            expect(Math.trunc(JSON.parse(eventData.data?.event).y)).assertEqual(50)
         } catch (err) {
           console.info("[testButton12_] expection err : " + JSON.stringify(err));
           expect().assertFail();
@@ -356,7 +356,7 @@ export default function buttonJsunit() {
         console.info("[testButton13] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton13] change component data error: " + err.message);
+        console.log("[testButton13] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button');
@@ -384,7 +384,7 @@ export default function buttonJsunit() {
         console.info("[testButton14] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testButton14] change component data error: " + err.message);
+        console.log("[testButton14] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('button');
@@ -411,7 +411,7 @@ export default function buttonJsunit() {
         console.info("testButton15 start to publish emit");
         events_emitter.emit(indexEventOne, eventData);
       } catch (err) {
-        console.log("testButton15 change component data error: " + err.message);
+        console.log("testButton15 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(500);
       let indexEvent: events_emitter.InnerEvent = {
@@ -420,8 +420,8 @@ export default function buttonJsunit() {
       }
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testButton15 get state result is: " + JSON.stringify(indexEvent))
-        console.info("testButton15 indexEvent.data.fontColorValue is: " + indexEvent.data.fontColorValue)
-        expect(indexEvent.data.fontColorValue).assertEqual("ab996")
+        console.info("testButton15 indexEvent.data.fontColorValue is: " + indexEvent.data?.fontColorValue)
+        expect(indexEvent.data?.fontColorValue).assertEqual("ab996")
         console.info('[testButton15] END');
         done();
       }

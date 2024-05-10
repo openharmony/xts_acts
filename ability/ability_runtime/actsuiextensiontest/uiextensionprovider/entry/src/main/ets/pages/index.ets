@@ -34,7 +34,7 @@ let failcount = 0;
 struct Index {
   @State message: string = 'UIExtension'
   private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session');
-  
+
   aboutToAppear() {
 	let options = {
       parameters: {
@@ -45,6 +45,7 @@ struct Index {
         preferencesDir: context.preferencesDir,
         bundleCodeDir: context.bundleCodeDir,
         distributedFilesDir: context.distributedFilesDir,
+        cloudFileDir: context.cloudFileDir,
         stageMode: context.stageMode,
         area: context.area,
         eventHub: context.eventHub
@@ -55,6 +56,7 @@ struct Index {
     })
     let appearEvent = 'ACTS_UIExtension_AboutToAppear';
     let terminateSelfWithResultEvent = 'ACTS_UIExtension_TerminateSelfWithResult';
+    let reportDrawnCompletedEvent = 'ACTS_UIExtension_ReportDrawnCompleted';
     let sendDataEvent = 'ACTS_UIExtension_SendData';
     let startAbilityEvent1 = 'ACTS_UIExtension_StartAbility_001';
     let startAbilityEvent2 = 'ACTS_UIExtension_StartAbility_002';
@@ -87,10 +89,10 @@ struct Index {
     var startresult = false;
     var subscribeInfo = {
     events: [startAbilityEvent1, startAbilityEvent2, startAbilityEvent3,
-                  startAbilityEvent4, startAbilityForResultEvent1, 
+                  startAbilityEvent4, startAbilityForResultEvent1,
                   startAbilityForResultEvent2, startAbilityForResultEvent3,
-                  startAbilityForResultEvent4, terminateSelfWithResultEvent,MoreParamaterEvent,
-                  sendDataEvent,connectAbilityEvent,connectExceptionEvent,disConnectEvent,
+                  startAbilityForResultEvent4, terminateSelfWithResultEvent, reportDrawnCompletedEvent,
+                  MoreParamaterEvent, sendDataEvent,connectAbilityEvent,connectExceptionEvent,disConnectEvent,
                   sameAppEvent,differentAppEvent,differentAppEvent002,differentAppEvent003,
                   differentAppEvent004,differentAppEvent005,differentAppEvent006,
                   differentAppEvent008,differentAppEvent010,deviceEvent01,deviceEvent02,
@@ -128,6 +130,10 @@ struct Index {
           }).catch((err)=>{
             console.log(TAG + "terminateSelfPromise : " + JSON.stringify(err));
           })
+        } else if (data.event == reportDrawnCompletedEvent) {
+          globalThis.context2.reportDrawnCompleted((err, data) => {
+            console.log(TAG + "reportDrawnCompleted : " + JSON.stringify(data));
+          });
         } else if (data.event == "terminateSelfCallback") {
           this.session.terminateSelf((err, data)=>{
             console.log(TAG + "terminateSelfCallback : " + JSON.stringify(data));
@@ -175,7 +181,7 @@ struct Index {
             }).then((data)=>{
               console.log(TAG + "====>startAbilityEvent3 end====>");
               console.log(TAG + "====>data is====>" + JSON.stringify(data));
-            }); 
+            });
             commonEventManager.unsubscribe(subscriber, async (err, data) => {
               console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
             });
@@ -303,7 +309,7 @@ struct Index {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doConnectExceptionEvent();
-          let waitTime = 1000; 
+          let waitTime = 1000;
           setTimeout(async () => {
             console.log("timeout failcount = " + failcount);
             if(failcount == 0){
@@ -312,62 +318,62 @@ struct Index {
               commonEventManager.publish(failExceptionEvent, (err) => { });
             }
           }, waitTime);
-        } else if (data.event == disConnectEvent) { 
+        } else if (data.event == disConnectEvent) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDisConnectEvent();
-        } else if (data.event == sameAppEvent) { 
+        } else if (data.event == sameAppEvent) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doSameAppEvent();
-        } else if (data.event == differentAppEvent) { 
+        } else if (data.event == differentAppEvent) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDifferentAppEvent();
-        } else if (data.event == differentAppEvent002) { 
+        } else if (data.event == differentAppEvent002) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDifferentAppEvent002();
-        } else if (data.event == differentAppEvent003) { 
+        } else if (data.event == differentAppEvent003) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDifferentAppEvent003();
-        } else if (data.event == differentAppEvent004) { 
+        } else if (data.event == differentAppEvent004) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDifferentAppEvent004();
-        } else if (data.event == differentAppEvent005) { 
+        } else if (data.event == differentAppEvent005) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDifferentAppEvent005();
-        } else if (data.event == differentAppEvent006) { 
+        } else if (data.event == differentAppEvent006) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDifferentAppEvent006();
-        } else if (data.event == differentAppEvent008) { 
+        } else if (data.event == differentAppEvent008) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDifferentAppEvent008();
-        } else if (data.event == differentAppEvent010) { 
+        } else if (data.event == differentAppEvent010) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDifferentAppEvent010();
-        } else if (data.event == deviceEvent01) { 
+        } else if (data.event == deviceEvent01) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDeviceEvent01();
-        } else if (data.event == deviceEvent02) { 
+        } else if (data.event == deviceEvent02) {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
@@ -497,7 +503,7 @@ struct Index {
     };
     this.testParamException(newWant,options);
     newWant = {
-      "bundleName": "com.test.uiextensionservice", 
+      "bundleName": "com.test.uiextensionservice",
       "abilityName": "TestServiceExtAbility"
     };
     this.testParamException(newWant,options);
@@ -518,7 +524,7 @@ struct Index {
     this.testParamException(newWant,options);
     newWant = {
       "bundleName": "com.acts.uiextensionservice",
-      "abilityName": "ServiceExtAbility"  
+      "abilityName": "ServiceExtAbility"
     };
     this.testParamException(newWant,options);
     newWant = {
@@ -579,7 +585,7 @@ struct Index {
       console.info('disconnect success..');
     }).catch((err) => {
       console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
-      commonEventManager.publish(failDisconnectEvent, (err) => { }); 
+      commonEventManager.publish(failDisconnectEvent, (err) => { });
       return;
     });
 
@@ -601,7 +607,7 @@ struct Index {
     globalThis.context2.disconnectServiceExtensionAbility(connectid, (err) => {
       if (err.code) {
         console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
-        commonEventManager.publish(failDisconnectEvent, (err) => { }); 
+        commonEventManager.publish(failDisconnectEvent, (err) => { });
         return;
       }
       console.info('disconnectServiceExtensionAbility succeed');
@@ -662,7 +668,7 @@ struct Index {
     }).catch((err) => {
       console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
       if(err.code != ERROR_CODE_INTERNAL){
-        commonEventManager.publish(failDisconnectEvent, (err) => { });   
+        commonEventManager.publish(failDisconnectEvent, (err) => { });
         return;
       }
     });
@@ -759,7 +765,7 @@ struct Index {
     await this.sleep(400);
     await globalThis.context2.disconnectServiceExtensionAbility(connectid).then(() => {
     }).catch((err) => {
-      commonEventManager.publish(failDifferentAppEvent, (err) => { });   
+      commonEventManager.publish(failDifferentAppEvent, (err) => { });
       return;
     });
     commonEventManager.publish(successDifferentAppEvent, (err) => { });
@@ -816,7 +822,7 @@ struct Index {
       onConnect(elementName, remote) {
       },
       onDisconnect(elementName) {
-        commonEventManager.publish(successDifferentAppEvent004, (err) => { }); 
+        commonEventManager.publish(successDifferentAppEvent004, (err) => { });
       },
       onFailed(code) {
       }
@@ -861,7 +867,7 @@ struct Index {
       onDisconnect(elementName) {
       },
       onFailed(code) {
-        commonEventManager.publish(successDifferentAppEvent006_unvisible, (err) => { }); 
+        commonEventManager.publish(successDifferentAppEvent006_unvisible, (err) => { });
         console.info('successDifferentAppEvent006_unvisible___')
       }
     }
@@ -871,7 +877,7 @@ struct Index {
     };
     let options = {
       onConnect(elementName, remote) {
-        commonEventManager.publish(successDifferentAppEvent006_visible, (err) => { }); 
+        commonEventManager.publish(successDifferentAppEvent006_visible, (err) => { });
         console.info('successDifferentAppEvent006_visible___' + elementName);
       },
       onDisconnect(elementName) {
@@ -897,7 +903,7 @@ struct Index {
       onDisconnect(elementName) {
       },
       onFailed(code) {
-        commonEventManager.publish(successDifferentAppEvent008_unvisible, (err) => { }); 
+        commonEventManager.publish(successDifferentAppEvent008_unvisible, (err) => { });
         console.info('successDifferentAppEvent006_unvisible___')
       }
     }
@@ -907,7 +913,7 @@ struct Index {
     };
     let options = {
       onConnect(elementName, remote) {
-        commonEventManager.publish(successDifferentAppEvent008_visible, (err) => { }); 
+        commonEventManager.publish(successDifferentAppEvent008_visible, (err) => { });
         console.info('successDifferentAppEvent006_visible___' + elementName);
       },
       onDisconnect(elementName) {
@@ -936,7 +942,7 @@ struct Index {
     };
     let options = {
       onConnect(elementName, remote) {
-        commonEventManager.publish(successDifferentAppEvent010_ext1, (err) => { }); 
+        commonEventManager.publish(successDifferentAppEvent010_ext1, (err) => { });
       },
       onDisconnect(elementName) {
       },
@@ -957,19 +963,19 @@ struct Index {
     let options = {
       onConnect(elementName, remote) {
         console.log(TAG + '___connect success');
-        commonEventManager.publish(canBackToDesktop, (err) => { }); 
+        commonEventManager.publish(canBackToDesktop, (err) => { });
       },
       onDisconnect(elementName) {
-        commonEventManager.publish(failBackToDesktop, (err) => { }); 
+        commonEventManager.publish(failBackToDesktop, (err) => { });
       },
       onFailed(code) {
-        commonEventManager.publish(failBackToDesktop, (err) => { }); 
+        commonEventManager.publish(failBackToDesktop, (err) => { });
       }
     }
     globalThis.context2.connectServiceExtensionAbility(want, options);
     await this.sleep(400)
     setTimeout(async () => {
-      commonEventManager.publish(successBackToDesktop, (err) => { }); 
+      commonEventManager.publish(successBackToDesktop, (err) => { });
     }, 200);
   }
 
@@ -984,15 +990,15 @@ struct Index {
     let options = {
       onConnect(elementName, remote) {
         console.log(TAG + '___connect success');
-        commonEventManager.publish(canOffTheScreen, (err) => { }); 
+        commonEventManager.publish(canOffTheScreen, (err) => { });
       },
       onDisconnect(elementName) {
         console.log(TAG + '___failOffTheScreen Event onDisconnect');
-        commonEventManager.publish(failOffTheScreen, (err) => { }); 
+        commonEventManager.publish(failOffTheScreen, (err) => { });
       },
       onFailed(code) {
         console.log(TAG + '___failOffTheScreen Event onFailed');
-        commonEventManager.publish(failOffTheScreen, (err) => { }); 
+        commonEventManager.publish(failOffTheScreen, (err) => { });
       }
     }
     globalThis.context2.connectServiceExtensionAbility(want, options);
@@ -1000,7 +1006,7 @@ struct Index {
 
     setTimeout(async () => {
       console.log(TAG + '___successOffTheScreen Event');
-      commonEventManager.publish(successOffTheScreen, (err) => { }); 
+      commonEventManager.publish(successOffTheScreen, (err) => { });
     }, 200);
   }
 
@@ -1029,7 +1035,7 @@ struct Index {
   testParamException(want,options){
     try {
       globalThis.context2.connectServiceExtensionAbility(want, options);
-      failcount += 1; 
+      failcount += 1;
     } catch (error) {
       console.info(error.code +":"+error.message);
       if(error.code != ERROR_CODE_INVALID_PARAM){

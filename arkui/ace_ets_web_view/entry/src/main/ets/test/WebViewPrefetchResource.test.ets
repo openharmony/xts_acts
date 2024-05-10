@@ -32,7 +32,7 @@ export default function webViewControllerPart3Test() {
         if (!("WebViewPrefetchResource" == pages.name)) {
           console.info("get WebViewPrefetchResource state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await Utils.sleep(900);
           console.info("push WebViewPrefetchResource page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -42,7 +42,7 @@ export default function webViewControllerPart3Test() {
     });
 
     beforeEach(async (done: Function) => {
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       console.info("WebViewPrefetchResource beforeEach start");
       done();
     })
@@ -57,7 +57,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource001', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource001", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource001", true, 10080, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -71,7 +71,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource002', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource002", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource001", true, 10081, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -85,7 +85,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource003', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource003", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource003", "17100002", 10082, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -99,7 +99,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource004', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource004", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource004", "401", 10083, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -113,7 +113,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource005', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource005", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource005", "17100002", 10084, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -127,7 +127,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource006', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource006", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource006", "17100002", 10085, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -141,7 +141,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource007', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource007", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource007", "401", 10086, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -155,7 +155,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource008', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource008", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource008", "401", 10087, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -169,7 +169,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource009', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource009", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource009", "401", 10088, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -183,7 +183,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource010', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource010", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource010", "401", 10089, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -197,7 +197,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource011', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource011", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource011", true, 10090, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })
@@ -211,7 +211,7 @@ export default function webViewControllerPart3Test() {
     */
     it('testPrefetchResource012', 0, async (done: Function) => {
       Utils.emitEvent("testPrefetchResource012", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(500);
       Utils.registerEvent("testPrefetchResource012", '401', 10091, done);
       sendEventByKey('WebViewPrefetchResourceTestButton', 10, '');
     })

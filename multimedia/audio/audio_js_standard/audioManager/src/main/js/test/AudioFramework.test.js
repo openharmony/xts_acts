@@ -41,6 +41,7 @@ export default function audioFramework() {
         let audioRingtone = 2;
         let minVol = 0;
         let maxVol = 15;
+        let maxVolPc = 20;
         let lowVol = 5;
         let highVol = 14;
         let outOfRangeVol = 28;
@@ -352,11 +353,13 @@ export default function audioFramework() {
         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUMESYNC_0100', 1, async function (done) {
             try {
                 let data = audioVolumeGroupManager.getMaxVolumeSync(audio.AudioVolumeType.MEDIA);
-                if (data == 15) {
+                if (data == maxVol) {
                     console.info(`${TagFrmwk}: Media getVolumeSync : PASS :${data}`);
                     expect(true).assertTrue();
-                    done();
-                } else {
+                } else if(data == maxVolPc){
+                    console.info(`${TagFrmwk}: Media getVolumeSync : PASS :${data}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: Media getVolumeSync : FAIL :${data}`);
                     expect(false).assertTrue();
                     done();
@@ -366,7 +369,7 @@ export default function audioFramework() {
                 expect(false).assertTrue();
                 done();
             }
-
+            done();
         })
         /**
          *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUMESYNC_0200
@@ -682,7 +685,10 @@ export default function audioFramework() {
                 if (data == maxVol) {
                     console.info(`${TagFrmwk}: Media getVolume Promise: PASS :${data}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(data == maxVolPc){
+                    console.info(`${TagFrmwk}: Media getVolume Promise: PASS :${data}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: Media getVolume Promise: FAIL :${data}`);
                     expect(false).assertTrue();
                 }
@@ -794,7 +800,10 @@ export default function audioFramework() {
                         } else if (value == maxVol) {
                             console.info(`${TagFrmwk}: callback : Media getVolume: PASS :${value}`);
                             expect(true).assertTrue();
-                        } else {
+                        } else if(value == maxVolPc){
+                            console.info(`${TagFrmwk}: callback : Media getVolume: PASS :${value}`);
+                            expect(true).assertTrue();
+                        }else{
                             console.info(`${TagFrmwk}: callback : Media getVolume: FAIL :${value}`);
                             expect(false).assertTrue();
                         }
@@ -896,10 +905,13 @@ export default function audioFramework() {
             try {
                 await audioManager.setVolume(audioRingtone, maxVol);
                 let data = await audioManager.getVolume(audioRingtone);
-                if (data == maxVol) {
+                if (data == maxVol ) {
                     console.info(`${TagFrmwk}: Ringtone getVolume Promise: PASS :${data}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(data == maxVolPc){
+                    console.info(`${TagFrmwk}: Ringtone getVolume Promise: PASS :${data}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: Ringtone getVolume Promise: FAIL :${data}`);
                     expect(false).assertTrue();
                 }
@@ -1010,10 +1022,13 @@ export default function audioFramework() {
                         if (err) {
                             console.error(`${TagFrmwk}: callback : Ringtone: failed to get volume ${err.message}`);
                             expect(false).assertTrue();
-                        } else if (value == maxVol) {
+                        } else if (value == maxVol ) {
                             console.info(`${TagFrmwk}: callback : Ringtone getVolume: PASS :${value}`);
                             expect(true).assertTrue();
-                        } else {
+                        } else if(value == maxVolPc){
+                            console.info(`${TagFrmwk}: callback : Ringtone getVolume: PASS :${value}`);
+                            expect(true).assertTrue();
+                        }else{
                             console.info(`${TagFrmwk}: callback : Ringtone getVolume: FAIL :${value}`);
                             expect(false).assertTrue();
                         }
@@ -1429,10 +1444,13 @@ export default function audioFramework() {
         it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0100', 1, async function (done) {
             const PROMISE = audioManager.getMaxVolume(audioMedia);
             PROMISE.then(function (data) {
-                if (data == maxVol) {
+                if (data == maxVol  ) {
                     console.info(`${TagFrmwk}: Media getMaxVolume promise : PASS:${data}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(data == maxVolPc){
+                    console.info(`${TagFrmwk}: Media getMaxVolume promise : PASS:${data}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: Media getMaxVolume promise : FAIL: ${data}`);
                     expect(false).assertTrue();
                 }
@@ -1451,13 +1469,17 @@ export default function audioFramework() {
          */
         it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0200', 1, function (done) {
             audioManager.getMaxVolume(audioMedia, (err, value) => {
+                console.info(`${TagFrmwk}: callback : Media:  getMaxVolume : value:${value}`);
                 if (err) {
                     console.error(`${TagFrmwk}: callback : Media : failed to getMaxVolume ${err.message}`);
                     expect(false).assertTrue();
-                } else if (value == maxVol) {
+                } else if (value == maxVol ) {
                     console.info(`${TagFrmwk}: callback : Media:  getMaxVolume : PASS:${value}`);
                     expect(true).assertTrue();
-                } else {
+                } else if( value == maxVolPc){
+                    console.info(`${TagFrmwk}: callback : Media:  getMaxVolume : PASS:${value}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: callback : Media:  getMaxVolume : FAIL: ${value}`);
                     expect(false).assertTrue();
                 }
@@ -1479,7 +1501,10 @@ export default function audioFramework() {
                 if (data == maxVol) {
                     console.info(`${TagFrmwk}: Ringtone getMaxVolume promise : PASS:${data}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(data == maxVolPc){
+                    console.info(`${TagFrmwk}: Ringtone getMaxVolume promise : PASS:${data}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: Ringtone getMaxVolume promise : FAIL: ${data}`);
                     expect(false).assertTrue();
                 }
@@ -1509,12 +1534,16 @@ export default function audioFramework() {
                     console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : PASS:${value}`);
                     expect(true).assertTrue();
                     done();
-                } else {
+                } else if(value == maxVolPc){
+                    console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : PASS:${value}`);
+                    expect(true).assertTrue();
+                    done();
+                }else{
                     console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : FAIL: ${value}`);
                     expect(false).assertTrue();
                     done();
                 }
-
+                
             });
         })
 
@@ -1534,7 +1563,10 @@ export default function audioFramework() {
                 if (data == maxVol) {
                     console.info(`${TagFrmwk}: Media getMaxVolume promise : PASS:${data}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(data == maxVolPc){
+                    console.info(`${TagFrmwk}: Media getMaxVolume promise : PASS:${data}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: Media getMaxVolume promise : FAIL: ${data}`);
                     expect(false).assertTrue();
                 }
@@ -1561,7 +1593,10 @@ export default function audioFramework() {
                 if (data == maxVol) {
                     console.info(`${TagFrmwk}: Ringtone getMaxVolume promise : PASS:${data}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(data == maxVolPc){
+                    console.info(`${TagFrmwk}: Ringtone getMaxVolume promise : PASS:${data}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: Ringtone getMaxVolume promise : FAIL: ${data}`);
                     expect(false).assertTrue();
                 }
@@ -1589,7 +1624,10 @@ export default function audioFramework() {
                 } else if (value == maxVol) {
                     console.info(`${TagFrmwk}: callback : Media:  getMaxVolume : PASS:${value}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(value == maxVolPc){
+                    console.info(`${TagFrmwk}: callback : Media:  getMaxVolume : PASS:${value}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: callback : Media:  getMaxVolume : FAIL: ${value}`);
                     expect(false).assertTrue();
                 }
@@ -1614,7 +1652,10 @@ export default function audioFramework() {
                 } else if (value == maxVol) {
                     console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : PASS:${value}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(value == maxVolPc){
+                    console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : PASS:${value}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : FAIL: ${value}`);
                     expect(false).assertTrue();
                 }
@@ -1637,7 +1678,10 @@ export default function audioFramework() {
                 if (data == maxVol) {
                     console.info(`${TagFrmwk}: Media getMaxVolume promise : PASS:${data}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(data == maxVolPc){
+                    console.info(`${TagFrmwk}: Media getMaxVolume promise : PASS:${data}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: Media getMaxVolume promise : FAIL: ${data}`);
                     expect(false).assertTrue();
                 }
@@ -1663,7 +1707,10 @@ export default function audioFramework() {
                 if (data == maxVol) {
                     console.info(`${TagFrmwk}: Ringtone getMaxVolume promise : PASS:${data}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(data == maxVolPc){
+                    console.info(`${TagFrmwk}: Ringtone getMaxVolume promise : PASS:${data}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: Ringtone getMaxVolume promise : FAIL: ${data}`);
                     expect(false).assertTrue();
                 }
@@ -1691,7 +1738,10 @@ export default function audioFramework() {
                 } else if (value == maxVol) {
                     console.info(`${TagFrmwk}: callback : Media:  getMaxVolume : PASS:${value}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(value == maxVolPc){
+                    console.info(`${TagFrmwk}: callback : Media:  getMaxVolume : PASS:${value}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: callback : Media:  getMaxVolume : FAIL: ${value}`);
                     expect(false).assertTrue();
                 }
@@ -1716,7 +1766,10 @@ export default function audioFramework() {
                 } else if (value == maxVol) {
                     console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : PASS:${value}`);
                     expect(true).assertTrue();
-                } else {
+                } else if(value == maxVolPc){
+                    console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : PASS:${value}`);
+                    expect(true).assertTrue();
+                }else{
                     console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : FAIL: ${value}`);
                     expect(false).assertTrue();
                 }

@@ -3732,6 +3732,7 @@ static napi_value RunEventLoop(napi_env env, napi_callback_info info)
         char16_t resStr[] = u"napi_generic_failure";
         napi_value resultValue = nullptr;
         napi_create_string_utf16(env, resStr, NAPI_AUTO_LENGTH, &resultValue);
+        free(testCaseName);
         return resultValue;
     } else if (value == RUN_NAPI_LOOP_WITH_NOWAIT) {
         strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread1");
@@ -3946,9 +3947,9 @@ static napi_value NapiSerializeDate(napi_env env, napi_callback_info info)
     napi_status status = napi_deserialize(env, data, &result1);
     NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
 
-    bool isDate = false;
-    napi_is_date(env, result1, &isDate);
-    NAPI_ASSERT(env, isDate, "napi_is_Date fail");
+    bool isDateVal = false;
+    napi_is_date(env, result1, &isDateVal);
+    NAPI_ASSERT(env, isDateVal, "napi_is_Date fail");
     napi_delete_serialization_data(env, data);
 
     napi_value value = 0;

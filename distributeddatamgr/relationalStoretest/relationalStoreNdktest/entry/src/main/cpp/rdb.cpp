@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -19,6 +19,7 @@
 #include "oh_value_object.h"
 #include "oh_values_bucket.h"
 #include "relational_store.h"
+#include "relational_store_error_code.h"
 #include <js_native_api_types.h>
 
 #define E_BASE 14800000
@@ -31,6 +32,7 @@
 #define MPARAM_1 (-1)
 int g_rdbEInvalidArgs = E_BASE + 1;
 int g_invalidFile = E_BASE + 11;
+int g_sqliteError = E_BASE + 55;
 OH_Rdb_Config GetConfig()
 {
     static OH_Rdb_Config config;
@@ -46,7 +48,10 @@ OH_Rdb_Config GetConfig()
 
 int errCode = 0;
 char table[] = "test";
+char lockTable[] = "lock_test";
 char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+    "data3 FLOAT, data4 BLOB, data5 TEXT);";
+char createLockTableSql[] = "CREATE TABLE lock_test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
     "data3 FLOAT, data4 BLOB, data5 TEXT);";
 
 OH_VBucket *GetValueBucket()
@@ -710,7 +715,7 @@ static napi_value ExecuteFour(napi_env env, napi_callback_info)
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
     napi_value result = nullptr;
-    napi_create_int32(env, returnValue == -1, &result);
+    napi_create_int32(env, returnValue == g_sqliteError, &result);
     return result;
 }
 
@@ -1006,6 +1011,59 @@ static napi_value SetVersionTwo(napi_env env, napi_callback_info)
     napi_create_int32(env, returnValue == g_rdbEInvalidArgs, &result);
     return result;
 }
+
+static napi_value LockRowOne(napi_env env, napi_callback_info)
+{
+    OH_Rdb_Config config = GetConfig();
+    OH_Rdb_Store *predicatesTestRdbStore = nullptr;
+    predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
+    OH_Rdb_Execute(predicatesTestRdbStore, createLockTableSql);
+    OH_Rdb_Insert(predicatesTestRdbStore, lockTable, GetValueBucket());
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates(lockTable);
+    OH_VObject *valueObject = OH_Rdb_CreateValueObject();
+    const char *data1Value = "zhangSan";
+    valueObject->putText(valueObject, data1Value);
+    predicates->equalTo(predicates, "data1", valueObject);
+    errCode = OH_Rdb_LockRow(predicatesTestRdbStore, predicates);
+    OH_Rdb_CloseStore(predicatesTestRdbStore);
+    OH_Rdb_DeleteStore(&config);
+    napi_value result = nullptr;
+    napi_create_int32(env, errCode, &result);
+    return result;
+}
+
+static napi_value UnLockRowOne(napi_env env, napi_callback_info)
+{
+    OH_Rdb_Config config = GetConfig();
+    OH_Rdb_Store *predicatesTestRdbStore = nullptr;
+    predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
+    OH_Rdb_Execute(predicatesTestRdbStore, createLockTableSql);
+    OH_Rdb_Insert(predicatesTestRdbStore, lockTable, GetValueBucket());
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates(lockTable);
+    errCode = OH_Rdb_UnlockRow(predicatesTestRdbStore, predicates);
+    OH_Rdb_CloseStore(predicatesTestRdbStore);
+    OH_Rdb_DeleteStore(&config);
+    napi_value result = nullptr;
+    napi_create_int32(env, errCode, &result);
+    return result;
+}
+
+static napi_value QueryLockRowOne(napi_env env, napi_callback_info)
+{
+    OH_Rdb_Config config = GetConfig();
+    OH_Rdb_Store *predicatesTestRdbStore = nullptr;
+    predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
+    OH_Rdb_Execute(predicatesTestRdbStore, createLockTableSql);
+    OH_Rdb_Insert(predicatesTestRdbStore, lockTable, GetValueBucket());
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates(lockTable);
+    OH_Cursor *cursor = OH_Rdb_QueryLockedRow(predicatesTestRdbStore, predicates, NULL, 0);
+    OH_Rdb_CloseStore(predicatesTestRdbStore);
+    OH_Rdb_DeleteStore(&config);
+    napi_value result = nullptr;
+    napi_create_int32(env, cursor != nullptr, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1070,7 +1128,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"getVersionTwo", nullptr, GetVersionTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getVersionThree", nullptr, GetVersionThree, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"setVersionOne", nullptr, SetVersionOne, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"setVersionTwo", nullptr, SetVersionTwo, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"setVersionTwo", nullptr, SetVersionTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"lockRowOne", nullptr, LockRowOne, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"unLockRowOne", nullptr, UnLockRowOne, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"queryLockRowOne", nullptr, QueryLockRowOne, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

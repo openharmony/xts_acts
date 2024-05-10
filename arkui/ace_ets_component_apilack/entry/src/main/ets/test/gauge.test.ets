@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function gaugeColorsJsunit() {
   describe('gaugeColorsTest', () => {
     beforeAll(async () => {
-      console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/gauge',
+      console.info("gaugeColors beforeAll start");
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/gauge',
       }
       try {
         router.clear();

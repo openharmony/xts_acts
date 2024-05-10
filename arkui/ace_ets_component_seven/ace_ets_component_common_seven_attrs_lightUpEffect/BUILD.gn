@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAceEtsComponentCommonSevenAttrsLightUpEffectTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAceEtsComponentCommonSevenAttrsLightUpEffectTest"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
 }
 
 ohos_app_scope(

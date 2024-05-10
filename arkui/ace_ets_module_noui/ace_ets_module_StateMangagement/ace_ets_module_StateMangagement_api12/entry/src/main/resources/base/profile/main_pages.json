@@ -10,6 +10,15 @@
         "MainAbility/pages/ObservedV2/TrackDate",
         "MainAbility/pages/ObservedV2/TrackMap",
         "MainAbility/pages/ObservedV2/TrackSet",
-        "MainAbility/pages/ObservedV2/ArrayTrack"
+        "MainAbility/pages/ObservedV2/ArrayTrack",
+        "MainAbility/pages/GetSharedLocal/getSharedLocalStorage",
+        "MainAbility/pages/GetSharedLocal/useSharedStorage",
+        "MainAbility/pages/Monitor/Monitor1",
+        "MainAbility/pages/Monitor/Monitor2",
+        "MainAbility/pages/Monitor/Monitor3",
+        "MainAbility/pages/Monitor/Monitor4",
+        "MainAbility/pages/Monitor/Monitor5",
+        "MainAbility/pages/Monitor/Monitor6",
+        "MainAbility/pages/Repeat/RepeatEach"
     ]
 }

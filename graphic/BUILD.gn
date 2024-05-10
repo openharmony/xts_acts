@@ -17,13 +17,16 @@ group("graphic") {
   if (is_standard_system) {
     deps = [
       "LandscapeWindow:LandscapeWindow_Test",
+      "acts_animator:ActsAnimatorTest",
+      "acts_display:ActsDisplayTest",
+      "acts_pipwindow:ActsPipWindowTest",
+      "displayManager:ActsDisplayManagerTest",
       "effectKit:ActsEffectKitTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
       "graphicDrawing:ActsGraphicDrawingTest",
       "graphicEGL:ActsGraphicEglTest",
       "graphicGLES3:ActsGraphicGles3Test",
       "graphicGlesExtension:ActsGraphicGlesExtensionTest",
-      "graphicText:ActsGraphicTextTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
       "graphicvulkannapitest:ActsGraphicVulkanTest",

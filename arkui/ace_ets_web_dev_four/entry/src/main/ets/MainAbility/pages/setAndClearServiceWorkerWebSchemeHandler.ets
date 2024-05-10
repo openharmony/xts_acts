@@ -19,6 +19,7 @@ import web_webview from '@ohos.web.webview';
 import business_error from '@ohos.base';
 import buffer from '@ohos.buffer'
 import { WebNetErrorList } from '@ohos.web.netErrorList'
+import common from '@ohos.app.ability.common'
 
 @Entry
 @Component
@@ -30,6 +31,7 @@ struct setAndClearServiceWorkerWebSchemeHandler {
   htmlData: string = "<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>";
   postDataStream: web_webview.WebHttpBodyStream | null = null;
   resourceHandler: web_webview.WebResourceHandler | null = null;
+  context = getContext(this) as common.UIAbilityContext;
   @State getRequestUrlResult: string = "lock";
   @State getRequestMethodResult: string = "lock";
   @State getReferrerResult: string = "lock";
@@ -66,13 +68,12 @@ struct setAndClearServiceWorkerWebSchemeHandler {
           switch (this.str) {
             case "setAndClearServiceWorkerWebSchemeHandler0100": {
               try {
+                this.webviewcontroller.setWebSchemeHandler('https', this.webSchemeHander);
                 web_webview.WebviewController.setServiceWorkerWebSchemeHandler('https', this.webSchemeHander);
-                this.webviewcontroller.loadUrl('https://www.baidu.com/')
+                this.webviewcontroller.loadUrl('https://www.example.com/service_worker.html')
                 await Utils.sleep(2000);
-                Utils.emitEvent(this.getRequestUrlResult, 8852)
                 Utils.emitEvent(this.getRequestMethodResult, 8854)
                 Utils.emitEvent(this.getReferrerResult, 8856)
-                Utils.emitEvent(this.isMainFrameResult, 8858)
                 Utils.emitEvent(this.hasGestureResult, 8860)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -81,6 +82,8 @@ struct setAndClearServiceWorkerWebSchemeHandler {
             }
             case "setAndClearServiceWorkerWebSchemeHandler0200": {
               try {
+                this.webviewcontroller.clearWebSchemeHandler();
+                web_webview.WebviewController.clearServiceWorkerWebSchemeHandler();
                 this.getRequestUrlResult = "lock";
                 this.getRequestMethodResult = "lock";
                 this.getReferrerResult = "lock";
@@ -88,7 +91,7 @@ struct setAndClearServiceWorkerWebSchemeHandler {
                 this.hasGestureResult = true;
                 web_webview.WebviewController.setServiceWorkerWebSchemeHandler('https', this.webSchemeHander);
                 web_webview.WebviewController.clearServiceWorkerWebSchemeHandler();
-                this.webviewcontroller.loadUrl('https://www.baidu.com/')
+                this.webviewcontroller.loadUrl('https://www.example.com/service_worker.html')
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.getRequestUrlResult, 8862)
                 Utils.emitEvent(this.getRequestMethodResult, 8864)
@@ -109,6 +112,9 @@ struct setAndClearServiceWorkerWebSchemeHandler {
           try {
             this.webSchemeHander.onRequestStart((request: web_webview.WebSchemeHandlerRequest, resourceHandler: web_webview.WebResourceHandler) => {
               console.log("[schemeHandler] onRequestStart")
+              let schemeMap = new Map([
+                ["https://www.example.com/service_worker.html", "service_worker.html"]
+              ])
               try {
                 console.log("[schemeHandler] onRequestStart url:" + request.getRequestUrl())
                 this.getRequestUrlResult = request.getRequestUrl()
@@ -123,18 +129,43 @@ struct setAndClearServiceWorkerWebSchemeHandler {
                 console.log("[schemeHandler] onRequestStart header size:" + request.getHeader().length)
                 
                 let header = request.getHeader();
+                let requestHeaderMap = new Map<string, string>();
                 for (let i = 0; i < header.length; i++) {
                   console.log("[schemeHandler] onRequestStart header:" + header[i].headerKey + " " + header[i].headerValue);
+                  requestHeaderMap.set(header[i].headerKey, header[i].headerValue)
                 }
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
-              if (request.getRequestUrl() != 'https://www.example.com/'){
+
+              this.postDataStream = request.getHttpBodyStream();
+              this.resourceHandler = resourceHandler;
+
+              if(schemeMap.has(request.getRequestUrl())){
+                let arrayBuffer = new ArrayBuffer(200);
+                let size = 200;
+                let fileName = schemeMap.get(request.getRequestUrl());
+                let fileContent = this.context.resourceManager.getRawFileContentSync(fileName);
+                let buf:ArrayBuffer = fileContent.buffer.slice(0);
+                arrayBuffer = buf;
+                size = arrayBuffer.byteLength;
+
+                let response = new web_webview.WebSchemeHandlerResponse();
+                response.setStatus(200)
+                response.setStatusText("OK")
+                response.setMimeType("text/html")
+                response.setEncoding("utf-8")
+                response.setHeaderByName("content-length", '${size}', false)
+
+                this.resourceHandler.didReceiveResponse(response);
+                this.resourceHandler.didReceiveResponseBody(arrayBuffer);
+                this.resourceHandler.didFinish();
+
                 return true;
-              }else {
-                return false; 
               }
+              return false;
+              
             })
             this.webSchemeHander.onRequestStop((request: web_webview.WebSchemeHandlerRequest) => {
               console.log("[schemeHandler] onRequestStop")

@@ -2885,5 +2885,65 @@ describe('UriTest', function () {
         expect(err.message).assertEqual("The input parameter defaultValue is invalid");
       }
     })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16600
+     * @tc.name: testTildeUnderline001
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+     it('testTildeUnderline001', 0, function () {
+      let uriTest = new uri.URI('http://www.bian~_cheng.net/inde~_x?param=10~_!*&para~_m1=20!-~_');
+      expect(uriTest.host).assertEqual('www.bian~_cheng.net');
+      expect(uriTest.path).assertEqual('/inde~_x');
+      expect(uriTest.query).assertEqual('param=10~_!*&para~_m1=20!-~_');
+      expect(uriTest.authority).assertEqual('www.bian~_cheng.net');
+      expect(uriTest.ssp).assertEqual('//www.bian~_cheng.net/inde~_x?param=10~_!*&para~_m1=20!-~_');
+      expect(uriTest.encodedPath).assertEqual('/inde~_x');
+      expect(uriTest.encodedQuery).assertEqual('param=10~_!*&para~_m1=20!-~_');
+      expect(uriTest.encodedAuthority).assertEqual('www.bian~_cheng.net');
+      expect(uriTest.encodedSSP).assertEqual('//www.bian~_cheng.net/inde~_x?param=10~_!*&para~_m1=20!-~_');
+    })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16700
+     * @tc.name: testTildeUnderline002
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testTildeUnderline002', 0, function () {
+      let uriTest = new uri.URI('http://www.bian_cheng.net/inde_x?param=10_!*&para_m1=20!-_');
+      expect(uriTest.host).assertEqual('www.bian_cheng.net');
+      expect(uriTest.path).assertEqual('/inde_x');
+      expect(uriTest.query).assertEqual('param=10_!*&para_m1=20!-_');
+      expect(uriTest.authority).assertEqual('www.bian_cheng.net');
+      expect(uriTest.ssp).assertEqual('//www.bian_cheng.net/inde_x?param=10_!*&para_m1=20!-_');
+      expect(uriTest.encodedPath).assertEqual('/inde_x');
+      expect(uriTest.encodedQuery).assertEqual('param=10_!*&para_m1=20!-_');
+      expect(uriTest.encodedAuthority).assertEqual('www.bian_cheng.net');
+      expect(uriTest.encodedSSP).assertEqual('//www.bian_cheng.net/inde_x?param=10_!*&para_m1=20!-_');
+    })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16800
+     * @tc.name: testTildeUnderline003
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testTildeUnderline003', 0, function () {
+      let uriTest = new uri.URI('http://www.bian~cheng.net/inde~x?param=10~!*&para~m1=20!-~');
+      expect(uriTest.host).assertEqual('www.bian~cheng.net');
+      expect(uriTest.path).assertEqual('/inde~x');
+      expect(uriTest.query).assertEqual('param=10~!*&para~m1=20!-~');
+      expect(uriTest.authority).assertEqual('www.bian~cheng.net');
+      expect(uriTest.ssp).assertEqual('//www.bian~cheng.net/inde~x?param=10~!*&para~m1=20!-~');
+      expect(uriTest.encodedPath).assertEqual('/inde~x');
+      expect(uriTest.encodedQuery).assertEqual('param=10~!*&para~m1=20!-~');
+      expect(uriTest.encodedAuthority).assertEqual('www.bian~cheng.net');
+      expect(uriTest.encodedSSP).assertEqual('//www.bian~cheng.net/inde~x?param=10~!*&para~m1=20!-~');
+    })
 })
 }

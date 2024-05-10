@@ -286,7 +286,7 @@ struct Index {
                                 Utils.emitEvent(flag,828);
                             });
                         }catch(error){
-                            console.error(`ErrorCode:${error.code},Message:${error.message}`);
+                            console.error(`ErrorCode:${(error as BusinessError)?.code},Message:${(error as Error)?.message}`);
                         }
                         break;
                     case "hasImageTwo":
@@ -300,7 +300,7 @@ struct Index {
                             }
 
                         }catch(error){
-                            console.error(`ErrorCode:${error.code},Message:${error.message}`);
+                            console.error(`ErrorCode:${(error as BusinessError)?.code},Message:${(error as Error)?.message}`);
                         }
                         break;
                     case "setNetworkAvailable":

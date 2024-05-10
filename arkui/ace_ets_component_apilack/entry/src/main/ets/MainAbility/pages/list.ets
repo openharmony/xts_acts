@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
+import events_emitter from '@ohos.events.emitter';
 
 const TAG = 'ets_apiLack_add';
-import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -35,11 +35,11 @@ struct ListLanes {
     Log.showInfo(TAG, `aboutToDisAppear ListLanes end`)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("list page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.alwaysEnabled != null) {
-        this.alwaysEnabled = eventData.data.alwaysEnabled;
+      if (eventData.data?.alwaysEnabled != null) {
+        this.alwaysEnabled = eventData.data?.alwaysEnabled;
       }
     }
   }
@@ -101,7 +101,7 @@ struct ListLanes {
       Stack({ alignContent: Alignment.TopStart }) {
         Scroll(this.scroller) {
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: number) => {
               ListItem() {
                 Text('' + item)
                   .width('100%')
@@ -110,7 +110,7 @@ struct ListLanes {
 
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .key("list1")
           .height(300)
@@ -127,22 +127,6 @@ struct ListLanes {
             }
             this.listPosition = 1;
             return { offsetRemain: offset }
-
-            try {
-              let backData: events_emitter.EventData = {
-                data: {
-                  "result": "success"
-                }
-              }
-              let backEvent = {
-                eventId: 60216,
-                priority: events_emitter.EventPriority.LOW
-              }
-              console.info("onScrollBegin onClick start to emit action state")
-              events_emitter.emit(backEvent, backData)
-            } catch (err) {
-              console.info("onScrollBegin onClick emit action state err: " + JSON.stringify(err.message))
-            }
           })
         }
         .scrollable(ScrollDirection.Vertical)

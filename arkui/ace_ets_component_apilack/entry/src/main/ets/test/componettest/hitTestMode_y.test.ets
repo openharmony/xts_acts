@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function hitTestModeJsunit() {
   describe('hitTestModeJsunit', () => {
     beforeEach(async () => {
       console.info("hitTestMode beforeEach start");
-      let options = {
-        uri: 'pages/hitTestMode',
+      let options: router.RouterOptions  = {
+        url: 'pages/hitTestMode',
       }
       try {
         router.clear();

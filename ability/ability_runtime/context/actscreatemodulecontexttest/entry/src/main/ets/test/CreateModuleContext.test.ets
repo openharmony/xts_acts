@@ -129,7 +129,7 @@ export default function actsCreateModuleContextTest() {
           globalThis.abilityContext.createModuleContext(undefined);
       } catch (err) {
         let e = err.toString();
-        let errLog = "Invalid input parameter"
+        let errLog = "Parse param moduleName failed, moduleName must be string."
         console.info("SUB_AA_CreateModuleContext_0500 createModuleContext is " + JSON.stringify(createModuleContext));
         console.debug("====>e====>" + e);
         expect(e.indexOf(errLog) >= 0).assertTrue();
@@ -248,7 +248,7 @@ export default function actsCreateModuleContextTest() {
           globalThis.abilityStageContext.createModuleContext(undefined);
       } catch (err) {
         let e = err.toString();
-        let errLog = "Invalid input parameter"
+        let errLog = "Parse param moduleName failed, moduleName must be string."
         console.info("SUB_AA_CreateModuleContext_1000 createModuleContext is " + JSON.stringify(createModuleContext));
         console.debug("====>e====>" + e);
         expect(e.indexOf(errLog) >= 0).assertTrue();

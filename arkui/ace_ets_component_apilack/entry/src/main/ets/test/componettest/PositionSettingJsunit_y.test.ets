@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
 
 export default function positionSettingJsunit() {
   describe('borderTest_five_3', () => {
     beforeEach(async () => {
       console.info("positionSetting beforeEach start");
-      let options = {
-        uri: 'pages/positionSetting',
+      let options: router.RouterOptions  = {
+        url: 'pages/positionSetting',
       }
       try {
         router.clear();

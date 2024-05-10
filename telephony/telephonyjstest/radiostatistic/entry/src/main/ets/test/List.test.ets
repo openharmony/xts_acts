@@ -12,20 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
+import call from '@ohos.telephony.call';
 import radioJsunit from './RadioJsunit.test';
 import radioSecondJsunit from './RadioSecondJsunit.test';
 import smsUiJsunit from './SmsMmsJsunit.test';
 import callJsunit from './CallJsunit.test';
 import dataJsunit from './DataJsunit.test';
 import telSyncTest from './TelSyncTest.test';
+let voiceCapablity = call.hasVoiceCapability();
 
 export default function testsuite() {
-  dataJsunit();
-  smsUiJsunit();
-  radioJsunit();
-  radioSecondJsunit();
-  callJsunit();
-  telSyncTest();
+   if(voiceCapablity){
+    dataJsunit();
+    smsUiJsunit();
+    radioJsunit();
+    radioSecondJsunit();
+    callJsunit();
+    telSyncTest();
+   }
 }

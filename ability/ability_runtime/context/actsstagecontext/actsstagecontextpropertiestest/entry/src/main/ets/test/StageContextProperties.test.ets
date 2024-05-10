@@ -292,7 +292,7 @@ export default function stageContextPropertiesTest(abilityContext) {
             })
 
              await driver.delayMs(2000);
-            let allowed = await driver.findComponent(ON.text("打开"));
+            let allowed = await driver.findComponent(ON.text(""));
             if (allowed) {
               console.log("find button");
               let point = await allowed.getBoundsCenter();
@@ -348,7 +348,7 @@ export default function stageContextPropertiesTest(abilityContext) {
             })
 
              await driver.delayMs(2000);
-            let allowed = await driver.findComponent(ON.text("打开"));
+            let allowed = await driver.findComponent(ON.text(""));
             if (allowed) {
               console.log("find button");
               let point = await allowed.getBoundsCenter();
@@ -422,7 +422,7 @@ export default function stageContextPropertiesTest(abilityContext) {
             })
 
              await driver.delayMs(2000);
-            let allowed = await driver.findComponent(ON.text("打开"));
+            let allowed = await driver.findComponent(ON.text(""));
             if (allowed) {
               console.log("find button");
               let point = await allowed.getBoundsCenter();

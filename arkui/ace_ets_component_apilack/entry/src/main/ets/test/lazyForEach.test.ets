@@ -14,16 +14,16 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function lazyForEachOnDataAddJsunit() {
   describe('lazyForEachOnDataAddTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/lazyForEach',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/lazyForEach',
       }
       try {
         router.clear();
@@ -57,12 +57,12 @@ export default function lazyForEachOnDataAddJsunit() {
         eventId: 60212,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback1 = (eventData) => {
-        console.info("eventData.data.result1 result is: " + eventData.data.result1);
+      let callback1 = (eventData: events_emitter.EventData) => {
+        console.info("eventData.data.result1 result is: " + eventData.data?.result1);
         try {
           console.info("callback1 success");
-          console.info("Lazy_101 eventData.data.result1 result is: " + eventData.data.result1);
-          expect(eventData.data.result1).assertEqual(true);
+          console.info("Lazy_101 eventData.data.result1 result is: " + eventData.data?.result1);
+          expect(eventData.data?.result1).assertEqual(true);
           console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0001 END');
         } catch (err) {
           console.info("Lazy_101 on events_emitter err : " + JSON.stringify(err));
@@ -89,12 +89,12 @@ export default function lazyForEachOnDataAddJsunit() {
         eventId: 60213,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback2 = (eventData) => {
-        console.info("eventData.data.result2 result is: " + eventData.data.result2);
+      let callback2 = (eventData: events_emitter.EventData) => {
+        console.info("eventData.data.result2 result is: " + eventData.data?.result2);
         try {
           console.info("callback2 success");
-          console.info("Lazy_102 eventData.data.result2 result is: " + eventData.data.result2);
-          expect(eventData.data.result2).assertEqual(true);
+          console.info("Lazy_102 eventData.data.result2 result is: " + eventData.data?.result2);
+          expect(eventData.data?.result2).assertEqual(true);
           console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0002 END');
         } catch (err) {
           console.info("Lazy_102 on events_emitter err : " + JSON.stringify(err));
@@ -121,12 +121,12 @@ export default function lazyForEachOnDataAddJsunit() {
         eventId: 60214,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback3 = (eventData) => {
-        console.info("eventData.data.result3 result is: " + eventData.data.result3);
+      let callback3 = (eventData: events_emitter.EventData) => {
+        console.info("eventData.data.result3 result is: " + eventData.data?.result3);
         try {
           console.info("callback3 success");
-          console.info("Lazy_103 eventData.data.result3 result is: " + eventData.data.result3);
-          expect(eventData.data.result3).assertEqual(true);
+          console.info("Lazy_103 eventData.data.result3 result is: " + eventData.data?.result3);
+          expect(eventData.data?.result3).assertEqual(true);
           console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0003 END');
         } catch (err) {
           console.info("Lazy_103 on events_emitter err : " + JSON.stringify(err));
@@ -153,12 +153,12 @@ export default function lazyForEachOnDataAddJsunit() {
         eventId: 60215,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback4 = (eventData) => {
-        console.info("eventData.data.result4 result is: " + eventData.data.result4);
+      let callback4 = (eventData: events_emitter.EventData) => {
+        console.info("eventData.data.result4 result is: " + eventData.data?.result4);
         try {
           console.info("callback4 success");
-          console.info("Lazy_104 eventData.data.result4 result is: " + eventData.data.result4);
-          expect(eventData.data.result4).assertEqual(true);
+          console.info("Lazy_104 eventData.data.result4 result is: " + eventData.data?.result4);
+          expect(eventData.data?.result4).assertEqual(true);
           console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0004 END');
         } catch (err) {
           console.info("Lazy_104 on events_emitter err : " + JSON.stringify(err));

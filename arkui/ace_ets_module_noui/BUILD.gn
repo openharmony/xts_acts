@@ -18,6 +18,7 @@ group("ActsAceEtsModuleNoUITest") {
     "ace_ets_module_StateMangagement:ActsAceEtsModuleStateMangagementTest",
     "ace_ets_module_UIContext:ActsAceEtsModuleUIContextTest",
     "ace_ets_module_featureAbility:ActsAceEtsModuleFeatureAbilityTest",
+    "ace_ets_module_forEach:ActsAceEtsModuleForEachTest",
     "ace_ets_module_global:ActsAceEtsModuleGlobalTest",
   ]
 }

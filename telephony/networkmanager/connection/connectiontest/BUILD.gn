@@ -17,8 +17,8 @@ ohos_js_hap_suite("ActsNetworkMgrConnectionTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":connectiontest_demo_ets_resources",
-    ":connectiontest_demo_ets_test_resources",
+    ":httpconcurrent_demo_resources",
+    ":httpconcurrent_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
@@ -27,15 +27,15 @@ ohos_js_hap_suite("ActsNetworkMgrConnectionTest") {
   part_name = "sms_mms"
   subsystem_name = "telephony"
 }
-ohos_app_scope("connectiontest_app_profile") {
+ohos_app_scope("httpconcurrent_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
-ohos_js_assets("connectiontest_demo_ets_resources") {
+ohos_js_assets("httpconcurrent_resources") {
   source_dir = "entry/src/main/ets"
 }
-ohos_resources("connectiontest_demo_ets_test_resources") {
+ohos_resources("httpconcurrent_demo_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":connectiontest_app_profile" ]
+  deps = [ ":httpconcurrent_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }

@@ -4982,4 +4982,197 @@ describe('UrlFunTest', function () {
         var result = JSON.stringify(urlObj.params.getAll("url"))
         expect(result).assertEqual(res)
     })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_29900
+   * @tc.name: testUrlparseURL0033
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0033', 0, function () {
+        let strUrl = "?newsId=HB-1-snhs/index_v2-s&urlInfo=%7B%22hot_topic%22%3A%221%22%2C%22keyword%22%3A%22%25" +
+          "E5%25B8%2583%25E6%259E%2597%25E8%2582%25AF%25E6%258A%25B5%25E8%25BE%25BE%25E4%25B8%258A%25E6%25" +
+          "B5%25B7%25E5%25BC%2580%25E5%2590%25AF%25E8%25AE%25BF%25E5%258D%258E%22%2C%22query_class%22%3A%22" +
+          "%25E5%259B%25BD%25E9%2599%2585%22%2C%22query_id%22%3A%227VO3B%22%2C%22query_rank%22%3A%2234%22%2C%22" +
+          "query_resultVersion%22%3A%220%22%2C%22query_wordType%22%3A%22harmony%22%2C%22searchFrom%22" +
+          "%3A%22hot_topic%22%7D";
+        let res = '{"hot_topic":"1","keyword":"%E5%B8%83%E6%9E%97%E8%82%AF%E6%8A%B5%E8%BE%BE%E4%B8%8A%E6%B5' +
+        '%B7%E5%BC%80%E5%90%AF%E8%AE%BF%E5%8D%8E","query_class":"%E5%9B%BD%E9%99%85","query_id":"7VO3B",' +
+        '"query_rank":"34","query_resultVersion":"0","query_wordType":"harmony","searchFrom":"hot_topic"}';
+        let urlObj = new Url.URLParams(strUrl)
+        var result = urlObj.get("urlInfo")
+        expect(result).assertEqual(res)
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30000
+   * @tc.name: testUrlparseURL0034
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0034', 0, function () {
+        let strUrl = '?newsId=HB-1-snhs/index_v2-search&urlInfo=%7B%22hot_topic%22%3A%221%22%2C%22keyword%22%3A%22' +
+            '%25E6%2598%25A5%25E8%2589%25B2%25E5%25AF%2584%25E6%2583%2585%25E4%25BA%25BA%2520%25E4%25BD%2595%25E5' +
+            '%258F%2594%25E5%258E%25BB%25E4%25B8%2596%22%2C%22query_class%22%3A%22%25E6%2583%2585%25E6%2584%259F' +
+            '%22%2C%22query_id%22%3A%227VZkV%22%2C%22query_rank%22%3A%2227%22%2C%22query_resultVersion%22%3A%220' +
+            '%22%2C%22query_wordType%22%3A%22harmony%22%2C%22searchFrom%22%3A%22hot_topic%22%7D';
+        let urlObj = new Url.URLParams(strUrl);
+        let value1 = 'HB-1-snhs/index_v2-search';
+        let value2 = '{"hot_topic":"1","keyword":"%E6%98%A5%E8%89%B2%E5%AF%84%E6%83%85%E4%BA%BA%20%E4%BD%95%E5%8F' +
+            '%94%E5%8E%BB%E4%B8%96","query_class":"%E6%83%85%E6%84%9F","query_id":"7VZkV","query_rank":"27",' +
+            '"query_resultVersion":"0","query_wordType":"harmony","searchFrom":"hot_topic"}'
+        let a = urlObj.values();
+        expect(a[0]).assertEqual(value1)
+        expect(a[1]).assertEqual(value2)
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30100
+   * @tc.name: testUrlparseURL0035
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+   it('testUrlparseURL0035', 0, function () {
+    const u = Url.URL.parseURL(`https://a.cn?phone=lkasdjfj+d sa+=d+d`)
+    const phone = u.params.get('phone')
+    expect(u.params.toString()).assertEqual('phone=lkasdjfj+d+sa+%3Dd+d')
+    expect(phone).assertEqual('lkasdjfj d sa =d d')
+    let url1 = new Url.URLParams('MEYCIQDFq18GgOub1%2BDLIafKGY19uor8j0qCYc1Z9HzX2TEcPwIhAPg7VCBUPjOpp' +
+        'JNbv9zoo0NqIIeHH4K0gFjm7oLLw8mD%3D=s+%2B')
+    expect(url1.toString()).assertEqual('MEYCIQDFq18GgOub1%2BDLIafKGY19uor8j0qCYc1Z9HzX2TEcPwIh' +
+        'APg7VCBUPjOppJNbv9zoo0NqIIeHH4K0gFjm7oLLw8mD%3D=s+%2B')
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30200
+   * @tc.name: testUrlparseURL0036
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0036', 0, function () {
+        const schema = "bytedance://large_image?url=https%3A%2F%2Fp3-sign.toutiaoimg.com%2Flarge%2Ftos-cn-i-6w9my" +
+            "0ksvp%2Fc2c8b671c3ea4f968ae3a89a21b5f952%3F_iz%3D67594%26from%3Darticle.detail%26x-expires%3D1703" +
+            "755589%26x-signature%3DFUbhPcvUfgI%252BJLdkCiaj1S1pBSQ%253D&index=0"
+        const parsedUrl = Url.URL.parseURL(schema)
+        let src = 'https://p3-sign.toutiaoimg.com/large/tos-cn-i-6w9my0ksvp/c2c8b671c3ea4f968ae3a89a21b5f952?_iz=67594' +
+            '&from=article.detail&x-expires=1703755589&x-signature=FUbhPcvUfgI%2BJLdkCiaj1S1pBSQ%3D'
+        expect(parsedUrl.params.get("url")).assertEqual(src)
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30300
+   * @tc.name: testUrlparseURL0037
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0037', 0, function () {
+        let urlz = Url.URL.parseURL('eleme://web?url=eleme%3A%2F%2Fweb%3Fur1%3Dhttps%253A%252F%252Fwww.ba+idu.com')
+        let uriParams = urlz.params;
+        uriParams.forEach((value, key) => {
+            expect(key).assertEqual('url')
+            expect(value).assertEqual('eleme://web?ur1=https%3A%2F%2Fwww.ba idu.com')
+        })
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30400
+   * @tc.name: testUrlparseURL0038
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0038', 0, function () {
+        let urlObject = Url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2#ss');
+        let paramsObject = urlObject.params;
+        paramsObject.set('baz', 'test 你好');
+        const s = urlObject.toString();
+        expect(s).assertEqual('https://developer.exampleurl/?fod=1&bard=2&baz=test+%E4%BD%A0%E5%A5%BD#ss')
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30500
+   * @tc.name: testUrlparseURL0039
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0039', 0, function () {
+        let urlString = '?url=http%3A%2F%2Ftest-aweme.snssdk.com%2Ffalcon%2Fjsb_tester_web%2Fdmt%2F%3FcaseId%3D%26' +
+            'groupId%3D1379%26author%3Dliuhongyang.lhoin%26authorId%3D1951227%26isAutoTest%3D%26productionId%3D32%0A'
+        const params = new Url.URLParams(urlString)
+        let temp = 'url=http%3A%2F%2Ftest-aweme.snssdk.com%2Ffalcon%2Fjsb_tester_web%2Fdmt%2F%3FcaseId%3D%26' +
+            'groupId%3D1379%26author%3Dliuhongyang.lhoin%26authorId%3D1951227%26isAutoTest%3D%26productionId%3D32%0A'
+        expect(params.toString()).assertEqual(temp)
+        let srcKey = 'url';
+        let srcValue = 'http://test-aweme.snssdk.com/falcon/jsb_tester_web/dmt/?caseId=&groupId=1379&author=' +
+        'liuhongyang.lhoin&authorId=1951227&isAutoTest=&productionId=32\n';
+        params.forEach((value, key) => {
+        expect(key).assertEqual(srcKey)
+        expect(value).assertEqual(srcValue)
+        })
+        for (const param of params.entries()) {
+        expect(param[0]).assertEqual(srcKey)
+        expect(param[1]).assertEqual(srcValue)
+        }
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30600
+   * @tc.name: testUrlparseURL0040
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0040', 0, function () {
+        let urlString = '?url='
+        const params = new Url.URLParams(urlString)
+        expect(params.toString()).assertEqual('url=')
+        for (const param of params.entries()) {
+            expect(param[0]).assertEqual('url')
+            expect(param[1]).assertEqual('')
+        }
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30700
+   * @tc.name: testUrlparseURL0041
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0041', 0, function () {
+        const u2 = Url.URL.parseURL(`https://a.cn?phone=%2B86`)
+        const phone2 = u2.params.get('phone')
+        expect(u2.params.toString()).assertEqual('phone=%2B86')
+        expect(phone2.toString()).assertEqual('+86')
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30800
+   * @tc.name: testUrlparseURL0042
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0042', 0, function () {
+        const u2 = Url.URL.parseURL(`https://a.cn?phone=%2B86+9`)
+        const phone2 = u2.params.get('phone')
+        expect(u2.params.toString()).assertEqual('phone=%2B86+9')
+        expect(phone2.toString()).assertEqual('+86 9')
+    })
 })}

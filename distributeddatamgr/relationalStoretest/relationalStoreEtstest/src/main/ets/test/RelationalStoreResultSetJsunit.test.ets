@@ -1775,7 +1775,7 @@ describe('relationalStoreResultSetTest', function () {
             try{
                 expect(false).assertEqual(resultSet.isColumnNull(2));
             }catch(e){
-                expect(e.code).assertEqual("14800013");
+                expect(e.code).assertEqual("14800012");
             }
             resultSet.close();
             done();

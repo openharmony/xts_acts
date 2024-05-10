@@ -62,7 +62,7 @@ export default function progressJsunit() {
         console.info("testProgress_100 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("testProgress_100 change component data error: " + err.message);
+        console.log("testProgress_100 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('LPValue');
@@ -102,7 +102,7 @@ export default function progressJsunit() {
         console.info("testProgress_300 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("testProgress_300 change component data error: " + err.message);
+        console.log("testProgress_300 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('EPValue');
@@ -141,7 +141,7 @@ export default function progressJsunit() {
         console.info("testProgress_500 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("testProgress_500 change component data error: " + err.message);
+        console.log("testProgress_500 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('EPValue');
@@ -180,7 +180,7 @@ export default function progressJsunit() {
         console.info("testProgress_700 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("testProgress_700 change component data error: " + err.message);
+        console.log("testProgress_700 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('LPValue');
@@ -209,7 +209,7 @@ export default function progressJsunit() {
         console.info("testProgress_800 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("testProgress_800 change component data error: " + err.message);
+        console.log("testProgress_800 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('EPValue');
@@ -238,7 +238,7 @@ export default function progressJsunit() {
         console.info("testProgress_900 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("testProgress_900 change component data error: " + err.message);
+        console.log("testProgress_900 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('EPValue');
@@ -267,7 +267,7 @@ export default function progressJsunit() {
         console.info("testProgress_1000 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("testProgress_1000 change component data error: " + err.message);
+        console.log("testProgress_1000 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('LPValue');
@@ -297,7 +297,7 @@ export default function progressJsunit() {
         console.info("testProgress_1100 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("testProgress_1100 change component data error: " + err.message);
+        console.log("testProgress_1100 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('LPValue');

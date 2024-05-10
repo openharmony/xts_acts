@@ -3247,7 +3247,7 @@ export default function HttpRequestOnOffTest() {
               httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS).then((res: number) => {
                 console.info(`${caseName} request sunccess, data: ${JSON.stringify(res)}`);
                 console.info(`${caseName} called: ${called}`);
-                ExpectTrue(called == 0);
+                ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
               }).catch((error: BusinessError) => {

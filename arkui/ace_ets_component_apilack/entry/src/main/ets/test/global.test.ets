@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import RectValue from './Rect';
 
 export default function globalJsunit() {
   describe('globalJsunit', () => {
     beforeEach(async () => {
       console.info("global beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/global',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/global',
       }
       try {
         router.clear();

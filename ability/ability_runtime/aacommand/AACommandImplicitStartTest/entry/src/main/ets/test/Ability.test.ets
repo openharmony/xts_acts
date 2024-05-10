@@ -157,6 +157,7 @@ export default function aaImplicitStartTest() {
       expect(res).assertContain('[-A <action-name>]');
       expect(res).assertContain('[-U <URI>]');
       expect(res).assertContain('[-e <entity>]');
+      expect(res).assertContain('[-R]');
       done();
     })
 
@@ -668,7 +669,7 @@ export default function aaImplicitStartTest() {
     * @tc.name    check --pb value case sense
     * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool False" is successful
     * @tc.size    MediumTest
-    * @tc.type    Function    
+    * @tc.type    Function
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2700',1, async function (done) {
@@ -690,7 +691,7 @@ export default function aaImplicitStartTest() {
     * @tc.name    check --pb value case sense
     * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool false" is successful
     * @tc.size    MediumTest
-    * @tc.type    Function    
+    * @tc.type    Function
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2800',1, async function (done) {
@@ -712,7 +713,7 @@ export default function aaImplicitStartTest() {
     * @tc.name    check --pb value case sense
     * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool F" is successful
     * @tc.size    MediumTest
-    * @tc.type    Function    
+    * @tc.type    Function
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2900',1, async function (done) {
@@ -734,7 +735,7 @@ export default function aaImplicitStartTest() {
     * @tc.name    check --pb value case sense
     * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool f" is successful
     * @tc.size    MediumTest
-    * @tc.type    Function    
+    * @tc.type    Function
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3000',1, async function (done) {

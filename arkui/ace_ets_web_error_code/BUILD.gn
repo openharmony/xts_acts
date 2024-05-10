@@ -23,6 +23,7 @@ ohos_js_hap_suite("ActsAceWebErrorCodeTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAceWebErrorCodeTest"
+  part_name = "webview"
 }
 
 ohos_app_scope("arkui_web_error_code_app_profile") {
