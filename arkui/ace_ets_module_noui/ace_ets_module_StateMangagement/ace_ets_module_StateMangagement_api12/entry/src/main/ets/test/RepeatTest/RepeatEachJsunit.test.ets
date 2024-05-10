@@ -44,6 +44,10 @@ export default function RepeatEachJsunit() {
 
     afterEach(async function () {
       await CommonFunc.sleep(1000);
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let init = await driver.findComponent(ON.id('init_repeat'));
+      await init.click();
       console.info(" RepeatEachJsunit after each called");
     });
 
@@ -71,6 +75,145 @@ export default function RepeatEachJsunit() {
       console.info("[RepeatEachJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('message: new three');
       console.info('[RepeatEachJsunit_0100] END');
+      done();
+    });
+
+    /* *
+    * @tc.number: SUB_ACE_SWIPER_RepeatEachJsunit_0200
+    * @tc.name  : RepeatEachJsunit_0200
+    * @tc.desc  : Click to add value.
+    * @tc.level : Level 2
+    * @tc.type :
+    * @tc.size :
+    */
+    it('RepeatEachJsunit_0200', 0, async function (done) {
+      console.info('RepeatEachJsunit_0200 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('repeat_1'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+
+      let strJson = getInspectorByKey('length_repeat');
+      let obj = JSON.parse(strJson);
+      console.info("[RepeatEachJsunit_0200] component obj is: " + JSON.stringify(obj));
+      console.info("[RepeatEachJsunit_0200] text: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual("length: 4");
+      console.info('[RepeatEachJsunit_0200] END');
+      done();
+    });
+	
+    /* *
+    * @tc.number: SUB_ACE_SWIPER_RepeatEachJsunit_0300
+    * @tc.name  : RepeatEachJsunit_0300
+    * @tc.desc  : Swap array items.
+    * @tc.level : Level 2
+    * @tc.type :
+    * @tc.size :
+    */
+    it('RepeatEachJsunit_0300', 0, async function (done) {
+      console.info('RepeatEachJsunit_0300 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('repeat_2'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+
+      let strJson = getInspectorByKey('mess_repeat');
+      let obj = JSON.parse(strJson);
+      console.info("[RepeatEachJsunit_0300] component obj is: " + JSON.stringify(obj));
+      console.info("[RepeatEachJsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual("message: two");
+      console.info('[RepeatEachJsunit_0300] END');
+      done();
+    });
+	
+    /* *
+    * @tc.number: SUB_ACE_SWIPER_RepeatEachJsunit_0400
+    * @tc.name  : RepeatEachJsunit_0400
+    * @tc.desc  : Click to delete the value of the third array item.
+    * @tc.level : Level 2
+    * @tc.type :
+    * @tc.size :
+    */
+    it('RepeatEachJsunit_0400', 0, async function (done) {
+      console.info('RepeatEachJsunit_0400 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('repeat_3'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+
+      let strJson = getInspectorByKey('length_repeat');
+      let obj = JSON.parse(strJson);
+      console.info("[RepeatEachJsunit_0400] component obj is: " + JSON.stringify(obj));
+      console.info("[RepeatEachJsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual("length: 2");
+      console.info('[RepeatEachJsunit_0400] END');
+      done();
+    });
+	
+    /* *
+    * @tc.number: SUB_ACE_SWIPER_RepeatEachJsunit_0500
+    * @tc.name  : RepeatEachJsunit_0500
+    * @tc.desc  : Click to add data and delete values.
+    * @tc.level : Level 2
+    * @tc.type :
+    * @tc.size :
+    */
+    it('RepeatEachJsunit_0500', 0, async function (done) {
+      console.info('RepeatEachJsunit_0500 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('repeat_4'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+
+      let strJson = getInspectorByKey('length_repeat');
+      let obj = JSON.parse(strJson);
+      console.info("[RepeatEachJsunit_0500] component obj is: " + JSON.stringify(obj));
+      console.info("[RepeatEachJsunit_0500] text: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual("length: 3");
+
+      let strJson2 = getInspectorByKey('mess_repeat');
+      let obj2 = JSON.parse(strJson2);
+      console.info("[RepeatEachJsunit_0500] component obj2 is: " + JSON.stringify(obj2));
+      console.info("[RepeatEachJsunit_0500] text2: " + JSON.stringify(obj2.$attrs.content));
+      expect(obj2.$attrs.content).assertEqual("message: 我");
+
+      console.info('[RepeatEachJsunit_0500] END');
+      done();
+    });
+	
+    /* *
+    * @tc.number: SUB_ACE_SWIPER_RepeatEachJsunit_0600
+    * @tc.name  : RepeatEachJsunit_0600
+    * @tc.desc  : Click to add two data items and delete the second value.
+    * @tc.level : Level 2
+    * @tc.type :
+    * @tc.size :
+    */
+    it('RepeatEachJsunit_0600', 0, async function (done) {
+      console.info('RepeatEachJsunit_0600 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('repeat_5'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+
+      let strJson = getInspectorByKey('length_repeat');
+      let obj = JSON.parse(strJson);
+      console.info("[RepeatEachJsunit_0600] component obj is: " + JSON.stringify(obj));
+      console.info("[RepeatEachJsunit_0600] text: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual("length: 4");
+
+      let strJson2 = getInspectorByKey('mess_repeat');
+      let obj2 = JSON.parse(strJson2);
+      console.info("[RepeatEachJsunit_0600] component obj2 is: " + JSON.stringify(obj2));
+      console.info("[RepeatEachJsunit_0600] text2: " + JSON.stringify(obj2.$attrs.content));
+      expect(obj2.$attrs.content).assertEqual("message: 你");
+
+      console.info('[RepeatEachJsunit_0600] END');
       done();
     });
 

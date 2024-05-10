@@ -20,14 +20,61 @@ struct RepeatParent {
   build() {
     Row() {
       Column() {
-        Text('message: '+ this.simpleList[2] ).id('mess_repeat')
-          .margin(10)
+        Text('message: '+ this.simpleList[2]).id('mess_repeat')
+        Text('length: '+ this.simpleList.length).id('length_repeat')
 
-        Text('点击修改第3个数组项的值').id('repeat_modify')
-          .fontSize(24)
+        Text('初始化数据').id('init_repeat')
+          .fontSize(20)
+          .margin(5)
           .fontColor(Color.Red)
           .onClick(() => {
+            this.simpleList = ['one', 'two', 'three'];
+          })
+		  
+        Button('点击修改第3个数组项的值').id('repeat_modify')
+          .fontSize(18)
+          .margin(5)
+          .onClick(() => {
             this.simpleList[2] = 'new three';
+          })
+
+        Button('点击添加值').id('repeat_1')
+          .fontSize(18)
+          .margin(5)
+          .onClick(() => {
+            this.simpleList.push('five');
+          })
+		  
+        Button('交换数组项1，2').id('repeat_2')
+          .fontSize(18)
+          .margin(5)
+          .onClick(() => {
+            let temp: string = this.simpleList[2]
+            this.simpleList[2] = this.simpleList[1]
+            this.simpleList[1] = temp
+          })
+		  
+        Button('点击删除第3个数组项的值').id('repeat_3')
+          .fontSize(18)
+          .margin(5)
+          .onClick(() => {
+            this.simpleList.splice(2,1);
+          })
+
+        Button('点击添加数据，并删除值').id('repeat_4')
+          .fontSize(18)
+          .margin(5)
+          .onClick(() => {
+            this.simpleList.splice(1,1);
+            this.simpleList.push('我');
+          })
+
+        Button('点击添加两项数据，并删除第二个值').id('repeat_5')
+          .fontSize(18)
+          .margin(5)
+          .onClick(() => {
+            this.simpleList.splice(1,1);
+            this.simpleList.push('你','他');
           })
 
         Repeat<string>(this.simpleList)
@@ -52,6 +99,6 @@ struct ChildItem {
 
   build() {
     Text(this.item)
-      .fontSize(30)
+      .fontSize(20)
   }
 }
