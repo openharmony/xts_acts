@@ -197,6 +197,7 @@ export default class Utils {
       screenY: screenX,
       x: x,
       y: y,
+      
     })
 
     console.info('performTouch result : ' + result);
@@ -230,6 +231,10 @@ export default class Utils {
       timestamp: new Date().getTime(),
       stopPropagation: () => {
       },
+      getModifierKeyState:(keys: Array<string>):boolean => {
+              console.info("the key 0 is :" + keys[0]);
+              return true;
+        }
     })
     console.info('performKeyEvent result : ' + result);
     return result
@@ -285,6 +290,10 @@ export default class Utils {
       pressure: 0,
       stopPropagation: () => {
       },
+      getModifierKeyState:(keys: Array<string>):boolean => {
+              console.info("the key 0 is :" + keys[0]);
+              return true;
+        }
     })
 
     console.info('performMouseEvent result : ' + result);

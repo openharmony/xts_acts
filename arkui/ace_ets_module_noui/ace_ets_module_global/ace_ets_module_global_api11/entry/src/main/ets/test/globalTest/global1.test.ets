@@ -77,7 +77,12 @@ export default function globalJsunit1() {
         timestamp: 5284417765376,
         intentionCode: -1,
         stopPropagation: () => {
+        },
+        getModifierKeyState:(keys: Array<string>):boolean => {
+              console.info("the key 0 is :" + keys[0]);
+              return true;
         }
+        
       };
       let result = sendKeyEvent(KeyEvent);
       console.info("[testglobal_sendKeyEvent0002] result:" + result);
@@ -131,6 +136,10 @@ export default function globalJsunit1() {
         sourceTool: SourceTool.Unknown,
         stopPropagation: () => {
         },
+        getModifierKeyState:(keys: Array<string>):boolean => {
+              console.info("the key 0 is :" + keys[0]);
+              return true;
+        }
       }
       let result = sendMouseEvent(mouseEvent);
       console.info("[testglobal_sendMouseEvent0003] result:" + result);
