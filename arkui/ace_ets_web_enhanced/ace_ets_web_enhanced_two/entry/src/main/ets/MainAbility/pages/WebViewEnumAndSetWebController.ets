@@ -101,7 +101,7 @@ struct WebViewEnumAndSetWebController {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(0.25 + '', 1291)
-                }else if((this.userAgentPC).includes("tablet")){
+                }else if((this.userAgentPC).includes("Tablet")){
                   Utils.emitEvent(0.25 + '', 1291)
                 }else{
                   Utils.emitEvent(result + '', 1291)
