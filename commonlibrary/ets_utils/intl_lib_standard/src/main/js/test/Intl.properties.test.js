@@ -1201,7 +1201,7 @@ describe('etsIntlPtsFunTest', function () {
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_013', 0, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
-        var value = date.toLocaleDateString('jp', { timeZone: 'UTC' });
+        var value = date.toLocaleDateString('ja', { timeZone: 'UTC' });
         console.log('DateTest013 :' + value);
         expect(value).assertEqual('10/20/2022');
     })
@@ -1234,7 +1234,7 @@ describe('etsIntlPtsFunTest', function () {
         var value = date.toLocaleDateString(undefined, { hour12: true, weekday: 'long', year: 'numeric',
             month: 'long', day: 'numeric', timeZone: 'UTC' });
         console.log('DateTest015 :' + value);
-        expect(value).assertEqual('Thursday, October 20, 2022');
+        expect(value).assertEqual('2022年10月20日星期四');
     })
 
     /**
