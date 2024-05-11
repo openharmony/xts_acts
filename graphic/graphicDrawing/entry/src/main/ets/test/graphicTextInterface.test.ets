@@ -255,5 +255,27 @@ export default function graphicTextInterface(context, windowStage, abilityStorag
         expect().assertFail();
       }
     })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_008
+     * @tc.name      : testLoadFontSync
+     * @tc.desc      : To test interface loadFontSync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontSync', 7, async function () {
+      let msg = "testLoadFontSync"
+      console.info(msg + ' begin ');
+      try {
+        let fontCollection = new text.FontCollection;
+        fontCollection.loadFontSync("test", "");
+        console.log(msg + ' Succeed in fontCollection.loadFontSync.')
+        expect(true).assertTrue()
+      } catch (err) {
+        console.info(msg + ' Failed in fontCollection.loadFontSync.    Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
   })
 }
