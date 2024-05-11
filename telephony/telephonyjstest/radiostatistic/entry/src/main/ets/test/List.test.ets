@@ -22,12 +22,17 @@ import telSyncTest from './TelSyncTest.test';
 let voiceCapablity = call.hasVoiceCapability();
 
 export default function testsuite() {
-   if(voiceCapablity){
+  if(voiceCapablity){
     dataJsunit();
     smsUiJsunit();
     radioJsunit();
     radioSecondJsunit();
     callJsunit();
     telSyncTest();
-   }
+  }else{
+    dataJsunit();
+    smsUiJsunit();
+    radioJsunit();
+    radioSecondJsunit();
+  }
 }
