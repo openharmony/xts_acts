@@ -2218,5 +2218,79 @@ export default function nativeApiStringJsunit() {
       expect(value).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0149
+     * @tc.name aceNapiTest0149
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0149', 0, async function (done) {
+      console.info('aceNapiTest0149 START');
+      value = napitest.napiSetNamedProperty();
+      console.info('aceNapiTest0149 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0150
+     * @tc.name aceNapiTest0150
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0150', 0, async function (done) {
+      console.info('aceNapiTest0150 START');
+      value = napitest.napiGetNamedProperty();
+      console.info('aceNapiTest0150 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0151
+     * @tc.name aceNapiTest0151
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0151', 0, async function (done) {
+      class MyClass {
+        constructor() {
+        }
+        // 类的方法
+        add(num1, num2) {
+          return num1 + num2;
+        }
+      }
+      const myObj = new MyClass();
+      console.info('aceNapiTest0151 START');
+      value = napitest.callAddNumFunction(myObj, myObj.add);
+      console.info('aceNapiTest0151 testString result is: ' + value);
+      expect(value).assertEqual(12);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0152
+     * @tc.name aceNapiTest0152
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0152', 0, async function (done) {
+      console.info('aceNapiTest0152 START');
+      value = napitest.napiNewInstance();
+      console.info('aceNapiTest0152 testString result is: ' + value);
+      expect(value).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0153
+     * @tc.name aceNapiTest0153
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0153', 0, async function (done) {
+      console.info('aceNapiTest0153 START');
+      value = napitest.napiCrateAndGetValueString('love');
+      console.info('aceNapiTest0153 testString result is: ' + value);
+      expect(value).assertEqual('love');
+      done();
+    });
   })
 }
