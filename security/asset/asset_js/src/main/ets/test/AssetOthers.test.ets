@@ -190,6 +190,8 @@ export default function AssetOthers() {
      */
     it('testJSFunc0100', 0, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
+      let valueType: asset.Value = asset.SyncType.NEVER;
+      expect(valueType).assertEqual(0);
       try{
         attr.set(asset.Tag.SYNC_TYPE,asset.SyncType.TRUSTED_ACCOUNT);
         attr.set(asset.Tag.OPERATION_TYPE,asset.OperationType.NEED_LOGOUT);
