@@ -135,9 +135,6 @@ void URLRequest::StartRead()
     // 开启线程
     thrd_t th;
     ArkWeb_RequestHeaderList* headerList;
-    ArkWeb_RequestHeaderList* beforeHeaderList = headerList;
-
-    OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetRequestHeaders before %{public}p", beforeHeaderList);
 
     OH_ArkWebResourceRequest_GetRequestHeaders(resourceRequest_, &headerList);
     int size = OH_ArkWebRequestHeaderList_GetSize(headerList);
@@ -145,19 +142,10 @@ void URLRequest::StartRead()
         char *key;
         char *value;
         OH_ArkWebRequestHeaderList_GetHeader(headerList, i, &key, &value);
+        g_testWebResourceRequestGetRequestHeaders = true;
     }
 
     OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetRequestHeaders after %{public}p", headerList);
-
-    if (headerList == beforeHeaderList) {
-        g_testWebResourceRequestGetRequestHeaders = false;
-        OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetRequestHeaders before %{public}p",
-                    g_testWebResourceRequestGetRequestHeaders);
-    } else {
-        g_testWebResourceRequestGetRequestHeaders = true;
-        OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetRequestHeaders before %{public}p",
-                    g_testWebResourceRequestGetRequestHeaders);
-    }
 
     char *method;
     char *referrer;
