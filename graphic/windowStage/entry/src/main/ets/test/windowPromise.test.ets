@@ -62,11 +62,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
     let systemWindowTypeDic: Record<string, number> = {
       'TYPE_FLOAT': 8,
     }
-    let currentDeviceIsRk = false;
     let currentDeviceIsPC = false;
     beforeAll(() => {
       let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
       currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
       console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
@@ -1567,7 +1565,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
 
         } catch (exception) {
           console.error(msgStr + 'Failed to set the visibility of window decor. Cause: ' + JSON.stringify(exception));
-          if (!currentDeviceIsRk) {
+          if (exception.code != 801) {
             console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
             expect().assertFail();
             done();
@@ -1602,7 +1600,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           done()
         } catch (exception) {
           console.error(msgStr + ' Failed to set the height of window decor. Cause: ' + JSON.stringify(exception));
-          if (!currentDeviceIsRk) {
+          if (exception.code != 801) {
             console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
             expect().assertFail();
             done();
