@@ -303,7 +303,8 @@ export default function audioCapturerEnhanceTest() {
           capturerInfo: AudioCapturerInfo
         }
         try {
-          if (Number(audio.SourceType[index]) == -1 || Number(audio.SourceType[index]) == 3 || Number(audio.SourceType[index]) == 4) {
+          if (Number(audio.SourceType[index]) == -1 || Number(audio.SourceType[index]) == 3 ||
+            Number(audio.SourceType[index]) == 4 || Number(audio.SourceType[index]) == 11) {
             console.info(`SourceType ${index}:${audio.SourceType[index]}, change to MIC`)
             AudioCapturerOptions.capturerInfo.source = Number(audio.SourceType.SOURCE_TYPE_MIC);
           }
