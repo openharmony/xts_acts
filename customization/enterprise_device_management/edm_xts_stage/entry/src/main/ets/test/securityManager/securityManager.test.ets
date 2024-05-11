@@ -14,7 +14,7 @@
  */
 
 import { describe, expect, it } from '@ohos/hypium';
-import { ENTINFO1, INVALID_WANT, SELFHAPNAME, SELFWANT } from '../commom';
+import { ENTINFO1, INVALID_WANT, SELFHAPNAME, SELFWANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import securityManager from '@ohos.enterprise.securityManager';
@@ -115,6 +115,9 @@ export default function securityManagerTest() {
 
     testInstallUserCertificate();
     testUninstallUserCertificate();
+
+    testSetClipboardPolicy();
+    testGetClipboardPolicy();
   })
 }
 
@@ -680,6 +683,211 @@ function testUninstallUserCertificate() {
       expect(error.code == 401).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testSetClipboardPolicy() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0100
+   * @tc.name      : test_set_clipboard_policy_0100
+   * @tc.desc      : test securityManager setAppClipboardPolicy without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_0100", 0, async (done: Function) => {
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0200
+   * @tc.name      : test_set_clipboard_policy_0200
+   * @tc.desc      : test securityManager setAppClipboardPolicy without permission
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_0200", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0300
+   * @tc.name      : test_set_clipboard_policy_0300
+   * @tc.desc      : test securityManager setAppClipboardPolicy without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_0300", 0, async (done: Function) => {
+    try {
+      securityManager.setAppClipboardPolicy(null, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0400
+   * @tc.name      : test_set_clipboard_policy_0400
+   * @tc.desc      : test securityManager setAppClipboardPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_0400", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, null, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0500
+   * @tc.name      : test_set_clipboard_policy_0500
+   * @tc.desc      : test securityManager setAppClipboardPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_0500", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID, null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0600
+   * @tc.name      : test_set_clipboard_policy_0600
+   * @tc.desc      : test securityManager setAppClipboardPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_0600", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY);
+      let data: string = securityManager.getAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID);
+      let policy: any = JSON.parse(data);
+      expect(policy[0]["tokenId"] == TEST_TOKEN_ID).assertTrue();
+      expect(policy[0]["clipboardPolicy"] == 1).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0700
+   * @tc.name      : test_set_clipboard_policy_0700
+   * @tc.desc      : test securityManager setAppClipboardPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_0700", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      for (let i = 0; i < 101; i++) {
+        securityManager.setAppClipboardPolicy(SELFWANT, i, TEST_CLIPBOARD_POLICY);
+      }
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401);
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testGetClipboardPolicy() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_CLIPBOARD_POLICY_JS_0100
+   * @tc.name      : test_get_clipboard_policy_0100
+   * @tc.desc      : test securityManager getAppClipboardPolicy without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_0100", 0, async (done: Function) => {
+    try {
+      securityManager.getAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0200
+   * @tc.name      : test_get_clipboard_policy_0200
+   * @tc.desc      : test securityManager getAppClipboardPolicy without permission
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_0200", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      securityManager.getAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+  
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0300
+   * @tc.name      : test_get_clipboard_policy_0300
+   * @tc.desc      : test securityManager getAppClipboardPolicy without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_0300", 0, async (done: Function) => {
+    try {
+      securityManager.getAppClipboardPolicy(null, TEST_TOKEN_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
     }
     done();
   });
