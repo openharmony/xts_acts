@@ -1203,7 +1203,7 @@ describe('etsIntlPtsFunTest', function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         var value = date.toLocaleDateString('ja', { timeZone: 'UTC' });
         console.log('DateTest013 :' + value);
-        expect(value).assertEqual('10/20/2022');
+        expect(value).assertEqual('2022/10/20');
     })
 
     /**
