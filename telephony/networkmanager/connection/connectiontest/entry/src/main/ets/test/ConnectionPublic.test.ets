@@ -4448,7 +4448,7 @@ export default function ConnectionPublicTest() {
             family: 1
           } as socket.NetAddress, (error: BusinessError) => {
             console.info(`${caseName} bind error: ${JSON.stringify(error)}`);
-            netHandle.netId = 23;
+            netHandle.netId = 53;
             netHandle.bindSocket(tcp, (error: BusinessError, data: void) => {
               if (error) {
                 console.info(`${caseName} bindSocket failed error: ${JSON.stringify(error)}`);
@@ -4620,7 +4620,7 @@ export default function ConnectionPublicTest() {
             family: 1
           } as socket.NetAddress, (error: BusinessError) => {
             console.info(`${caseName} bind error: ${JSON.stringify(error)}`);
-            netHandle.netId = 23;
+            netHandle.netId = 53;
             netHandle.bindSocket(tcp).then((data: void) => {
               console.info(`${caseName} bindSocket data: ${JSON.stringify(data)}`);
               ExpectFail();
@@ -6622,7 +6622,6 @@ export default function ConnectionPublicTest() {
     /**
      * @tc.number : SUB_NetworkMgr_Connection_HttpProxy_0100
      * @tc.name   : testNetworkMgrConnectionHttpProxy0100
-     *
      * @tc.desc   : Network proxy configuration information.
      * @tc.level  : Level 3
      * @tc.type   : Function
