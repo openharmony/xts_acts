@@ -215,8 +215,11 @@ OH_NN_ReturnCode GetInputDimAndSetShape(OH_NNExecutor *executor, std::vector<NN_
                 LOGE("End2EndTest::OH_NNExecutor_GetInputDimRange failed.");
                 return OH_NN_FAILED;
             }
-            if (OH_NN_SUCCESS != OH_NNTensorDesc_SetShape(inputTensorDescs[i],
-                                                          (int32_t*)minInputDims, shapeLength)) {
+            std::vector<int32_t> minInputDimsT;
+            for (size_t j = 0; j < shapeLength; ++j) {
+                minInputDimsT.emplace_back(static_cast<int32_t>(minInputDims[j]));
+            }
+            if (OH_NN_SUCCESS != OH_NNTensorDesc_SetShape(inputTensorDescs[i], minInputDimsT.data(), shapeLength)) {
                 LOGE("End2EndTest::OH_NNTensorDesc_SetShape failed.");
                 return OH_NN_FAILED;
             }
