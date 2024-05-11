@@ -15,6 +15,8 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
+import fs from '@ohos.file.fs';
+import fileUri from "@ohos.file.fileuri";
 import mediaNative from "libmediaAssetManager.so";
 import {
   photoKeys,
@@ -32,12 +34,10 @@ export default function requestCancelNativeTest() {
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
         let srcUri = photoAsset.uri;
-        let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
-        let extension: string = 'mp4';
-        let CreateOptions: photoAccessHelper.CreateOptions = {
-          title: 'testPhoto' + new Date().getTime()
-        }
-        let destUri: string = await helper.createAsset(photoType, extension, CreateOptions);
+        let pathDir = globalThis.abilityContext.filesDir;
+        let path = pathDir + '/test'+ new Date().getTime()+'.mp4';
+        fs.openSync(path, 0o100)
+        let destUri = fileUri.getUriFromPath(path);
         let result = await mediaNative.testRequestVideoForPath(srcUri, requestOptions, destUri, (err, state, requestId ) => {
             console.info(`${testNum} succeed ${state} ${requestId}`);
             expect(state).assertEqual(0);
