@@ -35,7 +35,7 @@ struct WebComponent {
         .color('#0000ff')
         .visibility(this.hideProgress ? Visibility.None : Visibility.Visible)
       // 初始化Web组件，并绑定controller
-      Web({ src: $rawfile('index.html'), controller: this.controller })
+      Web({ src: "", controller: this.controller })
         .key("getTitleText")
         .fileAccess(this.fileAccess)
         .javaScriptAccess(true)
