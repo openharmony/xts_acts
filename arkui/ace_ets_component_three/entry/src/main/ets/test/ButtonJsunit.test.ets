@@ -299,7 +299,7 @@ export default function buttonJsunit() {
       console.info('[testButton11] END');
     });
 
-    it('testButton12', 0, async (done: Function) => {
+    it('testButton12', 0, async function (done) {
       let driver = Driver.create();
 
       await Utils.sleep(500);
