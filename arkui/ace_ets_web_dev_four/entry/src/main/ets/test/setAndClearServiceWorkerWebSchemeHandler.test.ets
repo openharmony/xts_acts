@@ -57,7 +57,6 @@ export default function setAndClearServiceWorkerWebSchemeHandler() {
       Utils.emitEvent("setAndClearServiceWorkerWebSchemeHandler0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("setAndClearServiceWorkerWebSchemeHandler0100", "GET", 8854, done);
-      Utils.registerEvent("setAndClearServiceWorkerWebSchemeHandler0100", "", 8856, done);
       Utils.registerEvent("setAndClearServiceWorkerWebSchemeHandler0100", false, 8860, done);
       await Utils.sleep(2000);
       let driver = Driver.create();

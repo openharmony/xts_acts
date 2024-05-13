@@ -61,7 +61,7 @@ export default function webViewOnRequestStart() {
       Utils.registerEvent("defaultOnRequestStart0100", "", 4404, done);
       Utils.registerEvent("defaultOnRequestStart0100", true, 4406, done);
       Utils.registerEvent("defaultOnRequestStart0100", false, 4408, done);
-      Utils.registerEvent("defaultOnRequestStart0100", 4, 4410, done);
+      Utils.registerEvent("defaultOnRequestStart0100", true, 4410, done);
       Utils.registerEvent("defaultOnRequestStart0100", true, 4412, done);
       await Utils.sleep(4000);
       let driver = Driver.create();

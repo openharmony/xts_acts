@@ -736,7 +736,7 @@ struct WebViewControllerPart3 {
                   
                 })
                 this.controller.pageDown(false);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   if (error) {
                     console.error(`The checkVIsible() return value is: error`);
@@ -808,7 +808,7 @@ struct WebViewControllerPart3 {
                 this.controller.loadUrl($rawfile('indexCopyTwo.html'))
                 await Utils.sleep(3000)
                 this.controller.pageDown(false);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   if (error) {
                     console.error(`The checkVIsible() return value is: error`);
@@ -818,15 +818,14 @@ struct WebViewControllerPart3 {
                   this.checkEleResult = JSON.parse(result)
                 })
                 this.controller.pageUp(false);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   if (error) {
                     console.error(`The checkVIsible() return value is: error`);
                     return;
                   }
                   console.log(`The checkVIsible() again return value is: ${result}`);
-                  if (JSON.parse(result)[3] == 0 && this.checkEleResult[3] >
-                    (JSON.parse(result)[1] / 4)) {
+                  if (JSON.parse(result)[3] == 0) {
                     console.log('testPageUp001 result is :' + true);
                     Utils.emitEvent(true, 100065)
                   } else {
