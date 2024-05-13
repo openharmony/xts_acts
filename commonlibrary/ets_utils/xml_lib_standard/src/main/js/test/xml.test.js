@@ -2177,4 +2177,176 @@ describe('XmlSerializerXmlPullParserTest', function () {
             expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be object")
         }
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_09200
+     * @tc.name: testXmlBusinessError016
+     * @tc.desc: Parsing XML files.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError016', 0, function () {
+        try {
+            let strXml =
+                '<?xml version="1.0" encoding="utf-8"?>' +
+                '<note importance="high" logged="true">' +
+                '    <!--Hello, World!-->' +
+                '    <company>John &amp; Hans</company>' +
+                '    <title>Happy</title>' +
+                '    <todo>Work</todo>' +
+                '</note>';
+            let textEncoder = new util.TextEncoder();
+            let uint8 = textEncoder.encodeInto(strXml);
+            let that = new xml.XmlPullParser(uint8, 'UTF-8');
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("Error: The parameter type is incorrect, only support ArrayBuffer or DataView.");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_09300
+     * @tc.name: testXmlBusinessError017
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError017', 0, function () {
+        try {
+            const myMAX = 1024;
+            let arrayBuffer = new ArrayBuffer(myMAX);
+            let uint = new Uint8Array(arrayBuffer);
+            let thatSer = new xml.XmlSerializer(uint);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("Error: The parameter type is incorrect, only support ArrayBuffer or DataView.");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_09400
+     * @tc.name: testSetText006
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetText006', 0, function () {
+        const myMAX = 1024;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let thatSer = new xml.XmlSerializer(arrayBuffer);
+        thatSer.startElement("note");
+        thatSer.setAttributes("importance", "high");
+        thatSer.setText("Hello>World");
+        thatSer.endElement();
+        let uint8 = new Uint8Array(arrayBuffer);
+        let result = '<note importance="high">Hello&gt;World</note>';
+        let view = "";
+        for (let i = 0; i < result.length; ++i) {
+            view = view + String.fromCodePoint(uint8[i]);
+        }
+        expect(view).assertEqual(result);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_09500
+     * @tc.name: testSetText007
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetText007', 0, function () {
+        const myMAX = 1024;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let thatSer = new xml.XmlSerializer(arrayBuffer);
+        thatSer.startElement("note");
+        thatSer.setAttributes("importance", "high");
+        thatSer.setText("Hello<World");
+        thatSer.endElement();
+        let uint8 = new Uint8Array(arrayBuffer);
+        let result = '<note importance="high">Hello&lt;World</note>';
+        let view = "";
+        for (let i = 0; i < result.length; ++i) {
+            view = view + String.fromCodePoint(uint8[i]);
+        }
+        expect(view).assertEqual(result);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_09600
+     * @tc.name: testSetText008
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetText008', 0, function () {
+        const myMAX = 1024;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let thatSer = new xml.XmlSerializer(arrayBuffer);
+        thatSer.startElement("note");
+        thatSer.setAttributes("importance", "high");
+        thatSer.setText("Hello&World");
+        thatSer.endElement();
+        let uint8 = new Uint8Array(arrayBuffer);
+        let result = '<note importance="high">Hello&amp;World</note>';
+        let view = "";
+        for (let i = 0; i < result.length; ++i) {
+            view = view + String.fromCodePoint(uint8[i]);
+        }
+        expect(view).assertEqual(result);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_09700
+     * @tc.name: testSetText009
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetText009', 0, function () {
+        const myMAX = 1024;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let thatSer = new xml.XmlSerializer(arrayBuffer);
+        thatSer.startElement("note");
+        thatSer.setAttributes("importance", "high");
+        thatSer.setText("Hello'World");
+        thatSer.endElement();
+        let uint8 = new Uint8Array(arrayBuffer);
+        let result = '<note importance="high">Hello&apos;World</note>';
+        let view = "";
+        for (let i = 0; i < result.length; ++i) {
+            view = view + String.fromCodePoint(uint8[i]);
+        }
+        expect(view).assertEqual(result);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_09800
+     * @tc.name: testSetText010
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetText010', 0, function () {
+        const myMAX = 1024;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let thatSer = new xml.XmlSerializer(arrayBuffer);
+        thatSer.startElement("note");
+        thatSer.setAttributes("importance", "high");
+        thatSer.setText("Hello\"World");
+        thatSer.endElement();
+        let uint8 = new Uint8Array(arrayBuffer);
+        let result = '<note importance="high">Hello&quot;World</note>';
+        let view = "";
+        for (let i = 0; i < result.length; ++i) {
+            view = view + String.fromCodePoint(uint8[i]);
+        }
+        expect(view).assertEqual(result);
+    })
 })}
