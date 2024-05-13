@@ -14,11 +14,11 @@
  */
 import cameraPicker from './CameraPicker.test'
 import cameraPickerPc from './CameraPickerPc.test'
-import parameter from '@ohos.systemparameter';
-let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
+import call from  '@ohos.telephony.call'
+let voice = call.hasVoiceCapability()
 
 export default async function testsuite() {
-    if (info != "false"){
+    if (voice){
         cameraPicker()
     }else{
         cameraPickerPc()

@@ -27,14 +27,14 @@ import cameraManagerTest from './CameraManagerTest.test.ets'
 import cameraEnumTest from './CameraEnumTest.test.ets'
 import cameraVideoSuperStabilizationTest from './CameraVideoSuperStabilizationTest.test.ets'
 import cameraTorchTest from './CameraTorchTest.test.ets'
-import parameter from '@ohos.systemparameter';
 import cameraPickerPc from './CameraPickerPc.test'
-let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
+import call from  '@ohos.telephony.call'
+let voice = call.hasVoiceCapability()
 let TAG = 'CameraModuleTest: '
 
 export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
-  if (info != "false"){
+  if (voice){
     cameraInputTest()
     cameraVideoSuperStabilizationTest()
     cameraJSUnitOutput()
