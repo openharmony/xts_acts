@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+        "MainAbility/pages/index/second",
         "MainAbility/pages/List/list",
         "MainAbility/pages/List/List07",
         "MainAbility/pages/Swiper/Swiper07",

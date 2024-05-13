@@ -22,7 +22,6 @@ struct scrollEvent1 {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7]
   @State message1: string = ''
   @State message2: string = ''
-  // @State temp:observer.ScrollEventType=observer.ScrollEventType.SCROLL_START
   build() {
     Row() {
       Column({ space: 10 }) {
@@ -37,7 +36,7 @@ struct scrollEvent1 {
                 this.message1 = 'SCROLL_START'
               }
               if (observer.ScrollEventType.SCROLL_STOP == info.scrollEvent) {
-                this.message1 = 'SCROLL_STOP'
+                this.message2 = 'SCROLL_STOP'
               }
             });
           })
@@ -57,7 +56,6 @@ struct scrollEvent1 {
         }
         .id('scrollEvent_4')
         .border({ width: 1, color: Color.Red })
-        .id("testId")
         .height('80%')
       }
       .width('100%')
