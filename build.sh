@@ -15,8 +15,7 @@
 
 set -e
 
-usage()
-{
+usage() {
     echo
     echo "USAGE"
     echo "       ./build.sh [suite=BUILD_TARGET] [target_os=TARGET_OS] [target_arch=TARGET_ARCH] [variant=BUILD_VARIANT] [target_subsystem=TARGET_SUBSYSTEM]"
@@ -30,9 +29,7 @@ usage()
     exit 1
 }
 
-
-parse_cmdline()
-{
+parse_cmdline() {
     BASE_HOME=$(dirname $(cd $(dirname $0); pwd))
     BASE_HOME=${BASE_HOME}/../..
     BUILD_TOOLS_DIR=${BASE_HOME}/prebuilts/build-tools/linux-x86/bin
@@ -50,10 +47,10 @@ parse_cmdline()
     USE_MUSL=false
     export PATH=${BASE_HOME}/prebuilts/python/linux-x86/3.8.3/bin:$PATH
 
+
     system_build_params="build_xts=true"
 
-    while [ -n "$1" ]
-    do
+    while [ -n "$1" ]; do
         var="$1"
         OPTIONS=${var%%=*}
         PARAM=${var#*=}
@@ -87,46 +84,49 @@ parse_cmdline()
         shift
     done
     if [ "$SYSTEM_SIZE" = "standard" ]; then
-       BUILD_TARGET=${BUILD_TARGET:-"test/xts/acts:xts_acts"}
-       PRODUCT_NAME=${PRODUCT_NAME:-"Hi3516DV300"}
+        BUILD_TARGET=${BUILD_TARGET:-"test/xts/acts:xts_acts"}
+        PRODUCT_NAME=${PRODUCT_NAME:-"Hi3516DV300"}
     else
-       BUILD_TARGET=${BUILD_TARGET:-"acts acts_ivi acts_intellitv acts_wearable"}
-       PRODUCT_NAME=${PRODUCT_NAME:-"arm64"}
+        BUILD_TARGET=${BUILD_TARGET:-"acts acts_ivi acts_intellitv acts_wearable"}
+        PRODUCT_NAME=${PRODUCT_NAME:-"arm64"}
     fi
 }
 
-
-do_make()
-{
+do_make() {
     BUILD_TARGET=$(echo "$BUILD_TARGET" | sed 's/,/ /g')
     echo "BUILD_TARGET: $BUILD_TARGET"
     cd $BASE_HOME
     ACTS_ROOT="$BASE_HOME/test/xts/acts"
+
+    ${BASE_HOME}/prebuilts/python/linux-x86/3.10.2/bin/python3 -B ${ACTS_ROOT}/check_hvigor.py
+    if [ "$?" != 0 ]; then
+        exit 1
+    fi
 
     rm -rf "$BASE_HOME/test/xts/autogen_apiobjs"
     export XTS_SUITENAME=acts
     if [ "$SYSTEM_SIZE" = "standard" ]; then
         MUSL_ARGS=""
         if [ "$PRODUCT_NAME" = "m40" ]; then
-		    if [ "$USE_MUSL" = "false" ]; then
-                        MUSL_ARGS="--gn-args use_musl=false --gn-args use_custom_libcxx=true --gn-args use_custom_clang=true"			
-		    fi
+            if [ "$USE_MUSL" = "false" ]; then
+                MUSL_ARGS="--gn-args use_musl=false --gn-args use_custom_libcxx=true --gn-args use_custom_clang=true"
+            fi
         fi
-	CACHE_ARG=""
+        CACHE_ARG=""
     
-	if [ "$CACHE_TYPE" == "xcache" ];then
+        if [ "$CACHE_TYPE" == "xcache" ];then
             CACHE_ARG="--ccache false --xcache true"
-    fi
-    if [ "$PR_PARTH_LIST" != "" ]; then
-        system_build_params+=" pr_path_list=$PR_PARTH_LIST"
-    fi
-    ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH --get-warning-list=false --stat-ccache=true --compute-overlap-rate=false --deps-guard=false $CACHE_ARG --gn-args skip_generate_module_list_file=true
+        fi
+        if [ "$PR_PARTH_LIST" != "" ]; then
+            system_build_params+=" pr_path_list=$PR_PARTH_LIST"
+        fi
+        ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH --get-warning-list=false --stat-ccache=true --compute-overlap-rate=false --deps-guard=false $CACHE_ARG --gn-args skip_generate_module_list_file=true
     else
-       if [ "$BUILD_TARGET" = "acts acts_ivi acts_intellitv acts_wearable" ]; then
-         ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target "acts" --build-target "acts_ivi" --build-target "acts_intellitv" --build-target "acts_wearable" --build-target "deploy_testtools"
-       else
-         ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools"
-       fi
+        if [ "$BUILD_TARGET" = "acts acts_ivi acts_intellitv acts_wearable" ]; then
+            ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target "acts" --build-target "acts_ivi" --build-target "acts_intellitv" --build-target "acts_wearable" --build-target "deploy_testtools"
+        else
+            ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools"
+        fi
     fi
     ret=$?
 
