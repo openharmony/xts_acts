@@ -14,29 +14,48 @@
  */
 
 import vibrator from 'libvibratorndk.so'
+import deviceInfo from '@ohos.deviceInfo'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function ActsMiscdeviceNdkTest() {
+let isAvailable; 
+const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice'); 
 describe('ActsMiscdeviceNdkTest', () => {
-    beforeAll(function () {
-      /*
-       * @tc.setup: setup invoked before all testcases
-       */
-      console.info('beforeAll caled')
+    beforeAll(async function (done) {
+        /*
+         * @tc.setup: setup invoked before all testcases
+         */
+        console.info('beforeAll called')           
+        console.info('ActsMiscdeviceNdkTest Device type = ' + deviceInfo.deviceType);    
+        console.info('ActsMiscdeviceNdkTest isAvailable = ' + isAvailable);    
+        try {
+            if (deviceInfo.deviceType === '2in1' || ABILITYJUDGMENT === false) {
+                isAvailable = false;
+                console.info('ActsMiscdeviceNdkTest isAvailable ' + isAvailable);
+                done() 
+            }else {
+                isAvailable = true;
+                console.info('ActsMiscdeviceNdkTest isAvailable ' + isAvailable);
+                done() 
+            }
+        } catch(error) {
+            console.error('ActsMiscdeviceNdkTest exception :' + JSON.stringify(error))
+            done() 
+        }        
     })
 
     afterAll(function () {
         /*
         * @tc.teardown: teardown invoked after all testcases
         */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
         /*
         * @tc.setup: setup invoked before each testcases
         */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -52,6 +71,7 @@ describe('ActsMiscdeviceNdkTest', () => {
     const UNSUPPORTED = 801;
     const PARAMETER_ERROR = 401;
     const DEVICE_OPERATION_FAILED = 14600101;
+    let TAG = ""  
 
     /**
      * @tc.number     : SEN_MISC_Miscdevice_ETS_0100
@@ -59,13 +79,20 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testActsMiscdeviceNdkTest001', 0, async (done: Function) => {
-        let ret = vibrator.startVibrator(0, USAGE_ALARM);
-        console.info("Test MISC ret Result = " + ret);
-        expect(ret).assertEqual(PARAMETER_ERROR);
-        done()
+    it('testActsMiscdeviceNdkTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest001"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            let ret = vibrator.startVibrator(0, USAGE_ALARM);
+            console.info("Test MISC ret Result = " + ret);
+            expect(ret).assertEqual(PARAMETER_ERROR);
+            done()
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
     });
 
     /**
@@ -74,15 +101,22 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('testActsMiscdeviceNdkTest002', 0 , async (done: Function) => {
-        let ret = vibrator.startVibrator(g_duration, USAGE_RING);
-        console.info("Test MISC ret Result = " + ret);
-        expect(ret).assertEqual(0);
-        ret = vibrator.cancel();
-        expect(ret).assertEqual(0);
-        done()
+    it('testActsMiscdeviceNdkTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest002"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            let ret = vibrator.startVibrator(g_duration, USAGE_RING);
+            console.info("Test MISC ret Result = " + ret);
+            expect(ret).assertEqual(0);
+            ret = vibrator.cancel();
+            expect(ret).assertEqual(0);
+            done()
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
     });
 
       /**
@@ -91,17 +125,24 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('testActsMiscdeviceNdkTest003', 0 , async (done: Function) => {
-        let ret = vibrator.cancel();
-        console.info("Test MISC ret Result = " + ret);
-        if (ret == 0) {
-            expect(false).assertTrue();
+    it('testActsMiscdeviceNdkTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest003"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            let ret = vibrator.cancel();
+            console.info("Test MISC ret Result = " + ret);
+            if (ret == 0) {
+                expect(false).assertTrue();
+            } else {
+                expect(true).assertTrue();
+            }
+            done()
         } else {
-            expect(true).assertTrue();
+            console.log(TAG + ' is not supported on this device.');
+            done();
         }
-        done()
     });
 
     /**
@@ -110,18 +151,25 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('testActsMiscdeviceNdkTest004', 0 , async (done: Function) => {
-        let file = await globalThis.abilityContext.resourceManager.getRawFdSync('coin_drop.json');
-        console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
-        let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
-        console.info("Test MISC ret Result = " + ret);
-        await globalThis.abilityContext.resourceManager.closeRawFdSync('coin_drop.json')
-        let isSuccess = ((ret == 0) || (ret == UNSUPPORTED));
-        expect(isSuccess).assertTrue();
-        vibrator.cancel();
-        done()
+    it('testActsMiscdeviceNdkTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest004"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            let file = await globalThis.abilityContext.resourceManager.getRawFdSync('coin_drop.json');
+            console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
+            let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
+            console.info("Test MISC ret Result = " + ret);
+            await globalThis.abilityContext.resourceManager.closeRawFdSync('coin_drop.json')
+            let isSuccess = ((ret == 0) || (ret == UNSUPPORTED));
+            expect(isSuccess).assertTrue();
+            vibrator.cancel();
+            done()
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
     });
 
     /**
@@ -130,16 +178,23 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('testActsMiscdeviceNdkTest005', 0 , async (done: Function) => {
-        let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_invalid_type.json');
-        console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
-        let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
-        console.info("Test MISC ret Result = " + ret);
-        await globalThis.abilityContext.resourceManager.closeRawFdSync('test_invalid_type.json')
-        expect(ret).not(0);
-        done()
+    it('testActsMiscdeviceNdkTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest005"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_invalid_type.json');
+            console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
+            let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
+            console.info("Test MISC ret Result = " + ret);
+            await globalThis.abilityContext.resourceManager.closeRawFdSync('test_invalid_type.json')
+            expect(ret).not(0);
+            done()
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
     });
 
     /**
@@ -148,20 +203,27 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('testActsMiscdeviceNdkTest006', 0 , async (done: Function) => {
-        let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_invalid_startTime.json');
-        console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
-        let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
-        console.info("Test MISC ret Result = " + ret);
-        await globalThis.abilityContext.resourceManager.closeRawFdSync('test_invalid_startTime.json')
-        if (ret == 0) {
-            expect(false).assertTrue();
+    it('testActsMiscdeviceNdkTest006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest006"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_invalid_startTime.json');
+            console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
+            let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
+            console.info("Test MISC ret Result = " + ret);
+            await globalThis.abilityContext.resourceManager.closeRawFdSync('test_invalid_startTime.json')
+            if (ret == 0) {
+                expect(false).assertTrue();
+            } else {
+                expect(true).assertTrue();
+            }
+            done()
         } else {
-            expect(true).assertTrue();
+            console.log(TAG + ' is not supported on this device.');
+            done();
         }
-        done()
     });
 
     /**
@@ -170,20 +232,27 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('testActsMiscdeviceNdkTest007', 0 , async (done: Function) => {
-        let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_invalid_duration.json');
-        console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
-        let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
-        console.info("Test MISC ret Result = " + ret);
-        await globalThis.abilityContext.resourceManager.closeRawFdSync('test_invalid_duration.json')
-        if (ret == 0) {
-            expect(false).assertTrue();
+    it('testActsMiscdeviceNdkTest007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest007"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_invalid_duration.json');
+            console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
+            let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
+            console.info("Test MISC ret Result = " + ret);
+            await globalThis.abilityContext.resourceManager.closeRawFdSync('test_invalid_duration.json')
+            if (ret == 0) {
+                expect(false).assertTrue();
+            } else {
+                expect(true).assertTrue();
+            }
+            done()
         } else {
-            expect(true).assertTrue();
+            console.log(TAG + ' is not supported on this device.');
+            done();
         }
-        done()
     });
 
     /**
@@ -192,20 +261,27 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('testActsMiscdeviceNdkTest008', 0 , async (done: Function) => {
-        let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_invalid_intensity.json');
-        console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
-        let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
-        console.info("Test MISC ret Result = " + ret);
-        await globalThis.abilityContext.resourceManager.closeRawFdSync('test_invalid_intensity.json')
-        if (ret == 0) {
-            expect(false).assertTrue();
+    it('testActsMiscdeviceNdkTest008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest008"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_invalid_intensity.json');
+            console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
+            let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
+            console.info("Test MISC ret Result = " + ret);
+            await globalThis.abilityContext.resourceManager.closeRawFdSync('test_invalid_intensity.json')
+            if (ret == 0) {
+                expect(false).assertTrue();
+            } else {
+                expect(true).assertTrue();
+            }
+            done()
         } else {
-            expect(true).assertTrue();
+            console.log(TAG + ' is not supported on this device.');
+            done();
         }
-        done()
     });
 
     /**
@@ -214,20 +290,27 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('testActsMiscdeviceNdkTest009', 0 , async (done: Function) => {
-        let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_invalid_frequency.json');
-        console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
-        let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
-        console.info("Test MISC ret Result = " + ret);
-        await globalThis.abilityContext.resourceManager.closeRawFdSync('test_invalid_frequency.json')
-        if (ret == 0) {
-            expect(false).assertTrue();
+    it('testActsMiscdeviceNdkTest009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest009"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+            if (isAvailable) {
+            let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_invalid_frequency.json');
+            console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
+            let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
+            console.info("Test MISC ret Result = " + ret);
+            await globalThis.abilityContext.resourceManager.closeRawFdSync('test_invalid_frequency.json')
+            if (ret == 0) {
+                expect(false).assertTrue();
+            } else {
+                expect(true).assertTrue();
+            }
+            done()
         } else {
-            expect(true).assertTrue();
+            console.log(TAG + ' is not supported on this device.');
+            done();
         }
-        done()
     });
 
     /**
@@ -236,20 +319,27 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('testActsMiscdeviceNdkTest010', 0 , async (done: Function) => {
-        let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_129_event.json');
-        console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
-        let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
-        console.info("Test MISC ret Result = " + ret);
-        await globalThis.abilityContext.resourceManager.closeRawFdSync('test_129_event.json')
-        if (ret == 0) {
-            expect(false).assertTrue();
+    it('testActsMiscdeviceNdkTest010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest010"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_129_event.json');
+            console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
+            let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
+            console.info("Test MISC ret Result = " + ret);
+            await globalThis.abilityContext.resourceManager.closeRawFdSync('test_129_event.json')
+            if (ret == 0) {
+                expect(false).assertTrue();
+            } else {
+                expect(true).assertTrue();
+            }
+            done()
         } else {
-            expect(true).assertTrue();
+            console.log(TAG + ' is not supported on this device.');
+            done();
         }
-        done()
     });
 
     /**
@@ -258,20 +348,27 @@ describe('ActsMiscdeviceNdkTest', () => {
      * @tc.desc       : OH_Misc_ActsMiscdeviceNdkTest Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('testActsMiscdeviceNdkTest011', 0 , async (done: Function) => {
-        let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_big_file_size.json');
-        console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
-        let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
-        console.info("Test MISC ret Result = " + ret);
-        await globalThis.abilityContext.resourceManager.closeRawFdSync('test_big_file_size.json')
-        if (ret == 0) {
-            expect(false).assertTrue();
+    it('testActsMiscdeviceNdkTest011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        TAG = "testActsMiscdeviceNdkTest011"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            let file = await globalThis.abilityContext.resourceManager.getRawFdSync('test_big_file_size.json');
+            console.info("getRawFdSync, file.fd =", file.fd, file.offset, file.length);
+            let ret = vibrator.startVibratorCustom(file.fd, file.offset, file.length, USAGE_RING);
+            console.info("Test MISC ret Result = " + ret);
+            await globalThis.abilityContext.resourceManager.closeRawFdSync('test_big_file_size.json')
+            if (ret == 0) {
+                expect(false).assertTrue();
+            } else {
+                expect(true).assertTrue();
+            }
+            done()
         } else {
-            expect(true).assertTrue();
+            console.log(TAG + ' is not supported on this device.');
+            done();
         }
-        done()
     });
 
 })
