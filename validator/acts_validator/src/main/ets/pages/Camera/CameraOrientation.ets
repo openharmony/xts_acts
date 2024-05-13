@@ -66,8 +66,11 @@ struct cameraOrientation {
         this.imageRotation = 0
       }
       if (this.cameraListLength > 1) {
-        this.cameraDeviceIndex = 1
-        CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex)
+        if (this.imageRotation > 270 && this.clickFrequency > 3) {
+          this.imageRotation = 0
+          this.cameraDeviceIndex = 1
+          CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex)
+        }
       }
     }
   }
