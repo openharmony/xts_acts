@@ -94,7 +94,7 @@ export default function ThermalControlMgrTest() {
             }
             
             try {
-                systemLoad.on('systemLoadChange', onSystemLoadChange);
+                systemLoad.off('systemLoadChange', onSystemLoadChange);
                 console.info('ThermalControlMgrTest002 callback successful');
 
                 expect(true).assertTure();

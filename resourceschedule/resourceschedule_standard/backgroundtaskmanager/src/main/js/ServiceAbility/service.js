@@ -17,6 +17,7 @@ import notification from '@ohos.notification';
 import featureAbility from '@ohos.ability.featureAbility';
 import wantAgent from '@ohos.wantAgent';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import resBackgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager';
 import particleAbility from '@ohos.ability.particleAbility';
 import commonEvent from '@ohos.commonEvent';
 
@@ -168,7 +169,7 @@ function startContinuousTaskInvalidBgmode() {
 function updateContinuousTaskUseApi12Promise() {
     let list = ["audioPlayback","location"]
     wantAgent.getWantAgent(wantAgentInfo).then((data) => {
-        return backgroundTaskManager.updateBackgroundRunning(featureAbility.getContext(),
+        return resBackgroundTaskManager.updateBackgroundRunning(featureAbility.getContext(),
             list, data);
     }).catch(() => {
         commonEvent.publish("updateTaskUseApi12Promise", (err) => {
