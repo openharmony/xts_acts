@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,7 +44,7 @@ struct promptExample {
             console.info("confituration start to emit action state");
             events_emitter.emit(backEvent, backData);
           }catch{
-            console.info("confituration emit action state err: " + JSON.stringify(err.message));
+            console.info("confituration emit action state err: ");
           }
         })
     }
