@@ -23,6 +23,7 @@ import tabIconJsunit from './TabsTest/tabIconJsunit.test';
 import ListFadeOut from './ListFadeOut/ListFadeOut.test';
 import ListFadeOutEx from './ListFadeOut/ListFadeOutEx.test';
 import ListFadeOutEx1 from './ListFadeOut/ListFadeOutEx1.test';
+import listSwipeActionApi12Test from './ListTest/listSwipeActionApi12.test';
 
 
 export default function testsuite() {
@@ -37,4 +38,5 @@ export default function testsuite() {
   ListFadeOut();
   ListFadeOutEx();
   ListFadeOutEx1();
+  listSwipeActionApi12Test();
 }
