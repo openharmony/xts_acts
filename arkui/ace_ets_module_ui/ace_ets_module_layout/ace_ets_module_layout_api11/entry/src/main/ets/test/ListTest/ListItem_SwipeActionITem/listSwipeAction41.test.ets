@@ -82,7 +82,7 @@ export default function listSwipeAction41Jsunit() {
       expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('50')
       // reset
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(-600))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + 0)
       );
       await CommonFunc.sleep(4000);
       let buttonReset2 = await driver.findComponent(ON.id('btreset41'));
@@ -101,7 +101,7 @@ export default function listSwipeAction41Jsunit() {
       //init the state
       // swipe to up
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(-1000))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + 0)
       );
       await CommonFunc.sleep(4000);
       done();

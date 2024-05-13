@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +31,7 @@ export default function configurationJsunit() {
         if (!("configuration" == pages.name)) {
           console.info("get prompt state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push prompt  page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -42,7 +41,7 @@ export default function configurationJsunit() {
     });
 
     afterEach(async function () {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("prompt each called");
     });
     it('configurationTest_0100', 0, async function (done) {
@@ -50,7 +49,7 @@ export default function configurationJsunit() {
       try {
         let callBackConfiguration = (backData) => {
           console.info("configurationTest_0100 get configurationEvent result is: " + JSON.stringify(backData));
-          expect(backData.data.COUNTRY).assertEqual('');
+          expect(backData.data.COUNTRY).assertEqual('CN');
           expect(backData.data.DIR).assertEqual('ltr');
           done();
         }

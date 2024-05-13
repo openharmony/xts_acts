@@ -97,7 +97,7 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(1000);
       // check the onAnimation triggers
       let strJson = getInspectorByKey('animationEnd');
@@ -156,9 +156,9 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver2 = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver2.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver2.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-      await driver2.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver2.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
@@ -287,9 +287,9 @@ export default function swiperAnimationJsunit() {
       await driver.longClick(Math.round(right/2),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
      // to swipe for duration
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
 
        // check the onAnimation triggers
@@ -549,7 +549,7 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(1000);
 
      // press screen to swipe
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);  
 
 
@@ -624,7 +624,7 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(1000);
 
      // press screen to swipe
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(3000);
      await driver.swipe(Math.round(left + width*0.1),Math.round(bottom + height/2),Math.round(left + width*0.1),Math.round(bottom + height/2));
 
@@ -690,7 +690,7 @@ export default function swiperAnimationJsunit() {
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
      // getComponentRectOnScreen
-     await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+     await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
 
       await CommonFunc.sleep(1000);
        // check the onAnimation triggers
@@ -750,7 +750,7 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
@@ -818,7 +818,7 @@ export default function swiperAnimationJsunit() {
       // to swiper
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
@@ -895,7 +895,7 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(1000);
 
       // to swiper
-      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),Math.round(left - width*0.2),Math.round(bottom + height/2));
+      await driver.swipe(Math.round(right- width*0.1),Math.round(bottom + height/2),0,Math.round(bottom + height/2));
       await CommonFunc.sleep(3000);
        //check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
