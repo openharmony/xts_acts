@@ -301,36 +301,39 @@ export default function buttonJsunit() {
 
     it('testButton12', 0, async function (done) {
       let driver = Driver.create();
+
+      await Utils.sleep(500);
+      let buttonCl = await driver.findComponent(ON.id('buttonClick'));
+      await Utils.sleep(500);
+      let point = await buttonCl.getBoundsCenter();
+
       let density = await driver.getDisplayDensity();
       console.info("[testButton12] getDisplayDensity is: " + JSON.stringify(density));
-      await Utils.sleep(1000);
-      var callback = (eventData) => {
+      await Utils.sleep(500);
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("[testButton12] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual(true)
-        let event = JSON.parse(eventData.data.event);
-        console.info("[testButton12] get event state result is: " + Math.trunc(event.screenY));
-        console.info("[testButton12] get event state result is: " + Math.trunc(event.screenX));
-        console.info("[testButton12] get event state result is: " + Math.trunc(event.x));
-        console.info("[testButton12] get event state result is: " + Math.trunc(event.y));
+        expect(eventData.data?.ACTION).assertEqual(true)
+        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data?.event)
+          .screenY));
+        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data?.event)
+          .screenX));
+        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data?.event).x));
+        console.info("[testButton12] get event state result is: " + Math.trunc(JSON.parse(eventData.data?.event).y));
+
+        let ScreenX: number = JSON.parse(eventData.data?.event).screenX
+        let ScreenY: number = JSON.parse(eventData.data?.event).screenY
         try {
-          if(density.x == 1080){
-            expect(Math.abs(event.screenX - 185) <= 1).assertTrue()
-            expect(Math.abs(event.screenY - 533) <= 1).assertTrue()
-            expect(Math.trunc(event.x)).assertEqual(100)
-            expect(Math.trunc(event.y)).assertEqual(50)
-          }else{
-            expect(Math.abs(event.screenX - 185) <= 1).assertTrue()
-            expect(Math.abs(event.screenY - 523) <= 1).assertTrue()
-            expect(Math.trunc(event.x)).assertEqual(100)
-            expect(Math.trunc(event.y)).assertEqual(50)
-          }
+            expect(Math.abs(vp2px(ScreenX) - point.x + globalThis.winLeft) <= 1).assertTrue()
+            expect(Math.abs(vp2px(ScreenY) - point.y + globalThis.winTop)  <= 1).assertTrue()
+            expect(Math.trunc(JSON.parse(eventData.data?.event).x)).assertEqual(100)
+            expect(Math.trunc(JSON.parse(eventData.data?.event).y)).assertEqual(50)
         } catch (err) {
-            console.info("[testButton12_] expection err : " + JSON.stringify(err));
-            expect().assertFail();
+          console.info("[testButton12_] expection err : " + JSON.stringify(err));
+          expect().assertFail();
         }
         done();
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 4,
         priority: events_emitter.EventPriority.LOW
       }
