@@ -79,6 +79,7 @@ group("multimedia") {
       "media/media_js_standard/screenCapture_ndk_test:ActsNativeAVScreenCaptureTest",
       "media/media_js_standard/soundPool:soundpool_js_hap",
       "media/media_js_standard/videoPlayer:video_player_js_hap",
+      "media/media_ndk_standard/AVPlayerNDK:OhAVPlayerNDK",
       "medialibrary/mediaLibrary_album:mediaLibrary_album_hap",
       "medialibrary/mediaLibrary_base:mediaLibrary_base_hap",
       "medialibrary/mediaLibrary_favorite:mediaLibrary_favorite_hap",
