@@ -114,7 +114,12 @@ struct webViewOnRequestStart {
                   Utils.emitEvent(request.getReferrer(), 4404)
                   Utils.emitEvent(request.isMainFrame(), 4406)
                   Utils.emitEvent(request.hasGesture(), 4408)
-                  Utils.emitEvent(request.getHeader().length, 4410)
+                  if(request.getHeader().length > 0){
+                    Utils.emitEvent(true, 4410)
+                  }else {
+                    Utils.emitEvent(request.getHeader().length, 4410)
+                  }
+                  
                 }
                 let header = request.getHeader();
                 for (let i = 0; i < header.length; i++) {
