@@ -1,6 +1,3 @@
-import worker, { MessageEvents } from "@ohos.worker";
-import napitest from 'libnapitest.so'
-
 /*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,32 +13,41 @@ import napitest from 'libnapitest.so'
  * limitations under the License.
  */
 
-const workPort = worker.workerPort;
+import worker from "@ohos.worker";
+import napitest from 'libnapitest.so'
 
-workPort.onmessage = (e) => {
+const parentPort = worker.parentPort;
+
+console.info("worker::new version")
+
+parentPort.onmessage = (e) => {
   let data = e.data;
+  console.info("worker:: worker thread worker data is " + data)
   if (data === "call napi_run_event_loop with nowait") {
     let result = napitest.runEventLoop(4);
+    console.info("worker:: worker thread runEventLoop result is " + result)
     if (result === "napi_generic_failure") {
-        workPort.postMessage(0);
+      parentPort.postMessage("success");
     } else {
-        workPort.postMessage(1);
+      parentPort.postMessage("failure");
     }
   }
   if (data === "call napi_run_event_loop with default") {
     let result = napitest.runEventLoop(5);
+    console.info("worker:: worker thread runEventLoop result is " + result)
     if (result === "napi_generic_failure") {
-        workPort.postMessage(0);
+      parentPort.postMessage("success");
     } else {
-        workPort.postMessage(1);
+      parentPort.postMessage("failure");
     }
   }
   if (data === "call napi_stop_event_loop") {
     let result = napitest.stopEventLoop(2);
-    if (result === "napi_generic_failure") {
-        workPort.postMessage(0);
+    console.info("worker:: worker thread runEventLoop result is " + result)
+    if (result === 0) {
+      parentPort.postMessage("success");
     } else {
-        workPort.postMessage(1);
+      parentPort.postMessage("failure");
     }
   }
 }
