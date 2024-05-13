@@ -4578,6 +4578,439 @@ export default function inputMethodAbility() {
       commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0100
+    * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_InputMethod_IsTextPreviewSupport_0100', 0, async function (done) {
+
+      function unSubscriberCallback(err) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0100"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        subscriber = data;
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 subscriber data:" + JSON.stringify(data))
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 340
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    /*
+    * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0200
+    * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_InputMethod_IsTextPreviewSupport_0200', 0, async function (done) {
+
+      function unSubscriberCallback(err) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0200"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        subscriber = data;
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 subscriber data:" + JSON.stringify(data))
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 350
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    /*
+    * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0300
+    * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_InputMethod_IsTextPreviewSupport_0300', 0, async function (done) {
+
+      function unSubscriberCallback(err) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0300"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        subscriber = data;
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 subscriber data:" + JSON.stringify(data))
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 360
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    /*
+    * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0400
+    * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0400
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_InputMethod_IsTextPreviewSupport_0400', 0, async function (done) {
+
+      function unSubscriberCallback(err) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0400"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        subscriber = data;
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 subscriber data:" + JSON.stringify(data))
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 370
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    /*
+    * @tc.number  SUB_InputMethod_IME_PrivateDateTransferred_0500
+    * @tc.name    SUB_InputMethod_IME_PrivateDateTransferred_0500
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_InputMethod_IME_PrivateDateTransferred_0500', 0, async function (done) {
+
+      function unSubscriberCallback(err) {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IME_PrivateDateTransferred_0500"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        subscriber = data;
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 subscriber data:" + JSON.stringify(data))
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 380
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    /*
+    * @tc.number  SUB_InputMethod_IME_PrivateDateTransferred_0600
+    * @tc.name    SUB_InputMethod_IME_PrivateDateTransferred_0600
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_InputMethod_IME_PrivateDateTransferred_0600', 0, async function (done) {
+
+      function unSubscriberCallback(err) {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IME_PrivateDateTransferred_0600"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        subscriber = data;
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 subscriber data:" + JSON.stringify(data))
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 390
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    /*
+* @tc.number  SUB_InputMethod_IME_PrivateDateTransferred_1100
+* @tc.name    SUB_InputMethod_IME_PrivateDateTransferred_1100
+* @tc.desc    Function test
+* @tc.size    MediumTest
+* @tc.type    Function
+* @tc.level   Level2
+*/
+    it('SUB_InputMethod_IME_PrivateDateTransferred_1100', 0, async function (done) {
+
+      function unSubscriberCallback(err) {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IME_PrivateDateTransferred_1100"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        subscriber = data;
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 subscriber data:" + JSON.stringify(data))
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 400
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
 
   });
 };
