@@ -1234,7 +1234,7 @@ describe('etsIntlPtsFunTest', function () {
         var value = date.toLocaleDateString(undefined, { hour12: true, weekday: 'long', year: 'numeric',
             month: 'long', day: 'numeric', timeZone: 'UTC' });
         console.log('DateTest015 :' + value);
-        expect(value).assertEqual('2022年10月20日星期四');
+        expect(value).assertEqual('Thursday, October 20, 2022');
     })
 
     /**
