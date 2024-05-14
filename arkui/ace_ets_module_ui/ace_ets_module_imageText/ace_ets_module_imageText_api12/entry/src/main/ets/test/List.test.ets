@@ -49,7 +49,10 @@ import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
 import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
 import RichEditorApi5 from './RichEditor/RichEditorApi5.test'
 import RichEditorChangeCallback from './RichEditor/RichEditorChangeCallback.test'
-
+import RichEditorWordBreakJsunitTest from './RichEditorEnhance01/RichEditorWordBreakJsunitTest.test'
+import RichEditorMenuPolicyJsunit from './RichEditorEnhance01/RichEditorMenuPolicyJsunit.test'
+import RichEditorTextStyleJsunit from './RichEditorEnhance01/RichEditorTextStyleJsunit.test'
+import RichEditorFontFeatureJsunit from './RichEditorEnhance01/RichEditorFontFeatureJsunit.test'
 import RichEditor1 from './RichEditorEnhance/RichEditor1.test'
 import RichEditor2 from './RichEditorEnhance/RichEditor2.test'
 import RichEditor3 from './RichEditorEnhance/RichEditor3.test'
@@ -95,7 +98,10 @@ APIUnderlineColorTest();
   RichEditorApi3();
   RichEditorApi5();
   RichEditorChangeCallback();
-
+  RichEditorWordBreakJsunitTest();
+  RichEditorMenuPolicyJsunit();
+  RichEditorTextStyleJsunit();
+  RichEditorFontFeatureJsunit();
   RichEditor1();
   RichEditor2();
   RichEditor3();
