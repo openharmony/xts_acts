@@ -181,7 +181,7 @@ describe('relationalStoreEncryptTest', function () {
                 expect(rdbStore !== null).assertFalse()
             } catch (err) {
                 console.info(TAG + `catch err: err.code= ${err.code}, message = ${err.message}`)
-                expect(err.code).assertEqual(14800017);
+                expect(err.code).assertEqual(14800011);
                 done()
                 console.info(TAG + "************* RdbEncryptTest_0040 end *************")
             }
