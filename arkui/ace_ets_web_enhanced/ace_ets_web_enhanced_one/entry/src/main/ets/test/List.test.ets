@@ -20,6 +20,7 @@ import webMessageExt from './WebMessageExt.test'
 import webDataBase from './WebDataBase.test'
 import webController from './WebController.test'
 import webAttribute from './WebAttribute.test'
+import webAttributeTwo from './WebAttributeTwo.test'
 import sslErrorHandler from './SslErrorHandler.test'
 import webStorage from './WebStorage.test'
 import httpAuthHandler from './HttpAuthHandler.test'
@@ -41,6 +42,7 @@ export default function testsuite() {
   webViewController()
   webDataBase()
   webController()
+  webAttributeTwo()
   webAttribute()
   sslErrorHandler()
   httpAuthHandler()
