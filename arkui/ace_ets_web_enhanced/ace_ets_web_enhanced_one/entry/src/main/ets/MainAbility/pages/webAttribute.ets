@@ -310,7 +310,7 @@ struct webAttribute {
           if (event) {
             let popController: webView.WebviewController = new webView.WebviewController();
             this.OnWindowNewCallBack = true
-            event.handler.setWebController(popController);
+            event.handler.setWebController(null);
           }
         })
         .onWindowExit(() => {
