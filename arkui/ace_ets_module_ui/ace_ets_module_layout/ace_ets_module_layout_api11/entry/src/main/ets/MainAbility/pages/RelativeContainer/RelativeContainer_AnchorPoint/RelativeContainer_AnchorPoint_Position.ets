@@ -46,7 +46,6 @@ struct RelativeContainer_AnchorPoint_Position {
           .id("RelativeContainer_AnchorPoint_Position_tx2")
           .borderWidth(2)
           .borderColor(Color.Green)
-          .height(30)
           .width(150)
           .position({ x: 10, y: 10 })
       }
