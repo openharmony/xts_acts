@@ -45,7 +45,6 @@ public:
     void DidFinish();
     void DidFailWithError(ArkWeb_NetError errorCode);
     
-    
     bool httpBodyStreamIsEof() { return httpBodyStreamIsEof_; }
     bool httpBodyStreamIsInMemory() { return httpBodyStreamIsInMemory_; }
     bool httpBodyStreamIsChunked() { return httpBodyStreamIsChunked_; }
@@ -60,7 +59,6 @@ public:
     int32_t resourceHandlerDidReceiveData() { return resourceHandlerDidReceiveData_; }
     int32_t resourceHandlerDidFinish() { return resourceHandlerDidFinish_; }
     int32_t resourceHandlerDidFailWithError() { return resourceHandlerDidFailWithError_; }
-
 
 private:
     const ArkWeb_ResourceRequest *resourceRequest_{nullptr};

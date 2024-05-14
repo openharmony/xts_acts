@@ -34,7 +34,7 @@ int32_t testResourceHandlerDidFailWithError = -1;
 static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info) {
     OH_LOG_INFO(LOG_APP, "register custom schemes");
     // 接口覆盖1 OH_ArkWeb_RegisterCustomSchemes
-    OH_ArkWeb_RegisterCustomSchemes("custom",  ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED 
+    OH_ArkWeb_RegisterCustomSchemes("custom",  ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED
     | ARKWEB_SCHEME_OPTION_FETCH_ENABLED | ARKWEB_SCHEME_OPTION_CORS_ENABLED | ARKWEB_SCHEME_OPTION_CSP_BYPASSING);
 
     return nullptr;
@@ -46,7 +46,6 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resourc
     *intercept = true;
     RawfileRequest *request = new RawfileRequest(resourceRequest, resourceHandler, g_resourceManager);
 
-
     OH_ArkWebResourceRequest_SetUserData(resourceRequest, request);
     request->Start();
 
@@ -56,7 +55,6 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resourc
 
     // 接口覆盖6 OH_ArkWebSchemeHandler_GetUserData
     OH_ArkWebSchemeHandler_GetUserData(schemeHandler);
-    
 }
 
 // 请求结束的回调，在该函数中我们需要标记RawfileRequest已经结束了，内部不应该再使用ResourceHandler。
@@ -146,8 +144,8 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"setSchemeHandler", nullptr, SetSchemeHandler, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"initResourceManager", nullptr, InitResourceManager, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"registerCustomSchemes", nullptr, RegisterCustomSchemes, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"resourceHandlerDidFailWithError", nullptr, ResourceHandlerDidFailWithError, nullptr, nullptr, nullptr, napi_default, nullptr}
-
+        {"resourceHandlerDidFailWithError", nullptr, ResourceHandlerDidFailWithError, nullptr, nullptr, nullptr,
+         napi_default, nullptr}
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

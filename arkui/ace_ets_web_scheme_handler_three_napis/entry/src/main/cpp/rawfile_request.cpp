@@ -44,7 +44,6 @@ namespace {
             RawfileRequest *rawfileRequest = (RawfileRequest *)OH_ArkWebHttpBodyStream_GetUserData(httpBodyStream);
             if (rawfileRequest) {
                 rawfileRequest->ReadRawfileDataOnWorkerThread();
-
             }
         }
     }
@@ -114,7 +113,8 @@ void RawfileRequest::Start() {
     if (stream_) {
         OH_LOG_ERROR(LOG_APP, "have http body stream");
         httpBodyStreamSetUserData_ = OH_ArkWebHttpBodyStream_SetUserData(stream_, this);
-        httpBodyStreamSetReadCallback_ = OH_ArkWebHttpBodyStream_SetReadCallback(stream_, (ArkWeb_HttpBodyStreamReadCallback)ReadCallback);
+        httpBodyStreamSetReadCallback_ = OH_ArkWebHttpBodyStream_SetReadCallback(stream_,
+                                                                                 (ArkWeb_HttpBodyStreamReadCallback)ReadCallback);
         httpBodyStreamInit_ = OH_ArkWebHttpBodyStream_Init(stream_, (ArkWeb_HttpBodyStreamInitCallback)InitCallback);
 
         OH_LOG_ERROR(LOG_APP, "OH_ArkWebHttpBodyStream_SetUserData %{public}d", httpBodyStreamSetUserData_);
@@ -183,7 +183,6 @@ void RawfileRequest::ReadRawfileDataOnWorkerThread() {
     OH_ArkWebResponse_GetUrl(response(), &url);
     std::string rspUrl1(url);
     OH_LOG_INFO(LOG_APP, "OH_ArkWebResponse_GetUrl %{public}s ", rspUrl1.c_str());
-
 
     DidReceiveResponse();
 
