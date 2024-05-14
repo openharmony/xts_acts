@@ -15,9 +15,9 @@
 import thermalCommonEvent from './thermal_common_event.test.js'
 import thermalPerformance from './thermal_performance.test.js'
 import thermalUnit from './thermal_uint.test.js'
-import thermalUnitTest from './thermal_unittest.test.js'
+import thermalTest from './thermal.test.js'
 export default function testsuite() {
-    thermalUnitTest()
+    thermalTest()
     //thermalUnit()
     //thermalCommonEvent()
     //thermalPerformance()
