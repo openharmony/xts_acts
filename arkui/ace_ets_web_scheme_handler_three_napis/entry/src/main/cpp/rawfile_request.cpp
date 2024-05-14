@@ -113,8 +113,8 @@ void RawfileRequest::Start() {
     if (stream_) {
         OH_LOG_ERROR(LOG_APP, "have http body stream");
         httpBodyStreamSetUserData_ = OH_ArkWebHttpBodyStream_SetUserData(stream_, this);
-        httpBodyStreamSetReadCallback_ = OH_ArkWebHttpBodyStream_SetReadCallback(stream_,
-                                                                                 (ArkWeb_HttpBodyStreamReadCallback)ReadCallback);
+        httpBodyStreamSetReadCallback_ =
+            OH_ArkWebHttpBodyStream_SetReadCallback(stream_, (ArkWeb_HttpBodyStreamReadCallback)ReadCallback);
         httpBodyStreamInit_ = OH_ArkWebHttpBodyStream_Init(stream_, (ArkWeb_HttpBodyStreamInitCallback)InitCallback);
 
         OH_LOG_ERROR(LOG_APP, "OH_ArkWebHttpBodyStream_SetUserData %{public}d", httpBodyStreamSetUserData_);
@@ -177,7 +177,6 @@ void RawfileRequest::ReadRawfileDataOnWorkerThread() {
     long len = OH_ResourceManager_GetRawFileSize(rawfile);
     OH_ArkWebResponse_SetHeaderByName(response(), "content-length", std::to_string(len).c_str(), false);
     OH_ArkWebResponse_SetHeaderByName(response(), "Access-Control-Allow-Origin", "*", false);
-
 
     char* url;
     OH_ArkWebResponse_GetUrl(response(), &url);
