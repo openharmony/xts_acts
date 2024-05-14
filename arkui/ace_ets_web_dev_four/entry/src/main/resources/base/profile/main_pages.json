@@ -19,6 +19,7 @@
         "MainAbility/pages/WebViewControllerAudioMedia",
         "MainAbility/pages/WebCameraApiNoCrash",
         "MainAbility/pages/webViewOnSslErrorEvent",
-        "MainAbility/pages/MetaViewport"
+        "MainAbility/pages/MetaViewport",
+        "MainAbility/pages/WebTextAutosizing"
     ]
 }
