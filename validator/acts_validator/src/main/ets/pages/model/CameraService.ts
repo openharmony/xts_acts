@@ -54,12 +54,12 @@ class CameraService {
     profile: {
       audioBitrate: 48000,
       audioChannels: 2,
-      audioCodec: 'audio/mp4v-es',
+      audioCodec: 'audio/mp4a-latm',
       audioSampleRate: 48000,
       durationTime: 1000,
       fileFormat: 'mp4',
       videoBitrate: 280000,
-      videoCodec: 'video/mp4v-es',
+      videoCodec: 'video/avc',
       videoFrameWidth: 640,
       videoFrameHeight: 480,
       videoFrameRate: 15,
@@ -156,17 +156,19 @@ class CameraService {
   }
 
   async initCamera(surfaceId: number, cameraDeviceIndex: number, obj?, photoIndex?, previewObj?) {
+    await this.getCameraManagerFn();
+    await this.getSupportedCamerasFn();
+    this.cameraOutputCapability = this.cameraManager.getSupportedOutputCapability(this.cameras[cameraDeviceIndex]);
+    let videoPro = this.cameraOutputCapability.videoProfiles[0].format;
     try {
-      if (deviceInfo.deviceType === 'default') {
-        this.videoConfig.videoSourceType = 1;
+      if (videoPro === camera.CameraFormat.CAMERA_FORMAT_RGBA_8888) {
+        this.videoConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES;
       } else {
-        this.videoConfig.videoSourceType = 0;
+        this.videoConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV;
       }
       Logger.info(this.tag, `cameraDeviceIndex success: ${cameraDeviceIndex}`);
       await this.getScreensObj();
       await this.releaseCamera();
-      await this.getCameraManagerFn();
-      await this.getSupportedCamerasFn();
       await this.getSupportedOutputCapabilityFn(cameraDeviceIndex);
       if (previewObj) {
         previewObj.format = this.cameraOutputCapability.previewProfiles[0].format;
