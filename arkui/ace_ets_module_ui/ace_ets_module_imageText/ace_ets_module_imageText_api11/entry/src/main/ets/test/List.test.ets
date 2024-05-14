@@ -221,6 +221,7 @@ import textSpanFontTest from './textTest/textSpanFont.test';
 export default function testsuite() {
   stageFontTest();
   stageMediaquery();
+  RichEditorApi222();
   TextStateJsunit();
   richEditorApi4();
   richEditorApi5();
@@ -245,7 +246,6 @@ export default function testsuite() {
   arkuiNodeRenderTest();
   Image_QRCode_Api();
   RichEditorApi();
-  RichEditorApi222();
   APIgetUIFontConfigJsunit();
   APITextBackgroundStyleJsunit();
   SXrenderingStrategyJsunit();

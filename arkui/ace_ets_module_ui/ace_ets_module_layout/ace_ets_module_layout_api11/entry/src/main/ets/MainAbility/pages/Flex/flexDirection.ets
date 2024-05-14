@@ -31,7 +31,7 @@ struct flexDirectionExample {
           Text('2').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
           Text('3').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
           Text('4').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
-          .key('Row')
+          .key('flexDirection')
         }.height(70).width('90%').padding(10).backgroundColor(0xAFEEEE)
 
         Text('direction:Column').fontSize(9).fontColor(0xCCCCCC).width('90%')
