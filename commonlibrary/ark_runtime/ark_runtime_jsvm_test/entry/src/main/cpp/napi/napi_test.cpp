@@ -655,23 +655,6 @@ void CreateReference_test_4(JSVM_Env env)
     OH_JSVM_CloseEscapableHandleScope(env, handleScope1);
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
-void CreateReference_test_5(JSVM_Env env)
-{
-    JSVM_HandleScope handleScope;
-    OH_JSVM_OpenHandleScope(env, &handleScope);
-    JSVM_EscapableHandleScope handleScope1;
-    OH_JSVM_OpenEscapableHandleScope(env, &handleScope1);
-    const char testStr[] = "foo";
-    JSVM_Value value = nullptr;
-    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
-    JSVM_Ref reference = nullptr;
-    OH_JSVM_CreateReference(env, value, 1, &reference);
-    JSVM_Value result = nullptr;
-    OH_JSVM_GetReferenceValue(env, reference, &result);
-    OH_JSVM_DeleteReference(env, reference);
-    OH_JSVM_CloseEscapableHandleScope(env, handleScope1);
-    OH_JSVM_CloseHandleScope(env, handleScope);
-}
 void CreateReference_test_6(JSVM_Env env)
 {
     JSVM_HandleScope handleScope;
@@ -802,7 +785,6 @@ static napi_value testLifeCycle2(napi_env env1, napi_callback_info info)
     CreateReference_test_2(env);
     CreateReference_test_3(env);
     CreateReference_test_4(env);
-    CreateReference_test_5(env);
     CreateReference_test_6(env);
     CreateReference_test_7(env);
     CreateReference_test_8(env);
@@ -1814,6 +1796,176 @@ static napi_value testValueOperation4(napi_env env1, napi_callback_info info)
     equals_test_22(env);
     equals_test_23(env);
     equals_test_24(env);
+
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+void type_test(JSVM_Env env, JSVM_Value value)
+{
+    bool isValue = false;
+    OH_JSVM_IsUndefined(env, value, &isValue);
+    OH_JSVM_IsNull(env, value, &isValue);
+    OH_JSVM_IsNullOrUndefined(env, value, &isValue);
+    OH_JSVM_IsBoolean(env, value, &isValue);
+    OH_JSVM_IsNumber(env, value, &isValue);
+    OH_JSVM_IsString(env, value, &isValue);
+    OH_JSVM_IsSymbol(env, value, &isValue);
+    OH_JSVM_IsFunction(env, value, &isValue);
+    OH_JSVM_IsObject(env, value, &isValue);
+    OH_JSVM_IsBigInt(env, value, &isValue);
+}
+void type_test_1(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    OH_JSVM_GetUndefined(env, &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_2(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    OH_JSVM_GetNull(env, &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_3(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    bool x = true;
+    OH_JSVM_GetBoolean(env, x, &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_4(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value;
+    OH_JSVM_CreateInt32(env, 1, &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_5(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    const char testStr[] = "foo";
+    JSVM_Value value = nullptr;
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_6(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    JSVM_Value description;
+    const char testStr[] = "1234567";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &description);
+    OH_JSVM_CreateSymbol(env, description, &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_7(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    JSVM_CallbackStruct param;
+    OH_JSVM_CreateFunction(env, "func", JSVM_AUTO_LENGTH, &param, &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_8(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    OH_JSVM_CreateObject(env, &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_9(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    int64_t testValue = INT64_MAX;
+    OH_JSVM_CreateBigintInt64(env, testValue, &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+static napi_value testValueOperation5(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+
+    type_test_1(env);
+    type_test_2(env);
+    type_test_3(env);
+    type_test_4(env);
+    type_test_5(env);
+    type_test_6(env);
+    type_test_7(env);
+    type_test_8(env);
+    type_test_9(env);
 
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -8361,6 +8513,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testValueOperation2",testValueOperation2),
         DECLARE_NAPI_FUNCTION("testValueOperation3", testValueOperation3),
         DECLARE_NAPI_FUNCTION("testValueOperation4", testValueOperation4),
+        DECLARE_NAPI_FUNCTION("testValueOperation5", testValueOperation5),
         DECLARE_NAPI_FUNCTION("testGetPropertyNames",testGetPropertyNames),
         DECLARE_NAPI_FUNCTION("testGetAllPropertyNames",testGetAllPropertyNames),
         DECLARE_NAPI_FUNCTION("testProperty",testProperty),

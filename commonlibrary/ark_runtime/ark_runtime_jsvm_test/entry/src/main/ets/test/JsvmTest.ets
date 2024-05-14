@@ -632,7 +632,7 @@ export default function JsvmJsunit() {
     });
      /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0050
-     * @tc.name      JsvmTest0500
+     * @tc.name      JsvmTest050
      * @tc.desc      JsvmTest
      */
     it('JsvmTest050', 0, async function (done) {
@@ -5903,6 +5903,18 @@ instanceOf(obj, Person);
       `;
       let result = napitest.runJsVm(script);
       expect(typeof result).assertEqual('string');
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0433
+     * @tc.name      JsvmTest0433
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0433', 0, async function (done) {
+      console.info('JsvmTest0433 START');
+      value = napitest.testValueOperation5()
+      console.info('JsvmTest0433 testString result is:'+ value + "--" + JSON.stringify(value) );
+      expect(value).assertEqual(0);
+      done();
     });
   });
 }
