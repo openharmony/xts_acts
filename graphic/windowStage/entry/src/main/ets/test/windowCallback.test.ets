@@ -19,7 +19,6 @@ import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import { Context } from '@ohos.abilityAccessCtrl';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
   let msgStr: string = 'jsUnittest ' + caseName + ' ' + apiName + ' failed, err: ';
@@ -79,11 +78,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       'TYPE_FLOAT': 8,
     }
 
-    let currentDeviceIsRk = false;
     beforeAll(() => {
-      let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       appWindowTypeArr = Object.keys(appWindowTypeDic);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
       let wndTypeArray: Array<number> = [ohosWindow.WindowType.TYPE_FLOAT, ohosWindow.WindowType.TYPE_APP, ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ohosWindow.WindowType.TYPE_DIALOG]
@@ -2361,7 +2356,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done();
       } catch(error){
         console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
-        if (!currentDeviceIsRk) {
+        if (error.code != 801) {
           console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
           expect().assertFail();
           done();
@@ -2394,7 +2389,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done();
       } catch(error){
         console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
-        if (!currentDeviceIsRk) {
+        if (error.code != 801) {
           console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
           expect().assertFail();
           done();
@@ -2428,13 +2423,13 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done();
       } catch (error) {
         console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
-        if(!currentDeviceIsRk){
+        if (error.code != 801) {
           console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
-          expect(true).assertTrue();
+          expect(error.code).assertEqual(801);
           done();
         }
       }
@@ -2460,13 +2455,13 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done();
       } catch (error) {
         console.log(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(error));
-        if(!currentDeviceIsRk){
+        if (error.code != 801) {
           console.log(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
-          expect(true).assertTrue();
+          expect(error.code).assertEqual(801);
           done();
         }
       }
