@@ -78,11 +78,11 @@ struct Orientation {
             if (this.nextX !== this.dataX || this.nextY !== this.dataY || this.nextZ !== this.dataZ) {
               this.Vue = true;
             }
-          }, 500)
+          }, 100)
         }, { interval: 100000000 });
         setTimeout(() => {
           sensor.off(sensor.SensorId.ORIENTATION);
-        }, 500);
+        }, 5000);
       } catch (error) {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {

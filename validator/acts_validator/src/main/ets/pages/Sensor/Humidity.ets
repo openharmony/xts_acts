@@ -60,11 +60,11 @@ struct Humidity {
             if (this.nextHumidity || this.dataHumidity) {
               this.Vue = true;
             }
-          }, 500)
+          }, 100)
         }, { interval: 100000000 });
         setTimeout(() => {
           sensor.off(sensor.SensorId.HUMIDITY);
-        }, 500);
+        }, 5000);
       } catch (error) {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {
