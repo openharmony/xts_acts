@@ -28,6 +28,15 @@
         },30);
 
     }
+    function OpenWindowAllTwo(){
+        openwindowAll=window.open("https://www.baidu.com","_blank","height=400,width=600,top=100,scrollbars=yes")
+        setTimeout(function() {
+            if (openwindowAll){
+                openwindowAll.close()
+            }
+        },300);
+
+    }
 </script>
 </body>
 </html>    
