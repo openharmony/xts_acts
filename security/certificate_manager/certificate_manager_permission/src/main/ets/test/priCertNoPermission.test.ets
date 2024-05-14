@@ -41,8 +41,11 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_0100
-     * @tc.name Test installPrivateCertificate with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use Promise Type
+     * @tc.name test installPrivateCertificate with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use promise type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_0100', 0, async (done: Function) => {
       let keystore: Uint8Array = commonParameter.priRsaCredData;
@@ -59,15 +62,18 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_0200
-     * @tc.name Test installPrivateCertificate with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use AsyncCallback Type
+     * @tc.name test installPrivateCertificate with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use asynccallback type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_0200', 0, async (done: Function) => {
       let keystore: Uint8Array = commonParameter.priEccCredData;
       let keystorePwd: string = '123456';
       let certAlias: string = 'appCertAliasDemoEcc';
       try {
-        await new Promise((resolve, reject) => {
+        await new Promise<certManager.CMResult>((resolve, reject) => {
           certManager.installPrivateCertificate(keystore, keystorePwd, certAlias, (err, cmResult) => {
             if (err) {
               reject(err);
@@ -85,8 +91,11 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_0300
-     * @tc.name Test getPrivateCertificate with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use Promise Type
+     * @tc.name test getPrivateCertificate with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use promise type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_0300', 0, async (done: Function) => {
       try {
@@ -100,12 +109,15 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_0400
-     * @tc.name Test getPrivateCertificate with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use AsyncCallback Type
+     * @tc.name test getPrivateCertificate with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use asynccallback type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_0400', 0, async (done: Function) => {
       try {
-        await new Promise((resolve, reject) => {
+        await new Promise<certManager.CMResult>((resolve, reject) => {
           certManager.getPrivateCertificate("11111", (err, CMResult) => {
             if (err) {
               reject(err);
@@ -123,15 +135,18 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_0500
-     * @tc.name Test init interface with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use AsyncCallback Type
+     * @tc.name test init interface with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use asynccallback type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_0500', 0, async (done: Function) => {
       let signSpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN
       };
       try {
-        await new Promise((resolve, reject) => {
+        await new Promise<certManager.CMHandle>((resolve, reject) => {
           certManager.init("11111", signSpec, (err, cmResult) => {
             if (err) {
               reject(err);
@@ -149,8 +164,11 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_0600
-     * @tc.name Test init interface with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use Promise Type
+     * @tc.name test init interface with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use promise type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_0600', 0, async (done: Function) => {
       let signSpec: certManager.CMSignatureSpec = {
@@ -167,14 +185,17 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_0700
-     * @tc.name Test update interface with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use AsyncCallback Type
+     * @tc.name test update interface with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use asynccallback type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_0700', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       let handle: Uint8Array = new Uint8Array([0X00]);
       try {
-        await new Promise((resolve, reject) => {
+        await new Promise<void>((resolve, reject) => {
           certManager.update(handle, keyStore, (err, cmResult) => {
             if (err) {
               reject(err);
@@ -192,8 +213,11 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_0800
-     * @tc.name Test update interface with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use Promise Type
+     * @tc.name test update interface with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use promise type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_0800', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
@@ -209,14 +233,17 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_0900
-     * @tc.name Test finish interface with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use AsyncCallback Type
+     * @tc.name test finish interface with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use asynccallback type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_0900', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       let handle: Uint8Array = new Uint8Array([0X00]);
       try {
-        await new Promise((resolve, reject) => {
+        await new Promise<certManager.CMResult>((resolve, reject) => {
           certManager.finish(handle, keyStore, (err, cmResult) => {
             if (err) {
               reject(err);
@@ -230,7 +257,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
         expect(err.code).assertEqual(201);
       }
       try {
-        await new Promise((resolve, reject) => {
+        await new Promise<certManager.CMResult>((resolve, reject) => {
           certManager.finish(handle, (err, cmResult) => {
             if (err) {
               reject(err);
@@ -248,8 +275,11 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_1000
-     * @tc.name Test finish interface with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use Promise Type
+     * @tc.name test finish interface with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use promise type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_1000', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
@@ -265,13 +295,16 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_1100
-     * @tc.name Test abort interface with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use AsyncCallback Type
+     * @tc.name test abort interface with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use asynccallback type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_1100', 0, async (done: Function) => {
       let handle: Uint8Array = new Uint8Array([0X00]);
       try {
-        await new Promise((resolve, reject) => {
+        await new Promise<void>((resolve, reject) => {
           certManager.abort(handle, (err, cmResult) => {
             if (err) {
               reject(err);
@@ -289,8 +322,11 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_1200
-     * @tc.name Test abort interface with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use Promise Type
+     * @tc.name test abort interface with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use promise type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_1200', 0, async (done: Function) => {
       let handle: Uint8Array = new Uint8Array([0X00]);
@@ -305,8 +341,11 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_1300
-     * @tc.name Test uninstallPrivateCertificate interface with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use Promise Type
+     * @tc.name test uninstallPrivateCertificate interface with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use promise type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_1300', 0, async (done: Function) => {
       try {
@@ -320,12 +359,15 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_1400
-     * @tc.name Test uninstallPrivateCertificate interface with no ohos.permission.ACCESS_CERT_MANAGER permission
-     * @tc.desc Use AsyncCallback Type
+     * @tc.name test uninstallPrivateCertificate interface with no ohos.permission.ACCESS_CERT_MANAGER permission
+     * @tc.desc use asynccallback type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_1400', 0, async (done: Function) => {
       try {
-        await new Promise((resolve, reject) => {
+        await new Promise<void>((resolve, reject) => {
           certManager.uninstallPrivateCertificate("1111111", (err, status) => {
             if (err) {
               reject(err);
@@ -343,9 +385,12 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_1500
-     * @tc.name Test getAllAppPrivateCertificates interface with no  ohos.permission.ACCESS_CERT_MANAGER
+     * @tc.name test getAllAppPrivateCertificates interface with no  ohos.permission.ACCESS_CERT_MANAGER
      * @tc.name and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
-     * @tc.desc Use Promise Type
+     * @tc.desc use promise type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_1500', 0, async (done: Function) => {
       try {
@@ -359,13 +404,16 @@ export default function priCertJsAPINoPermissionTestUnit() {
 
     /**
      * @tc.number Security_CertManager_PriCertJsApi_NoPermission_Func_1600
-     * @tc.name Test getAllAppPrivateCertificates interface with no  ohos.permission.ACCESS_CERT_MANAGER
+     * @tc.name test getAllAppPrivateCertificates interface with no ohos.permission.ACCESS_CERT_MANAGER
      * @tc.name and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
-     * @tc.desc Use AsyncCallback Type
+     * @tc.desc use asynccallback type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_NoPermission_Func_1600', 0, async (done: Function) => {
       try {
-        await new Promise((resolve, reject) => {
+        await new Promise<certManager.CMResult>((resolve, reject) => {
           certManager.getAllAppPrivateCertificates((err, status) => {
             if (err) {
               reject(err);
