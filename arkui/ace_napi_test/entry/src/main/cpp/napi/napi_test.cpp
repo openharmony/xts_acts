@@ -4329,6 +4329,114 @@ static napi_value NapiCrateAndGetValueString(napi_env env, napi_callback_info in
     return output;
 }
 
+static napi_value ExceptionalSetNamedProperty(napi_env env, napi_callback_info info)
+{
+    napi_value fn = nullptr;
+    NAPI_CALL(env, napi_create_function(env, nullptr, NAPI_AUTO_LENGTH, SayHello, nullptr, &fn));
+    if (fn == nullptr) {
+        napi_throw_error(env, nullptr, "Napitest: napi_create_function fail");
+        return nullptr;
+    }
+    napi_value value = nullptr;
+    napi_create_int32(env, 0, &value);
+    NAPI_CALL(env, napi_set_named_property(env, value, "name", fn));
+    napi_valuetype valuetype;
+    napi_typeof(env, value, &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_function, "Napitest: wrong type of argment. Expects a function.");
+    napi_value num = 0;
+    napi_create_int32(env, 0, &num);
+    return num;
+}
+
+static napi_value ExceptionalGetNamedProperty(napi_env env, napi_callback_info info)
+{
+    napi_value resultValue = nullptr;
+    napi_value undefined = nullptr;
+    NAPI_CALL(env, napi_get_undefined(env, &undefined));
+    NAPI_CALL(env, napi_create_object(env, &resultValue));
+    NAPI_CALL(env, napi_set_named_property(env, resultValue, "undefined", undefined));
+
+    napi_value retStrAttribute = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, 0, &resultValue));
+    NAPI_CALL(env, napi_get_named_property(env, resultValue, "undefined", &retStrAttribute));
+
+    napi_valuetype valuetype;
+    napi_typeof(env, retStrAttribute, &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_undefined, "Napitest: wrong type of argment. Expects a undefined.");
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value ExceptionalCallAddNumFunction(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;    // 2:Number of parameters
+    napi_value args[2]; // 2:Number of parameters
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    napi_valuetype valuetype;
+    napi_typeof(env, args[0], &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_object, "Napitest: wrong type of argment. Expects a object.");
+
+    napi_valuetype valuetype2;
+    napi_typeof(env, args[1], &valuetype2);
+    NAPI_ASSERT(env, valuetype2 == napi_function, "Napitest: wrong type of argment. Expects a function.");
+
+    napi_value para[2];                  // 2:Number of parameters
+    napi_create_int32(env, 6, &para[0]); // 6:numerical value
+    napi_create_int32(env, 6, &para[1]); // 6:numerical value
+
+    napi_value *argv = para;
+    napi_value ret;
+    napi_value callRst;
+    NAPI_CALL(env, napi_get_named_property(env, args[0], "add", &callRst));
+
+    NAPI_CALL(env, napi_call_function(env, args[0], nullptr, argc, argv, &ret));
+    return ret;
+}
+
+static napi_value ExceptionalNapiNewInstance(napi_env env, napi_callback_info info)
+{
+    napi_value testWrapClass = nullptr;
+    napi_value arg;
+    NAPI_CALL(env, napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &arg));
+    napi_value *argv = &arg;
+    size_t argc = 1;
+    napi_value instanceValue = nullptr;
+    NAPI_CALL(env, napi_new_instance(env, testWrapClass, argc, argv, &instanceValue));
+    if (!instanceValue) {
+        napi_throw_error(env, nullptr, "Napitest: napi_new_instance fail");
+        return nullptr;
+    }
+    bool isInstanceOf = false;
+    NAPI_CALL(env, napi_instanceof(env, instanceValue, testWrapClass, &isInstanceOf));
+    NAPI_ASSERT(env, isInstanceOf, "Napitest: isInstanceOf success");
+    napi_value result;
+    NAPI_CALL(env, napi_get_boolean(env, isInstanceOf, &result));
+    return result;
+}
+
+static napi_value ExceptionalNapiCrateAndGetValueString(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+    if (argc != 1) {
+        napi_throw_error(env, nullptr, "Napitest: wrong number of parameters");
+        return nullptr;
+    }
+    napi_valuetype valuetype;
+    napi_typeof(env, args[0], &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_string, "Napitest: wrong type of argment. Expects a string.");
+    char buffer[1] = "";
+    size_t copied = 0;
+    NAPI_CALL(env, napi_get_value_string_utf8(env, args[0], buffer, 0, &copied));
+    napi_value output;
+    NAPI_CALL(env, napi_create_string_utf8(env, buffer, copied, &output));
+    return output;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -4494,6 +4602,11 @@ static napi_value Init(napi_env env, napi_value exports)
         {"callAddNumFunction", nullptr, CallAddNumFunction, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"napiNewInstance", nullptr, NapiNewInstance, nullptr, nullptr, nullptr, napi_default, nullptr},
         DECLARE_NAPI_FUNCTION("napiCrateAndGetValueString", NapiCrateAndGetValueString),
+        DECLARE_NAPI_FUNCTION("exceptionalSetNamedProperty", ExceptionalSetNamedProperty),
+        DECLARE_NAPI_FUNCTION("exceptionalGetNamedProperty", ExceptionalGetNamedProperty),
+        DECLARE_NAPI_FUNCTION("exceptionalCallAddNumFunction", ExceptionalCallAddNumFunction),
+        DECLARE_NAPI_FUNCTION("exceptionalNapiNewInstance", ExceptionalNapiNewInstance),
+        DECLARE_NAPI_FUNCTION("exceptionalNapiCrateAndGetValueString", ExceptionalNapiCrateAndGetValueString),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
