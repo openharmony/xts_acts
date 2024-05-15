@@ -72,7 +72,6 @@ namespace {
     
         ReadHttpBodyOnWorkerThread((void *)httpBodyStream);
     }
-
     const int blockSize = 1024 * 8;
 
 } // namespace
@@ -109,7 +108,6 @@ void RawfileRequest::Start() {
         return;
     }
 
-
     if (stream_) {
         OH_LOG_ERROR(LOG_APP, "have http body stream");
         httpBodyStreamSetUserData_ = OH_ArkWebHttpBodyStream_SetUserData(stream_, this);
@@ -124,8 +122,6 @@ void RawfileRequest::Start() {
     } else {
         ReadRawfileOnWorkerThread(reinterpret_cast<void *>(this));
     }
-
-
 }
 
 // 在worker线程中读取rawfile，并通过ResourceHandler返回给Web内核。
@@ -156,7 +152,6 @@ void RawfileRequest::ReadRawfileDataOnWorkerThread() {
 
     RawFile *rawfile = OH_ResourceManager_OpenRawFile(resourceManager(), rawfilePath().c_str());
     OH_LOG_INFO(LOG_APP, "read OH_ResourceManager_OpenRawFile %{public}s", rawfilePath().c_str());
-    
     
     if (!rawfile) {
         OH_LOG_INFO(LOG_APP, "read OH_ArkWebResponse_SetStatus %{public}d", DO_NOT_FOUND);
@@ -198,7 +193,6 @@ void RawfileRequest::ReadRawfileDataOnWorkerThread() {
         DidReceiveData(buffer, ret);
         memset(buffer, 0, blockSize);
     }
-
     OH_ResourceManager_CloseRawFile(rawfile);
     DidFinish();
 }
@@ -209,7 +203,6 @@ void RawfileRequest::Stop() {
     if (response_) {
         OH_ArkWeb_DestroyResponse(response_);
     }
-    
     OH_ArkWebResourceRequest_Destroy(resourceRequest_);
 
     resourceHandlerDestroy_ = OH_ArkWebResourceHandler_Destroy(resourceHandler_);
@@ -226,13 +219,12 @@ void RawfileRequest::Stop() {
     OH_LOG_INFO(LOG_APP, "OH_ArkWebHttpBodyStream_GetPosition %{public}lu", httpBodyStreamGetPosition_);
     OH_LOG_INFO(LOG_APP, "OH_ArkWebHttpBodyStream_GetSize %{public}lu", httpBodyStreamGetSize_);
 
-
     OH_ArkWebResourceRequest_DestroyHttpBodyStream(stream_);
-    
 }
 
 void RawfileRequest::DidReceiveResponse() {
     OH_LOG_INFO(LOG_APP, "did receive response.");
+
     if (!stopped_) {
         // 接口覆盖
         OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceHandler_DidReceiveResponse start.");
@@ -246,7 +238,6 @@ void RawfileRequest::DidReceiveData(const uint8_t *buffer, int64_t bufLen) {
 
     if (!stopped_) {
         // 接口覆盖
-        
         OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceHandler_DidReceiveData start.");
         resourceHandlerDidReceiveData_ = OH_ArkWebResourceHandler_DidReceiveData(resourceHandler_, buffer, bufLen);
         OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceHandler_DidReceiveData end %{public}d.", resourceHandlerDidReceiveData_);
