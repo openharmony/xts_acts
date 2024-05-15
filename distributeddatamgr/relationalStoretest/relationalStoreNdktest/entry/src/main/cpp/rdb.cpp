@@ -21,7 +21,6 @@
 #include "relational_store.h"
 #include "relational_store_error_code.h"
 #include <js_native_api_types.h>
-#include "relational_store_error_code.h"
 
 #define E_BASE 14800000
 #define DATATWO 12800
