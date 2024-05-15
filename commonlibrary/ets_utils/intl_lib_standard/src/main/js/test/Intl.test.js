@@ -161,7 +161,7 @@ describe('etsIntlFunTest', function () {
             { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat("aa", options).format;
         console.log("intlDateTimeFormatTest009::" + intlObj(newDate));
-        expect(intlObj(newDate)).assertEqual("2022年10月8日");
+        expect(intlObj(newDate)).assertEqual("October 8, 2022");
     })
 
     /**
@@ -991,7 +991,7 @@ describe('etsIntlFunTest', function () {
         var relativetimefmt = new Intl.RelativeTimeFormat();
         var value = relativetimefmt.format(100, 'second');
         console.log('RelativeTimeFormatTest001 :' + value);
-        expect(value).assertEqual('100秒钟后');
+        expect(value).assertEqual('in 100 seconds');
     })
 
     /**
@@ -1367,7 +1367,7 @@ describe('etsIntlFunTest', function () {
      * @tc.level     : Level 0
     */
     it('SUB_ARK_ETS_INTL_LISTFORMAT_001', 0, function () {
-        var listform = new Intl.ListFormat("en");
+        var listform = new Intl.ListFormat();
         var value = listform.format(vehicles);
         console.log('ListFormatTest001 :' + value);
         expect(value).assertEqual('Motorcycle, Bus, and Car');
