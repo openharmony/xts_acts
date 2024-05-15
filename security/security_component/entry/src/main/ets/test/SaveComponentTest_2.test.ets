@@ -157,11 +157,11 @@ export default function saveComponentTest_2() {
             }
             ;
           }
-          let knowBtn = await driver.findComponent(ON.text('知道了'));
-          console.info("====>[Test_Security_Button_SaveScenarios_0100] knowBtn is:" + JSON.stringify(knowBtn));
-          if (knowBtn !== null) {
-            console.info("====>[Test_Security_Button_SaveScenarios_0100] knowBtnClick START====");
-            await knowBtn.click();
+          let allowBtn = await driver.findComponent(ON.text('允许'));
+          console.info("====>[Test_Security_Button_SaveScenarios_0100] allowBtn is:" + JSON.stringify(allowBtn));
+          if (allowBtn !== null) {
+            console.info("====>[Test_Security_Button_SaveScenarios_0100] allowBtnClick START====");
+            await allowBtn.click();
             console.info("====>[Test_Security_Button_SaveScenarios_0100] reClick====" + i);
           } else {
             flag = true;
