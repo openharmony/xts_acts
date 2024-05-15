@@ -59,14 +59,25 @@ export default function ListItem_Delete_Start_Resource() {
       console.info('[SUB_ACE_ListItem_Delete_Start_Resource_0100] START');
       await CommonFunc.sleep(1000);
       console.log('get Initial value')
-      let ListItem_00 = CommonFunc.getComponentRect('ListItem_Delete_Start_Resource_ListItem_00');
-      let ListItem_01 = CommonFunc.getComponentRect('ListItem_Delete_Start_Resource_ListItem_01');
+
+      let Resource_ListItemStart_00 = CommonFunc.getComponentRect('ListItem_Delete_Start_Resource_ListItem_00');
+
+      console.log('Resource_ListItemStart_00.top: ' + Resource_ListItemStart_00.top + ' Resource_ListItemStart_00.bottom: ' + Resource_ListItemStart_00.bottom 
+      + ' Resource_ListItemStart_00.right: ' + Resource_ListItemStart_00.right + ' Resource_ListItemStart_00.left: ' + Resource_ListItemStart_00.left )
+
+      let Resource_ListItemStartFirstOne = Resource_ListItemStart_00.left + (Resource_ListItemStart_00.right - Resource_ListItemStart_00.left) / 4;
+      let Resource_ListItemStartFirstTwo = Resource_ListItemStart_00.bottom - (Resource_ListItemStart_00.bottom - Resource_ListItemStart_00.top) / 2;
+      let Resource_ListItemStartFirstThree = Resource_ListItemStart_00.right - (Resource_ListItemStart_00.right - Resource_ListItemStart_00.left) / 4;
+      let Resource_ListItemStartFirstFour = Resource_ListItemStart_00.bottom - (Resource_ListItemStart_00.bottom - Resource_ListItemStart_00.top) / 2;
+
+      console.log("Resource_ListItemStartFirstOne " + Resource_ListItemStartFirstOne + " Resource_ListItemStartFirstTwo " + Resource_ListItemStartFirstTwo + 
+      " Resource_ListItemStartFirstThree " + Resource_ListItemStartFirstThree + " Resource_ListItemStartFirstFour " + Resource_ListItemStartFirstFour)
 
       console.log('slide ')
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(300)), Math.round(vp2px(50))
+        Math.round(Resource_ListItemStartFirstOne), Math.round(Resource_ListItemStartFirstTwo), Math.round(Resource_ListItemStartFirstThree), Math.round(Resource_ListItemStartFirstFour)
 
       );
       await CommonFunc.sleep(2000);

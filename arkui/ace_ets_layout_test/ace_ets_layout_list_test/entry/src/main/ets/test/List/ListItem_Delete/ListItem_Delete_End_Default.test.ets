@@ -92,12 +92,24 @@ export default function ListItem_Delete_End_Default() {
       console.info('[SUB_ACE_ListItem_Delete_End_Default_0200] START');
       await CommonFunc.sleep(1000);
       console.log('get Initial value')
+      let Default_ListItem_00 = CommonFunc.getComponentRect('ListItem_Delete_End_Default_ListItem_00');
+
+      console.log('Default_ListItem_00.top: ' + Default_ListItem_00.top + ' Default_ListItem_00.bottom: ' + Default_ListItem_00.bottom 
+      + ' Default_ListItem_00.right: ' + Default_ListItem_00.right + ' Default_ListItem_00.left: ' + Default_ListItem_00.left )
+
+      let DefaultListItemFirstOne = Default_ListItem_00.right - (Default_ListItem_00.right - Default_ListItem_00.left) / 4;
+      let DefaultListItemFirstTwo = Default_ListItem_00.bottom - (Default_ListItem_00.bottom - Default_ListItem_00.top) / 2;
+      let DefaultListItemFirstThree = Default_ListItem_00.left + (Default_ListItem_00.right - Default_ListItem_00.left) / 4;
+      let DefaultListItemFirstFour = Default_ListItem_00.bottom - (Default_ListItem_00.bottom - Default_ListItem_00.top) / 2;
+
+      console.log("DefaultListItemFirstOne " + DefaultListItemFirstOne + " DefaultListItemFirstTwo " + DefaultListItemFirstTwo + 
+      " DefaultListItemFirstThree " + DefaultListItemFirstThree + " DefaultListItemFirstFour " + DefaultListItemFirstFour)
 
       console.log('slide ')
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
       await driver.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(50))
+        Math.round(DefaultListItemFirstOne), Math.round(DefaultListItemFirstTwo), Math.round(DefaultListItemFirstThree), Math.round(DefaultListItemFirstFour)
       );
       await CommonFunc.sleep(2000);
 

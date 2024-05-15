@@ -60,12 +60,23 @@ export default function ListItem_Delete_Start() {
       console.info('[SUB_ACE_ListItem_Delete_Start_0200] START');
       globalThis.value.message.notify({name:'actionAreaDistance', value:100});
       await CommonFunc.sleep(1000);
-      let ListItem_00 = CommonFunc.getComponentRect('ListItem_Delete_Start_ListItem_00');
-      let ListItem_01 = CommonFunc.getComponentRect('ListItem_Delete_Start_ListItem_01');
+      
+      let ListItemStart_00 = CommonFunc.getComponentRect('ListItem_Delete_Start_ListItem_00');
+
+      console.log('ListItemStart_00.top: ' + ListItemStart_00.top + ' ListItemStart_00.bottom: ' + ListItemStart_00.bottom 
+      + ' ListItemStart_00.right: ' + ListItemStart_00.right + ' ListItemStart_00.left: ' + ListItemStart_00.left )
+
+      let ListItemStartFirstOne = ListItemStart_00.left + (ListItemStart_00.right - ListItemStart_00.left) / 4;
+      let ListItemStartFirstTwo = ListItemStart_00.bottom - (ListItemStart_00.bottom - ListItemStart_00.top) / 2;
+      let ListItemStartFirstThree = ListItemStart_00.right - (ListItemStart_00.right - ListItemStart_00.left) / 4;
+      let ListItemStartFirstFour = ListItemStart_00.bottom - (ListItemStart_00.bottom - ListItemStart_00.top) / 2;
+
+      console.log("ListItemStartFirstOne " + ListItemStartFirstOne + " ListItemStartFirstTwo " + ListItemStartFirstTwo + 
+      " ListItemStartFirstThree " + ListItemStartFirstThree + " ListItemStartFirstFour " + ListItemStartFirstFour)
 
       let driver = await Driver.create();
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(300)), Math.round(vp2px(50))
+        Math.round(ListItemStartFirstOne), Math.round(ListItemStartFirstTwo), Math.round(ListItemStartFirstThree), Math.round(ListItemStartFirstFour)
       );
       await CommonFunc.sleep(2000);
 
