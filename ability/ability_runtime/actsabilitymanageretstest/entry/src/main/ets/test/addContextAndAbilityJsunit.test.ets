@@ -20,18 +20,18 @@ import abilityManager from "@ohos.application.appManager";
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import { BusinessError } from '@ohos.base';
 
-const TAG_TEST_0100 = ' context_isUpdatingConfigurations_test_0100 ';
-const TAG_TEST_0200 = ' context_isUpdatingConfigurations_test_0200 ';
-const TAG_TEST_0300 = ' context_printDrawnCompleted_test_0100 ';
-const TAG_TEST_0400 = ' context_printDrawnCompleted_test_0200 ';
-const TAG_TEST_0500 = ' context_getAppMemorySize_test_0100 ';
-const TAG_TEST_0600 = ' context_getAppMemorySize_test_0200 ';
-const TAG_TEST_0700 = ' context_isRamConstrainedDevice_test_0100 ';
-const TAG_TEST_0800 = ' context_isRamConstrainedDevice_test_0200 ';
-const TAG_TEST_0900 = ' context_featureAbility_test_0100 ';
-const TAG_TEST_0010 = ' context_featureAbility_test_0200 ';
-const TAG_TEST_0011 = ' context_featureAbility_test_0300 ';
-const TAG_TEST_0012 = ' context_featureAbility_test_0400 ';
+const TAG_TEST_0100 = 'context_isUpdatingConfigurations_test_0100';
+const TAG_TEST_0200 = 'context_isUpdatingConfigurations_test_0200';
+const TAG_TEST_0300 = 'context_printDrawnCompleted_test_0100';
+const TAG_TEST_0400 = 'context_printDrawnCompleted_test_0200';
+const TAG_TEST_0500 = 'context_getAppMemorySize_test_0100';
+const TAG_TEST_0600 = 'context_getAppMemorySize_test_0200';
+const TAG_TEST_0700 = 'context_isRamConstrainedDevice_test_0100';
+const TAG_TEST_0800 = 'context_isRamConstrainedDevice_test_0200';
+const TAG_TEST_0900 = 'context_featureAbility_test_0100';
+const TAG_TEST_0010 = 'context_featureAbility_test_0200';
+const TAG_TEST_0011 = 'context_featureAbility_test_0300';
+const TAG_TEST_0012 = 'context_featureAbility_test_0400';
 
 export default function addContextAndAbilityJsunit() {
   describe('addContextTest', () => {
