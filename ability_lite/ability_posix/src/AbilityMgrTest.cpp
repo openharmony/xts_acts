@@ -452,7 +452,7 @@ HWTEST_F(AbilityMgrTest, testGetBundleNameIllegal, Function | MediumTest | Level
     SetElementAbilityName(&element, "SecondAbility");
     SetWantElement(&want, element);
     int result = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("ret is %d \n", result);
     const char * bundleName1 = GetBundleName();
     printf("result of GetBundleName is %s \n", bundleName1);
@@ -474,7 +474,7 @@ HWTEST_F(AbilityMgrTest, testGetSrcPathIllegal, Function | MediumTest | Level1)
     SetElementAbilityName(&element, "SecondAbility");
     SetWantElement(&want, element);
     int result = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("ret is %d \n", result);
     const char * srcPath = GetSrcPath();
     EXPECT_STREQ(srcPath, "");
@@ -495,7 +495,7 @@ HWTEST_F(AbilityMgrTest, testGetDataPathIllegal, Function | MediumTest | Level1)
     SetElementAbilityName(&element, "SecondAbility");
     SetWantElement(&want, element);
     int result = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("ret is %d \n", result);
     const char * dataPath = GetDataPath();
     printf("result of GetDataPath is %s \n", dataPath);
@@ -520,7 +520,7 @@ HWTEST_F(AbilityMgrTest, testDumpIllegal, Function | MediumTest | Level1)
     SetWantElement(&want, element);
     Ability *ability = new Ability();
     int result = ability->StartAbility(want);
-    sleep(2);
+    usleep(900000);
     printf("ret is %d \n", result);
     EXPECT_EQ(result, 0);
     char *extra = (char*)"test";
@@ -542,7 +542,7 @@ HWTEST_F(AbilityMgrTest, testStartAbility, Function | MediumTest | Level1)
     SetElementAbilityName(&element, "MainAbility");
     SetWantElement(&want, element);
     int result = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("ret is %d \n", result);
     EXPECT_EQ(result, 0);
     ClearElement(&element);
@@ -579,11 +579,11 @@ HWTEST_F(AbilityMgrTest, testStopAbility, Function | MediumTest | Level0)
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
     g_errorCode = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("ret is %d \n", g_errorCode);
     EXPECT_EQ(g_errorCode, 0);
     g_errorCode = StopAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("ret of stop is %d \n", g_errorCode);
     EXPECT_EQ(g_errorCode, 0);
     ClearElement(&element);
@@ -628,7 +628,7 @@ HWTEST_F(AbilityMgrTest, testConnectAbility, Function | MediumTest | Level1)
     printf("ret is %d \n ", result);
     EXPECT_EQ(result, 0);
     DisconnectAbility(&g_conn);
-    sleep(1);
+    usleep(900000);
     ClearElement(&element);
     ClearWant(&want);
     printf("------end testConnectAbility------\n");
@@ -658,7 +658,7 @@ HWTEST_F(AbilityMgrTest, testDisConnectAbility, Function | MediumTest | Level1)
     printf("ret of connect is %d \n ", result);
     if (g_errorCode == 16) {
         result = DisconnectAbility(&g_conn);
-        sleep(2);
+        usleep(900000);
         EXPECT_EQ(result, 0);
         printf("ret of disconnect is %d \n ", result);
     }
@@ -736,12 +736,12 @@ HWTEST_F(AbilityMgrTest, testTerminateAbility, Function | MediumTest | Level1)
     SetElementAbilityName(&element, "SecondAbility");
     SetWantElement(&want, element);
     int result1 = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("result1 of startAbility is %d \n", result1);
     EXPECT_EQ(result1, 0);
     Ability *ability = new Ability();
     int result2 = ability->TerminateAbility();
-    sleep(2);
+    usleep(900000);
     printf("result2 of TerminateAbility is %d \n", result2);
     EXPECT_EQ(result2, 0);
     ClearElement(&element);
@@ -775,13 +775,13 @@ HWTEST_F(AbilityMgrTest, testWantMatchBundle, Function | MediumTest | Level1)
         printf("abilityInfo.name is %s \n", abilityInfo.name);
     }
     int result = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("result of startAbility is %d \n", result);
     EXPECT_EQ(result, 0);
     printf("element is %s \n", want.element->bundleName);
     printf("element is %s \n", want.element->abilityName);
     StopAbility(&want);
-    sleep(1);
+    usleep(900000);
     printf("------end testWantMathBundle------\n");
 }
 
@@ -807,7 +807,7 @@ HWTEST_F(AbilityMgrTest, testWantNotMathBundle, Function | MediumTest | Level2)
     printf("ret is %d \n", g_errorCode);
     EXPECT_TRUE(g_errorCode != 0);
     int result = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("result of startAbility is %d \n", result);
     EXPECT_TRUE(result == 0);
     printf("element is %s \n", want.element->bundleName);
@@ -836,7 +836,7 @@ HWTEST_F(AbilityMgrTest, testWantOnlyMathBundleName, Function | MediumTest | Lev
     printf("ret is %d \n", g_errorCode);
     EXPECT_TRUE(g_errorCode != 0);
     int result = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("result of startAbility is %d \n", result);
     EXPECT_TRUE(result == 0);
     printf("element is %s \n", want.element->bundleName);
@@ -865,7 +865,7 @@ HWTEST_F(AbilityMgrTest, testWantOnlyMathAbility, Function | MediumTest | Level1
     printf("ret is %d \n", g_errorCode);
     EXPECT_TRUE(g_errorCode != 0);
     int result = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("result of startAbility is %d \n", result);
     EXPECT_TRUE(result == 0);
     printf("element is %s \n", want.element->abilityName);
@@ -894,13 +894,13 @@ HWTEST_F(AbilityMgrTest, testWantDataMatchLength, Function | MediumTest | Level1
     printf("ret is %d \n", g_errorCode);
     EXPECT_TRUE(g_errorCode == 0);
     int result = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("result of startAbility is %d \n", result);
     EXPECT_TRUE(result == 0);
     EXPECT_STREQ((char*)(want.data), "test");
     EXPECT_EQ(want.dataLength, 5);
     StopAbility(&want);
-    sleep(1);
+    usleep(900000);
     printf("------end testWantDataMatchLength------\n");
 }
 
@@ -922,7 +922,7 @@ HWTEST_F(AbilityMgrTest, testWantDataNotMatchLength, Function | MediumTest | Lev
     SetWantElement(&want, element);
     SetWantData(&want, "test", 3);
     int result = StartAbility(&want);
-    sleep(2);
+    usleep(900000);
     printf("result of startAbility is %d \n", result);
     EXPECT_TRUE(result == 0);
     EXPECT_EQ(want.dataLength, 3);
