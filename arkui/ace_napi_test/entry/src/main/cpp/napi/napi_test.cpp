@@ -2251,6 +2251,21 @@ static napi_value SayHello(napi_env env, napi_callback_info info)
     return ret;
 }
 
+static napi_value isConcurrentFunction(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    bool isConcurrentFunction = false;
+    NAPI_CALL(env, napi_is_concurrent_function(env, args[0], &isConcurrentFunction));
+
+    napi_value result;
+    NAPI_CALL(env, napi_get_boolean(env, isConcurrentFunction, &result));
+
+    return result;
+}
+
 static napi_value napiCreateFunction(napi_env env, napi_callback_info info)
 {
     napi_value funcValue = nullptr;
@@ -4492,6 +4507,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("instanceOf", instanceOf),
         DECLARE_NAPI_FUNCTION("isArray", isArray),
         DECLARE_NAPI_FUNCTION("isDate", isDate),
+        DECLARE_NAPI_FUNCTION("isConcurrentFunction", isConcurrentFunction),
         DECLARE_NAPI_FUNCTION("strictEquals", strictEquals),
         DECLARE_NAPI_FUNCTION("getPropertyNames", getPropertyNames),
         DECLARE_NAPI_FUNCTION("setProperty", setProperty),
