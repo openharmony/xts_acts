@@ -21,6 +21,7 @@
 #include "relational_store.h"
 #include "relational_store_error_code.h"
 #include <js_native_api_types.h>
+#include "relational_store_error_code.h"
 
 #define E_BASE 14800000
 #define DATATWO 12800
@@ -715,7 +716,7 @@ static napi_value ExecuteFour(napi_env env, napi_callback_info)
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
     napi_value result = nullptr;
-    napi_create_int32(env, returnValue == g_sqliteError, &result);
+    napi_create_int32(env, returnValue == RDB_E_ERROR, &result);
     return result;
 }
 
