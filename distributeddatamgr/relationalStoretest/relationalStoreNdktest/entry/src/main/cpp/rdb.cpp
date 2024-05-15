@@ -715,7 +715,7 @@ static napi_value ExecuteFour(napi_env env, napi_callback_info)
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
     napi_value result = nullptr;
-    napi_create_int32(env, returnValue == g_sqliteError, &result);
+    napi_create_int32(env, returnValue == RDB_E_ERROR, &result);
     return result;
 }
 
