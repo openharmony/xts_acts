@@ -1736,6 +1736,7 @@ export default function getBundleInfoForSelf() {
       expect(data[1].name).assertEqual("DynamicPage2");
       expect(data[1].pageSourceFile).assertEqual("entry/src/index");
       expect(data[1].buildFunction).assertEqual("myBuilder");
+      expect(data[1].data.length).assertEqual(31);
       console.info("checkRouterMapInfo end");
     }
   })
