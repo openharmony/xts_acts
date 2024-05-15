@@ -61,11 +61,22 @@ export default function ListItem_Delete_End() {
       console.log('get Initial value')
       let ListItem_00 = CommonFunc.getComponentRect('ListItem_Delete_End_ListItem_00');
 
+      console.log('ListItem_00.top: ' + ListItem_00.top + ' ListItem_00.bottom: ' + ListItem_00.bottom 
+      + ' ListItem_00.right: ' + ListItem_00.right + ' ListItem_00.left: ' + ListItem_00.left )
+
+      let ListItemFirstOne = ListItem_00.right - (ListItem_00.right - ListItem_00.left) / 4;
+      let ListItemFirstTwo = ListItem_00.bottom - (ListItem_00.bottom - ListItem_00.top) / 2;
+      let ListItemFirstThree = ListItem_00.left + (ListItem_00.right - ListItem_00.left) / 4;
+      let ListItemFirstFour = ListItem_00.bottom - (ListItem_00.bottom - ListItem_00.top) / 2;
+
+      console.log("ListItemFirstOne " + ListItemFirstOne + " ListItemFirstTwo " + ListItemFirstTwo + 
+      " ListItemFirstThree " + ListItemFirstThree + " ListItemFirstFour " + ListItemFirstFour)
+
       console.log('slide ')
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
       await driver.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(50))
+        Math.round(ListItemFirstOne), Math.round(ListItemFirstTwo), Math.round(ListItemFirstThree), Math.round(ListItemFirstFour)
       );
       await CommonFunc.sleep(2000);
 

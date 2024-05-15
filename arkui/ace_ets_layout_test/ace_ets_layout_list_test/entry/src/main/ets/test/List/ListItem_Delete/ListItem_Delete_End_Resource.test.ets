@@ -59,14 +59,24 @@ export default function ListItem_Delete_End_Resource() {
       console.info('[SUB_ACE_ListItem_Delete_End_Resource_0100] START');
       await CommonFunc.sleep(1000);
       console.log('get Initial value')
-      let ListItem_00 = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_00');
-      let ListItem_01 = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_01');
+      let Resource_ListItem_00 = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_00');
+
+      console.log('Resource_ListItem_00.top: ' + Resource_ListItem_00.top + ' Resource_ListItem_00.bottom: ' + Resource_ListItem_00.bottom 
+      + ' Resource_ListItem_00.right: ' + Resource_ListItem_00.right + ' Resource_ListItem_00.left: ' + Resource_ListItem_00.left )
+
+      let ResourceListItemFirstOne = Resource_ListItem_00.right - (Resource_ListItem_00.right - Resource_ListItem_00.left) / 4;
+      let ResourceListItemFirstTwo = Resource_ListItem_00.bottom - (Resource_ListItem_00.bottom - Resource_ListItem_00.top) / 2;
+      let ResourceListItemFirstThree = Resource_ListItem_00.left + (Resource_ListItem_00.right - Resource_ListItem_00.left) / 4;
+      let ResourceListItemFirstFour = Resource_ListItem_00.bottom - (Resource_ListItem_00.bottom - Resource_ListItem_00.top) / 2;
+
+      console.log("ResourceListItemFirstOne " + ResourceListItemFirstOne + " ResourceListItemFirstTwo " + ResourceListItemFirstTwo + 
+      " ResourceListItemFirstThree " + ResourceListItemFirstThree + " ResourceListItemFirstFour " + ResourceListItemFirstFour)
 
       console.log('slide ')
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
       await driver.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(50))
+        Math.round(ResourceListItemFirstOne), Math.round(ResourceListItemFirstTwo), Math.round(ResourceListItemFirstThree), Math.round(ResourceListItemFirstFour)
       );
       await CommonFunc.sleep(2000);
 
