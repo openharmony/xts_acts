@@ -22,7 +22,6 @@ import Ability from '@ohos.app.ability.Ability';
 import { BusinessError, Callback } from '@ohos.base';
 import { UIContext } from '@ohos.arkui.UIContext';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
 
 function unexpectedError(error: BusinessError, caseName: string, apiName: string, TRUE_FLAG: boolean, done: Function) {
   let msgStr: string = 'jsUnittest ' + caseName + ' ' + apiName + ' failed, err: ';
@@ -95,12 +94,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
   describe('windowInterface_optionalParameter_test', () => {
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG: boolean = true;
-    let currentDeviceIsPC = false;
     beforeAll(async () => {
-      let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
-
       // 点击掉USB用于的弹窗
       let msgStr: string = 'USB用于的弹窗';
       await buttonClick('取消', msgStr).catch(async (err: BusinessError) => {
@@ -953,8 +947,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testWindow_off_keyboardHeightChange_AllListening_LogOut';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      // pc上输入框聚焦没有软件盘弹出，该用例无法测试执行
-      if(currentDeviceIsPC){
+      // pc上输入框聚焦没有软键盘弹出，该用例无法测试执行
+      if(!canIUse("SyatemCapability.Sensors.Sensor")){
         done();
         return;
       }
@@ -1036,8 +1030,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testWindow_off_keyboardHeightChange_FirstCall_LogOut';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      // pc上输入框聚焦没有软件盘弹出，该用例无法测试执行
-      if(currentDeviceIsPC){
+      // pc上输入框聚焦没有软键盘弹出，该用例无法测试执行
+      if(!canIUse("SyatemCapability.Sensors.Sensor")){
         done();
         return;
       }
