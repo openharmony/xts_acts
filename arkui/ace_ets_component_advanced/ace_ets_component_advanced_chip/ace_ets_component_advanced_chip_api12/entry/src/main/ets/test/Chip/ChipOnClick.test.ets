@@ -68,7 +68,7 @@ export default function ChipOnClose() {
             await CommonFunc.sleep(200);
             console.info('ChipOnClick_001 left' + left + 'top:' + top);
             let driver = Driver.create();
-            await driver.click(left, top);
+            await driver.click(Math.round(top), Math.round(left));
             await CommonFunc.sleep(1000);
             console.info('ChipOnClick_001 click success');
 
