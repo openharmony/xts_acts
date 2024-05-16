@@ -115,7 +115,6 @@ static napi_value GetKeyPressed(napi_env env, napi_callback_info info)
     napi_value result;
     struct Input_KeyState *keyState = OH_Input_CreateKeyState();
     OH_Input_SetKeyCode(keyState, value0);
-    OH_Input_GetKeyState(keyState);
     int32_t keyPressed = OH_Input_GetKeyPressed(keyState);
     napi_create_int32(env, keyPressed == KEY_RELEASED ? 1 : 0, &result);
     OH_Input_DestroyKeyState(&keyState);
@@ -138,7 +137,6 @@ static napi_value GetKeySwitch(napi_env env, napi_callback_info info)
     napi_value result;
     struct Input_KeyState *keyState = OH_Input_CreateKeyState();
     OH_Input_SetKeyCode(keyState, value0);
-    OH_Input_GetKeyState(keyState);
     int32_t keySwitch = OH_Input_GetKeySwitch(keyState);
     napi_create_int32(env, keySwitch == KEY_DEFAULT ? 1 : 0, &result);
     OH_Input_DestroyKeyState(&keyState);
@@ -161,7 +159,6 @@ static napi_value GetKeyState(napi_env env, napi_callback_info info)
     napi_value result;
     struct Input_KeyState *keyState = OH_Input_CreateKeyState();
     OH_Input_SetKeyCode(keyState, value0);
-    OH_Input_GetKeyState(keyState);
     int32_t keyStateValue = OH_Input_GetKeyState(keyState);
     napi_create_int32(env, keyStateValue == INPUT_SUCCESS ? 1 : 0, &result);
     OH_Input_DestroyKeyState(&keyState);
@@ -196,11 +193,11 @@ static napi_value DestroyKeyEvent(napi_env env, napi_callback_info info)
     OH_Input_SetKeyEventAction(keyEvent, KEY_ACTION_DOWN);
     OH_Input_SetKeyEventKeyCode(keyEvent, KEYCODE_UNKNOWN);
     OH_Input_SetKeyEventActionTime(keyEvent, -1);
-    int32_t retResult = OH_Input_InjectKeyEvent(keyEvent);
+    OH_Input_InjectKeyEvent(keyEvent);
     OH_Input_SetKeyEventAction(keyEvent, KEY_ACTION_UP);
     OH_Input_SetKeyEventKeyCode(keyEvent, KEYCODE_UNKNOWN);
     OH_Input_SetKeyEventActionTime(keyEvent, -1);
-    retResult = OH_Input_InjectKeyEvent(keyEvent);
+    OH_Input_InjectKeyEvent(keyEvent);
     OH_Input_CancelInjection();
     OH_Input_DestroyKeyEvent(&keyEvent);
     napi_create_int32(env, keyEvent == nullptr ? 1 : 0, &result);
@@ -698,5 +695,5 @@ static napi_module demoModule = {
 
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 {
-	napi_module_register(&demoModule); 
+	napi_module_register( &demoModule ); 
 }
