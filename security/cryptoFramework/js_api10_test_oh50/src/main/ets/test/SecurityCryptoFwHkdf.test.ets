@@ -111,6 +111,42 @@ export default function SecurityCryptoFwHkdfTestUnit() {
       }
       done();
     });
+    
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Hkdf_Func_0300
+     * @tc.name Test HKDF algorithm traversal test. Sync style. Process success
+     * @tc.desc algorithm is HKDF
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Hkdf_Func_0300", 0, async (done: Function) => {
+      let key: string = "hello world";
+      let isKeyString: boolean = true;
+      let salt: string = "0123456789";
+      let info: string = "kdf test";
+      let algName: string = "HKDF";
+      try {
+        for (let mdName of hkdfUtils.HKDF_DIGEST_SPEC) {
+          for ( let modeName of hkdfUtils.HKDF_MODE_SPEC) {
+            let keySize: number = 128;
+            let mdInfo: hkdfUtils.mdData = hkdfUtils.getMdLen(mdName, modeName);
+            keySize = mdInfo.isExtract ? mdInfo.mdSize : keySize;
+            let spec: cryptoFramework.HKDFSpec = hkdfUtils.hkdfSpec(key, isKeyString, salt, info, keySize);
+            let kdfAlgName: string = algName + "|" + mdName;
+            if (modeName) {
+              kdfAlgName = kdfAlgName + "|" + modeName;
+            }
+            let secret: cryptoFramework.DataBlob = hkdfUtils.hkdfSync(kdfAlgName, spec);
+            expect(secret.data.length).assertEqual(keySize);
+          }
+        }
+      } catch (error) {
+        console.error(`HKDF “${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
 
     /**
      * @tc.number SUB_Security_CryptoFramework_Hkdf_Func_0400
