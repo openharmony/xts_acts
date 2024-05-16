@@ -2396,5 +2396,25 @@ export default function nativeApiStringJsunit() {
       }
       done();
     });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0159
+     * @tc.name aceNapiTest0159
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0159', 0, async function (done) {
+      console.info('aceNapiTest0159 START');
+      function test1() {
+        "use concurrent"
+      }
+      function test2() {}
+      value = napitest.isConcurrentFunction(test1);
+      expect(value).assertEqual(true);
+      console.info('aceNapiTest0159 testString result is: ' + value);
+      value = napitest.isConcurrentFunction(test2);
+      expect(value).assertEqual(false);
+      console.info('aceNapiTest0159 testString result is: ' + value);
+      done();
+    });
   })
 }
