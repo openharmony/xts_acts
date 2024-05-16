@@ -3636,7 +3636,7 @@ static void *NewThreadFunc(void *arg)
 
     napi_value objectUtils = nullptr;
     napi_status status =
-        napi_load_module_with_info(env, "ets/pages/ObjectUtils", "com.acts.ace.napitest/entry", &objectUtils);
+        napi_load_module_with_info(env, "pages/ObjectUtils", "com.acts.ace.napitest/entry", &objectUtils);
     NAPI_ASSERT(env, status == napi_ok, "napi_load_module_with_info failed");
     NAPI_ASSERT(env, objectUtils != nullptr, "napi_load_module_with_info failed");
 
@@ -3779,7 +3779,7 @@ static void *CallAfterRunFunc(void *arg)
 
     napi_value objectUtils = nullptr;
     napi_status status =
-        napi_load_module_with_info(env, "ets/pages/ObjectUtils", "com.acts.ace.napitest/entry", &objectUtils);
+        napi_load_module_with_info(env, "pages/ObjectUtils", "com.acts.ace.napitest/entry", &objectUtils);
     NAPI_ASSERT(env, status == napi_ok, "napi_load_module_with_info successfully");
     NAPI_ASSERT(env, objectUtils != nullptr, "napi_load_module_with_info failed");
     g_isTaskFinished = false;
