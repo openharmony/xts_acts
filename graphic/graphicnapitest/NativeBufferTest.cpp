@@ -278,7 +278,7 @@ HWTEST_F(NativeBufferTest, OHNativeBufferSetColorSpace002, Function | MediumTest
     }
 
     int32_t ret = OH_NativeBuffer_SetColorSpace(buffer, OH_COLORSPACE_BT709_LIMIT);
-    if (ret != GSERROR_NOT_SUPPORT) {
+    if (ret != SURFACE_ERROR_UNKOWN) {
         ASSERT_EQ(ret, GSERROR_OK);
     }
 }
