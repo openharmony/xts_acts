@@ -1193,6 +1193,71 @@ static napi_value instanceOf(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value NapiIsSendable(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    bool isSendable = false;
+    napi_is_sendable(env, args[0], &isSendable);
+    NAPI_ASSERT(env, !isSendable, "the first param is not sendable");
+    napi_is_sendable(env, args[1], &isSendable);
+    NAPI_ASSERT(env, isSendable, "the second param is sendable");
+
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiDefineSendableClass(napi_env env, napi_callback_info info)
+{
+    napi_value staticStr;
+    napi_value nonStaticStr;
+    napi_create_string_utf8(env, "static", NAPI_AUTO_LENGTH, &staticStr);
+    napi_create_string_utf8(env, "nonStatic", NAPI_AUTO_LENGTH, &nonStaticStr);
+
+    napi_property_descriptor desc[] = {
+        DECLARE_NAPI_STATIC_PROPERTY("static", staticStr),
+        DECLARE_NAPI_DEFAULT_PROPERTY("nonStatic", nonStaticStr),
+        DECLARE_NAPI_STATIC_FUNCTION("staticFunc",
+                                     [](napi_env env, napi_callback_info info) -> napi_value { return nullptr; }),
+        DECLARE_NAPI_FUNCTION("func", [](napi_env env, napi_callback_info info) -> napi_value { return nullptr; }),
+        DECLARE_NAPI_GETTER_SETTER(
+            "getterSetter",
+            [](napi_env env, napi_callback_info info) -> napi_value { return nullptr; },
+            [](napi_env env, napi_callback_info info) -> napi_value { return nullptr; }),
+    };
+
+    napi_value sendableClass = nullptr;
+    napi_define_sendable_class(
+        env,
+        "SendableClass",
+        NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+            return thisVar;
+        },
+        nullptr,
+        sizeof(desc) / sizeof(desc[0]),
+        desc,
+        nullptr,
+        &sendableClass);
+
+    bool isSendable = false;
+    napi_is_sendable(env, sendableClass, &isSendable);
+    NAPI_ASSERT(env, isSendable, "napi_is_sendable success");
+
+    napi_value instanceValue = nullptr;
+    napi_new_instance(env, sendableClass, 0, nullptr, &instanceValue);
+    NAPI_ASSERT(env, instanceValue != nullptr, "napi_define_sendable_class success");
+
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
 static napi_value isArray(napi_env env, napi_callback_info info)
 {
     napi_value array = nullptr;
@@ -4505,6 +4570,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("coerceToObject", coerceToObject),
         DECLARE_NAPI_FUNCTION("coerceToString", coerceToString),
         DECLARE_NAPI_FUNCTION("instanceOf", instanceOf),
+        DECLARE_NAPI_FUNCTION("NapiIsSendable", NapiIsSendable),
+        DECLARE_NAPI_FUNCTION("NapiDefineSendableClass", NapiDefineSendableClass),
         DECLARE_NAPI_FUNCTION("isArray", isArray),
         DECLARE_NAPI_FUNCTION("isDate", isDate),
         DECLARE_NAPI_FUNCTION("isConcurrentFunction", isConcurrentFunction),
