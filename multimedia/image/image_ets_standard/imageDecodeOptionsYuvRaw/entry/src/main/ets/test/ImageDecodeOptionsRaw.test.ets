@@ -44,8 +44,8 @@ let sleep = async (delay: number): Promise<void> => {
   });
 };
 
-export default function decodeOptionsWithRawAbilityTest() {
-  describe('ActsDecodeOptionsWithRawAbilityTest', () => {
+export default function imageDecodeOptionsRawTest() {
+  describe('ImageDecodeOptionsRaw', () => {
     beforeAll(async () => {
       filesDir = AppStorage.get('pathDir')
     })
