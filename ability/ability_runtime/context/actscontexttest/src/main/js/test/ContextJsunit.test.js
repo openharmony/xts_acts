@@ -23,14 +23,15 @@ describe('ActsContextTest', function () {
     //  @tc.name: getBundleName : Query return value type
     //  @tc.desc: The class of the test return value is made Promise
     it('ACTS_GetBundleName_0100', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
+        console.log('ACTS_GetBundleName_0100 context is:' + JSON.stringify(context));
         var result = await context.getBundleName();
         expect(typeof(context)).assertEqual("object");
         ret = true
         done();
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -38,14 +39,15 @@ describe('ActsContextTest', function () {
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Get the bundlename of the hap package(by promise)
     it('ACTS_GetBundleName_0200', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
+        console.log('ACTS_GetBundleName_0200 context is:' + JSON.stringify(context));
         var result = await context.getBundleName();
         expect(result).assertEqual('com.example.actscontext');
         ret = true
         done();
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -53,18 +55,16 @@ describe('ActsContextTest', function () {
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Get the value of return is void (by callback)
     it('ACTS_GetBundleName_0300', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = featureAbility.getContext();
-                var info = context.getBundleName(
-                    (err, data) => {
-                        expect(data).assertEqual('com.example.actscontext');
-                        ret = true
-                        done();
-                    })
-
-
+        var info = context.getBundleName(
+            (err, data) => {
+                expect(data).assertEqual('com.example.actscontext');
+                ret = true
+                done();
+            })
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -72,17 +72,18 @@ describe('ActsContextTest', function () {
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Get the bundlename of the hap package(by callback)
     it('ACTS_GetBundleName_0400', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
         var info = context.getBundleName(
             (err, data) => {
+                console.log('ACTS_GetBundleName_0400 data is:' + JSON.stringify(data));
                 expect(data).assertEqual('com.example.actscontext');
                 ret = true
                 done();
             }
         );
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -90,10 +91,11 @@ describe('ActsContextTest', function () {
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Wrong parameters are provided, and the test return type is void (by callback)
     it('ACTS_GetBundleName_0500', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
         var info = context.getBundleName("error_param",
             (err, data) => {
+                console.log('ACTS_GetBundleName_0500 data is:' + JSON.stringify(data));
                 expect(data).assertEqual('com.example.actscontext');
             }
         );
@@ -101,7 +103,7 @@ describe('ActsContextTest', function () {
         ret = true
         done();
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -111,8 +113,9 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by callback)
     it('ACTS_VerifyPermission_0100', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
+        console.log('ACTS_VerifyPermission_0100 context is:' + JSON.stringify(context));
         var datainfo = await bundle.getBundleInfo('com.example.actscontext',1);
         var options = {
             pid :0,
@@ -120,13 +123,14 @@ describe('ActsContextTest', function () {
         }
         context.verifyPermission("ohos.permission.INSTALL_BUNDLE",options,
             (err, data) => {
-                console.info("ACTS_VerifyPermission_0100 in verifyPermission")
+                console.info("ACTS_VerifyPermission_0100 in verifyPermission");
+                console.log('ACTS_VerifyPermission_0100 data is:' + JSON.stringify(data));
                 expect(data).assertEqual(0);
                 ret = true
                 done();
             });
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -136,19 +140,21 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
     it('ACTS_VerifyPermission_0200', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
+        console.log('ACTS_VerifyPermission_0200 context is:' + JSON.stringify(context));
         var datainfo = await bundle.getBundleInfo('com.example.actscontext',1);
         var options = {
             pid :0,
             uid :datainfo.uid
         }
         var promise = await context.verifyPermission("ohos.permission.INSTALL_BUNDLE",options );
+        console.log('ACTS_VerifyPermission_0200 promise is:' + JSON.stringify(promise));
         expect(promise).assertEqual(0);
         ret = true
         done();
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -158,7 +164,7 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
     it('ACTS_VerifyPermission_0300', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
         var datainfo = await bundle.getBundleInfo('com.example.actscontext',1);
         var options = {
@@ -167,12 +173,13 @@ describe('ActsContextTest', function () {
         }
         var result = context.verifyPermission("com.example.permission.NOT",options,
             (err, data) => {
+                console.log('ACTS_VerifyPermission_0300 data is:' + JSON.stringify(data));
                 expect(data).assertEqual(-1);
                 ret = true
                 done();
             });
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -182,7 +189,7 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
     it('ACTS_VerifyPermission_0400', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
         var datainfo = await bundle.getBundleInfo('com.example.actscontext',1);
         var options = {
@@ -190,11 +197,12 @@ describe('ActsContextTest', function () {
             uid :datainfo.uid
         }
         var promise = await context.verifyPermission("ohos.permission.CAMERA.NOT",options );
+        console.log('ACTS_VerifyPermission_0400 promise is:' + JSON.stringify(promise));
         expect(promise).assertEqual(-1);
         ret = true
         done();
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -204,7 +212,7 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
     it('ACTS_VerifyPermission_0500', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
         var datainfo = await bundle.getBundleInfo('com.example.actscontext',1);
         var options = {
@@ -212,11 +220,12 @@ describe('ActsContextTest', function () {
             uid :datainfo.uid
         }
         var promise = await context.verifyPermission(2000,options );
+        console.log('ACTS_VerifyPermission_0500 promise is:' + JSON.stringify(promise));
         expect(promise).assertEqual(null);
         ret = true
         done();
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -227,7 +236,7 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Requests certain permissions from the system.
     //  process is the current process. (by callback)
     it('ACTS_RequestPermissionForUser_0100', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
         console.log("ACTS_RequestPermissionForUser_0100 ----------1");
 
@@ -241,7 +250,7 @@ describe('ActsContextTest', function () {
         ret = true
         done();
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
@@ -251,7 +260,7 @@ describe('ActsContextTest', function () {
     //  @tc.desc: Requests certain permissions from the system.
     //  process is the current process. (by promise)
     it('ACTS_RequestPermissionForUser_0200', 0, async function (done) {
-        var ret = false
+        var ret = false;
         var context = await featureAbility.getContext();
         console.log("ACTS_RequestPermissionForUser_0200 ----------1");
 
@@ -265,7 +274,7 @@ describe('ActsContextTest', function () {
         ret = true
         done();
         setTimeout(function(){
-            expect(ret).assertEqual(true)
+            expect(ret).assertEqual(true);
         },1000)
     })
 
