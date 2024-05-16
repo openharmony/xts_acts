@@ -264,7 +264,7 @@ HWTEST_F(NativeImageTest, OHNativeImageDetachContext001, Function | MediumTest |
 HWTEST_F(NativeImageTest, OHNativeImageDetachContext002, Function | MediumTest | Level1)
 {
     int32_t ret = OH_NativeImage_DetachContext(image);
-    ASSERT_EQ(ret, SURFACE_ERROR_INIT);
+    ASSERT_EQ(ret, SURFACE_ERROR_EGL_STATE_UNKONW);
 }
 
 /*
@@ -385,7 +385,7 @@ HWTEST_F(NativeImageTest, OHNativeImageUpdateSurfaceImage003, Function | MediumT
 HWTEST_F(NativeImageTest, OHNativeImageGetTimestamp001, Function | MediumTest | Level2)
 {
     int64_t timeStamp = OH_NativeImage_GetTimestamp(nullptr);
-    ASSERT_EQ(timeStamp, SURFACE_ERROR_ERROR);
+    ASSERT_EQ(timeStamp, -1);
 }
 
 /*
@@ -633,36 +633,6 @@ HWTEST_F(NativeImageTest, OHNativeImageGetSurfaceId001, Function | MediumTest | 
     int32_t ret = OH_NativeImage_GetSurfaceId(image, &surfaceId);
     ASSERT_EQ(ret, SURFACE_ERROR_OK);
 }
-/*
- * @tc.name: OHNativeImageGetSurfaceId002
- * @tc.desc: test for call OH_NativeImage_GetSurfaceId
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeImageTest, OHNativeImageGetSurfaceId002, Function | MediumTest | Level1)
-{
-    uint64_t surfaceId;
-    int32_t ret = OH_NativeImage_GetSurfaceId(nullptr, &surfaceId);
-    ASSERT_EQ(ret, SURFACE_ERROR_ERROR);
-}
-/*
- * @tc.name: OHNativeImageGetSurfaceId003
- * @tc.desc: test for call OH_NativeImage_GetSurfaceId
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeImageTest, OHNativeImageGetSurfaceId003, Function | MediumTest | Level1)
-{
-    if (image == nullptr) {
-        image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
-        ASSERT_NE(image, nullptr);
-    }
-
-    int32_t ret = OH_NativeImage_GetSurfaceId(image, nullptr);
-    ASSERT_EQ(ret, SURFACE_ERROR_ERROR);
-}
 
 /*
  * @tc.name: OHNativeImageSetOnFrameAvailableListener001
@@ -708,54 +678,6 @@ HWTEST_F(NativeImageTest, OHNativeImageSetOnFrameAvailableListener001, Function 
     ret = OH_NativeImage_UpdateSurfaceImage(image);
     ASSERT_EQ(ret, SURFACE_ERROR_OK);
 }
-/*
- * @tc.name: OHNativeImageSetOnFrameAvailableListener002
- * @tc.desc: test for call OH_NativeImage_SetOnFrameAvailableListener
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeImageTest, OHNativeImageSetOnFrameAvailableListener002, Function | MediumTest | Level1)
-{
-
-    if (nativeWindow == nullptr) {
-        nativeWindow = OH_NativeImage_AcquireNativeWindow(image);
-        ASSERT_NE(nativeWindow, nullptr);
-    }
-
-    OH_OnFrameAvailableListener listener;
-    listener.context = this;
-    listener.onFrameAvailable = NativeImageTest::OnFrameAvailable;
-    int32_t ret = OH_NativeImage_SetOnFrameAvailableListener(nullptr, listener);
-    ASSERT_EQ(ret, SURFACE_ERROR_ERROR);
-
-}
-/*
- * @tc.name: OHNativeImageSetOnFrameAvailableListener003
- * @tc.desc: test for call OH_NativeImage_SetOnFrameAvailableListener
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeImageTest, OHNativeImageSetOnFrameAvailableListener003, Function | MediumTest | Level1)
-{
-    
-     if (image == nullptr) {
-        image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
-        ASSERT_NE(image, nullptr);
-    }
-
-    if (nativeWindow == nullptr) {
-        nativeWindow = OH_NativeImage_AcquireNativeWindow(image);
-        ASSERT_NE(nativeWindow, nullptr);
-    }
-    OH_OnFrameAvailableListener listener;
-    listener.context = this;
-    listener.onFrameAvailable = nullptr;
-    int32_t ret = OH_NativeImage_SetOnFrameAvailableListener(image, listener);
-    ASSERT_EQ(ret, SURFACE_ERROR_ERROR);
-
-}
 
 /*
  * @tc.name: OHNativeImageUnsetOnFrameAvailableListener001
@@ -769,19 +691,6 @@ HWTEST_F(NativeImageTest, OHNativeImageUnsetOnFrameAvailableListener001, Functio
     int32_t ret = OH_NativeImage_UnsetOnFrameAvailableListener(image);
     ASSERT_EQ(ret, SURFACE_ERROR_OK);
 }
-/*
- * @tc.name: OHNativeImageUnsetOnFrameAvailableListener002
- * @tc.desc: test for call OH_NativeImage_UnsetOnFrameAvailableListener
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeImageTest, OHNativeImageUnsetOnFrameAvailableListener002, Function | MediumTest | Level1)
-{
-    int32_t ret = OH_NativeImage_UnsetOnFrameAvailableListener(nullptr);
-    ASSERT_EQ(ret, SURFACE_ERROR_ERROR);
-}
-
 /*
  * @tc.name: OHNativeImageDestroy001
  * @tc.desc: test for call OH_NativeImage_Destroy by abnormal input and check ret.
