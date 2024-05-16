@@ -3075,6 +3075,48 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004(napi_env 
     return res;
 }
 
+static napi_value AudioAudioInternalRecordingSuccess01(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    OH_AudioStream_PrivacyType type = AUDIO_STREAM_PRIVACY_TYPE_PUBLIC;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererPrivacy(builder, type);
+    
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioInternalRecordingSuccess02(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    OH_AudioStream_PrivacyType type = AUDIO_STREAM_PRIVACY_TYPE_PRIVATE;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererPrivacy(builder, type);
+    
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioAudioInternalRecordingFalse(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
+    OH_AudioRenderer* audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    OH_AudioStream_PrivacyType type = static_cast<OH_AudioStream_PrivacyType>(2);
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererPrivacy(builder, type);
+    
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -3343,6 +3385,12 @@ static napi_value Init(napi_env env, napi_value exports)
             AudioAudioDeviceDescriptorGetDeviceEncodingTypes_003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioAudioDeviceDescriptorGetDeviceEncodingTypes_004", nullptr,
             AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioInternalRecordingSuccess01", nullptr, 
+            AudioAudioInternalRecordingSuccess01, nullptr, nullptr, nullptr, napi_default, nullptr}, 
+        {"audioAudioInternalRecordingSuccess02", nullptr, 
+            AudioAudioInternalRecordingSuccess02, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioAudioInternalRecordingFalse", nullptr, 
+            AudioAudioInternalRecordingFalse, nullptr, nullptr, nullptr, napi_default, nullptr},    
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
