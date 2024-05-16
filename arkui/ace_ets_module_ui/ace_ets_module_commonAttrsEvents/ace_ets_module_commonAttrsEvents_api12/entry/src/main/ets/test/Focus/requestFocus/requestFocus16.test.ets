@@ -65,6 +65,10 @@ export default function requestFocus16() {
       expect(JSON.stringify(JSON.parse(textInput1).$attrs.text)).assertEqual('"TextInput_1"');
       await CommonFunc.sleep(1000);
 
+      let driver: Driver = Driver.create();
+      await CommonFunc.sleep(1000);
+      await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       console.info('requestFocus16_0100 END');
       done();
     });

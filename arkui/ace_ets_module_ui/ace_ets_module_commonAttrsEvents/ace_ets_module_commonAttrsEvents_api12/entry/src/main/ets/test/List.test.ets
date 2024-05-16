@@ -59,8 +59,8 @@ export default function testsuite() {
   requestFocus18();
   requestFocus19();
   requestFocus20();
-  requestFocus21();
   requestFocus22();
+  requestFocus21();
   requestFocus23();
   requestFocus24();
   requestFocus25();
