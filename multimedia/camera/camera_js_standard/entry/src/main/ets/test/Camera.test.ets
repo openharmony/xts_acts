@@ -24,6 +24,7 @@ import cameraSessionBaseTest from './CameraSessionBaseTest.test.ets'
 import cameraInputTest from './CameraInputTest.test.ets'
 import CameraErrorCodeUsecaseTest from './CameraErrorCodeUsecaseTest.test.ets'
 import cameraManagerTest from './CameraManagerTest.test.ets'
+import cameraPreconfigTest from './CameraPreconfigTest.test.ets'
 import cameraEnumTest from './CameraEnumTest.test.ets'
 import cameraVideoSuperStabilizationTest from './CameraVideoSuperStabilizationTest.test.ets'
 import cameraTorchTest from './CameraTorchTest.test.ets'
@@ -46,6 +47,7 @@ export default function cameraKit() {
     cameraSessionBaseTest()
     CameraErrorCodeUsecaseTest()
     cameraManagerTest()
+    cameraPreconfigTest()
     cameraEnumTest()
     cameraTorchTest()
   }else{
