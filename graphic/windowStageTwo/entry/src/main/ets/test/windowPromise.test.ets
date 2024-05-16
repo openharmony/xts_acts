@@ -328,11 +328,20 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let msgStr = "testRectChangeReason_enum";
       console.log(msgStr + "begin");
       try {
+		expect(0).assertEqual(ohosWindow.RectChangeReason.UNDEFINED);
+		console.log(`ohosWindow.RectChangeReason.UNDEFINED: ${ohosWindow.RectChangeReason.UNDEFINED}`);
+		expect(1).assertEqual(ohosWindow.RectChangeReason.MAXIMIZE);
+		console.log(`ohosWindow.RectChangeReason.MAXIMIZE: ${ohosWindow.RectChangeReason.MAXIMIZE}`);
         expect(2).assertEqual(ohosWindow.RectChangeReason.RECOVER);
+		console.log(`ohosWindow.RectChangeReason.RECOVER: ${ohosWindow.RectChangeReason.RECOVER}`);
         expect(3).assertEqual(ohosWindow.RectChangeReason.MOVE);
+		console.log(`ohosWindow.RectChangeReason.MOVE: ${ohosWindow.RectChangeReason.MOVE}`);
         expect(4).assertEqual(ohosWindow.RectChangeReason.DRAG);
+		console.log(`ohosWindow.RectChangeReason.DRAG: ${ohosWindow.RectChangeReason.DRAG}`);
         expect(5).assertEqual(ohosWindow.RectChangeReason.DRAG_START);
+		console.log(`ohosWindow.RectChangeReason.DRAG_START: ${ohosWindow.RectChangeReason.DRAG_START}`);
         expect(6).assertEqual(ohosWindow.RectChangeReason.DRAG_END);
+		console.log(`ohosWindow.RectChangeReason.DRAG_END: ${ohosWindow.RectChangeReason.DRAG_END}`);
         done();
       } catch (error) {
         console.log(msgStr + 'Failed to testRectChangeReason_enum'+JSON.stringify(error));
