@@ -952,7 +952,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdMimeTypeJsAPITest0640
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0640
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/aiff"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/pcm"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1220,7 +1220,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdMimeTypeJsAPITest0830
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0830
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-python-script"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/ruby-script"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1234,7 +1234,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdMimeTypeJsAPITest0840
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0840
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-python-script"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-php-script"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
