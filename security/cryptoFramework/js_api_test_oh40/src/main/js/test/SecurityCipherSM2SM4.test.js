@@ -37,15 +37,6 @@ export default function SecurityCipherSM2SM4Jsunit() {
                 }
             }
 
-            async function sleep(ms) {
-                let timeoutID;
-                await new Promise(resolve => {
-                    timeoutID = setTimeout(resolve, ms)
-                });
-                clearTimeout(timeoutID);
-            }
-
-            await sleep(3000);
             symKeyPairSM4 = await genSymKeyPair();
         });
 
