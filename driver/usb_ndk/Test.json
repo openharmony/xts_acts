@@ -1,5 +1,5 @@
 {
-    "description": "Configuration for ActsDriversExternalusbNdkTest Tests",
+    "description": "Configuration for ActsDriversExternalUsbNdkTest Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsDriversExternalusbNdkTest.hap"
+            "ActsDriversExternalUsbNdkTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

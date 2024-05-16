@@ -14,7 +14,7 @@
 import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsDriversExternalusbNdkTest") {
+ohos_js_hap_suite("ActsDriversExternalUsbNdkTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
@@ -23,7 +23,7 @@ ohos_js_hap_suite("ActsDriversExternalusbNdkTest") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsDriversExternalusbNdkTest"
+  hap_name = "ActsDriversExternalUsbNdkTest"
   subsystem_name = "hdf"
   part_name = "external_device_manager"
   shared_libraries = [
