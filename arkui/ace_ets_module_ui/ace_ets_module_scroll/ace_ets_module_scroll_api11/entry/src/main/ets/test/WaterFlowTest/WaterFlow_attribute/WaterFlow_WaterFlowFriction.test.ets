@@ -56,7 +56,7 @@ export default function waterFlow_WaterFlowFrictionTest() {
       let scrollContainerStrJson = getInspectorByKey('WaterFlow_WaterFlowFriction');
       let scrollContainerObj = JSON.parse(scrollContainerStrJson);
       expect(scrollContainerObj.$type).assertEqual('WaterFlow');
-      expect(scrollContainerObj.$attrs.friction).assertEqual(0.6);
+      expect(scrollContainerObj.$attrs.friction).assertEqual(0.7);
       console.info('[testWaterFlowFriction_0100] END');
       done();
     });
