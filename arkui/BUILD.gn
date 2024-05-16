@@ -64,7 +64,6 @@ group("arkui") {
     "ace_ets_web_napis:ActsNativeWebTest",
     "ace_ets_web_scheme_handler_four_napis:ActsNativeWebSchemeHandlerTest",
     "ace_ets_web_scheme_handler_napis:ActsNativeWebSchemeHandlerOneTest",
-    "ace_ets_web_scheme_handler_three_napis:ActsNativeWebSchemeHandlerThreeTest",
     "ace_ets_web_scheme_handler_two_napis:ActsNativeWebSchemeHandlerTwoTest",
     "ace_ets_web_view:ActsAceWebViewTest",
     "ace_ets_xcomponent:ActsAceXComponentEtsTest",
