@@ -46,18 +46,6 @@
         "type": "page",
         "visible": true,
         "launchType": "standard"
-      },
-      {
-        "orientation": "unspecified",
-        "srcPath": "MainAbility2",
-        "name": ".MainAbility2",
-        "srcLanguage": "js",
-        "icon": "$media:icon",
-        "description": "$string:description_mainability2",
-        "formsEnabled": false,
-        "label": "$string:entry_MainAbility2",
-        "type": "page",
-        "launchType": "standard"
       }
     ],
     "js": [
