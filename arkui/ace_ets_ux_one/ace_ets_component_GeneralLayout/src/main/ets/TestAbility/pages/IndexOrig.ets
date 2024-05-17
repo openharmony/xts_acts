@@ -19,11 +19,11 @@ struct IndexOrig {
   build() {
     Column() {
       Image($r('app.media.icon'))
-        .key("top")
+        .key("top_orig")
         .width('30px').height('30px')
         .position({ left: 0, top: 0 })
       Image($r('app.media.icon'))
-        .key("bottom")
+        .key("bottom_orig")
         .width('30px').height('30px')
         .position({ left: '100%', top: '100%' })
       Text('Original_0100')
