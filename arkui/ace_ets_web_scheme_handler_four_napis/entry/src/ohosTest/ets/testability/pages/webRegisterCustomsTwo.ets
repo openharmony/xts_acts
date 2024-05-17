@@ -229,7 +229,7 @@ struct webRegisterCustomsTwoComponent {
                 .width('100%')
                 .javaScriptAccess(true)
                 .fileAccess(true)
-                .onConsole((event) => {
+                .onConsole(async(event) => {
                     if (event) {
                         console.log('onConsole getMessage:' + event.message?.getMessage())
                         console.log('onConsole getSourceId:' + event.message?.getSourceId())
