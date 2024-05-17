@@ -48,6 +48,28 @@ export default function signNormalAccessBiometricExecute() {
         }
       })
     }
+
+    function userAuthPromiseFace(...args){
+      return new Promise((resolve, reject) => {
+        try {
+          const userAuthInstance = userAuth.getUserAuthInstance(args[0], args[1]);
+          userAuthInstance.on('result', {
+            onResult: (onResult) => {
+              console.info(`${args[2]} onResult ${onResult}`);
+              console.info('onResult.token is ' + onResult.token);
+              console.info('onResult.authType is ' + onResult.authType);
+              expect(onResult.result == args[3] || onResult.result == args[4]).assertTrue();
+              resolve();
+            }
+          });
+          userAuthInstance.start();
+        } catch (e) {
+          console.info(`${args[2]} fail ${e.code}`);
+          expect(null).assertFail();
+          reject();
+        }
+      })
+    }
     
     /*
       * @tc.number    : Security_IAM_getUserAuthInstance_Func_0043
@@ -115,22 +137,25 @@ export default function signNormalAccessBiometricExecute() {
       const notSupportTLParams  = [
         {
           ...authParamDefault,
-          authType: [userAuth.UserAuthType.FACE],
-          authTrustLevel: userAuth.AuthTrustLevel.ATL4
-        },
-        {
-          ...authParamDefault,
           authType: [userAuth.UserAuthType.FINGERPRINT],
           authTrustLevel: userAuth.AuthTrustLevel.ATL4
         }
       ];
-      for (let index = 0; index < notSupportTLParams.length; index++) {
-        console.info("Security_IAM_getUserAuthInstance_Func_0043 notSupportTLParams: " + JSON.stringify(notSupportTLParams[index]));
-        await userAuthPromise(notSupportTLParams[index], widgetParamDefault,
-                              'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
-                              userAuth.UserAuthResultCode.NOT_ENROLLED);
-        stepIndex++;
-      }
+      await userAuthPromise(notSupportTLParams[0], widgetParamDefault,
+                            'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
+                            userAuth.UserAuthResultCode.NOT_ENROLLED);
+      stepIndex++;
+      const notSupportTLParams1  = [
+        {
+          ...authParamDefault,
+          authType: [userAuth.UserAuthType.FACE],
+          authTrustLevel: userAuth.AuthTrustLevel.ATL4
+        }
+      ];
+      await userAuthPromiseFace(notSupportTLParams1[0], widgetParamDefault,
+                                'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
+                                userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)
+      stepIndex++;
       
       // 补充到60个字符
       let widgetParams = [

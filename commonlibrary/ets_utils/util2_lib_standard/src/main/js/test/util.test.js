@@ -5129,6 +5129,109 @@ describe('RationalNumberTest', function () {
             expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
         }
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_001
+     * @tc.name: testUtilGetHash001
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash001', 0, function () {
+        let person = {
+          name: "Alice",
+          age: 30
+        };
+        let result1 = util.getHash(person);
+        let result2 = util.getHash(person);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_002
+     * @tc.name: testUtilGetHash002
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash002', 0, function () {
+        let numbers = [1, 2, 3, 4, 5];
+        let result1 = util.getHash(numbers);
+        let result2 = util.getHash(numbers);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_003
+     * @tc.name: testUtilGetHash003
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash003', 0, function () {
+        class Car {
+          make;
+          model;
+
+          constructor(make, model) {
+            this.make = make;
+            this.model = model;
+          }
+        }
+
+        let myCar = new Car("Toyota", "Corolla");
+        let result1 = util.getHash(myCar);
+        let result2 = util.getHash(myCar);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_004
+     * @tc.name: testUtilGetHash004
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash004', 0, function () {
+        let now = new Date();
+        let result1 = util.getHash(now);
+        let result2 = util.getHash(now);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_005
+     * @tc.name: testUtilGetHash005
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash005', 0, function () {
+        let regex = new RegExp("abc");
+        let result1 = util.getHash(regex);
+        let result2 = util.getHash(regex);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_006
+     * @tc.name: testUtilGetHash006
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash006', 0, function () {
+        let mathObject = Math;
+        let result1 = util.getHash(mathObject);
+        let result2 = util.getHash(mathObject);
+        expect(result1).assertEqual(result2);
+    })
 })
 
 describe('Base64HelperTest', function () {
@@ -6286,6 +6389,44 @@ describe('Base64HelperTest', function () {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODETOSTRINGSYNC_BASE64URL_002
+     * @tc.name: test_encodeToStringSync_base64url_002
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+     it('test_encodeToStringSync_base64url_002', 0, function () {
+        let that = new util.Base64Helper()
+        let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
+        let result = that.encodeToStringSync(array);
+        let resBas = that.encodeToStringSync(array, util.Type.BASIC);
+        let resUrl = that.encodeToStringSync(array, util.Type.BASIC_URL_SAFE);
+        expect(result).assertEqual('AsD+QWERQ9+y');
+        expect(resBas).assertEqual('AsD+QWERQ9+y');
+        expect(resUrl).assertEqual('AsD-QWERQ9-y');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODETOSTRINGSYNC_BASE64URL_003
+     * @tc.name: test_encodeToStringSync_base64url_003
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToStringSync_base64url_003', 0, function () {
+        let that = new util.Base64Helper()
+        let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
+        let result = that.encodeToStringSync(array);
+        let resBas = that.encodeToStringSync(array, util.Type.BASIC);
+        let resUrl = that.encodeToStringSync(array, util.Type.BASIC_URL_SAFE);
+        expect(result).assertEqual('AsD/QWERQ9/y');
+        expect(resBas).assertEqual('AsD/QWERQ9/y');
+        expect(resUrl).assertEqual('AsD_QWERQ9_y');
+    })
+
+    /**
      * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_BASE64URL_001
      * @tc.name: test_encodeSync_base64url_001
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8.
@@ -6301,6 +6442,48 @@ describe('Base64HelperTest', function () {
         let resUrl = that.encodeSync(array, util.Type.BASIC_URL_SAFE);
         let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
         let arrUrl = new Uint8Array([65,115,68,45,95,81,87,69,82,81]);
+        expect(result.every((value, index) => value === arrBas[index])).assertEqual(true);
+        expect(resBas.every((value, index) => value === arrBas[index])).assertEqual(true);
+        expect(resUrl.every((value, index) => value === arrUrl[index])).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_BASE64URL_002
+     * @tc.name: test_encodeSync_base64url_002
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeSync_base64url_002', 0, function () {
+        let that = new util.Base64Helper()
+        let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
+        let result = that.encodeSync(array);
+        let resBas = that.encodeSync(array, util.Type.BASIC);
+        let resUrl = that.encodeSync(array, util.Type.BASIC_URL_SAFE);
+        let arrBas = new Uint8Array([65,115,68,43,81,87,69,82,81,57,43,121]);
+        let arrUrl = new Uint8Array([65,115,68,45,81,87,69,82,81,57,45,121]);
+        expect(result.every((value, index) => value === arrBas[index])).assertEqual(true);
+        expect(resBas.every((value, index) => value === arrBas[index])).assertEqual(true);
+        expect(resUrl.every((value, index) => value === arrUrl[index])).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_BASE64URL_003
+     * @tc.name: test_encodeSync_base64url_003
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeSync_base64url_003', 0, function () {
+        let that = new util.Base64Helper()
+        let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
+        let result = that.encodeSync(array);
+        let resBas = that.encodeSync(array, util.Type.BASIC);
+        let resUrl = that.encodeSync(array, util.Type.BASIC_URL_SAFE);
+        let arrBas = new Uint8Array([65,115,68,47,81,87,69,82,81,57,47,121]);
+        let arrUrl = new Uint8Array([65,115,68,95,81,87,69,82,81,57,95,121]);
         expect(result.every((value, index) => value === arrBas[index])).assertEqual(true);
         expect(resBas.every((value, index) => value === arrBas[index])).assertEqual(true);
         expect(resUrl.every((value, index) => value === arrUrl[index])).assertEqual(true);
@@ -6330,6 +6513,52 @@ describe('Base64HelperTest', function () {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODETOSTRING_BASE64URL_002
+     * @tc.name: test_encodeToString_base64url_002
+     * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 and
+     * Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToString_base64url_002', 0, function () {
+        let that = new util.Base64Helper();
+        let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
+        that.encodeToString(array).then(result => {
+            expect(result).assertEqual('AsD+QWERQ9+y');
+        })
+        that.encodeToString(array, util.Type.BASIC).then(resBas => {
+            expect(resBas).assertEqual('AsD+QWERQ9+y');
+        })
+        that.encodeToString(array, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl).assertEqual('AsD-QWERQ9-y');
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODETOSTRING_BASE64URL_003
+     * @tc.name: test_encodeToString_base64url_003
+     * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 and
+     * Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToString_base64url_003', 0, function () {
+        let that = new util.Base64Helper();
+        let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
+        that.encodeToString(array).then(result => {
+            expect(result).assertEqual('AsD/QWERQ9/y');
+        })
+        that.encodeToString(array, util.Type.BASIC).then(resBas => {
+            expect(resBas).assertEqual('AsD/QWERQ9/y');
+        })
+        that.encodeToString(array, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl).assertEqual('AsD_QWERQ9_y');
+        })
+    })
+
+    /**
      * @tc.number: SUB_COMMONLIBRARY_ENCODE_BASE64URL_001
      * @tc.name: test_encode_base64url_001
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated
@@ -6343,6 +6572,56 @@ describe('Base64HelperTest', function () {
         let array = new Uint8Array([2, 192, 254, 253, 5, 132, 69]);
         let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
         let arrUrl = new Uint8Array([65,115,68,45,95,81,87,69,82,81]);
+        that.encode(array).then(result => {
+            expect(result.every((value, index) => value === arrBas[index])).assertEqual(true);
+        })
+        that.encode(array, util.Type.BASIC).then(resBas => {
+            expect(resBas.every((value, index) => value === arrBas[index])).assertEqual(true);
+        })
+        that.encode(array, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl.every((value, index) => value === arrUrl[index])).assertEqual(true);
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_BASE64URL_002
+     * @tc.name: test_encode_base64url_002
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated
+     * u8 array using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encode_base64url_002', 0, function () {
+        let that = new util.Base64Helper();
+        let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
+        let arrBas = new Uint8Array([65,115,68,43,81,87,69,82,81,57,43,121]);
+        let arrUrl = new Uint8Array([65,115,68,45,81,87,69,82,81,57,45,121]);
+        that.encode(array).then(result => {
+            expect(result.every((value, index) => value === arrBas[index])).assertEqual(true);
+        })
+        that.encode(array, util.Type.BASIC).then(resBas => {
+            expect(resBas.every((value, index) => value === arrBas[index])).assertEqual(true);
+        })
+        that.encode(array, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl.every((value, index) => value === arrUrl[index])).assertEqual(true);
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_BASE64URL_003
+     * @tc.name: test_encode_base64url_003
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated
+     * u8 array using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encode_base64url_003', 0, function () {
+        let that = new util.Base64Helper();
+        let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
+        let arrBas = new Uint8Array([65,115,68,47,81,87,69,82,81,57,47,121]);
+        let arrUrl = new Uint8Array([65,115,68,95,81,87,69,82,81,57,95,121]);
         that.encode(array).then(result => {
             expect(result.every((value, index) => value === arrBas[index])).assertEqual(true);
         })
@@ -6378,16 +6657,100 @@ describe('Base64HelperTest', function () {
     /**
      * @tc.number: SUB_COMMONLIBRARY_DECODESYNC_BASE64URL_002
      * @tc.name: test_decodeSync_base64url_002
-     * @tc.desc: Decodes input u8 array into a newly-allocated u8 array using the Base64 and Base64URL encoding scheme.
+     * @tc.desc: Decodes String into a newly-allocated u8 array using the Base64 and Base64URL encoding scheme.
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 1
      */
     it('test_decodeSync_base64url_002', 0, function () {
         let that = new util.Base64Helper();
+        let str = "AsD+QWERQ9+y";
+        let strUrl = "AsD-QWERQ9-y";
+        let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
+        let result = that.decodeSync(str);
+        let resBas = that.decodeSync(str, util.Type.BASIC);
+        let resUrl = that.decodeSync(strUrl, util.Type.BASIC_URL_SAFE);
+        expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYNC_BASE64URL_003
+     * @tc.name: test_decodeSync_base64url_003
+     * @tc.desc: Decodes String into a newly-allocated u8 array using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64url_003', 0, function () {
+        let that = new util.Base64Helper();
+        let str = "AsD/QWERQ9/y";
+        let strUrl = "AsD_QWERQ9_y";
+        let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
+        let result = that.decodeSync(str);
+        let resBas = that.decodeSync(str, util.Type.BASIC);
+        let resUrl = that.decodeSync(strUrl, util.Type.BASIC_URL_SAFE);
+        expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYNC_BASE64URL_004
+     * @tc.name: test_decodeSync_base64url_004
+     * @tc.desc: Decodes input u8 array into a newly-allocated u8 array using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64url_004', 0, function () {
+        let that = new util.Base64Helper();
         let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
         let arrURL = new Uint8Array([65,115,68,45,95,81,87,69,82,81]);
         let array = new Uint8Array([2,192,254,253,5,132,69]);
+        let result = that.decodeSync(arrBas);
+        let resBas = that.decodeSync(arrBas, util.Type.BASIC);
+        let resUrl = that.decodeSync(arrURL, util.Type.BASIC_URL_SAFE);
+        expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYNC_BASE64URL_005
+     * @tc.name: test_decodeSync_base64url_005
+     * @tc.desc: Decodes input u8 array into a newly-allocated u8 array using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64url_005', 0, function () {
+        let that = new util.Base64Helper();
+        let arrBas = new Uint8Array([65,115,68,43,81,87,69,82,81,57,43,121]);
+        let arrURL = new Uint8Array([65,115,68,45,81,87,69,82,81,57,45,121]);
+        let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
+        let result = that.decodeSync(arrBas);
+        let resBas = that.decodeSync(arrBas, util.Type.BASIC);
+        let resUrl = that.decodeSync(arrURL, util.Type.BASIC_URL_SAFE);
+        expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYNC_BASE64URL_006
+     * @tc.name: test_decodeSync_base64url_006
+     * @tc.desc: Decodes input u8 array into a newly-allocated u8 array using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64url_006', 0, function () {
+        let that = new util.Base64Helper();
+        let arrBas = new Uint8Array([65,115,68,47,81,87,69,82,81,57,47,121]);
+        let arrURL = new Uint8Array([65,115,68,95,81,87,69,82,81,57,95,121]);
+        let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
         let result = that.decodeSync(arrBas);
         let resBas = that.decodeSync(arrBas, util.Type.BASIC);
         let resUrl = that.decodeSync(arrURL, util.Type.BASIC_URL_SAFE);
@@ -6424,7 +6787,7 @@ describe('Base64HelperTest', function () {
     /**
      * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64URL_002
      * @tc.name: test_decode_base64url_002
-     * @tc.desc: Use the Base64 and Base64URL encoding scheme to asynchronously decode a input u8 array into
+     * @tc.desc: Use the Base64 and Base64URL encoding scheme to asynchronously decode a string into
      * a newly allocated u8 array.
      * @tc.size: MediumTest
      * @tc.type: Function
@@ -6432,9 +6795,109 @@ describe('Base64HelperTest', function () {
      */
     it('test_decode_base64url_002', 0, function () {
         let that = new util.Base64Helper();
+        let str = "AsD+QWERQ9+y";
+        let strUrl = "AsD-QWERQ9-y";
+        let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
+        that.decode(str).then(result => {
+            expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.decode(str, util.Type.BASIC).then(resBas => {
+            expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.decode(strUrl, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64URL_003
+     * @tc.name: test_decode_base64url_003
+     * @tc.desc: Use the Base64 and Base64URL encoding scheme to asynchronously decode a string into
+     * a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decode_base64url_003', 0, function () {
+        let that = new util.Base64Helper();
+        let str = "AsD/QWERQ9/y";
+        let strUrl = "AsD_QWERQ9_y";
+        let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
+        that.decode(str).then(result => {
+            expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.decode(str, util.Type.BASIC).then(resBas => {
+            expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.decode(strUrl, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64URL_004
+     * @tc.name: test_decode_base64url_004
+     * @tc.desc: Use the Base64 and Base64URL encoding scheme to asynchronously decode a input u8 array into
+     * a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decode_base64url_004', 0, function () {
+        let that = new util.Base64Helper();
         let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
         let arrUrl = new Uint8Array([65,115,68,45,95,81,87,69,82,81]);
         let array = new Uint8Array([2,192,254,253,5,132,69]);
+        that.decode(arrBas).then(result => {
+            expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.encode(arrBas, util.Type.BASIC).then(resBas => {
+            expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.encode(arrUrl, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64URL_005
+     * @tc.name: test_decode_base64url_005
+     * @tc.desc: Use the Base64 and Base64URL encoding scheme to asynchronously decode a input u8 array into
+     * a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decode_base64url_005', 0, function () {
+        let that = new util.Base64Helper();
+        let arrBas = new Uint8Array([65,115,68,43,81,87,69,82,81,57,43,121]);
+        let arrUrl = new Uint8Array([65,115,68,45,81,87,69,82,81,57,45,121]);
+        let array = new Uint8Array([2,192,254,65,97,17,67,223,178]);
+        that.decode(arrBas).then(result => {
+            expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.encode(arrBas, util.Type.BASIC).then(resBas => {
+            expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.encode(arrUrl, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64URL_006
+     * @tc.name: test_decode_base64url_006
+     * @tc.desc: Use the Base64 and Base64URL encoding scheme to asynchronously decode a input u8 array into
+     * a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decode_base64url_006', 0, function () {
+        let that = new util.Base64Helper();
+        let arrBas = new Uint8Array([65,115,68,47,81,87,69,82,81,57,47,121]);
+        let arrUrl = new Uint8Array([65,115,68,95,81,87,69,82,81,57,95,121]);
+        let array = new Uint8Array([2,192,255,65,97,17,67,223,242]);
         that.decode(arrBas).then(result => {
             expect(result.every((value, index) => value === array[index])).assertEqual(true);
         })

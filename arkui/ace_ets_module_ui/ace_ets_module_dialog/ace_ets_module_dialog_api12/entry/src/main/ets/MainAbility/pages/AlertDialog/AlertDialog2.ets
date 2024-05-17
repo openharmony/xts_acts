@@ -28,7 +28,7 @@ struct AlertDialog2Example {
               subtitle: 'subtitle',
               message: 'text',
               autoCancel: false,
-              alignment: DialogAlignment.Bottom,
+              alignment: DialogAlignment.Center,
               gridCount: 4,
               showInSubWindow: true,
               offset: { dx: 0, dy: -20 },

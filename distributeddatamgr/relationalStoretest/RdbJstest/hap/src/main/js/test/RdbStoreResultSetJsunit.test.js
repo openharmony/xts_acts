@@ -1556,15 +1556,19 @@ describe('rdbResultSetTest', function () {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBResultSetJsAPITest_6900
      * @tc.desc resultSet isColumnNull test
      */
-    it('testIsColumnNull0003', 0, async function (done) {
+    it('testIsColumnNull0003', 0, async function () {
         console.info(TAG + '************* testIsColumnNull0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
             resultSet.goToRow(5)
-            expect(false).assertEqual(resultSet.isColumnNull(2))
+            try {
+                let res = resultSet.isColumnNull(2);
+                expect(false).assertEqual(res);
+            } catch (e) {
+                expect(e.code).assertEqual("14800012");
+            }
             resultSet = null;
-            done();
             console.info(TAG + '************* testIsColumnNull0003 end *************');
         }
     })

@@ -28,7 +28,6 @@ struct WhereModel1 {
     float input1Value[3] = {1, 2, 3};
     float input2Value[3] = {4, 5, 6};
     float outputValue[3] = {0};
-    float expectValue[3] = {1, 5, 3};
 
     OHNNOperandTest input0 = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(bool)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input1Value, 3*sizeof(float)};
@@ -47,7 +46,6 @@ struct WhereModel2 {
     float input1Value[1] = {5};
     float input2Value[3] = {7, 8, 9};
     float outputValue[3] = {0};
-    float expectValue[3] = {7, 8, 5};
 
     OHNNOperandTest input0 = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(bool)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, {1}, input1Value, sizeof(float)};
@@ -66,7 +64,6 @@ struct WhereModel3 {
     float input1Value[3] = {10, 11, 12};
     float input2Value[1] = {3};
     float outputValue[3] = {0};
-    float expectValue[3] = {10, 11, 3};
 
     OHNNOperandTest input0 = {OH_NN_BOOL, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(bool)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input1Value, 3*sizeof(float)};
@@ -294,7 +291,6 @@ HWTEST_F(WhereTest, SUB_AI_NNRt_Func_North_Where_Model_SetOperandValue_01, Funct
     WhereModel1 whereModel;
     OHNNGraphArgs graphArgs = whereModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -305,7 +301,7 @@ HWTEST_F(WhereTest, SUB_AI_NNRt_Func_North_Where_Model_SetOperandValue_01, Funct
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -331,7 +327,6 @@ HWTEST_F(WhereTest, SUB_AI_NNRt_Func_North_Where_Model_SetOperandValue_02, Funct
     WhereModel1 whereModel;
     OHNNGraphArgs graphArgs = whereModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -342,7 +337,7 @@ HWTEST_F(WhereTest, SUB_AI_NNRt_Func_North_Where_Model_SetOperandValue_02, Funct
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -367,7 +362,6 @@ HWTEST_F(WhereTest, SUB_AI_NNRt_Func_North_Where_Model_SetOperandValue_03, Funct
     WhereModel1 whereModel;
     OHNNGraphArgs graphArgs = whereModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -378,7 +372,7 @@ HWTEST_F(WhereTest, SUB_AI_NNRt_Func_North_Where_Model_SetOperandValue_03, Funct
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

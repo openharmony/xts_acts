@@ -15,6 +15,7 @@ group("ActsAceEtsModuleUITest") {
   testonly = true
   deps = [
     "ace_ets_module_RouteManagement:ActsAceEtsModuleRouteManagementTest",
+    "ace_ets_module_XNode:ActsAceEtsModuleXNodeTest",
     "ace_ets_module_animation:ActsAceEtsModuleAnimationTest",
     "ace_ets_module_commonAttrsDialog:ActsAceEtsModuleCommonAttrsDialogTest",
     "ace_ets_module_commonAttrsEvents:ActsAceEtsModuleCommonAttrsEventsTest",
@@ -26,11 +27,14 @@ group("ActsAceEtsModuleUITest") {
     "ace_ets_module_draw:ActsAceEtsModuleDrawTest",
     "ace_ets_module_imageText:ActsAceEtsModuleImageTextTest",
     "ace_ets_module_information:ActsAceEtsModuleInformationTest",
+    "ace_ets_module_keyboardShortcut:ActsAceEtsModuleKeyboardShortcutTest",
     "ace_ets_module_layout:ActsAceEtsModuleLayoutTest",
+    "ace_ets_module_modifier:ActsAceEtsModuleModifierTest",
     "ace_ets_module_navigation:ActsAceEtsModuleNavigationTest",
     "ace_ets_module_observer:ActsAceEtsModuleObserverTest",
     "ace_ets_module_picker:ActsAceEtsModulePickerTest",
     "ace_ets_module_platform:ActsAceEtsModulePlatformTest",
     "ace_ets_module_scroll:ActsAceEtsModuleScrollTest",
+    "ace_ets_module_span_baselineOffset:ActsAceEtsModuleSpanBaselineOffsetTest",
   ]
 }

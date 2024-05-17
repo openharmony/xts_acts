@@ -85,7 +85,7 @@ export default function RichEditorApi() {
       await Utils.sleep(1000);
       console.info("[RichEditorApi_002] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content)
-        .assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":[5,0]}},"range":[0,4]}]');
+        .assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":["5.00vp","0.00vp"]}},"range":[0,4]}]');
       console.info('[RichEditorApi_002] END');
       done();
     });
@@ -116,7 +116,7 @@ export default function RichEditorApi() {
       await Utils.sleep(1000);
       console.info("[RichEditorApi_003] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.content)
-        .assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":[10,0]}},"range":[0,4]}]');
+        .assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":["10.00vp","0.00vp"]}},"range":[0,4]}]');
       console.info('[RichEditorApi_003] END');
       done();
     });

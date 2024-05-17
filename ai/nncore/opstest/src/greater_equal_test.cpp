@@ -27,7 +27,6 @@ struct GreaterEqualModel1 {
     float input0Value[3] = {1, 2, 3};
     float input1Value[3] = {4, 2, 6};
     bool outputValue[3] = {0};
-    bool expectValue[3] = {false, true, false};
 
     OHNNOperandTest input0 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input0Value, 3*sizeof(float)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input1Value, 3*sizeof(float)};
@@ -44,7 +43,6 @@ struct GreaterEqualModel2 {
     float input0Value[1] = {1};
     float input1Value[1] = {1};
     bool outputValue[1] = {0};
-    bool expectValue[1] = {true};
 
     OHNNOperandTest input0 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input0Value, sizeof(float)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input1Value, sizeof(float)};
@@ -78,7 +76,6 @@ struct GreaterEqualModel4 {
     float* input0Value = {};
     float* input1Value = {};
     bool* outputValue = {};
-    bool* expectValue = {};
 
     OHNNOperandTest input0 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input0Value, 0*sizeof(float)};
     OHNNOperandTest input1 = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, input1Value, 0*sizeof(float)};
@@ -335,7 +332,6 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
     GreaterEqualModel1 greaterEqualModel;
     OHNNGraphArgs graphArgs = greaterEqualModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -345,7 +341,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
                                       (uint32_t) operandTem.shape.size(),
                                       operandTem.dataType, operandTem.format);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -372,7 +368,6 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
     GreaterEqualModel1 greaterEqualModel;
     OHNNGraphArgs graphArgs = greaterEqualModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -382,7 +377,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
                                       (uint32_t) operandTem.shape.size(),
                                       operandTem.dataType, operandTem.format);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -408,7 +403,6 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
     GreaterEqualModel1 greaterEqualModel;
     OHNNGraphArgs graphArgs = greaterEqualModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -419,7 +413,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

@@ -1140,7 +1140,6 @@ export default function requestDownloadJSUnit() {
         title: 'XTS download test!',
         background: false
       }
-      let flag;
       request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
         console.info("====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 downloadTask: " + downloadTask);
         try {
@@ -1150,14 +1149,23 @@ export default function requestDownloadJSUnit() {
           }
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('complete', async () => {
-            flag = true;
             try {
               downloadTask.off('complete');
-              console.info('====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 complete success');
-              await downloadTask.delete();
-              console.info('====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 delete downloadTask');
+              console.info('====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 complete off success');
+              await request.downloadFile(globalThis.abilityContext, downloadFileConfig);
+              console.info("====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 second downloadTask success");
+              expect().assertFail();
+              done();
             } catch (err) {
-              console.info("====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 complete error: " + JSON.stringify(err));
+              try {
+                fs.unlinkSync(downloadFilePath);
+                console.info("====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 second downloadTask fail: " + JSON.stringify(err));
+                expect(err.code).assertEqual(13400002);
+                done();
+              } catch (err) {
+                console.info("====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 catch err: " + JSON.stringify(err));
+                done();
+              }
             }
           });
         } catch (err) {
@@ -1166,24 +1174,6 @@ export default function requestDownloadJSUnit() {
           fs.unlinkSync(downloadFilePath);
         }
       })
-      await sleep(8000);
-      if (flag) {
-        try {
-          await request.downloadFile(globalThis.abilityContext, downloadFileConfig);
-          console.info("====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 second downloadTask success");
-          expect().assertFail();
-          done();
-        } catch (err) {
-          fs.unlinkSync(downloadFilePath);
-          console.info("====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 second downloadTask fail: " + JSON.stringify(err));
-          expect(err.code).assertEqual(13400002);
-          done();
-        }
-      } else {
-        console.info("====>SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001 first downloadTask can not complete");
-        expect().assertFail();
-        done();
-      }
     });
 
     /**
@@ -1448,20 +1438,32 @@ export default function requestDownloadJSUnit() {
             console.info("====>Download_Test_0700 complete flag " + flag);
           });
           downloadTask.off('complete');
-          await sleep(8000);
-          if (flag) {
-            console.info('====>Download_Test_0700 onFail success');
-            fs.unlinkSync(downloadFilePath);
-            console.info('====>Download_Test_0700 delete files success');
-            await downloadTask.delete();
-            console.info('====>Download_Test_0700 delete downloadTask');
-            expect(true).assertTrue();
-            done();
-          } else {
-            console.info("====>Download_Test_0700 onFail error: " + JSON.stringify(err));
-            expect().assertFail();
-            done();
-          }
+          downloadTask.on('progress',async (size, totalSize) => {
+            console.info(`====>size: ${size}; totalSize  ${totalSize}`);
+            if (size === totalSize){
+              try {
+                console.info('====>Download_Test_0700 into expect');
+                await sleep(100);
+                downloadTask.off('progress');
+                if (flag) {
+                  console.info('====>Download_Test_0700 onFail success');
+                  fs.unlinkSync(downloadFilePath);
+                  console.info('====>Download_Test_0700 delete files success');
+                  await downloadTask.delete();
+                  console.info('====>Download_Test_0700 delete downloadTask');
+                  expect(true).assertTrue();
+                  done();
+                } else {
+                  console.info("====>Download_Test_0700 onFail error: " + JSON.stringify(err));
+                  expect().assertFail();
+                  done();
+                }
+              } catch (err) {
+                console.info('====>Download_Test_0700 catch err: ' + JSON.stringify(err));
+                done();
+              }
+            }
+          })
         } catch (err) {
           console.info("====>Download_Test_0700 error: " + JSON.stringify(err));
           await downloadTask.delete();

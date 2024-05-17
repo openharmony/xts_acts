@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -32,8 +32,8 @@ export default function panelJsunit() {
   describe('panelTest', () => {
 
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/Panel',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Panel',
       }
       try {
         router.clear();

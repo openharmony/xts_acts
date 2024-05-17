@@ -35,5 +35,10 @@ HWTEST_F(OH_Drawing_FontCollectionTest, OH_Drawing_FontCollectionTest001, TestSi
     OH_Drawing_FontCollection* fontCollection = OH_Drawing_CreateFontCollection();
     EXPECT_EQ(fontCollection == nullptr, false);
     OH_Drawing_DestroyFontCollection(fontCollection);
+    OH_Drawing_FontCollection* sharedFontCollection = OH_Drawing_CreateSharedFontCollection();
+    EXPECT_EQ(sharedFontCollection == nullptr, false);
+    OH_Drawing_DisableFontCollectionFallback(sharedFontCollection);
+    OH_Drawing_DisableFontCollectionSystemFont(sharedFontCollection);
+    OH_Drawing_DestroyFontCollection(sharedFontCollection);
 }
 }

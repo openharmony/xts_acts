@@ -66,7 +66,7 @@ export default function transitionJsunit() {
       await Utils.sleep(1000);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("transitionTest_0200 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.btn1).assertEqual(false);
+        expect(indexEvent.data?.btn1).assertEqual(false);
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -94,7 +94,7 @@ export default function transitionJsunit() {
         console.info("transitionTest_0300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("transitionTest_0300 change component data error: " + err.message);
+        console.log("transitionTest_0300 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('button');
@@ -120,7 +120,7 @@ export default function transitionJsunit() {
         console.info("transitionTest_0400 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("transitionTest_0400 change component data error: " + err.message);
+        console.log("transitionTest_0400 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('button');

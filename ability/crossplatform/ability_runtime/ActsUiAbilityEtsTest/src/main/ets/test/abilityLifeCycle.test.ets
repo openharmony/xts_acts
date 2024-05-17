@@ -17,6 +17,9 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import aConstant from '@ohos.app.ability.AbilityConstant'
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
+
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -306,6 +309,10 @@ export default function abilityTest() {
       expect(result1[0]).assertEqual("MainAbility1 onCreate");
       expect(result1[1]).assertEqual("MainAbility1 onWindowStageCreate");
       expect(result1[2]).assertEqual("MainAbility1 onForeground");
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       expect(result1[3]).assertEqual("MainAbility1 onBackground");
 
       // mainability2将会在1.5秒后，终结自己

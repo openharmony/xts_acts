@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,13 +18,13 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct QrCode {
-  @State qrCodeBackgroundColor: Color = "#FF008000";
-  @State qrCodeColor: Color = "#FF0000FF";
+  @State qrCodeBackgroundColor: string = "#FF008000";
+  @State qrCodeColor: string = "#FF0000FF";
   @State qrCodeValue: string = 'qrCodeValue';
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("qrCode page state change called:" + JSON.stringify(eventData));
-      var colorValue = eventData.data.color;
+      let colorValue: string|undefined = eventData.data?.color;
       if (colorValue != null && colorValue.length != 0) {
         this.qrCodeColor = colorValue;
         console.info("qrCodeColor:" + this.qrCodeColor);
@@ -36,10 +35,10 @@ struct QrCode {
       console.info("qrCode page color not change called:" + JSON.stringify(eventData));
     }
   }
-  private stateChangCallBackTwo = (eventData) => {
+  private stateChangCallBackTwo = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("qrCode page state change called:" + JSON.stringify(eventData));
-      var backgroundColorValue = eventData.data.backgroundColor;
+      let backgroundColorValue: string|undefined = eventData.data?.backgroundColor;
       if (backgroundColorValue != null && backgroundColorValue.length != 0) {
         this.qrCodeBackgroundColor = backgroundColorValue;
         console.info("qrCodeBackgroundColor:" + this.qrCodeBackgroundColor);
@@ -53,41 +52,41 @@ struct QrCode {
 
   onPageShow() {
     console.info('qrCode page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 170,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEvent = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 171,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
+    events_emitter.on(stateChangeEvent2, this.stateChangCallBackTwo);
 
-    var stateChangeEvent = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 1023,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
 
-    var stateChangeEvent = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 1024,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent4, this.stateChangCallBack);
 
-    var stateChangeEvent = {
+    let stateChangeEvent5: events_emitter.InnerEvent = {
       eventId: 1025,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
+    events_emitter.on(stateChangeEvent5, this.stateChangCallBackTwo);
 
-    var stateChangeEvent = {
+    let stateChangeEvent6: events_emitter.InnerEvent = {
       eventId: 1026,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
+    events_emitter.on(stateChangeEvent6, this.stateChangCallBackTwo);
   }
 
   build() {

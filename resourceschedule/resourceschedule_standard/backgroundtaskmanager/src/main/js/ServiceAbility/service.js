@@ -17,6 +17,7 @@ import notification from '@ohos.notification';
 import featureAbility from '@ohos.ability.featureAbility';
 import wantAgent from '@ohos.wantAgent';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import resBackgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager';
 import particleAbility from '@ohos.ability.particleAbility';
 import commonEvent from '@ohos.commonEvent';
 
@@ -165,6 +166,22 @@ function startContinuousTaskInvalidBgmode() {
     });
 }
 
+function updateContinuousTaskUseApi12Promise() {
+    let list = ["audioPlayback","location"]
+    wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+        return resBackgroundTaskManager.updateBackgroundRunning(featureAbility.getContext(),
+            list, data);
+    }).catch(() => {
+        commonEvent.publish("updateTaskUseApi12Promise", (err) => {
+            if (err.code) {
+                console.error(TAG + "PublishCallBack failed");
+            } else {
+                console.info(TAG + "Publish succeed");
+            }
+        });
+    });
+}
+
 function handleOption(want) {
     switch (want.parameters.option) {
         case "testcase1":
@@ -193,6 +210,9 @@ function handleOption(want) {
             break;
         case "testcase9":
             startContinuousTaskInvalidBgmode();
+            break;
+        case "testcase10":
+            updateContinuousTaskUseApi12Promise();
             break;
         default:
             console.warn(TAG + 'Unknown option');

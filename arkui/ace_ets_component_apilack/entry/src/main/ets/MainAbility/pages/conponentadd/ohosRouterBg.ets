@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 
 @Entry
@@ -48,7 +48,7 @@ struct OhosRouterB {
       console.info("[OhosRouterB] start to emit params");
       events_emitter.emit(paramsEvent, paramsData);
     } catch (err) {
-      console.info("[OhosRouterB] emit params err: " + JSON.stringify(err.message));
+      console.info("[OhosRouterB] emit params err: " + JSON.stringify((err as Error)?.message));
     }
   }
 }

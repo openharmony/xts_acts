@@ -20,13 +20,13 @@ import common from '@ohos.app.ability.common';
 let context: common.UIAbilityContext;
 const TAG = "[RelationalStore_JSKITS _TEST]"
 const CREATE_TABLE_ALL_DATA_TYPE_SQL = "CREATE TABLE IF NOT EXISTS AllDataType "
-  + "(id INTEGER PRIMARY KEY AUTOINCREMENT, "
-  + "integerValue INTEGER , longValue INTEGER , shortValue INTEGER , booleanValue INTEGER , "
-  + "doubleValue REAL , floatValue REAL , stringValue TEXT , blobValue BLOB , clobValue TEXT , "
-  + "byteValue INTEGER , dateValue INTEGER , timeValue INTEGER , timestampValue INTEGER , "
-  + "calendarValue INTEGER , characterValue TEXT , primIntValue INTEGER , primLongValue INTEGER , "
-  + "primShortValue INTEGER , primFloatValue REAL , primDoubleValue REAL , "
-  + "primBooleanValue INTEGER , primByteValue INTEGER , primCharValue TEXT, `order` INTEGER);";
++ "(id INTEGER PRIMARY KEY AUTOINCREMENT, "
++ "integerValue INTEGER , longValue INTEGER , shortValue INTEGER , booleanValue INTEGER , "
++ "doubleValue REAL , floatValue REAL , stringValue TEXT , blobValue BLOB , clobValue TEXT , "
++ "byteValue INTEGER , dateValue INTEGER , timeValue INTEGER , timestampValue INTEGER , "
++ "calendarValue INTEGER , characterValue TEXT , primIntValue INTEGER , primLongValue INTEGER , "
++ "primShortValue INTEGER , primFloatValue REAL , primDoubleValue REAL , "
++ "primBooleanValue INTEGER , primByteValue INTEGER , primCharValue TEXT, `order` INTEGER);";
 
 const STORE_CONFIG = {
   name: "Predicates.db",
@@ -39,6 +39,10 @@ export default function relationalStorePredicatesTest() {
   describe('relationalStorePredicatesTest', function () {
     beforeAll(async function () {
       console.info(TAG + 'beforeAll')
+    })
+
+    beforeEach(async function () {
+      console.info(TAG + 'beforeEach')
       context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext
       rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_ALL_DATA_TYPE_SQL, null);
@@ -48,18 +52,14 @@ export default function relationalStorePredicatesTest() {
       await rdbStore.executeSql("CREATE INDEX index_name ON AllDataType (characterValue);", null);
     })
 
-    beforeEach(function () {
-      console.info(TAG + 'beforeEach')
-    })
-
-    afterEach(function () {
+    afterEach(async function () {
       console.info(TAG + 'afterEach')
+      rdbStore = null
+      await data_Rdb.deleteRdbStore(context, "Predicates.db");
     })
 
     afterAll(async function () {
       console.info(TAG + 'afterAll')
-      rdbStore = null
-      await data_Rdb.deleteRdbStore(context, "Predicates.db");
     })
 
     async function buildAllDataType1() {
@@ -2005,7 +2005,7 @@ export default function relationalStorePredicatesTest() {
       predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").or().or().equalTo("integerValue", 1);
       expect(predicates == predicatesInit).assertTrue();
       console.info(TAG + "you are starting a sql request with predicate or or,"
-        + "using function or() immediately after another or(). that is ridiculous.");
+      + "using function or() immediately after another or(). that is ridiculous.");
 
       console.info(TAG + "************* testAnd0004 end *************");
     })
@@ -2574,5 +2574,951 @@ export default function relationalStorePredicatesTest() {
     })
 
     console.info(TAG + "*************Unit Test End*************");
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0001
+     * @tc.name Normal test case of predicates, test "notLike" for string value
+     * @tc.desc 1.Execute notLike ("stringValue", "ABCDEFGHIJKLMN")
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0001', 0, async function (done) {
+      console.log(TAG + "************* testNotLike0001 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notLike("stringValue", "ABCDEFGHIJKLMN");
+      let result = await rdbStore.query(predicates);
+      expect(0).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      done();
+      console.log(TAG + "************* testNotLike0001 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0002
+     * @tc.name Normal test case of predicates, test "notLike" for string value
+     * @tc.desc 1.Execute notLike ("stringValue", "LMNX")
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0002', 0, async function (done) {
+      console.log(TAG + "************* testNotLike0002 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notLike("stringValue", "LMNX");
+      let result = await rdbStore.query(predicates);
+      expect(3).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      done();
+      console.log(TAG + "************* testNotLike0002 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0003
+     * @tc.name Normal test case of predicates, test "notLike" for Chinese character value
+     * @tc.desc 1.Execute notLike ("characterValue", "中")
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0003', 0, async function (done) {
+      console.log(TAG + "************* testNotLike0003 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notLike("characterValue", "中");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      done();
+      console.log(TAG + "************* testNotLike0003 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0004
+     * @tc.name Normal test case of predicates, test "notLike" for character value
+     * @tc.desc 1.Execute notLike ("characterValue", "#")
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0004', 0, async function (done) {
+      console.log(TAG + "************* testNotLike0004 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notLike("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      done();
+      console.log(TAG + "************* testNotLike0004 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0006
+     * @tc.name Normal test case of predicates, test "notLike" for character value
+     * @tc.desc 1.Execute notLike ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.insert data ("characterValue", "#")
+     *          5.Execute notLike ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0006', 0, async function (done) {
+      console.log(TAG + "************* testNotLike0006 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notLike("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      var u8 = new Uint8Array([1, 2, 3])
+      const valueBucket = {
+        "integerValue": -2147483648,
+        "doubleValue": Number.MIN_VALUE,
+        "booleanValue": false,
+        "floatValue": 0.1234567,
+        "longValue": -9223372036854775808,
+        "shortValue": -32768,
+        "characterValue": '#',
+        "stringValue": "OPQRST",
+        "blobValue": u8,
+        "byteValue": -128,
+      }
+
+      await rdbStore.insert("AllDataType", valueBucket)
+
+      let predicatesInsert = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesInsert.notLike("characterValue", "#");
+
+      result = await rdbStore.query(predicatesInsert);
+      expect(2).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      let predicatesBefore = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesBefore.equalTo("stringValue", "OPQRST");
+
+      await rdbStore.delete(predicatesBefore);
+      done();
+      console.log(TAG + "************* testNotLike0006 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0007
+     * @tc.name Normal test case of predicates, test "notLike" for character value
+     * @tc.desc 1.Execute notLike ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.insert data ("characterValue", "-")
+     *          5.Execute notLike ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0007', 0, async function (done) {
+      console.log(TAG + "************* testNotLike0007 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notLike("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      var u8 = new Uint8Array([1, 2, 3])
+      const valueBucket = {
+        "integerValue": -2147483648,
+        "doubleValue": Number.MIN_VALUE,
+        "booleanValue": false,
+        "floatValue": 0.1234567,
+        "longValue": -9223372036854775808,
+        "shortValue": -32768,
+        "characterValue": '-',
+        "stringValue": "OPQRST",
+        "blobValue": u8,
+        "byteValue": -128,
+      }
+
+      await rdbStore.insert("AllDataType", valueBucket)
+
+      let predicatesInsert = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesInsert.notLike("characterValue", "#");
+
+      result = await rdbStore.query(predicatesInsert);
+      expect(3).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      let predicatesBefore = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesBefore.equalTo("stringValue", "OPQRST");
+
+      await rdbStore.delete(predicatesBefore);
+      done();
+      console.log(TAG + "************* testNotLike0007 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0008
+     * @tc.name Normal test case of predicates, test "notLike" for character value
+     * @tc.desc 1.Execute notLike ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.updata data "characterValue", "中" - "#"
+     *          5.Execute notLike ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0008', 0, async function (done) {
+      console.log(TAG + "************* testNotLike0008 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notLike("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      var u8 = new Uint8Array([1, 2, 3])
+      const valueBucket = {
+        "integerValue": -2147483648,
+        "doubleValue": Number.MIN_VALUE,
+        "booleanValue": false,
+        "floatValue": 0.1234567,
+        "longValue": -9223372036854775808,
+        "shortValue": -32768,
+        "characterValue": '#',
+        "stringValue": "OPQRST",
+        "blobValue": u8,
+        "byteValue": -128,
+      }
+      predicates.equalTo("characterValue", "中");
+      await rdbStore.update(valueBucket, predicates);
+      let predicatesUpdate = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesUpdate.notLike("characterValue", "#");
+      result = await rdbStore.query(predicatesUpdate);
+      expect(1).assertEqual(result.rowCount);
+      const valueBucketBefore = {
+        "integerValue": 1,
+        "doubleValue": 1.0,
+        "booleanValue": false,
+        "floatValue": 1.0,
+        "longValue": 1,
+        "shortValue": 1,
+        "characterValue": '中',
+        "stringValue": "ABCDEFGHIJKLMN",
+        "blobValue": u8,
+        "byteValue": 1,
+      }
+      result.close();
+      result = null;
+      let predicatesBefore = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesBefore.equalTo("stringValue", "OPQRST");
+      await rdbStore.update(valueBucketBefore, predicatesBefore);
+      done();
+      console.log(TAG + "************* testNotLike0008 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0009
+     * @tc.name Normal test case of predicates, test "notLike" for character value
+     * @tc.desc 1.Execute notLike ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.updata data "characterValue", "中" - "-"
+     *          5.Execute notLike ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0009', 0, async function (done) {
+      console.log(TAG + "************* testNotLike0009 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notLike("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      var u8 = new Uint8Array([1, 2, 3])
+      const valueBucket = {
+        "integerValue": -2147483648,
+        "doubleValue": Number.MIN_VALUE,
+        "booleanValue": false,
+        "floatValue": 0.1234567,
+        "longValue": -9223372036854775808,
+        "shortValue": -32768,
+        "characterValue": '-',
+        "stringValue": "OPQRST",
+        "blobValue": u8,
+        "byteValue": -128,
+      }
+      predicates.equalTo("characterValue", "中");
+      await rdbStore.update(valueBucket, predicates);
+      let predicatesUpdate = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesUpdate.notLike("characterValue", "#");
+      result = await rdbStore.query(predicatesUpdate);
+      expect(2).assertEqual(result.rowCount);
+      const valueBucketBefore = {
+        "integerValue": 1,
+        "doubleValue": 1.0,
+        "booleanValue": false,
+        "floatValue": 1.0,
+        "longValue": 1,
+        "shortValue": 1,
+        "characterValue": '中',
+        "stringValue": "ABCDEFGHIJKLMN",
+        "blobValue": u8,
+        "byteValue": 1,
+      }
+      result.close();
+      result = null;
+      let predicatesBefore = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesBefore.equalTo("stringValue", "OPQRST");
+      await rdbStore.update(valueBucketBefore, predicatesBefore);
+      done();
+      console.log(TAG + "************* testNotLike0009 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0010
+     * @tc.name Normal test case of predicates, test "notLike" for character value
+     * @tc.desc 1.Execute notLike ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.delete data ("characterValue", "中")
+     *          5.Execute notLike ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0010', 0, async function (done) {
+      console.log(TAG + "************* testNotLike0010 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notLike("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      predicates.equalTo("characterValue", "中");
+      await rdbStore.delete(predicates);
+      let predicatesDelete = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesDelete.notLike("characterValue", "#");
+      result = await rdbStore.query(predicatesDelete);
+      expect(1).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      var u8 = new Uint8Array([1, 2, 3]);
+      const valueBucketBefore = {
+        "integerValue": 1,
+        "doubleValue": 1.0,
+        "booleanValue": false,
+        "floatValue": 1.0,
+        "longValue": 1,
+        "shortValue": 1,
+        "characterValue": '中',
+        "stringValue": "ABCDEFGHIJKLMN",
+        "blobValue": u8,
+        "byteValue": 1,
+      }
+      await rdbStore.insert("AllDataType", valueBucketBefore);
+      done();
+      console.log(TAG + "************* testNotLike0010 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0011
+     * @tc.name Normal test case of predicates, test "notLike" for character value
+     * @tc.desc 1.Execute notLike ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.delete data ("characterValue", "#")
+     *          5.Execute notLike ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0011', 0, async function (done) {
+      console.log(TAG + "************* testNotLike0011 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notLike("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      predicates.equalTo("characterValue", "#");
+      await rdbStore.delete(predicates);
+      let predicatesDelete = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesDelete.notLike("characterValue", "#");
+      result = await rdbStore.query(predicatesDelete);
+      expect(2).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      var u8 = new Uint8Array([1, 2, 3]);
+      const valueBucketBefore = {
+        "integerValue": 1,
+        "doubleValue": 1.0,
+        "booleanValue": false,
+        "floatValue": 1.0,
+        "longValue": 1,
+        "shortValue": 1,
+        "characterValue": '#',
+        "stringValue": "ABCDEFGHIJKLMN",
+        "blobValue": u8,
+        "byteValue": 1,
+      }
+      await rdbStore.insert("AllDataType", valueBucketBefore);
+      done();
+      console.log(TAG + "************* testNotLike0011 end *************");
+    })
+
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0012
+     * @tc.name Abnormal test case of predicates, test "notLike" for character value
+     * @tc.desc 1.Execute notLike ("characterValue", null)
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0012', 0, async function (done) {
+      console.info(TAG, `************* testNotLike0012 start *************`);
+      try {
+        let predicates = new data_Rdb.RdbPredicates("AllDataType");
+        predicates.notLike("characterValue", null);
+        expect(null).assertFail();
+        done();
+      } catch (err) {
+        console.error(TAG, `testNotLike0012 predicates.notLike failed: err code=${err.code}, message=${err.message}`);
+        expect("401").assertEqual(err.code);
+        done();
+      }
+      console.info(TAG, `************* testNotLike0012 end *************`);
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0013
+     * @tc.name Abnormal test case of predicates, test "notLike" for character value
+     * @tc.desc 1.Execute notLike ("characterValue", undefined)
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0013', 0, async function (done) {
+      console.info(TAG, `************* testNotLike0013 start *************`);
+      try {
+        let predicates = new data_Rdb.RdbPredicates("AllDataType");
+        predicates.notLike("characterValue", undefined);
+        expect(null).assertEqual();
+        done();
+      } catch (err) {
+        console.error(TAG, `testNotLike0013 predicates.notLike failed: err code=${err.code}, message=${err.message}`);
+        expect("401").assertEqual(err.code);
+        done();
+      }
+      console.info(TAG, `************* testNotLike0013 end *************`);
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotLike_0014
+     * @tc.name Abnormal test case of predicates, test "notLike" for character value
+     * @tc.desc 1.Execute notLike ("", "#")
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotLike0014', 0, async function (done) {
+      console.info(TAG, `************* testNotLike0014 start *************`);
+      try {
+        let predicates = new data_Rdb.RdbPredicates("AllDataType");
+        predicates.notLike("", "#");
+        expect(null).assertEqual();
+        done();
+      } catch (err) {
+        console.error(TAG, `predicates.notLike failed: err code=${err.code}, message=${err.message}`);
+        expect("401").assertEqual(err.code);
+        done();
+      }
+      console.info(TAG, `************* testNotLike0014 end *************`);
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0001
+     * @tc.name Normal test case of predicates, test "notContains" for string value
+     * @tc.desc 1.Execute notContains ("stringValue", "ABC")
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0001', 0, async function (done) {
+      console.log(TAG + "************* testNotContains0001 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("stringValue", "ABC");
+      let result = await rdbStore.query(predicates);
+      expect(0).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      done();
+      console.log(TAG + "************* testNotContains0001 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0002
+     * @tc.name Normal test case of predicates, test "notContains" for string value
+     * @tc.desc 1.Execute notContains ("stringValue", "ABCX")
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0002', 0, async function (done) {
+      console.log(TAG + "************* testNotContains0002 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("stringValue", "ABCX");
+      let result = await rdbStore.query(predicates);
+      expect(3).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      done();
+      console.log(TAG + "************* testNotContains0002 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0003
+     * @tc.name Normal test case of predicates, test "notContains" for  Chinese character value
+     * @tc.desc 1.Execute notContains ("characterValue", "中")
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0003', 0, async function (done) {
+      console.log(TAG + "************* testNotContains0003 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("characterValue", "中");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      done();
+      console.log(TAG + "************* testNotContains0003 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0004
+     * @tc.name Normal test case of predicates, test "notContains" for character value
+     * @tc.desc 1.Execute notContains ("characterValue", "#")
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0004', 0, async function (done) {
+      console.log(TAG + "************* testNotContains0004 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      done();
+      console.log(TAG + "************* testNotContains0004 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0006
+     * @tc.name Normal test case of predicates, test "notContains" for character value
+     * @tc.desc 1.Execute notContains ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.insert data ("characterValue", "#")
+     *          5.Execute notContains ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0006', 0, async function (done) {
+      console.log(TAG + "************* testNotContains0006 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      var u8 = new Uint8Array([1, 2, 3])
+      const valueBucket = {
+        "integerValue": -2147483648,
+        "doubleValue": Number.MIN_VALUE,
+        "booleanValue": false,
+        "floatValue": 0.1234567,
+        "longValue": -9223372036854775808,
+        "shortValue": -32768,
+        "characterValue": '#',
+        "stringValue": "OPQRST",
+        "blobValue": u8,
+        "byteValue": -128,
+      }
+      await rdbStore.insert("AllDataType", valueBucket)
+      let predicatesInsert = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesInsert.notContains("characterValue", "#");
+      result = await rdbStore.query(predicatesInsert);
+      expect(2).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      let predicatesBefore = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesBefore.equalTo("stringValue", "OPQRST");
+      await rdbStore.delete(predicatesBefore);
+      done();
+      console.log(TAG + "************* testNotContains0006 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0007
+     * @tc.name Normal test case of predicates, test "notContains" for character value
+     * @tc.desc 1.Execute notContains ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.insert data ("characterValue", "-")
+     *          5.Execute notContains ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0007', 0, async function (done) {
+      console.log(TAG + "************* testNotContains0007 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      var u8 = new Uint8Array([1, 2, 3])
+      const valueBucket = {
+        "integerValue": -2147483648,
+        "doubleValue": Number.MIN_VALUE,
+        "booleanValue": false,
+        "floatValue": 0.1234567,
+        "longValue": -9223372036854775808,
+        "shortValue": -32768,
+        "characterValue": '-',
+        "stringValue": "OPQRST",
+        "blobValue": u8,
+        "byteValue": -128,
+      }
+      await rdbStore.insert("AllDataType", valueBucket)
+      let predicatesInsert = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesInsert.notContains("characterValue", "#");
+      result = await rdbStore.query(predicatesInsert);
+      expect(3).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      let predicatesBefore = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesBefore.equalTo("stringValue", "OPQRST");
+      await rdbStore.delete(predicatesBefore);
+      done();
+      console.log(TAG + "************* testNotContains0007 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0008
+     * @tc.name Normal test case of predicates, test "notContains" for character value
+     * @tc.desc 1.Execute notContains ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.updata data "characterValue", "中" - "#"
+     *          5.Execute notContains ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0008', 0, async function (done) {
+      console.log(TAG + "************* testNotContains0008 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      var u8 = new Uint8Array([1, 2, 3])
+      const valueBucket = {
+        "integerValue": -2147483648,
+        "doubleValue": Number.MIN_VALUE,
+        "booleanValue": false,
+        "floatValue": 0.1234567,
+        "longValue": -9223372036854775808,
+        "shortValue": -32768,
+        "characterValue": '#',
+        "stringValue": "OPQRST",
+        "blobValue": u8,
+        "byteValue": -128,
+      }
+      predicates.equalTo("characterValue", "中")
+      await rdbStore.update(valueBucket, predicates)
+      let predicatesUpdate = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesUpdate.notContains("characterValue", "#");
+      result = await rdbStore.query(predicatesUpdate);
+      expect(1).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      const valueBucketBefore = {
+        "integerValue": 1,
+        "doubleValue": 1.0,
+        "booleanValue": false,
+        "floatValue": 1.0,
+        "longValue": 1,
+        "shortValue": 1,
+        "characterValue": '中',
+        "stringValue": "ABCDEFGHIJKLMN",
+        "blobValue": u8,
+        "byteValue": 1,
+      }
+      let predicatesBefore = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesBefore.equalTo("stringValue", "OPQRST");
+      await rdbStore.update(valueBucketBefore, predicatesBefore);
+      done();
+      console.log(TAG + "************* testNotContains0008 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0009
+     * @tc.name Normal test case of predicates, test "notContains" for character value
+     * @tc.desc 1.Execute notContains ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.updata data "characterValue", "中" - "-"
+     *          5.Execute notContains ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0009', 0, async function (done) {
+      console.log(TAG + "************* testNotContains0009 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      var u8 = new Uint8Array([1, 2, 3])
+      const valueBucket = {
+        "integerValue": -2147483648,
+        "doubleValue": Number.MIN_VALUE,
+        "booleanValue": false,
+        "floatValue": 0.1234567,
+        "longValue": -9223372036854775808,
+        "shortValue": -32768,
+        "characterValue": '-',
+        "stringValue": "OPQRST",
+        "blobValue": u8,
+        "byteValue": -128,
+      }
+      predicates.equalTo("characterValue", "中")
+      await rdbStore.update(valueBucket, predicates)
+      let predicatesUpdate = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesUpdate.notContains("characterValue", "#");
+      result = await rdbStore.query(predicatesUpdate);
+      expect(2).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      const valueBucketBefore = {
+        "integerValue": 1,
+        "doubleValue": 1.0,
+        "booleanValue": false,
+        "floatValue": 1.0,
+        "longValue": 1,
+        "shortValue": 1,
+        "characterValue": '中',
+        "stringValue": "ABCDEFGHIJKLMN",
+        "blobValue": u8,
+        "byteValue": 1,
+      }
+      let predicatesBefore = new data_Rdb.RdbPredicates("AllDataType");
+      predicatesBefore.equalTo("stringValue", "OPQRST");
+      await rdbStore.update(valueBucketBefore, predicatesBefore);
+      done();
+      console.log(TAG + "************* testNotContains0009 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0010
+     * @tc.name Normal test case of predicates, test "notContains" for character value
+     * @tc.desc 1.Execute notContains ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.delete data ("characterValue", "中")
+     *          5.Execute notContains ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0010', 0, async function (done) {
+      console.log(TAG + "************* testNotContains0010 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      predicates.equalTo("characterValue", "中")
+      await rdbStore.delete(predicates)
+      predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("characterValue", "#");
+      result = await rdbStore.query(predicates);
+      expect(1).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      var u8 = new Uint8Array([1, 2, 3]);
+      const valueBucketBefore = {
+        "integerValue": 1,
+        "doubleValue": 1.0,
+        "booleanValue": false,
+        "floatValue": 1.0,
+        "longValue": 1,
+        "shortValue": 1,
+        "characterValue": '中',
+        "stringValue": "ABCDEFGHIJKLMN",
+        "blobValue": u8,
+        "byteValue": 1,
+      }
+      await rdbStore.insert("AllDataType", valueBucketBefore);
+      done();
+      console.log(TAG + "************* testNotContains0010 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0011
+     * @tc.name Normal test case of predicates, test "notContains" for character value
+     * @tc.desc 1.Execute notContains ("characterValue", "#")
+     *          2.Query data
+     *          3.close result
+     *          4.delete data ("characterValue", "#")
+     *          5.Execute notContains ("characterValue", "#")
+     *          6.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0011', 0, async function (done) {
+      console.log(TAG + "************* testNotContains0011 start *************");
+      let predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("characterValue", "#");
+      let result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close()
+      result = null
+      predicates.equalTo("characterValue", "#")
+      await rdbStore.delete(predicates)
+      predicates = new data_Rdb.RdbPredicates("AllDataType");
+      predicates.notContains("characterValue", "#");
+      result = await rdbStore.query(predicates);
+      expect(2).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      var u8 = new Uint8Array([1, 2, 3]);
+      const valueBucketBefore = {
+        "integerValue": 1,
+        "doubleValue": 1.0,
+        "booleanValue": false,
+        "floatValue": 1.0,
+        "longValue": 1,
+        "shortValue": 1,
+        "characterValue": '#',
+        "stringValue": "ABCDEFGHIJKLMN",
+        "blobValue": u8,
+        "byteValue": 1,
+      }
+      await rdbStore.insert("AllDataType", valueBucketBefore);
+      done();
+      console.log(TAG + "************* testNotContains0011 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0012
+     * @tc.name Abnormal test case of predicates, test "notContains" for character value
+     * @tc.desc 1.Execute notContains ("characterValue", null)
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0012', 0, async function (done) {
+      console.info(TAG, `************* testNotContains0012 start *************`);
+      try {
+        let predicates = new data_Rdb.RdbPredicates("AllDataType");
+        predicates.notContains("characterValue", null);
+        expect(null).assertFail();
+        done();
+      } catch (err) {
+        console.error(TAG, `testNotContains0009 predicates.notContains failed: err code=${err.code}, message=${err.message}`);
+        expect("401").assertEqual(err.code);
+        done();
+      }
+      console.info(TAG, `************* testNotContains0012 end *************`);
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0013
+     * @tc.name Abnormal test case of predicates, test "notContains" for character value
+     * @tc.desc 1.Execute notContains ("characterValue", undefined)
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0013', 0, async function (done) {
+      console.info(TAG, `************* testNotContains0013 start *************`);
+      try {
+        let predicates = new data_Rdb.RdbPredicates("AllDataType");
+        predicates.notContains("characterValue", undefined);
+        expect(null).assertFail();
+        done();
+      } catch (err) {
+        console.error(TAG, `testNotContains0013 predicates.notContains failed: err code=${err.code}, message=${err.message}`);
+        expect("401").assertEqual(err.code);
+        done();
+      }
+      console.info(TAG, `************* testNotContains0013 end *************`);
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_NotContains_0014
+     * @tc.name Abnormal test case of predicates, test "notContains" for character value
+     * @tc.desc 1.Execute notContains ("characterValue", undefined)
+     *          2.Query data
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testNotContains0014', 0, async function (done) {
+      console.info(TAG, `************* testNotContains0014 start *************`);
+      try {
+        let predicates = new data_Rdb.RdbPredicates("AllDataType");
+        predicates.notContains("", "#");
+        expect(null).assertFail();
+        done();
+      } catch (err) {
+        console.error(TAG, `testNotContains0014 predicates.notContains failed: err code=${err.code}, message=${err.message}`);
+        expect("401").assertEqual(err.code);
+        done();
+      }
+      console.info(TAG, `************* testNotContains0014 end *************`);
+    })
+    console.log(TAG + "*************Unit Test End*************");
   })
 }

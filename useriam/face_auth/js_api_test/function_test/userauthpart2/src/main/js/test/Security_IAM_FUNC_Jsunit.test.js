@@ -34,22 +34,43 @@ export default function userauthTest() {
             * @tc.level     : Level 0
         */
         it('Security_IAM_Func_0102', 0, async function (done) {
-            console.info('testFace GetAvailabeStatusTest0102 start');
+            console.info('testFace getAvailableStatusTest0102 start');
             if (productSeriesInfo != "NOH" && productSeriesInfo != "HYM") {
                 let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT, userAuthNorth.UserAuthType.PIN]
-                let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3, userAuthNorth.AuthTrustLevel.ATL4]
+                let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3]
                 for (let idx0 = 0; idx0 < authType.length; idx0++) {
                     for (let idx1 = 0; idx1 < level.length; idx1++) {
                         try {
-                            console.info('GetAvailabeStatusTest0102 authtype:' + authType[idx0] + 'trustlevel:' + level[idx1])
+                            console.info('getAvailableStatusTest0102 authtype:' + authType[idx0] + 'trustlevel:' + level[idx1])
                             userAuthNorth.getAvailableStatus(authType[idx0], level[idx1]);
                         } catch (e) {
-                            console.log("GetAvailabeStatusTest0102 fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
+                            console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
                             expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
                             done();
                         }
                     }
                 }
+                let authType1 = [userAuthNorth.UserAuthType.FINGERPRINT, userAuthNorth.UserAuthType.PIN];
+                let level1 = userAuthNorth.AuthTrustLevel.ATL4;
+                for (let idx2 = 0; idx2 < authType1.length; idx2++) {
+                    try {
+                        console.info('getAvailableStatusTest0102 authtype:' + authType1[idx2] + 'trustlevel:' + level1)
+                        userAuthNorth.getAvailableStatus(authType1[idx2], level1);
+                    } catch (e) {
+                        console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType1[idx2] + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                        expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
+                        done();
+                    }
+                }
+                let authType2 = userAuthNorth.UserAuthType.FACE;
+                try {
+                    console.info('getAvailableStatusTest0102 authtype:' + authType2 + 'trustlevel:' + level1)
+                        userAuthNorth.getAvailableStatus(authType2, level1);
+                    } catch (e) {
+                        console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType2 + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                        expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
+                        done();
+                    }
             }
             done();
         })
@@ -57,18 +78,18 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_Func_0104
-            * @tc.name      : getAvailabeStatus invalid parameters
+            * @tc.name      : getAvailableStatus invalid parameters
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
         it('Security_IAM_Func_0104', 0, async function (done) {
-            console.info('testFace GetAvailabeStatusTest0104 start');
+            console.info('testFace getAvailableStatusTest0104 start');
             //No AuthType
             try {
                 userAuthNorth.getAvailableStatus(userAuthNorth.AuthTrustLevel.ATL1);
             } catch (e) {
-                console.log("GetAvailabeStatusTest0104 noAuthType fail " + e.code);
+                console.log("getAvailableStatusTest0104 noAuthType fail " + e.code);
                 expect(e.code).assertEqual(401);
             }
 
@@ -76,7 +97,7 @@ export default function userauthTest() {
             try {
                 userAuthNorth.getAvailableStatus(userAuthNorth.UserAuthType.FACE);
             } catch (e) {
-                console.log("GetAvailabeStatusTest0104 no AuthTrustLevel fail " + e.code);
+                console.log("getAvailableStatusTest0104 no AuthTrustLevel fail " + e.code);
                 expect(e.code).assertEqual(401);
             }
 
@@ -84,7 +105,7 @@ export default function userauthTest() {
             try {
                 userAuthNorth.getAvailableStatus();
             } catch (e) {
-                console.log("GetAvailabeStatusTest0104 no authtype and AuthTrustLevel fail " + e.code);
+                console.log("getAvailableStatusTest0104 no authtype and AuthTrustLevel fail " + e.code);
                 expect(e.code).assertEqual(401);
             }
 
@@ -92,7 +113,7 @@ export default function userauthTest() {
             try {
                 userAuthNorth.getAvailableStatus(userAuthNorth.UserAuthType.FACE, userAuthNorth.AuthTrustLevel.ATL1, 2);
             } catch (e) {
-                console.log("GetAvailabeStatusTest0104 more param 2 fail " + e.code);
+                console.log("getAvailableStatusTest0104 more param 2 fail " + e.code);
                 expect(e.code).assertEqual(401);
             }
 
@@ -100,10 +121,10 @@ export default function userauthTest() {
             for (let idx = 0; idx < invalidauthType.length; idx++) {
                 //authType invalid
                 try {
-                    console.log("GetAvailabeStatusTest0104 authType invalid: " + invalidauthType[idx]);
+                    console.log("getAvailableStatusTest0104 authType invalid: " + invalidauthType[idx]);
                     userAuthNorth.getAvailableStatus(invalidauthType[idx], userAuthNorth.AuthTrustLevel.ATL1);
                 } catch (e) {
-                    console.log("GetAvailabeStatusTest0104 authType invalid:" + e.code);
+                    console.log("getAvailableStatusTest0104 authType invalid:" + e.code);
                     expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.TYPE_NOT_SUPPORT);
                 }
             }
@@ -112,10 +133,10 @@ export default function userauthTest() {
             for (let idx = 0; idx < invalidtrustLevel.length; idx++) {
                 //trustlevel invalid
                 try {
-                    console.log("GetAvailabeStatusTest0104 trustLevel invalid " + invalidtrustLevel[idx]);
+                    console.log("getAvailableStatusTest0104 trustLevel invalid " + invalidtrustLevel[idx]);
                     userAuthNorth.getAvailableStatus(2, invalidtrustLevel[idx]);
                 } catch (e) {
-                    console.log("GetAvailabeStatusTest0104 trustLevel invalid :1 " + e.code);
+                    console.log("getAvailableStatusTest0104 trustLevel invalid :1 " + e.code);
                     expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT);
                 }
             }

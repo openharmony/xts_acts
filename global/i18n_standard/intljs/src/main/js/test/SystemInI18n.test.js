@@ -103,7 +103,7 @@ describe('SystemInI18nTest', function () {
             console.log('i18n_system_test_0400 ' + e.code);
             console.log('i18n_system_test_0400 ' + e.message);
             expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid');
+            expect(e.message).assertEqual('Param value not valid, the country must be a valid region.');
         }
     })
 
@@ -132,7 +132,7 @@ describe('SystemInI18nTest', function () {
             console.log('i18n_system_test_0600 ' + e.code);
             console.log('i18n_system_test_0600 ' + e.message);
             expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid');
+            expect(e.message).assertEqual('Param value not valid, the country must be a valid region.');
         }
     })
 
@@ -172,7 +172,7 @@ describe('SystemInI18nTest', function () {
             console.log('i18n_system_test_0900 ' + e.code);
             console.log('i18n_system_test_0900 ' + e.message);
             expect(e.code).assertEqual('401');
-            expect(e.message).assertEqual('Check param failed');
+            expect(e.message).assertEqual('Parameter error, the country or locale cannot be empty.');
         }
     })
 
@@ -189,8 +189,8 @@ describe('SystemInI18nTest', function () {
         }catch(e){
             console.log('i18n_system_test_1000 ' + e.code);
             console.log('i18n_system_test_1000 ' + e.message);
-            expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid');
+            expect(e.code).assertEqual('401');
+            expect(e.message).assertEqual('Parameter error, the type of locale must be string.');
         }
     })
 
@@ -307,7 +307,7 @@ describe('SystemInI18nTest', function () {
             console.log('i18n_system_test_2000 ' + e.code);
             console.log('i18n_system_test_2000 ' + e.message);
             expect(e.code).assertEqual('401');
-            expect(e.message).assertEqual('Check param failed');
+            expect(e.message).assertEqual('Parameter error, the language or locale cannot be empty.');
         }
     })
 
@@ -324,8 +324,8 @@ describe('SystemInI18nTest', function () {
         }catch(e){
             console.log('i18n_system_test_2100 ' + e.code);
             console.log('i18n_system_test_2100 ' + e.message);
-            expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid');
+            expect(e.code).assertEqual('401');
+            expect(e.message).assertEqual('Parameter error, the type of locale must be string.');
         }
     })
 
@@ -368,7 +368,7 @@ describe('SystemInI18nTest', function () {
             console.log('i18n_system_test_2400 ' + e.code);
             console.log('i18n_system_test_2400 ' + e.message);
             expect(e.code).assertEqual('401');
-            expect(e.message).assertEqual('Check param failed');
+            expect(e.message).assertEqual('Parameter error, the language cannot be empty.');
         }
     })
 
@@ -386,8 +386,8 @@ describe('SystemInI18nTest', function () {
         }catch(e){
             console.log('i18n_system_test_2500 ' + e.code);
             console.log('i18n_system_test_2500 ' + e.message);
-            expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid');
+            expect(e.code).assertEqual('401');
+            expect(e.message).assertEqual('Parameter error, the type of language must be string.');
         }
     })
 
@@ -449,7 +449,7 @@ describe('SystemInI18nTest', function () {
             console.log('i18n_system_test_3000 ' + e.code);
             console.log('i18n_system_test_3000 ' + e.message);
             expect(e.code).assertEqual('401');
-            expect(e.message).assertEqual('Check param failed');
+            expect(e.message).assertEqual('Parameter error, the language cannot be empty.');
         }
     })
 
@@ -466,8 +466,8 @@ describe('SystemInI18nTest', function () {
         }catch(e){
             console.log('i18n_system_test_3100 ' + e.code);
             console.log('i18n_system_test_3100 ' + e.message);
-            expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid');
+            expect(e.code).assertEqual('401');
+            expect(e.message).assertEqual('Parameter error, the type of language must be string.');
         }
     })
 

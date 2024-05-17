@@ -79,7 +79,7 @@ export default function InputDevice_test() {
       try {
         inputDevice.getDeviceIds(-1);
       } catch (error) {
-        expect(error.message).assertEqual("GetDeviceIds: \"The first parameter type is wrong\"");
+        expect(error.message).assertEqual("GetDeviceIds: \"First parameter type is wrong\"");
       }
       console.info(`InputDevice_getDeviceIds_test_03 exit`);
       done();

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { expect } from 'deccjsunit/index';
+import { expect } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { HksKeyAlg } from '../publicParam';
 import { HuksSignVerifyDSA } from './publicSignverifyParam';

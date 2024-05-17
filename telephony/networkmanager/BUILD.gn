@@ -14,8 +14,17 @@
 group("networkmanager") {
   testonly = true
   deps = [
+    "connection:connection",
     "fetch:fetch",
     "http:http",
+    "mdns:mdns",
+    "ndk:ndk",
+    "network:network",
+    "networksecurity:networksecurity",
+    "noNet:noNet",
+    "noPermission:noPermission",
     "socket:socket",
+    "statistics:statistics",
+    "websocket:websocket",
   ]
 }

@@ -46,6 +46,7 @@
                 "mkdir -p /storage/media/100/local/files/Audios",
                 "mkdir /storage/media/100/local/files/Pictures/Screenshots",
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files",
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/photos",
                 "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone",
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*"
@@ -56,7 +57,14 @@
             "pre-push": [],
             "push": [
                 "./resource/medialibrary/01.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
-                "./resource/medialibrary/01.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/"
+                "./resource/medialibrary/01.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
+                "./resource/medialibrary/test_mov_1.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/photos/",
+                "./resource/medialibrary/test_mov_1.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/photos/",
+                "./resource/medialibrary/error_mp4.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
+                "./resource/medialibrary/error_jpg.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
+                "./resource/medialibrary/01.gif ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
+                "./resource/medialibrary/01.png ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/",
+                "./resource/medialibrary/01.mpeg ->/data/app/el2/100/base/ohos.acts.multimedia.photoaccess/haps/phone/files/"
             ]
         },
         {

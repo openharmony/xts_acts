@@ -61,11 +61,11 @@ struct Temperature {
             if (this.dataTemperature !== this.nextTemperature) {
               this.Vue = true;
             }
-          }, 500)
+          }, 100)
         }, { interval: 100000000 });
         setTimeout(() => {
           sensor.off(sensor.SensorId.AMBIENT_TEMPERATURE);
-        }, 500);
+        }, 5000);
       } catch (error) {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {

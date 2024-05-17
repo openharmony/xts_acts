@@ -130,7 +130,7 @@ export default function relationalStoreUpdateTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreUpdate0002', 0, async function (done) {
+        it('testRdbStoreUpdate0002', 0, async function () {
             console.info(TAG + "************* testRdbStoreUpdate0002 start *************");
             //更新
             {
@@ -142,28 +142,23 @@ export default function relationalStoreUpdateTest() {
                     "salary": 100.5,
                     "blobType": u8,
                 }
-                try {
-                    let predicates = new data_Rdb.RdbPredicates("")
-                    let updatePromise = rdbStore.update(valueBucket, predicates)
-                    updatePromise.then(async (ret) => {
-                        console.info(TAG + "update done: " + ret);
-                        expect(null).assertFail();
-                    }).catch((err) => {
-                        console.info(TAG + "update with null table name");
-                    })
+                 try {
+                    let predicates = new data_Rdb.RdbPredicates("");
+                    expect(true).assertFail();
                 } catch (err) {
-                    errInfo = err
+                    console.info(TAG + "new RdbPredicates empty name.");
+                    expect('401').assertEqual(err.code);
                 }
                 {
                     const emptyBucket = {};
                     let predicates = await new data_Rdb.RdbPredicates("test")
-                    let updatePromise = rdbStore.update(emptyBucket, predicates)
-                    updatePromise.then(async (ret) => {
-                        console.info(TAG + "update done: " + ret);
-                        expect(null).assertFail();
-                    }).catch((err) => {
+                    try {
+                        await rdbStore.update(emptyBucket, predicates)
+                        expect(true).assertFail();
+                    } catch(err) {
                         console.info(TAG + "update with wrong valueBucket");
-                    })
+                        expect('401').assertEqual(err.code);
+                    }
                 }
                 {
                     let predicates = await new data_Rdb.RdbPredicates("test")
@@ -174,11 +169,10 @@ export default function relationalStoreUpdateTest() {
                         expect(null).assertFail();
                     }).catch((err) => {
                         console.info(TAG + "update with wrong condition");
+                        expect(14800021).assertEqual(err.code);
                     })
                 }
-                expect(errInfo.code).assertEqual("401")
             }
-            done();
             console.info(TAG + "************* testRdbStoreUpdate0002 end   *************");
         })
 

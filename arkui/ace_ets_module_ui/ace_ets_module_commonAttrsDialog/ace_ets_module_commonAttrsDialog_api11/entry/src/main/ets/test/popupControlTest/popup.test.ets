@@ -26,7 +26,7 @@ export default function popup(){
         router.clear();
         let pages = router.getState();
         console.info("get bindPopup state success " + JSON.stringify(pages));
-        if (!("bindPopup" == pages.name)) {
+        if (!("popup" == pages.name)) {
           console.info("get bindPopup state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await Utils.sleep(1000);

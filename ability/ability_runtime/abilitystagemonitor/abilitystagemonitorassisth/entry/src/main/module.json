@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "feature_assistg",
+    "name": "feature_assisth",
     "type": "feature",
     "srcEntrance": "./ets/Application/MyAbilityStage.ts",
     "description": "$string:entry_test_desc",

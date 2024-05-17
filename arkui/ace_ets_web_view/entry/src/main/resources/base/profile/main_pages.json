@@ -1,6 +1,7 @@
 {
   "src": [
-    "MainAbility/pages/WebViewPrefetchResource"
+    "MainAbility/pages/WebViewPrefetchResource",
+    "MainAbility/pages/precompileJavaScriptTest"
   ]
 }
 

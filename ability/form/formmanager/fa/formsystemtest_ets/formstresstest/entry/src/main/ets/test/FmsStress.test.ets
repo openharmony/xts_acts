@@ -15,6 +15,9 @@
 
 import featureAbility from '@ohos.ability.featureAbility';
 import formHost from '@ohos.application.formHost';
+import formHostNew from '@ohos.app.form.formHost';
+import formInfo from '@ohos.app.form.formInfo';
+import Want from '@ohos.app.ability.Want';
 import commonEvent from '@ohos.commonEvent';
 import { beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
 
@@ -407,6 +410,25 @@ export default function test() {
             const systemstatus = await formHost.isSystemReady();
             console.info(`${tcNumber} systemstatus: ${JSON.stringify(systemstatus)}`);
             expect(systemstatus).assertEqual(undefined);
+            done();
+        });
+        
+        /**
+         * @tc.number: FMS_stressTest_1900
+         * @tc.name: Form add test.
+         * @tc.desc: addForm method working well.
+         */
+        it(`FMS_stressTest_1900`, 0, async (done) => {
+            const tcNumber = `FMS_stressTest_1900`;
+
+            let want: Want = {
+              bundleName: 'com.ohos.example',
+              abilityName: 'FormAbility',
+            };
+            formHostNew.addForm(want).then((formInfo: formInfo.RunningFormInfo) => {
+              console.info(`${tcNumber} addForm Result: ${JSON.stringify(formInfo)}`);
+              expect(formInfo).assertNotNull();
+            });
             done();
         });
     });

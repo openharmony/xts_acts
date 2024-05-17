@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 
 export default function gridItemOnSelectJsunit() {
   describe('gridItemOnSelectTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/gridItem',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/gridItem',
       }
       try {
         router.clear();
@@ -49,9 +49,9 @@ export default function gridItemOnSelectJsunit() {
     it('testgridItemOnSelect0001', 0, async () => {
       console.info('testgridItemOnSelect testgridItemOnSelect0001 START');
       await Utils.sleep(2000);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("onSelect_0001 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.STATUS).assertEqual(true);
+        expect(indexEvent.data?.STATUS).assertEqual(true);
 
       }
       let indexEvent: events_emitter.InnerEvent = {

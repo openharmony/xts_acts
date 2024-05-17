@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAceEtsComponentContainerWaterflowApi12Test") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAceEtsComponentContainerWaterflowApi12Test"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
 }
 
 ohos_app_scope("ace_ets_component_container_waterflow_api12_app_profile") {

@@ -1084,6 +1084,7 @@ export default function requestConfigSavesTest() {
       try {
         let task: request.agent.Task = await request.agent.create(baseContext, config);
         console.info("====>SUB_Request_Agent_onResponse_0700 create success");
+
         let responseCallback_1 = async (info: request.agent.HttpResponse) => {
           try {
             task.off('response');
@@ -1092,19 +1093,29 @@ export default function requestConfigSavesTest() {
             expect(info.statusCode).assertEqual(206);
             done();
           } catch (err) {
-            console.info("====>SUB_Request_Agent_onResponse_0700 err: " + JSON.stringify(err));
+            console.info("====>SUB_Request_Agent_onResponse_0700 responseCallback_1 err: " + JSON.stringify(err));
             done();
           }
         }
+
+        let progressCallback = async (pro: request.agent.Progress) => {
+          try {
+            task.off('progress');
+            console.info("====>SUB_Request_Agent_onResponse_0700 pro: " + JSON.stringify(pro));
+            await task.pause();
+            task.on('response', responseCallback_1);
+            let t = setTimeout(async () => {
+              clearTimeout(t);
+              console.info("====>SUB_Request_Agent_onResponse_0700 task.resume");
+              await task.resume();
+            }, 3000)
+          } catch (err) {
+            console.info("====>SUB_Request_Agent_onResponse_0700 progressCallback err: " + JSON.stringify(err));
+            done();
+          }
+        }
+        task.on('progress', progressCallback);
         await task.start();
-        console.info("====>SUB_Request_Agent_onResponse_0700 task.start");
-        await sleep(500);
-        task.on('response', responseCallback_1);
-        await task.pause();
-        console.info("====>SUB_Request_Agent_onResponse_0700 task.pause");
-        await sleep(500);
-        await task.resume();
-        console.info("====>SUB_Request_Agent_onResponse_0700 task.resume");
       } catch (err) {
         console.info("====>SUB_Request_Agent_onResponse_0700 create catch err: " + JSON.stringify(err));
         expect().assertFail();

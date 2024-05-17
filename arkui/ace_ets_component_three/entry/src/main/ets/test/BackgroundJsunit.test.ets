@@ -73,7 +73,7 @@ export default function backgroundJsunit() {
         console.info("testBackground_0200 start pages");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("testBackground_0200 change component data error: " + err.message);
+        console.log("testBackground_0200 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('backgroundColor');

@@ -14,9 +14,11 @@
 group("arkui") {
   testonly = true
   deps = [
+    "ace_c_arkui_test:ActsAceCArkUITest",
     "ace_ets_arkts_api:ActsAceEtsArkTSApiTest",
     "ace_ets_component:ActsAceEtsComponentTest",
     "ace_ets_component_ArkUI_test:ActsAceAPITest",
+    "ace_ets_component_advanced:componentAdvancedTest",
     "ace_ets_component_api:ActsAceComponentApi03Test",
     "ace_ets_component_api11_completion:ActsAceEtsComponentApi11CompletionTest",
     "ace_ets_component_api12:ActsAceEtsComponentApi12Test",
@@ -49,6 +51,7 @@ group("arkui") {
     "ace_ets_test:ActsAceEtsTest",
     "ace_ets_third_test:ActsAceEtsThirdTest",
     "ace_ets_ux_five:UxFiveTest",
+    "ace_ets_ux_one:UxOneTest",
     "ace_ets_web_dev:ActsAceWebDevTest",
     "ace_ets_web_dev_four:ActsAceWebDevFourTest",
     "ace_ets_web_dev_three:ActsAceWebDevThreeTest",
@@ -59,6 +62,10 @@ group("arkui") {
     "ace_ets_web_enhanced:webEnhancedTest",
     "ace_ets_web_error_code:ActsAceWebErrorCodeTest",
     "ace_ets_web_napis:ActsNativeWebTest",
+    "ace_ets_web_scheme_handler_four_napis:ActsNativeWebSchemeHandlerTest",
+    "ace_ets_web_scheme_handler_napis:ActsNativeWebSchemeHandlerOneTest",
+    "ace_ets_web_scheme_handler_three_napis:ActsNativeWebSchemeHandlerThreeTest",
+    "ace_ets_web_scheme_handler_two_napis:ActsNativeWebSchemeHandlerTwoTest",
     "ace_ets_web_view:ActsAceWebViewTest",
     "ace_ets_xcomponent:ActsAceXComponentEtsTest",
     "ace_js_attribute_api:ActsAceJsApiTest",

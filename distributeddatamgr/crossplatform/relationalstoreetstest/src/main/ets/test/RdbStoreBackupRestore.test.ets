@@ -202,18 +202,14 @@ export default function RdbStoreBackupRestoreCallbackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBackup001", 0, async (done: Function) => {
+    it("testRdbStoreBackup001", 0, async () => {
       console.info(TAG + "************* testRdbStoreBackup001 start *************");
       try {
-        RdbStore.backup("", async (err) => {
-          console.info(`Backup success.`);
-          expect(!err).assertTrue();
-          done();
-        });
+        await RdbStore.backup("");
+        expect(true).asserFail();
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreBackup001 error: " + errInfo);
-        expect(errInfo == "Error: Parameter error. The table must be not empty").assertTrue();
-        done();
+        expect('401').assertEqual(errInfo.code);
       }
       console.info(TAG + "************* testRdbStoreBackup001 end *************");
     });
@@ -231,7 +227,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       try {
         RdbStore.backup(STORE_CONFIG.name, async (err) => {
           console.info(TAG + "backup err ttt:  " + err.message + "code:  " + err.code);
-		  done();
+          done();
           expect(err.code == 14800010).assertTrue();
         });
       } catch (errInfo) {
@@ -250,16 +246,14 @@ export default function RdbStoreBackupRestoreCallbackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBackup003", 0, async (done: Function) => {
+    it("testRdbStoreBackup003", 0, async () => {
       console.info(TAG + "************* testRdbStoreBackup003 start *************");
       try {
         await RdbStore.backup("");
-        done();
+        expect(true).asserFail();
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreBackup003 error: " + errInfo);
-        console.info(`Backup err: file name empty.`);
-        expect(errInfo == "Error: Parameter error. The table must be not empty").assertTrue();
-        done();
+        expect('401').assertEqual(errInfo.code);
       }
       console.info(TAG + "************* testRdbStoreBackup003 end *************");
     });

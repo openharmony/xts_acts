@@ -16,7 +16,9 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import commonEvent from "@ohos.commonEvent"
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let subscriberInfo_MainAbility = {
   events: ["GetCurrentTopAbility"],
 };
@@ -36,6 +38,11 @@ export default function abilityTest() {
             let subscriber;
             function onAbilityForegroundCallback2(){
                 console.log("====>onAbilityForegroundCallback2====");
+                if (deviceType === '2in1') {
+                  console.log("====>ACTS_GetAbilityState_0200 end====");
+                  commonEvent.unsubscribe(subscriber, UnSubscribeCallback);
+                  return;
+                }
                 count ++;
                 if (count == 2) {
                   abilityDelegator.getCurrentTopAbility((err, data)=>{
@@ -98,6 +105,11 @@ export default function abilityTest() {
             let subscriber;
             function onAbilityForegroundCallback3(){
                 console.log("====>onAbilityForegroundCallback3====");
+                if (deviceType === '2in1') {
+                  console.log("====>ACTS_GetAbilityState_0300 end====");
+                  commonEvent.unsubscribe(subscriber, UnSubscribeCallback);
+                  return;
+                }
                 count++;
                 if (count == 2) {
                   abilityDelegator.getCurrentTopAbility((err, data)=>{
@@ -172,6 +184,11 @@ export default function abilityTest() {
             let subscriber;
             function onAbilityForegroundCallback6(){
                 console.log("====>onAbilityForegroundCallback6====");
+                if (deviceType === '2in1') {
+                  console.log("====>ACTS_GetAbilityState_0600 end====");
+                  commonEvent.unsubscribe(subscriber, UnSubscribeCallback);
+                  return;
+                }
                 count++;
                 if (count == 2) {
                   abilityDelegator.getCurrentTopAbility((err, data)=>{

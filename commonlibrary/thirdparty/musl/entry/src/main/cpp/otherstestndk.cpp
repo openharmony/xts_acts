@@ -45,6 +45,7 @@
 #include <threads.h>
 #include <unistd.h>
 #include <utmp.h>
+#include <atomic>
 
 #define NAMELEN 16
 #define NSEC_PER_SEC 1000000000
@@ -86,6 +87,7 @@
 #ifndef tls_mod_off_t
 #define tls_mod_off_t size_t
 #define PARAM_72 72
+#define SLEEPTIME 1
 #endif
 
 extern "C" mode_t __umask_chk(mode_t);
@@ -883,9 +885,16 @@ static napi_value Optresets(napi_env env, napi_callback_info info)
     napi_create_int32(env, optreset, &result);
     return result;
 }
+
+std::atomic<bool> isPthreadTestRun  (true);
+
 void *pthread_test(void *arg)
 {
     *((pid_t *)arg) = gettid();
+    while(isPthreadTestRun)
+    {
+        sleep(SLEEPTIME);
+    }
     return nullptr;
 }
 static napi_value Pthreadgettidnp(napi_env env, napi_callback_info info)
@@ -895,6 +904,8 @@ static napi_value Pthreadgettidnp(napi_env env, napi_callback_info info)
     int backInfo = FAILD;
     pthread_create(&t, nullptr, pthread_test, &tid);
     pid_t recv_result = pthread_gettid_np(t);
+    isPthreadTestRun = false;
+    pthread_join(t,nullptr);
     if (recv_result > NO_ERROR) {
         backInfo = SUCCESS;
     }

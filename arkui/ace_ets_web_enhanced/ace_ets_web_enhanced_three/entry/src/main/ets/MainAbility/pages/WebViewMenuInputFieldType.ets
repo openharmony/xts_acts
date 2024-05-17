@@ -64,6 +64,7 @@ struct WebViewMenuInputFieldType {
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "emitInputFieldTypeText001": {
@@ -79,6 +80,7 @@ struct WebViewMenuInputFieldType {
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "emitInputFieldTypePassWord001": {
@@ -94,6 +96,7 @@ struct WebViewMenuInputFieldType {
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "emitInputFieldTypeTelephone001": {
@@ -109,6 +112,7 @@ struct WebViewMenuInputFieldType {
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
             case "emitInputFieldTypeOther001": {
@@ -124,6 +128,7 @@ struct WebViewMenuInputFieldType {
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              await driver.mouseMoveTo({x:0, y:0})
               break;
             }
           }

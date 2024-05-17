@@ -131,7 +131,7 @@ export default function rdbStoreUpdateTest() {
                     "salary": 100.5,
                     "blobType": u8,
                 }
-                try{
+                try {
                     let predicates = new dataRdb.RdbPredicates("")
                     let updatePromise = rdbStore.update(valueBucket, predicates)
                     updatePromise.then(async (ret) => {

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +21,7 @@ import events_emitter from '@ohos.events.emitter';
 struct TouchAbleExample {
   @State text1: string = '';
   @State text2: string = '';
+  @State touchableValue: boolean = true;
 
   build() {
     Stack() {
@@ -56,7 +56,7 @@ struct TouchAbleExample {
             console.info("[TouchAble] start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("[TouchAble] emit action state err: " + JSON.stringify(err.message))
+            console.info("[TouchAble] emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .overlay(this.text2, { align: Alignment.Bottom, offset: { x: 0, y: 20 } })

@@ -1,0 +1,82 @@
+
+/**
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@system.router';
+import Utils from './Utils';
+import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
+
+
+
+export default function SpanBaselineOffsetJsunit() {
+  describe('SpanBaselineOffsetJsunit', function () {
+    beforeEach(async function (done) {
+      console.info("SpanBaselineOffsetJsunit beforeEach start");
+      let options = {
+        uri: 'MainAbility/pages/component/spanBaselineOffset',
+      }
+      let result;
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get spanBaselineOffset state pages: " + JSON.stringify(pages));
+        if (!("spanBaselineOffset" == pages.name)) {
+          console.info("get spanBaselineOffset state pages.name: " + JSON.stringify(pages.name));
+          result = await router.push(options);
+          await Utils.sleep(2000);
+          console.info("push spanBaselineOffset page result: " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push spanBaselineOffset page error: " + err);
+      }
+      done();
+    })
+    /*
+    * @tc.number
+    * @tc.name       : SpanBaselineOffsetJsunit_0101
+    * @tc.desc       : test prefetchResource
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('SpanBaselineOffsetJsunit_0101', 0, async function (done) {
+      console.info('[SpanBaselineOffsetJsunit_0101] START');
+      let strJson = getInspectorByKey('SpanBaselineOffsetKey001');
+      let obj = JSON.parse(strJson);
+      console.info("[SpanBaselineOffsetJsunit_0101] obj is: " + JSON.stringify(obj.$attrs));
+      expect(obj.$attrs.baselineOffset).assertEqual('10.00vp');
+      console.info('[SpanBaselineOffsetJsunit_0101] END**********************************');
+      done();
+    });
+    /*
+    * @tc.number 
+    * @tc.name       : SpanBaselineOffsetJsunit_0102
+    * @tc.desc       : test prefetchResource
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('SpanBaselineOffsetJsunit_0102', 0, async function (done) {
+      console.info('[SpanBaselineOffsetJsunit_0102] START');
+      let strJson = getInspectorByKey('SpanBaselineOffsetKey002');
+      let obj = JSON.parse(strJson);
+      console.info("[SpanBaselineOffsetJsunit_0102] obj is: " + JSON.stringify(obj.$attrs));
+      expect(obj.$attrs.baselineOffset).assertEqual('5.00vp');
+      console.info('[SpanBaselineOffsetJsunit_0102] END**********************************');
+      done();
+    });
+  });
+
+}

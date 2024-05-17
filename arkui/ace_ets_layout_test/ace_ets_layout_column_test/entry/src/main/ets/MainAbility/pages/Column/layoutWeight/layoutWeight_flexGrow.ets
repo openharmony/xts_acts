@@ -12,18 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from './../../../common/MessageManager';
+import { MessageManager, Callback, Message } from './../../../common/MessageManager';
 @Entry
 @Component
 struct layoutWeight_flexGrow {
   @State addLayoutWeight: number = 0
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager()
   onPageShow() {
     console.info('layoutWeight_flexGrow onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addLayoutWeight') {
         this.addLayoutWeight = message.value;

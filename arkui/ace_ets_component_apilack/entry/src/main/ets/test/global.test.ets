@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import RectValue from './Rect';
 
 export default function globalJsunit() {
   describe('globalJsunit', () => {
     beforeEach(async () => {
       console.info("global beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/global',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/global',
       }
       try {
         router.clear();
@@ -77,6 +77,10 @@ export default function globalJsunit() {
         timestamp: 5284417765376,
         intentionCode: -1,
         stopPropagation: () => {
+        },
+        getModifierKeyState:(keys: Array<string>):boolean => {
+              console.info("the key 0 is :" + keys[0]);
+              return true;
         }
       };
       let result = sendKeyEvent(KeyEvent);
@@ -131,6 +135,10 @@ export default function globalJsunit() {
         sourceTool: SourceTool.Unknown,
         stopPropagation: () => {
         },
+        getModifierKeyState:(keys: Array<string>):boolean => {
+              console.info("the key 0 is :" + keys[0]);
+              return true;
+        }
       }
       let result = sendMouseEvent(mouseEvent);
       console.info("[testglobal_sendMouseEvent0003] result:" + result);

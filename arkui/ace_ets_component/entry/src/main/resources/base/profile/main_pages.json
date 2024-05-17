@@ -18,6 +18,7 @@
           "MainAbility/pages/overlay",
           "MainAbility/pages/stepper",
           "MainAbility/pages/swiper",
+          "MainAbility/pages/textAreaAutoFill",
           "MainAbility/pages/textInputAutoFill",
           "MainAbility/pages/textStyle",
           "MainAbility/pages/touchAble",

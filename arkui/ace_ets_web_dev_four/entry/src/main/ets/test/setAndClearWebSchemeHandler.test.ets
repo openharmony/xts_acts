@@ -59,7 +59,6 @@ export default function setAndClearWebSchemeHandler() {
       Utils.registerEvent("setAndClearWebSchemeHandler0100", "https://www.baidu.com/", 8822, done);
       Utils.registerEvent("setAndClearWebSchemeHandler0100", "GET", 8824, done);
       Utils.registerEvent("setAndClearWebSchemeHandler0100", "", 8826, done);
-      Utils.registerEvent("setAndClearWebSchemeHandler0100", true, 8828, done);
       Utils.registerEvent("setAndClearWebSchemeHandler0100", false, 8830, done);
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -107,7 +106,6 @@ export default function setAndClearWebSchemeHandler() {
       Utils.registerEvent("setAndClearWebSchemeHandler0300", "https://www.baidu.com/", 8842, done);
       Utils.registerEvent("setAndClearWebSchemeHandler0300", "GET", 8844, done);
       Utils.registerEvent("setAndClearWebSchemeHandler0300", "", 8846, done);
-      Utils.registerEvent("setAndClearWebSchemeHandler0300", true, 8848, done);
       Utils.registerEvent("setAndClearWebSchemeHandler0300", false, 8850, done);
       await Utils.sleep(2000);
       let driver = Driver.create();

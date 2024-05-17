@@ -16,6 +16,7 @@ group("ets_utils") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "arkts_collections_lib_standard:arkts_collections_js_test",
       "atomics_lib_standard:atomics_js_hap",
       "buffer_lib_standard:buffer_js_test",
       "codeparsingtest:codeparsingtest",
@@ -25,6 +26,7 @@ group("ets_utils") {
       "intl_lib_standard:intl_js_test",
       "json_lib_standard:json_js_test",
       "process_lib_standard:process_js_test",
+      "stream_lib_standard:stream_js_test",
       "taskpool_lib_standard:taskPool_js_test",
       "taskpool_lib_standard2:ActsTaskPoolTest",
       "threadWorker_lib_standard:threadWorker_js_hap",

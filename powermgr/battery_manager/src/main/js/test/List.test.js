@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 import batteryCommonEventTest from './battery_common_event.test.js'
-import batteryUnitTest from './battery_unit.test.js'
+import batteryInfoTest from './batteryInfo.test.js'
 import batteryManagerPerformanceTest from './batterymanager_performance.test.js'
 import systemBatteryTest from './system_battery.test.js'
 export default function testsuite() {
     batteryCommonEventTest()
-    batteryUnitTest()
+    batteryInfoTest()
     //batteryManagerPerformanceTest()
     systemBatteryTest()
 }

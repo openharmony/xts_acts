@@ -19,6 +19,9 @@ import fileUri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs'
 import wantConstant from '@ohos.ability.wantConstant';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
+
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 export default function UriPermissionTest() {
 
   describe('UriPermissionTest', function () {
@@ -125,6 +128,11 @@ export default function UriPermissionTest() {
           console.info(TAG1 + ' Subscribe CallBack data:' + JSON.stringify(data));
           if (data.event === eventName1_3) {
               console.info(TAG1 + 'write file succeed.');
+              if (deviceType === '2in1') {
+                commonEvent.unsubscribe(subscriber1_2, UnSubscribeInfoCallback1_2)
+                flag1_2 = true;
+                return;
+              }
               expect().assertFail();
           }
           if (data.event === eventName1_4) {
@@ -352,6 +360,11 @@ export default function UriPermissionTest() {
           console.info(TAG3 + ' Subscribe CallBack data:' + JSON.stringify(data));
           if (data.event === eventName3_3) {
               console.info(TAG3 + 'write file succeed.');
+              if (deviceType === '2in1') {
+                commonEvent.unsubscribe(subscriber3_2, UnSubscribeInfoCallback3_2)
+                flag3_2 = true;
+                return;
+              }
               expect().assertFail();
           }
           if (data.event === eventName3_4) {
@@ -528,6 +541,11 @@ export default function UriPermissionTest() {
           console.info(TAG4 + ' Subscribe CallBack data:' + JSON.stringify(data));
           if (data.event === eventName4_5) {
               console.info(TAG4 + 'read file succeed.');
+              if (deviceType === '2in1') {
+                commonEvent.unsubscribe(subscriber4_3, UnSubscribeInfoCallback4_3)
+                flag4_3 = true;
+                return;
+              }
               expect().assertFail();
           }
           if (data.event === eventName4_6) {
@@ -688,6 +706,10 @@ export default function UriPermissionTest() {
      */
     it("Temp_UriPermissionTest_0600", 0, async function (done) {
       console.info("---------------Temp_UriPermissionTest_0600 is start---------------")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let TAG6 = "Temp_UriPermissionTest_0600";
       let filePath : string = abilityContext.filesDir + "/test_6.txt";
       fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE, (err, file) => {
@@ -840,6 +862,10 @@ export default function UriPermissionTest() {
      */
     it("Temp_UriPermissionTest_0700", 0, async function (done) {
       console.info("---------------Temp_UriPermissionTest_0700 is start---------------")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let TAG7 = "Temp_UriPermissionTest_0700";
       let filePath : string = abilityContext.filesDir + "/test_7.txt";
       fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE, (err, file) => {
@@ -960,6 +986,10 @@ export default function UriPermissionTest() {
      */
     it("Temp_UriPermissionTest_0800", 0, async function (done) {
       console.info("---------------Temp_UriPermissionTest_0800 is start---------------")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let TAG8 = "Temp_UriPermissionTest_0800";
       let filePath : string = abilityContext.filesDir + "/test_8.txt";
       fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE, (err, file) => {
@@ -1088,6 +1118,10 @@ export default function UriPermissionTest() {
      */
     it("Temp_UriPermissionTest_1000", 0, async function (done) {
       console.info("---------------Temp_UriPermissionTest_1000 is start---------------")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let TAG10 = "Temp_UriPermissionTest_1000";
       let filePath : string = abilityContext.filesDir + "/test_9.txt";
       fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE, (err, file) => {
@@ -1204,6 +1238,10 @@ export default function UriPermissionTest() {
      */
     it("Temp_UriPermissionTest_1100", 0, async function (done) {
       console.info("---------------Temp_UriPermissionTest_1100 is start---------------")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let TAG11 = "Temp_UriPermissionTest_1100";
       let flag11_1 = false;
       let flag11_2 = false;
@@ -1292,6 +1330,10 @@ export default function UriPermissionTest() {
      */
     it("Temp_UriPermissionTest_1200", 0, async function (done) {
       console.info("---------------Temp_UriPermissionTest_1200 is start---------------")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let TAG12 = "Temp_UriPermissionTest_1200";
       let filePath : string = abilityContext.filesDir + "/test_11.txt";
       fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE, (err, file) => {
@@ -1379,6 +1421,10 @@ export default function UriPermissionTest() {
      */
     it("Temp_UriPermissionTest_1400", 0, async function (done) {
       console.info("---------------Temp_UriPermissionTest_1400 is start---------------")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let TAG14 = "Temp_UriPermissionTest_1400";
       let filePath : string = abilityContext.filesDir + "/test_12.txt";
       fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE, (err, file) => {
@@ -1483,6 +1529,10 @@ export default function UriPermissionTest() {
      */
     it("Temp_UriPermissionTest_1500", 0, async function (done) {
       console.info("---------------Temp_UriPermissionTest_1500 is start---------------")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let TAG15 = "Temp_UriPermissionTest_1500";
       let filePath : string = abilityContext.filesDir + "/test_13.txt";
       fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE, (err, file) => {

@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
 
 export default class MainAbility extends Ability {
     onCreate(want,launchParam){
@@ -30,6 +32,25 @@ export default class MainAbility extends Ability {
         globalThis.windowStage = windowStage
         globalThis.abilityContext = this.context
         windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)
+        let windowClass: window.Window | undefined = undefined;
+        windowStage.getMainWindow((err: BusinessError, data) => {
+            let errCode: number = err.code;
+            if (errCode) {
+                console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+                return;
+            }
+            windowClass = data;
+            console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+            try {
+                let properties : window.WindowProperties = windowClass.getWindowProperties();
+                let wRect : window.Rect =  properties.windowRect;
+                globalThis.winLeft = wRect.left;
+                globalThis.winTop = wRect.top;
+                console.info('Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
+            } catch (exception) {
+                console.error('Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+            }
+        })
     }
     onWindowStageDestroy() {
         //Main window is destroyed, release UI related resources

@@ -26,6 +26,7 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(async () => {
+            console.log('close viewData ability');
             let context = getContext(this) as common.UIAbilityContext;
             context.terminateSelf();
           })

@@ -50,8 +50,19 @@ struct CustomContainerUser {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         Scroll(this.scroller) {
           Column() {
+            Row(){
+              Column(){
+                Button(`无法添加空白桌面`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('50%')
+                  .onClick(()=>{
+                    this.Vue = true;
+                  })
+              }
+            }
             Row() {
-              Text(`根据以下操作步骤完成测试` + '\n' + '\n')
+              Text('\n' + '\n' + `根据以下操作步骤完成测试` + '\n' + '\n')
                 .fontColor(Color.White)
                 .fontSize('24fp')
             }

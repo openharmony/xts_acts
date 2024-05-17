@@ -23,6 +23,7 @@ ohos_js_hap_suite("CalendarManagerEtsTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsCalendarManagerEtsTest"
+  part_name = "calendarManager"
 }
 
 ohos_app_scope("settings_ets_app_profile") {

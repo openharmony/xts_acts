@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("photoAccess_js_hap") {
@@ -23,6 +24,7 @@ ohos_js_hap_suite("photoAccess_js_hap") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsPhotoAccessTest"
+  shared_libraries = [ "./entry/src/main/cpp:mediaAssetManager" ]
   part_name = "media_library"
   subsystem_name = "multimedia"
 }

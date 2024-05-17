@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import router from '@ohos.router';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-import { Hypium } from '@ohos/hypium'
-import testsuite from '../../test/List.test'
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import { Hypium } from '@ohos/hypium';
+import testsuite from '../../test/List.test';
 
 @Entry
 @Component
-struct Index {
-  @State message: string = 'CreateFormAbility'
+struct Index1 {
+  @State message: string = 'CreateFormAbility';
   @State isShowing: boolean = true;
-
   @State formId: number = 0;
   @State bundle: string = "com.example.apicoverhaptest";
   @State ability: string = "FormAbility";
@@ -33,7 +33,7 @@ struct Index {
   private temporary = false;
 
   aboutToAppear() {
-    this.isShowing = globalThis.isCreateForm
+    this.isShowing = AppStorage.get<boolean>("isCreateForm")!;
   }
 
   build() {
@@ -49,12 +49,12 @@ struct Index {
             dimension: this.dimension,
             temporary: this.temporary,
           })
-          .allowUpdate(this.allowUpate )
-          .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
-          .size({width:360,height:360})
-          .onAcquired((form) => {
-            console.log("[FormComponent.host] get form, form id:" + form.id);
-          })
+            .allowUpdate(this.allowUpate)
+            .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
+            .size({ width: 360, height: 360 })
+            .onAcquired((form) => {
+              console.log("[FormComponent.host] get form, form id:" + form.id);
+            })
         }
         Text(this.message)
           .fontSize(50)

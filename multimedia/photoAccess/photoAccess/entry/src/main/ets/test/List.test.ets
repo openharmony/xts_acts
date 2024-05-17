@@ -63,6 +63,11 @@ import addResourceChangeRequestTest from './MediaAssetChangeRequest/addResource'
 import getWriteCacheHandlerTest from './MediaAssetChangeRequest/getWriteCacheHandler'
 import requestImageTest from './MediaAssetManager/requestImage'
 import requestImageDataTest from './MediaAssetManager/requestImageData'
+import getMovingPhotoTest from './PhotoAccessHelper/getMovingPhoto'
+import requestVideoNativeTest from './MediaAssetManager/requestVideoNative'
+import requestImageNativeTest from './MediaAssetManager/requestImageNative'
+import requestCancelNativeTest from './MediaAssetManager/requestCancelNative'
+import requestVideoTest from './MediaAssetManager/requestVideo'
 
 export default function testsuite () {
   provisionResourcesTest()
@@ -116,4 +121,9 @@ export default function testsuite () {
   getWriteCacheHandlerTest()
   requestImageTest()
   requestImageDataTest()
+  getMovingPhotoTest()
+  requestVideoNativeTest()
+  requestImageNativeTest()
+  requestCancelNativeTest()
+  requestVideoTest()
 }

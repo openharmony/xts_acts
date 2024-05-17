@@ -118,5 +118,101 @@ export default function canOpenLink() {
         done();
       }
     });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0070
+     * @tc.name: canOpenLinkEmptyParam
+     * @tc.desc: The parameter is incorrect.
+     */
+    it('canOpenLinkEmptyParam', 0, async (done: Function) => {
+      try {
+        let data = bundle.canOpenLink("");
+        expect(data).assertFail();
+        done();
+      } catch (err) {
+        expect(err.code).assertEqual(ERROR_INVALID_LINK);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0080
+     * @tc.name: canOpenLinkLowercaseParam
+     * @tc.desc: The parameter is lowercase letter when configure is capital letter.
+     */
+    it('canOpenLinkLowercaseParam', 0, async (done: Function) => {
+      try {
+        let data = bundle.canOpenLink("scheme://com.ohos.test");
+        expect(data).assertTrue();
+        done();
+      } catch (err) {
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0090
+     * @tc.name: canOpenLinkSchemeMatch
+     * @tc.desc: Test canOpenLink when scheme match.
+     */
+    it('canOpenLinkSchemeMatch', 0, async (done: Function) => {
+      try {
+        let data = bundle.canOpenLink("matchscheme1://com.ohos.test");
+        expect(data).assertTrue();
+        done();
+      } catch (err) {
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0010
+     * @tc.name: canOpenLinkHostMatch
+     * @tc.desc: Test canOpenLink when host match.
+     */
+    it('canOpenLinkHostMatch', 0, async (done: Function) => {
+      try {
+        let data = bundle.canOpenLink("matchscheme2://com.ohos.test:8080");
+        expect(data).assertTrue();
+        done();
+      } catch (err) {
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0011
+     * @tc.name: canOpenLinkPortMatch
+     * @tc.desc: Test canOpenLink when port match.
+     */
+    it('canOpenLinkPortMatch', 0, async (done: Function) => {
+      try {
+        let data = bundle.canOpenLink("Matchscheme3://com.ohos.test:8080/hello");
+        expect(data).assertTrue();
+        done();
+      } catch (err) {
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0012
+     * @tc.name: canOpenLinkHostNotMatch
+     * @tc.desc: Test canOpenLink when host not match.
+     */
+    it('canOpenLinkHostNotMatch', 0, async (done: Function) => {
+      try {
+        let data = bundle.canOpenLink("Matchscheme3://host.ohos.test:8080");
+        expect(data).assertFalse();
+        done();
+      } catch (err) {
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }

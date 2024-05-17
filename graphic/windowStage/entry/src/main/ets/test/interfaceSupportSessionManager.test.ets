@@ -14,7 +14,6 @@
  */
 import { describe, beforeAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
-import deviceInfo from '@ohos.deviceInfo';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
@@ -33,13 +32,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       clearTimeout(timeoutId)
     }
 
-    let currentDeviceIsRk = false;
-    beforeAll(async function () {
-      // 获取当前的设备类型，区分是否是RK
-      let deviceTypeInfo: string = deviceInfo.deviceType
-      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
-    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2510
      * @tc.name      : testKeepKeyboardOnFocus_SubWindow_True
@@ -62,7 +54,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         await (subWindow as ohosWindow.Window).destroyWindow();
       } catch (exception) {
         await (subWindow as ohosWindow.Window).destroyWindow();
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -94,7 +86,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         await (subWindow as ohosWindow.Window).destroyWindow();
       } catch (exception) {
         await (subWindow as ohosWindow.Window).destroyWindow();
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -132,7 +124,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         await (tempWnd as ohosWindow.Window).destroyWindow();
       } catch (exception) {
         await (tempWnd as ohosWindow.Window).destroyWindow();
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -170,7 +162,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         await (tempWnd as ohosWindow.Window).destroyWindow();
       } catch (exception) {
         await (tempWnd as ohosWindow.Window).destroyWindow();
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -297,7 +289,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.info(msgStr + 'Window visibility changed, isVisible=' + boolean);
         });
       } catch (exception) {
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error('Failed to register callback. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -310,7 +302,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         // @ts-ignore
         (win as ohosWindow.Window).off('windowVisibilityChange');
       } catch (exception) {
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -354,7 +346,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
         await (win as ohosWindow.Window).destroyWindow();
       }).catch((err: BusinessError) => {
-        if (!currentDeviceIsRk) {
+        if (err.code != 801) {
           console.error(msgStr + `ailed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
           expect().assertFail();
         } else {
@@ -390,7 +382,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
         await (win as ohosWindow.Window).destroyWindow();
       }).catch((err: BusinessError) => {
-        if (!currentDeviceIsRk) {
+        if (err.code != 801) {
           console.error(msgStr + `Failed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
           expect().assertFail();
         } else {
@@ -526,8 +518,14 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = tempWnd.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
+        console.log(msgStr + 'width is: ' + windowLimits.minWidth + ' ' + "height is: " + windowLimits.minHeight);
+        await tempWnd.resize(windowLimits.minWidth, windowLimits.minHeight).catch((err) => {
+          console.log(msgStr + 'tempWnd.resize failed');
+          expect().assertFail();
+        });
+        console.log(msgStr + 'tempWnd.resize successed');
       } catch (exception) {
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -535,14 +533,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.log(msgStr + JSON.stringify(exception))
           expect(exception.code).assertEqual(801);
         }
-      }
-      if (!currentDeviceIsRk) {
-        console.log(msgStr + 'width is: ' + windowLimits.minWidth + ' ' + "height is: " + windowLimits.minHeight);
-        await tempWnd.resize(windowLimits.minWidth, windowLimits.minHeight).catch((err) => {
-          console.log(msgStr + 'tempWnd.resize failed');
-          expect().assertFail();
-        });
-        console.log(msgStr + 'tempWnd.resize successed');
       }
       await tempWnd.showWindow().catch((err) => {
         console.log(msgStr + 'tempWnd.showWindow failed');
@@ -581,8 +571,14 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = tempWnd.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
+        console.log(msgStr + 'width is: ' + windowLimits.maxWidth + ' ' + "height is: " + windowLimits.maxHeight);
+        await tempWnd.resize(windowLimits.maxWidth, windowLimits.maxHeight).catch((err) => {
+          console.log(msgStr + 'tempWnd.resize failed');
+          expect().assertFail();
+        });
+        console.log(msgStr + 'tempWnd.resize successed');
       } catch (exception) {
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -590,14 +586,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.log(msgStr + JSON.stringify(exception))
           expect(exception.code).assertEqual(801);
         }
-      }
-      if (!currentDeviceIsRk) {
-        console.log(msgStr + 'width is: ' + windowLimits.maxWidth + ' ' + "height is: " + windowLimits.maxHeight);
-        await tempWnd.resize(windowLimits.maxWidth, windowLimits.maxHeight).catch((err) => {
-          console.log(msgStr + 'tempWnd.resize failed');
-          expect().assertFail();
-        });
-        console.log(msgStr + 'tempWnd.resize successed');
       }
       await tempWnd.showWindow().catch((err) => {
         console.log(msgStr + 'tempWnd.showWindow failed');
@@ -636,8 +624,14 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = tempWnd.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
+        console.log(msgStr + 'width is: ' + windowLimits.minWidth + ' ' + "height is: " + windowLimits.maxHeight);
+        await tempWnd.resize(windowLimits.minWidth, windowLimits.maxHeight).catch((err) => {
+          console.log(msgStr + 'tempWnd.resize failed');
+          expect().assertFail();
+        });
+        console.log(msgStr + 'tempWnd.resize successed');
       } catch (exception) {
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -645,14 +639,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.log(msgStr + JSON.stringify(exception))
           expect(exception.code).assertEqual(801);
         }
-      }
-      if (!currentDeviceIsRk) {
-        console.log(msgStr + 'width is: ' + windowLimits.minWidth + ' ' + "height is: " + windowLimits.maxHeight);
-        await tempWnd.resize(windowLimits.minWidth, windowLimits.maxHeight).catch((err) => {
-          console.log(msgStr + 'tempWnd.resize failed');
-          expect().assertFail();
-        });
-        console.log(msgStr + 'tempWnd.resize successed');
       }
       await tempWnd.showWindow().catch((err) => {
         console.log(msgStr + 'tempWnd.showWindow failed');
@@ -699,17 +685,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = tempWnd.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
-      } catch (exception) {
-        if (!currentDeviceIsRk) {
-          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
-          expect().assertFail();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        }
-      }
-      if (!currentDeviceIsRk) {
         let _width = windowLimits.maxWidth + 100;
         let _height = windowLimits.maxHeight + 5;
         console.log(msgStr + 'width is: ' + _width + ' ' + "height is: " + _height);
@@ -719,11 +694,20 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.log(msgStr + 'tempWnd.resize failed Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(900)
         let properties = tempWnd.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(windowLimits.maxWidth)
         expect(properties.windowRect.height).assertEqual(windowLimits.maxHeight)
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
       }
       await tempWnd.destroyWindow();
     })
@@ -763,7 +747,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       await tempWnd.setWindowLimits(winLimits).then((data) => {
         console.info(msgStr + 'Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
       }).catch((err: BusinessError) => {
-        if (!currentDeviceIsRk) {
+        if (err.code != 801) {
           console.error(msgStr + 'Failed to change the window limits. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         } else {
@@ -775,17 +759,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = tempWnd.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
-      } catch (exception) {
-        if (!currentDeviceIsRk) {
-          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
-          expect().assertFail();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        }
-      }
-      if (!currentDeviceIsRk) {
         console.log(msgStr + 'width is: ' + windowLimits.minWidth + ' ' + "height is: " + windowLimits.minHeight);
         await tempWnd.resize(windowLimits.minWidth, windowLimits.minHeight).then(() => {
           console.log(msgStr + 'tempWnd.resize successed');
@@ -793,6 +766,15 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.log(msgStr + 'tempWnd.resize failed');
           expect().assertFail();
         });
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
       }
       await tempWnd.showWindow().catch((err) => {
         console.log(msgStr + 'tempWnd.showWindow failed');
@@ -837,7 +819,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       await tempWnd.setWindowLimits(winLimits).then((data) => {
         console.info(msgStr + 'Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
       }).catch((err: BusinessError) => {
-        if (!currentDeviceIsRk) {
+        if (err.code != 801) {
           console.error(msgStr + 'Failed to change the window limits. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         } else {
@@ -849,8 +831,14 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = tempWnd.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
+        console.log(msgStr + 'width is: ' + windowLimits.maxWidth + ' ' + "height is: " + windowLimits.maxHeight);
+        await tempWnd.resize(windowLimits.maxWidth, windowLimits.maxHeight).catch((err) => {
+          console.log(msgStr + 'tempWnd.resize failed');
+          expect().assertFail();
+        });
+        console.log(msgStr + 'tempWnd.resize successed');
       } catch (exception) {
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -858,14 +846,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.log(msgStr + JSON.stringify(exception))
           expect(exception.code).assertEqual(801);
         }
-      }
-      if (!currentDeviceIsRk) {
-        console.log(msgStr + 'width is: ' + windowLimits.maxWidth + ' ' + "height is: " + windowLimits.maxHeight);
-        await tempWnd.resize(windowLimits.maxWidth, windowLimits.maxHeight).catch((err) => {
-          console.log(msgStr + 'tempWnd.resize failed');
-          expect().assertFail();
-        });
-        console.log(msgStr + 'tempWnd.resize successed');
       }
       await tempWnd.showWindow().catch((err) => {
         console.log(msgStr + 'tempWnd.showWindow failed');
@@ -910,7 +890,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       await tempWnd.setWindowLimits(winLimits).then((data) => {
         console.info(msgStr + 'Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
       }).catch((err: BusinessError) => {
-        if (!currentDeviceIsRk) {
+        if (err.code != 801) {
           console.error(msgStr + 'Failed to change the window limits. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         } else {
@@ -922,8 +902,14 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = tempWnd.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
+        console.log(msgStr + 'width is: ' + windowLimits.minWidth + ' ' + "height is: " + windowLimits.maxHeight);
+        await tempWnd.resize(windowLimits.minWidth, windowLimits.maxHeight).catch((err) => {
+          console.log(msgStr + 'tempWnd.resize failed');
+          expect().assertFail();
+        });
+        console.log(msgStr + 'tempWnd.resize successed');
       } catch (exception) {
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
@@ -931,14 +917,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.log(msgStr + JSON.stringify(exception))
           expect(exception.code).assertEqual(801);
         }
-      }
-      if (!currentDeviceIsRk) {
-        console.log(msgStr + 'width is: ' + windowLimits.minWidth + ' ' + "height is: " + windowLimits.maxHeight);
-        await tempWnd.resize(windowLimits.minWidth, windowLimits.maxHeight).catch((err) => {
-          console.log(msgStr + 'tempWnd.resize failed');
-          expect().assertFail();
-        });
-        console.log(msgStr + 'tempWnd.resize successed');
       }
       await tempWnd.showWindow().catch((err) => {
         console.log(msgStr + 'tempWnd.showWindow failed');
@@ -991,7 +969,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       await tempWnd.setWindowLimits(winLimits).then((data) => {
         console.info(msgStr + 'Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
       }).catch((err: BusinessError) => {
-        if (!currentDeviceIsRk) {
+        if (err.code != 801) {
           console.error(msgStr + 'Failed to change the window limits. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         } else {
@@ -1003,17 +981,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = tempWnd.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
-      } catch (exception) {
-        if (!currentDeviceIsRk) {
-          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
-          expect().assertFail();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        }
-      }
-      if (!currentDeviceIsRk) {
         let _width = windowLimits.maxWidth + 100;
         let _height = windowLimits.maxHeight + 5;
         console.log(msgStr + 'width is: ' + _width + ' ' + "height is: " + _height);
@@ -1023,11 +990,20 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.log(msgStr + 'tempWnd.resize failed Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(900)
         let properties = tempWnd.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(windowLimits.maxWidth)
         expect(properties.windowRect.height).assertEqual(windowLimits.maxHeight)
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
       }
       await tempWnd.destroyWindow();
     })
@@ -1044,9 +1020,10 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let subMin = null;
-      subMin = await windowStage.createSubWindow('testResize_SubWindow_LimitMin_Callback').catch((err: BusinessError) => {
-        console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
-      });
+      subMin = await windowStage.createSubWindow('testResize_SubWindow_LimitMin_Callback')
+        .catch((err: BusinessError) => {
+          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+        });
       expect(!!subMin).assertTrue();
       await subMin.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -1067,19 +1044,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = subMin.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
-      } catch (exception) {
-        if (!currentDeviceIsRk) {
-          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
-          expect().assertFail();
-          done();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-          done();
-        }
-      }
-      if (!currentDeviceIsRk) {
         let _width = windowLimits.minWidth;
         let _height = windowLimits.minHeight;
         console.log(msgStr + 'width is: ' + _width + ' ' + "height is: " + _height);
@@ -1092,7 +1056,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
             return;
           }
           console.info(msgStr + 'Succeeded in changing the window size.');
-          await sleep(1000)
+          await sleep(900)
           let properties = subMin.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.width).assertEqual(_width)
@@ -1100,9 +1064,18 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           await subMin.destroyWindow();
           done();
         });
-      } else {
+      } catch (exception) {
         await subMin.destroyWindow();
-        done();
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+          done();
+        }
       }
     })
     /**
@@ -1118,9 +1091,10 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let subMin = null;
-      subMin = await windowStage.createSubWindow('testResize_SubWindow_LimitMax_Callback').catch((err: BusinessError) => {
-        console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
-      });
+      subMin = await windowStage.createSubWindow('testResize_SubWindow_LimitMax_Callback')
+        .catch((err: BusinessError) => {
+          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+        });
       expect(!!subMin).assertTrue();
       await subMin.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -1141,19 +1115,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = subMin.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
-      } catch (exception) {
-        if (!currentDeviceIsRk) {
-          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
-          expect().assertFail();
-          done();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-          done();
-        }
-      }
-      if (!currentDeviceIsRk) {
         let _width = windowLimits.maxWidth;
         let _height = windowLimits.maxHeight;
         console.log(msgStr + 'width is: ' + _width + ' ' + "height is: " + _height);
@@ -1166,7 +1127,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
             return;
           }
           console.info(msgStr + 'Succeeded in changing the window size.');
-          await sleep(1000)
+          await sleep(900)
           let properties = subMin.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
           expect(properties.windowRect.width).assertEqual(_width)
@@ -1174,9 +1135,18 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           await subMin.destroyWindow();
           done();
         });
-      } else {
+      } catch (exception) {
         await subMin.destroyWindow();
-        done();
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+          done();
+        }
       }
     })
     /**
@@ -1212,17 +1182,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = subMin.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
-      } catch (exception) {
-        if (!currentDeviceIsRk) {
-          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
-          expect().assertFail();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        }
-      }
-      if (!currentDeviceIsRk) {
         let _width = windowLimits.maxWidth + 10;
         let _height = windowLimits.maxHeight + 20;
         console.log(msgStr + 'width is: ' + _width + ' ' + "height is: " + _height);
@@ -1232,11 +1191,20 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(900)
         let properties = subMin.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(windowLimits.maxWidth)
         expect(properties.windowRect.height).assertEqual(windowLimits.maxHeight)
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
       }
       await subMin.destroyWindow();
     })
@@ -1253,9 +1221,10 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let subMin = null;
-      subMin = await windowStage.createSubWindow('testResize_SubWindow_LessThan_MinLimits').catch((err: BusinessError) => {
-        console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
-      });
+      subMin = await windowStage.createSubWindow('testResize_SubWindow_LessThan_MinLimits')
+        .catch((err: BusinessError) => {
+          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+        });
       expect(!!subMin).assertTrue();
       await subMin.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -1273,19 +1242,8 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         windowLimits = subMin.getWindowLimits();
         console.log(msgStr + 'windowLimits is: ' + JSON.stringify(windowLimits));
-      } catch (exception) {
-        if (!currentDeviceIsRk) {
-          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
-          expect().assertFail();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        }
-      }
-      if (!currentDeviceIsRk) {
-        let _width = windowLimits.minWidth - 10;
-        let _height = windowLimits.minHeight - 20;
+        let _width = windowLimits.minWidth - 1;
+        let _height = windowLimits.minHeight - 1;
         console.log(msgStr + 'width is: ' + _width + ' ' + "height is: " + _height);
         await subMin.resize(_width, _height).then(async () => {
           console.info(msgStr + 'Succeeded in changing the window size.');
@@ -1293,11 +1251,20 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
           console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         });
-        await sleep(1000)
+        await sleep(900)
         let properties = subMin.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
         expect(properties.windowRect.width).assertEqual(windowLimits.minWidth)
         expect(properties.windowRect.height).assertEqual(windowLimits.minHeight)
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
       }
       await subMin.destroyWindow();
     })
@@ -1345,7 +1312,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       await tempWnd.setWindowLimits(winLimits).then((data) => {
         console.info(msgStr + 'Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
       }).catch((err: BusinessError) => {
-        if (!currentDeviceIsRk) {
+        if (err.code != 801) {
           console.error(msgStr + 'Failed to change the window limits. Cause: ' + JSON.stringify(err));
           expect().assertFail();
         } else {
@@ -1362,7 +1329,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         expect(windowLimits.minWidth).assertEqual(2002);
         expect(windowLimits.minHeight).assertEqual(2002);
       } catch (exception) {
-        if (!currentDeviceIsRk) {
+        if (exception.code != 801) {
           console.error(msgStr + 'Failed to obtain the window limits of window. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {

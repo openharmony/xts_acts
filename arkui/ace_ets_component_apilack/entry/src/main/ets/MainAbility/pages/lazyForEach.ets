@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
 
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = []
@@ -22,7 +22,7 @@ class BasicDataSource implements IDataSource {
     return 0
   }
 
-  public getData(index: number): any {
+  public getData(index: number): undefined | string {
     return undefined
   }
 
@@ -79,7 +79,7 @@ class MyDataSource extends BasicDataSource {
     return this.dataArray.length
   }
 
-  public getData(index: number): any {
+  public getData(index: number): undefined | string {
     return this.dataArray[index]
   }
 
@@ -211,7 +211,7 @@ struct LazyForEachOnDataAdd {
                     console.info("this.data.totalCount() is :" + this.data.totalCount())
                   } catch (err) {
                     this.result_101 = false
-                    console.info("LazyForEachOnDataAdd_101 onClick emit action err: " + JSON.stringify(err.message))
+                    console.info("LazyForEachOnDataAdd_101 onClick emit action err: " + JSON.stringify((err as Error)?.message))
                   }
 
                   try {
@@ -227,7 +227,7 @@ struct LazyForEachOnDataAdd {
                     console.info("LazyForEachOnDataAdd_101 onClick start to emit action")
                     events_emitter.emit(backEvent1, backData1)
                   } catch (err) {
-                    console.info("LazyForEachOnDataAdd_101 onClick emit action err: " + JSON.stringify(err.message))
+                    console.info("LazyForEachOnDataAdd_101 onClick emit action err: " + JSON.stringify((err as Error)?.message))
                   }
                 })
               }, (item: string) => item)
@@ -261,7 +261,7 @@ struct LazyForEachOnDataAdd {
                     this.data.moveData(3, 1)
                   } catch (err) {
                     this.result_102 = false
-                    console.info("LazyForEachOnDataAdd_102 onClick emit action err: " + JSON.stringify(err.message))
+                    console.info("LazyForEachOnDataAdd_102 onClick emit action err: " + JSON.stringify((err as Error)?.message))
                   }
 
                   try {
@@ -277,7 +277,7 @@ struct LazyForEachOnDataAdd {
                     console.info("LazyForEachOnDataAdd_102 onClick start to emit action")
                     events_emitter.emit(backEvent2, backData2)
                   } catch (err) {
-                    console.info("LazyForEachOnDataAdd_102 onClick emit action err: " + JSON.stringify(err.message))
+                    console.info("LazyForEachOnDataAdd_102 onClick emit action err: " + JSON.stringify((err as Error)?.message))
                   }
                 })
               }, (item: string) => item)
@@ -311,7 +311,7 @@ struct LazyForEachOnDataAdd {
                     this.data.popData()
                   } catch (err) {
                     this.result_103 = false
-                    console.info("LazyForEachOnDataAdd_103 onClick emit action err: " + JSON.stringify(err.message))
+                    console.info("LazyForEachOnDataAdd_103 onClick emit action err: " + JSON.stringify((err as Error)?.message))
                   }
 
                   try {
@@ -327,7 +327,7 @@ struct LazyForEachOnDataAdd {
                     console.info("LazyForEachOnDataAdd_103 onClick start to emit action")
                     events_emitter.emit(backEvent3, backData3)
                   } catch (err) {
-                    console.info("LazyForEachOnDataAdd_103 onClick emit action err: " + JSON.stringify(err.message))
+                    console.info("LazyForEachOnDataAdd_103 onClick emit action err: " + JSON.stringify((err as Error)?.message))
                   }
 
                 })
@@ -362,7 +362,7 @@ struct LazyForEachOnDataAdd {
                     this.data.changeData(2)
                   } catch (err) {
                     this.result_104 = false
-                    console.info("LazyForEachOnDataAdd_104 onClick emit action err: " + JSON.stringify(err.message))
+                    console.info("LazyForEachOnDataAdd_104 onClick emit action err: " + JSON.stringify((err as Error)?.message))
                   }
 
                   try {
@@ -378,7 +378,7 @@ struct LazyForEachOnDataAdd {
                     console.info("LazyForEachOnDataAdd_104 onClick start to emit action")
                     events_emitter.emit(backEvent4, backData4)
                   } catch (err) {
-                    console.info("LazyForEachOnDataAdd_104 onClick emit action err: " + JSON.stringify(err.message))
+                    console.info("LazyForEachOnDataAdd_104 onClick emit action err: " + JSON.stringify((err as Error)?.message))
                   }
                 })
               }, (item: string) => item)

@@ -854,5 +854,29 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
         done();
       }
     })
+
+    /*
+    * @tc.number  : ActsOsAccountGetOsAccountName_0100
+    * @tc.name    : GetOsAccountName promise
+    * @tc.desc    : Gets the name of the OS account to which the caller belongs
+    * @tc.level   : Level3
+    * @tc.size    : MediumTest
+    * @tc.type    : Function
+    */
+    it('ActsOsAccountGetOsAccountName_0100', 0, async function (done) {
+      console.info("====>ActsOsAccountGetOsAccountName_0100 start====");
+      var AccountManager = osaccount.getAccountManager();
+      console.info("====>get os AccountManager finish====");
+      try {
+        let osAccountName = await AccountManager.getOsAccountName();
+        console.info("====>isOsAccountConstraintEnabled osAccountName: " + osAccountName);
+        done();
+      } catch (err) {
+        console.info("====>isOsAccountConstraintEnabled err:" + JSON.stringify(err));
+        expect(err).assertEqual(null);
+        console.info("====>ActsOsAccountGetOsAccountName_0100 end====");
+        done();
+      }
+    })
   })
 }

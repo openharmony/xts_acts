@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAceEtsAttrLackTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAceEtsAttrLackTest"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
 }
 ohos_js_assets("ace_ets_dev_assets") {
   source_dir = "entry/src/main/ets"

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +20,8 @@ import events_emitter from '@ohos.events.emitter'
 struct GridSetting {
   @State smSpan: number = 2;
   @State smOffset: number = 1;
-  @State gridSpan: number = 1;
-  @State gridOffset: number = 0;
+  @State _gridSpan: number = 1;
+  @State _gridOffset: number = 0;
 
   build() {
     GridContainer({ sizeType: SizeType.SM }) {
@@ -30,7 +29,7 @@ struct GridSetting {
         Row() {
           Text('Left').fontSize(25)
         }
-        .gridOffset(this.gridOffset)
+        .gridOffset(this._gridOffset)
         .height("100%")
         .backgroundColor(0x66bbb2cb)
         .key('gridOffset')
@@ -49,7 +48,7 @@ struct GridSetting {
         Row() {
           Text('Right').fontSize(25)
         }
-        .gridSpan(this.gridSpan)
+        .gridSpan(this._gridSpan)
         .height("100%")
         .backgroundColor(0x66bbb2cb)
         .key('gridSpan')
@@ -86,9 +85,9 @@ struct GridSetting {
         this.smSpan = eventData.data.span;
         this.smOffset = eventData.data.offset;
       } else if (eventData.data.gridOffset) {
-        this.gridOffset = eventData.data.gridOffset;
+        this._gridOffset = eventData.data.gridOffset;
       } else if (eventData.data.gridSpan) {
-        this.gridSpan = eventData.data.gridSpan;
+        this._gridSpan = eventData.data.gridSpan;
       }
     }
   }

@@ -48,11 +48,11 @@ function buttonClick(buttonText: string, msgStr: string) {
     let driver = await UiDriver.create()
     console.info(msgStr + `case come in buttonClick fun 222`)
     console.info(msgStr + `driver is ${JSON.stringify(driver)}`)
-    await sleep(1000)
+    await sleep(900)
     console.info(msgStr + `UiDriver start`)
     let button: UiComponent = await driver.findComponent(BY.text(buttonText))
     console.info(msgStr + `button is ${JSON.stringify(button)}`)
-    await sleep(1000)
+    await sleep(900)
     if (button) {
       console.info(msgStr + `button click begin`)
       await button.click()
@@ -71,11 +71,11 @@ function inputClick(buttonText: string, msgStr: string) {
     let driver = await UiDriver.create()
     console.info(msgStr + `case come in inputClick fun 222`)
     console.info(msgStr + `driver is ${JSON.stringify(driver)}`)
-    await sleep(1000)
+    await sleep(900)
     console.info(msgStr + `UiDriver start`)
     let input: UiComponent = await driver.findComponent(BY.key(buttonText))
     console.info(msgStr + `input is ${JSON.stringify(input)}`)
-    await sleep(1000)
+    await sleep(900)
     if (input) {
       console.info(msgStr + `input click begin`)
       await input.click()
@@ -94,7 +94,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
   describe('windowInterface_optionalParameter_test', () => {
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG: boolean = true;
-
     beforeAll(async () => {
       // 点击掉USB用于的弹窗
       let msgStr: string = 'USB用于的弹窗';
@@ -130,7 +129,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect().assertFail();
         done();
       }
-      await sleep(1000);
+      await sleep(900);
       try {
         // @ts-ignore
         (mainWin as ohosWindow.Window).off('touchOutside', callback);
@@ -233,7 +232,10 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         num++
         secondListenFlag = true
       });
-      await sleep(3000);
+      await sleep(800);
+      await sleep(800);
+      await sleep(800);
+      await sleep(600);
       await buttonClick("点击pageOne", msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
@@ -336,7 +338,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       (tempWnd as ohosWindow.Window).on('touchOutside', firstCall);
       // @ts-ignore
       (tempWnd as ohosWindow.Window).on('touchOutside', secondCall);
-      await sleep(1000);
+      await sleep(800);
       await buttonClick('点击pageOne', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
@@ -355,7 +357,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect(TRUE_FLAG).assertFail();
         done();
       })
-      await sleep(1000)
+      await sleep(800)
       await (tempWnd as ohosWindow.Window).destroyWindow();
       await (tempWnd_two as ohosWindow.Window).destroyWindow();
       if (!firstListenFlag && secondListenFlag) {
@@ -436,7 +438,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         await (tempWnd as ohosWindow.Window).destroyWindow();
         done();
       })
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('windowSizeChange');
       firstListenFlag = false
       secondListenFlag = false
@@ -504,7 +506,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         await (tempWnd as ohosWindow.Window).destroyWindow();
         done();
       })
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('windowSizeChange', firstCall);
       firstListenFlag = false
       secondListenFlag = false
@@ -565,7 +567,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status']).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', TRUE_FLAG, done);
       });
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('avoidAreaChange');
       firstListenFlag = false
       secondListenFlag = false
@@ -618,7 +620,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (tempWnd as ohosWindow.Window).setFullScreen(true).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', TRUE_FLAG, done);
       });
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('avoidAreaChange', firstCall);
       firstListenFlag = false
       secondListenFlag = false
@@ -628,7 +630,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', TRUE_FLAG, done);
       });
-      await sleep(1000);
+      await sleep(800);
       if (!firstListenFlag && secondListenFlag) {
         (tempWnd as ohosWindow.Window).off('avoidAreaChange');
         done();
@@ -692,7 +694,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect().assertFail();
         done();
       });
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('screenshot');
       firstListenFlag = false
       secondListenFlag = false
@@ -705,7 +707,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect().assertFail();
         done();
       });
-      await sleep(1000);
+      await sleep(800);
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await (tempWnd as ohosWindow.Window).destroyWindow();
         done();
@@ -771,7 +773,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect().assertFail();
         done();
       });
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('screenshot', firstCall);
       firstListenFlag = false
       secondListenFlag = false
@@ -784,7 +786,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect().assertFail();
         done();
       });
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('screenshot');
       await (tempWnd as ohosWindow.Window).destroyWindow();
       if (!firstListenFlag && secondListenFlag) {
@@ -845,7 +847,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect(TRUE_FLAG).assertFail();
         done();
       })
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('dialogTargetTouch');
       firstListenFlag = false
       secondListenFlag = false
@@ -855,7 +857,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect(TRUE_FLAG).assertFail();
         done();
       })
-      await sleep(1000);
+      await sleep(800);
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await (tempWnd as ohosWindow.Window).destroyWindow();
         done();
@@ -913,7 +915,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect(TRUE_FLAG).assertFail();
         done();
       })
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('dialogTargetTouch', firstCall);
       firstListenFlag = false
       secondListenFlag = false
@@ -923,7 +925,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect(TRUE_FLAG).assertFail();
         done();
       })
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('dialogTargetTouch');
       await (tempWnd as ohosWindow.Window).destroyWindow();
       if (!firstListenFlag && secondListenFlag) {
@@ -945,6 +947,11 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testWindow_off_keyboardHeightChange_AllListening_LogOut';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      // pc上输入框聚焦没有软键盘弹出，该用例无法测试执行
+      if(!canIUse("SyatemCapability.Sensors.Sensor")){
+        done();
+        return;
+      }
       let num: number = 0
       let firstListenFlag: boolean = false
       let secondListenFlag: boolean = false
@@ -987,25 +994,25 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect(TRUE_FLAG).assertFail();
         done();
       })
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('keyboardHeightChange');
       firstListenFlag = false
       secondListenFlag = false
-      await sleep(1000);
+      await sleep(800);
       await buttonClick('点击按钮获取焦点', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
         expect().assertFail();
         done();
       })
-      await sleep(1000);
+      await sleep(800);
       await inputClick('pageTwoinputSecond', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
         expect(TRUE_FLAG).assertFail();
         done();
       })
-      await sleep(2000);
+      await sleep(800);
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await (tempWnd as ohosWindow.Window).destroyWindow();
         done();
@@ -1023,6 +1030,11 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testWindow_off_keyboardHeightChange_FirstCall_LogOut';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      // pc上输入框聚焦没有软键盘弹出，该用例无法测试执行
+      if(!canIUse("SyatemCapability.Sensors.Sensor")){
+        done();
+        return;
+      }
       let firstListenFlag: boolean = false
       let secondListenFlag: boolean = false
 
@@ -1067,25 +1079,25 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect(TRUE_FLAG).assertFail();
         done();
       })
-      await sleep(1000);
+      await sleep(800);
       (tempWnd as ohosWindow.Window).off('keyboardHeightChange', firstCall);
       firstListenFlag = false
       secondListenFlag = false
-      await sleep(1000);
+      await sleep(800);
       await buttonClick('点击按钮获取焦点', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
         expect().assertFail();
         done();
       })
-      await sleep(1000);
+      await sleep(800);
       await inputClick('pageTwoinputSecond', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
         expect(TRUE_FLAG).assertFail();
         done();
       })
-      await sleep(2000);
+      await sleep(800);
       if (!firstListenFlag && secondListenFlag) {
         (tempWnd as ohosWindow.Window).off('keyboardHeightChange');
         await (tempWnd as ohosWindow.Window).destroyWindow();
@@ -1134,14 +1146,14 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (tempWnd as ohosWindow.Window).hide().catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.hide', TRUE_FLAG, done);
       });
-      await sleep(1000);
+      await sleep(800);
       windowStage.off("windowStageEvent");
       firstListenFlag = false
       secondListenFlag = false
       await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
       });
-      await sleep(1000);
+      await sleep(800);
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         done();
       }
@@ -1179,433 +1191,15 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (tempWnd as ohosWindow.Window).hide().catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.hide', TRUE_FLAG, done);
       });
-      await sleep(1000);
+      await sleep(800);
       windowStage.off("windowStageEvent", firstCall);
       firstListenFlag = false
       secondListenFlag = false
       await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
       });
-      await sleep(1000);
+      await sleep(800);
       windowStage.off("windowStageEvent");
-      if (!firstListenFlag && secondListenFlag) {
-        done();
-      } else {
-        expect(TRUE_FLAG).assertFail();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0340
-     * @tc.name      : testDisplay_off_add_Deregister_All_Listeners
-     * @tc.desc      : Enable the monitor that shows device changes.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testDisplay_off_add_Deregister_All_Listeners', 0, async (done: Function) => {
-      let caseName: string = 'testDisplay_off_add_Deregister_All_Listeners';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let num: number = 0
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-
-      let firstCall = () => {
-        console.log(msgStr + "first listener trigger")
-        num++
-        firstListenFlag = true
-      }
-
-      let secondCall = () => {
-        console.log(msgStr + "second listener trigger")
-        num++
-        secondListenFlag = true
-      }
-
-      display.on("add", firstCall);
-      display.on("add", secondCall);
-      let screenClass: screen.Screen | void = await screen.createVirtualScreen({
-        name: 'add01',
-        width: 1080,
-        height: 2340,
-        density: 2,
-        surfaceId: ''
-      }).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', TRUE_FLAG, done);
-      });
-      expect(!!screenClass).assertTrue();
-      await screen.makeExpand([{
-        screenId: 0, startX: 0, startY: 0
-      }, {
-        screenId: (screenClass as screen.Screen).id, startX: 1080, startY: 0
-      }]).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', TRUE_FLAG, done);
-      });
-      await sleep(1000);
-      display.off('add')
-      firstListenFlag = false
-      secondListenFlag = false
-      await screen.destroyVirtualScreen((screenClass as screen.Screen).id)
-      let screenClass_two: screen.Screen | void = await screen.createVirtualScreen({
-        name: 'add001',
-        width: 900,
-        height: 2000,
-        density: 3,
-        surfaceId: ''
-      }).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', TRUE_FLAG, done);
-      });
-      expect(!!screenClass_two).assertTrue();
-      await screen.makeExpand([{
-        screenId: 0, startX: 0, startY: 0
-      }, {
-        screenId: (screenClass_two as screen.Screen).id, startX: 1080, startY: 0
-      }]).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', TRUE_FLAG, done);
-      });
-      await sleep(1000);
-      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
-        await screen.destroyVirtualScreen((screenClass_two as screen.Screen).id)
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0350
-     * @tc.name      : testDisplay_off_add_Deregister_FirstCall_Listeners
-     * @tc.desc      : Enable the monitor that shows device changes.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testDisplay_off_add_Deregister_FirstCall_Listeners', 0, async (done: Function) => {
-      let caseName: string = 'testDisplay_off_add_Deregister_FirstCall_Listeners';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-      let firstCall: Callback<number> = () => {
-        console.log(msgStr + "first listener trigger")
-        firstListenFlag = true
-      }
-
-      let secondCall: Callback<number> = () => {
-        console.log(msgStr + "second listener trigger")
-        secondListenFlag = true
-      }
-
-      display.on("add", firstCall);
-      display.on("add", secondCall);
-      let screenClass: screen.Screen | void = await screen.createVirtualScreen({
-        name: 'add02',
-        width: 1080,
-        height: 2340,
-        density: 2,
-        surfaceId: ''
-      }).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', TRUE_FLAG, done);
-      });
-      expect(!!screenClass).assertTrue();
-      await screen.makeExpand([{
-        screenId: 0, startX: 0, startY: 0
-      }, {
-        screenId: (screenClass as screen.Screen).id, startX: 1080, startY: 0
-      }]).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', TRUE_FLAG, done);
-      });
-      await sleep(1000);
-      display.off("add", firstCall)
-      firstListenFlag = false
-      secondListenFlag = false
-      await screen.destroyVirtualScreen((screenClass as screen.Screen).id)
-      let screenClass_two: screen.Screen | void = await screen.createVirtualScreen({
-        name: 'add002',
-        width: 900,
-        height: 2000,
-        density: 3,
-        surfaceId: ''
-      }).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', TRUE_FLAG, done);
-      });
-      expect(!!screenClass_two).assertTrue();
-      await screen.makeExpand([{
-        screenId: 0, startX: 0, startY: 0
-      }, {
-        screenId: (screenClass_two as screen.Screen).id, startX: 1080, startY: 0
-      }]).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', TRUE_FLAG, done);
-      });
-      await sleep(1000);
-      await screen.destroyVirtualScreen((screenClass_two as screen.Screen).id)
-      display.off("add")
-      if (!firstListenFlag && secondListenFlag) {
-        done();
-      } else {
-        expect(TRUE_FLAG).assertFail();
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0380
-     * @tc.name      : testDisplay_off_remove_Deregister_All_Listeners
-     * @tc.desc      : Enable the monitor that shows device changes.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testDisplay_off_remove_Deregister_All_Listeners', 0, async (done: Function) => {
-      let caseName: string = 'testDisplay_off_remove_Deregister_All_Listeners';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let num: number = 0
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-
-      let firstCall: Callback<number> = () => {
-        console.log(msgStr + "first listener trigger")
-        num++
-        firstListenFlag = true
-      }
-
-      let secondCall: Callback<number> = () => {
-        console.log(msgStr + "second listener trigger")
-        num++
-        secondListenFlag = true
-      }
-
-      display.on('remove', firstCall);
-      display.on('remove', secondCall);
-      let screenClass: screen.Screen | void = await screen.createVirtualScreen({
-        name: 'remove01',
-        width: 1080,
-        height: 2340,
-        density: 2,
-        surfaceId: ''
-      }).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', TRUE_FLAG, done);
-      });
-      expect(!!screenClass).assertTrue();
-      await screen.makeExpand([{
-        screenId: 0, startX: 0, startY: 0
-      }, {
-        screenId: (screenClass as screen.Screen).id, startX: 1080, startY: 0
-      }]).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', TRUE_FLAG, done);
-      });
-      await screen.destroyVirtualScreen((screenClass as screen.Screen).id)
-      await sleep(1000);
-      display.off('remove')
-      firstListenFlag = false
-      secondListenFlag = false
-      let screenClass_two: screen.Screen | void = await screen.createVirtualScreen({
-        name: 'remove001',
-        width: 900,
-        height: 2000,
-        density: 3,
-        surfaceId: ''
-      }).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', TRUE_FLAG, done);
-      });
-      expect(!!screenClass_two).assertTrue();
-      await screen.makeExpand([{
-        screenId: 0, startX: 0, startY: 0
-      }, {
-        screenId: (screenClass_two as screen.Screen).id, startX: 1080, startY: 0
-      }]).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', TRUE_FLAG, done);
-      });
-      await screen.destroyVirtualScreen((screenClass_two as screen.Screen).id)
-      await sleep(1000);
-      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0390
-     * @tc.name      : testDisplay_off_remove_Deregister_FirstCall_Listeners
-     * @tc.desc      : Enable the monitor that shows device changes.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testDisplay_off_remove_Deregister_FirstCall_Listeners', 0, async (done: Function) => {
-      let caseName: string = 'testDisplay_off_remove_Deregister_FirstCall_Listeners';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-
-      let firstCall: Callback<number> = () => {
-        console.log(msgStr + "first listener trigger")
-        firstListenFlag = true
-      }
-
-      let secondCall: Callback<number> = () => {
-        console.log(msgStr + "second listener trigger")
-        secondListenFlag = true
-      }
-
-      display.on('remove', firstCall);
-      display.on('remove', secondCall);
-      let screenClass: screen.Screen | void = await screen.createVirtualScreen({
-        name: 'remove02',
-        width: 1080,
-        height: 2340,
-        density: 2,
-        surfaceId: ''
-      }).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', TRUE_FLAG, done);
-      });
-      expect(!!screenClass).assertTrue();
-      await screen.makeExpand([{
-        screenId: 0, startX: 0, startY: 0
-      }, {
-        screenId: (screenClass as screen.Screen).id, startX: 1080, startY: 0
-      }]).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', TRUE_FLAG, done);
-      });
-      await screen.destroyVirtualScreen((screenClass as screen.Screen).id)
-      await sleep(1000);
-      display.off('remove', firstCall)
-      firstListenFlag = false
-      secondListenFlag = false
-      let screenClass_two: screen.Screen | void = await screen.createVirtualScreen({
-        name: 'remove002',
-        width: 900,
-        height: 2000,
-        density: 3,
-        surfaceId: ''
-      }).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', TRUE_FLAG, done);
-      });
-      expect(!!screenClass_two).assertTrue();
-      await screen.makeExpand([{
-        screenId: 0, startX: 0, startY: 0
-      }, {
-        screenId: (screenClass_two as screen.Screen).id, startX: 1080, startY: 0
-      }]).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', TRUE_FLAG, done);
-      });
-      await screen.destroyVirtualScreen((screenClass_two as screen.Screen).id)
-      await sleep(1000);
-      display.off('remove')
-      if (!firstListenFlag && secondListenFlag) {
-        done();
-      } else {
-        expect(TRUE_FLAG).assertFail();
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0360
-     * @tc.name      : testDisplay_off_change_Deregister_All_Listeners
-     * @tc.desc      : Enable monitoring of screen status changes.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testDisplay_off_change_Deregister_All_Listeners', 0, async (done: Function) => {
-      let caseName: string = 'testDisplay_off_change_Deregister_All_Listeners';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let num: number = 0
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-
-      let firstCall: Callback<number> = () => {
-        console.log(msgStr + "first listener trigger")
-        num++
-        firstListenFlag = true
-      }
-
-      let secondCall: Callback<number> = () => {
-        console.log(msgStr + "second listener trigger")
-        num++
-        secondListenFlag = true
-      }
-
-      display.on('change', firstCall);
-      display.on('change', secondCall);
-      let mainWindow: ohosWindow.Window | void;
-      mainWindow = await windowStage.getMainWindow().catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'windowStage.getMainWindow', TRUE_FLAG, done);
-      });
-      expect(!!mainWindow).assertTrue();
-      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.PORTRAIT_INVERTED)
-        .catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        });
-      await sleep(1000);
-      display.off('change')
-      firstListenFlag = false
-      secondListenFlag = false
-      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED)
-        .catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
-          expect(TRUE_FLAG).assertFail();
-          done();
-        });
-      await sleep(1000);
-      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
-        done();
-      } else {
-        expect(TRUE_FLAG).assertFail();
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0370
-     * @tc.name      : testDisplay_off_change_Deregister_FirstCall_Listeners
-     * @tc.desc      : Enable monitoring of screen status changes.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testDisplay_off_change_Deregister_FirstCall_Listeners', 0, async (done: Function) => {
-      let caseName: string = 'testDisplay_off_change_Deregister_FirstCall_Listeners';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-
-      let firstCall = () => {
-        console.log(msgStr + "first listener trigger")
-        firstListenFlag = true
-      }
-
-      let secondCall = () => {
-        console.log(msgStr + "second listener trigger")
-        secondListenFlag = true
-      }
-
-      display.on('change', firstCall);
-      display.on('change', secondCall);
-      let mainWindow: ohosWindow.Window | void
-      mainWindow = await windowStage.getMainWindow().catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'windowStage.getMainWindow', TRUE_FLAG, done);
-      });
-      expect(!!mainWindow).assertTrue();
-      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.PORTRAIT_INVERTED)
-        .catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        });
-      await sleep(1000);
-      display.off('change', firstCall)
-      firstListenFlag = false
-      secondListenFlag = false
-      await (mainWindow as ohosWindow.Window).setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED)
-        .catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        });
-      await sleep(1000);
-      display.off('change')
       if (!firstListenFlag && secondListenFlag) {
         done();
       } else {

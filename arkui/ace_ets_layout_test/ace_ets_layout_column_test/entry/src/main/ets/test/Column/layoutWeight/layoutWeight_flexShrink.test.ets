@@ -16,7 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../MainAbility/common/MessageManager';
 
 export default function layoutWeight_flexShrink() {
   describe('layoutWeight_flexShrink', () => {

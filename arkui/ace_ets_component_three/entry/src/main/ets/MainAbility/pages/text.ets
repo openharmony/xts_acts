@@ -42,68 +42,68 @@ struct TextExample {
 
   onPageShow() {
     console.info('text page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 226,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 227,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 228,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
 
-    var stateChangeEventThree = {
+    let stateChangeEventThree: events_emitter.InnerEvent = {
       eventId: 229,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
 
-    var stateChangeEventFour = {
+    let stateChangeEventFour: events_emitter.InnerEvent = {
       eventId: 230,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventFour, this.stateChangCallBack)
 
-    var stateChangeEventFive = {
+    let stateChangeEventFive: events_emitter.InnerEvent = {
       eventId: 231,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventFive, this.stateChangCallBack)
 
-    var stateChangeEventSix = {
+    let stateChangeEventSix: events_emitter.InnerEvent = {
       eventId: 232,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventSix, this.stateChangCallBack)
 
-    var stateChangeEventSeven = {
+    let stateChangeEventSeven: events_emitter.InnerEvent = {
       eventId: 233,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventSeven, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("text page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.fontSize != null) {
+      if (eventData.data?.fontSize != null) {
         this.fontSize = parseInt(eventData.data.fontSize);
       }
-      if (eventData.data.fontColor != null) {
+      if (eventData.data?.fontColor != null) {
         this.fontColor = eventData.data.fontColor;
       }
-      if (eventData.data.textAlign != null) {
+      if (eventData.data?.textAlign != null) {
         this.textAlign = parseInt(eventData.data.textAlign);
       }
-      if (eventData.data.textOverflow != null) {
+      if (eventData.data?.textOverflow != null) {
         this.textOverflow = parseInt(eventData.data.textOverflow);
       }
     }

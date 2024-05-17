@@ -20,6 +20,7 @@ import {
     sleep,
     getPermission,
     pushCreateAsset,
+    pushCreateAssetSingle,
 } from '../../../../../../common';
 
 export default function provisionResourcesTest() {
@@ -77,7 +78,7 @@ export default function provisionResourcesTest() {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0100';
             const fileNames = [
                 "01.jpg", "addRemoveAssetsChangeReq01.jpg", "addRemoveAssetsChangeReq02.jpg", "request_image.jpg", 
-                "albumImageVideoCount01.jpg", "albumImageVideoCount02.jpg","PicturealbumGetAssetsCb01.jpg", "albumGetAssetsPro01.jpg"
+                "albumImageVideoCount01.jpg", "albumImageVideoCount02.jpg","PicturealbumGetAssetsCb01.jpg", "albumGetAssetsPro01.jpg", "request_image_native.jpg",
             ];
             await pushCreateAsset(fileNames);
             await checkResourceAsset(done, testNum, fileNames);
@@ -202,7 +203,8 @@ export default function provisionResourcesTest() {
         it('sub_media_photoAccess_provision_check_assets_008', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0800';
             const fileNames = [
-                "01.mp4", "albumImageVideoCount01.mp4", "albumGetAssetsCb01.mp4", "albumGetAssetsPro01.mp4"
+                "01.mp4", "albumImageVideoCount01.mp4", "albumGetAssetsCb01.mp4", "albumGetAssetsPro01.mp4",
+                "request_video_native.mp4","request_video.mp4",
             ];
             await pushCreateAsset(fileNames);
             await checkResourceAsset(done, testNum, fileNames);
@@ -273,6 +275,23 @@ export default function provisionResourcesTest() {
                 "modifyCb06.mp4", "modifyCb07.mp4",  "modifyPro06.mp4", "modifyPro07.mp4"
             ];
             await pushCreateAsset(fileNames);
+            await checkResourceAsset(done, testNum, fileNames);
+        });
+
+        /**
+         * @tc.number    : SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_1300
+         * @tc.name      : sub_media_photoAccess_provision_check_assets_013
+         * @tc.desc      : Provision mediaAssets and check mediaAssets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('sub_media_photoAccess_provision_check_assets_013', 0, async function (done) {
+            const testNum = 'sub_media_photoAccess_provision_check_assets_013';
+            const fileNames = [
+                "native_request_gif.gif", "native_request_png.png",  "native_request_mpeg.mpeg", "native_request_error_mp4.mp4", "native_request_error_jpg.jpg"
+            ];
+            await pushCreateAssetSingle(fileNames);
             await checkResourceAsset(done, testNum, fileNames);
         });
     });

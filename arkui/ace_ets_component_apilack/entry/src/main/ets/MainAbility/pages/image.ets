@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
+import events_emitter from '@ohos.events.emitter';
 
 const TAG = 'ets_apiLack_add';
-import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component

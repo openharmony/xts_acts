@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 
 export default function mediaQueryOffJsunit() {
@@ -28,8 +28,8 @@ export default function mediaQueryOffJsunit() {
       console.info('[mediaQueryOffTest] before each called')
 
       // let result ;
-      let options = {
-        uri: 'MainAbility/pages/mediaQuery'
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/mediaQuery'
       }
       try {
         let result = router.push(options)
@@ -214,9 +214,9 @@ export default function mediaQueryOffJsunit() {
           eventId: 60218,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback1 = (eventData) => {
+        let callback1 = (eventData: events_emitter.EventData) => {
           console.info("onRequestPopupData_0012 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
         }
         console.info("onSelect_0012 click result is: " + JSON.stringify(sendEventByKey('offText', 10, "")));
         events_emitter.on(innerEventOne, callback1);
@@ -240,9 +240,9 @@ export default function mediaQueryOffJsunit() {
           eventId: 60219,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback1 = (eventData) => {
+        let callback1 = (eventData: events_emitter.EventData) => {
           console.info("onRequestPopupData_0012 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
         }
         console.info("onSelect_0012 click result is: " + JSON.stringify(sendEventByKey('matchMediaSyncText', 10, "")));
         events_emitter.on(innerEventOne, callback1);

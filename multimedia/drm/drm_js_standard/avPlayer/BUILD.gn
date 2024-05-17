@@ -24,7 +24,7 @@ ohos_js_hap_suite("drm_avplayer_js_hap") {
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsDRMTest"
   subsystem_name = "multimedia"
-  part_name = "player_framework"
+  part_name = "drm_framework"
 }
 
 ohos_app_scope("hts_demo_ets_app_profile") {

@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import WebViewPrefetchResource from './WebViewPrefetchResource.test'
+import precompileJavaScript from './precompileJavaScript.test'
 
 export default function testsuite() {
   WebViewPrefetchResource()
+  precompileJavaScript()
 }

@@ -20,6 +20,15 @@ import ModalBlurStyle from './menuTest/ModalBlurStyle.test';
 import popupArrowJsunit from './popupControlTest/popupArrowJsunit.test';
 import ModelSheetTest from './bindSheetTest/ModelSheet.test';
 import abilityTest from './popupControlTest/popupfirst.test';
+import CustomPopupOptions from './popupControlTest/CustomPopupOptions.test';
+import CustomPopupOptionsFalse from './popupControlTest/CustomPopupOptionsFalse.test';
+import CustomPopupOptionsTrue from './popupControlTest/CustomPopupOptionsTrue.test';
+import PopupOptions from './popupControlTest/PopupOptions.test';
+import PopupOptionsFalse from './popupControlTest/PopupOptionsFalse.test';
+import PopupOptionsTrue from './popupControlTest/PopupOptionsTrue.test';
+import bindContextMenu from './menuControlTest/bindContextMenu.test';
+import BindMenu from './menuControlTest/BindMenu1.test';
+import aboutToDisappearJsunit from './menuControlTest/AboutToDisappearJsunit.test';
 
 export default function testsuite() {
   BindMenuTest();
@@ -30,4 +39,14 @@ export default function testsuite() {
   popupArrowJsunit()
   ModelSheetTest()
   abilityTest()
+
+  CustomPopupOptions()
+  CustomPopupOptionsFalse()
+  CustomPopupOptionsTrue()
+  PopupOptions()
+  PopupOptionsFalse()
+  PopupOptionsTrue()
+  bindContextMenu()
+  BindMenu()
+  aboutToDisappearJsunit();
 }

@@ -150,7 +150,7 @@ export default function listSwipeAction29Jsunit() {
       expect(JSON.parse(textSwipeOffset2).$attrs.content).assertEqual('-160');
       // init reset the state
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(-1000)), Math.round(globalThis.winTop + vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + 0), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       done();

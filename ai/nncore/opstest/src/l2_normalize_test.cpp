@@ -29,7 +29,6 @@ struct L2NormalizeModel1 {
 
     float inputValue[2][3] = {{-1, -2, -3}, {4, 5, 6}};
     float outputValue[2][3] = {0};
-    float expectValue[2][3] = {{-0.26726124, -0.53452248, -0.80178373}, {0.45584231, 0.56980288, 0.68376346}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 6*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 6*sizeof(float)};
@@ -49,7 +48,6 @@ struct L2NormalizeModel2 {
 
     float inputValue[2][3] = {{-1, -2, -3}, {4, 5, 6}};
     float outputValue[2][3] = {0};
-    float expectValue[2][3] = {{-0.24253563, -0.37139068, -0.4472136}, {0.9701425, 0.92847669, 0.89442719}};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 6*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 6*sizeof(float)};
@@ -299,7 +297,6 @@ HWTEST_F(L2NormalizeTest, SUB_AI_NNRt_Func_North_L2Normalize_Model_SetOperandVal
     L2NormalizeModel1 l2NormalizeModel;
     OHNNGraphArgs graphArgs = l2NormalizeModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -310,7 +307,7 @@ HWTEST_F(L2NormalizeTest, SUB_AI_NNRt_Func_North_L2Normalize_Model_SetOperandVal
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -336,7 +333,6 @@ HWTEST_F(L2NormalizeTest, SUB_AI_NNRt_Func_North_L2Normalize_Model_SetOperandVal
     L2NormalizeModel1 l2NormalizeModel;
     OHNNGraphArgs graphArgs = l2NormalizeModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -347,7 +343,7 @@ HWTEST_F(L2NormalizeTest, SUB_AI_NNRt_Func_North_L2Normalize_Model_SetOperandVal
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -372,7 +368,6 @@ HWTEST_F(L2NormalizeTest, SUB_AI_NNRt_Func_North_L2Normalize_Model_SetOperandVal
     L2NormalizeModel1 l2NormalizeModel;
     OHNNGraphArgs graphArgs = l2NormalizeModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -383,7 +378,7 @@ HWTEST_F(L2NormalizeTest, SUB_AI_NNRt_Func_North_L2Normalize_Model_SetOperandVal
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

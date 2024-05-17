@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -160,7 +159,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_1000 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_1000 change component color error: " + err.message);
+        console.log("shapeTest_1000 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -178,7 +177,7 @@ export default function shapeJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "antiAlias": aaaaa,
+            "antiAlias": "aaaaa",
           }
         }
         let innerEvent: events_emitter.InnerEvent = {
@@ -188,7 +187,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_1100 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_1100 change component color error: " + err.message);
+        console.log("shapeTest_1100 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -215,7 +214,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_1200 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_1200 change component color error: " + err.message);
+        console.log("shapeTest_1200 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -242,7 +241,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_1300 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_1300 change component color error: " + err.message);
+        console.log("shapeTest_1300 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -270,7 +269,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_1400 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_1400 change component color error: " + err.message);
+        console.log("shapeTest_1400 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -298,7 +297,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_1500 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_1500 change component color error: " + err.message);
+        console.log("shapeTest_1500 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -326,7 +325,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_1600 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_1600 change component color error: " + err.message);
+        console.log("shapeTest_1600 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -354,7 +353,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_1700 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_1700 change component color error: " + err.message);
+        console.log("shapeTest_1700 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -382,7 +381,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_1800 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_1800 change component color error: " + err.message);
+        console.log("shapeTest_1800 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -410,7 +409,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_2100 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_2100 change component color error: " + err.message);
+        console.log("shapeTest_2100 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -438,7 +437,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_3200 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_3200 change component color error: " + err.message);
+        console.log("shapeTest_3200 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -466,7 +465,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_3300 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_3300 change component color error: " + err.message);
+        console.log("shapeTest_3300 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -494,7 +493,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_2200 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_2200 change component color error: " + err.message);
+        console.log("shapeTest_2200 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -522,7 +521,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_1900 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_1900 change component color error: " + err.message);
+        console.log("shapeTest_1900 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -550,7 +549,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_2000 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_2000 change component color error: " + err.message);
+        console.log("shapeTest_2000 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -579,7 +578,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_2300 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_2300 change component color error: " + err.message);
+        console.log("shapeTest_2300 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -607,7 +606,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_2400 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_2400 change component color error: " + err.message);
+        console.log("shapeTest_2400 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -635,7 +634,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_2500 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_2500 change component color error: " + err.message);
+        console.log("shapeTest_2500 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -663,7 +662,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_2600 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_2600 change component color error: " + err.message);
+        console.log("shapeTest_2600 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -691,7 +690,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_2700 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_2700 change component color error: " + err.message);
+        console.log("shapeTest_2700 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -719,7 +718,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_2800 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_2800 change component color error: " + err.message);
+        console.log("shapeTest_2800 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -747,7 +746,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_2900 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_2900 change component color error: " + err.message);
+        console.log("shapeTest_2900 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');
@@ -786,7 +785,7 @@ export default function shapeJsunit() {
         console.info("shapeTest_3100 start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("shapeTest_3100 change component color error: " + err.message);
+        console.log("shapeTest_3100 change component color error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('shape');

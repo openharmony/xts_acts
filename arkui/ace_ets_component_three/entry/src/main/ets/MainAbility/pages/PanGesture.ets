@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,20 +19,21 @@ import events_emitter from '@ohos.events.emitter';
 struct PanGestureExample {
   @State offsetX: number = 0
   @State offsetY: number = 0
-  @State touchable: boolean = true;
+  @State _touchable: boolean = true;
   @State isTouched: boolean = false;
-  private ChangCallBack = (eventData) => {
+  eventType?: string;
+  private ChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[PanGesture] ChangCallBack stateChangCallBack");
     if (eventData != null) {
       console.info("[PanGesture] ChangCallBack state change called:" + JSON.stringify(eventData));
-      if (eventData.data.touchable != null) {
-        this.touchable = eventData.data.touchable;
+      if (eventData.data?.touchable != null) {
+        this._touchable = eventData.data.touchable;
       }
     }
   }
 
   onPageShow() {
-    var ChangeEvent = {
+    let ChangeEvent: events_emitter.InnerEvent = {
       eventId: 23,
       priority: events_emitter.EventPriority.LOW
     }
@@ -51,17 +51,12 @@ struct PanGestureExample {
     .margin(80)
     .key('PanGesture')
     .translate({ x: this.offsetX, y: this.offsetY, z: 5 })
-    .touchable(this.touchable)
+    .touchable(this._touchable)
     .gesture(
       PanGesture({ fingers: 1, direction: PanDirection.All, distance: 1 })
       .onActionStart((event: GestureEvent) => {
         console.info('Pan start')
-        console.log('PanGesture globalX' + event.globalX);
-        console.log('PanGesture globalY' + event.globalY);
-        console.log('PanGesture localX' + event.localX);
-        console.log('PanGesture localY' + event.localY);
         console.log('PanGesture fingerList' + event.fingerList);
-        console.log('PanGesture FingerInfo' + event.fingerList.FingerInfo);
         console.log('PanGesture speed' + event.speed);
         console.log('PanGesture pinchCenterX' + event.pinchCenterX);
         console.log('PanGesture pinchCenterY' + event.pinchCenterY);
@@ -88,20 +83,20 @@ struct PanGestureExample {
         }
         console.info('[PanGesture] TouchType:' + this.eventType)
         try {
-          var backData = {
+          let backData: events_emitter.EventData = {
             data: {
               "ACTION": this.isTouched,
               "EVENT_TYPE": this.eventType
             }
           }
-          var backEvent = {
+          let backEvent: events_emitter.InnerEvent = {
             eventId: 24,
             priority: events_emitter.EventPriority.LOW
           }
           console.info("[PanGesture] start to emit action state")
           events_emitter.emit(backEvent, backData)
         } catch (err) {
-          console.info("[PanGesture] emit action state err: " + JSON.stringify(err.message))
+          console.info("[PanGesture] emit action state err: " + JSON.stringify((err as Error)?.message))
         }
       })
   }

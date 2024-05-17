@@ -230,25 +230,6 @@ struct webAttribute {
             }
 
 
-            case "testOnWindowExit001": {
-              try {
-                this.OnWindowExtCallBack = false
-                this.javaScriptAccess = true;
-                this.testAllowWindowOpenMethod = true;
-                this.testMultiWindowAccess = true;
-                this.controller.loadUrl({ url: "resource://rawfile/onWindowExit.html" });
-                await Utils.sleep(2000)
-                this.controller.runJavaScript({ script: "OpenWindowAll()", callback: (res) => {
-                  console.log('OpenWindowAll: ' + JSON.stringify(res));
-                } })
-                await Utils.sleep(2000)
-                Utils.emitEvent(this.OnWindowExtCallBack, 30075)
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              }
-              break;
-            }
-
 
           }
         })
@@ -329,7 +310,7 @@ struct webAttribute {
           if (event) {
             let popController: webView.WebviewController = new webView.WebviewController();
             this.OnWindowNewCallBack = true
-            event.handler.setWebController(popController);
+            event.handler.setWebController(null);
           }
         })
         .onWindowExit(() => {

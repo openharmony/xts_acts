@@ -72,7 +72,6 @@ struct setAndClearWebSchemeHandler {
                 Utils.emitEvent(this.getRequestUrlResult, 8822)
                 Utils.emitEvent(this.getRequestMethodResult, 8824)
                 Utils.emitEvent(this.getReferrerResult, 8826)
-                Utils.emitEvent(this.isMainFrameResult, 8828)
                 Utils.emitEvent(this.hasGestureResult, 8830)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -115,7 +114,6 @@ struct setAndClearWebSchemeHandler {
                 Utils.emitEvent(this.getRequestUrlResult, 8842)
                 Utils.emitEvent(this.getRequestMethodResult, 8844)
                 Utils.emitEvent(this.getReferrerResult, 8846)
-                Utils.emitEvent(this.isMainFrameResult, 8848)
                 Utils.emitEvent(this.hasGestureResult, 8850)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);

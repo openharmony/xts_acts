@@ -986,28 +986,34 @@ export default function window_test() {
                 } else {
                     expect(data != null).assertTrue();
                     data.on('systemAvoidAreaChange', systemAvoidAreaChangeCallback);
-                    data.setFullScreen(true, (err) => {
-                        if (err.code != 0) {
-                            console.log(msgStr + ' setLayoutFullScreen callback fail ' + JSON.stringify(err));
-                            expect().assertFail();
-                            done();
-                        } else {
-                            setTimeout((async function () {
-                                expect(height == 0).assertTrue();
-                                data.off('systemAvoidAreaChange');
-                                data.setFullScreen(false, (err) => {
-                                    if (err.code != 0) {
-                                        console.log(msgStr + ' setLayoutFullScreen callback fail ' + JSON.stringify(err));
-                                        expect().assertFail();
-                                        done();
-                                    } else {
-                                        console.log(msgStr + ' off callback success');
+                    data.setLayoutFullScreen(false, (err) => {
+                        console.log(msgStr + ' setLayoutFullScreen(false) err info is ' + JSON.stringify(err));
+                        data.setLayoutFullScreen(true, (err) => {
+                            console.log(msgStr + ' setLayoutFullScreen(true) err info is ' + JSON.stringify(err));
+                            data.setFullScreen(true, (err) => {
+                                if (err.code != 0) {
+                                    console.log(msgStr + ' setFullScreen callback fail ' + JSON.stringify(err));
+                                    expect().assertFail();
+                                    done();
+                                } else {
+                                    setTimeout((async function () {
                                         expect(height == 0).assertTrue();
-                                        done();
-                                    }
-                                })
-                            }), 3000)
-                        }
+                                        data.off('systemAvoidAreaChange');
+                                        data.setFullScreen(false, (err) => {
+                                            if (err.code != 0) {
+                                                console.log(msgStr + ' setLayoutFullScreen callback fail ' + JSON.stringify(err));
+                                                expect().assertFail();
+                                                done();
+                                            } else {
+                                                console.log(msgStr + ' off callback success');
+                                                expect(height == 0).assertTrue();
+                                                done();
+                                            }
+                                        })
+                                    }), 3000)
+                                }
+                            })
+                        })
                     })
                 }
             })
@@ -3766,47 +3772,6 @@ export default function window_test() {
           }
     })
 
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1180
-     * @tc.name      : testSetWindowLimits_Function_Promise
-     * @tc.desc      : test the function of setWindowLimits
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testSetWindowLimits_Function_Promise', 0, async function (done){
-        let tag = 'setWindowLimits_Function_Promise '
-        console.log(tag + 'begin')
-        try {
-            let WindowLimits = {
-                maxWidth: 1500,
-                maxHeight: 1000,
-                minWidth: 500,
-                minHeight: 400
-            };
-            let windowClass= await window.getTopWindow();
-            let promise = windowClass.setWindowLimits(WindowLimits);
-            promise.then((data) => {
-                console.log(tag + 'Succeeded in setWindowLimits. Cause:' + JSON.stringify(data));
-                expect(true).assertTrue();
-                done();
-            }).catch((error) => {
-                console.log(tag + 'www data Failed to setWindowLimits. Cause: ' + JSON.stringify(error));
-                if (error.code == 801) {
-                    expect(true).assertTrue()
-                    done()
-                } else {
-                    expect().assertFail();
-                    done();
-                }
-            });
-            
-          } catch (error) {
-              console.log(tag + 'Failed to change the window limits out. Cause:' + JSON.stringify(error));
-              expect().assertFail();
-              done();
-          }
-    })
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1190

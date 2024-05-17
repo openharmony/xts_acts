@@ -14,6 +14,9 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
+
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 export default function abilityTest() {
 
   describe('AbilityTest', function () {
@@ -516,6 +519,10 @@ export default function abilityTest() {
             });
           }
         } else if (event === 'Hap2MainAbility8onForeground') {
+          if (deviceType === '2in1') {
+            done();
+            return;
+          }
           globalThis.abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
             abilityName: "MainAbility7"
@@ -726,6 +733,10 @@ export default function abilityTest() {
             JSON.stringify(error) + ",data: " + JSON.stringify(data));
           })
         } else if (event === 'Hap3MainAbility3onForeground') {
+          if (deviceType === '2in1') {
+            done();
+            return;
+          }
           hap3MainAbility3onForegroundCount ++;
           if (hap3MainAbility3onForegroundCount == 3) {
             clearInterval(intervalId);

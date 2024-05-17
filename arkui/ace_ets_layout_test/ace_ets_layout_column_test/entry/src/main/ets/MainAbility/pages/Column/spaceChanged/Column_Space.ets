@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import { MessageManager, Callback } from './../../../common/MessageManager';
+import { MessageManager, Callback, Message } from './../../../common/MessageManager';
 @Entry
 @Component
 struct Column_Space {
   @State addSpace: number = 10;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
   onPageShow() {
     console.info('Column_Space onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'addSpace') {
         this.addSpace = message.value;

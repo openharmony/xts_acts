@@ -13,19 +13,19 @@
  * limitations under the License.
  */
 
-import apiCoverAbility from './ApiCoverAbility.test'
-import newApiCoverAbility from './NewApiCoverAbility.test'
-import verificationTest from './VerificationTest'
-import wantAgentCover from './WantAgentCover.test'
+import apiCoverAbility from './ApiCoverAbility.test';
+import newApiCoverAbility from './NewApiCoverAbility.test';
+import verificationTest from './VerificationTest';
+import wantAgentCover from './WantAgentCover.test';
 import contextEnvironmentTest from './ContextEnvironmentTest.test';
+import common from '@ohos.app.ability.common';
 import UIContextWindowStageTest from './UIContextWindowStage.test';
 
 export default function List() {
-
-  apiCoverAbility()
-  newApiCoverAbility()
-  verificationTest()
-  wantAgentCover()
-  contextEnvironmentTest(globalThis.applicationContext)
-  UIContextWindowStageTest()
+  apiCoverAbility();
+  newApiCoverAbility();
+  verificationTest();
+  wantAgentCover();
+  contextEnvironmentTest(AppStorage.get<common.ApplicationContext>("applicationContext")!);
+  UIContextWindowStageTest();
 }

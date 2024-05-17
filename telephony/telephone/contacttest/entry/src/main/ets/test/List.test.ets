@@ -18,9 +18,10 @@ import QueryKeyTest from './QueryKey.test';
 import QueryByEmailPhoneNumTest from './QueryByPhoneNum.test';
 import QueryContactTest from './QueryContact.test';
 import UpdateContactTest from './UpdateContact.test';
-
-
-
+import IsMyCardTest from './IsMyCard.test';
+import ContactTest from './Contact.test';
+import QueryGroupsTest from './QueryGroups.test';
+import SelectTest from './Select.test';
 
 export default function testsuite() {
   AddContactTest();
@@ -29,4 +30,8 @@ export default function testsuite() {
   QueryByEmailPhoneNumTest();
   QueryContactTest();
   UpdateContactTest();
+  QueryGroupsTest();
+  IsMyCardTest();
+  ContactTest();
+  SelectTest();
 }

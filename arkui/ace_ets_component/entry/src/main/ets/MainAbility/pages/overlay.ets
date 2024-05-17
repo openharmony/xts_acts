@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,16 +42,16 @@ struct OverlayExample {
     console.info("[stateChangCallBack] stateChangCallBack ");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called: " + JSON.stringify(eventData));
-      if (eventData.data.align != null) {
+      if (eventData.data?.align != null) {
         this.alignment = eventData.data.align
       }
-      if (eventData.data.title != null) {
+      if (eventData.data?.title != null) {
         this.title = eventData.data.title
       }
-      if (eventData.data.x != null) {
+      if (eventData.data?.x != null) {
         this.x = eventData.data.x
       }
-      if (eventData.data.y != null) {
+      if (eventData.data?.y != null) {
         this.y = eventData.data.y
       }
 

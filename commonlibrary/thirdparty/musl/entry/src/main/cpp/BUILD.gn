@@ -23,7 +23,11 @@ config("config") {
     "-Werror",
     "-g3",
     "-Wunused-variable",
+    "-fexceptions",
   ]
+
+  cflags_cc = [ "-fexceptions" ]
+  cflags_objcc = cflags_cc
 }
 
 config("public_config") {

@@ -17,6 +17,7 @@ import display from '@ohos.display';
 import windowManager from '@ohos.window';
 import commoneventmanager from '@ohos.commonEventManager';
 import prompt from '@ohos.prompt';
+import inputMethodEngine from '@ohos.inputMethodEngine';
 
 let inputMethodAbility = inputmethodengine.getInputMethodAbility();
 const TAG = 'keyboardController';
@@ -39,6 +40,8 @@ export class KeyboardController {
     private windowHeight: number = 0;
     private windowWidth: number = 0;
     private nonBarPosition: number = 0;
+    private keyboardController: inputMethodEngine.KeyboardController;
+    private InputClient: inputMethodEngine.InputClient;
 
     constructor(context) {
         this.storage = new LocalStorage();
@@ -53,11 +56,19 @@ export class KeyboardController {
         this.initWindow();
         let that = this;
         inputMethodAbility.on('inputStop', () => {
+             inputMethodAbility.off('inputStart')
             this.mContext.destroy((err, data) => {
                 console.info(TAG + '====>inputMethodEngine destorey err:' + JSON.stringify(err));
                 console.info(TAG + '====>inputMethodEngine destorey data:' + JSON.stringify(data));
             });
         });
+
+        inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
+            this.keyboardController = keyboardController;
+            this.InputClient = InputClient
+            console.info(TAG + '====>inputMethodAbility inputStart into');
+
+        })
 
         inputMethodAbility.createPanel(this.mContext, panelInfo, (err, panel) => {
             if (err !== undefined) {
@@ -65,6 +76,8 @@ export class KeyboardController {
                 return;
             }
             this.softKeyboardPanel = panel;
+            this.softKeyboardPanel.setUiContent('pages/second/second', async (err, data) => {
+            });
             console.info('Succeed in creating panel.' + JSON.stringify(panel));
         });
 
@@ -176,6 +189,10 @@ export class KeyboardController {
                     console.debug(TAG + '====>Sub_InputMethod_IMF_getSecurityMode_0100 event:' + data.event);
                     that.Sub_InputMethod_IMF_getSecurityMode_0100();
                     break;
+                case 216:
+                    console.debug(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 event:' + data.event);
+                    that.SUB_InputMethod_IME_SplitScreen_0100();
+                    break;
             }
         }
 
@@ -217,7 +234,7 @@ export class KeyboardController {
 
             var config = {
                 name: this.windowName,
-                windowType: this.WINDOW_TYPE_INPUT_METHOD_FLOAT,
+                windowType: windowManager.WindowType.TYPE_INPUT_METHOD,
                 ctx: this.mContext
             };
             windowManager.createWindow(config).then((win) => {
@@ -1056,7 +1073,7 @@ export class KeyboardController {
         }
     }
 
-        private Sub_InputMethod_IMF_SecurityKeyboard_0700(): void {
+    private Sub_InputMethod_IMF_SecurityKeyboard_0700(): void {
         let commonEventPublishData = {
             data: 'FAILED'
         };
@@ -1144,4 +1161,45 @@ export class KeyboardController {
         }
     }
 
+    private async SUB_InputMethod_IME_SplitScreen_0100(): Promise<void> {
+        let commonEventPublishData = {
+            data: 'FAILED'
+        };
+        console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 start');
+        try {
+            if (this.softKeyboardPanel !== null) {
+                console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 this.softKeyboardPanel:' +  this.softKeyboardPanel);
+                let t = setTimeout(async () => {
+                    clearTimeout(t);
+                    try {
+                        let WindowInfo =  await this.InputClient.getCallingWindowInfo();
+                        console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInfo WindowInfo:' +  JSON.stringify(WindowInfo));
+                        console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInfo  rect: ' + JSON.stringify(WindowInfo.rect));
+                        console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInfo  status: ' + JSON.stringify(WindowInfo.status));
+                        if (typeof(WindowInfo) === 'object' && typeof(WindowInfo.rect) === 'object' && typeof(WindowInfo.status) === 'number') {
+                            commonEventPublishData = {
+                                data: "SUCCESS"
+                            }
+                        }
+                        console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInfo WindowInfo:  success' );
+                    } catch (err) {
+                        console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInf0 err: ' + JSON.stringify(err.message));
+                        console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInf0 err: ' + JSON.stringify(err.code));
+                        console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInfO err: ' + err);
+                    }
+                    commoneventmanager.publish("SUB_InputMethod_IME_SplitScreen_0100", commonEventPublishData, this.publishCallback);
+
+                }, 500);
+
+            } else {
+                console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInfo softKeyboardPanel is null ');
+            }
+
+        } catch (error) {
+            console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 catch error: ' + JSON.stringify(error.message));
+            console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 catch error: ' + JSON.stringify(error.code))
+            commoneventmanager.publish('SUB_InputMethod_IME_SplitScreen_0100', commonEventPublishData, this.publishCallback);
+        }
+    }
+    
 }

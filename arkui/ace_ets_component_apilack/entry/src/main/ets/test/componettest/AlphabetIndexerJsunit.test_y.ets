@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -31,7 +31,7 @@ export default function alphabetIndexerJsunit() {
 
   describe('alphabetIndexerTest', () => {
     beforeEach(async () => {
-      let options = {
+      let options: router.RouterOptions  = {
         uri: 'pages/AlphabetIndexer',
       }
       try {

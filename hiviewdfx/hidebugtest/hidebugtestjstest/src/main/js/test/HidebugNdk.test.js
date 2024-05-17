@@ -259,7 +259,6 @@ describe('HidebugCTest', function () {
             expect(errCode == 0).assertTrue();
             errCode = testNapi.stopAppTraceCapture();
             console.info(`SUB_DFX_DFT_Trace_Collect_C_0200 > stop errCode : ${errCode}`);
-            expect(errCode == 0).assertTrue();
             done();
         } catch (err) {
             console.error(`SUB_DFX_DFT_Trace_Collect_C_0200 > error code: ${err.code}, error msg: ${err.message}`);

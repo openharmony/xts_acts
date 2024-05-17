@@ -116,7 +116,7 @@ export default function inputMethodEngineKeyJSUnit() {
           let t = setTimeout(async ()=>{
             await driver.triggerKey(2045)
             clearTimeout(t);
-          }, 100)    
+          }, 200)
         }
       }
 
@@ -182,7 +182,7 @@ export default function inputMethodEngineKeyJSUnit() {
           let t = setTimeout(async ()=>{
             await driver.triggerKey(2017)
             clearTimeout(t);
-          }, 100)             
+          }, 200)
         }
       }
 
@@ -248,7 +248,7 @@ export default function inputMethodEngineKeyJSUnit() {
           let t = setTimeout(async ()=>{
             await driver.triggerCombineKeys(2072, 2017);
             clearTimeout(t);
-          }, 100)            
+          }, 200)
         }
       }
 
@@ -314,7 +314,7 @@ export default function inputMethodEngineKeyJSUnit() {
           let t = setTimeout(async ()=>{
             await driver.triggerCombineKeys(2017, 2047);
             clearTimeout(t);
-          }, 100)  
+          }, 200)
         }
       }
 
@@ -380,7 +380,7 @@ export default function inputMethodEngineKeyJSUnit() {
           let t = setTimeout(async ()=>{
             await driver.triggerCombineKeys(2047, 2017);
             clearTimeout(t);
-          }, 100)  
+          }, 200)
           
         }
       }
@@ -447,7 +447,7 @@ export default function inputMethodEngineKeyJSUnit() {
           let t = setTimeout(async ()=>{
             await driver.triggerCombineKeys(2047, 2001);
             clearTimeout(t);
-          }, 100)  
+          }, 200)
         }
       }
 
@@ -513,7 +513,7 @@ export default function inputMethodEngineKeyJSUnit() {
           let t = setTimeout(async ()=>{
             await driver.triggerCombineKeys(2047, 2062)
             clearTimeout(t)
-          }, 100)  
+          }, 200)
         }
       }
 

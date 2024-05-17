@@ -61,11 +61,11 @@ struct Hall {
             if (this.nextHall !== this.dataHall || data.status > 0) {
               this.Vue = true;
             }
-          }, 500)
+          }, 100)
         }, { interval: 100000000 });
         setTimeout(() => {
           sensor.off(sensor.SensorId.HALL);
-        }, 500);
+        }, 5000);
       } catch (error) {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {

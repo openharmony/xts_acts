@@ -35,7 +35,7 @@ struct AlertDialog1Example {
               message: 'text',
               autoCancel: true,
               showInSubWindow: true,
-              alignment: DialogAlignment.Bottom,
+              alignment: DialogAlignment.Center,
               offset: { dx: 0, dy: -20 },
               gridCount: 3,
               confirm: {

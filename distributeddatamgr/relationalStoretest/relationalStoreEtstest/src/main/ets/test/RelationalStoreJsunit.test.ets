@@ -45,8 +45,8 @@ export default function relationalStoreTest() {
     })
 
     afterEach(async function () {
-      console.info(TAG + 'afterAll');
       await data_Rdb.deleteRdbStore(context, "rdbstore.db");
+      console.info(TAG + 'afterEach');
     })
 
     afterAll(async function () {
@@ -357,13 +357,17 @@ export default function relationalStoreTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStore0012', 0, async function (done) {
+    it('testRdbStore0012', 0, async function () {
       console.info(TAG + "************* testRdbStore0012 start *************");
+      const STORE_CONFIGS1 = {
+        name: "rdbstore12.db",
+        securityLevel: data_Rdb.SecurityLevel.S1
+      };
       const STORE_CONFIGS2 = {
-        name: "rdbstore.db",
+        name: "rdbstore12.db",
         securityLevel: data_Rdb.SecurityLevel.S2
       };
-      let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+      let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS1);
       console.info(`testRdbStore0012 S1 Get RdbStore successfully.`);
       try {
         let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS2);
@@ -373,15 +377,13 @@ export default function relationalStoreTest() {
           expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0012 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800000);
+          expect(err.code).assertEqual(14800017);
         })
       } catch (error) {
         console.error(`testRdbStore0012 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
         expect().assertFail();
       }
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
-      done();
+      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS1.name);
       console.info(TAG + "************* testRdbStore0012 end   *************");
     })
 
@@ -393,13 +395,17 @@ export default function relationalStoreTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStore0013', 0, async function (done) {
+    it('testRdbStore0013', 0, async function () {
       console.info(TAG + "************* testRdbStore0013 start *************");
+      const STORE_CONFIGS1 = {
+        name: "rdbstore13.db",
+        securityLevel: data_Rdb.SecurityLevel.S1
+      };
       const STORE_CONFIGS3 = {
-        name: "rdbstore.db",
+        name: "rdbstore13.db",
         securityLevel: data_Rdb.SecurityLevel.S3
       };
-      let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+      let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS1);
       console.info(`testRdbStore0013 S1 Get RdbStore successfully.`);
       try {
         let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS3);
@@ -409,15 +415,13 @@ export default function relationalStoreTest() {
           expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0013 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800000);
+          expect(err.code).assertEqual(14800017);
         })
       } catch (error) {
         console.error(`testRdbStore0013 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
         expect().assertFail();
       }
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS3.name);
-      done();
+      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS1.name);
       console.info(TAG + "************* testRdbStore0013 end   *************");
     })
 
@@ -429,13 +433,17 @@ export default function relationalStoreTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStore0014', 0, async function (done) {
+    it('testRdbStore0014', 0, async function () {
       console.info(TAG + "************* testRdbStore0014 start *************");
+      const STORE_CONFIGS1 = {
+        name: "rdbstore14.db",
+        securityLevel: data_Rdb.SecurityLevel.S1
+      };
       const STORE_CONFIGS4 = {
-        name: "rdbstore.db",
+        name: "rdbstore14.db",
         securityLevel: data_Rdb.SecurityLevel.S4
       };
-      let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+      let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS1);
       console.info(`testRdbStore0014 S1 Get RdbStore successfully.`);
       try {
         let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS4);
@@ -445,15 +453,13 @@ export default function relationalStoreTest() {
           expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0014 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800000);
+          expect(err.code).assertEqual(14800017);
         })
       } catch (error) {
         console.error(`testRdbStore0014 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
         expect().assertFail();
       }
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS4.name);
-      done();
+      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS1.name);
       console.info(TAG + "************* testRdbStore0014 end   *************");
     })
 
@@ -465,14 +471,14 @@ export default function relationalStoreTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStore0015', 0, async function (done) {
+    it('testRdbStore0015', 0, async function () {
       console.info(TAG + "************* testRdbStore0015 start *************");
       const STORE_CONFIGS2 = {
-        name: "rdbstore.db",
+        name: "rdbstore15.db",
         securityLevel: data_Rdb.SecurityLevel.S2
       };
       const STORE_CONFIGS4 = {
-        name: "rdbstore.db",
+        name: "rdbstore15.db",
         securityLevel: data_Rdb.SecurityLevel.S4
       };
       let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS2);
@@ -485,15 +491,13 @@ export default function relationalStoreTest() {
           expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0015 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800000);
+          expect(err.code).assertEqual(14800017);
         })
       } catch (error) {
         console.error(`testRdbStore0015 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
         expect().assertFail();
       }
       await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS4.name);
-      done();
       console.info(TAG + "************* testRdbStore0015 end   *************");
     })
 
@@ -506,14 +510,14 @@ export default function relationalStoreTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStore0016', 0, async function (done) {
+    it('testRdbStore0016', 0, async function () {
       console.info(TAG + "************* testRdbStore0016 start *************");
       const STORE_CONFIGS2 = {
-        name: "rdbstore.db",
+        name: "rdbstore16.db",
         securityLevel: data_Rdb.SecurityLevel.S2
       };
       const STORE_CONFIGS3 = {
-        name: "rdbstore.db",
+        name: "rdbstore16.db",
         securityLevel: data_Rdb.SecurityLevel.S3
       };
       let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS2);
@@ -526,15 +530,13 @@ export default function relationalStoreTest() {
           expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0016 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800000);
+          expect(err.code).assertEqual(14800017);
         })
       } catch (error) {
         console.error(`testRdbStore0016 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
         expect().assertFail();
       }
       await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS3.name);
-      done();
       console.info(TAG + "************* testRdbStore0016 end   *************");
     })
 
@@ -547,31 +549,33 @@ export default function relationalStoreTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStore0017', 0, async function (done) {
+    it('testRdbStore0017', 0, async function () {
       console.info(TAG + "************* testRdbStore0017 start *************");
+      const STORE_CONFIGS1 = {
+        name: "rdbstore17.db",
+        securityLevel: data_Rdb.SecurityLevel.S1
+      };
       const STORE_CONFIGS4 = {
-        name: "rdbstore.db",
+        name: "rdbstore17.db",
         securityLevel: data_Rdb.SecurityLevel.S4
       };
       let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS4);
       console.info(`testRdbStore0017 S4 Get RdbStore successfully.`);
       try {
-        let promise = data_Rdb.getRdbStore(context, STORE_CONFIG);
+        let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS1);
         await promise.then(async (rdbStore) => {
           store = rdbStore;
           console.info(`testRdbStore0017 Get RdbStore successfully.`);
           expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0017 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800000);
+          expect(err.code).assertEqual(14800017);
         })
       } catch (error) {
         console.error(`testRdbStore0017 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
         expect().assertFail();
       }
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS4.name);
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-      done();
+      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS1.name);
       console.info(TAG + "************* testRdbStore0017 end   *************");
     })
 
@@ -584,14 +588,14 @@ export default function relationalStoreTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStore0018', 0, async function (done) {
+    it('testRdbStore0018', 0, async function () {
       console.info(TAG + "************* testRdbStore0018 start *************");
       const STORE_CONFIGS3 = {
-        name: "rdbstore.db",
+        name: "rdbstore18.db",
         securityLevel: data_Rdb.SecurityLevel.S3
       };
       const STORE_CONFIGS2 = {
-        name: "rdbstore.db",
+        name: "rdbstore18.db",
         securityLevel: data_Rdb.SecurityLevel.S2
       };
       let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS3);
@@ -604,18 +608,15 @@ export default function relationalStoreTest() {
           expect().assertFail();
         }).catch((err) => {
           console.error(`testRdbStore0018 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code).assertEqual(14800000);
+          expect(err.code).assertEqual(14800017);
         })
       } catch (error) {
         console.error(`testRdbStore0018 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
         expect().assertFail();
       }
-      await data_Rdb.deleteRdbStore(context, STORE_CONFIGS3.name);
       await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
-      done();
       console.info(TAG + "************* testRdbStore0018 end   *************");
     })
-
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionEtsAPITest_2700
@@ -625,7 +626,7 @@ export default function relationalStoreTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStore0019', 0, async function (done) {
+    it('testRdbStore0019', 0, async function () {
       console.info(TAG + "************* testRdbStore0019 start *************");
       let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
       console.info(`testRdbStore0019 S1 Get RdbStore successfully.`);
@@ -637,20 +638,16 @@ export default function relationalStoreTest() {
           expect(rdbStore != null).assertTrue();
           await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
           console.error(`testRdbStore0019 Get RdbStore  deleteRdbStore`);
-          done();
         }).catch((err) => {
           console.error(`testRdbStore0019 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
           expect().assertFail();
-          done();
         })
       } catch (error) {
         console.error(`testRdbStore0019 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
         expect().assertFail();
-        done();
       }
       console.info(TAG + "************* testRdbStore0019 end   *************");
     })
-
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionEtsAPITest_2800

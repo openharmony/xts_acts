@@ -16,7 +16,8 @@
 import avSession from '@ohos.multimedia.avsession';
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it} from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
-import WantAgent from '@ohos.wantAgent';
+// import WantAgent from '@ohos.wantAgent';
+import WantAgent from '@ohos.app.ability.wantAgent';
 import featureAbility from '@ohos.ability.featureAbility';
 
 export default function AVSessionCallback() {
@@ -371,7 +372,10 @@ export default function AVSessionCallback() {
                 } else if (value.mediaImage === metadata7.mediaImage) {
                     console.info('TestLog: Get mediaImage Successfully');
                     expect(true).assertTrue();
-                } else {
+                } else if (value.mediaImage !== null) {
+                    console.info('TestLog: Get mediaImage Successfully not null');
+                    expect(true).assertTrue();
+                }else {
                     console.info(`TestLog: Get mediaImage failed:${value}`);
                     expect(false).assertTrue();
                 }

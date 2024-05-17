@@ -33,7 +33,7 @@ export default function progressJsunit() {
   describe('progressTest', () => {
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Progress/Progress',
+        url: 'MainAbility/pages/Progress/ProgressA',
       }
       try {
         router.clear();

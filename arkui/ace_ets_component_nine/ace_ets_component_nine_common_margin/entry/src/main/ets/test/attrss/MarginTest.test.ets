@@ -23,45 +23,45 @@ export default function marginTest() {
   //'AlphabetIndexer',
     'Button',
     'Blank',
-  // 'Checkbox',
-  //'CheckboxGroup',
-  //'DataPanel',
-  //'DatePicker',
-  'Divider',
-  //'Gauge',
-  'Image',
-  //'ImageAnimator',
-  //'LoadingProgress',
-  //'Marquee',
-  //'Menu',
-  //'MenuItem',
-  //'MenuItemGroup',
-  ////'Navigation',
-  //'NavRouter',
-  //'Progress',
-  //'QRCode',
-  //'Radio',
-  //'Rating',
-  //'ScrollBar',
-  //'Search',
-  //'Select',
-  //'Slider',
-  //'Stepper',
-  'Text',
-  //'TextArea',
-  //'TextClock',
-  //'TextInput',
-  //'TextPicker',
-  //'TextTimer',
-  //'TimePicker',
-  //'Toggle',
-  //'Badge',
-  //'Column',
-  //'ColumnSplit',
-  //'Counter',
-  //'Flex',
-  ////'FlowItem',
-  'GridCol',
+    // 'Checkbox',
+    //'CheckboxGroup',
+    //'DataPanel',
+    //'DatePicker',
+    'Divider',
+    //'Gauge',
+    'Image',
+    //'ImageAnimator',
+    //'LoadingProgress',
+    //'Marquee',
+    //'Menu',
+    //'MenuItem',
+    //'MenuItemGroup',
+    ////'Navigation',
+    //'NavRouter',
+    //'Progress',
+    //'QRCode',
+    //'Radio',
+    //'Rating',
+    //'ScrollBar',
+    //'Search',
+    //'Select',
+    //'Slider',
+    //'Stepper',
+    'Text',
+    //'TextArea',
+    //'TextClock',
+    //'TextInput',
+    //'TextPicker',
+    //'TextTimer',
+    //'TimePicker',
+    //'Toggle',
+    //'Badge',
+    //'Column',
+    //'ColumnSplit',
+    //'Counter',
+    //'Flex',
+    ////'FlowItem',
+    'GridCol',
   //'GridRow',
   //'Grid',
   //'GridItem',
@@ -92,44 +92,47 @@ export default function marginTest() {
   //Custom params.
   let targetComponentWidth = 200;
   let targetComponentHeight = 200;
-  let pageConfig = {
-    testName: 'testMargin',
-    pageName: 'MarginPage',
-    pageUrl: 'MainAbility/pages/common/MarginPage',
-    targetComponentHeight: targetComponentHeight,
-    targetComponentWidth: targetComponentWidth,
-    referenceComponentKey: 'referenceComponentKey',
-    parentComponentKey: 'parentComponentKey'
+  let pageConfig: Record<string, string | number> = {
+    'testName': 'testMargin',
+    'pageName': 'MarginPage',
+    'pageUrl': 'MainAbility/pages/common/MarginPage',
+    'targetComponentHeight': targetComponentHeight,
+    'targetComponentWidth': targetComponentWidth,
+    'referenceComponentKey': 'referenceComponentKey',
+    'parentComponentKey': 'parentComponentKey'
   }
-  let testValues = [{
-    describe: 'SetMargin60',
-    setValue: '60cp',
-    expectValue: {
+
+  let testValues: Array<Record<string, ESObject>> = [{
+    'describe': 'SetMargin60',
+    'setValue': '60cp',
+    'expectValue': {
       margin: '60.00vp'
     }
-  },{
-    describe: 'SetMarginObject',
-    setValue: { left: 10, right: 50, top: 80, bottom:40},
-    expectValue: {
+  }, {
+    'describe': 'SetMarginObject',
+    'setValue': {
+      left: 10, right: 50, top: 80, bottom: 40
+    },
+    'expectValue': {
       margin: '{"top":"80.00vp","right":"50.00vp","bottom":"40.00vp","left":"10.00vp"}'
     }
   }]
-   /**
+  /**
    * @tc.number Common_Margin_10010
-   * @tc.name   testCommonMarginStringAndObject
-   * @tc.desc   The Margin property of the Common component is set to StringAndObject
-   * @tc.size   MediumTest
-   * @tc.type   Function
-   * @tc.level  0
+   * @tc.name testCommonMarginStringAndObject
+   * @tc.desc The Margin property of the Common component is set to StringAndObject
+   * @tc.size MediumTest
+   * @tc.type Function
+   * @tc.level 0
    */
   describe('MarginTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       AttrsManager.change(data.caseTag, 0);
       await Utils.sleep(1000);
       console.info('[' + data.caseTag + '] setValue : ' + JSON.stringify(data.testValue.setValue));
       AttrsManager.change(data.caseTag, data.testValue.setValue);
       await Utils.sleep(1000);
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + ']' + 'expectValue margin is:' + data.testValue.expectValue.margin);
       console.info('[' + data.caseTag + ']' + 'margin is:' + viewObj.$attrs.margin);
       expect(viewObj.$attrs.margin).assertEqual(data.testValue.expectValue.margin);

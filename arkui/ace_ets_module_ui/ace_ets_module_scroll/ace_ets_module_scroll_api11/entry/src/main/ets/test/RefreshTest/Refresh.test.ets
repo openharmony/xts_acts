@@ -16,25 +16,27 @@
 import router from '@system.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
+import CommonFunc from "../../MainAbility/common/Common";
 
 export default function RefreshTest() {
   describe('RefreshTest', () => {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/Refresh/Index',
+        uri: 'MainAbility/pages/Refresh/refreshux',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Index state success " + JSON.stringify(pages));
-        if (!("Index" == pages.name)) {
+        if (!("refreshux" == pages.name)) {
           console.info("get Index state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           console.info("push Index page success " + JSON.stringify(result));
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
-        console.error("push Index page error: " + err);
+        console.error("push CommonFunc page error: " + err);
       }
       done()
     });

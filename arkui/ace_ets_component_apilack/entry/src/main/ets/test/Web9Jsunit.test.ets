@@ -15,8 +15,8 @@
 
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
-import Utils from './Utils.ets';
+import router from '@ohos.router';
+import Utils from './Utils';
 
 let emitKey = "emitUserAgent";
 
@@ -24,8 +24,8 @@ export default function web9Jsunit() {
 
   describe('web9Jsunit', () => {
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/web_api_9',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/web_api_9',
       }
       try {
         router.clear();

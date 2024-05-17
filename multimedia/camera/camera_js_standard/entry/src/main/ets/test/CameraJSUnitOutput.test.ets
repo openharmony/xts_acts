@@ -1109,7 +1109,7 @@ export default function cameraJSUnitOutput() {
           expect().assertFail();
         });
       }
-      await sleep(1000);
+      await sleep(3000);
       done();
     })
 
@@ -1138,11 +1138,11 @@ export default function cameraJSUnitOutput() {
             expect().assertFail();
           }
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_CALLBACK_0100 ends here");
-          await sleep(1000);
+          await sleep(3000);
           done();
         })
       }
-      await sleep(1000);
+      await sleep(3000);
       done();
     })
 
@@ -1175,7 +1175,7 @@ export default function cameraJSUnitOutput() {
         });
 
       }
-      await sleep(1000);
+      await sleep(3000);
       done();
     })
 
@@ -1204,11 +1204,11 @@ export default function cameraJSUnitOutput() {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_CALLBACK_0100 FAILED: " + err.message);
           }
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_CALLBACK_0100 ends here");
-          await sleep(1000);
+          await sleep(3000);
           done();
         })
       }
-      await sleep(1000);
+      await sleep(3000);
       done();
     })
 

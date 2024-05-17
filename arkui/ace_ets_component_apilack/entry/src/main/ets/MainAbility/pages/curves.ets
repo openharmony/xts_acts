@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Log from '../common/Log.ets';
+import Log from '../common/Log';
 import events_emitter from '@ohos.events.emitter';
 import Curves from '@ohos.curves'
 
@@ -55,7 +55,7 @@ struct CurvesSteps {
             console.info("curve is" + curve)
             this.curveApi = "callBackSuccess"
           } catch (err) {
-            console.info("curve onClick err: " + JSON.stringify(err.message))
+            console.info("curve onClick err: " + JSON.stringify((err as Error)?.message))
             this.curveApi = "callBackFail"
           }
           try {
@@ -73,7 +73,7 @@ struct CurvesSteps {
             console.info("curveApi onClick start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("curveApi onClick emit action state err: " + JSON.stringify(err.message))
+            console.info("curveApi onClick emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
     }.width("100%").height("100%")
