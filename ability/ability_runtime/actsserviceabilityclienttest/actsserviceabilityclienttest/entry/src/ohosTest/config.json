@@ -50,24 +50,6 @@
         "type": "page",
         "visible": true,
         "launchType": "standard"
-      },
-      {
-        "srcPath": "ServiceAbility1",
-        "name": ".ServiceAbility1",
-        "icon": "$media:icon",
-        "srcLanguage": "js",
-        "description": "$string:description_serviceability",
-        "visible": true,
-        "type": "service"
-      },
-      {
-        "srcPath": "ServiceAbility2",
-        "name": ".ServiceAbility2",
-        "icon": "$media:icon",
-        "srcLanguage": "js",
-        "description": "$string:description_serviceability",
-        "visible": true,
-        "type": "service"
       }
     ],
     "js": [
