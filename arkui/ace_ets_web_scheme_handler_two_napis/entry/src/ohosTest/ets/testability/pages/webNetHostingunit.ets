@@ -365,7 +365,7 @@ struct webRegisterCustomsComponent {
         .onPageBegin(event => {
           testNapi.initResourceManager(getContext().resourceManager);
         })
-        .onConsole((event) => {
+        .onConsole(async(event) => {
           if (event) {
             console.log('onConsole getMessage:' + event.message?.getMessage())
             console.log('onConsole getSourceId:' + event.message?.getSourceId())

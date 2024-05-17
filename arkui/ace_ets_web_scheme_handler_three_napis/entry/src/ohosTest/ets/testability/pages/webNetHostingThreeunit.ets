@@ -121,7 +121,7 @@ struct webRegisterCustomsComponent {
         .fileAccess(false)
         .domStorageAccess(true)
         .cacheMode(CacheMode.Default)
-        .onPageBegin( event => {
+        .onPageBegin(async(event) => {
           testNapi.initResourceManager(getContext().resourceManager);
         }).onConsole((event) => {
         if (event) {
