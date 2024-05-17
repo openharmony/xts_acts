@@ -2416,5 +2416,39 @@ export default function nativeApiStringJsunit() {
       console.info('aceNapiTest0159 testString result is: ' + value);
       done();
     });
+
+    /**
+     * @tc.name aceNapiTest0160
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0160', 0, async (done: Function) => {
+      console.info('aceNapiTest0160 START');
+      class Class {
+        constructor() {
+        }
+      }
+      class SendableClass {
+        constructor() {
+          'use sendable';
+        }
+      }
+      let value = napitest.NapiIsSendable(Class, SendableClass);
+      console.info('aceNapiTest0160 testString result is: ' + value + '--' + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0160
+     * @tc.name aceNapiTest0161
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0161', 0, async (done: Function) => {
+      console.info('aceNapiTest0161 START');
+      let value = napitest.NapiDefineSendableClass();
+      console.info('aceNapiTest0161 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
   })
 }
