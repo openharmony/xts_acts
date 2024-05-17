@@ -42,6 +42,7 @@ group("multimedia") {
       "camera/camera_picker_test:camera_picker_ets_hap",
       "drm/drm_js_standard/avPlayer:drm_avplayer_js_hap",
       "drm/drm_ndk_test:Drm_Framework_NDK_test",
+      "image/image_ets_standard/imageExifGetModify:image_exif_get_modify_hap",
       "image/image_js_standard/image:image_js_hap",
       "image/image_js_standard/imageColorSpaceTransfer:image_colorspace_transfer_hap",
       "image/image_js_standard/imageColorspace:image_colorspace_js_hap",
