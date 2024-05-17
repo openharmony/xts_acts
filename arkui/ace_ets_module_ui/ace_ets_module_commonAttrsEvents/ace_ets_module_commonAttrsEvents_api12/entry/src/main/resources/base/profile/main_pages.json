@@ -1,0 +1,31 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+
+        "MainAbility/pages/Focus/requestFocus/requestFocus1",
+        "MainAbility/pages/Focus/requestFocus/requestFocus2",
+        "MainAbility/pages/Focus/requestFocus/requestFocus3",
+        "MainAbility/pages/Focus/requestFocus/requestFocus4",
+        "MainAbility/pages/Focus/requestFocus/requestFocus5",
+        "MainAbility/pages/Focus/requestFocus/requestFocus6",
+        "MainAbility/pages/Focus/requestFocus/requestFocus7",
+        "MainAbility/pages/Focus/requestFocus/requestFocus8",
+        "MainAbility/pages/Focus/requestFocus/requestFocus9",
+        "MainAbility/pages/Focus/requestFocus/requestFocus10",
+        "MainAbility/pages/Focus/requestFocus/requestFocus11",
+        "MainAbility/pages/Focus/requestFocus/requestFocus12",
+        "MainAbility/pages/Focus/requestFocus/requestFocus13",
+        "MainAbility/pages/Focus/requestFocus/requestFocus14",
+        "MainAbility/pages/Focus/requestFocus/requestFocus15",
+        "MainAbility/pages/Focus/requestFocus/requestFocus16",
+        "MainAbility/pages/Focus/requestFocus/requestFocus17",
+        "MainAbility/pages/Focus/requestFocus/requestFocus18",
+        "MainAbility/pages/Focus/requestFocus/requestFocus19",
+        "MainAbility/pages/Focus/requestFocus/requestFocus20",
+        "MainAbility/pages/Focus/requestFocus/requestFocus21",
+        "MainAbility/pages/Focus/requestFocus/requestFocus22",
+        "MainAbility/pages/Focus/requestFocus/requestFocus23",
+        "MainAbility/pages/Focus/requestFocus/requestFocus24",
+        "MainAbility/pages/Focus/requestFocus/requestFocus25"
+    ]
+}
