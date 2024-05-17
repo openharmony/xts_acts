@@ -51,7 +51,8 @@ struct webRegisterCustomsComponent {
 
     console.error("aboutToAppear setSchemeHandler" + this.isSet)
     console.error("aboutToAppear registerCustomSchemes End")
-
+    
+    testNapi.initResourceManager(getContext().resourceManager);
   }
 
   onPageShow() {
@@ -121,9 +122,6 @@ struct webRegisterCustomsComponent {
         .fileAccess(false)
         .domStorageAccess(true)
         .cacheMode(CacheMode.Default)
-        .onPageBegin(async(event) => {
-          testNapi.initResourceManager(getContext().resourceManager);
-        })
     }
     .height('100%')
 
