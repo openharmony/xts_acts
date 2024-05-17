@@ -48,7 +48,6 @@ struct RelativeContainer_AnchorPoint_Visibility_Hidden {
           .id("RelativeContainer_AnchorPoint_Visibility_Hidden_tx2")
           .borderWidth(2)
           .borderColor(Color.Green)
-          .height(30)
           .width(150)
 
         Button("Button2")
