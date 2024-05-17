@@ -46,6 +46,8 @@ struct webRegisterCustomsComponent {
     testNapi.setSchemeHandler();
     console.error("aboutToAppear setSchemeHandler" + this.isSet)
     console.error("aboutToAppear registerCustomSchemes End")
+    
+    testNapi.initResourceManager(getContext().resourceManager);
   }
 
   onPageShow() {
