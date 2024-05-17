@@ -123,16 +123,7 @@ struct webRegisterCustomsComponent {
         .cacheMode(CacheMode.Default)
         .onPageBegin(async(event) => {
           testNapi.initResourceManager(getContext().resourceManager);
-        }).onConsole((event) => {
-        if (event) {
-          console.log('onConsole getMessage:' + event.message?.getMessage())
-          console.log('onConsole getSourceId:' + event.message?.getSourceId())
-          console.log('onConsole getLineNumber:' + event.message?.getLineNumber())
-          console.log('onConsole getMessageLevel:' + event.message?.getMessageLevel())
-        }
-        return false
-      })
-
+        })
     }
     .height('100%')
 
