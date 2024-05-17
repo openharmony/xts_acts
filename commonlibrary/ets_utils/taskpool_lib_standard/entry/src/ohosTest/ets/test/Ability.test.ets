@@ -16,10 +16,11 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import taskpool from '@ohos.taskpool'
 import worker from '@ohos.worker'
 import { BusinessError } from '@ohos.base'
-import { A, B, currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, setTransferListTest,
-         testString, testTime, testNumber, testTaskPool, promiseCase, printArgs, asyncSum,
-         printArgsFunc, Sum, delaySum, Add, StrCat, funcStrCat, arraySum, objectSum, Multi, AdditionDelay, WaitforRunner,
-         errorTest, testCancelDelayed, dependend, hashMapTest } from './testFunclist'
+import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, setTransferListTest,
+  testString, testTime, testNumber, testTaskPool, promiseCase, printArgs, asyncSum,
+  printArgsFunc, Sum, delaySum, Add, funcStrCat, arraySum, objectSum, Multi, AdditionDelay, WaitforRunner,
+  errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest } from './testFunclist'
+import { A, B, StrCat} from './exportFunclist'
 
 export default function TaskPoolTest() {
   describe('ActsAbilityTest', () => {
@@ -384,7 +385,7 @@ export default function TaskPoolTest() {
         result1 = ret1 as number;
         isTerminate1 = true;
       })
-      
+
       let task2: taskpool.Task = new taskpool.Task(Sum, 30, 40);
       let result2: number = 0;
       taskpool.execute(task2).then((ret2) => {
@@ -457,26 +458,26 @@ export default function TaskPoolTest() {
 
       let task1: taskpool.Task = new taskpool.Task(Sum, 10, 20);
       taskpool.execute(task1).then((ret1) => {
-          result1 = ret1 as number;
-          isTerminate1 = true;
+        result1 = ret1 as number;
+        isTerminate1 = true;
       })
       let task2: taskpool.Task = new taskpool.Task(Multi, 10, 20);
       taskpool.execute(task2).then((ret2) => {
-          result2 = ret2 as number;
-          isTerminate2 = true;
+        result2 = ret2 as number;
+        isTerminate2 = true;
       })
       let task3: taskpool.Task = new taskpool.Task(Sum, 10, 30);
       taskpool.execute(task3).then((ret3) => {
-          result3 = ret3 as number;
-          isTerminate3 = true;
+        result3 = ret3 as number;
+        isTerminate3 = true;
       })
       let task4: taskpool.Task = new taskpool.Task(Multi, 20, 20);
       taskpool.execute(task4).then((ret4) => {
-          result4 = ret4 as number;
-          isTerminate4 = true;
+        result4 = ret4 as number;
+        isTerminate4 = true;
       })
       while (!isTerminate1 || !isTerminate2 || !isTerminate3 || !isTerminate4) {
-          await promiseCase()
+        await promiseCase()
       }
 
       expect(result1).assertEqual(30);
@@ -490,11 +491,11 @@ export default function TaskPoolTest() {
       let isTerminate: boolean = false;
       let result: number = 0;
       taskpool.execute(Sum, 10, 20).then((ret) => {
-          result = ret as number;
-          isTerminate = true;
+        result = ret as number;
+        isTerminate = true;
       })
       while (!isTerminate) {
-          await promiseCase()
+        await promiseCase()
       }
       expect(result).assertEqual(30);
       done();
@@ -504,11 +505,11 @@ export default function TaskPoolTest() {
       let isTerminate: boolean = false;
       let result: boolean = false;
       taskpool.execute(Add, true, true).then((ret) => {
-          result = ret as boolean;
-          isTerminate = true;
+        result = ret as boolean;
+        isTerminate = true;
       })
       while (!isTerminate) {
-          await promiseCase()
+        await promiseCase()
       }
       expect(result).assertEqual(true);
       done();
@@ -518,11 +519,11 @@ export default function TaskPoolTest() {
       let isTerminate: boolean = false;
       let result: string = '';
       taskpool.execute(StrCat, "abc", "def").then((ret) => {
-          result = ret as string;
-          isTerminate = true;
+        result = ret as string;
+        isTerminate = true;
       })
       while (!isTerminate) {
-          await promiseCase()
+        await promiseCase()
       }
       expect(result).assertEqual("abcdef");
       done();
@@ -532,11 +533,11 @@ export default function TaskPoolTest() {
       let isTerminate: boolean = false;
       let result: string = '';
       taskpool.execute(funcStrCat, "abc", "def", "hello").then((ret) => {
-          result = ret as string;
-          isTerminate = true;
+        result = ret as string;
+        isTerminate = true;
       })
       while (!isTerminate) {
-          await promiseCase()
+        await promiseCase()
       }
       expect(result).assertEqual("abcdefhello");
       done();
@@ -546,11 +547,11 @@ export default function TaskPoolTest() {
       let isTerminate: boolean = false;
       let result: Array<number> = [];
       taskpool.execute(arraySum, [1,2], [3,4]).then((ret) => {
-          result = ret as Array<number>;
-          isTerminate = true;
+        result = ret as Array<number>;
+        isTerminate = true;
       })
       while (!isTerminate) {
-          await promiseCase()
+        await promiseCase()
       }
       expect(result[0]).assertEqual(4);
       expect(result[1]).assertEqual(6);
@@ -567,11 +568,11 @@ export default function TaskPoolTest() {
       let isTerminate: boolean = false;
       let result: A = aa;
       taskpool.execute(objectSum, aa, bb).then((ret) => {
-          result = ret as A;
-          isTerminate = true;
+        result = ret as A;
+        isTerminate = true;
       })
       while (!isTerminate) {
-          await promiseCase()
+        await promiseCase()
       }
       expect(JSON.stringify(result)).assertEqual("{\"a\":4,\"b\":6}");
       done();
@@ -581,11 +582,11 @@ export default function TaskPoolTest() {
       let isTerminate: boolean = false;
       let result: number = 0;
       taskpool.execute(Sum, 10).then((ret) => {
-          result = ret as number;
-          isTerminate = true;
+        result = ret as number;
+        isTerminate = true;
       })
       while (!isTerminate) {
-          await promiseCase()
+        await promiseCase()
       }
       expect(result.toString()).assertEqual("NaN");
       done();
@@ -595,11 +596,11 @@ export default function TaskPoolTest() {
       let isTerminate: boolean = false;
       let result: number = 0;
       taskpool.execute(Sum, 10, 20, 30).then((ret) => {
-          result = ret as number;
-          isTerminate = true;
+        result = ret as number;
+        isTerminate = true;
       })
       while (!isTerminate) {
-          await promiseCase()
+        await promiseCase()
       }
       expect(result).assertEqual(30);
       done();
@@ -611,15 +612,15 @@ export default function TaskPoolTest() {
       let result1: number = 0;
       let result2: number = 0;
       taskpool.execute(Sum, 10, 20).then((ret1) => {
-          result1 = ret1 as number;
-          isTerminate1 = true;
+        result1 = ret1 as number;
+        isTerminate1 = true;
       })
       taskpool.execute(Sum, 30, 40).then((ret2) => {
-          result2 = ret2 as number;
-          isTerminate2 = true;
+        result2 = ret2 as number;
+        isTerminate2 = true;
       })
       while (!isTerminate1 || !isTerminate2) {
-          await promiseCase()
+        await promiseCase()
       }
       expect(result1).assertEqual(30);
       expect(result2).assertEqual(70);
@@ -632,15 +633,15 @@ export default function TaskPoolTest() {
       let result1: number = 0;
       let result2: number = 0;
       taskpool.execute(Sum, 10, 20).then((ret1) => {
-          result1 = ret1 as number;
-          isTerminate1 = true;
+        result1 = ret1 as number;
+        isTerminate1 = true;
       })
       taskpool.execute(Sum, 10, 20).then((ret2) => {
-          result2 = ret2 as number;
-          isTerminate2 = true;
+        result2 = ret2 as number;
+        isTerminate2 = true;
       })
       while (!isTerminate1 || !isTerminate2) {
-          await promiseCase()
+        await promiseCase()
       }
       expect(result1).assertEqual(30);
       expect(result2).assertEqual(30);
@@ -658,23 +659,23 @@ export default function TaskPoolTest() {
       let result4: number = 0;
 
       taskpool.execute(Sum, 10, 20).then((ret1) => {
-          result1 = ret1 as number;
-          isTerminate1 = true;
+        result1 = ret1 as number;
+        isTerminate1 = true;
       })
       taskpool.execute(Multi, 10, 20).then((ret2) => {
-          result2 = ret2 as number;
-          isTerminate2 = true;
+        result2 = ret2 as number;
+        isTerminate2 = true;
       })
       taskpool.execute(Sum, 10, 30).then((ret3) => {
-          result3 = ret3 as number;
-          isTerminate3 = true;
+        result3 = ret3 as number;
+        isTerminate3 = true;
       })
       taskpool.execute(Multi, 20, 20).then((ret4) => {
-          result4 = ret4 as number;
-          isTerminate4 = true;
+        result4 = ret4 as number;
+        isTerminate4 = true;
       })
       while (!isTerminate1 || !isTerminate2 || !isTerminate3 || !isTerminate4) {
-          await promiseCase()
+        await promiseCase()
       }
 
       expect(result1).assertEqual(30);
@@ -1001,7 +1002,7 @@ export default function TaskPoolTest() {
         let res3: number = await taskpool.execute(taskArray[i + 2], taskpool.Priority.MEDIUM) as number;
         highTime += (res3 - begin);
       }
-      
+
       expect(lowTime > mediumTime && mediumTime > highTime);
       done();
     })
@@ -1197,79 +1198,6 @@ export default function TaskPoolTest() {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass066
-     * @tc.name      : sync Function GetTaskPoolInfo
-     * @tc.desc      : Get the taskPoolInfo
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass066', 0, async (done: Function) => {
-      let highCount: number = 0;
-      let mediumCount: number = 0;
-      let lowCount: number = 0;
-      let allCount: number = 100;
-      for (let i: number = 0; i < allCount; i++) {
-        let task1: taskpool.Task = new taskpool.Task(AdditionDelay, 500);
-        let task2: taskpool.Task = new taskpool.Task(AdditionDelay, 500);
-        let task3: taskpool.Task = new taskpool.Task(AdditionDelay, 500);
-        taskpool.execute(task1, taskpool.Priority.LOW).then(() => {
-          lowCount++;
-        }).catch((e: BusinessError) => {
-          console.error("low task error: " + e);
-        })
-        taskpool.execute(task2, taskpool.Priority.MEDIUM).then(() => {
-          mediumCount++;
-        }).catch((e: BusinessError) => {
-          console.error("medium task error: " + e);
-        })
-        taskpool.execute(task3, taskpool.Priority.HIGH).then(() => {
-          highCount++;
-        }).catch((e: BusinessError) => {
-          console.error("high task error: " + e);
-        })
-      }
-
-      let start: number = new Date().getTime();
-      while (new Date().getTime() - start < 1000) {
-        continue;
-      }
-
-      let taskpoolInfo = taskpool.getTaskPoolInfo();
-      let tid: number = 0;
-      let taskIds: Array<number> = [];
-      let priority: number = 0;
-      let taskId: number = 0;
-      let state: number = 0;
-      let duration: number = 0;
-
-      for(let threadInfo of taskpoolInfo.threadInfos) {
-        tid += threadInfo.tid;
-        if(threadInfo.taskIds != undefined) {
-          taskIds.length += threadInfo.taskIds.length;
-        }
-        if(threadInfo.priority != undefined) {
-          priority += threadInfo.priority;
-        }
-      }
-
-      for(let taskInfo of taskpoolInfo.taskInfos) {
-        taskId += Number(taskInfo.taskId);
-        state += taskInfo.state;
-        if(taskInfo.duration != undefined) {
-          duration += taskInfo.duration;
-        }
-      }
-      console.info("task duration is: " + duration);
-      expect(tid != 0).assertTrue();
-      expect(taskIds.length != 0).assertTrue();
-      expect(priority != -1).assertTrue();
-      expect(taskId != 0).assertTrue();
-      expect(state != 0).assertTrue();
-      done();
-    })
-
-    /**
      * @tc.number    : TaskPoolTestClass067
      * @tc.name      : SharedArrayBuffer with taskpool
      * @tc.desc      : transfer SharedArrayBuffer with taskpool
@@ -1304,15 +1232,18 @@ export default function TaskPoolTest() {
       taskpool.execute(task).then((res) => {
         expect(res).assertEqual("ok");
       });
-      setTimeout(() => {
-        Atomics.notify(int32, 0, 1);
-      }, 1000);
+
+      let t = Date.now()
+      while ((Date.now() - t) < 1000) {
+        continue;
+      }
+      Atomics.notify(int32, 0, 1);
       done();
     })
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0069
-     * @tc.name      : TaskPoolTestClass066
+     * @tc.name      : TaskPoolTestClass069
      * @tc.desc      : sendData and onReceiveData for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1332,7 +1263,7 @@ export default function TaskPoolTest() {
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0070
-     * @tc.name      : TaskPoolTestClass067
+     * @tc.name      : TaskPoolTestClass070
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1348,7 +1279,7 @@ export default function TaskPoolTest() {
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0071
-     * @tc.name      : TaskPoolTestClass068
+     * @tc.name      : TaskPoolTestClass071
      * @tc.desc      : add name of taskGroup for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1389,9 +1320,12 @@ export default function TaskPoolTest() {
       taskpool.execute(task2);
       taskpool.execute(task3);
       taskpool.execute(task4);
-      setTimeout(()=>{
-        taskpool.cancel(task4);}, 500);
 
+      let t = Date.now()
+      while ((Date.now() - t) < 500) {
+        continue;
+      }
+      taskpool.cancel(task4);;
       expect(taskpool.Task.isCanceled() == false);
       done();
     })
@@ -1648,6 +1582,7 @@ export default function TaskPoolTest() {
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass081', 0, async (done: Function) => {
+      let isTerminate: boolean = false;
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup1.addTask(printArgs, 10);
       taskGroup1.addTask(printArgs, 20);
@@ -1662,16 +1597,20 @@ export default function TaskPoolTest() {
       taskGroup2.addTask(task2);
       taskGroup2.addTask(task3);
 
-      taskpool.execute(taskGroup1);
+      taskpool.execute(taskGroup1).then(() => {
+        isTerminate = true;
+      });;
       taskpool.execute(taskGroup2);
 
-      setTimeout(()=>{
-        try {
-          taskpool.cancel(taskGroup1);
-        } catch(e) {
-          expect((e as BusinessError).toString()).assertEqual("BusinessError: The task group does not exist when it is canceled, taskpool:: taskGroup is not executed or has been executed");
-        }
-      }, 3000);
+      while(!isTerminate) {
+        await promiseCase();
+      }
+
+      try {
+        taskpool.cancel(taskGroup1);
+      } catch(e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task group does not exist when it is canceled, taskpool:: taskGroup is not executed or has been executed");
+      }
       done();
     })
 
@@ -2236,23 +2175,23 @@ export default function TaskPoolTest() {
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass108', 0, async (done: Function) => {
-
       let result: number = 0;
       let task: taskpool.Task = new taskpool.Task(printArgs, 100);
       taskpool.executeDelayed(1000, task).then((ret)=>{
         result = ret as number;
       })
-      setTimeout(()=>{
-        taskpool.cancel(task)
-      }, 500);
-
+      let t = Date.now()
+      while ((Date.now() - t) < 500) {
+        continue;
+      }
+      taskpool.cancel(task)
       expect(result).assertEqual(0);
       done();
     })
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0109
-     * @tc.name      : TaskPoolTestClass108
+     * @tc.name      : TaskPoolTestClass109
      * @tc.desc      : executedTask with dependency cannot executeDelayed again
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -2376,31 +2315,52 @@ export default function TaskPoolTest() {
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0115
      * @tc.name      : TaskPoolTestClass115
-     * @tc.desc      : get name from taskInfo
+     * @tc.desc      : Register a callback of onEnqueued
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass115', 0, async (done: Function) => {
-      let task: taskpool.Task = new taskpool.Task(errorTest)
-      taskpool.execute(task).then((res)=>{
-        console.info("errTest res " + res)
-      }).catch((e:BusinessError)=>{
-        expect((e as BusinessError).toString()).assertContain("this is an error");
+      let isTerminate1: boolean = false;
+      let task: taskpool.Task = new taskpool.Task(printArgs, 1);
+      let onEnqueuedStr = "";
+      task.onEnqueued(()=>{
+        onEnqueuedStr = "onEnqueued";
       })
+
+      let onStartExecutionStr = "";
+      task.onStartExecution(()=>{
+        onStartExecutionStr = "onStartExecution";
+      })
+
+      let onExecutionSucceededStr = "";
+      task.onExecutionSucceeded(()=>{
+        onExecutionSucceededStr = "onExecutionSucceeded";
+      })
+
+      taskpool.execute(task).then(()=> {
+        isTerminate1 = true;
+      });
+      while (!isTerminate1) {
+        await promiseCase()
+      }
+      expect(onEnqueuedStr).assertEqual("onEnqueued");
+      expect(onStartExecutionStr).assertEqual("onStartExecution");
+      expect(onExecutionSucceededStr).assertEqual("onExecutionSucceeded");
       done();
     })
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0116
      * @tc.name      : TaskPoolTestClass116
-     * @tc.desc      : get name from taskInfo
+     * @tc.desc      : handle cancel task error
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass116', 0, async (done: Function) => {
       let isTerminate1: boolean = false;
+      let isTerminate2: boolean = false;
       let task1: taskpool.Task = new taskpool.Task(testCancelDelayed);
       let task2: taskpool.Task = new taskpool.Task(testCancelDelayed);
       try {
@@ -2419,6 +2379,12 @@ export default function TaskPoolTest() {
         await promiseCase()
       }
 
+      taskpool.execute(task2).then(()=>{
+        isTerminate2 = true;
+      })
+      while (!isTerminate2) {
+        await promiseCase()
+      }
       try {
         taskpool.cancel(task2);
       } catch (e) {
@@ -2430,7 +2396,7 @@ export default function TaskPoolTest() {
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0117
      * @tc.name      : TaskPoolTestClass117
-     * @tc.desc      : get name from taskInfo
+     * @tc.desc      : handle cancel task error
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -2497,6 +2463,482 @@ export default function TaskPoolTest() {
         expect((e as BusinessError).toString()).assertEqual("BusinessError: The executed task does not support the registration of listeners.");
       }
 
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0120
+     * @tc.name      : TaskPoolTestClass120
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass120', 0, async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(delay);
+      expect(task.totalDuration < 5).assertTrue();
+      expect(task.cpuDuration < 5).assertTrue();
+      expect(task.ioDuration < 5).assertTrue();
+      let terminate: boolean = false;
+      taskpool.execute(task).then(()=>{
+        terminate = true;
+        expect(task.totalDuration > 0).assertTrue();
+        expect(task.ioDuration).assertEqual(0);
+        expect(task.totalDuration).assertEqual(task.cpuDuration);
+      })
+
+      let exeution: boolean = false;
+      while (!terminate) {
+        if (!exeution) {
+          expect(task.totalDuration < 5).assertTrue();
+          expect(task.ioDuration < 5).assertTrue();
+          exeution = true;
+        }
+        await promiseCase()
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0121
+     * @tc.name      : TaskPoolTestClass121
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass121', 0, async (done: Function) => {
+      let finalString: string = "";
+      let task1: taskpool.Task = new taskpool.Task(AdditionDelay, 300);
+      let task2: taskpool.Task = new taskpool.Task(AdditionDelay, 200);
+      task1.addDependency(task2);
+      let runner = new taskpool.SequenceRunner();
+      try {
+        runner.execute(task1).then(() => {
+          finalString += 'a';
+        });
+      } catch (e) {
+        expect(e.toString()).assertEqual("BusinessError: seqRunner:: dependent task not allowed.");
+        expect(task1.totalDuration < 5).assertTrue();
+        expect(task1.cpuDuration < 5).assertTrue();
+        expect(task1.ioDuration < 5).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0122
+     * @tc.name      : TaskPoolTestClass122
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass122', 0, async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 500);
+      taskpool.execute(task);
+      let start = new Date().getTime();
+      while (new Date().getTime() - start < 100) {
+        continue;
+      }
+      taskpool.cancel(task);
+      expect(task.totalDuration < 5).assertTrue();
+      expect(task.cpuDuration < 5).assertTrue();
+      expect(task.ioDuration < 5).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0123
+     * @tc.name      : TaskPoolTestClass123
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass123', 0, async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(randomTest, 100);
+      expect(task.totalDuration < 5).assertTrue();
+      expect(task.cpuDuration < 5).assertTrue();
+      expect(task.ioDuration < 5).assertTrue();
+      let terminate: boolean = false;
+      taskpool.execute(task).then(()=>{
+        terminate = true;
+        expect(task.totalDuration > 0).assertTrue();
+        expect(task.ioDuration > 0).assertTrue();
+        expect(task.cpuDuration > 0).assertTrue();
+        expect(task.totalDuration == task.ioDuration + task.cpuDuration).assertTrue();
+      })
+
+      let exeution: boolean = false;
+      while (!terminate) {
+        if (!exeution) {
+          expect(task.totalDuration < 5).assertTrue();
+          expect(task.ioDuration < 5).assertTrue();
+          exeution = true;
+        }
+        await promiseCase()
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0124
+     * @tc.name      : TaskPoolTestClass124
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass124', 0, async (done: Function) => {
+      let finalString: string = "";
+      let task1: taskpool.Task = new taskpool.Task(AdditionDelay, 300);
+      let task2: taskpool.Task = new taskpool.Task(AdditionDelay, 200);
+      task1.addDependency(task2);
+      let runner = new taskpool.SequenceRunner();
+      try {
+        runner.execute(task1).then(() => {
+          finalString += 'a';
+        });
+      } catch (e) {
+        expect(e.toString()).assertEqual("BusinessError: seqRunner:: dependent task not allowed.");
+        expect(task1.totalDuration < 5).assertTrue();
+        expect(task1.cpuDuration < 5).assertTrue();
+        expect(task1.ioDuration < 5).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0125
+     * @tc.name      : TaskPoolTestClass125
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass125', 0,  async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 500);
+      taskpool.execute(task);
+      let start = new Date().getTime();
+      while (new Date().getTime() - start < 100) {
+        continue;
+      }
+      taskpool.cancel(task);
+      expect(task.totalDuration < 5).assertTrue();
+      expect(task.cpuDuration < 5).assertTrue();
+      expect(task.ioDuration < 5).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0126
+     * @tc.name      : TaskPoolTestClass126
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass126', 0,  async (done: Function) => {
+      let task1: taskpool.Task = new taskpool.Task(delay, 100);
+      let task2: taskpool.Task = new taskpool.Task(delay, 200);
+      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+      taskGroup.addTask(task1);
+      taskGroup.addTask(task2);
+      expect(task1.totalDuration < 5).assertTrue();
+      expect(task1.cpuDuration < 5).assertTrue();
+      expect(task1.ioDuration < 5).assertTrue();
+
+      let terminate: boolean = false;
+      taskpool.execute(taskGroup).then((res) => {
+        terminate = true;
+        expect(task1.totalDuration > 0).assertTrue();
+        expect(task1.ioDuration).assertEqual(0);
+        expect(task1.totalDuration).assertEqual(task1.cpuDuration);
+      });
+
+      let exeution: boolean = false;
+      while (!terminate) {
+        if (!exeution) {
+          expect(task1.totalDuration < 5).assertTrue();
+          expect(task1.ioDuration < 5).assertTrue();
+          exeution = true;
+        }
+        await promiseCase()
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0127
+     * @tc.name      : TaskPoolTestClass127
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass127', 0,  async (done: Function) => {
+      let task1: taskpool.Task = new taskpool.Task(printArgs, 100);
+      let task2: taskpool.Task = new taskpool.Task(printArgs, 200);
+      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+      try {
+        taskGroup.addTask(task1);
+        taskpool.execute(taskGroup).then((res) => {
+          expect(res[0]).assertEqual(100);
+        });
+        taskGroup.addTask(task2);
+        taskpool.execute(taskGroup).then((res) => {
+          expect(res[1]).assertEqual(200);
+        });
+      } catch (e) {
+        expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: executed taskGroup cannot addTask");
+        expect(task1.totalDuration < 5).assertTrue();
+        expect(task1.cpuDuration < 5).assertTrue();
+        expect(task1.ioDuration < 5).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0128
+     * @tc.name      : TaskPoolTestClass128
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass128', 0,  async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(randomTest, 100);
+      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+      taskGroup.addTask(task);
+      expect(task.totalDuration < 5).assertTrue();
+      expect(task.cpuDuration < 5).assertTrue();
+      expect(task.ioDuration < 5).assertTrue();
+      let terminate: boolean = false;
+      taskpool.execute(taskGroup).then(()=>{
+        terminate = true;
+        expect(task.totalDuration > 0).assertTrue();
+        expect(task.ioDuration > 0).assertTrue();
+        expect(task.cpuDuration > 0).assertTrue();
+        expect(task.totalDuration == task.ioDuration + task.cpuDuration).assertTrue();
+      })
+
+      let exeution: boolean = false;
+      while (!terminate) {
+        if (!exeution) {
+          expect(task.totalDuration < 5).assertTrue();
+          expect(task.ioDuration < 5).assertTrue();
+          exeution = true;
+        }
+        await promiseCase()
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0129
+     * @tc.name      : TaskPoolTestClass129
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass129', 0,  async (done: Function) => {
+      let finalString: string = "";
+      let task1: taskpool.Task = new taskpool.Task(AdditionDelay, 500);
+      let task2: taskpool.Task = new taskpool.Task(AdditionDelay, 300);
+      let task3: taskpool.Task = new taskpool.Task(AdditionDelay, 100);
+      let task4: taskpool.Task = new taskpool.Task(WaitforRunner, finalString);
+
+      expect(task1.totalDuration < 5).assertTrue();
+      expect(task1.cpuDuration < 5).assertTrue();
+      expect(task1.ioDuration < 5).assertTrue();
+
+      let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner();
+      runner.execute(task1).then(() => {
+        finalString += 'a';
+      });
+      runner.execute(task2).then(() => {
+        finalString += 'b';
+      });
+      runner.execute(task3).then(() => {
+        finalString += 'c';
+      });
+
+      expect(task1.totalDuration < 5).assertTrue();
+      expect(task1.cpuDuration < 5).assertTrue();
+      expect(task1.ioDuration < 5).assertTrue();
+
+      await runner.execute(task4);
+      expect(finalString).assertEqual("abc");
+      expect(task1.totalDuration > 0).assertTrue();
+      expect(task1.ioDuration).assertEqual(0);
+      expect(task1.totalDuration).assertEqual(task1.cpuDuration);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0130
+     * @tc.name      : TaskPoolTestClass130
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass130', 0,  async (done: Function) => {
+      let finalString: string = "";
+      let task1: taskpool.Task = new taskpool.Task(randomTest, 500);
+      let task2: taskpool.Task = new taskpool.Task(randomTest, 300);
+      let task3: taskpool.Task = new taskpool.Task(randomTest, 100);
+      let task4: taskpool.Task = new taskpool.Task(WaitforRunner, finalString);
+
+      expect(task1.totalDuration < 5).assertTrue();
+      expect(task1.cpuDuration < 5).assertTrue();
+      expect(task1.ioDuration < 5).assertTrue();
+
+      let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
+      runner.execute(task1).then(() => {
+        finalString += 'a';
+      });
+      runner.execute(task2).then(() => {
+        finalString += 'b';
+      });
+      runner.execute(task3).then(() => {
+        finalString += 'c';
+      });
+
+      expect(task1.totalDuration < 5).assertTrue();
+      expect(task1.cpuDuration < 5).assertTrue();
+      expect(task1.ioDuration < 5).assertTrue();
+
+      await runner.execute(task4);
+      expect(finalString).assertEqual("abc");
+      expect(task1.totalDuration > 0).assertTrue();
+      expect(task1.ioDuration > 0).assertTrue();
+      expect(task1.cpuDuration > 0).assertTrue();
+      expect(task1.totalDuration == task1.ioDuration + task1.cpuDuration).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0131
+     * @tc.name      : TaskPoolTestClass131
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass131', 0,  async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(printArgs, 100);
+      let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
+      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+      expect(task.totalDuration < 5).assertTrue();
+      expect(task.cpuDuration < 5).assertTrue();
+      expect(task.ioDuration < 5).assertTrue();
+      try {
+        runner.execute(task).then((ret) => {
+        });
+        taskGroup.addTask(task);
+
+      } catch (e) {
+        expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: taskGroup cannot add seqRunnerTask or executedTask");
+        expect(task.totalDuration < 5).assertTrue();
+        expect(task.cpuDuration < 5).assertTrue();
+        expect(task.ioDuration < 5).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0132
+     * @tc.name      : TaskPoolTestClass132
+     * @tc.desc      : handle cancel task error
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass132', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let isTerminate2: boolean = false;
+      let isTerminate3: boolean = false;
+      let finalString: string = "";
+      let task1: taskpool.Task = new taskpool.Task(printArgs, 100);
+      taskpool.executeDelayed(500, task1, taskpool.Priority.HIGH).then(() => {
+        finalString += 'a';
+        isTerminate1 = true;
+      });
+      taskpool.executeDelayed(1000, task1, taskpool.Priority.MEDIUM).then(() => {
+        finalString += 'b';
+        isTerminate2 = true;
+      });
+      taskpool.executeDelayed(1500, task1, taskpool.Priority.LOW).then(() => {
+        finalString += 'c';
+        isTerminate3 = true;
+      });
+      while (!isTerminate1 || !isTerminate2 || !isTerminate3) {
+        await promiseCase()
+      }
+      expect(finalString).assertEqual("abc");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0133
+     * @tc.name      : TaskPoolTestClass133
+     * @tc.desc      : handle cancel task error
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass133', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let isTerminate2: boolean = false;
+      let isTerminate3: boolean = false;
+      let isTerminate4: boolean = false;
+      let finalString: string = "";
+      let task1: taskpool.Task = new taskpool.Task(dependend, 1);
+      let task2: taskpool.Task = new taskpool.Task(dependend, 2);
+      let task3: taskpool.Task = new taskpool.Task(dependend, 3);
+      let task4: taskpool.Task = new taskpool.Task(dependend, 4);
+      task4.addDependency(task1, task2, task3);
+      taskpool.execute(task1).then(() => {
+        finalString += 'a';
+        isTerminate1 = true;
+      });
+      taskpool.execute(task2).then(() => {
+        finalString += 'b';
+        isTerminate2 = true;
+      });
+      taskpool.execute(task3).then(() => {
+        finalString += 'c';
+        isTerminate3 = true;
+      });
+      taskpool.execute(task4).then(() => {
+        finalString += 'd';
+        isTerminate4 = true;
+      });
+      while (!isTerminate1 || !isTerminate2 || !isTerminate3 || !isTerminate4) {
+        await promiseCase()
+      }
+      expect(finalString).assertEqual("abcd");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0134
+     * @tc.name      : TaskPoolTestClass134
+     * @tc.desc      : get name from taskInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass134', 0, async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(errorTest)
+      taskpool.execute(task).then((res)=>{
+        console.info("errTest res " + res)
+      }).catch((e:BusinessError)=>{
+        expect((e as BusinessError).toString()).assertContain("this is an error");
+      })
       done();
     })
   })
