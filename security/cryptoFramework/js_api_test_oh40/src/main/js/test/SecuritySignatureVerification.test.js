@@ -24,16 +24,7 @@ export default function SecuritySignatureVerificationJsunit() {
         console.log(
             "##########start SecuritySignatureVerificationJsunit##########"
         );
-        beforeAll(async function () {
-            async function sleep(ms) {
-                let timeoutID;
-                await new Promise(resolve => {
-                    timeoutID = setTimeout(resolve, ms)
-                });
-                clearTimeout(timeoutID);
-            }
-
-            await sleep(6000);
+        beforeAll(async function () { 
         });
         afterEach(function () {
         });

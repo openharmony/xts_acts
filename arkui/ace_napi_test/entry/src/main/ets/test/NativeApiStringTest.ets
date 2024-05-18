@@ -2060,21 +2060,23 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0139', 0, async function (done) {
       console.info('aceNapiTest0139 START');
-      const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.js', {name:"first worker in Stage model"});
+      const workerInstance = new worker.Worker('workers/worker.js');
       let isTerminate = false;
       workerInstance.onexit = function () {
         isTerminate = true;
       }
       expect(workerInstance != null).assertTrue();
+      let res = undefined;
       workerInstance.onmessage = async (e) => {
         console.info('aceNapiTest0139 testString result is: ' + e.data);
-        expect(e.data).assertEqual(0)
+        res = e.data;
         workerInstance.terminate();
-        while (!isTerminate) {
-          await promiseCase()
-        }
       }
       workerInstance.postMessage("call napi_run_event_loop with nowait");
+      while (!isTerminate) {
+        await promiseCase()
+      }
+      expect(res).assertEqual("success")
       done();
     });
 
@@ -2085,21 +2087,23 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0140', 0, async function (done) {
       console.info('aceNapiTest0140 START');
-      const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.js', {name:"first worker in Stage model"});
+      const workerInstance = new worker.Worker('workers/worker.js');
       let isTerminate = false;
       workerInstance.onexit = function () {
         isTerminate = true;
       }
       expect(workerInstance != null).assertTrue();
+      let res = undefined;
       workerInstance.onmessage = async (e) => {
         console.info('aceNapiTest0140 testString result is: ' + e.data);
-        expect(e.data).assertEqual(0)
+        res = e.data;
         workerInstance.terminate();
-        while (!isTerminate) {
-          await promiseCase()
-        }
       }
       workerInstance.postMessage("call napi_run_event_loop with nowait");
+      while (!isTerminate) {
+        await promiseCase()
+      }
+      expect(res).assertEqual("success")
       done();
     });
 
@@ -2175,21 +2179,23 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0146', 0, async function (done) {
       console.info('aceNapiTest0146 START');
-      const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.js', {name: "first worker in Stage model"});
+      const workerInstance = new worker.Worker('workers/worker.js');
       let isTerminate = false;
       workerInstance.onexit = function () {
         isTerminate = true;
       }
       expect(workerInstance != null).assertTrue();
+      let res = undefined;
       workerInstance.onmessage = async (e) => {
         console.info('aceNapiTest0146 testString result is: ' + e.data);
-        expect(e.data).assertEqual(0);
+        res = e.data;
         workerInstance.terminate();
-        while (!isTerminate) {
-          await promiseCase()
-        }
       }
       workerInstance.postMessage("call napi_stop_event_loop");
+      while (!isTerminate) {
+        await promiseCase()
+      }
+      expect(res).assertEqual("success")
       done();
     });
 
@@ -2381,13 +2387,81 @@ export default function nativeApiStringJsunit() {
     it('aceNapiTest0158', 0, async function (done) {
       try {
         console.info('aceNapiTest0158 START');
-        value = napitest.ExceptionalNapiCrateAndGetValueString('love');
+        value = napitest.exceptionalNapiCrateAndGetValueString('love');
         console.info('aceNapiTest0158 testString result is: ' + value);
       } catch (err) {
         console.info('aceNapiTest0158 testString result is err: ' + err + "--" + JSON.stringify(err));
         let er = JSON.stringify(err)
         expect(er === '{}').assertTrue();
       }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0159
+     * @tc.name aceNapiTest0159
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0159', 0, async function (done) {
+      console.info('aceNapiTest0159 START');
+      function test1() {
+        "use concurrent"
+      }
+      function test2() {}
+      value = napitest.isConcurrentFunction(test1);
+      expect(value).assertEqual(true);
+      console.info('aceNapiTest0159 testString result is: ' + value);
+      value = napitest.isConcurrentFunction(test2);
+      expect(value).assertEqual(false);
+      console.info('aceNapiTest0159 testString result is: ' + value);
+      done();
+    });
+
+    /**
+     * @tc.name aceNapiTest0160
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0160', 0, async (done: Function) => {
+      console.info('aceNapiTest0160 START');
+      class Class {
+        constructor() {
+        }
+      }
+      class SendableClass {
+        constructor() {
+          'use sendable';
+        }
+      }
+      let value = napitest.NapiIsSendable(Class, SendableClass);
+      console.info('aceNapiTest0160 testString result is: ' + value + '--' + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0160
+     * @tc.name aceNapiTest0161
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0161', 0, async (done: Function) => {
+      console.info('aceNapiTest0161 START');
+      let value = napitest.NapiDefineSendableClass();
+      console.info('aceNapiTest0161 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0162
+     * @tc.name aceNapiTest0162
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0162', 0, async (done: Function) => {
+      console.info('aceNapiTest0162 START');
+      value = napitest.threadSafePriority((num1, num2) => {
+        return num1 + num2;
+      });
+      console.info('aceNapiTest0162 testString result is value: ' + JSON.stringify(value));
       done();
     });
   })

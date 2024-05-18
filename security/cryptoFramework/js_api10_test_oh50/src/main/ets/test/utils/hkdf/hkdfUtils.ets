@@ -56,6 +56,18 @@ async function hkdfPromise(algName: string, spec: cryptoFramework.HKDFSpec): Pro
   }
 }
 
+function hkdfSync(algName: string, spec: cryptoFramework.HKDFSpec): cryptoFramework.DataBlob {
+  try {
+    let kdf: cryptoFramework.Kdf = cryptoFramework.createKdf(algName);
+    let secret: cryptoFramework.DataBlob = kdf.generateSecretSync(spec);
+
+    return secret;
+  } catch (error) {
+    console.error(`hkdfSync “${error}“, error code: ${error.code}`);
+    throw error as Error;
+  }
+}
+
 function hkdfSpec(key: string, isKeyString: boolean, salt: string,
                   info: string, keySize: number): cryptoFramework.HKDFSpec {
   try {
@@ -236,6 +248,7 @@ let KAT_VECTOR_DATA: kdfVector[] = [
 export {
   hkdfCallback,
   hkdfPromise,
+  hkdfSync,
   hkdfSpec,
   getMdLen,
   mdData,

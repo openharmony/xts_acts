@@ -37,15 +37,6 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                 }
             }
 
-            async function sleep(ms) {
-                let timeoutID;
-                await new Promise(resolve => {
-                    timeoutID = setTimeout(resolve, ms)
-                });
-                clearTimeout(timeoutID);
-            }
-
-            await sleep(5000);
             asyKeyPair = await genAsyKeyPair();
         });
         afterAll(function () {

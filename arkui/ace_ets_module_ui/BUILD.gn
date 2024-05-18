@@ -27,11 +27,14 @@ group("ActsAceEtsModuleUITest") {
     "ace_ets_module_draw:ActsAceEtsModuleDrawTest",
     "ace_ets_module_imageText:ActsAceEtsModuleImageTextTest",
     "ace_ets_module_information:ActsAceEtsModuleInformationTest",
+    "ace_ets_module_keyboardShortcut:ActsAceEtsModuleKeyboardShortcutTest",
     "ace_ets_module_layout:ActsAceEtsModuleLayoutTest",
+    "ace_ets_module_modifier:ActsAceEtsModuleModifierTest",
     "ace_ets_module_navigation:ActsAceEtsModuleNavigationTest",
     "ace_ets_module_observer:ActsAceEtsModuleObserverTest",
     "ace_ets_module_picker:ActsAceEtsModulePickerTest",
     "ace_ets_module_platform:ActsAceEtsModulePlatformTest",
     "ace_ets_module_scroll:ActsAceEtsModuleScrollTest",
+    "ace_ets_module_span_baselineOffset:ActsAceEtsModuleSpanBaselineOffsetTest",
   ]
 }

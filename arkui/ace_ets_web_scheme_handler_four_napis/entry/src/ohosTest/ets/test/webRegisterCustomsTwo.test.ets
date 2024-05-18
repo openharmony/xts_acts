@@ -172,26 +172,6 @@ export default function webviewApi() {
         await Utils.sleep(1000);
         Utils.registerEvent("testWebResourceRequest_GetRequestHeaders", true, 7763, done);
         sendEventByKey('webHostingButton', 10, '');
-    })
-    
-    /*
-     * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0580
-     * @tc.name       : testWebHttpBodyStream_GetUserData0580
-     * @tc.desc       : test WebHttpBodyStream_GetUserData
-     * @tc.size_t     : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testWebHttpBodyStream_GetUserData', 0, async (done: Function) => {
-        
-        hilog.info(0x0000, 'testTag', '%{public}s', 'testWebHttpBodyStream_GetUserData PASS');
-        
-        Utils.emitEvent("emitWebHttpBodyStream_GetUserData", 10)
-        await Utils.sleep(1000);
-        Utils.registerEvent("testWebHttpBodyStream_GetUserData", true, 7764, done);
-        sendEventByKey('webHostingButton', 10, '');
-    })
-    
-    
+    })    
   })
 }

@@ -51,7 +51,8 @@ struct webRegisterCustomsComponent {
 
     console.error("aboutToAppear setSchemeHandler" + this.isSet)
     console.error("aboutToAppear registerCustomSchemes End")
-
+    
+    testNapi.initResourceManager(getContext().resourceManager);
   }
 
   onPageShow() {
@@ -121,18 +122,6 @@ struct webRegisterCustomsComponent {
         .fileAccess(false)
         .domStorageAccess(true)
         .cacheMode(CacheMode.Default)
-        .onPageBegin( event => {
-          testNapi.initResourceManager(getContext().resourceManager);
-        }).onConsole((event) => {
-        if (event) {
-          console.log('onConsole getMessage:' + event.message?.getMessage())
-          console.log('onConsole getSourceId:' + event.message?.getSourceId())
-          console.log('onConsole getLineNumber:' + event.message?.getLineNumber())
-          console.log('onConsole getMessageLevel:' + event.message?.getMessageLevel())
-        }
-        return false
-      })
-
     }
     .height('100%')
 

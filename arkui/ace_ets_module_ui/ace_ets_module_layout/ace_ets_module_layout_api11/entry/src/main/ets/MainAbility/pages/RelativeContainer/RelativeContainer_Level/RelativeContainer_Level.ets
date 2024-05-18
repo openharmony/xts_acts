@@ -61,7 +61,6 @@ struct RelativeContainer_Level {
           .id("RelativeContainer_Level_tx2")
           .borderWidth(2)
           .borderColor(Color.Green)
-          .height(30)
           .width(250)
       }
       .width(300).height(300)

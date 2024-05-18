@@ -38,15 +38,6 @@ export default function SecurityCipherJsunit() {
                 }
             }
 
-            async function sleep(ms) {
-                let timeoutID;
-                await new Promise(resolve => {
-                    timeoutID = setTimeout(resolve, ms)
-                });
-                clearTimeout(timeoutID);
-            }
-
-            await sleep(5000);
             gKeyPairSpec = await genRsa2048KeyPairSpec();
         });
         afterEach(async function () {
