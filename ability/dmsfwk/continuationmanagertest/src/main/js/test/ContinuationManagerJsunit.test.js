@@ -39,16 +39,15 @@ export default function continuationManagerTest() {
             }
         }
 
-
         async function driveFn() {
             try {
                 let driver = await UiDriver.create();
                 console.info(`come in driveFn`);
                 console.info(`driver is ${JSON.stringify(driver)}`);
-                sleep(2000);
+                await sleep(1000);
                 let button = await driver.findComponent(BY.text('允许'));
                 console.info(`button is ${JSON.stringify(button)}`);
-                sleep(5000);
+                await sleep(1000);
                 await button.click();
             } catch (err) {
                 console.info('err code is ' + err);
@@ -56,15 +55,12 @@ export default function continuationManagerTest() {
             }
         }
 
-
-
         beforeAll(async function (done) {
             console.info('beforeAll');
             await requestPermission();
-            sleep(5000);
+            await sleep(1000);
             await driveFn();
-            sleep(5000);
-
+            await sleep(1000);
             done();
         })
 
@@ -150,7 +146,7 @@ export default function continuationManagerTest() {
                     done();
                 });
             } catch (error) {
-                console.info("testRegister002 catch error is" + error); 
+                console.info("testRegister002 catch error is" + error);
                 expect(null).assertFail();
                 done();
             }
@@ -1098,7 +1094,7 @@ export default function continuationManagerTest() {
         it('testOn005', 0, async function (done) {
             console.info("----------------------testOn005 start----------------------");
             try {
-                continuationManager.on("deviceConnect",continuationManager.ContinuationResult, function (data) {
+                continuationManager.on("deviceConnect", continuationManager.ContinuationResult, function (data) {
                     console.info("testOn005 data is" + data);
                     expect().assertFail();
                     done()
