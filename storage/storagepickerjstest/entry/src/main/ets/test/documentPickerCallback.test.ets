@@ -364,6 +364,34 @@ export default function documentPickerCallback(abilityContext: Context) {
       option.fileSuffixChoices = ['.mp3'];
       await saveWithOption(testNum, done, option);
     });
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SAVE_CALLBACK_1000
+     * @tc.name   : documentpicker_save_callback_010
+     * @tc.desc   : save option=DOWNLOAD
+     * @tc.size   : MEDIUM
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("documentpicker_save_callback_010", 1, async (done: Function) => {
+      let testNum = "documentpicker_save_callback_010";
+      let option = new picker.DocumentSaveOptions();
+      option.pickerMode = 1;
+      await saveWithOption(testNum, done, option);
+    });
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SAVE_CALLBACK_1100
+     * @tc.name   : documentpicker_save_callback_011
+     * @tc.desc   : save option=DEFAULT
+     * @tc.size   : MEDIUM
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("documentpicker_save_callback_011", 1, async (done: Function) => {
+      let testNum = "documentpicker_save_callback_011";
+      let option = new picker.DocumentSaveOptions();
+      option.pickerMode = DEFAULT;
+      await saveWithOption(testNum, done, option);
+    });
   });
 }
 
