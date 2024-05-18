@@ -364,7 +364,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
         expect(null).assertTrue();
       } catch (error) {
         console.error(`“${error}“, error code: ${error.code}`);
-        expect(error.code).assertEqual(401);
+        expect(error.code).assertEqual(17630001);
       }
       done();
     });
@@ -393,7 +393,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
         expect(null).assertTrue();
       } catch (error) {
         console.error(`“${error}“, error code: ${error.code}`);
-        expect(error.code).assertEqual(401);
+        expect(error.code).assertEqual(17630001);
       }
       done();
     });
@@ -422,7 +422,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
         expect(null).assertTrue();
       } catch (error) {
         console.error(`“${error}“, error code: ${error.code}`);
-        expect(error.code).assertEqual(401);
+        expect(error.code).assertEqual(17630001);
       }
       done();
     });
