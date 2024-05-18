@@ -2387,7 +2387,7 @@ export default function nativeApiStringJsunit() {
     it('aceNapiTest0158', 0, async function (done) {
       try {
         console.info('aceNapiTest0158 START');
-        value = napitest.ExceptionalNapiCrateAndGetValueString('love');
+        value = napitest.exceptionalNapiCrateAndGetValueString('love');
         console.info('aceNapiTest0158 testString result is: ' + value);
       } catch (err) {
         console.info('aceNapiTest0158 testString result is err: ' + err + "--" + JSON.stringify(err));
@@ -2448,6 +2448,20 @@ export default function nativeApiStringJsunit() {
       let value = napitest.NapiDefineSendableClass();
       console.info('aceNapiTest0161 testString result is: ' + value + "--" + JSON.stringify(value));
       expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0162
+     * @tc.name aceNapiTest0162
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0162', 0, async (done: Function) => {
+      console.info('aceNapiTest0162 START');
+      value = napitest.threadSafePriority((num1, num2) => {
+        return num1 + num2;
+      });
+      console.info('aceNapiTest0162 testString result is value: ' + JSON.stringify(value));
       done();
     });
   })

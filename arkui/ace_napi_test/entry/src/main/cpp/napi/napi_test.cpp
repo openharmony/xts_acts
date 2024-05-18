@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <vector>
 #include <malloc.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <unistd.h>
@@ -55,6 +56,11 @@ static int g_cleanupHookCount = 0;
 static napi_env g_sharedEnv = nullptr;
 static napi_deferred g_deferred = nullptr;
 static bool g_isTaskFinished = false;
+
+struct CallbackData {
+    napi_threadsafe_function tsfn;
+    napi_async_work work;
+};
 
 struct InstanceData {
     size_t value;
@@ -4517,11 +4523,73 @@ static napi_value ExceptionalNapiCrateAndGetValueString(napi_env env, napi_callb
     return output;
 }
 
+static void CallJsFunc(napi_env env, napi_value jsCb, void *context, void *data)
+{
+    if (env == nullptr) {
+        return;
+    }
+    napi_value resultNumber = nullptr;
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    napi_value number1 = nullptr;
+    napi_create_int32(env, 12, &number1); // 12:numerical value
+    napi_value number2 = nullptr;
+    napi_create_int32(env, 15, &number2); // 15:numerical value
+    napi_value argv[2] = {number1, number2}; // 2:array size
+    napi_call_function(env, undefined, jsCb, 2, argv, &resultNumber); // 2:number of parameters
+    int32_t res = 0;
+    napi_get_value_int32(env, resultNumber, &res);
+    if (res != 27) { // 27: calculation result
+        napi_throw_error(env, nullptr, "Napitest: Return result error");
+        return;
+    }
+}
+
+static void ExecuteWork(napi_env env, void *data)
+{
+    CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
+    // 执行任务为napi_priority_idle优先级，入队方式为队列尾部入队
+    napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_idle, true);
+    napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_low, true);
+    napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_high, true);
+    napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_immediate, true);
+    // 执行任务为napi_priority_high优先级，入队方式为队列头部入队
+    napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_high, false);
+}
+
+static void WorkComplete(napi_env env, napi_status status, void *data)
+{
+    CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
+    napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
+    napi_delete_async_work(env, callbackData->work);
+    callbackData->work = nullptr;
+    callbackData->tsfn = nullptr;
+}
+
+static napi_value ThreadSafePriority(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value jsCb = nullptr;
+    CallbackData *callbackData = nullptr;
+    napi_get_cb_info(env, info, &argc, &jsCb, nullptr, reinterpret_cast<void **>(&callbackData));
+    napi_value resourceName = nullptr;
+    napi_create_string_utf8(env, "Thread-safe Function Demo", NAPI_AUTO_LENGTH, &resourceName);
+    napi_create_threadsafe_function(env, jsCb, nullptr, resourceName, 0, 1, callbackData, nullptr, callbackData,
+                                    CallJsFunc, &callbackData->tsfn);
+    napi_create_async_work(env, nullptr, resourceName, ExecuteWork, WorkComplete, callbackData, &callbackData->work);
+    napi_queue_async_work(env, callbackData->work);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_value theValue;
+    CallbackData *callbackData = new CallbackData();
     NAPI_CALL(env, napi_create_string_utf8(env, TEST_STR, sizeof(TEST_STR), &theValue));
     NAPI_CALL(env, napi_set_named_property(env, exports, "testStr", theValue));
     napi_property_descriptor properties[] = {
@@ -4690,6 +4758,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("exceptionalCallAddNumFunction", ExceptionalCallAddNumFunction),
         DECLARE_NAPI_FUNCTION("exceptionalNapiNewInstance", ExceptionalNapiNewInstance),
         DECLARE_NAPI_FUNCTION("exceptionalNapiCrateAndGetValueString", ExceptionalNapiCrateAndGetValueString),
+        {"threadSafePriority", nullptr, ThreadSafePriority, nullptr, nullptr, nullptr, napi_default, callbackData},
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
