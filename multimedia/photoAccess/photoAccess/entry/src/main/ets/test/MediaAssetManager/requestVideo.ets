@@ -14,14 +14,12 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import image from '@ohos.multimedia.image'
 import { describe, it, expect } from 'deccjsunit/index'
-import { albumType, albumSubtype, genRadomStr, albumKeys } from '../../../../../../../common'
-import fs from '@ohos.file.fs';
-import fileUri from "@ohos.file.fileuri";
+
 import {
   photoKeys,
   fetchOption,
+  createSandboxFileUri,
 } from '../../../../../../../common'
 
 export default function requestVideoTest() {
@@ -33,11 +31,7 @@ export default function requestVideoTest() {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
-        
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.mp4';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('mp4');
         class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
           async onDataPrepared(data : boolean) {
             console.info(`${testNum} succeed`);
@@ -59,10 +53,7 @@ export default function requestVideoTest() {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.mp4';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('mp4');
         class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
           onDataPrepared(data : boolean) {
             console.info(`${testNum} failed`);
@@ -81,10 +72,7 @@ export default function requestVideoTest() {
 
     async function requestVideoPhotoAssetError(testNum, done, photoAsset) {
       try {
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.mp4';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('mp4');
         class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
           onDataPrepared(data : boolean) {
             console.info(`${testNum} failed`);
@@ -515,11 +503,7 @@ export default function requestVideoTest() {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
-        
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.mp4';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('mp4');
         class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
           onDataPrepared(data : boolean) {
             console.info(`${testNum} succeed`);
@@ -554,11 +538,7 @@ export default function requestVideoTest() {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
-        
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.jpg';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('jpg');
         class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
           onDataPrepared(data : boolean) {
             console.info(`${testNum} succeed`);
@@ -593,10 +573,7 @@ export default function requestVideoTest() {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.jpg';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('jpg');
         class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
           onDataPrepared(data : boolean) {
             console.info(`${testNum} succeed`);
