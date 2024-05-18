@@ -700,5 +700,22 @@ describe("TreeSetTest", function () {
       expect(err.message).assertEqual(`The Symbol.iterator method cannot be bound`);
     }
   });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TREESET_01002
+   * @tc.name: testValues047
+   * @tc.desc: Get a collection of all the values in the TreeSet. For example: treeSet.forEach((value, key).
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it('testValues047', 0, function () {
+    let  treeSet = new TreeSet();
+    treeSet.add("sparrow");
+    treeSet.forEach((value, key) => {
+      expect(value).assertEqual("sparrow");
+      expect(key).assertEqual("sparrow");
+    });
+  });
 });
 }
