@@ -156,7 +156,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdfileNameExtentionsJsAPITest0090
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0090
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .wmv
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".wmp"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -377,7 +377,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdfileNameExtentionsJsAPITest0240
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0240
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .class
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .jar
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
