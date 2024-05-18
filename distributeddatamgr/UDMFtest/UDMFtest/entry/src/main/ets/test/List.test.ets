@@ -19,6 +19,7 @@ import UDMFApiTest from './UDMF.test'
 import UDMFApiDescriptorTest from './UDMFApiDescriptor.test'
 import UDMFDragBigDataJsApiTest from './UDMFDragBigDataJsApi.test'
 import UtdfMimeTypeTest from './UtdfMimeTypeTest'
+import UtdfileNameTest from './UtdfileNameExtentionsTest'
 
 export default function testsuite() {
   UDMFApiCallback()
@@ -26,5 +27,6 @@ export default function testsuite() {
   UDMFApiPromise()
   UDMFApiTest()
   UtdfMimeTypeTest()
+  UtdfileNameTest()
   UDMFDragBigDataJsApiTest()
 }
