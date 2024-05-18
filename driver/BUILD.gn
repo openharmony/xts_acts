@@ -19,7 +19,7 @@ group("driver") {
     deps = [
       # "device_manager:device_manager_js_test",
       "hid:emit_event_test",
-      "usb_ndk:ActsDriversExternalusbNdkTest",
+      "usb_ndk:ActsDriversExternalUsbNdkTest",
     ]
   }
 }
