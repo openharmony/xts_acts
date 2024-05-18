@@ -2160,7 +2160,7 @@ export default function StreamTest() {
     it('testStreamReadableSetEncoding001', 0, () => {
       let readable = new stream.Readable();
       readable.setEncoding(null);
-      expect(readable.readableEncoding).assertEqual('utf8');
+      expect(readable.readableEncoding).assertEqual('utf-8');
     });
 
     // Check the StreamReadableWithUnimplementedDoRead.
@@ -2837,7 +2837,165 @@ export default function StreamTest() {
       let duplex = new stream.Duplex();
       expect(duplex.readableHighWatermark).assertEqual(16 * 1024);
     });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13100
+     * @tc.name: testStreamReadableread001
+     * @tc.desc: Reads a buffer of a specified size from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamReadableread001', 0, () => {
+      const stringdecoder = new StringDecoderReadable();
+      let ss = stringdecoder.setEncoding("utf-8");
+      expect(ss).assertEqual(true);
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13200
+     * @tc.name: testStreamReadableread002
+     * @tc.desc: Reads a buffer of a specified size from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamReadableread002', 0, () => {
+      const stringdecoder = new StringDecoderReadable();
+      let ss = stringdecoder.setEncoding("utf8");
+      expect(ss).assertEqual(true);
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13300
+     * @tc.name: testStreamReadableread003
+     * @tc.desc: Reads a buffer of a specified size from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamReadableread003', 0, () => {
+      let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const stringdecoder = new StringDecoderReadable();
+      stringdecoder.push(input);
+      let res = stringdecoder.read(2);
+      let ss = stringdecoder.setEncoding("windows-1250")
+      res = stringdecoder.read(4);
+      expect(ss).assertEqual(false);
+      expect(res).assertEqual('你好');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13400
+     * @tc.name: testStreamReadableread004
+     * @tc.desc: Reads a buffer of a specified size from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamReadableread004', 0, () => {
+      let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const stringdecoder = new StringDecoderReadable();
+      stringdecoder.push(input);
+      let res = stringdecoder.read(2);
+      res = stringdecoder.read(4);
+      expect(res).assertEqual('你好');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13500
+     * @tc.name: testStreamReadableread005
+     * @tc.desc: Reads a buffer of a specified size from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamReadableread005', 0, () => {
+      let enc : stream.ReadableOptions = {
+        encoding : "utf-8"
+      };
+      let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const stringdecoder = new StringDecoderReadable(enc);
+      stringdecoder.push(input);
+      let res = stringdecoder.read(input.length);
+      expect(res).assertEqual('你好');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13600
+     * @tc.name: testStreamReadableread006
+     * @tc.desc: Reads a buffer of a specified size from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamReadableread006', 0, () => {
+      let enc : stream.ReadableOptions = {
+        encoding : "windows-1250"
+      };
+      let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const stringdecoder = new StringDecoderReadable(enc);
+      let ss = stringdecoder.setEncoding();
+      stringdecoder.push(input);
+      let res = stringdecoder.read();
+      expect(res).assertEqual('你好');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13700
+     * @tc.name: testStreamReadableread007
+     * @tc.desc: Reads a buffer of a specified size from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamReadableread007', 0, () => {
+      let enc : stream.ReadableOptions = {
+        encoding : "windows-1250"
+      };
+      const stringdecoder = new StringDecoderReadable(enc);
+      let res = stringdecoder.readableEncoding;
+      expect(res).assertEqual('windows-1250');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13800
+     * @tc.name: testStreamReadableread008
+     * @tc.desc: Reads a buffer of a specified size from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamReadableread008', 0, () => {
+      const stringdecoder = new StringDecoderReadable();
+      let res = stringdecoder.readableEncoding;
+      expect(res).assertEqual('utf-8');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13900
+     * @tc.name: testStreamReadableread009
+     * @tc.desc: Reads a buffer of a specified size from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamReadableread009', 0, () => {
+      let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const stringdecoder = new StringDecoderReadable();
+      stringdecoder.push(input);
+      let res = stringdecoder.read();
+      expect(res).assertEqual('你好');
+    });
   })
+}
+
+class StringDecoderReadable extends stream.Readable {
+  constructor(opt?: stream.ReadableOptions) {
+    super(opt);
+  }
+  doRead(size: number) {
+  }
 }
 
 class TestWritable extends stream.Writable {
