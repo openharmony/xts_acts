@@ -63,10 +63,7 @@ export default function routerReplaceJsunit() {
       await CommonFunc.sleep(2000);
       let text = getInspectorByKey('replace_getParams');
       let Obj = JSON.parse(text);
-      // let text = await driver.findComponent(ON.id('replace_getParams'));
-      // await CommonFunc.sleep(1000);
-      // let txt = await text.getText()
-      expect(Obj.attrs.content).assertEqual('router_replaceUrl:undefined');
+      expect(Obj.$attrs.content).assertEqual('router_replaceUrl:undefined');
       console.info('[routerReplaceJsunit_0100] END');
       done();
     });
