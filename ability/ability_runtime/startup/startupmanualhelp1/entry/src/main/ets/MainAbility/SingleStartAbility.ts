@@ -138,10 +138,10 @@ export default class SingleStartAbility extends UIAbility {
     console.log('StartupTest startupManager run');
     setTimeout(()=>{
       if (!customConfig) {
-        console.log('StartupTest SingleStartAbility2 startupManager run with defaultConfig');
+        console.log('StartupTest SingleStartAbility startupManager run with defaultConfig');
         startupManager.run(['Sample_001']);
       } else {
-        console.log('Custom StartupTest SingleStartAbility2 startupManager run with custom Config');
+        console.log('Custom StartupTest SingleStartAbility startupManager run with custom Config');
         let onCompletedCallback = (error) => {
           console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
           if (error) {

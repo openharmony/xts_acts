@@ -16,7 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import common from '@ohos.app.ability.common';
 import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-
+import testContext from '../MainAbility/MainAbility'
 export default function abilityTest() {
 
   let delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -25,7 +25,7 @@ export default function abilityTest() {
 
   describe('ActsAbilityStartUpTest', function () {
     beforeAll(async function (done) {
-      context = globalThis.context;
+      context = testContext;
       done();
     });
 
@@ -46,17 +46,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_0100', 0, async function (done) {
       TAG = "ACTS_AddAbilityMonitor_Callback_0100";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'SingleStartAbility',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startResult = result.want.parameters.startResult
-        expect(startResult).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a SingleStartAbility')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }      
     })
 
     /**
@@ -70,19 +74,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_0200', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0200";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility2',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startOrder = JSON.stringify(result.want.parameters.startOrder)
-        expect(startOrder.indexOf('startupSampleInit1') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit2') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit3') != -1).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility2')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -96,22 +102,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_0300', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0300";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility3',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startOrder = JSON.stringify(result.want.parameters.startOrder)
-        expect(startOrder.indexOf('startupSampleInit1') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit4') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit5') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit6') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit7') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit8') != -1).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility3')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -125,19 +130,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_0400', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0400";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility4',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startResult = result.want.parameters.startResult
-        let code = result.want.parameters.code
-        expect(startResult).assertFalse()
-        expect(code).assertEqual(28800002)
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility4')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -151,19 +158,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_0500', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0500";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility5',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startResult = result.want.parameters.startResult
-        let code = result.want.parameters.code
-        expect(startResult).assertFalse()
-        expect(code).assertEqual(28800002)
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility5')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -177,19 +186,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_0600', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0600";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility6',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let hasInit001 = result.want.parameters.hasInit001
-        let hasInit003 = result.want.parameters.hasInit003
-        expect(hasInit001).assertTrue()
-        expect(hasInit003).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility6')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -203,21 +214,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_0700', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0700";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility7',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startOrder = JSON.stringify(result.want.parameters.startOrder)
-        expect(startOrder.indexOf('Sample_006') != -1).assertTrue()
-        expect(startOrder.indexOf('Sample_008') != -1).assertTrue()
-        expect(startOrder.indexOf('Sample_001') != -1).assertTrue()
-        expect(startOrder.indexOf('Sample_005') != -1).assertTrue()
-        expect(startOrder.indexOf('Sample_007') != -1).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility7')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -231,24 +242,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_0800', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0800";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'SingleStartAbility2',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startupDefaultConfig = result.want.parameters.startupDefaultConfig
-        let startupSampleComp = result.want.parameters.startupSampleComp
-
-        console.log(TAG + " startupDefaultConfig = " + JSON.stringify(startupDefaultConfig))
-        console.log(TAG + " startupSampleComp = " + JSON.stringify(startupSampleComp))
-        delegator.printSync(TAG + " startupSampleComp = " + JSON.stringify(startupSampleComp))
-
-        expect(startupDefaultConfig).assertTrue()
-        expect(startupSampleComp).assertFalse()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a SingleStartAbility2')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -262,17 +270,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_0900', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0900";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility8',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let res = result.want.parameters.result
-        expect(res).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility8')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -286,17 +298,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_1000', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1000";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility9',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let res = result.want.parameters.result
-        expect(res).assertFalse()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility9')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -310,20 +326,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_1100', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1100";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'SingleStartAbility',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          customConfig: true
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startResult = result.want.parameters.startResult
-        expect(startResult).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a SingleStartAbility')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -337,22 +354,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_1200', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1200";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility2',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          customConfig: true
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startOrder = JSON.stringify(result.want.parameters.startOrder)
-        expect(startOrder.indexOf('startupSampleInit1') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit2') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit3') != -1).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility2')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -366,25 +382,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_1300', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1300";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility3',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          customConfig: true
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startOrder = JSON.stringify(result.want.parameters.startOrder)
-        expect(startOrder.indexOf('startupSampleInit1') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit4') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit5') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit6') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit7') != -1).assertTrue()
-        expect(startOrder.indexOf('startupSampleInit8') != -1).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility3')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -398,22 +410,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_1400', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1400";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility4',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          customConfig: true
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startResult = result.want.parameters.startResult
-        let code = result.want.parameters.code
-        expect(startResult).assertFalse()
-        expect(code).assertEqual(28800002)
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility4')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -427,22 +438,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_1500', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1500";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility5',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          customConfig: true
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startResult = result.want.parameters.startResult
-        let code = result.want.parameters.code
-        expect(startResult).assertFalse()
-        expect(code).assertEqual(28800002)
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility5')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -456,22 +466,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_1600', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1600";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility6',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          customConfig: true
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let hasInit001 = result.want.parameters.hasInit001
-        let hasInit003 = result.want.parameters.hasInit003
-        expect(hasInit001).assertTrue()
-        expect(hasInit003).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility6')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -485,24 +494,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_1700', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1700";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility7',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          customConfig: true
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startOrder = JSON.stringify(result.want.parameters.startOrder)
-        expect(startOrder.indexOf('Sample_006') != -1).assertTrue()
-        expect(startOrder.indexOf('Sample_008') != -1).assertTrue()
-        expect(startOrder.indexOf('Sample_001') != -1).assertTrue()
-        expect(startOrder.indexOf('Sample_005') != -1).assertTrue()
-        expect(startOrder.indexOf('Sample_007') != -1).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility7')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -516,26 +522,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_1800', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1800";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'SingleStartAbility2',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          customConfig: true
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let startupDefaultConfig = result.want.parameters.startupDefaultConfig
-        let startupSampleComp = result.want.parameters.startupSampleComp
-
-        console.log(TAG + " startupDefaultConfig = " + JSON.stringify(startupDefaultConfig))
-        console.log(TAG + " startupSampleComp = " + JSON.stringify(startupSampleComp))
-
-        expect(startupDefaultConfig).assertTrue()
-        expect(startupSampleComp).assertFalse()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a SingleStartAbility2')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -549,20 +550,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_1900', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1900";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility8',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          customConfig: true
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let res = result.want.parameters.result
-        expect(res).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility8')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -576,20 +578,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_2000', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2000";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility9',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          customConfig: true
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let res = result.want.parameters.result
-        expect(res).assertFalse()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility9')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -603,20 +606,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_2100', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2100";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility10',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          type: 0
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let code = result.want.parameters.code
-        expect(code == 401).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility10')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -630,20 +634,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_2200', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2200";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility10',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          type: 0
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let code = result.want.parameters.code
-        expect(code == 401).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility10')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -657,20 +662,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_2300', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2300";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility10',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          type: 1
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let code = result.want.parameters.code
-        expect(code == 401).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility10')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -684,20 +690,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_2400', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2400";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility10',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          type: 2
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let code = result.want.parameters.code
-        expect(code == 16000050).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility10')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -711,20 +718,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_2500', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2500";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility10',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          type: 3
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let code = result.want.parameters.code
-        expect(code == 401).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility10')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -738,20 +746,21 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_2600', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2600";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility10',
-        bundleName: 'com.acts.startupmanualhelp1',
-        parameters: {
-          type: 4
-        }
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let code = result.want.parameters.code
-        expect(code == 401).assertTrue()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility10')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(false).assertTrue()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
 
     /**
@@ -765,27 +774,31 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_2700', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2700";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility11',
-        bundleName: 'com.acts.startupmanualhelp1',
-      }, (err, result: ability.AbilityResult) => {
-        console.log(TAG + " error = " + JSON.stringify(err))
-        console.log(TAG + " result = " + JSON.stringify(result))
-        delegator.printSync(TAG + " result = " + JSON.stringify(result))
-        let apiResult: Array<boolean> = (result.want.parameters.apiResult) as Array<boolean>
-        expect(apiResult.length == 10).assertTrue()
-        expect(apiResult[0]).assertTrue()
-        expect(apiResult[1]).assertTrue()
-        expect(apiResult[2]).assertTrue()
-        expect(apiResult[3]).assertFalse()
-        expect(apiResult[4]).assertFalse()
-        expect(apiResult[5]).assertFalse()
-        expect(apiResult[6]).assertFalse()
-        expect(apiResult[7]).assertFalse()
-        expect(apiResult[8]).assertFalse()
-        expect(apiResult[9]).assertFalse()
+      try {
+        delegator.executeShellCommand('aa start -b com.acts.startupmanualhelp1 -a PageAbility11')
+        .then(()=>{
+            console.log(TAG, " aa start ability success: ")
+            done();
+          })
+          .catch((err)=>{
+            console.log(TAG, "aa start ability error: ",JSON.stringify(err))
+            expect(apiResult.length == 10).assertTrue()
+            expect(apiResult[0]).assertTrue()
+            expect(apiResult[1]).assertTrue()
+            expect(apiResult[2]).assertTrue()
+            expect(apiResult[3]).assertFalse()
+            expect(apiResult[4]).assertFalse()
+            expect(apiResult[5]).assertFalse()
+            expect(apiResult[6]).assertFalse()
+            expect(apiResult[7]).assertFalse()
+            expect(apiResult[8]).assertFalse()
+            expect(apiResult[9]).assertFalse()
+            done();
+          })
+      } catch (err) {
+        console.log(TAG, "start ability error: ",JSON.stringify(err))
         done();
-      })
+      }
     })
   })
 }

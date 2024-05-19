@@ -16,31 +16,24 @@
 import StartupTask from '@ohos.app.appstartup.StartupTask'
 import hilog from '@ohos.hilog';
 import commonEventManager from '@ohos.commonEventManager';
+import common from '@ohos.app.ability.common';
 
 const NAME = "Sample_007";
 @Sendable
 export default class Sample_007 extends StartupTask {
-  async init(context) {
-    hilog.info(0x0000, 'StartupTest', '%{public}s', NAME);
+  constructor() {
+    super();
+  }
+  async init(context: common.AbilityStageContext) {
+    hilog.info(0x0000, 'StartupTest', 'Sample_007');
     console.info("StartupTest Sample_007 init");
-    commonEventManager.publish('StartupSample_007', (err, data)=>{
-      console.log("StartupTest Sample_007 init, publish msg, err=" + JSON.stringify(err));
-      console.log("StartupTest Sample_007 init, publish msg, data=" + JSON.stringify(data));
-    })
+    return 'Sample_007';
   }
 
-  onDependencyCompleted(dependence: string, result) {
-    hilog.info(0x0000, 'StartupTest', '%{public}s, dependence:%{public}s, result:%{public}s', NAME, dependence,
+  onDependencyCompleted(dependence: string, result: Object): void {
+    hilog.info(0x0000, 'StartupTest', 'Sample_007, dependence:%{public}s, result:%{public}s', dependence,
       JSON.stringify(result));
     console.info("StartupTest Sample_007 onDependencyCompleted dependence=" + dependence);
     console.info("StartupTest Sample_007 onDependencyCompleted result=" + JSON.stringify(result));
-    commonEventManager.publish('StartupSample_007_onDependencyCompleted', {
-      parameters: {
-        'name': dependence
-      }
-    }, (err, data) => {
-      console.log("StartupTest Sample_007 onDependencyCompleted, publish msg, err=" + JSON.stringify(err));
-      console.log("StartupTest Sample_007 onDependencyCompleted, publish msg, data=" + JSON.stringify(data));
-    })
   }
 }
