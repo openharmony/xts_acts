@@ -26,7 +26,7 @@ export default function ActsAccountAppAccess() {
     describe('ActsAccountAuthenticator', function () {
         beforeAll(async function (done) {
             console.info("====>ActsAccountAuthenticator beforeAll start====");
-            await featureAbility.startAbilityForResult(
+            featureAbility.startAbilityForResult(
                 {
                     want:
                     {
@@ -38,11 +38,12 @@ export default function ActsAccountAppAccess() {
                         {},
                     },
                 }, (err, data) => {
-                    console.info("====>accountauthenticatorfeatureAbility.startAbilityForResult err:" + JSON.stringify(err))
-                    console.info("====>accountauthenticatorfeatureAbility.startAbilityForResult data:" + JSON.stringify(data))
+                    console.info("====>accountauthenticator featureAbility startAbilityForResult err:" + JSON.stringify(err))
+                    console.info("====>accountauthenticator featureAbility startAbilityForResult data:" + JSON.stringify(data))
+                    console.info("====>accountauthenticator beforeAll end====");
                     done();
-                })
-            console.info("====>ActsAccountAuthenticator beforeAll end====");
+                }
+            )
         });
         beforeEach(async (done)=>{
             console.info("====>afterEach start====");

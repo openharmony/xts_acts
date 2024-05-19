@@ -35,9 +35,16 @@ export default {
             console.info("====>add account scene err:" + JSON.stringify(err));
             appAccountManager.setAppAccess("account_name_scene_single", enableBundle, true, (err)=>{
                 console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
-                appAccountManager.setAppAccess("account_name_scene_single", enableBundle2, true, (err)=>{
+                appAccountManager.setAppAccess("account_name_scene_single", enableBundle2, true, async (err)=>{
                     console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
-                    featureAbility.terminateSelf()
+                    featureAbility.terminateSelfWithResult({
+                        resultCode: 1,
+                        want:
+                        {
+                            bundleName: "com.example.actsscenegetallaccounts",
+                            abilityName: "com.example.actsscenegetallaccounts.MainAbility"
+                        }
+                    })
                 })                
             });
         });

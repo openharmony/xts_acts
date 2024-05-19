@@ -25,18 +25,11 @@ export default {
         this.title = "scene accessible first application";
     },
     onShow() {
-        function sleep(delay) {
-            var start = (new Date()).getTime();
-            while((new Date()).getTime() - start < delay) {
-                continue;
-            }
-        }
-
         console.info('====>scene accessible first application start====');
-        var appAccountManager = account.createAppAccountManager();
+        let appAccountManager = account.createAppAccountManager();
         console.info("====>creat first scene manager finish====");
-        var enableBundle = "com.example.actsgetallaccessiblemultiple";
-        var enableBundle_2 = "com.example.getmultipleaccountstest"
+        let enableBundle = "com.example.actsgetallaccessiblemultiple";
+        let enableBundle_2 = "com.example.getmultipleaccountstest"
         console.info("====>add first account start====");
         appAccountManager.createAccount("account_name_scene_first_first", (err)=>{
             console.info("====>add first account err:" + JSON.stringify(err));
@@ -50,7 +43,7 @@ export default {
                             appAccountManager.setAppAccess("account_name_scene_first_second", enableBundle_2, true, (err)=>{
                                 console.info("====>enableAppAccess second account err:" + JSON.stringify(err));
                                 console.info("====>startAbility second start====");
-                                featureAbility.startAbility(
+                                featureAbility.startAbilityForResult(
                                     {
                                         want:
                                         {
@@ -61,12 +54,17 @@ export default {
                                             parameters:
                                             {},
                                         },
-                                    }, (err, data) => {
-                                        console.info("====>startAbility com.example.actsaccountaccessiblesecond err:" + JSON.stringify(err));
-                                        sleep(1500);
-                                        featureAbility.terminateSelf((err, data)=>{
-                                            console.info("====>Terminate First Ability err:" + JSON.stringify(err));
-                                        });
+                                    }, async (err, data) => {
+                                        console.info("====>startAbility second err:" + JSON.stringify(err));
+                                        console.info("====>start terminateSelfWithResult first");
+                                        featureAbility.terminateSelfWithResult({
+                                            resultCode: 1,
+                                            want:
+                                            {
+                                                bundleName: "com.example.actsaccountaccessiblefirst",
+                                                abilityName: "com.example.actsaccountaccessiblefirst.MainAbility"
+                                            }
+                                        })
                                     }
                                 );
                             })

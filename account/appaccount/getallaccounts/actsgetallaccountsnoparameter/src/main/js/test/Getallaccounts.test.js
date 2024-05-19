@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,20 +16,9 @@ import account from '@ohos.account.appAccount'
 import featureAbility from '@ohos.ability.featureAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
-const TIMEOUT = 2000;
 const SELFBUNDLE = 'com.example.getallaccountsnoparameter'
 export default function ActsGetAllAccountsNoParameter() {
     describe('ActsGetAllAccountsNoParameter', function () {
-        async function sleep(delay) {
-            let timeoutId = null;
-            var promise = new Promise((resolve, reject) => {
-                timeoutId = setTimeout(() => {
-                    resolve("done")
-                }, delay)
-            })
-            await promise
-            clearTimeout(timeoutId)
-        }
 
         /*
         * @tc.number    : ActsGetAllAccountsNoParameter_0100
@@ -559,12 +548,12 @@ export default function ActsGetAllAccountsNoParameter() {
         */
         it('ActsGetAllAccountsNoParameter_1100', 0, async function (done) {
             console.info("====>ActsGetAllAccountsNoParameter_1100 start====");
-            var appAccountManager = account.createAppAccountManager();
-            console.info("====>creat finish====");
+            let appAccountManager = account.createAppAccountManager();
+            console.info("====>create finish====");
             console.info("====>add account 1100 start====");
             await appAccountManager.createAccount("accessibleAccount_this_application");
-            console.info("====>startAbility 1100 start====");
-            await featureAbility.startAbility(
+            console.info("====>startAbilityForResult start====");
+            featureAbility.startAbilityForResult(
                 {
                     want:
                     {
@@ -575,35 +564,29 @@ export default function ActsGetAllAccountsNoParameter() {
                         parameters:
                         {},
                     },
-                },
+                }, async (err, data) => {
+                    console.info("====>startAbilityForResult callback err:" + JSON.stringify(err));
+                    console.info("====>startAbilityForResult callback data:" + JSON.stringify(data));
+                    console.info("====>getAllAccounts 1100 start====");
+                    try{
+                        let info = await appAccountManager.getAllAccounts();
+                        console.info("====>getAllAccounts 1100 data:" + JSON.stringify(info));
+                        expect(info.length).assertEqual(2);
+                        expect(info[0].name).assertEqual("account_name_scene_single");
+                        expect(info[0].owner).assertEqual("com.example.actsaccountsceneaccessible");
+                        expect(info[1].name).assertEqual("accessibleAccount_this_application");
+                        expect(info[1].owner).assertEqual("com.example.getallaccountsnoparameter");
+                        console.info("====>delete account 1100 start====");
+                        await appAccountManager.removeAccount("accessibleAccount_this_application");
+                        console.info("====>ActsGetAllAccountsNoParameter_1100 end====");
+                        done();
+                    } catch(err) {
+                        console.error("====>getAllAccounts 1100 fail err:" + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    }
+                }
             );
-            await sleep(TIMEOUT)
-            console.info("====>getAllAccounts 1100 start====");
-            try{
-                var data = await appAccountManager.getAllAccounts();
-            }
-            catch(err){
-                console.error("====>getAllAccounts 1100 fail err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.info("====>getAllAccounts 1100 data:" + JSON.stringify(data));
-            expect(data.length).assertEqual(2);
-            try{
-                expect(data[0].name).assertEqual("account_name_scene_single");
-                expect(data[0].owner).assertEqual("com.example.actsaccountsceneaccessible");
-                expect(data[1].name).assertEqual("accessibleAccount_this_application");
-                expect(data[1].owner).assertEqual("com.example.getallaccountsnoparameter");
-            }
-            catch(err){
-                console.error("====>check data 1100 fail err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.info("====>delete account 1100 start====");
-            await appAccountManager.removeAccount("accessibleAccount_this_application");
-            console.info("====>ActsGetAllAccountsNoParameter_1100 end====");
-            done();
         });
     })
 }

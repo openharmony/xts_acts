@@ -25,7 +25,7 @@ export default function ActsAccountAuthenticator() {
     describe('ActsAccountAuthenticator', function () {
         beforeAll(async function (done) {  
             console.info("====>accountauthenticatorbeforeAll start====");		
-            await featureAbility.startAbilityForResult(
+            featureAbility.startAbilityForResult(
                 {
                     want:
                     {
@@ -39,10 +39,12 @@ export default function ActsAccountAuthenticator() {
                 }, (err, data) => {
                     console.info("====>accountauthenticatorfeatureAbility.startAbility err:" + JSON.stringify(err))
                     console.info("====>accountauthenticatorfeatureAbility.startAbility data:" + JSON.stringify(data))
+                    console.info("====>accountauthenticatorfeatureAbility.startAbility end")
                     done();
-                })
-            console.info("====>accountauthenticatorfeatureAbility.startAbility end")
+                }
+            )
         });
+
         beforeEach(async function (done) {            
             console.info("====>afterEach start====");
             var appAccountManager = account.createAppAccountManager();
