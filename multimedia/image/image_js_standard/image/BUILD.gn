@@ -17,7 +17,7 @@ ohos_js_app_suite("image_js_hap") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "huksagree_callback_basic_js_test"
+  hap_name = "image_js_hap"
   part_name = "image_framework"
   subsystem_name = "multimedia"
 }
