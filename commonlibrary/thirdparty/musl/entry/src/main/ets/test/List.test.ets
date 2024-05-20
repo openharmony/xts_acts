@@ -130,6 +130,8 @@ import timexNdk1Test from './TimexNdk1.test';
 import unistdNdk1Test from './UnistdNdk1.test';
 
 export default function testsuite() {
+  mathNdkTest();
+  mallocNdkTest();
   otherstestNdkTest();
   unistdNdkTest();
   malloc1NdkTest();
@@ -168,8 +170,6 @@ export default function testsuite() {
   intTypesNdkTest();
   langInfoNdkTest();
   localeNdkTest();
-  mallocNdkTest();
-  mathNdkTest();
   membarrierNdkTest();
   mmanNdkTest();
   mmanNdk1Test();
