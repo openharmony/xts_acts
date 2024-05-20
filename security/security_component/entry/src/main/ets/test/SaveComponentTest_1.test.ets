@@ -51,7 +51,7 @@ export default function saveComponentTest_1() {
      * @tc.desc Test SecurityComponent The button style is a line and the text is described as a download file and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
     it('Test_Security_Button_Save_2300', 0, async function (done) {
@@ -106,7 +106,7 @@ export default function saveComponentTest_1() {
      * @tc.desc Test SecurityComponent The text is described as saving and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
     it('Test_Security_Button_Save_2400', 0, async function (done) {
@@ -159,7 +159,7 @@ export default function saveComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes saving the image and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
     it('Test_Security_Button_Save_2500', 0, async function (done) {
@@ -212,7 +212,7 @@ export default function saveComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes the saved file and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
     it('Test_Security_Button_Save_2600', 0, async function (done) {
@@ -265,7 +265,7 @@ export default function saveComponentTest_1() {
      * @tc.desc Test SecurityComponent The text description is download and share and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
     it('Test_Security_Button_Save_2700', 0, async function (done) {
@@ -318,7 +318,7 @@ export default function saveComponentTest_1() {
      * @tc.desc Test SecurityComponent The text is described as receiving and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
     it('Test_Security_Button_Save_2800', 0, async function (done) {
@@ -371,7 +371,7 @@ export default function saveComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes continued receiving and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
     it('Test_Security_Button_Save_2900', 0, async function (done) {
@@ -424,7 +424,7 @@ export default function saveComponentTest_1() {
      * @tc.desc Test SecurityComponent The text describes save to gallery and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
     it('Test_Security_Button_Save_3000', 0, async function (done) {
@@ -446,7 +446,7 @@ export default function saveComponentTest_1() {
             done();
           } else {
             console.info("====>[Test_Security_Button_Save_3000] 设置权限失败");
-            expect().assertFail()
+            expect(false).assertTrue();
             console.info("====>[Test_Security_Button_Save_3000] END====");
             done();
           }
@@ -458,16 +458,20 @@ export default function saveComponentTest_1() {
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_3000] once clickEvent err : " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_3000] button is:" + JSON.stringify(button));
-        await button[6].click();
+        await button[7].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_3000] clickSecComponent err : " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
       }
     });
   })
