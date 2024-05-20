@@ -45,8 +45,8 @@ describe('VideoPlayerEnumTest', function () {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_ENUM_SEEK_MODE_0100', 0, async function (done) {
         expect(media.SeekMode.SEEK_NEXT_SYNC).assertEqual(0);
         expect(media.SeekMode.SEEK_PREV_SYNC).assertEqual(1);
-        expect(media.SeekMode.SEEK_CLOSEST_SYNC).assertEqual(2);
-        expect(media.SeekMode.SEEK_CLOSEST).assertEqual(3);
+        expect(media.SeekMode.SEEK_CLOSEST_SYNC).assertEqual(3);
+        expect(media.SeekMode.SEEK_CLOSEST).assertEqual(2);
         done();
     })
 
