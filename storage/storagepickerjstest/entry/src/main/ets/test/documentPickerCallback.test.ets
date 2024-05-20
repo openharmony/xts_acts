@@ -375,7 +375,7 @@ export default function documentPickerCallback(abilityContext: Context) {
     it("documentpicker_save_callback_010", 1, async (done: Function) => {
       let testNum = "documentpicker_save_callback_010";
       let option = new picker.DocumentSaveOptions();
-      option.pickerMode = 1;
+      option.pickerMode = picker.DocumentPickerMode.DOWNLOAD;
       await saveWithOption(testNum, done, option);
     });
     /**
