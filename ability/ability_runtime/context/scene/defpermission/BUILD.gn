@@ -13,8 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("DefPermission") {
-  test_hap = true
+ohos_app_assist_suite("DefPermission") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "DefPermission"
