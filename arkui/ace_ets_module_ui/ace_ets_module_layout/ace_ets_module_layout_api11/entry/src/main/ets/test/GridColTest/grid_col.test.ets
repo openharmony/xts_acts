@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function grid_colSpanJsunit() {
   describe('grid_colSpanTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/GridCol/grid_col',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/GridCol/grid_col',
       }
       try {
         router.clear();
@@ -54,7 +54,7 @@ export default function grid_colSpanJsunit() {
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('gridContainer');
       console.info("[testgrid_colSpan0001] component height strJson:" + strJson);
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('GridCol');
       expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00vp");
       console.info("[testgrid_colSpan0001] width value :" + JSON.parse(strJson).$attrs.width);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function grid_rowOnBreakpointChangeJsunit() {
   describe('grid_rowOnBreakpointChangeTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/GridRow/grid_row',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/GridRow/grid_row',
       }
       try {
         router.clear();
@@ -54,7 +54,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
       console.info("[testgrid_rowOnBreakpointChange001] component width strJson:" + strJson);
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('GridRow');
       expect(JSON.parse(strJson).$attrs.width).assertEqual("100vp");
       console.info("[testgrid_rowOnBreakpointChange001] width value :" + JSON.parse(strJson).$attrs.width);
@@ -71,7 +71,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
       console.info("[testgrid_rowOnBreakpointChange002] component height strJson:" + strJson);
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('GridRow');
       expect(JSON.parse(strJson).$attrs.height).assertEqual("100vp");
       console.info("[testgrid_rowOnBreakpointChange002] height value :" + JSON.parse(strJson).$attrs.height);
@@ -88,7 +88,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
       console.info("[testgrid_rowOnBreakpointChange003] component backgroundColor strJson:" + strJson);
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('GridRow');
       expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual("0xFF0000");
       console.info("[testgrid_rowOnBreakpointChange003] backgroundColor value :" + JSON.parse(strJson)

@@ -13,18 +13,24 @@
  * limitations under the License.
  */
 
-import {MessageManager,Callback} from './../../../common/MessageManager1';
+import  GlobalContext  from './../../../common/GlobalContext';
+import { Value } from './../../../common/Value';
+import { MessageManager, Callback } from './../../../common/MessageManager';
+
+type MessageData = number
+
 @Entry
 @Component
 struct Column_Space {
   @State addSpace: number = 10;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<MessageData> = new MessageManager();
   onPageShow() {
     console.info('Column_Space onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'addSpace') {
         this.addSpace = message.value;

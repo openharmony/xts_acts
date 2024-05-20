@@ -52,18 +52,18 @@ export default class CommonFunc {
   }
 
   static getComponentRectOnScreen(key: string) {
-    let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
+    let strJson: string = getInspectorByKey(key);
+    let obj: Record<string, Object> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo = JSON.parse('[' + obj.$rect + ']');
+    let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
     console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop );
-    this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;
-    this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1] + globalThis.winTop;
-    this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0] + globalThis.winLeft;
-    this.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1] + globalThis.winTop;
-    return this.rect_value = {
-      "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
+    CommonFunc.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;
+    CommonFunc.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1] + globalThis.winTop;
+    CommonFunc.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0] + globalThis.winLeft;
+    CommonFunc.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1] + globalThis.winTop;
+    return CommonFunc.rect_value = {
+      "left": CommonFunc.rect_left, "top": CommonFunc.rect_top, "right": CommonFunc.rect_right, "bottom": CommonFunc.rect_bottom
     }
   }
 
@@ -78,7 +78,7 @@ export default class CommonFunc {
       console.log('Failed to get all screens. Cause: ' + JSON.stringify(err));
     });
     try {
-      screenClass.setOrientation(orientation, (err: BusinessError) => {
+      screenClass!.setOrientation(orientation, (err: BusinessError) => {
         const errCode: number = err.code;
         if (errCode) {
           console.error('Failed to set the vertical orientation. Code: ' + JSON.stringify(err));

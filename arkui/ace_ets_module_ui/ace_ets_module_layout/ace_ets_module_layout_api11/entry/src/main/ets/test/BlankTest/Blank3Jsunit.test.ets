@@ -71,7 +71,7 @@ export default function blank3Jsunit() {
         console.info("[testBlank02] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testBlank02] change component data error: " + err.message);
+        console.log("[testBlank02] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('blank');

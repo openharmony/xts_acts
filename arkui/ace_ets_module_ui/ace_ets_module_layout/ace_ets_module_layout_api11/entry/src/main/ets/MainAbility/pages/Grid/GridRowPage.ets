@@ -12,7 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utilsUI/MessageManager';
+import  GlobalContext  from './../../common/GlobalContext';
+import { Value } from './../../common/Value';
+import { MessageManager, Callback } from './../../common/MessageManager';
+
+type MessageData = string|number|GutterOption|BreakPoints|GridRowDirection
 
 @Entry
 @Component
@@ -23,29 +27,30 @@ struct GridRowPage {
   @State columns: number = 4
   @State breakpoints: BreakPoints = { value: ["400vp", "600vp", "800vp"], reference: BreakpointsReference.WindowSize }
   @State grDirection: GridRowDirection = GridRowDirection.Row
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<MessageData> = new MessageManager()
 
   onPageShow() {
     console.info('GridRowPage onPageShow')
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'currentBp') {
-        this.currentBp = message.value
+        this.currentBp = message.value as string
       }
       if (message.name == 'columns') {
-        this.columns = message.value
+        this.columns = message.value as number
       }
       if (message.name == 'gutter') {
-        this.gutter = message.value
+        this.gutter = message.value as GutterOption
       }
       if (message.name == 'breakpoints') {
-        this.breakpoints = message.value
+        this.breakpoints = message.value as BreakPoints
       }
       if (message.name == 'grDirection') {
-        this.grDirection = message.value
+        this.grDirection = message.value as GridRowDirection
       }
     }
     this.messageManager.registerCallback(callback)
@@ -60,7 +65,7 @@ struct GridRowPage {
         breakpoints: this.breakpoints,
         direction: this.grDirection
       }) {
-        ForEach(this.bgColors, (color) => {
+        ForEach(this.bgColors, (color: Color) => {
           GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
             Row().width("100%").height("20vp")
           }.borderColor(color).borderWidth(2)
@@ -71,7 +76,7 @@ struct GridRowPage {
       })
       
       GridRow() {
-        ForEach(this.bgColors, (color) => {
+        ForEach(this.bgColors, (color: Color) => {
           GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
             Row().width("100%").height("20vp")
           }.borderColor(color).borderWidth(2)

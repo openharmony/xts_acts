@@ -48,7 +48,7 @@ struct WaterflowDemo {
         LazyForEach(this.datasource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text("N" + item.toString()).fontSize(12).height('16')
               Image('res/waterFlowTest(' + item % 5 + ').jpg')
                 .objectFit(ImageFit.Fill)
             }
@@ -57,7 +57,7 @@ struct WaterflowDemo {
           .height(this.getSize())
           .backgroundColor(this.colors[item % 5])
 
-        }, item => item)
+        }, (item: string) => item)
       }
       .columnsTemplate("1fr 1fr 1fr 1fr")
       .itemConstraintSize({

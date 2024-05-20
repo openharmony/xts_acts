@@ -12,20 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from './../../../common/MessageManager1';
+import  GlobalContext  from './../../../common/GlobalContext';
+import { Value } from './../../../common/Value';
+import { MessageManager, Callback } from './../../../common/MessageManager';
+
+type MessageData = string
+
 @Entry
 @Component
 struct layoutWeight_All {
   @State layoutWeight1: string = '0'
   @State layoutWeight2: string = '0'
   @State layoutWeight3: string = '0'
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<MessageData> = new MessageManager()
   onPageShow() {
     console.info('layoutWeight_All onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if(message.name == 'layoutWeight1'){
         this.layoutWeight1 = message.value;

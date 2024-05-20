@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function blankUIJsunit() {
-  describe('blankUIJsunit', function () {
-    beforeEach(async function (done) {
+  describe('blankUIJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("blankJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Blank/blankParentWidth',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Blank/blankParentWidth',
       }
       try {
         router.clear();
@@ -46,13 +46,13 @@ export default function blankUIJsunit() {
      * @tc.name       Test blankJsunit_0100
      * @tc.desc       Test blank attribute
     */
-    it('blankJsunit_0100', 0, async function (done) {
+    it('blankJsunit_0100', 0, async (done: Function) => {
       console.info('blankJsunitUITest_0100 START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'blankColor',value:'#FCAE5394'})
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('bl2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0100'] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.color).assertEqual('#FCAE5394');
       done();
@@ -63,7 +63,7 @@ export default function blankUIJsunit() {
      * @tc.name       Test blankJsunit_0100
      * @tc.desc       Test blank attribute
      */
-   it('blankJsunit_0200', 0, async function (done) {
+   it('blankJsunit_0200', 0, async (done: Function) => {
       console.info('blankJsunitUITest_0200 START');
       await CommonFunc.sleep(1000);
        // 动态修改Blank组件的minwidth
@@ -71,13 +71,13 @@ export default function blankUIJsunit() {
       await CommonFunc.sleep(3000);
       // 获取动态修改后的组件的minwidth
       let strJson = getInspectorByKey('bl2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0200'] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.min).assertEqual('80.00vp');
       done();
     });
 
-    it('blankJsunit_0300', 0, async function (done) {
+    it('blankJsunit_0300', 0, async (done: Function) => {
       console.info('blankJsunitUITest_0300 START');
       await CommonFunc.sleep(1000);
        // 动态非法修改Blank组件的minwidth
@@ -85,14 +85,14 @@ export default function blankUIJsunit() {
       await CommonFunc.sleep(2000);
       // 获取默认的minWidth值
       let strJson = getInspectorByKey('bl2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0300'] component obj is: " + obj.$attrs.min);
       // return not the default value to confirm ?
       expect(obj.$attrs.min).assertEqual('0.00vp');
       done();
     });
 
-    it('blankJsunit_0400', 0, async function (done) {
+    it('blankJsunit_0400', 0, async (done: Function) => {
       console.info('blankJsunitUITest_0400 START');
       await CommonFunc.sleep(1000);
        // 动态非法修改Blank组件的颜色
@@ -101,13 +101,13 @@ export default function blankUIJsunit() {
        // 获取非法动态修改后默认组件的颜色
       let strJson = getInspectorByKey('bl2');
       console.info("[blankJsunit_0400'] component obj is: " + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       // add enum color test case and  confirm the the color  ?
       expect(obj.$attrs.color).assertEqual('#AAEE5533');
       done();
     });
 
-    it('blankJsunit_0500', 0, async function (done) {
+    it('blankJsunit_0500', 0, async (done: Function) => {
       console.info('blankJsunitUITest_0500 START');
       await CommonFunc.sleep(1000);
        // 验证父组件不设置宽度，blank失效
@@ -118,18 +118,18 @@ export default function blankUIJsunit() {
       // 判断blank不显示
       expect(bl1_rect.left - bl1_rect.right).assertEqual(0)
       let strJson = getInspectorByKey('blank');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
        console.info("[blankJsunit_0500'] component obj is: " + strJson);
       expect(obj.$attrs.min).assertEqual('0.00vp');
       done();
     });
 
-    it('blankJsunit_0600', 0, async function (done) {
+    it('blankJsunit_0600', 0, async (done: Function) => {
       console.info('blankJsunitUITest_0600 START');
       await CommonFunc.sleep(1000);
        // 验证父组件为row/coloumn 且宽度有，blank平分
       let strJson = getInspectorByKey('blank');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0600'] component obj is: " + JSON.stringify(obj));
       let text_rect = CommonFunc.getComponentRect('text');
       let toggle_rect = CommonFunc.getComponentRect('toggle');
@@ -141,12 +141,12 @@ export default function blankUIJsunit() {
       done();
     });
 
-   it('blankJsunit_0700', 0, async function (done) {
+   it('blankJsunit_0700', 0, async (done: Function) => {
       console.info('blankJsunitUITest_0700 START');
       await CommonFunc.sleep(1000);
        // 直接判断组件的属性
       let strJson = getInspectorByKey('blank');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[blankJsunit_0700'] component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Blank');
       expect(obj.$attrs.color).assertEqual('#00000000');
@@ -154,13 +154,13 @@ export default function blankUIJsunit() {
       done();
     });
 
-    it('blankJsunit_0800', 0, async function (done) {
+    it('blankJsunit_0800', 0, async (done: Function) => {
       console.info('blankJsunitUITest_0700 START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'minWith',value:'rr'})
       await CommonFunc.sleep(200);
       let strJson2 = getInspectorByKey('bl2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[blankJsunit_0300'] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.min).assertEqual('0.00vp');
       done();

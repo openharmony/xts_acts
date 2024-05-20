@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function GridRowCol02() {
-  describe('GridRowCol02', function () {
-    beforeEach(async function (done) {
+  describe('GridRowCol02', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridRowCol02 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Grid/GridRowCol02',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Grid/GridRowCol02',
       }
       try {
         router.clear();
@@ -49,14 +49,14 @@ export default function GridRowCol02() {
       * @tc.desc  : set rowsTemplate to repeat(auto-fit,10%)
       * @tc.level : Level 3
       */
-    it('GridRowCol02_001', 0, async function (done) {
+    it('GridRowCol02_001', 0, async (done: Function) => {
 
       console.info('[GridRowCol02_001] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'rowsTemplate', value: 'repeat(auto-fit,10%)' });
       await CommonFunc.sleep(200);
       let strJson1 = getInspectorByKey('GridRowCol02');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[GridRowCol02_001] component obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.rowsTemplate).assertEqual('repeat(auto-fit,10%)');
@@ -71,14 +71,14 @@ export default function GridRowCol02() {
       * @tc.desc  : set rowsTemplate to repeat(auto-fit,10%)
       * @tc.level : Level 3
       */
-    it('GridRowCol02_002', 0, async function (done) {
+    it('GridRowCol02_002', 0, async (done: Function) => {
 
       console.info('[GridRowCol02_002] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'rowsTemplate', value: 'repeat(auto-fit,90px)' });
       await CommonFunc.sleep(200);
       let strJson1 = getInspectorByKey('GridRowCol02');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[GridRowCol02_002] component obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.rowsTemplate).assertEqual('repeat(auto-fit,90px)');
@@ -93,14 +93,14 @@ export default function GridRowCol02() {
       * @tc.desc  : set rowsTemplate to repeat(auto-fit,10%)
       * @tc.level : Level 3
       */
-    it('GridRowCol02_003', 0, async function (done) {
+    it('GridRowCol02_003', 0, async (done: Function) => {
 
       console.info('[GridRowCol02_003] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'rowsTemplate', value: 'repeat(auto-fit,-1)' });
       await CommonFunc.sleep(200);
       let strJson1 = getInspectorByKey('GridRowCol02');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[GridRowCol02_003] component obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.rowsTemplate).assertEqual('repeat(auto-fit,-1)');
@@ -115,7 +115,7 @@ export default function GridRowCol02() {
       * @tc.desc  : set rowsTemplate to repeat(auto-fit,10%)
       * @tc.level : Level 3
       */
-    it('GridRowCol02_004', 0, async function (done) {
+    it('GridRowCol02_004', 0, async (done: Function) => {
 
       console.info('[GridRowCol02_004] START');
       await CommonFunc.sleep(1000);
@@ -126,7 +126,7 @@ export default function GridRowCol02() {
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(GridRowCol02.top - Column02.top) - Math.round(vp2px(10))) <= 1).assertTrue();
       let strJson1 = getInspectorByKey('GridRowCol02');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[GridRowCol02_004] component obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.rowsTemplate).assertEqual('repeat(auto-fit,90px)');
@@ -141,7 +141,7 @@ export default function GridRowCol02() {
       * @tc.desc  : set rowsTemplate to repeat(auto-fit,10%)
       * @tc.level : Level 3
       */
-    it('GridRowCol02_005', 0, async function (done) {
+    it('GridRowCol02_005', 0, async (done: Function) => {
 
       console.info('[GridRowCol02_005] START');
       await CommonFunc.sleep(1000);
@@ -152,7 +152,7 @@ export default function GridRowCol02() {
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(Item00.top - GridRowCol02.top) - Math.round(vp2px(10))) <= 1).assertTrue();
       let strJson1 = getInspectorByKey('GridRowCol02');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[GridRowCol02_005] component obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.rowsTemplate).assertEqual('repeat(auto-fit,90px)');
@@ -167,7 +167,7 @@ export default function GridRowCol02() {
       * @tc.desc  : set rowsTemplate to repeat(auto-fit,10%)
       * @tc.level : Level 3
       */
-    it('GridRowCol02_006', 0, async function (done) {
+    it('GridRowCol02_006', 0, async (done: Function) => {
 
       console.info('[GridRowCol02_006] START');
       await CommonFunc.sleep(1000);
@@ -178,7 +178,7 @@ export default function GridRowCol02() {
       await CommonFunc.sleep(1000);
       expect(Math.round(Item03.top - Item00.bottom)).assertEqual(Math.round(vp2px(10)));
       let strJson1 = getInspectorByKey('GridRowCol02');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[GridRowCol02_006] component obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.rowsTemplate).assertEqual('repeat(auto-fit,90px)');

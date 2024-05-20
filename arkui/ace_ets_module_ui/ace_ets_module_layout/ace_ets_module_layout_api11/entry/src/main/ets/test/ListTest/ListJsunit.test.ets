@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function ListJsunit() {
-  describe('ListJsunit', function () {
-    beforeEach(async function (done) {
+  describe('ListJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/List/ListPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/List/ListPage',
       }
       try {
         router.clear();
@@ -43,12 +43,12 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0100', 0, async function (done) {
+    it('ListJsunit_0100', 0, async (done: Function) => {
       // Get the information of the List component
       console.info('[ListJsunit_0100] START');
       await CommonFunc.sleep(5000);
       let strJson = getInspectorByKey('list');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ListJsunit_0100] space: " + JSON.stringify(obj.$attrs.space));
       console.info("[ListJsunit_0100] initialIndex: " + JSON.stringify(obj.$attrs.initialIndex));
@@ -86,7 +86,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0200', 0, async function (done) {
+    it('ListJsunit_0200', 0, async (done: Function) => {
       // Verify the functions of the List component
       console.info('[ListJsunit_0200] START');
       
@@ -152,7 +152,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0300', 0, async function (done) {
+    it('ListJsunit_0300', 0, async (done: Function) => {
       // Modify the properties of component List
       console.info('[ListJsunit_0300] START');
       globalThis.value.message.notify({name:'space',value:25})
@@ -188,7 +188,7 @@ export default function ListJsunit() {
 
       // Get the propoties value of the List component
       let strJson = getInspectorByKey('list');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[ListJsunit_0300] space: " + JSON.stringify(obj.$attrs.space));
       console.info("[ListJsunit_0300] initialIndex: " + JSON.stringify(obj.$attrs.initialIndex));
@@ -225,7 +225,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0400', 0, async function (done) {
+    it('ListJsunit_0400', 0, async (done: Function) => {
       // Illegal modification of properties of component List
       console.info('[ListJsunit_0400] START');
       await CommonFunc.sleep(1000);
@@ -256,7 +256,7 @@ export default function ListJsunit() {
 
       // Get the propoties value of the List component
       let strJson = getInspectorByKey('list');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[ListJsunit_0400] space: " + JSON.stringify(obj.$attrs.space));
       console.info("[ListJsunit_0400] initialIndex: " + JSON.stringify(obj.$attrs.initialIndex));
@@ -293,12 +293,12 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0500', 0, async function (done) {
+    it('ListJsunit_0500', 0, async (done: Function) => {
       // Verify default value of the List component
       console.info('[ListJsunit_0500] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('list_default');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.space).assertEqual('0.00vp');
       expect(obj.$attrs.initialIndex).assertEqual('0');
@@ -312,7 +312,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0600', 0, async function (done) {
+    it('ListJsunit_0600', 0, async (done: Function) => {
       // Verify the Vertical layout of List components
       console.info('[ListJsunit_0600] START');
       let listItem1 = CommonFunc.getComponentRect('0');
@@ -325,7 +325,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0700', 0, async function (done) {
+    it('ListJsunit_0700', 0, async (done: Function) => {
       // Verify the Vertical layout of List components
       console.info('[ListJsunit_0700] START');
       globalThis.value.message.notify({name:'listDirection',value:Axis.Vertical})

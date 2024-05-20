@@ -12,11 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../common/MessageManager1';
 @Entry
 @Component
-struct ColumnSetFlexShinkTest {
-  messageManager:MessageManager = new MessageManager()
+struct ColumnSetFlexShinkNodeTest {
   private content: string = "ColumnSetFlexShink Page";
   onPageShow() {
     console.info('ColumnSetFlexShink onPageShow');

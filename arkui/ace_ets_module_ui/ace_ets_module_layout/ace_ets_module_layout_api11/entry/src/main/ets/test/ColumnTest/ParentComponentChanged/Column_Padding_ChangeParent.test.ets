@@ -61,7 +61,7 @@ export default function column_Padding_ChangeParent() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnPaddingChange1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1: RectValue = CommonFunc.getComponentRect('Padding_Test1');
       let locationText2: RectValue = CommonFunc.getComponentRect('Padding_Test2');
@@ -113,7 +113,7 @@ export default function column_Padding_ChangeParent() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnPaddingChange1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1: RectValue = CommonFunc.getComponentRect('Padding_Test1');
       let locationText2: RectValue = CommonFunc.getComponentRect('Padding_Test2');

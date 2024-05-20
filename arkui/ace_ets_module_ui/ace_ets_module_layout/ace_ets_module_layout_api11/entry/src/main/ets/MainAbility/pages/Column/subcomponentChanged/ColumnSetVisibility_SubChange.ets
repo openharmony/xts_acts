@@ -12,20 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../common/MessageManager1';
+import  GlobalContext  from './../../../common/GlobalContext';
+import { Value } from './../../../common/Value';
+import { MessageManager, Callback } from './../../../common/MessageManager';
+
+type MessageData = number
+
 @Entry
 @Component
 struct ColumnSetVisibilityTest {
   @State testVisibility1: number = Visibility.Visible
   @State testVisibility2: number = Visibility.Visible
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<MessageData> = new MessageManager()
   private content: string = "ColumnSetVisibility Page";
   onPageShow() {
     console.info('ColumnSetVisibility onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'testVisibility1') {
         this.testVisibility1 = message.value;

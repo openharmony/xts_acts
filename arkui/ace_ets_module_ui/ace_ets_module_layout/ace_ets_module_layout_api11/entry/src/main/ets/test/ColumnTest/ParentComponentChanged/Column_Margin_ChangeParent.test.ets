@@ -60,7 +60,7 @@ export default function column_Margin_ChangeParent() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnMarginChange1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1 : RectValue = CommonFunc.getComponentRect('Margin_Test1');
       let locationText2 : RectValue = CommonFunc.getComponentRect('Margin_Test2');

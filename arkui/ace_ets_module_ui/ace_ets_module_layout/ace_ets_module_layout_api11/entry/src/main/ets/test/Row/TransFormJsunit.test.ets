@@ -18,17 +18,17 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 class ScaleValue {
-  x: number;
-  y: number;
+  x: number = 0;
+  y: number = 0;
 }
 
 class RotateValue {
-  x: number;
-  y: number;
-  z: number;
-  centerX: string;
-  centerY: string;
-  angle: number;
+  x: number = 0;
+  y: number = 0;
+  z: number = 0;
+  centerX: string = "";
+  centerY: string = "";
+  angle: number = 0;
 }
 
 export default function transFormJsunit() {
@@ -98,7 +98,7 @@ export default function transFormJsunit() {
         console.info("[testTransForm002] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testTransForm002] change component data error: " + err.message);
+        console.log("[testTransForm002] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew: string = getInspectorByKey('rotate');
@@ -142,7 +142,7 @@ export default function transFormJsunit() {
         console.info("[testTransForm004] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testTransForm004] change component data error: " + err.message);
+        console.log("[testTransForm004] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew: string = getInspectorByKey('rotate3');

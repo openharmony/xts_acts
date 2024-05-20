@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
@@ -22,8 +22,8 @@ export default function inspectorJsunit() {
   describe('inspectorTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/inspector/inspector',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/inspector/inspector',
       }
       try {
         router.clear();
@@ -54,7 +54,7 @@ export default function inspectorJsunit() {
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('inspectorApiOne');
       console.info("[testInspectorTestAdd0001] component width strJson:" + strJson);
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
       expect(JSON.parse(strJson).$attrs.fontSize).assertEqual("50.00fp");
       console.info("[testInspectorTestAdd0001] fontSize value :" + JSON.parse(strJson).$attrs.fontSize);
@@ -71,7 +71,7 @@ export default function inspectorJsunit() {
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('inspectorApiOne');
       console.info("[testInspectorTestAdd0002] component width strJson:" + strJson);
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
       expect(JSON.parse(strJson).$attrs.fontWeight).assertEqual("FontWeight.Bold");
       console.info("[testInspectorTestAdd0002] fontWeight value :" + JSON.parse(strJson).$attrs.fontWeight);
@@ -89,16 +89,16 @@ export default function inspectorJsunit() {
         eventId: 60208,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback1 = (eventData) => {
-        console.info("eventData.data.getInspectorNodes result is: " + eventData.data.getInspectorNodes);
+      let callback1 = (eventData: events_emitter.EventData) => {
+        console.info("eventData.data?.getInspectorNodes result is: " + eventData.data?.getInspectorNodes);
         try {
           console.info("callback1 success");
-          console.info("inspector_101 eventData.data.result result is: " + eventData.data.result);
-          expect(eventData.data.result).assertEqual("success");
+          console.info("inspector_101 eventData.data?.result result is: " + eventData.data?.result);
+          expect(eventData.data?.result).assertEqual("success");
           console.info("inspector_101 end: ");
-          if (eventData.data.getInspectorNodes != null) {
-            console.info("eventData.data.result result is: " + eventData.data.result);
-            expect(eventData.data.result).assertEqual("success");
+          if (eventData.data?.getInspectorNodes != null) {
+            console.info("eventData.data?.result result is: " + eventData.data?.result);
+            expect(eventData.data?.result).assertEqual("success");
           }
         } catch (err) {
           console.info("inspector_101 on events_emitter err : " + JSON.stringify(err));
@@ -123,12 +123,12 @@ export default function inspectorJsunit() {
         eventId: 60209,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback2 = (eventData) => {
-        console.info("eventData.data.getInspectorNodeById result is: " + eventData.data.getInspectorNodeById);
+      let callback2 = (eventData: events_emitter.EventData) => {
+        console.info("eventData.data?.getInspectorNodeById result is: " + eventData.data?.getInspectorNodeById);
         try {
           console.info("callback2 success");
-          console.info("inspector_102 eventData.data.result result is: " + eventData.data.result);
-          expect(eventData.data.result).assertEqual("success");
+          console.info("inspector_102 eventData.data?.result result is: " + eventData.data?.result);
+          expect(eventData.data?.result).assertEqual("success");
           console.info("inspector_102 end");
         } catch (err) {
           console.info("inspector_102 on events_emitter err : " + JSON.stringify(err));
@@ -164,7 +164,7 @@ export default function inspectorJsunit() {
         }
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testInspectorTestAdd0005] change component data error: " + err.message);
+        console.log("[testInspectorTestAdd0005] change component data error: " + (err as Error)?.message);
       }
 
     });
@@ -179,11 +179,11 @@ export default function inspectorJsunit() {
         eventId: 60210,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback3 = (eventData) => {
+      let callback3 = (eventData: events_emitter.EventData) => {
         try {
           console.info("callback3 success");
-          console.info("inspector_103 eventData.data.result result is: " + eventData.data.catchStatus);
-          expect(eventData.data.catchStatus).assertEqual("callBackSuccess");
+          console.info("inspector_103 eventData.data?.result result is: " + eventData.data?.catchStatus);
+          expect(eventData.data?.catchStatus).assertEqual("callBackSuccess");
           console.info("inspector_103 end");
         } catch (err) {
           console.info("inspector_103 on events_emitter err : " + JSON.stringify(err));

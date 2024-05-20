@@ -61,7 +61,7 @@ export default function ColumnSetVisibility_SubChange() {
         });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('columnSetVisibility_1');
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         expect(obj.$attrs.visibility).assertEqual("Visibility.None");
         let columnSetVisibility_1: RectValue = CommonFunc.getComponentRect('columnSetVisibility_1');
         let columnSetVisibility_2: RectValue = CommonFunc.getComponentRect('columnSetVisibility_2');
@@ -98,7 +98,7 @@ export default function ColumnSetVisibility_SubChange() {
         });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('columnSetVisibility_1');
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         expect(obj.$attrs.visibility).assertEqual("Visibility.Hidden");
         let columnSetVisibility_1: RectValue = CommonFunc.getComponentRect('columnSetVisibility_1');
         let columnSetVisibility_2: RectValue = CommonFunc.getComponentRect('columnSetVisibility_2');
@@ -131,7 +131,7 @@ export default function ColumnSetVisibility_SubChange() {
         });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('columnSetVisibility_1');
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         expect(obj.$attrs.visibility).assertEqual("Visibility.Visible");
         let columnSetVisibility_1: RectValue = CommonFunc.getComponentRect('columnSetVisibility_1');
         let columnSetVisibility_2: RectValue = CommonFunc.getComponentRect('columnSetVisibility_2');
@@ -164,7 +164,7 @@ export default function ColumnSetVisibility_SubChange() {
         });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('columnSetVisibility_2');
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         expect(obj.$attrs.visibility).assertEqual("Visibility.None");
         let columnSetVisibility_1: RectValue = CommonFunc.getComponentRect('columnSetVisibility_1');
         let columnSetVisibility_2: RectValue = CommonFunc.getComponentRect('columnSetVisibility_2');

@@ -12,7 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utilsUI/MessageManager';
+import  GlobalContext  from './../../common/GlobalContext';
+import { Value } from './../../common/Value';
+import { MessageManager, Callback } from './../../common/MessageManager';
+
+type MessageData = string|number|Dimension|Axis
 
 @Entry
 @Component
@@ -23,26 +27,27 @@ struct ListLanes {
   @State listSpace: string = '20'
   @State alignListItem: ListItemAlign = ListItemAlign.Start
   @State initialIndex: number = 0
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<MessageData> = new MessageManager()
 
   onPageShow() {
     console.info('ListLanes  onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'listGutter') {
-        this.listGutter = message.value;
+        this.listGutter = message.value as Dimension
       }
       if (message.name == 'listDirection') {
-        this.listDirection = message.value;
+        this.listDirection = message.value as Axis
       }
       if (message.name == 'listSpace') {
-        this.listSpace = message.value;
+        this.listSpace = message.value as string
       }
       if (message.name == 'initialIndex') {
-        this.initialIndex = message.value;
+        this.initialIndex = message.value as number
       }
 
     }

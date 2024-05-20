@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import CommonFunc from "../../MainAbility/common/Common";
 
 
 export default function waterFlowDemoJsunit() {
-  describe('waterFlowDemoJsunit', function () {
-    beforeAll(async function (done) {
+  describe('waterFlowDemoJsunit', () => {
+    beforeAll(async (done: Function) => {
       console.info("waterFlow beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/waterflow/WaterflowDemo',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/waterflow/WaterflowDemo',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function waterFlowDemoJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("waterflowDemo after each called");
     });
@@ -52,12 +52,12 @@ export default function waterFlowDemoJsunit() {
      * @tc.name         waterflowTest0001
      * @tc.desic        'waterflowTest0001
      */
-    it('waterflowTest0001', 0, async function (done) {
+    it('waterflowTest0001', 0, async (done: Function) => {
       console.info('waterflowDemo testalphabetIndexerWidth0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('waterFlow');
       console.info("[waterflowTest0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('WaterFlow');
       done();
     });

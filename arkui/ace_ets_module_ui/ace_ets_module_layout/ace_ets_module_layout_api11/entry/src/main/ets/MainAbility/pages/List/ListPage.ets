@@ -12,7 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utilsUI/MessageManager';
+import  GlobalContext  from './../../common/GlobalContext';
+import { Value } from './../../common/Value';
+import { MessageManager, Callback } from './../../common/MessageManager';
+
+type MessageData = string|number|boolean|BarState|Color|EdgeEffect|ListItemAlign|StickyStyle
 
 @Entry
 @Component
@@ -45,62 +49,63 @@ struct ListPage {
   @State onItemDragText: string = "onItemDrag"
   @State onItemDropText: string = "onItemDrop"
   scroller: Scroller = new Scroller()
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<MessageData> = new MessageManager()
 
   onPageShow() {
     console.info('ListPage onPageShow')
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'space') {
-        this.space = message.value
+        this.space = message.value as number
       }
       if (message.name == 'initialIndex') {
-        this.initialIndex = message.value
+        this.initialIndex = message.value as number
       }
       if (message.name == 'listDirection') {
-        this.listDirection = message.value
+        this.listDirection = message.value as Axis
       }
       if (message.name == 'strokeWidth') {
-        this.strokeWidth = message.value
+        this.strokeWidth = message.value as number
       }
       if (message.name == 'dividerColor') {
-        this.dividerColor = message.value
+        this.dividerColor = message.value as Color
       }
       if (message.name == 'startMargin') {
-        this.startMargin = message.value
+        this.startMargin = message.value as number
       }
       if (message.name == 'endMargin') {
-        this.endMargin = message.value
+        this.endMargin = message.value as number
       }
       if (message.name == 'scrollBar') {
-        this.scrollBar = message.value
+        this.scrollBar = message.value as BarState
       }
       if (message.name == 'cachedCount') {
-        this.cachedCount = message.value
+        this.cachedCount = message.value as number
       }
       if (message.name == 'editMode') {
-        this.editMode = message.value
+        this.editMode = message.value as boolean
       }
       if (message.name == 'edgeEffect') {
-        this.edgeEffect = message.value
+        this.edgeEffect = message.value as EdgeEffect
       }
       if (message.name == 'chainAnimation') {
-        this.chainAnimation = message.value
+        this.chainAnimation = message.value as boolean
       }
       if (message.name == 'multiSelectable') {
-        this.multiSelectable = message.value
+        this.multiSelectable = message.value as boolean
       }
       if (message.name == 'lanes') {
-        this.lanes = message.value
+        this.lanes = message.value as number
       }
       if (message.name == 'alignListItem') {
-        this.alignListItem = message.value
+        this.alignListItem = message.value as ListItemAlign
       }
       if (message.name == 'sticky') {
-        this.sticky = message.value
+        this.sticky = message.value as StickyStyle
       }
     }
     this.messageManager.registerCallback(callback)
@@ -109,17 +114,17 @@ struct ListPage {
   build() {
     Column() {
       List() {
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item: string) => {
           ListItem() {
             Text('' + item)
               .width('90%').height(20).fontSize(10)
               .textAlign(TextAlign.Center).backgroundColor(0xFFFFFF)
           }
-        }, item => item)
+        }, (item: string) => item)
       }.key('list_default')
 
       List({ space: this.space, initialIndex: this.initialIndex, scroller: this.scroller }) {
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item: string) => {
           ListItem() {
             Text('' + item)
               .width('30%')
@@ -131,7 +136,7 @@ struct ListPage {
               .key('' + item)
           }
           .border({ width: 2, color: Color.Green })
-        }, item => item)
+        }, (item: string) => item)
       }
       .height(300)
       .width("90%")

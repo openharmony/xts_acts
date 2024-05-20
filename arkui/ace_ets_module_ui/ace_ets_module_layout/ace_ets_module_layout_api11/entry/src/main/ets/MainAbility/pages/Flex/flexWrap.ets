@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,18 +17,18 @@ import events_emitter from '@ohos.events.emitter'
 @Entry
 @Component
 struct FlexWrapExample {
-  @State width: string = '20%'
-  @State height: number = 40
-  @State backgroundColor: Color = 0xD2B48C
+  @State sWidth: string = '20%'
+  @State sHeight: number = 40
+  @State sBackgroundColor: Color = 0xD2B48C
 
   build() {
     Column() {
       Column({ space: 5 }) {
         Text('WrapReverse').fontSize(9).fontColor(0xCCCCCC).width('90%')
         Flex({ wrap: FlexWrap.WrapReverse, direction: FlexDirection.Row }) {
-          Text('1').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
-          Text('2').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
-          Text('3').width(this.width).height(this.height).backgroundColor(this.backgroundColor)
+          Text('1').width(this.sWidth).height(this.sHeight).backgroundColor(this.sBackgroundColor)
+          Text('2').width(this.sWidth).height(this.sHeight).backgroundColor(this.sBackgroundColor)
+          Text('3').width(this.sWidth).height(this.sHeight).backgroundColor(this.sBackgroundColor)
             .key('WrapReverse')
         }
         .width('90%')
@@ -41,23 +40,23 @@ struct FlexWrapExample {
   }
   onPageShow() {
     console.info('flexDirection page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 100,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("swiper page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.width != null) {
-        this.width = eventData.data.width;
+      if (eventData.data?.width != null) {
+        this.sWidth = eventData.data?.width;
       }
-      if (eventData.data.height != null) {
-        this.height = eventData.data.height;
+      if (eventData.data?.height != null) {
+        this.sHeight = eventData.data?.height;
       }
-      if (eventData.data.backgroundColor != null) {
-        this.backgroundColor = eventData.data.backgroundColor;
+      if (eventData.data?.backgroundColor != null) {
+        this.sBackgroundColor = eventData.data?.backgroundColor;
       }
     }
   }

@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function ListLanes() {
-  describe('ListLanes', function () {
-    beforeEach(async function (done) {
+  describe('ListLanes', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListLanes beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/List/ListLanes',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/List/ListLanes',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function ListLanes() {
        * @tc.desc  : set gutter to -1vp and listDirection to Axis.Vertical
        * @tc.level : Level 3
        */
-    it('ListLanes_001', 0, async function (done) {
+    it('ListLanes_001', 0, async (done: Function) => {
 
       console.info('[ListLanes_001] START');
       await CommonFunc.sleep(200);
@@ -71,7 +71,7 @@ export default function ListLanes() {
        * @tc.desc  : set gutter to 10% and space to 20
        * @tc.level : Level 3
        */
-    it('ListLanes_002', 0, async function (done) {
+    it('ListLanes_002', 0, async (done: Function) => {
 
       console.info('[ListLanes_002] START');
       await CommonFunc.sleep(200);
@@ -93,7 +93,7 @@ export default function ListLanes() {
        * @tc.desc  : set gutter to 10px and space to 10px
        * @tc.level : Level 3
        */
-    it('ListLanes_007', 0, async function (done) {
+    it('ListLanes_007', 0, async (done: Function) => {
 
       console.info('[ListLanes_007] START');
       await CommonFunc.sleep(200);
@@ -118,7 +118,7 @@ export default function ListLanes() {
       * @tc.desc  : set gutter to 10px and initialIndex to 8
       * @tc.level : Level 3
       */
-    it('ListLanes_008', 0, async function (done) {
+    it('ListLanes_008', 0, async (done: Function) => {
 
       console.info('[ListLanes_008] START');
       await CommonFunc.sleep(200);
@@ -141,7 +141,7 @@ export default function ListLanes() {
        * @tc.desc  : set padding to 20 and gutter to 10
        * @tc.level : Level 2
        */
-    it('ListLanes_009', 0, async function (done) {
+    it('ListLanes_009', 0, async (done: Function) => {
 
       console.info('[ListLanes_008] START');
       await CommonFunc.sleep(200);
@@ -162,7 +162,7 @@ export default function ListLanes() {
        * @tc.desc  : set margin to 10 and gutter to 10
        * @tc.level : Level 2
        */
-    it('ListLanes_010', 0, async function (done) {
+    it('ListLanes_010', 0, async (done: Function) => {
 
       console.info('[ListLanes_010] START');
       await CommonFunc.sleep(200);

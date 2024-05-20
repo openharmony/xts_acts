@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,18 +49,18 @@ struct DividerExample2 {
 
     onPageShow() {
     console.info('divider page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
     eventId: 85,
     priority: events_emitter.EventPriority.LOW
   }
   events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("divider page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.color != null) {
-        this.color = eventData.data.color;
+      if (eventData.data?.color != null) {
+        this.color = eventData.data?.color;
       }
     }
   }

@@ -70,7 +70,7 @@ export default function visibilityJsunit() {
         console.info("[testVisibility02] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testVisibility02] change component data error: " + err.message);
+        console.log("[testVisibility02] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('box');
@@ -95,7 +95,7 @@ export default function visibilityJsunit() {
         console.info("[testVisibility03] start to publish emit:" + JSON.stringify(eventData.data));
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testVisibility03] change component data error: " + err.message);
+        console.log("[testVisibility03] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('box');

@@ -58,7 +58,6 @@ struct scrollBy {
       .columnsGap(10)
       .rowsGap(10)
       .key('scrollByPages')
-      // @ts-ignore
       .friction(0.6)
       .edgeEffect(EdgeEffect.Spring)
       .scrollBar(BarState.On)
