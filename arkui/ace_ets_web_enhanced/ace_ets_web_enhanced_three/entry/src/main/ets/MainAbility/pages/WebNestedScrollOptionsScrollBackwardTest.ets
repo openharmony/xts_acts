@@ -65,9 +65,9 @@ struct WebNestedScrollOptionsTest {
 
             case "testNestedScrollOptionsScrollBackward001": {
               try {
+                let driver: Driver = Driver.create();
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  let driver: Driver = Driver.create();
                   let window: UiWindow = await driver.findWindow({actived: true});
                   await window.maximize()
                   await Utils.sleep(2000)
