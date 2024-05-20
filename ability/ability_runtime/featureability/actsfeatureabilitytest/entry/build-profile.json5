@@ -12,13 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hilog from '@ohos.hilog';
-
-export default {
-    onCreate() {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
+{
+  "apiType": 'faMode',
+  "buildOption": {
+  },
+  "targets": [
+    {
+      "name": "default",
     },
-    onDestroy() {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
-    },
+    {
+      "name": "ohosTest",
+    }
+  ]
 }
