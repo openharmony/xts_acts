@@ -29,6 +29,8 @@ import SliderAttrs from './SliderTest/SliderAttrs.test'
 import SliderContentModifier from './SliderTest/SliderContentModifier.test'
 import ToggleContentModifier from './ToggleTest/ToggleContentModifier.test'
 import ToggleSwitchStyle from './ToggleTest/ToggleSwitchStyle.test'
+import ToggleContentIsOn from './ToggleTest/ToggleIsOn.test.ets';
+import ToggleContentEnabled from './ToggleTest/ToggleEnabled.test.ets';
 
 export default function testsuite() {
     gradientHeight()
@@ -47,5 +49,6 @@ export default function testsuite() {
     SliderContentModifier();
     ToggleContentModifier();
     ToggleSwitchStyle();
-
+    ToggleContentIsOn();
+    ToggleContentEnabled();
 }
