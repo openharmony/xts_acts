@@ -198,7 +198,7 @@ export default function relationalStoreDifferenceCustomDirMultipleTest() {
         expect(null).assertFail();
         console.error(TAG +`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
       })
-      await data_Rdb.getRdbStore(globalThis.abilityContext, STORE_CONFIG2).then(async (rdbStore) => {
+      await data_Rdb.getRdbStore(globalThis.abilityContext, STORE_CONFIG3).then(async (rdbStore) => {
         rdbStore2 = rdbStore;
         console.info(TAG +`Get RdbStore successfully.`)
       }).catch((err) => {
