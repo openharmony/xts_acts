@@ -14,12 +14,14 @@
  */
 import imageExifJpegGetModifyTest from './ImageExifJpegGetModify.test';
 import imageExifPngGetModifyTest from './ImageExifPngGetModify.test';
+import imageExifDngGetModifyTest from './ImageExifDngGetModify.test';
 import imageExifWebpGetModifyTest from './ImageExifWebpGetModify.test';
 import imageExifHeifGetModifyTest from './ImageExifHeifGetModify.test';
 
 export default function testsuite() {
   imageExifJpegGetModifyTest();
   imageExifPngGetModifyTest();
+  imageExifDngGetModifyTest();
   imageExifWebpGetModifyTest();
   imageExifHeifGetModifyTest();
 }
