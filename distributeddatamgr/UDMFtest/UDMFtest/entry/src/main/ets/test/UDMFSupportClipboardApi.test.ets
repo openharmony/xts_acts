@@ -29,9 +29,9 @@ export default function UDMFSupportClipboardApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0100
-     * @tc.name      : unifiedDataChannel properties test
+     * @tc.name      : testUnifiedDataChannelProperties
      * @tc.desc      : unifiedDataChannel properties test
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -53,9 +53,9 @@ export default function UDMFSupportClipboardApiTest() {
     })
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0200
-     * @tc.name      : unifiedDataChannel properties test
+     * @tc.name      : testUnifiedDataChannelProperties
      * @tc.desc      : unifiedDataChannel properties test
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -95,9 +95,9 @@ export default function UDMFSupportClipboardApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0300
-     * @tc.name      : unifiedDataChannel properties test
+     * @tc.name      : testUnifiedDataChannelProperties
      * @tc.desc      : unifiedDataChannel properties test
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -135,9 +135,9 @@ export default function UDMFSupportClipboardApiTest() {
     });
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0400
-     * @tc.name      : unifiedDataChannel properties test
+     * @tc.name      : testUnifiedDataChannelProperties
      * @tc.desc      : unifiedDataChannel properties test
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -169,9 +169,9 @@ export default function UDMFSupportClipboardApiTest() {
     });
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0500
-     * @tc.name      : unifiedDataChannel properties test
+     * @tc.name      : testUnifiedDataChannelProperties
      * @tc.desc      : unifiedDataChannel properties test
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -229,9 +229,9 @@ export default function UDMFSupportClipboardApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0600
-     * @tc.name      : unifiedDataChannel properties test
+     * @tc.name      : testUnifiedDataChannelProperties
      * @tc.desc      : unifiedDataChannel properties test
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -295,9 +295,9 @@ export default function UDMFSupportClipboardApiTest() {
     });
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700
-     * @tc.name      : unifiedDataChannel properties test
+     * @tc.name      : testUnifiedDataChannelProperties
      * @tc.desc      : unifiedDataChannel properties test
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -333,14 +333,14 @@ export default function UDMFSupportClipboardApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700
-     * @tc.name      : unifiedDataChannel properties test
+     * @tc.name      : testUnifiedDataChannelProperties
      * @tc.desc      : unifiedDataChannel properties test
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('UnifiedRecordConstruct004', 0, async function () {
-      const TAG = 'UnifiedRecordConstruct004';
+    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700', 0, async function () {
+      const TAG = 'SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700';
       console.info(TAG, 'start');
 
       const dataUri = new ArrayBuffer(256);
