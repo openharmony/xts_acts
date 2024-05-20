@@ -10,26 +10,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("DefPermission") {
-  hap_profile = "./src/main/config.json"
-  js_build_mode = "debug"
-  hap_name = "DefPermission"
-
+ohos_app_assist_suite("DefPermission") {
   testonly = true
-  deps = [
-    ":hjs_demo_js_assets",
-    ":hjs_demo_resources",
-  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  subsystem_name = "ability"
+  hap_name = "DefPermission"
   part_name = "ability_runtime"
-}
-ohos_js_assets("hjs_demo_js_assets") {
-  source_dir = "./src/main/js/default"
-}
-ohos_resources("hjs_demo_resources") {
-  sources = [ "./src/main/js/resources" ]
-  hap_profile = "./src/main/config.json"
+  subsystem_name = "ability"
 }
