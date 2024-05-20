@@ -394,7 +394,7 @@ export default function documentPickerPromise(abilityContext: Context) {
     it("documentpicker_save_promise_010", 1, async (done: Function) => {
       let testNum = "documentpicker_save_promise_010";
       let option = new picker.DocumentSaveOptions();
-      option.pickerMode = 1;
+      option.pickerMode = picker.DocumentPickerMode.DOWNLOAD;
       await saveWithOption(testNum, done, option);
     });
     /**
