@@ -747,6 +747,8 @@ export default function abilityTest() {
           expect(accessibilityAbilityInfo.description != null).assertTrue();
           expect(accessibilityAbilityInfo.id != null).assertTrue();
           expect(accessibilityAbilityInfo.name != null).assertTrue();
+          expect(accessibilityAbilityInfo.needHide != null).assertTrue();
+          expect(accessibilityAbilityInfo.label != null).assertTrue();
           for (let capability of accessibilityAbilityInfo.capabilities) {
             let cap = capability.toString();
             expect(cap == 'retrieve' ||
@@ -925,6 +927,11 @@ export default function abilityTest() {
             }).catch((err) => {
               console.log('failed to perform action, because ' + JSON.stringify(err));
             });
+            rootElement.getCursorPosition().then((data: number) => {
+              console.info('get cursorPosition success');
+            }).catch((err) => {
+              console.log('failed to getCursorPosition, because ' + JSON.stringify(err));
+            });
             done();
           }).catch((err) => {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0400 err:' + JSON.stringify(err));
@@ -1006,11 +1013,18 @@ export default function abilityTest() {
               expect(ElementAttributeValue.indexOf("valueMin") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("valueNow") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("windowId") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("textType") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("offset") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("hotArea") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("accessibilityText") != -1).assertTrue();
             });
             rootElement.actionNames((err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
             });
             rootElement.performAction('action', (err, data) => {
+              console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
+            });
+            rootElement.getCursorPosition((err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
             });
             let actionName = 'action';
