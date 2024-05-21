@@ -97,7 +97,7 @@ export default function getBundleInfoForSelf() {
      * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0013
      * @tc.name  : GetBundleInfoForSelfSyncSkill
      * @tc.desc  : Test getBundleInfoForSelfSync with Skill
-     * @tc.size  : MEDIUM
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 2
      */
