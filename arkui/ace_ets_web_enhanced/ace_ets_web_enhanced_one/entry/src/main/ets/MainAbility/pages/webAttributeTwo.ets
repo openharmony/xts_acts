@@ -28,6 +28,9 @@ build() {
         .multiWindowAccess(false)
         .onWindowExit(()=> {
           console.info("NewWebViewComp onWindowExit")
+          if (this.controller) {
+            this.controller.close()
+          }
           Utils.emitEvent(true, 300750)
         })
       }
@@ -155,14 +158,19 @@ struct webAttributeTwo {
         .onWindowNew((event) => {
           console.log("onWindowNew start");
           if (this.dialogController) {
+            console.log('bxb1')
             this.dialogController.close()
           }
+          console.log('bxb2')
           let popController:webView.WebviewController = new webView.WebviewController()
+          console.log('bxb3')
           this.dialogController = new CustomDialogController({
             builder: NewWebViewComp({webviewController1: popController})
           })
           this.dialogController.open()
+          console.log('bxb6');
           event.handler.setWebController(popController)
+          console.log('bxb7');
         })
     }
   }
