@@ -25,18 +25,11 @@ export default {
         this.title = "scene accessible second application";
     },
     onShow() {
-        function sleep(delay) {
-            var start = (new Date()).getTime();
-            while((new Date()).getTime() - start < delay) {
-                continue;
-            }
-        }
-
         console.info('====>scene accessible second application start====');
-        var appAccountManager = account.createAppAccountManager();
+        let appAccountManager = account.createAppAccountManager();
         console.info("====>creat second scene manager finish====");
-        var enableBundle = "com.example.actsgetallaccessiblemultiple";
-        var enableBundle_2 = "com.example.getmultipleaccountstest"
+        let enableBundle = "com.example.actsgetallaccessiblemultiple";
+        let enableBundle_2 = "com.example.getmultipleaccountstest"
         console.info("====>add second account start====");
         appAccountManager.createAccount("account_name_scene_second_first", (err)=>{
             console.info("====>add second account err:" + JSON.stringify(err));
@@ -46,12 +39,17 @@ export default {
                     appAccountManager.createAccount("account_name_scene_second_second", (err)=>{
                         console.info("====>add second account err:" + JSON.stringify(err));
                         appAccountManager.setAppAccess("account_name_scene_second_second", enableBundle, true, (err)=>{
-                            appAccountManager.setAppAccess("account_name_scene_second_second", enableBundle_2, true, (err) => {
+                            appAccountManager.setAppAccess("account_name_scene_second_second", enableBundle_2, true, async (err) => {
                                 console.info("====>enableAppAccess second account err:" + JSON.stringify(err));
-                                sleep(1500);
-                                featureAbility.terminateSelf((err, data)=>{
-                                    console.info("====>Terminate Second Ability err:" + JSON.stringify(err));
-                                });
+                                console.info("====>terminateSelfWithResult second");
+                                featureAbility.terminateSelfWithResult({
+                                    resultCode: 1,
+                                    want:
+                                    {
+                                        bundleName: "com.example.actsaccountaccessiblesecond",
+                                        abilityName: "com.example.actsaccountaccessiblesecond.MainAbility"
+                                    }
+                                })
                             })
                         })
                     })

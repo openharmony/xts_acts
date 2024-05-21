@@ -24,33 +24,24 @@ export default function GetAccountsByOwner() {
     describe('GetAccountsByOwner', function () {
         beforeAll(async function (done) {
             console.info("====>startAbility start====");
-                await featureAbility.startAbility(
+            featureAbility.startAbilityForResult(
+                {
+                    want:
                     {
-                        want:
-                        {
-                            deviceId: "",
-                            bundleName: "com.example.actsscenegetallaccounts",
-                            abilityName: "com.example.actsscenegetallaccounts.MainAbility",
-                            action: "action1",
-                            parameters:
-                            {},
-                        },
+                        deviceId: "",
+                        bundleName: "com.example.actsscenegetallaccounts",
+                        abilityName: "com.example.actsscenegetallaccounts.MainAbility",
+                        action: "action1",
+                        parameters:
+                        {},
                     },
-                );
-            await sleep(TIMEOUT);
-            done();
+                }, (err, data) => {
+                    console.info("====>GetAccountsByOwner.startAbilityForResult err:" + JSON.stringify(err))
+                    console.info("====>GetAccountsByOwner.startAbilityForResult data:" + JSON.stringify(data))
+                    done();
+                }
+            );
         });
-
-        async function sleep(delay) {
-            let timeoutId = null;
-            var promise = new Promise((resolve, reject) => {
-                timeoutId = setTimeout(() => {
-                    resolve("done")
-                }, delay)
-            })
-            await promise
-            clearTimeout(timeoutId)
-        }
 
         /*
         * @tc.number    : GetAccountsByOwner_0100
@@ -298,7 +289,6 @@ export default function GetAccountsByOwner() {
                     done();
                 });
             }
-            await sleep(TIMEOUT)
             console.info("====>getAccountsByOwner 0900 start====");
             appAccountManager.getAccountsByOwner(SELFBUNDLE, getAllCallback);
         });
@@ -315,30 +305,22 @@ export default function GetAccountsByOwner() {
             console.info("====>creat finish====");
             console.info("====>add account 1000 start====");
             await appAccountManager.createAccount("Account_application_promise");
-            await sleep(TIMEOUT)
             console.info("====>getAccountsByOwner 1000 start====");
             try{
-                var data = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
+                let data = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
+                console.info("====>getAccountsByOwner 1000 data:" + JSON.stringify(data));
+                expect(data[0].name).assertEqual("Account_application_promise");
+                expect(data[0].owner).assertEqual("com.example.actsgetaccountsbyowner");
+                console.info("====>delete account 1000 start====");
+                await appAccountManager.removeAccount("Account_application_promise");
+                console.info("====>GetAccountsByOwner_1000 end====");
+                done();
             }
             catch(err){
                 console.error("====>getAccountsByOwner 1000 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.info("====>getAccountsByOwner 1000 data:" + JSON.stringify(data));
-            try{
-                expect(data[0].name).assertEqual("Account_application_promise");
-                expect(data[0].owner).assertEqual("com.example.actsgetaccountsbyowner");
-            }
-            catch(err){
-                console.error("====>check data 1000 fail err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.info("====>delete account 1000 start====");
-            await appAccountManager.removeAccount("Account_application_promise");
-            console.info("====>GetAccountsByOwner_1000 end====");
-            done();
         });
 
         /*
@@ -349,9 +331,9 @@ export default function GetAccountsByOwner() {
         */
         it('GetAccountsByOwner_1100', 0, async function (done) {
             console.info("====>GetAccountsByOwner_1100 start====");
-            var appAccountManager = account.createAppAccountManager();
+            let appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
-            var specifiedBundle = "com.example.actsscenegetallaccounts";
+            let specifiedBundle = "com.example.actsscenegetallaccounts";
             function getAllCallback(err, data){
                 console.info("====>getAccountsByOwner 1100 err:" + JSON.stringify(err));
                 console.info("====>getAccountsByOwner 1100 data:" + JSON.stringify(data));
@@ -361,7 +343,6 @@ export default function GetAccountsByOwner() {
                 console.info("====>GetAccountsByOwner_1100 end====");
                 done();
             }
-            await sleep(TIMEOUT)
             console.info("====>getAccountsByOwner 1100 start====");
             appAccountManager.getAccountsByOwner(specifiedBundle, getAllCallback);
         });
@@ -374,24 +355,22 @@ export default function GetAccountsByOwner() {
         */
         it('GetAccountsByOwner_1200', 0, async function (done) {
             console.info("====>GetAccountsByOwner_1200 start====");
-            var appAccountManager = account.createAppAccountManager();
+            let appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
-            var specifiedBundle = "com.example.actsscenegetallaccounts";
-            await sleep(TIMEOUT)
+            let specifiedBundle = "com.example.actsscenegetallaccounts";
             console.info("====>getAccountsByOwner 1200 start====");
             try{
-                var data = await appAccountManager.getAccountsByOwner(specifiedBundle);
-            }
-            catch(err){
+                let data = await appAccountManager.getAccountsByOwner(specifiedBundle);
+                console.info("====>getAccountsByOwner 1200 data:" + JSON.stringify(data));
+                expect(data[0].name).assertEqual("account_name_scene_single");
+                expect(data[0].owner).assertEqual("com.example.actsscenegetallaccounts");
+                console.info("====>GetAccountsByOwner_1200 end====");
+                done();
+            } catch(err) {
                 console.error("====>getAccountsByOwner 1200 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.info("====>getAccountsByOwner 1200 data:" + JSON.stringify(data));
-            expect(data[0].name).assertEqual("account_name_scene_single");
-            expect(data[0].owner).assertEqual("com.example.actsscenegetallaccounts");
-            console.info("====>GetAccountsByOwner_1200 end====");
-            done();
         });
 
         /*
