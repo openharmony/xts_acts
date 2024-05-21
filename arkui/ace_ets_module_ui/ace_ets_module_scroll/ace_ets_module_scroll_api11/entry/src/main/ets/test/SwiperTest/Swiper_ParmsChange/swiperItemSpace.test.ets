@@ -101,7 +101,7 @@ export default function swiperItemSpace() {
         Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
         Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
         Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
-        1000);
+        500);
       await CommonFunc.sleep(3000);
       itemspacekey = CommonFunc.getComponentRect('itemspacekey');
       itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
@@ -177,7 +177,7 @@ export default function swiperItemSpace() {
         Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
         Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
         Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
-        1000);
+        500);
       await CommonFunc.sleep(3000);
       itemspacekey = CommonFunc.getComponentRect('itemspacekey');
       itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
