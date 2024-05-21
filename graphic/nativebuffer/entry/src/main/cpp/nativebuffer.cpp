@@ -15,7 +15,7 @@
 
 #include "napi/native_api.h"
 #include <native_buffer/native_buffer.h>
-#include <limits.h>
+#include <climits>
 
 #define SUCCESS 0
 #define FAIL (-1)
