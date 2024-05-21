@@ -13,14 +13,6 @@
  * limitations under the License.
  */
 
-import textInputUnderlineColorTest from "./component/textInputUnderlineColor.test.ets";
-import textInputMaxFontSize from "./component/textInputMaxFontSize.test.ets";
-import textInputMinFontSize from "./component/textInputMinFontSize.test.ets";
-import textInputHeightAdaptivePolicy from "./component/textInputHeightAdaptivePolicy.test.ets";
-
-export default function testsuite() {
-  textInputUnderlineColorTest();
-  textInputMaxFontSize();
-  textInputMinFontSize();
-  textInputHeightAdaptivePolicy();
+export class Constants {
+  static readonly EVENT_ID_CHANGE_DATA = 101
 }

@@ -1,6 +1,9 @@
 {
   "src": [
     "MainAbility/pages/index/Index",
-    "MainAbility/pages/component/textInputUnderlineColor"
+    "MainAbility/pages/component/textInputUnderlineColor",
+    "MainAbility/pages/component/textInputMaxFontSize",
+    "MainAbility/pages/component/textInputMinFontSize",
+    "MainAbility/pages/component/textInputHeightAdaptivePolicy"
   ]
 }
