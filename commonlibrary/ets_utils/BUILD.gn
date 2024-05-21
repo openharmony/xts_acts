@@ -26,6 +26,7 @@ group("ets_utils") {
       "intl_lib_standard:intl_js_test",
       "json_lib_standard:json_js_test",
       "process_lib_standard:process_js_test",
+      "sendable_lib_collections:collections_js_test",
       "stream_lib_standard:stream_js_test",
       "taskpool_lib_standard:taskPool_js_test",
       "taskpool_lib_standard2:ActsTaskPoolTest",
@@ -37,7 +38,6 @@ group("ets_utils") {
       "worker_lib_standard:worker_js_hap",
       "worker_lib_standard2:ActsWorkerTest",
       "xml_lib_standard:xml_js_test",
-      "sendable_lib_collections:collections_js_test",
     ]
   }
 }
