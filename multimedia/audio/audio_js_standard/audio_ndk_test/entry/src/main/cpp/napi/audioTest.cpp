@@ -3385,11 +3385,11 @@ static napi_value Init(napi_env env, napi_value exports)
             AudioAudioDeviceDescriptorGetDeviceEncodingTypes_003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioAudioDeviceDescriptorGetDeviceEncodingTypes_004", nullptr,
             AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"audioAudioInternalRecordingSuccess01", nullptr, 
+        {"audioAudioInternalRecordingSuccess01", nullptr,
             AudioAudioInternalRecordingSuccess01, nullptr, nullptr, nullptr, napi_default, nullptr}, 
-        {"audioAudioInternalRecordingSuccess02", nullptr, 
+        {"audioAudioInternalRecordingSuccess02", nullptr,
             AudioAudioInternalRecordingSuccess02, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"audioAudioInternalRecordingFalse", nullptr, 
+        {"audioAudioInternalRecordingFalse", nullptr,
             AudioAudioInternalRecordingFalse, nullptr, nullptr, nullptr, napi_default, nullptr},    
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
@@ -3398,6 +3398,7 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 
 /*
+
  * module define
  */
 static napi_module g_module = {
