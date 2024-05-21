@@ -55,7 +55,7 @@ export default function backgroundImageResizableTest() {
       let obj = JSON.parse(strJson);
       console.log('backgroundImageResizableTest_0100',obj.$attrs)
       console.log('backgroundImageResizableTest_0100',obj.$attrs.backgroundImageResizable.slice.top)
-      expect(obj.$attrs.backgroundImageResizable.slice.top).assertEqual('20px');
+      expect(obj.$attrs.backgroundImageResizable).assertEqual(('ImageResizableSlice: {left: 20.00px, right: 20.00px, top: 20.00px, bottom: 20.00px}'));
       console.info('[backgroundImageResizableTest_0100] END');
       done();
     });
