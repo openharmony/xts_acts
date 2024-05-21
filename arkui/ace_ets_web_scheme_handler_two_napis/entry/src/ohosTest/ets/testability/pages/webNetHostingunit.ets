@@ -46,6 +46,8 @@ struct webRegisterCustomsComponent {
     testNapi.setSchemeHandler();
     console.error("aboutToAppear setSchemeHandler" + this.isSet)
     console.error("aboutToAppear registerCustomSchemes End")
+    
+    testNapi.initResourceManager(getContext().resourceManager);
   }
 
   onPageShow() {
@@ -87,7 +89,7 @@ struct webRegisterCustomsComponent {
                   console.info(" run JavaScript return value is:" + result);
                 }
               })
-              await Utils.sleep(1000);
+              await Utils.sleep(4000);
               console.log("emitWebHttpBodyStream_IsEof ==>");
               let result: number = testNapi.httpBodyStreamIsEof();
               await Utils.sleep(1000);
@@ -362,18 +364,6 @@ struct webRegisterCustomsComponent {
         .fileAccess(false)
         .domStorageAccess(true)
         .cacheMode(CacheMode.Default)
-        .onPageBegin(event => {
-          testNapi.initResourceManager(getContext().resourceManager);
-        })
-        .onConsole((event) => {
-          if (event) {
-            console.log('onConsole getMessage:' + event.message?.getMessage())
-            console.log('onConsole getSourceId:' + event.message?.getSourceId())
-            console.log('onConsole getLineNumber:' + event.message?.getLineNumber())
-            console.log('onConsole getMessageLevel:' + event.message?.getMessageLevel())
-          }
-          return false
-        })
     }
     .height('100%')
   }

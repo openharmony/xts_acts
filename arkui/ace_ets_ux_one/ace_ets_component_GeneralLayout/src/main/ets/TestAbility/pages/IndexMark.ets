@@ -20,11 +20,11 @@ struct IndexMark {
   build() {
     Column() {
       Image($r('app.media.icon'))
-        .key("top")
+        .key("top_mark")
         .width(20).height(20)
         .position({ left: 0, top: 0 })
       Image($r('app.media.icon'))
-        .key("bottom")
+        .key("bottom_mark")
         .width(20).height(20)
         .position({ left: '100%', top: '-100%' })
       Text('0100_TextM')

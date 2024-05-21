@@ -13,4 +13,7 @@
  * limitations under the License.
  */
 
-require('./creator.test.js')
+import ImageCreator from "./creator.test.js";
+export default function testsuite() {
+    ImageCreator();
+}

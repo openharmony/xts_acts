@@ -120,13 +120,13 @@ do_make() {
         if [ "$PR_PARTH_LIST" != "" ]; then
             system_build_params+=" pr_path_list=$PR_PARTH_LIST"
         fi
-        ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH --get-warning-list=false --stat-ccache=true --compute-overlap-rate=false --deps-guard=false $CACHE_ARG --gn-args skip_generate_module_list_file=true
+        ./build.sh --product-name $PRODUCT_NAME --gn-args $system_build_params --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH --get-warning-list=false --stat-ccache=true --compute-overlap-rate=false --deps-guard=false $CACHE_ARG --gn-args skip_generate_module_list_file=true
     else
-        if [ "$BUILD_TARGET" = "acts acts_ivi acts_intellitv acts_wearable" ]; then
-            ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target "acts" --build-target "acts_ivi" --build-target "acts_intellitv" --build-target "acts_wearable" --build-target "deploy_testtools"
-        else
-            ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools"
-        fi
+       if [ "$BUILD_TARGET" = "acts acts_ivi acts_intellitv acts_wearable" ]; then
+         ./build.sh --product-name $PRODUCT_NAME --gn-args $system_build_params --build-target "acts" --build-target "acts_ivi" --build-target "acts_intellitv" --build-target "acts_wearable" --build-target "deploy_testtools"
+       else
+         ./build.sh --product-name $PRODUCT_NAME --gn-args $system_build_params --build-target $BUILD_TARGET --build-target "deploy_testtools"
+       fi
     fi
     ret=$?
 

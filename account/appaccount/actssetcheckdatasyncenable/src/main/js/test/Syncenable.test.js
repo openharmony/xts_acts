@@ -17,7 +17,6 @@ import account from '@ohos.account.appAccount'
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
-const TIMEOUT = 2000;
 const PERMISSION_USER_SET = 1;
 const PERMISSION_USER_NAME = "ohos.permission.DISTRIBUTED_DATASYNC";
 var tokenID = undefined;
@@ -25,23 +24,15 @@ export default function ActsSetCheckDataSyncEnabled() {
     describe('ActsSetCheckDataSyncEnabled', function () {
         beforeAll(async function (done) {
             console.info("====>beforeAll start====");
-            var appInfo = await bundle.getApplicationInfo('com.example.actssetcheckdatasyncenable', 0, 100);
+            let appInfo = await bundle.getApplicationInfo('com.example.actssetcheckdatasyncenable', 0, 100);
             tokenID = appInfo.accessTokenId;
             console.info("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.bundleName);
-            var atManager = abilityAccessCtrl.createAtManager();
-            var result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
+            let atManager = abilityAccessCtrl.createAtManager();
+            let result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
             console.info("tokenId" + tokenID + " result:" + result);
-            sleep(TIMEOUT);
             console.info("====>beforeAll end====");
             done();
         })
-
-        function sleep(delay) {
-            var start = (new Date()).getTime();
-            while((new Date()).getTime() - start < delay) {
-                continue;
-            }
-        }
 
         /*
         * @tc.number    : ActsSetCheckDataSyncEnabled_0100

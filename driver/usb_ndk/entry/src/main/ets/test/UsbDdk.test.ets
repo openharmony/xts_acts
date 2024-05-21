@@ -19,9 +19,15 @@ import deviceManager from "@ohos.driver.deviceManager";
 
 
 export default function usbDdkTest() {
-  let dev: number = 0
+  let dev: number = -1;
 
   describe('UsbDdkTest', () => {
+
+    const TAG: string = "[usbDdkNdkJsTest]";
+    const USB_DDK_SUCCESS: number = 0;
+    const USB_DDK_FAILED: number = -1;
+    const USB_DDK_INVALID_PARAMETER: number = -2;
+    const USB_DDK_INVALID_OPERATION: number = -4;
 
     beforeAll(async () => {
       try {
@@ -76,9 +82,9 @@ export default function usbDdkTest() {
      */
     it('testUsbGetDeviceDescriptor001', 0, async (done: Function) => {
       console.info("Test USB dev = " + dev);
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbGetDeviceDescriptorOne(dev);
@@ -97,9 +103,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbGetDeviceDescriptor002', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbGetDeviceDescriptorTwo(dev);
@@ -118,9 +124,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbGetConfigDescriptor001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbGetConfigDescriptorOne(dev);
@@ -139,14 +145,14 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbGetConfigDescriptor002', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbGetConfigDescriptorTwo();
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-1);
+        expect(data).assertEqual(USB_DDK_FAILED);
         done()
       }
     });
@@ -160,9 +166,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbGetConfigDescriptor003', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbGetConfigDescriptorThree(dev);
@@ -181,9 +187,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbFreeConfigDescriptor001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbFreeConfigDescriptor(dev);
@@ -202,9 +208,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbClaimInterface001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbClaimInterfaceOne(dev);
@@ -223,9 +229,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbClaimInterface002', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbClaimInterfaceTwo();
@@ -244,9 +250,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbClaimInterface003', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbClaimInterfaceThree(dev);
@@ -265,9 +271,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbReleaseInterface001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbReleaseInterface(dev);
@@ -286,9 +292,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSelectInterfaceSetting001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSelectInterfaceSettingOne(dev);
@@ -307,9 +313,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSelectInterfaceSetting002', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSelectInterfaceSettingTwo(dev);
@@ -328,9 +334,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbGetCurrentInterfaceSetting001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbGetCurrentInterfaceSettingOne(dev);
@@ -349,9 +355,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbGetCurrentInterfaceSetting002', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbGetCurrentInterfaceSettingTwo(dev);
@@ -370,9 +376,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbGetCurrentInterfaceSetting003', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbGetCurrentInterfaceSettingThree(dev);
@@ -391,9 +397,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendControlReadRequest001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendControlReadRequestOne(dev);
@@ -412,9 +418,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlReadRequest002', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendControlReadRequestTwo(dev);
@@ -433,9 +439,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlReadRequest003', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendControlReadRequestThree(dev);
@@ -454,9 +460,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlReadRequest004', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendControlReadRequestFour(dev);
@@ -475,9 +481,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlReadRequest005', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendControlReadRequestFive(dev);
@@ -496,9 +502,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendControlWriteRequest001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendControlWriteRequestOne(dev);
@@ -517,9 +523,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlWriteRequest002', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendControlWriteRequestTwo(dev);
@@ -538,9 +544,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlWriteRequest003', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendControlWriteRequestThree(dev);
@@ -559,9 +565,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendControlWriteRequest004', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendControlWriteRequestFour(dev);
@@ -580,9 +586,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendPipeRequest001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendPipeRequestOne(dev);
@@ -601,9 +607,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendPipeRequest002', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendPipeRequestTwo(dev);
@@ -622,9 +628,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendPipeRequest003', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendPipeRequestThree(dev);
@@ -643,9 +649,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendPipeRequest004', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbSendPipeRequestFour(dev);
@@ -664,9 +670,9 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbCreateDeviceMemMap001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbCreateDeviceMemMapOne(dev);
@@ -685,12 +691,12 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbCreateDeviceMemMap002', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
-        let data = usbDdk.usbCreateDeviceMemMapTow(dev);
+        let data = usbDdk.usbCreateDeviceMemMapTwo(dev);
         console.info("Test USB data Result = " + data);
         expect(data).assertEqual(-2);
         done()
@@ -706,15 +712,131 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbDestroyDeviceMemMap001', 0, async (done: Function) => {
-      if (dev == 0) {
+      if (dev < 0) {
         console.info("Test USB device not connected");
-        expect(dev).assertEqual(0);
+        expect(dev).assertEqual(USB_DDK_FAILED);
         done()
       } else {
         let data = usbDdk.usbDestroyDeviceMemMap(dev);
         console.info("Test USB data Result = " + data);
         expect(data).assertEqual(1);
         done()
+      }
+    });
+
+     /**
+     * @tc.number     : SUB_USB_DriverExt_DDKETS_3400
+     * @tc.name       : testUsbSendPipeRequestWithAshmem001
+     * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbSendPipeRequestWithAshmem001', 0, async (done: Function) => {
+      console.info('----------------------testUsbSendPipeRequestWithAshmem001---------------------------');
+      try {
+        if (dev < 0) {
+          console.info("Test USB device not connected");
+          expect(dev).assertEqual(USB_DDK_FAILED);
+          done();
+          return;
+        }
+        console.info("Test USB deviceId = " + dev);
+        const ret = usbDdk.usbSendPipeRequestWithAshmemOne(dev);
+        console.info("Test Result testUsbSendPipeRequestWithAshmem001 : " + ret);
+        expect(ret).assertEqual(USB_DDK_SUCCESS);
+        done();
+      } catch (err) {
+        console.error(TAG, `testUsbSendPipeRequestWithAshmem001 failed, message is ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+     /**
+     * @tc.number     : SUB_USB_DriverExt_DDKETS_3500
+     * @tc.name       : testUsbSendPipeRequestWithAshmem002
+     * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbSendPipeRequestWithAshmem002', 0, async (done: Function) => {
+      console.info('----------------------testUsbSendPipeRequestWithAshmem002---------------------------');
+      try {
+        if (dev < 0) {
+          console.info("Test USB device not connected");
+          expect(dev).assertEqual(USB_DDK_FAILED);
+          done();
+          return;
+        }
+        console.info("Test USB deviceId = " + dev);
+        const ret = usbDdk.usbSendPipeRequestWithAshmemTwo(dev);
+        console.info("Test Result testUsbSendPipeRequestWithAshmem002 : " + ret);
+        expect(ret).assertEqual(USB_DDK_INVALID_PARAMETER);
+        done();
+      } catch (err) {
+        console.error(TAG, `testUsbSendPipeRequestWithAshmem002 failed, message is ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_USB_DriverExt_DDKETS_3600
+     * @tc.name       : testUsbSendPipeRequestWithAshmem003
+     * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbSendPipeRequestWithAshmem003', 0, async (done: Function) => {
+      console.info('----------------------testUsbSendPipeRequestWithAshmem003---------------------------');
+      try {
+        if (dev < 0) {
+          console.info("Test USB device not connected");
+          expect(dev).assertEqual(USB_DDK_FAILED);
+          done();
+          return;
+        }
+        console.info("Test USB deviceId = " + dev);
+        const ret = usbDdk.usbSendPipeRequestWithAshmemThree(dev);
+        console.info("Test Result testUsbSendPipeRequestWithAshmem003 : " + ret);
+        expect(ret).assertEqual(USB_DDK_INVALID_PARAMETER);
+        done();
+      } catch (err) {
+        console.error(TAG, `testUsbSendPipeRequestWithAshmem003 failed, message is ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_USB_DriverExt_DDKETS_3700
+     * @tc.name       : testUsbSendPipeRequestWithAshmem004
+     * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbSendPipeRequestWithAshmem004', 0, async (done: Function) => {
+      console.info('----------------------testUsbSendPipeRequestWithAshmem004---------------------------');
+      try {
+        if (dev < 0) {
+          console.info("Test USB device not connected");
+          expect(dev).assertEqual(USB_DDK_FAILED);
+          done();
+          return;
+        }
+        console.info("Test USB deviceId = " + dev);
+        const ret = usbDdk.usbSendPipeRequestWithAshmemFour(dev);
+        console.info("Test Result testUsbSendPipeRequestWithAshmem004 : " + ret);
+        expect(ret).assertEqual(USB_DDK_INVALID_OPERATION);
+        done();
+      } catch (err) {
+        console.error(TAG, `testUsbSendPipeRequestWithAshmem004 failed, message is ${err.message}`);
+        expect(false).assertTrue();
+        done();
       }
     });
 

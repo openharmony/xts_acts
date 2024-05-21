@@ -15,15 +15,11 @@
 
 import hilog from '@ohos.hilog';
 import testNapi from 'libentry.so'
-import web_webview from '@ohos.web.webview'
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World'
-  controller: web_webview.WebviewController = new web_webview.WebviewController("scheme-handler");
-  aboutToAppear(): void {
-  }
 
   build() {
     Row() {
@@ -32,21 +28,7 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-              this.controller.refresh();
-              console.log("testNapi getUrl => " + testNapi.getUrl())
           })
-          
-        Web({ src:$rawfile('index.html'), controller: this.controller })
-            .height('50%')
-            .width('100%')
-            .javaScriptAccess(true)
-            .fileAccess(true)
-            .onPageBegin(
-                event => {
-                    // 初始化管理文件
-                    testNapi.initResourceManager(getContext().resourceManager);
-                }
-             )
       }
       .width('100%')
     }

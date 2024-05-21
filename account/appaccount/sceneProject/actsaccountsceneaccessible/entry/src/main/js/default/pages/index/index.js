@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
+import featureAbility from '@ohos.ability.featureAbility'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
@@ -34,9 +35,17 @@ export default {
             console.info("====>add account scene err:" + JSON.stringify(err));
             appAccountManager.setAppAccess("account_name_scene_single", enableBundle, true, (err)=>{
                 console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
-            });
-            appAccountManager.setAppAccess("account_name_scene_single", enableBundle2, true, (err)=>{
-                console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
+                appAccountManager.setAppAccess("account_name_scene_single", enableBundle2, true, (err)=>{
+                    console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
+                    featureAbility.terminateSelfWithResult({
+                        resultCode: 1,
+                        want:
+                        {
+                            bundleName: "com.example.actsaccountsceneaccessible",
+                            abilityName: "com.example.actsaccountsceneaccessible.MainAbility"
+                        }
+                    })
+                });
             });
         });
     },

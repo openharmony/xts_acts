@@ -16,8 +16,8 @@ import("//test/xts/tools/build/suite.gni")
 import("//test/xts/acts/graphic/vktest/comm.gni")
 
 ohos_moduletest_suite("ActsVulkanPipelineLibraryTest") {
-  part_name = "graphic_2d"
   sources = [ "ActsVulkanPipelineLibraryTest.cpp" ]
+  part_name = "graphic_2d"
 
   include_dirs = [ "src" ]
   deps = [

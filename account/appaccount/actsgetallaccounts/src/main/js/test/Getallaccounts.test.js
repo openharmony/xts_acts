@@ -16,20 +16,9 @@ import account from '@ohos.account.appAccount'
 import featureAbility from '@ohos.ability.featureAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
-const TIMEOUT = 2000;
 const LENGTHLIMIT = 1024;
 export default function ActsGetAllAccounts() {
     describe('ActsGetAllAccounts', function () {
-        async function sleep(delay) {
-            let timeoutId = null;
-            var promise = new Promise((resolve, reject) => {
-                timeoutId = setTimeout(() => {
-                    resolve("done")
-                }, delay)
-            })
-            await promise
-            clearTimeout(timeoutId)
-        }
 
         /*
         * @tc.number    : ActsGetAllAccounts_0100
@@ -263,20 +252,6 @@ export default function ActsGetAllAccounts() {
             var selfBundle = "com.example.actsgetallaccounts";
             console.info("====>add account 0900 start====");
             await appAccountManager.addAccount("Account_application_callback");
-            console.info("====>startAbility 0900 start====");
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.example.actsscenegetallaccounts",
-                        abilityName: "com.example.actsscenegetallaccounts.MainAbility",
-                        action: "action1",
-                        parameters:
-                        {},
-                    },
-                },
-            );
             function getAllCallback(err, data){
                 console.info("====>getAllAccounts 0900 err:" + JSON.stringify(err));
                 console.info("====>getAllAccounts 0900 data:" + JSON.stringify(data));
@@ -291,26 +266,8 @@ export default function ActsGetAllAccounts() {
                     done();
                 });
             }
-            await sleep(TIMEOUT)
-            console.info("====>getAllAccounts 0900 start====");
-            appAccountManager.getAllAccounts(selfBundle, getAllCallback);
-        });
-
-        /*
-        * @tc.number    : ActsGetAllAccounts_1000
-        * @tc.name      : getAllAccounts promise
-        * @tc.desc      : This application adds an account, and after other applications authorize an account to this
-        *                 application, this application obtains the information of its own application
-        */
-        it('ActsGetAllAccounts_1000', 0, async function (done) {
-            console.info("====>ActsGetAllAccounts_1000 start====");
-            var appAccountManager = account.createAppAccountManager();
-            console.info("====>creat finish====");
-            var selfBundle = "com.example.actsgetallaccounts";
-            console.info("====>add account 1000 start====");
-            await appAccountManager.addAccount("Account_application_promise");
-            console.info("====>startAbility 1000 start====");
-            await featureAbility.startAbility(
+            console.info("====>startAbility 0900 start====");
+            featureAbility.startAbilityForResult(
                 {
                     want:
                     {
@@ -321,30 +278,60 @@ export default function ActsGetAllAccounts() {
                         parameters:
                         {},
                     },
-                },
+                }, (err, data) => {
+                    console.info("====>ActsGetAllAccounts_0900 startAbilityForResult err:" + JSON.stringify(err))
+                    console.info("====>ActsGetAllAccounts_0900 startAbilityForResult data:" + JSON.stringify(data))
+                    console.info("====>getAllAccounts 0900 start====");
+                    appAccountManager.getAllAccounts(selfBundle, getAllCallback);
+                }
             );
-            await sleep(TIMEOUT)
-            console.info("====>getAllAccounts 1000 start====");
-            try{
-                var data = await appAccountManager.getAllAccounts(selfBundle);
-            } catch(err) {
-                console.error("====>getAllAccounts 1000 fail err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.info("====>getAllAccounts 1000 data:" + JSON.stringify(data));
-            try{
-                expect(data[0].name).assertEqual("Account_application_promise");
-                expect(data[0].owner).assertEqual("com.example.actsgetallaccounts");
-            } catch(err) {
-                console.error("====>check data 1000 fail err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.info("====>delete account 1000 start====");
-            await appAccountManager.deleteAccount("Account_application_promise");
-            console.info("====>ActsGetAllAccounts_1000 end====");
-            done();
+        });
+
+        /*
+        * @tc.number    : ActsGetAllAccounts_1000
+        * @tc.name      : getAllAccounts promise
+        * @tc.desc      : This application adds an account, and after other applications authorize an account to this
+        *                 application, this application obtains the information of its own application
+        */
+        it('ActsGetAllAccounts_1000', 0, async function (done) {
+            console.info("====>ActsGetAllAccounts_1000 start====");
+            let appAccountManager = account.createAppAccountManager();
+            console.info("====>creat finish====");
+            let selfBundle = "com.example.actsgetallaccounts";
+            console.info("====>add account 1000 start====");
+            await appAccountManager.addAccount("Account_application_promise");
+            console.info("====>startAbility 1000 start====");
+            featureAbility.startAbilityForResult(
+                {
+                    want:
+                    {
+                        deviceId: "",
+                        bundleName: "com.example.actsscenegetallaccounts",
+                        abilityName: "com.example.actsscenegetallaccounts.MainAbility",
+                        action: "action1",
+                        parameters:
+                        {},
+                    },
+                }, async (err, data) => {
+                    console.info("====>ActsGetAllAccounts_1000 startAbilityForResult err:" + JSON.stringify(err))
+                    console.info("====>ActsGetAllAccounts_1000 startAbilityForResult data:" + JSON.stringify(data))
+                    console.info("====>getAllAccounts 1000 start====");
+                    try{
+                        let data = await appAccountManager.getAllAccounts(selfBundle);
+                        console.info("====>getAllAccounts 1000 data:" + JSON.stringify(data));
+                        expect(data[0].name).assertEqual("Account_application_promise");
+                        expect(data[0].owner).assertEqual("com.example.actsgetallaccounts");
+                        console.info("====>delete account 1000 start====");
+                        await appAccountManager.deleteAccount("Account_application_promise");
+                        console.info("====>ActsGetAllAccounts_1000 end====");
+                        done();
+                    } catch(err) {
+                        console.error("====>getAllAccounts 1000 fail err:" + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    }
+                }
+            );
         });
 
         /*

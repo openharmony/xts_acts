@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach, beforeEach } from '@ohos/hypium';
+import { describe, it, expect, beforeEach } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import webSocket from '@ohos.net.webSocket';
 
@@ -88,31 +88,14 @@ let sendLongMessage: string = '创建要上传或下载的任务，并将其排�
   '创建要上传或下载的任务，并将其排入队列，每个应用最多支持创建10个未完成的任务。使用callback异步回调。'+
   '创建要上传或下载的任务，并将其排入队列，每个应用最多支持创建10个未完成的任务。使用callback异步回调。'
 
-function closeWebSocket(caseName?: string): Promise<boolean> {
-  try {
-    console.info(`${caseName} close websocket`);
-    return ws.close();
-  } catch (error) {
-    console.info(`${caseName} close websocket with error ${JSON.stringify(error)}`);
-    return new Promise((reject) => {
-      reject(false);
-    });
-  }
-}
-
-function sleep(time: number): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, time);
-  });
-}
-
 let ws: webSocket.WebSocket;
 let availableWebSocketAddress: string = 'wss://ws.welive.huawei.com/';
 
 export default function WebSocketApiTest() {
   describe('webSocketApiTest', () => {
-    beforeEach(() => {
+    beforeEach((done: Function) => {
       ws = webSocket.createWebSocket();
+      done();
     })
 
     /* *
@@ -4056,6 +4039,70 @@ export default function WebSocketApiTest() {
     })
 
     /* *
+     * @tc.number: SUB_NetworkMgr_WebSocket_OnDataEndCallback_0200
+     * @tc.name  : testNetworkMgrWebSocketOnDataEndCallback0200
+     * @tc.desc  : Subscription to WebSocket data receiving end event(onDataEnd)
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testNetworkMgrWebSocketOnDataEndCallback0200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketOnDataEndCallback0200';
+      console.info(`${caseName} test start`);
+      try {
+        class OutValue {
+          status: number = 0
+          message: string = ""
+        }
+        ws.on('dataEnd', () => {
+          console.info(`${caseName} ondataEnd success`);
+          done();
+        })
+        ws.on('error', (err: BusinessError) => {
+          console.info(`${caseName} findError" + ${JSON.stringify(err)}`);
+        });
+        ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
+          console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
+          expectTrue(value != null);
+          done();
+        });
+        ws.on('open', (err: BusinessError, value: Object) => {
+          console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+          const status: number = (value as OutValue).status;
+          expectEqual(status,101);
+          ws.send('Hello', (err: BusinessError, value: boolean) => {
+            if (err) {
+              console.info(`${caseName} send fail ${JSON.stringify(err)}`);
+              expectFail(`${caseName} send fail`);
+              done();
+              console.info(`${caseName} test end`);
+            } else {
+              console.info(`${caseName} send success and value is ${value}`);
+              expectTrue(value);
+              done();
+              console.info(`${caseName} test end`);
+            }
+          })
+        });
+        ws.connect(availableWebSocketAddress, (err: BusinessError, value: boolean) => {
+          if (err) {
+            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+            expectFail(`${caseName} test connect fail`);
+            done();
+            console.info(`${caseName} test end`);
+          } else {
+            console.info(`${caseName} test connect success and value is ${value}`);
+          }
+        })
+      } catch (err) {
+        console.info(`${caseName} catchError ${JSON.stringify(err)}`);
+        expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        done();
+        console.info(`${caseName} test end`);
+      }
+    })
+
+    /* *
      * @tc.number: SUB_NetworkMgr_WebSocket_OffDataEndCallback_0100
      * @tc.name  : testNetworkMgrWebSocketOffDataEndCallback0100
      * @tc.desc  : Unsubscribe from WebSocket data receiving end event(off_null)
@@ -4121,6 +4168,202 @@ export default function WebSocketApiTest() {
     })
 
     /* *
+     * @tc.number: SUB_NetworkMgr_WebSocket_OffDataEndCallback_0200
+     * @tc.name  : testNetworkMgrWebSocketOffDataEndCallback0200
+     * @tc.desc  : Unsubscribe from WebSocket data receiving end event(off twice)
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testNetworkMgrWebSocketOffDataEndCallback0200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketOffDataEndCallback0200';
+      console.info(`${caseName} test start`);
+      try {
+        class OutValue {
+          status: number = 0
+          message: string = ""
+        }
+        ws.on('dataEnd', () => {
+          console.info(`${caseName} ondataEnd success`);
+          done();
+        });
+        ws.off('dataEnd');
+        ws.off('dataEnd');
+        ws.on('error', (err: BusinessError) => {
+          console.info(`${caseName} findError" + ${JSON.stringify(err)}`);
+        });
+        ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
+          console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
+          expectTrue(value != null);
+          done();
+        });
+        ws.on('open', (err: BusinessError, value: Object) => {
+          console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+          const status: number = (value as OutValue).status;
+          expectEqual(status,101);
+          ws.send('Hello', (err: BusinessError, value: boolean) => {
+            if (err) {
+              console.info(`${caseName} send fail ${JSON.stringify(err)}`);
+              expectFail(`${caseName} send fail`);
+              done();
+              console.info(`${caseName} test end`);
+            } else {
+              console.info(`${caseName} send success and value is ${value}`);
+              expectTrue(value);
+              done();
+              console.info(`${caseName} test end`);
+            }
+          })
+        });
+        ws.connect(availableWebSocketAddress, (err: BusinessError, value: boolean) => {
+          if (err) {
+            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+            expectFail(`${caseName} test connect fail`);
+            done();
+            console.info(`${caseName} test end`);
+          } else {
+            console.info(`${caseName} test connect success and value is ${value}`);
+          }
+        })
+      } catch (err) {
+        console.info(`${caseName} catchError ${JSON.stringify(err)}`);
+        expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        done();
+        console.info(`${caseName} test end`);
+      }
+    })
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_WebSocket_OffDataEndCallback_0300
+     * @tc.name  : testNetworkMgrWebSocketOffDataEndCallback0300
+     * @tc.desc  : Unsubscribe from WebSocket data receiving end event(off--on)
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testNetworkMgrWebSocketOffDataEndCallback0300', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketOffDataEndCallback0300';
+      console.info(`${caseName} test start`);
+      try {
+        class OutValue {
+          status: number = 0
+          message: string = ""
+        }
+        ws.off('dataEnd');
+        ws.on('dataEnd', () => {
+          console.info(`${caseName} ondataEnd success`);
+          done();
+        });
+        ws.on('error', (err: BusinessError) => {
+          console.info(`${caseName} findError" + ${JSON.stringify(err)}`);
+        });
+        ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
+          console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
+          expectTrue(value != null);
+          done();
+        });
+        ws.on('open', (err: BusinessError, value: Object) => {
+          console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+          const status: number = (value as OutValue).status;
+          expectEqual(status,101);
+          ws.send('Hello', (err: BusinessError, value: boolean) => {
+            if (err) {
+              console.info(`${caseName} send fail ${JSON.stringify(err)}`);
+              expectFail(`${caseName} send fail`);
+              done();
+              console.info(`${caseName} test end`);
+            } else {
+              console.info(`${caseName} send success and value is ${value}`);
+              expectTrue(value);
+              done();
+              console.info(`${caseName} test end`);
+            }
+          })
+        });
+        ws.connect(availableWebSocketAddress, (err: BusinessError, value: boolean) => {
+          if (err) {
+            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+            expectFail(`${caseName} test connect fail`);
+            done();
+            console.info(`${caseName} test end`);
+          } else {
+            console.info(`${caseName} test connect success and value is ${value}`);
+          }
+        })
+      } catch (err) {
+        console.info(`${caseName} catchError ${JSON.stringify(err)}`);
+        expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        done();
+        console.info(`${caseName} test end`);
+      }
+    })
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_WebSocket_OffDataEndCallback_0400
+     * @tc.name  : testNetworkMgrWebSocketOffDataEndCallback0400
+     * @tc.desc  : Unsubscribe from WebSocket data receiving end event(on--off)
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testNetworkMgrWebSocketOffDataEndCallback0400', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketOffDataEndCallback0400';
+      console.info(`${caseName} test start`);
+      try {
+        class OutValue {
+          status: number = 0
+          message: string = ""
+        }
+        ws.on('dataEnd', () => {
+          console.info(`${caseName} ondataEnd success`);
+          done();
+        });
+        ws.off('dataEnd');
+        ws.on('error', (err: BusinessError) => {
+          console.info(`${caseName} findError" + ${JSON.stringify(err)}`);
+        });
+        ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
+          console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
+          expectTrue(value != null);
+          done();
+        });
+        ws.on('open', (err: BusinessError, value: Object) => {
+          console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+          const status: number = (value as OutValue).status;
+          expectEqual(status,101);
+          ws.send('Hello', (err: BusinessError, value: boolean) => {
+            if (err) {
+              console.info(`${caseName} send fail ${JSON.stringify(err)}`);
+              expectFail(`${caseName} send fail`);
+              done();
+              console.info(`${caseName} test end`);
+            } else {
+              console.info(`${caseName} send success and value is ${value}`);
+              expectTrue(value);
+              done();
+              console.info(`${caseName} test end`);
+            }
+          })
+        });
+        ws.connect(availableWebSocketAddress, (err: BusinessError, value: boolean) => {
+          if (err) {
+            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+            expectFail(`${caseName} test connect fail`);
+            done();
+            console.info(`${caseName} test end`);
+          } else {
+            console.info(`${caseName} test connect success and value is ${value}`);
+          }
+        })
+      } catch (err) {
+        console.info(`${caseName} catchError ${JSON.stringify(err)}`);
+        expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        done();
+        console.info(`${caseName} test end`);
+      }
+    })
+
+    /* *
      * @tc.number: SUB_NetworkMgr_WebSocket_OnHeaderReceiveCallback_0100
      * @tc.name  : testNetworkMgrWebSocketOnHeaderReceiveCallback0100
      * @tc.desc  : Subscribe to the headerReceive event of WebSocket(on_HeaderReceive)
@@ -4164,15 +4407,15 @@ export default function WebSocketApiTest() {
     })
 
     /* *
-     * @tc.number: SUB_NetworkMgr_WebSocket_OnHeaderReceiveCallback_0200
-     * @tc.name  : testNetworkMgrWebSocketOnHeaderReceiveCallback0200
+     * @tc.number: SUB_NetworkMgr_WebSocket_OffHeaderReceiveCallback_0100
+     * @tc.name  : testNetworkMgrWebSocketOffHeaderReceiveCallback0100
      * @tc.desc  : Subscribe to the headerReceive event of WebSocket(off twice)
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnHeaderReceiveCallback0200', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrWebSocketOnHeaderReceiveCallback0200';
+    it('testNetworkMgrWebSocketOffHeaderReceiveCallback0100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketOffHeaderReceiveCallback0100';
       console.info(`${caseName} test start`);
       try {
         class OutValue {
@@ -4209,15 +4452,15 @@ export default function WebSocketApiTest() {
     })
 
     /* *
-     * @tc.number: SUB_NetworkMgr_WebSocket_OnHeaderReceiveCallback_0300
-     * @tc.name  : testNetworkMgrWebSocketOnHeaderReceiveCallback0300
+     * @tc.number: SUB_NetworkMgr_WebSocket_OffHeaderReceiveCallback_0200
+     * @tc.name  : testNetworkMgrWebSocketOffHeaderReceiveCallback0200
      * @tc.desc  : Subscribe to the headerReceive event of WebSocket(off-->on)
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnHeaderReceiveCallback0300', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrWebSocketOnHeaderReceiveCallback0300';
+    it('testNetworkMgrWebSocketOffHeaderReceiveCallback0200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketOffHeaderReceiveCallback0200';
       console.info(`${caseName} test start`);
       try {
         class OutValue {
@@ -4253,15 +4496,15 @@ export default function WebSocketApiTest() {
     })
 
     /* *
-     * @tc.number: SUB_NetworkMgr_WebSocket_OnHeaderReceiveCallback_0400
-     * @tc.name  : testNetworkMgrWebSocketOnHeaderReceiveCallback0400
+     * @tc.number: SUB_NetworkMgr_WebSocket_OffHeaderReceiveCallback_0300
+     * @tc.name  : testNetworkMgrWebSocketOffHeaderReceiveCallback0300
      * @tc.desc  : Subscribe to the headerReceive event of WebSocket(on-->off)
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnHeaderReceiveCallback0400', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrWebSocketOnHeaderReceiveCallback0400';
+    it('testNetworkMgrWebSocketOffHeaderReceiveCallback0300', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketOffHeaderReceiveCallback0300';
       console.info(`${caseName} test start`);
       try {
         class OutValue {

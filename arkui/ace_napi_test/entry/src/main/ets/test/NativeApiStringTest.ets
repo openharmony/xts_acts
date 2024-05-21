@@ -2387,7 +2387,7 @@ export default function nativeApiStringJsunit() {
     it('aceNapiTest0158', 0, async function (done) {
       try {
         console.info('aceNapiTest0158 START');
-        value = napitest.ExceptionalNapiCrateAndGetValueString('love');
+        value = napitest.exceptionalNapiCrateAndGetValueString('love');
         console.info('aceNapiTest0158 testString result is: ' + value);
       } catch (err) {
         console.info('aceNapiTest0158 testString result is err: ' + err + "--" + JSON.stringify(err));
@@ -2414,6 +2414,54 @@ export default function nativeApiStringJsunit() {
       value = napitest.isConcurrentFunction(test2);
       expect(value).assertEqual(false);
       console.info('aceNapiTest0159 testString result is: ' + value);
+      done();
+    });
+
+    /**
+     * @tc.name aceNapiTest0160
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0160', 0, async (done: Function) => {
+      console.info('aceNapiTest0160 START');
+      class Class {
+        constructor() {
+        }
+      }
+      class SendableClass {
+        constructor() {
+          'use sendable';
+        }
+      }
+      let value = napitest.NapiIsSendable(Class, SendableClass);
+      console.info('aceNapiTest0160 testString result is: ' + value + '--' + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0160
+     * @tc.name aceNapiTest0161
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0161', 0, async (done: Function) => {
+      console.info('aceNapiTest0161 START');
+      let value = napitest.NapiDefineSendableClass();
+      console.info('aceNapiTest0161 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0162
+     * @tc.name aceNapiTest0162
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0162', 0, async (done: Function) => {
+      console.info('aceNapiTest0162 START');
+      value = napitest.threadSafePriority((num1, num2) => {
+        return num1 + num2;
+      });
+      console.info('aceNapiTest0162 testString result is value: ' + JSON.stringify(value));
       done();
     });
   })

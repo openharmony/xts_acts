@@ -2927,12 +2927,67 @@ export default function TaskPoolTest() {
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0134
      * @tc.name      : TaskPoolTestClass134
-     * @tc.desc      : get name from taskInfo
+     * @tc.desc      : execute long task
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass134', 0, async (done: Function) => {
+      let task: taskpool.LongTask = new taskpool.LongTask(Sum, 10, 20);
+      let result = await taskpool.execute(task);
+      taskpool.terminateTask(task);
+      expect(result).assertEqual(30);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0135
+     * @tc.name      : TaskPoolTestClass135
+     * @tc.desc      : the long task can only be executed once
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass135', 0, async (done: Function) => {
+      let task: taskpool.LongTask = new taskpool.LongTask(Sum, 10, 20);
+      let result = await taskpool.execute(task);
+      taskpool.terminateTask(task);
+      try {
+        taskpool.execute(task)
+      } catch (e) {
+        expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: The long task can only be executed once");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0136
+     * @tc.name      : TaskPoolTestClass136
+     * @tc.desc      : task group does not support the long task
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass136', 0, async (done: Function) => {
+      let task: taskpool.LongTask = new taskpool.LongTask(Sum, 10, 20);
+      let group = new taskpool.TaskGroup();
+      try {
+        group.addTask(task)
+      } catch (e) {
+        expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: The interface does not support the long task");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0137
+     * @tc.name      : TaskPoolTestClass137
+     * @tc.desc      : taskpool error test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass137', 0, async (done: Function) => {
       let task: taskpool.Task = new taskpool.Task(errorTest)
       taskpool.execute(task).then((res)=>{
         console.info("errTest res " + res)

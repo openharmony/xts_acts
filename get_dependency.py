@@ -22,7 +22,7 @@ import stat
 
 precise_repo_xts = sys.argv[1]
 DEEP = int(sys.argv[2]) if len(sys.argv) > 2 else -1
-home = os.path.dirname(os.path.dirname(os.path.dirname(os.getcwd())))
+home = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 manifest_home = os.path.join(home, ".repo")
 preloader_path = os.path.join(home, "out", "preloader")
 PRECISE_GNI_NAME = "precise_run.gni"
@@ -109,14 +109,14 @@ def write_precise_gni(depends_list, file_name):
     array_str = json.dumps(list(depends_list))
 
     # 打开文件并写入数组字符串
-    file_descriptor = os.open("file.txt", os.O_WRONLY | os.O_CREAT | os.O_TRUNC, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP)
+    file_descriptor = os.open(file_name, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP)
     with os.fdopen(file_descriptor, 'w') as file:
         file.write("precise_run=")
         file.write(array_str)
 
 
 def write_file(depends_list, file_name):
-    file_descriptor = os.open("file.txt", os.O_WRONLY | os.O_CREAT | os.O_TRUNC, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP)
+    file_descriptor = os.open(file_name, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP)
     with os.fdopen(file_descriptor, 'w') as f:
         json.dump(depends_list, f, indent=4)
 
@@ -135,6 +135,7 @@ def run(precise_repo_xts_list):
             print(bundlelist)
             # 获取全部需要跑的bundlename
             depends_list, depends_tree = get_all_dependencies(bundlelist, dependency_dist)
+            depends_list.add("acts")
             print(depends_list)
         except Exception as e:
             print("发生异常:", str(e))
@@ -148,5 +149,5 @@ def run(precise_repo_xts_list):
 
 if __name__ == '__main__':
     print("counting dependencies start")
-    run(precise_repo_xts.split(':'))
+    run(precise_repo_xts.split(','))
     print("counting dependencies finished")

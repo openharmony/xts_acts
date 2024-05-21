@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
-require('./AudioRendererChangeInfo.test.js')
-
-
+import audioRendererChange from "./AudioRendererChangeInfo.test.js";
+export default function testsuite() {
+    audioRendererChange();
+}

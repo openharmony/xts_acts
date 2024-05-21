@@ -22,6 +22,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include <unistd.h>
+#include <atomic>
 
 #define PARAM_0 0
 #define PARAM_1 1
@@ -33,6 +34,7 @@
 #define PARAM_5 5
 #define PARAM_0x4001 0x4001
 #define PARAM_4069 4069
+#define SLEEP_10_MS 10
 
 struct pthreadAtForkParam {
     pthread_mutex_t mutex;
@@ -628,11 +630,13 @@ struct pthreadCondWaitParam {
     pthread_cond_t cond;
     pthread_mutex_t mutex;
 };
+std:: atomic<bool> isPthreadRun (false);
 int g_pthreadCondWaitResult;
 static void *PThreadCondWaitThreadA(void *arg)
 {
     pthreadCondWaitParam *pparam = (pthreadCondWaitParam *)arg;
     pthread_mutex_lock(&(pparam->mutex));
+    isPthreadRun = true;
     g_pthreadCondWaitResult = pthread_cond_wait(&(pparam->cond), &(pparam->mutex));
     pthread_mutex_unlock(&(pparam->mutex));
     return nullptr;
@@ -640,6 +644,9 @@ static void *PThreadCondWaitThreadA(void *arg)
 static void *PThreadCondWaitThreadB(void *arg)
 {
     pthreadCondWaitParam *pparam = (pthreadCondWaitParam *)arg;
+    while(!isPthreadRun){
+        usleep(SLEEP_10_MS);
+    }
     pthread_mutex_lock(&(pparam->mutex));
     pthread_cond_signal(&(pparam->cond));
     pthread_mutex_unlock(&(pparam->mutex));
@@ -648,6 +655,7 @@ static void *PThreadCondWaitThreadB(void *arg)
 
 static napi_value PThreadCondWait(napi_env env, napi_callback_info info)
 {
+    isPthreadRun = false;
     pthreadCondWaitParam param;
     pthread_t threadIdA;
     pthread_t threadIdB;

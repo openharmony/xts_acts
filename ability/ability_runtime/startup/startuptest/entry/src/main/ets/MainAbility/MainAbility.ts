@@ -16,11 +16,14 @@ import Ability from '@ohos.app.ability.UIAbility'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/List.test'
+import common from '@ohos.app.ability.common';
+export let testContext:common.UIAbilityContext;
 
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         console.log('MainAbility onCreate')
         globalThis.context = this.context;
+        testContext = this.context
         var abilityDelegator: any
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         var abilityDelegatorArguments: any

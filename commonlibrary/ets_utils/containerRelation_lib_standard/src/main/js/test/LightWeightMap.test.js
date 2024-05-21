@@ -206,6 +206,20 @@ describe("LightWeightMapTest", function () {
   });
               
   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LIGHTWEIGHTMAP_01003
+   * @tc.name: testEntries013
+   * @tc.desc: Get all key value pairs collection in lightWeightMap.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testEntries013", 0, function () {
+    let lightWeightMap = new LightWeightMap();
+    let res = lightWeightMap.entries();
+    expect(undefined).assertEqual(res.next().value);
+  });
+              
+  /**
    * @tc.name: testGetIndexOfKey013
    * @tc.desc: Find the index of the key value pair according to the corresponding key. 
    * If no key is specified, return -1.
@@ -219,6 +233,26 @@ describe("LightWeightMapTest", function () {
     lightWeightMap.set(5, "E");
     let res = lightWeightMap.getIndexOfKey(2);
     expect(res).assertEqual(1);
+  });
+              
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LIGHTWEIGHTMAP_01002
+   * @tc.name: testGetIndexOfKey014
+   * @tc.desc: Find the index of the key value pair according to the corresponding key.
+   * If no key is specified, return -1.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testGetIndexOfKey014", 0, function () {
+    let lightWeightMap = new LightWeightMap();
+    lightWeightMap.set(1, "A");
+    lightWeightMap.set(2, "B");
+    lightWeightMap.set(3, "C");
+    lightWeightMap.set(4, "D");
+    lightWeightMap.set(5, "E");
+    let res = lightWeightMap.getIndexOfKey(6);
+    expect(res).assertEqual(-1);
   });
               
   /**
@@ -237,6 +271,26 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.getIndexOfValue("F");
     expect(res).assertEqual(4);
   });
+              
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LIGHTWEIGHTMAP_01001
+   * @tc.name: testGetIndexOfValue015
+   * @tc.desc: Find the index of the key value pair according to the corresponding value.
+   * If no key is specified, return -1.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it("testGetIndexOfValue015", 0, function () {
+      let lightWeightMap = new LightWeightMap();
+      lightWeightMap.set(1, "A");
+      lightWeightMap.set(2, "B");
+      lightWeightMap.set(3, "C");
+      lightWeightMap.set(4, "D");
+      lightWeightMap.set(5, "E");
+      let res = lightWeightMap.getIndexOfValue("G");
+      expect(res).assertEqual(-1);
+    });
               
   /**
    * @tc.name: testIsEmpty015

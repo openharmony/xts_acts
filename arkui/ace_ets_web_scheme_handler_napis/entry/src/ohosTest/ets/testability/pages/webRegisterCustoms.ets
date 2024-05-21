@@ -655,12 +655,6 @@ struct webRegisterCustomsComponent {
                 .width('100%')
                 .javaScriptAccess(true)
                 .fileAccess(true)
-                .onPageBegin(
-                    event => {
-                        // 初始化管理文件
-                        testNapi.initResourceManager(getContext().resourceManager);
-                    }
-                 )                
         }
         .height('100%')
     }    

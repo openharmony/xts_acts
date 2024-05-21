@@ -28,7 +28,7 @@ export default function OhosRouterJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get ohosRouter state success " + JSON.stringify(pages));
-        if (!("ohosRouter" == pages.name)) {
+        if (!("ohosRouterA" == pages.name)) {
           console.info("get ohosRouter state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(4000);
@@ -57,7 +57,7 @@ export default function OhosRouterJsunit() {
         let pages = router.getState();
         expect(pages.index).assertEqual(2);
         expect(pages.name).assertEqual('ohosRouterA');
-        expect(pages.path).assertEqual('MainAbility/pages/');
+        expect(pages.path).assertEqual('MainAbility/pages/Router/');
       } catch (err) {
         console.error("[ohosRouterTest001] push page error: " + err);
       }
@@ -115,7 +115,7 @@ export default function OhosRouterJsunit() {
       router.clear();
       await CommonFunc.sleep(1000);
       let options = {
-        uri: 'MainAbility/pages/Router/ohosRouterB'
+        uri: 'MainAbility/pages/Router/ohosRouterA'
       }
       try {
         let result = await router.push(options);
@@ -125,7 +125,7 @@ export default function OhosRouterJsunit() {
       }
       await CommonFunc.sleep(2000);
       let optionsB = {
-        uri: 'pages/ohosRouterB'
+        uri: 'MainAbility/pages/Router/ohosRouterB'
       }
       try {
         let result = await router.replace(optionsB);

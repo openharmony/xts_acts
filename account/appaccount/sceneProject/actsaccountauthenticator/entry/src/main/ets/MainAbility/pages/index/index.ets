@@ -42,8 +42,13 @@ struct Index {
                 await accountMgr.setAppAccess("wangwu", "com.example.actsaccounttest", true)
                 console.info('====>ServiceAbility setAppAccess actsaccountoperatetest wangwu');
                 accountMgr.setAppAccess("wangwu", "com.example.actsaccountoperatetest", true, (err)=>{
-                  this.context.terminateSelf().then(() => {
-                    console.info('====>ServiceAbility add end');
+                  this.context.terminateSelfWithResult({
+                    resultCode: 1,
+                    want:
+                    {
+                      bundleName: "com.acts.accountauthenticator",
+                      abilityName: "com.acts.accountauthenticator.MainAbility"
+                    },
                   });
                 });
             });

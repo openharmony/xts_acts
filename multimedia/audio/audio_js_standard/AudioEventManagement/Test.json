@@ -1,10 +1,11 @@
 {
     "description": "Configuration for audio manager Tests",
     "driver": {
-        "type": "JSUnitTest",
-        "test-timeout": "1500000",
-        "package": "ohos.acts.multimedia.audio.audioeventmanagement",
-        "shell-timeout": "60000"
+        "type": "OHJSUnitTest",
+        "test-timeout": "300000",
+        "shell-timeout": "120000",
+        "bundle-name": "ohos.acts.multimedia.audio.audioeventmanagement",
+        "package-name": "ohos.acts.multimedia.audio.audioeventmanagement"
     },
     "kits": [
         {

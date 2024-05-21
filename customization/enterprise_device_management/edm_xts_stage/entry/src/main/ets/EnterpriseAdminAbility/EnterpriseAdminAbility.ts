@@ -37,7 +37,8 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
     console.log('EnterpriseAdminExtensionAbility onAppStop: ' + bundleName);
   }
   onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo){
-    console.log('EnterpriseAdminExtensionAbility onSystemUpdate: ' + JSON.stringify(systemUpdateInfo));
+    console.log(`EnterpriseAdminExtensionAbility onSystemUpdate: versionName: ${systemUpdateInfo.versionName},
+      firstReceivedTime: ${systemUpdateInfo.firstReceivedTime}, packageType: ${systemUpdateInfo.packageType}`);
   }
   onStart(){
     console.log('EnterpriseAdminExtensionAbility onStart');

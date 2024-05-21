@@ -17,12 +17,11 @@
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import mediaNative from "libmediaAssetManager.so";
-import fs from '@ohos.file.fs';
-import fileUri from "@ohos.file.fileuri";
 
 import {
   photoKeys,
   fetchOption,
+  createSandboxFileUri,
 } from '../../../../../../../common'
 
 export default function requestImageNativeTest() {
@@ -36,10 +35,7 @@ export default function requestImageNativeTest() {
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
         let srcUri = photoAsset.uri;
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.jpg';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('jpg');
         let result = await mediaNative.testRequestImageForPath(srcUri, requestOptions, destUri, (err, state, requestId) => {
           console.info(`${testNum} succeed ${state} ${requestId}`);
           expect(state).assertEqual(0);
@@ -58,10 +54,7 @@ export default function requestImageNativeTest() {
 
     async function requestImageSrcUriAssetError(testNum, done, srcUri) {
       try {
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.jpg';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('jpg');
         let requestOptions = {
           deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
         }
@@ -385,11 +378,7 @@ export default function requestImageNativeTest() {
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
         let srcUri = photoAsset.uri;
-        
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.jpg';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('jpg');
         let requestOptions = {
           deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
         }
@@ -423,10 +412,7 @@ export default function requestImageNativeTest() {
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
         let srcUri = photoAsset.uri;
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.mp4';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('mp4');
         let requestOptions = {
           deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
         }
@@ -460,10 +446,7 @@ export default function requestImageNativeTest() {
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
         let srcUri = photoAsset.uri;
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.mp4';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        let destUri = createSandboxFileUri('mp4');
         let requestOptions = {
           deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
         }
@@ -498,12 +481,8 @@ export default function requestImageNativeTest() {
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
         let srcUri = photoAsset.uri;
-            console.info(`${testNum} srcUri` +srcUri);
-
-        let pathDir = globalThis.abilityContext.filesDir;
-        let path = pathDir + '/test'+ new Date().getTime()+'.jpg';
-        fs.openSync(path, 0o100)
-        let destUri = fileUri.getUriFromPath(path);
+        console.info(`${testNum} srcUri` +srcUri);
+        let destUri = createSandboxFileUri('jpg');
         let requestOptions = {
           deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
         }
