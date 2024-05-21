@@ -332,7 +332,7 @@ export default function UDMFSupportClipboardApiTest() {
     });
 
     /**
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0800
      * @tc.name      : testUnifiedDataChannelProperties
      * @tc.desc      : unifiedDataChannel properties test
      * @tc.size      : MediumTest
@@ -340,7 +340,7 @@ export default function UDMFSupportClipboardApiTest() {
      * @tc.level     : Level 0
      */
     it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0800', 0, async function () {
-      const TAG = 'SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700';
+      const TAG = 'SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0800';
       console.info(TAG, 'start');
 
       const dataUri = new ArrayBuffer(256);
