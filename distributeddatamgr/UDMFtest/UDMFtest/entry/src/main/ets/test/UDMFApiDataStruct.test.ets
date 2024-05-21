@@ -22,7 +22,7 @@ export default function UDMFApiDataStructTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest0100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0100
-     * @tc.desc      : Verify the properties of the text type
+     * @tc.desc      : Verify the properties of the PlainText type
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -50,7 +50,7 @@ export default function UDMFApiDataStructTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest0200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0200
-     * @tc.desc      : Verify the properties of the text type
+     * @tc.desc      : Verify the properties of the Hyperlink type
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -78,7 +78,7 @@ export default function UDMFApiDataStructTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest0300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0300
-     * @tc.desc      : Verify the properties of the text type
+     * @tc.desc      : Verify the properties of the HTML type
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -106,7 +106,7 @@ export default function UDMFApiDataStructTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest0400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0400
-     * @tc.desc      : Verify the properties of the text type
+     * @tc.desc      : Verify the properties of the OpenHarmonyAppItem type
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
