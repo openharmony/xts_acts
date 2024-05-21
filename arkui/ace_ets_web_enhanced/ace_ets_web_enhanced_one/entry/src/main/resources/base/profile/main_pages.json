@@ -12,6 +12,7 @@
     "MainAbility/pages/webDataBase",
     "MainAbility/pages/webController",
     "MainAbility/pages/webAttribute",
+    "MainAbility/pages/webAttributeTwo",
     "MainAbility/pages/sslErrorHandler",
     "MainAbility/pages/httpAuthHandler",
     "MainAbility/pages/WebViewControllerHitTest",
