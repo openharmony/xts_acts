@@ -37,6 +37,8 @@ group("ets_utils") {
       "worker_lib_standard:worker_js_hap",
       "worker_lib_standard2:ActsWorkerTest",
       "xml_lib_standard:xml_js_test",
+      "sendable_lib_taskpool:sendableTaskpool_js_test",
+      "sendable_lib_worker:sendableWorker_js_test"
     ]
   }
 }
