@@ -15,6 +15,7 @@
 
 #include "napi/native_api.h"
 #include <native_buffer/native_buffer.h>
+#include <limits.h>
 
 #define SUCCESS 0
 #define FAIL (-1)
@@ -195,7 +196,7 @@ static napi_value OHNativeBufferGetSeqNumAbnormal(napi_env env, napi_callback_in
 {
     int backInfo = FAIL;
     uint32_t id = OH_NativeBuffer_GetSeqNum(nullptr);
-    if (id > 0 && id != ERROR_NUMBER) {
+    if (id > 0 && id != UINT_MAX) {
         backInfo = SUCCESS;
     }
     napi_value result = nullptr;
