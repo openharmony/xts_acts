@@ -426,7 +426,7 @@ static napi_value PosixSpawnP(napi_env env, napi_callback_info info)
         pid = getpid();
         posix_spawnattr_t attr;
         posix_spawnattr_init(&attr);
-        const char *argv[] = {"echo", "hello", nullptr};
+        const char *argv[] = {"/bin/echo", "hello", nullptr};
         ret = posix_spawnp(&pid, "echo", nullptr, &attr, (char *const *)argv, nullptr);
         posix_spawnattr_destroy(&attr);
     } else {
