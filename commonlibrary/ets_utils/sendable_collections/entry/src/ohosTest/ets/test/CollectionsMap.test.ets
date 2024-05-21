@@ -43,7 +43,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapConstructor0100
     * @tc.desc  : Constructor that is used to create an ArkTS Map object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapConstructor0100', 0, async (done: Function) => {
@@ -67,7 +67,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapConstructor0200
     * @tc.desc  : Constructor that is used to create an ArkTS Map object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapConstructor0200', 0, async (done: Function) => {
@@ -91,7 +91,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapConstructor0300
     * @tc.desc  : Constructor that is used to create an ArkTS Map object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapConstructor0300', 0, async (done: Function) => {
@@ -115,7 +115,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapConstructor0400
     * @tc.desc  : Constructor that is used to create an ArkTS Map object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapConstructor0400', 0, async (done: Function) => {
@@ -139,7 +139,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapEntries0100
     * @tc.desc  : Returns a Map iterator object that contains the [key, value] pairs of each element in this Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapEntries0100', 0, async (done: Function) => {
@@ -165,7 +165,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapEntries0200
     * @tc.desc  : Returns a Map iterator object that contains the [key, value] pairs of each element in this Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapEntries0200', 0, async (done: Function) => {
@@ -192,7 +192,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapEntries0300
     * @tc.desc  : Returns a Map iterator object that contains the [key, value] pairs of each element in this Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapEntries0300', 0, async (done: Function) => {
@@ -218,7 +218,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapKeys0100
     * @tc.desc  : Returns an Map iterator object that contains the key of each element in this Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapKeys0100', 0, async (done: Function) => {
@@ -244,7 +244,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapKeys0200
     * @tc.desc  : Returns an Map iterator object that contains the key of each element in this Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapKeys0200', 0, async (done: Function) => {
@@ -271,7 +271,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapKeys0300
     * @tc.desc  : Returns an Map iterator object that contains the key of each element in this Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapKeys0300', 0, async (done: Function) => {
@@ -296,7 +296,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapValues0100
     * @tc.desc  : Returns an Map iterator object that contains the value of each element in this Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapValues0100', 0, async (done: Function) => {
@@ -322,7 +322,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapValues0200
     * @tc.desc  : Returns an Map iterator object that contains the value of each element in this Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapValues0200', 0, async (done: Function) => {
@@ -349,7 +349,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapValues0300
     * @tc.desc  : Returns an Map iterator object that contains the value of each element in this Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapValues0300', 0, async (done: Function) => {
@@ -374,7 +374,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapClear0100
     * @tc.desc  : Delete all elements in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapClear0100', 0, async (done: Function) => {
@@ -400,7 +400,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapClear0200
     * @tc.desc  : Delete all elements in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapClear0200', 0, async (done: Function) => {
@@ -426,7 +426,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapClear0300
     * @tc.desc  : Delete all elements in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapClear0300', 0, async (done: Function) => {
@@ -452,7 +452,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapDelete0100
     * @tc.desc  : Deletes the specified element in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapDelete0100', 0, async (done: Function) => {
@@ -478,7 +478,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapDelete0200
     * @tc.desc  : Deletes the specified element in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapDelete0200', 0, async (done: Function) => {
@@ -504,7 +504,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapDelete0300
     * @tc.desc  : Deletes the specified element in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapDelete0300', 0, async (done: Function) => {
@@ -530,7 +530,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapForEach0100
     * @tc.desc  : The callback function is executed once for each key / value pair in the Map in the insertion order.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapForEach0100', 0, async (done: Function) => {
@@ -559,7 +559,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapForEach0200
     * @tc.desc  : The callback function is executed once for each key / value pair in the Map in the insertion order.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapForEach0200', 0, async (done: Function) => {
@@ -588,7 +588,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapGet0100
     * @tc.desc  : Returns the specified element in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapGet0100', 0, async (done: Function) => {
@@ -614,7 +614,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapGet0200
     * @tc.desc  : Returns the specified element in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapGet0200', 0, async (done: Function) => {
@@ -640,7 +640,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapGet0300
     * @tc.desc  : Returns the specified element in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapGet0300', 0, async (done: Function) => {
@@ -667,7 +667,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapHas0100
     * @tc.desc  : Determines whether the specified element exists in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapHas0100', 0, async (done: Function) => {
@@ -693,7 +693,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapHas0200
     * @tc.desc  : Determines whether the specified element exists in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapHas0200', 0, async (done: Function) => {
@@ -719,7 +719,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapHas0300
     * @tc.desc  : Determines whether the specified element exists in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapHas0300', 0, async (done: Function) => {
@@ -745,7 +745,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapSet0100
     * @tc.desc  : Adds or updates a specified key-value pair to the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapSet0100', 0, async (done: Function) => {
@@ -771,7 +771,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapSet0200
     * @tc.desc  : Adds or updates a specified key-value pair to the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapSet0200', 0, async (done: Function) => {
@@ -797,7 +797,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapSet0300
     * @tc.desc  : Adds or updates a specified key-value pair to the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapSet0300', 0, async (done: Function) => {
@@ -823,7 +823,7 @@ export default function collectionsMapTest() {
     * @tc.name  : testMapSet0400
     * @tc.desc  : Adds or updates a specified key-value pair to the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapSet0400', 0, async (done: Function) => {

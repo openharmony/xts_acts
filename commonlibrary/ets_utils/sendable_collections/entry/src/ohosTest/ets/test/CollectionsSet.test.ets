@@ -44,7 +44,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetConstructor0100
     * @tc.desc  : Constructor that is used to create an ArkTS Set object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetConstructor0100', 0, async (done: Function) => {
@@ -68,7 +68,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetConstructor0200
     * @tc.desc  : Constructor that is used to create an ArkTS Set object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetConstructor0200', 0, async (done: Function) => {
@@ -92,7 +92,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetConstructor0300
     * @tc.desc  : Constructor that is used to create an ArkTS Set object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetConstructor0300', 0, async (done: Function) => {
@@ -116,7 +116,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetConstructor0400
     * @tc.desc  : Constructor that is used to create an ArkTS Set object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetConstructor0400', 0, async (done: Function) => {
@@ -140,7 +140,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetEntries0100
     * @tc.desc  : Returns a Set iterator object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetEntries0100', 0, async (done: Function) => {
@@ -166,7 +166,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetEntries0200
     * @tc.desc  : Returns a Set iterator object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetEntries0200', 0, async (done: Function) => {
@@ -194,7 +194,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetEntries0300
     * @tc.desc  : Returns a Set iterator object.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetEntries0300', 0, async (done: Function) => {
@@ -221,7 +221,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetKeys0100
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetKeys0100', 0, async (done: Function) => {
@@ -247,7 +247,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetKeys0200
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetKeys0200', 0, async (done: Function) => {
@@ -275,7 +275,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetKeys0300
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetKeys0300', 0, async (done: Function) => {
@@ -302,7 +302,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetValues0100
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetValues0100', 0, async (done: Function) => {
@@ -328,7 +328,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetValues0200
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetValues0200', 0, async (done: Function) => {
@@ -356,7 +356,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetValues0300
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetValues0300', 0, async (done: Function) => {
@@ -383,7 +383,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetClear0100
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetClear0100', 0, async (done: Function) => {
@@ -409,7 +409,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetClear0200
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetClear0200', 0, async (done: Function) => {
@@ -435,7 +435,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetClear0300
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetClear0300', 0, async (done: Function) => {
@@ -461,7 +461,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetDelete0100
     * @tc.desc  : Deletes the specified element in the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetDelete0100', 0, async (done: Function) => {
@@ -487,7 +487,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetDelete0200
     * @tc.desc  : Deletes the specified element in the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetDelete0200', 0, async (done: Function) => {
@@ -513,7 +513,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetDelete0300
     * @tc.desc  : Deletes the specified element in the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetDelete0300', 0, async (done: Function) => {
@@ -539,7 +539,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetForEach0100
     * @tc.desc  : The callback function is executed once for each key / value pair in the Set in the insertion order.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetForEach0100', 0, async (done: Function) => {
@@ -568,7 +568,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetForEach0200
     * @tc.desc  : The callback function is executed once for each key / value pair in the Set in the insertion order.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetForEach0200', 0, async (done: Function) => {
@@ -597,7 +597,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetHas0100
     * @tc.desc  : Determines whether the specified element exists in the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetHas0100', 0, async (done: Function) => {
@@ -622,7 +622,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetHas0200
     * @tc.desc  : Determines whether the specified element exists in the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetHas0200', 0, async (done: Function) => {
@@ -647,7 +647,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetHas0300
     * @tc.desc  : Determines whether the specified element exists in the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetHas0300', 0, async (done: Function) => {
@@ -672,7 +672,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetAdd0100
     * @tc.desc  : If there is no same element, a new element is inserted into the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetAdd0100', 0, async (done: Function) => {
@@ -698,7 +698,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetAdd0200
     * @tc.desc  : If there is no same element, a new element is inserted into the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetAdd0200', 0, async (done: Function) => {
@@ -724,7 +724,7 @@ export default function collectionsSetTest() {
     * @tc.name  : testSetAdd0300
     * @tc.desc  : If there is no same element, a new element is inserted into the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetAdd0300', 0, async (done: Function) => {

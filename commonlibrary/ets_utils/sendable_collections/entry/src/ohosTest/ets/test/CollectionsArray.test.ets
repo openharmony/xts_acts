@@ -43,7 +43,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayConstructor0100
     * @tc.desc  : Create a constructor for ArkTS Array,Empty parameter constructor.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayConstructor0100', 0, async (done: Function) => {
@@ -67,7 +67,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayConstructor0200
     * @tc.desc  : Create a constructor for ArkTS Array,Parameters 1, 2, 3, 4.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayConstructor0200', 0, async (done: Function) => {
@@ -91,7 +91,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayConstructor0300
     * @tc.desc  : Create a constructor for ArkTS Array,Parameters 1, 2, 3, 4.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayConstructor0300', 0, async (done: Function) => {
@@ -115,7 +115,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayConstructor0400
     * @tc.desc  : Create a constructor for ArkTS Array,The array object calls constructor().
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayConstructor0400', 0, async (done: Function) => {
@@ -140,7 +140,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayCreate0100
     * @tc.desc  : Generate a fixed-length Array, where the initial value of each element is initialValue,Array.create<number>(3, 10);.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayCreate0100', 0, async (done: Function) => {
@@ -165,7 +165,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayCreate0200
     * @tc.desc  : Generate a fixed-length Array, where the initial value of each element is initialValue,Array.create<number>(2.5, 10).
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayCreate0200', 0, async (done: Function) => {
@@ -189,7 +189,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayCreate0300
     * @tc.desc  : Generate a fixed-length Array, where the initial value of each element is initialValue,Array.create<number>(0, 10).
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayCreate0300', 0, async (done: Function) => {
@@ -213,7 +213,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayCreate0400
     * @tc.desc  : Generate a fixed-length Array, where the initial value of each element is initialValue,Array.create<number>(0, 10).
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayCreate0400', 0, async (done: Function) => {
@@ -238,7 +238,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFrom0100
     * @tc.desc  : Create a new ArkTS Array from an object that implements the ArrayLike interface.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFrom0100', 0, async (done: Function) => {
@@ -263,7 +263,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFrom0200
     * @tc.desc  : Create a new ArkTS Array from an object that implements the ArrayLike interface.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFrom0200', 0, async (done: Function) => {
@@ -288,7 +288,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFrom0300
     * @tc.desc  : Create a new ArkTS Array from an object that implements the ArrayLike interface.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFrom0300', 0, async (done: Function) => {
@@ -313,7 +313,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayPop0100
     * @tc.desc  : Removes and returns the last element from the ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayPop0100', 0, async (done: Function) => {
@@ -339,7 +339,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayPop0200
     * @tc.desc  : Removes and returns the last element from the ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayPop0200', 0, async (done: Function) => {
@@ -366,7 +366,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayPop0300
     * @tc.desc  : Removes and returns the last element from the ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayPop0300', 0, async (done: Function) => {
@@ -392,7 +392,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayPop0400
     * @tc.desc  : Removes and returns the last element from the ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayPop0400', 0, async (done: Function) => {
@@ -420,7 +420,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayPush0100
     * @tc.desc  : Add one or more elements to the end of the ArkTS Array and return the new Array length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayPush0100', 0, async (done: Function) => {
@@ -446,7 +446,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayPush0200
     * @tc.desc  : Add one or more elements to the end of the ArkTS Array and return the new Array length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayPush0200', 0, async (done: Function) => {
@@ -472,7 +472,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayJoin0100
     * @tc.desc  : Concatenates all elements of ArkTS Array into a string that can be separated by a specified delimiter.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayJoin0100', 0, async (done: Function) => {
@@ -498,7 +498,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayJoin0200
     * @tc.desc  : Concatenates all elements of ArkTS Array into a string that can be separated by a specified delimiter.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayJoin0200', 0, async (done: Function) => {
@@ -524,7 +524,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayJoin0300
     * @tc.desc  : Concatenates all elements of ArkTS Array into a string that can be separated by a specified delimiter.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayJoin0300', 0, async (done: Function) => {
@@ -550,7 +550,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayShift0100
     * @tc.desc  : Removes and returns the first element from the ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayShift0100', 0, async (done: Function) => {
@@ -576,7 +576,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayShift0200
     * @tc.desc  : Removes and returns the first element from the ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayShift0200', 0, async (done: Function) => {
@@ -602,7 +602,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayShift0300
     * @tc.desc  : Removes and returns the first element from the ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayShift0300', 0, async (done: Function) => {
@@ -628,7 +628,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayShift0400
     * @tc.desc  : Removes and returns the first element from the ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayShift0400', 0, async (done: Function) => {
@@ -655,7 +655,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayUnshift0100
     * @tc.desc  : Inserts one or more elements at the head of the ArkTS Array and returns the new Array length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayUnshift0100', 0, async (done: Function) => {
@@ -681,7 +681,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayUnshift0200
     * @tc.desc  : Inserts one or more elements at the head of the ArkTS Array and returns the new Array length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayUnshift0200', 0, async (done: Function) => {
@@ -707,7 +707,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySlice0100
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice0100', 0, async (done: Function) => {
@@ -733,7 +733,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySlice0200
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice0200', 0, async (done: Function) => {
@@ -759,7 +759,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySlice0300
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice0300', 0, async (done: Function) => {
@@ -785,7 +785,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySlice0400
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice0400', 0, async (done: Function) => {
@@ -811,7 +811,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySlice0500
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice0500', 0, async (done: Function) => {
@@ -837,7 +837,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySlice0600
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice0600', 0, async (done: Function) => {
@@ -863,7 +863,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySlice0700
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice0700', 0, async (done: Function) => {
@@ -889,7 +889,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySlice0800
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice0800', 0, async (done: Function) => {
@@ -916,7 +916,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySlice0900
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice0900', 0, async (done: Function) => {
@@ -942,7 +942,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySlice1000
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice1000', 0, async (done: Function) => {
@@ -968,7 +968,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySort0100
     * @tc.desc  : Sorts the ArkTS Array and returns the sorted Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySort0100', 0, async (done: Function) => {
@@ -994,7 +994,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySort0200
     * @tc.desc  : Sorts the ArkTS Array and returns the sorted Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySort0200', 0, async (done: Function) => {
@@ -1020,7 +1020,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArraySort0300
     * @tc.desc  : Sorts the ArkTS Array and returns the sorted Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySort0300', 0, async (done: Function) => {
@@ -1046,7 +1046,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIndexOf0100
     * @tc.desc  : Returns the index where the search element first appears in ArkTS Array, or-1 if it does not exist.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIndexOf0100', 0, async (done: Function) => {
@@ -1071,7 +1071,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIndexOf0300
     * @tc.desc  : Returns the index where the search element first appears in ArkTS Array, or-1 if it does not exist.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIndexOf0300', 0, async (done: Function) => {
@@ -1096,7 +1096,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIndexOf0400
     * @tc.desc  : Returns the index where the search element first appears in ArkTS Array, or-1 if it does not exist.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIndexOf0400', 0, async (done: Function) => {
@@ -1121,7 +1121,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayForEach0100
     * @tc.desc  : Executes the provided callback function on each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayForEach0100', 0, async (done: Function) => {
@@ -1149,7 +1149,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayForEach0300
     * @tc.desc  : Executes the provided callback function on each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayForEach0300', 0, async (done: Function) => {
@@ -1174,7 +1174,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayMap0100
     * @tc.desc  : Executes the provided callback function on each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayMap0100', 0, async (done: Function) => {
@@ -1202,7 +1202,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayMap0200
     * @tc.desc  : Executes the provided callback function on each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayMap0200', 0, async (done: Function) => {
@@ -1230,7 +1230,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFilter0100
     * @tc.desc  : Returns a new Array that contains all the elements tested by the specified callback function.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFilter0100', 0, async (done: Function) => {
@@ -1258,7 +1258,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFilter0200
     * @tc.desc  : Returns a new Array that contains all the elements tested by the specified callback function.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFilter0200', 0, async (done: Function) => {
@@ -1287,7 +1287,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayReduce0100
     * @tc.desc  : Returns a new Array that contains all the elements tested by the specified callback function.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayReduce0100', 0, async (done: Function) => {
@@ -1313,7 +1313,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayReduce0200
     * @tc.desc  : Returns a new Array that contains all the elements tested by the specified callback function.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayReduce0200', 0, async (done: Function) => {
@@ -1339,7 +1339,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayReduce0300
     * @tc.desc  : Returns a new Array that contains all the elements tested by the specified callback function.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayReduce0300', 0, async (done: Function) => {
@@ -1365,7 +1365,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayReduce0400
     * @tc.desc  : Returns a new Array that contains all the elements tested by the specified callback function.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayReduce0400', 0, async (done: Function) => {
@@ -1391,7 +1391,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayAt0100
     * @tc.desc  : Returns the element at the specified index position in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayAt0100', 0, async (done: Function) => {
@@ -1417,7 +1417,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayAt0200
     * @tc.desc  : Returns the element at the specified index position in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayAt0200', 0, async (done: Function) => {
@@ -1443,7 +1443,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayAt0300
     * @tc.desc  : Returns the element at the specified index position in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayAt0300', 0, async (done: Function) => {
@@ -1469,7 +1469,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayAt0400
     * @tc.desc  : Returns the element at the specified index position in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayAt0400', 0, async (done: Function) => {
@@ -1495,7 +1495,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayEntries0100
     * @tc.desc  : Returns a new iterable object that contains key-value pairs for each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayEntries0100', 0, async (done: Function) => {
@@ -1521,7 +1521,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayEntries0200
     * @tc.desc  : Returns a new iterable object that contains key-value pairs for each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayEntries0200', 0, async (done: Function) => {
@@ -1549,7 +1549,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayKeys0100
     * @tc.desc  : Returns a new iterable object that contains the key for each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayKeys0100', 0, async (done: Function) => {
@@ -1575,7 +1575,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayKeys0200
     * @tc.desc  : Returns a new iterable object that contains the key for each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayKeys0200', 0, async (done: Function) => {
@@ -1603,7 +1603,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayValues0100
     * @tc.desc  : Returns a new iterable object that contains the value of each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayValues0100', 0, async (done: Function) => {
@@ -1629,7 +1629,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayValues0200
     * @tc.desc  : Returns a new iterable object that contains the value of each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayValues0200', 0, async (done: Function) => {
@@ -1657,7 +1657,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFind0100
     * @tc.desc  : Returns a new iterable object that contains the value of each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFind0100', 0, async (done: Function) => {
@@ -1683,7 +1683,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFind0200
     * @tc.desc  : Returns a new iterable object that contains the value of each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFind0200', 0, async (done: Function) => {
@@ -1709,7 +1709,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFind0300
     * @tc.desc  : Returns a new iterable object that contains the value of each element in the Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFind0300', 0, async (done: Function) => {
@@ -1735,7 +1735,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIncludes0100
     * @tc.desc  : Determines whether the Array contains the specified element and returns a Boolean value.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIncludes0100', 0, async (done: Function) => {
@@ -1761,7 +1761,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIncludes0200
     * @tc.desc  : Determines whether the Array contains the specified element and returns a Boolean value.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIncludes0200', 0, async (done: Function) => {
@@ -1787,7 +1787,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIncludes0300
     * @tc.desc  : Determines whether the Array contains the specified element and returns a Boolean value.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIncludes0300', 0, async (done: Function) => {
@@ -1813,7 +1813,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIncludes0400
     * @tc.desc  : Determines whether the Array contains the specified element and returns a Boolean value.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIncludes0400', 0, async (done: Function) => {
@@ -1839,7 +1839,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIncludes0500
     * @tc.desc  : Determines whether the Array contains the specified element and returns a Boolean value.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIncludes0500', 0, async (done: Function) => {
@@ -1865,7 +1865,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIncludes0600
     * @tc.desc  : Determines whether the Array contains the specified element and returns a Boolean value.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIncludes0600', 0, async (done: Function) => {
@@ -1891,7 +1891,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIncludes0700
     * @tc.desc  : Determines whether the Array contains the specified element and returns a Boolean value.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIncludes0700', 0, async (done: Function) => {
@@ -1917,7 +1917,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayIncludes0800
     * @tc.desc  : Determines whether the Array contains the specified element and returns a Boolean value.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIncludes0800', 0, async (done: Function) => {
@@ -1943,7 +1943,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFindIndex0100
     * @tc.desc  : Returns the index of the first element in Array that satisfies the specified test function, or-1 if none of the elements are satisfied.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFindIndex0100', 0, async (done: Function) => {
@@ -1969,7 +1969,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFindIndex0200
     * @tc.desc  : Returns the index of the first element in Array that satisfies the specified test function, or-1 if none of the elements are satisfied.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFindIndex0200', 0, async (done: Function) => {
@@ -1995,7 +1995,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFindIndex0300
     * @tc.desc  : Returns the index of the first element in Array that satisfies the specified test function, or-1 if none of the elements are satisfied.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFindIndex0300', 0, async (done: Function) => {
@@ -2021,7 +2021,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFill0100
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill0100', 0, async (done: Function) => {
@@ -2048,7 +2048,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFill0200
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill0200', 0, async (done: Function) => {
@@ -2075,7 +2075,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFill0300
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill0300', 0, async (done: Function) => {
@@ -2102,7 +2102,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFill0400
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill0400', 0, async (done: Function) => {
@@ -2129,7 +2129,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFill0500
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill0500', 0, async (done: Function) => {
@@ -2156,7 +2156,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFill0600
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill0600', 0, async (done: Function) => {
@@ -2183,7 +2183,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFill0700
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill0700', 0, async (done: Function) => {
@@ -2210,7 +2210,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFill0800
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill0800', 0, async (done: Function) => {
@@ -2237,7 +2237,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFill0900
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill0900', 0, async (done: Function) => {
@@ -2264,7 +2264,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayFill1000
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill1000', 0, async (done: Function) => {
@@ -2291,7 +2291,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayShrinkTo0100
     * @tc.desc  : Shrinks the Array to the specified length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayShrinkTo0100', 0, async (done: Function) => {
@@ -2317,7 +2317,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayShrinkTo0200
     * @tc.desc  : Shrinks the Array to the specified length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayShrinkTo0200', 0, async (done: Function) => {
@@ -2343,7 +2343,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayShrinkTo0300
     * @tc.desc  : Shrinks the Array to the specified length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayShrinkTo0300', 0, async (done: Function) => {
@@ -2369,7 +2369,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayShrinkTo0400
     * @tc.desc  : Shrinks the Array to the specified length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayShrinkTo0400', 0, async (done: Function) => {
@@ -2395,7 +2395,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayShrinkTo0500
     * @tc.desc  : Shrinks the Array to the specified length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayShrinkTo0500', 0, async (done: Function) => {
@@ -2421,7 +2421,7 @@ export default function collectionsArrayTest() {
     * @tc.name  : testArrayExtendTo0100
     * @tc.desc  : Expands the Array to the specified length, and the extended part is filled with the given value.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayExtendTo0100', 0, async (done: Function) => {
@@ -2447,7 +2447,7 @@ export default function collectionsArrayTest() {
      * @tc.name  : testArrayExtendTo0200
      * @tc.desc  : Expands the Array to the specified length, and the extended part is filled with the given value.
      * @tc.size  : MediumTest
-     * @tc.type  : method
+     * @tc.type  : Function
      * @tc.level : level 2
      */
     it('testArrayExtendTo0200', 0, async (done: Function) => {
@@ -2473,7 +2473,7 @@ export default function collectionsArrayTest() {
      * @tc.name  : testArrayExtendTo0300
      * @tc.desc  : Expands the Array to the specified length, and the extended part is filled with the given value.
      * @tc.size  : MediumTest
-     * @tc.type  : method
+     * @tc.type  : Function
      * @tc.level : level 2
      */
     it('testArrayExtendTo0300', 0, async (done: Function) => {
@@ -2499,7 +2499,7 @@ export default function collectionsArrayTest() {
      * @tc.name  : testArrayExtendTo0400
      * @tc.desc  : Expands the Array to the specified length, and the extended part is filled with the given value.
      * @tc.size  : MediumTest
-     * @tc.type  : method
+     * @tc.type  : Function
      * @tc.level : level 2
      */
     it('testArrayExtendTo0400', 0, async (done: Function) => {
@@ -2525,7 +2525,7 @@ export default function collectionsArrayTest() {
      * @tc.name  : testArrayExtendTo0500
      * @tc.desc  : Expands the Array to the specified length, and the extended part is filled with the given value.
      * @tc.size  : MediumTest
-     * @tc.type  : method
+     * @tc.type  : Function
      * @tc.level : level 2
      */
     it('testArrayExtendTo0500', 0, async (done: Function) => {

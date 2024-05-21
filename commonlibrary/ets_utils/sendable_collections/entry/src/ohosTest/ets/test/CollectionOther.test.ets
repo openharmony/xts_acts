@@ -64,7 +64,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testArrayPop0500
     * @tc.desc  : Removes and returns the last element from the ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayPop0500', 0, async (done: Function) => {
@@ -95,7 +95,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testArrayPush0300
     * @tc.desc  : Add one or more elements to the end of the ArkTS Array and return the new Array length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayPush0300', 0, async (done: Function) => {
@@ -126,7 +126,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testArrayJoin0400
     * @tc.desc  : Concatenates all elements of ArkTS Array into a string that can be separated by a specified delimiter.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayJoin0400', 0, async (done: Function) => {
@@ -157,7 +157,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testArrayShift0500
     * @tc.desc  : Removes and returns the first element from the ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayShift0500', 0, async (done: Function) => {
@@ -188,7 +188,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testArrayUnshift0300
     * @tc.desc  : Inserts one or more elements at the head of the ArkTS Array and returns the new Array length.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayUnshift0300', 0, async (done: Function) => {
@@ -219,7 +219,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testArraySlice1100
     * @tc.desc  : Returns a new Array, which is a slice of the original ArkTS Array.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArraySlice1100', 0, async (done: Function) => {
@@ -250,7 +250,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testArrayIndexOf0500
     * @tc.desc  : Returns the index where the search element first appears in ArkTS Array, or-1 if it does not exist.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayIndexOf0500', 0, async (done: Function) => {
@@ -282,7 +282,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testArrayAt0500
     * @tc.desc  : Returns the index where the search element first appears in ArkTS Array, or-1 if it does not exist.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayAt0500', 0, async (done: Function) => {
@@ -314,7 +314,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testArrayFill1100
     * @tc.desc  : Fills all elements in the specified range of Array with the specified values.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testArrayFill1100', 0, async (done: Function) => {
@@ -345,7 +345,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testMapClear0400
     * @tc.desc  : Delete all elements in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapClear0400', 0, async (done: Function) => {
@@ -376,7 +376,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testMapDelete0400
     * @tc.desc  : Deletes the specified element in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapDelete0400', 0, async (done: Function) => {
@@ -407,7 +407,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testMapGet0400
     * @tc.desc  : Returns the specified element in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapGet0400', 0, async (done: Function) => {
@@ -439,7 +439,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testMapHas0400
     * @tc.desc  : Determines whether the specified element exists in the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapHas0400', 0, async (done: Function) => {
@@ -471,7 +471,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testMapSet0500
     * @tc.desc  : Adds or updates a specified key-value pair to the Map.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testMapSet0500', 0, async (done: Function) => {
@@ -502,7 +502,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testSetClear0500
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetClear0500', 0, async (done: Function) => {
@@ -533,7 +533,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testSetDelete0400
     * @tc.desc  : Deletes the specified element in the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetDelete0400', 0, async (done: Function) => {
@@ -565,7 +565,7 @@ export default function collectionsOtherTest() {
     * @tc.name  : testSetAdd0400
     * @tc.desc  : If there is no same element, a new element is inserted into the Set.
     * @tc.size  : MediumTest
-    * @tc.type  : method
+    * @tc.type  : Function
     * @tc.level : level 2
     */
     it('testSetAdd0400', 0, async (done: Function) => {
