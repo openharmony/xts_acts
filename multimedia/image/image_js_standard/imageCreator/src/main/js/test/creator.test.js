@@ -64,7 +64,7 @@ export default function ImageCreator() {
                 expect(false).assertTrue();
                 done();
             } catch (error) {
-                expect(error.code == 1).assertTrue();
+                expect(error.code == 401).assertTrue();
                 console.info(`${testNum} err message` + error);
                 done();
             }
@@ -83,7 +83,7 @@ export default function ImageCreator() {
                         done();
                     });
                 } catch (error) {
-                    expect(error.code == 1).assertTrue();
+                    expect(error.code == 401).assertTrue();
                     console.log(`${testNum} error msg: ` + error);
                     done();
                 }
@@ -124,7 +124,7 @@ export default function ImageCreator() {
                             expect(false).assertTrue();
                             done();
                         } catch (error) {
-                            expect(error.code == 1).assertTrue();
+                            expect(error.code == 401).assertTrue();
                             console.log(`${testNum} error msg: ` + error);
                             done();
                         }
@@ -175,7 +175,7 @@ export default function ImageCreator() {
                                     done();
                                 })
                             } catch (error) {
-                                expect(error.code == 1).assertTrue();
+                                expect(error.code == 401).assertTrue();
                                 console.log(`${testNum} error msg: ` + error);
                                 done();
                             }
