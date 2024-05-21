@@ -42,10 +42,10 @@ export default function testsuite() {
   webViewController()
   webDataBase()
   webController()
-  webAttributeTwo()
   webAttribute()
   sslErrorHandler()
   httpAuthHandler()
   webViewControllerHitTest()
   webControllerHitTest()
+  webAttributeTwo()
 }
