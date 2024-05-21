@@ -89,7 +89,7 @@ struct webRegisterCustomsComponent {
                   console.info(" run JavaScript return value is:" + result);
                 }
               })
-              await Utils.sleep(1000);
+              await Utils.sleep(4000);
               console.log("emitWebHttpBodyStream_IsEof ==>");
               let result: number = testNapi.httpBodyStreamIsEof();
               await Utils.sleep(1000);
