@@ -247,7 +247,7 @@ export default function audioCapturerEnhanceTest() {
         });
       } catch (error) {
         console.error(`off-inputDeviceChange input parameter type -1: ${error.message}, ${error.code}`);
-        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_401);
         done();
       }
     })
@@ -294,7 +294,7 @@ export default function audioCapturerEnhanceTest() {
         });
       } catch (error) {
         console.error(`off-inputDeviceChange invalid parameter type '123': ${error.message}, ${error.code}`);
-        expect(Number(error.code)).assertEqual(env.UNSUPORTED_OPTION_6800104);
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
         done();
       }
     })
@@ -341,7 +341,7 @@ export default function audioCapturerEnhanceTest() {
         });
       } catch (error) {
         console.error(`off-inputDeviceChange no input parameter: ${error.message}, ${error.code}`);
-        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_401);
         done();
       }
     })

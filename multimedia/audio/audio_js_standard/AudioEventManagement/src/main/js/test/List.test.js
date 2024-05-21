@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
-require('./AudioEventManagement.test.js')
-
-
+import audioEventManagement from "./AudioEventManagement.test.js";
+export default function testsuite() {
+    audioEventManagement();
+}

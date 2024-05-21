@@ -16,13 +16,11 @@ import account from '@ohos.account.appAccount'
 import featureAbility from '@ohos.ability.featureAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
-const TIMEOUT = 5000;
-
 export default function ActsGetMultipleAccounts() {
   describe('ActsGetMultipleAccounts', function () {
     beforeAll(async function (done) {
       console.info("====>startAbility first start====");
-      await featureAbility.startAbility(
+      featureAbility.startAbilityForResult(
         {
           want:
           {
@@ -33,18 +31,13 @@ export default function ActsGetMultipleAccounts() {
             parameters:
             {},
           },
-        },
+        }, (err, data) => {
+          console.info("====>ActsGetMultipleAccounts beforeAll startAbilityForResult err:" + JSON.stringify(err))
+          console.info("====>ActsGetMultipleAccounts beforeAll startAbilityForResult data:" + JSON.stringify(data))
+          done();
+        }
       );
-      sleep(TIMEOUT);
-      done();
     });
-
-    function sleep(delay) {
-      var start = (new Date()).getTime();
-      while ((new Date()).getTime() - start < delay) {
-        continue;
-      }
-    }
 
     /*
     * @tc.number    : ActsgetAllAccounts_0100

@@ -727,6 +727,24 @@ describe("LinkedListTest", function () {
   });
     
   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LINKEDLIST_01000
+   * @tc.name: testGet042
+   * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(1).
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testGet042", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add(0);
+    linkedList.add(1);
+    linkedList.add(2);
+    let s = Math.trunc(1.33);
+    let res = linkedList.get(s);
+    expect(res).assertEqual(1);
+  });
+    
+  /**
    * @tc.name: testListSet042
    * @tc.desc: Modify the element corresponding to the specified index. For example: linkedList[1] = "f".
    */
@@ -802,7 +820,25 @@ describe("LinkedListTest", function () {
     let res = linkedList.getIndexOf(1);
     expect(res).assertEqual(-1);
   });
-      
+    
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LINKEDLIST_01005
+   * @tc.name: testRemoveByIndex045
+   * @tc.desc:   In the LinkedList instance, find the index of a specified element from front to back,
+   * and return the index found for the first time. If not found, return -1. For example: linkedList.getIndexOf(1).
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testRemoveByIndex045", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add(0)
+    linkedList.add(1)
+    let s = Math.trunc(1.33);
+    linkedList.removeByIndex(s);
+    expect(linkedList.has(1)).assertEqual(false);
+  });
+    
   /**
    * @tc.name: testForEach047
    * @tc.desc: Traversing elements in an LinkedList instance. 
@@ -972,7 +1008,25 @@ describe("LinkedListTest", function () {
       expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
   });
-
+    
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LINKEDLIST_01002
+   * @tc.name: testInsert059
+   * @tc.desc: Insert an element into the middle of the LinkedList instance. For example: linkedList.insert("a", "d").
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testInsert059", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add(0);
+    linkedList.add(1);
+    linkedList.add(2);
+    let s = Math.trunc(1.33);
+    linkedList.insert(s, 3);
+    expect(linkedList.get(1)).assertEqual(3);
+  });
+    
   /**
    * @tc.name: testGet059
    * @tc.desc: Gets the element corresponding to the specified index. For example: linkedList.get("a").

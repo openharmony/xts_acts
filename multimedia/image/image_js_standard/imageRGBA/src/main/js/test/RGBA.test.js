@@ -14,8 +14,9 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 
+export default function Image() {
 describe("Image", function () {
     let globalpixelmap;
     const { RGBA_F16, BGRA_8888, ALPHA_8, RGB_565, ARGB_8888, UNKNOWN, RGB_888 } = image.PixelMapFormat;
@@ -567,3 +568,4 @@ describe("Image", function () {
         });
     });
 });
+}

@@ -62,12 +62,11 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
   external_deps = [
     "c_utils:utils",
     "graphic_2d:2d_graphics",
+    "graphic_2d:EGL",
+    "graphic_2d:GLESv3",
     "graphic_2d:native_drawing_ndk",
     "hilog:libhilog",
     "openssl:libcrypto_shared",
   ]
-  deps = [
-    "$comPath:libgl",
-    "//third_party/googletest:gtest_main",
-  ]
+  deps = [ "//third_party/googletest:gtest_main" ]
 }

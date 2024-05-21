@@ -750,16 +750,16 @@ export default function graphicDrawing(context, windowStage, abilityStorage) {
           glyph: 65, positionX: 0, positionY: 0
         },
         {
-          glphy: 227, positionX: 14.9, positionY: 0
+          glyph: 227, positionX: 14.9, positionY: 0
         },
         {
-          glphy: 283, postionX: 25.84, positionY: 0
+          glyph: 283, positionX: 25.84, positionY: 0
         },
         {
-          glphy: 283, positionX: 30.62, positionY: 0
+          glyph: 283, positionX: 30.62, positionY: 0
         },
         {
-          glphy: 299, positionX: 35.4, positionY: 0
+          glyph: 299, positionX: 35.4, positionY: 0
         }
       ];
       try {
@@ -822,16 +822,16 @@ export default function graphicDrawing(context, windowStage, abilityStorage) {
           glyph: 65, positionX: 0, positionY: 0
         },
         {
-          glphy: 227, positionX: 14.9, positionY: 0
+          glyph: 227, positionX: 14.9, positionY: 0
         },
         {
-          glphy: 283, postionX: 25.84, positionY: 0
+          glyph: 283, positionX: 25.84, positionY: 0
         },
         {
-          glphy: 283, positionX: 30.62, positionY: 0
+          glyph: 283, positionX: 30.62, positionY: 0
         },
         {
-          glphy: 299, positionX: 35.4, positionY: 0
+          glyph: 299, positionX: 35.4, positionY: 0
         }
       ];
       try {
@@ -954,7 +954,7 @@ export default function graphicDrawing(context, windowStage, abilityStorage) {
           glyph: 65, positionX: 0, positionY: 0
         },
         {
-          glphy: 283, postionX: 25.84, positionY: 0
+          glyph: 283, positionX: 25.84, positionY: 0
         },
       ];
       try {
@@ -1017,19 +1017,19 @@ export default function graphicDrawing(context, windowStage, abilityStorage) {
           glyph: 65, positionX: 0, positionY: 0
         },
         {
-          glphy: 227, positionX: 14.9, positionY: 0
+          glyph: 227, positionX: 14.9, positionY: 0
         },
         {
-          glphy: 283, postionX: 25.84, positionY: 0
+          glyph: 283, positionX: 25.84, positionY: 0
         },
         {
-          glphy: 283, positionX: 30.62, positionY: 0
+          glyph: 283, positionX: 30.62, positionY: 0
         },
         {
-          glphy: 299, positionX: 35.4, positionY: 0
+          glyph: 299, positionX: 35.4, positionY: 0
         },
         {
-          glphy: 283, postionX: 25.84, positionY: 0
+          glyph: 283, positionX: 25.84, positionY: 0
         }
       ];
       try {
@@ -1092,10 +1092,10 @@ export default function graphicDrawing(context, windowStage, abilityStorage) {
           glyph: 1000.5698, positionX: -100, positionY: 200
         },
         {
-          glphy: -100, positionX: 14.9, positionY: 0
+          glyph: -100, positionX: 14.9, positionY: 0
         },
         {
-          glphy: 0.5698, postionX: 300, positionY: -520
+          glyph: 0.5698, positionX: 300, positionY: -520
         },
       ];
       try {

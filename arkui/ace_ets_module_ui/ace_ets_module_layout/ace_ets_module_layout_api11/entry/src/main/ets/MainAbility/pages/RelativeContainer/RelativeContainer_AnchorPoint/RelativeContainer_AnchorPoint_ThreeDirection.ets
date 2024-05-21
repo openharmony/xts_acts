@@ -49,7 +49,6 @@ struct RelativeContainer_AnchorPoint_ThreeDirection {
           .id("RelativeContainer_AnchorPoint_ThreeDirection_tx2")
           .borderWidth(2)
           .borderColor(Color.Green)
-          .height(30)
           .width(250)
       }
       .key("RelativeContainer_AnchorPoint_ThreeDirection_r1")

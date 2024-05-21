@@ -228,17 +228,7 @@ struct webRegisterCustomsTwoComponent {
                 .height('50%')
                 .width('100%')
                 .javaScriptAccess(true)
-                .fileAccess(true)
-                .onConsole((event) => {
-                    if (event) {
-                        console.log('onConsole getMessage:' + event.message?.getMessage())
-                        console.log('onConsole getSourceId:' + event.message?.getSourceId())
-                        console.log('onConsole getLineNumber:' + event.message?.getLineNumber())
-                        console.log('onConsole getMessageLevel:' + event.message?.getMessageLevel())
-                    }
-                    return false
-                })
-                
+                .fileAccess(true)                
         }
         .height('100%')
         

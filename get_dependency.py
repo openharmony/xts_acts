@@ -135,6 +135,7 @@ def run(precise_repo_xts_list):
             print(bundlelist)
             # 获取全部需要跑的bundlename
             depends_list, depends_tree = get_all_dependencies(bundlelist, dependency_dist)
+            depends_list.add("acts")
             print(depends_list)
         except Exception as e:
             print("发生异常:", str(e))
@@ -148,5 +149,5 @@ def run(precise_repo_xts_list):
 
 if __name__ == '__main__':
     print("counting dependencies start")
-    run(precise_repo_xts.split(':'))
+    run(precise_repo_xts.split(','))
     print("counting dependencies finished")

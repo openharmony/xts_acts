@@ -74,22 +74,23 @@ ohos_moduletest_suite("ActsVulkanTests") {
   cflags = [ "-Wno-error" ]
 }
 
-action("cpVulkan") {
+ohos_sh_assist_suite("cpVulkan") {
   testonly = true
   script = "cpVulkan.sh"
   outputs = [ "${target_out_dir}/cpVulkan.log" ]
   root_vkgl_path = rebase_path("//")
   args = [ "$root_vkgl_path" ]
   deps = [
+    ":vulkanTest",
     "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan:deqp_vk_execute",
   ]
+  part_name = "graphic_2d"
 }
 
 group("vulkanTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      ":cpVulkan",
       "src/apitest:ActsVulkanApiTest",
       "src/bindingmodeltest:ActsVulkanBindingmodelTest",
       "src/clippingtest:ActsVulkanClippingTest",

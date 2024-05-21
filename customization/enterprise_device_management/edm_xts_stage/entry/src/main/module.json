@@ -187,6 +187,10 @@
       {
         "name": "ohos.permission.ENTERPRISE_MANAGE_WIFI",
         "reason": "need use ENTERPRISE_MANAGE_WIFI"
+      },
+      {
+        "name": "ohos.permission.ENTERPRISE_OPERATE_DEVICE",
+        "reason": "need use ENTERPRISE_OPERATE_DEVICE"
       }
     ]
   }

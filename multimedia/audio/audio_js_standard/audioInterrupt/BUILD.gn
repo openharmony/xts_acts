@@ -25,7 +25,9 @@ ohos_js_hap_suite("audio_interrupt_js_hap") {
   part_name = "audio_framework"
 }
 ohos_js_assets("audio_interrupt_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("audio_interrupt_resources") {
   sources = [ "./src/main/resources" ]

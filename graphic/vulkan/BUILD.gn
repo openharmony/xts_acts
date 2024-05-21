@@ -131,7 +131,7 @@ group("ActsVkTest") {
   ]
 }
 
-action("cpvktest") {
+ohos_sh_assist_suite("cpvktest") {
   testonly = true
   script = "cpvkTest.sh"
   outputs = [ "${target_out_dir}/cpVktest.log" ]
@@ -141,4 +141,5 @@ action("cpvktest") {
     ":ActsVkTest",
     "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan:deqp_vk_execute",
   ]
+  part_name = "graphic_2d"
 }

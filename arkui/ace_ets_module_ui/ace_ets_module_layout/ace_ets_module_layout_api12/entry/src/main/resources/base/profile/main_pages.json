@@ -1,0 +1,8 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/Flex/SpaceMainNumber",
+        "MainAbility/pages/Flex/SpaceCross5AlignItems",
+        "MainAbility/pages/Flex/SpaceMain5JustifyContent"
+    ]
+}
