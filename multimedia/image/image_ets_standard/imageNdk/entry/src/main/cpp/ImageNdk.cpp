@@ -21,9 +21,9 @@
 #include <unistd.h>
 
 #include "napi/native_api.h"
-#include "multimedia/image_framework/pixelmap_native.h"
-#include "multimedia/image_framework/image_packer_native.h"
-#include "multimedia/image_framework/image_source_native.h"
+#include <multimedia/image_framework/image/pixelmap_native.h>
+#include <multimedia/image_framework/image/image_packer_native.h>
+#include <multimedia/image_framework/image/image_source_native.h>
 
 #undef LOG_DOMAIN
 #undef LOG_TAG
@@ -43,23 +43,6 @@
 
 OH_PixelmapNative *TEST_PIXELMAP = nullptr;
 const char *LOG_APP = "ImageNDK";
-
-static void memcpy_s(void *dest, int32_t dest_size, const void *src, int32_t n) {
-    if (dest == nullptr || src == nullptr) {
-        return;
-    }
-
-    if (n > dest_size) {
-        return;
-    }
-
-    char *d = (char *)dest;
-    const char *s = (const char *)src;
-
-    while (n--) {
-        *d++ = *s++;
-    }
-}
 
 static void OHLog(const char *module, const char *format, ...) {
 
