@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.actsaccountsceneaccessible",
+    "bundleName": "com.example.accessibleabilitylist",
     "vendor": "example",
     "version": {
       "code": 1000000,
@@ -9,21 +9,33 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.actsaccountsceneaccessible",
-    "name": ".entry",
-    "mainAbility": ".MainAbility",
+    "package": "com.example.accessibleabilitylist_test",
+    "name": ".entry_test",
+    "mainAbility": ".TestAbility",
     "deviceType": [
       "default",
       "tablet",
-      "phone",
       "2in1"
     ],
     "distro": {
       "deliveryWithInstall": true,
-      "moduleName": "entry",
-      "moduleType": "entry",
+      "moduleName": "entry_test",
+      "moduleType": "feature",
       "installationFree": false
     },
+    "defPermissions": [
+      {
+        "availableScope": [],
+        "grantMode": "system_grant",
+        "name": "ohos.permission.DISTRIBUTED_DATASYNC"
+      }
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+        "reason": "ceshi"
+      }
+    ],
     "abilities": [
       {
         "skills": [
@@ -38,12 +50,12 @@
         ],
         "orientation": "unspecified",
         "formsEnabled": false,
-        "name": ".MainAbility",
+        "name": ".TestAbility",
         "srcLanguage": "js",
-        "srcPath": "MainAbility",
+        "srcPath": "TestAbility",
         "icon": "$media:icon",
-        "description": "$string:MainAbility_desc",
-        "label": "$string:MainAbility_label",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
         "type": "page",
         "visible": true,
         "launchType": "standard"
@@ -54,12 +66,16 @@
         "pages": [
           "pages/index/index"
         ],
-        "name": ".MainAbility",
+        "name": ".TestAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
         }
       }
-    ]
+    ],
+    "testRunner": {
+      "name": "OpenHarmonyTestRunner",
+      "srcPath": "TestRunner"
+    }
   }
 }
