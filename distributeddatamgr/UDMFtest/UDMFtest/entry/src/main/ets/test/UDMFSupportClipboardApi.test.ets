@@ -339,7 +339,7 @@ export default function UDMFSupportClipboardApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700', 0, async function () {
+    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0800', 0, async function () {
       const TAG = 'SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700';
       console.info(TAG, 'start');
 
