@@ -95,8 +95,11 @@ export default function getBundleInfoForSelf() {
 
     /*
      * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0013
-     * @tc.name: getBundleInfoForSelfSyncSkill
-     * @tc.desc: Test getBundleInfoForSelfSync with Skill
+     * @tc.name  : GetBundleInfoForSelfSyncSkill
+     * @tc.desc  : Test getBundleInfoForSelfSync with Skill
+     * @tc.size  : MEDIUM
+     * @tc.type  : Function
+     * @tc.level : Level 2
      */
     it('getBundleInfoForSelfSyncSkill', 0, async (done: Function) => {
       let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_SKILL);
