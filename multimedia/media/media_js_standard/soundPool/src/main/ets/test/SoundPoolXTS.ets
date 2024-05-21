@@ -4569,7 +4569,6 @@ export default function soundPoolTest() {
           }
           await sleep(1000);
         }
-        await sleep(1000);
         for (let i = 0; i < 4; i++) {
           streamId_[i] = await soundPool.play(soundId_[i]);
         }
