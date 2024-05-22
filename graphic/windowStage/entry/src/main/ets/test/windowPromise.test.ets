@@ -1681,29 +1681,22 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
     it("test_subWindow_GetWindowSystemBarProperties_1300004", 2, async function (done) {
       let msgStr = "test_subWindow_GetWindowSystemBarProperties_1300004";
       console.log(msgStr + " begin");
+      let SubWindowClass = null;
+      SubWindowClass = await windowStage.createSubWindow('test_subWindow_GetWindowSystemBarProperties_1300004').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!SubWindowClass).assertTrue();
       try {
-        await WindowStage.createSubWindow('mySubWindow1').then((data) => {
-          let SubWindowClass = data;
-          console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-          try {
-            let systemBarProperty = SubWindowClass.getWindowSystemBarProperties();
-            console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
-          } catch (err) {
-            console.error('Failed to get system bar properties. Code: ' + JSON.stringify(err) + err.code);
-            expect(err.code).assertEqual(1300004)
-            done();
-          }
-        }).catch((err) => {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
-          expect(false).assertTrue();
-          done()
-        });
-      } catch (exception) {
-        console.error('test_subWindow_GetWindowSystemBarProperties_1300004 Failed. Cause: ' + JSON.stringify(exception));
-        expect(false).assertTrue();
-        done()
+        let systemBarProperty = SubWindowClass.getWindowSystemBarProperties();
+        console.info(msgStr + 'Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
+      } catch (err) {
+        console.error(msgStr + 'Failed to get system bar properties. Code: ' + JSON.stringify(err) + err.code);
+        expect(err.code).assertEqual(1300004)
+        done();
       }
-
     })
 
     /**
@@ -1714,9 +1707,16 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("test_subWindow_SetWindowSystemBarProperties", 2, async function (done) {
+    it("test_subWindow_SetWindowSystemBarProperties", 0, async function () {
       let msgStr = "test_subWindow_GetWindowSystemBarProperties_1300004";
       console.log(msgStr + " begin");
+      let SubWindowClass = null;
+      SubWindowClass = await windowStage.createSubWindow('test_subWindow_SetWindowSystemBarProperties').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!SubWindowClass).assertTrue();
       let SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
@@ -1724,37 +1724,17 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         navigationBarContentColor: '#00ffff'
       };
       try {
-        await WindowStage.createSubWindow('mySubWindow2').then((data) => {
-          let SubWindowClass = data;
-          console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-          try {
-            SubWindowClass.setWindowSystemBarProperties(SystemBarProperties).then(() => {
-              console.info('Succeeded in setting the system bar properties.');
-              expect(true).assertTrue();
-              done();
-            }).catch((err) => {
-              console.error('Failed to set the system bar properties. Cause: ' + JSON.stringify(err));
-              expect(false).assertTrue();
-              done();
-            });
-          } catch (err) {
-            console.error('Failed to setWindowSystemBarProperties. Code: ' + JSON.stringify(err) + err.code);
-            expect(false).assertTrue();
-            done();
-          }
+        SubWindowClass.setWindowSystemBarProperties(SystemBarProperties).then(() => {
+          console.info('Succeeded in setting the system bar properties.');
         }).catch((err) => {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
-          expect(false).assertTrue();
-          done()
+          console.error('Failed to set the system bar properties. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
         });
-      } catch (exception) {
-        console.error('test_subWindow_GetWindowSystemBarProperties_1300004 Failed. Cause: ' + JSON.stringify(exception));
-        expect(false).assertTrue();
-        done()
+      } catch (err) {
+        console.error('Failed to setWindowSystemBarProperties. Code: ' + JSON.stringify(err) + err.code);
+        expect().assertFail();
       }
-
     })
-
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1180
      * @tc.name      : testSetWindowLimits_Function_Promise
