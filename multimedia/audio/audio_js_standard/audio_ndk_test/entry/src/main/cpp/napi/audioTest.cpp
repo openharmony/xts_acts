@@ -3386,11 +3386,11 @@ static napi_value Init(napi_env env, napi_value exports)
         {"audioAudioDeviceDescriptorGetDeviceEncodingTypes_004", nullptr,
             AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioAudioInternalRecordingSuccess01", nullptr,
-            AudioAudioInternalRecordingSuccess01, nullptr, nullptr, nullptr, napi_default, nullptr}, 
+            AudioAudioInternalRecordingSuccess01, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioAudioInternalRecordingSuccess02", nullptr,
             AudioAudioInternalRecordingSuccess02, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioAudioInternalRecordingFalse", nullptr,
-            AudioAudioInternalRecordingFalse, nullptr, nullptr, nullptr, napi_default, nullptr},    
+            AudioAudioInternalRecordingFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
