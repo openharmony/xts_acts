@@ -99,9 +99,9 @@ struct PrecompileJavaScriptTest {
                 ]
               }).then((res) => {
                 console.info(msg + " precompile result: " + res);
-                Utils.emitEvent(res, 10093)
               }).catch((err: number) => {
                 console.error(msg + " precompile error: " + err);
+                Utils.emitEvent(err, 10093)
               })
               break;
             }
@@ -116,9 +116,9 @@ struct PrecompileJavaScriptTest {
                 ]
               }).then((res) => {
                 console.info(msg + " precompile result: " + res);
-                Utils.emitEvent(res, 10094)
               }).catch((err: number) => {
                 console.error(msg + " precompile error: " + err);
+                Utils.emitEvent(err, 10094)
               })
               break;
             }
@@ -133,9 +133,9 @@ struct PrecompileJavaScriptTest {
                 ]
               }).then((res) => {
                 console.info(msg + " precompile result: " + res);
-                Utils.emitEvent(res, 10095)
               }).catch((err: number) => {
                 console.error(msg + " precompile error: " + err);
+                Utils.emitEvent(err, 10095)
               })
               break;
             }
