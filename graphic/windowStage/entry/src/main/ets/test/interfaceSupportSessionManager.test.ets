@@ -97,114 +97,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2530
-     * @tc.name      : testKeepKeyboardOnFocus_SystemWindow_False
-     * @tc.desc      : The soft keyboard created by other Windows is retained when the window is in focus
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testKeepKeyboardOnFocus_SystemWindow_False', 0, async () => {
-      let caseName: string = 'testKeepKeyboardOnFocus_SystemWindow_False';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: 'testKeepKeyboardOnFocus_SystemWindow_False',
-        windowType: ohosWindow.WindowType.TYPE_SYSTEM_TOAST,
-        ctx: context
-      };
-      let tempWnd: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig)
-        .catch((err: BusinessError) => {
-          console.log(msgStr + 'createWindow tempWnd failed');
-          expect().assertFail();
-        });
-      expect(!!tempWnd).assertTrue();
-      try {
-        (tempWnd as ohosWindow.Window).keepKeyboardOnFocus(false);
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-      } catch (exception) {
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        if (exception.code != 801) {
-          console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
-          expect().assertFail();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        }
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2540
-     * @tc.name      : testKeepKeyboardOnFocus_SystemWindow_True
-     * @tc.desc      : The soft keyboard created by other Windows is retained when the window is in focus.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testKeepKeyboardOnFocus_SystemWindow_True', 0, async () => {
-      let caseName: string = 'testKeepKeyboardOnFocus_SystemWindow_True';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: 'testKeepKeyboardOnFocus_SystemWindow_True',
-        windowType: ohosWindow.WindowType.TYPE_SYSTEM_TOAST,
-        ctx: context
-      };
-      let tempWnd: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig)
-        .catch((err: BusinessError) => {
-          console.log(msgStr + 'createWindow tempWnd failed');
-          expect().assertFail();
-        });
-      expect(!!tempWnd).assertTrue();
-      try {
-        (tempWnd as ohosWindow.Window).keepKeyboardOnFocus(false);
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-      } catch (exception) {
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        if (exception.code != 801) {
-          console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
-          expect().assertFail();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        }
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2550
-     * @tc.name      : testKeepKeyboardOnFocus_WindowStateAbnormal
-     * @tc.desc      : The soft keyboard created by other Windows is retained when the window is in focus
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testKeepKeyboardOnFocus_WindowStateAbnormal', 0, async () => {
-      let caseName: string = 'testKeepKeyboardOnFocus_SystemWindow_True';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: 'testKeepKeyboardOnFocus_SystemWindow_True',
-        windowType: ohosWindow.WindowType.TYPE_SYSTEM_TOAST,
-        ctx: context
-      };
-      let tempWnd: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig)
-        .catch((err: BusinessError) => {
-          console.log(msgStr + 'createWindow tempWnd failed');
-          expect().assertFail();
-        });
-      expect(!!tempWnd).assertTrue();
-      await (tempWnd as ohosWindow.Window).destroyWindow();
-      try {
-        (tempWnd as ohosWindow.Window).keepKeyboardOnFocus(false);
-        expect().assertFail();
-      } catch (exception) {
-        console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
-      }
-    })
-    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2560
      * @tc.name      : testKeepKeyboardOnFocus_MainWindow
      * @tc.desc      : The soft keyboard created by other Windows is retained when the window is in focus
@@ -241,15 +133,11 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName: string = 'testWindowOffWindowVisibilityChange_UnregisteredOff';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testWindowOffWindowVisibilityChange_UnregisteredOff",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
-      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let win: ohosWindow.Window | void = await windowStage.createSubWindow('testWindowOffWindowVisibilityChange_UnregisteredOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         // @ts-ignore
@@ -273,15 +161,11 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName: string = 'testWindowOffWindowVisibilityChange_RepeatOff';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testWindowOffWindowVisibilityChange_RepeatOff",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
-      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let win: ohosWindow.Window | void = await windowStage.createSubWindow('testWindowOffWindowVisibilityChange_RepeatOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         // @ts-ignore
@@ -321,174 +205,6 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2590
-     * @tc.name      : testSetSingleFrameComposerEnabled_True
-     * @tc.desc      : Disable/Enable the function of single frame compositing render node
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testSetSingleFrameComposerEnabled_True', 0, async () => {
-      let caseName: string = 'testSetSingleFrameComposerEnabled_True';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testSetSingleFrameComposerEnabled_True",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
-      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      expect(!!win).assertTrue();
-      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(true).then(async () => {
-        console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
-        await (win as ohosWindow.Window).destroyWindow();
-      }).catch((err: BusinessError) => {
-        if (err.code != 801) {
-          console.error(msgStr + `ailed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
-          expect().assertFail();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(err))
-          expect(err.code).assertEqual(801);
-        }
-      });
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2600
-     * @tc.name      : testSetSingleFrameComposerEnabled_False
-     * @tc.desc      : Disable/Enable the function of single frame compositing render node
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testSetSingleFrameComposerEnabled_False', 0, async () => {
-      let caseName: string = 'testSetSingleFrameComposerEnabled_False';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testSetSingleFrameComposerEnabled_False",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
-      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      expect(!!win).assertTrue();
-      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(false).then(async () => {
-        console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
-        await (win as ohosWindow.Window).destroyWindow();
-      }).catch((err: BusinessError) => {
-        if (err.code != 801) {
-          console.error(msgStr + `Failed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
-          expect().assertFail();
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(err))
-          expect(err.code).assertEqual(801);
-        }
-      });
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2610
-     * @tc.name      : testSetSingleFrameComposerEnabled_WindowStateAbnormal
-     * @tc.desc      : Disable/Enable the function of single frame compositing render node
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testSetSingleFrameComposerEnabled_WindowStateAbnormal', 0, async () => {
-      let caseName: string = 'testSetSingleFrameComposerEnabled_WindowStateAbnormal';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testSetSingleFrameComposerEnabled_WindowStateAbnormal",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
-      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      expect(!!win).assertTrue();
-      await (win as ohosWindow.Window).destroyWindow();
-      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(false).then(() => {
-        console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
-        expect().assertFail();
-      }).catch((err: BusinessError) => {
-        console.error(msgStr + `Failed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
-        expect(err.code).assertEqual(1300002);
-      });
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2620
-     * @tc.name      : testSetSingleFrameComposerEnabled_Invalid_ParameThree
-     * @tc.desc      : Disable/Enable the function of single frame compositing render node
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testSetSingleFrameComposerEnabled_Invalid_ParameThree', 0, async () => {
-      let caseName: string = 'testSetSingleFrameComposerEnabled_Invalid_ParameThree';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testSetSingleFrameComposerEnabled_Invalid_ParameThree",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
-      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      expect(!!win).assertTrue();
-      // @ts-ignore
-      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(false, true).then(async () => {
-        console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
-        await (win as ohosWindow.Window).destroyWindow();
-        expect().assertFail();
-      }).catch(async (err: BusinessError) => {
-        console.error(msgStr + `Failed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
-        await (win as ohosWindow.Window).destroyWindow();
-        expect(err.code).assertEqual(401);
-      });
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4020
-     * @tc.name      : testSetSingleFrameComposerEnabled_Invalid_Parame_Null
-     * @tc.desc      : Disable/Enable the function of single frame compositing render node
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testSetSingleFrameComposerEnabled_Invalid_Parame_Null', 0, async () => {
-      let caseName: string = 'testSetSingleFrameComposerEnabled_Invalid_Parame_Null';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: "testSetSingleFrameComposerEnabled_Invalid_Parame_Null",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
-      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      expect(!!win).assertTrue();
-      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(null).then(async () => {
-        console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
-        await (win as ohosWindow.Window).destroyWindow();
-        expect().assertFail();
-      }).catch(async (err: BusinessError) => {
-        console.error(msgStr + `Failed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
-        await (win as ohosWindow.Window).destroyWindow();
-        expect(err.code).assertEqual(401);
-      });
-    })
-    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3730
      * @tc.name      : testResize_MinLimits
      * @tc.desc      : Change the current window size
@@ -500,16 +216,13 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName = 'testResize_MinLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'testResize_MinLimits';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd = null;
       let windowLimits = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
+      tempWnd = await windowStage.createSubWindow('testResize_MinLimits').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.log(msgStr + 'tempWnd.loadContent failed');
@@ -553,16 +266,13 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName = 'testResize_MaxLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'testResize_MaxLimits';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd = null;
       let windowLimits = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
+      tempWnd = await windowStage.createSubWindow('testResize_MaxLimits').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.log(msgStr + 'tempWnd.loadContent failed');
@@ -606,16 +316,13 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName = 'testResize_MaxAndMinLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'testResize_MaxAndMinLimits';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd = null;
       let windowLimits = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
+      tempWnd = await windowStage.createSubWindow('testResize_MaxAndMinLimits').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.log(msgStr + 'tempWnd.loadContent failed');
@@ -659,16 +366,13 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName = 'testResize_Over_MaxLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'testResize_Over_MaxLimits';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd = null;
       let windowLimits = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
+      tempWnd = await windowStage.createSubWindow('testResize_Over_MaxLimits').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.log(msgStr + 'tempWnd.loadContent failed');
@@ -723,16 +427,13 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName = 'testResize_setAndGet_MinLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'testResize_setAndGet_MinLimits';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd = null;
       let windowLimits = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
+      tempWnd = await windowStage.createSubWindow('testResize_setAndGet_MinLimits').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.log(msgStr + 'tempWnd.loadContent failed');
@@ -795,16 +496,13 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName = 'testResize_setAndGet_MaxLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'testResize_setAndGet_MaxLimits';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd = null;
       let windowLimits = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
+      tempWnd = await windowStage.createSubWindow('testResize_setAndGet_MaxLimits').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.log(msgStr + 'tempWnd.loadContent failed');
@@ -866,16 +564,13 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName = 'testResize_setAndGet_MaxAndMinLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'testResize_setAndGet_MaxAndMinLimits';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd = null;
       let windowLimits = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
+      tempWnd = await windowStage.createSubWindow('testResize_setAndGet_MaxAndMinLimits').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.log(msgStr + 'tempWnd.loadContent failed');
@@ -937,16 +632,13 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName = 'testResize_setAndGet_Over_MaxLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'testResize_setAndGet_Over_MaxLimits';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd = null;
       let windowLimits = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
+      tempWnd = await windowStage.createSubWindow('testResize_setAndGet_Over_MaxLimits').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.log(msgStr + 'tempWnd.loadContent failed');
@@ -1280,16 +972,13 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       let caseName = 'testGetAndSetWindowLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'testGetAndSetWindowLimits';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd = null;
       let windowLimits = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
+      tempWnd = await windowStage.createSubWindow('testGetAndSetWindowLimits').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.log(msgStr + 'tempWnd.loadContent failed');
