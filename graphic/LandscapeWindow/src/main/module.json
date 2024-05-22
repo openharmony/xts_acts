@@ -5,8 +5,10 @@
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
     "deviceTypes": [
+      "phone",
+      "tablet",
       "default",
-      "tablet"
+      "2in1"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -21,7 +23,6 @@
         "exported": true,
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
-        "preferMultWindowOrientation": "landscape",
         "skills": [
           {
             "actions": [

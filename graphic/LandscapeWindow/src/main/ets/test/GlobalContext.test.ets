@@ -13,10 +13,11 @@
  * limitations under the License.
  */
 import common from '@ohos.app.ability.common';
+
 export class GlobalContext{
   private constructor() {}
   private static instance:GlobalContext;
-  private _objects = new Map<string, common.UIAbilityContext>();
+  private _objects = new Map<string, common.BaseContext>();
 
   public static getContext():GlobalContext{
     if(!GlobalContext.instance){
@@ -25,11 +26,11 @@ export class GlobalContext{
     return GlobalContext.instance;
   }
 
-  getObject(value: string): common.UIAbilityContext | undefined {
+  getObject(value: string): common.BaseContext | undefined {
     return this._objects.get(value);
   }
 
-  setObject(key: string, objectClass: common.UIAbilityContext):void{
+  setObject(key: string, objectClass: common.BaseContext):void{
     this._objects.set(key,objectClass);
   }
 }
