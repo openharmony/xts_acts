@@ -1,12 +1,11 @@
 {
-    "description": "Configuration for osaccount js api Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
-        "shell-timeout": "600000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.security.access_token.normal",
-        "package-name": "ohos.acts.security.access_token.normal",
-        "testcase-timeout": 10000
+        "package-name": "ohos.acts.security.access_token.normal"
     },
     "kits": [
         {
@@ -15,6 +14,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

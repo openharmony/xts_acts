@@ -32,11 +32,12 @@ import CalendarDialogCallback from './CalendarPickerDialogTest/CalendarDialogCal
 import DatePickerDialogCallback from './DatePickerDialogTest/DatePickerDialogCallback.test.ets'
 import TextPickerDialogCallback from './TextPickerDialogTest/TextPickerDialogCallback.test.ets'
 import TimePickerDialogCallback from './TimePickerDialogTest/TimePickerDialogCallback.test.ets'
-
 import closeCustomDialog from './promptActionTest/closeCustomDialog.test'
 import openCustomDialog from './promptActionTest/openCustomDialog.test'
 import updateCustomDialog from './promptActionTest/updateCustomDialog.test'
 import onHeightDidChange from './onHeightDidChange.test'
+import ButtonStyle from './CalendarPickerDialogTest/ButtonStyle.test'
+
 export default function testsuite() {
   TextPickerDialog()
   DatePickerDialog()
@@ -62,4 +63,5 @@ export default function testsuite() {
   closeCustomDialog()
   openCustomDialog()
   updateCustomDialog()
+  ButtonStyle()
 }

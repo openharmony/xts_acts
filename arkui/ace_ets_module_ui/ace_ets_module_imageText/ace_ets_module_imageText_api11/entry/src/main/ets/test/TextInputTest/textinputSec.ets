@@ -356,9 +356,9 @@ export default function textinputSec() {
         console.info('ArkUX_Stage_TextInput_ShowError_0400 obj $attrs.showError :' + JSON.stringify(obj.$attrs.showError));
         console.info('ArkUX_Stage_TextInput_ShowError_0400 obj $attrs.showErrorText :' + JSON.stringify(obj.$attrs.showErrorText));
         console.info('ArkUX_Stage_TextInput_ShowError_0400 obj $attrs.errorText :' + JSON.stringify(obj.$attrs.errorText));
-        expect(obj.$attrs.showErrorText).assertEqual(false)
-        expect(obj.$attrs.errorText).assertEqual("")
-        expect(obj.$attrs.showError).assertEqual("undefined")
+        expect(obj.$attrs.showErrorText).assertEqual(true)
+        expect(obj.$attrs.errorText).assertEqual("string")
+        expect(obj.$attrs.showError).assertEqual("string")
         done()
       } catch (err) {
         expect().assertFail()

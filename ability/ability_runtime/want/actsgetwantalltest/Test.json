@@ -2,11 +2,10 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "com.example.actsgetwantalltest",
-        "package-name": "com.example.actsgetwantalltest",
-        "shell-timeout": "600000",
-        "testcase-timeout": "20000"
+        "package-name": "com.example.actsgetwantalltest"
     },
     "kits": [
         {
@@ -16,6 +15,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

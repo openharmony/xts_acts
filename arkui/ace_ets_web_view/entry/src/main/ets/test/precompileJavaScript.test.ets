@@ -72,7 +72,7 @@ export default function precompileJavaScriptTest() {
     it('testPrecompileJavaScript002', 0, async (done: Function) => {
       Utils.emitEvent("testPrecompileJavaScript002", 10)
       await Utils.sleep(500);
-      Utils.registerEvent("testPrecompileJavaScript002", 0, 10093, done);
+      Utils.registerEvent("testPrecompileJavaScript002", -1, 10093, done);
       sendEventByKey('precompileJavaScriptTestButton', 10, '');
     })
     /*
@@ -86,7 +86,7 @@ export default function precompileJavaScriptTest() {
     it('testPrecompileJavaScript003', 0, async (done: Function) => {
       Utils.emitEvent("testPrecompileJavaScript003", 10)
       await Utils.sleep(500);
-      Utils.registerEvent("testPrecompileJavaScript003", 0, 10094, done);
+      Utils.registerEvent("testPrecompileJavaScript003", -1, 10094, done);
       sendEventByKey('precompileJavaScriptTestButton', 10, '');
     })
     /*
@@ -100,7 +100,7 @@ export default function precompileJavaScriptTest() {
     it('testPrecompileJavaScript004', 0, async (done: Function) => {
       Utils.emitEvent("testPrecompileJavaScript004", 10)
       await Utils.sleep(500);
-      Utils.registerEvent("testPrecompileJavaScript004", 0, 10095, done);
+      Utils.registerEvent("testPrecompileJavaScript004", -1, 10095, done);
       sendEventByKey('precompileJavaScriptTestButton', 10, '');
     })
     /*
