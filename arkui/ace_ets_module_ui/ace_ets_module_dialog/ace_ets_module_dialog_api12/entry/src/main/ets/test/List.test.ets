@@ -45,6 +45,7 @@ import CloseCustomDialogTest from './CustomDialogTest/UIContextTest/CloseCustomD
 import openCustomDialogTest from './CustomDialogTest/UIContextTest/OpenCustomDialog.test.ets'
 import UpdateCustomDialogTest from './CustomDialogTest/UIContextTest/UpdateCustomDialog.test.ets'
 import ButtonStyle from './CalendarPickerDialogTest/ButtonStyle.test'
+import DateButtonStyle from './DatePickerDialogTest/DateButtonStyle.test'
 
 export default function testsuite() {
   TextPickerDialog()
@@ -79,4 +80,5 @@ export default function testsuite() {
   openCustomDialogTest();
   UpdateCustomDialogTest();
   ButtonStyle()
+  DateButtonStyle()
 }
