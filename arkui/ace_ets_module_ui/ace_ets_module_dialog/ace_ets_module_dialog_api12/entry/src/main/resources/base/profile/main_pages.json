@@ -24,6 +24,13 @@
     "MainAbility/pages/promptAction/closeCustomDialog",
     "MainAbility/pages/promptAction/openCustomDialog",
     "MainAbility/pages/promptAction/updateCustomDialog",
-    "MainAbility/pages/onHeightDidChange"
+    "MainAbility/pages/onHeightDidChange",
+    "MainAbility/pages/TextPickerDialog/ButtonStyle/Text_accept",
+    "MainAbility/pages/TextPickerDialog/ButtonStyle/Text_cancel",
+    "MainAbility/pages/TimePickerDialog/ButtonStyle/Time_accept",
+    "MainAbility/pages/TimePickerDialog/ButtonStyle/Time_cancel",
+    "MainAbility/pages/CustomDialog/UIContext/CloseCustomDialog",
+    "MainAbility/pages/CustomDialog/UIContext/UpdateCustomDialog",
+    "MainAbility/pages/CustomDialog/UIContext/OpenCustomDialog"
   ]
 }
