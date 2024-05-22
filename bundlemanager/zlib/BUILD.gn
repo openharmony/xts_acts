@@ -19,9 +19,9 @@ group("zlib") {
     deps = [
       "actszipfileandunzipfiletest:actszipfileandunzipfiletest",
       "actszlibchecksumtest:ActsChecksumTest",
+      "actszlibinterfacetest:ActsZlibInterfaceTest",
       "actszlibndktest:ActsZlibNdkTest",
       "actszlibtest:ActsZlibTest",
-      "actszlibinterfacetest:ActsZlibInterfaceTest",
     ]
   }
 }

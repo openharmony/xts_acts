@@ -49,13 +49,13 @@ export default function ActsZlibInterfaceTest() {
 
     /**
      * @tc.number     : ACTS_ZlibInterfaceTest_01
-     * @tc.name       : actsZlibInterfaceTest01
+     * @tc.name       : ActsZlibInterfaceTest01
      * @tc.desc       : test getOriginalSize
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsZlibInterfaceTest01', 0, async function (done) {
+    it('ActsZlibInterfaceTest01', 0, async function (done) {
         console.info("==================ACTS_ZlibInterfaceTest_01 start==================");
         let inFile = filesDir + '/test.txt';
         let outFile = filesDir + '/test.zip';
@@ -97,13 +97,13 @@ export default function ActsZlibInterfaceTest() {
 
     /**
      * @tc.number     : ACTS_ZlibInterfaceTest_02
-     * @tc.name       : actsZlibInterfaceTest02
+     * @tc.name       : ActsZlibInterfaceTest02
      * @tc.desc       : test getOriginalSize 401
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsZlibInterfaceTest02', 0, async function (done) {
+    it('ActsZlibInterfaceTest02', 0, async function (done) {
         console.info("==================ACTS_ZlibInterfaceTest_02 start==================");
         try {
             zlib.getOriginalSize(123).then((data: number) => {
@@ -125,13 +125,13 @@ export default function ActsZlibInterfaceTest() {
 
     /**
      * @tc.number     : ACTS_ZlibInterfaceTest_03
-     * @tc.name       : actsZlibInterfaceTest03
+     * @tc.name       : ActsZlibInterfaceTest03
      * @tc.desc       : test getOriginalSize 900001
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsZlibInterfaceTest03', 0, async function (done) {
+    it('ActsZlibInterfaceTest03', 0, async function (done) {
         console.info("==================ACTS_ZlibInterfaceTest_03 start==================");
         let compressedFile = filesDir + '/not_found.zip';
         try {
@@ -154,13 +154,13 @@ export default function ActsZlibInterfaceTest() {
 
     /**
      * @tc.number     : ACTS_ZlibInterfaceTest_04
-     * @tc.name       : actsZlibInterfaceTest04
+     * @tc.name       : ActsZlibInterfaceTest04
      * @tc.desc       : test getOriginalSize 900003
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsZlibInterfaceTest04', 0, async function (done) {
+    it('ActsZlibInterfaceTest04', 0, async function (done) {
         console.info("==================ACTS_ZlibInterfaceTest_04 start==================");
         let compressedFile = filesDir + '/test.txt';
         try {
@@ -183,13 +183,13 @@ export default function ActsZlibInterfaceTest() {
 
     /**
      * @tc.number     : ACTS_ZlibInterfaceTest_05
-     * @tc.name       : actsZlibInterfaceTest05
+     * @tc.name       : ActsZlibInterfaceTest05
      * @tc.desc       : test compressFiles
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsZlibInterfaceTest05', 0, async function (done) {
+    it('ActsZlibInterfaceTest05', 0, async function (done) {
         console.info("==================ACTS_ZlibInterfaceTest_05 start==================");
         let inFile = filesDir + '/test.txt';
         let inFile2 = filesDir + '/test2.txt';
@@ -220,13 +220,13 @@ export default function ActsZlibInterfaceTest() {
 
     /**
      * @tc.number     : ACTS_ZlibInterfaceTest_06
-     * @tc.name       : actsZlibInterfaceTest06
+     * @tc.name       : ActsZlibInterfaceTest06
      * @tc.desc       : test compressFiles 401
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsZlibInterfaceTest06', 0, async function (done) {
+    it('ActsZlibInterfaceTest06', 0, async function (done) {
         console.info("==================ACTS_ZlibInterfaceTest_06 start==================");
         let options: zlib.Options = {
             level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
@@ -253,13 +253,13 @@ export default function ActsZlibInterfaceTest() {
 
     /**
      * @tc.number     : ACTS_ZlibInterfaceTest_07
-     * @tc.name       : actsZlibInterfaceTest07
+     * @tc.name       : ActsZlibInterfaceTest07
      * @tc.desc       : test compressFiles 900001
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsZlibInterfaceTest07', 0, async function (done) {
+    it('ActsZlibInterfaceTest07', 0, async function (done) {
         console.info("==================ACTS_ZlibInterfaceTest_07 start==================");
         let inFile = filesDir + '/not_found.txt';
         let inFile2 = filesDir + '/not_found2.txt';
@@ -290,13 +290,13 @@ export default function ActsZlibInterfaceTest() {
 
     /**
      * @tc.number     : ACTS_ZlibInterfaceTest_08
-     * @tc.name       : actsZlibInterfaceTest08
+     * @tc.name       : ActsZlibInterfaceTest08
      * @tc.desc       : test compressFiles 900002
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsZlibInterfaceTest08', 0, async function (done) {
+    it('ActsZlibInterfaceTest08', 0, async function (done) {
         console.info("==================ACTS_ZlibInterfaceTest_08 start==================");
         let inFile = filesDir + '/test.txt';
         let inFile2 = filesDir + '/test2.txt';
