@@ -349,7 +349,7 @@ export class KeyboardDelegate {
 
         var config = {
             name: this.windowName,
-            windowType: this.WINDOW_TYPE_INPUT_METHOD_FLOAT,
+            windowType: windowManager.WindowType.TYPE_INPUT_METHOD,
             cts: this.mContext
         };
 
