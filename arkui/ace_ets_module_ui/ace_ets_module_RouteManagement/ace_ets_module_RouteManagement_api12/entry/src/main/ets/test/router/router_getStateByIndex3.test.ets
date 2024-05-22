@@ -66,7 +66,7 @@ export default function router_getStateByIndex3() {
 
       let text1 = getInspectorByKey('router_getStateByIndex3_text');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('index=2;name=router_getStateByIndex3;path=MainAbility/pages/router/;params="";');
+      expect(Obj1.$attrs.content).assertEqual('index=2;name=router_getStateByIndex3;path=MainAbility/pages/router/;params={};');
 
       console.info('[router_getStateByIndex3_0100] END');
       done();
