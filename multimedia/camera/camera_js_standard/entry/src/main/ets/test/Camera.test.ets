@@ -29,6 +29,7 @@ import cameraEnumTest from './CameraEnumTest.test.ets'
 import cameraVideoSuperStabilizationTest from './CameraVideoSuperStabilizationTest.test.ets'
 import cameraTorchTest from './CameraTorchTest.test.ets'
 import cameraPickerPc from './CameraPickerPc.test'
+import cameraSecureSessionTest from './CameraSecureSessionTest.test.ets'
 import call from  '@ohos.telephony.call'
 let voice = call.hasVoiceCapability()
 let TAG = 'CameraModuleTest: '
@@ -50,6 +51,7 @@ export default function cameraKit() {
     cameraPreconfigTest()
     cameraEnumTest()
     cameraTorchTest()
+    cameraSecureSessionTest()
   }else{
     cameraPickerPc()
   }
