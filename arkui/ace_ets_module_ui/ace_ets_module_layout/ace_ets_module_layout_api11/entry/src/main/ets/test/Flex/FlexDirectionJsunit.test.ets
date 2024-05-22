@@ -48,7 +48,7 @@ export default function flexDirectionJsunit(){
 
     it('flexDirection_0100', 0, async function (done) {
       console.info('flexDirection_0100 START');
-      let strJson = getInspectorByKey('Row');
+      let strJson = getInspectorByKey('flexDirection');
       console.info("flexDirection_0100 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("flexDirection_0100 component obj is: " + JSON.stringify(obj));
@@ -60,7 +60,7 @@ export default function flexDirectionJsunit(){
 
     it('flexDirection_0200', 0, async function (done) {
       console.info('flexDirection_0200 START');
-      let strJson = getInspectorByKey('Row');
+      let strJson = getInspectorByKey('flexDirection');
       console.info("flexDirection_0200 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("flexDirection_0200 component obj is: " + JSON.stringify(obj));
@@ -138,7 +138,7 @@ export default function flexDirectionJsunit(){
         console.log("flexDirection_0700 change component data error: " + err.message);
       }
       await Utils.sleep(3000);
-      let strJsonNew = getInspectorByKey('Row');
+      let strJsonNew = getInspectorByKey('flexDirection');
       let objNew = JSON.parse(strJsonNew);
       console.info("flexDirection_0700 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.width).assertEqual('40.00%');
