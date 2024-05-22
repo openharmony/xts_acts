@@ -88,7 +88,7 @@ export default function textInputCaretStyleTest() {
       console.info('[' + tagName + '] Text caretstyle is: ' + JSON.stringify(obj.$attrs.caretStyle));
 
       let objcaretStyle = JSON.parse(obj.$attrs.caretStyle);
-      expect(objcaretStyle.width).assertEqual('1.50vp');
+      expect(objcaretStyle.width).assertEqual('2.00vp');
       console.info('[' + tagName + '] END ===========================');
       done();
     });
@@ -175,7 +175,7 @@ export default function textInputCaretStyleTest() {
       console.info('[' + tagName + '] Text caretstyle is: ' + JSON.stringify(obj.$attrs.caretStyle));
 
       let objcaretStyle = JSON.parse(obj.$attrs.caretStyle);
-      expect(objcaretStyle.width).assertEqual('1.50vp');
+      expect(objcaretStyle.width).assertEqual('2.00vp');
       console.info('[' + tagName + '] END ===========================');
       done();
     });
