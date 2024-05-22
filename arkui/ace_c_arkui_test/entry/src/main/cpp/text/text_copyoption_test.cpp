@@ -20,7 +20,7 @@ namespace ArkUICapiTest {
 static napi_value TestTextCopyOption001(napi_env env, napi_callback_info info)
 {
     NAPI_START(text, ARKUI_NODE_TEXT);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION)->value->i32, ARKUI_COPY_OPTIONS_NONE);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION)->value[PARAM_0].i32, ARKUI_COPY_OPTIONS_NONE);
     NAPI_END;
 }
 
@@ -31,7 +31,7 @@ static napi_value TestTextCopyOption002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_COPY_OPTION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION)->value->i32, ARKUI_COPY_OPTIONS_IN_APP);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION)->value[PARAM_0].i32, ARKUI_COPY_OPTIONS_IN_APP);
     NAPI_END;
 }
 
@@ -42,7 +42,7 @@ static napi_value TestTextCopyOption003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_COPY_OPTION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION)->value->i32, ARKUI_COPY_OPTIONS_LOCAL_DEVICE);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION)->value[PARAM_0].i32, ARKUI_COPY_OPTIONS_LOCAL_DEVICE);
     NAPI_END;
 }
 
@@ -53,7 +53,7 @@ static napi_value TestTextCopyOption004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_COPY_OPTION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION)->value->i32, ARKUI_COPY_OPTIONS_CROSS_DEVICE);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION)->value[PARAM_0].i32, ARKUI_COPY_OPTIONS_CROSS_DEVICE);
     NAPI_END;
 }
 
@@ -65,7 +65,7 @@ static napi_value TestTextCopyOption005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_TEXT_SHADOW, &valueItem);
     if (nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION)->value->i32, exceptionValue);
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_COPY_OPTION)->value[PARAM_0].i32, exceptionValue);
     };
     ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;

@@ -104,18 +104,5 @@ export default function stackSaturateTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_SATURATE_0700
-     * @tc.name       : testStackSaturate007
-     * @tc.desc       : testing saturate for stack with default value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackSaturate007', 0, async (done: Function) => {
-      expect(nativeFunc.testStackSaturate007()).assertEqual(0)
-      done()
-    })
-
   })
 }

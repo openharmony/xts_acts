@@ -25,7 +25,7 @@ static napi_value TestToggleFocusable001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(toggle, NODE_FOCUSABLE, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_FOCUSABLE)->value->i32, focusable);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_FOCUSABLE)->value[PARAM_0].i32, focusable);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestToggleFocusable002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(toggle, NODE_FOCUSABLE, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_FOCUSABLE)->value->i32, focusable);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_FOCUSABLE)->value[PARAM_0].i32, focusable);
     NAPI_END;
 }
 
@@ -50,7 +50,7 @@ static napi_value TestToggleFocusable003(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(toggle, NODE_FOCUSABLE, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(toggle, NODE_FOCUSABLE) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(toggle, NODE_FOCUSABLE)->value->i32, focusable);
+        ASSERT_NE(nodeAPI->getAttribute(toggle, NODE_FOCUSABLE)->value[PARAM_0].i32, focusable);
     }
     NAPI_END;
 }

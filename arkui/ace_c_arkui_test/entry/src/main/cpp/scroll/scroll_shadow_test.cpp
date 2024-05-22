@@ -27,7 +27,7 @@ static napi_value TestScrollShadow001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SHADOW, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS);
     NAPI_END;
 }
 
@@ -38,7 +38,7 @@ static napi_value TestScrollShadow002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SHADOW, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestScrollShadow003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SHADOW, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD);
     NAPI_END;
 }
 
@@ -60,7 +60,7 @@ static napi_value TestScrollShadow004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SHADOW, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG);
     NAPI_END;
 }
 
@@ -71,7 +71,7 @@ static napi_value TestScrollShadow005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SHADOW, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM);
     NAPI_END;
 }
 
@@ -82,7 +82,7 @@ static napi_value TestScrollShadow006(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SHADOW, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

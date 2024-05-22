@@ -84,11 +84,10 @@ static napi_value TestCommonAttrsTransform001(napi_env env, napi_callback_info i
     matrix432 = MATRIX4_0;
     matrix433 = MATRIX4_1;
 
-    ArkUI_NumberValue value_second[] = {
-        {.f32 = matrix400}, {.f32 = matrix401}, {.f32 = matrix402}, {.f32 = matrix403},
-        {.f32 = matrix410}, {.f32 = matrix411}, {.f32 = matrix412}, {.f32 = matrix413},
-        {.f32 = matrix420}, {.f32 = matrix421}, {.f32 = matrix422}, {.f32 = matrix423},
-        {.f32 = matrix430}, {.f32 = matrix431}, {.f32 = matrix432}, {.f32 = matrix433}};
+    ArkUI_NumberValue value_second[] = {{.f32 = matrix400}, {.f32 = matrix401}, {.f32 = matrix402}, {.f32 = matrix403},
+                                        {.f32 = matrix410}, {.f32 = matrix411}, {.f32 = matrix412}, {.f32 = matrix413},
+                                        {.f32 = matrix420}, {.f32 = matrix421}, {.f32 = matrix422}, {.f32 = matrix423},
+                                        {.f32 = matrix430}, {.f32 = matrix431}, {.f32 = matrix432}, {.f32 = matrix433}};
     ArkUI_AttributeItem value_second_item = {value_second, sizeof(value_second) / sizeof(ArkUI_NumberValue)};
     ret = nodeAPI->setAttribute(transform, NODE_TRANSFORM, &value_second_item);
     ASSERT_EQ(ret, SUCCESS);
@@ -126,11 +125,10 @@ static napi_value TestCommonAttrsTransform001(napi_env env, napi_callback_info i
     matrix432 = MATRIX4_0;
     matrix433 = MATRIX4_1;
 
-    ArkUI_NumberValue value_third[] = {
-        {.f32 = matrix400}, {.f32 = matrix401}, {.f32 = matrix402}, {.f32 = matrix403},
-        {.f32 = matrix410}, {.f32 = matrix411}, {.f32 = matrix412}, {.f32 = matrix413},
-        {.f32 = matrix420}, {.f32 = matrix421}, {.f32 = matrix422}, {.f32 = matrix423},
-        {.f32 = matrix430}, {.f32 = matrix431}, {.f32 = matrix432}, {.f32 = matrix433}};
+    ArkUI_NumberValue value_third[] = {{.f32 = matrix400}, {.f32 = matrix401}, {.f32 = matrix402}, {.f32 = matrix403},
+                                       {.f32 = matrix410}, {.f32 = matrix411}, {.f32 = matrix412}, {.f32 = matrix413},
+                                       {.f32 = matrix420}, {.f32 = matrix421}, {.f32 = matrix422}, {.f32 = matrix423},
+                                       {.f32 = matrix430}, {.f32 = matrix431}, {.f32 = matrix432}, {.f32 = matrix433}};
     ArkUI_AttributeItem value_third_item = {value_third, sizeof(value_third) / sizeof(ArkUI_NumberValue)};
     ret = nodeAPI->setAttribute(transform, NODE_TRANSFORM, &value_third_item);
     ASSERT_EQ(ret, SUCCESS);

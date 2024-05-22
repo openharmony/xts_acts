@@ -25,7 +25,7 @@ static napi_value TestSwiperDisplayCount001(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT)->value->i32, displayCount);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT)->value[PARAM_0].i32, displayCount);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestSwiperDisplayCount002(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT)->value->i32, displayCount);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT)->value[PARAM_0].i32, displayCount);
     NAPI_END;
 }
 
@@ -50,20 +50,11 @@ static napi_value TestSwiperDisplayCount003(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT)->value->i32, expectCode);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT)->value[PARAM_0].i32, expectCode);
     NAPI_END;
 }
 
 static napi_value TestSwiperDisplayCount004(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    int32_t displayCount = 1;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT)->value->i32, displayCount);
-    NAPI_END;
-}
-
-static napi_value TestSwiperDisplayCount005(napi_env env, napi_callback_info info)
 {
     NAPI_START(swiper, ARKUI_NODE_SWIPER);
     int32_t displayCount = 0;
@@ -72,7 +63,7 @@ static napi_value TestSwiperDisplayCount005(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT)->value->i32, expectCode);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISPLAY_COUNT)->value[PARAM_0].i32, expectCode);
     NAPI_END;
 }
 

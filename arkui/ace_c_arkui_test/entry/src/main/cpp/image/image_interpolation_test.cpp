@@ -28,7 +28,7 @@ static napi_value TestImageInterpolation001(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_INTERPOLATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value->i32, interpolationValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value[PARAM_0].i32, interpolationValue);
     NAPI_END;
 }
 
@@ -40,7 +40,7 @@ static napi_value TestImageInterpolation002(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_INTERPOLATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value->i32, interpolationValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value[PARAM_0].i32, interpolationValue);
     NAPI_END;
 }
 
@@ -52,7 +52,7 @@ static napi_value TestImageInterpolation003(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_INTERPOLATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value->i32, interpolationValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value[PARAM_0].i32, interpolationValue);
     NAPI_END;
 }
 
@@ -64,7 +64,7 @@ static napi_value TestImageInterpolation004(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_INTERPOLATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value->i32, interpolationValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value[PARAM_0].i32, interpolationValue);
     NAPI_END;
 }
 
@@ -77,7 +77,7 @@ static napi_value TestImageInterpolation005(napi_env env, napi_callback_info inf
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_INTERPOLATION, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value->i32, interpolationValue);
+        ASSERT_NE(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value[PARAM_0].i32, interpolationValue);
     }
 
     NAPI_END;
@@ -92,7 +92,7 @@ static napi_value TestImageInterpolation006(napi_env env, napi_callback_info inf
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_INTERPOLATION, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value->i32, interpolationValue);
+        ASSERT_NE(nodeAPI->getAttribute(image, NODE_IMAGE_INTERPOLATION)->value[PARAM_0].i32, interpolationValue);
     }
 
     NAPI_END;

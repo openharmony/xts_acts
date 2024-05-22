@@ -29,13 +29,39 @@ export default function scrollScrollBarColorTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLBARCOLOR_0100
      * @tc.name       : testScrollScrollBarColor001
-     * @tc.desc       : testing scroll bar color for scroll with black color value
+     * @tc.desc       : testing scroll bar color for scroll with red color value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testScrollScrollBarColor001', 0, async (done: Function) => {
       expect(nativeFunc.testScrollScrollBarColor001()).assertEqual(0)
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLBARCOLOR_0200
+     * @tc.name       : testScrollScrollBarColor002
+     * @tc.desc       : testing scroll bar color for scroll with black color value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollBarColor002', 0, async (done: Function) => {
+      expect(nativeFunc.testScrollScrollBarColor002()).assertEqual(0)
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLBARCOLOR_0300
+     * @tc.name       : testScrollScrollBarColor003
+     * @tc.desc       : testing scroll bar color for scroll with white color value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollBarColor003', 0, async (done: Function) => {
+      expect(nativeFunc.testScrollScrollBarColor003()).assertEqual(0)
       done();
     });
   })

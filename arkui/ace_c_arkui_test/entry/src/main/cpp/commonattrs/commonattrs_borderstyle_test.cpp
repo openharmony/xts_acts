@@ -24,7 +24,7 @@ static napi_value TestCommonAttrsBorderStyle001(napi_env env, napi_callback_info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_BORDER_STYLE, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_STYLE)->value->i32, ARKUI_BORDER_STYLE_SOLID);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_STYLE)->value[PARAM_0].i32, ARKUI_BORDER_STYLE_SOLID);
     NAPI_END;
 }
 
@@ -35,7 +35,7 @@ static napi_value TestCommonAttrsBorderStyle002(napi_env env, napi_callback_info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_BORDER_STYLE, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_STYLE)->value->i32, ARKUI_BORDER_STYLE_DASHED);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_STYLE)->value[PARAM_0].i32, ARKUI_BORDER_STYLE_DASHED);
     NAPI_END;
 }
 
@@ -46,7 +46,7 @@ static napi_value TestCommonAttrsBorderStyle003(napi_env env, napi_callback_info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_BORDER_STYLE, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_STYLE)->value->i32, ARKUI_BORDER_STYLE_DOTTED);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_STYLE)->value[PARAM_0].i32, ARKUI_BORDER_STYLE_DOTTED);
     NAPI_END;
 }
 

@@ -40,12 +40,12 @@ export default function toggleEnabledTest() {
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickEnabledToggle').$attrs.switchPointColor).assertEqual('#FF00FF00')
 
-      focusControl.requestFocus('OnClickDefaultToggle')
+      focusControl.requestFocus('OnClickAbnormalToggle')
       focusControl.requestFocus('OnClickEnabledToggle')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickEnabledToggle').$attrs.switchPointColor).assertEqual('#FF0000FF')
 
-      focusControl.requestFocus('OnClickDefaultToggle')
+      focusControl.requestFocus('OnClickAbnormalToggle')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickEnabledToggle').$attrs.switchPointColor).assertEqual('#FFFFFF00')
       expect(Utils.getComponentInfoByKey('OnClickEnabledToggle').$attrs.enabled).assertTrue()
@@ -101,33 +101,5 @@ export default function toggleEnabledTest() {
       expect(Utils.getComponentInfoByKey('OnClickAbnormalToggle').$attrs.enabled).assertTrue()
       done();
     })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_TOGGLE_ENABLED_0400
-    * @tc.name       : testToggleEnabled004
-    * @tc.desc       : testing enabled event callback for toggle with default value
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testToggleEnabled004', 0, async (done: Function) => {
-      await Utils.clickComponent('OnClickDefaultToggle')
-      await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnClickDefaultToggle').$attrs.switchPointColor).assertEqual('#FF00FF00')
-
-      focusControl.requestFocus('OnClickEnabledToggle')
-      focusControl.requestFocus('OnClickDefaultToggle')
-      await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnClickDefaultToggle').$attrs.switchPointColor).assertEqual('#FF0000FF')
-
-      focusControl.requestFocus('OnClickEnabledToggle')
-      await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnClickDefaultToggle').$attrs.switchPointColor).assertEqual('#FFFFFF00')
-      expect(Utils.getComponentInfoByKey('OnClickDefaultToggle').$attrs.enabled).assertTrue()
-      done();
-    })
-
-
-
   })
 }

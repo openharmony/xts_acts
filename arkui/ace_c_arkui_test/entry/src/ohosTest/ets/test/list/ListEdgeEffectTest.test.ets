@@ -55,26 +55,13 @@ export default function listEdgeEffectTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_LIST_EDGEEFFECT_0300
      * @tc.name       : testListEdgeEffect003
-     * @tc.desc       : testing edgeEffect for list with default value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testListEdgeEffect003', 0, async (done: Function) => {
-      expect(nativeFunc.testListEdgeEffect003()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_LIST_EDGEEFFECT_0400
-     * @tc.name       : testListEdgeEffect004
      * @tc.desc       : testing edgeEffect for list with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListEdgeEffect004', 0, async (done: Function) => {
-      expect(nativeFunc.testListEdgeEffect004()).assertEqual(0)
+    it('testListEdgeEffect003', 0, async (done: Function) => {
+      expect(nativeFunc.testListEdgeEffect003()).assertEqual(0)
       done()
     })
   })

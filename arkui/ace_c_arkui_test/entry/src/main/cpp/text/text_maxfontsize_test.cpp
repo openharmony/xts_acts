@@ -24,7 +24,7 @@ static napi_value TestTextMaxFontSize001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = maxFontSizeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_MAX_FONT_SIZE, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_FONT_SIZE)->value->f32, maxFontSizeValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_FONT_SIZE)->value[PARAM_0].f32, maxFontSizeValue);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -36,7 +36,7 @@ static napi_value TestTextMaxFontSize002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = maxFontSizeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_MAX_FONT_SIZE, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_FONT_SIZE)->value->f32, maxFontSizeValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_FONT_SIZE)->value[PARAM_0].f32, maxFontSizeValue);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -49,7 +49,7 @@ static napi_value TestTextMaxFontSize003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_MAX_FONT_SIZE, &valueItem);
     if (nodeAPI->getAttribute(text, NODE_TEXT_MAX_FONT_SIZE) != nullptr) {
-        ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_FONT_SIZE)->value->f32, exceptionValue);
+        ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_FONT_SIZE)->value[PARAM_0].f32, exceptionValue);
     };
 
     ASSERT_EQ(ret, SUCCESS);

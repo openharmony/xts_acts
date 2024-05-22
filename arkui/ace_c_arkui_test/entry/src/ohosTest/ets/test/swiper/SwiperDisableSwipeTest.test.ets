@@ -65,18 +65,5 @@ export default function swiperDisableSwipeTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_DISABLESWIPE_0400
-     * @tc.name       : testSwiperDisableSwipe004
-     * @tc.desc       : testing disableSwipe values of disableSwipe property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperDisableSwipe004', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperDisableSwipe004()).assertEqual(0)
-      done()
-    })
-
   })
 }

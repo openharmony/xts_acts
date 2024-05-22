@@ -25,7 +25,7 @@ static napi_value TestListWidth001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_WIDTH, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_WIDTH)->value->f32, width);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_WIDTH)->value[PARAM_0].f32, width);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestListWidth002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_WIDTH, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_WIDTH)->value->f32, width);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_WIDTH)->value[PARAM_0].f32, width);
     NAPI_END;
 }
 
@@ -50,7 +50,7 @@ static napi_value TestListWidth003(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(list, NODE_WIDTH, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(list, NODE_WIDTH) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(list, NODE_WIDTH)->value->f32, width);
+        ASSERT_NE(nodeAPI->getAttribute(list, NODE_WIDTH)->value[PARAM_0].f32, width);
     }
     NAPI_END;
 }

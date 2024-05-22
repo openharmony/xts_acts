@@ -32,7 +32,7 @@ static napi_value TestImageSaturate001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_SATURATION)->value->f32, saturateValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_SATURATION)->value[PARAM_0].f32, saturateValue);
     NAPI_END;
 }
 
@@ -40,7 +40,7 @@ static napi_value TestImageSaturate002(napi_env env, napi_callback_info info)
 {
     NAPI_START(image, ARKUI_NODE_IMAGE);
     float saturateValue = DEFAULT_VALUE;
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_SATURATION)->value->f32, saturateValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_SATURATION)->value[PARAM_0].f32, saturateValue);
     NAPI_END;
 }
 
@@ -52,7 +52,7 @@ static napi_value TestImageSaturate003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_SATURATION)->value->f32, saturateValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_SATURATION)->value[PARAM_0].f32, saturateValue);
     NAPI_END;
 }
 
@@ -64,19 +64,19 @@ static napi_value TestImageSaturate004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_SATURATION)->value->f32, saturateValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_SATURATION)->value[PARAM_0].f32, saturateValue);
     NAPI_END;
 }
 
 static napi_value TestImageSaturate005(napi_env env, napi_callback_info info)
 {
     NAPI_START(image, ARKUI_NODE_IMAGE);
-    float saturateValue = FLT_MAX;
+    float saturateValue = SIZE_50;
     ArkUI_NumberValue value[] = {{.f32 = saturateValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_SATURATION)->value->f32, saturateValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_SATURATION)->value[PARAM_0].f32, saturateValue);
     NAPI_END;
 }
 
@@ -89,7 +89,7 @@ static napi_value TestImageSaturate006(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(image, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(image, NODE_SATURATION) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(image, NODE_SATURATION)->value->f32, saturateValue);
+        ASSERT_NE(nodeAPI->getAttribute(image, NODE_SATURATION)->value[PARAM_0].f32, saturateValue);
     }
     NAPI_END;
 }
@@ -97,13 +97,13 @@ static napi_value TestImageSaturate006(napi_env env, napi_callback_info info)
 static napi_value TestImageSaturate007(napi_env env, napi_callback_info info)
 {
     NAPI_START(image, ARKUI_NODE_IMAGE);
-    float saturateValue = FLT_MAX + 1;
+    float saturateValue = SIZE_50 + PARAM_1;
     ArkUI_NumberValue value[] = {{.f32 = saturateValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(image, NODE_SATURATION) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(image, NODE_SATURATION)->value->f32, saturateValue);
+        ASSERT_NE(nodeAPI->getAttribute(image, NODE_SATURATION)->value[PARAM_0].f32, saturateValue);
     }
     NAPI_END;
 }

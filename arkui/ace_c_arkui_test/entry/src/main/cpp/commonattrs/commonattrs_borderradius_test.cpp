@@ -24,7 +24,7 @@ static napi_value TestCommonAttrsBorderRadius001(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_BORDER_RADIUS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_RADIUS)->value->f32, PARAM_2);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_RADIUS)->value[PARAM_0].f32, PARAM_2);
     NAPI_END;
 }
 
@@ -46,7 +46,7 @@ static napi_value TestCommonAttrsBorderRadius003(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_BORDER_RADIUS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_RADIUS)->value->f32, SIZE_100);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_RADIUS)->value[PARAM_0].f32, SIZE_100);
     NAPI_END;
 }
 
@@ -71,7 +71,7 @@ static napi_value TestCommonAttrsBorderRadius005(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_BORDER_RADIUS, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(row, NODE_BORDER_RADIUS)->value->f32, PARAM_NEGATIVE_10);
+    ASSERT_NE(nodeAPI->getAttribute(row, NODE_BORDER_RADIUS)->value[PARAM_0].f32, PARAM_NEGATIVE_10);
     NAPI_END;
 }
 

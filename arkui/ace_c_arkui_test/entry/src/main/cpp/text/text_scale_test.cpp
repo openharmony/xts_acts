@@ -21,8 +21,8 @@ static napi_value TestTextScale001(napi_env env, napi_callback_info info)
 {
     NAPI_START(text, ARKUI_NODE_TEXT);
     int32_t defaultValue = 1;
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SCALE)->value[PARAM_0].f32, defaultValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SCALE)->value[PARAM_1].f32, defaultValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SCALE)->value[PARAM_2].f32, defaultValue);
     NAPI_END;
 }
 
@@ -33,8 +33,8 @@ static napi_value TestTextScale002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = narrowValue}, {.f32 = narrowValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_SCALE, &valueItem);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SCALE)->value[PARAM_0].f32, narrowValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SCALE)->value[PARAM_1].f32, narrowValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SCALE)->value[PARAM_2].f32, narrowValue);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -46,8 +46,8 @@ static napi_value TestTextScale003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = boundaryValue}, {.f32 = boundaryValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_SCALE, &valueItem);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SCALE)->value[PARAM_0].f32, boundaryValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SCALE)->value[PARAM_1].f32, boundaryValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SCALE)->value[PARAM_2].f32, boundaryValue);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }

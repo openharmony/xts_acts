@@ -105,7 +105,7 @@ static napi_value TestTextAlignRules008(napi_env env, napi_callback_info info)
 {
     NAPI_START(text, ARKUI_NODE_TEXT);
     auto alignRules = OH_ArkUI_AlignmentRuleOption_Create();
-    float offset = -50 ;
+    float offset = -50;
     OH_ArkUI_AlignmentRuleOption_SetBottom(alignRules, "__container__", ARKUI_VERTICAL_ALIGNMENT_BOTTOM);
     OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(alignRules, "__container__", ARKUI_HORIZONTAL_ALIGNMENT_CENTER);
     OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(alignRules, offset);

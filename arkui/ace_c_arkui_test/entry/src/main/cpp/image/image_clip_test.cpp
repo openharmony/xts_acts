@@ -35,7 +35,7 @@ static napi_value TestImageClip001(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(image, NODE_CLIP, &value_item);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_CLIP)->value->i32, clip);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_CLIP)->value[PARAM_0].i32, clip);
     NAPI_END;
 }
 
@@ -43,7 +43,7 @@ static napi_value TestImageClip002(napi_env env, napi_callback_info info)
 {
     NAPI_START(image, ARKUI_NODE_IMAGE);
     int32_t clip = DEFAULT_VALUE;
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_CLIP)->value->i32, clip);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_CLIP)->value[PARAM_0].i32, clip);
     NAPI_END;
 }
 
@@ -56,7 +56,7 @@ static napi_value TestImageClip003(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(image, NODE_CLIP, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(image, NODE_CLIP) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(image, NODE_CLIP)->value->i32, clip);
+        ASSERT_NE(nodeAPI->getAttribute(image, NODE_CLIP)->value[PARAM_0].i32, clip);
     }
 
     NAPI_END;

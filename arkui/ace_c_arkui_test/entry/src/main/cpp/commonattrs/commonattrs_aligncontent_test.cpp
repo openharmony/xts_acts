@@ -24,7 +24,7 @@ static napi_value TestCommonAttrsAlignContent001(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_TOP_START);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_TOP_START);
     NAPI_END;
 }
 
@@ -35,7 +35,7 @@ static napi_value TestCommonAttrsAlignContent002(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_TOP);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_TOP);
     NAPI_END;
 }
 
@@ -46,7 +46,7 @@ static napi_value TestCommonAttrsAlignContent003(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_TOP_END);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_TOP_END);
     NAPI_END;
 }
 
@@ -57,7 +57,7 @@ static napi_value TestCommonAttrsAlignContent004(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_START);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_START);
     NAPI_END;
 }
 
@@ -68,7 +68,7 @@ static napi_value TestCommonAttrsAlignContent005(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_CENTER);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_CENTER);
     NAPI_END;
 }
 
@@ -79,7 +79,7 @@ static napi_value TestCommonAttrsAlignContent006(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_END);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_END);
     NAPI_END;
 }
 
@@ -90,7 +90,7 @@ static napi_value TestCommonAttrsAlignContent007(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_BOTTOM_START);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_BOTTOM_START);
     NAPI_END;
 }
 
@@ -101,7 +101,7 @@ static napi_value TestCommonAttrsAlignContent008(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_BOTTOM);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_BOTTOM);
     NAPI_END;
 }
 
@@ -112,7 +112,7 @@ static napi_value TestCommonAttrsAlignContent009(napi_env env, napi_callback_inf
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_BOTTOM_END);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_BOTTOM_END);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

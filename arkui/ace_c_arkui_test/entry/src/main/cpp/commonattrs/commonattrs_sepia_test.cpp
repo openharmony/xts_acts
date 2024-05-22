@@ -31,7 +31,7 @@ static napi_value TestCommonAttrsSepia001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SEPIA, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SEPIA)->value->f32, MIN_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SEPIA)->value[PARAM_0].f32, MIN_VALUE);
     NAPI_END;
 }
 
@@ -43,7 +43,7 @@ static napi_value TestCommonAttrsSepia002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SEPIA, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SEPIA)->value->f32, sepia);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SEPIA)->value[PARAM_0].f32, sepia);
     NAPI_END;
 }
 
@@ -55,7 +55,7 @@ static napi_value TestCommonAttrsSepia003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SEPIA, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SEPIA)->value->f32, sepia);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SEPIA)->value[PARAM_0].f32, sepia);
     NAPI_END;
 }
 
@@ -67,7 +67,7 @@ static napi_value TestCommonAttrsSepia004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SEPIA, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SEPIA)->value->f32, sepia);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SEPIA)->value[PARAM_0].f32, sepia);
     NAPI_END;
 }
 
@@ -79,7 +79,7 @@ static napi_value TestCommonAttrsSepia005(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(stack, NODE_SEPIA, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_SEPIA) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SEPIA)->value->f32, MIN_ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SEPIA)->value[PARAM_0].f32, MIN_ABNORMAL_VALUE);
     }
 
     NAPI_END;
@@ -93,7 +93,7 @@ static napi_value TestCommonAttrsSepia006(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(stack, NODE_SEPIA, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_SEPIA) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SEPIA)->value->f32, MAX_ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SEPIA)->value[PARAM_0].f32, MAX_ABNORMAL_VALUE);
     }
 
     NAPI_END;
