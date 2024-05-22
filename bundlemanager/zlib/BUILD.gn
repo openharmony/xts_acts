@@ -21,6 +21,7 @@ group("zlib") {
       "actszlibchecksumtest:ActsChecksumTest",
       "actszlibndktest:ActsZlibNdkTest",
       "actszlibtest:ActsZlibTest",
+      "actszlibinterfacetest:ActsZlibInterfaceTest",
     ]
   }
 }
