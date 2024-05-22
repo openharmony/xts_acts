@@ -1,9 +1,9 @@
 {
-    "description": "Configuration for resourceschedule js api Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "300000",
-        "shell-timeout": "300000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.resourceschedule.taskmgr.js.function",
         "package-name": "ohos.acts.resourceschedule.taskmgr.js.function"
     },
@@ -14,18 +14,11 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
-                "remount",
-                "mkdir /data/test"
-            ]
-        },
-        {
-            "type": "ShellKit",
-            "teardown-command": [
-                "rm -rf data/test"
+                "power-shell wakeup",
+                "power-shell setmode 602"
             ]
         }
     ]
