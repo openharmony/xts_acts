@@ -67,7 +67,7 @@ export default class SecondAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', '%{public}s', 'secondAbility terminateSelf errCode:' + JSON.stringify(err.code) +
         'errMessage:' + JSON.stringify(err.message));
       })
-    }, 3000);
+    }, 300);
   }
 
   onBackground() {
