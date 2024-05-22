@@ -12,26 +12,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import hilog from '@ohos.hilog';
-import window from '@ohos.window';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
-import {GlobalContext} from '../test/GlobalContext.test';
-import UIAbility from '@ohos.app.ability.UIAbility';
+import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-
+import { GlobalContext } from '../test/GlobalContext.test';
 
 export default class TestAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
     hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
-    let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-    abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-    let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;
-    abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
@@ -51,8 +50,6 @@ export default class TestAbility extends UIAbility {
         JSON.stringify(data) ?? '');
     });
     GlobalContext.getContext().setObject("context",this.context);
-
-
   }
 
   onWindowStageDestroy() {
@@ -67,4 +64,3 @@ export default class TestAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onBackground');
   }
 }
-
