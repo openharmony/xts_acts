@@ -24,7 +24,6 @@
 #include <multimedia/image_framework/image/pixelmap_native.h>
 #include <multimedia/image_framework/image/image_packer_native.h>
 #include <multimedia/image_framework/image/image_source_native.h>
-#include "securec.h"
 
 #undef LOG_DOMAIN
 #undef LOG_TAG
@@ -44,6 +43,23 @@
 
 OH_PixelmapNative *TEST_PIXELMAP = nullptr;
 const char *LOG_APP = "ImageNDK";
+
+static void DataCopy(void *dest, int32_t dest_size, const void *src, int32_t n) {
+    if (dest == nullptr || src == nullptr) {
+        return;
+    }
+
+    if (n > dest_size) {
+        return;
+    }
+
+    char *d = static_cast<char *>(dest);
+    const char *s = static_cast<const char *>(src);
+
+    while (n--) {
+        *d++ = *s++;
+    }
+}
 
 static void OHLog(const char *module, const char *format, ...) {
 
@@ -1664,7 +1680,7 @@ static napi_value PackingOptionsSetMimeType(napi_env env, napi_callback_info inf
 
     Image_MimeType tmpMineType;
     tmpMineType.data = new (std::nothrow) char[MAX_BUFFER_SIZE];
-    memcpy_s(tmpMineType.data, MAX_BUFFER_SIZE, mineType, mineTypeSize);
+    DataCopy(tmpMineType.data, MAX_BUFFER_SIZE, mineType, mineTypeSize);
     tmpMineType.data[mineTypeSize] = '\0';
 
     tmpMineType.size = mineTypeSize;
