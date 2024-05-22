@@ -28,5 +28,6 @@ ohos_js_app_suite("image_ndk_hap") {
   hap_name = "ActsImageNdkTest"
   subsystem_name = "multimedia"
   part_name = "image_framework"
+  external_deps = [ "c_utils:utils" ]
   deps = [ ":image_ndk_main" ]
 }
