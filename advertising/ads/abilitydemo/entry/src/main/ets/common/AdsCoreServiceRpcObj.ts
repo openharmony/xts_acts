@@ -17,6 +17,7 @@ import Logger from '../log/HiAdLog';
 
 const TAG = 'AdsCoreSEARpcObj';
 const REQUEST_CODE: number = 1; // 请求单广告位广告
+const PARSE_RESP: number = 2;
 
 /**
  * AdsCoreService返回给调用方的rpc对象，用于调用方向service发送数据
@@ -28,9 +29,8 @@ export default class AdsCoreServiceRpcObj extends rpc.RemoteObject {
 
   // 接收客户端传递过来的消息处理，以及将处理的结果返回给客户端
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
-    if (code === REQUEST_CODE) {
-      let callingUid = data.readInt();
-      Logger.i(TAG, `ad request adrequest callinguid is : ${callingUid}`);
+    if (code === REQUEST_CODE || code === PARSE_RESP) {
+
       let remoteObject: rpc.IRemoteObject = data.readRemoteObject();
       Logger.i(TAG, `ad request remoteObject is : ${remoteObject}`);
       let adrequest: string = data.readString();
