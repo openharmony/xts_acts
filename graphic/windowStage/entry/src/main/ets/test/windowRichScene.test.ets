@@ -97,19 +97,16 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testFindWindow_WinName_Is_Exist';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = 'findWindow_Test_001'
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let win: ohosWindow.Window | void;
-      win = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testFindWindow_WinName_Is_Exist').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
-        let windowClass: ohosWindow.Window = ohosWindow.findWindow('findWindow_Test_001');
+        let windowClass: ohosWindow.Window = ohosWindow.findWindow('testFindWindow_WinName_Is_Exist');
         console.log(msgStr + 'findWindow windowClass: ' + JSON.stringify(windowClass))
         expect(!!windowClass).assertTrue();
         await (win as ohosWindow.Window).destroyWindow()
@@ -206,16 +203,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testFind_Invoke_Interface_Continuously';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = 'find_Test_001'
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let win: ohosWindow.Window | void;
-      win = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('find_Test_001').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         let windowClass: ohosWindow.Window | void;
@@ -366,16 +360,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testShowWindow_Window_NotExist';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "showWindow_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testShowWindow_Window_NotExist').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       (windowClass as ohosWindow.Window).showWindow().then(() => {
@@ -400,16 +391,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testDestroyWindow_Destory_Same_Win_Type';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "destroyWindow_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testDestroyWindow_Destory_Same_Win_Type').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       (windowClass as ohosWindow.Window).destroyWindow((err) => {
@@ -440,16 +428,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testGetWindowProperties_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "getWindowProperties_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testGetWindowProperties_Invoke_Interface_Two_Times').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       try {
         let properties = (windowClass as ohosWindow.Window).getWindowProperties();
@@ -482,16 +467,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testGetWindowAvoidArea_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "getWindowAvoidArea_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testGetWindowAvoidArea_Invoke_Interface_Two_Times').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       let type = ohosWindow.AvoidAreaType.TYPE_SYSTEM;
       try {
@@ -526,16 +508,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testGetWindowAvoidArea_Invalid_Parameter';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "getWindowAvoidArea_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testGetWindowAvoidArea_Invalid_Parameter').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       try {
         let avoidArea: ohosWindow.AvoidArea = (windowClass as ohosWindow.Window).getWindowAvoidArea(888);
@@ -558,16 +537,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setWindowLayoutFullScreen_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       let isLayoutFullScreen = true;
       try {
@@ -617,16 +593,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetWindowLayoutFullScreen_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setWindowLayoutFullScreen_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetWindowLayoutFullScreen_Destroyed_Win').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       let isLayoutFullScreen = true;
       try {
@@ -993,16 +966,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetWindowKeepScreenOn_Window_State_Abnorma';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setWindowKeepScreenOn_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetWindowKeepScreenOn_Window_State_Abnorma').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       try {
@@ -1031,16 +1001,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetWindowKeepScreenOn_Multiple_Calls';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setWindowKeepScreenOn_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetWindowKeepScreenOn_Multiple_Calls').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       try {
         await (windowClass as ohosWindow.Window).setWindowKeepScreenOn(false).then(() => {
@@ -1089,16 +1056,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetWindowPrivacyMode_Window_State_Abnorma';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setWindowPrivacyMode_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetWindowPrivacyMode_Window_State_Abnorma').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       try {
@@ -1127,16 +1091,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetWindowPrivacyMode_Window_Multiple_Calls';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setWindowPrivacyMode_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetWindowPrivacyMode_Window_Multiple_Calls').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       try {
         await (windowClass as ohosWindow.Window).setWindowPrivacyMode(true).then(() => {
@@ -1183,16 +1144,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetWindowTouchable_Promise_Form';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setWindowTouchable_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetWindowTouchable_Promise_Form').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       try {
         await (windowClass as ohosWindow.Window).setWindowTouchable(false).then(() => {
@@ -1241,16 +1199,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetWindowTouchable_Window_NotExist';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setWindowTouchable_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass =  await windowStage.createSubWindow('testSetWindowTouchable_Window_NotExist').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       try {
@@ -1268,83 +1223,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1090
-     * @tc.name      : testSetAspectRatio_Non_Main_Win
-     * @tc.desc      : Set the proportion of the window content layout
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testSetAspectRatio_Non_Main_Win', 0, async (done: Function) => {
-      let caseName: string = 'testSetAspectRatio_Non_Main_Win';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowId: string = "setAspectRatio_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
-      let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      })
-      expect(!!windowClass).assertTrue();
-      try {
-        let ratio = 1.0;
-        await (windowClass as ohosWindow.Window).setAspectRatio(ratio).then(() => {
-          console.info(msgStr + 'Succeeded in setting aspect ratio of window.');
-          expect().assertFail();
-          done();
-        }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the aspect ratio of window. Cause:' + JSON.stringify(err));
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the aspect ratio of window. Cause: ' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300004);
-        await (windowClass as ohosWindow.Window).destroyWindow();
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0990
-     * @tc.name      : testResetAspectRatio_Non_Main_Win
-     * @tc.desc      : Unset the proportion of the window content layout
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testResetAspectRatio_Non_Main_Win', 0, async (done: Function) => {
-      let caseName: string = 'testResetAspectRatio_Non_Main_Win';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowId: string = "resetAspectRatio_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
-      let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      })
-      expect(!!windowClass).assertTrue();
-      try {
-        await (windowClass as ohosWindow.Window).resetAspectRatio().then(() => {
-          console.info(msgStr + 'Succeeded in resetting aspect ratio of window.');
-          expect().assertFail();
-          done();
-        }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to reset the aspect ratio of window. Cause:' + JSON.stringify(err));
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to reset the aspect ratio of window. catch Cause: ' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300004);
-        await (windowClass as ohosWindow.Window).destroyWindow();
-        done();
-      }
-    })
-    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0560
      * @tc.name      : testGetProperties_Invoke_Interface_Two_Times
      * @tc.desc      : Gets the properties of the current window Continuous call interface
@@ -1356,16 +1234,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testGetProperties_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "getProperties_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testGetProperties_Invoke_Interface_Two_Times').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).getProperties().then((data) => {
         console.info(msgStr + 'Succeeded in obtaining the window properties. Data: ' + JSON.stringify(data));
@@ -1402,16 +1277,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testGetProperties_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "getProperties_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testGetProperties_Destroyed_Win').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       await (windowClass as ohosWindow.Window).getProperties().then((data) => {
@@ -1434,16 +1306,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testGetAvoidArea_Invoke_Interfaca_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "getAvoidArea_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testGetAvoidArea_Invoke_Interfaca_Two_Times').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).getAvoidArea(ohosWindow.AvoidAreaType.TYPE_SYSTEM).then((data) => {
         console.info('Succeeded in obtaining the area. Data:' + JSON.stringify(data));
@@ -1482,16 +1351,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testGetAvoidArea_Invalid_Parameter';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "getAvoidArea_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testGetAvoidArea_Invalid_Parameter').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).getAvoidArea(6).then(async (data) => {
         console.info('Succeeded in obtaining the area. Data:' + JSON.stringify(data));
@@ -1516,16 +1382,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testGetAvoidArea_Type_CutOut_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "getAvoidArea_Test_003"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testGetAvoidArea_Type_CutOut_Destroyed_Win').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       await (windowClass as ohosWindow.Window).getAvoidArea(ohosWindow.AvoidAreaType.TYPE_CUTOUT).then((data) => {
@@ -1550,16 +1413,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetFullScreen_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setFullScreen_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetFullScreen_Invoke_Interface_Two_Times').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).setFullScreen(true).catch((err: BusinessError) => {
         console.error('Failed to enable the full-screen mode. Cause: ' + JSON.stringify(err));
@@ -1594,16 +1454,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetFullScreen_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setFullScreen_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetFullScreen_Destroyed_Win').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       await (windowClass as ohosWindow.Window).setFullScreen(true).then(() => {
@@ -1627,16 +1484,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetLayoutFullScreen_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setLayoutFullScreen_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetLayoutFullScreen_Invoke_Interface_Two_Times').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).setLayoutFullScreen(true).catch((err: BusinessError) => {
         console.error('Failed to enable the full-screen mode. Cause: ' + JSON.stringify(err));
@@ -1671,16 +1525,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetLayoutFullScreen_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setLayoutFullScreen_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetLayoutFullScreen_Destroyed_Win').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       await (windowClass as ohosWindow.Window).setLayoutFullScreen(true).then(() => {
@@ -1704,16 +1555,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetSystemBarEnable_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setSystemBarEnable_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetSystemBarEnable_Invoke_Interface_Two_Times').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).setSystemBarEnable([]).catch((err: BusinessError) => {
         console.error('Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
@@ -1748,16 +1596,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetSystemBarEnable_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setSystemBarEnable_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetSystemBarEnable_Destroyed_Win').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       (windowClass as ohosWindow.Window).setSystemBarEnable([]).then(() => {
@@ -1983,16 +1828,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testIsWindowShowing_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "isWindowShowing_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testIsWindowShowing_Invoke_Interface_Two_Times').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       try {
         let data = (windowClass as ohosWindow.Window).isWindowShowing();
@@ -2027,16 +1869,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetUIContent_Window_State_Abnorma_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setUIContent_Test_001"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetUIContent_Window_State_Abnorma_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).destroyWindow();
       try {
@@ -2069,16 +1908,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetUIContent_Multiple_Calls';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setUIContent_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetUIContent_Multiple_Calls').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       await (windowClass as ohosWindow.Window).setUIContent('MainAbility/pages/second/pageTwo')
         .catch((err: BusinessError) => {
@@ -2145,16 +1981,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetWindowSystemBarEnable_Window_State_Abnorma';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "setWindowSystemBarEnable_Test_002"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testSetWindowSystemBarEnable_Window_State_Abnorma').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       let names: Array<'status' | 'navigation'> = ['status', 'navigation'];
       await (windowClass as ohosWindow.Window).destroyWindow();

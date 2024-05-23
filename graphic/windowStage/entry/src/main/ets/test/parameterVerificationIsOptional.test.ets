@@ -94,13 +94,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
   describe('windowInterface_optionalParameter_test', () => {
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG: boolean = true;
-    beforeAll(async () => {
-      // 点击掉USB用于的弹窗
-      let msgStr: string = 'USB用于的弹窗';
-      await buttonClick('取消', msgStr).catch(async (err: BusinessError) => {
-        console.info(msgStr + err);
-      })
-    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2360
      * @tc.name      : testTouchOutsideBaseTest
@@ -153,24 +146,17 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testWindowOffTouchOutsideCancelAll';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = 'touchOutside01';
-      let windowId_two: string = 'touchOutside001';
       let num: number = 0
       let firstListenFlag: boolean = false
       let secondListenFlag: boolean = false
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
-      let windowConfig_two: ohosWindow.Configuration = {
-        name: windowId_two, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let tempWnd: ohosWindow.Window | void;
       let tempWnd_two: ohosWindow.Window | void;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
+      tempWnd = await windowStage.createSubWindow('touchOutside01').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+
       expect(!!tempWnd).assertTrue();
       await (tempWnd as ohosWindow.Window).loadContent('MainAbility/pages/second/second')
         .catch((err: BusinessError) => {
@@ -193,8 +179,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         expect().assertFail();
         done();
       });
-      tempWnd_two = await ohosWindow.createWindow(windowConfig_two).catch((err: BusinessError) => {
-        console.log(msgStr + 'createWindow tempWnd_two failed');
+      tempWnd_two = await windowStage.createSubWindow('touchOutside001').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
@@ -289,19 +275,12 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         secondListenFlag = true
         return secondListenFlag
       }
-
-      let windowId: string = 'touchOutside02';
-      let windowId_two: string = 'touchOutside002';
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
-      let windowConfig_two: ohosWindow.Configuration = {
-        name: windowId_two, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let tempWnd: ohosWindow.Window | void;
       let tempWnd_two: ohosWindow.Window | void;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
+      tempWnd = await windowStage.createSubWindow('touchOutside02').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
       expect(!!tempWnd).assertTrue();
       await (tempWnd as ohosWindow.Window).loadContent('MainAbility/pages/second/second')
@@ -317,8 +296,10 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
       });
-      tempWnd_two = await ohosWindow.createWindow(windowConfig_two).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
+      tempWnd_two = await windowStage.createSubWindow('touchOutside002').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
       expect(!!tempWnd_two).assertTrue();
       await (tempWnd_two as ohosWindow.Window).loadContent('MainAbility/pages/second/pageOne')
@@ -404,16 +385,14 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let num: number = 0
       let firstListenFlag: boolean = false
       let secondListenFlag: boolean = false
-      let baseWndType: number = ohosWindow.WindowType.TYPE_FLOAT;
-      let windowId: string = 'window_off_windowSizeChange_Test_001';
       console.log(msgStr + 'begin');
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: baseWndType, ctx: context
-      };
       let tempWnd: ohosWindow.Window | void;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
+      tempWnd = await windowStage.createSubWindow('testWindow_off_WindowSizeChange_No_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       (tempWnd as ohosWindow.Window).on('windowSizeChange', () => {
         console.info(msgStr + "first listener trigger");
@@ -429,9 +408,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
       });
       console.log(msgStr + 'tempWnd.show success');
-      await (tempWnd as ohosWindow.Window).setWindowMode(102).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.setWindowMode 102', TRUE_FLAG, done);
-      });
       await (tempWnd as ohosWindow.Window).resize(200, 600).catch(async (err: BusinessError) => {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
         expect().assertFail();
@@ -449,9 +425,12 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done();
       })
       console.error(msgStr + 'num : ' + num);
-      await sleep(500);
+      await sleep(900);
+      await (tempWnd as ohosWindow.Window).destroyWindow();
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
-        await (tempWnd as ohosWindow.Window).destroyWindow();
+        done();
+      }else {
+        expect().assertFail();
         done();
       }
     })
@@ -469,18 +448,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       console.log(msgStr + 'begin');
       let firstListenFlag = false
       let secondListenFlag = false
-      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
-      let windowId = 'window_off_windowSizeChange_Test_002';
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: baseWndType, ctx: context
-      };
-
-      let tempWnd: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig)
-        .catch((err: BusinessError) => {
-          unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
-        });
+      let tempWnd: ohosWindow.Window | void = await windowStage.createSubWindow('testWindow_off_WindowSizeChange_SecondCall_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
-
       let firstCall: Callback<ohosWindow.Size> = () => {
         console.log(msgStr + "first listener trigger")
         firstListenFlag = true
@@ -497,9 +471,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
       });
       console.log(msgStr + 'tempWnd.show success');
-      await (tempWnd as ohosWindow.Window).setWindowMode(102).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.setWindowMode 102', TRUE_FLAG, done);
-      });
       await (tempWnd as ohosWindow.Window).resize(200, 600).catch(async (err: BusinessError) => {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
         expect().assertFail();
@@ -516,15 +487,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         await (tempWnd as ohosWindow.Window).destroyWindow();
         done();
       })
-      await sleep(500);
+      await sleep(900);
+      (tempWnd as ohosWindow.Window).off('windowSizeChange');
+      await (tempWnd as ohosWindow.Window).destroyWindow();
       if (!firstListenFlag && secondListenFlag) {
-        (tempWnd as ohosWindow.Window).off('windowSizeChange');
-        await (tempWnd as ohosWindow.Window).destroyWindow();
         done();
       } else {
-        (tempWnd as ohosWindow.Window).off('windowSizeChange');
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect(TRUE_FLAG).assertFail();
+        expect().assertFail();
         done();
       }
     })
@@ -574,11 +543,14 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (tempWnd as ohosWindow.Window).setSystemBarEnable([]).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([navigation])', TRUE_FLAG, done);
       });
-      await sleep(500);
+      await sleep(800);
       await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', TRUE_FLAG, done);
       });
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
+        done();
+      }else {
+        expect().assertFail();
         done();
       }
     })
@@ -636,162 +608,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done();
       } else {
         (tempWnd as ohosWindow.Window).off('avoidAreaChange');
-        expect(TRUE_FLAG).assertFail();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2260
-     * @tc.name      : testWindow_off_screenshot_AllListening_LogOut
-     * @tc.desc      : Disable the monitoring of screenshots.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testWindow_off_screenshot_AllListening_LogOut', 0, async (done: Function) => {
-      let caseName: string = 'testWindow_off_screenshot_AllListening_LogOut';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let num: number = 0
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-      let windowId: string = 'window_off_screenshot_Test_001';
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
-      let tempWnd: ohosWindow.Window | void;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
-      });
-      expect(!!tempWnd).assertTrue();
-      await (tempWnd as ohosWindow.Window).loadContent('MainAbility/pages/second/pageOne')
-        .catch((err: BusinessError) => {
-          unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
-        });
-      await (tempWnd as ohosWindow.Window).resize(500, 500).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
-      });
-      await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
-      });
-      (tempWnd as ohosWindow.Window).on('screenshot', (data) => {
-        console.info(msgStr + "first listener trigger");
-        num++
-        firstListenFlag = true
-      });
-      (tempWnd as ohosWindow.Window).on('screenshot', (data) => {
-        console.info(msgStr + "second listener trigger");
-        num++
-        secondListenFlag = true
-      });
-      // 截屏代码
-      await screenshot.save().then((pixelMap: PixelMap) => {
-        console.log('Succeeded in saving sreenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
-        pixelMap.release(); // PixelMap使用完后及时释放内存
-      }).catch((err: BusinessError) => {
-        console.log('Failed to save screenshot. Code: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      await sleep(800);
-      (tempWnd as ohosWindow.Window).off('screenshot');
-      firstListenFlag = false
-      secondListenFlag = false
-      // 截屏代码
-      await screenshot.save().then((pixelMap: PixelMap) => {
-        console.log('Succeeded in saving sreenShot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
-        pixelMap.release(); // PixelMap使用完后及时释放内存
-      }).catch((err: BusinessError) => {
-        console.log('Failed to save screenshot. Code: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      await sleep(800);
-      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        done();
-      } else {
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2270
-     * @tc.name      : testWindow_off_screenshot_FirstCall_LogOut
-     * @tc.desc      : Disable the monitoring of screenshots.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testWindow_off_screenshot_FirstCall_LogOut', 0, async (done: Function) => {
-      let caseName: string = 'testWindow_off_screenshot_FirstCall_LogOut';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-
-      let firstCall: Callback<void> = () => {
-        console.log(msgStr + "first listener trigger")
-        firstListenFlag = true
-      }
-
-      let secondCall: Callback<void> = () => {
-        console.log(msgStr + "second listener trigger")
-        secondListenFlag = true
-      }
-
-      let windowId: string = 'window_off_screenshot_Test_002';
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
-      let tempWnd: ohosWindow.Window | void;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
-      });
-      expect(!!tempWnd).assertTrue();
-      await (tempWnd as ohosWindow.Window).loadContent('MainAbility/pages/second/pageOne')
-        .catch((err: BusinessError) => {
-          unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
-        });
-      await (tempWnd as ohosWindow.Window).resize(500, 500).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
-      });
-      await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
-      });
-      (tempWnd as ohosWindow.Window).on('screenshot', firstCall);
-      (tempWnd as ohosWindow.Window).on('screenshot', secondCall);
-
-      // 截屏代码
-      await screenshot.save().then((pixelMap: PixelMap) => {
-        console.log('Succeeded in saving sreenShot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
-        pixelMap.release(); // PixelMap使用完后及时释放内存
-      }).catch((err: BusinessError) => {
-        console.log('Failed to save screenshot. Code: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      await sleep(800);
-      (tempWnd as ohosWindow.Window).off('screenshot', firstCall);
-      firstListenFlag = false
-      secondListenFlag = false
-      // 截屏代码
-      await screenshot.save().then((pixelMap: PixelMap) => {
-        console.log('Succeeded in saving sreenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
-        pixelMap.release(); // PixelMap使用完后及时释放内存
-      }).catch((err: BusinessError) => {
-        console.log('Failed to save screenshot. Code: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      await sleep(800);
-      (tempWnd as ohosWindow.Window).off('screenshot');
-      await (tempWnd as ohosWindow.Window).destroyWindow();
-      if (!firstListenFlag && secondListenFlag) {
-        done();
-      } else {
         expect(TRUE_FLAG).assertFail();
         done();
       }
@@ -858,8 +674,11 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done();
       })
       await sleep(800);
+      await (tempWnd as ohosWindow.Window).destroyWindow();
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
-        await (tempWnd as ohosWindow.Window).destroyWindow();
+        done();
+      }else{
+        expect().assertFail();
         done();
       }
     })
@@ -912,7 +731,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await buttonClick('secondPage_BackToIndex', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect(TRUE_FLAG).assertFail();
+        expect().assertFail();
         done();
       })
       await sleep(800);
@@ -922,7 +741,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await buttonClick('secondPage_BackToIndex', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect(TRUE_FLAG).assertFail();
+        expect().assertFail();
         done();
       })
       await sleep(800);
@@ -931,7 +750,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       if (!firstListenFlag && secondListenFlag) {
         done();
       } else {
-        expect(TRUE_FLAG).assertFail();
+        expect().assertFail();
         done();
       }
     })
@@ -955,14 +774,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let num: number = 0
       let firstListenFlag: boolean = false
       let secondListenFlag: boolean = false
-      let windowId: string = 'window_off_keyboardHeightChange_Test_001';
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd: ohosWindow.Window | void;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
+      tempWnd = await windowStage.createSubWindow('testWindow_off_keyboardHeightChange_AllListening_LogOut').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await (tempWnd as ohosWindow.Window).loadContent('MainAbility/pages/second/pageTwo')
         .catch((err: BusinessError) => {
@@ -1013,8 +831,11 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done();
       })
       await sleep(800);
+      await (tempWnd as ohosWindow.Window).destroyWindow();
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
-        await (tempWnd as ohosWindow.Window).destroyWindow();
+        done();
+      } else {
+        expect().assertFail();
         done();
       }
     })
@@ -1048,14 +869,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         secondListenFlag = true
       }
 
-      let windowId: string = 'window_off_keyboardHeightChange_Test_002';
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
-      };
       let tempWnd: ohosWindow.Window | void;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
+      tempWnd = await windowStage.createSubWindow('testWindow_off_keyboardHeightChange_FirstCall_LogOut').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!tempWnd).assertTrue();
       await (tempWnd as ohosWindow.Window).loadContent('MainAbility/pages/second/pageTwo')
         .catch((err: BusinessError) => {
@@ -1098,112 +918,12 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done();
       })
       await sleep(800);
-      if (!firstListenFlag && secondListenFlag) {
-        (tempWnd as ohosWindow.Window).off('keyboardHeightChange');
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        done();
-      } else {
-        (tempWnd as ohosWindow.Window).off('keyboardHeightChange');
-        await (tempWnd as ohosWindow.Window).destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2180
-     * @tc.name      : testWindowStage_off_windowStageEvent_AllListening_LogOut
-     * @tc.desc      : Turn off listening for Windows Stage life cycle changes.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testWindowStage_off_windowStageEvent_AllListening_LogOut', 0, async (done: Function) => {
-      let caseName: string = 'testWindowStage_off_windowStageEvent_AllListening_LogOut';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let num: number = 0
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-
-      let firstCall: Callback<ohosWindow.WindowStageEventType> = () => {
-        console.log(msgStr + "first listener trigger")
-        num++
-        firstListenFlag = true
-      }
-
-      let secondCall: Callback<ohosWindow.WindowStageEventType> = () => {
-        console.log(msgStr + "second listener trigger")
-        num++
-        secondListenFlag = true
-      }
-
-      let tempWnd: ohosWindow.Window | void;
-      tempWnd = windowStage.getMainWindowSync();
-      expect(!!tempWnd).assertTrue();
-      windowStage.on("windowStageEvent", firstCall);
-      windowStage.on("windowStageEvent", secondCall);
-      await (tempWnd as ohosWindow.Window).hide().catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.hide', TRUE_FLAG, done);
-      });
-      await sleep(800);
-      windowStage.off("windowStageEvent");
-      firstListenFlag = false
-      secondListenFlag = false
-      await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
-      });
-      await sleep(800);
-      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
-        done();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2190
-     * @tc.name      : testWindowStage_off_windowStageEvent_FirstCall_LogOut
-     * @tc.desc      : Turn off listening for Windows Stage life cycle changes.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testWindowStage_off_windowStageEvent_FirstCall_LogOut', 0, async (done: Function) => {
-      let caseName: string = 'testWindowStage_off_windowStageEvent_FirstCall_LogOut';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let firstListenFlag: boolean = false
-      let secondListenFlag: boolean = false
-
-      let firstCall: Callback<ohosWindow.WindowStageEventType> = () => {
-        console.log(msgStr + "first listener trigger")
-        firstListenFlag = true
-      }
-
-      let secondCall: Callback<ohosWindow.WindowStageEventType> = () => {
-        console.log(msgStr + "second listener trigger")
-        secondListenFlag = true
-      }
-
-      let tempWnd: ohosWindow.Window | void;
-      tempWnd = windowStage.getMainWindowSync();
-      expect(!!tempWnd).assertTrue();
-      windowStage.on("windowStageEvent", firstCall);
-      windowStage.on("windowStageEvent", secondCall);
-      await (tempWnd as ohosWindow.Window).hide().catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.hide', TRUE_FLAG, done);
-      });
-      await sleep(800);
-      windowStage.off("windowStageEvent", firstCall);
-      firstListenFlag = false
-      secondListenFlag = false
-      await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
-      });
-      await sleep(800);
-      windowStage.off("windowStageEvent");
+      (tempWnd as ohosWindow.Window).off('keyboardHeightChange');
+      await (tempWnd as ohosWindow.Window).destroyWindow();
       if (!firstListenFlag && secondListenFlag) {
         done();
       } else {
-        expect(TRUE_FLAG).assertFail();
+        expect().assertFail();
         done();
       }
     })
