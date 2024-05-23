@@ -81,7 +81,7 @@ const adResponse =
     "      },\n" +
     "      \"content\":[\n" +
     "      ],\n" +
-    "      \"retcode30\":200,\n" +
+    "      \"retcode30\":200\n" +
     "    }\n" +
     "  ],\n" +
     "  \"retcode\":200,\n" +
