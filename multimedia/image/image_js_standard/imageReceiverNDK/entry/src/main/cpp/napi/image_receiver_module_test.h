@@ -65,7 +65,6 @@ private:
     int32_t width_;
     int32_t height_;
     int32_t capacity_;
-
 };
 
 #endif // IMAGE_RECEIVER_MODULE_TEST_H

@@ -94,7 +94,6 @@ Image_ErrorCode ImageReceiverModuleTest::CreateImageReceiver(int32_t width, int3
             capacity, ret);
         return ret;
     }
-
     ret = OH_ImageReceiverNative_Create(options, &imageReceiver_);
     if (ret != IMAGE_SUCCESS) {
         OH_ImageReceiverOptions_Release(options);
@@ -371,7 +370,8 @@ Image_ErrorCode ImageReceiverModuleTest::GetImageComponentTypes(OH_ImageNative *
     return ret;
 }
 
-Image_ErrorCode ImageReceiverModuleTest::GetImageByteBuffer(OH_ImageNative *image, int32_t type, OH_NativeBuffer **nativeBuffer)
+Image_ErrorCode ImageReceiverModuleTest::GetImageByteBuffer(OH_ImageNative *image, int32_t type,
+                                                            OH_NativeBuffer **nativeBuffer)
 {
     Image_ErrorCode ret = OH_ImageNative_GetByteBuffer(image, type, nativeBuffer);
     if (ret != IMAGE_SUCCESS) {

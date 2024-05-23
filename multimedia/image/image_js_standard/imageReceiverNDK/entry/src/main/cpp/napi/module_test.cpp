@@ -18,8 +18,13 @@
 #include "image_receiver_module_test.h"
 #include <js_native_api.h>
 #include "camera.h"
-#include <string.h>
+#include <cstring>
 #include "hilog/log.h"
+
+static constexpr uint32_t NUM_0 = 0;
+static constexpr uint32_t NUM_1 = 1;
+static constexpr uint32_t NUM_2 = 2;
+static constexpr uint32_t NUM_4 = 4;
 
 static NDKCamera* ndkCamera_ = nullptr;
 static ImageReceiverModuleTest* imageReceiverTest_ = nullptr;
@@ -43,7 +48,7 @@ static napi_value InitCamera(napi_env env, napi_callback_info info)
     size_t typeLen = 0;
     char* surfaceId = nullptr;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     napi_get_value_string_utf8(env, args[0], nullptr, 0, &typeLen);
     surfaceId = new char[typeLen + 1];
@@ -85,7 +90,7 @@ static napi_value GetSupportedCameras(napi_env env, napi_callback_info info)
     napi_create_int32(env, ndkCamera_->cameras_->connectionType, &jsValue);
     napi_set_named_property(env, cameraInfo, "connectionType", jsValue);
 
-    napi_create_string_utf8(env, ndkCamera_->cameras_->cameraId, sizeof(ndkCamera_->cameras_->cameraId) + 1 , &jsValue);
+    napi_create_string_utf8(env, ndkCamera_->cameras_->cameraId, sizeof(ndkCamera_->cameras_->cameraId) + 1, &jsValue);
     napi_set_named_property(env, cameraInfo, "cameraId", jsValue);
 
     return cameraInfo;
@@ -202,16 +207,16 @@ static napi_value CreatePhotoOutput(napi_env env, napi_callback_info info)
     napi_value result;
 
     size_t argc = 4;
-    napi_value args[4] = {nullptr};
+    napi_value args[NUM_4] = {nullptr};
 
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int32_t width = 0;
     int32_t height = 0;
     int32_t capacity = 0;
-    napi_get_value_int32(env, args[0], &width);
-    napi_get_value_int32(env, args[1], &height);
-    napi_get_value_int32(env, args[2], &capacity);
+    napi_get_value_int32(env, args[NUM_0], &width);
+    napi_get_value_int32(env, args[NUM_1], &height);
+    napi_get_value_int32(env, args[NUM_2], &capacity);
 
     Image_ErrorCode res = imageReceiverTest_->CreateImageReceiver(width, height, capacity);
     if (res != IMAGE_SUCCESS) {
@@ -248,7 +253,7 @@ static napi_value CreateVideoOutput(napi_env env, napi_callback_info info)
 
     size_t videoIdLen = 0;
     char* videoId = nullptr;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_string_utf8(env, args[0], nullptr, 0, &videoIdLen);
     videoId = new char[videoIdLen + 1];
     napi_get_value_string_utf8(env, args[0], videoId, videoIdLen + 1, &videoIdLen);
@@ -560,7 +565,7 @@ static napi_value SessionIsFlashModeSupported(napi_env env, napi_callback_info i
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int32_t flashMode;
     napi_get_value_int32(env, args[0], &flashMode);
@@ -586,7 +591,7 @@ static napi_value SessionSetFlashMode(napi_env env, napi_callback_info info)
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int32_t flashMode;
     napi_get_value_int32(env, args[0], &flashMode);
@@ -601,7 +606,7 @@ static napi_value SessionIsExposureModeSupported(napi_env env, napi_callback_inf
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int32_t exposureMode;
     napi_get_value_int32(env, args[0], &exposureMode);
@@ -626,7 +631,7 @@ static napi_value SessionSetExposureMode(napi_env env, napi_callback_info info)
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_value result;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int32_t exposureMode;
     napi_get_value_int32(env, args[0], &exposureMode);
     Camera_ErrorCode ret = ndkCamera_->SessionSetExposureMode(exposureMode);
@@ -657,7 +662,7 @@ static napi_value SessionSetMeteringPoint(napi_env env, napi_callback_info info)
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     napi_value value = nullptr;
     napi_get_named_property(env, args[0], "x", &value);
@@ -668,7 +673,7 @@ static napi_value SessionSetMeteringPoint(napi_env env, napi_callback_info info)
     double y;
     napi_get_value_double(env, value, &y);
 
-    Camera_ErrorCode ret = ndkCamera_->SessionSetMeteringPoint(x,y);
+    Camera_ErrorCode ret = ndkCamera_->SessionSetMeteringPoint(x, y);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -696,7 +701,7 @@ static napi_value SessionSetExposureBias(napi_env env, napi_callback_info info)
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     double exposureBias;
     napi_get_value_double(env, args[0], &exposureBias);
@@ -721,7 +726,7 @@ static napi_value SessionIsFocusModeSupported(napi_env env, napi_callback_info i
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int32_t focusMode;
     napi_get_value_int32(env, args[0], &focusMode);
@@ -747,7 +752,7 @@ static napi_value SessionSetFocusMode(napi_env env, napi_callback_info info)
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int32_t focusMode;
     napi_get_value_int32(env, args[0], &focusMode);
@@ -762,7 +767,7 @@ static napi_value SessionSetFocusPoint(napi_env env, napi_callback_info info)
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     napi_value value = nullptr;
     napi_get_named_property(env, args[0], "x", &value);
@@ -773,7 +778,7 @@ static napi_value SessionSetFocusPoint(napi_env env, napi_callback_info info)
     double y;
     napi_get_value_double(env, value, &y);
 
-    Camera_ErrorCode ret = ndkCamera_->SessionSetFocusPoint(x,y);
+    Camera_ErrorCode ret = ndkCamera_->SessionSetFocusPoint(x, y);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -828,7 +833,7 @@ static napi_value SessionSetZoomRatio(napi_env env, napi_callback_info info)
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     double zoomRatio;
     napi_get_value_double(env, args[0], &zoomRatio);
@@ -843,7 +848,7 @@ static napi_value SessionIsVideoStabilizationModeSupported(napi_env env, napi_ca
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int32_t videoStabilizationMode;
     napi_get_value_int32(env, args[0], &videoStabilizationMode);
     ndkCamera_->SessionIsVideoStabilizationModeSupported(videoStabilizationMode);
@@ -867,7 +872,7 @@ static napi_value SessionSetVideoStabilizationMode(napi_env env, napi_callback_i
     napi_value args[2] = {nullptr};
     napi_value result;
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int32_t videoStabilizationMode;
     napi_get_value_int32(env, args[0], &videoStabilizationMode);
@@ -1034,7 +1039,7 @@ static napi_value Init(napi_env env, napi_value exports)
             napi_default, nullptr },
         { "getCameraCallbackCode", nullptr, GetCameraCallbackCode, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "takePictureWithSettings", nullptr, TakePictureWithSettings, nullptr, nullptr, nullptr,
-                    napi_default, nullptr },
+            napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -60,7 +60,7 @@ typedef enum CameraCallbackCode {
 class NDKCamera {
 public:
     ~NDKCamera(void);
-    NDKCamera(char *str);
+    explicit NDKCamera(char *str);
 
     bool IsMirror_;
     bool HasFlash_;

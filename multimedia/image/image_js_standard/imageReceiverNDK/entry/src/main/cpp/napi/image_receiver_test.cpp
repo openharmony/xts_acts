@@ -22,8 +22,6 @@
 #include "image/image_receiver_native.h"
 #include "image_receiver_test.h"
 
-#define STATIC_FUNCTION(n, f) { (n), nullptr, ImageReceiverTest::f, nullptr, nullptr, nullptr, napi_static, nullptr }
-
 namespace OHOS {
 namespace Media {
 
@@ -38,13 +36,12 @@ static constexpr int32_t NUM_1000 = 1000;
 static constexpr int32_t NUM_2000 = 2000;
 static constexpr int32_t NUM_3000 = 3000;
 
-class MyMap
-{
+class MyMap {
 public:
     /*
      * constructor
      */
-    MyMap(int32_t startCount) : count_(startCount)
+    explicit MyMap(int32_t startCount) : count_(startCount)
     {
     }
 
@@ -56,7 +53,7 @@ public:
     }
 
     /*
-     * 
+     * insert item
      */
     int32_t save(uintptr_t ptr)
     {
@@ -71,7 +68,7 @@ public:
     }
 
     /*
-     * 
+     * find item
      */
     uintptr_t find(int32_t key)
     {
@@ -83,7 +80,7 @@ public:
     }
 
     /*
-     * 
+     * find item
      */
     int32_t find(uintptr_t ptr)
     {
@@ -96,7 +93,7 @@ public:
     }
 
     /*
-     * 
+     * remove item
      */
     bool remove(uintptr_t ptr)
     {
@@ -110,7 +107,7 @@ public:
     }
 
     /*
-     * 
+     * remove item
      */
     bool remove(int32_t key)
     {
@@ -119,7 +116,7 @@ public:
     }
 
     /*
-     * 
+     * check item
      */
     bool check(uintptr_t ptr)
     {
@@ -132,7 +129,7 @@ public:
     }
 
     /*
-     * 
+     * check item
      */
     bool check(int32_t key)
     {
@@ -881,28 +878,50 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        STATIC_FUNCTION("JsCreateImageReceiverOptions", JsCreateImageReceiverOptions),
-        STATIC_FUNCTION("JsImageReceiverOptionsGetSize", JsImageReceiverOptionsGetSize),
-        STATIC_FUNCTION("JsImageReceiverOptionsSetSize", JsImageReceiverOptionsSetSize),
-        STATIC_FUNCTION("JsImageReceiverOptionsGetCapacity", JsImageReceiverOptionsGetCapacity),
-        STATIC_FUNCTION("JsImageReceiverOptionsSetCapacity", JsImageReceiverOptionsSetCapacity),
-        STATIC_FUNCTION("JsReleaseImageReceiverOptions", JsReleaseImageReceiverOptions),
-        STATIC_FUNCTION("JsCreateImageReceiver", JsCreateImageReceiver),
-        STATIC_FUNCTION("JsGetReceivingSurfaceId", JsGetReceivingSurfaceId),
-        STATIC_FUNCTION("JsReadLatestImage", JsReadLatestImage),
-        STATIC_FUNCTION("JsReadNextImage", JsReadNextImage),
-        STATIC_FUNCTION("JsOn", JsOn),
-        STATIC_FUNCTION("JsOff", JsOff),
-        STATIC_FUNCTION("JsGetSize", JsGetSize),
-        STATIC_FUNCTION("JsGetCapacity", JsGetCapacity),
-        STATIC_FUNCTION("JsReleaseImageReceiver", JsReleaseImageReceiver),
-        STATIC_FUNCTION("JsGetImageSize", JsGetImageSize),
-        STATIC_FUNCTION("JsGetImageComponentTypes", JsGetImageComponentTypes),
-        STATIC_FUNCTION("JsGetImageByteBuffer", JsGetImageByteBuffer),
-        STATIC_FUNCTION("JsGetImageBufferSize", JsGetImageBufferSize),
-        STATIC_FUNCTION("JsGetImageRowStride", JsGetImageRowStride),
-        STATIC_FUNCTION("JsGetImagePixelStride", JsGetImagePixelStride),
-        STATIC_FUNCTION("JsReleaseImage", JsReleaseImage),
+        { "JsCreateImageReceiverOptions", nullptr, ImageReceiverTest::JsCreateImageReceiverOptions,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsImageReceiverOptionsGetSize", nullptr, ImageReceiverTest::JsImageReceiverOptionsGetSize,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsImageReceiverOptionsSetSize", nullptr, ImageReceiverTest::JsImageReceiverOptionsSetSize,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsImageReceiverOptionsGetCapacity", nullptr, ImageReceiverTest::JsImageReceiverOptionsGetCapacity,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsImageReceiverOptionsSetCapacity", nullptr, ImageReceiverTest::JsImageReceiverOptionsSetCapacity,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsReleaseImageReceiverOptions", nullptr, ImageReceiverTest::JsReleaseImageReceiverOptions,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsCreateImageReceiver", nullptr, ImageReceiverTest::JsCreateImageReceiver,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsGetReceivingSurfaceId", nullptr, ImageReceiverTest::JsGetReceivingSurfaceId,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsReadLatestImage", nullptr, ImageReceiverTest::JsReadLatestImage,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsReadNextImage", nullptr, ImageReceiverTest::JsReadNextImage,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsOn", nullptr, ImageReceiverTest::JsOn,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsOff", nullptr, ImageReceiverTest::JsOff,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsGetSize", nullptr, ImageReceiverTest::JsGetSize,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsGetCapacity", nullptr, ImageReceiverTest::JsGetCapacity,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsReleaseImageReceiver", nullptr, ImageReceiverTest::JsReleaseImageReceiver,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsGetImageSize", nullptr, ImageReceiverTest::JsGetImageSize,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsGetImageComponentTypes", nullptr, ImageReceiverTest::JsGetImageComponentTypes,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsGetImageByteBuffer", nullptr, ImageReceiverTest::JsGetImageByteBuffer,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsGetImageBufferSize", nullptr, ImageReceiverTest::JsGetImageBufferSize,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsGetImageRowStride", nullptr, ImageReceiverTest::JsGetImageRowStride,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsGetImagePixelStride", nullptr, ImageReceiverTest::JsGetImagePixelStride,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
+        { "JsReleaseImage", nullptr, ImageReceiverTest::JsReleaseImage,
+            nullptr, nullptr, nullptr, napi_static, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

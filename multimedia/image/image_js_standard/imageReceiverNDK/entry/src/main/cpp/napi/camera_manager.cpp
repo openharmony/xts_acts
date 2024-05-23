@@ -20,8 +20,7 @@
 #include <queue>
 #include <utility>
 
-#define LOG(fmt, ...)           \
-        (void)printf(fmt, ##__VA_ARGS__);           \
+#define LOG(fmt, ...) (void)printf(fmt, ##__VA_ARGS__);
 
 CameraCallbackCode NDKCamera::cameraCallbackCode_ = NoReceived;
 
@@ -43,7 +42,8 @@ NDKCamera::NDKCamera(char* str)
 }
 
 
-NDKCamera::~NDKCamera() {
+NDKCamera::~NDKCamera()
+{
     valid_ = false;
 
     Camera_ErrorCode ret = OH_CaptureSession_Release(captureSession_);
@@ -85,7 +85,7 @@ NDKCamera::~NDKCamera() {
 Camera_ErrorCode NDKCamera::CreateSession(void)
 {
     if (!cameraManager_) {
-          return Camera_ErrorCode::CAMERA_INVALID_ARGUMENT;
+        return Camera_ErrorCode::CAMERA_INVALID_ARGUMENT;
     }
     Camera_ErrorCode ret =  OH_CameraManager_CreateCaptureSession(cameraManager_, &captureSession_);
     if (captureSession_ == nullptr || ret != CAMERA_OK) {
@@ -270,7 +270,6 @@ Camera_ErrorCode NDKCamera::CameraInputRelease(void)
 
 Camera_ErrorCode NDKCamera::GetSupportedCameras(void)
 {
-
     ret_ = OH_CameraManager_GetSupportedCameras(cameraManager_, &cameras_, &size_);
     if (cameras_ == nullptr || ret_ != CAMERA_OK) {
         return CAMERA_INVALID_ARGUMENT;
@@ -842,7 +841,8 @@ Camera_ErrorCode NDKCamera::SessionSetMeteringPoint(double point_x, double point
 Camera_ErrorCode NDKCamera::SessionGetExposureBiasRange(void)
 {
     LOG("GetExposureBiasRange begin.");
-    Camera_ErrorCode ret = OH_CaptureSession_GetExposureBiasRange(captureSession_, &minExposureBias_, &maxExposureBias_, &step_);
+    Camera_ErrorCode ret = OH_CaptureSession_GetExposureBiasRange(
+        captureSession_, &minExposureBias_, &maxExposureBias_, &step_);
     if (ret == CAMERA_OK) {
         LOG("OH_CaptureSession_GetExposureBiasRange success[%f, %f].", minExposureBias_, maxExposureBias_);
     } else {
@@ -981,7 +981,8 @@ Camera_ErrorCode NDKCamera::SessionIsVideoStabilizationModeSupported(uint32_t mo
     LOG("isVideoStabilizationModeSupported begin.");
     Camera_VideoStabilizationMode videoMode = static_cast<Camera_VideoStabilizationMode>(mode);
     LOG("OH_CaptureSession_IsVideoStabilizationModeSupported begin.");
-    Camera_ErrorCode ret = OH_CaptureSession_IsVideoStabilizationModeSupported(captureSession_, videoMode, &isVideoSupported_);
+    Camera_ErrorCode ret = OH_CaptureSession_IsVideoStabilizationModeSupported(
+        captureSession_, videoMode, &isVideoSupported_);
     if (ret == CAMERA_OK) {
         LOG("OH_CaptureSession_isVideoStabilizationModeSupported success.");
     } else {
