@@ -5,7 +5,8 @@
     "test-timeout": "600000",
     "shell-timeout": "600000",
     "bundle-name": "com.example.ace_ets_web_scheme_handler_two_napis",
-    "module-name": "entry_test"
+    "module-name": "entry_test",
+    "testcase-timeout": "300000"
   },
   "kits": [
     {
