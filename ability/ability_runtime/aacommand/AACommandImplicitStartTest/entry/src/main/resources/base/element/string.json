@@ -11,30 +11,6 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
-    },
-    {
-      "name": "app_name",
-      "value": "AACommandImplicitStartTest"
-    },
-    {
-      "name": "description_application",
-      "value": "demo for test"
-    },
-    {
-      "name": "TestAbility_desc",
-      "value": "the test ability"
-    },
-    {
-      "name": "TestAbility_label",
-      "value": "test label"
-    },
-    {
-      "name": "UnexportedAbility_desc",
-      "value": "description"
-    },
-    {
-      "name": "UnexportedAbility_label",
-      "value": "label"
     }
   ]
 }
