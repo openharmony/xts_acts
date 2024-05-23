@@ -13,31 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ModelSheetTest") {
-  hap_profile = "src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":ace_ets_component_ModelSheet_js_assets",
-    ":ace_ets_component_ModelSheet_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_js_app_suite("ModelSheetTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsModelSheetTest"
-  part_name = "ace_engine"
   subsystem_name = "arkui"
-}
-
-ohos_app_scope("ace_ets_component_ModelSheet_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("ace_ets_component_ModelSheet_js_assets") {
-  source_dir = "src/main/ets"
-}
-
-ohos_resources("ace_ets_component_ModelSheet_resources") {
-  sources = [ "src/main/resources" ]
-  deps = [ ":ace_ets_component_ModelSheet_profile" ]
-  hap_profile = "src/main/module.json"
+  part_name = "ace_engine"
 }
