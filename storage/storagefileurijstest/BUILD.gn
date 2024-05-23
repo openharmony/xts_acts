@@ -17,7 +17,7 @@ ohos_js_app_suite("storagefileuri_js_test") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "storagefileuri_js_test"
+  hap_name = "ActsStorageFileUriJsTest"
   subsystem_name = "filemanagement"
   part_name = "app_file_service"
 }
