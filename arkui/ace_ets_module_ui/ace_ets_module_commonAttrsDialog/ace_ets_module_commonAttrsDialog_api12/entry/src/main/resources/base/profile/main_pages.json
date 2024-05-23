@@ -9,6 +9,10 @@
         "MainAbility/pages/menuControl/bindContextMenu/CloseMask",
         "MainAbility/pages/menuControl/bindContextMenu/CloseMenu",
         "MainAbility/pages/menuControl/bindContextMenu/IsShowFalse",
-        "MainAbility/pages/menuControl/bindContextMenu/preview"
+        "MainAbility/pages/menuControl/bindContextMenu/preview",
+        "MainAbility/pages/bindSheet/SheetMode",
+        "MainAbility/pages/bindSheet/springBack",
+        "MainAbility/pages/bindSheet/DetentsChange",
+        "MainAbility/pages/bindSheet/SheetTransition"
     ]
 }
