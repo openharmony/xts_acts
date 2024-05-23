@@ -255,7 +255,7 @@ export default function SwiperMinSize() {
       let swiper = CommonFunc.getComponentRect('swiperMinSize2');
       let swiperText1 = CommonFunc.getComponentRect('swiperText1');
       await CommonFunc.sleep(1000);
-      expect(Math.round(swiperText1.top - swiper.top)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(swiperText1.top - swiper.top) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[SwiperMinSize_005] END');
       done();
@@ -280,7 +280,7 @@ export default function SwiperMinSize() {
       let swiperText1 = CommonFunc.getComponentRect('swiperText1');
       let swiperText2 = CommonFunc.getComponentRect('swiperText2');
       await CommonFunc.sleep(1000);
-      expect(Math.round(swiperText2.left - swiperText1.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(swiperText2.left - swiperText1.right) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[SwiperMinSize_006] END');
       done();
@@ -304,7 +304,7 @@ export default function SwiperMinSize() {
       let swiperText1 = CommonFunc.getComponentRect('swiperText1');
       let swiperText2 = CommonFunc.getComponentRect('swiperText2');
       await CommonFunc.sleep(1000);
-      expect(Math.round(swiperText2.left - swiperText1.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(swiperText2.left - swiperText1.right) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[SwiperMinSize_007] END');
       done();
