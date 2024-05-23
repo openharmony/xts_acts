@@ -1969,7 +1969,7 @@ export default function imageEffectTest() {
     /**
      * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTSETOUTPUTSURFACE_0100
      * @tc.name   : testOHImageEffectSetOutputSurface001
-     * @tc.desc   : Set the output surface.
+     * @tc.desc   : This is setting the output surface.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
@@ -1982,7 +1982,7 @@ export default function imageEffectTest() {
     /**
      * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTSETOUTPUTSURFACE_0200
      * @tc.name   : testOHImageEffectSetOutputSurface002
-     * @tc.desc   : Set the output surface.
+     * @tc.desc   : This is setting the output surface.
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 1
