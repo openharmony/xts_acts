@@ -2060,21 +2060,23 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0139', 0, async function (done) {
       console.info('aceNapiTest0139 START');
-      const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.js', {name:"first worker in Stage model"});
+      const workerInstance = new worker.Worker('workers/worker.js');
       let isTerminate = false;
       workerInstance.onexit = function () {
         isTerminate = true;
       }
       expect(workerInstance != null).assertTrue();
+      let res = undefined;
       workerInstance.onmessage = async (e) => {
         console.info('aceNapiTest0139 testString result is: ' + e.data);
-        expect(e.data).assertEqual(0)
+        res = e.data;
         workerInstance.terminate();
-        while (!isTerminate) {
-          await promiseCase()
-        }
       }
       workerInstance.postMessage("call napi_run_event_loop with nowait");
+      while (!isTerminate) {
+        await promiseCase()
+      }
+      expect(res).assertEqual("success")
       done();
     });
 
@@ -2085,21 +2087,23 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0140', 0, async function (done) {
       console.info('aceNapiTest0140 START');
-      const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.js', {name:"first worker in Stage model"});
+      const workerInstance = new worker.Worker('workers/worker.js');
       let isTerminate = false;
       workerInstance.onexit = function () {
         isTerminate = true;
       }
       expect(workerInstance != null).assertTrue();
+      let res = undefined;
       workerInstance.onmessage = async (e) => {
         console.info('aceNapiTest0140 testString result is: ' + e.data);
-        expect(e.data).assertEqual(0)
+        res = e.data;
         workerInstance.terminate();
-        while (!isTerminate) {
-          await promiseCase()
-        }
       }
       workerInstance.postMessage("call napi_run_event_loop with nowait");
+      while (!isTerminate) {
+        await promiseCase()
+      }
+      expect(res).assertEqual("success")
       done();
     });
 
@@ -2175,21 +2179,23 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0146', 0, async function (done) {
       console.info('aceNapiTest0146 START');
-      const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.js', {name: "first worker in Stage model"});
+      const workerInstance = new worker.Worker('workers/worker.js');
       let isTerminate = false;
       workerInstance.onexit = function () {
         isTerminate = true;
       }
       expect(workerInstance != null).assertTrue();
+      let res = undefined;
       workerInstance.onmessage = async (e) => {
         console.info('aceNapiTest0146 testString result is: ' + e.data);
-        expect(e.data).assertEqual(0);
+        res = e.data;
         workerInstance.terminate();
-        while (!isTerminate) {
-          await promiseCase()
-        }
       }
       workerInstance.postMessage("call napi_stop_event_loop");
+      while (!isTerminate) {
+        await promiseCase()
+      }
+      expect(res).assertEqual("success")
       done();
     });
 
