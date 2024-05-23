@@ -73,7 +73,7 @@ export default function GetabilityInfo() {
                 }
                 console.info('[Sub_Bms_Framework_Query_AbilityInfo_2600] getApplicationInfo callback data is: ' + JSON.stringify(data));
                 mData = data;
-                Utils.sleep(2000);
+                Utils.sleep(200);
                 checkAbilityInfo(mData);
                 done();
             });
@@ -144,7 +144,7 @@ export default function GetabilityInfo() {
                 console.error('[Sub_Bms_Framework_Query_AbilityInfo_2620]Operation failed. Cause: ' + JSON.stringify(error));
                 error1 = error;
             });
-            await Utils.sleep(1000);
+            await Utils.sleep(100);
             await expect(error1).assertEqual(1);
             done();
         });
@@ -186,7 +186,7 @@ export default function GetabilityInfo() {
                 console.error('[Sub_Bms_Framework_Query_AbilityInfo_2640]Operation failed. Cause: ' + JSON.stringify(error));
                 error1 = error;
             })
-            await Utils.sleep(1000);
+            await Utils.sleep(100);
             await expect(error1).assertEqual(1);
             done();
         });

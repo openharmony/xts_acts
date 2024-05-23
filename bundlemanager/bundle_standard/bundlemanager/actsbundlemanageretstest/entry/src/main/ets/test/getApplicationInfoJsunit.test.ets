@@ -202,7 +202,7 @@ export default function applicationBundleJsunit() {
                     console.info(TAG_TEST_0300_001 + 'UserId callBack data is:' + JSON.stringify(data));
                     datas = data;
                 });
-            await Utils.sleep(2000);
+            await Utils.sleep(200);
             console.info(TAG_TEST_0300_001 + 'UserId callBack data is: ' + JSON.stringify(datas));
             expectData(TAG_TEST_0300_001, datas);
             getApplicationInfoSuccess(TAG_TEST_0300_001, datas);
@@ -231,7 +231,7 @@ export default function applicationBundleJsunit() {
                     console.info(TAG_TEST_0400_001 + 'noUserId callBack data is:' + JSON.stringify(data));
                     datas = data;
                 });
-            await Utils.sleep(2000);
+            await Utils.sleep(200);
             console.info(TAG_TEST_0400_001 + 'noUserId callBack datas is: ' + JSON.stringify(datas));
             expectData(TAG_TEST_0400_001, datas);
             getApplicationInfoSuccess(TAG_TEST_0400_001, datas);
