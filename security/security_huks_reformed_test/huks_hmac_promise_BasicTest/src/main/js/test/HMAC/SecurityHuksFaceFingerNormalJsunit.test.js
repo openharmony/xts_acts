@@ -243,7 +243,7 @@ export default function SecurityHuksFaceFingerNormalJsunit() {
             })
             .catch(error => {
               console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-              expect(error.code == 12000013).assertTrue();
+              expect(error.code == 401).assertTrue();
             });
         } catch (error) {
           console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
