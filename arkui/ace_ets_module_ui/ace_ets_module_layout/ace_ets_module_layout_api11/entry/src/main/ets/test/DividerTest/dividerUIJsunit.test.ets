@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 const waitUiReadyMs = 1000;
 
@@ -62,11 +63,11 @@ export default function dividerUIJsunit() {
       console.info('dividerUIJsunit_0200 START');
       await CommonFunc.sleep(1000);
       // modify the type attribute normal value of divider dynamically
-      globalThis.value.message.notify({name:'strokeWidth',value:'30'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'strokeWidth',value:'30'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'lineCapStyle',value:LineCapStyle.Round})
+      GlobalContext.getContext().getObject<LineCapStyle>('value').message.notify({name:'lineCapStyle',value:LineCapStyle.Round})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'color',value:'#FFFFFF'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'color',value:'#FFFFFF'})
       await CommonFunc.sleep(200);
       // check the value of changed attribute
       let strJson = getInspectorByKey('divider');
@@ -82,7 +83,7 @@ export default function dividerUIJsunit() {
       console.info('dividerUIJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // modify the lineCapStyle attribute normal value of divider dynamically
-      globalThis.value.message.notify({name:'lineCapStyle',value:LineCapStyle.Square})
+      GlobalContext.getContext().getObject<LineCapStyle>('value').message.notify({name:'lineCapStyle',value:LineCapStyle.Square})
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('divider');
@@ -96,9 +97,9 @@ export default function dividerUIJsunit() {
       console.info('datelPanelJsunit_0400 START');
       await CommonFunc.sleep(1000);
       // modify the values attribute illegal value of divider dynamically
-      globalThis.value.message.notify({name:'strokeWidth',value:'-30'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'strokeWidth',value:'-30'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'lineCapStyle',value:'4'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'lineCapStyle',value:'4'})
       await CommonFunc.sleep(200);
       //globalThis.value.message.notify({name:'color',value:'#FF'})
       //await CommonFunc.sleep(200);
@@ -116,7 +117,7 @@ export default function dividerUIJsunit() {
       console.info('dividerUIJsunit_0500 START');
       await CommonFunc.sleep(1000);
       // test the common attribute
-      globalThis.value.message.notify({name:'widthK',value:'1.0'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'widthK',value:'1.0'})
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('divider');
@@ -131,7 +132,7 @@ export default function dividerUIJsunit() {
       console.info('dividerUIJsunit_0500 START');
       await CommonFunc.sleep(1000);
       // modify the type attribute normal value of divider dynamically
-      globalThis.value.message.notify({name:'vertical',value:true})
+      GlobalContext.getContext().getObject<boolean>('value').message.notify({name:'vertical',value:true})
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('divider');

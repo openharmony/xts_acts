@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function column_JustifyContent_ChangeParent() {
@@ -55,7 +56,7 @@ export default function column_JustifyContent_ChangeParent() {
      */
     it('testColumnJustifyContentChangeParentFlexAlignCenter', 0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignCenter START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.Center
       })
       await CommonFunc.sleep(3000);
@@ -106,7 +107,7 @@ export default function column_JustifyContent_ChangeParent() {
      */
     it('testColumnJustifyContentChangeParentFlexAlignEnd', 0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignEnd START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.End
       })
       await CommonFunc.sleep(3000);
@@ -156,7 +157,7 @@ export default function column_JustifyContent_ChangeParent() {
      */
     it('testColumnJustifyContentChangeParentFlexAlignSpaceBetween', 0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceBetween START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceBetween
       })
       await CommonFunc.sleep(3000);
@@ -206,7 +207,7 @@ export default function column_JustifyContent_ChangeParent() {
      */
     it('testColumnJustifyContentChangeParentFlexAlignSpaceAround', 0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceAround START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceAround
       })
       await CommonFunc.sleep(3000);
@@ -257,7 +258,7 @@ export default function column_JustifyContent_ChangeParent() {
      */
     it('testColumnJustifyContentChangeParentFlexAlignSpaceEvenly', 0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceEvenly START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceEvenly
       })
       await CommonFunc.sleep(3000);

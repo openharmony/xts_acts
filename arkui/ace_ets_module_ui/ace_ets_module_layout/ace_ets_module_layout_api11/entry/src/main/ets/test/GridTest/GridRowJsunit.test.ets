@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
@@ -69,15 +70,15 @@ export default function GridRowJsunit() {
     it('GridRowJsunit_0200', 0, async (done: Function) => {
       // Modify the properties of component GridRow
       console.info('[GridRowJsunit_0200] START');
-      globalThis.value.message.notify({name:'columns',value:'12'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columns',value:'12'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'gutter',value:'x: 7.5, y: 15'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'gutter',value:'x: 7.5, y: 15'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'breakpoints',value:'12'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'breakpoints',value:'12'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'grDirection',value:'12'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'grDirection',value:'12'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'currentBp',value:'sm'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'currentBp',value:'sm'})
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the GridRow component
@@ -102,15 +103,15 @@ export default function GridRowJsunit() {
     it('GridRowJsunit_0300', 0, async (done: Function) => {
       // Illegal modification of properties of component GridRow
       console.info('[GridRowJsunit_0300] START');
-      globalThis.value.message.notify({name:'gutter',value:'-10'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'gutter',value:'-10'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'columns',value:'-5'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columns',value:'-5'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'breakpoints',value:'test'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'breakpoints',value:'test'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'grDirection',value:'test'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'grDirection',value:'test'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'currentBp',value:'110'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'currentBp',value:'110'})
       await CommonFunc.sleep(200);
 
       // Get the propoties value of the GridRow component

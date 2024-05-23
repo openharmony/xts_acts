@@ -13,24 +13,29 @@
  * limitations under the License.
  */
 
+import GlobalContext from './../../../common/GlobalContext'
+import { Value } from '../../../common/Value';
 import { MessageManager, Callback, Message } from './../../../common/MessageManager';
+
+type MessageDaata = number|string
 
 @Entry
 @Component
 struct Grid_Col_Order_Number {
   @State addOrder: number = 0;
   @State currentBp: string = 'unknown';
-  messageManager: MessageManager<number> = new MessageManager();
+  messageManager: MessageManager<MessageDaata> = new MessageManager();
 
   onPageShow() {
     console.info('Grid_Col_Order_Number onPageShow');
-    globalThis.value = {
+    let value: Value<MessageDaata> = {
       name: 'messageManager', message: this.messageManager
-    };
-    let callback: Callback<number> = (message: Message<number>) => {
+    }
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageDaata> = (message: Message<MessageDaata>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addOrder') {
-        this.addOrder = message.value;
+        this.addOrder = message.value as number;
       }
     };
     this.messageManager.registerCallback(callback);

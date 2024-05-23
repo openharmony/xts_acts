@@ -22,7 +22,7 @@ import CommonFunc from "../../MainAbility/common/Common";
 export default function waterFlowDemoJsunit() {
   describe('waterFlowDemoJsunit', () => {
     beforeAll(async (done: Function) => {
-      console.info("waterFlow beforeEach start");
+      console.info("waterFlow beforeAll start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/waterflow/WaterflowDemo',
       }

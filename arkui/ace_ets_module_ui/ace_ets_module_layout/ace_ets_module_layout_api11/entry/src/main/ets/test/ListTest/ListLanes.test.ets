@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
@@ -53,7 +54,7 @@ export default function ListLanes() {
 
       console.info('[ListLanes_001] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({ name:'listGutter', value: '-1vp' });
+      GlobalContext.getContext().getObject<Dimension>('value').message.notify({ name:'listGutter', value: '-1vp' });
       await CommonFunc.sleep(200);
 
       let ListItem0 = CommonFunc.getComponentRect('ListItem0');
@@ -75,7 +76,7 @@ export default function ListLanes() {
 
       console.info('[ListLanes_002] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({ name:'listGutter', value: '10%' });
+      GlobalContext.getContext().getObject<Dimension>('value').message.notify({ name:'listGutter', value: '10%' });
       await CommonFunc.sleep(200);
 
       let ListItem0 = CommonFunc.getComponentRect('ListItem0');
@@ -97,8 +98,8 @@ export default function ListLanes() {
 
       console.info('[ListLanes_007] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({ name:'listGutter', value: '10px' });
-      globalThis.value.message.notify({ name:'listSpace', value: '10px' });
+      GlobalContext.getContext().getObject<Dimension>('value').message.notify({ name:'listGutter', value: '10px' });
+      GlobalContext.getContext().getObject<string>('value').message.notify({ name:'listSpace', value: '10px' });
       await CommonFunc.sleep(200);
 
       let ListItem0 = CommonFunc.getComponentRect('ListItem0');
@@ -122,8 +123,8 @@ export default function ListLanes() {
 
       console.info('[ListLanes_008] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({ name:'listGutter', value: '10vp' });
-      globalThis.value.message.notify({ name:'initialIndex', value: 8 });
+      GlobalContext.getContext().getObject<Dimension>('value').message.notify({ name:'listGutter', value: '10vp' });
+      GlobalContext.getContext().getObject<number>('value').message.notify({ name:'initialIndex', value: 8 });
       await CommonFunc.sleep(200);
 
       let ListItem0 = CommonFunc.getComponentRect('ListItem0');

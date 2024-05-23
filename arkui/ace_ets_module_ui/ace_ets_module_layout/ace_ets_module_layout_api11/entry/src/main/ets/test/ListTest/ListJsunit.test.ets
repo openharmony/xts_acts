@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
@@ -155,35 +156,35 @@ export default function ListJsunit() {
     it('ListJsunit_0300', 0, async (done: Function) => {
       // Modify the properties of component List
       console.info('[ListJsunit_0300] START');
-      globalThis.value.message.notify({name:'space',value:25})
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'space',value:25})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'initialIndex',value:1})
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'initialIndex',value:1})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'listDirection',value:Axis.Horizontal})
+      GlobalContext.getContext().getObject<Axis>('value').message.notify({name:'listDirection',value:Axis.Horizontal})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'strokeWidth',value:3})
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'strokeWidth',value:3})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'dividerColor',value:Color.Black})
+      GlobalContext.getContext().getObject<Color>('value').message.notify({name:'dividerColor',value:Color.Black})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'startMargin',value:5})
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'startMargin',value:5})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'endMargin',value:4})
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'endMargin',value:4})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'scrollBar',value:BarState.On})
+      GlobalContext.getContext().getObject<BarState>('value').message.notify({name:'scrollBar',value:BarState.On})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'cachedCount',value:2})
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'cachedCount',value:2})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'edgeEffect',value:EdgeEffect.Fade})
+      GlobalContext.getContext().getObject<EdgeEffect>('value').message.notify({name:'edgeEffect',value:EdgeEffect.Fade})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'chainAnimation',value:true})
+      GlobalContext.getContext().getObject<boolean>('value').message.notify({name:'chainAnimation',value:true})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'lanes',value:5})
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'lanes',value:5})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'multiSelectable',value:true})
+      GlobalContext.getContext().getObject<boolean>('value').message.notify({name:'multiSelectable',value:true})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'alignListItem',value:ListItemAlign.Start})
+      GlobalContext.getContext().getObject<ListItemAlign>('value').message.notify({name:'alignListItem',value:ListItemAlign.Start})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'sticky',value:StickyStyle.None})
+      GlobalContext.getContext().getObject<StickyStyle>('value').message.notify({name:'sticky',value:StickyStyle.None})
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the List component
@@ -229,29 +230,29 @@ export default function ListJsunit() {
       // Illegal modification of properties of component List
       console.info('[ListJsunit_0400] START');
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'space',value:'-10'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'space',value:'-10'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'initialIndex',value:'30'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'initialIndex',value:'30'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'listDirection',value:'10'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'listDirection',value:'10'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'strokeWidth',value:'abc'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'strokeWidth',value:'abc'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'dividerColor',value:'10'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'dividerColor',value:'10'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'startMargin',value:'#aaa'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'startMargin',value:'#aaa'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'endMargin',value:'-10'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'endMargin',value:'-10'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'scrollBar',value:'abc'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'scrollBar',value:'abc'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'cachedCount',value:'-10'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'cachedCount',value:'-10'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'edgeEffect',value:'111'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'edgeEffect',value:'111'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'lanesMinLength',value:'$a'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'lanesMinLength',value:'$a'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'lanesMaxLength',value:'-10'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'lanesMaxLength',value:'-10'})
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the List component
@@ -328,7 +329,7 @@ export default function ListJsunit() {
     it('ListJsunit_0700', 0, async (done: Function) => {
       // Verify the Vertical layout of List components
       console.info('[ListJsunit_0700] START');
-      globalThis.value.message.notify({name:'listDirection',value:Axis.Vertical})
+      GlobalContext.getContext().getObject<Axis>('value').message.notify({name:'listDirection',value:Axis.Vertical})
       await CommonFunc.sleep(1000);
       let listItem1 = CommonFunc.getComponentRect('0');
       let top1 = listItem1.top

@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+import GlobalContext from './../../../common/GlobalContext'
+import { Value } from './../../../common/Value';
 import { MessageManager, Callback, Message } from './../../../common/MessageManager';
 
 @Entry
@@ -24,9 +26,10 @@ struct Grid_Col_Order_GridColColumnOption {
 
   onPageShow() {
     console.info('Grid_Col_Order_GridColColumnOption onPageShow');
-    globalThis.value = {
+    let value: Value<string> = {
       name: 'messageManager', message: this.messageManager
-    };
+    }
+    GlobalContext.getContext().setObject('value', value);
     let callback: Callback<string> = (message: Message<string>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addWidth') {

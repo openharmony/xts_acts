@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
@@ -53,7 +54,7 @@ export default function GridLayoutDirection() {
 
       console.info('[GridLayoutDirection_001] START');
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'layoutDirection', value: GridDirection.ColumnReverse });
+      GlobalContext.getContext().getObject<GridDirection>('value').message.notify({name:'layoutDirection', value: GridDirection.ColumnReverse });
       await CommonFunc.sleep(1000);
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
@@ -74,7 +75,7 @@ export default function GridLayoutDirection() {
 
       console.info('[GridLayoutDirection_002] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'layoutDirection', value: GridDirection.Column });
+      GlobalContext.getContext().getObject<GridDirection>('value').message.notify({name:'layoutDirection', value: GridDirection.Column });
       await CommonFunc.sleep(200);
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
@@ -95,7 +96,7 @@ export default function GridLayoutDirection() {
 
       console.info('[GridLayoutDirection_003] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'layoutDirection', value: GridDirection.RowReverse });
+      GlobalContext.getContext().getObject<GridDirection>('value').message.notify({name:'layoutDirection', value: GridDirection.RowReverse });
       await CommonFunc.sleep(200);
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
@@ -116,7 +117,7 @@ export default function GridLayoutDirection() {
 
       console.info('[GridLayoutDirection_004] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'layoutDirection', value: GridDirection.Row });
+      GlobalContext.getContext().getObject<GridDirection>('value').message.notify({name:'layoutDirection', value: GridDirection.Row });
       await CommonFunc.sleep(200);
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
@@ -137,7 +138,7 @@ export default function GridLayoutDirection() {
 
       console.info('[GridLayoutDirection_005] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'gridPadding', value: 50 });
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'gridPadding', value: 50 });
       await CommonFunc.sleep(200);
       let GridLayoutDirKey = CommonFunc.getComponentRect('GridLayoutDirKey');
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
@@ -158,7 +159,7 @@ export default function GridLayoutDirection() {
 
       console.info('[GridLayoutDirection_006] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'gridMargin', value: 50 });
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'gridMargin', value: 50 });
       await CommonFunc.sleep(200);
       let GridLayoutDirKey = CommonFunc.getComponentRect('GridLayoutDirKey');
       let ColumnKey = CommonFunc.getComponentRect('ColumnKey');

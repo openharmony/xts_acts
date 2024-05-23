@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function column_Padding_ChangeParent() {
@@ -56,7 +57,7 @@ export default function column_Padding_ChangeParent() {
      */
     it('testColumnPaddingChangeParentInRange', 0, async () => {
       console.info('new testColumnPaddingChangeParentInRange START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 20
       })
       await CommonFunc.sleep(3000);
@@ -108,7 +109,7 @@ export default function column_Padding_ChangeParent() {
      */
     it('testColumnPaddingChangeParentOutRange', 0, async () => {
       console.info('new testColumnPaddingChangeParentOutRange START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50
       })
       await CommonFunc.sleep(3000);

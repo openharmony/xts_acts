@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function blankUIJsunit() {
@@ -49,7 +50,7 @@ export default function blankUIJsunit() {
     it('blankJsunit_0100', 0, async (done: Function) => {
       console.info('blankJsunitUITest_0100 START');
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'blankColor',value:'#FCAE5394'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'blankColor',value:'#FCAE5394'})
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('bl2');
       let obj: ESObject = JSON.parse(strJson);
@@ -67,7 +68,7 @@ export default function blankUIJsunit() {
       console.info('blankJsunitUITest_0200 START');
       await CommonFunc.sleep(1000);
        // 动态修改Blank组件的minwidth
-      globalThis.value.message.notify({name:'minWith',value:'80'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'minWith',value:'80'})
       await CommonFunc.sleep(3000);
       // 获取动态修改后的组件的minwidth
       let strJson = getInspectorByKey('bl2');
@@ -81,7 +82,7 @@ export default function blankUIJsunit() {
       console.info('blankJsunitUITest_0300 START');
       await CommonFunc.sleep(1000);
        // 动态非法修改Blank组件的minwidth
-      globalThis.value.message.notify({name:'minWith',value:'-30'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'minWith',value:'-30'})
       await CommonFunc.sleep(2000);
       // 获取默认的minWidth值
       let strJson = getInspectorByKey('bl2');
@@ -96,7 +97,7 @@ export default function blankUIJsunit() {
       console.info('blankJsunitUITest_0400 START');
       await CommonFunc.sleep(1000);
        // 动态非法修改Blank组件的颜色
-      globalThis.value.message.notify({name:'blankColor',value:'#AE53'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'blankColor',value:'#AE53'})
       await CommonFunc.sleep(3000);
        // 获取非法动态修改后默认组件的颜色
       let strJson = getInspectorByKey('bl2');
@@ -157,7 +158,7 @@ export default function blankUIJsunit() {
     it('blankJsunit_0800', 0, async (done: Function) => {
       console.info('blankJsunitUITest_0700 START');
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'minWith',value:'rr'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'minWith',value:'rr'})
       await CommonFunc.sleep(200);
       let strJson2 = getInspectorByKey('bl2');
       let obj2: ESObject = JSON.parse(strJson2);

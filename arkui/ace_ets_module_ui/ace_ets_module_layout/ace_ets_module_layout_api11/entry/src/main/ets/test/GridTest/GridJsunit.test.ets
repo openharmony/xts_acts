@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
@@ -70,27 +71,27 @@ export default function GridJsunit() {
       // Modify the properties of component Grid
       console.info('[GridJsunit_0200] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
-        name: 'columnsGap', value: '15'
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'columnsGap', value: 15
       })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
-        name: 'rowsGap', value: '20'
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'rowsGap', value: 20
       })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
-        name: 'scrollBar', value: 'BarState.On'
+      GlobalContext.getContext().getObject<BarState>('value').message.notify({
+        name: 'scrollBar', value: BarState.On
       })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'scrollBarColor', value: 'Color.Blue'
       })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
-        name: 'scrollBarWidth', value: '30'
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'scrollBarWidth', value: 30
       })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'cachedCount', value: 2
       })
       await CommonFunc.sleep(2000);
@@ -116,27 +117,27 @@ export default function GridJsunit() {
       // Illegal modification of properties of component grid
       console.info('[GridJsunit_0300] START');
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'columnsGap', value: 'a'
       })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
-        name: 'rowsGap', value: '-10'
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'rowsGap', value: -10
       })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'scrollBar', value: '123'
       })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'scrollBarColor', value: 'aaa'
       })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
-        name: 'scrollBarWidth', value: '-10'
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'scrollBarWidth', value: -10
       })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'cachedCount', value: 'a'
       })
       await CommonFunc.sleep(200);
@@ -220,11 +221,11 @@ export default function GridJsunit() {
     it('GridJsunit_0600', 0, async (done: Function) => {
       // Verify that rowsTemplate and columnsTemplate are set at the same time
       console.info('[GridJsunit_0600] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'columnsTemplate', value: '1fr 1fr'
       })
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'rowsTemplate', value: '1fr 1fr'
       })
       await CommonFunc.sleep(1000);
@@ -246,11 +247,11 @@ export default function GridJsunit() {
     it('GridJsunit_0700', 0, async (done: Function) => {
       // Verify only setting columnsTemplate of Grid component
       console.info('[GridJsunit_0700] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'columnsTemplate', value: '1fr 1fr 1fr 1fr'
       })
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'rowsTemplate', value: ''
       })
       await CommonFunc.sleep(1000);
@@ -266,11 +267,11 @@ export default function GridJsunit() {
     it('GridJsunit_0800', 0, async (done: Function) => {
       // Verify only setting rowsTemplate of grid component
       console.info('[GridJsunit_0800] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'columnsTemplate', value: ''
       })
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'rowsTemplate', value: '1fr 1fr 1fr 1fr'
       })
       await CommonFunc.sleep(1000);
@@ -287,11 +288,11 @@ export default function GridJsunit() {
     it('GridJsunit_0900', 0, async (done: Function) => {
       // Verify Neither rowsTemplate nor columnsTemplate is set
       console.info('[GridJsunit_0900] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'columnsTemplate', value: ''
       })
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'rowsTemplate', value: ''
       })
       await CommonFunc.sleep(1000);

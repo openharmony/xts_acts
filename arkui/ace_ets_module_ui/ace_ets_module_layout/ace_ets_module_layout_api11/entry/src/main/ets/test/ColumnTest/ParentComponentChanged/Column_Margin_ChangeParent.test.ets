@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function column_Margin_ChangeParent() {
@@ -55,7 +56,7 @@ export default function column_Margin_ChangeParent() {
      */
     it('testColumnMarginChangeParent', 0, async () => {
       console.info('new testColumnMarginChangeParent START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
       })
       await CommonFunc.sleep(3000);

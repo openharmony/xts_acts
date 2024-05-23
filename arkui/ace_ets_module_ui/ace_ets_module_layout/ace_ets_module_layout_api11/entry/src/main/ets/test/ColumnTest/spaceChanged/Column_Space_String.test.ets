@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function Column_Space_String() {
@@ -54,7 +55,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_0100', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0100] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '30'
       });
       await CommonFunc.sleep(4000);
@@ -95,7 +96,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_0200', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0200] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '50px'
       });
       await CommonFunc.sleep(3000);
@@ -136,7 +137,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_0300', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0300] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '50fp'
       });
       await CommonFunc.sleep(3000);
@@ -178,7 +179,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_0400', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0400] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '50lpx'
       });
       await CommonFunc.sleep(3000);
@@ -222,7 +223,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_0500', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0500] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: vp2px(10) + 'px'
       });
       await CommonFunc.sleep(3000);
@@ -263,7 +264,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_0600', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0600] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: px2vp(10) + 'vp'
       });
       await CommonFunc.sleep(3000);
@@ -304,7 +305,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_0700', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0700] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: fp2px(10) + 'px'
       });
       await CommonFunc.sleep(3000);
@@ -345,7 +346,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_0800', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0800] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: px2fp(10) + 'fp'
       });
       await CommonFunc.sleep(3000);
@@ -386,7 +387,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_0900', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0900] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: lpx2px(10) + 'px'
       });
       await CommonFunc.sleep(3000);
@@ -427,7 +428,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_1000', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_1000] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: px2lpx(10) + 'lpx'
       });
       await CommonFunc.sleep(3000);
@@ -470,7 +471,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_1100', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_01100] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '3' + '0'
       });
       await CommonFunc.sleep(3000);
@@ -511,7 +512,7 @@ export default function Column_Space_String() {
      */
     it('SUB_ACE_Column_Space_String_TEST_1200', 0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_1200] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '50'
       });
       await CommonFunc.sleep(3000);

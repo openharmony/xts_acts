@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
@@ -81,17 +82,17 @@ export default function GridItemJsunit() {
     it('GridItemJsunit_0200', 0, async (done: Function) => {
       // Modify the properties of component GridItem
       console.info('[GridItemJsunit_0200] START');
-      globalThis.value.message.notify({name:'rowStart',value:'2'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowStart',value:'2'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'rowEnd',value:'5'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowEnd',value:'5'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'columnStart',value:'2'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnStart',value:'2'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'columnEnd',value:'4'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnEnd',value:'4'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'forceRebuild',value:'false'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'forceRebuild',value:'false'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'selectable',value:'true'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'selectable',value:'true'})
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the GridItem component
@@ -115,17 +116,17 @@ export default function GridItemJsunit() {
     it('GridItemJsunit_0300', 0, async (done: Function) => {
       // Illegal modification of properties of component gridItem
       console.info('[GridItemJsunit_0300] START');
-      globalThis.value.message.notify({name:'rowStart',value:'test'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowStart',value:'test'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'rowEnd',value:'#'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowEnd',value:'#'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'columnStart',value:'-10'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnStart',value:'-10'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'columnEnd',value:'%a'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnEnd',value:'%a'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'forceRebuild',value:'0'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'forceRebuild',value:'0'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'selectable',value:'test'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'selectable',value:'test'})
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the GridItem component
@@ -206,9 +207,9 @@ export default function GridItemJsunit() {
     it('GridJsunit_0800', 0, async (done: Function) => {
       // Verify the rowsGap of Grid component 
       console.info('[GridJsunit_0800] START');
-      globalThis.value.message.notify({name:'rowStart',value:'1'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowStart',value:'1'})
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'rowEnd',value:'4'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowEnd',value:'4'})
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       let gridItem1 = CommonFunc.getComponentRect('gridItem1');

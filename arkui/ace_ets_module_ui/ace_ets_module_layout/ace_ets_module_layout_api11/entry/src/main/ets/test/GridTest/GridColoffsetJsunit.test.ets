@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
@@ -57,7 +58,7 @@ export default function GridColOffsetJsunit() {
       // Modify the properties of component GridCol
       console.info('[GridColOffsetJsunit_0200] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'gridColoffset',value:2});
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'gridColoffset',value:2});
       await CommonFunc.sleep(200);
       let strJson = getInspectorByKey('keykey2');
       let obj: ESObject = JSON.parse(strJson);

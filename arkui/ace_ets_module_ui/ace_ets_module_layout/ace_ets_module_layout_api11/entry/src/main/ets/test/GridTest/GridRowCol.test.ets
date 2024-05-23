@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
@@ -81,7 +82,7 @@ export default function GridRowCol() {
 
       console.info('[GridRowCol_002] START');
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'columnsTemplate', value: 'repeat(auto-fit,10%)' });
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnsTemplate', value: 'repeat(auto-fit,10%)' });
       await CommonFunc.sleep(200);
       let strJson1 = getInspectorByKey('GridRowCol');
       let obj1: ESObject = JSON.parse(strJson1);
@@ -103,7 +104,7 @@ export default function GridRowCol() {
 
       console.info('[GridRowCol_002] START');
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'columnsTemplate', value: 'repeat(auto-fit,90)' });
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnsTemplate', value: 'repeat(auto-fit,90)' });
       await CommonFunc.sleep(200);
       let strJson1 = getInspectorByKey('GridRowCol');
       let obj1: ESObject = JSON.parse(strJson1);
@@ -125,7 +126,7 @@ export default function GridRowCol() {
 
       console.info('[GridRowCol_004] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'columnsTemplate', value: 'repeat(auto-fit,-1)' });
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnsTemplate', value: 'repeat(auto-fit,-1)' });
       await CommonFunc.sleep(200);
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
@@ -146,7 +147,7 @@ export default function GridRowCol() {
 
       console.info('[GridRowCol_005] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'columnsTemplate', value: '1fr 1fr 1fr' });
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnsTemplate', value: '1fr 1fr 1fr' });
       await CommonFunc.sleep(200);
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');

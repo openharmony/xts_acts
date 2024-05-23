@@ -16,6 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function Grid_Col_Order_GridColColumnOption() {
@@ -52,7 +53,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      */
     it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addOrder', value: "40vp"
       });
 
@@ -84,7 +85,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      */
     it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addWidth', value: '80vp'
       });
 
@@ -116,7 +117,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      */
     it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addWidth', value: '130vp'
       });
 
@@ -147,7 +148,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      */
     it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addWidth', value: '180vp'
       });
 
@@ -178,7 +179,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      */
     it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addWidth', value: '230vp'
       });
 
@@ -209,7 +210,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      */
     it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addWidth', value: '330vp'
       });
 
