@@ -34,7 +34,7 @@ export default function PasteboardUnifiedTest() {
     })
 
     /**
-     * @tc.name put Uint8Array promise interface test
+     * @tc.name PasteboardSetUnifiedData_0100
      * @tc.number SUB_Pasteboard_Local_Fun_ApiCompatibility_1900
      * @tc.desc setUnifiedData getUnifiedData interface test
      * @tc.size MediumTest
@@ -77,7 +77,7 @@ export default function PasteboardUnifiedTest() {
     })
 
     /**
-     * @tc.name put Uint8Array promise interface test
+     * @tc.name PasteboardSetUnifiedData_0200
      * @tc.number SUB_Pasteboard_Local_Fun_ApiCompatibility_2000
      * @tc.desc setUnifiedDataSync getUnifiedDataSync interface test
      * @tc.size MediumTest
@@ -121,7 +121,7 @@ export default function PasteboardUnifiedTest() {
     })
 
     /**
-     * @tc.name put Uint8Array promise interface test
+     * @tc.name PasteboardSetUnifiedData_0300
      * @tc.number SUB_Pasteboard_Local_Fun_ApiCompatibility_2100
      * @tc.desc setUnifiedData getUnifiedDataSync interface test
      * @tc.size MediumTest
@@ -163,7 +163,7 @@ export default function PasteboardUnifiedTest() {
     })
 
     /**
-     * @tc.name put Uint8Array promise interface test
+     * @tc.name PasteboardSetUnifiedData_0400
      * @tc.number SUB_Pasteboard_Local_Fun_ApiCompatibility_2200
      * @tc.desc setUnifiedDataSync getUnifiedData interface test
      * @tc.size MediumTest
