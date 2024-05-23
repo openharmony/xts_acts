@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,21 +13,5 @@
  * limitations under the License.
  */
 
-import hilog from '@ohos.hilog';
-
-@Entry
-@Component
-struct Index {
- @State message: string = 'Hello World'
-   build() {
-         Row() {
-           Column() {
-             Text(this.message)
-               .fontSize(50)
-               .fontWeight(FontWeight.Bold)
-           }
-             .width('100%')
-         }
-             .height('100%')
-   }
- }
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { appTasks } from '@ohos/hvigor-ohos-plugin';
