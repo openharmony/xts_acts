@@ -30,7 +30,7 @@ function sleep(ms: number) {
 
 export default function abilityTest() {
   describe('ACTS_AACommand_Test', () => {
-    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AppStorage.get<AbilityDelegatorRegistry.AbilityDelegator>("abilityDelegator");
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator | undefined = AppStorage.get<AbilityDelegatorRegistry.AbilityDelegator>("abilityDelegator");
     beforeAll(async (done: Function) => {
       // abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       await done();
@@ -42,7 +42,7 @@ export default function abilityTest() {
         bundleName: "com.example.aacommandtest",
         abilityName: "MainAbility"
       }
-      await AppStorage.get<common.UIAbilityContext>("abilityContext").startAbility(wantInfo).then((data) => {
+      await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(wantInfo).then((data) => {
         console.log("ActsAACommandTest startAbility data : " + JSON.stringify(data));
       }).catch((err: BusinessError) => {
         console.log("ActsAACommandTest startAbility err : " + JSON.stringify(err));
@@ -70,7 +70,7 @@ export default function abilityTest() {
         '-w 40 -s class ACTS_AACommand_01_3 -s level 1 -s size 0 -s testType aaa -s ' +
         'timeout 5 -s 1 3 -D';
       let delay = 3000;
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.log('ACTS_AACommand_0100 - executeShellCommand: start ');
         console.log('ACTS_AACommand_0100 stdResult = ' + data.stdResult);
         let i = data.stdResult.indexOf('start ability successfully');
@@ -91,7 +91,7 @@ export default function abilityTest() {
     it('ACTS_AACommand_0200', 0, async (done: Function) => {
       console.log("ACTS_AACommand_0200 --- start");
       let cmd = 'aa test -b invalid -m entry_test -s unittest OpenHarmonyTestRunner';
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.log('ACTS_AACommand_0200 - executeShellCommand: start ');
         console.log('ACTS_AACommand_0200 stdResult = ' + data.stdResult);
         let i = data.stdResult.indexOf('failed to start user test');
@@ -113,7 +113,7 @@ export default function abilityTest() {
     it('ACTS_AACommand_0300', 0, async (done: Function) => {
       console.log("ACTS_AACommand_0300 --- start");
       let cmd = 'aa test -b com.example.actsaacommandtestatest -m entry_test -s invalid';
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.log('ACTS_AACommand_0300 - executeShellCommand: start ');
         console.log('ACTS_AACommand_0300 stdResult = ' + data.stdResult);
         let i = data.stdResult.indexOf('option [-s] is incorrect');
@@ -137,7 +137,7 @@ export default function abilityTest() {
       let cmd = 'aa test -b com.example.actsaacommandtestatest -m entry_test ' +
         '-s unittest OpenHarmonyTestRunner ' +
         '-w 无效值';
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.log('ACTS_AACommand_0400 - executeShellCommand: start ');
         console.log('ACTS_AACommand_0400 stdResult = ' + data.stdResult);
         let i = data.stdResult.indexOf('start ability successfully');
@@ -161,7 +161,7 @@ export default function abilityTest() {
       console.log("ACTS_AACommand_0500 --- start");
       let cmd = 'aa test -b aa test -b com.example.actsaacommandtestatest -m entry_test' +
         '-s unittest OpenHarmonyTestRunner -z invalid';
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.log('ACTS_AACommand_0500 - executeShellCommand: start ');
         console.log('ACTS_AACommand_0500 stdResult = ' + data.stdResult);
         let i = data.stdResult.indexOf('error: unknown option: -z');
@@ -183,7 +183,7 @@ export default function abilityTest() {
     it('ACTS_AACommand_0600', 0, async (done: Function) => {
       console.log("ACTS_AACommand_0600 --- start");
       let cmd = 'aa test -b com.example.actsaacommandtestatest -m aatest -s unittest OpenHarmonyTestRunner -w 20';
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.log('ACTS_AACommand_0600 - executeShellCommand: start ');
         console.log('ACTS_AACommand_0600 stdResult = ' + data.stdResult);
         let i = data.stdResult.indexOf('start ability successfully');
@@ -211,7 +211,7 @@ export default function abilityTest() {
       finishmsg1 = 'TestFinished-ResultCode: -1';
       expect(AppStorage.get<string>("stdResult1")).assertContain(finishmsg);
       expect(AppStorage.get<string>("stdResult1")).assertContain(finishmsg1);
-      expect(AppStorage.get<string>("stdResult2").indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
+      expect(AppStorage.get<string>("stdResult2")!.indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
       done();
     })
 
@@ -224,7 +224,7 @@ export default function abilityTest() {
     it('ACTS_AACommand_0800', 0, async (done: Function) => {
       console.log("ACTS_AACommand_0800 --- start");
       let cmd = 'aa test -b com.example.aacommand08 -m entry_test -s unittest OpenHarmonyTestRunner -w 3';
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.log('ACTS_AACommand_0800 - executeShellCommand: start ');
         console.log('ACTS_AACommand_0800 stdResult = ' + data.stdResult);
         let i = data.stdResult.indexOf('start ability successfully');
@@ -248,7 +248,7 @@ export default function abilityTest() {
       console.log("ACTS_AACommand_finishTest_0400 --- start");
       finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
       expect(AppStorage.get<string>("stdResult11")).assertContain(finishmsg);
-      expect(AppStorage.get<string>("stdResult12").indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
+      expect(AppStorage.get<string>("stdResult12")!.indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
       done();
     })
 
@@ -266,7 +266,7 @@ export default function abilityTest() {
       finishmsg1 = 'TestFinished-ResultCode: 1';
       expect(AppStorage.get<string>("stdResult13")).assertContain(finishmsg);
       expect(AppStorage.get<string>("stdResult13")).assertContain(finishmsg1);
-      expect(AppStorage.get<string>("stdResult14").indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
+      expect(AppStorage.get<string>("stdResult14")!.indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
       done();
     })
 
@@ -285,7 +285,7 @@ export default function abilityTest() {
       finishmsg1 = 'TestFinished-ResultCode: 0';
       expect(AppStorage.get<string>("stdResult15")).assertContain(finishmsg);
       expect(AppStorage.get<string>("stdResult15")).assertContain(finishmsg1);
-      expect(AppStorage.get<string>("stdResult16").indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
+      expect(AppStorage.get<string>("stdResult16")!.indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
       done();
     })
 
@@ -304,7 +304,7 @@ export default function abilityTest() {
       finishmsg1 = 'TestFinished-ResultCode: 1';
       expect(AppStorage.get<string>("stdResult17")).assertContain(finishmsg);
       expect(AppStorage.get<string>("stdResult17")).assertContain(finishmsg1);
-      expect(AppStorage.get<string>("stdResult18").indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
+      expect(AppStorage.get<string>("stdResult18")!.indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
       done();
     })
 
@@ -321,7 +321,7 @@ export default function abilityTest() {
       finishmsg1 = 'TestFinished-ResultCode: 1';
       expect(AppStorage.get<string>("stdResult19")).assertContain(finishmsg);
       expect(AppStorage.get<string>("stdResult19")).assertContain(finishmsg1);
-      expect(AppStorage.get<string>("stdResult20").indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
+      expect(AppStorage.get<string>("stdResult20")!.indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
       done();
     })
 
@@ -338,7 +338,7 @@ export default function abilityTest() {
       finishmsg1 = 'TestFinished-ResultCode: 0';
       expect(AppStorage.get<string>("stdResult23")).assertContain(finishmsg);
       expect(AppStorage.get<string>("stdResult23")).assertContain(finishmsg1);
-      expect(AppStorage.get<string>("stdResult24").indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
+      expect(AppStorage.get<string>("stdResult24")!.indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
       done();
     })
 
@@ -355,7 +355,7 @@ export default function abilityTest() {
       finishmsg1 = 'TestFinished-ResultCode: 1';
       expect(AppStorage.get<string>("stdResult25")).assertContain(finishmsg);
       expect(AppStorage.get<string>("stdResult25")).assertContain(finishmsg1);
-      expect(AppStorage.get<string>("stdResult26").indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
+      expect(AppStorage.get<string>("stdResult26")!.indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
       done();
     })
 
@@ -372,7 +372,7 @@ export default function abilityTest() {
       finishmsg1 = 'TestFinished-ResultCode: -1';
       expect(AppStorage.get<string>("stdResult27")).assertContain(finishmsg);
       expect(AppStorage.get<string>("stdResult27")).assertContain(finishmsg1);
-      expect(AppStorage.get<string>("stdResult28").indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
+      expect(AppStorage.get<string>("stdResult28")!.indexOf("com.example.aacommandrelyhap") == -1).assertTrue();
       done();
     })
 
@@ -384,7 +384,7 @@ export default function abilityTest() {
      */
     it('ACTS_AACommand_finishTest_0300', 0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_0300 --- start");
-      expect(AppStorage.get<string>("stdResult30").indexOf("com.example.aacommandrelyhap") >= 0).assertTrue();
+      expect(AppStorage.get<string>("stdResult30")!.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue();
       done();
     })
 
@@ -398,7 +398,7 @@ export default function abilityTest() {
      */
     it('ACTS_AACommand_finishTest_1600', 0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_1600 --- start");
-      expect(AppStorage.get<string>("stdResult34").indexOf("com.example.aacommandrelyhap") >= 0).assertTrue();
+      expect(AppStorage.get<string>("stdResult34")!.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue();
       done();
     })
 
@@ -411,7 +411,7 @@ export default function abilityTest() {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0700 start!');
       let cmd1 = 'aa attach';
       let cmd2 = 'aa detach';
-      await abilityDelegator.executeShellCommand(cmd1).then((data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      await abilityDelegator!.executeShellCommand(cmd1).then((data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0700 shell result1 data: ' + JSON.stringify(data));
         try {
           expect(data.stdResult).assertContain('aa attach <options>');
@@ -420,7 +420,7 @@ export default function abilityTest() {
         }
       });
       await sleep(700);
-      await abilityDelegator.executeShellCommand(cmd2).then((data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      await abilityDelegator!.executeShellCommand(cmd2).then((data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0700 shell result2 data: ' + JSON.stringify(data));
         try {
           expect(data.stdResult).assertContain('aa detach <options>');
@@ -440,7 +440,7 @@ export default function abilityTest() {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0800 start!');
       let cmd1 = 'aa attach -b';
       let cmd2 = 'aa detach -b';
-      await abilityDelegator.executeShellCommand(cmd1).then((data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      await abilityDelegator!.executeShellCommand(cmd1).then((data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0800 shell result1 data: ' + JSON.stringify(data));
         try {
           expect(data.stdResult).assertContain('aa attach <options>');
@@ -449,7 +449,7 @@ export default function abilityTest() {
         }
       });
       await sleep(700);
-      await abilityDelegator.executeShellCommand(cmd2).then((data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      await abilityDelegator!.executeShellCommand(cmd2).then((data: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0800 shell result2 data: ' + JSON.stringify(data));
         try {
           expect(data.stdResult).assertContain('aa detach <options>');
@@ -468,7 +468,7 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0900', 0, (done: Function) => {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0900 start!');
       let cmd = 'aa attach -c';
-      abilityDelegator.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         expect(error).assertEqual(null);
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0900 shell result data: ' + JSON.stringify(data));
         try {
@@ -488,7 +488,7 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1000', 0, (done: Function) => {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1000 start!');
       let cmd = 'aa detach -c';
-      abilityDelegator.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         expect(error).assertEqual(null);
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1000 shell result data: ' + JSON.stringify(data));
         try {
@@ -508,7 +508,7 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1100', 0, (done: Function) => {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1100 start!');
       let cmd = 'aa attach -b com.example.attachdebugtest';
-      abilityDelegator.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         expect(error).assertEqual(null);
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1100 shell result data: ' + JSON.stringify(data));
         try {
@@ -528,7 +528,7 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1200', 0, (done: Function) => {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1200 start!');
       let cmd = 'aa detach -b com.example.attachdebugtest';
-      abilityDelegator.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
+      abilityDelegator!.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
         expect(error).assertEqual(null);
         console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1200 shell result data: ' + JSON.stringify(data));
         try {
