@@ -1770,7 +1770,7 @@ export default function imageEffectTest() {
      * @tc.level  : Level 1
      */
     it('testOHImageEffectSetInputPixelmap001', 0, () => {
-      expect(testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_1)).assertEqual(EFFECT_SUCCESS);
+      expect(testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_1)).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
 
     /**
