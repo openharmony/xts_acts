@@ -21,14 +21,33 @@ import featureAbility from "@ohos.ability.featureAbility";
 
 export default function imageModifyProperty() {
     describe("imageModifyProperty", function () {
+        const { IMAGE_LENGTH,IMAGE_WIDTH,GPS_DATE_STAMP,IMAGE_DESCRIPTION,SCENE_BLUE_SKY_CONF,SCENE_GREEN_PLANT_CONF } = image.PropertyKey;
         let globalImagesource;
         let filePath;
+        let fdNumber;
+        let ERROR_CODE1 = "62980135";
+        let ERROR_CODE2 = "62980146";
+        let ERROR_CODE3 = "62980096";
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
             await context.getFilesDir().then((data) => {
                 filePath = data + "/" + fileName;
                 console.info("image case filePath is " + filePath);
             });
+            await fileio
+                .open(filePath)
+                .then(
+                    (data) => {
+                        fdNumber = data;
+                        console.info("image case open fd success " + fdNumber);
+                    },
+                    (err) => {
+                        console.info("image cese open fd fail" + err);
+                    }
+                )
+                .catch((err) => {
+                    console.info("image case open fd err " + err);
+                });
         }
         beforeAll(async function () {
             console.info("beforeAll case");
@@ -53,6 +72,48 @@ export default function imageModifyProperty() {
         afterAll(function () {
             console.info("afterAll case");
         });
+
+        async function modifyImageProperties(done, testNum, type, key, checkKey, checkResult) {
+            let imageSourceApi;
+            if (type == "buffer") {
+                const data = modifyBuf.buffer;
+                imageSourceApi = image.createImageSource(data);
+            } else {
+                await getFd(type);
+                imageSourceApi = image.createImageSource(filePath);
+            }
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                globalImagesource = imageSourceApi;
+                imageSourceApi.modifyImageProperties(key)
+                    .then(() => {
+                        imageSourceApi
+                            .getImageProperties(checkKey)
+                            .then((data) => {
+                                console.info(`${testNum} ${JSON.stringify(key)} ,` + JSON.stringify(data));
+                                checkResult(data);
+                                done();
+                            })
+                            .catch((err) => {
+                                const errormsg = err.toString();
+                                const errorCode = JSON.stringify(err);
+                                console.log(`${testNum} get error: ` + errormsg);
+                                expect(errorCode.includes(ERROR_CODE3)).assertTrue();
+                                done();
+                            });
+                    })
+                    .catch((err) => {
+                        const errormsg = err.toString();
+                        const errorCode = JSON.stringify(err);
+                        console.log(`${testNum} modify error: ` + errormsg);
+                        expect(errorCode.includes(ERROR_CODE1) || errorCode.includes(ERROR_CODE2) || errorCode.includes(ERROR_CODE3)).assertTrue();
+                        done();
+                    });
+            }
+        }
 
         async function modifyPromise(done, testNum, type, key, value, checkProps) {
             let imageSourceApi;
@@ -3462,6 +3523,489 @@ export default function imageModifyProperty() {
                 "buffer",
                 "GPSLongitudeRef",
                 "1234"
+            );
+        });
+        
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0100
+         * @tc.name      : test modifyImageProperties for jpg with multy keys
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0100", 0, async function (done) {
+            function checkProps(result) {
+                const keys = Object.keys(props)
+                const ret = true;
+                for (let key in keys) {
+                    if(props[keys[key]] != result[key][keys[key]]) {
+                        ret = false;
+                        break;
+                    }
+                }
+                expect(ret).assertTrue();
+            }
+            let props = {
+                ImageWidth: "1024",
+                ImageLength: "2048"
+            }
+            let checkKey = [
+                IMAGE_WIDTH,
+                IMAGE_LENGTH
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0100",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                checkProps
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0200
+         * @tc.name      : test modifyImageProperties for jpg with single key
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0200", 0, async function (done) {
+            function checkProps(result) {
+                const keys = Object.keys(props)
+                const ret = true;
+                for (let key in keys) {
+                    if(props[keys[key]] != result[key][keys[key]]) {
+                        ret = false;
+                        break;
+                    }
+                }
+                expect(ret).assertTrue();
+            }
+            let props = {
+                ImageLength: "2048"
+            }
+            let checkKey = [
+                IMAGE_LENGTH
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0200",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                checkProps
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0300
+         * @tc.name      : test modifyImageProperties for all the key with null value of jpg icon
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0300", 0, async function (done) {
+            function checkProps(result) {
+                const keys = Object.keys(props)
+                const ret = true;
+                for (let key in keys) {
+                    if(props[keys[key]] != result[key][keys[key]]) {
+                        ret = false;
+                        break;
+                    }
+                }
+                expect(ret).assertTrue();
+            }
+            let props = {
+                GPSDateStamp: "2023:04:13",
+                ImageDescription: "A gray picture"
+            }
+            let checkKey = [
+                GPS_DATE_STAMP,
+                IMAGE_DESCRIPTION
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0300",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                checkProps
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0400
+         * @tc.name      : test modifyImageProperties for partially the key with null value of jpg icon
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0400", 0, async function (done) {
+            function checkProps(result) {
+                const keys = Object.keys(props)
+                const ret = true;
+                for (let key in keys) {
+                    if(props[keys[key]] != result[key][keys[key]]) {
+                        ret = false;
+                        break;
+                    }
+                }
+                expect(ret).assertTrue();
+            }
+            let props = {
+                GPSDateStamp: "2023:04:13",
+                ImageWidth: "1024",
+            }
+            let checkKey = [
+                GPS_DATE_STAMP,
+                IMAGE_WIDTH
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0400",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                checkProps
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0100
+         * @tc.name      : test modifyImageProperties for jpg with invalid value
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0100", 0, async function (done) {
+            let props = {
+                ImageWidth: "-1",
+                ImageLength: "2344"
+            }
+            let checkKey = [
+                IMAGE_WIDTH,
+                IMAGE_LENGTH
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0100",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                undefined
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0200
+         * @tc.name      : test modifyImageProperties for jpg with out-of-bounds value
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0200", 0, async function (done) {
+            let props = {
+                ImageWidth: "100000000000000",
+                ImageLength: "2344"
+            }
+            let checkKey = [
+                IMAGE_WIDTH,
+                IMAGE_LENGTH
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0200",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                undefined
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0300
+         * @tc.name      : test modifyImageProperties for jpg with invalid keys
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0300", 0, async function (done) {
+            let props = {
+                "ErrorKey1": "1024",
+                "ErrorKey2": "2048"
+            }
+            let checkKey = [
+                "ErrorKey1",
+                "ErrorKey2"
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0300",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                undefined
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0400
+         * @tc.name      : test modifyImageProperties for jpg with invalid key
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0400", 0, async function (done) {
+            let props = {
+                ImageLength: "2048",
+                "ErrorKey": "1024",
+            }
+            let checkKey = [
+                IMAGE_LENGTH,
+                "ErrorKey"
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0400",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                undefined
+            );
+        });
+
+         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0500
+         * @tc.name      : test modifyImageProperties for jpg with all null value 
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0500", 0, async function (done) {
+            let props = {
+                ImageLength: "",
+                ImageWidth: "",
+            }
+            let checkKey = [
+                IMAGE_LENGTH,
+                IMAGE_WIDTH
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0500",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                undefined
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0600
+         * @tc.name      : test modifyImageProperties for jpg with partially null value
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0600", 0, async function (done) {
+            let props = {
+                ImageLength: "2048",
+                ImageWidth: "",
+            }
+            let checkKey = [
+                IMAGE_LENGTH,
+                IMAGE_WIDTH
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0600",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                undefined
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0700
+         * @tc.name      : test modifyImageProperties for jpg with incorrect type
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0700", 0, async function (done) {
+            let props = {
+                ImageLength: "2048",
+                ImageWidth: "abc",
+            }
+            let checkKey = [
+                IMAGE_LENGTH,
+                IMAGE_WIDTH
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0700",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                undefined
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0800
+         * @tc.name      : test modifyImageProperties for private filed of jpg
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0800", 0, async function (done) {
+            let props = {
+                HwMnoteSceneBlueSkyConf: "71",
+                HwMnoteSceneGreenPlantConf: "98"
+            }
+            let checkKey = [
+                SCENE_BLUE_SKY_CONF,
+                SCENE_GREEN_PLANT_CONF
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0800",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                undefined
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0900
+         * @tc.name      : test modifyImageProperties for private and public filed of jpg
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0900", 0, async function (done) {
+            let props = {
+                ImageWidth: "1024",
+                ImageLength: "2048",
+                HwMnoteSceneBlueSkyConf: "71",
+                HwMnoteSceneGreenPlantConf: "98"
+            }
+            let checkKey = [
+                IMAGE_WIDTH,
+                IMAGE_LENGTH,
+                SCENE_BLUE_SKY_CONF,
+                SCENE_GREEN_PLANT_CONF
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0900",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                undefined
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1000
+         * @tc.name      : test modifyImageProperties for unwritable filed of jpg
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1000", 0, async function (done) {
+            let props = {
+                "JPEGInterchangeFormat": "1450",
+                "JPEGInterchangeFormatLength": "1450",
+                "MakerNote": "xxxxx",
+            }
+            let checkKey = [
+                "JPEGInterchangeFormat",
+                "JPEGInterchangeFormatLength",
+                "MakerNote"
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1000",
+                "test_exif.jpg",
+                props,
+                checkKey,
+                undefined
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1100
+         * @tc.name      : test modifyImageProperties for tiff with multy keys
+         * @tc.desc      : 1.create tiff imagesource
+         *                 2.call modifyImageProperty(keys)
+         *                 3.return undefined
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1100", 0, async function (done) {
+            let props = {
+                ImageWidth: "1024",
+                ImageLength: "2048"
+            }
+            let checkKey = [
+                IMAGE_WIDTH,
+                IMAGE_LENGTH
+            ];
+            await modifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1100",
+                "test.tiff",
+                props,
+                checkKey,
+                undefined
             );
         });
     });
