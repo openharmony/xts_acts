@@ -101,7 +101,12 @@
     "pages/Wifi/WifiScan",
     "pages/Bluetooth/BlueTooth_index",
     "pages/Bluetooth/StandardBluetooth/page/StandardBluetooth",
-    "pages/Bluetooth/BleBluetooth/page/BleBluetooth"
+    "pages/Bluetooth/BleBluetooth/page/BleBluetooth",
+    "pages/PCS/PCS_index",
+    "pages/PCS/DeveloperMode",
+    "pages/PCS/DHCPClientAndServer",
+    "pages/PCS/SubscribeCommonEvent",
+    "pages/PCS/UninstallHap"
   ]
 }
 
