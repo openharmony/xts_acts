@@ -99,7 +99,7 @@ export default function PasteboardUnifiedTest() {
       expect(result).assertFalse();
       try {
         await systemPasteboard.setUnifiedDataSync(plainTextData);
-        expect(systemPasteboard.hasDataSync()).assertTrue()
+        expect(systemPasteboard.hasDataSync()).assertTrue();
         console.info(TAG + 'Succeeded in setting UnifiedData.')
       } catch (error){
         console.info(TAG + 'Failed To Set UnifiedData.Cause:' + error.message);
@@ -140,7 +140,7 @@ export default function PasteboardUnifiedTest() {
       plainTextData.addRecord(plainText);
       let result = systemPasteboard.hasDataSync();
       expect(result).assertFalse();
-      await systemPasteboard.setUnifiedDataSync(plainTextData).then(async (data:void) => {
+      await systemPasteboard.setUnifiedData(plainTextData).then(async (data:void) => {
         expect(systemPasteboard.hasDataSync()).assertTrue();
         console.info(TAG + 'Succeeded in setting UnifiedData.');
         try {
@@ -184,8 +184,8 @@ export default function PasteboardUnifiedTest() {
       expect(result).assertFalse();
       try {
         await systemPasteboard.setUnifiedDataSync(plainTextData);
-        expect(systemPasteboard.hasDataSync()).assertTrue()
-        console.info(TAG + 'Succeeded in setting UnifiedData.')
+        expect(systemPasteboard.hasDataSync()).assertTrue();
+        console.info(TAG + 'Succeeded in setting UnifiedData.');
       } catch (error){
         console.info(TAG + 'Failed To Set UnifiedData.Cause:' + error.message);
       }
