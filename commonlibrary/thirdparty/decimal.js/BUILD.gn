@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Huawei Device Co., Ltd.
+# Copyright (C) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -12,13 +12,23 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-group("thirdparty") {
+group("decimal.js") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "musl:ActsThirdPartyMuslTest" ]
-    if (target_cpu == "arm") {
-      deps += [ "musl32:ActsThirdPartyMusl32Test" ]
-    }
-    deps += [ "decimal.js:decimal.js" ]
+    deps = [
+      "decimal001:ActsDecimalTest001",
+      "decimal002:ActsDecimalTest002",
+      "decimal003:ActsDecimalTest003",
+      "decimal004:ActsDecimalTest004",
+      "decimal005:ActsDecimalTest005",
+      "decimal006:ActsDecimalTest006",
+      "decimal007:ActsDecimalTest007",
+      "decimal008:ActsDecimalTest008",
+      "decimal009:ActsDecimalTest009",
+      "decimal010:ActsDecimalTest010",
+      "decimal011:ActsDecimalTest011",
+      "decimal012:ActsDecimalTest012",
+      "decimal013:ActsDecimalTest013",
+    ]
   }
 }
