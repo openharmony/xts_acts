@@ -24,7 +24,7 @@ const TAG = "[RELATIONAL_STORE_ESTKITS_Corrupt_TEST]  ";
 
 let dataBaseDir : String;
 var rdbStore = undefined;
-const dbName = "Resultset.db"
+const dbName = "Resultset.db";
 let dbPath = "";
 let dbPathWal = "";
 let dbPathShm = "";
@@ -53,7 +53,7 @@ export default function rdbStoreCorruptJSunitTest() {
 
         afterEach(async function () {
             console.log(TAG + 'afterEach')
-            rdbStore = null
+            rdbStore = null;
             await data_relationalStore.deleteRdbStore(context, "Resultset.db");
         })
 
@@ -81,9 +81,9 @@ export default function rdbStoreCorruptJSunitTest() {
             for (let i = 0; i < 100; ++i) {
                 valueBucketArray.push(valueBucket);
             }
-            let count = await rdbStore.batchInsert("test", valueBucketArray)
+            let count = await rdbStore.batchInsert("test", valueBucketArray);
             rdbStore.close();
-            rdbStore = null
+            rdbStore = null;
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
             try {
                 await CreateCorruptDb();
@@ -97,14 +97,14 @@ export default function rdbStoreCorruptJSunitTest() {
             try {
                 let fileExist = fs.accessSync(dbPath);
                 expect(fileExist).assertTrue();
-                fs.truncateSync(dbPathWal, 4)
-                fs.truncateSync(dbPathShm, 4)
+                fs.truncateSync(dbPathWal, 4);
+                fs.truncateSync(dbPathShm, 4);
                 let file = fs.openSync(dbPath, fs.OpenMode.READ_WRITE);
                 fs.truncateSync(file.fd, 4);
-                fs.fsyncSync(file.fd)
-                fs.closeSync(file)
+                fs.fsyncSync(file.fd);
+                fs.closeSync(file);
             } catch (err) {
-                console.log(TAG, `CreateCorruptDb err.code ${err.code}, err.message ${err.message}`)
+                console.log(TAG, `CreateCorruptDb err.code ${err.code}, err.message ${err.message}`);
             }
             console.log(TAG, `quit create corrupt store`);
         }
@@ -119,17 +119,17 @@ export default function rdbStoreCorruptJSunitTest() {
                     "data3": 1.0,
                     "data4": u8,
                 }
-                await rdbStore.insert("test", valueBucket)
+                await rdbStore.insert("test", valueBucket);
             }
             {
-                var u8 = new Uint8Array([3, 4, 5])
+                var u8 = new Uint8Array([3, 4, 5]);
                 const valueBucket = {
                     "data1": "2",
                     "data2": -5,
                     "data3": 2.5,
                     "data4": u8,
                 }
-                await rdbStore.insert("test", valueBucket)
+                await rdbStore.insert("test", valueBucket);
             }
             {
                 var u8 = new Uint8Array(0)
@@ -139,7 +139,7 @@ export default function rdbStoreCorruptJSunitTest() {
                     "data3": 1.8,
                     "data4": u8,
                 }
-                await rdbStore.insert("test", valueBucket)
+                await rdbStore.insert("test", valueBucket);
             }
             console.log(TAG, "createTest data end");
         }
@@ -187,7 +187,7 @@ export default function rdbStoreCorruptJSunitTest() {
          */
         it('rebuiltInsertTest0001', 0, async function (done) {
             console.log(TAG + "************* rebuiltInsertTest0001 start *************");
-            await Generate()
+            await Generate();
             var u8 = new Uint8Array([1, 2, 3]);
             const valueBucket = {
                 "data1": "hello",

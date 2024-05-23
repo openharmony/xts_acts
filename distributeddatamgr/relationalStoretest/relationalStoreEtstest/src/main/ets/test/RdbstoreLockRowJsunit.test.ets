@@ -22,11 +22,11 @@ let context: common.UIAbilityContext;
 const TAG = "[RELATIONAL_STORE_ESTKITS_Corrupt_TEST]  ";
 
 var rdbStore = undefined;
-const dbName = "LockRowTest.db"
-const TABLE = 'lockrowtest'
-const LOG_TABLE = "naturalbase_rdb_aux_" + TABLE + "_log"
+const dbName = "LockRowTest.db";
+const TABLE = 'lockrowtest';
+const LOG_TABLE = "naturalbase_rdb_aux_" + TABLE + "_log";
 const CHECK_STATUS = "SELECT " + LOG_TABLE + ".status FROM " + LOG_TABLE + " INNER JOIN " + TABLE + " ON " +
-    LOG_TABLE + ".data_key = " + TABLE + ".ROWID WHERE " + TABLE + ".name = '"
+    LOG_TABLE + ".data_key = " + TABLE + ".ROWID WHERE " + TABLE + ".name = '";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS " + TABLE + " (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
     "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB, data1 asset, data2 assets )";
 let STORE_CONFIG = {
@@ -105,8 +105,8 @@ export default function rdbstoreLockRowJsunitTest() {
         })
 
         afterEach(async function () {
-            console.log(TAG + 'afterEach')
-            rdbStore = null
+            console.log(TAG + 'afterEach');
+            rdbStore = null;
         })
 
         afterAll(async function () {
@@ -119,39 +119,39 @@ export default function rdbstoreLockRowJsunitTest() {
                 let resultSet = await rdbStore.querySql(sql);
                 expect(true).assertEqual(resultSet.goToNextRow());
                 expect(status).assertEqual(resultSet.getLong(0));
-                console.log(TAG + `checkStatus success, status: `+ resultSet.getLong(0) + ', expert is ' + status)
+                console.log(TAG + `checkStatus success, status: `+ resultSet.getLong(0) + ', expert is ' + status);
                 resultSet.close();
             } catch (err) {
-                console.log(TAG + `checkStatus failed, err: ${JSON.stringify(err)}`)
-                expect().assertFail()
+                console.log(TAG + `checkStatus failed, err: ${JSON.stringify(err)}`);
+                expect().assertFail();
             }
         }
     
         async function queryLockedData(count, name) {
-            console.log(TAG + `queryLockedData start`)
+            console.log(TAG + `queryLockedData start`);
             try {
-                let predicates = new data_relationalStore.RdbPredicates(TABLE)
-                predicates.equalTo("name", name)
+                let predicates = new data_relationalStore.RdbPredicates(TABLE);
+                predicates.equalTo("name", name);
                 let resultSet = await rdbStore.queryLockedRow(predicates);
                 expect(count).assertEqual(resultSet.rowCount);
                 resultSet.close();
-                console.log(TAG + `query all columns success`)
+                console.log(TAG + `query all columns success`);
             } catch (err) {
-                console.log(TAG + `query all columns failed, err: ${JSON.stringify(err)}`)
-                expect().assertFail()
+                console.log(TAG + `query all columns failed, err: ${JSON.stringify(err)}`);
+                expect().assertFail();
             }
             try {
-                let predicates = new data_relationalStore.RdbPredicates(TABLE)
-                predicates.equalTo("name", name)
+                let predicates = new data_relationalStore.RdbPredicates(TABLE);
+                predicates.equalTo("name", name);
                 let resultSet = await rdbStore.queryLockedRow(predicates, ['name', 'age']);
                 expect(count).assertEqual(resultSet.rowCount);
                 resultSet.close();
-                console.log(TAG + `query specified columns success`)
+                console.log(TAG + `query specified columns success`);
             } catch (err) {
-                console.log(TAG + `query specified columns failed, err: ${JSON.stringify(err)}`)
-                expect().assertFail()
+                console.log(TAG + `query specified columns failed, err: ${JSON.stringify(err)}`);
+                expect().assertFail();
             }
-            console.log(TAG + `queryLockedData end`)
+            console.log(TAG + `queryLockedData end`);
         }
 
         console.log(TAG + "*************JS Test Begin*************");
@@ -175,19 +175,18 @@ export default function rdbstoreLockRowJsunitTest() {
                 "data1": asset3,
                 "data2": assets
             }
-            let ret = await rdbStore.insert(TABLE, valueBucket)
-            console.log(TAG + `insert end: ` + ret)
+            let ret = await rdbStore.insert(TABLE, valueBucket);
+            console.log(TAG + `insert end: ` + ret);
             expect(1).assertEqual(ret);
-            // check default status
-            checkStatus(checkName, UNLOCK)
-            console.log(TAG + `checkStatus end`)
+            checkStatus(checkName, UNLOCK);
+            console.log(TAG + `checkStatus end`);
         } catch (err) {
-            console.log(TAG + `init failed, err: ${JSON.stringify(err)}`)
-            expect().assertFail()
+            console.log(TAG + `init failed, err: ${JSON.stringify(err)}`);
+            expect().assertFail();
         }
-        queryLockedData(0, checkName)
+        queryLockedData(0, checkName);
         try {
-            var u8 = new Uint8Array([4, 5, 6])
+            var u8 = new Uint8Array([4, 5, 6]);
             const valueBucket = {
                 "name": checkName,
                 "age": 20,
@@ -196,17 +195,16 @@ export default function rdbstoreLockRowJsunitTest() {
                 "data1": asset3,
                 "data2": assets
             }
-            let predicates = new data_relationalStore.RdbPredicates(TABLE)
-            predicates.equalTo("name", checkName)
-            let ret = await rdbStore.update(valueBucket, predicates)
+            let predicates = new data_relationalStore.RdbPredicates(TABLE);
+            predicates.equalTo("name", checkName);
+            let ret = await rdbStore.update(valueBucket, predicates);
             await expect(1).assertEqual(ret);
-            // check default status
-            checkStatus(checkName, UNLOCK)
+            checkStatus(checkName, UNLOCK);
         } catch (err) {
-            console.log(TAG + `failed, err: ${JSON.stringify(err)}`)
-            expect().assertFail()
+            console.log(TAG + `failed, err: ${JSON.stringify(err)}`);
+            expect().assertFail();
         }
-        queryLockedData(0, checkName)
+        queryLockedData(0, checkName);
 
         console.log(TAG + "************* testRdbStoreLockRow0001 end   *************");
     })
@@ -218,14 +216,13 @@ export default function rdbstoreLockRowJsunitTest() {
      */
     it('testRdbStoreLockRow0002', 0, async function () {
         console.log(TAG + "************* testRdbStoreLockRow0002 start *************");
-        // table name should not empty
         try {
-            let predicates = new data_relationalStore.RdbPredicates("")
-            await rdbStore.lockRow(predicates) 
-            expect().assertFail()
+            let predicates = new data_relationalStore.RdbPredicates("");
+            await rdbStore.lockRow(predicates);
+            expect().assertFail();
         } catch (err) {
-            console.log(TAG + `failed, err: ${JSON.stringify(err)}`)
-            expect("401").assertEqual(err.code)
+            console.log(TAG + `failed, err: ${JSON.stringify(err)}`);
+            expect("401").assertEqual(err.code);
         }
         console.log(TAG + "************* testRdbStoreLockRow0002 end   *************");
     })
@@ -237,14 +234,13 @@ export default function rdbstoreLockRowJsunitTest() {
      */
     it('testRdbStoreLockRow0003', 0, async function () {
         console.log(TAG + "************* testRdbStoreLockRow0003 start *************");
-        // unlock
         try {
-            let predicates = new data_relationalStore.RdbPredicates("")
-            await rdbStore.unlockRow(predicates) // table name should not empty
-            expect().assertFail()
+            let predicates = new data_relationalStore.RdbPredicates("");
+            await rdbStore.unlockRow(predicates);
+            expect().assertFail();
         } catch (err) {
-            console.log(TAG + `failed, err: ${JSON.stringify(err)}`)
-            expect("401").assertEqual(err.code)
+            console.log(TAG + `failed, err: ${JSON.stringify(err)}`);
+            expect("401").assertEqual(err.code);
         }
         console.log(TAG + "************* testRdbStoreLockRow0003 end   *************");
     })
