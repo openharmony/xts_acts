@@ -61,6 +61,21 @@ function specificNoParam($$?: ABuilderParam) {
   Column() {
     Scroll() {
       Column() {
+        Button(`不支持外接鼠标`)
+          .borderRadius(8)
+          .backgroundColor(0x317aff)
+          .width('50%')
+          .margin('5vp')
+          .onClick(()=>{
+            this.Vue = true;
+            router.back({
+              url: 'pages/MultimodalInput/MultimodalInput_index',
+              params: { result: 'true ', title: this.name }
+            });
+            promptAction.showToast({
+              message: '当前设备不支持外接鼠标', duration: 1000
+            });
+          })
         Row() {
           Button('1')
             .fontSize(24)
