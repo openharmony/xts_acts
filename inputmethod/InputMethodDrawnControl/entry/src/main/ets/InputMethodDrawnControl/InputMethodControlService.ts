@@ -14,13 +14,14 @@
  */
 import InputMethodExtensionAbility from '@ohos.InputMethodExtensionAbility';
 import { KeyboardDelegate } from './KeyboardDelegate';
+import Want from '@ohos.app.ability.Want';
 
 export default class InputMethodControlService extends InputMethodExtensionAbility {
   private keyboardDelegate: KeyboardDelegate;
 
-  onCreate(want) {
+  onCreate(want: Want) {
     this.keyboardDelegate = new KeyboardDelegate(this.context);
-    this.keyboardDelegate.onCreate();  // 初始化窗口
+    this.keyboardDelegate.onCreate(); // 初始化窗口
   }
 
   onDestroy() {
