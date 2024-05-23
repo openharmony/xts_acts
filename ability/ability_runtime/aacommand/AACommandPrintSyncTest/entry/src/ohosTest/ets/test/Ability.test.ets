@@ -28,7 +28,7 @@ export default function abilityTest() {
         bundleName: "com.example.aacommandprintsynctest",
         abilityName: "MainAbility"
       }
-      await AppStorage.get<common.UIAbilityContext>("abilityContext").startAbility(wantInfo).then((data) => {
+      await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(wantInfo).then((data) => {
         console.log("ActsAACommandPrintSyncTest startAbility data : " + JSON.stringify(data));
       }).catch((err: BusinessError) => {
         console.log("ActsAACommandPrintSyncTest startAbility err : " + JSON.stringify(err));
