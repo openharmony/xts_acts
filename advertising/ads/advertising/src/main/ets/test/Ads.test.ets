@@ -71,7 +71,6 @@ const advertisement: advertising.Advertisement = {
 };
 const adResponse =
     "{\n" +
-    "  \"clientAdRequestId\":\"763fa78c-0d9a-4908-bab4-25a149801d82\",\n" +
     "  \"cost\":\"18,11,0,10,3,0,1,10,1\",\n" +
     "  \"ctrlSwitchs\":\"0\",\n" +
     "  \"multiad\":[\n" +
@@ -83,7 +82,6 @@ const adResponse =
     "      \"content\":[\n" +
     "      ],\n" +
     "      \"retcode30\":200,\n" +
-    "      \"slotid\":\"testb4znbuh3n2\"\n" +
     "    }\n" +
     "  ],\n" +
     "  \"retcode\":200,\n" +
