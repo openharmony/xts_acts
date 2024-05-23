@@ -16,6 +16,7 @@
 #include "napi/native_api.h"
 #include "native_common.h"
 #include "cstdlib"
+#include "map"
 #include <js_native_api_types.h>
 #include <multimedia/player_framework/native_avcodec_base.h>
 #include <multimedia/player_framework/native_averrors.h>
@@ -78,6 +79,13 @@ enum OH_MD_KEY {
     KEY_AUD_SAMPLE_RATE,
     KEY_I_FRAME_INTERVAL,
     KEY_ROTATION,
+};
+
+const std::map <const char *, bool> Set_Buffer_Key_Map = {
+    {OH_MD_KEY_CODEC_CONFIG, true},
+    {OH_MD_KEY_IDENTIFICATION_HEADER, true},
+    {OH_MD_KEY_SETUP_HEADER, true},
+    {OH_MD_KEY_AUDIO_VIVID_METADATA, true},
 };
 
 const char *bufferKey = "buffer value key";
@@ -1343,6 +1351,11 @@ static napi_value MultimediaCoreAVFormatSetBufferAll(napi_env env, napi_callback
     size_t sizeIn = buffernum * sizeof(uint8_t);
     uint8_t *buffer = reinterpret_cast<uint8_t *>(malloc(sizeIn));
     const char *key = domain(env, info);
+    if (Set_Buffer_Key_Map.find(key) == Set_Buffer_Key_Map.end()) {
+        auto it = Set_Buffer_Key_Map.begin();
+        key = it->first;
+    }
+
     bool ReturnValue = OH_AVFormat_SetBuffer(AVFormat, key, buffer, sizeIn);
     NAPI_ASSERT(env, ReturnValue == true, "OH_AVFormat_SetBuffer failed");
     OH_AVFormat_Destroy(AVFormat);
