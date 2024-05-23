@@ -5,12 +5,6 @@
     "versionCode": 1000000,
     "versionName": "1.0.0",
     "icon": "$media:app_icon",
-    "label": "$string:app_name",
-    "minAPIVersion": 11,
-    "targetAPIVersion": 11,
-    "car":{
-         "apiCompatibleVersion": 11,
-         "singleUser": false
-    }
+    "label": "$string:app_name"
   }
 }
