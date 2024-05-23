@@ -92,5 +92,24 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[2].dependencies[0].moduleName).assertEqual("feature");
       done();
     })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0013
+     * @tc.name  : GetBundleInfoForSelfSyncSkill
+     * @tc.desc  : Test getBundleInfoForSelfSync with Skill
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : Level 2
+     */
+    it('getBundleInfoForSelfSyncSkill', 0, async (done: Function) => {
+      let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_SKILL);
+      expect(data.appIndex).assertEqual(0);
+      expect(data.versionName).assertEqual('1.0.0');
+      expect(data.minCompatibleVersionCode).assertEqual(1000000);
+      expect(data.versionCode).assertEqual(1000000);
+      expect(data.vendor).assertEqual('huawei');
+      expect(data.name).assertEqual('ohos.acts.atomic.service.test');
+      done();
+    })
   })
 }
