@@ -30,7 +30,6 @@ export default class AdsCoreServiceRpcObj extends rpc.RemoteObject {
   // 接收客户端传递过来的消息处理，以及将处理的结果返回给客户端
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
     if (code === REQUEST_CODE || code === PARSE_RESP) {
-
       let remoteObject: rpc.IRemoteObject = data.readRemoteObject();
       Logger.i(TAG, `ad request remoteObject is : ${remoteObject}`);
       let adrequest: string = data.readString();

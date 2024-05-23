@@ -211,7 +211,7 @@ export default function adsTest() {
     /**
      * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0500
      * @tc.name: testGetAdRequestBody
-     * @tc.desc: callback data is not null.
+     * @tc.desc: get Ad RequestBody.
      * @tc.size: LargeTest
      * @tc.type: Function
      * @tc.level: Level0
@@ -231,7 +231,7 @@ export default function adsTest() {
     /**
      * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0600
      * @tc.name: testParseAdResponse
-     * @tc.desc: callback data is not null.
+     * @tc.desc: parse Ad Response.
      * @tc.size: LargeTest
      * @tc.type: Function
      * @tc.level: Level0
@@ -264,8 +264,8 @@ export default function adsTest() {
 
     /**
      * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0700
-     * @tc.name: testParseAdResponse
-     * @tc.desc: callback data is not null.
+     * @tc.name: tesRegisterWebAdInterface
+     * @tc.desc: register Web Ad Interface .
      * @tc.size: LargeTest
      * @tc.type: Function
      * @tc.level: Level0
@@ -274,6 +274,7 @@ export default function adsTest() {
       router.pushUrl({
         url: 'MainAbility/pages/index/webRegister'
       })
+      expect(adResponse != null).assertEqual(true);
       done();
     })
   })
