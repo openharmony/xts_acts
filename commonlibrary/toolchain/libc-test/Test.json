@@ -111,6 +111,7 @@
                 "rm -rf /data/local/tmp/libc-test/gwp_asan_invalid_free_left_test",
                 "rm -rf /data/local/tmp/libc-test/unittest_hilog_vsnprint",
                 "rm -rf /data/local/tmp/libc-test/signal",
+                "rm -rf /data/local/tmp/libc-test/yn",
                 "rm -rf /data/local/tmp/libc-test/clock_nanosleep",
                 "rm -rf /data/local/tmp/libc-test/pthread_rwlock_rdlock",
                 "rm -rf /data/local/tmp/libc-test/pthread_cond_timedwait",
