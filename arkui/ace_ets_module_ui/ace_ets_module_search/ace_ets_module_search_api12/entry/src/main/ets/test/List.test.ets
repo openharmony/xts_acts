@@ -13,14 +13,10 @@
  * limitations under the License.
  */
 
-import textInputUnderlineColorTest from "./component/textInputUnderlineColor.test.ets";
-import textInputMaxFontSize from "./component/textInputMaxFontSize.test.ets";
-import textInputMinFontSize from "./component/textInputMinFontSize.test.ets";
-import textInputHeightAdaptivePolicy from "./component/textInputHeightAdaptivePolicy.test.ets";
+import searchMaxFontSize from "./component/searchMaxFontSize.test.ets";
+import searchMinFontSize from "./component/serachMinFontSize.test.ets";
 
 export default function testsuite() {
-  textInputUnderlineColorTest();
-  textInputMaxFontSize();
-  textInputMinFontSize();
-  textInputHeightAdaptivePolicy();
+  searchMaxFontSize();
+  searchMinFontSize();
 }

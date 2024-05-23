@@ -13,14 +13,12 @@
  * limitations under the License.
  */
 
-import textInputUnderlineColorTest from "./component/textInputUnderlineColor.test.ets";
-import textInputMaxFontSize from "./component/textInputMaxFontSize.test.ets";
-import textInputMinFontSize from "./component/textInputMinFontSize.test.ets";
-import textInputHeightAdaptivePolicy from "./component/textInputHeightAdaptivePolicy.test.ets";
+import AbilityStage from '@ohos.app.ability.AbilityStage';
 
-export default function testsuite() {
-  textInputUnderlineColorTest();
-  textInputMaxFontSize();
-  textInputMinFontSize();
-  textInputHeightAdaptivePolicy();
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    console.log('[Demo] MyAbilityStage onCreate');
+    globalThis.stageOnCreateRun = 1;
+    globalThis.stageContext = this.context;
+  }
 }
