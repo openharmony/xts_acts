@@ -783,7 +783,7 @@ describe("WorkSchedulerJsTest", function () {
             workScheduler.startWork(workInfo)
         }catch(err){
             console.info("----------------err: " + err.code);
-            expect(err.code).assertEqual("401");
+            expect(err.code).assertEqual("9700005");
             done();
         }
     })
@@ -805,7 +805,7 @@ describe("WorkSchedulerJsTest", function () {
             workScheduler.startWork(workInfo)
         }catch(err){
             console.info("----------------err: " + err.code);
-            expect(err.code).assertEqual("401");
+            expect(err.code).assertEqual("9700005");
             done();
         }
     })
