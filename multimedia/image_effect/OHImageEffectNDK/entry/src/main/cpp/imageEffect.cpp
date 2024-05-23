@@ -1890,95 +1890,103 @@ static napi_value OHImageEffectStop(napi_env env, napi_callback_info info)
     return ret;
 }
 
+napi_property_descriptor desc1[] = {
+    {"OHEffectBufferInfoCreate", nullptr, OHEffectBufferInfoCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectBufferInfoSetAddr", nullptr, OHEffectBufferInfoSetAddr, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectBufferInfoGetAddr", nullptr, OHEffectBufferInfoGetAddr, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectBufferInfoSetEffectFormat", nullptr, OHEffectBufferInfoSetEffectFormat, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"OHEffectBufferInfoGetEffectFormat", nullptr, OHEffectBufferInfoGetEffectFormat, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"OHEffectBufferInfoSetHeight", nullptr, OHEffectBufferInfoSetHeight, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHEffectBufferInfoGetHeight", nullptr, OHEffectBufferInfoGetHeight, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHEffectBufferInfoSetRowSize", nullptr, OHEffectBufferInfoSetRowSize, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHEffectBufferInfoGetRowSize", nullptr, OHEffectBufferInfoGetRowSize, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHEffectBufferInfoSetWidth", nullptr, OHEffectBufferInfoSetWidth, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHEffectBufferInfoGetWidth", nullptr, OHEffectBufferInfoGetWidth, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHEffectBufferInfoRelease", nullptr, OHEffectBufferInfoRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectFilterInfoCreate", nullptr, OHEffectFilterInfoCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectFilterInfoSetFilterName", nullptr, OHEffectFilterInfoSetFilterName, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"OHEffectFilterInfoGetFilterName", nullptr, OHEffectFilterInfoGetFilterName, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"OHEffectFilterInfoSetSupportedBufferTypes", nullptr, OHEffectFilterInfoSetSupportedBufferTypes, nullptr, nullptr,
+     nullptr, napi_default, nullptr},
+};
+
+napi_property_descriptor desc2[] = {
+    {"OHEffectFilterInfoGetSupportedBufferTypes", nullptr, OHEffectFilterInfoGetSupportedBufferTypes, nullptr, nullptr,
+     nullptr, napi_default, nullptr},
+    {"OHEffectFilterInfoSetSupportedFormats", nullptr, OHEffectFilterInfoSetSupportedFormats, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"OHEffectFilterInfoGetSupportedFormats", nullptr, OHEffectFilterInfoGetSupportedFormats, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"OHEffectFilterInfoRelease", nullptr, OHEffectFilterInfoRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectFilterCreate", nullptr, OHEffectFilterCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectFilterSetValue", nullptr, OHEffectFilterSetValue, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectFilterGetValue", nullptr, OHEffectFilterGetValue, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectFilterLookupFilterInfo", nullptr, OHEffectFilterLookupFilterInfo, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHEffectFilterLookupFilters", nullptr, OHEffectFilterLookupFilters, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHEffectFilterRegister", nullptr, OHEffectFilterRegister, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectFilterRelease", nullptr, OHEffectFilterRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHEffectFilterReleaseFilterNames", nullptr, OHEffectFilterReleaseFilterNames, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"OHEffectFilterRender", nullptr, OHEffectFilterRender, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectCreate", nullptr, OHImageEffectCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectConfigure", nullptr, OHImageEffectConfigure, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectAddFilter", nullptr, OHImageEffectAddFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
+};
+
+napi_property_descriptor desc3[] = {
+    {"OHImageEffectGetFilter", nullptr, OHImageEffectGetFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectGetFilterCount", nullptr, OHImageEffectGetFilterCount, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHImageEffectGetInputSurface", nullptr, OHImageEffectGetInputSurface, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHImageEffectInsertFilter", nullptr, OHImageEffectInsertFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectRelease", nullptr, OHImageEffectRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectRemoveFilter", nullptr, OHImageEffectRemoveFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectSave", nullptr, OHImageEffectSave, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectRestore", nullptr, OHImageEffectRestore, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectSetInputNativeBuffer", nullptr, OHImageEffectSetInputNativeBuffer, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"OHImageEffectSetInputPixelmap", nullptr, OHImageEffectSetInputPixelmap, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHImageEffectSetInputUri", nullptr, OHImageEffectSetInputUri, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectSetOutputNativeBuffer", nullptr, OHImageEffectSetOutputNativeBuffer, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"OHImageEffectSetOutputPixelmap", nullptr, OHImageEffectSetOutputPixelmap, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHImageEffectSetOutputSurface", nullptr, OHImageEffectSetOutputSurface, nullptr, nullptr, nullptr, napi_default,
+     nullptr},
+    {"OHImageEffectSetOutputUri", nullptr, OHImageEffectSetOutputUri, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectStart", nullptr, OHImageEffectStart, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"OHImageEffectStop", nullptr, OHImageEffectStop, nullptr, nullptr, nullptr, napi_default, nullptr},
+};
 
 EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
 {
-    napi_property_descriptor desc[] = {
-        {"OHEffectBufferInfoCreate", nullptr, OHEffectBufferInfoCreate, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectBufferInfoSetAddr", nullptr, OHEffectBufferInfoSetAddr, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectBufferInfoGetAddr", nullptr, OHEffectBufferInfoGetAddr, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectBufferInfoSetEffectFormat", nullptr, OHEffectBufferInfoSetEffectFormat, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHEffectBufferInfoGetEffectFormat", nullptr, OHEffectBufferInfoGetEffectFormat, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHEffectBufferInfoSetHeight", nullptr, OHEffectBufferInfoSetHeight, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectBufferInfoGetHeight", nullptr, OHEffectBufferInfoGetHeight, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectBufferInfoSetRowSize", nullptr, OHEffectBufferInfoSetRowSize, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectBufferInfoGetRowSize", nullptr, OHEffectBufferInfoGetRowSize, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectBufferInfoSetWidth", nullptr, OHEffectBufferInfoSetWidth, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectBufferInfoGetWidth", nullptr, OHEffectBufferInfoGetWidth, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectBufferInfoRelease", nullptr, OHEffectBufferInfoRelease, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectFilterInfoCreate", nullptr, OHEffectFilterInfoCreate, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectFilterInfoSetFilterName", nullptr, OHEffectFilterInfoSetFilterName, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHEffectFilterInfoGetFilterName", nullptr, OHEffectFilterInfoGetFilterName, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHEffectFilterInfoSetSupportedBufferTypes", nullptr, OHEffectFilterInfoSetSupportedBufferTypes, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OHEffectFilterInfoGetSupportedBufferTypes", nullptr, OHEffectFilterInfoGetSupportedBufferTypes, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OHEffectFilterInfoSetSupportedFormats", nullptr, OHEffectFilterInfoSetSupportedFormats, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"OHEffectFilterInfoGetSupportedFormats", nullptr, OHEffectFilterInfoGetSupportedFormats, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"OHEffectFilterInfoRelease", nullptr, OHEffectFilterInfoRelease, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectFilterCreate", nullptr, OHEffectFilterCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHEffectFilterSetValue", nullptr, OHEffectFilterSetValue, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHEffectFilterGetValue", nullptr, OHEffectFilterGetValue, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHEffectFilterLookupFilterInfo", nullptr, OHEffectFilterLookupFilterInfo, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHEffectFilterLookupFilters", nullptr, OHEffectFilterLookupFilters, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHEffectFilterRegister", nullptr, OHEffectFilterRegister, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHEffectFilterRelease", nullptr, OHEffectFilterRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHEffectFilterReleaseFilterNames", nullptr, OHEffectFilterReleaseFilterNames, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHEffectFilterRender", nullptr, OHEffectFilterRender, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHImageEffectCreate", nullptr, OHImageEffectCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHImageEffectConfigure", nullptr, OHImageEffectConfigure, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHImageEffectAddFilter", nullptr, OHImageEffectAddFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHImageEffectGetFilter", nullptr, OHImageEffectGetFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHImageEffectGetFilterCount", nullptr, OHImageEffectGetFilterCount, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHImageEffectGetInputSurface", nullptr, OHImageEffectGetInputSurface, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHImageEffectInsertFilter", nullptr, OHImageEffectInsertFilter, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHImageEffectRelease", nullptr, OHImageEffectRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHImageEffectRemoveFilter", nullptr, OHImageEffectRemoveFilter, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHImageEffectSave", nullptr, OHImageEffectSave, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHImageEffectRestore", nullptr, OHImageEffectRestore, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHImageEffectSetInputNativeBuffer", nullptr, OHImageEffectSetInputNativeBuffer, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHImageEffectSetInputPixelmap", nullptr, OHImageEffectSetInputPixelmap, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHImageEffectSetInputUri", nullptr, OHImageEffectSetInputUri, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHImageEffectSetOutputNativeBuffer", nullptr, OHImageEffectSetOutputNativeBuffer, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHImageEffectSetOutputPixelmap", nullptr, OHImageEffectSetOutputPixelmap, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHImageEffectSetOutputSurface", nullptr, OHImageEffectSetOutputSurface, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"OHImageEffectSetOutputUri", nullptr, OHImageEffectSetOutputUri, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"OHImageEffectStart", nullptr, OHImageEffectStart, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHImageEffectStop", nullptr, OHImageEffectStop, nullptr, nullptr, nullptr, napi_default, nullptr},
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    size_t mergedLength =
+        sizeof(desc1) / sizeof(desc1[0]) + sizeof(desc2) / sizeof(desc2[0]) + sizeof(desc3) / sizeof(desc3[0]);
+    napi_property_descriptor mergedArray[mergedLength];
+    for (size_t i = 0; i < sizeof(desc1) / sizeof(desc1[0]); ++i) {
+        mergedArray[i] = desc1[i];
+    }
+    for (size_t i = 0; i < sizeof(desc2) / sizeof(desc2[0]); ++i) {
+        mergedArray[sizeof(desc1) / sizeof(desc1[0]) + i] = desc2[i];
+    }
+    for (size_t i = 0; i < sizeof(desc3) / sizeof(desc3[0]); ++i) {
+        mergedArray[sizeof(desc1) / sizeof(desc1[0]) + sizeof(desc2) / sizeof(desc2[0]) + i] = desc3[i];
+    }
+    napi_define_properties(env, exports, mergedLength, mergedArray);
     return exports;
 }
 EXTERN_C_END
@@ -1994,6 +2002,6 @@ static napi_module demoModule = {
 };
 
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{ 
+{
     napi_module_register(&demoModule);
 }
