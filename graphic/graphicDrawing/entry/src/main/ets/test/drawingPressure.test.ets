@@ -726,16 +726,16 @@ export default function graphicDrawing(context, windowStage, abilityStorage) {
           glyph: 65, positionX: 0, positionY: 0
         },
         {
-          glphy: 227, positionX: 14.9, positionY: 0
+          glyph: 227, positionX: 14.9, positionY: 0
         },
         {
-          glphy: 283, postionX: 25.84, positionY: 0
+          glyph: 283, positionX: 25.84, positionY: 0
         },
         {
-          glphy: 283, positionX: 30.62, positionY: 0
+          glyph: 283, positionX: 30.62, positionY: 0
         },
         {
-          glphy: 299, positionX: 35.4, positionY: 0
+          glyph: 299, positionX: 35.4, positionY: 0
         }
       ];
       for (let i = 0;i < pressureTestNum; i++) {
