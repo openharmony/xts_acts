@@ -63,6 +63,7 @@ export default function rdbStoreAttachEtsunitTest() {
             try{
                 let attachStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG1);
                 console.info(TAG + 'beforeEach context databasedir: ' + context.databaseDir);
+                dataBaseDir = context.databaseDir + "/rdb/";
                 console.info(TAG + 'beforeEach STORE_CONFIG1 success');
                 await attachStore.executeSql(CREATE_TABLE_TEST1);
                 let attachStore1 = await data_relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -245,7 +246,7 @@ export default function rdbStoreAttachEtsunitTest() {
             await store.executeSql(CREATE_TABLE_TEST);
             await attachInsert(store, "test");
             try {
-                let number = await store.attach("/data/storage/el2/database/relationalstore/rdb/rdbstore1.db", "attachDB");
+                let number = await store.attach(dataBaseDir + "rdbstore1.db", "attachDB");
                 expect(1).assertEqual(number);
             } catch(e) {
                 console.log("testRdbStoreAttach0005 err: failed, err: code=" + e.code + " message=" + e.message);
@@ -329,7 +330,7 @@ export default function rdbStoreAttachEtsunitTest() {
             let count = resultSet.rowCount;
             expect(10).assertEqual(count);
             try {
-                await store.attach("/data/storage/el2/database/relationalstore/rdb/rdbstore1.db", "attachDB");
+                await store.attach(dataBaseDir + "rdbstore1.db", "attachDB");
                 expect().assertFail();
             } catch(e) {
                 console.log("testRdbStoreAttach0008 err: failed, err: code=" + e.code + " message=" + e.message);
