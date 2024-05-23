@@ -17,6 +17,7 @@ import { describe, it, expect } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function abilityTest() {
+  let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator | undefined = AppStorage.get<AbilityDelegatorRegistry.AbilityDelegator>("abilityDelegator");
   describe('ACTS_AACommand_01_3', () => {
     /**
      * @tc.number: ACTS_AACommand_test_0300_9
@@ -28,7 +29,7 @@ export default function abilityTest() {
     it('ACTS_AACommand_test_0300_9', 0, async (done: Function) => {
       console.log("ACTS_AACommand_test_0300_9 ---------3-------- start");
       let msg = 'ACTS_AACommand_0200/0300/0400/0500/0600';
-      AppStorage.get<AbilityDelegatorRegistry.AbilityDelegator>("abilityDelegator").print(msg, () => {
+      abilityDelegator?.print(msg, () => {
         console.log("ACTS_AACommand_test_0300_9 print  test  end ========> callback ");
       })
       let AbilityDelegatorArgs: AbilityDelegatorRegistry.AbilityDelegatorArgs = AbilityDelegatorRegistry.getArguments();
