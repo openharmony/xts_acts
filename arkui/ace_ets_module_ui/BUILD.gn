@@ -40,6 +40,7 @@ group("ActsAceEtsModuleUITest") {
     "ace_ets_module_span_baselineOffset:ActsAceEtsModuleSpanBaselineOffsetTest",
     "ace_ets_module_textArea:ActsAceEtsModuleTextAreaTest",
     "ace_ets_module_textInput:ActsAceEtsModuleTextInputTest",
+    "ace_ets_module_uicontext/ace_ets_module_uicontext_api12:ActsAceBasicContextTest",
     "ace_ets_module_video:ActsAceEtsModuleVideoTest",
   ]
 }
