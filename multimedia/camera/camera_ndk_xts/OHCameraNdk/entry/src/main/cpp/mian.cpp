@@ -220,28 +220,27 @@ static napi_value OHCameraManagerCreateCameraInput(napi_env env, napi_callback_i
 static Camera_Position GetPosition(int position)
 {
     switch (position) {
-    case NUMBER_1:
-        return Camera_Position::CAMERA_POSITION_BACK;
-    case NUMBER_2:
-        return Camera_Position::CAMERA_POSITION_FRONT;
-    default:
-        return Camera_Position::CAMERA_POSITION_UNSPECIFIED;
+        case NUMBER_1:
+            return Camera_Position::CAMERA_POSITION_BACK;
+        case NUMBER_2:
+            return Camera_Position::CAMERA_POSITION_FRONT;
+        default:
+            return Camera_Position::CAMERA_POSITION_UNSPECIFIED;
     }
 }
-
 static Camera_Type GetType(int type)
 {
     switch (type) {
-    case NUMBER_1:
-        return Camera_Type::CAMERA_TYPE_WIDE_ANGLE;
-    case NUMBER_2:
-        return Camera_Type::CAMERA_TYPE_ULTRA_WIDE;
-    case NUMBER_3:
-        return Camera_Type::CAMERA_TYPE_TELEPHOTO;
-    case NUMBER_4:
-        return Camera_Type::CAMERA_TYPE_TRUE_DEPTH;
-    default:
-        return Camera_Type::CAMERA_TYPE_DEFAULT;
+        case NUMBER_1:
+            return Camera_Type::CAMERA_TYPE_WIDE_ANGLE;
+        case NUMBER_2:
+            return Camera_Type::CAMERA_TYPE_ULTRA_WIDE;
+        case NUMBER_3:
+            return Camera_Type::CAMERA_TYPE_TELEPHOTO;
+        case NUMBER_4:
+            return Camera_Type::CAMERA_TYPE_TRUE_DEPTH;
+        default:
+            return Camera_Type::CAMERA_TYPE_DEFAULT;
     }
 }
 static napi_value OHCreateCameraInputWithPositionAndType(napi_env env, napi_callback_info info)
