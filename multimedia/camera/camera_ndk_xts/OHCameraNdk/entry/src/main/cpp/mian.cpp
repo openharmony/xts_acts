@@ -18,7 +18,7 @@
 #include <hilog/log.h>
 
 
-static NDKCamera *ndkCamera_ = nullptr;
+static NDKCamera *ndkCamera = nullptr;
 const static int NUMBER_1 = 1;
 const static int NUMBER_2 = 2;
 const static int NUMBER_3 = 3;
@@ -52,7 +52,7 @@ static napi_value InitCamera(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
 
-    ndkCamera_ = new NDKCamera(surfaceId, index);
+    ndkCamera = new NDKCamera(surfaceId, index);
     napi_create_int32(env, CAMERA_OK, &result);
     return result;
 }
@@ -97,7 +97,7 @@ static napi_value OHCameraManagerRegisterCallback(napi_env env, napi_callback_in
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CameraManagerRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->CameraManagerRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -114,7 +114,7 @@ static napi_value CameraDeleteCameraManager(napi_env env, napi_callback_info inf
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CameraDeleteCameraManager(index);
+    Camera_ErrorCode code = ndkCamera->CameraDeleteCameraManager(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -129,7 +129,7 @@ static napi_value CameraManagerGetSupportedCameras(napi_env env, napi_callback_i
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->GetSupportedCameras(index);
+    Camera_ErrorCode code = ndkCamera->GetSupportedCameras(index);
 
     napi_value cameraInfo = nullptr;
     napi_create_object(env, &cameraInfo);
@@ -138,16 +138,16 @@ static napi_value CameraManagerGetSupportedCameras(napi_env env, napi_callback_i
     }
     napi_value jsValue = nullptr;
 
-    napi_create_int32(env, ndkCamera_->cameras_->cameraPosition, &jsValue);
+    napi_create_int32(env, ndkCamera->cameras_->cameraPosition, &jsValue);
     napi_set_named_property(env, cameraInfo, "cameraPosition", jsValue);
 
-    napi_create_int32(env, ndkCamera_->cameras_->cameraType, &jsValue);
+    napi_create_int32(env, ndkCamera->cameras_->cameraType, &jsValue);
     napi_set_named_property(env, cameraInfo, "cameraType", jsValue);
 
-    napi_create_int32(env, ndkCamera_->cameras_->connectionType, &jsValue);
+    napi_create_int32(env, ndkCamera->cameras_->connectionType, &jsValue);
     napi_set_named_property(env, cameraInfo, "connectionType", jsValue);
 
-    napi_create_string_utf8(env, ndkCamera_->cameras_->cameraId, sizeof(ndkCamera_->cameras_->cameraId) + 1, &jsValue);
+    napi_create_string_utf8(env, ndkCamera->cameras_->cameraId, sizeof(ndkCamera->cameras_->cameraId) + 1, &jsValue);
     napi_set_named_property(env, cameraInfo, "cameraId", jsValue);
 
     return cameraInfo;
@@ -164,7 +164,7 @@ static napi_value CameraManagerDeleteSupportedCameras(napi_env env, napi_callbac
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CameraManagerDeleteSupportedCameras(index);
+    Camera_ErrorCode code = ndkCamera->CameraManagerDeleteSupportedCameras(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -180,7 +180,7 @@ static napi_value GetSupportedCameraOutputCapability(napi_env env, napi_callback
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->GetSupportedOutputCapability(index);
+    Camera_ErrorCode code = ndkCamera->GetSupportedOutputCapability(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -196,7 +196,7 @@ static napi_value OHCameraManagerCreatePreviewOutput(napi_env env, napi_callback
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CreatePreviewOutput(index);
+    Camera_ErrorCode code = ndkCamera->CreatePreviewOutput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -212,7 +212,7 @@ static napi_value OHCameraManagerCreateCameraInput(napi_env env, napi_callback_i
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CreateCameraInput(index);
+    Camera_ErrorCode code = ndkCamera->CreateCameraInput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -262,7 +262,7 @@ static napi_value OHCreateCameraInputWithPositionAndType(napi_env env, napi_call
 
     Camera_Position position = GetPosition(x);
     Camera_Type type = GetType(y);
-    Camera_ErrorCode ret = ndkCamera_->CreateCameraInputWithPositionAndType(position, type, index);
+    Camera_ErrorCode ret = ndkCamera->CreateCameraInputWithPositionAndType(position, type, index);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -277,7 +277,7 @@ static napi_value OHCameraManagerCreateCaptureSession(napi_env env, napi_callbac
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CreateSession(index);
+    Camera_ErrorCode code = ndkCamera->CreateSession(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -293,7 +293,7 @@ static napi_value CameraManagerDeleteSupportedCameraOutputCapability(napi_env en
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CameraManagerDeleteSupportedCameraOutputCapability(index);
+    Camera_ErrorCode code = ndkCamera->CameraManagerDeleteSupportedCameraOutputCapability(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -309,7 +309,7 @@ static napi_value PreviewOutputRegisterCallback(napi_env env, napi_callback_info
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->PreviewOutputRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->PreviewOutputRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -332,7 +332,7 @@ static napi_value OHCameraManagerCreatePhotoOutput(napi_env env, napi_callback_i
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
     LOG("创建一个拍照输出实例. %{public}s====%{public}d", surfaceId, index);
-    Camera_ErrorCode ret = ndkCamera_->CreatePhotoOutput(surfaceId, index);
+    Camera_ErrorCode ret = ndkCamera->CreatePhotoOutput(surfaceId, index);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -347,7 +347,7 @@ static napi_value OHCameraManagerCreateMetadataOutput(napi_env env, napi_callbac
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CreateMetadataOutput(index);
+    Camera_ErrorCode code = ndkCamera->CreateMetadataOutput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -363,7 +363,7 @@ static napi_value OHCameraInputOpen(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CameraInputOpen(index);
+    Camera_ErrorCode code = ndkCamera->CameraInputOpen(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -379,7 +379,7 @@ static napi_value OHCameraInputClose(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CameraInputClose(index);
+    Camera_ErrorCode code = ndkCamera->CameraInputClose(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -395,7 +395,7 @@ static napi_value OHCameraInputRelease(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CameraInputRelease(index);
+    Camera_ErrorCode code = ndkCamera->CameraInputRelease(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -411,7 +411,7 @@ static napi_value OHCameraInputRegisterCallback(napi_env env, napi_callback_info
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CameraInputRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->CameraInputRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -427,7 +427,7 @@ static napi_value OHCameraInputUnregisterCallback(napi_env env, napi_callback_in
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CameraInputUnRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->CameraInputUnRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -443,7 +443,7 @@ static napi_value OHCaptureSessionBeginConfig(napi_env env, napi_callback_info i
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionBegin(index);
+    Camera_ErrorCode code = ndkCamera->SessionBegin(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -459,7 +459,7 @@ static napi_value OHCaptureSessionCommitConfig(napi_env env, napi_callback_info 
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionCommitConfig(index);
+    Camera_ErrorCode code = ndkCamera->SessionCommitConfig(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -475,7 +475,7 @@ static napi_value OHCaptureSessionStart(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionStart(index);
+    Camera_ErrorCode code = ndkCamera->SessionStart(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -491,7 +491,7 @@ static napi_value OHCaptureSessionStop(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionStop(index);
+    Camera_ErrorCode code = ndkCamera->SessionStop(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -507,7 +507,7 @@ static napi_value OHCaptureSessionRelease(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionRelease(index);
+    Camera_ErrorCode code = ndkCamera->SessionRelease(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -523,7 +523,7 @@ static napi_value OHCaptureSessionRegisterCallback(napi_env env, napi_callback_i
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CaptureSessionRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->CaptureSessionRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -539,7 +539,7 @@ static napi_value OHCaptureSessionUnregisterCallback(napi_env env, napi_callback
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CaptureSessionUnRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->CaptureSessionUnRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -555,7 +555,7 @@ static napi_value OHCaptureSessionGetExposureBias(napi_env env, napi_callback_in
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionGetExposureBias(index);
+    Camera_ErrorCode code = ndkCamera->SessionGetExposureBias(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -571,7 +571,7 @@ static napi_value OHCaptureSessionAddInput(napi_env env, napi_callback_info info
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionAddInput(index);
+    Camera_ErrorCode code = ndkCamera->SessionAddInput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -587,7 +587,7 @@ static napi_value OHCaptureSessionRemoveInput(napi_env env, napi_callback_info i
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionRemoveInput(index);
+    Camera_ErrorCode code = ndkCamera->SessionRemoveInput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -603,7 +603,7 @@ static napi_value OHCaptureSessionAddPreviewOutput(napi_env env, napi_callback_i
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionAddPreviewOutput(index);
+    Camera_ErrorCode code = ndkCamera->SessionAddPreviewOutput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -619,7 +619,7 @@ static napi_value OHCaptureSessionAddPhotoOutput(napi_env env, napi_callback_inf
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionAddPhotoOutput(index);
+    Camera_ErrorCode code = ndkCamera->SessionAddPhotoOutput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -635,7 +635,7 @@ static napi_value OHCaptureSessionGetExposureBiasRange(napi_env env, napi_callba
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionGetExposureBiasRange(index);
+    Camera_ErrorCode code = ndkCamera->SessionGetExposureBiasRange(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -651,7 +651,7 @@ static napi_value OHCameraManagerIsCameraMuted(napi_env env, napi_callback_info 
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->IsCameraMuted(index);
+    Camera_ErrorCode code = ndkCamera->IsCameraMuted(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -667,7 +667,7 @@ static napi_value OHCaptureSessionGetExposureMode(napi_env env, napi_callback_in
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionGetExposureMode(index);
+    Camera_ErrorCode code = ndkCamera->SessionGetExposureMode(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -686,7 +686,7 @@ static napi_value OHCaptureSessionIsExposureModeSupported(napi_env env, napi_cal
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
 
-    Camera_ErrorCode code =  ndkCamera_->SessionIsExposureModeSupported(exposureMode, index);
+    Camera_ErrorCode code =  ndkCamera->SessionIsExposureModeSupported(exposureMode, index);
     napi_create_int32(env, code, &result);
     return result;
 }
@@ -704,7 +704,7 @@ static napi_value OHCaptureSessionSetExposureMode(napi_env env, napi_callback_in
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionSetExposureMode(exposureMode, index);
+    Camera_ErrorCode code = ndkCamera->SessionSetExposureMode(exposureMode, index);
     napi_create_int32(env, code, &result);
     return result;
 }
@@ -722,7 +722,7 @@ static napi_value OHCaptureSessionSetExposureBias(napi_env env, napi_callback_in
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
     
-    Camera_ErrorCode ret = ndkCamera_->SessionSetExposureBias(exposureBias, index);
+    Camera_ErrorCode ret = ndkCamera->SessionSetExposureBias(exposureBias, index);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -740,7 +740,7 @@ static napi_value OHCaptureSessionIsFlashModeSupported(napi_env env, napi_callba
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
 
-    Camera_ErrorCode ret = ndkCamera_->SessionIsFlashModeSupported(exposureBias, index);
+    Camera_ErrorCode ret = ndkCamera->SessionIsFlashModeSupported(exposureBias, index);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -755,7 +755,7 @@ static napi_value OHCaptureSessionHasFlash(napi_env env, napi_callback_info info
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionHasFlash(index);
+    Camera_ErrorCode code = ndkCamera->SessionHasFlash(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -774,7 +774,7 @@ static napi_value OHCaptureSessionSetFlashMode(napi_env env, napi_callback_info 
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionSetFlashMode(flashMode, index);
+    Camera_ErrorCode code = ndkCamera->SessionSetFlashMode(flashMode, index);
     napi_create_int32(env, code, &result);
     return result;
 }
@@ -789,7 +789,7 @@ static napi_value OHCaptureSessionGetFlashMode(napi_env env, napi_callback_info 
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionGetFlashMode(index);
+    Camera_ErrorCode code = ndkCamera->SessionGetFlashMode(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -808,7 +808,7 @@ static napi_value OHCaptureSessionIsFocusModeSupported(napi_env env, napi_callba
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionIsFocusModeSupported(focusMode, index);
+    Camera_ErrorCode code = ndkCamera->SessionIsFocusModeSupported(focusMode, index);
     napi_create_int32(env, code, &result);
     return result;
 }
@@ -823,7 +823,7 @@ static napi_value OHCaptureSessionGetFocusMode(napi_env env, napi_callback_info 
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionGetFocusMode(index);
+    Camera_ErrorCode code = ndkCamera->SessionGetFocusMode(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -839,7 +839,7 @@ static napi_value OHCaptureSessionGetFocusPoint(napi_env env, napi_callback_info
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionGetFocusPoint(index);
+    Camera_ErrorCode code = ndkCamera->SessionGetFocusPoint(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -864,7 +864,7 @@ static napi_value OHCaptureSessionSetFocusPoint(napi_env env, napi_callback_info
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
     
-    Camera_ErrorCode ret = ndkCamera_->SessionSetFocusPoint(x, y, index);
+    Camera_ErrorCode ret = ndkCamera->SessionSetFocusPoint(x, y, index);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -879,7 +879,7 @@ static napi_value OHCaptureSessionGetMeteringPoint(napi_env env, napi_callback_i
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionGetMeteringPoint(index);
+    Camera_ErrorCode code = ndkCamera->SessionGetMeteringPoint(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -895,7 +895,7 @@ static napi_value OHCaptureSessionGetZoomRatio(napi_env env, napi_callback_info 
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionGetZoomRatio(index);
+    Camera_ErrorCode code = ndkCamera->SessionGetZoomRatio(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -911,7 +911,7 @@ static napi_value OHCaptureSessionGetZoomRatioRange(napi_env env, napi_callback_
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionGetZoomRatioRange(index);
+    Camera_ErrorCode code = ndkCamera->SessionGetZoomRatioRange(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -930,7 +930,7 @@ static napi_value OHCaptureSessionSetZoomRatio(napi_env env, napi_callback_info 
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionSetZoomRatio(zoomRatio, index);
+    Camera_ErrorCode code = ndkCamera->SessionSetZoomRatio(zoomRatio, index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -955,7 +955,7 @@ static napi_value OHCaptureSessionSetMeteringPoint(napi_env env, napi_callback_i
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
 
-    Camera_ErrorCode ret = ndkCamera_->SessionSetMeteringPoint(x, y, index);
+    Camera_ErrorCode ret = ndkCamera->SessionSetMeteringPoint(x, y, index);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -973,7 +973,7 @@ static napi_value OHCaptureSessionIsVideoStabilizationModeSupported(napi_env env
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionIsVideoStabilizationModeSupported(mode, index);
+    Camera_ErrorCode code = ndkCamera->SessionIsVideoStabilizationModeSupported(mode, index);
     napi_create_int32(env, code, &result);
     return result;
 }
@@ -988,7 +988,7 @@ static napi_value OHCaptureSessionGetVideoStabilizationMode(napi_env env, napi_c
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionGetVideoStabilizationMode(index);
+    Camera_ErrorCode code = ndkCamera->SessionGetVideoStabilizationMode(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1007,7 +1007,7 @@ static napi_value OHCaptureSessionSetVideoStabilizationMode(napi_env env, napi_c
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionSetVideoStabilizationMode(mode, index);
+    Camera_ErrorCode code = ndkCamera->SessionSetVideoStabilizationMode(mode, index);
     napi_create_int32(env, code, &result);
     return result;
 }
@@ -1022,7 +1022,7 @@ static napi_value OHCaptureSessionRemovePreviewOutput(napi_env env, napi_callbac
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionRemovePreviewOutput(index);
+    Camera_ErrorCode code = ndkCamera->SessionRemovePreviewOutput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1038,7 +1038,7 @@ static napi_value OHCaptureSessionRemovePhotoOutput(napi_env env, napi_callback_
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionRemovePhotoOutput(index);
+    Camera_ErrorCode code = ndkCamera->SessionRemovePhotoOutput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1054,7 +1054,7 @@ static napi_value OHCaptureSessionAddVideoOutput(napi_env env, napi_callback_inf
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->AddVideoOutput(index);
+    Camera_ErrorCode code = ndkCamera->AddVideoOutput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1076,7 +1076,7 @@ static napi_value OHCameraManagerCreateVideoOutput(napi_env env, napi_callback_i
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
     
-    Camera_ErrorCode ret = ndkCamera_->CreateVideoOutput(videoId, index);
+    Camera_ErrorCode ret = ndkCamera->CreateVideoOutput(videoId, index);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -1091,7 +1091,7 @@ static napi_value OHVideoOutputRegisterCallback(napi_env env, napi_callback_info
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->VideoOutputRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->VideoOutputRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1107,7 +1107,7 @@ static napi_value OHVideoOutputUnregisterCallback(napi_env env, napi_callback_in
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->VideoOutputUnRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->VideoOutputUnRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1123,7 +1123,7 @@ static napi_value OHVideoOutputStart(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->VideoOutputStart(index);
+    Camera_ErrorCode code = ndkCamera->VideoOutputStart(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1139,7 +1139,7 @@ static napi_value OHVideoOutputStop(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->VideoOutputStop(index);
+    Camera_ErrorCode code = ndkCamera->VideoOutputStop(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1155,7 +1155,7 @@ static napi_value OHCaptureSessionRemoveVideoOutput(napi_env env, napi_callback_
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->SessionRemoveVideoOutput(index);
+    Camera_ErrorCode code = ndkCamera->SessionRemoveVideoOutput(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1171,7 +1171,7 @@ static napi_value OHVideoOutputRelease(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->VideoOutputRelease(index);
+    Camera_ErrorCode code = ndkCamera->VideoOutputRelease(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1187,7 +1187,7 @@ static napi_value OHCameraManagerUnregisterCallback(napi_env env, napi_callback_
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->CameraManagerUnRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->CameraManagerUnRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1203,7 +1203,7 @@ static napi_value OHPreviewOutputStart(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->PreviewOutputStart(index);
+    Camera_ErrorCode code = ndkCamera->PreviewOutputStart(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1219,7 +1219,7 @@ static napi_value OHPreviewOutputStop(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->PreviewOutputStop(index);
+    Camera_ErrorCode code = ndkCamera->PreviewOutputStop(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1235,7 +1235,7 @@ static napi_value OHPreviewOutputRelease(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->PreviewOutputRelease(index);
+    Camera_ErrorCode code = ndkCamera->PreviewOutputRelease(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1251,7 +1251,7 @@ static napi_value OHPhotoOutputRegisterCallback(napi_env env, napi_callback_info
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->PhotoOutputRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->PhotoOutputRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1267,7 +1267,7 @@ static napi_value OHPhotoOutputUnregisterCallback(napi_env env, napi_callback_in
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->PhotoOutputUnRegisterCallback(index);
+    Camera_ErrorCode code = ndkCamera->PhotoOutputUnRegisterCallback(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1283,7 +1283,7 @@ static napi_value OHPhotoOutputIsMirrorSupported(napi_env env, napi_callback_inf
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->IsMirrorSupported(index);
+    Camera_ErrorCode code = ndkCamera->IsMirrorSupported(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1299,7 +1299,7 @@ static napi_value OHPhotoOutputCapture(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->PhotoOutputCapture(index);
+    Camera_ErrorCode code = ndkCamera->PhotoOutputCapture(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -1364,7 +1364,7 @@ static napi_value OHPhotoOutputCaptureWithCaptureSetting(napi_env env, napi_call
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
     napi_value result;
-    Camera_ErrorCode ret = ndkCamera_->TakePictureWithPhotoSettings(photoSetting, index);
+    Camera_ErrorCode ret = ndkCamera->TakePictureWithPhotoSettings(photoSetting, index);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -1379,7 +1379,7 @@ static napi_value OHPhotoOutputRelease(napi_env env, napi_callback_info info)
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->PhotoOutputRelease(index);
+    Camera_ErrorCode code = ndkCamera->PhotoOutputRelease(index);
 
     napi_create_int32(env, code, &result);
     return result;
