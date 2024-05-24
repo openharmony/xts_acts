@@ -104,7 +104,7 @@ export default function certFrameworkCertChainPolicyJsAPIFunctionTestUnit() {
         const validRes = await certChain1.validate(param);
         console.log(`${caseName} X509CertChain validate success: ${JSON.stringify(validRes.entityCert.getNotBeforeTime())}`);
         expect(validRes != null).assertTrue();
-        expect(validRes.entityCert.getNotBeforeTime() == '230323000000Z\u0000').assertTrue();
+        expect(validRes.entityCert.getNotBeforeTime() == '230323000000Z').assertTrue();
       } catch (err) {
         console.error(`${caseName} X509CertChain validate error: ${JSON.stringify(err)}`);
         expect(null).assertFail();
@@ -189,7 +189,7 @@ export default function certFrameworkCertChainPolicyJsAPIFunctionTestUnit() {
       try {
         const validRes = await certChain1.validate(param);
         expect(validRes != null).assertTrue();
-        expect(validRes.entityCert.getNotBeforeTime() == '230323000000Z\u0000').assertTrue();
+        expect(validRes.entityCert.getNotBeforeTime() == '230323000000Z').assertTrue();
       } catch (err) {
         console.error(`${caseName} X509CertChain validate error: ${JSON.stringify(err)}`);
         expect(null).assertFail();
@@ -390,7 +390,7 @@ export default function certFrameworkCertChainPolicyJsAPIFunctionTestUnit() {
       try {
         const validRes = await certChain1.validate(param);
         expect(validRes != null).assertTrue();
-        expect(validRes.entityCert.getNotBeforeTime() == '230323000000Z\u0000').assertTrue();
+        expect(validRes.entityCert.getNotBeforeTime() == '230323000000Z').assertTrue();
       } catch (err) {
         console.error(`${caseName} X509CertChain validate error: ${JSON.stringify(err)}`);
         expect(null).assertFail();
@@ -450,7 +450,7 @@ export default function certFrameworkCertChainPolicyJsAPIFunctionTestUnit() {
       try {
         const validRes = await certChain1.validate(param);
         expect(validRes != null).assertTrue();
-        expect(validRes.entityCert.getNotBeforeTime() == '230323000000Z\u0000').assertTrue();
+        expect(validRes.entityCert.getNotBeforeTime() == '230323000000Z').assertTrue();
       } catch (err) {
         console.error(`${caseName} X509CertChain validate error: ${JSON.stringify(err)}`);
         expect(null).assertFail();
