@@ -689,14 +689,14 @@ export default function cameraSessionTest() {
             }
             else {
                 let errorDefaultProfile = {
-                    fromat: 1003,
+                    format: 1003,
                     size: {
                         width: 123,
                         height: 456
                     }
                 }
                 let errorVideoProfile = {
-                    fromat: 1003,
+                    format: 1003,
                     size: {
                         width: 123,
                         height: 456

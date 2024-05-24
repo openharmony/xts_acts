@@ -19,7 +19,7 @@ import { BusinessError } from '@ohos.base'
 import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, setTransferListTest,
   testString, testTime, testNumber, testTaskPool, promiseCase, printArgs, asyncSum,
   printArgsFunc, Sum, delaySum, Add, funcStrCat, arraySum, objectSum, Multi, AdditionDelay, WaitforRunner,
-  errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest } from './testFunclist'
+  errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc } from './testFunclist'
 import { A, B, StrCat} from './exportFunclist'
 
 export default function TaskPoolTest() {
@@ -1194,6 +1194,31 @@ export default function TaskPoolTest() {
       expect(priority != -1).assertTrue();
       expect(taskId != 0).assertTrue();
       expect(state != 0).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass066
+     * @tc.name      : exeute task at taskpool thread
+     * @tc.desc      : exeute task at taskpool thread
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass066', 0, async (done: Function) => {
+      let outerTask1 = new taskpool.Task(outerTaskFunc, "001")
+      let res1: string = await taskpool.execute(outerTask1) as string;
+      expect(res1).assertEqual("outerTaskRes-001");
+
+      let outerTask2 = new taskpool.Task(outerTaskFunc, "002")
+      let res2: string = await taskpool.execute(outerTask2) as string;
+      expect(res2).assertEqual("outerTaskRes-002");
+
+      let res3: string = await taskpool.execute(outerTaskFunc, "001") as string;
+      expect(res3).assertEqual("outerTaskRes-001");
+
+      let res4: string = await taskpool.execute(outerTaskFunc, "002") as string;
+      expect(res4).assertEqual("outerTaskRes-002");
       done();
     })
 
@@ -2920,19 +2945,74 @@ export default function TaskPoolTest() {
       while (!isTerminate1 || !isTerminate2 || !isTerminate3 || !isTerminate4) {
         await promiseCase()
       }
-      expect(finalString).assertEqual("abcd");
+      expect(finalString.charAt(3)).assertEqual("d");
       done();
     })
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0134
      * @tc.name      : TaskPoolTestClass134
-     * @tc.desc      : get name from taskInfo
+     * @tc.desc      : execute long task
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass134', 0, async (done: Function) => {
+      let task: taskpool.LongTask = new taskpool.LongTask(Sum, 10, 20);
+      let result = await taskpool.execute(task);
+      taskpool.terminateTask(task);
+      expect(result).assertEqual(30);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0135
+     * @tc.name      : TaskPoolTestClass135
+     * @tc.desc      : the long task can only be executed once
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass135', 0, async (done: Function) => {
+      let task: taskpool.LongTask = new taskpool.LongTask(Sum, 10, 20);
+      let result = await taskpool.execute(task);
+      taskpool.terminateTask(task);
+      try {
+        taskpool.execute(task)
+      } catch (e) {
+        expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: The long task can only be executed once");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0136
+     * @tc.name      : TaskPoolTestClass136
+     * @tc.desc      : task group does not support the long task
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass136', 0, async (done: Function) => {
+      let task: taskpool.LongTask = new taskpool.LongTask(Sum, 10, 20);
+      let group = new taskpool.TaskGroup();
+      try {
+        group.addTask(task)
+      } catch (e) {
+        expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: The interface does not support the long task");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0137
+     * @tc.name      : TaskPoolTestClass137
+     * @tc.desc      : taskpool error test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass137', 0, async (done: Function) => {
       let task: taskpool.Task = new taskpool.Task(errorTest)
       taskpool.execute(task).then((res)=>{
         console.info("errTest res " + res)

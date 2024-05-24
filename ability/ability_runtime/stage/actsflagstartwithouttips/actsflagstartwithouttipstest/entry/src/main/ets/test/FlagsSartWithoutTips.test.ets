@@ -274,7 +274,6 @@ export default function flagstartwithouttipstest() {
             hilog.info(0x0000, TAG, 'text at this success %{public}s', JSON.stringify(data));
             popupCorrect = true;
           })
-          await driver.click(rectLeft, rectTop);
           let cmd = "uinput -K -d 2 -u 2";
           await abilityDelegator.executeShellCommand(cmd);
         }

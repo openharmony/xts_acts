@@ -44,7 +44,7 @@ group("graphic") {
       deps += [
         "vkgl:cpvkgl",
         #"vulkan:cpvktest",
-        #"vktest:vulkanTest",
+        #"vktest:cpVulkan",
       ]
     }
   } else {

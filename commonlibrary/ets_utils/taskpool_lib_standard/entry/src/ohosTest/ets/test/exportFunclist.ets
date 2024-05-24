@@ -35,3 +35,8 @@ export class B {
     this.b = 4;
   }
 }
+
+export function printStrArgs(args: string): string {
+  "use concurrent"
+  return args;
+}

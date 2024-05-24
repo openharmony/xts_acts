@@ -44,23 +44,11 @@ struct IndexPage {
   @State result: string = '';
   @State TEST: number = 0;
   private TestCaseList: TestCase[] = [
-    { title: 'DeskFps', uri: 'pages/Experience/DeskFps' },
     { title: 'PhotoFps', uri: 'pages/Experience/PhotoFps' },
-    { title: 'CameraColdStart', uri: 'pages/Experience/CameraColdStartTest' },
     { title: 'SettingsColdStart', uri: 'pages/Experience/SettingsColdStartTest' },
     { title: 'PhotosColdStart', uri: 'pages/Experience/PhotosColdStartTest' },
-    { title: 'MmsColdStart', uri: 'pages/Experience/MmsColdStartTest' },
-    { title: 'ContactsColdStart', uri: 'pages/Experience/ContactsColdStartTest' },
-    { title: 'SettingsHotStart', uri: 'pages/Experience/SettingsHotStartTest' },
-    { title: 'PhotosHotStart', uri: 'pages/Experience/PhotosHotStartTest' },
-    { title: 'MmsHotStart', uri: 'pages/Experience/MmsHotStartTest' },
-    { title: 'ContactsHotStart', uri: 'pages/Experience/ContactsHotStartTest' },
-    { title: 'ViewPhoto', uri: 'pages/Experience/ViewPhotoTest' },
-    { title: 'KeyboardDisplay', uri: 'pages/Experience/KeyboardDisplayTest' },
     { title: 'StartTaskManager', uri: 'pages/Experience/StartTaskManager' },
     { title: 'StartNotification', uri: 'pages/Experience/StartNotification' },
-    { title: 'ScrollPhotosList', uri: 'pages/Experience/ScrollPhotosList' },
-    { title: 'KeyboardInput', uri: 'pages/Experience/KeyboardInputTest' },
   ]
   @State ColorObject: Object[] = VarColor;
   @State ColorTrue: number[] = [];

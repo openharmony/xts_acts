@@ -18,8 +18,9 @@ import audio from '@ohos.multimedia.audio';
 import ability from '@ohos.ability.featureAbility'
 import fileio from '@ohos.fileio';
 import featureAbility from '@ohos.ability.featureAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import avSession from '@ohos.multimedia.avsession';
+export default function audioInterrupt() {
 describe('audioInterrupt', function () {
     console.info('audioRenderInterrupt: Create AudioManger Object JS Framework');
     let fdRead;
@@ -214,3 +215,4 @@ describe('audioInterrupt', function () {
     })
 
 })
+}

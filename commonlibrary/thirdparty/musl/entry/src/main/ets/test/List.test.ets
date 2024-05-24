@@ -130,6 +130,8 @@ import timexNdk1Test from './TimexNdk1.test';
 import unistdNdk1Test from './UnistdNdk1.test';
 
 export default function testsuite() {
+  mathNdkTest();
+  mallocNdkTest();
   otherstestNdkTest();
   unistdNdkTest();
   malloc1NdkTest();
@@ -138,6 +140,7 @@ export default function testsuite() {
   muslStdioExt1Test();
   wcharNdk1Test();
   timeNdk1Test();
+  stdlibNdkTest();
   threadsNdkTest();
   muslPThreadNdk1Test();
   unistdNdk1Test();
@@ -167,8 +170,6 @@ export default function testsuite() {
   intTypesNdkTest();
   langInfoNdkTest();
   localeNdkTest();
-  mallocNdkTest();
-  mathNdkTest();
   membarrierNdkTest();
   mmanNdkTest();
   mmanNdk1Test();
@@ -205,7 +206,6 @@ export default function testsuite() {
   statfsNdkTest();
   statNdkTest();
   statvfsNdkTest();
-  stdlibNdkTest();
   syslogNdkTest();
   timerfdNdkTest();
   timesNdkTest();
