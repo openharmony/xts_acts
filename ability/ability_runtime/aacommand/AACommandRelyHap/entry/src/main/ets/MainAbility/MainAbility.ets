@@ -22,7 +22,7 @@ import testsuite from '../test/List.test'
 import window from '@ohos.window';
 
 export default class MainAbility extends Ability {
-    onCreate(want:Want, launchParam:AbilityConstant.LaunchParam) {
+    onCreate(want:Want, launchParam:AbilityConstant.LaunchParam){
         console.log('MainAbility onCreate')
         let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
