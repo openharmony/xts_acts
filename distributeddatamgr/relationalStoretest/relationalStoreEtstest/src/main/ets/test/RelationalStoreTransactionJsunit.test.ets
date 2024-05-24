@@ -464,5 +464,29 @@ export default function relationalStoreTransactionTest() {
 
         })
 
+        /**
+         * @tc.name testRdbTransactionMulti0003
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionEtsAPITest_0700
+         * @tc.desc the classical transaction scenario, when we insert or commit the value,
+         *     db returns an exception, we need to catch exception and rollback.
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_028', 0, async function (done) {
+            if(rdbStore != null) {
+                try {
+                    let txId : number=rdbStore.beginTrans()
+                    console.info(TAG + "txId"+txId)
+                    expect(txId != null).assertTrue()
+                } catch (err) {
+                    console.info(TAG + "Delete RdbStore failed" + err.code + err.message)
+                    expect().assertFail()
+                }
+            }   
+            done()
+        })
+
+
         console.info(TAG + "*************Unit Test End*************");
     })}

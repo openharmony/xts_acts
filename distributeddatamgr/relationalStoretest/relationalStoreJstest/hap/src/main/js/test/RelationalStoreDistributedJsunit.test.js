@@ -691,6 +691,25 @@ describe('relationalStoreDistributedTest', function () {
         }
     })
 
+    /**
+     * @tc.name SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_027
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_SetDistributeJsAPITest_2700
+     * @tc.desc sync test
+     */
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_027', 0, async function (done) {
+        try{
+            rdbStore.on('dataChange', data_Rdb.SubscribeType.SUBSCRIBE_TYPE_LOCAL_DETAILS, function (table) {
+                console.info(TAG + table + " dataChange");
+                expect(table).assertEqual(null);
+            });
+        }catch(err){
+            console.info(TAG + "on dataChange " + err);
+            expect(err !== null).assertFalse();
+        }
+        done();
+
+    })
+
 	
     console.info(TAG + "*************Unit Test End*************");
 })

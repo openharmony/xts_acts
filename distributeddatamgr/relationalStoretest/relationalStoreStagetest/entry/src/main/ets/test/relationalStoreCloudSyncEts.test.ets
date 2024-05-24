@@ -298,6 +298,7 @@ export default function relationalStoreCloudSyncEtsTest(context) {
         expect(relationalStore.ProgressCode.LOCKED_BY_OTHERS == 4).assertTrue();
         expect(relationalStore.ProgressCode.RECORD_LIMIT_EXCEEDED == 5).assertTrue();
         expect(relationalStore.ProgressCode.NO_SPACE_FOR_ASSET == 6).assertTrue();
+        expect(relationalStore.ProgressCode.BLOCKED_BY_NETWORK_STRATEGY == 7).assertTrue();
         done();
       } catch (err) {
         console.log(TAG + `testRdbStoreProgressCode0010 fail, err code is ${err.code}, message is ${err.message}.`);
