@@ -105,6 +105,7 @@ export default function rdbStoreCorruptJSunitTest() {
                 fs.closeSync(file);
             } catch (err) {
                 console.log(TAG, `CreateCorruptDb err.code ${err.code}, err.message ${err.message}`);
+                expect().assertFail();
             }
             console.log(TAG, `quit create corrupt store`);
         }
