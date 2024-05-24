@@ -17,7 +17,7 @@ group("stage") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actformmenuprovidertest:ActFormMenuProviderTest",
+      "actsformmenuprovidertest:ActsFormMenuProviderTest",
       "actsformprovidergetformsinfo:actsformprovidergetformsinfo",
     ]
   }

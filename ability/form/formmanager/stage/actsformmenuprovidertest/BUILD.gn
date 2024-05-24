@@ -13,31 +13,31 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActFormMenuProviderTest") {
+ohos_js_hap_suite("ActsFormMenuProviderTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":actformmenuprovidertest_js_assets",
-    ":actformmenuprovidertest_resources",
+    ":actsformmenuprovidertest_js_assets",
+    ":actsformmenuprovidertest_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActFormMenuProviderTest"
+  hap_name = "ActsFormMenuProviderTest"
   subsystem_name = "ability"
   part_name = "form_fwk"
 }
 
-ohos_app_scope("actformmenuprovidertest_app_profile") {
+ohos_app_scope("actsformmenuprovidertest_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("actformmenuprovidertest_js_assets") {
+ohos_js_assets("actsformmenuprovidertest_js_assets") {
   source_dir = "entry/src/main/ets"
 }
 
-ohos_resources("actformmenuprovidertest_resources") {
+ohos_resources("actsformmenuprovidertest_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":actformmenuprovidertest_app_profile" ]
+  deps = [ ":actsformmenuprovidertest_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }

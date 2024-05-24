@@ -24,7 +24,6 @@ export default class EntryFormAbility extends FormExtensionAbility {
   onAddForm(want: Want) {
     console.log('===>  onAddForm')
     return formBindingData.createFormBindingData({
-      NewValue:'default'
     });
   }
 
@@ -36,7 +35,7 @@ export default class EntryFormAbility extends FormExtensionAbility {
   onUpdateForm(formId: string) {
     console.log('===>  onUpdateForm')
     let bindingData = formBindingData.createFormBindingData({
-      NewValue: 'default updated'
+      newValue: 'default updated'
     });
     formProvider.updateForm(formId, bindingData)
       .then(() => {

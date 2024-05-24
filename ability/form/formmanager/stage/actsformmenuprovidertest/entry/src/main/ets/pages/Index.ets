@@ -47,10 +47,11 @@ struct Index {
          },
          this.compId,
          {
-           formBindingData: formBindingData.createFormBindingData({}),
+           formBindingData: formBindingData.createFormBindingData({
+           }),
            callback:
-             (formId) => {
-               console.log("AddFormMenuItem success and formId = " + formId);
+             (code, formId) => {
+               console.log("AddFormMenuItem success and formId = " + formId + "FormID  " + code + "ReturnCode");
              },
            style: {
              options: {
