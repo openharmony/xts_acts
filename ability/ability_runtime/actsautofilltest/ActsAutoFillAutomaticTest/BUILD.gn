@@ -8,36 +8,14 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAutoFillAutomaticTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":actsautofillautomatictest_js_assets",
-    ":actsautofillautomatictest_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_js_app_suite("ActsAutoFillAutomaticTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAutoFillAutomaticTest"
-  subsystem_name = "ability"
   part_name = "ability_runtime"
-}
-
-ohos_app_scope("actsautofillautomatictest_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("actsautofillautomatictest_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("actsautofillautomatictest_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":actsautofillautomatictest_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  subsystem_name = "ability"
 }

@@ -21,7 +21,7 @@ import autoFillManager from '@ohos.app.ability.autoFillManager';
 import commonEventManager from '@ohos.commonEventManager';
 
 export default function abilityTest() {
-  describe('ActsAutoSaveTest', function () {
+  describe('ActsAutoSaveTest', () => {
 
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoSave_0100
@@ -30,10 +30,10 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_AutoSave_0100', 0, async function (done) {
+    it('SUB_Ability_AbilityRuntime_AutoSave_0100', 0, async (done:Function) => {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoSave_0100_TAG';
       
-      let uiContext: UIContext;
+      let uiContext: UIContext | undefined = undefined;
       console.info("uiContext: ", uiContext);
       let callback: autoFillManager.AutoSaveCallback = {
         onSuccess: () => {
