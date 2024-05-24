@@ -25,28 +25,28 @@
 #define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_DEBUG, CAMERA_LOG_DOMAIN, CAMERA_LOG_TAG, fmt, ##__VA_ARGS__)
 
 typedef enum CameraCallbackCode {
-    CameraInput_Status = 1,
-    Preview_OnFrameStart = 2,
-    Preview_OnFrameEnd = 3,
-    Preview_OnError = 4,
-    Photo_OnFrameStart = 5,
-    Photo_OnFrameShutter = 6,
-    Photo_OnFrameEnd = 7,
-    Photo_OnError = 8,
-    Video_OnFrameStart = 9,
-    Video_OnFrameEnd = 10,
-    Video_OnError = 11,
-    Session_OnFocusState_Change = 14,
-    Session_OnError = 15,
-    CameraManager_Status = 16,
-    No_Received = 10086,
+    CAMERA_INPUT_STATUS = 1,
+    PREVIEW_ON_FRAME_START = 2,
+    PREVIEW_ON_FRAME_END = 3,
+    PREVIEW_ON_ERROR = 4,
+    PHOTO_ON_FRAME_START = 5,
+    PHOTO_ON_FRAME_SHUTTER = 6,
+    PHOTO_ON_FRAME_END = 7,
+    PHOTO_ON_ERROR = 8,
+    VIDEO_ON_FRAME_START = 9,
+    VIDEO_ON_FRAME_END = 10,
+    VIDEO_ON_ERROR = 11,
+    SESSION_ON_FOCUS_STATE_CHANGE = 14,
+    SESSION_ON_ERROR = 15,
+    CAMERA_MANAGER_STATUS = 16,
+    NO_RECEIVED = 10086,
 } CameraCallbackCode;
 typedef enum UseCaseCode {
-    Parameter_Ok = 0,     // 参数正常
-    Parameter1_Error = 1, // 参数1异常
-    Parameter2_Error = 2, // 参数2异常
-    Parameter3_Error = 3, // 参数3异常
-    Parameter4_Error = 4, // 参数4异常
+    PARAMETER_OK = 0,     // 参数正常
+    PARAMETER1_ERROE = 1, // 参数1异常
+    PARAMETER2_ERROE = 2, // 参数2异常
+    PARAMETER3_ERROE = 3, // 参数3异常
+    PARAMETER4_ERROE = 4, // 参数4异常
 } UseCaseCode;
 class NDKCamera {
 public:
