@@ -1,12 +1,11 @@
 {
-    "description": "Configuration for Image Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "300000",
-        "shell-timeout": "300000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.multimedia.image.PackingToFile",
-        "package-name": "ohos.acts.multimedia.image.PackingToFile",
-        "testcase-timeout": 60000
+        "package-name": "ohos.acts.multimedia.image.PackingToFile"
     },
     "kits": [
         {
@@ -15,31 +14,11 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
-                "aa start -a ohos.acts.multimedia.image.PackingToFile.MainAbility -b ohos.acts.multimedia.image.PackingToFile",
-                "aa force-stop ohos.acts.multimedia.image.PackingToFile",
-                "bm clean -c -d -n ohos.acts.multimedia.image.PackingToFile"
-            ],
-            "teardown-command": []
-        },
-        {
-            "type": "PushKit",
-            "pre-push": [],
-            "push": [
-                "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.PackingToFile/haps/entry/files"
-            ]
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "hilog -Q pidoff",
-                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.PackingToFile/haps/entry/files/*"
-            ],
-            "teardown-command": [
-                "rm -rf /data/app/el2/100/base/ohos.acts.multimedia.image.PackingToFile/*"
+                "power-shell wakeup",
+                "power-shell setmode 602"
             ]
         }
     ]

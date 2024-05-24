@@ -1,12 +1,11 @@
 {
-    "description": "Configuration for Image Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "1500000",
-        "shell-timeout": "1500000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.multimedia.image.Packing",
-        "package-name": "ohos.acts.multimedia.image.Packing",
-        "testcase-timeout": 60000
+        "package-name": "ohos.acts.multimedia.image.Packing"
     },
     "kits": [
         {
@@ -15,25 +14,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry/files/",
-                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry/files/*"
-            ],
-            "teardown-command": []
-        },
-        {
-            "type": "PushKit",
-            "pre-push": [],
-            "push": [
-                "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry/files"
+                "power-shell wakeup",
+                "power-shell setmode 602"
             ]
-        },
-        {
-            "type": "ShellKit",
-            "run-command": []
         }
     ]
 }

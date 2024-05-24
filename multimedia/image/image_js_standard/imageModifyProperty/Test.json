@@ -1,9 +1,9 @@
 {
-    "description": "Configuration for Image Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "300000",
-        "shell-timeout": "120000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.multimedia.image.ModifyProperty",
         "package-name": "ohos.acts.multimedia.image.ModifyProperty"
     },
@@ -14,8 +14,7 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/haps/entry/files/",
