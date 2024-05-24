@@ -14,17 +14,17 @@
  */
 import huks from '@ohos.security.huks';
 
-export function getParam(paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): huks.HuksParam {
+export function genParam(paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): huks.HuksParam {
   return {
     tag: paramTag,
     value: paramValue
   } as huks.HuksParam;
 }
 
-export function changeOrAddParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): void {
+export function setParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): void {
   let properties: Array<huks.HuksParam> = huksOption.properties as Array<huks.HuksParam>;
   deleteParam(huksOption, paramTag);
-  properties.push(getParam(paramTag, paramValue));
+  properties.push(genParam(paramTag, paramValue));
 }
 
 export function deleteParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag): void {
