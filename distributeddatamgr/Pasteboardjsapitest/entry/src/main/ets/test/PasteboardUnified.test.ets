@@ -34,7 +34,7 @@ export default function PasteboardUnifiedTest() {
     })
 
     /**
-     * @tc.name PasteboardSetUnifiedData_0100
+     * @tc.name testSUBDistributedDataPasteboardApiCompatibility0100
      * @tc.number SUB_Pasteboard_Local_Fun_ApiCompatibility_1900
      * @tc.desc setUnifiedData getUnifiedData interface test
      * @tc.size MediumTest
@@ -66,7 +66,7 @@ export default function PasteboardUnifiedTest() {
         let outputData = data;
         let records = outputData.getRecords();
         if(records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT){
-          let record = records[0] as unifiedDataChannel.plainText;
+          let record = records[0] as unifiedDataChannel.PlainText;
           expect(JSON.stringify(record.details)).assertEqual(JSON.stringify(plainText.details));
           console.info(TAG + 'Get Plain Text Unified Data Success, type: ' + records[0].getType() + 'details:' + JSON.stringify(record.details));
         } else {
@@ -80,7 +80,7 @@ export default function PasteboardUnifiedTest() {
     })
 
     /**
-     * @tc.name PasteboardSetUnifiedData_0200
+     * @tc.name testSUBDistributedDataPasteboardApiCompatibility0200
      * @tc.number SUB_Pasteboard_Local_Fun_ApiCompatibility_2000
      * @tc.desc setUnifiedDataSync getUnifiedDataSync interface test
      * @tc.size MediumTest
@@ -103,7 +103,7 @@ export default function PasteboardUnifiedTest() {
       try {
         await systemPasteboard.setUnifiedDataSync(plainTextData);
         expect(systemPasteboard.hasDataSync()).assertTrue();
-        console.info(TAG + 'Succeeded in setting UnifiedData.')
+        console.info(TAG + 'Succeeded in setting UnifiedData.');
       } catch (error){
         console.info(TAG + 'Failed To Set UnifiedData.Cause:' + error.message);
         expect().assertFail();
@@ -112,7 +112,7 @@ export default function PasteboardUnifiedTest() {
         let data:unifiedDataChannel.UnifiedData = await systemPasteboard.getUnifiedDataSync();
         let outputData = data;
         let records = outputData.getRecords();
-        if(records[0].getType() == uniformTypeDescriptor.UniformDataType.Plain_TEXT){
+        if(records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT){
           let record = records[0] as unifiedDataChannel.PlainText;
           expect(JSON.stringify(record.details)).assertEqual(JSON.stringify(plainText.details));
           console.info(TAG + 'Get Plain Text UnifiedData Success, type:' + records[0].getType() + 'details:' + JSON.stringify(record.details));
@@ -127,7 +127,7 @@ export default function PasteboardUnifiedTest() {
     })
 
     /**
-     * @tc.name PasteboardSetUnifiedData_0300
+     * @tc.name testSUBDistributedDataPasteboardApiCompatibility0300
      * @tc.number SUB_Pasteboard_Local_Fun_ApiCompatibility_2100
      * @tc.desc setUnifiedData getUnifiedDataSync interface test
      * @tc.size MediumTest
@@ -156,7 +156,7 @@ export default function PasteboardUnifiedTest() {
           if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
             let record = records[0] as unifiedDataChannel.PlainText;
             expect(JSON.stringify(record.details)).assertEqual(JSON.stringify(plainText.details));
-            console.info(TAG + 'Get Text Unified Data Success.');
+            console.info(TAG + 'Get Plain Text UnifiedData Success, type:' + records[0].getType() + 'details:' + JSON.stringify(record.details));
           } else {
             console.info(TAG + 'Get Text Unified Data No Success, Type:' + records[0].getType());
             expect().assertFail();
@@ -172,7 +172,7 @@ export default function PasteboardUnifiedTest() {
     })
 
     /**
-     * @tc.name PasteboardSetUnifiedData_0400
+     * @tc.name testSUBDistributedDataPasteboardApiCompatibility0400
      * @tc.number SUB_Pasteboard_Local_Fun_ApiCompatibility_2200
      * @tc.desc setUnifiedDataSync getUnifiedData interface test
      * @tc.size MediumTest
@@ -203,7 +203,7 @@ export default function PasteboardUnifiedTest() {
         let outputData = data;
         let records = outputData.getRecords();
         if(records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT){
-          let record = records[0] as unifiedDataChannel.plainText;
+          let record = records[0] as unifiedDataChannel.PlainText;
           expect(JSON.stringify(record.details)).assertEqual(JSON.stringify(plainText.details));
           console.info(TAG + 'Get Plain Text Unified Data Success, type: ' + records[0].getType() + 'details:' + JSON.stringify(record.details));
         } else {
