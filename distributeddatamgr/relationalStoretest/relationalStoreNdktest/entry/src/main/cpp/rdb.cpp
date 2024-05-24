@@ -21,7 +21,6 @@
 #include "relational_store.h"
 #include "relational_store_error_code.h"
 #include <js_native_api_types.h>
-#include "relational_store_error_code.h"
 
 #define E_BASE 14800000
 #define DATATWO 12800
@@ -48,12 +47,12 @@ OH_Rdb_Config GetConfig()
 }
 
 int errCode = 0;
-char table[] = "test";
-char lockTable[] = "lock_test";
-char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+char g_table[] = "test";
+char g_lockTable[] = "lock_test";
+char g_createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
     "data3 FLOAT, data4 BLOB, data5 TEXT);";
-char createLockTableSql[] = "CREATE TABLE lock_test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
-    "data3 FLOAT, data4 BLOB, data5 TEXT);";
+char g_createLockTableSql[] = "CREATE TABLE lock_test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, "
+    "data2 INTEGER, data3 FLOAT, data4 BLOB, data5 TEXT);";
 
 OH_VBucket *GetValueBucket()
 {
@@ -218,8 +217,8 @@ static napi_value InsertOne(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
-    int returnValue = OH_Rdb_Insert(predicatesTestRdbStore, table, GetValueBucket());
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
+    int returnValue = OH_Rdb_Insert(predicatesTestRdbStore, g_table, GetValueBucket());
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
     napi_value result = nullptr;
@@ -232,8 +231,8 @@ static napi_value InsertTwo(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
-    int returnValue = OH_Rdb_Insert(nullptr, table, GetValueBucket());
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
+    int returnValue = OH_Rdb_Insert(nullptr, g_table, GetValueBucket());
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
     napi_value result = nullptr;
@@ -246,8 +245,8 @@ static napi_value InsertThree(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
-    int returnValue = OH_Rdb_Insert(predicatesTestRdbStore, table, nullptr);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
+    int returnValue = OH_Rdb_Insert(predicatesTestRdbStore, g_table, nullptr);
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
     napi_value result = nullptr;
@@ -260,7 +259,7 @@ static napi_value InsertFour(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     int returnValue = OH_Rdb_Insert(predicatesTestRdbStore, nullptr, GetValueBucket());
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
@@ -274,12 +273,12 @@ static napi_value InsertFive(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
-    int returnValueOne = OH_Rdb_Insert(predicatesTestRdbStore, table, GetValueBucket());
-    int returnValueTwo = OH_Rdb_Insert(predicatesTestRdbStore, table, GetValueBucket());
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
+    int returnValueOne = OH_Rdb_Insert(predicatesTestRdbStore, g_table, GetValueBucket());
+    int returnValueTwo = OH_Rdb_Insert(predicatesTestRdbStore, g_table, GetValueBucket());
     OH_VBucket *valueBucket = GetValueBucket();
     valueBucket->putInt64(valueBucket, "id", PARAM_2);
-    int returnValueThree = OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    int returnValueThree = OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
     napi_value result = nullptr;
@@ -293,9 +292,9 @@ static napi_value UpdateOne(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     valueBucket->clear(valueBucket);
     valueBucket->putText(valueBucket, "data1", "liSi");
     valueBucket->putInt64(valueBucket, "data2", DATAFOUR);
@@ -319,9 +318,9 @@ static napi_value UpdateTwo(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("null");
     int returnValue = OH_Rdb_Update(predicatesTestRdbStore, valueBucket, predicates);
     OH_Rdb_CloseStore(predicatesTestRdbStore);
@@ -336,9 +335,9 @@ static napi_value UpdateThree(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     valueBucket->clear(valueBucket);
     valueBucket->putText(valueBucket, "data1", "liSi");
     valueBucket->putInt64(valueBucket, "data2", DATAFOUR);
@@ -362,9 +361,9 @@ static napi_value UpdateFour(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     valueBucket->clear(valueBucket);
     valueBucket->putText(valueBucket, "data1", "liSi");
     valueBucket->putInt64(valueBucket, "data2", DATAFOUR);
@@ -388,9 +387,9 @@ static napi_value UpdateFive(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     valueBucket->clear(valueBucket);
     valueBucket->putText(valueBucket, "data1", "liSi");
     valueBucket->putInt64(valueBucket, "data2", DATAFOUR);
@@ -414,17 +413,17 @@ static napi_value UpdateSix(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    int insertReturnValueOne = OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    int insertReturnValueOne = OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     OH_VBucket *valueBucket2 = OH_Rdb_CreateValuesBucket();
     valueBucket2->putInt64(valueBucket2, "id", PARAM_2);
     valueBucket2->putText(valueBucket2, "data2", "zhangSan");
     valueBucket2->putText(valueBucket2, "data3", "lisi");
-    int insertReturnValueTwo = OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket2);
+    int insertReturnValueTwo = OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket2);
     valueBucket->clear(valueBucket);
     valueBucket->putText(valueBucket, "data1", "liSi");
-    OH_Predicates *predicates = OH_Rdb_CreatePredicates(table);
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates(g_table);
     OH_VObject *valueObject = OH_Rdb_CreateValueObject();
     const char *dataValue = "zhangSan";
     valueObject->putText(valueObject, dataValue);
@@ -432,7 +431,7 @@ static napi_value UpdateSix(napi_env env, napi_callback_info)
     int updateReturnValueOne = OH_Rdb_Update(predicatesTestRdbStore, valueBucket, predicates);
     valueBucket2->clear(valueBucket2);
     valueBucket2->putText(valueBucket2, "data2", "wangwu");
-    OH_Predicates *predicatesTwo = OH_Rdb_CreatePredicates(table);
+    OH_Predicates *predicatesTwo = OH_Rdb_CreatePredicates(g_table);
     OH_VObject *valueObjectTwo = OH_Rdb_CreateValueObject();
     const char *data1Value = "zhangSan";
     valueObjectTwo->putText(valueObjectTwo, data1Value);
@@ -453,7 +452,7 @@ static napi_value UpdateSeven(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
     OH_Rdb_Insert(predicatesTestRdbStore, nullptr, valueBucket);
     valueBucket->clear(valueBucket);
@@ -475,9 +474,9 @@ static napi_value DeleteOne(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("test");
     OH_VObject *valueObject = OH_Rdb_CreateValueObject();
     const char *name = "zhangSan";
@@ -496,9 +495,9 @@ static napi_value DeleteTwo(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("test");
     OH_VObject *valueObject = OH_Rdb_CreateValueObject();
     const char *name = "zhangSan";
@@ -517,9 +516,9 @@ static napi_value DeleteThree(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("test");
     OH_VObject *valueObject = OH_Rdb_CreateValueObject();
     const char *name = "zhangSan";
@@ -538,9 +537,9 @@ static napi_value DeleteFour(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("null");
     int returnValue = OH_Rdb_Delete(predicatesTestRdbStore, predicates);
     OH_Rdb_CloseStore(predicatesTestRdbStore);
@@ -555,10 +554,10 @@ static napi_value DeleteFive(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("test");
     OH_VObject *valueObject = OH_Rdb_CreateValueObject();
     const char *name = "zhangSan";
@@ -578,9 +577,9 @@ static napi_value QueryOne(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     valueBucket->clear(valueBucket);
     valueBucket->putText(valueBucket, "data1", "liSi");
     valueBucket->putInt64(valueBucket, "data2", DATAFOUR);
@@ -603,9 +602,9 @@ static napi_value QueryTwo(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     valueBucket->clear(valueBucket);
     valueBucket->putText(valueBucket, "data1", "liSi");
     valueBucket->putInt64(valueBucket, "data2", DATAFOUR);
@@ -628,9 +627,9 @@ static napi_value QueryThree(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     valueBucket->clear(valueBucket);
     valueBucket->putText(valueBucket, "data1", "liSi");
     valueBucket->putInt64(valueBucket, "data2", DATAFOUR);
@@ -653,9 +652,9 @@ static napi_value QueryFour(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Insert(predicatesTestRdbStore, table, valueBucket);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_table, valueBucket);
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("test");
     const char *columnNames[] = {"NAME", "AGE"};
     int len = sizeof(columnNames) / sizeof(columnNames[0]);
@@ -672,7 +671,7 @@ static napi_value ExecuteOne(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    int returnValue = OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    int returnValue = OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
     napi_value result = nullptr;
@@ -698,7 +697,7 @@ static napi_value ExecuteThree(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    int returnValue = OH_Rdb_Execute(nullptr, createTableSql);
+    int returnValue = OH_Rdb_Execute(nullptr, g_createTableSql);
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
     napi_value result = nullptr;
@@ -806,7 +805,7 @@ static napi_value RollBackOne(napi_env env, napi_callback_info)
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
     OH_VBucket *valueBucket = GetValueBucket();
-    OH_Rdb_Execute(predicatesTestRdbStore, createTableSql);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createTableSql);
     OH_Rdb_BeginTransaction(predicatesTestRdbStore);
     OH_Rdb_Insert(predicatesTestRdbStore, "test", valueBucket);
     int returnValue = OH_Rdb_RollBack(predicatesTestRdbStore);
@@ -1018,9 +1017,9 @@ static napi_value LockRowOne(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createLockTableSql);
-    OH_Rdb_Insert(predicatesTestRdbStore, lockTable, GetValueBucket());
-    OH_Predicates *predicates = OH_Rdb_CreatePredicates(lockTable);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createLockTableSql);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_lockTable, GetValueBucket());
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates(g_lockTable);
     OH_VObject *valueObject = OH_Rdb_CreateValueObject();
     const char *data1Value = "zhangSan";
     valueObject->putText(valueObject, data1Value);
@@ -1038,9 +1037,9 @@ static napi_value UnLockRowOne(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createLockTableSql);
-    OH_Rdb_Insert(predicatesTestRdbStore, lockTable, GetValueBucket());
-    OH_Predicates *predicates = OH_Rdb_CreatePredicates(lockTable);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createLockTableSql);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_lockTable, GetValueBucket());
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates(g_lockTable);
     errCode = OH_Rdb_UnlockRow(predicatesTestRdbStore, predicates);
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
@@ -1054,9 +1053,9 @@ static napi_value QueryLockRowOne(napi_env env, napi_callback_info)
     OH_Rdb_Config config = GetConfig();
     OH_Rdb_Store *predicatesTestRdbStore = nullptr;
     predicatesTestRdbStore = OH_Rdb_GetOrOpen(&config, &errCode);
-    OH_Rdb_Execute(predicatesTestRdbStore, createLockTableSql);
-    OH_Rdb_Insert(predicatesTestRdbStore, lockTable, GetValueBucket());
-    OH_Predicates *predicates = OH_Rdb_CreatePredicates(lockTable);
+    OH_Rdb_Execute(predicatesTestRdbStore, g_createLockTableSql);
+    OH_Rdb_Insert(predicatesTestRdbStore, g_lockTable, GetValueBucket());
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates(g_lockTable);
     OH_Cursor *cursor = OH_Rdb_QueryLockedRow(predicatesTestRdbStore, predicates, NULL, 0);
     OH_Rdb_CloseStore(predicatesTestRdbStore);
     OH_Rdb_DeleteStore(&config);
