@@ -43,10 +43,10 @@ typedef enum CameraCallbackCode {
 } CameraCallbackCode;
 typedef enum UseCaseCode {
     PARAMETER_OK = 0,     // 参数正常
-    PARAMETER1_ERROE = 1, // 参数1异常
-    PARAMETER2_ERROE = 2, // 参数2异常
-    PARAMETER3_ERROE = 3, // 参数3异常
-    PARAMETER4_ERROE = 4, // 参数4异常
+    PARAMETER1_ERROR = 1, // 参数1异常
+    PARAMETER2_ERROR = 2, // 参数2异常
+    PARAMETER3_ERROR = 3, // 参数3异常
+    PARAMETER4_ERROR = 4, // 参数4异常
 } UseCaseCode;
 class NDKCamera {
 public:
