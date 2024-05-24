@@ -28,13 +28,20 @@ const TAG = "WorkerTestRegisterObservers";
 workerPort.onmessage = function (e: MessageEvents) {
   console.log(TAG, "received from main thread: ", e.data);
   try {
+    let observer: errorManager.UnhandledRejectionObserver = (reason: Error) => {
+      console.log("reason", reason);
+    };
     console.log(TAG, 'trying to register UnhandledRejectionObserver in worker')
-    errorManager.on("unhandledRejection", (reason, promise) => {
-      console.log(TAG, "THIS SHOULD NEVER SHOW UP");
-    })
+    errorManager.on("unhandledRejection", observer);
+    new Promise<string>((res) => {
+      throw new Error("unhandledRejection Worker");
+    }) .then(() => {
+      throw new Error("unhandledRejection Worker then");
+    });
+    workerPort.postMessage("WorkerThread");
   } catch (e) {
     console.log(TAG, "catch register exception: ", JSON.stringify(e));
-    workerPort.postMessage(Number(e.code));
+    workerPort.postMessage("unhandledRejection register error");
   }
 }
 
