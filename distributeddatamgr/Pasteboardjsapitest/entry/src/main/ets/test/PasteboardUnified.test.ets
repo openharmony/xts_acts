@@ -59,6 +59,7 @@ export default function PasteboardUnifiedTest() {
         console.info(TAG + 'Succeeded in setting UnifiedData.');
       }).catch((error:BusinessError)=>{
         console.info(TAG + 'Failed to set UnifiedData.Cause' + error.message);
+        expect().assertFail();
       })
 
       await systemPasteboard.getUnifiedData().then((data) => {
@@ -70,9 +71,11 @@ export default function PasteboardUnifiedTest() {
           console.info(TAG + 'Get Plain Text Unified Data Success, type: ' + records[0].getType() + 'details:' + JSON.stringify(record.details));
         } else {
           console.info(TAG + 'Get Plain Text Data No Success, Type:' + records[0].getType());
+          expect().assertFail();
         }
       }).catch((error:BusinessError) => {
         console.info(TAG + 'Get Plain Text Unified Data Fail:' + error);
+        expect().assertFail();
       })
     })
 
@@ -103,6 +106,7 @@ export default function PasteboardUnifiedTest() {
         console.info(TAG + 'Succeeded in setting UnifiedData.')
       } catch (error){
         console.info(TAG + 'Failed To Set UnifiedData.Cause:' + error.message);
+        expect().assertFail();
       }
       try {
         let data:unifiedDataChannel.UnifiedData = await systemPasteboard.getUnifiedDataSync();
@@ -114,9 +118,11 @@ export default function PasteboardUnifiedTest() {
           console.info(TAG + 'Get Plain Text UnifiedData Success, type:' + records[0].getType() + 'details:' + JSON.stringify(record.details));
         } else {
           console.info(TAG + 'Get Plain Text Data No Success,type:' + records[0].getType());
+          expect().assertFail();
         }
       } catch (error){
         console.info(TAG + 'Get Plain Text UnifiedData Fail:' + error);
+        expect().assertFail();
       }
     })
 
@@ -153,12 +159,15 @@ export default function PasteboardUnifiedTest() {
             console.info(TAG + 'Get Text Unified Data Success.');
           } else {
             console.info(TAG + 'Get Text Unified Data No Success, Type:' + records[0].getType());
+            expect().assertFail();
           }
         } catch (error){
           console.info(TAG + 'Get Text Unified Data Fail:' + error);
+          expect().assertFail();
         }
       }).catch((err:BusinessError) => {
         console.info(TAG + 'Failed To Set UnifiedData.Cause:' + err.message);
+        expect().assertFail();
       })
     })
 
@@ -188,6 +197,7 @@ export default function PasteboardUnifiedTest() {
         console.info(TAG + 'Succeeded in setting UnifiedData.');
       } catch (error){
         console.info(TAG + 'Failed To Set UnifiedData.Cause:' + error.message);
+        expect().assertFail();
       }
       await systemPasteboard.getUnifiedData().then((data) => {
         let outputData = data;
@@ -198,9 +208,11 @@ export default function PasteboardUnifiedTest() {
           console.info(TAG + 'Get Plain Text Unified Data Success, type: ' + records[0].getType() + 'details:' + JSON.stringify(record.details));
         } else {
           console.info(TAG + 'Get Plain Text Data No Success, Type:' + records[0].getType());
+          expect().assertFail();
         }
       }).catch((error:BusinessError) => {
         console.info(TAG + 'Get Plain Text Unified Data Fail:' + error);
+        expect().assertFail();
       })
     })
   })
