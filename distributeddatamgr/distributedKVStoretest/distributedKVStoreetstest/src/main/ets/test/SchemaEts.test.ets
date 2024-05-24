@@ -232,7 +232,7 @@ export default function schemaTest(){
         let schema = new ddm.Schema();
         schema.root.appendChild(name);
         schema.indexes = ['$.name'];
-        schema.mode = 1; // STRICT
+        schema.mode = 1;
         options.kvStoreType = ddm.KVStoreType.SINGLE_VERSION;
         options.schema = schema;
         await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
@@ -261,6 +261,52 @@ export default function schemaTest(){
       }
       done();
     })
+
+    /**
+     * @tc.name SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0400
+     * @tc.desc  Test Js Api Schema.ToJsonString() testcase 004
+     * @tc.type: FUNC
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSchemaJsApiTest_0400
+     */
+
+    it('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0400', 0, async function(done) {
+      try {
+        let name = new ddm.FieldNode('name');
+        name.type = ddm.ValueType.FLOAT;
+        name.nullable = true;
+        name.default = '3.14';
+
+        let schema = new ddm.Schema();
+        schema.root.appendChild(name);
+        schema.indexes = [];
+        schema.mode = 1;
+        options.kvStoreType = ddm.KVStoreType.SINGLE_VERSION;
+        options.schema = schema;
+        await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
+          console.info('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0400 getKVStore success' + JSON.stringify(options));
+          kvStore = store;
+          expect(store != null).assertTrue();
+          await kvStore.put("test_key_1", '{"name":1.5}');
+          await kvStore.put("test_key_2", '{"name":2.5}');
+          await kvStore.put("test_key_3", '{}');
+          console.info('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0400 Put success');
+        });
+        console.info('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0400 start Query ...');
+        await kvStore.getEntries('test_key_').then((entries) => {
+          console.info('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0400 get success : ' + JSON.stringify(entries));
+          expect(entries.length == 3).assertTrue();
+        }).catch((err) => {
+          console.info('SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0400 get fail ' + err);
+          expect(null).assertFail();
+        });
+      } catch (e) {
+        console.info("SUB_DDM_DKV_SCHEMA_TOJSONSTRING_0400 fail on exception: " + e);
+        expect(null).assertFail();
+      }
+      done();
+    })
+
+
 
     /**
      * @tc.name SUB_DDM_DKV_SCHEMA_ROOT_0100
