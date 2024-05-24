@@ -19,6 +19,8 @@ import edgeWidths from './GraphicsTest/edgeWidths.test';
 import renderNodeGetInterfaceTest from './renderNode/renderNodeTestInterface.test';
 import disposeTest from './FrameNodeTest/dispose.test';
 import getAttrsTest from './FrameNodeTest/getAttrs.test';
+import getPosition from './FrameNodeTest/getPosition.test';
+import setLayout from './FrameNodeTest/setLayout.test';
 
 export default function testsuite() {
   borderRadiuses();
@@ -28,4 +30,6 @@ export default function testsuite() {
   renderNodeGetInterfaceTest();
   disposeTest();
   getAttrsTest();
+  getPosition();
+  setLayout();
 }
