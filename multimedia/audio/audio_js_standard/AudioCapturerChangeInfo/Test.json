@@ -1,12 +1,11 @@
 {
-    "description": "Configuration for audio manager Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "1500000",
-        "testcase-timeout": "20000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.multimedia.audio.audiocapturerchangeInfo",
-        "package-name": "ohos.acts.multimedia.audio.audiocapturerchangeInfo",
-        "shell-timeout": "60000"
+        "package-name": "ohos.acts.multimedia.audio.audiocapturerchangeInfo"
     },
     "kits": [
         {
@@ -15,16 +14,11 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-		{
+        },{
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
-                "uinput -T -m 300 2700 280 200",
                 "power-shell setmode 602"
-            ],
-            "teardown-command":[
-                "power-shell setmode 600"
             ]
         }
     ]
