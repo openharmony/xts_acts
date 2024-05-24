@@ -39,9 +39,9 @@ export default class ThirdAbility extends UIAbility {
 
     let parameters: commonEventManager.CommonEventPublishData = {
       parameters: {
-        pid: paramWant.parameters[CALLER_PID],
-        tokenId: paramWant.parameters[CALLER_TOKEN],
-        uid: paramWant.parameters[CALLER_UID]
+        pid: paramWant.parameters![CALLER_PID],
+        tokenId: paramWant.parameters![CALLER_TOKEN],
+        uid: paramWant.parameters![CALLER_UID]
       }
     }
     commonEvent.publish(EVENT_CASE_300, parameters, (err, data) => {

@@ -28,10 +28,10 @@ const CALLER_PID = 'ohos.aafwk.param.callerPid';
 const CALLER_TOKEN = 'ohos.aafwk.param.callerToken';
 const CALLER_UID = 'ohos.aafwk.param.callerUid';
 const TEST_SUITE_NAME: string = 'StartAbilityGetStartParameterTest';
-const EVENT_CASE_400 = 'ABILITY_StartAbility_GetStartParameters_0400';
+const EVENT_CASE_1400 = 'ABILITY_StartAbility_GetStartParameters_1400';
 let paramWant: Want;
 
-export default class FourthAbility extends UIAbility {
+export default class FifthAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     paramWant = want;
@@ -39,12 +39,12 @@ export default class FourthAbility extends UIAbility {
 
     let parameters: commonEventManager.CommonEventPublishData = {
       parameters: {
-        pid: paramWant.parameters[CALLER_PID],
-        tokenId: paramWant.parameters[CALLER_TOKEN],
-        uid: paramWant.parameters[CALLER_UID]
+        pid: paramWant.parameters![CALLER_PID],
+        tokenId: paramWant.parameters![CALLER_TOKEN],
+        uid: paramWant.parameters![CALLER_UID]
       }
     }
-    commonEvent.publish(EVENT_CASE_400, parameters, (err, data) => {
+    commonEvent.publish(EVENT_CASE_1400, parameters, (err, data) => {
       hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}-${JSON.stringify(parameters)} event 800 publish success`);
     })
   }
@@ -55,7 +55,7 @@ export default class FourthAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onWindowStageCreate');
-    windowStage.loadContent('FourthAbility/pages/Index', (err, data) => {
+    windowStage.loadContent('FifthAbility/pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;

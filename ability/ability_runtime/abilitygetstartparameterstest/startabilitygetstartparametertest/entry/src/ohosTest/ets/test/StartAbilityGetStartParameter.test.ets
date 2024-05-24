@@ -102,9 +102,9 @@ export default function StartAbilityGetStartParameterTest() {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success: ${JSON.stringify(eventData)}`);
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success localhapuid: ${uid}, accessTokenId: ${accessTokenId}`);
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success pid: ${pid}`);
-            let callPid: ESObject = eventData.parameters.pid;
-            let tokenId: ESObject = eventData.parameters.tokenId;
-            let userId: ESObject = eventData.parameters.uid;
+            let callPid: ESObject = eventData.parameters!.pid;
+            let tokenId: ESObject = eventData.parameters!.tokenId;
+            let userId: ESObject = eventData.parameters!.uid;
             expect(pid).assertContain(callPid);
             expect(userId == uid).assertEqual(true);
             expect(tokenId == accessTokenId).assertEqual(true);
@@ -152,9 +152,9 @@ export default function StartAbilityGetStartParameterTest() {
           commonEvent.subscribe(subscriber, (err, eventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success: ${JSON.stringify(eventData)}`);
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success localhapuid: ${uid}, accessTokenId: ${accessTokenId}`);
-            let callPid: ESObject = eventData.parameters.pid;
-            let tokenId: ESObject = eventData.parameters.tokenId;
-            let userId: ESObject = eventData.parameters.uid;
+            let callPid: ESObject = eventData.parameters!.pid;
+            let tokenId: ESObject = eventData.parameters!.tokenId;
+            let userId: ESObject = eventData.parameters!.uid;
             expect(pid).assertContain(callPid);
             expect(userId == uid).assertEqual(true);
             expect(tokenId == accessTokenId).assertEqual(true);
@@ -165,7 +165,7 @@ export default function StartAbilityGetStartParameterTest() {
           })
         })
 
-        AppStorage.get<common.UIAbilityContext>("abilityContext").startAbilityForResult({
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbilityForResult({
           bundleName: 'com.ohos.getstartparameterhelper2',
           abilityName: 'EntryAbility',
         },
@@ -205,9 +205,9 @@ export default function StartAbilityGetStartParameterTest() {
           commonEvent.subscribe(subscriber, (err, eventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success: ${JSON.stringify(eventData)}`);
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success localhapuid: ${uid}, accessTokenId: ${accessTokenId}`);
-            let callPid: ESObject = eventData.parameters.pid;
-            let tokenId: ESObject = eventData.parameters.tokenId;
-            let userId: ESObject = eventData.parameters.uid;
+            let callPid: ESObject = eventData.parameters!.pid;
+            let tokenId: ESObject = eventData.parameters!.tokenId;
+            let userId: ESObject = eventData.parameters!.uid;
             expect(pid).assertContain(callPid);
             expect(userId == uid).assertEqual(true);
             expect(tokenId == accessTokenId).assertEqual(true);
@@ -218,7 +218,7 @@ export default function StartAbilityGetStartParameterTest() {
           })
         })
 
-        AppStorage.get<common.UIAbilityContext>("abilityContext").startAbility({
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility({
           bundleName: 'com.ohos.getstartparameterhelper3',
           abilityName: 'EntryAbility',
         },
@@ -254,9 +254,9 @@ export default function StartAbilityGetStartParameterTest() {
           commonEvent.subscribe(subscriber, (err, eventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success: ${JSON.stringify(eventData)}`);
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success localhapuid: ${uid}, accessTokenId: ${accessTokenId}`);
-            let callPid: ESObject = eventData.parameters.pid;
-            let tokenId: ESObject = eventData.parameters.tokenId;
-            let userId: ESObject = eventData.parameters.uid;
+            let callPid: ESObject = eventData.parameters!.pid;
+            let tokenId: ESObject = eventData.parameters!.tokenId;
+            let userId: ESObject = eventData.parameters!.uid;
             expect(pid).assertContain(callPid);
             expect(userId == uid).assertEqual(true);
             expect(tokenId == accessTokenId).assertEqual(true);
@@ -266,7 +266,7 @@ export default function StartAbilityGetStartParameterTest() {
             })
           })
         })
-        AppStorage.get<common.UIAbilityContext>("abilityContext").startAbility({
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility({
           bundleName: 'com.ohos.startabilitygetstartparametertest',
           abilityName: 'FirstAbility',
         },
@@ -302,9 +302,9 @@ export default function StartAbilityGetStartParameterTest() {
           commonEvent.subscribe(subscriber, (err, eventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success: ${JSON.stringify(eventData)}`);
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success localhapuid: ${uid}, accessTokenId: ${accessTokenId}`);
-            let callPid: ESObject = eventData.parameters.pid;
-            let tokenId: ESObject = eventData.parameters.tokenId;
-            let userId: ESObject = eventData.parameters.uid;
+            let callPid: ESObject = eventData.parameters!.pid;
+            let tokenId: ESObject = eventData.parameters!.tokenId;
+            let userId: ESObject = eventData.parameters!.uid;
             expect(pid).assertContain(callPid);
             expect(userId == uid).assertEqual(true);
             expect(tokenId == accessTokenId).assertEqual(true);
@@ -314,7 +314,7 @@ export default function StartAbilityGetStartParameterTest() {
             })
           })
         })
-        AppStorage.get<common.UIAbilityContext>("abilityContext").startAbilityForResult({
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbilityForResult({
           bundleName: 'com.ohos.startabilitygetstartparametertest',
           abilityName: 'SecondAbility',
         },
@@ -354,9 +354,9 @@ export default function StartAbilityGetStartParameterTest() {
           commonEvent.subscribe(subscriber, (err, eventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success: ${JSON.stringify(eventData)}`);
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success localhapuid: ${uid}, accessTokenId: ${accessTokenId}`);
-            let callPid: ESObject = eventData.parameters.pid;
-            let tokenId: ESObject = eventData.parameters.tokenId;
-            let userId: ESObject = eventData.parameters.uid;
+            let callPid: ESObject = eventData.parameters!.pid;
+            let tokenId: ESObject = eventData.parameters!.tokenId;
+            let userId: ESObject = eventData.parameters!.uid;
             expect(pid).assertContain(callPid);
             expect(userId == uid).assertEqual(true);
             expect(tokenId == accessTokenId).assertEqual(true);
@@ -366,7 +366,7 @@ export default function StartAbilityGetStartParameterTest() {
             })
           })
         })
-        AppStorage.get<common.UIAbilityContext>("abilityContext").startAbility({
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility({
           bundleName: 'com.ohos.startabilitygetstartparametertest',
           abilityName: 'ThirdAbility',
         },
@@ -402,9 +402,9 @@ export default function StartAbilityGetStartParameterTest() {
           commonEvent.subscribe(subscriber, (err, eventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success: ${JSON.stringify(eventData)}`);
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success localhapuid: ${uid}, accessTokenId: ${accessTokenId}`);
-            let callPid: ESObject = eventData.parameters.pid;
-            let tokenId: ESObject = eventData.parameters.tokenId;
-            let userId: ESObject = eventData.parameters.uid;
+            let callPid: ESObject = eventData.parameters!.pid;
+            let tokenId: ESObject = eventData.parameters!.tokenId;
+            let userId: ESObject = eventData.parameters!.uid;
             expect(pid).assertContain(callPid);
             expect(userId == uid).assertEqual(true);
             expect(tokenId == accessTokenId).assertEqual(true);
@@ -414,7 +414,7 @@ export default function StartAbilityGetStartParameterTest() {
             })
           })
         })
-        AppStorage.get<common.UIAbilityContext>("abilityContext").startAbilityForResult({
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbilityForResult({
           bundleName: 'com.ohos.startabilitygetstartparametertest',
           abilityName: 'FourthAbility',
         },
@@ -454,9 +454,9 @@ export default function StartAbilityGetStartParameterTest() {
           commonEvent.subscribe(subscriber, (err, eventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success: ${JSON.stringify(eventData)}`);
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe success localhapuid: ${uid}, accessTokenId: ${accessTokenId}`);
-            let callPid: ESObject = eventData.parameters.pid;
-            let tokenId: ESObject = eventData.parameters.tokenId;
-            let userId: ESObject = eventData.parameters.uid;
+            let callPid: ESObject = eventData.parameters!.pid;
+            let tokenId: ESObject = eventData.parameters!.tokenId;
+            let userId: ESObject = eventData.parameters!.uid;
             expect(pid).assertContain(callPid);
             expect(userId == uid).assertEqual(true);
             expect(tokenId == accessTokenId).assertEqual(true);
@@ -466,7 +466,7 @@ export default function StartAbilityGetStartParameterTest() {
             })
           })
         })
-        AppStorage.get<common.UIAbilityContext>("abilityContext").startAbility({
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility({
           bundleName: 'com.ohos.startabilitygetstartparametertest',
           abilityName: 'FifthAbility',
         },
