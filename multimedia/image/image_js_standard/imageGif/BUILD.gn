@@ -17,7 +17,7 @@ ohos_js_app_suite("image_gif_js_hap") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "image_gif_js_hap"
+  hap_name = "ActsImageGifJsTest"
   part_name = "image_framework"
   subsystem_name = "multimedia"
 }

@@ -17,7 +17,7 @@ ohos_js_app_suite("image_pixelmapframework_js_hap") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "image_pixelmapframework_js_hap"
+  hap_name = "ActsImagePixelMapFrameworkJsTest"
   part_name = "image_framework"
   subsystem_name = "multimedia"
 }
