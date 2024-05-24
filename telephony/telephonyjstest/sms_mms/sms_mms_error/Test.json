@@ -1,11 +1,11 @@
 {
-    "description": "Configuration for sms_mms demo Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "1800000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "com.ohos.smsmms",
-        "package-name": "com.ohos.smsmms",  
-        "shell-timeout": "1800000"
+        "package-name": "com.ohos.smsmms"
     },
     "kits": [
         {
@@ -14,6 +14,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

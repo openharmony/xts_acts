@@ -1,28 +1,32 @@
 {
-    "description": "Function test of sim manager interface",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "1800000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "com.ohos.register",
-        "package-name": "com.ohos.register",
-        "shell-timeout": "1800000",
-        "testcase-timeout": "30000"
+        "package-name": "com.ohos.register"
     },
     "kits": [
         {
             "test-file-name": [
-                "$module.hap"
+              "$module.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
                 "power-shell setmode 602",
                 "uinput -T -m 425 1000 425 500 400"
             ]
-        }
+        },
+        {
+          "type": "ShellKit",
+          "run-command": [
+              "chmod 777 -R /data/local/tmp/xts-test"
+          ]
+      }
     ]
 }

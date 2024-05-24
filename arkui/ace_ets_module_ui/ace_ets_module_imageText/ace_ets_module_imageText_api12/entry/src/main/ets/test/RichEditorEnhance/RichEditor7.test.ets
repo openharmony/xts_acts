@@ -90,8 +90,7 @@ export default function RichEditor7() {
 
       let RichEditorGetAttribute = await driver.findComponent(ON.id("RichEditor02"));
       await RichEditorGetAttribute.inputText('1')
-      let FindStartKey = await driver.findComponent(ON.text("完成"));
-      await FindStartKey.click()
+      await driver.triggerKey(2054)
       let OnSubmitEnterKey = await driver.findComponent(ON.id("EnterKey"));
       let EnterKeyResult = await OnSubmitEnterKey.getText()
       console.log("EnterKeyResult:"+EnterKeyResult)
@@ -126,8 +125,7 @@ export default function RichEditor7() {
       await SeIsCallKeepEditableState.click()
       let RichEditorGetAttribute = await driver.findComponent(ON.id("RichEditor02"));
       await RichEditorGetAttribute.inputText('1')
-      let FindStartKey = await driver.findComponent(ON.text("开始"));
-      await FindStartKey.click()
+      await driver.triggerKey(2054)
       let OnSubmitEnterKey = await driver.findComponent(ON.id("EnterKey"));
       let EnterKeyResult = await OnSubmitEnterKey.getText()
       let OnEditingChange = await driver.findComponent(ON.id("OnEditingChange2"));

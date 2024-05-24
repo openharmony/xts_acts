@@ -15,7 +15,7 @@
 import hilog from '@ohos.hilog';
 import common from '@ohos.app.ability.common';
 import commonEventManager from '@ohos.commonEventManager';
-import router from '@ohos.router'
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import advertising from '@ohos.advertising';
 
@@ -69,6 +69,25 @@ const advertisement: advertising.Advertisement = {
   shown: false,
   uniqueId: "5bb42294-e601-4d84-9185-b6fd0f6f49b8"  
 };
+const adResponse =
+    "{\n" +
+    "  \"cost\":\"18,11,0,10,3,0,1,10,1\",\n" +
+    "  \"ctrlSwitchs\":\"0\",\n" +
+    "  \"multiad\":[\n" +
+    "    {\n" +
+    "      \"adtype\":12,\n" +
+    "      \"configMap\":{\n" +
+    "        \"insreCacheAdEnable\":\"0\"\n" +
+    "      },\n" +
+    "      \"content\":[\n" +
+    "      ],\n" +
+    "      \"retcode30\":200\n" +
+    "    }\n" +
+    "  ],\n" +
+    "  \"retcode\":200,\n" +
+    "  \"sig\":\"\",\n" +
+    "  \"totalCacheSize\":300\n" +
+    "}";
 
 export default function adsTest() {
   describe('ActsAdsTest', function () {
@@ -187,6 +206,76 @@ export default function adsTest() {
       router.pushUrl({
         url: 'MainAbility/pages/index/p1'
       })
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0500
+     * @tc.name: testGetAdRequestBody
+     * @tc.desc: get Ad RequestBody.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testGetAdRequestBody", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done) => {
+      advertising.getAdRequestBody(multiAdRequest, adOption).then((data) => {
+        hilog.info(Domain, TAG, `testGetAdRequestBody result = ${JSON.stringify(JSON.parse(data)}`);
+        expect(data != null).assertEqual(true);
+        done();
+      }).catch((error) => {
+        hilog.error(Domain, TAG, `testGetAdRequestBody failed, ERROR= ${error}`);
+        expect(error != null).assertEqual(true);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0600
+     * @tc.name: testParseAdResponse
+     * @tc.desc: parse Ad Response.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testParseAdResponse", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done) => {
+      let adLoaderListener = {
+        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
+          expect(errorCode).assertLarger(0);
+          expect(errorMsg).assertInstanceOf('String')
+          done();
+        },
+        onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
+          hilog.info(Domain, TAG, 'request ad success');
+          let returnAds: Array<advertising.Advertisement> = [];
+          ads.forEach((adsArray) => returnAds.push(...adsArray));
+          expect(returnAds[0] != null).assertEqual(true);
+          done();
+        }
+      };
+      try {
+        advertising.parseAdResponse(adResponse, adLoaderListener, context);
+      } catch (e) {
+        hilog.error(Domain, TAG, `testParseAdResponse failed, ERROR= ${e}`);
+        expect(e != null).assertEqual(true);
+        done();
+      }
+
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0700
+     * @tc.name: tesRegisterWebAdInterface
+     * @tc.desc: register Web Ad Interface .
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("tesRegisterWebAdInterface", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done) => {
+      router.pushUrl({
+        url: 'MainAbility/pages/index/webRegister'
+      })
+      expect(adResponse != null).assertEqual(true);
+      done();
     })
   })
 }

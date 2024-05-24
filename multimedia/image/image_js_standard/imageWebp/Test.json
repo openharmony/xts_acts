@@ -14,7 +14,24 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },{
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files/",
+                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files/*"
+            ],
+            "teardown-command": []
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "./resource/image/test_large.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files",
+                "./resource/image/moving_test.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files",
+                "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files"
+            ]
+        },
+        {
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",

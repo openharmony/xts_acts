@@ -57,15 +57,15 @@ export default function requestCancelNativeTest() {
     }
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_NATIVE_0000
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CANCEL_NATIVE_0000
      * @tc.name      : test requestImage requestOptions with FAST_MODE
      * @tc.desc      : request video with fast mode
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_request_option_fast_mode', 0, async function (done) {
-      let testNum = 'request_video_native_request_option_fast_mode';
+    it('request_cancel_native_request_option_fast_mode', 0, async function (done) {
+      let testNum = 'request_cancel_native_request_option_fast_mode';
       let requestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
       }
@@ -73,15 +73,15 @@ export default function requestCancelNativeTest() {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_NATIVE_0100
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CANCEL_NATIVE_0100
      * @tc.name      : test requestVideo requestOptions with HIGH_QUALITY_MODE 
      * @tc.desc      : request video with high quality mode
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_request_option_high_quality_mode', 0, async function (done) {
-      let testNum = 'request_video_native_request_option_high_quality_mode';
+    it('request_cancel_native_request_option_high_quality_mode', 0, async function (done) {
+      let testNum = 'request_cancel_native_request_option_high_quality_mode';
       let requestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
       }
@@ -89,15 +89,15 @@ export default function requestCancelNativeTest() {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_NATIVE_0200
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CANCEL_NATIVE_0200
      * @tc.name      : test requestVideo requestOptions with BALANCE_MODE and sourceMode: 
      * @tc.desc      : request video with high balance mode
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_request_option_balance_mode', 0, async function (done) {
-      let testNum = 'request_video_native_request_option_balance_mode';
+    it('request_cancel_native_request_option_balance_mode', 0, async function (done) {
+      let testNum = 'request_cancel_native_request_option_balance_mode';
       let requestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
       }

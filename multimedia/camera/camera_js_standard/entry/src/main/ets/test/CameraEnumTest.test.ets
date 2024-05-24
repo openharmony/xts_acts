@@ -362,5 +362,24 @@ export default function cameraEnumTest() {
             done();
         })
 
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_PRECONFIG_0100
+         * @tc.name      : test preconfig enum
+         * @tc.desc      : assert all preconfig enums
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_PRECONFIG_0100', 0, async function (done) {
+            expect(camera.PreconfigType.PRECONFIG_720P == 0).assertTrue();
+            console.info(`${TAG} PreconfigType.PRECONFIG_720P:${camera.PreconfigType.PRECONFIG_720P}`);
+            expect(camera.PreconfigType.PRECONFIG_1080P == 1).assertTrue();
+            console.info(`${TAG} PreconfigType.PRECONFIG_1080P:${camera.PreconfigType.PRECONFIG_1080P}`);
+            expect(camera.PreconfigType.PRECONFIG_4K == 2).assertTrue();
+            console.info(`${TAG} PreconfigType.PRECONFIG_4K:${camera.PreconfigType.PRECONFIG_4K}`);
+            expect(camera.PreconfigType.PRECONFIG_HIGH_QUALITY == 3).assertTrue();
+            console.info(`${TAG} PreconfigType.PRECONFIG_HIGH_QUALITY:${camera.PreconfigType.PRECONFIG_HIGH_QUALITY}`);
+            done();
+        })
     })
 }

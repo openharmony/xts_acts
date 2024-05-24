@@ -315,6 +315,44 @@ struct saveButton_1 {
           .textIconSpace(this.middle)
           .key("keySave8")
       }.width('100%').height(this.heightValue).margin(this.marginValue)
+      Row() {
+        SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.SAVE_TO_GALLERY, buttonType: this.bgType })
+          .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+            try {
+              var clickData = {
+                data: {
+                  "clickResult": result,
+                }
+              }
+              var clickEvent = {
+                eventId: 2,
+                priority: events_emitter.EventPriority.LOW
+              }
+              console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+              events_emitter.emit(clickEvent, clickData)
+            } catch (err) {
+              console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
+            }
+          })
+          .iconSize(this.iconSize)
+          .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+          .markAnchor({ x: this.anchorX, y: this.anchorY })
+          .offset({ x: this.offsetX, y: 0 })
+          .fontSize(this.fontSize)
+          .fontStyle(this.fontStyle)
+          .fontWeight(this.fontWeight)
+          .fontFamily(this.fontFamily)
+          .fontColor('0xFFFFF000')
+          .iconColor(this.iconColor)
+          .backgroundColor(this.bgColor)
+          .borderStyle(this.borderSty)
+          .borderWidth(this.borderWid)
+          .borderColor(this.borderCol)
+          .borderRadius(this.borderRad)
+          .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+          .textIconSpace(this.middle)
+          .key("keySave9")
+      }.width('100%').height(this.heightValue).margin(this.marginValue)
     }
   }
 }

@@ -15,7 +15,7 @@
 
 import taskpool from '@ohos.taskpool';
 import { BusinessError } from '@ohos.base'
-import { StrCat, A, B } from './exportFunclist'
+import { StrCat, A, B, printStrArgs } from './exportFunclist'
 import HashMap from '@ohos.util.HashMap';
 
 export async function currentFun(): Promise<void> {
@@ -245,4 +245,25 @@ export async function randomTest(): Promise<void> {
     }, 200);
   })
   return p;
+}
+
+export async function outerTaskFunc(params:string) {
+  "use concurrent"
+  let t1 = Date.now();
+  while ((Date.now() - t1) < 100) {
+    continue
+  }
+  let val = "";
+  if (params == "001") {
+    let innerTask = new taskpool.Task(printStrArgs, params)
+    val += await taskpool.execute(innerTask)
+  } else if (params == "002") {
+    val += await taskpool.execute(printStrArgs, params);
+  }
+
+  let t2 = Date.now();
+  while ((Date.now() - t2) < 100) {
+    continue
+  }
+  return "outerTaskRes-" + val;
 }

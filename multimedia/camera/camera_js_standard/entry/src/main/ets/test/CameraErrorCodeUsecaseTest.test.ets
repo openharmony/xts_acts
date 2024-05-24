@@ -342,8 +342,14 @@ export default function CameraErrorCodeUsecaseTest() {
 
         afterAll(async function () {
             await releaseVideoReceiveSurface();
-            sleep(1000);
             console.info('afterAll case');
+            if (!isEmpty(mCameraInput)) {
+                await releaseInput();
+            }
+            if (!isEmpty(mCameraSession)) {
+                await releaseCameraSessionInstance();
+            }
+            sleep(1000);
         })
 
         /**

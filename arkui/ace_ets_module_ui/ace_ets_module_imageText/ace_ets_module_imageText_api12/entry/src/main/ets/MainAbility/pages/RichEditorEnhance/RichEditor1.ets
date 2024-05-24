@@ -25,6 +25,9 @@ struct RichEditor1 {
         .id('RichEditor_textinput')
         .key('RichEditor_textinput')
       RichEditor({ controller: this.controller })
+        .onReady(()=>{
+          this.controller.addTextSpan("测试文字")
+        })
         .width("100%")
         .margin({top:50})
         .border({ width: 1, radius: 5 })

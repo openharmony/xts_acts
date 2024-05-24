@@ -4542,10 +4542,16 @@ export default function soundPoolTest() {
         let streamId_ = [];
         let soundId_ = [];
         let time = 0;
+        let loadCount = 0;
+        let sleepTotalTime = 0;
         await createSoundPool();
         soundPool.on('error', (error) => {
           console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
           expectFalse();
+        })
+        soundPool.on('loadComplete', (soundId_) => {
+          console.info(`${TAG}: on loadComplete called, soundId: ${soundId_}`);
+          loadCount++;
         })
         soundPool.on('playFinished', () => {
           console.info(`${TAG}: on playFinished called!`);
@@ -4555,7 +4561,14 @@ export default function soundPoolTest() {
         soundId_[1] = await soundPool.load(fd2, length2 / 3, length2);
         soundId_[2] = await soundPool.load(uri3);
         soundId_[3] = await soundPool.load(fd3, length3 / 3, length3);
-        await sleep(1000);
+        while(loadCount != 4) {
+          sleepTotalTime++;
+          if(sleepTotalTime > 15){
+            expectFalse();
+            break;
+          }
+          await sleep(1000);
+        }
         for (let i = 0; i < 4; i++) {
           streamId_[i] = await soundPool.play(soundId_[i]);
         }

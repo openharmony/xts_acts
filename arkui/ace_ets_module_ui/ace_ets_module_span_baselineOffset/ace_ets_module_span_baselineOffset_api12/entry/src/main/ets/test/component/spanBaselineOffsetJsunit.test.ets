@@ -73,7 +73,7 @@ export default function SpanBaselineOffsetJsunit() {
       let strJson = getInspectorByKey('SpanBaselineOffsetKey002');
       let obj = JSON.parse(strJson);
       console.info("[SpanBaselineOffsetJsunit_0102] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.baselineOffset).assertEqual('5.00vp');
+      expect(obj.$attrs.baselineOffset).assertEqual(5);
       console.info('[SpanBaselineOffsetJsunit_0102] END**********************************');
       done();
     });

@@ -25,6 +25,7 @@ import networkManagerTest from './networkManager/networkManager.test';
 import restrictionsTest from './restrictions/restrictions.test';
 import systemManagerTest from './systemManager/systemManager.test';
 import wifiManagerTest from './wifiManager/wifiManager.test';
+import deviceControlTest from './deviceControl/deviceControl.test.ets';
 
 export default function testsuite() {
   browserManagerTest();
@@ -40,4 +41,5 @@ export default function testsuite() {
   restrictionsTest();
   systemManagerTest();
   wifiManagerTest();
+  deviceControlTest();
 }

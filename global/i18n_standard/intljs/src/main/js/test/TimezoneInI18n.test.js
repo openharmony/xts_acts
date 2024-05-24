@@ -485,7 +485,7 @@ describe('TimezoneInI18nTest', function () {
             console.log('timezone_test_2700 e.code' + e.code);
             console.log('timezone_test_2700 e.message' + e.message);
             expect(e.code == 890001).assertTrue();
-            expect(e.message == 'Param value not valid, the longitude or latitude must be a valid value.').assertTrue();
+            expect(e.message == 'Invalid parameter, the longitude or latitude must be a valid value.').assertTrue();
         }
     })
 
@@ -504,7 +504,7 @@ describe('TimezoneInI18nTest', function () {
             console.log('timezone_test_2800 e.code' + e.code);
             console.log('timezone_test_2800 e.message' + e.message);
             expect(e.code == 890001).assertTrue();
-            expect(e.message == 'Param value not valid, the longitude or latitude must be a valid value.').assertTrue();
+            expect(e.message == 'Invalid parameter, the longitude or latitude must be a valid value.').assertTrue();
         }
     })
 
@@ -523,7 +523,7 @@ describe('TimezoneInI18nTest', function () {
             console.log('timezone_test_2900 e.code' + e.code);
             console.log('timezone_test_2900 e.message' + e.message);
             expect(e.code == 890001).assertTrue();
-            expect(e.message == 'Param value not valid, the longitude or latitude must be a valid value.').assertTrue();
+            expect(e.message == 'Invalid parameter, the longitude or latitude must be a valid value.').assertTrue();
         }
     })
 
@@ -542,7 +542,7 @@ describe('TimezoneInI18nTest', function () {
             console.log('timezone_test_3000 e.code' + e.code);
             console.log('timezone_test_3000 e.message' + e.message);
             expect(e.code == 890001).assertTrue();
-            expect(e.message == 'Param value not valid, the longitude or latitude must be a valid value.').assertTrue();
+            expect(e.message == 'Invalid parameter, the longitude or latitude must be a valid value.').assertTrue();
         }
     })
 

@@ -17,7 +17,9 @@ group("zlib") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsgzipdecompressiontest:ActsGzipDecompressionTest",
       "actszipfileandunzipfiletest:actszipfileandunzipfiletest",
+      "actsziptest:ActsZipTest",
       "actszlibchecksumtest:ActsChecksumTest",
       "actszlibndktest:ActsZlibNdkTest",
       "actszlibtest:ActsZlibTest",

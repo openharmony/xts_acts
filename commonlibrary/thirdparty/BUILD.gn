@@ -19,5 +19,6 @@ group("thirdparty") {
     if (target_cpu == "arm") {
       deps += [ "musl32:ActsThirdPartyMusl32Test" ]
     }
+    deps += [ "decimal.js:decimal.js" ]
   }
 }

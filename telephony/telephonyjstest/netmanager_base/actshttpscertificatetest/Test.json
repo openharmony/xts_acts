@@ -1,20 +1,31 @@
 {
-    "description": "Function test of Https Certificate Test",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "900000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "com.ohos.actshttpscertificatetest",
-        "package-name": "com.ohos.actshttpscertificatetest",
-        "shell-timeout": "900000",
-        "testcase-timeout": "30000"
+        "package-name": "com.ohos.actshttpscertificatetest"
     },
     "kits": [
         {
             "test-file-name": [
-                "$module.hap"
+              "$module.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        }
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        },
+        {
+          "type": "ShellKit",
+          "run-command": [
+              "chmod 777 -R /data/local/tmp/xts-test"
+          ]
+      }
     ]
 }
