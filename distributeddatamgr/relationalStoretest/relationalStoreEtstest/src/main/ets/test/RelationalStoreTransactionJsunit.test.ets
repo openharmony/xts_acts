@@ -480,7 +480,7 @@ export default function relationalStoreTransactionTest() {
                     console.info(TAG + "txId"+txId)
                     expect(txId != null).assertTrue()
                 } catch (err) {
-                    console.info(TAG + "Delete RdbStore failed" + err.code + err.message)
+                    console.info(TAG + "get txId failed" + err.code + err.message)
                     expect().assertFail()
                 }
             }   
