@@ -232,11 +232,34 @@ int32_t MockIDevice::AllocateBuffer(uint32_t length, SharedBuffer &buffer)
     buffer.dataSize = length;
 
     AshmemSetProt(buffer.fd, PROT_READ | PROT_WRITE);
+    m_bufferFd = buffer.fd;
     return HDF_SUCCESS;
 }
 
 int32_t MockIDevice::ReleaseBuffer(const SharedBuffer &buffer)
 {
+    return HDF_SUCCESS;
+}
+
+int32_t MockIDevice::MemoryCopy(float* data, uint32_t length)
+{
+    std::lock_guard<std::mutex> lock(m_mtx);
+    void* mapData = mmap(nullptr, length, PROT_READ | PROT_WRITE, MAP_SHARED, m_bufferFd, 0);
+    if (mapData == MAP_FAILED) {
+        LOGE("[Mock_Device]::ExportModelCache failed, Map fd to address failed: %{public}s.", strerror(errno));
+        return HDF_FAILURE;
+    }
+
+    auto memRet = memcpy_s(mapData, length, data, length);
+    auto unmapResult = munmap(mapData, length);
+    if (unmapResult != 0) {
+        LOGE("[Mock_Device]ExportModelCache failed . Please try again.");
+        return HDF_FAILURE;
+    }
+    if (memRet != EOK) {
+        LOGE("[Mock_Device]ExportModelCache failed, failed to memcpy_s data type.");
+        return HDF_FAILURE;
+    }
     return HDF_SUCCESS;
 }
 

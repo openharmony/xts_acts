@@ -73,6 +73,8 @@ public:
     int32_t PrepareModelFromModelCache(const std::vector<SharedBuffer>& modelCache, const ModelConfig& config,
          sptr<IPreparedModel>& preparedModel) override;
 
+    int32_t MemoryCopy(float* data, uint32_t length);
+
     void SetFP16Supported(bool isSupported);
 
     void SetPerformanceSupported(bool isSupported);
