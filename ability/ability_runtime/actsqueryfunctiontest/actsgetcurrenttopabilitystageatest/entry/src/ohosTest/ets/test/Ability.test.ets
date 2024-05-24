@@ -16,32 +16,40 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import commonEvent from "@ohos.commonEvent"
+import CommonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
 
-var subscriberInfo_MainAbility2 = {
+let subscriberInfo_MainAbility2: CommonEventManager.CommonEventSubscribeInfo = {
     events: ["GetCurrentTopAbilityB"],
 };
 const START_ABILITY_TIMEOUT = 4000;
 
 export default function abilityTest() {
-    describe('ActsParticleAbilityTest', function () {
+    describe('ActsParticleAbilityTest', () => {
 
         /**
          * @tc.number: ACTS_GetCurrentTopAbility_0100
          * @tc.name: Verify the interface for obtaining the Ability of the foreground
          * @tc.desc:Start PageAbility1,Ability2 to be tested in turn, and get the current foreground Ability (AsyncCallback)
          */
-        it('ACTS_GetCurrentTopAbility_0100', 0, async function (done) {
+        it('ACTS_GetCurrentTopAbility_0100', 0, async (done:Function) => {
             console.log("ACTS_GetCurrentTopAbility_0100 --- start");
-            var flag = true;
-            var Subscriber;
-            var AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+            let flag = true;
+            let Subscriber:CommonEventManager.CommonEventSubscriber;
+            let AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
-            async function SubscribeCallBack(err, data) {
+            commonEvent.createSubscriber(subscriberInfo_MainAbility2).then(async (data) => {
+                console.debug("ACTS_GetCurrentTopAbility_0100====>Create Subscriber====>");
+                Subscriber = data;
+                commonEvent.subscribe(Subscriber, async (err, data) => {
                 console.debug("ACTS_GetCurrentTopAbility_0100====>Subscribe CallBack data:====>"
                 + JSON.stringify(data));
                 expect(data.event == 'GetCurrentTopAbilityB').assertTrue();
                 if (data.event == 'GetCurrentTopAbilityB') {
-                    commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+                    commonEvent.unsubscribe(Subscriber, async () => {
+                        console.debug("ACTS_GetCurrentTopAbility_0100====>UnSubscribe CallBack====>");
+                    });
+
                     AbilityDelegator.getCurrentTopAbility((err, data) => {
                         console.log("ACTS_GetCurrentTopAbility_0100 and");
                         console.debug("====>thisTopAbility_0100====>" + JSON.stringify(data));
@@ -55,27 +63,18 @@ export default function abilityTest() {
                         done();
                     })
                 }
-            }
-
-            commonEvent.createSubscriber(subscriberInfo_MainAbility2).then(async (data) => {
-                console.debug("ACTS_GetCurrentTopAbility_0100====>Create Subscriber====>");
-                Subscriber = data;
-                commonEvent.subscribe(Subscriber, SubscribeCallBack);
+            });
 
                 console.log("ACTS_GetCurrentTopAbility_0100 start");
                 await globalThis.abilityContext.startAbility(
                     {
                         bundleName: 'com.example.actsgetcurrenttopabilitystageatest',
                         abilityName: 'Ability1'
-                    }, (err) => {
+                    }, (err:BusinessError) => {
                     console.debug("====>ACTS_GetCurrentTopAbility_0100 err:" + JSON.stringify(err))
                 })
                 console.log("ACTS_GetCurrentTopAbility_0100 end");
             })
-
-            async function UnSubscribeCallback() {
-                console.debug("ACTS_GetCurrentTopAbility_0100====>UnSubscribe CallBack====>");
-            }
         })
     })
 }
