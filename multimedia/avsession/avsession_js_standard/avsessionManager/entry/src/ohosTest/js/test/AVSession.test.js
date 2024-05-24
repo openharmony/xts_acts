@@ -3526,5 +3526,111 @@ export default function AVSession() {
             }
         })
 
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2200
+         * @tc.name      : setAVMetadata - promise - set filter(ProtocolType.TYPE_DLN)
+         * @tc.desc      : Testing call setAVMetadata(promise) set filter(ProtocolType.TYPE_DLN)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2200', 0, async function (done) {
+            let metadata0 = {
+                assetId: '121278',
+                filter: 'avSession.ProtocolType.TYPE_DLNA'
+            };
+            await session.setAVMetadata(metadata0).then(() => {
+                console.info('TestLog: Set assetId successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set assetId error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await controller.getAVMetadata().then((data) => {
+                if (data.filter === metadata.filter) {
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get filter failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2300
+         * @tc.name      : setAVMetadata - promise - set drmSchemes
+         * @tc.desc      : Testing call setAVMetadata(promise) set drmSchemes
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2300', 0, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                drmSchemes: ["abcdefghjkl","asdfghjklqw"]
+            };
+            await session.setAVMetadata(metadata).then(() => {
+                console.info('TestLog: Set assetId successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set assetId error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await controller.getAVMetadata().then((data) => {
+                if (JSON.stringify(data.drmSchemes) === JSON.stringify(metadata.drmSchemes)) {
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get filter failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_SUPPORTEDDRMCAPABILITIES_0100
+         * @tc.name      : get session outputDevice - callback
+         * @tc.desc      : Testing call getOutputDevice(supportedDrmCapabilities)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_SUPPORTEDDRMCAPABILITIES_0100', 0, async function (done) {
+            try {
+                session.getOutputDevice((err, value) => {
+                    if (err) {
+                        console.info(`Get device information BusinessError: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else if (!value.isRemote) {
+                        console.info('Get device information successfully');
+                        let deviceInfo = value.devices[0]
+                        if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
+                            deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
+                            deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined && deviceInfo.authenticationStatus !== undefined && Array.isArray(deviceInfo.supportedDrmCapabilities)) {
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('getOutputDevice value error.')
+                            expect(false).assertTrue();
+                        }
+                    } else {
+                        console.info('Get device information failed');
+                        expect(false).assertTrue();
+                    }
+                    done();
+                });
+            } catch (err) {
+                console.info(`Get device information unknownError: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+            } 
+        })
+
     })
 }
