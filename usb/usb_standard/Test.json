@@ -1,19 +1,25 @@
 {
-    "description": "Configuration for usb js api Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "160000",
-        "shell-timeout": "160000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.usb.usb.function",
         "package-name": "ohos.acts.usb.usb.function"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsUsbJSApiTest.hap"
+              "ActsUsbJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
