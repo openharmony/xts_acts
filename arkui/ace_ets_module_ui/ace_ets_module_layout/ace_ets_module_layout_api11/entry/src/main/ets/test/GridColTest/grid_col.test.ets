@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils'
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function grid_colSpanJsunit() {
   describe('grid_colSpanTest', () => {
@@ -31,7 +31,7 @@ export default function grid_colSpanJsunit() {
         if (!("grid_col" == pages.name)) {
           console.info("get grid_col state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push grid_col page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function grid_colSpanJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("grid_colSpan after each called");
     });
 
@@ -51,7 +51,7 @@ export default function grid_colSpanJsunit() {
      */
     it('testgrid_colSpan0001', 0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_colSpan0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('gridContainer');
       console.info("[testgrid_colSpan0001] component height strJson:" + strJson);
       let obj: ESObject = JSON.parse(strJson);

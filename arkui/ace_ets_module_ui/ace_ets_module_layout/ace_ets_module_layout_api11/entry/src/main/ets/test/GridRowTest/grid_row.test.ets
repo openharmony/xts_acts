@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils'
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function grid_rowOnBreakpointChangeJsunit() {
   describe('grid_rowOnBreakpointChangeTest', () => {
@@ -31,7 +31,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
         if (!("grid_row" == pages.name)) {
           console.info("get grid_row state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push grid_row page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("grid_rowOnBreakpointChange after each called");
     });
 
@@ -51,7 +51,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
      */
     it('testgrid_rowOnBreakpointChange001', 0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_rowOnBreakpointChange001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
       console.info("[testgrid_rowOnBreakpointChange001] component width strJson:" + strJson);
       let obj: ESObject = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
      */
     it('testgrid_rowOnBreakpointChange002', 0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_rowOnBreakpointChange002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
       console.info("[testgrid_rowOnBreakpointChange002] component height strJson:" + strJson);
       let obj: ESObject = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
      */
     it('testgrid_rowOnBreakpointChange003', 0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_rowOnBreakpointChange003 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
       console.info("[testgrid_rowOnBreakpointChange003] component backgroundColor strJson:" + strJson);
       let obj: ESObject = JSON.parse(strJson);

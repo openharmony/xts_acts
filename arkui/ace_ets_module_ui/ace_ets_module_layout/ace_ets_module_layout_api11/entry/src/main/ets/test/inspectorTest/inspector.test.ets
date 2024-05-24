@@ -16,7 +16,7 @@
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils'
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function inspectorJsunit() {
   describe('inspectorTest', () => {
@@ -32,7 +32,7 @@ export default function inspectorJsunit() {
         if (!("inspector" == pages.name)) {
           console.info("get inspector state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push inspector page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -51,7 +51,7 @@ export default function inspectorJsunit() {
      */
     it('testInspectorTestAdd0001', 0, async () => {
       console.info('Inspector testInspectorTestAdd0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('inspectorApiOne');
       console.info("[testInspectorTestAdd0001] component width strJson:" + strJson);
       let obj: ESObject = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function inspectorJsunit() {
      */
     it('testInspectorTestAdd0002', 0, async () => {
       console.info('Inspector testInspectorTestAdd0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('inspectorApiOne');
       console.info("[testInspectorTestAdd0002] component width strJson:" + strJson);
       let obj: ESObject = JSON.parse(strJson);
@@ -138,7 +138,7 @@ export default function inspectorJsunit() {
       try {
         console.info("inspector_102 click result is: " + JSON.stringify(sendEventByKey('inspectorApiTwo', 10, "")));
         events_emitter.on(innerEvent2, callback2);
-        await Utils.sleep(2000);
+        await CommonFunc.sleep(2000);
 
       } catch (err) {
         console.info("inspector_102 on events_emitter err : " + JSON.stringify(err));
