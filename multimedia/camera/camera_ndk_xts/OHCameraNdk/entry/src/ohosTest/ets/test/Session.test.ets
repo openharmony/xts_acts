@@ -19,7 +19,7 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
 
-const TAG = "CAMERA_NDK_JS";
+const TAG = "CAMERA_LOGTAG_JS";
 const CAMERA_OK = 0;
 const CAMERA_ERROR_7400101 = 7400101; //参数错误
 let receiver: image.ImageReceiver;

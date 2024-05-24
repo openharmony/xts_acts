@@ -20,7 +20,7 @@
 #include <ohcamera/camera_manager.h>
 #include "hilog/log.h"
 
-#define CAMERA_LOG_TAG "CAMERA_NDK"
+#define CAMERA_LOG_TAG "CAMERA_TAGLOG"
 #define CAMERA_LOG_DOMAIN 0x00000
 #define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_DEBUG, CAMERA_LOG_DOMAIN, CAMERA_LOG_TAG, fmt, ##__VA_ARGS__)
 
@@ -167,7 +167,7 @@ private:
     Camera_CaptureSession *captureSession_;
     uint32_t size_; // 记录支持的Camera_Device列表的大小。
     const Camera_Profile *profile_;
-    const Camera_VideoProfile *videoProfile_;
+    const Camera_VideoProfile *vProfile_;
     Camera_PreviewOutput *previewOutput_; // 预览输出实例
     Camera_PhotoOutput *photoOutput_;
     Camera_VideoOutput *videoOutput_;

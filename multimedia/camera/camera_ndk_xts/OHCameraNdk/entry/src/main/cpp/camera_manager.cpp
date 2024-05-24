@@ -870,18 +870,18 @@ Camera_ErrorCode NDKCamera::AddVideoOutput(int useCaseCode)
 }
 Camera_ErrorCode NDKCamera::CreateVideoOutput(char *videoId, int useCaseCode)
 {
-    videoProfile_ = cameraOutputCapability_->videoProfiles[0];
-    
+    vProfile_ = cameraOutputCapability_->videoProfiles[0];
+
     if (useCaseCode == PARAMETER_OK) {
-        ret_ = OH_CameraManager_CreateVideoOutput(cameraManager_, videoProfile_, videoId, &videoOutput_);
+        ret_ = OH_CameraManager_CreateVideoOutput(cameraManager_, vProfile_, videoId, &videoOutput_);
     } else if (useCaseCode == PARAMETER4_ERROR) {
-        ret_ = OH_CameraManager_CreateVideoOutput(cameraManager_, videoProfile_, videoId, nullptr);
+        ret_ = OH_CameraManager_CreateVideoOutput(cameraManager_, vProfile_, videoId, nullptr);
     } else if (useCaseCode == PARAMETER3_ERROR) {
-        ret_ = OH_CameraManager_CreateVideoOutput(cameraManager_, videoProfile_, nullptr, &videoOutput_);
+        ret_ = OH_CameraManager_CreateVideoOutput(cameraManager_, vProfile_, nullptr, &videoOutput_);
     } else if (useCaseCode == PARAMETER2_ERROR) {
         ret_ = OH_CameraManager_CreateVideoOutput(cameraManager_, nullptr, videoId, &videoOutput_);
     } else {
-        ret_ = OH_CameraManager_CreateVideoOutput(nullptr, videoProfile_, videoId, &videoOutput_);
+        ret_ = OH_CameraManager_CreateVideoOutput(nullptr, vProfile_, videoId, &videoOutput_);
     }
     return ret_;
 }

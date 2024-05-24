@@ -23,7 +23,7 @@ import account from '@ohos.account.osAccount';
 import { BusinessError } from '@ohos.base';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
-const TAG = "CAMERA_NDK_JS";
+const TAG = "CAMERA_LOGTAG_JS";
 const CAMERA_OK = 0;
 const CAMERA_ERROR_7400101 = 7400101; //参数错误
 let mediaUtil = MediaUtils.getInstance()
