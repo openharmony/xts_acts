@@ -70,7 +70,8 @@ export default class OpenHarmonyTestRunner implements TestRunner {
   }
 }
 
-async function checkMock(abilityDelegator: abilityDelegatorRegistry.AbilityDelegator, resourceManager: resourceManager.ResourceManager) {
+async function checkMock(abilityDelegator: abilityDelegatorRegistry.AbilityDelegator,
+                         resourceManager: resourceManager.ResourceManager) {
   let rawFile: Uint8Array;
   try {
     rawFile = resourceManager.getRawFileContentSync(jsonPath);

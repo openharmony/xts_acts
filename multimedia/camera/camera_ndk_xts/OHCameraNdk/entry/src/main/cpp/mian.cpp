@@ -71,7 +71,7 @@ static napi_value CameraGetCameraManager(napi_env env, napi_callback_info info)
     // 创建CameraManager实例。
     Camera_Manager *cameraManager_;
     Camera_ErrorCode code;
-    if (index == Parameter_Ok) {
+    if (index == PARAMETER_OK) {
         code = OH_Camera_GetCameraManager(&cameraManager_);
     } else {
         // 传null代码无法继续执行
