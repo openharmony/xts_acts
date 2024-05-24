@@ -149,6 +149,9 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.name the rebuilt function
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RebuiltEtsAPITest_0100
          * @tc.desc rebuild the database while corrupt
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('rebuiltTest001', 0, async function (done) {
             console.log(TAG + "************* rebuiltTest001 start *************");
@@ -184,6 +187,9 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.name the insert function
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RebuiltEtsAPITest_0200
          * @tc.desc insert while corrupt
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('rebuiltInsertTest0001', 0, async function (done) {
             console.log(TAG + "************* rebuiltInsertTest0001 start *************");
@@ -210,6 +216,9 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.name the batchInsert function
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RebuiltEtsAPITest_0300
          * @tc.desc batchInsert while corrupt
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('rebuiltBatchInsertTest0001', 0, async function (done) {
             console.log(TAG + "************* rebuiltBatchInsertTest0001 start *************");
@@ -239,6 +248,9 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.name the update function
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RebuiltEtsAPITest_0400
          * @tc.desc update while corrupt
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('rebuiltUpdateTest0001', 0, async function (done) {
             console.log(TAG + "************* rebuiltUpdateTest0001 start *************");
@@ -268,6 +280,9 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.name the delete function
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RebuiltEtsAPITest_0500
          * @tc.desc delete while corrupt
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('rebuiltDeleteTest0001', 0, async function (done) {
             console.log(TAG + "************* rebuiltDeleteTest0001 start *************");
@@ -290,6 +305,9 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.name the execute function
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RebuiltEtsAPITest_0600
          * @tc.desc execute while corrupt
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('rebuiltExecuteTest0001', 0, async function (done) {
             console.log(TAG + "************* rebuiltExecuteTest0001 start *************");
@@ -309,6 +327,9 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.name the executeSql function
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RebuiltEtsAPITest_0700
          * @tc.desc executeSql while corrupt
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('rebuiltExecuteSqlTest0001', 0, async function (done) {
             console.log(TAG + "************* rebuiltExecuteSqlTest0001 start *************");

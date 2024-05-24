@@ -164,6 +164,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0010
          * @tc.desc non encrypted database attach non encrypted database
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach0001', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach0001 start *************");
@@ -183,6 +186,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0020
          * @tc.desc non encrypted database attach encrypted database
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach0002', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach0002 start *************");
@@ -202,6 +208,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0030
          * @tc.desc encrypted database attach encrypted database
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach0003', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach0003 start *************");
@@ -221,6 +230,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0040
          * @tc.desc encrypted databases are not supported for attaching non encrypted databases
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach0004', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach0004 start *************");
@@ -239,6 +251,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0050
          * @tc.desc non encrypted database attach non encrypted database
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach0005', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach0005 start *************");
@@ -261,6 +276,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0060
          * @tc.desc path error for non encrypted database
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach0006', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach0006 start *************");
@@ -286,6 +304,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0070
          * @tc.desc non encrypted database attach non encrypted database with same table name
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach0007', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach0007 start *************");
@@ -318,6 +339,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0080
          * @tc.desc resultSet occupies connection, attach failed
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach0008', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach0008 start *************");
@@ -344,6 +368,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0090
          * @tc.desc repeat attach using the same alias
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach0009', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach0009 start *************");
@@ -373,6 +400,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0100
          * @tc.desc WaitTime exceeds maximum limit
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach00010', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach00010 start *************");
@@ -402,6 +432,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0110
          * @tc.desc WaitTime exceeds the minimum limit
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach00011', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach00011 start *************");
@@ -432,6 +465,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0120
          * @tc.desc the alias cannot be empty
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach00012', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach00012 start *************");
@@ -452,6 +488,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0130
          * @tc.desc input error path
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach00013', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach00013 start *************");
@@ -472,6 +511,9 @@ export default function rdbStoreAttachEtsunitTest() {
          * @tc.name the attach function
          * @tc.number SUB_Distributed_Data_RelationalStore_SDK_AttachAPITest_0140
          * @tc.desc input empty path
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRdbStoreAttach00014', 0, async function () {
             console.log(TAG + "************* testRdbStoreAttach00014 start *************");

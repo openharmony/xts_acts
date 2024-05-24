@@ -51,8 +51,8 @@ char g_table[] = "test";
 char g_lockTable[] = "lock_test";
 char g_createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
     "data3 FLOAT, data4 BLOB, data5 TEXT);";
-char g_createLockTableSql[] = "CREATE TABLE lock_test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
-    "data3 FLOAT, data4 BLOB, data5 TEXT);";
+char g_createLockTableSql[] = "CREATE TABLE lock_test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, "
+    "data2 INTEGER, data3 FLOAT, data4 BLOB, data5 TEXT);";
 
 OH_VBucket *GetValueBucket()
 {

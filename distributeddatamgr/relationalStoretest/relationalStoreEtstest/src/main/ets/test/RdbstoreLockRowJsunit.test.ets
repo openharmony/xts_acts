@@ -161,6 +161,9 @@ export default function rdbstoreLockRowJsunitTest() {
      * @tc.name Normal test case of original state
      * @tc.desc 1.Insert data, check status
      *          2.Update data, check status
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('testRdbStoreLockRow0001', 0, async function () {
         console.log(TAG + "************* testRdbStoreLockRow0001 start *************");
@@ -213,6 +216,9 @@ export default function rdbstoreLockRowJsunitTest() {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_LockRow_0200
      * @tc.name Abnormal test case of lock, if TABLE name or column invalid
      * @tc.desc Configure predicates (TABLE name: "")
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('testRdbStoreLockRow0002', 0, async function () {
         console.log(TAG + "************* testRdbStoreLockRow0002 start *************");
@@ -231,6 +237,9 @@ export default function rdbstoreLockRowJsunitTest() {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_LockRow_0300
      * @tc.name Abnormal test case of unlock, if TABLE name or column invalid
      * @tc.desc Configure predicates (TABLE name: "")
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('testRdbStoreLockRow0003', 0, async function () {
         console.log(TAG + "************* testRdbStoreLockRow0003 start *************");
