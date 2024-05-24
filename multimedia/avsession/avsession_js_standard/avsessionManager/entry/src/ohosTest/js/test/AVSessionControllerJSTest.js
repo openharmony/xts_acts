@@ -65,7 +65,8 @@ export default function AVSessionControllerJsTest() {
 			startPosition: 0,
 			creditsPosition: 0,
 			appName: "appName",
-			displayTags: avSession.DisplayTag.TAG_AUDIO_VIVID
+			displayTags: avSession.DisplayTag.TAG_AUDIO_VIVID,
+            drmScheme: "C83EADEOA7FB9E76B"
 		};
 		const QUEUE_ITEM_DESCRIPTION_ERROR = {
 			mediaId: QUEUE_ITEM_KEY_WORD,
@@ -81,7 +82,8 @@ export default function AVSessionControllerJsTest() {
 			mediaUri: "mediaUri",
 			startPosition: 0,
 			creditsPosition: 0,
-			appName: "appName"
+			appName: "appName",
+            drmScheme: "C83EADEOA7FB9E76S"
 		};
 		const QUEUE_ITEM = {
 			itemId: QUEUE_ITEM_ID,
@@ -1420,5 +1422,33 @@ export default function AVSessionControllerJsTest() {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_0100 finished");
 			done();
 		})
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300
+         * @tc.name      : controller get items of AVQueue - promise
+         * @tc.desc      : Testing call getAVQueueItems(drmScheme)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300", 0, async function (done) {
+			await session.setAVQueueItems(ITEMS_ARRAY).then(async () => {
+				await controller.getAVQueueItems().then((items) => {
+					console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300 data " + JSON.stringify(err));
+                    if (items[0].description.drmScheme === ITEMS_ARRAY[0].description.drmScheme){
+                        expect(true).assertTrue();
+                    }else{
+                        expect().assertFail();
+                        done();
+                    }
+                    done();
+				});
+			}).catch((err) => {
+				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300 error " + JSON.stringify(err));
+				expect().assertFail();
+				done();
+			});
+		})
+
 	})
 }
