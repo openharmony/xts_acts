@@ -17,5 +17,5 @@ ohos_js_app_suite("avsession_framework_js_hap") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "avsession_framework_js_hap"
+  hap_name = "ActsAvsessionFrameworkJsTest"
 }
