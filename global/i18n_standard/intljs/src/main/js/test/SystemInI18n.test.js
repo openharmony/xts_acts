@@ -103,7 +103,7 @@ describe('SystemInI18nTest', function () {
             console.log('i18n_system_test_0400 ' + e.code);
             console.log('i18n_system_test_0400 ' + e.message);
             expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid, the country must be a valid region.');
+            expect(e.message).assertEqual('Invalid parameter, the country must be a valid region.');
         }
     })
 
@@ -132,7 +132,7 @@ describe('SystemInI18nTest', function () {
             console.log('i18n_system_test_0600 ' + e.code);
             console.log('i18n_system_test_0600 ' + e.message);
             expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid, the country must be a valid region.');
+            expect(e.message).assertEqual('Invalid parameter, the country must be a valid region.');
         }
     })
 
