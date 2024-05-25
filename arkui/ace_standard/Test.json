@@ -1,12 +1,11 @@
 {
-    "description": "Configuration for ActsAceStandardTest Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "2500000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "com.example.aceceshi",
-        "package-name": "com.example.aceceshi",
-        "shell-timeout": "1800000",
-        "testcase-timeout": "50000"
+        "package-name": "com.example.aceceshi"
     },
     "kits": [
         {
@@ -15,8 +14,7 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-		{
+        },{
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",

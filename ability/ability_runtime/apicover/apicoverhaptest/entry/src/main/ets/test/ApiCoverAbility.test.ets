@@ -15,9 +15,6 @@
  */
 
 import { describe, afterEach, it, expect } from '@ohos/hypium';
-import FormInfo from '@ohos.application.formInfo';
-import formInfoNew from '@ohos.app.form.formInfo';
-import formError from '@ohos.application.formError';
 import formHost from '@ohos.application.formHost';
 import abilityConstant from '@ohos.app.ability.AbilityConstant';
 import appManagerNew from '@ohos.app.ability.appManager';
@@ -33,9 +30,12 @@ import insightIntent from '@ohos.app.ability.insightIntent';
 import startOptions from '@ohos.app.ability.StartOptions';
 import ability from '@ohos.ability.ability';
 import Want from '@ohos.app.ability.Want';
+import wantConstant from '@ohos.app.ability.wantConstant';
 import { BusinessError } from '@ohos.base';
 import commonEventManager from '@ohos.commonEventManager';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
 let CROSS_USER_DENY = 201;
@@ -46,7 +46,6 @@ let createModuleContext: ESObject;
 function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time));
 }
-
 
 function func1(a: string, b: string) {
   array.push(a);
@@ -430,6 +429,8 @@ export default function ApiCoverTest() {
         .assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.bundleCodeDir);
       expect("/data/storage/el2/distributedfiles")
         .assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.distributedFilesDir);
+      expect("/data/storage/el2/cloud")
+        .assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.cloudFileDir);
       expect(1).assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.area);
       if (AppStorage.get<common.UIAbilityContext>("abilityContext")!.resourceDir != "") {
         fs.access(AppStorage.get<common.UIAbilityContext>("abilityContext")!.resourceDir, (err, res) => {
@@ -452,8 +453,12 @@ export default function ApiCoverTest() {
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.resourceManager.getConfiguration((err, data) => {
         if (err == undefined) {
           console.log(`Ability: getConfiguration success: ${JSON.stringify(data)}`);
-          console.log(`Ability: getConfiguration success: JSON.stringify(data.direction)`);
-          expect(0).assertEqual(data.direction);
+          console.log(`Ability: getConfiguration success1: ${JSON.stringify(data.direction)}`);
+          if (deviceType === '2in1') {
+            expect(1).assertEqual(data.direction);
+          } else {
+            expect(0).assertEqual(data.direction);
+          }
           done();
         } else {
           expect().assertFail();
@@ -485,122 +490,6 @@ export default function ApiCoverTest() {
       await sleep(2000);
       done();
     })
-
-    /*
-     * @tc.number  SUB_AA_Form_provider_TestFormErr_0100
-     * @tc.name    Get all FormError types.
-     * @tc.desc    Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level   3
-     */
-    it('SUB_AA_Form_provider_TestFormErr_0100', 0, async (done: Function) => {
-      console.info("SUB_AA_Form_provider_TestFormErr_0100");
-      expect(7).assertEqual(formError.FormError.ERR_ADD_INVALID_PARAM);
-      expect(10).assertEqual(formError.FormError.ERR_BIND_PROVIDER_FAILED);
-      expect(8).assertEqual(formError.FormError.ERR_CFG_NOT_MATCH_ID);
-      expect(1).assertEqual(formError.FormError.ERR_COMMON);
-      expect(31).assertEqual(formError.FormError.ERR_FORM_DUPLICATE_ADDED);
-      expect(20).assertEqual(formError.FormError.ERR_FORM_FA_NOT_INSTALLED);
-      expect(18).assertEqual(formError.FormError.ERR_FORM_NO_SUCH_ABILITY);
-      expect(19).assertEqual(formError.FormError.ERR_FORM_NO_SUCH_DIMENSION);
-      expect(17).assertEqual(formError.FormError.ERR_FORM_NO_SUCH_MODULE);
-      expect(5).assertEqual(formError.FormError.ERR_GET_BUNDLE_FAILED);
-      expect(4).assertEqual(formError.FormError.ERR_GET_INFO_FAILED);
-      expect(6).assertEqual(formError.FormError.ERR_GET_LAYOUT_FAILED);
-      expect(36).assertEqual(formError.FormError.ERR_IN_RECOVERY);
-      expect(15).assertEqual(formError.FormError.ERR_MAX_FORMS_PER_CLIENT);
-      expect(12).assertEqual(formError.FormError.ERR_MAX_INSTANCES_PER_FORM);
-      expect(11).assertEqual(formError.FormError.ERR_MAX_SYSTEM_FORMS);
-      expect(16).assertEqual(formError.FormError.ERR_MAX_SYSTEM_TEMP_FORMS);
-      expect(9).assertEqual(formError.FormError.ERR_NOT_EXIST_ID);
-      expect(13).assertEqual(formError.FormError.ERR_OPERATION_FORM_NOT_SELF);
-      expect(2).assertEqual(formError.FormError.ERR_PERMISSION_DENY);
-      expect(14).assertEqual(formError.FormError.ERR_PROVIDER_DEL_FAIL);
-      expect(30).assertEqual(formError.FormError.ERR_SYSTEM_RESPONSES_FAILED);
-      done();
-    })
-
-    /*
-     * @tc.number  SUB_AA_Form_provider_TestFormInfo_0100
-     * @tc.name     Get all FormInfo types
-     * @tc.desc    Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level   3
-     */
-    it('SUB_AA_Form_provider_TestFormInfo_0100', 0, async (done: Function) => {
-      console.info("SUB_AA_Form_provider_TestFormInfo_0100");
-      expect("ohos.extra.param.key.form_dimension").assertEqual(FormInfo.FormParam.DIMENSION_KEY);
-      expect("ohos.extra.param.key.form_height").assertEqual(FormInfo.FormParam.HEIGHT_KEY);
-      expect("ohos.extra.param.key.module_name").assertEqual(FormInfo.FormParam.MODULE_NAME_KEY);
-      expect("ohos.extra.param.key.form_width").assertEqual(FormInfo.FormParam.WIDTH_KEY);
-      expect("ohos.extra.param.key.form_name").assertEqual(FormInfo.FormParam.NAME_KEY);
-      expect("ohos.extra.param.key.form_temporary").assertEqual(FormInfo.FormParam.TEMPORARY_KEY);
-      expect("ohos.extra.param.key.form_identity").assertEqual(FormInfo.FormParam.IDENTITY_KEY);
-      expect(0).assertEqual(FormInfo.FormState.DEFAULT);
-      expect(1).assertEqual(FormInfo.FormState.READY);
-      expect(-1).assertEqual(FormInfo.FormState.UNKNOWN);
-      expect(0).assertEqual(FormInfo.ColorMode.MODE_DARK);
-      expect(1).assertEqual(FormInfo.ColorMode.MODE_LIGHT);
-      expect(1).assertEqual(FormInfo.FormType.JS);
-      done();
-    });
-
-    /*
-     * @tc.number  SUB_AA_Form_provider_TestFormInfo_0200
-     * @tc.name     Get all FormInfo types
-     * @tc.desc    Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level   3
-     */
-    it('SUB_AA_Form_provider_TestFormInfo_0200', 0, async (done: Function) => {
-      console.info("SUB_AA_Form_provider_TestFormInfo_0200");
-      expect("ohos.extra.param.key.form_dimension").assertEqual(formInfoNew.FormParam.DIMENSION_KEY);
-      expect("ohos.extra.param.key.form_height").assertEqual(formInfoNew.FormParam.HEIGHT_KEY);
-      expect("ohos.extra.param.key.module_name").assertEqual(formInfoNew.FormParam.MODULE_NAME_KEY);
-      expect("ohos.extra.param.key.form_width").assertEqual(formInfoNew.FormParam.WIDTH_KEY);
-      expect("ohos.extra.param.key.form_name").assertEqual(formInfoNew.FormParam.NAME_KEY);
-      expect("ohos.extra.param.key.form_temporary").assertEqual(formInfoNew.FormParam.TEMPORARY_KEY);
-      expect("ohos.extra.param.key.form_identity").assertEqual(formInfoNew.FormParam.IDENTITY_KEY);
-      expect("ohos.extra.param.key.bundle_name").assertEqual(formInfoNew.FormParam.BUNDLE_NAME_KEY);
-      expect("ohos.extra.param.key.ability_name").assertEqual(formInfoNew.FormParam.ABILITY_NAME_KEY);
-      expect('ohos.extra.param.key.form_customize').assertEqual(formInfoNew.FormParam.PARAM_FORM_CUSTOMIZE_KEY);
-      expect('ohos.extra.param.key.form_launch_reason').assertEqual(formInfoNew.FormParam.LAUNCH_REASON_KEY);
-      // expect('ohos.extra.param.key.form_rendering_mode').assertEqual(formInfoNew.FormParam.FORM_RENDERING_MODE_KEY);
-      console.info("SUB_AA_Test_InsightIntent_0100:" + formInfoNew.FormParam.FORM_RENDERING_MODE_KEY);
-      expect('ohos.extra.param.key.host_bg_inverse_color').assertEqual(formInfoNew.FormParam.HOST_BG_INVERSE_COLOR_KEY)
-      expect('ohos.extra.param.key.permission_name').assertEqual(formInfoNew.FormParam.FORM_PERMISSION_NAME_KEY)
-      expect('ohos.extra.param.key.permission_granted').assertEqual(formInfoNew.FormParam.FORM_PERMISSION_GRANTED_KEY)
-      expect(1).assertEqual(formInfoNew.LaunchReason.FORM_DEFAULT);
-      expect(2).assertEqual(formInfoNew.LaunchReason.FORM_SHARE);
-      expect(0).assertEqual(formInfoNew.FormState.DEFAULT);
-      expect(1).assertEqual(formInfoNew.FormState.READY);
-      expect(-1).assertEqual(formInfoNew.FormState.UNKNOWN);
-      expect(0).assertEqual(formInfoNew.ColorMode.MODE_DARK);
-      expect(1).assertEqual(formInfoNew.ColorMode.MODE_LIGHT);
-      console.info("SUB_AA_Form_provider_TestFormInfo_0200:" + formInfoNew.FormDimension.DIMENSION_1_1);
-      expect(1).assertEqual(formInfoNew.FormDimension.Dimension_1_2);
-      expect(2).assertEqual(formInfoNew.FormDimension.Dimension_2_2);
-      expect(3).assertEqual(formInfoNew.FormDimension.Dimension_2_4);
-      expect(4).assertEqual(formInfoNew.FormDimension.Dimension_4_4);
-      expect(5).assertEqual(formInfoNew.FormDimension.Dimension_2_1);
-      // expect(6).assertEqual(formInfoNew.FormDimension.DIMENSION_1_1)
-      console.info("SUB_AA_Test_InsightIntent_0100:" + formInfoNew.FormDimension.Dimension_2_1);
-      expect(1).assertEqual(formInfoNew.FormType.JS);
-      expect(2).assertEqual(formInfoNew.FormType.eTS);
-      expect(1).assertEqual(formInfoNew.VisibilityType.FORM_VISIBLE);
-      expect(2).assertEqual(formInfoNew.VisibilityType.FORM_INVISIBLE);
-      let formStateInfo: formInfoNew.FormStateInfo = {
-        formState: formInfoNew.FormState.READY,
-        want: {
-          bundleName: "com.example.extensionapitest",
-          abilityName: "FirstExtension"
-        }
-      }
-      done();
-    });
 
     /*
      * @tc.number  SUB_AA_Test_AbilityConstant_0100
@@ -660,6 +549,46 @@ export default function ApiCoverTest() {
       expect(0).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND);
       expect(1).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND);
       console.info("SUB_AA_Test_InsightIntent_0100:" + insightIntent.ExecuteMode.UI_EXTENSION_ABILITY);
+      // expect(2).assertEqual(insightIntent.ExecuteMode.UI_EXTENSION_ABILITY)
+      AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(startWant, startOp, (err, data) => {
+        if (err.code == 0) {
+          console.info("SUB_AA_FMS_AbilityStage_0100===CreateSubscriberCallback===");
+          expect().assertFail();
+          done();
+        } else {
+          console.info("SUB_AA_FMS_AbilityStage_0100===failed===");
+          expect(err.code).assertEqual(EXTENSION_INFO_ERR);
+          done();
+        }
+      })
+    });
+
+    /*
+     * @tc.number  SUB_AA_Test_StartOptions_0100
+     * @tc.name    Test insightIntent.ExecuteMode and startOptions.
+     * @tc.desc    Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   3
+     */
+    it('SUB_AA_Test_StartOptions_0100', 0, async (done: Function) => {
+      let startOp: startOptions = {
+        withAnimation: false,
+        displayId: 0,
+        windowLeft: 100,
+        windowTop: 100,
+        windowWidth: 100,
+        windowHeight: 100,
+        windowFocused: true,
+      }
+      let startWant: Want = {
+        deviceId: "",
+        bundleName: "ohos.acts.aafwk.test.stagesupplementerr",
+        abilityName: "MainAbility3",
+      }
+      expect(0).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND);
+      expect(1).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND);
+      console.info("SUB_AA_Test_StartOptions_0100:" + insightIntent.ExecuteMode.UI_EXTENSION_ABILITY);
       // expect(2).assertEqual(insightIntent.ExecuteMode.UI_EXTENSION_ABILITY)
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(startWant, startOp, (err, data) => {
         if (err.code == 0) {
@@ -1079,5 +1008,17 @@ export default function ApiCoverTest() {
       }
     });
 
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_URI_FLAG_0100
+     * @tc.name   : Check if value of FLAG_AUTH_PERSISTABLE_URI_PERMISSION is as expected
+     * @tc.desc   : Uri Flag api cover
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : 1
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_URI_FLAG_0100', 0, async (done: Function) => {
+      expect(wantConstant.Flags.FLAG_AUTH_PERSISTABLE_URI_PERMISSION).assertEqual(0x00000040);
+      done();
+    });
   })
 }

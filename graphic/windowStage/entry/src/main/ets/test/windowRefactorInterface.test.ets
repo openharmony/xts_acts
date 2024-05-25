@@ -31,35 +31,12 @@ async function sleep(time: number) {
 }
 
 export default function windowRefactorInterfaceTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
-  console.info('windowTest context: ' + JSON.stringify(context))
-  console.info('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
   describe('windowRefactorInterface_test', () => {
     console.info('describe window_api_test2 start!!!')
     const TRUE_FLAG = true;
     let commonRGBColorArr: Array<string> = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(255,255,255)', 'rgb(0,0,0)', 'rgb(249,0,230)', 'rgb(102,102,102)', 'rgb(255,247,0)'];
     let commonNUMBERColorArr: Array<string> = ['#00FF0000', '#0000FF00', '#000000FF', '#00FFFFFF', '#00000000', '#00F900E6', '#00666666', '#00FFF700'];
     let commonKEYColorArr: Array<string> = ['red', 'green', 'blue', 'white', 'black', 'pink', 'grey', 'yellow'];
-    let systemWindowTypeDicArr: Array<string> = [];
-    let systemWindowTypeDic: Record<string, number> = {
-      'TYPE_INPUT_METHOD': 2,
-      'TYPE_STATUS_BAR': 3,
-      'TYPE_PANEL': 4,
-      'TYPE_KEYGUARD': 5,
-      'TYPE_VOLUME_OVERLAY': 6,
-      'TYPE_NAVIGATION_BAR': 7,
-      'TYPE_FLOAT': 8,
-      'TYPE_FLOAT_CAMERA': 9
-    }
-    beforeAll(() => {
-      console.info('jsUnittest beforeAll ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
-      systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
-      console.info('jsUnittest beforeAll systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
-    })
-    beforeEach(() => {
-    })
-    afterAll(() => {
-    })
-
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2020
@@ -84,7 +61,7 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
         expect().assertFail();
         done();
       });
-      await sleep(1000);
+      await sleep(800);
       for (let i = 0; i < commonRGBColorArr.length; i++) {
         console.info('setWindowSystemBarPropertiesTest1 begin step:' + i);
         let tempColor: string = commonRGBColorArr[i];
@@ -138,7 +115,7 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
         expect().assertFail();
         done();
       });
-      await sleep(1000);
+      await sleep(800);
       for (let i = 0; i < commonNUMBERColorArr.length; i++) {
         console.info('setWindowSystemBarPropertiesTest2 begin step:' + i);
         let tempColor = commonNUMBERColorArr[i];
@@ -191,7 +168,7 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
         expect().assertFail();
         done();
       });
-      await sleep(1000);
+      await sleep(900);
       for (let i = 0; i < commonKEYColorArr.length; i++) {
         console.info('setWindowSystemBarPropertiesTest3 begin step:' + i);
         let tempColor = commonKEYColorArr[i];
@@ -291,15 +268,14 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
      */
     it('testIsWindowShowingTest', 0, async (done: Function) => {
       console.info('windowTest testIsWindowShowingTest begin');
-      let config: ohosWindow.Configuration = {
-        name: "alertWindowShow", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let wnd: ohosWindow.Window | void;
-      wnd = await ohosWindow.createWindow(config).catch((err: BusinessError) => {
-        console.error('Failed to create the WindowShow1. Cause:' + JSON.stringify(err));
+      let msgStr = "testIsWindowShowingTest";
+      wnd =await windowStage.createSubWindow('testIsWindowShowingTest').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      })
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(wnd != null).assertTrue();
       let isWindowShowing = (wnd as ohosWindow.Window).isWindowShowing();
       expect(!isWindowShowing).assertTrue();
@@ -324,16 +300,15 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
      * @tc.level     : Level4
      */
     it('testSetUIContent_Existence_page', 0, async (done: Function) => {
-      let config: ohosWindow.Configuration = {
-        name: "alertWindow", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let win: ohosWindow.Window | void;
+      let msgStr = "testSetUIContent_Existence_page";
       try {
-        win = await ohosWindow.createWindow(config).catch((err: BusinessError) => {
-          console.error('Failed to create the Window1. Cause:' + JSON.stringify(err));
+        win = await windowStage.createSubWindow('testSetUIContent_Existence_page').catch((err) => {
+          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
+        console.log(msgStr + 'windowStage.createSubWindow success');
         expect(win != null);
         await (win as ohosWindow.Window).setUIContent('MainAbility/pages/second/second').then(async () => {
           console.info('setUIContent1 . Cause: success');
@@ -363,33 +338,13 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
      */
     it('testSetUIContentTestCallback1', 0, async (done: Function) => {
       let msgStr = 'testSetUIContentTestCallback1'
-      let config: ohosWindow.Configuration = {
-        name: "alertWindowcallBack", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
-      let createFirstWindow: Function = () => {
-        return new Promise<ohosWindow.Window>((resolve, reject) => {
-          try {
-            ohosWindow.createWindow(config, (create_err, create_data) => {
-              console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
-              if (create_err && create_err.code) {
-                try {
-                  expect().assertFail();
-                } catch (err) {
-                  console.info(msgStr + `ohosWindow.createWindow catch error: ${JSON.stringify(err)}`)
-                }
-                done();
-                reject(null)
-              }
-              resolve(create_data)
-            })
-          } catch (exception) {
-            console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
-          }
-          ;
-        })
-      }
       let winData: ohosWindow.Window;
-      winData = await createFirstWindow();
+      winData = await windowStage.createSubWindow('testSetUIContentTestCallback1').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!winData).assertTrue();
       try {
         winData.setUIContent('pages/second/second', async (err: BusinessError) => {
@@ -427,16 +382,15 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
      * @tc.level     : Level4
      */
     it('testSetUIContent_Invalid_Parameter', 0, async (done: Function) => {
-      let config: ohosWindow.Configuration = {
-        name: "alertWindow2", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let win: ohosWindow.Window | void;
+      let msgStr = 'testSetUIContent_Invalid_Parameter'
       try {
-        win = await ohosWindow.createWindow(config).catch((err: BusinessError) => {
-          console.error('Failed to create the inner Window2. Cause:' + JSON.stringify(err));
+        win =  await windowStage.createSubWindow('testSetUIContent_Invalid_Parameter').catch((err) => {
+          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
+        console.log(msgStr + 'windowStage.createSubWindow success');
         expect(win != null).assertTrue();
         try {
           await (win as ohosWindow.Window).setUIContent(null).then(async () => {
@@ -474,16 +428,15 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
      * @tc.level     : Level4
      */
     it('testSetUIContent_Not_Existent_Parameter', 0, async (done: Function) => {
-      let config: ohosWindow.Configuration = {
-        name: "alertWindow3", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
+      let msgStr = 'testSetUIContent_Not_Existent_Parameter'
       let win: ohosWindow.Window | void;
       try {
-        win = await ohosWindow.createWindow(config).catch((err: BusinessError) => {
-          console.error('Failed to create the inner Window3. Cause:' + JSON.stringify(err));
+        win = await windowStage.createSubWindow('testSetUIContent_Not_Existent_Parameter').catch((err) => {
+          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
+        console.log(msgStr + 'windowStage.createSubWindow success');
         expect(win != null).assertTrue();
         // 设置setUIContent
         await (win as ohosWindow.Window).setUIContent('pages/second/he').then(async () => {
@@ -1348,8 +1301,6 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
       console.info('windowTest testSetWindowKeepScreenOn_Base_True_Promise begin');
       let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      //      let data = wnd.getWindowProperties();
-      //      expect(!data.isKeepScreenOn).assertTrue();
       await wnd.setWindowKeepScreenOn(true).then(() => {
         console.info('windowTest setKeepScreenOnTest2 setKeepScreenOn(false) success ');
         let data2 = wnd.getWindowProperties();
@@ -1432,8 +1383,6 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
       console.info('windowTest testSetWindowPrivacyMode_False_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      //      let data = wnd.getWindowProperties();
-      //      expect(!data.isPrivacyMode).assertTrue();
       await wnd.setWindowPrivacyMode(false).then(() => {
         console.info('windowTest setWindowPrivacyMode1 success ');
         let data2 = wnd.getWindowProperties();
@@ -1458,8 +1407,6 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
       console.info('windowTest testSetWindowPrivacyMode_True_Promise begin');
       let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      //      let data = wnd.getWindowProperties();
-      //      expect(!data.isPrivacyMode).assertTrue();
       await wnd.setWindowPrivacyMode(true).then(() => {
         console.info('windowTest setWindowPrivacyMode2 success ');
         let data2 = wnd.getWindowProperties();

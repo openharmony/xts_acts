@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct Column_JustifyContent_ChangeParent {
   @State testJustifyContent: number = FlexAlign.Start
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager()
   private content: string = "Column_JustifyContent_ChangeParent Page"
   onPageShow() {
     console.info('Column_JustifyContent_ChangeParent page show called');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'justifyContent') {
         this.testJustifyContent = message.value;

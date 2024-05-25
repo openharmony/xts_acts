@@ -70,6 +70,7 @@ HWTEST_F(TensorTest, SUB_AI_NNRt_Func_North_Tensor_CreateTensor_0200, Function |
     size_t deviceId = 0;
     NN_Tensor* tensor = OH_NNTensor_Create(deviceId, tensorDesc);
     ASSERT_NE(nullptr, tensor);
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensor_Destroy(&tensor));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_Destroy(&tensorDesc));
 }
 

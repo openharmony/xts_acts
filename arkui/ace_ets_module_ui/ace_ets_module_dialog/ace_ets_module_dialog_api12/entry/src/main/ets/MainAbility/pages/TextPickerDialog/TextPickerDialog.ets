@@ -32,6 +32,7 @@ struct TextPickerDialogExample {
           .margin(20)
           .onClick(() => {
             TextPickerDialog.show({
+              alignment: DialogAlignment.Bottom,
               range: this.fruits,
               selected: this.select,
               disappearTextStyle: {color: Color.Red, font: {size: 15, weight: FontWeight.Lighter}},

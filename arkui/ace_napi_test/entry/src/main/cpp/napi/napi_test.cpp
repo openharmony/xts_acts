@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <vector>
 #include <malloc.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <unistd.h>
@@ -55,6 +56,11 @@ static int g_cleanupHookCount = 0;
 static napi_env g_sharedEnv = nullptr;
 static napi_deferred g_deferred = nullptr;
 static bool g_isTaskFinished = false;
+
+struct CallbackData {
+    napi_threadsafe_function tsfn;
+    napi_async_work work;
+};
 
 struct InstanceData {
     size_t value;
@@ -1193,6 +1199,71 @@ static napi_value instanceOf(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value NapiIsSendable(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    bool isSendable = false;
+    napi_is_sendable(env, args[0], &isSendable);
+    NAPI_ASSERT(env, !isSendable, "the first param is not sendable");
+    napi_is_sendable(env, args[1], &isSendable);
+    NAPI_ASSERT(env, isSendable, "the second param is sendable");
+
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value NapiDefineSendableClass(napi_env env, napi_callback_info info)
+{
+    napi_value staticStr;
+    napi_value nonStaticStr;
+    napi_create_string_utf8(env, "static", NAPI_AUTO_LENGTH, &staticStr);
+    napi_create_string_utf8(env, "nonStatic", NAPI_AUTO_LENGTH, &nonStaticStr);
+
+    napi_property_descriptor desc[] = {
+        DECLARE_NAPI_STATIC_PROPERTY("static", staticStr),
+        DECLARE_NAPI_DEFAULT_PROPERTY("nonStatic", nonStaticStr),
+        DECLARE_NAPI_STATIC_FUNCTION("staticFunc",
+                                     [](napi_env env, napi_callback_info info) -> napi_value { return nullptr; }),
+        DECLARE_NAPI_FUNCTION("func", [](napi_env env, napi_callback_info info) -> napi_value { return nullptr; }),
+        DECLARE_NAPI_GETTER_SETTER(
+            "getterSetter",
+            [](napi_env env, napi_callback_info info) -> napi_value { return nullptr; },
+            [](napi_env env, napi_callback_info info) -> napi_value { return nullptr; }),
+    };
+
+    napi_value sendableClass = nullptr;
+    napi_define_sendable_class(
+        env,
+        "SendableClass",
+        NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+            return thisVar;
+        },
+        nullptr,
+        sizeof(desc) / sizeof(desc[0]),
+        desc,
+        nullptr,
+        &sendableClass);
+
+    bool isSendable = false;
+    napi_is_sendable(env, sendableClass, &isSendable);
+    NAPI_ASSERT(env, isSendable, "napi_is_sendable success");
+
+    napi_value instanceValue = nullptr;
+    napi_new_instance(env, sendableClass, 0, nullptr, &instanceValue);
+    NAPI_ASSERT(env, instanceValue != nullptr, "napi_define_sendable_class success");
+
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
 static napi_value isArray(napi_env env, napi_callback_info info)
 {
     napi_value array = nullptr;
@@ -2249,6 +2320,21 @@ static napi_value SayHello(napi_env env, napi_callback_info info)
     napi_value ret;
     NAPI_CALL(env, napi_create_int32(env, TAG_NUMBER, &ret));
     return ret;
+}
+
+static napi_value isConcurrentFunction(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    bool isConcurrentFunction = false;
+    NAPI_CALL(env, napi_is_concurrent_function(env, args[0], &isConcurrentFunction));
+
+    napi_value result;
+    NAPI_CALL(env, napi_get_boolean(env, isConcurrentFunction, &result));
+
+    return result;
 }
 
 static napi_value napiCreateFunction(napi_env env, napi_callback_info info)
@@ -3636,7 +3722,7 @@ static void *NewThreadFunc(void *arg)
 
     napi_value objectUtils = nullptr;
     napi_status status =
-        napi_load_module_with_info(env, "ets/pages/ObjectUtils", "com.acts.ace.napitest/entry", &objectUtils);
+        napi_load_module_with_info(env, "pages/ObjectUtils", "com.acts.ace.napitest/entry", &objectUtils);
     NAPI_ASSERT(env, status == napi_ok, "napi_load_module_with_info failed");
     NAPI_ASSERT(env, objectUtils != nullptr, "napi_load_module_with_info failed");
 
@@ -3732,6 +3818,7 @@ static napi_value RunEventLoop(napi_env env, napi_callback_info info)
         char16_t resStr[] = u"napi_generic_failure";
         napi_value resultValue = nullptr;
         napi_create_string_utf16(env, resStr, NAPI_AUTO_LENGTH, &resultValue);
+        free(testCaseName);
         return resultValue;
     } else if (value == RUN_NAPI_LOOP_WITH_NOWAIT) {
         strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread1");
@@ -3778,7 +3865,7 @@ static void *CallAfterRunFunc(void *arg)
 
     napi_value objectUtils = nullptr;
     napi_status status =
-        napi_load_module_with_info(env, "ets/pages/ObjectUtils", "com.acts.ace.napitest/entry", &objectUtils);
+        napi_load_module_with_info(env, "pages/ObjectUtils", "com.acts.ace.napitest/entry", &objectUtils);
     NAPI_ASSERT(env, status == napi_ok, "napi_load_module_with_info successfully");
     NAPI_ASSERT(env, objectUtils != nullptr, "napi_load_module_with_info failed");
     g_isTaskFinished = false;
@@ -3946,9 +4033,9 @@ static napi_value NapiSerializeDate(napi_env env, napi_callback_info info)
     napi_status status = napi_deserialize(env, data, &result1);
     NAPI_ASSERT(env, status == napi_ok, "napi_deserialize fail");
 
-    bool isDate = false;
-    napi_is_date(env, result1, &isDate);
-    NAPI_ASSERT(env, isDate, "napi_is_Date fail");
+    bool isDateVal = false;
+    napi_is_date(env, result1, &isDateVal);
+    NAPI_ASSERT(env, isDateVal, "napi_is_Date fail");
     napi_delete_serialization_data(env, data);
 
     napi_value value = 0;
@@ -4203,11 +4290,306 @@ static napi_value NapiSerializeRegExp(napi_env env, napi_callback_info info)
     return value;
 }
 
+static napi_value NapiSetNamedProperty(napi_env env, napi_callback_info info)
+{
+    napi_value fn = nullptr;
+    napi_value resultValue = nullptr;
+    NAPI_CALL(env, napi_create_function(env, nullptr, NAPI_AUTO_LENGTH, SayHello, nullptr, &fn));
+    if (fn == nullptr) {
+        napi_throw_error(env, nullptr, "Napitest: napi_create_function fail");
+        return nullptr;
+    }
+    napi_create_object(env, &resultValue);
+    NAPI_CALL(env, napi_set_named_property(env, resultValue, "name", fn));
+
+    napi_value retStrAttribute = nullptr;
+    NAPI_CALL(env, napi_get_named_property(env, resultValue, "name", &retStrAttribute));
+
+    napi_valuetype valuetype;
+    napi_typeof(env, retStrAttribute, &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_function, "Napitest: wrong type of argment. Expects a function.");
+
+    napi_value value = 0;
+    napi_create_int32(env, 0, &value);
+    return value;
+}
+
+static napi_value NapiGetNamedProperty(napi_env env, napi_callback_info info)
+{
+    napi_value resultValue = nullptr;
+    napi_value undefined = nullptr;
+    NAPI_CALL(env, napi_get_undefined(env, &undefined));
+    NAPI_CALL(env, napi_create_object(env, &resultValue));
+    NAPI_CALL(env, napi_set_named_property(env, resultValue, "undefined", undefined));
+
+    napi_value retStrAttribute = nullptr;
+    NAPI_CALL(env, napi_get_named_property(env, resultValue, "undefined", &retStrAttribute));
+
+    napi_valuetype valuetype;
+    napi_typeof(env, retStrAttribute, &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_undefined, "Napitest: wrong type of argment. Expects a undefined.");
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value CallAddNumFunction(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2; // 2:Number of parameters
+    napi_value args[2]; // 2:Number of parameters
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    napi_valuetype valuetype;
+    napi_typeof(env, args[0], &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_object, "Napitest: wrong type of argment. Expects a object.");
+
+    napi_valuetype valuetype2;
+    napi_typeof(env, args[1], &valuetype2);
+    NAPI_ASSERT(env, valuetype2 == napi_function, "Napitest: wrong type of argment. Expects a function.");
+
+    napi_value para[2]; // 2:Number of parameters
+    napi_create_int32(env, 6, &para[0]); // 6:numerical value
+    napi_create_int32(env, 6, &para[1]); // 6:numerical value
+
+    napi_value *argv = para;
+    napi_value ret;
+    napi_value callRst;
+    NAPI_CALL(env, napi_get_named_property(env, args[0], "add", &callRst));
+    NAPI_CALL(env, napi_call_function(env, args[0], callRst, argc, argv, &ret));
+
+    return ret;
+}
+
+static napi_value NapiNewInstance(napi_env env, napi_callback_info info)
+{
+    napi_value testWrapClass = nullptr;
+    napi_define_class(
+        env, "TestWrapClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+            return thisVar;
+        },
+        nullptr, 0, nullptr, &testWrapClass);
+    napi_value arg;
+    NAPI_CALL(env, napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &arg));
+
+    napi_value *argv = &arg;
+    size_t argc = 1;
+    napi_value instanceValue = nullptr;
+    NAPI_CALL(env, napi_new_instance(env, testWrapClass, argc, argv, &instanceValue));
+    if (!instanceValue) {
+        napi_throw_error(env, nullptr, "Napitest: instanceValue is nullptr");
+        return nullptr;
+    }
+
+    bool isInstanceOf = false;
+    NAPI_CALL(env, napi_instanceof(env, instanceValue, testWrapClass, &isInstanceOf));
+    NAPI_ASSERT(env, isInstanceOf, "Napitest: isInstanceOf fail");
+
+    napi_value result;
+    NAPI_CALL(env, napi_get_boolean(env, isInstanceOf, &result));
+
+    return result;
+}
+
+static napi_value NapiCrateAndGetValueString(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+    if (argc != 1) {
+        napi_throw_error(env, nullptr, "Napitest: wrong number of parameters");
+        return nullptr;
+    }
+    napi_valuetype valuetype;
+    napi_typeof(env, args[0], &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_string, "Napitest: wrong type of argment. Expects a string.");
+
+    char buffer[256] = ""; // 256:length value
+    size_t copied = 0;
+    NAPI_CALL(env, napi_get_value_string_utf8(env, args[0], buffer, 255, &copied)); // 255:size of buffer
+    napi_value output;
+    NAPI_CALL(env, napi_create_string_utf8(env, buffer, copied, &output));
+    return output;
+}
+
+static napi_value ExceptionalSetNamedProperty(napi_env env, napi_callback_info info)
+{
+    napi_value fn = nullptr;
+    NAPI_CALL(env, napi_create_function(env, nullptr, NAPI_AUTO_LENGTH, SayHello, nullptr, &fn));
+    if (fn == nullptr) {
+        napi_throw_error(env, nullptr, "Napitest: napi_create_function fail");
+        return nullptr;
+    }
+    napi_value value = nullptr;
+    napi_create_int32(env, 0, &value);
+    NAPI_CALL(env, napi_set_named_property(env, value, "name", fn));
+    napi_valuetype valuetype;
+    napi_typeof(env, value, &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_function, "Napitest: wrong type of argment. Expects a function.");
+    napi_value num = 0;
+    napi_create_int32(env, 0, &num);
+    return num;
+}
+
+static napi_value ExceptionalGetNamedProperty(napi_env env, napi_callback_info info)
+{
+    napi_value resultValue = nullptr;
+    napi_value undefined = nullptr;
+    NAPI_CALL(env, napi_get_undefined(env, &undefined));
+    NAPI_CALL(env, napi_create_object(env, &resultValue));
+    NAPI_CALL(env, napi_set_named_property(env, resultValue, "undefined", undefined));
+
+    napi_value retStrAttribute = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, 0, &resultValue));
+    NAPI_CALL(env, napi_get_named_property(env, resultValue, "undefined", &retStrAttribute));
+
+    napi_valuetype valuetype;
+    napi_typeof(env, retStrAttribute, &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_undefined, "Napitest: wrong type of argment. Expects a undefined.");
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
+static napi_value ExceptionalCallAddNumFunction(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;    // 2:Number of parameters
+    napi_value args[2]; // 2:Number of parameters
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    napi_valuetype valuetype;
+    napi_typeof(env, args[0], &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_object, "Napitest: wrong type of argment. Expects a object.");
+
+    napi_valuetype valuetype2;
+    napi_typeof(env, args[1], &valuetype2);
+    NAPI_ASSERT(env, valuetype2 == napi_function, "Napitest: wrong type of argment. Expects a function.");
+
+    napi_value para[2];                  // 2:Number of parameters
+    napi_create_int32(env, 6, &para[0]); // 6:numerical value
+    napi_create_int32(env, 6, &para[1]); // 6:numerical value
+
+    napi_value *argv = para;
+    napi_value ret;
+    napi_value callRst;
+    NAPI_CALL(env, napi_get_named_property(env, args[0], "add", &callRst));
+
+    NAPI_CALL(env, napi_call_function(env, args[0], nullptr, argc, argv, &ret));
+    return ret;
+}
+
+static napi_value ExceptionalNapiNewInstance(napi_env env, napi_callback_info info)
+{
+    napi_value testWrapClass = nullptr;
+    napi_value arg;
+    NAPI_CALL(env, napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &arg));
+    napi_value *argv = &arg;
+    size_t argc = 1;
+    napi_value instanceValue = nullptr;
+    NAPI_CALL(env, napi_new_instance(env, testWrapClass, argc, argv, &instanceValue));
+    if (!instanceValue) {
+        napi_throw_error(env, nullptr, "Napitest: napi_new_instance fail");
+        return nullptr;
+    }
+    bool isInstanceOf = false;
+    NAPI_CALL(env, napi_instanceof(env, instanceValue, testWrapClass, &isInstanceOf));
+    NAPI_ASSERT(env, isInstanceOf, "Napitest: isInstanceOf success");
+    napi_value result;
+    NAPI_CALL(env, napi_get_boolean(env, isInstanceOf, &result));
+    return result;
+}
+
+static napi_value ExceptionalNapiCrateAndGetValueString(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+    if (argc != 1) {
+        napi_throw_error(env, nullptr, "Napitest: wrong number of parameters");
+        return nullptr;
+    }
+    napi_valuetype valuetype;
+    napi_typeof(env, args[0], &valuetype);
+    NAPI_ASSERT(env, valuetype == napi_string, "Napitest: wrong type of argment. Expects a string.");
+    char buffer[1] = "";
+    size_t copied = 0;
+    NAPI_CALL(env, napi_get_value_string_utf8(env, args[0], buffer, 0, &copied));
+    napi_value output;
+    NAPI_CALL(env, napi_create_string_utf8(env, buffer, copied, &output));
+    return output;
+}
+
+static void CallJsFunc(napi_env env, napi_value jsCb, void *context, void *data)
+{
+    if (env == nullptr) {
+        return;
+    }
+    napi_value resultNumber = nullptr;
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    napi_value number1 = nullptr;
+    napi_create_int32(env, 12, &number1); // 12:numerical value
+    napi_value number2 = nullptr;
+    napi_create_int32(env, 15, &number2); // 15:numerical value
+    napi_value argv[2] = {number1, number2}; // 2:array size
+    napi_call_function(env, undefined, jsCb, 2, argv, &resultNumber); // 2:number of parameters
+    int32_t res = 0;
+    napi_get_value_int32(env, resultNumber, &res);
+    if (res != 27) { // 27: calculation result
+        napi_throw_error(env, nullptr, "Napitest: Return result error");
+        return;
+    }
+}
+
+static void ExecuteWork(napi_env env, void *data)
+{
+    CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
+    // 执行任务为napi_priority_idle优先级，入队方式为队列尾部入队
+    napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_idle, true);
+    napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_low, true);
+    napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_high, true);
+    napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_immediate, true);
+    // 执行任务为napi_priority_high优先级，入队方式为队列头部入队
+    napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_high, false);
+}
+
+static void WorkComplete(napi_env env, napi_status status, void *data)
+{
+    CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
+    napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
+    napi_delete_async_work(env, callbackData->work);
+    callbackData->work = nullptr;
+    callbackData->tsfn = nullptr;
+}
+
+static napi_value ThreadSafePriority(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value jsCb = nullptr;
+    CallbackData *callbackData = nullptr;
+    napi_get_cb_info(env, info, &argc, &jsCb, nullptr, reinterpret_cast<void **>(&callbackData));
+    napi_value resourceName = nullptr;
+    napi_create_string_utf8(env, "Thread-safe Function Demo", NAPI_AUTO_LENGTH, &resourceName);
+    napi_create_threadsafe_function(env, jsCb, nullptr, resourceName, 0, 1, callbackData, nullptr, callbackData,
+                                    CallJsFunc, &callbackData->tsfn);
+    napi_create_async_work(env, nullptr, resourceName, ExecuteWork, WorkComplete, callbackData, &callbackData->work);
+    napi_queue_async_work(env, callbackData->work);
+
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_value theValue;
+    CallbackData *callbackData = new CallbackData();
     NAPI_CALL(env, napi_create_string_utf8(env, TEST_STR, sizeof(TEST_STR), &theValue));
     NAPI_CALL(env, napi_set_named_property(env, exports, "testStr", theValue));
     napi_property_descriptor properties[] = {
@@ -4256,8 +4638,11 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("coerceToObject", coerceToObject),
         DECLARE_NAPI_FUNCTION("coerceToString", coerceToString),
         DECLARE_NAPI_FUNCTION("instanceOf", instanceOf),
+        DECLARE_NAPI_FUNCTION("NapiIsSendable", NapiIsSendable),
+        DECLARE_NAPI_FUNCTION("NapiDefineSendableClass", NapiDefineSendableClass),
         DECLARE_NAPI_FUNCTION("isArray", isArray),
         DECLARE_NAPI_FUNCTION("isDate", isDate),
+        DECLARE_NAPI_FUNCTION("isConcurrentFunction", isConcurrentFunction),
         DECLARE_NAPI_FUNCTION("strictEquals", strictEquals),
         DECLARE_NAPI_FUNCTION("getPropertyNames", getPropertyNames),
         DECLARE_NAPI_FUNCTION("setProperty", setProperty),
@@ -4363,6 +4748,17 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("napiSerializeMap", NapiSerializeMap),
         DECLARE_NAPI_FUNCTION("napiSerializeRegExp", NapiSerializeRegExp),
         DECLARE_NAPI_FUNCTION("asyncCallTest", AsyncCallTest),
+        {"napiSetNamedProperty", nullptr, NapiSetNamedProperty, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"napiGetNamedProperty", nullptr, NapiGetNamedProperty, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"callAddNumFunction", nullptr, CallAddNumFunction, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"napiNewInstance", nullptr, NapiNewInstance, nullptr, nullptr, nullptr, napi_default, nullptr},
+        DECLARE_NAPI_FUNCTION("napiCrateAndGetValueString", NapiCrateAndGetValueString),
+        DECLARE_NAPI_FUNCTION("exceptionalSetNamedProperty", ExceptionalSetNamedProperty),
+        DECLARE_NAPI_FUNCTION("exceptionalGetNamedProperty", ExceptionalGetNamedProperty),
+        DECLARE_NAPI_FUNCTION("exceptionalCallAddNumFunction", ExceptionalCallAddNumFunction),
+        DECLARE_NAPI_FUNCTION("exceptionalNapiNewInstance", ExceptionalNapiNewInstance),
+        DECLARE_NAPI_FUNCTION("exceptionalNapiCrateAndGetValueString", ExceptionalNapiCrateAndGetValueString),
+        {"threadSafePriority", nullptr, ThreadSafePriority, nullptr, nullptr, nullptr, napi_default, callbackData},
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 

@@ -28,7 +28,7 @@ interface TextStyleCls {
 }
 
 export default function textpicker() {
-  describe('ActsAceTextPickerTest', () => {
+  describe('textpicker', () => {
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
         url: "MainAbility/pages/TextPicker/Index",

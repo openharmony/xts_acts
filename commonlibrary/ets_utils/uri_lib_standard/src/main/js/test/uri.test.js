@@ -393,7 +393,7 @@ describe('UriTest', function () {
      */
     it('testUriConstruction019', 0, function () {
         let gaogao =
-		new uri.URI('http://gg:gaogao@[fe80:0000:0001:0000:0440:44ff:1233:5678]:99/path/path?query#fagment');
+                new uri.URI('http://gg:gaogao@[fe80:0000:0001:0000:0440:44ff:1233:5678]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[fe80:0000:0001:0000:0440:44ff:1233:5678]:99");
         expect(gaogao.ssp).assertEqual("//gg:gaogao@[fe80:0000:0001:0000:0440:44ff:1233:5678]:99/path/path?query");
@@ -1101,6 +1101,1849 @@ describe('UriTest', function () {
         let gaogao = new uri.URI('http1://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(true);
+    })
+
+    // Check the UriCheckRelative.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_5900
+     * @tc.name: testCheckRelative001
+     * @tc.desc: Tells whether or not this URI is relative.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+     it('testCheckRelative001', 0, function () {
+      let route = new uri.URI('http://www.test.com/images/pic.jpg');
+      let res = route.checkRelative();
+      expect(res).assertEqual(false);
+    })
+
+    // Check the UriCheckRelative.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_6000
+     * @tc.name: testCheckRelative002
+     * @tc.desc: Tells whether or not this URI is relative.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckRelative002', 0, function () {
+      let route = new uri.URI('/images/pic.jpg');
+      let res = route.checkRelative();
+      expect(res).assertEqual(true);
+    })
+
+    // Check the UriCheckRelative.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_6100
+     * @tc.name: testCheckRelative003
+     * @tc.desc: Tells whether or not this URI is relative.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckRelative003', 0, function () {
+      let route = new uri.URI('https://www.test.com/images/logo.jpg');
+      let res = route.checkRelative();
+      expect(res).assertEqual(false);
+    })
+
+    // Check the UriCheckRelative.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_6200
+     * @tc.name: testCheckRelative004
+     * @tc.desc: Tells whether or not this URI is relative.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckRelative004', 0, function () {
+      let route = new uri.URI('aaa');
+      let res = route.checkRelative();
+      expect(res).assertEqual(true);
+    })
+
+    // Check the UriCheckRelative.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_6300
+     * @tc.name: testCheckRelative005
+     * @tc.desc: Tells whether or not this URI is relative.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckRelative005', 0, function () {
+      let mailtoRoute = new uri.URI('mailto:user@test.com');
+      expect(mailtoRoute.checkRelative()).assertEqual(false);
+    })
+
+    // Check the UriCheckOpaque.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_6400
+     * @tc.name: testCheckOpaque001
+     * @tc.desc: Tells whether or not this URI is opaque.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckOpaque001', 0, function () {
+      let route = new uri.URI('http://www.test.com/images/pic.jpg');
+      let res = route.checkOpaque();
+      expect(res).assertEqual(false);
+    })
+
+    // Check the UriCheckOpaque.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_6500
+     * @tc.name: testCheckOpaque002
+     * @tc.desc: Tells whether or not this URI is Opaque.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckOpaque002', 0, function () {
+      let route = new uri.URI('images/pic.jpg');
+      let res = route.checkOpaque();
+      expect(res).assertEqual(false);
+    })
+
+    // Check the UriCheckOpaque.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_6600
+     * @tc.name: testCheckOpaque003
+     * @tc.desc: Tells whether or not this URI is Opaque.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckOpaque003', 0, function () {
+      let route = new uri.URI('mailto:user@test.com');
+      expect(route.checkOpaque()).assertEqual(true);
+    })
+
+    // Check the UriCheckOpaque.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_6700
+     * @tc.name: testCheckOpaque004
+     * @tc.desc: Tells whether or not this URI is Opaque.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckOpaque004', 0, function () {
+      let route = new uri.URI('tel:1234567890');
+      let res = route.checkOpaque();
+      expect(res).assertEqual(true);
+    })
+
+    // Check the UriCheckHierarchical.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_6800
+     * @tc.name: testCheckHierarchical001
+     * @tc.desc: Tells whether or not this URI is Opaque.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckHierarchical001', 0, function () {
+      let route = new uri.URI('http://www.test.com/images/pic.jpg');
+      let res = route.checkHierarchical();
+      expect(res).assertEqual(true);
+    })
+
+    // Check the UriCheckHierarchical.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_6900
+     * @tc.name: testCheckHierarchical002
+     * @tc.desc: Tells whether or not this URI is Opaque.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckHierarchical002', 0, function () {
+      let route = new uri.URI('mailto:test@test.com');
+      let res = route.checkHierarchical();
+      expect(res).assertEqual(false);
+    })
+
+    // Check the UriCheckHierarchical.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_7000
+     * @tc.name: testCheckHierarchical003
+     * @tc.desc: Tells whether or not this URI is Opaque.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckHierarchical003', 0, function () {
+      let route = new uri.URI('images/pic.jpg');
+      let res = route.checkHierarchical();
+      expect(res).assertEqual(true);
+    })
+
+    // Check the UriCheckHierarchical.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_7100
+     * @tc.name: testCheckHierarchical004
+     * @tc.desc: Tells whether or not this URI is Opaque.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCheckHierarchical004', 0, function () {
+      let route = new uri.URI('path');
+      expect(route.checkHierarchical()).assertEqual(true);
+      let testUri = new uri.URI('path:');
+      expect(testUri.checkHierarchical()).assertEqual(false);
+    })
+
+    // Check the UriGetQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_7200
+     * @tc.name: testUriGetQueryValue001
+     * @tc.desc: Get specific query parameters from URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValue001', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=value1&param2=value2');
+      let param1Value = route.getQueryValue("param1");
+      let param2Value = route.getQueryValue("param2");
+      expect(param1Value).assertEqual('value1');
+      expect(param2Value).assertEqual('value2');
+    })
+
+    // Check the UriGetQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_7300
+     * @tc.name: testUriGetQueryValue002
+     * @tc.desc: Get specific query parameters from URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValue002', 0, function () {
+      let route = new uri.URI('https://www.test.com');
+      expect(route.getQueryValue("param1")).assertEqual(null);
+      let include = new uri.URI('https://www.test.com?param1=value1');
+      expect(include.getQueryValue("param")).assertEqual(null);
+    })
+
+    // Check the UriGetQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_7400
+     * @tc.name: testUriGetQueryValue003
+     * @tc.desc: Get specific query parameters from URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValue003', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=value1&param1=value2&param1=value3');
+      let param1Value = route.getQueryValue("param1");
+      expect(param1Value).assertEqual("value1");
+      expect(route.getQueryValues("param1")[0]).assertEqual("value1");
+    })
+
+    // Check the UriGetQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_7500
+     * @tc.name: testUriGetQueryValue004
+     * @tc.desc: Get specific query parameters from URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValue004', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=hello%20world');
+      expect(route.getQueryValue("param1")).assertEqual("hello world");
+      let specialSymbol = new uri.URI('https://www.test.com?param1=hello+world');
+      expect(specialSymbol.getQueryValue("param1")).assertEqual("hello world");
+    })
+
+    // Check the UriGetQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_7600
+     * @tc.name: testUriGetQueryValue005
+     * @tc.desc: Get specific query parameters from URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValue005', 0, function () {
+      let route = new uri.URI('https://www.test.com?param%201=hello');
+      expect(route.getQueryValue("param 1")).assertEqual("hello");
+      expect(route.getQueryValue("1")).assertNull();
+      expect(route.getQueryValue(" 1")).assertNull();
+    })
+
+    // Check the UriGetQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_7700
+     * @tc.name: testUriGetQueryValue006
+     * @tc.desc: Get specific query parameters from URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValue006', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=&param2=');
+      expect(route.getQueryValue("param1")).assertEqual("");
+      expect(route.getQueryValue("param2")).assertEqual("");
+      let noNameUri = new uri.URI('https://www.test.com?=value');
+      expect(noNameUri.getQueryValue("")).assertEqual("value");
+    })
+
+    // Check the UriGetQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_7800
+     * @tc.name: testUriGetQueryValue007
+     * @tc.desc: Get specific query parameters from URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValue007', 0, function () {
+      let emptyParameter1 = new uri.URI('https://www.test.com?param1=value1&&param3=value3');
+      expect(emptyParameter1.getQueryValue("")).assertEqual("");
+      let emptyParameter12 = new uri.URI('https://www.test.com?param1=value1&');
+      expect(emptyParameter12.getQueryValue("")).assertEqual("");
+      let router = new uri.URI('https://www.test.com?');
+      expect(router.getQueryValue("")).assertEqual(null);
+    })
+
+    // Check the UriAddQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_7900
+     * @tc.name: testUriAddQueryValue001
+     * @tc.desc: Add query parameters for URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddQueryValue001', 0, function () {
+      let route = new uri.URI('https://www.test.com');
+      let newRoute = route.addQueryValue("param1", "value1");
+      expect(newRoute.getQueryValue("param1")).assertEqual("value1");
+      expect(newRoute.toString()).assertEqual("https://www.test.com?param1=value1");
+      let clearRoute = newRoute.clearQuery();
+      expect(clearRoute.toString()).assertEqual("https://www.test.com");
+    })
+
+    // Check the UriAddQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_8000
+     * @tc.name: testUriAddQueryValue002
+     * @tc.desc: Add query parameters for URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddQueryValue002', 0, function () {
+      let route = new uri.URI('https://www.test.com');
+      let newRoute = route.addQueryValue("param1", "value1").addQueryValue("param2", "value2");
+      expect(newRoute.getQueryValue('param1')).assertEqual("value1");
+      expect(newRoute.getQueryValue('param2')).assertEqual("value2");
+      expect(newRoute.toString()).assertEqual("https://www.test.com?param1=value1&param2=value2");
+    })
+
+    // Check the UriAddQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_8100
+     * @tc.name: testUriAddQueryValue003
+     * @tc.desc: Add query parameters for URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddQueryValue003', 0, function () {
+      let route = new uri.URI('https://www.test.com');
+      let newRoute = route.addQueryValue("param1", "hello world");
+      expect(newRoute.toString()).assertEqual("https://www.test.com?param1=hello%20world");
+      expect(newRoute.getQueryValue("param1")).assertEqual("hello world");
+      let paramNames = newRoute.getQueryNames();
+      expect(paramNames.length).assertEqual(1);
+      expect(paramNames.values().next().value).assertEqual("param1");
+    })
+
+    // Check the UriAddQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_8200
+     * @tc.name: testUriAddQueryValue004
+     * @tc.desc: Add query parameters for URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddQueryValue004', 0, function () {
+      let route = new uri.URI('https://www.test.com');
+      let newRoute = route.addQueryValue("param1", "value1").addQueryValue("param1", "value2");
+      expect(newRoute.toString()).assertEqual("https://www.test.com?param1=value1&param1=value2");
+    })
+
+    // Check the UriAddQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_8300
+     * @tc.name: testUriAddQueryValue005
+     * @tc.desc: Add query parameters for URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddQueryValue005', 0, function () {
+      let route = new uri.URI('https://www.test.com');
+      let newRoute = route.addQueryValue("param1", "value1").addQueryValue("param2", "null");
+      expect(newRoute.toString()).assertEqual("https://www.test.com?param1=value1&param2=null");
+      let values = newRoute.getQueryValues("param1");
+      expect(values[0]).assertEqual("value1");
+    })
+
+    // Check the UriAddQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_8400
+     * @tc.name: testUriAddQueryValue006
+     * @tc.desc: Add query parameters for URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddQueryValue006', 0, function () {
+      let value = "value";
+      let route = new uri.URI('https://www.test.com');
+      let newRoute = route.addQueryValue("param", value);
+      expect(newRoute.getQueryValue("param")).assertEqual(value);
+      expect(newRoute.getQueryValues("param")[0]).assertEqual(value);
+      expect(newRoute.toString()).assertEqual("https://www.test.com?param=value");
+    })
+
+    // Check the UriAddQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_8500
+     * @tc.name: testUriAddQueryValue007
+     * @tc.desc: Add query parameters for URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddQueryValue007', 0, function () {
+      let route = new uri.URI('https://www.test.com');
+      let newRoute = route.addQueryValue("param 1", "value 1");
+      expect(newRoute.getQueryValue("param 1")).assertEqual("value 1");
+    })
+
+    // Check the UriGetQueryNames.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_8600
+     * @tc.name: testUriGetQueryNames001
+     * @tc.desc: Get the names of all query parameters in the URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryNames001', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=value1&param2=value2');
+      let paramNames = route.getQueryNames();
+      expect(paramNames.length).assertEqual(2);
+      expect(paramNames.values().next().value).assertEqual("param1");
+    })
+
+    // Check the UriGetQueryNames.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_8700
+     * @tc.name: testUriGetQueryNames002
+     * @tc.desc: Get the names of all query parameters in the URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryNames002', 0, function () {
+      let route = new uri.URI('https://www.test.com');
+      let paramNames = route.getQueryNames();
+      expect(paramNames.length).assertEqual(0);
+    })
+
+    // Check the UriGetQueryNames.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_8800
+     * @tc.name: testUriGetQueryNames003
+     * @tc.desc: Get the names of all query parameters in the URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryNames003', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=value1&&param3=value3');
+      let paramNames = route.getQueryNames();
+      let values = paramNames.values();
+      expect(paramNames.length).assertEqual(3);
+      expect(values.next().value).assertEqual("param1");
+      expect(values.next().value).assertEqual("");
+      expect(values.next().value).assertEqual("param3");
+    })
+
+    // Check the UriGetQueryNames.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_8900
+     * @tc.name: testUriGetQueryNames004
+     * @tc.desc: Get the names of all query parameters in the URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryNames004', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=value1&=value2&param3=value3');
+      let paramNames = route.getQueryNames();
+      expect(paramNames.length).assertEqual(3);
+      let values = paramNames.values();
+      expect(values.next().value).assertEqual("param1");
+      expect(values.next().value).assertEqual("");
+      expect(values.next().value).assertEqual("param3");
+    })
+
+    // Check the UriGetQueryNames.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_9000
+     * @tc.name: testUriGetQueryNames005
+     * @tc.desc: Get the names of all query parameters in the URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryNames005', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=value1&&&a&b=v&param3');
+      let paramNames = route.getQueryNames();
+      expect(paramNames.length).assertEqual(5);
+      let values = paramNames.values();
+      expect(values.next().value).assertEqual("param1");
+      expect(values.next().value).assertEqual("");
+      expect(values.next().value).assertEqual("a");
+      expect(values.next().value).assertEqual("b");
+      expect(values.next().value).assertEqual("param3");
+    })
+
+    // Check the UriGetQueryNames.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_9100
+     * @tc.name: testUriGetQueryNames006
+     * @tc.desc: Get the names of all query parameters in the URI
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryNames006', 0, function () {
+      let route = new uri.URI('https://www.test.com?param%201=value1');
+      let paramNames = route.getQueryNames();
+      expect(paramNames.length).assertEqual(1);
+      expect(paramNames.values().next().value).assertEqual("param 1");
+      let route1 = new uri.URI('https://www.test.com?param+1=value1');
+      let paramNames1 = route1.getQueryNames();
+      expect(paramNames1.length).assertEqual(1);
+      expect(paramNames1.values().next().value).assertEqual("param+1");
+    })
+
+    // Check the UriGetQueryValues.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_9200
+     * @tc.name: testUriGetQueryValues001
+     * @tc.desc: Get all parameters and their corresponding values in the URI query string
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValues001', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?query=name&sort=asc&filter=f');
+      let values = route.getQueryValues("query");
+      expect(values.length).assertEqual(1);
+    })
+
+    // Check the UriGetQueryValues.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_9300
+     * @tc.name: testUriGetQueryValues002
+     * @tc.desc: Get all parameters and their corresponding values in the URI query string
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValues002', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?query=name');
+      let values = route.getQueryValues("query");
+      expect(values[0]).assertEqual("name");
+    })
+
+    // Check the UriGetQueryValues.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_9400
+     * @tc.name: testUriGetQueryValues003
+     * @tc.desc: Get all parameters and their corresponding values in the URI query string
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValues003', 0, function () {
+      let emptyParameter1 = new uri.URI('https://www.test.com/search?query=');
+      let result1 = emptyParameter1.getQueryValues("query");
+      expect(result1.length).assertEqual(1);
+      expect(result1[0]).assertEqual("");
+      let emptyParameter2 = new uri.URI('https://www.test.com/search?=value&');
+      let result2 = emptyParameter2.getQueryValues("");
+      expect(result2[0]).assertEqual("value");
+      expect(result2[1]).assertEqual("");
+      let emptyParameter3 = new uri.URI('https://www.test.com?');
+      let result3 = emptyParameter3.getQueryValues("");
+      expect(result3.length).assertEqual(0);
+      let emptyParameter4 = new uri.URI('https://www.test.com?param');
+      let result4 = emptyParameter4.getQueryValues("param");
+      expect(result4.length).assertEqual(1);
+      expect(result4[0]).assertEqual("");
+      let emptyParameter5 = new uri.URI('https://www.test.com?param1=value1&&param3=value3');
+      let result5 = emptyParameter5.getQueryValues("");
+      expect(result5[0]).assertEqual("");
+    })
+
+    // Check the UriGetQueryValues.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_9500
+     * @tc.name: testUriGetQueryValues004
+     * @tc.desc: Get all parameters and their corresponding values in the URI query string
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValues004', 0, function () {
+      let route = new uri.URI('https://www.test.com/search');
+      let values = route.getQueryValues("query");
+      expect(values.length).assertEqual(0);
+    })
+
+    // Check the UriGetQueryValues.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_9600
+     * @tc.name: testUriGetQueryValues005
+     * @tc.desc: Get all parameters and their corresponding values in the URI query string
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValues005', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?query=my%20query');
+      let values = route.getQueryValues("query");
+      expect(values[0]).assertEqual("my query");
+    })
+
+    // Check the UriGetQueryValues.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_9700
+     * @tc.name: testUriGetQueryValues006
+     * @tc.desc: Get all parameters and their corresponding values in the URI query string
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValues006', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?query=name&query=my');
+      let values = route.getQueryValues("query");
+      expect(values[0]).assertEqual("name");
+      expect(values[1]).assertEqual("my");
+    })
+
+    // Check the UriGetQueryValues.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_9800
+     * @tc.name: testUriGetQueryValues007
+     * @tc.desc: Get all parameters and their corresponding values in the URI query string
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValues007', 0, function () {
+      let route = new uri.URI('https://www.test.com?query=hello+world');
+      let values = route.getQueryValues("query");
+      expect(values[0]).assertEqual("hello+world");
+    })
+
+    // Check the UriGetQueryValues.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_9900
+     * @tc.name: testUriGetQueryValues008
+     * @tc.desc: Get all parameters and their corresponding values in the URI query string
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetQueryValues008', 0, function () {
+      let route1 = new uri.URI('https://www.test.com?param_g=value_1');
+      let values1 = route1.getQueryValues("param_g");
+      expect(values1[0]).assertEqual("value_1");
+      expect(route1.getQueryValue('param_g')).assertEqual("value_1");
+    })
+
+    // Check the UriGetBooleanQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_10000
+     * @tc.name: testUriGetBooleanQueryValue001
+     * @tc.desc: Get the Boolean value of the URI query parameter
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetBooleanQueryValue001', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?active=true');
+      let isActive = route.getBooleanQueryValue("active", false);
+      expect(isActive).assertEqual(true);
+    })
+
+    // Check the UriGetBooleanQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_10100
+     * @tc.name: testUriGetBooleanQueryValue002
+     * @tc.desc: Get the Boolean value of the URI query parameter
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetBooleanQueryValue002', 0, function () {
+      let route = new uri.URI('https://www.test.com/search');
+      let isActive = route.getBooleanQueryValue("active", false);
+      expect(isActive).assertEqual(false);
+    })
+
+    // Check the UriGetBooleanQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_10200
+     * @tc.name: testUriGetBooleanQueryValue003
+     * @tc.desc: Get the Boolean value of the URI query parameter
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetBooleanQueryValue003', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?active=name');
+      let isActive = route.getBooleanQueryValue("active", false);
+      expect(isActive).assertEqual(true);
+    })
+
+    // Check the UriGetBooleanQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_10300
+     * @tc.name: testUriGetBooleanQueryValue004
+     * @tc.desc: Get the Boolean value of the URI query parameter
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetBooleanQueryValue004', 0, function () {
+      let route = new uri.URI('https://www.test.com/search');
+      let isActive = route.getBooleanQueryValue("active", true);
+      expect(isActive).assertEqual(true);
+    })
+
+    // Check the UriGetBooleanQueryValue.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_10400
+     * @tc.name: testUriGetBooleanQueryValue005
+     * @tc.desc: Get the Boolean value of the URI query parameter
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetBooleanQueryValue005', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?active=true&active=false');
+      let isActive = route.getBooleanQueryValue("active", false);
+      expect(isActive).assertEqual(true);
+    })
+
+    // Check the UriClearQuery.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_10500
+     * @tc.name: testUriClearQuery001
+     * @tc.desc: Clear URI query parameters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriClearQuery001', 0, function () {
+      let route = new uri.URI('https://www.test.com');
+      let newRoute = route.clearQuery();
+      expect(newRoute.toString()).assertEqual("https://www.test.com");
+    })
+
+    // Check the UriClearQuery.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_10600
+     * @tc.name: testUriClearQuery002
+     * @tc.desc: Clear URI query parameters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriClearQuery002', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=value1');
+      let newRoute = route.clearQuery();
+      expect(newRoute.toString()).assertEqual("https://www.test.com");
+    })
+
+    // Check the UriClearQuery.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_10700
+     * @tc.name: testUriClearQuery003
+     * @tc.desc: Clear URI query parameters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriClearQuery003', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=value1%');
+      let newRoute = route.clearQuery();
+      expect(newRoute.toString()).assertEqual("https://www.test.com");
+    })
+
+    // Check the UriClearQuery.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_10800
+     * @tc.name: testUriClearQuery004
+     * @tc.desc: Clear URI query parameters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriClearQuery004', 0, function () {
+      let route = new uri.URI('https://www.test.com?param1=value1&param1=value2');
+      let newRoute = route.clearQuery();
+      expect(newRoute.toString()).assertEqual("https://www.test.com");
+    })
+
+    // Check the UriGetLastSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_10900
+     * @tc.name: testUriGetLastSegment001
+     * @tc.desc: Get the last segment of URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetLastSegment001', 0, function () {
+      let route = new uri.URI('content://com.test.uri/files/image.jpg');
+      let lastSegment = route.getLastSegment();
+      expect(lastSegment).assertEqual("image.jpg");
+    })
+
+    // Check the UriGetLastSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_11000
+     * @tc.name: testUriGetLastSegment002
+     * @tc.desc: Get the last segment of URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetLastSegment002', 0, function () {
+      let route = new uri.URI('content://com.test.uri/');
+      let lastSegment = route.getLastSegment();
+      expect(lastSegment).assertEqual("");
+    })
+
+    // Check the UriGetLastSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_11100
+     * @tc.name: testUriGetLastSegment003
+     * @tc.desc: Get the last segment of URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetLastSegment003', 0, function () {
+      let route = new uri.URI('content://com.test.uri');
+      let lastSegment = route.getLastSegment();
+      expect(lastSegment).assertEqual("");
+    })
+
+    // Check the UriGetLastSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_11200
+     * @tc.name: testUriGetLastSegment004
+     * @tc.desc: Get the last segment of URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetLastSegment004', 0, function () {
+      let route = new uri.URI('content://com.test.uri/files/');
+      let lastSegment = route.getLastSegment();
+      expect(lastSegment).assertEqual("files");
+    })
+
+    // Check the UriGetLastSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_11300
+     * @tc.name: testUriGetLastSegment005
+     * @tc.desc: Get the last segment of URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetLastSegment005', 0, function () {
+      let route = new uri.URI('content://com.test.uri/files/my%20file.jpg');
+      let lastSegment = route.getLastSegment();
+      expect(lastSegment).assertEqual("my file.jpg");
+    })
+
+    // Check the UriGetLastSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_11400
+     * @tc.name: testUriGetLastSegment006
+     * @tc.desc: Get the last segment of URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetLastSegment006', 0, function () {
+      let route = new uri.URI('content://com.test.uri/files/my+file.jpg');
+      let lastSegment = route.getLastSegment();
+      expect(lastSegment).assertEqual("my+file.jpg");
+    })
+
+    // Check the UriGetSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_11500
+     * @tc.name: testUriGetSegment007
+     * @tc.desc: Get all segments in the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetSegment007', 0, function () {
+      try {
+        let route = new uri.URI('content://com.test.uri/files/a a');
+        let segments = route.getSegment();
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+        expect(err.code).assertEqual(10200002);
+        expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+      }
+    })
+
+    // Check the UriGetSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_11600
+     * @tc.name: testUriGetSegment001
+     * @tc.desc: Get all segments in the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetSegment001', 0, function () {
+      let route = new uri.URI('content://com.test.uri/files/images');
+      let segments = route.getSegment();
+      expect(segments.length).assertEqual(2);
+      expect(segments[0]).assertEqual("files");
+      expect(segments[1]).assertEqual("images");
+    })
+
+    // Check the UriGetSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_11700
+     * @tc.name: testUriGetSegment002
+     * @tc.desc: Get all segments in the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetSegment002', 0, function () {
+      let route = new uri.URI('content://com.test.uri/');
+      let segments = route.getSegment();
+      expect(segments.length).assertEqual(0);
+    })
+
+    // Check the UriGetSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_11800
+     * @tc.name: testUriGetSegment003
+     * @tc.desc: Get all segments in the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetSegment003', 0, function () {
+      let route = new uri.URI('content://com.test.uri/files/');
+      let segments = route.getSegment();
+      expect(segments.length).assertEqual(1);
+    })
+
+    // Check the UriGetSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_11900
+     * @tc.name: testUriGetSegment004
+     * @tc.desc: Get all segments in the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetSegment004', 0, function () {
+      let route = new uri.URI('content://com.test.uri');
+      let segments = route.getSegment();
+      expect(segments.length).assertEqual(0);
+      let mailRoute = new uri.URI('mailto:people');
+      expect(mailRoute.getSegment().length).assertEqual(0);
+    })
+
+    // Check the UriGetSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_12000
+     * @tc.name: testUriGetSegment005
+     * @tc.desc: Get all segments in the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetSegment005', 0, function () {
+      let route = new uri.URI('content://com.test.uri/files/a%20a/b%20b');
+      let segments = route.getSegment();
+      expect(segments[0]).assertEqual("files");
+      expect(segments[1]).assertEqual("a a");
+      expect(segments[2]).assertEqual("b b");
+    })
+
+    // Check the UriGetSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_12100
+     * @tc.name: testUriGetSegment006
+     * @tc.desc: Get all segments in the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriGetSegment006', 0, function () {
+      let route = new uri.URI('http://www.test.com/path/to/image.jpg');
+      let segments = route.getSegment();
+      expect(segments[2]).assertEqual("image.jpg");
+    })
+
+    // Check the UriAddSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_12200
+     * @tc.name: testUriAddSegment001
+     * @tc.desc: Add a path segment to the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddSegment001', 0, function () {
+      let route = new uri.URI('http://www.test.com/');
+      let newRoute = route.addSegment("files").addSegment("image.jpg");
+      expect(newRoute.toString()).assertEqual("http://www.test.com/files/image.jpg");
+      expect(newRoute.getLastSegment()).assertEqual("image.jpg");
+    })
+
+    // Check the UriAddSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_12300
+     * @tc.name: testUriAddSegment002
+     * @tc.desc: Add a path segment to the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddSegment002', 0, function () {
+      let route1 = new uri.URI('http://www.test.com');
+      let newRoute1 = route1.addSegment("files").addSegment("my image.jpg");
+      expect(newRoute1.toString()).assertEqual("http://www.test.com/files/my%20image.jpg");
+      let route2 = new uri.URI('http://www.test.com');
+      let newRoute2 = route2.addSegment("files").addSegment("my+image.jpg");
+      expect(newRoute2.toString()).assertEqual("http://www.test.com/files/my%2Bimage.jpg");
+      let route3 = new uri.URI('http://www.test.com');
+      let newRoute3 = route3.addSegment("files").addSegment("my%20image.jpg");
+      expect(newRoute3.toString()).assertEqual("http://www.test.com/files/my%2520image.jpg");
+    })
+
+    // Check the UriAddSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_12400
+     * @tc.name: testUriAddSegment003
+     * @tc.desc: Add a path segment to the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddSegment003', 0, function () {
+      let route = new uri.URI('http://www.test.com');
+      let newRoute = route.addSegment("files");
+      expect(newRoute.getLastSegment()).assertEqual("files");
+      expect(newRoute.getSegment().length).assertEqual(1);
+    })
+
+    // Check the UriAddEncodedSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_12500
+     * @tc.name: testUriAddEncodedSegment001
+     * @tc.desc: Encode the path segment and add it to the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddEncodedSegment001', 0, function () {
+      let route = new uri.URI('http://www.test.com');
+      let newRoute = route.addEncodedSegment("files").addEncodedSegment("image.jpg");
+      expect(newRoute.getSegment()[1]).assertEqual("image.jpg");
+    })
+
+    // Check the UriAddEncodedSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_12600
+     * @tc.name: testUriAddEncodedSegment002
+     * @tc.desc: Encode the path segment and add it to the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddEncodedSegment002', 0, function () {
+      let route1 = new uri.URI('http://www.test.com?param%2B1=value1&param+2=value%202#fra+gemnt');
+      let newRoute1 = route1.addSegment("my+files").addEncodedSegment("my+image.jpg");
+      expect(newRoute1.toString()).
+      assertEqual("http://www.test.com/my%2Bfiles/my+image.jpg?param%2B1=value1&param+2=value%202#fra+gemnt");
+      expect(newRoute1.encodedUserInfo).assertEqual(null);
+      expect(newRoute1.encodedPath).assertEqual("/my%2Bfiles/my+image.jpg");
+      expect(newRoute1.encodedQuery).assertEqual('param%2B1=value1&param+2=value%202');
+      expect(newRoute1.encodedFragment).assertEqual("fra+gemnt");
+      expect(newRoute1.encodedAuthority).assertEqual("www.test.com");
+      expect(newRoute1.encodedSSP).
+      assertEqual("//www.test.com/my%2Bfiles/my+image.jpg?param%2B1=value1&param+2=value%202");
+      let route2 = new uri.URI('http://www.test.com/');
+      let newRoute2 = route2.addSegment("my files").addEncodedSegment("my%20image.jpg");
+      expect(newRoute2.toString()).assertEqual("http://www.test.com/my%20files/my%20image.jpg");
+      expect(newRoute2.encodedUserInfo).assertEqual(null);
+      expect(newRoute2.encodedPath).assertEqual("/my%20files/my%20image.jpg");
+      expect(newRoute2.encodedQuery).assertEqual(null);
+      expect(newRoute2.encodedFragment).assertEqual(null);
+      expect(newRoute2.encodedAuthority).assertEqual("www.test.com");
+      expect(newRoute2.encodedSSP).assertEqual("//www.test.com/my%20files/my%20image.jpg");
+      let route3 = new uri.URI('http://username:my%20name@www.test.com/');
+      let newRoute3 = route3.addSegment("my%2Bfiles").addEncodedSegment("my%2Bimage.jpg");
+      expect(newRoute3.toString()).
+      assertEqual("http://username:my%20name@www.test.com/my%252Bfiles/my%2Bimage.jpg");
+      expect(newRoute3.encodedUserInfo).assertEqual("username:my%20name");
+      expect(newRoute3.encodedPath).assertEqual("/my%252Bfiles/my%2Bimage.jpg");
+      expect(newRoute3.encodedQuery).assertEqual(null);
+      expect(newRoute3.encodedFragment).assertEqual(null);
+      expect(newRoute3.encodedAuthority).assertEqual("username:my%20name@www.test.com");
+      expect(newRoute3.encodedSSP).assertEqual("//username:my%20name@www.test.com/my%252Bfiles/my%2Bimage.jpg");
+    })
+
+    // Check the UriAddEncodedSegment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_12700
+     * @tc.name: testUriAddEncodedSegment003
+     * @tc.desc: Encode the path segment and add it to the URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriAddEncodedSegment003', 0, function () {
+      try {
+        let route = new uri.URI('http://www.test.com/');
+        let newRoute = route.addEncodedSegment("my files");
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+        expect(err.code).assertEqual(10200002);
+        expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+      }
+    })
+
+    // Check the UriCreateFromParts.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_12800
+     * @tc.name: testUriCreateFromParts001
+     * @tc.desc: Build a new URI object
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriCreateFromParts001', 0, function () {
+      let route = uri.URI.createFromParts("http", "", "fragment");
+      expect(route.toString()).assertEqual("http:#fragment");
+    })
+
+    // Check the UriCreateFromParts.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_12900
+     * @tc.name: testUriCreateFromParts002
+     * @tc.desc: Build a new URI object
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriCreateFromParts002', 0, function () {
+      let route = uri.URI.createFromParts("mailto", "no body", "top");
+      expect(route.toString()).assertEqual("mailto:no%20body#top");
+    })
+
+    // Check the UriCreateFromParts.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_13000
+     * @tc.name: testUriCreateFromParts003
+     * @tc.desc: Build a new URI object
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriCreateFromParts003', 0, function () {
+      let route = uri.URI.createFromParts("foo", "", "");
+      expect(route.toString()).assertEqual("foo:");
+      try {
+        uri.URI.createFromParts("", "", "");
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: Syntax Error. Invalid Uri string");
+        expect(err.code).assertEqual(10200002);
+        expect(err.message).assertEqual("Syntax Error. Invalid Uri string");
+      }
+      try {
+        uri.URI.createFromParts(null, null, null);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter scheme is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter scheme is invalid");
+      }
+      try {
+        uri.URI.createFromParts("foo", null, "fragment");
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter ssp is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter ssp is invalid");
+      }
+    })
+
+    // Check the UriCreateFromParts.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_13100
+     * @tc.name: testUriCreateFromParts004
+     * @tc.desc: Build a new URI object
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriCreateFromParts004', 0, function () {
+      let scheme = "https";
+      let ssp = "www.test.com";
+      let fragment = "fragment";
+      let route = uri.URI.createFromParts(scheme, ssp, fragment);
+      expect(route.toString()).assertEqual("https:www.test.com#fragment");
+    })
+
+    // Check the UriEncodedUserInfo.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_13200
+     * @tc.name: testUriEncodedUserInfo001
+     * @tc.desc:Encoded URI user information
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedUserInfo001', 0, function () {
+      let route = new uri.URI('http://username:name@www.test.com/');
+      expect(route.encodedUserInfo).assertEqual("username:name");
+    })
+
+    // Check the UriEncodedUserInfo.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_13300
+     * @tc.name: testUriEncodedUserInfo002
+     * @tc.desc: Encoded URI user information
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedUserInfo002', 0, function () {
+      let route = new uri.URI('http://username:@www.test.com/');
+      expect(route.encodedUserInfo).assertEqual("username:");
+    })
+
+    // Check the UriEncodedUserInfo.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_13400
+     * @tc.name: testUriEncodedUserInfo003
+     * @tc.desc: Encoded URI user information
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedUserInfo003', 0, function () {
+      let route = new uri.URI('http://username:my%20name@www.test.com/');
+      expect(route.encodedUserInfo).assertEqual("username:my%20name");
+    })
+
+    // Check the UriEncodedUserInfo.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_13500
+     * @tc.name: testUriEncodedUserInfo004
+     * @tc.desc: Encoded URI user information
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedUserInfo004', 0, function () {
+      let route = new uri.URI('http://www.test.com');
+      expect(route.encodedUserInfo).assertEqual(null);
+      let mailRoute = new uri.URI('mailto:body');
+      expect(mailRoute.encodedUserInfo).assertEqual(null);
+    })
+
+    // Check the UriEncodedPath.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_13600
+     * @tc.name: testUriEncodedPath001
+     * @tc.desc: Encoded URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedPath001', 0, function () {
+      let route = new uri.URI('http://www.test.com/file/image.jpg');
+      expect(route.encodedPath).assertEqual("/file/image.jpg");
+    })
+
+    // Check the UriEncodedPath.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_13700
+     * @tc.name: testUriEncodedPath002
+     * @tc.desc: Encoded URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedPath002', 0, function () {
+      let route = new uri.URI('http://www.test.com/');
+      expect(route.encodedPath).assertEqual("/");
+    })
+
+    // Check the UriEncodedPath.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_13800
+     * @tc.name: testUriEncodedPath003
+     * @tc.desc: Encoded URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedPath003', 0, function () {
+      let route = new uri.URI('http://www.test.com');
+      expect(route.encodedPath).assertEqual(null);
+      let mailRoute = new uri.URI('mailto:body');
+      expect(mailRoute.encodedPath).assertEqual(null);
+    })
+
+    // Check the UriEncodedPath.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_13900
+     * @tc.name: testUriEncodedPath004
+     * @tc.desc: Encoded URI path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedPath004', 0, function () {
+      let route = new uri.URI('http://www.test.com/my%20file');
+      expect(route.encodedPath).assertEqual("/my%20file");
+    })
+
+    // Check the UriEncodedQuery.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_14000
+     * @tc.name: testUriUriEncodedQuery001
+     * @tc.desc: Encoded URI parameters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriUriEncodedQuery001', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?query=name&query=my');
+      expect(route.encodedQuery).assertEqual("query=name&query=my");
+    })
+
+    // Check the UriEncodedQuery.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_14100
+     * @tc.name: testUriUriEncodedQuery002
+     * @tc.desc: Encoded URI parameters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriUriEncodedQuery002', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?');
+      expect(route.encodedQuery).assertEqual(null);
+    })
+
+    // Check the UriEncodedQuery.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_14200
+     * @tc.name: testUriUriEncodedQuery003
+     * @tc.desc: Encoded URI parameters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriUriEncodedQuery003', 0, function () {
+      let route = new uri.URI('https://www.test.com/');
+      expect(route.encodedQuery).assertEqual(null);
+    })
+
+    // Check the UriEncodedQuery.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_14300
+     * @tc.name: testUriUriEncodedQuery004
+     * @tc.desc: Encoded URI parameters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriUriEncodedQuery004', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?query=my%20test');
+      expect(route.encodedQuery).assertEqual("query=my%20test");
+    })
+
+    // Check the UriEncodedFragment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_14400
+     * @tc.name: testUriEncodedFragment001
+     * @tc.desc: Encoded URI fragment
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedFragment001', 0, function () {
+      let route = new uri.URI('mailto:body#top');
+      expect(route.encodedFragment).assertEqual("top");
+    })
+
+    // Check the UriEncodedFragment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_14500
+     * @tc.name: testUriEncodedFragment002
+     * @tc.desc: Encoded URI fragment
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedFragment002', 0, function () {
+      let route = new uri.URI('mailto:body#');
+      expect(route.encodedFragment).assertEqual(null);
+    })
+
+    // Check the UriEncodedFragment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_14600
+     * @tc.name: testUriEncodedFragment003
+     * @tc.desc: Encoded URI fragment
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedFragment003', 0, function () {
+      let route = new uri.URI('mailto:body#te%20st');
+      expect(route.encodedFragment).assertEqual("te%20st");
+    })
+
+    // Check the UriEncodedFragment.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_14700
+     * @tc.name: testUriEncodedFragment004
+     * @tc.desc: Encoded URI fragment
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedFragment004', 0, function () {
+      let route = new uri.URI('mailto:body');
+      expect(route.encodedFragment).assertEqual(null);
+    })
+
+    // Check the UriEncodedAuthority.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_14800
+     * @tc.name: testUriEncodedAuthority001
+     * @tc.desc: Encoded resource location information
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedAuthority001', 0, function () {
+      let route = new uri.URI('https://www.test.com/search?query=name&query=my');
+      expect(route.encodedAuthority).assertEqual("www.test.com");
+    })
+
+    // Check the UriEncodedAuthority.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_14900
+     * @tc.name: testUriEncodedAuthority002
+     * @tc.desc: Encoded resource location information
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedAuthority002', 0, function () {
+      let route = new uri.URI('http://username:my%20name@www.test.com/');
+      expect(route.encodedAuthority).assertEqual("username:my%20name@www.test.com");
+    })
+
+    // Check the UriEncodedAuthority.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_15000
+     * @tc.name: testUriEncodedAuthority003
+     * @tc.desc: Encoded resource location information
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedAuthority003', 0, function () {
+      let route = new uri.URI('mailto:body#top');
+      expect(route.encodedAuthority).assertEqual(null);
+    })
+
+    // Check the UriEncodedAuthority.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_15100
+     * @tc.name: testUriEncodedAuthority004
+     * @tc.desc: Encoded resource location information
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedAuthority004', 0, function () {
+      let route = new uri.URI('https://www.test.com:8080/');
+      expect(route.encodedAuthority).assertEqual("www.test.com:8080");
+    })
+
+    // Check the UriEncodedSSP.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_15200
+     * @tc.name: testUriEncodedSSP001
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedSSP001', 0, function () {
+      let route = new uri.URI('http://username:name@www.test.com/path?query=example');
+      expect(route.encodedSSP).assertEqual("//username:name@www.test.com/path?query=example");
+    })
+
+    // Check the UriEncodedSSP.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_15300
+     * @tc.name: testUriEncodedSSP002
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedSSP002', 0, function () {
+      let route = new uri.URI('http://username:my%20name@www.test.com');
+      expect(route.encodedSSP).assertEqual("//username:my%20name@www.test.com");
+      let route1 = new uri.URI('http://username:my_20name@www.test.com');
+      expect(route1.encodedSSP).assertEqual("//username:my_20name@www.test.com");
+    })
+
+    // Check the UriEncodedSSP.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_15400
+     * @tc.name: testUriEncodedSSP003
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testUriEncodedSSP003', 0, function () {
+      let route = new uri.URI('https://www.test.com/');
+      expect(route.encodedSSP).assertEqual("//www.test.com/");
+    })
+
+    // Check the UriCreateFromParts parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_15500
+     * @tc.name: testCreateFromPartsPara001
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCreateFromPartsPara001', 0, function () {
+      try {
+        // @ts-ignore
+        uri.URI.createFromParts(1, "ssp", "fragment");
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter scheme is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter scheme is invalid");
+      }
+    })
+
+    // Check the UriCreateFromParts parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_15600
+     * @tc.name: testCreateFromPartsPara002
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCreateFromPartsPara002', 0, function () {
+      try {
+        // @ts-ignore
+        uri.URI.createFromParts("aaa", 1, "fragment");
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter ssp is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter ssp is invalid");
+      }
+    })
+
+    // Check the UriCreateFromParts parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_15700
+     * @tc.name: testCreateFromPartsPara003
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCreateFromPartsPara003', 0, function () {
+      try {
+        // @ts-ignore
+        uri.URI.createFromParts("aaa", "bbb", 1);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter fragment is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter fragment is invalid");
+      }
+    })
+
+    // Check the UriAddQueryValue parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_15800
+     * @tc.name: testAddQueryValuePara001
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddQueryValuePara001', 0, function () {
+      try {
+        let route = new uri.URI('https://www.test.com');
+        // @ts-ignore
+        route.addQueryValue(1, "value 1");
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter key is invalid");
+      }
+    })
+
+    // Check the UriAddQueryValue parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_15900
+     * @tc.name: testAddQueryValuePara002
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddQueryValuePara002', 0, function () {
+      try {
+        let route = new uri.URI('https://www.test.com');
+        // @ts-ignore
+        route.addQueryValue("1", 1);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter value is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter value is invalid");
+      }
+    })
+
+    // Check the UriAddEncodedSegment parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16000
+     * @tc.name: testAddEncodedSegmentPara001
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddEncodedSegmentPara001', 0, function () {
+      try {
+        let route = new uri.URI('https://www.test.com');
+        // @ts-ignore
+        route.addEncodedSegment(1);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input pathSegment value is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input pathSegment value is invalid");
+      }
+    })
+
+    // Check the UriAddSegment parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16100
+     * @tc.name: testAddSegmentPara001
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddSegmentPara001', 0, function () {
+      try {
+        let route = new uri.URI('https://www.test.com');
+        // @ts-ignore
+        route.addSegment(1);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input pathSegment value is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input pathSegment value is invalid");
+      }
+    })
+
+    // Check the UriGetQueryValue parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16200
+     * @tc.name: testGetQueryValuePara001
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetQueryValuePara001', 0, function () {
+      try {
+        let route1 = new uri.URI('https://www.test.com?param_g=value_1');
+        // @ts-ignore
+        route1.getQueryValue(2);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter key is invalid");
+      }
+    })
+
+    // Check the UriGetQueryValues parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16300
+     * @tc.name: testGetQueryValuesPara001
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetQueryValuesPara001', 0, function () {
+      try {
+        let route1 = new uri.URI('https://www.test.com?param_g=value_1');
+        // @ts-ignore
+        route1.getQueryValues(2);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter key is invalid");
+      }
+    })
+
+    // Check the UriGetBooleanQueryValue parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16400
+     * @tc.name: testGetBooleanQueryValuePara001
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetBooleanQueryValuePara001', 0, function () {
+      try {
+        let route1 = new uri.URI('https://www.test.com?param_g=value_1');
+        // @ts-ignore
+        route1.getBooleanQueryValue(2, true);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter key is invalid");
+      }
+    })
+
+    // Check the UriGetBooleanQueryValue parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16500
+     * @tc.name: testGetBooleanQueryValuePara002
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetBooleanQueryValuePara002', 0, function () {
+      try {
+        let route1 = new uri.URI('https://www.test.com?param_g=value_1');
+        // @ts-ignore
+        route1.getBooleanQueryValue("param_g", 2);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter defaultValue is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter defaultValue is invalid");
+      }
+    })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16600
+     * @tc.name: testTildeUnderline001
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+     it('testTildeUnderline001', 0, function () {
+      let uriTest = new uri.URI('http://www.bian~_cheng.net/inde~_x?param=10~_!*&para~_m1=20!-~_');
+      expect(uriTest.host).assertEqual('www.bian~_cheng.net');
+      expect(uriTest.path).assertEqual('/inde~_x');
+      expect(uriTest.query).assertEqual('param=10~_!*&para~_m1=20!-~_');
+      expect(uriTest.authority).assertEqual('www.bian~_cheng.net');
+      expect(uriTest.ssp).assertEqual('//www.bian~_cheng.net/inde~_x?param=10~_!*&para~_m1=20!-~_');
+      expect(uriTest.encodedPath).assertEqual('/inde~_x');
+      expect(uriTest.encodedQuery).assertEqual('param=10~_!*&para~_m1=20!-~_');
+      expect(uriTest.encodedAuthority).assertEqual('www.bian~_cheng.net');
+      expect(uriTest.encodedSSP).assertEqual('//www.bian~_cheng.net/inde~_x?param=10~_!*&para~_m1=20!-~_');
+    })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16700
+     * @tc.name: testTildeUnderline002
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testTildeUnderline002', 0, function () {
+      let uriTest = new uri.URI('http://www.bian_cheng.net/inde_x?param=10_!*&para_m1=20!-_');
+      expect(uriTest.host).assertEqual('www.bian_cheng.net');
+      expect(uriTest.path).assertEqual('/inde_x');
+      expect(uriTest.query).assertEqual('param=10_!*&para_m1=20!-_');
+      expect(uriTest.authority).assertEqual('www.bian_cheng.net');
+      expect(uriTest.ssp).assertEqual('//www.bian_cheng.net/inde_x?param=10_!*&para_m1=20!-_');
+      expect(uriTest.encodedPath).assertEqual('/inde_x');
+      expect(uriTest.encodedQuery).assertEqual('param=10_!*&para_m1=20!-_');
+      expect(uriTest.encodedAuthority).assertEqual('www.bian_cheng.net');
+      expect(uriTest.encodedSSP).assertEqual('//www.bian_cheng.net/inde_x?param=10_!*&para_m1=20!-_');
+    })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16800
+     * @tc.name: testTildeUnderline003
+     * @tc.desc:  Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testTildeUnderline003', 0, function () {
+      let uriTest = new uri.URI('http://www.bian~cheng.net/inde~x?param=10~!*&para~m1=20!-~');
+      expect(uriTest.host).assertEqual('www.bian~cheng.net');
+      expect(uriTest.path).assertEqual('/inde~x');
+      expect(uriTest.query).assertEqual('param=10~!*&para~m1=20!-~');
+      expect(uriTest.authority).assertEqual('www.bian~cheng.net');
+      expect(uriTest.ssp).assertEqual('//www.bian~cheng.net/inde~x?param=10~!*&para~m1=20!-~');
+      expect(uriTest.encodedPath).assertEqual('/inde~x');
+      expect(uriTest.encodedQuery).assertEqual('param=10~!*&para~m1=20!-~');
+      expect(uriTest.encodedAuthority).assertEqual('www.bian~cheng.net');
+      expect(uriTest.encodedSSP).assertEqual('//www.bian~cheng.net/inde~x?param=10~!*&para~m1=20!-~');
     })
 })
 }

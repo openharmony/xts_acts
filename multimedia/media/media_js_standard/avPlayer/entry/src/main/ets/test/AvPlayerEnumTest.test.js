@@ -114,6 +114,25 @@ export default function AvPlayerEnumTest() {
             expect(media.MediaDescriptionKey.MD_KEY_LANGUAGE).assertEqual("language");
             done();
         })
+
+         /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0600
+            * @tc.name      : AVPlayer
+            * @tc.desc      : AVPlayer Enumeration test
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level0
+        */
+         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0600', 0, async function (done) {
+            try {
+                if (media.HdrType.AV_HDR_TYPE_NONE != 0 || media.HdrType.AV_HDR_TYPE_VIVID != 1) {
+                    expect(false).assertTrue();
+                }
+            } catch(error) {
+                console.info('Please update the SDK to the latest version')
+            }
+            done();
+        })
     })
 }
 

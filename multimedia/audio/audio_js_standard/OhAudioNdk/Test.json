@@ -5,13 +5,13 @@
         "test-timeout": "600000",
         "shell-timeout": "600000",
         "bundle-name": "com.example.ohaudiondk",
-        "module-name": "com.example.ohaudiondk"
+        "module-name": "entry_test"
     },
     "kits": [
         {
             "test-file-name": [
                 "OhAudioNdkMainTest.hap",
-                "OhRendererTest.hap"
+                "OhAudioNdkTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

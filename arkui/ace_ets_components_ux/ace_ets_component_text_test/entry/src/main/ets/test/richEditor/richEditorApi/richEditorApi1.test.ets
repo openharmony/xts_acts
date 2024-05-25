@@ -81,7 +81,7 @@ export default function richEditorApi1() {
 
       let text1 = getInspectorByKey('richEditorApi1_text1');
       let Obj1: ESObject = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('{"fontSize":50}');
+      expect(Obj1.$attrs.content).assertEqual('{"fontSize":50,"lineHeight":0,"letterSpacing":0,"fontColor":"#E5000000","fontFeature":"","decoration":{"color":"#E5000000"}}');
 
       console.info('[testRichEditor_0100] END');
       done();

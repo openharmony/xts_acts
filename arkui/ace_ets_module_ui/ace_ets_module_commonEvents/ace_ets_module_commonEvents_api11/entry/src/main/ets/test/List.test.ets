@@ -59,6 +59,28 @@ import LongPressGesture1 from './LongPressGestureTest/LongPressGesture1.test'
 import LongPressGesture2 from './LongPressGestureTest/LongPressGesture2.test'
 import LongPressGesture3 from './LongPressGestureTest/LongPressGesture3.test'
 
+import enumsLineCapStyleJsunit from './enumTest/EnmusLineCapStyleJsunit.test';
+import enmusItemAlignJsunit from './enumTest/EnmusItemAlignJsunit.test';
+import dragEventJsunit from './DragController/DragEventJsunit.test';
+import GestureModeJsunit from './onGestureJudgeBeginTest/GestureModeJsunit.test';
+import PanDirectionJsunit from './PanGestureTest/PanDirectionJsunit.test';
+import subscribedAbstractPropertyJsunit from './Abstract/SubscribedAbstractPropertyJsunit.test';
+import subscribaleAbstractJsunit from './Abstract/SubscribaleAbstractJsunit.test';
+
+import uiAppearanceALWAYS_DARKJsunit from './onAppearTest/uiAppearance.test.ets';
+import gestureParallelJsunit from './GestureGroupTest/gesture.test.ets';
+import gestureSetDirectionJsunit from './PanGestureTest/gesture.test';
+import lazyForEachOnDataAddJsunit from './lazyForeachTest/lazyForEach.test';
+import PanGestureEventJsunit from './PanGestureTest/PanGestureEventJsunit.test.ets';
+import gestureEnabledJsunit from './PanGestureTest/gestureEnabledJsunit.test.ets'
+import PanGesture3Jsunit from './PanGestureTest/PanGestureJsunit.test.ets';
+import longPressGestureJsUnit from './LongPressGestureTest/LongPressGesture.test.ets';
+import tapGestureTest from './TapGestureTest/TapGesture.test.ets';
+import priorityGestureJsunit from './TapGestureTest/PriorityGestureJsunit.test.ets';
+import parallelGestureJsunit from './TapGestureTest/ParallelGestureJsunit.test.ets';
+import commonJsunit from './CommonJsunit.test.ets';
+import motionPathJsunit from './MotionPathJsunit.test.ets';
+
 export default function testsuite() {
   touchJsunit();
   appearJsunit();
@@ -106,4 +128,22 @@ export default function testsuite() {
   LongPressGesture2()
   LongPressGesture3()
   GestureLongPressGesture();
+  dragEventJsunit()
+  enumsLineCapStyleJsunit()
+  enmusItemAlignJsunit()
+  GestureModeJsunit()
+  PanDirectionJsunit()
+  subscribedAbstractPropertyJsunit()
+  gestureParallelJsunit()
+  gestureSetDirectionJsunit()
+  lazyForEachOnDataAddJsunit()
+  PanGestureEventJsunit();
+  gestureEnabledJsunit();
+  PanGesture3Jsunit();
+  tapGestureTest();
+  longPressGestureJsUnit();
+  priorityGestureJsunit();
+  parallelGestureJsunit();
+  commonJsunit();
+  motionPathJsunit();
 }

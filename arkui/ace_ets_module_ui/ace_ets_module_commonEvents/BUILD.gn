@@ -15,5 +15,6 @@ group("ActsAceEtsModuleCommonEventsTest") {
   testonly = true
   deps = [
     "ace_ets_module_commonEvents_api11:ActsAceEtsModuleCommonEventsApi11Test",
+    "ace_ets_module_commonEvents_api12:ActsAceEtsModuleCommonEventsApi12Test",
   ]
 }

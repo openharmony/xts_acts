@@ -2561,7 +2561,130 @@ export default function ActsZlibTest() {
             })
         })
 
+        /*
+        * @tc.number: Sub_CompressFiles_0100
+        * @tc.name: compressFiles 
+        * @tc.desc: test compressFiles
+        */
+        it('compressFiles', Level.LEVEL1, async function (done) {
+            console.info("==================compressFiles  start==================");
+            try {
+            let pathDir = dir;
+            console.info(`beforeAll: getCacheDir data: ${pathDir}`);
+            let fpath = pathDir + `/my/test1.txt`;
+            fileio.mkdirSync(pathDir + "/my");
+            let zippath1 = pathDir + `/test1.zip`;
+            let zippath2 = pathDir + `/test2.zip`;
+            console.info(`beforeAll: filePath data: ${fpath}`);
+            let fd = fileio.openSync(fpath, 0o100 | 0o2, 0o666);
+            fileio.closeSync(fd);
+            fileio.mkdirSync(pathDir + "/my/my");
+            const FILE_CONTENT = 'hello world';
+            let sread = fileio.createStreamSync(fpath, 'r+');
+            let bytesWritten1 = sread.writeSync(FILE_CONTENT, undefined);
+            let readLen = sread.readSync(new ArrayBuffer(4096), { position: 0 });
+            console.info('readLen = ' + readLen);
+            sread.closeSync();
+            sread = fileio.createStreamSync(pathDir + `/my/test1.txt`, 'r+');
+            bytesWritten1 = sread.writeSync(FILE_CONTENT, undefined);
+            readLen = sread.readSync(new ArrayBuffer(4096), { position: 0 });
+            console.info('readLen = ' + readLen);
+            sread.closeSync();
+            try {
+            await zlib.compressFiles([fpath, pathDir, pathDir], zippath1, {}).then(() => {
+              console.info('compressFiles end!')
+              let swrite = fileio.createStreamSync(zippath1, 'r+');
+              let buffer = new ArrayBuffer(4096)
+              let len = swrite.readSync(buffer, { position: 0 });
+              console.info("compressFiles read length = ", len)
+              expect(len).assertEqual(4096);
+              let array = new Uint8Array(buffer);
+              let dataString = "";
+              for (let i = 0; i < len; i++) {
+                dataString += String.fromCharCode(array[i]);
+                console.info("for len = ", i)
+              }
+              console.info('compressFiles Call result dest', dataString)
+            })
+            } catch (errData) {
+                console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+                expect(errData).assertFail();
+            }
 
+            try {
+                await zlib.compressFiles([fpath, pathDir, pathDir], "", {}).then(() => {
+                    console.info('compressFiles end!')
+                    let swrite = fileio.createStreamSync(zippath1, 'r+');
+                    let buffer = new ArrayBuffer(4096)
+                    let len = swrite.readSync(buffer, { position: 0 });
+                    console.info("compressFiles read length = ", len)
+                    expect(len).assertEqual(4096);
+                    let array = new Uint8Array(buffer);
+                    let dataString = "";
+                    for (let i = 0; i < len; i++) {
+                    dataString += String.fromCharCode(array[i]);
+                    console.info("for len = ", i)
+                    }
+                    console.info('compressFiles Call result dest', dataString)
+                    expect(len).assertFail();
+                })
+                } catch (errData) {
+                    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+                    expect(errData.code).assertEqual(OUTPUT_FILE_INVALID);
+                }
+    
+                try {
+                await zlib.compressFiles("", zippath2, {}).then(() => {
+                    console.info('compressFiles end!')
+                    let swrite = fileio.createStreamSync(zippath1, 'r+');
+                    let buffer = new ArrayBuffer(4096)
+                    let len = swrite.readSync(buffer, { position: 0 });
+                    console.info("compressFiles read length = ", len)
+                    expect(len).assertEqual(4096);
+                    let array = new Uint8Array(buffer);
+                    let dataString = "";
+                    for (let i = 0; i < len; i++) {
+                    dataString += String.fromCharCode(array[i]);
+                    console.info("for len = ", i)
+                    }
+                    console.info('compressFiles Call result dest', dataString)
+                    expect(len).assertFail();
+                })
+                } catch (errData) {
+                    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+                    expect(errData.code).assertEqual(SRC_FILE_INVALID);
+                }
+          } catch (err) {
+            console.info('fileio_test_stream_write_sync_000 has failed for ' + err);
+            expect(err).assertFail();
+          }
+          done()
+        })
+
+        /*
+        * @tc.number: Sub_CompressFiles_0200
+        * @tc.name: compressFilesNull
+        * @tc.desc: test compressFiles when inFile is null
+        */
+        it('compressFilesNull', Level.LEVEL2, async function (done) {
+            console.info("==================compressFilesNull start==================");
+            try {
+                await zlib.compressFiles(null, null, {
+                    level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
+                }).then((data) => {
+                    console.info("compressFilesNull invalid src file success!");
+                    expect().assertFail();
+                }).catch((err) => {
+                    console.info("compressFilesNull zipFile fail: " + JSON.stringify(err));
+                    expect().assertFail();
+                })
+            } catch (errData) {
+                console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+                expect(errData.code).assertEqual(PARAM_ERROR);
+            }
+            done()
+            console.info("==================compressFileInFileNull end==================");
+        })
     })
 }
 

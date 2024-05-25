@@ -59,7 +59,7 @@ export default function Gutter_Length_Default() {
       let firstLengthNoSet: RectValue = CommonFunc.getComponentRect('Length_NoChange_0');
       let secondLengthNoSet: RectValue = CommonFunc.getComponentRect('Length_NoChange_1');
       let gridRowGutterLengthStrJson = getInspectorByKey('Length_NoChange001');
-      let gridRowGutter = JSON.parse(gridRowGutterLengthStrJson);
+      let gridRowGutter: Record<string, Object> = JSON.parse(gridRowGutterLengthStrJson);
       expect(gridRowGutter.$type).assertEqual('GridRow');
 
       expect(firstLengthNoSet.top).assertEqual(LengthNoSet_1.top);

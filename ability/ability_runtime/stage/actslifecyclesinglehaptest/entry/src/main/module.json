@@ -136,6 +136,13 @@
         "description": "$string:MainAbility12_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility12_label"
+      },
+      {
+        "name": "MainAbility13",
+        "srcEntrance": "./ets/MainAbility13/MainAbility13.ts",
+        "description": "$string:MainAbility13_desc",
+        "icon": "$media:icon",
+        "label": "$string:MainAbility13_label"
       }
     ],
     "requestPermissions": [

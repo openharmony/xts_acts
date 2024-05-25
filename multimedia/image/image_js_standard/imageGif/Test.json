@@ -1,9 +1,9 @@
 {
-    "description": "Configuration for Image Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "300000",
-        "shell-timeout": "120000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.multimedia.image",
         "package-name": "ohos.acts.multimedia.image"
     },
@@ -27,16 +27,16 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files"
+                "./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
+                "./resource/image/test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
+                "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files/*"
-            ],
-            "teardown-command": [
-                "rm -rf /data/app/el2/100/base/ohos.acts.multimedia.image/*"
+                "power-shell wakeup",
+                "power-shell setmode 602"
             ]
         }
     ]

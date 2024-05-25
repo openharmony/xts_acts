@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -31,8 +31,8 @@ export default function navigatorJsunit() {
 
   describe('navigatorTest', () => {
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/Navigator',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Navigator',
       }
       try {
         router.clear();

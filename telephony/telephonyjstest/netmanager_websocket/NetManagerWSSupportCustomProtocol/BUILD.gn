@@ -13,29 +13,12 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsNetManagerWSSupportCustomProtocolTest") {
-  hap_profile = "entry/src/main/module.json"
+ohos_js_app_suite("ActsNetManagerWSSupportCustomProtocolTest") {
+  test_hap = true
+  testonly = true
   js_build_mode = "debug"
-  deps = [
-    ":wssupportcustomprotocol_demo_ets_resources",
-    ":wssupportcustomprotocol_demo_ets_test_resources",
-  ]
-  ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsNetManagerWSSupportCustomProtocolTest"
-
   part_name = "sms_mms"
   subsystem_name = "telephony"
-}
-ohos_app_scope("wssupportcustomprotocol_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("wssupportcustomprotocol_demo_ets_resources") {
-  source_dir = "entry/src/main/ets"
-}
-ohos_resources("wssupportcustomprotocol_demo_ets_test_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":wssupportcustomprotocol_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }

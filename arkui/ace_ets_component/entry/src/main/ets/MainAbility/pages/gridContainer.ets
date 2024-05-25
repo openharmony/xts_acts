@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +22,7 @@ struct GridContainerExample {
   private stateChangCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null) {
       console.info("gridContainer page state change called:" + JSON.stringify(eventData));
-      switch (eventData.data.sizeType) {
+      switch (eventData.data?.sizeType) {
         case 'Auto':
           this.sizeType = SizeType.Auto;
           break;

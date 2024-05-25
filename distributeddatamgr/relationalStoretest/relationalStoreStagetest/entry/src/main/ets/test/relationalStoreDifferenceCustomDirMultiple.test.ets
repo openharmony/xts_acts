@@ -132,7 +132,6 @@ export default function relationalStoreDifferenceCustomDirMultipleTest() {
               expect(18).assertEqual(age)
               expect(100.5).assertEqual(salary)
               expect(false).assertEqual(resultSet.goToNextRow())
-              done();
               console.info(TAG + "************* querySuccess end *************");
               resultSet.close();
               resultSet = null;
@@ -145,10 +144,9 @@ export default function relationalStoreDifferenceCustomDirMultipleTest() {
             expect(null).assertFail();
             console.error(TAG +`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
           })
-      console.info(TAG + "************* testRdbStore0001 end   *************");
       await data_Rdb.deleteRdbStore(globalThis.abilityContext,STORE_CONFIG1);
       done();
-      // console.info(TAG + "************* testRdbStore0001 end   *************");
+      console.info(TAG + "************* testRdbStore0001 end   *************");
     })
 
     /**
@@ -198,7 +196,7 @@ export default function relationalStoreDifferenceCustomDirMultipleTest() {
         expect(null).assertFail();
         console.error(TAG +`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
       })
-      await data_Rdb.getRdbStore(globalThis.abilityContext, STORE_CONFIG2).then(async (rdbStore) => {
+      await data_Rdb.getRdbStore(globalThis.abilityContext, STORE_CONFIG3).then(async (rdbStore) => {
         rdbStore2 = rdbStore;
         console.info(TAG +`Get RdbStore successfully.`)
       }).catch((err) => {

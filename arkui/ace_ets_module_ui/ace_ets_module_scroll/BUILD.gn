@@ -13,5 +13,8 @@
 
 group("ActsAceEtsModuleScrollTest") {
   testonly = true
-  deps = [ "ace_ets_module_scroll_api11:ActsAceEtsModuleScrollApi11Test" ]
+  deps = [
+    "ace_ets_module_scroll_api11:ActsAceEtsModuleScrollApi11Test",
+    "ace_ets_module_scroll_api12:ActsAceEtsModuleScrollApi12Test",
+  ]
 }

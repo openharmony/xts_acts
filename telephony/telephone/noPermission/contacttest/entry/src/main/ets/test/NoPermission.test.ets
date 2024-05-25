@@ -1261,5 +1261,54 @@ export default function NoPermissionTest() {
       }
       console.info(`${caseName} test end `);
     })
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_0400
+     * @tc.name       : testTelephonyContactIsMyCard0400
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard0400', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsMyCard0400";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      contact.isMyCard(context, 1, (err: BusinessError, data: boolean) => {
+        if (err) {
+          console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+          ExpectTrue(err.code === 201);
+          done();
+        } else {
+          console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+          ExpectFail();
+          done();
+        }
+      });
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_1900
+     * @tc.name       : testTelephonyContactIsMyCard1900
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard1900', 0, async (done: Function) => {
+       const caseName: string = "testTelephonyContactIsMyCard1900";
+       console.info(`${caseName} test start `);
+       let context: Context = AppStorage.get('context') as Context;
+       let promise = contact.isMyCard(context, contactData.id);
+       promise.then((data: boolean) => {
+         console.log(`${caseName} success: data->${JSON.stringify(data)}`);
+         ExpectFail();
+         done();
+       }).catch((err: BusinessError) => {
+         console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
+         ExpectTrue(err.code === 401);
+         done();
+       });
+       console.info(`${caseName} test end `);
+     });
   })
 }

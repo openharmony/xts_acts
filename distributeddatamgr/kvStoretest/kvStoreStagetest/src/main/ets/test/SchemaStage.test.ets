@@ -219,7 +219,7 @@ export default function schemaTest(){
         let name = new ddm.FieldNode('name');
         name.type = ddm.ValueType.INTEGER;
         name.nullable = false;
-        name.default = "";
+        name.default = '0';
 
         let schema = new ddm.Schema();
         schema.root.appendChild(name);
@@ -259,21 +259,42 @@ export default function schemaTest(){
      * @tc.name [JS-API8]Schema.ToJsonString()
      * @tc.desc Test Js Api Schema.ToJsonString() testcase 004
      */
-    it('testToJsonString004', 0, async function(done) {
-      try {
-        let english = new ddm.FieldNode('english');
-        english.type = ddm.ValueType.STRING;
+      it('testToJsonString004', 0, async function(done) {
+        try {
+          let name = new ddm.FieldNode('name');
+          name.type = ddm.ValueType.FLOAT;
+          name.nullable = true;
+          name.default = '3.14';
 
-        let schema = new ddm.Schema();
-        schema.root.appendChild(english);
-        schema.indexes = [];    // indexex set to empty array -> invalid indexes.
-        expect(null).assertFail();
-      } catch (e) {
-        console.info("schema exception is ok: " + e);
-      }
-      done();
-    })
-
+          let schema = new ddm.Schema();
+          schema.root.appendChild(name);
+          schema.indexes = [];
+          schema.mode = 1;
+          options.kvStoreType = ddm.KVStoreType.SINGLE_VERSION;
+          options.schema = schema;
+          await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
+            console.info('testToJsonString004 getKVStore success' + JSON.stringify(options));
+            kvStore = store;
+            expect(store != null).assertTrue();
+            await kvStore.put("test_key_1", '{"name":1.5}');
+            await kvStore.put("test_key_2", '{"name":2.5}');
+            await kvStore.put("test_key_3", '{}');
+            console.info('testToJsonString004 Put success');
+          });
+          console.info('testToJsonString004 start Query ...');
+          await kvStore.getEntries('test_key_').then((entries) => {
+            console.info('testToJsonString004 get success : ' + JSON.stringify(entries));
+            expect(entries.length == 3).assertTrue();
+          }).catch((err) => {
+            console.info('testToJsonString004 get fail ' + err);
+            expect(null).assertFail();
+          });
+        } catch (e) {
+          console.info("testToJsonString004 fail on exception: " + e);
+          expect(null).assertFail();
+        }
+        done();
+      })
     /**
      * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1800
      * @tc.name [JS-API8]Schema.root

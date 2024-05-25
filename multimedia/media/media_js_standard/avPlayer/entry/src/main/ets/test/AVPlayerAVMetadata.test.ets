@@ -1340,5 +1340,39 @@ export default function AVMetadata() {
         done()
       })
     })
+
+     /* *
+      * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_HDRTYPE_PROMISE_FUNCTION_1800
+      * @tc.name      : 001.testAVMeta hdrType
+      * @tc.desc      : Local Video playback control test
+      * @tc.size      : MediumTest
+      * @tc.type      : Function Test
+      * @tc.level     : Level0
+         */
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HDRTYPE_PROMISE_FUNCTION_1800', 0, async function (done) {
+        console.info('AVMetadataExtractor success');
+        let avMetadataExtractor;
+        await media.createAVMetadataExtractor().then((extractor) => {
+          if (extractor != null) {
+            avMetadataExtractor = extractor;
+            console.info('createAVMetadataExtractor success');
+          } else {
+            console.error('createAVMetadataExtractor fail');
+          }
+        }).catch((error) => {
+          console.error(`AVMetadataExtractor catchCallback, error message:${error.message}`);
+        });
+        // 获取元数据
+        console.info('AVMetadataExtractor success');
+        avMetadataExtractor.fdSrc = AVFileDescriptor;
+        // 获取元信息
+        await avMetadataExtractor.fetchMetadata().then((metadata) => {
+            console.info(TAG, `fetchMetadata callback success, hdrType: ${metadata.hdrType}`)
+            avMetadataExtractor.release();
+        }).catch((error) => {
+          console.error(`fetchMetadata catchCallback, error message:${error.message}`);
+        });
+        done();
+      })
   })
 }

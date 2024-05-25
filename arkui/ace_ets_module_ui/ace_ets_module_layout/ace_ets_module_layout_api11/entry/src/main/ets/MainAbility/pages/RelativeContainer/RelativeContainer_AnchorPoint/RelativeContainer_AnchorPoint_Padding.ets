@@ -47,7 +47,6 @@ struct RelativeContainer_AnchorPoint_Padding {
           .id("RelativeContainer_AnchorPoint_Padding_tx2")
           .borderWidth(2)
           .borderColor(Color.Green)
-          .height(30)
           .width(150)
       }
       .key("RelativeContainer_AnchorPoint_Padding_r1")

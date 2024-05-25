@@ -135,6 +135,9 @@
       },
       {
         "name": "ohos.permission.ACCESS_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.ACTIVITY_MOTION"
       }
     ]
   }

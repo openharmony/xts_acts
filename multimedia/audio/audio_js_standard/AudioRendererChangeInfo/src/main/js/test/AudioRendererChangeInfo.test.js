@@ -14,8 +14,9 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
+export default function audioRendererChange() {
 describe('audioRendererChange', function () {
 
     let audioStreamManager;
@@ -2871,3 +2872,4 @@ describe('audioRendererChange', function () {
 
 
 })
+}

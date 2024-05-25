@@ -106,7 +106,7 @@ struct WebViewPrefetchResource {
                     },
                   ],
                   "KeyX", 500);
-                await Utils.sleep(2000)
+                await Utils.sleep(500)
                 Utils.emitEvent(true, 10080)
               } catch (error) {
                 console.error(`${msg} ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -117,7 +117,7 @@ struct WebViewPrefetchResource {
               let msg="testPrefetchResource002"
               try {
                 webView.WebviewController.prefetchResource({url:"https://www.example1.com/post?e=f&g=h",method:"POST",formData:"a=x&b=y"});
-                await Utils.sleep(2000)
+                await Utils.sleep(500)
                 Utils.emitEvent(true, 10081)
               } catch (error) {
                 console.error(`${msg} ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -221,7 +221,7 @@ struct WebViewPrefetchResource {
                     },
                   ],
                   "KeyX", 500);
-                await Utils.sleep(2000)
+                await Utils.sleep(500)
                 Utils.emitEvent(true, 10090)
               } catch (error) {
                 console.error(`${msg} ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -244,7 +244,7 @@ struct WebViewPrefetchResource {
                     },
                   ],
                   "KeyX", 500);
-                await Utils.sleep(2000)
+                await Utils.sleep(500)
               } catch (error) {
                 console.error(`${msg} ErrorCode: ${error.code},  Message: ${error.message}`);
                 Utils.emitEvent(error.code, 10091)

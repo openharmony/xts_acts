@@ -29,7 +29,7 @@ function sleep(time: number) {
 export default function listJsunit1() {
 
 
-  describe('listTest', () => {
+  describe('list1Test', () => {
     beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/List/List1',

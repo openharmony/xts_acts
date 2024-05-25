@@ -148,7 +148,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_Stage_Search_CaretStyle_0100]: " + JSON.stringify(obj.$attrs.caretStyle));
       console.info("[ArkUI_Stage_Search_CaretStyle_0100]: " + JSON.stringify(obj.$attrs.caretStyle.width));
-      expect(obj.$attrs.caretStyle.width).assertEqual("1.50vp");
+      expect(obj.$attrs.caretStyle.width).assertEqual("2.00vp");
       console.info("[ArkUI_Stage_Search_CaretStyle_0100] end");
       done();
     });
@@ -402,7 +402,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CaretStyle_0800]: " + JSON.stringify(obj.$attrs.caretStyle));
       console.info("[ArkUI_Stage_Search_CaretStyle_0800]: " + JSON.stringify(obj.$attrs.caretStyle.width));
-      expect(obj.$attrs.caretStyle.width).assertEqual("1.50vp");
+      expect(obj.$attrs.caretStyle.width).assertEqual("2.00vp");
       console.info("[ArkUI_Stage_Search_CaretStyle_0800] end");
       done();
     });
@@ -478,7 +478,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CaretStyle_1000]: " + JSON.stringify(obj.$attrs.caretStyle));
       console.info("[ArkUI_Stage_Search_CaretStyle_1000]: " + JSON.stringify(obj.$attrs.caretStyle.width));
-      expect(obj.$attrs.caretStyle.width).assertEqual("1.50vp");
+      expect(obj.$attrs.caretStyle.width).assertEqual("2.00vp");
       console.info("[ArkUI_Stage_Search_CaretStyle_1000] end");
       done();
     });
@@ -516,7 +516,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_CaretStyle_1100]: " + JSON.stringify(obj.$attrs.caretStyle));
       console.info("[ArkUI_Stage_Search_CaretStyle_1100]: " + JSON.stringify(obj.$attrs.caretStyle.width));
-      expect(obj.$attrs.caretStyle.width).assertEqual("1.50vp");
+      expect(obj.$attrs.caretStyle.width).assertEqual("2.00vp");
       console.info("[ArkUI_Stage_Search_CaretStyle_1100] end");
       done();
     });

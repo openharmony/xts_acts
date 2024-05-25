@@ -13,4 +13,7 @@
  * limitations under the License.
  */
 
-require('./RGBA.test.js')
+import Image from "./RGBA.test.js";
+export default function testsuite() {
+    Image();
+}

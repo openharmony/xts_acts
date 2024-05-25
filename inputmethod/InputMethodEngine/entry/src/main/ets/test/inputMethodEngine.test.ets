@@ -1431,7 +1431,7 @@ export default function inputMethodEngineJSUnit() {
           let t = setTimeout(()=>{
             runCmd();
             clearTimeout(t)
-          }, 100)
+          }, 200)
         }
       }
 
@@ -1497,11 +1497,11 @@ export default function inputMethodEngineJSUnit() {
           let t = setTimeout(()=>{
             runCmd();
             clearTimeout(t);
-          }, 100)
+          }, 200)
           let t1 = setTimeout(async () => {
             await driver.triggerKey(2000)
             clearTimeout(t1);
-          },300)
+          },400)
         }
       }
 
@@ -1630,7 +1630,7 @@ export default function inputMethodEngineJSUnit() {
           let t = setTimeout(()=>{
             runCmd();
             clearTimeout(t)
-          }, 100)
+          }, 200)
         }
       }
 

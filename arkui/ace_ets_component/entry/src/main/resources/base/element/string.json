@@ -55,6 +55,10 @@
         {
             "name": "app_name",
             "value": "Demo"
-        }
+        },
+    {
+      "name": "module_desc",
+      "value": "module description"
+    }
   ]
 }

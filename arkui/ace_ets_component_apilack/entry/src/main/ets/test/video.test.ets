@@ -14,16 +14,16 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function videoOnFullscreenChangeJsunit() {
   describe('videoOnFullscreenChangeTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/video',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/video',
       }
       try {
         router.clear();
@@ -204,11 +204,11 @@ export default function videoOnFullscreenChangeJsunit() {
         eventId: 60227,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         try {
           console.info("callback success");
-          console.info("eventData.data.result result is: " + eventData.data.result);
-          expect(eventData.data.result).assertEqual("success");
+          console.info("eventData.data.result result is: " + eventData.data?.result);
+          expect(eventData.data?.result).assertEqual("success");
           console.info("video_101 end: ");
         } catch (err) {
           console.info("video_101 on events_emitter err : " + JSON.stringify(err));

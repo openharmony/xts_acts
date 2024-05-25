@@ -40,15 +40,18 @@ export default function certManagerNotSystemAPPTestUnit() {
 
     /**
      * @tc.number Security_CertManager_NotSystemApp_Func_0100
-     * @tc.name Test getAllAppPrivateCertificates With No System App One
-     * @tc.desc Use Promise Type
+     * @tc.name test getAllAppPrivateCertificates with no system app one
+     * @tc.desc use promise type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_NotSystemApp_Func_0100', 0, async (done: Function) => {
       try {
         await certManager.getAllAppPrivateCertificates();
         expect(null).assertFail();
       } catch (err) {
-        console.error(`Security_CertManager_NotSystemApp_Func_0100 get error1: ${err.code}}`);
+        console.error(`Security_CertManager_NotSystemApp_Func_0100 get error1: ${err.code}`);
         expect(err.code).assertEqual(202);
       }
       done();
@@ -56,15 +59,18 @@ export default function certManagerNotSystemAPPTestUnit() {
 
     /**
      * @tc.number Security_CertManager_NotSystemApp_Func_0200
-     * @tc.name Test getAllAppPrivateCertificates With No System App Two
-     * @tc.desc Use AsyncCallback Type
+     * @tc.name test getAllAppPrivateCertificates with no system app two
+     * @tc.desc use asynccallback type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_NotSystemApp_Func_0200', 0, async (done: Function) => {
       try {
         let result: certManager.CMResult = await new Promise((resolve, reject) => {
           certManager.getAllAppPrivateCertificates((err, cmResult) => {
             if (err) {
-              console.error(`Security_CertManager_NotSystemApp_Func_0200 get error1: ${err.code}}`);
+              console.error(`Security_CertManager_NotSystemApp_Func_0200 get error1: ${err.code}`);
               reject(err);
             } else {
               resolve(cmResult);
@@ -77,6 +83,25 @@ export default function certManagerNotSystemAPPTestUnit() {
       }
       done();
     })
+
+    /**
+     * @tc.number SUB_Security_CertManager_SysCertJsApi_NotSystemApp_Func_0200
+     * @tc.name test getAllSystemAPPCertificates interface(not system app)
+     * @tc.desc use promise type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_SysCertJsApi_NotSystemApp_Func_0200', 0, async (done: Function) => {
+      try {
+        await certManager.getAllSystemAppCertificates();
+        expect(null).assertFail();
+      } catch (err) {
+        console.error(`SUB_Security_CertManager_SysCertJsApi_NotSystemApp_Func_0200 get error: ${err.code}`);
+        expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_NOT_SYSTEM_APP);
+      }
+      done();
+    });
   })
 }
 

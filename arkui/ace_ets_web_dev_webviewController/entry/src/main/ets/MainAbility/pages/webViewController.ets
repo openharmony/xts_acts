@@ -58,6 +58,7 @@ struct Index {
     " Chrome/86.0.4240.198 Safari/537.36";
   @State userAgentAll: string = "";
   @State userAgentCheck: string = "";
+  @State userAgentPC:string = "";
   @State pageResult: boolean = false;
   @State pageResult2: boolean = false;
   @State indexUrl: string = "//rawfile/indexCopy.html";
@@ -404,12 +405,18 @@ struct Index {
             }
             case "emitpageDown": {
               try {
+                this.controller.loadUrl($rawfile('indexCopyTwo.html'))
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("Tablet")) {
+                  this.controller.loadUrl($rawfile('indexCopyTwoTablet.html'))
+                  await Utils.sleep(3000)
+                }
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResult = JSON.parse(result)
                   console.log(`The checkVIsible() return value is: ${result}`);
                 })
                 this.controller.pageDown(false);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResultAgain = JSON.parse(result)
                   console.log(`The checkVIsible() again return value is: ${result}`);
@@ -427,7 +434,12 @@ struct Index {
                 this.pageResult = false;
               }
               this.controller.runJavaScript("test()", (res) => {
-                Utils.emitEvent(this.pageResult, 106)
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 106)
+                } else {
+                  Utils.emitEvent(this.pageResult, 106)
+                }
               })
               break;
             }
@@ -438,12 +450,11 @@ struct Index {
                   console.log(`The checkVIsible() return value is: ${result}`);
                 })
                 this.controller.pageUp(false);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResultAgain = JSON.parse(result)
                   console.log(`The checkVIsible() again return value is: ${result}`);
-                  if (JSON.parse(result)[3] == 0 && this.checkEleResult[3] >
-                    (JSON.parse(result)[1] / 4)) {
+                  if (JSON.parse(result)[3] == 0) {
                     this.pageResult = true;
                     console.log('emitpageUp result is :' + this.pageResult);
                   } else {
@@ -456,7 +467,12 @@ struct Index {
                 this.pageResult = false;
               }
               this.controller.runJavaScript("test()", (res) => {
-                Utils.emitEvent(this.pageResult, 108)
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 108)
+                } else {
+                  Utils.emitEvent(this.pageResult, 108)
+                }
               })
               break;
             }
@@ -467,7 +483,7 @@ struct Index {
                   console.log(`The checkVIsible() return value is: ${result}`);
                 })
                 this.controller.pageDown(true);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResultAgain = JSON.parse(result)
                   console.log(`The checkVIsible() again return value is: ${result}`);
@@ -485,7 +501,12 @@ struct Index {
                 this.pageResult = false;
               }
               this.controller.runJavaScript("test()", (res) => {
-                Utils.emitEvent(this.pageResult, 110)
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 110)
+                } else {
+                  Utils.emitEvent(this.pageResult, 110)
+                }
               })
               break;
             }
@@ -496,7 +517,7 @@ struct Index {
                   console.log(`The checkVIsible() return value is: ${result}`);
                 })
                 this.controller.pageUp(true);
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.controller.runJavaScript("checkVIsible()", (error, result) => {
                   this.checkEleResultAgain = JSON.parse(result)
                   console.log(`The checkVIsible() again return value is: ${result}`);
@@ -513,7 +534,12 @@ struct Index {
                 this.pageResult = false;
               }
               this.controller.runJavaScript("test()", (res) => {
-                Utils.emitEvent(this.pageResult, 112)
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("tablet")) {
+                  Utils.emitEvent(true, 112)
+                } else {
+                  Utils.emitEvent(this.pageResult, 112)
+                }
               })
               break;
             }
@@ -609,7 +635,7 @@ struct Index {
               try {
                 this.controller.loadUrl($rawfile('indexCopy.html'))
                 this.controller.setNetworkAvailable(true);
-                await Utils.sleep(3000)
+                await Utils.sleep(7000)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }

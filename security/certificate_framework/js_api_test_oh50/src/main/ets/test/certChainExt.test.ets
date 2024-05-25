@@ -52,7 +52,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
 
         cert.buildX509CertChain(param).then((data) => {
           expect(data.certChain.getCertList().length == 2).assertTrue();
-          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z\u0000').assertTrue();
+          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z').assertTrue();
           expect(data.validationResult.trustAnchor.nameConstraints != null).assertTrue();
           done();
         }).catch((err: BusinessError) => {
@@ -140,7 +140,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
 
         cert.buildX509CertChain(param).then((data) => {
           expect(data.certChain.getCertList().length == 2).assertTrue();
-          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z\u0000').assertTrue();
+          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z').assertTrue();
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} createX509CertChain failed, err: ${JSON.stringify(err)}`);
@@ -185,7 +185,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
 
         cert.buildX509CertChain(param).then((data) => {
           expect(data.certChain.getCertList().length == 1).assertTrue();
-          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z\u0000').assertTrue();
+          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z').assertTrue();
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} createX509CertChain failed, err: ${JSON.stringify(err)}`);
@@ -230,7 +230,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
 
         cert.buildX509CertChain(param).then((data) => {
           expect(data.certChain.getCertList().length == 2).assertTrue();
-          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z\u0000').assertTrue();
+          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z').assertTrue();
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} createX509CertChain failed, err: ${JSON.stringify(err)}`);
@@ -275,7 +275,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
 
         cert.buildX509CertChain(param).then((data) => {
           expect(data.certChain.getCertList().length == 2).assertTrue();
-          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z\u0000').assertTrue();
+          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z').assertTrue();
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} createX509CertChain failed, err: ${JSON.stringify(err)}`);
@@ -321,7 +321,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
 
         cert.buildX509CertChain(param).then((data) => {
           expect(data.certChain.getCertList().length == 2).assertTrue();
-          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z\u0000').assertTrue();
+          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z').assertTrue();
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} createX509CertChain failed, err: ${JSON.stringify(err)}`);
@@ -366,7 +366,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
 
         cert.buildX509CertChain(param).then((data) => {
           expect(data.certChain.getCertList().length == 2).assertTrue();
-          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z\u0000').assertTrue();
+          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z').assertTrue();
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} createX509CertChain failed, err: ${JSON.stringify(err)}`);
@@ -410,7 +410,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
 
         cert.buildX509CertChain(param).then((data) => {
           expect(data.certChain.getCertList().length == 2).assertTrue();
-          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z\u0000').assertTrue();
+          expect(data.validationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z').assertTrue();
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} createX509CertChain failed, err: ${JSON.stringify(err)}`);

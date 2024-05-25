@@ -116,15 +116,6 @@ export default function locationComponentTest() {
                   console.info("====>[Test_Security_Button_Location_0100] textComponentClick err : " + JSON.stringify(err));
                 };
               }
-              let knowBtn = await driver.findComponent(ON.text('知道了'));
-              console.info("====>[Test_Security_Button_Location_0100] knowBtn is:" + JSON.stringify(knowBtn));
-              if(knowBtn !== null){
-                console.info("====>[Test_Security_Button_Location_0100] knowBtnClick START====");
-                await knowBtn.click();
-                console.info("====>[Test_Security_Button_Location_0100] reClick====" + i);
-              }else{
-                flag = true;
-              }
             }
             console.info("====>[Test_Security_Button_Location_0100] END====");
             done()
@@ -150,6 +141,15 @@ export default function locationComponentTest() {
         console.info("====>[Test_Security_Button_Location_0100] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
+        let allowBtn = await driver.findComponent(ON.text('允许'));
+        console.info("====>[Test_Security_Button_Location_0100] allowBtn is:" + JSON.stringify(allowBtn));
+        if(allowBtn !== null){
+          console.info("====>[Test_Security_Button_Location_0100] allowBtnClick START====");
+          await allowBtn.click();
+          console.info("====>[Test_Security_Button_Location_0100] reClick====");
+        }else{
+          expect(false).assertTrue();
+        }
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_0100] clickSecComponent err : " + JSON.stringify(err));
       }
@@ -1544,29 +1544,20 @@ export default function locationComponentTest() {
             "middle": 4
           }
         }
-        try{
-          window.getLastWindow(globalThis.abilityContext, (err, data) => {
-            const errCode = err.code;
-            if(errCode){
-              console.error('Failed to obtain the top window Cause:' + JSON.stringify(err));
-              return;
-            }
-            let properties = data.getWindowProperties();
-            console.info('Succeeded in obtaining the window properties.width: ' + properties.windowRect.width);
-            console.info('Succeeded in obtaining the window properties.height: ' + properties.windowRect.height);
-            let window_width = properties.windowRect.width;
-            let window_height = properties.windowRect.height;
-            let button_iconSize = Math.ceil(Math.sqrt(window_width * window_height * 0.1));
-            console.info('====>[Test_Security_Button_Location_1600] button_iconSize is: ' + button_iconSize);
-            let offsetObj = {
-              "iconSize": `${button_iconSize}px`,
-              "positionY": `${-button_iconSize - 200}px`
-              };
-            Object.assign(eventData.data,offsetObj);
-          });
-        } catch (error){
-          console.error('Failed to obtain the window properties.error.code: ' + error.code)
-        }
+        let displayClass = [];
+        display.getAllDisplays((err, data) => {
+          console.info('====>[Test_Security_Button_Location_1600] the window data[0].width: ' + data[0].width);
+          console.info('====>[Test_Security_Button_Location_1600] the window data[0].height: ' + data[0].height);
+          let window_width = data[0].width;
+          let window_height = data[0].height;
+          let button_iconSize = Math.ceil(Math.sqrt(window_width * window_height * 0.1));
+          console.info('====>[Test_Security_Button_Location_1600] button_iconSize is: ' + button_iconSize);
+          let offsetObj = {
+            "iconSize": `${button_iconSize}px`,
+            "positionY": `${-button_iconSize - 200}px`
+            };
+          Object.assign(eventData.data,offsetObj);
+        });
         await Utils.sleep(1000);
         var innerEvent = {
           eventId: 1,

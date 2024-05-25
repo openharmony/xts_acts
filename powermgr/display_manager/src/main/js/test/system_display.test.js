@@ -24,9 +24,12 @@ export default async function SystemDisplayTest() {
         console.log("System SystemDisplay Unit Test Begin");
 
         /**
-         * @tc.number system_display_js_0100
-         * @tc.name get_value_success
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0010
+         * @tc.name testget_value_success
          * @tc.desc Get brightness success
+         * @tc.level: Level 1
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('get_value_success', 0, async function (done) {
             let currValue = 100;
@@ -41,9 +44,12 @@ export default async function SystemDisplayTest() {
         });
 
         /**
-         * @tc.number system_display_js_0101
-         * @tc.name get_value_success_not_must_test
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0020
+         * @tc.name testget_status_test_success_not_must
          * @tc.desc Get brightness
+         * @tc.level: Level 1
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('get_status_test_success_not_must', 0, async function (done) {
             brightness.getValue({
@@ -60,9 +66,12 @@ export default async function SystemDisplayTest() {
         })
 
         /**
-         * @tc.number system_display_js_0102
-         * @tc.name get_value_fail_not_must_test
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0030
+         * @tc.name testget_value_fail_not_must_test
          * @tc.desc Get brightness
+         * @tc.level: Level 1
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('get_value_fail_not_must_test', 0, async function (done) {
             brightness.getValue({
@@ -75,9 +84,12 @@ export default async function SystemDisplayTest() {
         });
 
         /**
-         * @tc.number system_display_js_0103
-         * @tc.name get_value_null_test
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0040
+         * @tc.name testget_status_test_fail_not_must
          * @tc.desc Get brightness
+         * @tc.level: Level 3
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('get_status_test_fail_not_must', 0, async function (done) {
             brightness.getValue();
@@ -86,9 +98,12 @@ export default async function SystemDisplayTest() {
         })
 
         /**
-         * @tc.number system_display_js_0201
-         * @tc.name set_value_success_value
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0050
+         * @tc.name testset_value_success_value
          * @tc.desc Set brightness success
+         * @tc.level: Level 3
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('set_value_success_value', 0, async function (done) {
             brightness.setKeepScreenOn({
@@ -120,9 +135,12 @@ export default async function SystemDisplayTest() {
         });
 
         /**
-         * @tc.number system_display_js_0202
-         * @tc.name set_value_fail
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0060
+         * @tc.name testset_value_fail
          * @tc.desc Set brightness fail
+         * @tc.level: Level 3
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('set_value_fail', 0, async function (done) {
             let setValue = "50";
@@ -143,9 +161,12 @@ export default async function SystemDisplayTest() {
         });
 
         /**
-         * @tc.number system_display_js_0203
-         * @tc.name set_value_undefined
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0070
+         * @tc.name testset_value_undefined
          * @tc.desc Check undefined as input of setValue
+         * @tc.level: Level 3
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('set_value_undefined', 0, async function (done) {
             brightness.setKeepScreenOn({
@@ -168,9 +189,12 @@ export default async function SystemDisplayTest() {
         });
 
         /**
-         * @tc.number system_display_js_0300
-         * @tc.name get_mode_success
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0080
+         * @tc.name testget_mode_success
          * @tc.desc Get mode success
+         * @tc.level: Level 3
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('get_mode_success', 0, async function (done) {
             brightness.getMode({
@@ -183,9 +207,12 @@ export default async function SystemDisplayTest() {
         })
 
         /**
-         * @tc.number system_display_js_0301
-         * @tc.name get_mode_success_null
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0090
+         * @tc.name testget_mode_success_null
          * @tc.desc Get mode success is null
+         * @tc.level: Level 3
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('get_mode_success_null', 0, async function (done) {
             brightness.getMode({
@@ -202,9 +229,12 @@ export default async function SystemDisplayTest() {
         });
 
         /**
-         * @tc.number system_display_js_0400
-         * @tc.name set_mode_success
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0100
+         * @tc.name testset_mode_success
          * @tc.desc set mode success
+         * @tc.level: Level 3
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('set_mode_success', 0, async function (done) {
             brightness.setMode({
@@ -226,9 +256,12 @@ export default async function SystemDisplayTest() {
         });
 
         /**
-         * @tc.number system_display_js_0401
-         * @tc.name set_mode_fail
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0110
+         * @tc.name testset_mode_fail
          * @tc.desc set mode fail
+         * @tc.level: Level 3
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('set_mode_fail', 0, async function (done) {
             brightness.setMode({
@@ -250,9 +283,12 @@ export default async function SystemDisplayTest() {
         });
 
         /**
-         * @tc.number system_display_js_0500
-         * @tc.name set_keep_screen_on_true
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0120
+         * @tc.name testset_keep_screen_on_true
          * @tc.desc set keep screen on true
+         * @tc.level: Level 3
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('set_keep_screen_on_true', 0, async function (done) {
             brightness.setKeepScreenOn({
@@ -273,9 +309,12 @@ export default async function SystemDisplayTest() {
         });
 
         /**
-         * @tc.number system_display_js_0501
-         * @tc.name set_keep_screen_on_false
+         * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0130
+         * @tc.name testset_keep_screen_on_false
          * @tc.desc set keep screen on false
+         * @tc.level: Level 3
+         * @tc.type: Functiontion
+         * @tc.size: MediumTest
          */
         it('set_keep_screen_on_false', 0, async function (done) {
             brightness.setKeepScreenOn({

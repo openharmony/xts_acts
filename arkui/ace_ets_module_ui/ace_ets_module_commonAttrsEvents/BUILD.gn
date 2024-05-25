@@ -13,5 +13,8 @@
 
 group("ActsAceEtsModuleCommonAttrsEventsTest") {
   testonly = true
-  deps = [ "ace_ets_module_commonAttrsEvents_api11:ActsAceEtsModuleCommonAttrsEventsApi11Test" ]
+  deps = [
+    "ace_ets_module_commonAttrsEvents_api11:ActsAceEtsModuleCommonAttrsEventsApi11Test",
+    "ace_ets_module_commonAttrsEvents_api12:ActsAceEtsModuleCommonAttrsEventsApi12Test",
+  ]
 }

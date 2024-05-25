@@ -14,13 +14,14 @@
  */
 
 import Ability from '@ohos.app.ability.UIAbility';
+import window from '@ohos.window';
 
 export default class TestAbility extends Ability {
   onDestroy() {
     console.log('TestAbility onDestroy');
   }
 
-  onWindowStageCreate(windowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     console.log('TestAbility onWindowStageCreate');
     windowStage.loadContent('TestAbility/pages/index', (err, data) => {
       if (err.code) {

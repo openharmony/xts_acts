@@ -13,10 +13,9 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
-import ohosrouter from '@ohos.router';
+import Utils from './Utils'
 import resourceManager from '@ohos.resourceManager';
 import { BusinessError } from '@ohos.base';
 
@@ -24,8 +23,8 @@ export default function circleNewJsunit() {
   describe('circleNewTest', () => {
     beforeAll(async () => {
       console.info("circle beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/circle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/circle',
       }
       try {
         router.clear();
@@ -128,7 +127,7 @@ export default function circleNewJsunit() {
      */
     it("ACE_pushUrl_callback_0100", 0, async () => {
       console.info("-----------------------ACE_pushUrl_callback_0100 start-----------------------");
-      ohosrouter.pushUrl({
+      router.pushUrl({
         url: 'MainAbility/pages/common',
         params: {
           data1: 'message',
@@ -138,7 +137,7 @@ export default function circleNewJsunit() {
         }
       }, (err) => {
         if (err) {
-          console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          console.error(`pushUrl failed, code is ${(err as BusinessError)?.code}, message is ${(err as Error)?.message}`);
           expect().assertFail();
         } else {
           console.info('pushUrl success');
@@ -156,7 +155,7 @@ export default function circleNewJsunit() {
      */
     it("ACE_pushUrl_callback_0200", 0, async () => {
       console.info("-----------------------ACE_pushUrl_promise_0200 start-----------------------");
-      ohosrouter.pushUrl({
+      router.pushUrl({
         url: 'MainAbility/pages/ellipse',
         params: {
           data1: 'message',
@@ -167,7 +166,7 @@ export default function circleNewJsunit() {
       }).then(() => {
         expect(true).assertTrue();
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
           expect().assertFail();
         })
@@ -183,12 +182,12 @@ export default function circleNewJsunit() {
     it("ACE_showAlertBeforeBackPage_0100", 0, async () => {
       console.info("-----------------------ACE_showAlertBeforeBackPage_0100-----------------------");
       try {
-        ohosrouter.showAlertBeforeBackPage({
+        router.showAlertBeforeBackPage({
           message: 'Message Info'
         });
         expect(true).assertTrue();
       } catch (error) {
-        console.error(`showAlertBeforeBackPage_0100 failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`showAlertBeforeBackPage_0100 failed, code is ${(error as BusinessError)?.code}, message is ${error.message}`);
         expect().assertFail();
       }
 
@@ -202,13 +201,13 @@ export default function circleNewJsunit() {
     it("ACE_showAlertBeforeBackPage_0200", 0, async () => {
       console.info("-----------------------ACE_showAlertBeforeBackPage_0200-----------------------");
       try {
-        ohosrouter.showAlertBeforeBackPage({
+        router.showAlertBeforeBackPage({
           message: undefined
         });
         expect(true).assertTrue();
       } catch (error) {
-        console.error(`ACE_showAlertBeforeBackPage_0200, code is ${error.code}, message is ${error.message}`);
-        expect(error.code == 401).assertTrue();
+        console.error(`ACE_showAlertBeforeBackPage_0200, code is ${(error as BusinessError)?.code}, message is ${error.message}`);
+        expect((error as BusinessError)?.code == 401).assertTrue();
       }
 
     });
@@ -221,10 +220,10 @@ export default function circleNewJsunit() {
     it("ACE_hideAlertBeforeBackPage_0100", 0, async () => {
       console.info("-----------------------ACE_showAlertBeforeBackPage_0200-----------------------");
       try {
-        ohosrouter.hideAlertBeforeBackPage();
+        router.hideAlertBeforeBackPage();
         expect(true).assertTrue();
       } catch (error) {
-        console.error(`ACE_showAlertBeforeBackPage_0200, code is ${error.code}, message is ${error.message}`);
+        console.error(`ACE_showAlertBeforeBackPage_0200, code is ${(error as BusinessError)?.code}, message is ${error.message}`);
         expect().assertFail();
       }
 
@@ -240,13 +239,13 @@ export default function circleNewJsunit() {
       await Utils.sleep(1000);
       let resource: resourceManager.Resource = {
         bundleName: "com.open.harmony.aceEtsApiLack",
-        moduleName: "phone",
+        moduleName: "entry",
         id: $r('app.string.app_name').id,
-        params: null,
+        params: undefined,
         type: 0
       };
       try {
-        globalThis.abilityContext.resourceManager.getStringValue(resource, (error, value) => {
+        globalThis.abilityContext.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
           if (error != null) {
             console.log("error is " + error);
             expect().assertFail();

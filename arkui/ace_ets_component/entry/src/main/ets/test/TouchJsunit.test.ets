@@ -51,8 +51,8 @@ export default function touchJsunit() {
       try {
         let callBackTouch = (backData: events_emitter.EventData) => {
           console.info("testTouch01 get backEvent result is: " + JSON.stringify(backEvent));
-          console.info("testTouch01 get flag result is: " + JSON.stringify(backData.data.ACTION));
-          expect(backData.data.ACTION).assertEqual(true);
+          console.info("testTouch01 get flag result is: " + JSON.stringify(backData.data?.ACTION));
+          expect(backData.data?.ACTION).assertEqual(true);
           done()
         }
         let backEvent: events_emitter.InnerEvent = {

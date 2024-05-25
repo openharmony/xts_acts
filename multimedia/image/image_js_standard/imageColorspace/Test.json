@@ -1,12 +1,11 @@
 {
-    "description": "Configuration for Image Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "300000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.multimedia.image.Colorspace",
-        "package-name": "ohos.acts.multimedia.image.Colorspace",
-        "shell-timeout": "300000",
-        "testcase-timeout": 60000
+        "package-name": "ohos.acts.multimedia.image.Colorspace"
     },
     "kits": [
         {
@@ -14,29 +13,12 @@
                 "ActsImageColorspaceJsTest.hap"
             ],
             "type": "AppInstallKit",
-           
             "cleanup-apps": true
-        },
-         {
+        },{
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files/",
-                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files/*"
-            ],
-            "teardown-command": []
-        },
-        {
-            "type": "PushKit",
-            "push": [
-                "./resource/image/colorspace.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files",
-                "./resource/image/DisplayP3.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files"
-            ]
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files/colorspace.jpg",
-                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files/DisplayP3.png"
+                "power-shell wakeup",
+                "power-shell setmode 602"
             ]
         }
     ]

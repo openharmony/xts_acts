@@ -15,9 +15,11 @@
 import getUIObserver from './UIContext/getUIObserver.test';
 import getDragController from './UIContext/getDragController.test';
 import atomicServiceBarTest from "./UIContext/autoservice/atomicServiceBar.test";
+import mediaQueryOffJsunit from './mediaqueryTest/mediaQuery.test';
 
 export default function testsuite() {
   getUIObserver()
   getDragController()
+  mediaQueryOffJsunit()
   atomicServiceBarTest()
 }

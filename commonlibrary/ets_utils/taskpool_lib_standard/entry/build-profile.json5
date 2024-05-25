@@ -18,7 +18,7 @@
   "buildOption": {
     "sourceOption": {
       "workers": [
-        "./src/main/ets/workers/worker.ts"
+        "./src/ohosTest/ets/workers/worker.ts"
       ]
     }
   },
@@ -37,6 +37,9 @@
   "targets": [
     {
       "name": "default",
+    },
+    {
+      "name": "ohosTest",
     }
   ]
 }

@@ -7,6 +7,7 @@
     "mainElement": "MainAbility", 
     "deviceTypes": [
       "tablet",
+      "2in1",
       "default"
     ],
     "deliveryWithInstall": true,

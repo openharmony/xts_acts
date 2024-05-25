@@ -37,7 +37,7 @@ export default function CustomPopupOptions() {
         if (!("CustomPopupOptions" == pages.name)) {
           console.info("get CustomPopupOptions state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await CommonFunc.sleep(2000);
+          await CommonFunc.sleep(5000);
           console.info("push CustomPopupOptions success: " + JSON.stringify(result));
         }
       } catch (err) {
@@ -58,10 +58,10 @@ export default function CustomPopupOptions() {
     it('CustomPopupOptions_0100', 0, async function (done) {
       console.info('CustomPopupOptions_0100 START');
       let driver = await Driver.create()
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(2000);
       let button = await driver.findComponent(ON.id('CustomPopupOptions'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(2000);
 
       let windowClass: window.Window | undefined = undefined;
       windowClass = await window.getLastWindow(globalThis.abilityContext);

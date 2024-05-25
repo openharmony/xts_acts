@@ -2,18 +2,24 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "60000",
-        "bundle-name": "com.example.actssetchecksyncenable",
-        "package-name": "com.example.actssetchecksyncenable",
-        "shell-timeout": "60000"
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
+        "bundle-name": "com.example.accessibleabilitylist",
+        "package-name": "com.example.accessibleabilitylist_test"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsSetCheckSyncEnableTest.hap"
+                "ActsAccessibleAbilityListTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

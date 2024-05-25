@@ -154,6 +154,24 @@ struct cameraOrientation {
 
       Scroll() {
         Column() {
+          Row() {
+            Column(){
+              Button(`设备无相机`)
+                .borderRadius(8)
+                .backgroundColor(0x317aff)
+                .width('50%')
+                .onClick(()=>{
+                  this.Vue = true;
+                  router.back({
+                    url: 'pages/Camera/Camera_index',
+                    params: { result: 'true ', title: this.name }
+                  });
+                  promptAction.showToast({
+                    message: '当前设备无相机', duration: 1000
+                  });
+                })
+            }
+          }
           Flex({ justifyContent: FlexAlign.SpaceEvenly }) {
 
             Column() {

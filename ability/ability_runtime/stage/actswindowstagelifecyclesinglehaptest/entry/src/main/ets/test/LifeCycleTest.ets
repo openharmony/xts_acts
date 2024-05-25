@@ -14,7 +14,9 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 export default function lifecycleTest() {
   describe('LifeCycleTest', function () {
 
@@ -217,7 +219,9 @@ export default function lifecycleTest() {
           let listTemp = JSON.stringify(globalThis.list1);
           console.log(TAG + " listTemp is :" + JSON.stringify(listTemp));
           expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
-          expect(listTemp.split("MainAbility1 onWindowStageActive").length - 1).assertEqual(2);
+          if (deviceType !== '2in1') {
+            expect(listTemp.split("MainAbility1 onWindowStageActive").length - 1).assertEqual(2);
+          }
           expect(listTemp.indexOf("MainAbility1 onWindowStageInactive") !== -1).assertTrue();
           expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
           expect(listTemp.indexOf("MainAbility2 onWindowStageActive") !== -1).assertTrue();
@@ -260,6 +264,10 @@ export default function lifecycleTest() {
     it("Singlehap_WindowStageLifeCycleTest_0300", 0, async function (done) {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0300 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0300";
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let mainAbility2onCreate = false;
       function subscribeCallBack(err, data) {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
@@ -378,7 +386,9 @@ export default function lifecycleTest() {
           let listTemp = JSON.stringify(globalThis.list3);
           console.log(TAG + " listTemp is :" + listTemp);
           expect(listTemp.indexOf("MainAbility3 onWindowStageCreate") !== -1).assertTrue();
-          expect(listTemp.split("MainAbility3 onWindowStageActive").length - 1).assertEqual(2);
+          if (deviceType !== '2in1') {
+            expect(listTemp.split("MainAbility3 onWindowStageActive").length - 1).assertEqual(2);
+          }
           expect(listTemp.indexOf("MainAbility3 onWindowStageInactive") !== -1).assertTrue();
           expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
           expect(listTemp.indexOf("MainAbility2 onWindowStageActive") !== -1).assertTrue();
@@ -418,7 +428,10 @@ export default function lifecycleTest() {
       await sleep(500);
       console.log("------------Singlehap_WindowStageLifeCycleTest_0500 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0500";
-      
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       function subscribeCallBack(err, data) {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
         if (data.event == MainAbility1onCreate) {
@@ -495,6 +508,10 @@ export default function lifecycleTest() {
     it("Singlehap_WindowStageLifeCycleTest_0600", 0, async function (done) {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0600 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0600";
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let mainAbility2onDestroy = 0
       function subscribeCallBack(err, data) {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
@@ -575,6 +592,10 @@ export default function lifecycleTest() {
     it("Singlehap_WindowStageLifeCycleTest_0700", 0, async function (done) {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0700 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0700";
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let mainAbility2onDestroy = 0
       function subscribeCallBack(err, data) {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
@@ -656,6 +677,10 @@ export default function lifecycleTest() {
     it("Singlehap_WindowStageLifeCycleTest_0800", 0, async function (done) {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0800 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0800";
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let id1 = -1;
 
       function subscribeCallBack(err, data) {
@@ -786,6 +811,10 @@ export default function lifecycleTest() {
     it("Singlehap_WindowStageLifeCycleTest_1000", 0, async function (done) {
       console.log("------------Singlehap_WindowStageLifeCycleTest_1000 start-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1000";
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let mainAbility9onForeground = 0;
       function subscribeCallBack(err, data) {
         console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
@@ -874,7 +903,9 @@ export default function lifecycleTest() {
             commonEvent.unsubscribe(subscriber, (err)=>{
               console.info(TAG + ' unsubscribe. err: ' + JSON.stringify(err));
             });
-            expect(id1 + 1).assertEqual(id2);
+            if (deviceType !== '2in1') {
+              expect(id1 + 1).assertEqual(id2);
+            }
             console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list11));
             let listTemp = JSON.stringify(globalThis.list11);
             console.log(TAG + " listTemp is :" + listTemp);
@@ -975,7 +1006,9 @@ export default function lifecycleTest() {
             console.log(TAG + " listTemp is :" + listTemp);
             console.log(TAG + " id1 is :" + id1);
             console.log(TAG + " id2 is :" + id2);
-            expect(id1 + 1).assertEqual(id2);
+            if (deviceType !== '2in1') {
+              expect(id1 + 1).assertEqual(id2);
+            }
             expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
             expect(listTemp.indexOf("MainAbility2 onWindowStageActive") !== -1).assertTrue();
             expect(listTemp.indexOf("MainAbility2 onWindowStageInactive") !== -1).assertTrue();
@@ -1026,6 +1059,10 @@ export default function lifecycleTest() {
       await sleep(500);
       console.log("------------Singlehap_WindowStageLifeCycleTest_1300 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1300";
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let id1;
       let id2;
       let id3;

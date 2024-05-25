@@ -376,4 +376,28 @@ export default class FlushData {
       console.info("Succeeded in flushing.");
     });
   }
+  static ResetPCS = async () => {
+    let Test = null;
+    let context = null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context, 'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('PCS', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'PCS'. Data: " + data);
+    });
+    promise = preferences.put('PCS', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'PCS'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
 }

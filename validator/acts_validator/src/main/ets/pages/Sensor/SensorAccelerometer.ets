@@ -63,7 +63,7 @@ struct SensorAccelerometer {
             if (this.nextX !== this.dataX || this.nextY !== this.dataY || this.nextY !== this.dataY) {
               this.Vue = true;
             }
-          }, 500)
+          }, 5000)
         }, { interval: 100000000 });
       } catch (error) {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;

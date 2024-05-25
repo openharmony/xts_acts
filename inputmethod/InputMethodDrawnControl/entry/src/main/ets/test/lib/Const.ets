@@ -14,16 +14,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const INVALID_OBJ_NULL:any = {};
-export const INVALID_TYPE_NUMBER_123:any = 123;
-export const INVALID_TYPE_STRING_123:any = '123';
-export const INVALID_STRING_NULL:any = '';
-export const INVALID_TYPE_STRING_A:any = 'a';
-export const INVALID_NULL:any = null;
-export const INVALID_ENUM_N1:any = -1;
-export const INVALID_ENUM_2:any = 2;
+export const INVALID_OBJ_NULL: ESObject = {};
+
+export const INVALID_TYPE_NUMBER_123: ESObject = 123;
+
+export const INVALID_TYPE_STRING_123: ESObject = '123';
+
+export const INVALID_STRING_NULL: ESObject = '';
+
+export const INVALID_TYPE_STRING_A: ESObject = 'a';
+
+export const INVALID_NULL: ESObject = null;
+
+export const INVALID_ENUM_N1: ESObject = -1;
+
+export const INVALID_ENUM_2: ESObject = 2;
+
 //----------------------------------------
 export const INVALID_INPUT_PARAMETER = 401;
+
 export const INVALID_INPUT_METHOD_CLIENT_DETACHED = 12800009;
 
 

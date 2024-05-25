@@ -9,7 +9,8 @@
     "kits": [
         {
             "test-file-name": [
-                "validator.hap"
+                "validator.hap",
+                "UninstallTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": false
@@ -25,7 +26,7 @@
             "shell": [
                 {
                     "name": "shell",
-                    "value": "SP_daemon"
+                    "value": "\"SP_daemon &\""
                 },
                 {
                     "name": "shell",
@@ -52,17 +53,8 @@
                 "MPEG448000321.m4a->/storage/media/100/local/files/Audios/ValidatorData/MPEG448000321.m4a",
                 "OGG480001.ogg->/storage/media/100/local/files/Audios/ValidatorData/OGG480001.ogg",
                 "vorbis48000321.wav->/storage/media/100/local/files/Audios/ValidatorData/vorbis48000321.wav",
-                "h263Mp3.mkv->/storage/media/100/local/files/Videos/ValidatorData/h263Mp3.mkv",
-                "h263Mp3.mp4->/storage/media/100/local/files/Videos/ValidatorData/h263Mp3.mp4",
-                "h263Mp3.ts->/storage/media/100/local/files/Videos/ValidatorData/h263Mp3.ts",
                 "h264Mp3.mkv->/storage/media/100/local/files/Videos/ValidatorData/h264Mp3.mkv",
-                "h264Mp3.mp4->/storage/media/100/local/files/Videos/ValidatorData/h264Mp3.mp4",
-                "mpeg2AAC.mp4->/storage/media/100/local/files/Videos/ValidatorData/mpeg2AAC.mp4",
-                "mpeg2AAC.ts->/storage/media/100/local/files/Videos/ValidatorData/mpeg2AAC.ts",
-                "mpeg2Mp3.mkv->/storage/media/100/local/files/Videos/ValidatorData/mpeg2Mp3.mkv",
-                "mpeg4AAC.mkv->/storage/media/100/local/files/Videos/ValidatorData/mpeg4AAC.mkv",
-                "mpeg4AAC.ts->/storage/media/100/local/files/Videos/ValidatorData/mpeg4AAC.ts",
-                "VP8VORBIS.webm->/storage/media/100/local/files/Videos/ValidatorData/VP8VORBIS.webm"
+                "h264Mp3.mp4->/storage/media/100/local/files/Videos/ValidatorData/h264Mp3.mp4"
             ],
             "uninstall": false
         },

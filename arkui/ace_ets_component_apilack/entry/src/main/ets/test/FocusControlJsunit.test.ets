@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
@@ -21,8 +21,8 @@ export default function focusControlJsunit() {
   describe('focusControlTest', () => {
     beforeEach(async () => {
       console.info("focusControlTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/focusControl',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/focusControl',
       }
       // let result = '';
       try {
@@ -48,10 +48,10 @@ export default function focusControlJsunit() {
     it('testFocusOnTouch01', 0, async () => {
       console.info('[testFocusOnTouch01] START');
       await Utils.sleep(1000);
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         if (eventData != null) {
           console.info("[testFocusOnTouch01] get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.value).assertEqual('FocusOnTouchGrpBtn')
+          expect(eventData.data?.value).assertEqual('FocusOnTouchGrpBtn')
         }
       }
       let innerEvent: events_emitter.InnerEvent = {
@@ -70,10 +70,10 @@ export default function focusControlJsunit() {
     it('testFocusOnTouch02', 0, async () => {
       console.info('[testFocusOnTouch02] START');
       await Utils.sleep(1000);
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         if (eventData != null) {
           console.info("[testFocusOnTouch02] get event state result is: " + JSON.stringify(eventData))
-          expect(eventData.data.value).assertEqual('FocusOnTouchBtn1')
+          expect(eventData.data?.value).assertEqual('FocusOnTouchBtn1')
         }
       }
       let innerEvent: events_emitter.InnerEvent = {
@@ -92,10 +92,10 @@ export default function focusControlJsunit() {
     it('testFocusOnTouch03', 0, async () => {
       console.info('[testFocusOnTouch03] START');
       await Utils.sleep(1000);
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         if (eventData != null) {
           console.info("[testFocusOnTouch03] get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.value).assertEqual('FocusOnTouchBtn2')
+          expect(eventData.data?.value).assertEqual('FocusOnTouchBtn2')
         }
       }
       let innerEvent: events_emitter.InnerEvent = {
@@ -114,10 +114,10 @@ export default function focusControlJsunit() {
     it('testFocusOnTouch04', 0, async () => {
       console.info('[testFocusOnTouch04] START');
       await Utils.sleep(1000);
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         if (eventData != null) {
           console.info("[testFocusOnTouch04] get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.value).assertEqual('OnTouchBtn3')
+          expect(eventData.data?.value).assertEqual('OnTouchBtn3')
         }
       }
       let innerEvent: events_emitter.InnerEvent = {
@@ -136,10 +136,10 @@ export default function focusControlJsunit() {
     it('testFocusOnTouch05', 0, async () => {
       console.info('[testFocusOnTouch05] START');
       await Utils.sleep(1000);
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         if (eventData != null) {
           console.info("[testFocusOnTouch05] get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.value).assertEqual('OnTouchBtn4')
+          expect(eventData.data?.value).assertEqual('OnTouchBtn4')
         }
       }
       let innerEvent: events_emitter.InnerEvent = {
@@ -158,10 +158,10 @@ export default function focusControlJsunit() {
     it('testDefaultFocus06', 0, async () => {
       console.info('[testDefaultFocus06] START');
       await Utils.sleep(1000);
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         if (eventData != null) {
           console.info("[testDefaultFocus06] get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.value).assertEqual('defaultFocus')
+          expect(eventData.data?.value).assertEqual('defaultFocus')
         }
       }
       let innerEvent: events_emitter.InnerEvent = {

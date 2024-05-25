@@ -1370,6 +1370,10 @@ static napi_value OHAIGetAllNNRTDeviceDescsOne(napi_env env, napi_callback_info)
     napi_value result = nullptr;
     size_t num = 0;
     auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (descs == nullptr) {
+        napi_create_int32(env, descs == nullptr, &result);
+        return result;
+    }
     napi_create_int32(env, descs != nullptr, &result);
     return result;
 }
@@ -1379,6 +1383,10 @@ static napi_value OHAIDestroyAllNNRTDeviceDescsOne(napi_env env, napi_callback_i
     napi_value result = nullptr;
     size_t num = 0;
     auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        napi_create_int32(env, desc == nullptr, &result);
+        return result;
+    }
     NAPI_ASSERT(env, desc != nullptr, "desc Create Error");
     OH_AI_DestroyAllNNRTDeviceDescs(&desc);
     napi_create_int32(env, desc == nullptr, &result);
@@ -1390,6 +1398,10 @@ static napi_value OHAIGetDeviceIdFromNNRTDeviceDescOne(napi_env env, napi_callba
     napi_value result = nullptr;
     size_t num = 0;
     auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        napi_create_int32(env, desc == nullptr, &result);
+        return result;
+    }
     NAPI_ASSERT(env, desc != nullptr, "desc Create Error");
     auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
     napi_create_int32(env, id != 0, &result);
@@ -1402,6 +1414,10 @@ static napi_value OHAIGetNameFromNNRTDeviceDescOne(napi_env env, napi_callback_i
     napi_value result = nullptr;
     size_t num = 0;
     auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        napi_create_int32(env, desc == nullptr, &result);
+        return result;
+    }
     NAPI_ASSERT(env, desc != nullptr, "desc Create Error");
     auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
     napi_create_int32(env, name != nullptr, &result);
@@ -1415,6 +1431,10 @@ static napi_value OHAIGetTypeFromNNRTDeviceDescOne(napi_env env, napi_callback_i
     size_t num = 0;
     int mix = 3;
     auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        napi_create_int32(env, desc == nullptr, &result);
+        return result;
+    }
     NAPI_ASSERT(env, desc != nullptr, "desc Create Error");
     auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
     napi_create_int32(env, ((0 <= type) && (type <= mix)), &result);
@@ -1427,6 +1447,10 @@ static napi_value OHAICreateNNRTDeviceInfoByNameOne(napi_env env, napi_callback_
     napi_value result = nullptr;
     size_t num = 0;
     auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        napi_create_int32(env, desc == nullptr, &result);
+        return result;
+    }
     NAPI_ASSERT(env, desc != nullptr, "desc Create Error");
     auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
     NAPI_ASSERT(env, name != nullptr, "name Create Error");
@@ -1442,6 +1466,10 @@ static napi_value OHAICreateNNRTDeviceInfoByTypeOne(napi_env env, napi_callback_
     size_t num = 0;
     int mix = 3;
     auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        napi_create_int32(env, desc == nullptr, &result);
+        return result;
+    }
     NAPI_ASSERT(env, desc != nullptr, "desc Create Error");
     auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
     NAPI_ASSERT(env, ((0 <= type) && (type <= mix)), "type Create Error");
@@ -1468,6 +1496,10 @@ static napi_value OHAIGetElementOfNNRTDeviceDescsOne(napi_env env, napi_callback
     napi_value result = nullptr;
     size_t num = 0;
     auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        napi_create_int32(env, desc == nullptr, &result);
+        return result;
+    }
     NAPI_ASSERT(env, desc != nullptr, "desc Create Error");
     for (size_t i = 0; i < num; i++) {
         auto getDesc = OH_AI_GetElementOfNNRTDeviceDescs(desc, i);

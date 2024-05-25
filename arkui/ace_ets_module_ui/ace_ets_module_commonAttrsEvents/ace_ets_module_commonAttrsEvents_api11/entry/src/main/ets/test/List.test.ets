@@ -18,6 +18,7 @@ import onChildTouchTest from './onChildTouchTest/onChildTouchTest.test';
 import setCursorTest from './cursorControlTest/setCursorTest.test';
 import monopolizeTest from './monopolizeEventsTest/monopolizeTest.test';
 import assemblyCallbackTest from './assemblyCallback.test';
+import sourceTypeJsunit from './SourceTypeJsunit.test';
 
 export default function testsuite() {
   assemblyCallbackTest();
@@ -26,4 +27,5 @@ export default function testsuite() {
   onChildTouchTest();
   setCursorTest();
   monopolizeTest();
+  sourceTypeJsunit();
 }

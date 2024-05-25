@@ -21,7 +21,6 @@ cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/main
 cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/main/src/fraction-mandatory-tests.txt" "suites/acts/acts/testcases/vulkandata/vk-default"
 cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/main/src/master.txt" "suites/acts/acts/testcases/vulkandata/vk-default"
 cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/main/src/test-issues.txt" "suites/acts/acts/testcases/vulkandata/vk-default"
-cp -rf "xts/acts/deqp_vk_execute" "suites/acts/acts/testcases/vulkandata"
 cp -rf "xts/acts/deqp_vk_execute" "suites/acts/acts/testcases/vulkandata/vk-default"
 
 tar czvf "vulkandata.tar.gz" -C "suites/acts/acts/testcases/vulkandata" "."

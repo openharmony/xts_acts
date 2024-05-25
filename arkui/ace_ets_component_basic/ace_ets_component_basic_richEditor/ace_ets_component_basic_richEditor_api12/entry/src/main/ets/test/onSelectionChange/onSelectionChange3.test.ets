@@ -71,7 +71,7 @@ export default function onSelectionChange3() {
       await CommonFunc.sleep(1000);
       let text1_2 = getInspectorByKey('onSelectionChange3_text1');
       let Obj1_2 = JSON.parse(text1_2);
-      expect(Obj1_2.$attrs.content).assertEqual('2');
+      expect(Obj1_2.$attrs.content).assertEqual('1');
       await CommonFunc.sleep(2500);
 
       await richEditor.longClick();
@@ -81,7 +81,7 @@ export default function onSelectionChange3() {
       await CommonFunc.sleep(1000);
       let text1_3 = getInspectorByKey('onSelectionChange3_text1');
       let Obj1_3 = JSON.parse(text1_3);
-      expect(Obj1_3.$attrs.content).assertEqual('4');
+      expect(Obj1_3.$attrs.content).assertEqual('2');
 
       console.info('[onSelectionChange3_0100] END');
       done();

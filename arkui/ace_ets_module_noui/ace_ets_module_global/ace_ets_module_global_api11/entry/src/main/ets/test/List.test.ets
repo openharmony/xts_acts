@@ -14,6 +14,34 @@
  */
 
 import globalJsunit from './globalTest/GlobalJsunit.test';
+import ResourceColor from './ResourceTest/ResourceColor.test.ets'
+import ResourceFloat from './ResourceTest/ResourceFloat.test.ets'
+import ResourceInteger from './ResourceTest/ResourceInteger.test.ets'
+import ResourcePlural from './ResourceTest/ResourcePlural.test.ets'
+import ResourceStrarray from './ResourceTest/ResourceStrarray.test.ets'
+import ResourceString from './ResourceTest/ResourceString.test.ets'
+
+import appStorageJsunit from './AppStorageTest/AppStorageJsunit.test';
+import basicJsunit from './BasicTest/BasicJsunit.test';
+import systemAppJsunit from './AppStorageTest/SystemAppJsunit.test';
+import webEditTextJsunit from './webTest/web.test.ets';
+
+import globalJsunit1 from './globalTest/global1.test';
+import webGetTitleJsunit from './webTest/web2.test';
+import configurationJsunit from './configuration/ConfigurationJsunit.test.ets';
 export default function testsuite() {
   globalJsunit();
+  ResourceColor();
+  ResourceFloat();
+  ResourceInteger();
+  ResourcePlural();
+  ResourceStrarray();
+  ResourceString();
+  appStorageJsunit()
+    basicJsunit()
+    systemAppJsunit()
+    webEditTextJsunit()
+  globalJsunit1()
+  webGetTitleJsunit()
+    configurationJsunit();
 }

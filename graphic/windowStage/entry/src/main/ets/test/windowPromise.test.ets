@@ -48,30 +48,18 @@ async function sleep(time: number) {
 }
 
 export default function windowPromiseTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
-  console.log('windowTest context: ' + JSON.stringify(context))
-  console.log('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
   describe('windowPromise_test', () => {
     console.log('describe window_api_test start!!!')
+    let WindowStage: ohosWindow.WindowStage;
     const TRUE_FLAG: boolean = true;
     let commonRGBColorArr: Array<string> = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(255,255,255)', 'rgb(0,0,0)', 'rgb(249,0,230)', 'rgb(102,102,102)', 'rgb(255,247,0)'];
     let commonNUMBERColorArr: Array<string> = ['#00FF0000', '#0000FF00', '#000000FF', '#00FFFFFF', '#00000000', '#00F900E6', '#00666666', '#00FFF700'];
     let commonKEYColorArr: Array<string> = ['red', 'green', 'blue', 'white', 'black', 'pink', 'grey', 'yellow'];
-    let systemWindowTypeArr: Array<string> = [];
-    let systemWindowTypeDicArr: Array<string> = [];
-    let systemWindowTypeDic: Record<string, number> = {
-      'TYPE_FLOAT': 8,
-    }
-    let currentDeviceIsRk = false;
     let currentDeviceIsPC = false;
     beforeAll(() => {
       let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
       currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
       console.info('the value of the deviceType is :' + deviceInfo.deviceType);
-      console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
-      systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
-      console.log('jsUnittest beforeAll systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
-      systemWindowTypeArr = Object.keys(systemWindowTypeDic);
     })
 
     /**
@@ -83,7 +71,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.level     : Level3
      */
     it('testListener_Sys_AvoidAreaChange_Promise', 0, async (done: Function) => {
-      await sleep(1000)
+      await sleep(800)
       let caseName: string = 'testListener_Sys_AvoidAreaChange_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       let listenerOnFlag: boolean = false;
@@ -121,7 +109,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
       listenerOnFlag = true;
-      await sleep(1000);
+      await sleep(800);
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
@@ -137,57 +125,41 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.level     : Level3
      */
     it('testListener_windowSizeChange', 0, async (done: Function) => {
-      await sleep(1000)
+      await sleep(900)
       let caseName: string = 'testListener_windowSizeChange';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      let wndId = 'listenerTest2';
-      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
-      let changedModel = 102;
-      let resizeValue = 200;
+      let resizeValue = 1000;
       console.log(msgStr + 'begin');
       let flag = false;
       let tempWindow: ohosWindow.Window | undefined = undefined;
-      try {
-        await ohosWindow.create(context, wndId, baseType).then((data: ohosWindow.Window) => {
-          tempWindow = data
-          console.log(msgStr + 'ohosWindow.create data:' + JSON.stringify(data));
-        }).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create ' + baseType, done);
-        });
-        console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWindow);
-        expect(!!tempWindow).assertTrue();
-      } catch (err) {
-        let e: BusinessError = err as BusinessError;
-        console.log(msgStr + 'ohosWindow.create catch err:' + JSON.stringify(e));
-      }
-      await sleep(1000);
-      if (tempWindow != undefined) {
-        let tempWnd: ohosWindow.Window = tempWindow as ohosWindow.Window;
-        tempWnd.on('windowSizeChange', async (sizeData) => {
-          console.log(msgStr + 'tempWnd.on windowSizeChange, systemBatData : ' + JSON.stringify(sizeData));
-          if (flag) {
-            expect(!!sizeData).assertTrue();
-            tempWnd.off('windowSizeChange');
-            await tempWnd.destroy();
-            done();
-          }
-        })
-        await tempWnd.show().catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.show', done);
-        });
-        console.log(msgStr + 'tempWnd.show success');
-        await tempWnd.setWindowMode(changedModel).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setWindowMode ' + changedModel, done);
-        });
-        console.log(msgStr + 'tempWnd.setWindowMode ' + changedModel + ' success');
-        flag = true
-        await tempWnd.resetSize(resizeValue, resizeValue).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ')', done);
-        });
-        await sleep(1500);
-        console.log(msgStr + 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ') success');
-      }
-
+      tempWindow = await windowStage.createSubWindow('testShowWindowTest_Callback_Form').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWindow).assertTrue();
+      await sleep(900);
+      let tempWnd: ohosWindow.Window = tempWindow as ohosWindow.Window;
+      tempWnd.on('windowSizeChange', async (sizeData) => {
+        console.log(msgStr + 'tempWnd.on windowSizeChange, systemBatData : ' + JSON.stringify(sizeData));
+        if (flag) {
+          expect(!!sizeData).assertTrue();
+          tempWnd.off('windowSizeChange');
+          await tempWnd.destroy();
+          done();
+        }
+      })
+      await tempWnd.show().catch((err: BusinessError) => {
+        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.show', done);
+      });
+      console.log(msgStr + 'tempWnd.show success');
+      flag = true
+      await tempWnd.resetSize(resizeValue, resizeValue).catch((err: BusinessError) => {
+        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ')', done);
+      });
+      await sleep(900);
+      console.log(msgStr + 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ') success');
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0740
@@ -198,7 +170,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.level     : Level3
      */
     it('testListener_SystemAvoidAreaChange_Off', 0, async (done: Function) => {
-      await sleep(1000)
+      await sleep(800)
       let caseName: string = 'testListener_SystemAvoidAreaChange_Off';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin 1');
@@ -249,56 +221,44 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.level     : Level3
      */
     it('testListener_windowSizeChange_Off', 0, async (done: Function) => {
-      await sleep(1000)
+      await sleep(900)
       let caseName: string = 'testListener_windowSizeChange_Off';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      let wndId: string = 'listenerTest4';
-      let baseType: number = ohosWindow.WindowType.TYPE_FLOAT;
-      let changedModel: number = 102;
       let listenerOffFlag: boolean = false;
       console.log(msgStr + 'begin');
-      let createWindowObj: ohosWindow.Configuration = {
-        name: wndId, windowType: baseType, ctx: context
-      }
-      console.log(msgStr + 'ohosWindow.create createWindowObj:' + JSON.stringify(createWindowObj));
       let tempWnd: ohosWindow.Window | undefined = undefined;
-      await ohosWindow.create(context, wndId, baseType).then((data: ohosWindow.Window) => {
-        console.log(msgStr + 'ohosWindow.create data:' + JSON.stringify(data));
-        tempWnd = data
-        console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
-        expect(!!tempWnd).assertTrue();
-      }).catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create ' + baseType, done);
+      tempWnd = await await windowStage.createSubWindow('testShowWindowTest_Callback_Form').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
-      if (tempWnd != undefined) {
-        let tempWindow: ohosWindow.Window = tempWnd as ohosWindow.Window
-        await tempWindow.show().catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.show', done);
-        });
-        console.log(msgStr + 'tempWnd.show success');
-        await tempWindow.setWindowMode(changedModel).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setWindowMode ' + changedModel, done);
-        });
-        console.log(msgStr + 'tempWnd.setWindowMode ' + changedModel + ' success');
-        await sleep(1000);
-        tempWindow.on('windowSizeChange', async (sizeData: ohosWindow.Size) => {
-          console.log(msgStr + 'tempWnd.on windowSizeChange, sizeData : ' + JSON.stringify(sizeData));
-          expect(sizeData.width === 100).assertTrue();
-          expect(sizeData.height === 100).assertTrue();
-          tempWindow.off('windowSizeChange');
-          await tempWindow.destroy();
-          done();
-        })
-        console.log(msgStr + 'tempWnd.on windowSizeChange finished');
-        await tempWindow.resetSize(100, 100).then(() => {
-          listenerOffFlag = true;
-          console.log(msgStr + 'listenerOffFlag:' + listenerOffFlag);
-        }).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.resetSize(100, 100)', done);
-        });
-        console.log(msgStr + 'tempWnd.resetSize(100, 100) success');
-        await sleep(1500)
-      }
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      let tempWindow: ohosWindow.Window = tempWnd as ohosWindow.Window
+      await tempWindow.show().catch((err: BusinessError) => {
+        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.show', done);
+      });
+      console.log(msgStr + 'tempWnd.show success');
+      await sleep(800);
+      await sleep(800);
+      tempWindow.on('windowSizeChange', async (sizeData: ohosWindow.Size) => {
+        console.log(msgStr + 'tempWnd.on windowSizeChange, sizeData : ' + JSON.stringify(sizeData));
+        expect(sizeData.width === 1000).assertTrue();
+        expect(sizeData.height === 1000).assertTrue();
+        tempWindow.off('windowSizeChange');
+        await tempWindow.destroy();
+        done();
+      })
+      console.log(msgStr + 'tempWnd.on windowSizeChange finished');
+      await tempWindow.resetSize(1000, 1000).then(() => {
+        listenerOffFlag = true;
+        console.log(msgStr + 'listenerOffFlag:' + listenerOffFlag);
+      }).catch((err: BusinessError) => {
+        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.resetSize(100, 100)', done);
+      });
+      console.log(msgStr + 'tempWnd.resetSize(100, 100) success');
+      await sleep(800)
+      await sleep(800)
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1310
@@ -326,12 +286,12 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setFullScreen(true)', done);
       });
       console.log(msgStr + 'tempWnd.setFullScreen(true) success');
-
+      await sleep(900);
       await tempWnd.setSystemBarEnable(['navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success');
-      await sleep(500);
+      await sleep(900);
       await tempWnd.setSystemBarEnable(['status']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
@@ -368,7 +328,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success');
-      await sleep(1000);
+      await sleep(800);
       await tempWnd.setSystemBarEnable(['navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([navigation])', done);
       });
@@ -406,7 +366,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      await sleep(500);
+      await sleep(900);
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
@@ -444,7 +404,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(500);
+      await sleep(900);
       await tempWnd.setSystemBarEnable([]).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
@@ -521,7 +481,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(500);
+      await sleep(900);
       let loopCount = commonRGBColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor = commonRGBColorArr[i];
@@ -532,6 +492,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: false,
           navigationBarContentColor: tempColor,
+          enableStatusBarAnimation: false,
+          enableNavigationBarAnimation: false,
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
@@ -574,7 +536,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(500);
+      await sleep(900);
       let loopCount: number = commonNUMBERColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor: string = commonNUMBERColorArr[i];
@@ -585,6 +547,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: true,
           navigationBarContentColor: tempColor,
+          enableStatusBarAnimation: false,
+          enableNavigationBarAnimation: false,
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
@@ -627,7 +591,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(500);
+      await sleep(900);
       let loopCount = commonKEYColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor = commonKEYColorArr[i];
@@ -638,6 +602,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: false,
           navigationBarContentColor: tempColor,
+          enableStatusBarAnimation: false,
+          enableNavigationBarAnimation: false,
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
@@ -662,29 +628,19 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testCreate_App_Type_Win_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let loopCount = systemWindowTypeDicArr.length;
-      console.log(msgStr + 'loopCount: ' + loopCount);
-      for (let i = 0; i < loopCount; i++) {
-        let tempType: number = systemWindowTypeDic[systemWindowTypeDicArr[i]];
-        let windId: string = 'createTest1' + i;
-        console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
-        let tempWnd: ohosWindow.Window | undefined = undefined;
-        await ohosWindow.create(context, windId, tempType).then(
-          (data) => {
-            tempWnd = data;
-          }
-        ).catch((err: BusinessError) => {
-          console.log(msgStr + 'ohosWindow.create ' + tempType + 'catched, err: ' + JSON.stringify(err));
-          unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create ' + tempType, done);
-        });
-        if (tempWnd != undefined) {
-          let tempWindow: ohosWindow.Window = tempWnd as ohosWindow.Window
-          console.log(msgStr + 'ohosWindow.create ' + tempType + 'finished, wnd: ' + tempWindow);
-          expect(!!tempWindow).assertTrue();
-          await tempWindow.destroy();
-        }
-      }
-      console.log(msgStr + 'done ');
+      let tempType: number = ohosWindow.WindowType.TYPE_DIALOG;
+      let windId: string = 'testCreate_App_Type_Win_Promise';
+      let tempWnd: ohosWindow.Window | undefined = undefined;
+      await ohosWindow.create(context, windId, tempType).then((data) => {
+        tempWnd = data;
+      }).catch((err: BusinessError) => {
+        console.log(msgStr + 'ohosWindow.create ' + tempType + 'catched, err: ' + JSON.stringify(err));
+        unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create ' + tempType, done);
+      });
+      let tempWindow: ohosWindow.Window = tempWnd as ohosWindow.Window
+      console.log(msgStr + 'ohosWindow.create ' + tempType + 'finished, wnd: ' + tempWindow);
+      expect(!!tempWindow).assertTrue();
+      await tempWindow.destroy();
       done();
     })
     /**
@@ -699,52 +655,28 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testCreate_Sys_Type_Win_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let loopCount = systemWindowTypeArr.length;
-      console.log(msgStr + ' loopCount: ' + loopCount);
-      let n = 0
-      for (let i = 0; i < loopCount; i++) {
-        let tempType: number = ohosWindow.WindowType.TYPE_FLOAT;
-        let windId = 'createTest2' + i;
-        console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
-        let createData: ohosWindow.Window | undefined = undefined;
-        try {
-          await ohosWindow.create(context, windId, tempType).then((data: ohosWindow.Window) => {
-            createData = data
-            expect(!!createData).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
-            unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create ' + tempType, done);
-            return;
-          })
-        }
-        catch (err) {
-          console.log(msgStr + 'ohosWindow.create catch err' + JSON.stringify(err));
-        }
-        if (createData != undefined) {
-          let tempWnd: ohosWindow.Window = createData as ohosWindow.Window;
-          console.log(msgStr + 'ohosWindow.create ' + tempType + ' wnd: ' + tempWnd);
-          let proData: ohosWindow.WindowProperties | void = await tempWnd.getProperties()
-            .catch((err: BusinessError) => {
-              console.log(msgStr + 'tempWnd.getProperties err' + JSON.stringify(err));
-              unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.getProperties', done);
-              console.log(msgStr + 'tempWnd.getProperties err&&err.code' + JSON.stringify(err));
-            })
-          expect(!!proData).assertTrue();
-          expect((proData as ohosWindow.WindowProperties).type == tempType).assertTrue();
-          await tempWnd.destroy();
-          console.log(msgStr + 'n：' + n);
-          if ((proData as ohosWindow.WindowProperties).type == tempType) n++
-          console.log(msgStr + 'n++：' + n);
-          console.log(msgStr + 'i：' + i);
-          if (i + 1 == loopCount) {
-            if (n === loopCount) {
-              expect(true).assertTrue();
-            } else {
-              expect(true).assertFail();
-            }
-          }
-        }
+      let tempType: number = ohosWindow.WindowType.TYPE_DIALOG;
+      let windId = 'testCreate_Sys_Type_Win_Promise';
+      let createData: ohosWindow.Window | undefined = undefined;
+      try {
+        createData = await ohosWindow.create(context, windId, tempType).catch((err: BusinessError) => {
+          console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
+          unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create ' + tempType, done);
+        })
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.create catch err' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       }
+      expect(!!createData).assertTrue();
+      let tempWnd: ohosWindow.Window = createData as ohosWindow.Window;
+      let proData: ohosWindow.WindowProperties | void = await tempWnd.getProperties().catch((err: BusinessError) => {
+        console.log(msgStr + 'tempWnd.getProperties err' + JSON.stringify(err));
+        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.getProperties', done);
+      })
+      expect(!!proData).assertTrue();
+      expect((proData as ohosWindow.WindowProperties).type == tempType).assertTrue();
+      await tempWnd.destroy();
       done();
     })
     /**
@@ -782,7 +714,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       console.log(msgStr + 'begin');
       let windowId: string = 'sameids'
       let ohosData: ohosWindow.Window | undefined = undefined;
-      await ohosWindow.create(context, windowId, ohosWindow.WindowType.TYPE_FLOAT).then(
+      await ohosWindow.create(context, windowId, ohosWindow.WindowType.TYPE_DIALOG).then(
         (data) => {
           ohosData = data;
         }).catch((err: BusinessError) => {
@@ -812,25 +744,14 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
     it('testLoadContent_Exist_Create_SysWin_Promise', 0, async (done: Function) => {
       let caseName: string = 'testLoadContent_Exist_Create_SysWin_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      let baseWndType: number = ohosWindow.WindowType.TYPE_FLOAT;
-      let windowId: string = 'loadContentTest1';
       console.log(msgStr + 'begin');
-      let createWindowObj: ohosWindow.Configuration = {
-        name: windowId, windowType: baseWndType, ctx: context
-      }
       let tempWnd: ohosWindow.Window | undefined = undefined;
-      try {
-        await ohosWindow.createWindow(createWindowObj).then((data: ohosWindow.Window) => {
-          tempWnd = data
-          console.log(msgStr + 'ohosWindow.create ' + baseWndType + '  , wnd: ' + tempWnd);
-        }).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create', done);
-        });
-      } catch (err) {
-        console.log(msgStr + 'ohosWindow.create catch err:' + JSON.stringify(err));
+      tempWnd = await await windowStage.createSubWindow('testLoadContent_Exist_Create_SysWin_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
-      }
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       let tempWindow: ohosWindow.Window = tempWnd as ohosWindow.Window
       expect(!!tempWindow).assertTrue();
       console.log(msgStr + 'tempWnd.loadContent start');
@@ -857,48 +778,36 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
     it('testLoadContent_Para_Is_Null_Create_SysWin_Promise', 0, async (done: Function) => {
       let caseName: string = 'testLoadContent_Para_Is_Null_Create_SysWin_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      let baseWndType: number = ohosWindow.WindowType.TYPE_FLOAT;
-      let windowId: string = 'loadContentTest2';
       console.log(msgStr + 'begin');
-      let createWindowObj: ohosWindow.Configuration = {
-        name: windowId, windowType: baseWndType, ctx: context
-      }
       let tempWnd: ohosWindow.Window | undefined = undefined;
+      tempWnd = await windowStage.createSubWindow('testLoadContent_Para_Is_Null_Create_SysWin_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      let tempWindows: ohosWindow.Window = tempWnd as ohosWindow.Window
+      console.log(msgStr + 'tempWnd.loadContent start');
+      await tempWindows.destroy();
+      let errFlag = false;
+      let loadContentData: void;
       try {
-        await ohosWindow.createWindow(createWindowObj).then((data: ohosWindow.Window) => {
-          tempWnd = data
-          console.log(msgStr + 'ohosWindow.create ' + baseWndType + ' wnd: ' + tempWnd);
-          expect(!!tempWnd).assertTrue();
+        await tempWindows.loadContent(null).then((data: void) => {
+          loadContentData = data;
         }).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create', done);
+          errFlag = true;
+          expectedError(TRUE_FLAG, err, caseName, 'tempWnd.loadContent', done, 1003);
+          console.log(msgStr + 'tempWnd.loadContent(null)' + JSON.stringify(err));
         });
-      }
-      catch (err) {
-        console.log(msgStr + 'ohosWindow.createWindow catch err:' + JSON.stringify(err));
-      }
-      if (tempWnd != undefined) {
-        let tempWindows: ohosWindow.Window = tempWnd as ohosWindow.Window
-        console.log(msgStr + 'tempWnd.loadContent start');
-        await tempWindows.destroy();
-        let errFlag = false;
-        let loadContentData: void;
-        try {
-          await tempWindows.loadContent(null).then((data: void) => {
-            loadContentData = data;
-          }).catch((err: BusinessError) => {
-            errFlag = true;
-            expectedError(TRUE_FLAG, err, caseName, 'tempWnd.loadContent', done, 1003);
-            console.log(msgStr + 'tempWnd.loadContent(null)' + JSON.stringify(err));
-          });
-          console.log(msgStr + 'tempWnd.loadContent loadContentData:' + JSON.stringify(loadContentData));
-          if (!errFlag) {
-            console.log(msgStr + 'should report err');
-            expect(TRUE_FLAG).assertFail();
-            done();
-          }
-        } catch (err) {
-          console.log(msgStr + 'tempWnd.loadContent(null) catch err:' + JSON.stringify(err));
+        console.log(msgStr + 'tempWnd.loadContent loadContentData:' + JSON.stringify(loadContentData));
+        if (!errFlag) {
+          console.log(msgStr + 'should report err');
+          expect(TRUE_FLAG).assertFail();
+          done();
         }
+      } catch (err) {
+        console.log(msgStr + 'tempWnd.loadContent(null) catch err:' + JSON.stringify(err));
       }
     })
 
@@ -1073,99 +982,50 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetPrivacyMode_SppSubWin_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin ');
-      let mainWnd: ohosWindow.Window;
       let windowData: ohosWindow.Window | undefined = undefined;
-      await ohosWindow.create(context, 'setPrivacyModeTest1', ohosWindow.WindowType.TYPE_FLOAT)
-        .then((data: ohosWindow.Window) => {
-          windowData = data;
-        }).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create', done);
-        })
-      if (windowData != undefined) {
-        let wndData: ohosWindow.Window = windowData as ohosWindow.Window
-        expect(!!wndData).assertTrue();
-        console.log(msgStr + 'window.create success windowData' + wndData);
-        mainWnd = wndData;
-        let firstProperties: ohosWindow.WindowProperties | void = await mainWnd.getProperties()
-          .catch((err: BusinessError) => {
-            unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.getProperties', done);
-          });
-        let firstPro: ohosWindow.WindowProperties = firstProperties as ohosWindow.WindowProperties;
-        console.log(msgStr + 'mainWnd.getProperties firstPro=' + JSON.stringify(firstPro));
-        expect(!firstPro.isPrivacyMode).assertTrue();
-        let firstPrivacyMode: void = await mainWnd.setPrivacyMode(true).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.setPrivacyMode', done);
-          console.log(msgStr + 'mainWnd.setPrivacyMode(true) err=' + JSON.stringify(err));
-        })
-        expect(!Boolean(firstPrivacyMode)).assertTrue();
-        console.log(msgStr + 'mainWnd.setPrivacyMode true firstPrivacyMode=' + JSON.stringify(firstPrivacyMode));
-        let tempSecondPro: ohosWindow.WindowProperties | void = await mainWnd.getProperties()
-          .catch((err: BusinessError) => {
-            unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.getProperties', done);
-          });
-        let secondPro: ohosWindow.WindowProperties = tempSecondPro as ohosWindow.WindowProperties;
-        console.log(msgStr + 'mainWnd.getProperties secondPro:' + JSON.stringify(secondPro.isPrivacyMode));
-        expect(secondPro.isPrivacyMode).assertTrue();
-        let secondPrivacyMode: void = await mainWnd.setPrivacyMode(false).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.setPrivacyMode', done);
-          console.log(msgStr + 'mainWnd.setPrivacyMode(false) err=' + JSON.stringify(err));
-        })
-        expect(!Boolean(secondPrivacyMode)).assertTrue();
-        console.log(msgStr + 'mainWnd.setPrivacyMode(false) secondPrivacyMode=' + JSON.stringify(secondPrivacyMode));
-        let tempLastPro: ohosWindow.WindowProperties | void = await mainWnd.getProperties()
-          .catch((err: BusinessError) => {
-            unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.getProperties', done);
-          });
-        let lastPro: ohosWindow.WindowProperties = tempLastPro as ohosWindow.WindowProperties;
-        console.log(msgStr + 'mainWnd.getProperties lastPro:' + JSON.stringify(lastPro.isPrivacyMode));
-        expect(!lastPro.isPrivacyMode).assertTrue();
-        await wndData.destroy();
-      }
-      done();
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0310
-     * @tc.name      : testDestroy_Promise
-     * @tc.desc      : Verification window destruction scenario.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testDestroy_Promise', 0, async (done: Function) => {
-      let caseName: string = 'testDestroy_Promise';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      let baseWndType: number = ohosWindow.WindowType.TYPE_FLOAT;
-      let windowId: string = 'destroyTest1';
-      console.log(msgStr + 'begin');
-      let createWindowObj: ohosWindow.Configuration = {
-        name: windowId, windowType: baseWndType, ctx: context
-      }
-      let tempWnd: ohosWindow.Window | undefined = undefined;
-      try {
-        await ohosWindow.createWindow(createWindowObj).then((data: ohosWindow.Window) => {
-          tempWnd = data
-          console.log(msgStr + 'ohosWindow.create ' + baseWndType + ' wnd: ' + tempWnd);
-          expect(!!tempWnd).assertTrue();
-          console.log(msgStr + 'tempWnd.destroy start');
-        }).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create', done);
+      windowData = await windowStage.createSubWindow('testSetPrivacyMode_SppSubWin_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      let wndData: ohosWindow.Window = windowData as ohosWindow.Window
+      expect(!!wndData).assertTrue();
+      console.log(msgStr + 'window.create success windowData' + wndData);
+      let firstProperties: ohosWindow.WindowProperties | void = await wndData.getProperties()
+        .catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.getProperties', done);
         });
-      } catch (err) {
-        console.log(msgStr + 'destroy catch err : ' + JSON.stringify(err));
-      }
-      if (tempWnd != undefined) {
-        let tempWindow: ohosWindow.Window = tempWnd as ohosWindow.Window;
-        await tempWindow.destroy().catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.destroy', done);
-          console.log(msgStr + 'destroy err : ' + JSON.stringify(err));
+      let firstPro: ohosWindow.WindowProperties = firstProperties as ohosWindow.WindowProperties;
+      console.log(msgStr + 'mainWnd.getProperties firstPro=' + JSON.stringify(firstPro));
+      expect(!firstPro.isPrivacyMode).assertTrue();
+      let firstPrivacyMode: void = await wndData.setPrivacyMode(true).catch((err: BusinessError) => {
+        unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.setPrivacyMode', done);
+        console.log(msgStr + 'mainWnd.setPrivacyMode(true) err=' + JSON.stringify(err));
+      })
+      expect(!Boolean(firstPrivacyMode)).assertTrue();
+      console.log(msgStr + 'mainWnd.setPrivacyMode true firstPrivacyMode=' + JSON.stringify(firstPrivacyMode));
+      let tempSecondPro: ohosWindow.WindowProperties | void = await wndData.getProperties()
+        .catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.getProperties', done);
         });
-        console.log(msgStr + 'tempWnd.destroy end');
-        let findWnd = await ohosWindow.find(windowId).catch((err: BusinessError) => {
-          expectedError(TRUE_FLAG, err, caseName, 'ohosWindow.find', done, 1001);
+      let secondPro: ohosWindow.WindowProperties = tempSecondPro as ohosWindow.WindowProperties;
+      console.log(msgStr + 'mainWnd.getProperties secondPro:' + JSON.stringify(secondPro.isPrivacyMode));
+      expect(secondPro.isPrivacyMode).assertTrue();
+      let secondPrivacyMode: void = await wndData.setPrivacyMode(false).catch((err: BusinessError) => {
+        unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.setPrivacyMode', done);
+        console.log(msgStr + 'mainWnd.setPrivacyMode(false) err=' + JSON.stringify(err));
+      })
+      expect(!Boolean(secondPrivacyMode)).assertTrue();
+      console.log(msgStr + 'mainWnd.setPrivacyMode(false) secondPrivacyMode=' + JSON.stringify(secondPrivacyMode));
+      let tempLastPro: ohosWindow.WindowProperties | void = await wndData.getProperties()
+        .catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'mainWnd.getProperties', done);
         });
-        console.log(msgStr + 'find findWnd: ' + JSON.stringify(findWnd));
-        expect(!findWnd).assertTrue();
-      }
+      let lastPro: ohosWindow.WindowProperties = tempLastPro as ohosWindow.WindowProperties;
+      console.log(msgStr + 'mainWnd.getProperties lastPro:' + JSON.stringify(lastPro.isPrivacyMode));
+      expect(!lastPro.isPrivacyMode).assertTrue();
+      await wndData.destroy();
       done();
     })
     /**
@@ -1189,9 +1049,11 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let num = 0
       let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED',
         'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE',
-        'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED',
-        'USER_ROTATION_PORTRAIT', 'USER_ROTATION_LANDSCAPE','USER_ROTATION_PORTRAIT_INVERTED','USER_ROTATION_LANDSCAPE_INVERTED','UNSPECIFIED'];
+        'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED', 'AUTO_ROTATION_UNSPECIFIED',
+        'USER_ROTATION_PORTRAIT', 'USER_ROTATION_LANDSCAPE', 'USER_ROTATION_PORTRAIT_INVERTED', 'USER_ROTATION_LANDSCAPE_INVERTED', 'UNSPECIFIED'];
       for (let i = 0; i < orientationItem.length; i++) {
+        await sleep(900)
+        await sleep(900)
         let orientation: ohosWindow.Orientation = ohosWindow.Orientation[orientationItem[i]]
         console.log(msgStr + 'i : ' + i + ' ,orientation : ' + orientation);
         console.log(msgStr + 'i : ' + i + ' ,ohosWindow.Orientation : ' + JSON.stringify(orientationItem[i]));
@@ -1202,7 +1064,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         }).catch((err: BusinessError) => {
           console.log(msgStr + 'window.setPreferredOrientation failed set error:' + orientation);
         });
-        await sleep(3000)
+        await sleep(900)
+        await sleep(300)
       }
     })
     /**
@@ -1254,7 +1117,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let mainWin: ohosWindow.Window = tempMainWin as ohosWindow.Window;
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
-      await sleep(2000)
+      await sleep(800)
       let snapshotData = await mainWin.snapshot().catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'mainWin.snapshot', done);
         console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
@@ -1296,87 +1159,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         tempWnd.destroy();
         done();
       }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0020
-     * @tc.name      : testAnimationForShown_Promise
-     * @tc.desc      : Verify window custom animation configuration of the scene
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testAnimationForShown_Promise', 0, async (done: Function) => {
-      let caseName: string = 'testAnimationForShown_Promise';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin context==' + JSON.stringify(context));
-      console.log(msgStr + 'begin ohosWindow==' + JSON.stringify("ohosWindow"));
-      let wndId = 'animationForShownTest1';
-      let baseType: number = ohosWindow.WindowType.TYPE_FLOAT;
-      let tempWnd: ohosWindow.Window | undefined = undefined;
-      let createWindowObj: ohosWindow.Configuration = {
-        name: wndId, windowType: baseType, ctx: context
-      }
-      try {
-        await ohosWindow.createWindow(createWindowObj).then((data: ohosWindow.Window) => {
-          tempWnd = data
-          console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
-          expect(!!tempWnd).assertTrue();
-        }).catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create ' + baseType, done);
-        });
-      } catch (err) {
-        console.log(msgStr + 'ohosWindow.createWindow catch err:' + JSON.stringify(err));
-      }
-      if (tempWnd != undefined) {
-        let tempWindow: ohosWindow.Window = tempWnd as ohosWindow.Window
-        // let controller = tempWindow.getTransitionController();
-        // controller.animationForShown = (context: ohosWindow.TransitionContext) => {
-        //   let toWindow = context.toWindow
-        //   animateTo({
-        //     duration: 1000,
-        //     tempo: 0.5,
-        //     curve: Curve.EaseInOut,
-        //     delay: 0,
-        //     iterations: 1,
-        //     playMode: PlayMode.Normal,
-        //   }, () => {
-        //     // @ts-ignore
-        //     let obj: ohosWindow.TranslateOptions = {
-        //       x : 100.0,
-        //       y : 0.0,
-        //       z : 0.0
-        //     };
-        //     toWindow.translate(obj);
-        //     console.info(msgStr + 'toWindow translate end');
-        //   }
-        //   )
-        //   context.completeTransition(true)
-        //   console.info(msgStr + 'complete transition end');
-        // }
-        await tempWindow.destroy();
-      }
-      done();
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0500
-     * @tc.name      : testGetCutoutInfo_Promise
-     * @tc.desc      : Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testGetCutoutInfo_Promise', 0, async (done: Function) => {
-      let caseName: string = 'testGetCutoutInfo_Promise';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin context==' + JSON.stringify(context));
-      let dpClass = display.getDefaultDisplaySync();
-      expect(!!dpClass).assertTrue();
-      dpClass.getCutoutInfo().then((data: display.CutoutInfo) => {
-        console.info('Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(data));
-        done();
-      }).catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'displayClass.getCutoutInfo', done);
-      });
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1080
@@ -1491,32 +1273,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2310
-     * @tc.name      : testOrientation_Enum
-     * @tc.desc      : Test the enumeration value of Orientation
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testOrientation_Enum', 0, async (done: Function) => {
-      let caseName: string = 'testOrientation_Enum';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      console.log(msgStr + 'display.orientation:' + JSON.stringify('PORTRAIT: ' + display.Orientation.PORTRAIT + ';LANDSCAPE: ' + display.Orientation.LANDSCAPE + ';PORTRAIT_INVERTED: ' + display.Orientation.PORTRAIT_INVERTED + ';LANDSCAPE_INVERTED: ' + display.Orientation.LANDSCAPE_INVERTED));
-      try {
-        expect(0).assertEqual(display.Orientation.PORTRAIT);
-        expect(1).assertEqual(display.Orientation.LANDSCAPE);
-        expect(2).assertEqual(display.Orientation.PORTRAIT_INVERTED);
-        expect(3).assertEqual(display.Orientation.LANDSCAPE_INVERTED);
-        done();
-      } catch (err) {
-        let e: BusinessError = err as BusinessError;
-        console.info(msgStr + 'Orientation error :' + JSON.stringify(e));
-        expect().assertFail();
-        done();
-      }
-    })
-    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
      * @tc.name      : testSetSpecificSystemBarEnabled_Function_Promise
      * @tc.desc      : Test the function of setSpecificSystemBarEnabled
@@ -1555,7 +1311,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSpecificSystemBarEnabled_2_Function_Promise', 0, async function(done){
+    it('testSetSpecificSystemBarEnabled_2_Function_Promise', 0, async function (done) {
       let msgStr = 'testSetSpecificSystemBarEnabled_2';
       console.log(msgStr + 'begin')
       try {
@@ -1600,7 +1356,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
 
         } catch (exception) {
           console.error(msgStr + 'Failed to set the visibility of window decor. Cause: ' + JSON.stringify(exception));
-          if (!currentDeviceIsRk) {
+          if (exception.code != 801) {
             console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
             expect().assertFail();
             done();
@@ -1635,7 +1391,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           done()
         } catch (exception) {
           console.error(msgStr + ' Failed to set the height of window decor. Cause: ' + JSON.stringify(exception));
-          if (!currentDeviceIsRk) {
+          if (exception.code != 801) {
             console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
             expect().assertFail();
             done();
@@ -1805,15 +1561,16 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testCreateSubWindowWithOptions_Function_Promise", 0, async function(done){
+    it("testCreateSubWindowWithOptions_Function_Promise", 0, async function (done) {
       let msgStr = "testCreateSubWindowWithOptions_Function_Promise";
       console.log(msgStr + " begin");
       let windowClass = undefined;
       try {
         console.log(msgStr + " try begin")
-        let options:ohosWindow.SubWindowOptions = {
+        let options: ohosWindow.SubWindowOptions = {
           title: 'title',
-          decorEnabled: true
+          decorEnabled: true,
+          isModal: false,
         };
         let promise = windowStage.createSubWindowWithOptions('mySubWindow', options);
         promise.then((data) => {
@@ -1823,7 +1580,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           done();
         }).catch((error) => {
           console.log(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
-          if(error.code == 1300002){
+          if (error.code == 1300002) {
             expect(true).assertTrue();
             done();
           } else {
@@ -1833,7 +1590,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         });
       } catch (error) {
         console.log('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
-        if(error.code == 1300002){
+        if (error.code == 1300002) {
           expect().assertTrue();
           done();
         } else {
@@ -1850,7 +1607,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testGetWindowSystemBarProperties_Function", 0, async function(done){
+    it("testGetWindowSystemBarProperties_Function", 0, async function (done) {
       let msgStr = "testGetWindowSystemBarProperties_Function";
       console.log(msgStr + " begin");
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -1868,6 +1625,158 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         }
       })
     })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_WULTMNDOW_GET_WINDOWSYSTEMBARPROPERTIES_0100
+     * @tc.name      : test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties
+     * @tc.desc      : test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties", 0, async function (done) {
+      let msgStr = "test_FullSereen_SetWindowSystemBarProperties_and_GetWindowSystemBarProperties";
+      let SystemBarProperties = {
+        statusBarColor: '#FF0000FF',
+        navigationBarColor: '#FF00FF00',
+        statusBarContentColor: '#FF00FFAA',
+        navigationBarContentColor: '#FF00FFFF'
+      };
+      console.log(msgStr + " begin");
+      ohosWindow.getLastWindow(context).then(async wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        try {
+          await wnd.setWindowSystemBarProperties(SystemBarProperties).then(() => {
+            console.info('Succeeded in setting the system bar properties.');
+            let systemBarProperty = wnd.getWindowSystemBarProperties();
+            console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
+            expect(systemBarProperty.statusBarColor).assertEqual('#FF0000FF');
+            expect(systemBarProperty.navigationBarColor).assertEqual('#FF00FF00');
+            expect(systemBarProperty.statusBarContentColor).assertEqual('#FF00FFAA');
+            expect(systemBarProperty.navigationBarContentColor).assertEqual('#FF00FFFF');
+            done()
+          }).catch((err) => {
+            console.error('Failed to set the system bar properties. Cause: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+            done()
+          });
+
+        } catch (exception) {
+          console.error(msgStr + ' Failed to get system bar properties. Cause: ' + JSON.stringify(exception));
+          expect().assertFail()
+          done()
+        }
+      })
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_WULTMNDOW_GET_WINDOWSYSTEMBARPROPERTIES_0200
+     * @tc.name      : test_subWindow_GetWindowSystemBarProperties_1300004
+     * @tc.desc      : test_subWindow_GetWindowSystemBarProperties_1300004
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("test_subWindow_GetWindowSystemBarProperties_1300004", 2, async function (done) {
+      let msgStr = "test_subWindow_GetWindowSystemBarProperties_1300004";
+      console.log(msgStr + " begin");
+      let SubWindowClass = null;
+      SubWindowClass = await windowStage.createSubWindow('test_subWindow_GetWindowSystemBarProperties_1300004').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!SubWindowClass).assertTrue();
+      try {
+        let systemBarProperty = SubWindowClass.getWindowSystemBarProperties();
+        console.info(msgStr + 'Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
+      } catch (err) {
+        console.error(msgStr + 'Failed to get system bar properties. Code: ' + JSON.stringify(err) + err.code);
+        expect(err.code).assertEqual(1300004)
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_WULTMNDOW_SET_WINDOWSYSTEMBARPROPERTIES_0100
+     * @tc.name      : test_subWindow_SetWindowSystemBarProperties
+     * @tc.desc      : test_subWindow_GetWindowSystemBarProperties
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("test_subWindow_SetWindowSystemBarProperties", 0, async function () {
+      let msgStr = "test_subWindow_GetWindowSystemBarProperties_1300004";
+      console.log(msgStr + " begin");
+      let SubWindowClass = null;
+      SubWindowClass = await windowStage.createSubWindow('test_subWindow_SetWindowSystemBarProperties').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!SubWindowClass).assertTrue();
+      let SystemBarProperties = {
+        statusBarColor: '#ff00ff',
+        navigationBarColor: '#00ff00',
+        statusBarContentColor: '#ffffff',
+        navigationBarContentColor: '#00ffff'
+      };
+      try {
+        SubWindowClass.setWindowSystemBarProperties(SystemBarProperties).then(() => {
+          console.info('Succeeded in setting the system bar properties.');
+        }).catch((err) => {
+          console.error('Failed to set the system bar properties. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        });
+      } catch (err) {
+        console.error('Failed to setWindowSystemBarProperties. Code: ' + JSON.stringify(err) + err.code);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1180
+     * @tc.name      : testSetWindowLimits_Function_Promise
+     * @tc.desc      : test the function of setWindowLimits
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testSetWindowLimits_Function_Promise', 4, async function (done) {
+      let tag = 'setWindowLimits_Function_Promise '
+      console.log(tag + 'begin')
+      try {
+        let WindowLimits = {
+          maxWidth: 1500,
+          maxHeight: 1000,
+          minWidth: 500,
+          minHeight: 400
+        };
+        let windowClass = await ohosWindow.getLastWindow(context);
+        let promise = windowClass.setWindowLimits(WindowLimits);
+        promise.then((data) => {
+          console.log(tag + 'Succeeded in setWindowLimits. Cause:' + JSON.stringify(data));
+          expect(true).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(tag + 'www data Failed to setWindowLimits. Cause: ' + JSON.stringify(error));
+          if (error.code == 801) {
+            expect(true).assertTrue()
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+
+      } catch (error) {
+        console.log(tag + 'Failed to change the window limits out. Cause:' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4000
      * @tc.name      : testEnableLandscapeMultiWindow_Function
@@ -1876,7 +1785,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testEnableLandscapeMultiWindow_Function", 0, async function(done){
+    it("testEnableLandscapeMultiWindow_Function", 0, async function (done) {
       let msgStr = "testEnableLandscapeMultiWindow_Function";
       console.log(msgStr + " begin");
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -1908,7 +1817,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testDisableLandscapeMultiWindow_Function", 0, async function(done){
+    it("testDisableLandscapeMultiWindow_Function", 0, async function (done) {
       let msgStr = "testDisableLandscapeMultiWindow_Function";
       console.log(msgStr + " begin");
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -1940,38 +1849,49 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetWindowMask_Function_Promise", 0, async function(done){
+    it("testSetWindowMask_Function_Promise", 0, async function (done) {
       let msgStr = "testSetWindowMask_Function_Promise";
-      console.log(msgStr + "begin0");
-      if(currentDeviceIsPC){
-        console.log(msgStr + "begin1")
-        try{
-          let windowMask: Array<Array<number>> = [
-            [0, 0, 0, 1, 0, 0, 0],
-            [0, 0, 1, 1, 1, 0, 0],
-            [0, 1, 1, 0, 1, 1, 0],
-            [1, 1, 0, 0, 0, 1, 1]
-          ];
-          let windowClass = await ohosWindow.getLastWindow(context);
-          let promise = windowClass.setWindowMask(windowMask);
-          console.log(msgStr + windowMask);
+      console.log(msgStr + " begin0");
+      if (currentDeviceIsPC) {
+        console.log(msgStr + " begin1")
+        let windowMask: Array<Array<number>> = new Array<Array<number>>()
+        for (let i = 0; i < 500; i++) {
+          let arr: Array<number> = new Array<number>(500);
+          for (let j = 0; j < 500; j++) {
+            if (i + j < 500) {
+              arr[j] = 0
+            } else {
+              arr[j] = 1
+            }
+          }
+          windowMask.push(arr)
+        }
+        console.log(msgStr + " windowMask OK ")
+        let windowClass = await ohosWindow.getLastWindow(context);
+        console.log(msgStr + " getLastWindow OK ")
+        let nowWindow = windowStage.createSubWindow('nowWindowA')
+        nowWindow.then(wnd => {
+          console.log(msgStr + " createSubWindow OK ")
+          wnd.resize(500, 500)
+          console.log(msgStr + " resize OK ")
+          let promise = wnd.setWindowMask(windowMask)
           promise.then(() => {
-            console.log(msgStr + 'Succeeded in setting the window mask.');
+            console.log(msgStr + ' Succeeded in setting the window mask.');
             expect(true).assertTrue();
             console.log(msgStr + true);
             done();
           }).catch((err: BusinessError) => {
-            console.log(msgStr + 'Failed1 to set the window mask. Cause: ' + JSON.stringify(err));
+            console.log(msgStr + ' Failed to set the window mask. Cause: ' + JSON.stringify(err));
             expect().assertFail();
             done();
           });
-        } catch (exception) {
-          console.log(msgStr + 'Failed2 to set the window mask. Cause:' + JSON.stringify(exception));
+        }).catch(err => {
+          console.log(msgStr + ' Failed to createSubWindow. Cause: ' + JSON.stringify(err));
           expect().assertFail();
           done();
-        }
-      }else{
-        console.log(msgStr + "该设备类型不是PC" );
+        })
+      } else {
+        console.log(msgStr + "该设备类型不是PC");
         expect(deviceInfo.deviceType).assertEqual(deviceInfo.deviceType);
         done();
       }

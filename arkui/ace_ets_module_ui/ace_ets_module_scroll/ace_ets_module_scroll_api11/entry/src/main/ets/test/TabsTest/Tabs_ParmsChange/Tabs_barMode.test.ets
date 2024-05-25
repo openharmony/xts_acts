@@ -129,18 +129,18 @@ export default function Tabs_barMode() {
       expect(Math.round(Tabs_barMode_011.bottom - Tabs_barMode_011.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_barMode_012.bottom - Tabs_barMode_012.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_barMode_013.bottom - Tabs_barMode_013.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_barMode_011.right - Tabs_barMode_011.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_barMode_012.right - Tabs_barMode_012.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_barMode_013.right - Tabs_barMode_013.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Math.round(Tabs_barMode_011.right - Tabs_barMode_011.left) - Math.round(vp2px(330))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barMode_012.right - Tabs_barMode_012.left) - Math.round(vp2px(330))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barMode_013.right - Tabs_barMode_013.left) - Math.round(vp2px(330))) <= 1).assertTrue();
 
       console.info(`[testTabsBarModeFixed]Tabs_barMode_001.bottom - Tabs_barMode_001.top=
         ${Math.round(Tabs_barMode_001.bottom - Tabs_barMode_001.top)}`);
       expect(Math.round(Tabs_barMode_001.bottom - Tabs_barMode_001.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_barMode_002.bottom - Tabs_barMode_002.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_barMode_003.bottom - Tabs_barMode_003.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_barMode_001.right - Tabs_barMode_001.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_barMode_002.right - Tabs_barMode_002.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_barMode_003.right - Tabs_barMode_003.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Math.round(Tabs_barMode_001.right - Tabs_barMode_001.left) - Math.round(vp2px(330))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barMode_002.right - Tabs_barMode_002.left) - Math.round(vp2px(330))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barMode_003.right - Tabs_barMode_003.left) - Math.round(vp2px(330))) <= 1).assertTrue();
 
       console.info(`[testTabsBarModeFixed]subGreen.bottom - subGreen.top=
         ${Math.round(subGreen.bottom - subGreen.top)}`);

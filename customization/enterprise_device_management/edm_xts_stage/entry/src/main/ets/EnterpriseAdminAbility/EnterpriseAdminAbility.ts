@@ -15,6 +15,7 @@
 
 import EnterpriseAdminExtensionAbility from '@ohos.enterprise.EnterpriseAdminExtensionAbility'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import type systemManager from './@ohos.enterprise.systemManager';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminEnabled() {
@@ -22,5 +23,24 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
   onAdminDisabled(){
       console.log('EnterpriseAdminExtensionAbility onAdminDisabled');
+  }
+  onBundleAdded(bundleName: string){
+    console.log('EnterpriseAdminExtensionAbility onBundleAdded: ' + bundleName);
+  }
+  onBundleRemoved(bundleName: string){
+    console.log('EnterpriseAdminExtensionAbility onBundleRemoved: ' + bundleName);
+  }
+  onAppStart(bundleName: string){
+    console.log('EnterpriseAdminExtensionAbility onAppStart: ' + bundleName);
+  }
+  onAppStop(bundleName: string){
+    console.log('EnterpriseAdminExtensionAbility onAppStop: ' + bundleName);
+  }
+  onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo){
+    console.log(`EnterpriseAdminExtensionAbility onSystemUpdate: versionName: ${systemUpdateInfo.versionName},
+      firstReceivedTime: ${systemUpdateInfo.firstReceivedTime}, packageType: ${systemUpdateInfo.packageType}`);
+  }
+  onStart(){
+    console.log('EnterpriseAdminExtensionAbility onStart');
   }
 }

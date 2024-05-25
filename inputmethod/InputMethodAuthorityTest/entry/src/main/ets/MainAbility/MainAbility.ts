@@ -13,39 +13,49 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import window from '@ohos.window';
 
 export default class MainAbility extends Ability {
-    onCreate(want, launchParam) {
-        // Ability is creating, initialize resources for this ability
-        console.info("ImExtAbility onCreate");
-        globalThis.abilityWant = want;
-    }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // Ability is creating, initialize resources for this ability
+    console.info("ImExtAbility onCreate");
+    globalThis.abilityWant = want;
+  }
 
-    onDestroy() {
-        // Ability is destroying, release resources for this ability
-        console.info("ImExtAbility onDestroy");
-    }
+  onDestroy() {
+    // Ability is destroying, release resources for this ability
+    console.info("ImExtAbility onDestroy");
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.info("ImExtAbility onWindowStageCreate");
-        globalThis.abilityContext = this.context;
-        windowStage.setUIContent(this.context, "pages/index/index", null);
-        console.info("ImExtAbility onWindowStageCreate finish");
-    }
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info("ImExtAbility onWindowStageCreate");
+    globalThis.abilityContext = this.context;
+    windowStage.loadContent("pages/index/index", (err, data) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data))
+    });
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.info("ImExtAbility onWindowStageDestroy");
-    }
+    console.info("ImExtAbility onWindowStageCreate finish");
+  }
 
-    onForeground() {
-        // Ability has brought to foreground
-        console.info("ImExtAbility onForeground");
-    }
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    console.info("ImExtAbility onWindowStageDestroy");
+  }
 
-    onBackground() {
-        // Ability has back to background
-        console.info("ImExtAbility onBackground");
-    }
+  onForeground() {
+    // Ability has brought to foreground
+    console.info("ImExtAbility onForeground");
+  }
+
+  onBackground() {
+    // Ability has back to background
+    console.info("ImExtAbility onBackground");
+  }
 };

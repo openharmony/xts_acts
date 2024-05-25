@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@ import huks from '@ohos.security.huks';
 import { HksTag, HksKeyStorageType, HksKeyAlg } from '../publicParam';
 import { HuksAgreeECDH } from './publicAgreeParam.js';
 import { stringToUint8Array } from '../publicFunc.js';
-import { expect } from 'deccjsunit/index';
+import { expect } from '@ohos/hypium';
 let exportKeyFrist;
 let exportKeySecond;
 let handle;

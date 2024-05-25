@@ -13,5 +13,8 @@
 
 group("ActsAceEtsModuleRouteManagementTest") {
   testonly = true
-  deps = [ "ace_ets_module_RouteManagement_api12:ActsAceEtsModuleRouteManagementApi12Test" ]
+  deps = [
+    "ace_ets_module_RouteManagement_api11:ActsAceEtsModuleRouteManagementApi11Test",
+    "ace_ets_module_RouteManagement_api12:ActsAceEtsModuleRouteManagementApi12Test",
+  ]
 }

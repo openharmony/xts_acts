@@ -1876,7 +1876,7 @@ export default function rdbResultSetTest() {
         }
       } catch (e) {
         console.info(TAG + "************* testResultSetGetLong005 err " + e);
-        expect(e.code == 14800000).assertTrue();
+        expect(e.code == 14800013).assertTrue();
       }
       resultSet.close();
       expect(true).assertEqual(resultSet.isClosed);
@@ -2067,7 +2067,7 @@ export default function rdbResultSetTest() {
             expect(!data).assertTrue();
           } catch (e) {
             console.info(TAG + "************* testResultSetGetDouble006 err " + e);
-            expect(e.code == 14800000).assertTrue();
+            expect(e.code == 14800013).assertTrue();
           }
           expect(resultSet !== null).assertTrue();
           resultSet.close();
@@ -2240,7 +2240,7 @@ export default function rdbResultSetTest() {
             expect(!data).assertTrue();
           } catch (e) {
             console.info(TAG + "************* testResultSetIsColumnNull005 err " + e);
-            expect(e.code == 14800000).assertTrue();
+            expect(e.code == 14800013).assertTrue();
           }
           expect(resultSet !== null).assertTrue();
           resultSet.close();

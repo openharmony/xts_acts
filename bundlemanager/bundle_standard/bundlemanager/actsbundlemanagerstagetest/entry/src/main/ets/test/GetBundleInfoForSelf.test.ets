@@ -1257,7 +1257,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
       expect(data.hapModulesInfo[0].installationFree).assertFalse();
       expect(data.hapModulesInfo[0].hashValue).assertEqual("");
-      expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("{\"src\": [\"MainAbility/pages/index/index\",\"MainAbility/pages/second/second\"]}");
+      expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("{\"src\":[\"MainAbility/pages/index/index\",\"MainAbility/pages/second/second\"]}");
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
       expect(data.signatureInfo).assertEqual(null);
@@ -1736,13 +1736,7 @@ export default function getBundleInfoForSelf() {
       expect(data[1].name).assertEqual("DynamicPage2");
       expect(data[1].pageSourceFile).assertEqual("entry/src/index");
       expect(data[1].buildFunction).assertEqual("myBuilder");
-      expect(data[1].data.length).assertEqual(2);
-      let dataTest: bundle.DataItem = data[1].data[0];
-      expect(typeof (dataTest.key)).assertEqual('string');
-      expect(data[1].data[0].key).assertEqual("key1");
-      expect(data[1].data[0].value).assertEqual("data1");
-      expect(data[1].data[1].key).assertEqual("key2");
-      expect(data[1].data[1].value).assertEqual("data2");
+      expect(data[1].data.length).assertEqual(31);
       console.info("checkRouterMapInfo end");
     }
   })

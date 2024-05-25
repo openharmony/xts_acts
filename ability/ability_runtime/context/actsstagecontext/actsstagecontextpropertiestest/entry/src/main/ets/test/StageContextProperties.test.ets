@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, afterEach, beforeAll ,beforeEach} from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import {Driver, ON} from '@ohos.UiTest';
 
+let driver = Driver.create();
 let Subscriber;
 let TAG;
 
@@ -28,6 +30,9 @@ let subscriberInfo_AbilityContext = {
 export default function stageContextPropertiesTest(abilityContext) {
     describe('ActsStageContextPropertiesTest', function () {
 
+      beforeEach(async (done) => {
+        setTimeout(() => { done(); }, 3000)
+      })
         beforeAll(async (done) => {
             console.log("ActsStageContextPropertiesTest afterAll called");
             await abilityContext.startAbility({
@@ -285,6 +290,16 @@ export default function stageContextPropertiesTest(abilityContext) {
                 expect.assertFail()
                 done()
             })
+
+             await driver.delayMs(2000);
+            let allowed = await driver.findComponent(ON.text(""));
+            if (allowed) {
+              console.log("find button");
+              let point = await allowed.getBoundsCenter();
+              console.log('point.x : ' + point.x +'point.y : '+ point.y);
+              await driver.click(point.x, point.y);
+            }
+            done()
         });
 
         /**
@@ -331,6 +346,16 @@ export default function stageContextPropertiesTest(abilityContext) {
                 expect.assertFail()
                 done()
             })
+
+             await driver.delayMs(2000);
+            let allowed = await driver.findComponent(ON.text(""));
+            if (allowed) {
+              console.log("find button");
+              let point = await allowed.getBoundsCenter();
+              console.log('point.x : ' + point.x +'point.y : '+ point.y);
+              await driver.click(point.x, point.y);
+            }
+            done()
         });
 
         /**
@@ -395,6 +420,16 @@ export default function stageContextPropertiesTest(abilityContext) {
                 expect.assertFail()
                 done()
             })
+
+             await driver.delayMs(2000);
+            let allowed = await driver.findComponent(ON.text(""));
+            if (allowed) {
+              console.log("find button");
+              let point = await allowed.getBoundsCenter();
+              console.log('point.x : ' + point.x +'point.y : '+ point.y);
+              await driver.click(point.x, point.y);
+            }
+            done()
         });
 
         /**

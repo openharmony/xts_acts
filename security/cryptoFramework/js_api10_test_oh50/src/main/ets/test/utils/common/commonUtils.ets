@@ -22,12 +22,62 @@ function stringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
+function decToHexString(data: cryptoFramework.DataBlob): string {
+  let arr: string = "";
+  for (let i = 0; i < data.data.length; ++i) {
+    let tmp: string = "";
+    let num: number = data.data[i];
+    tmp = num.toString(16);
+    if(tmp.length == 1) {
+      tmp = "0" + tmp;
+    }
+    arr += tmp;
+  }
+  return arr;
+}
+
+function convertToUint8Array(str: string): number[] {
+  let tmp: number[] = [];
+  let j: number = 0;
+  for (let i = 0; i < str.length; i++) {
+    tmp[j] = Number("0x" + str.substring(i, i+2));
+    j++;
+    i++;
+  }
+
+  return tmp;
+}
+
 function compareDataBlob(a: cryptoFramework.DataBlob, b: cryptoFramework.DataBlob): boolean {
   if (a.data.length != b.data.length) {
     return false;
   }
   for (let i = 0; i < a.data.length; i++) {
     if (a.data[i] !== b.data[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function compareNumber(a: number[], b: number[]): boolean {
+  if (a.length != b.length) {
+    return false;
+  }
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function compareString(a: string, b: string): boolean {
+  if (a.length != b.length) {
+    return false;
+  }
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) {
       return false;
     }
   }
@@ -49,6 +99,10 @@ async function createData(dataLen: number): Promise<cryptoFramework.DataBlob>{
 
 export {
   stringToUint8Array,
+  decToHexString,
+  convertToUint8Array,
   compareDataBlob,
-  createData
+  createData,
+  compareNumber,
+  compareString
 }

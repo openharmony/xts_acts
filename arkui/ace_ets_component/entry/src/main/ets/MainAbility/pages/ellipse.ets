@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +18,8 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct EllipseExample {
-  @State width: string = "200.00px";
-  @State height: string = "200.00px";
+  @State _width: string = "200.00px";
+  @State _height: string = "200.00px";
 
   onPageShow() {
     console.info('[ellipse] page show called');
@@ -47,11 +46,11 @@ struct EllipseExample {
     console.info("[ellipse] page stateChangCallBack");
     if (eventData != null) {
       console.info("[ellipse] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.width != null) {
-        this.width = eventData.data.width;
+      if (eventData.data?.width != null) {
+        this._width = eventData.data.width;
       }
-      if (eventData.data.height != null) {
-        this.height = eventData.data.height;
+      if (eventData.data?.height != null) {
+        this._height = eventData.data.height;
       }
     }
   }
@@ -59,8 +58,8 @@ struct EllipseExample {
   build() {
     Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Ellipse()
-        .width(`${this.width}`)
-        .height(`${this.height}`)
+        .width(`${this._width}`)
+        .height(`${this._height}`)
         .key('ellipse')
     }
     .width('100%')

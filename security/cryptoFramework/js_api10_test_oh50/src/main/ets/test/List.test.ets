@@ -17,6 +17,15 @@ import SecurityCryptoFwSignRecoverRSARecoverTestUnit from './SecurityCryptoFwSig
 import SecurityCryptoFwSymKeyGeneratorTestUnit from './SecurityCryptoFwSymKeyGenerator.test'
 import SecurityCryptoFwSymEncryptAndDecryptTestUnit from './SecurityCryptoFwSymEncryptAndDecrypt.test'
 import SecurityCryptoFwAsyKeyGeneratorTestUnit from './SecurityCryptoFwAsyKeyGenerator.test'
+import SecurityCryptoFwHkdfTestUnit from './SecurityCryptoFwHkdf.test'
+import SecurityCryptoFwMd5TestUnit from './SecurityCryptoFwMd5.test'
+import SecurityCryptoFwECCRfc5208TestUnit from './SecurityCryptoFwRfc5915ToRfc5208.test'
+import SecurityCryptoFwDigestSyncTestUnit from './SecurityCryptoFwDigestSync.test'
+import SecurityCryptoFwPbkdf2TestUnit from './SecurityCryptoFwPbkdf2Sync.test'
+import SecurityCryptoFwHmacSyncTestUnit from './SecurityCryptoHmacSync.test'
+import SecurityCryptoFwAgreementSyncTestUnit from './SecurityCryptoFwNegotiateAlgSync.test'
+import SecurityCryptoFwSignVerifySyncTestUnit from './SecurityCryptoFwSignVerify.test'
+import SecurityCryptoFwPkcs1ToPkcs8TestUnit from './SecurityCryptoFwPkcs1ToPkcs8.test'
 
 
 export default function testsuite() {
@@ -24,4 +33,13 @@ export default function testsuite() {
   SecurityCryptoFwSymKeyGeneratorTestUnit();
   SecurityCryptoFwSymEncryptAndDecryptTestUnit();
   SecurityCryptoFwAsyKeyGeneratorTestUnit();
+  SecurityCryptoFwHkdfTestUnit();
+  SecurityCryptoFwECCRfc5208TestUnit();
+  SecurityCryptoFwMd5TestUnit();
+  SecurityCryptoFwDigestSyncTestUnit();
+  SecurityCryptoFwHmacSyncTestUnit();
+  SecurityCryptoFwPbkdf2TestUnit();
+  SecurityCryptoFwAgreementSyncTestUnit();
+  SecurityCryptoFwSignVerifySyncTestUnit();
+  SecurityCryptoFwPkcs1ToPkcs8TestUnit();
 }

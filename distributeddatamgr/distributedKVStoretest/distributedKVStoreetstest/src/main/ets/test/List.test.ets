@@ -20,15 +20,19 @@ import kvStoreBackupPromiseJsunittest from './KvStoreBackupPromiseEtsTest';
 import kvStoreBackupCallbackJsunittest from './KvStoreBackupCallbackEtsTest';
 import SingleKvStoreCallbackTest from './SingleKvStoreKVCallbackEtsTest';
 import SingleKvStorePromiseTest from './SingleKvStoreKVPromiseEtsTest';
-import singleKvStoreEnumTest from './SingleKvStoreKVPromiseEtsTest';
+import singleKvStoreEnumTest from './SingleKvStoreEnumEtsTest';
+import queryTest from './QueryKvEtsTest';
+import schemaTest from './SchemaEts.test';
 
 export default function testsuite() {
-  deviceKvStoreCallbackTest()
-  deviceKvStorePromiseTest()
-  KvStoreResultSetTest()
-  kvStoreBackupPromiseJsunittest()
-  kvStoreBackupCallbackJsunittest()
-  SingleKvStoreCallbackTest()
-  SingleKvStorePromiseTest()
-    singleKvStoreEnumTest()
+  deviceKvStoreCallbackTest();
+  deviceKvStorePromiseTest();
+  KvStoreResultSetTest();
+  kvStoreBackupPromiseJsunittest();
+  kvStoreBackupCallbackJsunittest();
+  SingleKvStoreCallbackTest();
+  SingleKvStorePromiseTest();
+  singleKvStoreEnumTest();
+  queryTest();
+  schemaTest()；
 }

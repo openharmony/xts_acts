@@ -28,7 +28,6 @@ struct LeakyReluModel1 {
     float negativeSlopeValue[1] = {0.01};
     float inputValue[3] = {0.5, 1.0, 1.5};
     float outputValue[3] = {0};
-    float expectValue[3] = {0.5, 1.0, 1.5};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 3*sizeof(float)};
@@ -47,7 +46,6 @@ struct LeakyReluModel2 {
     float negativeSlopeValue[1] = {0.01};
     float inputValue[3] = {-0.5, -1.0, -1.5};
     float outputValue[3] = {0};
-    float expectValue[3] = {-0.005, -0.01, -0.015};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 3*sizeof(float)};
@@ -66,7 +64,6 @@ struct LeakyReluModel3 {
     float negativeSlopeValue[1] = {0};
     float inputValue[3] = {-0.5, -1.0, -1.5};
     float outputValue[3] = {0};
-    float expectValue[3] = {0, 0, 0};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 3*sizeof(float)};
@@ -340,7 +337,6 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -351,7 +347,7 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -377,7 +373,6 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -388,7 +383,7 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
@@ -413,7 +408,6 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
 
-    int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
     std::vector<NN_TensorDesc*> tensorDescVec;
 
@@ -424,7 +418,7 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {

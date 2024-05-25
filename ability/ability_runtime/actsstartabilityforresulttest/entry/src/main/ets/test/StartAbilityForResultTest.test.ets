@@ -16,7 +16,9 @@ import { describe, afterEach, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import hilog from '@ohos.hilog';
 import { Driver, ON } from '@ohos.UiTest';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 export default function StartAbilityForResultTest() {
   describe('StartAbilityForResultTest', function () {
 
@@ -396,6 +398,11 @@ export default function StartAbilityForResultTest() {
         await driver.delayMs(2000);
         let cancel = await driver.findComponent(ON.text("label"));
         await cancel.click();
+        if (deviceType === '2in1') {
+          await driver.delayMs(900);
+          let cancel1 = await driver.findComponent(ON.text("仅此一次"));
+          await cancel1.click();
+        }
       }))
     });
 

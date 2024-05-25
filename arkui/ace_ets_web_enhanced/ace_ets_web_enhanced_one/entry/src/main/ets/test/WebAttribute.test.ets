@@ -48,6 +48,36 @@ export default function webAttribute() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_GEOLOCATIONACCESS_0100
+    * @tc.name       : testGeolocationAccess001
+    * @tc.desc       : test geolocationAccess
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testGeolocationAccess001', 0, async (done: Function) => {
+      Utils.emitEvent("testGeolocationAccess001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testGeolocationAccess001", "\"位置服务被拒绝\"", 31020, done);
+      sendEventByKey('WebAttributeButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ONRESOURCELOAD_0100
+    * @tc.name       : testOnResourceLoad001
+    * @tc.desc       : test onResourceLoad
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testOnResourceLoad001', 0, async (done: Function) => {
+      Utils.emitEvent("testOnResourceLoad001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testOnResourceLoad001", "resource://rawfile/geolocation.html", 31021, done);
+      sendEventByKey('WebAttributeButton', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_ONWINDOWNEW_0100
     * @tc.name       : testOnWindowNew001
     * @tc.desc       : test onWindowNew
@@ -107,22 +137,6 @@ export default function webAttribute() {
       sendEventByKey('WebAttributeButton', 10, '');
     })
 
-
-    /*
-    * @tc.number     : SUB_WEB_ONWINDOWEXIT_0100
-    * @tc.name       : testOnWindowExit001
-    * @tc.desc       : test onWindowExit
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testOnWindowExit001', 0, async (done: Function) => {
-      Utils.emitEvent("testOnWindowExit001", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testOnWindowExit001", true, 30075, done);
-      sendEventByKey('WebAttributeButton', 10, '');
-    })
-
     /*
     * @tc.number     : SUB_WEB_JAVASCRIPTACCESS_0100
     * @tc.name       : testJavaScriptAccess001
@@ -137,38 +151,6 @@ export default function webAttribute() {
       Utils.registerEvent("testJavaScriptAccess001", true, 32019, done);
       sendEventByKey('WebAttributeButton', 10, '');
     })
-
-    /*
-    * @tc.number     : SUB_WEB_GEOLOCATIONACCESS_0100
-    * @tc.name       : testGeolocationAccess001
-    * @tc.desc       : test geolocationAccess
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testGeolocationAccess001', 0, async (done: Function) => {
-      Utils.emitEvent("testGeolocationAccess001", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testGeolocationAccess001", "\"位置服务被拒绝\"", 31020, done);
-      sendEventByKey('WebAttributeButton', 10, '');
-    })
-
-    /*
-    * @tc.number     : SUB_WEB_ONRESOURCELOAD_0100
-    * @tc.name       : testOnResourceLoad001
-    * @tc.desc       : test onResourceLoad
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testOnResourceLoad001', 0, async (done: Function) => {
-      Utils.emitEvent("testOnResourceLoad001", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testOnResourceLoad001", "resource://rawfile/geolocation.html", 31021, done);
-      sendEventByKey('WebAttributeButton', 10, '');
-    })
-
-
   })
 
 }

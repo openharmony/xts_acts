@@ -34,11 +34,24 @@ static napi_value DlSym(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value DlVSym(napi_env env, napi_callback_info info)
+{
+    const char *path = "/system/lib/extensionability/libstatic_subscriber_extension_module.z.so";
+    void *ptr = dlopen(path, RTLD_LAZY);
+    errno = 0;
+    const char *dso_easy_symver_version_stable = "STABLE";
+    dlvsym(ptr, "OHOS_EXTENSION_GetExtensionModule", dso_easy_symver_version_stable);
+    napi_value result = nullptr;
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"dlsym", nullptr, DlSym, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"dlvsym", nullptr, DlVSym, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -17,7 +17,7 @@ import { describe, it } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function abilityTest() {
-  let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AppStorage.get<AbilityDelegatorRegistry.AbilityDelegator>("abilityDelegator");
+  let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator | undefined = AppStorage.get<AbilityDelegatorRegistry.AbilityDelegator>("abilityDelegator");
   describe('AACommandPrintTest', () => {
     /**
      * @tc.number: ACTS_AACommand_printSync_01_0100
@@ -30,10 +30,10 @@ export default function abilityTest() {
       done();
       console.log("ACTS_AACommand_printSync_01_0100 start ====> ");
       let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
-      abilityDelegator.printSync(msg);
+      abilityDelegator?.printSync(msg);
       console.log("ACTS_AACommand_printSync_01_0100 printSync end ====> ");
       let finishmsg = 'ACTS_AACommand_printSync_01_0100 end';
-      abilityDelegator.finishTest(finishmsg, 1).then(() => {
+      abilityDelegator?.finishTest(finishmsg, 1).then(() => {
         console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end ========> callback ");
         console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end " + "========> callback successfully" );
       })
@@ -59,10 +59,10 @@ export default function abilityTest() {
         '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae';
-      abilityDelegator.printSync(msg);
+      abilityDelegator?.printSync(msg);
       console.log("ACTS_AACommand_printSync_01_0200 printSync end ====> ");
       let finishmsg = 'ACTS_AACommand_printSync_01_0200 end';
-      abilityDelegator.finishTest(finishmsg, 1).then(() => {
+      abilityDelegator?.finishTest(finishmsg, 1).then(() => {
         console.log("ACTS_AACommand_printSync_01_0200 print  test  end ========> callback ");
       })
     })
@@ -88,10 +88,10 @@ export default function abilityTest() {
         '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae' +
         'fffffffffff';
-      abilityDelegator.printSync(msg);
+      abilityDelegator?.printSync(msg);
       console.log("ACTS_AACommand_printSync_01_0300 printSync end ====> ");
       let finishmsg = 'ACTS_AACommand_printSync_01_0300 end';
-      abilityDelegator.finishTest(finishmsg, 1).then(() => {
+      abilityDelegator?.finishTest(finishmsg, 1).then(() => {
         console.log("ACTS_AACommand_printSync_01_0300 print  test  end ========> callback ");
       })
     })
@@ -105,10 +105,10 @@ export default function abilityTest() {
      */
     it('ACTS_AACommand_printSync_01_0400', 0, async (done: Function) => {
       done();
-      abilityDelegator.printSync(null);
+      abilityDelegator?.printSync(null);
       console.log("ACTS_AACommand_printSync_01_0300 printSync end ====> ");
       let finishmsg = 'ACTS_AACommand_printSync_01_0400 end';
-      abilityDelegator.finishTest(finishmsg, 1).then(() => {
+      abilityDelegator?.finishTest(finishmsg, 1).then(() => {
         console.log("ACTS_AACommand_printSync_01_0400 print  test  end ========> callback ");
       })
     })

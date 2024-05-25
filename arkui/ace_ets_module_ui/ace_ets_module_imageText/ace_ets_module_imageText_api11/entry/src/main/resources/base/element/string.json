@@ -78,7 +78,19 @@
     },
     {
       "name": "textInput_Size_test",
-      "value": "4"
+      "value": "4px"
+    },
+    {
+      "name": "TextInput_ShowError_test",
+      "value": "string"
+    },
+    {
+      "name": "Check_Mark_Size_test",
+      "value": "50"
+    },
+    {
+      "name": "MainAbility_label",
+      "value": "MainAbility_label"
     }
   ]
 }

@@ -18,7 +18,7 @@ import plugin from "../common/plugin_component.js"
 @Entry
 @Component
 struct PluginUserExample {
-  @StorageLink("plugincount") plugincount: Object[] = [
+  @StorageLink("plugincount") plugincount: ESObject[] = [
     { source: 'plugincomponent1', bundleName: 'com.example.plugin' },
     { source: 'plugintemplate', bundleName: 'com.example.myapplication' },
     { source: 'plugintemplate', bundleName: 'com.example.myapplication' }]
@@ -46,7 +46,7 @@ struct PluginUserExample {
           plugin.Request()
           console.log("Button('Request')")
         })
-      ForEach(this.plugincount, item => {
+      ForEach(this.plugincount, (item: ESObject) => {
         PluginComponent({
           template: { source: 'plugincomponent1', bundleName: 'com.example.plugin' },
           data: { 'countDownStartValue': 'new countDownStartValue' }
@@ -54,8 +54,8 @@ struct PluginUserExample {
           .onComplete(() => {
             console.log("onComplete")
           })
-          .onError(({errcode, msg}) => {
-            console.log("onComplete" + errcode + ":" + msg)
+          .onError((error: ESObject) => {
+            console.log("onComplete" + error.errcode + ":" + error.msg)
           })
       })
     }

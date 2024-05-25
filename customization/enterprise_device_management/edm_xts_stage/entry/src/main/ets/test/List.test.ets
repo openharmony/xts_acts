@@ -13,7 +13,33 @@
  * limitations under the License.
  */
 import browserManagerTest from './browser/browser.test.ets'
+import bluetoothManagerTest from './bluetoothManager/bluetoothManager.test.ets'
+import securityManagerTest from './securityManager/securityManager.test';
+import deviceSettingsTest from './deviceSettings/deviceSettings.test';
+import deviceInfoTest from './deviceInfo/deviceInfo.test';
+import accountManagerTest from './accountManager/accountManager.test.ets'
+import adminManagerTest from './adminManager/adminManager.test.ets'
+import applicationManagerTest from './applicationManager/applicationManager.test.ets'
+import bundleManagerTest from './bundleManager/bundleManager.test.ets'
+import networkManagerTest from './networkManager/networkManager.test';
+import restrictionsTest from './restrictions/restrictions.test';
+import systemManagerTest from './systemManager/systemManager.test';
+import wifiManagerTest from './wifiManager/wifiManager.test';
+import deviceControlTest from './deviceControl/deviceControl.test.ets';
 
 export default function testsuite() {
   browserManagerTest();
+  bluetoothManagerTest();
+  securityManagerTest();
+  deviceSettingsTest();
+  deviceInfoTest();
+  accountManagerTest();
+  adminManagerTest();
+  applicationManagerTest();
+  bundleManagerTest();
+  networkManagerTest();
+  restrictionsTest();
+  systemManagerTest();
+  wifiManagerTest();
+  deviceControlTest();
 }

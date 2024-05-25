@@ -16,6 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 import("//test/xts/acts/graphic/vktest/comm.gni")
 
 ohos_moduletest_suite("ActsVulkanMonolithicTest") {
+  part_name = "graphic_2d"
   sources = [ "ActsVulkanMonolithicTest.cpp" ]
 
   include_dirs = [ "src" ]

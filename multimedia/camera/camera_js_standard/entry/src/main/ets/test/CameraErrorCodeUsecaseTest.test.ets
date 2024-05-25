@@ -342,8 +342,14 @@ export default function CameraErrorCodeUsecaseTest() {
 
         afterAll(async function () {
             await releaseVideoReceiveSurface();
-            sleep(1000);
             console.info('afterAll case');
+            if (!isEmpty(mCameraInput)) {
+                await releaseInput();
+            }
+            if (!isEmpty(mCameraSession)) {
+                await releaseCameraSessionInstance();
+            }
+            sleep(1000);
         })
 
         /**
@@ -2193,7 +2199,6 @@ export default function CameraErrorCodeUsecaseTest() {
             createOutput(0);
             mCameraSession.addOutput(mPreviewOutput);
             mCameraSession.addOutput(mPhotoOutput);
-            await commitCameraSessionConfig();
             try {
                 await mPhotoOutput.capture();
             } catch (err) {
@@ -2221,7 +2226,6 @@ export default function CameraErrorCodeUsecaseTest() {
             createOutput(0);
             mCameraSession.addOutput(mPreviewOutput);
             mCameraSession.addOutput(mPhotoOutput);
-            await commitCameraSessionConfig();
             mPhotoOutput.capture(async (err) => {
                 if (!err) {
                     expect(true).assertTrue();
@@ -2231,8 +2235,8 @@ export default function CameraErrorCodeUsecaseTest() {
                     console.info(TAG + "ERRORCODE: " + err.code);
                     expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_RUNNING).assertTrue();
                 }
+                done();
             })
-            done();
         })
 
         /**
@@ -2251,7 +2255,6 @@ export default function CameraErrorCodeUsecaseTest() {
             createOutput(0);
             mCameraSession.addOutput(mPreviewOutput);
             mCameraSession.addOutput(mPhotoOutput);
-            await commitCameraSessionConfig();
             mPhotoOutput.capture(captureSetting, async (err) => {
                 if (!err) {
                     expect(true).assertTrue();
@@ -2261,9 +2264,8 @@ export default function CameraErrorCodeUsecaseTest() {
                     console.info(TAG + "ERRORCODE: " + err.code);
                     expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_RUNNING).assertTrue();
                 }
+                done();
             })
-            sleep(1000);
-            done();
         })
 
         /**
@@ -2282,7 +2284,6 @@ export default function CameraErrorCodeUsecaseTest() {
             createOutput(0);
             mCameraSession.addOutput(mPreviewOutput);
             mCameraSession.addOutput(mPhotoOutput);
-            await commitCameraSessionConfig();
             try {
                 await mPhotoOutput.capture(captureSetting);
             } catch (err) {

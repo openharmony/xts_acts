@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function alphabetIndexerOnSelectJsunit() {
   describe('alphabetIndexerOnSelectTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/alphabetIndexer',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/alphabetIndexer',
       }
       try {
         router.clear();
@@ -230,9 +230,9 @@ export default function alphabetIndexerOnSelectJsunit() {
       console.info('alphabetIndexerOnSelect testalphabetIndexerOnSelect0011 START');
       await Utils.sleep(2000);
       try {
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("onSelect_0012 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.STATUS).assertEqual(true);
+          expect(indexEvent.data?.STATUS).assertEqual(true);
         }
         let indexEvent: events_emitter.InnerEvent = {
           eventId: 60201,
@@ -250,9 +250,9 @@ export default function alphabetIndexerOnSelectJsunit() {
           eventId: 60202,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback1 = (eventData) => {
+        let callback1 = (eventData: events_emitter.EventData) => {
           console.info("onRequestPopupData_0012 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
         }
         console.info("onSelect_0012 click result is: " + JSON.stringify(sendEventByKey('alphabetIndexer', 10, "")));
         events_emitter.on(innerEventOne, callback1);

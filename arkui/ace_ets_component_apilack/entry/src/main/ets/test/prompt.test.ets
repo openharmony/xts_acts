@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 
 export default function promptShowDialogJsunit() {
   describe('promptShowDialogTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/prompt',
+      let options: router.RouterOptions  = {
+        url: 'MainAbility/pages/prompt',
       }
       try {
         router.clear();
@@ -58,9 +58,9 @@ export default function promptShowDialogJsunit() {
           eventId: 60220,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback1 = (eventData) => {
+        let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testpromptShowDialog001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
 
         }
         console.info("onSelect_001 click result is: " + JSON.stringify(sendEventByKey('showDialogText', 10, "")));
@@ -84,9 +84,9 @@ export default function promptShowDialogJsunit() {
           eventId: 60221,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback2 = (backData1) => {
+        let callback2 = (backData1: events_emitter.EventData) => {
           console.info("onRequestPopupData_0011 get event state result is: " + JSON.stringify(backData1));
-          expect(backData1.data.STATUS).assertEqual(true);
+          expect(backData1.data?.STATUS).assertEqual(true);
 
         }
         console.info("onSelect_002 click result is: " + JSON.stringify(sendEventByKey('showActionMenuText', 10, "")));
