@@ -66,6 +66,8 @@ const uint32_t DIFF_VALUE_UINT = 26;
 const double DIFF_VALUE_DOUBLE = 1.234;
 const double DIFF_VALUE_DATE = 1501924876711;
 static char g_dataType[32] = "";
+static bool g_threadFlag1 = false;
+static bool g_threadFlag2 = false;
 
 #define EOK 0
 #define OPENCODE
@@ -7690,6 +7692,284 @@ static JSVM_Value GetInstanceData(JSVM_Env env, JSVM_CallbackInfo info)
     return result;
 }
 
+static JSVM_Value IsCallable(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_Value value;
+    JSVM_Value rst;
+    size_t argc = 1;
+    bool isCallable = false;
+    JSVM_CALL(env, OH_JSVM_GetCbInfo(env, info, &argc, &value, NULL, NULL));
+    JSVM_CALL(env, OH_JSVM_IsCallable(env, value, &isCallable));
+    OH_JSVM_GetBoolean(env, isCallable, &rst);
+    return rst;
+}
+
+static napi_value testIsCallable(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_CallbackStruct param[] = {{.data = nullptr, .callback = IsCallable}};
+    JSVM_PropertyDescriptor descriptor[] = {{"isCallable", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT}};
+    JSVM_Env env;
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    const char* sourcecodestr = R"JS(
+      function add() { return 0;} let rst = isCallable(add);
+    )JS";
+    JSVM_Value sourcecodevalue;
+    OH_JSVM_CreateStringUtf8(env, sourcecodestr, strlen(sourcecodestr), &sourcecodevalue);
+    JSVM_Script script;
+    OH_JSVM_CompileScript(env, sourcecodevalue, nullptr, 0, true, nullptr, &script);
+    JSVM_Value result;
+    OH_JSVM_RunScript(env, script, &result);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
+void Thread1Func(JSVM_VM vm, JSVM_Env env)
+{
+    bool isLocked = false;
+    OH_JSVM_IsLocked(env, &isLocked);
+    if (!isLocked) {
+        OH_JSVM_AcquireLock(env);
+        g_threadFlag1 = false;
+    }
+    JSVM_VMScope vmScope;
+    OH_JSVM_OpenVMScope(vm, &vmScope);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+    JSVM_Value value;
+    OH_JSVM_CreateInt32(env, 32, &value); // 32: numerical value
+    int32_t num1;
+    OH_JSVM_GetValueInt32(env, value, &num1);
+    OH_JSVM_CloseHandleScope(env, handleScope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_CloseVMScope(vm, vmScope);
+    OH_JSVM_IsLocked(env, &isLocked);
+    if (isLocked) {
+        OH_JSVM_ReleaseLock(env);
+        g_threadFlag1 = true;
+    }
+}
+
+void Thread2Func(JSVM_VM vm, JSVM_Env env)
+{
+    bool isLocked = false;
+    OH_JSVM_IsLocked(env, &isLocked);
+    if (!isLocked) {
+        OH_JSVM_AcquireLock(env);
+        g_threadFlag2 = false;
+    }
+    JSVM_VMScope vmScope;
+    OH_JSVM_OpenVMScope(vm, &vmScope);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+    JSVM_Value value;
+    OH_JSVM_CreateInt32(env, 32, &value); // 32: numerical value
+    int32_t num1;
+    OH_JSVM_GetValueInt32(env, value, &num1);
+    OH_JSVM_CloseHandleScope(env, handleScope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_CloseVMScope(vm, vmScope);
+    OH_JSVM_IsLocked(env, &isLocked);
+    if (isLocked) {
+        OH_JSVM_ReleaseLock(env);
+        g_threadFlag2 = true;
+    }
+}
+
+static napi_value testMultithreadFunction(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_Env env;
+    OH_JSVM_CreateEnv(vm, 0, nullptr, &env);
+    Thread1Func(vm, env);
+    Thread2Func(vm, env);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    if (g_threadFlag1 && g_threadFlag2) {
+        NAPI_CALL(env1, napi_create_int32(env1, 1, &result11));
+    } else {
+        NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    }
+    return result11;
+}
+
+static const char *STR_TASK = R"JS(
+WebAssembly.instantiate(new Uint8Array([0, 97, 115, 109, 1, 0, 0, 0, 1, 8, 2, 96, 1, 127, 0, 96, 0, 0, 2, 8, 1, 2, 106,
+115, 1, 95, 0, 0, 3, 2, 1, 1, 8, 1, 1, 10, 9, 1, 7, 0, 65, 185, 10, 16, 0, 11]),
+{js:{_:console.log("JSVM: Called from WebAssembly Hello world")}}).then(function(obj)
+{
+    console.log("Called with instance " + obj);
+}).catch(function(err) {
+    console.log("Called with error " + err);
+});
+)JS";
+
+static napi_value testHandleMicrotasks(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    OH_JSVM_CreateEnv(vm, 0, nullptr, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value sourcecodevalue;
+    OH_JSVM_CreateStringUtf8(env, STR_TASK, strlen(STR_TASK), &sourcecodevalue);
+    JSVM_Script script;
+    OH_JSVM_CompileScript(env, sourcecodevalue, nullptr, 0, true, nullptr, &script);
+    JSVM_Value result;
+    OH_JSVM_RunScript(env, script, &result);
+    bool rst = false;
+    for (int i = 0; i < 3; i++) { // 3: cycles
+        sleep(3); // 3 seconds
+        JSVM_Status flag1 = OH_JSVM_PumpMessageLoop(vm, &rst);
+        sleep(3); // 3 sec onds
+        JSVM_Status flag2 = OH_JSVM_PerformMicrotaskCheckpoint(vm);
+        if (rst && flag1 == JSVM_Status::JSVM_OK && flag2 == JSVM_Status::JSVM_OK) {
+            break;
+        }
+    }
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_get_boolean(env1, rst, &result11));
+    return result11;
+}
+
+static const char *SRC_TEST = R"JS(
+!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};
+return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r)
+{n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e)
+{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),
+Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;
+if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);
+if(n.r(r),Object.defineProperty(r,"default",
+{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));
+return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};
+return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}
+([function(e,t,n){const r=n(1);try{const e=r.divide(10,0);print(e)}catch(e){print(e.message),print(e.stack)}},
+function(e,t){e.exports={divide:function(e,t){if(0===t)throw new Error("Cannot divide by zero");return e/t}}}]);
+)JS";
+
+static napi_value testJswmInterface(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    OH_JSVM_CreateEnv(vm, 0, nullptr, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    JSVM_Value jsSrc;
+    OH_JSVM_CreateStringUtf8(env, SRC_TEST, strlen(SRC_TEST), &jsSrc);
+    const uint8_t *data = nullptr;
+    size_t length = 0;
+    bool cacheRejected = false;
+    bool rstFlag = false;
+    JSVM_Script script;
+    JSVM_ScriptOrigin scriptOrgin {
+        .sourceMapUrl = "/data/bundle.js.map/bundle.js.map",
+        .resourceName = "bundle.js"
+    };
+    JSVM_Status status = OH_JSVM_CompileScriptWithOrigin(env, jsSrc, data, length,
+                                                         true, &cacheRejected, &scriptOrgin, &script);
+    if (status == JSVM_Status::JSVM_OK) {
+        rstFlag = true;
+    }
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_get_boolean(env1, rstFlag, &result11));
+    return result11;
+}
+
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateStringUtf8},
     {.data = nullptr, .callback = GetValueStringUtf8},
@@ -8524,8 +8804,12 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("Add1",Add1),
         DECLARE_NAPI_FUNCTION("testSecondOperations",testSecondOperations),
         DECLARE_NAPI_FUNCTION("testDefinePropertyHandle",testDefinePropertyHandle),
+        DECLARE_NAPI_FUNCTION("testIsCallable", testIsCallable),
+        DECLARE_NAPI_FUNCTION("testHandleMicrotasks", testHandleMicrotasks),
         DECLARE_NAPI_FUNCTION("runJsVm", RunJsVm),
         {"TypedArrayTypes", nullptr, nullptr, nullptr, nullptr, typedArrayTypes, napi_default, nullptr},
+        DECLARE_NAPI_FUNCTION("testMultithreadFunction", testMultithreadFunction),
+        DECLARE_NAPI_FUNCTION("testJswmInterface", testJswmInterface),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;
