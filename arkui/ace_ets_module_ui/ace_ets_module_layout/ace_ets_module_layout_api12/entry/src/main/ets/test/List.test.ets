@@ -15,10 +15,15 @@
 import SpaceMainNumberJsunit from './Flex/SpaceMainNumber.test.ets';
 import SpaceMain5JustifyContentJsunit from './Flex/SpaceMain5JustifyContent.test.ets';
 import SpaceCross5AlignItemsJsunit from './Flex/SpaceCross5AlignItems.test.ets';
-
+import RelativeContainerApi from './RelativeContainer/RelativeContainerApi.test'
+import ChipApi1 from './Chip/ChipApi1.test'
+import ChipGroupApi1 from './ChipGroup/ChipGroupApi1.test'
 
 export default function testsuite() {
   SpaceMainNumberJsunit();
   SpaceMain5JustifyContentJsunit();
   SpaceCross5AlignItemsJsunit();
+  RelativeContainerApi();
+  ChipApi1();
+  ChipGroupApi1();
 }
