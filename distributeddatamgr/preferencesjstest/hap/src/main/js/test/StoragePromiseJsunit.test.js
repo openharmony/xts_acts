@@ -21,8 +21,8 @@ const KEY_TEST_LONG_ELEMENT = 'key_test_long';
 const KEY_TEST_FLOAT_ELEMENT = 'key_test_float';
 const KEY_TEST_BOOLEAN_ELEMENT = 'key_test_boolean';
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
-const MAX_KEY_LENGTH = 'X'.repeat(80)
-const MAX_VALUE_LENGTH = 'y'.repeat(8192)
+const MAX_KEY_LENGTH = 'X'.repeat(1024)
+const MAX_VALUE_LENGTH = 'y'.repeat(16*1024*1024)
 let mPref;
 
 export default function storagePromiseTest() {
@@ -466,7 +466,7 @@ export default function storagePromiseTest() {
         it('testMaxLengthofValue0220', 0, async function (done) {
             await mPref.clearSync();
             await mPref.putSync("test", MAX_VALUE_LENGTH);
-            await mPref.put("test", "y".repeat(8192)).then((ret) => {
+            await mPref.put("test", "y".repeat(16*1024*1024)).then((ret) => {
                 expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
                 done();
             }).catch((err) => {
@@ -528,7 +528,7 @@ export default function storagePromiseTest() {
         it('testMaxLengthofValue0250', 0, async function (done) {
             await mPref.clearSync();
             await mPref.putSync("test", MAX_VALUE_LENGTH)
-            await mPref.put("test", "y".repeat(8192)).then((ret) => {
+            await mPref.put("test", "y".repeat(16*1024*1024)).then((ret) => {
                 expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
             }).catch((err) => {
                 expect(null).assertFail();

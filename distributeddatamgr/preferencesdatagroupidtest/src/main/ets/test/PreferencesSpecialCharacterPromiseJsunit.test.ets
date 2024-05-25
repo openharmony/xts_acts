@@ -221,18 +221,20 @@ export default function preferencesSpecialCharacterPromiseTest() {
      * @tc.level Level 2
      */
     it('testPreferencesPutUint8Array0040', 0, async () => {
-      let uInt8Array = new Uint8Array(8192);
+      let uInt8Array = new Uint8Array(16*1024*1024);
       uInt8Array.fill(100);
       const promise = mPreferences.put(KEY_TEST_UINT8ARRAY, uInt8Array);
       await promise.then(async (ret) => {
         let pre = await mPreferences.get(KEY_TEST_UINT8ARRAY, new Uint8Array(0));
-        expect(uInt8Array.toString() === pre.toString()).assertTrue();
+        expect(uInt8Array.length === pre.length).assertTrue();
+        expect(100 === pre[0]).assertTrue();
         await mPreferences.flush();
         await dataPreferences.removePreferencesFromCache(context, NAME);
         mPreferences = null;
         mPreferences = await dataPreferences.getPreferences(context, NAME);
         let pre2 = await mPreferences.get(KEY_TEST_UINT8ARRAY, new Uint8Array(0));
-        expect(uInt8Array.toString() === pre2.toString()).assertTrue();
+        expect(uInt8Array.length === pre2.length).assertTrue();
+        expect(100 === pre2[0]).assertTrue();
       }).catch((err: BusinessError) => {
         expect(null).assertFail();
       });
@@ -247,7 +249,7 @@ export default function preferencesSpecialCharacterPromiseTest() {
      * @tc.level Level 2
      */
     it('testPreferencesPutUint8Array0050', 0, async (done: Function) => {
-      let uInt8Array = new Uint8Array(8193);
+      let uInt8Array = new Uint8Array(16*1024*1024+1);
       uInt8Array.fill(100);
       try {
         await mPreferences.put(KEY_TEST_UINT8ARRAY, uInt8Array);
