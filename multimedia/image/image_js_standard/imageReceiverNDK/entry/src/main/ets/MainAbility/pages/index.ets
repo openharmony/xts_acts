@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+var mXComponentController: XComponentController = new XComponentController()
+var surfaceId: any
+
 @Entry
 @Component
 struct MyComponent {
@@ -21,17 +24,22 @@ struct MyComponent {
   }
 
   build() {
-    Flex({
-      direction: FlexDirection.Column,
-      alignItems: ItemAlign.Center,
-      justifyContent: FlexAlign.Center
-    }) {
-      Text('ACE ETS TEST')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
+    Flex() {
+      XComponent({
+        id: '',
+        type: 'surface',
+        libraryname: '',
+        controller: mXComponentController
+      })
+        .onLoad(() => {
+          console.info('ImageModuleTest: OnLoad() is called!')
+          mXComponentController.setXComponentSurfaceSize({ surfaceWidth: 1920, surfaceHeight: 1080 });
+          surfaceId = mXComponentController.getXComponentSurfaceId()
+          globalThis.surfaceId = surfaceId
+          console.info('ImageModuleTest: XComponent onLoad surfaceId: ' + surfaceId)
+        })
+        .width('1920px')
+        .height('1080px')
     }
-    .width('100%')
-      .height('100%')
   }
 }
-
