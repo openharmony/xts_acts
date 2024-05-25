@@ -14,9 +14,11 @@
  */
 
 import imageJsTest from './image.test.js'
+import imageSync from './imageSync.test.js'
 import addImage from './addImage.test.js'
 
 export default function testsuite() {
+    imageSync()
     imageJsTest()
     addImage()
 }
