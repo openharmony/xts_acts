@@ -53,23 +53,29 @@ struct audioOutputRouting {
   }
 
   async getDevices() {
+    this.outputDevice = "";
     let deviceDescriptors = await this.audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
     Logger.info(this.tag, `getDevices: ` + JSON.stringify(deviceDescriptors));
-    switch (deviceDescriptors[0].deviceType) {
-      case 2:
-        this.outputDevice = "Speaker";
+    for (let i = 0; i < deviceDescriptors.length; i++) {
+      switch (deviceDescriptors[i].deviceType) {
+        case 2:
+          this.outputDevice = "Speaker";
+          break
+        case 3:
+          this.outputDevice = "3.5mm有线耳机";
+          break
+        case 8:
+          this.outputDevice = "蓝牙耳机";
+          break
+        case 22:
+          this.outputDevice = "Type C耳机";
+          break
+        default:
+          break
+      }
+      if (this.outputDevice != "") {
         break
-      case 3:
-        this.outputDevice = "3.5mm有线耳机";
-        break
-      case 8:
-        this.outputDevice = "蓝牙耳机";
-        break
-      case 22:
-        this.outputDevice = "Type C耳机";
-        break
-      default:
-        break
+      }
     }
     Logger.info(this.tag, `OutputDeviceList: ${this.outputDevice}`);
   }
