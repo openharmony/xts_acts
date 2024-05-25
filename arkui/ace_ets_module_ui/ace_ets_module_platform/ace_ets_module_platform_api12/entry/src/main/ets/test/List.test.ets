@@ -16,10 +16,12 @@
 import getXComponentSurfaceRectJsunit from './XComponentTest/getXComponentSurfaceRect.test';
 import onSurfaceCreatedJsunit from './XComponentTest/onSurfaceCreated.test';
 import stopImageAnalyzerJsunit from './XComponentTest/stopImageAnalyzer.test';
+import counterApi from './Counter/counterApi.test';
 
 
 export default function testsuite() {
   getXComponentSurfaceRectJsunit();
   onSurfaceCreatedJsunit();
   stopImageAnalyzerJsunit();
+  counterApi();
 }

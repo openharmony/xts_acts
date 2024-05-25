@@ -46,8 +46,10 @@ import openCustomDialogTest from './CustomDialogTest/UIContextTest/OpenCustomDia
 import UpdateCustomDialogTest from './CustomDialogTest/UIContextTest/UpdateCustomDialog.test.ets'
 import ButtonStyle from './CalendarPickerDialogTest/ButtonStyle.test'
 import DateButtonStyle from './DatePickerDialogTest/DateButtonStyle.test'
+import dialogApi from './Dialog/dialogApi.test'
 
 export default function testsuite() {
+  dialogApi()
   TextPickerDialog()
   DatePickerDialog()
   TimePickerDialog()

@@ -3,6 +3,7 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/XComponent/getXComponentSurfaceRect",
         "MainAbility/pages/XComponent/onSurfaceCreated",
-        "MainAbility/pages/XComponent/stopImageAnalyzer"
+        "MainAbility/pages/XComponent/stopImageAnalyzer",
+        "MainAbility/pages/Counter/counterApi"
     ]
 }
