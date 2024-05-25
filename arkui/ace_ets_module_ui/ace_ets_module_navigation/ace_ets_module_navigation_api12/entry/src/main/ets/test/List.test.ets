@@ -16,9 +16,17 @@ import NavigationApi1 from './Navigation/NavigationApi1.test'
 import NavigationApi2 from './Navigation/NavigationApi2.test'
 import NavigationApi3 from './Navigation/NavigationApi3.test'
 import NavigationApi4 from './Navigation/NavigationApi4.test'
+import NavigationBarStyle from './Navigation/NavigationBarStyle.test'
+import NavigationOnPop from './Navigation/NavigationOnPop.test'
+import NavDestinationEvents from './NavDestinationTest/NavDestinationEvents.test'
+import NavDestinationRouterMap from './NavDestinationTest/NavDestinationRouterMap.test'
 export default function testsuite() {
   NavigationApi1();
   NavigationApi2();
   NavigationApi3();
   NavigationApi4();
+  NavigationBarStyle();
+  NavigationOnPop();
+  NavDestinationEvents();
+  NavDestinationRouterMap();
 }
