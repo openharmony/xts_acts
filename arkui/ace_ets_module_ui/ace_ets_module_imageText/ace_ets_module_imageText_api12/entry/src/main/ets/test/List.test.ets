@@ -61,9 +61,11 @@ import RichEditor5 from './RichEditorEnhance/RichEditor5.test'
 import RichEditor6 from './RichEditorEnhance/RichEditor6.test'
 import RichEditor7 from './RichEditorEnhance/RichEditor7.test'
 import TextInputTextAreaSearch from './RichEditorEnhance/TextInputTextAreaSearch.test'
+import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
+
 export default function testsuite() {
-APIContentTypeTest();
-APIUnderlineColorTest();
+  APIContentTypeTest();
+  APIUnderlineColorTest();
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
@@ -110,4 +112,6 @@ APIUnderlineColorTest();
   RichEditor6();
   RichEditor7();
   TextInputTextAreaSearch();
+  textStrategyJsunit();
+
 }

@@ -57,6 +57,7 @@ struct RefreshOffsetExample {
       .backgroundColor(0x89CFF0)
       .refreshOffset(64)
       .pullToRefresh(true)
+      .pullDownRatio(0.5)
     }
   }
 }

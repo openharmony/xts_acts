@@ -47,6 +47,8 @@
   "MainAbility/pages/RichEditorEnhance/RichEditor5",
   "MainAbility/pages/RichEditorEnhance/RichEditor6",
   "MainAbility/pages/RichEditorEnhance/RichEditor7",
-  "MainAbility/pages/RichEditorEnhance/TextInputTextAreaSearch"
+  "MainAbility/pages/RichEditorEnhance/TextInputTextAreaSearch",
+  "MainAbility/pages/Text/textStrategy"
+
   ]
 }
