@@ -54,7 +54,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
           let data: cert.CertChainBuildResult = await cert.buildX509CertChain(param);
           let x509_certChain: cert.X509CertChain = data.certChain;
           let cert_ChainValidationResult = data.validationResult;
-          expect(x509_certChain.getCertList().length == 2).asertTrue();
+          expect(x509_certChain.getCertList().length == 2).assertTrue();
           expect(cert_ChainValidationResult.trustAnchor.CACert?.getNotBeforeTime() == '201212201944Z').assertTrue();
           expect(cert_ChainValidationResult.trustAnchor.nameConstraints != null).assertTrue();
           done();
