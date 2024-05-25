@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/observer/observerScroll"
+        "MainAbility/pages/observer/observerScroll",
+        "MainAbility/pages/observer/ObserverNavDestinationState"
     ]
 }
