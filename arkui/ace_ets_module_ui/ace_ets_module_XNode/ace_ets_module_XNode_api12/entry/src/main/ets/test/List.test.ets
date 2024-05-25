@@ -20,6 +20,9 @@ import renderNodeGetInterfaceTest from './renderNode/renderNodeTestInterface.tes
 import disposeTest from './FrameNodeTest/dispose.test';
 import getAttrsTest from './FrameNodeTest/getAttrs.test';
 
+
+import RenderNodeAttributeTest from './renderNode/RenderNodeAttributeTest.test';
+
 export default function testsuite() {
   borderRadiuses();
   borderStyles();
@@ -28,4 +31,5 @@ export default function testsuite() {
   renderNodeGetInterfaceTest();
   disposeTest();
   getAttrsTest();
+  RenderNodeAttributeTest();
 }
