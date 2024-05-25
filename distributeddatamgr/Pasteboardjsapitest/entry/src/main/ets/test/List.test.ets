@@ -18,10 +18,12 @@ import pasteBoardJEtsunitTest from './PasteBoardEtsunitTest';
 import pasteBoardTest from './PasteBoard.test.ets';
 import pasteBoardRecordTest from './PasteBoardRecord.test.ets'
 import pasteBoardSystemPasteBoardTest from './PasteBoardSystemPasteBoard.test.ets'
+import PasteboardUnifiedTest from './PasteboardUnified.test';
 export default function testsuite() {
   pasteBoardJEtsunitTest()
   pasteBoardSystemPasteBoardTest()
   pasteBoardTest()
   pasteBoardRecordTest()
   pasteboardSyncTest()
+  PasteboardUnifiedTest()
 }
