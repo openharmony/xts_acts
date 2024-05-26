@@ -76,6 +76,9 @@ struct webviewSelectionMenuOptions {
                 this.controller.loadUrl($rawfile("indexdemotwo.html"))
                 await Utils.sleep(12000);
                 let driver: Driver = Driver.create();
+                let buttonCenter = await driver.findComponent(ON.id('webCenter'));
+                await buttonCenter.longClick()
+                await Utils.sleep(4000);
                 let buttonOne = await driver.findComponent(ON.text('Please'));
                 await buttonOne.longClick()
                 await Utils.sleep(4000);
