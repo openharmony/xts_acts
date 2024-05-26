@@ -21,6 +21,10 @@ import CloseMask from './menuControlTest/bindContextMenuTest/CloseMask.test'
 import CloseMenu from './menuControlTest/bindContextMenuTest/CloseMenu.test'
 import IsShowFalse from './menuControlTest/bindContextMenuTest/IsShowFalse.test'
 import preview from './menuControlTest/bindContextMenuTest/preview.test'
+import SheetMode from './bindSheetTest/SheetMode.test'
+import springBack from './bindSheetTest/springBack.test'
+import DetentsChange from './bindSheetTest/DetentsChange.test'
+import SheetTransition from './bindSheetTest/SheetTransition.test'
 
 export default function testsuite() {
   aboutToAppearFalse();
@@ -32,4 +36,8 @@ export default function testsuite() {
   CloseMenu();
   IsShowFalse();
   preview();
+  SheetMode()
+  springBack()
+  DetentsChange()
+  SheetTransition()
 }

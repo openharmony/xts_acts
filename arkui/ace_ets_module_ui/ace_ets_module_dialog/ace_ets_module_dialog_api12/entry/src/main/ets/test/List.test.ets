@@ -37,6 +37,9 @@ import closeCustomDialog from './promptActionTest/closeCustomDialog.test'
 import openCustomDialog from './promptActionTest/openCustomDialog.test'
 import updateCustomDialog from './promptActionTest/updateCustomDialog.test'
 import onHeightDidChange from './onHeightDidChange.test'
+import ButtonStyle from './CalendarPickerDialogTest/ButtonStyle.test'
+import DateButtonStyle from './DatePickerDialogTest/DateButtonStyle.test'
+
 export default function testsuite() {
   TextPickerDialog()
   DatePickerDialog()
@@ -62,4 +65,6 @@ export default function testsuite() {
   closeCustomDialog()
   openCustomDialog()
   updateCustomDialog()
+  ButtonStyle()
+  DateButtonStyle()
 }
