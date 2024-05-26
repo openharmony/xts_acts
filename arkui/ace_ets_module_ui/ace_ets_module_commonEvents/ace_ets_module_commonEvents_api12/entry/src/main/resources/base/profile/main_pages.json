@@ -2,7 +2,7 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/DragController/APIPreDragStatus",
-        "MainAbility/pages/addGestureApplyGesture"
+        "MainAbility/pages/addGestureApplyGesture",
         "MainAbility/pages/keyboardShortcut/ShortcutKeyTAB",
         "MainAbility/pages/keyboardShortcut/ShortcutKeyDPADUP",
         "MainAbility/pages/keyboardShortcut/ShortcutKeyDPADDOWN",
