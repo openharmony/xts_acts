@@ -36,10 +36,7 @@
   "MainAbility/pages/RichEditor/RichEditorApi3",
   "MainAbility/pages/RichEditor/RichEditorApi5",
   "MainAbility/pages/RichEditor/RichEditorChangeCallback",
-  "MainAbility/pages/RichEditorEnhance01/RichEditorWordBreak",
-  "MainAbility/pages/RichEditorEnhance01/RichEditorMenuPolicy",
-  "MainAbility/pages/RichEditorEnhance01/RichEditor_TextStyle",
-  "MainAbility/pages/RichEditorEnhance01/RichEditorFontFeature",
+
   "MainAbility/pages/RichEditorEnhance/RichEditor1",
   "MainAbility/pages/RichEditorEnhance/RichEditor2",
   "MainAbility/pages/RichEditorEnhance/RichEditor3",

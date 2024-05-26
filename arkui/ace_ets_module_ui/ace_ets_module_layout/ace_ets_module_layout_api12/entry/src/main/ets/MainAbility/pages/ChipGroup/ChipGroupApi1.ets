@@ -74,7 +74,6 @@ struct ChipGroupApi1 {
       })
 
       Button('getInspectorTree').onClick(() => {
-        // this.text1 = '' + JSON.parse(JSON.stringify(getInspectorTree())).$children[0].$children[0].$children[0].$children[0].$children[0].$children[0].$children[0].$children[0].$children[0].$children[0].$children[0].$type
         this.text1 = JSON.parse(JSON.stringify(getInspectorTree())).$children[0].$children[0].$children[0].$children[0].$children[0].$children[0].$children[0].$attrs.padding
 
       }).id('ChipGroupApi1_btn1')
