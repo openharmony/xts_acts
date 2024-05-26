@@ -26,7 +26,7 @@ import { Driver, ON, On } from '@ohos.UiTest';
 struct webviewSelectionMenuOptions {
   
   @State str: string = "emitSelectionMenuOptions0100";
-  @State userAgentPC:string = "";
+  @State userAgentPC:string = '';
   controller: web_webview.WebviewController = new web_webview.WebviewController()
   @State menuOptionArray: Array<ExpandedMenuItemOptions> = [
     {content: 'Apple', action: (selectedText) => {
@@ -38,13 +38,12 @@ struct webviewSelectionMenuOptions {
     }}
   ];
 
-  onPageShow() {
+  onPageShow(){
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
-    // let driver: Driver = Driver.create();
   }
 
   private valueChangeCallBack = (eventData: ESObject) => {
@@ -69,7 +68,7 @@ struct webviewSelectionMenuOptions {
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(1, 5400)
                   break;
-                }else if ((this.userAgentPC).includes("Tablet")){
+                }else if((this.userAgentPC).includes("Tablet")){
                   Utils.emitEvent(1, 5400)
                   break;
                 }
@@ -100,7 +99,7 @@ struct webviewSelectionMenuOptions {
 
       Web({ src: $rawfile('index.html'), controller: this.controller })
       .selectionMenuOptions(this.menuOptionArray)
-      .id("webCenter")
+      .id('webCenter')
     }
   }
 }

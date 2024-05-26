@@ -25,9 +25,9 @@ import web_webview from '@ohos.web.webview'
 struct webviewTerminateRenderProcess {
   controller: web_webview.WebviewController = new web_webview.WebviewController();
   @State str: string = "emitTerminateRenderProcess0100";
-  @State userAgentPC:string = "";
+  @State userAgentPC:string = '';
 
-  onPageShow() {
+  onPageShow(){
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
       priority: events_emitter.EventPriority.LOW
@@ -38,7 +38,7 @@ struct webviewTerminateRenderProcess {
   private valueChangeCallBack = (eventData: ESObject) => {
     console.info("webOnSslError page valueChangeCallBack");
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
@@ -57,7 +57,7 @@ struct webviewTerminateRenderProcess {
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 5300)
                   break;
-                }else if ((this.userAgentPC).includes("Tablet")){
+                }else if((this.userAgentPC).includes("Tablet")){
                   Utils.emitEvent(true, 5300)
                   break;
                 }
@@ -78,7 +78,7 @@ struct webviewTerminateRenderProcess {
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent("百度一下，你就知道", 5302)
                   break;
-                }else if ((this.userAgentPC).includes("Tablet")){
+                }else if((this.userAgentPC).includes("Tablet")){
                   Utils.emitEvent("百度一下，你就知道", 5302)
                   break;
                 }
@@ -101,7 +101,7 @@ struct webviewTerminateRenderProcess {
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 5304)
                   break;
-                }else if ((this.userAgentPC).includes("Tablet")){
+                }else if((this.userAgentPC).includes("Tablet")){
                   Utils.emitEvent(true, 5304)
                   break;
                 }
@@ -122,7 +122,7 @@ struct webviewTerminateRenderProcess {
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 5306)
                   break;
-                }else if ((this.userAgentPC).includes("Tablet")){
+                }else if((this.userAgentPC).includes("Tablet")){
                   Utils.emitEvent(true, 5306)
                   break;
                 }
@@ -145,8 +145,8 @@ struct webviewTerminateRenderProcess {
 
       Web({ src: 'https://wrong.host.badssl.com', controller: this.controller })
       .onOverScroll((event) => {
-          console.info("x = " + event.xOffset)
-          console.info("y = " + event.yOffset)
+          console.info('x = ' + event.xOffset)
+          console.info('y = ' + event.yOffset)
           Utils.emitEvent(false, 5306)
       })
     }
