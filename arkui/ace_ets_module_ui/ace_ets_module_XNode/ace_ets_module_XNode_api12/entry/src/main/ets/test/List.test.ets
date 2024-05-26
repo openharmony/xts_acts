@@ -22,6 +22,9 @@ import getAttrsTest from './FrameNodeTest/getAttrs.test';
 import getPosition from './FrameNodeTest/getPosition.test';
 import setLayout from './FrameNodeTest/setLayout.test';
 
+
+import RenderNodeAttributeTest from './renderNode/RenderNodeAttributeTest.test';
+
 export default function testsuite() {
   borderRadiuses();
   borderStyles();
@@ -32,4 +35,5 @@ export default function testsuite() {
   getAttrsTest();
   getPosition();
   setLayout();
+  RenderNodeAttributeTest();
 }

@@ -21,7 +21,8 @@ import featureAbility from "@ohos.ability.featureAbility";
 
 export default function imageModifyProperty() {
     describe("imageModifyProperty", function () {
-        const { IMAGE_LENGTH,IMAGE_WIDTH,GPS_DATE_STAMP,IMAGE_DESCRIPTION,SCENE_BLUE_SKY_CONF,SCENE_GREEN_PLANT_CONF } = image.PropertyKey;
+        const { IMAGE_LENGTH, IMAGE_WIDTH, GPS_DATE_STAMP, IMAGE_DESCRIPTION,
+            SCENE_BLUE_SKY_CONF, SCENE_GREEN_PLANT_CONF, GIF_LOOP_COUNT } = image.PropertyKey;
         let globalImagesource;
         let filePath;
         let fdNumber;
@@ -346,6 +347,64 @@ export default function imageModifyProperty() {
                         expect(error.message == "The EXIF data failed to be written to the file.").assertTrue();
                         done();
                     });
+            }
+        }
+
+        async function modifyLoopCountError(testNum, type, isBatch, done) {
+            let imageSourceApi;
+            try {
+                if (type == "gif") {
+                    await getFd("moving_test_loop1.gif");
+                } else {
+                    await getFd("test_exif.jpg");
+                }
+            } catch (error) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            }
+            imageSourceApi = image.createImageSource(filePath);
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                globalImagesource = imageSourceApi;
+                if (isBatch) {
+                    let props = {
+                        ImageWidth: '1024',
+                        GIFLoopCount: '3'
+                    };
+                    imageSourceApi
+                        .modifyImageProperties(props)
+                        .then(() => {
+                            console.log(`${testNum} modify GIF_LOOP_COUNT success.`);
+                            expect().assertFail();
+                            done()
+                        })
+                        .catch((error) => {
+                            let errorCode = JSON.stringify(error);
+                            console.log(`${testNum} error: ` + error);
+                            console.log(`${testNum} error: ` + errorCode);
+                            expect(errorCode.includes("62980146")).assertTrue();
+                            done();
+                        });
+                } else {
+                    imageSourceApi
+                        .modifyImageProperty(GIF_LOOP_COUNT, '3')
+                        .then(() => {
+                            console.log(`${testNum} modify GIF_LOOP_COUNT success.`);
+                            expect().assertFail();
+                            done()
+                        })
+                        .catch((error) => {
+                            let errorCode = JSON.stringify(error);
+                            console.log(`${testNum} error: ` + error);
+                            console.log(`${testNum} error: ` + errorCode);
+                            expect(errorCode.includes("62980146")).assertTrue();
+                            done();
+                        });
+                }
             }
         }
 
@@ -4007,6 +4066,59 @@ export default function imageModifyProperty() {
                 checkKey,
                 undefined
             );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100
+         * @tc.name      : test modifyImageProperty GIFLoopCount for gif
+         * @tc.desc      : 1.getFd()
+         *                 2.modifyImageProperty()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100", 0, async function (done) {
+            console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100 start");
+            modifyLoopCountError("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100", "gif", false, done);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200
+         * @tc.name      : test modifyImageProperties GIFLoopCount for gif
+         * @tc.desc      : 1.getFd()
+         *                 2.modifyImageProperties()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200", 0, async function (done) {
+            console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200 start");
+            modifyLoopCountError("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200", "gif", true, done);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300
+         * @tc.name      : test modifyImageProperty GIFLoopCount for jpg
+         * @tc.desc      : 1.getFd()
+         *                 2.modifyImageProperty()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300", 0, async function (done) {
+            console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300 start");
+            modifyLoopCountError("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300", "jpg", false, done);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400
+         * @tc.name      : test modifyImageProperties GIFLoopCount for jpg
+         * @tc.desc      : 1.getFd()
+         *                 2.modifyImageProperties()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400", 0, async function (done) {
+            console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400 start");
+            modifyLoopCountError("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400", "jpg", true, done);
         });
     });
 }

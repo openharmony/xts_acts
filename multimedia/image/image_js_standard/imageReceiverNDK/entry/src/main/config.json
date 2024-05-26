@@ -31,6 +31,10 @@
         },
         "reqPermissions": [
             {
+                "name": "ohos.permission.CAMERA",
+                "reason": "use ohos.permission.CAMERA"
+            },
+            {
                 "name": "ohos.permission.GET_BUNDLE_INFO",
                 "reason": "use ohos.permission.GET_BUNDLE_INFO"
             },

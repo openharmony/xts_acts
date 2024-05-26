@@ -319,7 +319,7 @@ export default function preferencesHelperTest() {
      * @tc.level   : Level 0
      */
     it("testMaxKeyLength001", 0, () => {
-      expect(dataPreferences.MAX_KEY_LENGTH == 80).assertTrue();
+      expect(dataPreferences.MAX_KEY_LENGTH == 1024).assertTrue();
     });
 
     /**
@@ -331,7 +331,7 @@ export default function preferencesHelperTest() {
      * @tc.level   : Level 0
      */
     it("testMaxValueLength001", 0, () => {
-      expect(dataPreferences.MAX_VALUE_LENGTH == 8192).assertTrue();
+      expect(dataPreferences.MAX_VALUE_LENGTH == 16*1024*1024).assertTrue();
     });
 
     /**
