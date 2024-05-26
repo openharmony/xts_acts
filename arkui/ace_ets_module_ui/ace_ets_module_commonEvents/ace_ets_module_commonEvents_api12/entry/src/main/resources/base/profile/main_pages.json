@@ -8,6 +8,8 @@
         "MainAbility/pages/GestureHandler/PanGestureHandler",
         "MainAbility/pages/GestureHandler/PinchGestureHandler",
         "MainAbility/pages/GestureHandler/RotationGestureHandler",
-        "MainAbility/pages/GestureHandler/LongPressGestureHandler"
+        "MainAbility/pages/GestureHandler/LongPressGestureHandler",
+        "MainAbility/pages/GestureHandler/SourceTool",
+        "MainAbility/pages/DragController/DragInteractionOptions"
     ]
 }

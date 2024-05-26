@@ -60,7 +60,7 @@ export default function LongPressGestureHandlerTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button1 = await driver.findComponent(ON.id('LongPressGestureHandlerColumn'));
-      await button1.longClick();
+      await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LongPressGestureHandler1');
       let obj = JSON.parse(strJson);

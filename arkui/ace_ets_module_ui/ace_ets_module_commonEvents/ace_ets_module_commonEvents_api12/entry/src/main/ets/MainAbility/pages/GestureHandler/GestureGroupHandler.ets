@@ -14,26 +14,39 @@
  */
 
 
-class LongPressModifier implements GestureModifier {
+class GestureGroupModifier implements GestureModifier {
   supportDoubleTap: boolean = true
+  supportPan: boolean = true
   value: string = 'succ'
-  LongPressOptions: LongPressGestureHandlerOptions = { fingers: 1 }
+  GestureGroupOptions1: GestureGroupGestureHandlerOptions = {
+    mode: GestureMode.Sequence,
+    gestures: ["pan gesture", "tap gesture"]
+  }
 
   applyGesture(event: UIGestureEvent): void {
     if (this.supportDoubleTap) {
       event.addGesture(
-        new TapGestureHandler({ count: 1, fingers: 1 })
-          .tag('aaa')
-          .onAction((event: GestureEvent) => {
-            console.log('button tap ' +JSON.stringify(event.repeat))
-            return this.value
+        new GestureGroupHandler(this.GestureGroupOptions1)
+          .onCancel(() => {
+            console.log("GestureGroup start");
           })
       )
     } else {
       event.addGesture(
-        new LongPressGestureHandler(this.LongPressOptions)
+        new TapGestureHandler()
+          .tag("tap gesture")
           .onAction(()=>{
-            return 'LongPress start'
+            return 'tap start'
+          })
+      )
+    }
+    if (this.supportPan) {
+      event.addGesture(
+        new PanGestureHandler()
+          .tag("pan gesture")
+          .onActionStart(()=>{
+            console.log("Pan start");
+            return 'pan start'
           })
       )
     }
@@ -42,15 +55,15 @@ class LongPressModifier implements GestureModifier {
 
 @Entry
 @Component
-struct LongPressGestureHandler1 {
-  @State modifier: LongPressModifier = new LongPressModifier()
+struct GestureGroupHandler1 {
+  @State modifier: GestureGroupModifier = new GestureGroupModifier()
 
   build() {
     Row() {
       Column() {
-        Button(this.modifier.value).margin({bottom:20}).id('LongPressGestureHandler1')
+        Button(this.modifier.value).margin({bottom:20}).id('GestureGroupHandler1')
         Column()
-          .id('LongPressGestureHandlerColumn')
+          .id('GestureGroupHandlerColumn')
           .gestureModifier(this.modifier)
           .width(400)
           .height(400)
