@@ -21,7 +21,7 @@ struct SwiperMargin {
   private swiperController4: SwiperController = new SwiperController()
   private arr: number[] = [];
 
-  aboutToAppear() {
+  aboutToAppear(){
     for (let i = 0; i < 60; i++) {
       this.arr[i] = i;
     }
