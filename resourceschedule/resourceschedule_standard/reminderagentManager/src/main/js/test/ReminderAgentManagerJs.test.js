@@ -730,5 +730,162 @@ export default function ReminderAgentManagerTest() {
                 console.info('reminderRequestAttribute_0027 cancelAllReminders error.code is : ' + error.code);
             }
         })
+        
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0028
+         * @tc.desc      test addExcludeDate promise. 
+         */
+        it("reminderRequestAttribute_0028", 0, async function (done) {
+            let calendar = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+                dateTime: {
+                    year: 2024,
+                    month: 7,
+                    day: 28,
+                    hour: 13,
+                    minute: 30,
+                    second: 32
+                },
+                endDateTime: {
+                    year: 2024,
+                    month: 7,
+                    day: 31,
+                    hour: 10,
+                    minute: 30,
+                    second: 10
+                },
+                repeatMonths: [3],
+                repeatDays: [6, 7],
+                actionButton: [
+                    {
+                        title: "close",
+                        titleResource: 'English',
+                        type: 0,
+                    },
+                    {
+                        title: "snooze",
+                        titleResource: 'English',
+                        type: 1
+                    }
+                ],
+                wantAgent: {
+                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
+                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                },
+                maxScreenWantAgent: {
+                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
+                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                },
+                ringDuration: 2,
+                snoozeTimes: 1,
+                timeInterval: 3,
+                title: "this is addExcludeDate title",
+                content: "this is content",
+                expiredContent: "this reminder has expired",
+                snoozeContent: "remind later",
+                notificationId: 500,
+                groupId: 'this is groupId',
+            }
+            try {
+                reminderAgent.publishReminder(calendar, (err, reminderId) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0028 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0028 callback reminderId = ' + reminderId);
+                        expect(reminderId).assertLarger(0);
+                        done();
+                    }
+                    let reqReminderId = reminderId;
+                    let date = new Date();
+                    reminderAgent.addExcludeDate(reqReminderId, date).then(() => {
+                        expect(true).assertTrue();
+                        done();
+                    }).catch((err) => {
+                        console.error("promise err code:" + err.code + " message:" + err.message);
+                        expect(false).assertTrue();
+                        done();
+                    });
+                })
+            } catch (error) {
+                console.info("reminderRequestAttribute_0028 publishReminder error.code:" + error.code);
+            }
+        })
+
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0029
+         * @tc.desc      test getExcludeDates promise. 
+         */
+        it("reminderRequestAttribute_0029", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0029---------------------------');
+            try {
+                reminderAgent.getAllValidReminders().then((reminderInfo) => {
+                    console.info('reminderRequestAttribute_0029 reminderInfo = ' + JSON.stringify(reminderInfo));
+                    let reminderInfoArr = [];
+                    reminderInfoArr = reminderInfo;
+                    let reminderId = 0;
+                    console.info('reminderRequestAttribute_0029 reminderInfoArr = ' + JSON.stringify(reminderInfoArr));
+                    for (let i = 0; i < reminderInfoArr.length; i++) {
+                        console.info('reminderRequestAttribute_0029 for is ok');
+                        if (reminderInfoArr[i].reminderReq.dateTime.month == 7) {
+                            reminderId = reminderInfoArr[i].reminderId;
+                        }
+                    }
+                    console.info('reminderRequestAttribute_0029 reminderId' + reminderId)
+                    reminderAgent.getExcludeDates(reminderId).then((dates) => {
+                        console.info('reminderRequestAttribute_0029 dates: ' + JSON.stringify(dates));
+                        expect(dates.length).assertLarger(0)
+                        done();
+                    }).catch((err) => {
+                        console.error("promise err code:" + err.code + " message:" + err.message);
+                        expect(false).assertTrue();
+                        done();
+                    });
+                }).catch((err) => {
+                    console.info('reminderRequestAttribute_0029 promise err.code is : ' + err.code);
+                })
+            } catch (error) {
+                console.info('reminderRequestAttribute_0029 getValidReminders error.code is : ' + error.code);
+            }
+        })
+
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0030
+         * @tc.desc      test deleteExcludeDates promise. 
+         */
+        it("reminderRequestAttribute_0030", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0030---------------------------');
+            try {
+                reminderAgent.getAllValidReminders().then((reminderInfo) => {
+                    console.info('reminderRequestAttribute_0030 reminderInfo = ' + JSON.stringify(reminderInfo));
+                    let reminderInfoArr = [];
+                    reminderInfoArr = reminderInfo;
+                    let reminderId = 0;
+                    console.info('reminderRequestAttribute_0030 reminderInfoArr = ' + JSON.stringify(reminderInfoArr));
+                    for (let i = 0; i < reminderInfoArr.length; i++) {
+                        console.info('reminderRequestAttribute_0030 for is ok');
+                        if (reminderInfoArr[i].reminderReq.dateTime.month == 7) {
+                            console.info('reminderRequestAttribute_0030 if is ok');
+                            reminderId = reminderInfoArr[i].reminderId;
+                        }
+                    }
+                    
+                    reminderAgent.deleteExcludeDates(reminderId).then(() => {
+                        expect(true).assertTrue();
+                        done();
+                    }).catch((err) => {
+                        console.error("promise err code:" + err.code + " message:" + err.message);
+                        expect(false).assertTrue();
+                        done();
+                    });
+                }).catch((err) => {
+                    console.info('reminderRequestAttribute_0030 promise err.code is : ' + err.code);
+                })
+            } catch (error) {
+                console.info('reminderRequestAttribute_0030 getValidReminders error.code is : ' + error.code);
+            }
+        })
     })
 }
