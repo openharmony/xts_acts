@@ -23,6 +23,10 @@ struct SwiperCustomPage {
   @State zIndexList: number[] = []
   @State message: string = 'message'
 
+  private DISPLAY_COUNT: number = 2
+  private MIN_SCALE: number = 0.75
+  @State text: string = 'text'
+
   aboutToAppear(): void {
     for (let i = 0; i < this.backgroundColors.length; i++) {
       this.opacityList.push(1.0)
@@ -35,6 +39,7 @@ struct SwiperCustomPage {
   build() {
     Column() {
       Text(this.message).id('swiper_mess')
+      Text(this.text).id('swiper_texts')
       Swiper(this.swiperController) {
         ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
           Text(index.toString()).width('100%').height('100%').fontSize(50).textAlign(TextAlign.Center)
@@ -50,6 +55,34 @@ struct SwiperCustomPage {
       .height(300)
       .indicator(false)
       .indicatorInteractive(true)
+      .displayCount(this.DISPLAY_COUNT, true)
+      .customContentTransition({
+        // 页面移除视窗时超时1000ms下渲染树
+        timeout: 1000,
+        // 对视窗内所有页面逐帧回调transition，在回调中修改opacity、scale、translate、zIndex等属性值，实现自定义动画
+        transition: (proxy: SwiperContentTransitionProxy) => {
+          this.text = 'mainAxisLength'
+          if (proxy.position <= proxy.index % this.DISPLAY_COUNT || proxy.position >= this.DISPLAY_COUNT + proxy.index % this.DISPLAY_COUNT) {
+            // 同组页面往左滑或往右完全滑出视窗外时，重置属性值
+            this.opacityList[proxy.index] = 1.0
+            this.scaleList[proxy.index] = 1.0
+            this.translateList[proxy.index] = 0.0
+            this.zIndexList[proxy.index] = 0
+          } else {
+            // 同组页面往右滑且未滑出视窗外时，对同组中左右两个页面，逐帧根据position修改属性值，实现两个页面往Swiper中间靠拢并透明缩放的自定义切换动画
+            if (proxy.index % this.DISPLAY_COUNT === 0) {
+              this.opacityList[proxy.index] = 1 - proxy.position / this.DISPLAY_COUNT
+              this.scaleList[proxy.index] = this.MIN_SCALE + (1 - this.MIN_SCALE) * (1 - proxy.position / this.DISPLAY_COUNT)
+              this.translateList[proxy.index] = - proxy.position * proxy.mainAxisLength + (1 - this.scaleList[proxy.index]) * proxy.mainAxisLength / 2.0
+            } else {
+              this.opacityList[proxy.index] = 1 - (proxy.position - 1) / this.DISPLAY_COUNT
+              this.scaleList[proxy.index] = this.MIN_SCALE + (1 - this.MIN_SCALE) * (1 - (proxy.position - 1) / this.DISPLAY_COUNT)
+              this.translateList[proxy.index] = - (proxy.position - 1) * proxy.mainAxisLength - (1 - this.scaleList[proxy.index]) * proxy.mainAxisLength / 2.0
+            }
+            this.zIndexList[proxy.index] = -1
+          }
+        }
+      })
       .onContentDidScroll((selectedIndex: number, index: number, position: number, mainAxisLength: number) => {
         // 监听Swiper页面滑动事件，在该回调中可以实现自定义导航点切换动画等
         this.message ='onContentDidScroll'
