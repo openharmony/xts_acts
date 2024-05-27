@@ -39,12 +39,16 @@ void CheckCreateInputMemory(OH_NNExecutor *executor, uint32_t inputIndex, size_t
 {
     OH_NN_Memory *OHNNMemory = OH_NNExecutor_AllocateInputMemory(executor, inputIndex, length);
     ASSERT_NE(nullptr, OHNNMemory);
+    OH_NNExecutor_DestroyInputMemory(executor, inputIndex, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
 }
 
 void CheckCreateOutputMemory(OH_NNExecutor *executor, uint32_t outputIndex, size_t length)
 {
     OH_NN_Memory *OHNNMemory = OH_NNExecutor_AllocateOutputMemory(executor, outputIndex, length);
     ASSERT_NE(nullptr, OHNNMemory);
+    OH_NNExecutor_DestroyOutputMemory(executor, inputIndex, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
 }
 
 } // namespace
@@ -139,6 +143,10 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_CreateInputMemory_05
     ASSERT_NE(nullptr, OHNNMemory);
     OH_NN_Memory *OHNNMemory2 = OH_NNExecutor_AllocateInputMemory(executor, 0, graphArgs.operands[0].length);
     ASSERT_NE(nullptr, OHNNMemory2);
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory2);
+    ASSERT_EQ(nullptr, OHNNMemory2);
     Free(model, compilation, executor);
 }
 
@@ -301,6 +309,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_DestroyInputMemory_0
     ASSERT_NE(nullptr, OHNNMemory);
     OH_NNExecutor_DestroyInputMemory(nullptr, 0, &OHNNMemory);
     ASSERT_NE(nullptr, OHNNMemory);
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -323,6 +333,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_DestroyInputMemory_0
     ASSERT_NE(nullptr, OHNNMemory);
     OH_NNExecutor_DestroyInputMemory(executor, 1, &OHNNMemory);
     ASSERT_NE(nullptr, OHNNMemory);
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -343,6 +355,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_DestroyInputMemory_0
     ASSERT_NE(nullptr, executor);
     OH_NN_Memory *OHNNMemory = nullptr;
     ASSERT_NO_THROW(OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory));
+    Free(model, compilation, executor);
 }
 
 /**
@@ -418,6 +431,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_DestroyOutputMemory_
     ASSERT_NE(nullptr, OHNNMemory);
     OH_NNExecutor_DestroyOutputMemory(nullptr, 0, &OHNNMemory);
     ASSERT_NE(nullptr, OHNNMemory);
+    OH_NNExecutor_DestroyOutputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -440,6 +455,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_DestroyOutputMemory_
     ASSERT_NE(nullptr, OHNNMemory);
     OH_NNExecutor_DestroyOutputMemory(executor, 1, &OHNNMemory);
     ASSERT_NE(nullptr, OHNNMemory);
+    OH_NNExecutor_DestroyOutputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -459,6 +476,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_DestroyOutputMemory_
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
     ASSERT_NE(nullptr, executor);
     ASSERT_NO_THROW(OH_NNExecutor_DestroyOutputMemory(executor, 0, nullptr));
+    Free(model, compilation, executor);
 }
 
 /**
@@ -539,6 +557,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetInputFromMemory_0
     OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
                              quantParam, operandTem.type};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetInputWithMemory(nullptr, 0, &operand, OHNNMemory));
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -564,6 +584,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetInputFromMemory_0
     OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
                              quantParam, operandTem.type};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetInputWithMemory(executor, 2, &operand, OHNNMemory));
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -585,6 +607,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetInputFromMemory_0
     OH_NN_Memory *OHNNMemory = OH_NNExecutor_AllocateInputMemory(executor, 0, graphArgs.operands[0].length);
     ASSERT_NE(nullptr, OHNNMemory);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetInputWithMemory(executor, 0, nullptr, OHNNMemory));
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -610,6 +634,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetInputFromMemory_0
     OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
                              quantParam, operandTem.type};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetInputWithMemory(executor, 0, &operand, OHNNMemory1));
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -635,6 +661,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetInputFromMemory_0
     OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
                              quantParam, operandTem.type};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetInputWithMemory(executor, 0, &operand, nullptr));
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -661,6 +689,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetInputFromMemory_0
                              quantParam, operandTem.type};
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_SetInputWithMemory(executor, 0, &operand, OHNNMemory));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_SetInputWithMemory(executor, 0, &operand, OHNNMemory));
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -682,6 +712,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetOutputFromMemory_
     OH_NN_Memory *OHNNMemory = OH_NNExecutor_AllocateOutputMemory(executor, 0, graphArgs.operands[0].length);
     ASSERT_NE(nullptr, OHNNMemory);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetOutputWithMemory(nullptr, 0, OHNNMemory));
+    OH_NNExecutor_DestroyOutputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -703,6 +735,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetOutputFromMemory_
     OH_NN_Memory *OHNNMemory = OH_NNExecutor_AllocateOutputMemory(executor, 0, graphArgs.operands[0].length);
     ASSERT_NE(nullptr, OHNNMemory);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetOutputWithMemory(executor, 1, OHNNMemory));
+    OH_NNExecutor_DestroyOutputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -724,6 +758,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetOutputFromMemory_
     OH_NN_Memory *OHNNMemory = OH_NNExecutor_AllocateOutputMemory(executor, 0, graphArgs.operands[0].length);
     ASSERT_NE(nullptr, OHNNMemory);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetOutputWithMemory(executor, 0, nullptr));
+    OH_NNExecutor_DestroyOutputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -746,6 +782,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetOutputFromMemory_
     ASSERT_NE(nullptr, OHNNMemory);
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_SetOutputWithMemory(executor, 0, OHNNMemory));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_SetOutputWithMemory(executor, 0, OHNNMemory));
+    OH_NNExecutor_DestroyOutputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
     Free(model, compilation, executor);
 }
 
@@ -778,15 +816,20 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0100, Function |
 
             ASSERT_EQ(EOK, memcpy_s(inputMemory->data, operandTem.length, static_cast<void*>(operandTem.data), operandTem.length));
 
+            OH_NNExecutor_DestroyInputMemory(executor, inputIndex, &inputMemory);
+            ASSERT_EQ(nullptr, inputMemory);
         } else if (std::find(graphArgs.outputIndices.begin(), graphArgs.outputIndices.end(), i) !=
                    graphArgs.outputIndices.end()) {
             OH_NN_Memory *outputMemory = OH_NNExecutor_AllocateOutputMemory(executor, outputIndex, operandTem.length);
             ASSERT_NE(nullptr, outputMemory);
             ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_SetOutputWithMemory(executor, outputIndex, outputMemory));
+            OH_NNExecutor_DestroyOutputMemory(executor, outputIndex, &outputMemory);
+            ASSERT_EQ(nullptr, outputMemory);
             outputIndex += 1;
         }
     }
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_Run(executor));
+    Free(model, compilation, executor);
 }
 
 /**
@@ -816,9 +859,12 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0200, Function |
             ASSERT_NE(nullptr, inputMemory);
             ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_SetInputWithMemory(executor, inputIndex, &operand, inputMemory));
             ASSERT_EQ(EOK, memcpy_s(inputMemory->data, operandTem.length, static_cast<void*>(operandTem.data), operandTem.length));
+            OH_NNExecutor_DestroyInputMemory(executor, inputIndex, &inputMemory);
+            ASSERT_EQ(nullptr, inputMemory);
         }
     }
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_Run(executor));
+    Free(model, compilation, executor);
 }
 
 /**

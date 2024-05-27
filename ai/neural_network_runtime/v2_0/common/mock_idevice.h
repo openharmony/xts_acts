@@ -96,7 +96,7 @@ public:
     virtual ~MockIDevice();
 
 private:
-    std::unordered_map<int, sptr<Ashmem>> m_ashmems;
+    std::unordered_map<int, Ashmem> m_ashmems;
     int m_bufferFd;
     bool m_fp16 = true;
     bool m_performance = true;
