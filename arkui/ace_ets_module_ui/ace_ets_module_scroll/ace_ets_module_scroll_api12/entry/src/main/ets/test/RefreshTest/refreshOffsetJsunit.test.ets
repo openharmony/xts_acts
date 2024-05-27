@@ -65,6 +65,7 @@ export default function refreshOffsetJsunit() {
       console.info("[scrollOffsetJsunit_0100] pullToRefresh: " + JSON.stringify(obj.$attrs.pullToRefresh));
       expect(obj.$attrs.refreshOffset).assertEqual('64.00vp');
       expect(obj.$attrs.pullToRefresh).assertEqual(true);
+      expect(obj.$attrs.pullDownRatio).assertEqual(0.5);
       console.info('[refreshOffsetJsunit_0100] END');
       done();
     });

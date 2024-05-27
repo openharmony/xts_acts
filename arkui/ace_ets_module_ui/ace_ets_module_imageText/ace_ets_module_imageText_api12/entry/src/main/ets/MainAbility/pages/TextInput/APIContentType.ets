@@ -22,6 +22,7 @@ struct APIContentType {
 
   build() {
     Column() {
+      Text(this.text).key('APIContentTypeText')
       TextInput({ placeholder: 'input your password...' }).key('APIContentTypeTextInput')
         .width('95%')
         .height(40)
@@ -36,11 +37,67 @@ struct APIContentType {
           console.info('isShowPassword',isShowPassword)
           this.passwordState = isShowPassword
         }))
-
-      Text(this.text).key('APIContentTypeText')
       Button('get').key('APIContentTypeButton')
         .onClick(() => {
           let strJson = getInspectorByKey('APIContentTypeTextInput');
+          this.text = JSON.parse(strJson).$attrs.contentType + ''
+        })
+
+      TextInput({ placeholder: 'input your password...' }).key('ContentType_23')
+        .width('95%')
+        .height(40)
+        .margin(20)
+        .type(InputType.Password)
+        .maxLength(9)
+        .showPasswordIcon(true)
+        .showPassword(this.passwordState)
+        .contentType(ContentType.NICKNAME)
+        .onSecurityStateChange(((isShowPassword: boolean) => {
+          // 更新密码显示状态
+          console.info('isShowPassword',isShowPassword)
+          this.passwordState = isShowPassword
+        }))
+      Button('get_ContentType_23').key('TypeButton_23')
+        .onClick(() => {
+          let strJson = getInspectorByKey('ContentType_23');
+          this.text = JSON.parse(strJson).$attrs.contentType + ''
+        })
+      TextInput({ placeholder: 'input your password...' }).key('ContentType_24')
+        .width('95%')
+        .height(40)
+        .margin(20)
+        .type(InputType.Password)
+        .maxLength(9)
+        .showPasswordIcon(true)
+        .showPassword(this.passwordState)
+        .contentType(ContentType.DETAIL_INFO_WITHOUT_STREET)
+        .onSecurityStateChange(((isShowPassword: boolean) => {
+          // 更新密码显示状态
+          console.info('isShowPassword',isShowPassword)
+          this.passwordState = isShowPassword
+        }))
+      Button('get_ContentType_23').key('TypeButton_24')
+        .onClick(() => {
+          let strJson = getInspectorByKey('ContentType_24');
+          this.text = JSON.parse(strJson).$attrs.contentType + ''
+        })
+      TextInput({ placeholder: 'input your password...' }).key('ContentType_25')
+        .width('95%')
+        .height(40)
+        .margin(20)
+        .type(InputType.Password)
+        .maxLength(9)
+        .showPasswordIcon(true)
+        .showPassword(this.passwordState)
+        .contentType(ContentType.FORMAT_ADDRESS)
+        .onSecurityStateChange(((isShowPassword: boolean) => {
+          // 更新密码显示状态
+          console.info('isShowPassword',isShowPassword)
+          this.passwordState = isShowPassword
+        }))
+      Button('get_ContentType_23').key('TypeButton_25')
+        .onClick(() => {
+          let strJson = getInspectorByKey('ContentType_25');
           this.text = JSON.parse(strJson).$attrs.contentType + ''
         })
     }.width('100%')
