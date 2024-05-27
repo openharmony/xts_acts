@@ -49,7 +49,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_0100', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'aabbccdd\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_0100 data is: ' + JSON.stringify(data));
@@ -69,7 +69,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_0200', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf abcd\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_0200 data is: ' + JSON.stringify(data));
@@ -89,7 +89,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_0300', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profileabdc\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_0300 data is: ' + JSON.stringify(data));
@@ -110,7 +110,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_0400', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'dumpheapabdc\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_0400 data is: ' + JSON.stringify(data));
@@ -130,7 +130,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_0500', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf asdb1000\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_0500 data is: ' + JSON.stringify(data));
@@ -150,7 +150,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_0600', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf 1000asdb\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_0600 data is: ' + JSON.stringify(data));
@@ -170,7 +170,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_0700', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperfasdb\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_0700 data is: ' + JSON.stringify(data));
@@ -190,7 +190,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('SUB_AA_ACTS_ParsingParameters_0800', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'dumpheap\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_0800 data is: ' + JSON.stringify(data));
@@ -211,7 +211,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_0900', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_0900 data is: ' + JSON.stringify(data));
@@ -231,7 +231,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_1000', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile nativeperf xxxxxxxxx\'')
         .then(data => {
@@ -251,7 +251,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_1100', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf 1000\'')
         .then(data => {
@@ -272,7 +272,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_1200', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf\'')
         .then(data => {
@@ -293,7 +293,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_1300', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile nativeperf xxxxxxxxx jsperf 1000\'')
         .then(data => {
@@ -314,7 +314,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_1400', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf nativeperf xxxxxxxxx\'')
         .then(data => {
@@ -335,7 +335,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_1500', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf 1000 nativeperf xxxxxxxxx\'')
         .then(data => {
@@ -356,7 +356,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_1600', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile nativeperf xxxxxxxxxxxxxxxx jsperf\'')
         .then(data => {
@@ -377,7 +377,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_1700', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'sleep 1000\'')
         .then(data => {
@@ -398,7 +398,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_1800', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf 100\'')
         .then(data => {
@@ -419,7 +419,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_1900', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf 99\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_1900 data is: ' + JSON.stringify(data));
@@ -439,7 +439,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_2000', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf 5001\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_2000 data is: ' + JSON.stringify(data));
@@ -459,7 +459,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_2100', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf 50000\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_2100 data is: ' + JSON.stringify(data));
@@ -479,7 +479,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_2200', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf 5000\'')
         .then(data => {
@@ -500,7 +500,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_2300', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await sleep(200);
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf 4999\'')
         .then(data => {
@@ -521,7 +521,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_2400', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'dumpheap abcd\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_2400 data is: ' + JSON.stringify(data));
@@ -541,7 +541,7 @@ export default function abilityTest() {
     * @tc.level   1
     */
     it('Acts_ParsingParameters_2500', 0, async (done: Function) => {
-      let res: string;
+      let res: string = ""
       await abilityDelegator.executeShellCommand('aa start -a EntryAbility -b com.example.actsability -p \'profile abcd\'')
         .then(data => {
           hilog.info(0x0000, 'debuggabletest', '%{public}s', 'Acts_ParsingParameters_2500 data is: ' + JSON.stringify(data));
