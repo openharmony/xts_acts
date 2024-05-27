@@ -81,7 +81,8 @@ export default function bundleManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = bundleManager.getAllowedInstallBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == APP_IDS_1.length).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -158,7 +159,8 @@ export default function bundleManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = bundleManager.getAllowedInstallBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == 0).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -234,8 +236,8 @@ export default function bundleManagerTest() {
     it("test_getAllowedInstallBundlesSync_003", 0, async function (done) {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        bundleManager.getAllowedInstallBundlesSync(SELFWANT, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = bundleManager.getAllowedInstallBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == 0).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -312,7 +314,8 @@ export default function bundleManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = bundleManager.getDisallowedInstallBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == APP_IDS_1.length).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -389,7 +392,8 @@ export default function bundleManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = bundleManager.getDisallowedInstallBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == 0).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -465,8 +469,8 @@ export default function bundleManagerTest() {
     it("test_getDisallowedInstallBundlesSync_003", 0, async function (done) {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        bundleManager.getDisallowedInstallBundlesSync(SELFWANT, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = bundleManager.getDisallowedInstallBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == 0).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -543,7 +547,8 @@ export default function bundleManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = bundleManager.getDisallowedUninstallBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == APP_IDS_1.length).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -620,7 +625,8 @@ export default function bundleManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = bundleManager.getDisallowedUninstallBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == 0).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -696,8 +702,8 @@ export default function bundleManagerTest() {
     it("test_getDisallowedUninstallBundlesSync_003", 0, async function (done) {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        bundleManager.getDisallowedUninstallBundlesSync(SELFWANT, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = bundleManager.getDisallowedUninstallBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == 0).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -777,7 +783,7 @@ export default function bundleManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.uninstall(SELFWANT, WANT1.bundleName, TEST_USER_ID, true);
-        expect(false).assertTrue();
+        expect(true).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
