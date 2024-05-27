@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import observerScrollTest from './observerTest/observerScroll.test';
+import ObserverNavDestinationState from './observerTest/ObserverNavDestinationState.test';
 
 export default function testsuite() {
   observerScrollTest()
+  ObserverNavDestinationState();
 }

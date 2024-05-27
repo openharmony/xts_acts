@@ -14,11 +14,19 @@
  */
 import APIPreDragStatusTest from './DragController/APIPreDragStatusTest.test';
 import addGestureApplyGesture from './addGestureApplyGesture.test';
-import ShortcutKeyTABTest from './keyboardShortcutTest/ShortcutKeyTABTest.test'
-import ShortcutKeyDPADUPTest from './keyboardShortcutTest/ShortcutKeyDPADUPTest.test'
-import ShortcutKeyDPADDOWNTest from './keyboardShortcutTest/ShortcutKeyDPADDOWNTest.test'
-import ShortcutKeyDPADLEFTTest from './keyboardShortcutTest/ShortcutKeyDPADLEFTTest.test'
-import ShortcutKeyDPADRIGHTTest from './keyboardShortcutTest/ShortcutKeyDPADRIGHTTest.test'
+import ShortcutKeyTABTest from './keyboardShortcutTest/ShortcutKeyTABTest.test';
+import ShortcutKeyDPADUPTest from './keyboardShortcutTest/ShortcutKeyDPADUPTest.test';
+import ShortcutKeyDPADDOWNTest from './keyboardShortcutTest/ShortcutKeyDPADDOWNTest.test';
+import ShortcutKeyDPADLEFTTest from './keyboardShortcutTest/ShortcutKeyDPADLEFTTest.test';
+import ShortcutKeyDPADRIGHTTest from './keyboardShortcutTest/ShortcutKeyDPADRIGHTTest.test';
+import TapGestureHandlerTest from './GestureHandler/TapGesture.test';
+import PanGestureHandlerTest from './GestureHandler/PanGesture.test';
+import SwiperGestureHandlerTest from './GestureHandler/SwiperGesture.test';
+import PinchGestureHandlerTest from './GestureHandler/PinchGesture.test';
+import RotationGestureHandlerTest from './GestureHandler/RotationGesture.test';
+import LongPressGestureHandlerTest from './GestureHandler/LongPressGesture.test';
+import DragInteractionOptionsTest from './DragController/DragInteractionOptions.test';
+import SourceToolTest from './GestureHandler/SourceTool.test';
 export default function testsuite() {
   APIPreDragStatusTest();
   addGestureApplyGesture();
@@ -27,4 +35,13 @@ export default function testsuite() {
   ShortcutKeyDPADDOWNTest();
   ShortcutKeyDPADLEFTTest();
   ShortcutKeyDPADRIGHTTest();
+  addGestureApplyGesture();
+  TapGestureHandlerTest();
+  PanGestureHandlerTest();
+  SwiperGestureHandlerTest();
+  PinchGestureHandlerTest();
+  RotationGestureHandlerTest();
+  LongPressGestureHandlerTest();
+  DragInteractionOptionsTest();
+  SourceToolTest();
 }
