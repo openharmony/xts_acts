@@ -12,7 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import HidebugJsTest from './Hidebug.test.js'
-export default function testsuite() {
-HidebugJsTest()
+
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+
+export default {
+    data: {
+        title: ""
+    },
+    onInit() {
+        this.title = this.$t('strings.world');
+    },
+    onShow() {
+        console.info('onShow finish')
+    },
+    onReady() {
+    },
 }

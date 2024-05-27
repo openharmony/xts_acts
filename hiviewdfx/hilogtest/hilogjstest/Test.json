@@ -18,12 +18,8 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -b X",
                 "hilog -b D -D 0x3200",
                 "hilog -b D -D 0xD003200"
-            ],
-            "teardown-command": [
-                "hilog -b I"
             ]
         }
     ]
