@@ -16,6 +16,7 @@ group("ets_utils") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "arkts_collections_lib_standard:arkts_collections_js_test",
       "atomics_lib_standard:atomics_js_hap",
       "buffer_lib_standard:buffer_js_test",
       "codeparsingtest:codeparsingtest",

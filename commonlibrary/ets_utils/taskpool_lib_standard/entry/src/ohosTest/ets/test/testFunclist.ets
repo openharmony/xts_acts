@@ -15,26 +15,8 @@
 
 import taskpool from '@ohos.taskpool';
 import { BusinessError } from '@ohos.base'
-import { strCat } from './exportFunclist'
+import { StrCat, A, B, printStrArgs } from './exportFunclist'
 import HashMap from '@ohos.util.HashMap';
-
-export class A {
-  a: number;
-  b: number;
-  constructor() {
-    this.a = 1;
-    this.b = 2;
-  }
-}
-
-export class B {
-  a: number;
-  b: number;
-  constructor() {
-    this.a = 3;
-    this.b = 4;
-  }
-}
 
 export async function currentFun(): Promise<void> {
   "use concurrent"
@@ -172,14 +154,9 @@ export function Add(value1: boolean, value2: boolean): boolean {
     return false;
 }
 
-export function StrCat(value1: string, value2: string): string {
-  "use concurrent"
-  return value1 + value2;
-}
-
 export function funcStrCat(value1: string, value2: string, value3: string): string {
   "use concurrent"
-  return value1 + strCat(value2, value3);
+  return value1 + StrCat(value2, value3);
 }
 
 export function arraySum(arg1: Array<number>, arg2: Array<number>): Array<number> {
@@ -245,4 +222,48 @@ export function hashMapTest(args:number) {
   let hashMap1: HashMap<string, number> = new HashMap();
   hashMap1.set('a', 123);
   return hashMap1;
+}
+
+export function delay() {
+  "use concurrent"
+  let t = Date.now();
+  while ((Date.now() - t) < 1000) {
+    continue;
+  }
+}
+
+export async function randomTest(): Promise<void> {
+  "use concurrent"
+  let t = Date.now();
+  while ((Date.now() - t) < 1000) {
+    continue;
+  }
+  let p = await new Promise<void>((resolve: Function, reject: Function) => {
+    setTimeout(() => {
+      const randomNumber = Math.floor(Math.random() * 100);
+      resolve(randomNumber);
+    }, 200);
+  })
+  return p;
+}
+
+export async function outerTaskFunc(params:string) {
+  "use concurrent"
+  let t1 = Date.now();
+  while ((Date.now() - t1) < 100) {
+    continue
+  }
+  let val = "";
+  if (params == "001") {
+    let innerTask = new taskpool.Task(printStrArgs, params)
+    val += await taskpool.execute(innerTask)
+  } else if (params == "002") {
+    val += await taskpool.execute(printStrArgs, params);
+  }
+
+  let t2 = Date.now();
+  while ((Date.now() - t2) < 100) {
+    continue
+  }
+  return "outerTaskRes-" + val;
 }

@@ -13,30 +13,20 @@
  * limitations under the License.
  */
 
-export function StrCat(value1: string, value2: string): string {
-  "use concurrent"
-  return value1 + value2;
-}
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
 
-export class A {
-  a: number;
-  b: number;
-  constructor() {
-    this.a = 1;
-    this.b = 2;
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
-}
-
-export class B {
-  a: number;
-  b: number;
-  constructor() {
-    this.a = 3;
-    this.b = 4;
-  }
-}
-
-export function printStrArgs(args: string): string {
-  "use concurrent"
-  return args;
 }
