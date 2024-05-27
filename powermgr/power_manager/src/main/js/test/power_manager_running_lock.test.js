@@ -729,8 +729,8 @@ export default function PowerManagerRunningLockTest() {
                         console.info('Create_Running_Lock_Callback_Invalid_JSTest0270 error code:' + error.code + " msg: " + error.message);
                         expect(typeof error !== "undefined").assertTrue();
                         expect(runninglock === null).assertTrue();
-                        done();
                     });
+                done();
             } catch (e) {
                 console.info('Create_Running_Lock_Callback_Invalid_JSTest0270 code:' + e.code + "msg:" + e.message);
                 // 401: Invalid input parameter
@@ -754,8 +754,8 @@ export default function PowerManagerRunningLockTest() {
                         console.info('Create_Running_Lock_Callback_Invalid_JSTest0280 error code:' + error.code + " msg: " + error.message);
                         expect(typeof error !== "undefined").assertTrue();
                         expect(runninglock === null).assertTrue();
-                        done();
                     });
+                done();
             } catch (e) {
                 console.info('Create_Running_Lock_Callback_Invalid_JSTest0280 code:' + e.code + "msg:" + e.message);
                 // 401: Invalid input parameter
