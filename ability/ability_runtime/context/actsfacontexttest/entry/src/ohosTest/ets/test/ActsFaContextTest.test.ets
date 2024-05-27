@@ -14,23 +14,24 @@
  */
 
 import { describe, it, expect } from '@ohos/hypium'
+import { BusinessError } from '@ohos.base';
 import resourceManager from '@ohos.resourceManager';
 
 export default function actsFaContextTest() {
-    describe('ActsFaContextTest', function () {
+    describe('ActsFaContextTest', () => {
         /*
         * @tc.number    : ACTS_FAContext_0100
         * @tc.name      : get resource by $r
         * @tc.desc      : get resource by $r
         */
-        it('ACTS_FAContext_0100',0, async function (done) {
+        it('ACTS_FAContext_0100',0, async (done: Function) => {
             await resourceManager.getResourceManager().then(rm => {
                 return rm.getString($r("app.string.fa").id)
             }).then(str => {
                 console.info("ACTS_FAContext_0100 str: " + str)
                 expect(str).assertEqual("fa_name")
                 done()
-            }).catch(err => {
+            }).catch((err: BusinessError) => {
                 console.info("ACTS_FAContext_0100 err: " + err)
                 expect().assertFail()
                 done();
