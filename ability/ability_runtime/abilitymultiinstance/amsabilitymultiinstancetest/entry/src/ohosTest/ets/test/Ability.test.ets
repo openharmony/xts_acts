@@ -26,10 +26,10 @@ let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 class Params {
-  startId: number
-  stepNum: number
-  nextStep: number
-  step: string[]
+  startId: number = 0
+  stepNum: number = 0
+  nextStep: number = 0
+  step: string[] = []
 }
 
 let subscriberInfoMultiInstance: commonEventManager.CommonEventSubscribeInfo = {
