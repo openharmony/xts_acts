@@ -19,12 +19,11 @@ struct SwiperMargin {
   private swiperController2: SwiperController = new SwiperController()
   private swiperController3: SwiperController = new SwiperController()
   private swiperController4: SwiperController = new SwiperController()
- //  private arr: number[] = Array.apply(this, {length: 6}).map((item, i) => (i+1))
   private arr: number[] = [];
 
   aboutToAppear() {
     for (let i = 0; i < 60; i++) {
-        this.arr[i] = i;
+      this.arr[i] = i;
     }
   }
 
