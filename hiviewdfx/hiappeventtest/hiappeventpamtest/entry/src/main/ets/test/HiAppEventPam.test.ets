@@ -748,6 +748,7 @@ export default function HiAppEventPamTest() {
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_2000
      * @tc.name testHiAppEventSetPam20
      * @tc.desc 验证setEventParam接口paramvalue为超长字符串，返回错误码11101004
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
      */
