@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+        "MainAbility/pages/renderNode/RenderNodeAttribute",
         "MainAbility/pages/Graphics/borderRadiuses",
         "MainAbility/pages/Graphics/borderStyles",
         "MainAbility/pages/Graphics/edgeColors",

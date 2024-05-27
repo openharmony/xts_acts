@@ -63,6 +63,10 @@ import RichEditor7 from './RichEditorEnhance/RichEditor7.test'
 import TextInputTextAreaSearch from './RichEditorEnhance/TextInputTextAreaSearch.test'
 import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
 
+import TextAreaApi1 from './TextArea/TextAreaApi1.test'
+import TextAreaApi2 from './TextArea/TextAreaApi2.test'
+import TextAreaApi3 from './TextArea/TextAreaApi3.test'
+import textApi1 from './Text/TextApi1.test'
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -114,4 +118,8 @@ export default function testsuite() {
   TextInputTextAreaSearch();
   textStrategyJsunit();
 
+  TextAreaApi1();
+  TextAreaApi2();
+  TextAreaApi3();
+  textApi1();
 }

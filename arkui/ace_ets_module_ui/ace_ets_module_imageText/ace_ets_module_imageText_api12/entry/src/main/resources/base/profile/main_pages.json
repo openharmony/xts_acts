@@ -50,5 +50,9 @@
   "MainAbility/pages/RichEditorEnhance/TextInputTextAreaSearch",
   "MainAbility/pages/Text/textStrategy"
 
+    "MainAbility/pages/TextArea/TextAreaApi1",
+    "MainAbility/pages/TextArea/TextAreaApi2",
+    "MainAbility/pages/TextArea/TextAreaApi3",
+    "MainAbility/pages/Text/TextApi1"
   ]
 }
