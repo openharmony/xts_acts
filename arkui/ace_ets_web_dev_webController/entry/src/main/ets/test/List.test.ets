@@ -33,6 +33,8 @@ import webONHttpErrorReceiveExample from './webONHttpErrorReceiveExample.test';
 import webONHttpErrorRecvExampleIsReady from './webONHttpErrorRecvExampleIsReady.test';
 import webONHttpErrorReceiveIframe from './webONHttpErrorReceiveIframe.test';
 import webOnAudioStateChanged from './webOnAudioStateChanged.test';
+import webviewTerminateRenderProcess from './webviewTerminateRenderProcess.test';
+import webviewSelectionMenuOptions from './webviewSelectionMenuOptions.test';
 
 export default function testsuite() {
   //webOnBeforeUnload()
@@ -56,4 +58,6 @@ export default function testsuite() {
   webONHttpErrorRecvExampleIsReady();
   webONHttpErrorReceiveIframe();
   //webOnAudioStateChanged()
+  webviewSelectionMenuOptions();
+  webviewTerminateRenderProcess();
 }
