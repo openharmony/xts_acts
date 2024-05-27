@@ -169,7 +169,6 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resourc
     OH_LOG_INFO(LOG_APP, "testRequest->rspResourceType() %{public}d", testResourceType);
     OH_LOG_INFO(LOG_APP, "testRequest->rspFrameUrl() %{public}s", testFrameUrl.c_str());
 
-
     OH_LOG_INFO(LOG_APP, "testRequest->rspUrl() %{public}s", testResponseUrl.c_str());
     OH_LOG_INFO(LOG_APP, "testRequest->rspNetError() %{public}d", testResponseError);
     OH_LOG_INFO(LOG_APP, "testRequest->rspStatus() %{public}d", testResponseStatus);
