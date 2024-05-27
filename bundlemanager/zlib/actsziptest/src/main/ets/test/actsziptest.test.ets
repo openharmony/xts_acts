@@ -1311,7 +1311,9 @@ export default function ActsZipTest() {
             })
             await zip.deflatePending({ nextOut: arrayBufferOut }).then((data) => {
                 console.info('deflatePending success')
-                expect(data.status).assertEqual(0)
+                expect(data.status).assertEqual(0);
+                expect(data.pending).assertEqual(0);
+                expect(data.bits).assertEqual(0);
             }).catch((errData: base.BusinessError) => {
                 console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
                 expect(errData).assertFail()
@@ -2193,6 +2195,7 @@ export default function ActsZipTest() {
             await zip.inflateGetDictionary({ nextOut: arrayBufferOut }, arrayBufferOut).then((data) => {
                 console.info('inflateGetDictionary success:')
                 expect(data.status).assertEqual(0);
+                expect(data.dictionaryLength).assertEqual(0);
             }).catch((errData: base.BusinessError) => {
                 console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
                 expect(errData).assertFail();
