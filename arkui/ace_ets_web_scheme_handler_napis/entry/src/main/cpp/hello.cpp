@@ -63,6 +63,10 @@ int32_t testResponseSetMimeType = -1;
 int32_t testResponseSetCharSet = -1;
 int32_t testResponseSetHost = -1;
 
+const int DEFAULT_TYPE = -100;
+int32_t testResourceType = DEFAULT_TYPE;
+std::string testFrameUrl("test");
+
 const int NOT_FOUND = 404;
 const int OK = 200;
 
@@ -127,6 +131,9 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resourc
     testIsMainFrame = testRequest->isMainFrame();
     testIsRedirect = testRequest->isRedirect();
     testRef = testRequest->referrer().c_str();
+    
+    testResourceType = testRequest->rspResourceType();
+    testFrameUrl = testRequest->rspFrameUrl();
 
     testResponseUrl = testRequest->rspUrl();
     testResponseError = testRequest->rspNetError();
@@ -158,6 +165,10 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resourc
     OH_LOG_INFO(LOG_APP, "testRequest->isMainFrame() %{public}d", testIsMainFrame);
     OH_LOG_INFO(LOG_APP, "testRequest->isRedirect() %{public}d", testIsRedirect);
     OH_LOG_INFO(LOG_APP, "testRequest->referrer() %{public}s", testRef.c_str());
+    
+    OH_LOG_INFO(LOG_APP, "testRequest->rspResourceType() %{public}d", testResourceType);
+    OH_LOG_INFO(LOG_APP, "testRequest->rspFrameUrl() %{public}s", testFrameUrl.c_str());
+
 
     OH_LOG_INFO(LOG_APP, "testRequest->rspUrl() %{public}s", testResponseUrl.c_str());
     OH_LOG_INFO(LOG_APP, "testRequest->rspNetError() %{public}d", testResponseError);
@@ -645,6 +656,30 @@ static napi_value CreateResponse(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value GetResourceType(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    if (testResourceType != DEFAULT_TYPE) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value GetFrameUrl(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    if (testFrameUrl != "test") {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -691,7 +726,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"responseSetCharset", nullptr, ResponseSetCharSet, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"responseSetHeaderByName", nullptr, ResponseSetHeaderByName, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"createResponse", nullptr, CreateResponse, nullptr, nullptr, nullptr, napi_default, nullptr},
-
+        {"getResourceType", nullptr, GetResourceType, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getFrameUrl", nullptr, GetFrameUrl, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -71,6 +71,9 @@ class TestRequest
     int32_t setCharset() { return setCharset_; }
     int32_t setHeaderByName() { return setHeaderByName_; }
     
+    int32_t rspResourceType() { return rspResourceType_; }
+    const std::string rspFrameUrl() { return rspFrameUrl_; }
+    
 private:
     const ArkWeb_ResourceRequest* resourceRequest_{nullptr};
     const ArkWeb_ResourceHandler* resourceHandler_{nullptr};
@@ -106,6 +109,9 @@ private:
     int32_t setMimeType_{-1};
     int32_t setCharset_{-1};
     int32_t setHeaderByName_{-1};
+    
+    int32_t rspResourceType_{-100};
+    std::string rspFrameUrl_{"test"};
 };
     
     
