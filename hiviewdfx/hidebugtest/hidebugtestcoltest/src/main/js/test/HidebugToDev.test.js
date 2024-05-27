@@ -18,15 +18,6 @@ import {describe, it, expect} from '@ohos/hypium';
 
 export default function HidebugToDevJsTest() {
 describe('HidebugToDevJsTest', function () {
-    function msleep(numberMillis) {
-        let now = new Date();
-        let exitTime = now.getTime() + numberMillis;
-        while (true) {
-            now = new Date();
-            if (now.getTime() > exitTime)
-                return;
-        }
-    }
 
     /**
      * @tc.number SUB_DFX_DFT_HiDebug_Mem_Js_0100
@@ -219,11 +210,13 @@ describe('HidebugToDevJsTest', function () {
             let limit_size = 500 * 1024 * 1024;
             let path = hidebug.startAppTraceCapture(tag, flag, limit_size);
             console.info(`SUB_DFX_DFT_Trace_Collect_Js_0100 > path =: ${path}`)
-            // 采集一段时间以后，调用关闭接口
-            msleep(1000);
-            hidebug.stopAppTraceCapture();
             expect(path != "").assertTrue();
-            done();
+            // 采集一段时间以后，调用关闭接口
+            setTimeout(() => {
+                hidebug.stopAppTraceCapture();
+                console.info(`SUB_DFX_DFT_Trace_Collect_Js_0100 stop`)
+                done();
+            }, 1000)
         } catch (err) {
             console.error(`SUB_DFX_DFT_Trace_Collect_Js_0100 > error code: ${err.code}, error msg: ${err.message}`);
             expect().assertFail();
