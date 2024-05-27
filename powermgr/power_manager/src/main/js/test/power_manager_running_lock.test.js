@@ -575,7 +575,7 @@ export default function PowerManagerRunningLockTest() {
                         done();
                     })
             } catch (e) {
-                console.info('Create_Running_Lock_Promise_Invalid_JSTest0210 code:' + e.code + "msg:" + e.message);
+                console.info('Create_Running_Lock_Promise_Invalid_JSTest0210 code: ' + e.code + "msg: " + e.message);
                 // 401: Invalid input parameter
                 expect(e.code === 401).assertTrue();
                 done();
@@ -593,9 +593,14 @@ export default function PowerManagerRunningLockTest() {
         it('Create_Running_Lock_Promise_Invalid_JSTest0220', 0, async function (done) {
             try {
                 runningLock.create("Create_Running_Lock_Promise_Invalid_JSTest0220", 0)
-                    .then((error, runninglock) => {
-                        expect(typeof error !== "undefined").assertTrue();
+                    .then((runninglock) => {
                         expect(runninglock === null).assertTrue();
+                        done();
+                    })
+                    .catch((error) => {
+                        console.info('Create_Running_Lock_Promise_Invalid_JSTest0220 error:' + (typeof error));
+                        expect(typeof error !== "undefined").assertTrue();
+                        console.info('Create_Running_Lock_Promise_Invalid_JSTest0220 error code:' + error.code + " msg: " + error.message);
                         done();
                     })
             } catch (e) {
@@ -617,13 +622,18 @@ export default function PowerManagerRunningLockTest() {
         it('Create_Running_Lock_Promise_Invalid_JSTest0230', 0, async function (done) {
             try {
                 runningLock.create("Create_Running_Lock_Promise_Invalid_JSTest0230", 5)
-                    .then((error, runninglock) => {
-                        expect(typeof error !== "undefined").assertTrue();
+                    .then((runninglock) => {
                         expect(runninglock === null).assertTrue();
                         done();
                     })
+                    .catch((error) => {
+                        console.info('Create_Running_Lock_Promise_Invalid_JSTest0230 error: ' + (typeof error));
+                        expect(typeof error !== "undefined").assertTrue();
+                        console.info('Create_Running_Lock_Promise_Invalid_JSTest0230 error code: ' + error.code + " msg: " + error.message);
+                        done();
+                    })
             } catch (e) {
-                console.info('Create_Running_Lock_Promise_Invalid_JSTest0230 code:' + e.code + "msg:" + e.message);
+                console.info('Create_Running_Lock_Promise_Invalid_JSTest0230 code: ' + e.code + "msg: " + e.message);
                 // 401: Invalid input parameter
                 expect(e.code === 401).assertTrue();
                 done();
