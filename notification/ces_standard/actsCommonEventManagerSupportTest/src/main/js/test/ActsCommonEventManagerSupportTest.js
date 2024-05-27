@@ -434,7 +434,7 @@ export default function ActsCommonEventManagerSupportTest() {
     /*
      * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300
      * @tc.name      : commonEventManager.Support
-     * @tc.desc      : Huawei ID common event
+     * @tc.desc      : HWID common event
      */
     it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300', 0, async  function () {
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300 START`)
