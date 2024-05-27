@@ -24,6 +24,8 @@ import setLayout from './FrameNodeTest/setLayout.test';
 
 
 import RenderNodeAttributeTest from './renderNode/RenderNodeAttributeTest.test';
+import setRectShape from './GraphicsTest/setRectShape.test';
+import LengthUnitTest from './GraphicsTest/LengthUnit.test'
 
 export default function testsuite() {
   borderRadiuses();
@@ -36,4 +38,6 @@ export default function testsuite() {
   getPosition();
   setLayout();
   RenderNodeAttributeTest();
+  setRectShape();
+  LengthUnitTest();
 }

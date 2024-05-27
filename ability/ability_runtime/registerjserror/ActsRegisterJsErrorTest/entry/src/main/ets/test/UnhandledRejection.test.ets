@@ -187,19 +187,19 @@ export default function unhandledRejectionTest() {
     /*
      * @tc.number: ACTS_Register_JsErrorCallback_UnhandledRejection_0600
      * @tc.name: JsError unhandled rejection callback enhancement
-     * @tc.desc: When trying to register UnhandledRejectionObserver in worker thread a 16200001 will occur.
+     * @tc.desc: When trying to register UnhandledRejectionObserver in worker thread.
      */
     it('ACTS_Register_JsErrorCallback_UnhandledRejection_0600', 0, async (done) => {
       let flag = false;
       console.log("=====>ACTS_Register_JsErrorCallback_UnhandledRejection_0600<=====");
       let threadWorker: worker.ThreadWorker;
       threadWorker = new worker.ThreadWorker('entry_test/ets/workers/workerTestRegisterObservers.ts');
-      threadWorker.postMessage("InTest host to worker");
       threadWorker.onmessage = (evt: MessageEvents) => {
-        console.log('Received event from WorkerTestRegisterObservers');
-        expect(Number(evt.data)).assertEqual(16200001);
-        flag = !flag;
+        console.log("Worker_Main_Thread, onmessage: ", JSON.stringify(evt.data));
+        expect(evt.data).assertEqual("WorkerThread");
+        flag = true;
       }
+      threadWorker.postMessage("InTest host to worker");
 
       setTimeout(() => {
         if (!flag) {
@@ -467,7 +467,7 @@ export default function unhandledRejectionTest() {
     /*
      * @tc.number: ACTS_Unregister_JsErrorCallback_UnhandledRejection_0500
      * @tc.name: JsError unhandled rejection callback enhancement
-     * @tc.desc: Trying to unregister UnhandledRejectionObserver in worker will end up with a 16200001 error.
+     * @tc.desc: Trying to unregister UnhandledRejectionObserver in worker.
      */
     it('ACTS_Unregister_JsErrorCallback_UnhandledRejection_0500', 0, async (done) => {
       let flag = false;
@@ -481,12 +481,12 @@ export default function unhandledRejectionTest() {
 
       let threadWorker: worker.ThreadWorker;
       threadWorker = new worker.ThreadWorker('entry_test/ets/workers/workerTestUnregisterObservers.ts');
-      threadWorker.postMessage("from main thread");
       threadWorker.onmessage = (evt: MessageEvents) => {
-        console.log('Received event from WorkerTestUnregisterObservers');
-        expect(Number(evt.data)).assertEqual(16200001);
-        flag = !flag;
+        console.log("Worker_Main_Thread, onmessage: ", JSON.stringify(evt.data));
+        expect(evt.data).assertEqual("WorkerThread");
+        flag = true;
       }
+      threadWorker.postMessage("InTest host to worker");
       await sleep(SLEEP_DURATION);
 
       setTimeout(() => {

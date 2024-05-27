@@ -2,6 +2,19 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/DragController/APIPreDragStatus",
-        "MainAbility/pages/addGestureApplyGesture"
+        "MainAbility/pages/addGestureApplyGesture",
+        "MainAbility/pages/keyboardShortcut/ShortcutKeyTAB",
+        "MainAbility/pages/keyboardShortcut/ShortcutKeyDPADUP",
+        "MainAbility/pages/keyboardShortcut/ShortcutKeyDPADDOWN",
+        "MainAbility/pages/keyboardShortcut/ShortcutKeyDPADLEFT",
+        "MainAbility/pages/keyboardShortcut/ShortcutKeyDPADRIGHT",
+        "MainAbility/pages/GestureHandler/TapGestureHandler",
+        "MainAbility/pages/GestureHandler/SwiperGestureHandler",
+        "MainAbility/pages/GestureHandler/PanGestureHandler",
+        "MainAbility/pages/GestureHandler/PinchGestureHandler",
+        "MainAbility/pages/GestureHandler/RotationGestureHandler",
+        "MainAbility/pages/GestureHandler/LongPressGestureHandler",
+        "MainAbility/pages/GestureHandler/SourceTool",
+        "MainAbility/pages/DragController/DragInteractionOptions"
     ]
 }

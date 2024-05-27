@@ -10,6 +10,8 @@
         "MainAbility/pages/FrameNode/dispose",
 	    "MainAbility/pages/FrameNode/getAttrs",
         "MainAbility/pages/FrameNode/getPosition",
-        "MainAbility/pages/FrameNode/setLayout"
+        "MainAbility/pages/FrameNode/setLayout",
+        "MainAbility/pages/Graphics/setRectShape",
+        "MainAbility/pages/Graphics/LengthUnit"
     ]
 }

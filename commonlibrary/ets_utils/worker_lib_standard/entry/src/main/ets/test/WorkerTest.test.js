@@ -2079,5 +2079,79 @@ export default function WorkerTest() {
             expect(res).assertEqual(3)
             done();
         })
+
+        // check postMessageWithSharedSendable is ok
+        // main thread postMessageWithSharedSendable "hello world",
+        // child thread postMessage "hello world worker"
+        /**
+         * @tc.name: worker_postMessageWithSharedSendable_test_001
+         * @tc.desc: Sends a message to the worker thread.
+         * @tc.author: hanyuqing
+         */
+        it('worker_postMessageWithSharedSendable_test_001', 0, async function (done) {
+            let ss = new worker.Worker("entry/ets/workers/worker_002.js")
+
+            let res = undefined
+            let flag = false
+            let isTerminate = false
+
+            ss.onexit = function () {
+                isTerminate = true
+            }
+            ss.onmessage = function (e) {
+                res = e.data
+                flag = true
+            }
+
+            ss.postMessageWithSharedSendable("hello world")
+            while (!flag) {
+                await promiseCase()
+            }
+
+            ss.terminate()
+            while (!isTerminate) {
+                await promiseCase()
+            }
+
+            expect(res).assertEqual("hello world worker")
+            done()
+        })
+
+        // check postMessageWithSharedSendable is ok
+        // main thread postMessage "hello world",
+        // child thread postMessageWithSharedSendable "hello world worker"
+        /**
+         * @tc.name: worker_postMessageWithSharedSendable_test_002
+         * @tc.desc: Sends a message to the worker thread.
+         * @tc.author: hanyuqing
+         */
+        it('worker_postMessageWithSharedSendable_test_002', 0, async function (done) {
+            let ss = new worker.Worker("entry/ets/workers/worker_0153.js")
+
+            let res = undefined
+            let flag = false
+            let isTerminate = false
+
+            ss.onexit = function () {
+                isTerminate = true
+            }
+            ss.onmessage = function (e) {
+                res = e.data
+                flag = true
+            }
+
+            ss.postMessage("hello world")
+            while (!flag) {
+                await promiseCase()
+            }
+
+            ss.terminate()
+            while (!isTerminate) {
+                await promiseCase()
+            }
+
+            expect(res).assertEqual("hello world worker")
+            done()
+        })
     })
 }

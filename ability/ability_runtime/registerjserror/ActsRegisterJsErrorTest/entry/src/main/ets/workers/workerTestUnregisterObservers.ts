@@ -30,9 +30,10 @@ workerPort.onmessage = function (e: MessageEvents) {
   try {
     console.log(TAG, 'trying to unregister UnhandledRejectionObserver in worker')
     errorManager.off("unhandledRejection")
+    workerPort.postMessage("WorkerThread");
   } catch (e) {
     console.log(TAG, "catch unregister exception: ", JSON.stringify(e));
-    workerPort.postMessage(Number(e.code));
+    workerPort.postMessage("unhandledRejection unregister error");
   }
 }
 

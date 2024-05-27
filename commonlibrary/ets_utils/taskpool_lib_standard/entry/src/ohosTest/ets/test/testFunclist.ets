@@ -267,3 +267,9 @@ export async function outerTaskFunc(params:string) {
   }
   return "outerTaskRes-" + val;
 }
+
+export function isConcurrentTest1() {
+    "use concurrent"
+}
+
+export function isConcurrentTest2() {}
