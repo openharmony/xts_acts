@@ -4,6 +4,10 @@
         "MainAbility/pages/Navigation/NavigationApi1",
         "MainAbility/pages/Navigation/NavigationApi2",
         "MainAbility/pages/Navigation/NavigationApi3",
-        "MainAbility/pages/Navigation/NavigationApi4"
+        "MainAbility/pages/Navigation/NavigationApi4",
+        "MainAbility/pages/Navigation/NavigationBarStyle",
+        "MainAbility/pages/Navigation/NavigationOnPop",
+        "MainAbility/pages/NavDestination/NavDestinationEvents",
+        "MainAbility/pages/NavDestination/NavDestinationRouterMap"
     ]
 }
