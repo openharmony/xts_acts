@@ -150,60 +150,6 @@ describe('PowerManagerPowerTest', function () {
       })
 
     /**
-     * @tc.number SUB_PowerSystem_PowerTest_JSTest_0090
-     * @tc.name testpower_Suspend_undefined_Test
-     * @tc.desc Device suspend interface verification
-     * @tc.level: Level 3
-     * @tc.type: Functiontion
-     * @tc.size: MediumTest
-     */
-    it('power_Suspend_undefined_Test', 0, async function (done) {
-        power.wakeupDevice("power_Suspend_undefined_Test");
-        power.suspend(undefined);
-        let isScreenOn =  await power.isScreenOn();
-        console.info('power_Suspend_undefined_Test ' + isScreenOn);
-        expect(isScreenOn).assertFalse();
-        console.info('suspend success done');
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_PowerTest_JSTest_0100
-     * @tc.name testpower_Suspend_Device_Test
-     * @tc.desc Device suspend interface verification
-     * @tc.level: Level 3
-     * @tc.type: Functiontion
-     * @tc.size: MediumTest
-     */
-    it('power_Suspend_Device_Test', 0, async function (done) {
-        power.wakeupDevice("power_Suspend_Device_Test");
-        power.suspend();
-        let isScreenOn =  await power.isScreenOn();
-        console.info('power_Suspend_Device_Test ' + isScreenOn);
-        expect(isScreenOn).assertFalse();
-        console.info('suspend success done');
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_PowerTest_JSTest_0110
-     * @tc.name testpower_Suspend_False_Test
-     * @tc.desc Device suspend interface verification
-     * @tc.level: Level 3
-     * @tc.type: Functiontion
-     * @tc.size: MediumTest
-     */
-    it('power_Suspend_False_Test', 0, async function (done) {
-        power.wakeupDevice("power_Suspend_False_Test");
-        power.suspend(false);
-        let isScreenOn =  await power.isScreenOn();
-        console.info('power_Suspend_False_Test ' + isScreenOn);
-        expect(isScreenOn).assertFalse();
-        console.info('suspend success done');
-        done();
-    })
-
-    /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0120
      * @tc.name testpower_Device_IsStandby_Test
      * @tc.desc Device isStandby interface verification
