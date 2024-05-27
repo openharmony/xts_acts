@@ -48,6 +48,31 @@
           }
         ]
       }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "ExtensionAbility",
+        "srcEntry": "./ets/extensionability/ExtensionAbility.ets",
+        "label": "$string:EntryAbility_label",
+        "description": "$string:EntryAbility_desc",
+        "type": "form",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ],
+            "uris": [
+              {
+                "scheme": "scheme"
+              }
+            ]
+          }
+        ]
+      }
     ]
+
   }
 }
