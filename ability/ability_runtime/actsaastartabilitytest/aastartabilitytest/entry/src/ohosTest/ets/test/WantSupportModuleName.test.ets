@@ -49,7 +49,7 @@ function unsubscribeCallback(done: Function) {
 
 function judge(commonEventData: commonEventManager.CommonEventData, isFinish: boolean, done: Function) {
   try {
-    let lifeCircle: Array<string> = commonEventData.parameters.lifeCircle;
+    let lifeCircle: Array<string> = commonEventData.parameters!.lifeCircle;
     hilog.info(0x0000, 'testTag', '%{public}s', `lifeCircle = ${lifeCircle}`);
     expect(lifeCircle.toString()).assertEqual(standard.toString());
     if (isFinish) {
