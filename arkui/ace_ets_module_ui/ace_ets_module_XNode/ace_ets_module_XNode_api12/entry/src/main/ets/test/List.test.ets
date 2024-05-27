@@ -19,9 +19,9 @@ import edgeWidths from './GraphicsTest/edgeWidths.test';
 import renderNodeGetInterfaceTest from './renderNode/renderNodeTestInterface.test';
 import disposeTest from './FrameNodeTest/dispose.test';
 import getAttrsTest from './FrameNodeTest/getAttrs.test';
-
-
 import RenderNodeAttributeTest from './renderNode/RenderNodeAttributeTest.test';
+import setRectShape from './GraphicsTest/setRectShape.test';
+import LengthUnitTest from './GraphicsTest/LengthUnit.test'
 
 export default function testsuite() {
   borderRadiuses();
@@ -32,4 +32,6 @@ export default function testsuite() {
   disposeTest();
   getAttrsTest();
   RenderNodeAttributeTest();
+  setRectShape();
+  LengthUnitTest();
 }
