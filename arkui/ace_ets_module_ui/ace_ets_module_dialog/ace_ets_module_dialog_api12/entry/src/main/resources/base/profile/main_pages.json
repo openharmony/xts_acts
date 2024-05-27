@@ -24,6 +24,8 @@
     "MainAbility/pages/promptAction/closeCustomDialog",
     "MainAbility/pages/promptAction/openCustomDialog",
     "MainAbility/pages/promptAction/updateCustomDialog",
-    "MainAbility/pages/onHeightDidChange"
+    "MainAbility/pages/onHeightDidChange",
+    "MainAbility/pages/CalendarPickerDialog/ButtonStyle",
+    "MainAbility/pages/DatePickerDialog/DateButtonStyle"
   ]
 }
