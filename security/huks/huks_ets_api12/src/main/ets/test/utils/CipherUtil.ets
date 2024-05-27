@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 import huks from '@ohos.security.huks';
-import { stringToUint8Array, uint8ArrayToString } from './commonUtil';
-import * as huksOptionUtil from './huksOptionUtil';
+import { stringToUint8Array, uint8ArrayToString } from './CommonUtil';
+import { setParam } from './HuksOptionUtil';
 
 export async function cipherWithText(genKeyOption: huks.HuksOptions, cipherOption: huks.HuksOptions, text: string): Promise<boolean> {
   let keyAlias: string = "cipherKey";
@@ -27,13 +27,13 @@ export async function cipherWithText(genKeyOption: huks.HuksOptions, cipherOptio
   let handle: number;
   try {
     await huks.generateKeyItem(keyAlias, genKeyOption);
-    huksOptionUtil.changeOrAddParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
+    setParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
     handle = (await huks.initSession(keyAlias, cipherOption)).handle;
     cipherOption.inData = preUpdateText;
     encryptUpdateData = (await huks.updateSession(handle, cipherOption)).outData as Uint8Array;
     cipherOption.inData = preFinishText;
     encryptFinishData = (await huks.finishSession(handle, cipherOption)).outData as Uint8Array;
-    huksOptionUtil.changeOrAddParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT);
+    setParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT);
     cipherOption.inData = encryptUpdateData;
     handle = (await huks.initSession(keyAlias, cipherOption)).handle;
     postUpdateText = (await huks.updateSession(handle, cipherOption)).outData as Uint8Array;
@@ -60,13 +60,13 @@ export async function cipherWithTextCallback(genKeyOption: huks.HuksOptions, cip
   let handle: number;
   try {
     await generateKeyItem(keyAlias, genKeyOption);
-    huksOptionUtil.changeOrAddParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
+    setParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
     handle = (await initSession(keyAlias, cipherOption)).handle;
     cipherOption.inData = preUpdateText;
     encryptUpdateData = (await updateSession(handle, cipherOption)).outData as Uint8Array;
     cipherOption.inData = preFinishText;
     encryptFinishData = (await finishSession(handle, cipherOption)).outData as Uint8Array;
-    huksOptionUtil.changeOrAddParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT);
+    setParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT);
     cipherOption.inData = encryptUpdateData;
     handle = (await initSession(keyAlias, cipherOption)).handle;
     postUpdateText = (await updateSession(handle, cipherOption)).outData as Uint8Array;
@@ -90,11 +90,11 @@ export async function cipherOnlyFinishWithText(genKeyOption: huks.HuksOptions, c
   let handle: number;
   try {
     await huks.generateKeyItem(keyAlias, genKeyOption);
-    huksOptionUtil.changeOrAddParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
+    setParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
     handle = (await huks.initSession(keyAlias, cipherOption)).handle;
     cipherOption.inData = preText;
     encryptData = (await huks.finishSession(handle, cipherOption)).outData as Uint8Array;
-    huksOptionUtil.changeOrAddParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT);
+    setParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT);
     cipherOption.inData = encryptData;
     handle = (await huks.initSession(keyAlias, cipherOption)).handle;
     postText = (await huks.finishSession(handle, cipherOption)).outData as Uint8Array;
@@ -116,12 +116,12 @@ export async function cipherAbortWithText(genKeyOption: huks.HuksOptions, cipher
   let handle: number;
   try {
     await huks.generateKeyItem(keyAlias, genKeyOption);
-    huksOptionUtil.changeOrAddParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
+    setParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
     handle = (await huks.initSession(keyAlias, cipherOption)).handle;
     cipherOption.inData = preUpdateText;
     encryptUpdateData = (await huks.updateSession(handle, cipherOption)).outData as Uint8Array;
     await huks.abortSession(handle, cipherOption);
-    huksOptionUtil.changeOrAddParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT);
+    setParam(cipherOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT);
     cipherOption.inData = encryptUpdateData;
     handle = (await huks.initSession(keyAlias, cipherOption)).handle;
     postUpdateText = (await huks.updateSession(handle, cipherOption)).outData as Uint8Array;

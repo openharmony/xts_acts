@@ -14,8 +14,8 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
-import * as huksOptionUtil from './utils/huksOptionUtil';
-import { stringToUint8Array } from './utils/commonUtil'
+import { setParam, genParam } from './utils/HuksOptionUtil';
+import { stringToUint8Array } from './utils/CommonUtil'
 
 export default function SecurityHUKSAccessControlAsUserTest() {
   describe('SecurityHuksAccessControlAsUserTest', () => {
@@ -51,9 +51,9 @@ export default function SecurityHUKSAccessControlAsUserTest() {
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
         ],
         inData: new Uint8Array()
       };
@@ -78,10 +78,10 @@ export default function SecurityHUKSAccessControlAsUserTest() {
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE),
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE),
         ],
         inData: new Uint8Array()
       };
@@ -107,9 +107,9 @@ export default function SecurityHUKSAccessControlAsUserTest() {
       let userid: number = 100;
       let importKeyOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
         ],
         inData: new Uint8Array()
       };
@@ -139,9 +139,9 @@ export default function SecurityHUKSAccessControlAsUserTest() {
       let userid: number = 100;
       let importKeyOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT)
         ],
         inData: new Uint8Array()
       };
@@ -171,10 +171,10 @@ export default function SecurityHUKSAccessControlAsUserTest() {
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_ECC),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_ECC),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY),
+          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
         ],
         inData: new Uint8Array()
       };
@@ -200,10 +200,10 @@ export default function SecurityHUKSAccessControlAsUserTest() {
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
         ],
         inData: new Uint8Array()
       };
@@ -229,10 +229,10 @@ export default function SecurityHUKSAccessControlAsUserTest() {
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
         ],
         inData: new Uint8Array()
       };
@@ -258,23 +258,23 @@ export default function SecurityHUKSAccessControlAsUserTest() {
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
         ],
         inData: new Uint8Array()
       };
       let encryptOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CBC),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_PKCS7),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_DIGEST, huks.HuksKeyDigest.HUKS_DIGEST_SHA256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_IV, stringToUint8Array("000000000000")),
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+          genParam(huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CBC),
+          genParam(huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_PKCS7),
+          genParam(huks.HuksTag.HUKS_TAG_DIGEST, huks.HuksKeyDigest.HUKS_DIGEST_SHA256),
+          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE),
+          genParam(huks.HuksTag.HUKS_TAG_IV, stringToUint8Array("000000000000")),
         ],
         inData: new Uint8Array()
       };
@@ -300,10 +300,10 @@ export default function SecurityHUKSAccessControlAsUserTest() {
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_256),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
         ],
         inData: new Uint8Array()
       };
@@ -329,23 +329,23 @@ export default function SecurityHUKSAccessControlAsUserTest() {
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_RSA),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_DIGEST, huks.HuksKeyDigest.HUKS_DIGEST_SHA256),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_PSS),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_ECB),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
+          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_RSA),
+          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048),
+          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY),
+          genParam(huks.HuksTag.HUKS_TAG_DIGEST, huks.HuksKeyDigest.HUKS_DIGEST_SHA256),
+          genParam(huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_PSS),
+          genParam(huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_ECB),
+          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
         ],
         inData: new Uint8Array()
       };
       let anonAttestOption: huks.HuksOptions = {
         properties: [
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO, stringToUint8Array('sec_level')),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE, stringToUint8Array('challenge_data')),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO, stringToUint8Array('version_info')),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS, stringToUint8Array(testNumber)),
-          huksOptionUtil.getParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
+          genParam(huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO, stringToUint8Array('sec_level')),
+          genParam(huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE, stringToUint8Array('challenge_data')),
+          genParam(huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO, stringToUint8Array('version_info')),
+          genParam(huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS, stringToUint8Array(testNumber)),
+          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE)
         ],
         inData: new Uint8Array()
       };
