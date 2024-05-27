@@ -1442,13 +1442,12 @@ export default function AVSessionControllerJsTest() {
                         done();
                     }
                     done();
-				});
-			}).catch((err) => {
-				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300 error " + JSON.stringify(err));
-				expect().assertFail();
-				done();
-			});
-		})
-
-	})
+                });
+            }).catch((err) => {
+                console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300 error " + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            });
+        })
+    })
 }
