@@ -66,7 +66,7 @@ export default function AVSessionControllerJsTest() {
 			creditsPosition: 0,
 			appName: "appName",
 			displayTags: avSession.DisplayTag.TAG_AUDIO_VIVID,
-                drmScheme: "C83EADEOA7FB9E76B"
+                        drmScheme: "C83EADEOA7FB9E76B"
 		};
 		const QUEUE_ITEM_DESCRIPTION_ERROR = {
 			mediaId: QUEUE_ITEM_KEY_WORD,
@@ -83,7 +83,7 @@ export default function AVSessionControllerJsTest() {
 			startPosition: 0,
 			creditsPosition: 0,
 			appName: "appName",
-                drmScheme: "C83EADEOA7FB9E76S"
+                        drmScheme: "C83EADEOA7FB9E76S"
 		};
 		const QUEUE_ITEM = {
 			itemId: QUEUE_ITEM_ID,
