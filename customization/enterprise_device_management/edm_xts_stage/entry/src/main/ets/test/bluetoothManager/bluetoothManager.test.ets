@@ -90,7 +90,8 @@ export default function bluetoothManagerTest() {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         let result: bluetoothManager.BluetoothInfo = bluetoothManager.getBluetoothInfo(SELFWANT);
-        expect((result.name == "" && result.state == 0) || (result.name != "" && result.state == 2)).assertTrue();
+        expect((result.name == "" && result.state == 0 && result.connectionState == 0) ||
+          (result.name != "" && result.state == 2)).assertTrue();
       } catch(error) {
         expect(false).assertTrue();
       }
@@ -167,12 +168,13 @@ export default function bluetoothManagerTest() {
     it('test_add_allowed_bluetooth_devices_0400', 0, async function (done) {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
-        let deviceIds: Array<string>  = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
-        bluetoothManager.addAllowedBluetoothDevices(SELFWANT,deviceIds);
+        let deviceIds: Array<string>  = ["00:1A:2B:3C:4D:5E", "AA:BB:CC:DD:EE:FF"];
+        bluetoothManager.addAllowedBluetoothDevices(SELFWANT, deviceIds);
       } catch(error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -195,8 +197,9 @@ export default function bluetoothManagerTest() {
         expect(false).assertTrue();
       } catch(error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -214,8 +217,9 @@ export default function bluetoothManagerTest() {
         bluetoothManager.getAllowedBluetoothDevices(SELFWANT);
       } catch(error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 

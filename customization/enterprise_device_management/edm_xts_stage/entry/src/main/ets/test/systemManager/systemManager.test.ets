@@ -18,7 +18,6 @@ import { ENTINFO1, SELFWANT, SELFHAPNAME, INVALID_WANT } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import systemManager from '@ohos.enterprise.systemManager';
-import restrictions from '@ohos.enterprise.restrictions';
 
 export default function systemManagerTest() {
   describe('systemManager_test', () => {
