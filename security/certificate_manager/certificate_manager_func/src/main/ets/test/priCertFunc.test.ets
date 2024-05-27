@@ -112,6 +112,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
       expect(certManager.CMErrorCode.CM_ERROR_GENERIC).assertEqual(17500001);
       expect(certManager.CMErrorCode.CM_ERROR_NO_FOUND).assertEqual(17500002);
       expect(certManager.CMErrorCode.CM_ERROR_INCORRECT_FORMAT).assertEqual(17500003);
+      expect(certManager.CMErrorCode.CM_ERROR_MAX_CERT_COUNT_REACHED).assertEqual(17500004);
       expect(certManager.CMErrorCode.CM_ERROR_NO_AUTHORIZATION).assertEqual(17500005);
       expect(certManager.CmKeyPadding.CM_PADDING_NONE).assertEqual(0);
       expect(certManager.CmKeyPadding.CM_PADDING_PSS).assertEqual(1);

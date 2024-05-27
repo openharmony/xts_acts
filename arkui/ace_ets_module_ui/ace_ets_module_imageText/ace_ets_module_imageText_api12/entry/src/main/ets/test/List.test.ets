@@ -44,12 +44,10 @@ import APIUnderlineColorTest from './TextInput/APIUnderlineColorTest.test';
 import srcIndexTest from './MatrixTest/srcIndexTest.test'
 import dstIndexTest from './MatrixTest/dstIndexTest.test'
 import underlineColor from './TextInput/underlineColor.test'
-
 import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
 import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
 import RichEditorApi5 from './RichEditor/RichEditorApi5.test'
 import RichEditorChangeCallback from './RichEditor/RichEditorChangeCallback.test'
-
 import RichEditor1 from './RichEditorEnhance/RichEditor1.test'
 import RichEditor2 from './RichEditorEnhance/RichEditor2.test'
 import RichEditor3 from './RichEditorEnhance/RichEditor3.test'
@@ -64,9 +62,13 @@ import imageAddApi from './ImageTest/imageAddApi.test'
 import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
 import styledStringApi from './TextTest/styledStringApi.test'
 import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
+import TextAreaApi1 from './TextArea/TextAreaApi1.test'
+import TextAreaApi2 from './TextArea/TextAreaApi2.test'
+import TextAreaApi3 from './TextArea/TextAreaApi3.test'
+import textApi1 from './Text/TextApi1.test'
 export default function testsuite() {
-APIContentTypeTest();
-APIUnderlineColorTest();
+  APIContentTypeTest();
+  APIUnderlineColorTest();
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
@@ -102,12 +104,10 @@ APIUnderlineColorTest();
   underlineColor();
   srcIndexTest();
   dstIndexTest();
-  
   RichEditorApi1();
   RichEditorApi3();
   RichEditorApi5();
   RichEditorChangeCallback();
-
   RichEditor1();
   RichEditor2();
   RichEditor3();
@@ -116,4 +116,8 @@ APIUnderlineColorTest();
   RichEditor6();
   RichEditor7();
   TextInputTextAreaSearch();
+  TextAreaApi1();
+  TextAreaApi2();
+  TextAreaApi3();
+  textApi1();
 }

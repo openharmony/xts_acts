@@ -41,14 +41,19 @@
   "MainAbility/pages/RichEditor/RichEditorApi1",
   "MainAbility/pages/RichEditor/RichEditorApi3",
   "MainAbility/pages/RichEditor/RichEditorApi5",
-        "MainAbility/pages/RichEditor/RichEditorChangeCallback",
-        "MainAbility/pages/RichEditorEnhance/RichEditor1",
-        "MainAbility/pages/RichEditorEnhance/RichEditor2",
-        "MainAbility/pages/RichEditorEnhance/RichEditor3",
-        "MainAbility/pages/RichEditorEnhance/RichEditor4",
-        "MainAbility/pages/RichEditorEnhance/RichEditor5",
-        "MainAbility/pages/RichEditorEnhance/RichEditor6",
-        "MainAbility/pages/RichEditorEnhance/RichEditor7",
-        "MainAbility/pages/RichEditorEnhance/TextInputTextAreaSearch"
+  "MainAbility/pages/RichEditor/RichEditorChangeCallback",
+
+  "MainAbility/pages/RichEditorEnhance/RichEditor1",
+  "MainAbility/pages/RichEditorEnhance/RichEditor2",
+  "MainAbility/pages/RichEditorEnhance/RichEditor3",
+  "MainAbility/pages/RichEditorEnhance/RichEditor4",
+  "MainAbility/pages/RichEditorEnhance/RichEditor5",
+  "MainAbility/pages/RichEditorEnhance/RichEditor6",
+  "MainAbility/pages/RichEditorEnhance/RichEditor7",
+  "MainAbility/pages/RichEditorEnhance/TextInputTextAreaSearch",
+    "MainAbility/pages/TextArea/TextAreaApi1",
+    "MainAbility/pages/TextArea/TextAreaApi2",
+    "MainAbility/pages/TextArea/TextAreaApi3",
+    "MainAbility/pages/Text/TextApi1"
   ]
 }

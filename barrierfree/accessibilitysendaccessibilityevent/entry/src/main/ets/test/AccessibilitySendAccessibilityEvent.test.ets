@@ -2507,11 +2507,13 @@ export default function abilityTest() {
             let typy = 'requestFocusForAccessibility';
             let ttriggerAction = 'click';
             let elementId = 16;
+            let customId = '123';
             let jsonObj = {
                 type : eventType,
                 bundleName : bundleName,
                 triggerAction : triggerAction,
-                elementId : elementId
+                elementId : elementId,
+                customId : customId
             }
 
             let event = new accessibility.EventInfo(jsonObj);
@@ -2542,11 +2544,13 @@ export default function abilityTest() {
             let typy = 'requestFocusForAccessibility';
             let ttriggerAction = 'click';
             let elementId = 16;
+            let customId = '123';
             let jsonObj = {
                 type : eventType,
                 bundleName : bundleName,
                 triggerAction : triggerAction,
                 elementId : elementId
+                customId : customId
             }
 
             let event = new accessibility.EventInfo(jsonObj);

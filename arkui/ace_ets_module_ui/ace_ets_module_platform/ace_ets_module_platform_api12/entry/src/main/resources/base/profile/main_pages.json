@@ -4,6 +4,7 @@
         "MainAbility/pages/Counter/counterApi",
         "MainAbility/pages/XComponent/getXComponentSurfaceRect",
         "MainAbility/pages/XComponent/onSurfaceCreated",
-        "MainAbility/pages/XComponent/stopImageAnalyzer"
+        "MainAbility/pages/XComponent/stopImageAnalyzer",
+        "MainAbility/pages/Video/VideoTest1"
     ]
 }
