@@ -3492,4 +3492,1285 @@ describe('BufferTest', function () {
       expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
     }
   });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_20600
+   * @tc.name: testWriteBigInt64LE0500
+   * @tc.desc: Writes value to buf at the specified offset as little-endian.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testWriteBigInt64LE0500", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    let ref = buf.writeBigInt64LE(0x0102030405060708n, 0);
+    expect(ref).assertEqual(8);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_20700
+   * @tc.name: testWriteBigInt64LE0501
+   * @tc.desc: Writes value to buf at the specified offset as little-endian.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testWriteBigInt64LE0501", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    try {
+      let ref = buf.writeBigInt64LE(0x0102030405060708n, 1);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_20800
+   * @tc.name: testWriteBigUInt64BE0510
+   * @tc.desc: Writes value to buf at the specified offset as big-endian.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testWriteBigUInt64BE0510", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    let ref = buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
+    expect(ref).assertEqual(8);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_20900
+   * @tc.name: testWriteBigUInt64BE0511
+   * @tc.desc: Writes value to buf at the specified offset as big-endian.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testWriteBigUInt64BE0511", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    try {
+      let ref = buf.writeBigUInt64BE(0xdecafafecacefaden, 1);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_21000
+   * @tc.name: testWriteBigUInt64LE0520
+   * @tc.desc: Writes value to buf at the specified offset as little-endian.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testWriteBigUInt64LE0520", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    let ref = buf.writeBigUInt64LE(0xdecafafecacefaden, 0);
+    expect(ref).assertEqual(8);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_21100
+   * @tc.name: testWriteBigUInt64LE0521
+   * @tc.desc: Writes value to buf at the specified offset as little-endian.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testWriteBigUInt64LE0521", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    try {
+      let ref = buf.writeBigUInt64LE(0xdecafafecacefaden, 1);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_21200
+   * @tc.name: testReadInt32BE0530
+   * @tc.desc: Reads a signed, big-endian 32-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadInt32BE0530", 0, function () {
+    let buf = buffer.alloc(4);
+    buf.writeInt32BE(0x12345678, 0);
+    let ref = buf.readInt32BE(0).toString(16);
+    expect(ref).assertEqual("12345678");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_21300
+   * @tc.name: testReadInt32BE0531
+   * @tc.desc: Reads a signed, big-endian 32-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadInt32BE0531", 0, function () {
+    let buf = buffer.alloc(4);
+    buf.writeInt32BE(0x12345678, 0);
+    try {
+      let ref = buf.readInt32BE(1);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_21400
+   * @tc.name: testReadInt32BE0532
+   * @tc.desc: Reads a signed, big-endian 32-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+   it("testReadInt32BE0532", 0, function () {
+    let buf = buffer.alloc(4);
+    buf.writeInt32BE(0x12345678, 0);
+    try {
+      let ref = buf.readInt32BE("1");
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The type of "offset" must be number. Received value is: string');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_21500
+   * @tc.name: testReadInt32LE0540
+   * @tc.desc: Reads a signed, little-endian 32-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadInt32LE0540", 0, function () {
+    let buf = buffer.alloc(4);
+    buf.writeInt32BE(0x12345678, 0);
+    let ref = buf.readInt32LE(0).toString(16);
+    expect(ref).assertEqual("78563412");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_21600
+   * @tc.name: testReadInt32LE0541
+   * @tc.desc: Reads a signed, little-endian 32-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadInt32LE0541", 0, function () {
+    let buf = buffer.alloc(4);
+    buf.writeInt32BE(0x12345678, 0);
+    try {
+      let ref = buf.readInt32LE(1);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_21700
+   * @tc.name: testReadInt16BE0550
+   * @tc.desc: Reads a signed, big-endian 16-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadInt16BE0550", 0, function () {
+    let buf = buffer.alloc(2);
+    buf.writeInt16BE(0x1234, 0);
+    let ref = buf.readInt16BE(0).toString(16);
+    expect(ref).assertEqual("1234");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_21800
+   * @tc.name: testReadInt16BE0551
+   * @tc.desc: Reads a signed, big-endian 16-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadInt16BE0551", 0, function () {
+    let buf = buffer.alloc(2);
+    buf.writeInt16BE(0x1234, 0);
+    try {
+      let ref = buf.readInt16BE(1).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_21900
+   * @tc.name: testReadInt16LE0560
+   * @tc.desc: Reads a signed, little-endian 16-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadInt16LE0560", 0, function () {
+    let buf = buffer.alloc(2);
+    buf.writeInt16BE(0x1234, 0);
+    let ref = buf.readInt16LE(0).toString(16);
+    expect(ref).assertEqual("3412");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_22000
+   * @tc.name: testReadInt16LE0561
+   * @tc.desc: Reads a signed, little-endian 16-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadInt16LE0561", 0, function () {
+    let buf = buffer.alloc(2);
+    buf.writeInt16BE(0x1234, 0);
+    try {
+      let ref = buf.readInt16LE(1);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_22100
+   * @tc.name: testReadInt80570
+   * @tc.desc: Reads a signed 8-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadInt80570", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(2);
+    buf.writeInt8(0x12);
+    let ref = buf.readInt8(0).toString(16);
+    expect(ref).assertEqual("12");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_22200
+   * @tc.name: testReadInt80571
+   * @tc.desc: Reads a signed 8-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadInt80571", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(2);
+    buf.writeInt8(0x12);
+    try {
+      let ref = buf.readInt8(2).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 1. Received value is: 2');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_22300
+   * @tc.name: testReadUInt16BE0580
+   * @tc.desc: Reads an unsigned, big-endian 16-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUInt16BE0580", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUInt16BE(0x1234, 0);
+    let ref = buf.readUInt16BE(0).toString(16);
+    expect(ref).assertEqual("1234");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_22400
+   * @tc.name: testReadUInt16BE0581
+   * @tc.desc: Reads an unsigned, big-endian 16-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUInt16BE0581", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUInt16BE(0x1234, 0);
+    try {
+      let ref = buf.readUInt16BE(3).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 2. Received value is: 3');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_22500
+   * @tc.name: testReadUInt16LE0590
+   * @tc.desc: Reads an unsigned, little-endian 16-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUInt16LE0590", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUInt16LE(0x1234, 0);
+    let ref = buf.readUInt16LE(0).toString(16);
+    expect(ref).assertEqual("1234");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_22600
+   * @tc.name: testReadUInt16LE0591
+   * @tc.desc: Reads an unsigned, little-endian 16-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUInt16LE0591", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUInt16LE(0x1234, 0);
+    try {
+      let ref = buf.readUInt16LE(3).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 2. Received value is: 3');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_22700
+   * @tc.name: testReadUInt32BE0600
+   * @tc.desc: Reads an unsigned, big-endian 32-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUInt32BE0600", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUInt32BE(0x12345678, 0);
+    let ref = buf.readUInt32BE(0).toString(16);
+    expect(ref).assertEqual("12345678");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_22800
+   * @tc.name: testReadUInt32BE0601
+   * @tc.desc: Reads an unsigned, big-endian 32-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUInt32BE0601", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUInt32BE(0x12345678, 0);
+    try {
+      let ref = buf.readUInt32BE(1).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_22900
+   * @tc.name: testReadUInt32LE0610
+   * @tc.desc: Reads an unsigned, little-endian 32-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUInt32LE0610", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUInt32LE(0x12345678, 0);
+    let ref = buf.readUInt32LE(0).toString(16);
+    expect(ref).assertEqual("12345678");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_23000
+   * @tc.name: testReadUInt32LE0611
+   * @tc.desc: Reads an unsigned, little-endian 32-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUInt32LE0611", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUInt32LE(0x12345678, 0);
+    try {
+      let ref = buf.readUInt32LE(1).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_23100
+   * @tc.name: testReadUInt80620
+   * @tc.desc: Reads an unsigned 8-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUInt80620", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUInt8(0x42);
+    let ref = buf.readUInt8(0).toString(16);
+    expect(ref).assertEqual("42");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_23200
+   * @tc.name: testReadUInt80621
+   * @tc.desc: Reads an unsigned 8-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUInt80621", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUInt8(0x42);
+    try {
+      let ref = buf.readUInt8(4).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 3. Received value is: 4');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_23300
+   * @tc.name: testReadUIntBE0630
+   * @tc.desc: Reads an unsigned 8-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUIntBE0630", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUIntBE(0x13141516, 0, 4);
+    let ref = buf.readUIntBE(0, 3).toString(16);
+    expect(ref).assertEqual("131415");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_23400
+   * @tc.name: testReadUIntBE0631
+   * @tc.desc: Reads an unsigned 8-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUIntBE0631", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUIntBE(0x13141516, 0, 4);
+    try {
+      let ref = buf.readUIntBE(2, 3).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 1. Received value is: 2');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_23500
+   * @tc.name: testReadUIntLE0640
+   * @tc.desc: Reads byteLength number of bytes from buf at the specified offset and interprets
+   *           the result as an unsigned, little-endian integer supporting up to 48 bits of accuracy.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUIntLE0640", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUIntLE(0x13141516, 0, 4);
+    let ref = buf.readUIntLE(0, 3).toString(16);
+    expect(ref).assertEqual("141516");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_23600
+   * @tc.name: testReadUIntLE0641
+   * @tc.desc: Reads byteLength number of bytes from buf at the specified offset and interprets
+   *           the result as an unsigned, little-endian integer supporting up to 48 bits of accuracy.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadUIntLE0641", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeUIntLE(0x13141516, 0, 4);
+    try {
+      let ref = buf.readUIntLE(2, 3).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 1. Received value is: 2');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_23700
+   * @tc.name: testReadIntBE0650
+   * @tc.desc: Reads byteLength number of bytes from buf at the specified offset and interprets
+   *           the result as a big-endian, two's complement signed value supporting up to 48 bits of accuracy.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadIntBE0650", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(6);
+    buf.writeIntBE(0x123456789011, 0, 6);
+    let ref = buf.readIntBE(0, 5).toString(16);
+    expect(ref).assertEqual("1234567890");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_23800
+   * @tc.name: testReadIntBE0651
+   * @tc.desc: Reads byteLength number of bytes from buf at the specified offset and interprets
+   *           the result as a big-endian, two's complement signed value supporting up to 48 bits of accuracy.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadIntBE0651", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(6);
+    buf.writeIntBE(0x123456789011, 0, 6);
+    try {
+      let ref = buf.readIntBE(2, 5).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 1. Received value is: 2');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_23900
+   * @tc.name: testReadIntLE0660
+   * @tc.desc: Reads byteLength number of bytes from buf at the specified offset and interprets
+   *           the result as a little-endian, two's complement signed value supporting up to 48 bits of accuracy.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadIntLE0660", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(6);
+    buf.writeIntLE(0x123456789011, 0, 6);
+    let ref = buf.readIntLE(0, 5).toString(16);
+    expect(ref).assertEqual("3456789011");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_24000
+   * @tc.name: testReadIntLE0661
+   * @tc.desc: Reads byteLength number of bytes from buf at the specified offset and interprets
+   *           the result as a little-endian, two's complement signed value supporting up to 48 bits of accuracy.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadIntLE0661", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(6);
+    buf.writeIntLE(0x123456789011, 0, 6);
+    try {
+      let ref = buf.readIntLE(2, 5).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 1. Received value is: 2');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_24100
+   * @tc.name: testReadDoubleBE0670
+   * @tc.desc: Reads a 64-bit, big-endian double from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadDoubleBE0670", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeDoubleBE(123.456, 0);
+    let ref = buf.readDoubleBE();
+    expect(ref).assertEqual(123.456);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_24200
+   * @tc.name: testReadDoubleBE0671
+   * @tc.desc: Reads a 64-bit, big-endian double from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadDoubleBE0671", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeDoubleBE(123.456, 0);
+    try {
+      let ref = buf.readDoubleBE(1);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_24300
+   * @tc.name: testReadDoubleLE0680
+   * @tc.desc: Reads a 64-bit, little-endian double from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadDoubleLE0680", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeDoubleLE(123.456, 0);
+    let ref = buf.readDoubleLE();
+    expect(ref).assertEqual(123.456);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_24400
+   * @tc.name: testReadDoubleLE0681
+   * @tc.desc: Reads a 64-bit, little-endian double from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadDoubleLE0681", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeDoubleLE(123.456, 0);
+    try {
+      let ref = buf.readDoubleLE(1);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_24500
+   * @tc.name: testReadFloatBE0690
+   * @tc.desc: Reads a 32-bit, big-endian float from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadFloatBE0690", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeFloatBE(0xcabcbcbc, 0);
+    let ref = buf.readFloatBE(0).toString(16);
+    expect(ref).assertEqual("cabcbd00");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_24600
+   * @tc.name: testReadFloatBE0691
+   * @tc.desc: Reads a 32-bit, big-endian float from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadFloatBE0691", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeFloatBE(0xcabcbcbc, 0);
+    try {
+      let ref = buf.readFloatBE(1).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_24700
+   * @tc.name: testReadFloatLE0700
+   * @tc.desc: Reads a 32-bit, little-endian float from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadFloatLE0700", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeFloatLE(0xcabcbcbc, 0);
+    let ref = buf.readFloatLE(0).toString(16);
+    expect(ref).assertEqual("cabcbd00");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_24800
+   * @tc.name: testReadFloatLE0701
+   * @tc.desc: Reads a 32-bit, little-endian float from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadFloatLE0701", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(4);
+    buf.writeFloatLE(0xcabcbcbc, 0);
+    try {
+      let ref = buf.readFloatLE(1).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_24900
+   * @tc.name: testReadBigInt64BE0710
+   * @tc.desc: Reads a signed, big-endian 64-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadBigInt64BE0710", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeBigInt64BE(0x0102030405060708n, 0);
+    let ref = buf.readBigInt64BE(0).toString(16);
+    expect(ref).assertEqual("102030405060708");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_25000
+   * @tc.name: testReadBigInt64BE0711
+   * @tc.desc: Reads a signed, big-endian 64-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadBigInt64BE0711", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeBigInt64BE(0x0102030405060708n, 0);
+    try {
+      let ref = buf.readBigInt64BE(1).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_25100
+   * @tc.name: testReadBigInt64LE0720
+   * @tc.desc: Reads a signed, little-endian 64-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadBigInt64LE0720", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeBigInt64BE(0x0102030405060708n, 0);
+    let ref = buf.readBigInt64LE(0).toString(16);
+    expect(ref).assertEqual("807060504030201");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_25200
+   * @tc.name: testReadBigInt64LE0721
+   * @tc.desc: Reads a signed, little-endian 64-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadBigInt64LE0721", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeBigInt64BE(0x0102030405060708n, 0);
+    try {
+      let ref = buf.readBigInt64LE(1).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_25300
+   * @tc.name: testReadBigUInt64BE0730
+   * @tc.desc: Reads a unsigned, big-endian 64-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadBigUInt64BE0730", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
+    let ref = buf.readBigUInt64BE(0).toString(16);
+    expect(ref).assertEqual("decafafecacefade");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_25400
+   * @tc.name: testReadBigUInt64BE0731
+   * @tc.desc: Reads a unsigned, big-endian 64-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadBigUInt64BE0731", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
+    try {
+      let ref = buf.readBigUInt64BE(1).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_25500
+   * @tc.name: testReadBigUInt64LE0740
+   * @tc.desc: Reads a unsigned, little-endian 64-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadBigUInt64LE0740", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
+    let ref = buf.readBigUInt64LE(0).toString(16);
+    expect(ref).assertEqual("defacecafefacade");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_25600
+   * @tc.name: testReadBigUInt64LE0741
+   * @tc.desc: Reads a unsigned, little-endian 64-bit integer from buf at the specified offset.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testReadBigUInt64LE0741", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(8);
+    buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
+    try {
+      let ref = buf.readBigUInt64LE(1).toString(16);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 0. Received value is: 1');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_25700
+   * @tc.name: testBufferLength0750
+   * @tc.desc: Returns the number of bytes in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBufferLength0750", 0, function () {
+    let buf = buffer.from("1236");
+    let len = buf.length;
+    expect(len).assertEqual(4);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_25800
+   * @tc.name: testBufferLength0751
+   * @tc.desc: Returns the number of bytes in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBufferLength0751", 0, function () {
+    let buf = buffer.from("1236");
+    try {
+      buf.length = 10;
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('Cannot set property length of Buffer which has only a getter');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_25900
+   * @tc.name: testBufferLength0751
+   * @tc.desc: Returns the number of bytes in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBufferLength0752", 0, function () {
+    let buf = buffer.from("测试特殊字符$#@!");
+    let len = buf.length;
+    expect(len).assertEqual(22);
+  });
+  
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26000
+   * @tc.name: testBufferByteOffset0755
+   * @tc.desc: Returns the offset of bytes in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBufferByteOffset0755", 0, function () {
+    let buf = buffer.from("1236");
+    let offset = buf.byteOffset;
+    expect(offset >= 0).assertTrue();
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26100
+   * @tc.name: testBufferByteOffset0756
+   * @tc.desc: Returns the offset of bytes in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBufferByteOffset0756", 0, function () {
+    let buf = buffer.alloc(10);
+    let offset = buf.byteOffset;
+    expect(offset >= 0).assertTrue();
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26200
+   * @tc.name: testBufferByteOffset0757
+   * @tc.desc: Returns the offset of bytes in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBufferByteOffset0757", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(10);
+    let offset = buf.byteOffset;
+    expect(offset >= 0).assertTrue();
+  });
+  
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26300
+   * @tc.name: testBufferByteOffset0758
+   * @tc.desc: Returns the offset of bytes in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBufferByteOffset0758", 0, function () {
+    let buf = buffer.allocUninitialized(10);
+    let offset = buf.byteOffset;
+    expect(offset >= 0).assertTrue();
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26400
+   * @tc.name: testBufferByteOffset0759
+   * @tc.desc: Returns the offset of bytes in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBufferByteOffset0759", 0, function () {
+    let buf = buffer.from("1236");
+    try {
+      buf.byteOffset = 3;
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('Cannot set property byteOffset of Buffer which has only a getter');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26500
+   * @tc.name: testBlobSize0760
+   * @tc.desc: The total size of the Blob in bytes.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBlobSize0760", 0, function () {
+    let blob = new buffer.Blob(["a", "b", "c"]);
+    let size = blob.size;
+    expect(size).assertEqual(3);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26600
+   * @tc.name: testBlobSize0761
+   * @tc.desc: The total size of the Blob in bytes.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBlobSize0761", 0, function () {
+    let blob = new buffer.Blob([]);
+    let size = blob.size;
+    expect(size).assertEqual(0);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26700
+   * @tc.name: testBlobSize0762
+   * @tc.desc: The total size of the Blob in bytes.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBlobSize0762", 0, function () {
+    let blob = new buffer.Blob(["测试", "$#", "c"]);
+    let size = blob.size;
+    expect(size).assertEqual(9);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26800
+   * @tc.name: testBlobType0770
+   * @tc.desc: The content-type of the Blob.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBlobType0770", 0, function () {
+    let blob = new buffer.Blob(["a", "b", "c"], { type: "mime", endings: "transparent" });
+    let type = blob.type;
+    expect(type).assertEqual("mime");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26900
+   * @tc.name: testBlobType0771
+   * @tc.desc: The content-type of the Blob.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBlobType0771", 0, function () {
+    let blob = new buffer.Blob(["a", "b", "c"]);
+    let type = blob.type;
+    expect(type).assertEqual("");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27000
+   * @tc.name: testAllocUninitialized0780
+   * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testAllocUninitialized0780", 0, function () {
+    let buf = buffer.allocUninitialized(10);
+    expect(buf.length).assertEqual(10);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27100
+   * @tc.name: testAllocUninitialized0781
+   * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testAllocUninitialized0781", 0, function () {
+    let buf = buffer.allocUninitialized(0);
+    expect(buf.length).assertEqual(0);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27200
+   * @tc.name: testAllocUninitialized0782
+   * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testAllocUninitialized0782", 0, function () {
+    try {
+      let buf = buffer.allocUninitialized(-5);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The type of "size" must be number and the value cannot be negative. Received value is: -5');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27300
+   * @tc.name: testfrom0783
+   * @tc.desc: For the object whose value returned by valueof() function is strictly equal to object
+   *           or supports symbol To primitive object, a new buffer instance is created.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+   it("testfrom0783", 0, function () {
+    try {
+      const buf = buffer.from(10);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The type of "value" must be Buffer or ArrayBuffer, Array, Array-like. Received value is: string');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27400
+   * @tc.name: testBufferBuffer0784
+   * @tc.desc: Returns the number of bytes in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testBufferBuffer0784", 0, function () {
+    let buf = buffer.from("1236");
+    let buf1 = buffer.from("123");
+    try {
+      buf.buffer = buf1;
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('Cannot set property buffer of Buffer which has only a getter');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27500
+   * @tc.name: testToString0785
+   * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testToString0785", 0, function () {
+    let buf1 = buffer.from("abc");
+    try {
+      let str = buf1.toString("code");
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The type of "encoding" must be BufferEncoding. the encoding code is unknown');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27600
+   * @tc.name: testfrom0786
+   * @tc.desc: For the object whose value returned by valueof() function is strictly equal to object
+   *           or supports symbol To primitive object, a new buffer instance is created.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testfrom0786", 0, function () {
+    let arrayBuffer = new ArrayBuffer(5);
+    let array = new Int8Array(arrayBuffer);
+    array[0] = '1';
+    array[1] = '2';
+    array[2] = '3';
+    array[3] = '4';
+    array[4] = '5';
+    try {
+      const buf = buffer.from(arrayBuffer, 6, 1);
+    } catch (err) {
+      expect(err.name).assertEqual('BusinessError');
+      expect(err.message).assertEqual('The value of "byteOffset" is out of range. It must be >= 0 and <= 5. Received value is: 6');
+    }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27700
+   * @tc.name: testfrom0787
+   * @tc.desc: The buffer handles a uint8array and decodes it with base64 and base64url.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it('testfrom0787', 0, function () {
+    let array = new Uint8Array([252,11,3,67,237,118,91,177,43]);
+    let buf = buffer.from(array);
+    let strUrl = buf.toString("base64url");
+    let str = buf.toString("base64");
+    expect(strUrl).assertEqual("_AsDQ-12W7Er");
+    expect(str).assertEqual("/AsDQ+12W7Er");
+
+    array = new Uint8Array([2,192,254,253,5,132,69]);
+    buf = buffer.from(array);
+    strUrl = buf.toString("base64url");
+    str= buf.toString("base64");
+    expect(strUrl).assertEqual("AsD-_QWERQ");
+    expect(str).assertEqual("AsD+/QWERQ==");
+
+    array = new Uint8Array([215,109,211,97,72,142,167,241]);
+    buf = buffer.from(array);
+    strUrl = buf.toString("base64url");
+    str = buf.toString("base64");
+    expect(strUrl).assertEqual("123TYUiOp_E");
+    expect(str).assertEqual("123TYUiOp/E=");
+
+    array = new Uint8Array([252]);
+    buf = buffer.from(array);
+    strUrl = buf.toString("base64url");
+    str = buf.toString("base64");
+    expect(strUrl).assertEqual("_A");
+    expect(str).assertEqual("/A==");
+
+    array = new Uint8Array([252,97]);
+    buf = buffer.from(array);
+    strUrl = buf.toString("base64url");
+    str = buf.toString("base64");
+    expect(strUrl).assertEqual("_GE");
+    expect(str).assertEqual("/GE=");
+
+    array = new Uint8Array([252,97,142]);
+    buf = buffer.from(array);
+    strUrl = buf.toString("base64url");
+    str = buf.toString("base64");
+    expect(strUrl).assertEqual("_GGO");
+    expect(str).assertEqual("/GGO");
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27800
+   * @tc.name: testByteLength0036
+   * @tc.desc: Returns the byte length of a string when encoded using `encoding`.
+   *           This is not the same as [`String.prototype.length`], which does not account
+   *           for the encoding that is used to convert the string into bytes.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testByteLength0036", 0, function () {
+    let buf1 = buffer.from("abc");
+    let byteLen = buffer.byteLength(buf1);
+    expect(byteLen).assertEqual(3);
+  });
+    
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27900
+   * @tc.name: testByteLength0037
+   * @tc.desc: Returns the byte length of a string when encoded using `encoding`.
+   *           This is not the same as [`String.prototype.length`], which does not account
+   *           for the encoding that is used to convert the string into bytes.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testByteLength0037", 0, function () {
+    let buf1 = buffer.alloc(8);
+    let byteLen = buffer.byteLength(buf1);
+    expect(byteLen).assertEqual(8);
+  });
+
+   /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28000
+    * @tc.name: testToString0038
+    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 2
+    */
+   it("testToString0038", 0, function () {
+    let str = "abcdefhajksalfsdfjl12346287467823®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+    let strbuf = buffer.from(str, "latin1");
+    let toStr = strbuf.toString("latin1");
+    expect(toStr).assertEqual("abcdefhajksalfsdfjl12346287467823®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ");
+   });
 })}
