@@ -61,16 +61,17 @@ import RichEditor5 from './RichEditorEnhance/RichEditor5.test'
 import RichEditor6 from './RichEditorEnhance/RichEditor6.test'
 import RichEditor7 from './RichEditorEnhance/RichEditor7.test'
 import TextInputTextAreaSearch from './RichEditorEnhance/TextInputTextAreaSearch.test'
-import Context from './TextTest/Context.test'
-import getLayout from './TextTest/getLayout.test'
-import imageAddApi from './ImageTest/imageAddApi.test'
-import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
-import styledStringApi from './TextTest/styledStringApi.test'
-import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
 import TextAreaApi1 from './TextArea/TextAreaApi1.test'
 import TextAreaApi2 from './TextArea/TextAreaApi2.test'
 import TextAreaApi3 from './TextArea/TextAreaApi3.test'
 import textApi1 from './Text/TextApi1.test'
+
+import TextArea_lineBreakStrategyTest from './TextAreaTest/TextAreaAPITest/TextArea_lineBreakStrategyTest.test'
+import TextArea_lineSpacingTest from './TextAreaTest/TextAreaAPITest/TextArea_lineSpacingTest.test'
+import TextInput_lineBreakStrategyTest from './TextInput/TextInputAPITest/TextInput_lineBreakStrategyTest.test'
+import Text_lineBreakStrategyTest from './TextTest/TextAPITest/Text_lineBreakStrategyTest.test'
+import Text_lineSpacingTest from './TextTest/TextAPITest/Text_lineSpacingTest.test'
+import marqueeOptionsTest from './TextTest/TextAPITest/marqueeOptionsTest.test'
 export default function testsuite() {
 APIContentTypeTest();
 APIUnderlineColorTest();
@@ -94,12 +95,6 @@ APIUnderlineColorTest();
   onSelectionChange18();
   onSelectionChange19();
   MediaCachedImageTest();
-  Context()
-  getLayout()
-  imageAddApi()
-  SymbolGlyphApi()
-  styledStringApi()
-  SelectionMenuApi()
   onComplete()
   removeStyles()
   clearStyles()
@@ -130,4 +125,11 @@ APIUnderlineColorTest();
   TextAreaApi2();
   TextAreaApi3();
   textApi1();
+
+  TextArea_lineBreakStrategyTest();
+  TextArea_lineSpacingTest();
+  TextInput_lineBreakStrategyTest();
+  Text_lineBreakStrategyTest();
+  Text_lineSpacingTest();
+  marqueeOptionsTest();
 }
