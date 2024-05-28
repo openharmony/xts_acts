@@ -72,9 +72,11 @@ import TextInput_lineBreakStrategyTest from './TextInput/TextInputAPITest/TextIn
 import Text_lineBreakStrategyTest from './TextTest/TextAPITest/Text_lineBreakStrategyTest.test'
 import Text_lineSpacingTest from './TextTest/TextAPITest/Text_lineSpacingTest.test'
 import marqueeOptionsTest from './TextTest/TextAPITest/marqueeOptionsTest.test'
+import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
+
 export default function testsuite() {
-APIContentTypeTest();
-APIUnderlineColorTest();
+  APIContentTypeTest();
+  APIUnderlineColorTest();
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
@@ -132,4 +134,5 @@ APIUnderlineColorTest();
   Text_lineBreakStrategyTest();
   Text_lineSpacingTest();
   marqueeOptionsTest();
+  textStrategyJsunit();
 }

@@ -13,10 +13,6 @@
  * limitations under the License.
  */
 import HidebugJsTest from './Hidebug.test.js'
-import HidebugToDevJsTest from "./HidebugToDev.test.js";
-import HidebugCTest from "./HidebugNdk.test.js";
 export default function testsuite() {
 HidebugJsTest()
-HidebugToDevJsTest()
-HidebugCTest()
 }

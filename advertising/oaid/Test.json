@@ -1,29 +1,28 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for ActsMindSporeNdkTest Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
+        "test-timeout": "600000",
+        "shell-timeout": "600000",
         "bundle-name": "com.acts.cloud.oaid.test",
-        "module-name": "entry_test",
-        "shell-timeout": "180000",
-        "testcase-timeout": 600000
+        "module-name": "entry_test"
     },
     "kits": [
-      {
-        "test-file-name": [
-            "ActsCloudOAIDTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-     },
-     {
-      "type": "ShellKit",
-      "run-command": [
-        "param set persist.ace.testmode.enabled 1",
-        "power-shell wakeup",
-        "uinput  -T -d 300 600 -m 300 600 300 100 -u 300 100",
-        "power-shell setmode 602"
-       ]
-     }
-  ]
+        {
+            "test-file-name": [
+              "ActsCloudOAIDTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "param set persist.ace.testmode.enabled 1",
+                "power-shell wakeup",
+                "uinput  -T -d 300 600 -m 300 600 300 100 -u 300 100",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
 }

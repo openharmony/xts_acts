@@ -71,16 +71,19 @@ export default function swiperCustomJsunit() {
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Swiper_Length');
       let strJson1 = getInspectorByKey('swiper_mess');
+      let strJson2 = getInspectorByKey('swiper_texts');
       let obj = JSON.parse(strJson);
       let obj1 = JSON.parse(strJson1);
+      let obj2 = JSON.parse(strJson2);
       console.info("[swiperCustomJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[swiperCustomJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
+      console.info("[swiperCustomJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       expect(obj.$attrs.indicatorInteractive).assertEqual('true');
       expect(obj1.$attrs.content).assertEqual('onContentDidScroll');
+      expect(obj2.$attrs.content).assertEqual('mainAxisLength');
       console.info('[swiperCustomJsunit_0100] END');
       done();
     });
 
   })
 }
-

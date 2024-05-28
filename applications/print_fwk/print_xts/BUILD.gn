@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2023 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -13,27 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("print_xts_test") {
-  hap_profile = "src/main/module.json"
-  deps = [
-    ":windowStage_js_assets",
-    ":windowStage_resources",
-  ]
-  ets2abc = true
+ohos_js_app_suite("print_xts_test") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsPrintXtsTest"
   subsystem_name = "print"
   part_name = "print_fwk"
-}
-ohos_app_scope("windowStage_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("windowStage_js_assets") {
-  source_dir = "src/main/ets"
-}
-ohos_resources("windowStage_resources") {
-  sources = [ "src/main/resources" ]
-  deps = [ ":windowStage_app_profile" ]
-  hap_profile = "src/main/module.json"
 }

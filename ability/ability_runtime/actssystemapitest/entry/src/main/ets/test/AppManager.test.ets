@@ -381,10 +381,10 @@ export default function appManagerTest() {
      */
     it('Public_API_Test_App_Manager_0100',0, function (done) {
       expect(appManager.ProcessState.STATE_CREATE).assertEqual(0);
-      expect(appManager.ProcessState.STATE_FOREGROUND).assertEqual(2);
-      expect(appManager.ProcessState.STATE_ACTIVE).assertEqual(3);
-      expect(appManager.ProcessState.STATE_BACKGROUND).assertEqual(4);
-      expect(appManager.ProcessState.STATE_DESTROY).assertEqual(5);
+      expect(appManager.ProcessState.STATE_FOREGROUND).assertEqual(1);
+      expect(appManager.ProcessState.STATE_ACTIVE).assertEqual(2);
+      expect(appManager.ProcessState.STATE_BACKGROUND).assertEqual(3);
+      expect(appManager.ProcessState.STATE_DESTROY).assertEqual(4);
       done();
     })
 

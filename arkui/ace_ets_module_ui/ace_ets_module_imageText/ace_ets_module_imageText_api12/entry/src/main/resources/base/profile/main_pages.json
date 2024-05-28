@@ -57,6 +57,7 @@
     "MainAbility/pages/Text/TextAPI/marquee",
     "MainAbility/pages/TextArea/TextAreaAPI/lineBreakStrategy",
     "MainAbility/pages/TextArea/TextAreaAPI/lineSpacing",
-    "MainAbility/pages/TextInput/TextInputAPI/lineBreakStrategy"
+    "MainAbility/pages/TextInput/TextInputAPI/lineBreakStrategy",
+  "MainAbility/pages/Text/textStrategy"
   ]
 }
