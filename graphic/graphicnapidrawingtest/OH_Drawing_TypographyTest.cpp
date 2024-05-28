@@ -1225,7 +1225,7 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest040, TestSize.Level
         size_t fontNum;
         char** list = OH_Drawing_FontParserGetSystemFontList(parser, &fontNum);
         EXPECT_EQ(list != nullptr, true);
-        const char *name = "OS Sans Digit";
+        const char *name = "FZHeiT-SC Bold";
         EXPECT_EQ(OH_Drawing_FontParserGetFontByName(parser, name) != nullptr, true);
         OH_Drawing_DestroySystemFontList(list, fontNum);
     }
@@ -2504,7 +2504,7 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest102, TestSize.Level
         char** list = OH_Drawing_FontParserGetSystemFontList(parser, &fontNum);
         EXPECT_EQ(list != nullptr, true);
         EXPECT_EQ(OH_Drawing_FontParserGetSystemFontList(nullptr, &fontNum) == nullptr, true);
-        const char *name = "OS Sans Digit";
+        const char *name = "FZHeiT-SC Bold";
         EXPECT_EQ(OH_Drawing_FontParserGetFontByName(parser, name) != nullptr, true);
         EXPECT_EQ(OH_Drawing_FontParserGetFontByName(nullptr, name) == nullptr, true);
         OH_Drawing_DestroySystemFontList(list, fontNum);
