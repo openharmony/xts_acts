@@ -26,7 +26,7 @@ import StartupListener from '@ohos.app.appstartup.StartupListener'
 let subscriber = undefined;
 let uiContext: common.UIAbilityContext = undefined;
 let keepAlive = false;
-let apiResult:Array<boolean> = [];
+let apiResult:boolean[];
 let timeOutNumber = -1;
 
 export default class PageAbility11 extends UIAbility {
