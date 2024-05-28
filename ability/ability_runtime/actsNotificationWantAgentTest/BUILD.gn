@@ -20,8 +20,8 @@ ohos_js_hap_suite("ActsNotificationWantAgentTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsNotificationWantAgentTest"
-  subsystem_name = "notification"
-  part_name = "distributed_notification_service"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true
