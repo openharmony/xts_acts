@@ -53,8 +53,8 @@
       {
         "name": "ExtensionAbility",
         "srcEntry": "./ets/extensionability/ExtensionAbility.ets",
-        "label": "$string:EntryAbility_label",
-        "description": "$string:EntryAbility_desc",
+        "label": "$string:TestAbility_label",
+        "description": "$string:TestAbility_desc",
         "type": "form",
         "skills": [
           {
@@ -73,6 +73,5 @@
         ]
       }
     ]
-
   }
 }
