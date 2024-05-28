@@ -5,6 +5,8 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
 
+const TAG: string = 'ExtensionAbility'
+
 export default class ExtensionAbility extends UIAbility {
   onCreate() {
     console.log(TAG, `UIExtensionProvider onCreate`)
