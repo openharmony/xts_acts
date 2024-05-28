@@ -8,6 +8,17 @@
         "MainAbility/pages/Graphics/edgeWidths",
         "MainAbility/pages/renderNode/renderNodeSetGetInterface",
         "MainAbility/pages/FrameNode/dispose",
-	"MainAbility/pages/FrameNode/getAttrs"
+	    "MainAbility/pages/FrameNode/getAttrs",
+        "MainAbility/pages/FrameNode/getPosition",
+        "MainAbility/pages/FrameNode/setLayout",
+        "MainAbility/pages/Graphics/setRectShape",
+        "MainAbility/pages/Graphics/LengthUnit",
+        "MainAbility/pages/Graphics/getBlendColor",
+        "MainAbility/pages/Graphics/resourceColor",
+        "MainAbility/pages/Graphics/getNumeric",
+        "MainAbility/pages/Graphics/getAlpha",
+        "MainAbility/pages/Graphics/getBlue",
+        "MainAbility/pages/Graphics/getRed",
+        "MainAbility/pages/Graphics/getGreen"
     ]
 }

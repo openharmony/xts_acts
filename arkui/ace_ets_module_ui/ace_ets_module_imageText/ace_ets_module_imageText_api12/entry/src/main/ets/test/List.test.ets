@@ -67,6 +67,11 @@ import TextAreaApi2 from './TextArea/TextAreaApi2.test'
 import TextAreaApi3 from './TextArea/TextAreaApi3.test'
 import textApi1 from './Text/TextApi1.test'
 import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
+import EffectFillStyle from './SymbolGlyph/EffectFillStyle.test'
+import EffectScope from './SymbolGlyph/EffectScope.test'
+import menuPolicyHIDE from './RichEditorTest/menuPolicyHIDE.test'
+import menuPolicySHOW from './RichEditorTest/menuPolicySHOW.test'
+
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -122,4 +127,8 @@ export default function testsuite() {
   TextAreaApi3();
   textApi1();
   textStrategyJsunit();
+  EffectFillStyle()
+  EffectScope()
+  menuPolicyHIDE()
+  menuPolicySHOW()
 }
