@@ -55,6 +55,8 @@
     "MainAbility/pages/TextArea/TextAreaApi2",
     "MainAbility/pages/TextArea/TextAreaApi3",
     "MainAbility/pages/Text/TextApi1",
-  "MainAbility/pages/Text/textStrategy"
+  "MainAbility/pages/Text/textStrategy",
+    "MainAbility/pages/StyledString/StyledStringApi1"
+
   ]
 }
