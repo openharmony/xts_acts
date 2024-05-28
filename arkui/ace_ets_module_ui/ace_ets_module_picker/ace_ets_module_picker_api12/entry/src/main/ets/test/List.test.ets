@@ -31,6 +31,7 @@ import ToggleContentModifier from './ToggleTest/ToggleContentModifier.test'
 import ToggleSwitchStyle from './ToggleTest/ToggleSwitchStyle.test'
 import ToggleContentIsOn from './ToggleTest/ToggleIsOn.test.ets';
 import ToggleContentEnabled from './ToggleTest/ToggleEnabled.test.ets';
+import selectApi1 from './select/selectApi1.test'
 
 export default function testsuite() {
     gradientHeight()
@@ -51,4 +52,6 @@ export default function testsuite() {
     ToggleSwitchStyle();
     ToggleContentIsOn();
     ToggleContentEnabled();
+    selectApi1();
+
 }

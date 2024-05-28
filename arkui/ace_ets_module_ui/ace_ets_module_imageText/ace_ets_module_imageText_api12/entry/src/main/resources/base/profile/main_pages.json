@@ -58,6 +58,8 @@
     "MainAbility/pages/TextArea/TextAreaAPI/lineBreakStrategy",
     "MainAbility/pages/TextArea/TextAreaAPI/lineSpacing",
     "MainAbility/pages/TextInput/TextInputAPI/lineBreakStrategy",
-  "MainAbility/pages/Text/textStrategy"
+  "MainAbility/pages/Text/textStrategy",
+    "MainAbility/pages/StyledString/StyledStringApi1"
+
   ]
 }
