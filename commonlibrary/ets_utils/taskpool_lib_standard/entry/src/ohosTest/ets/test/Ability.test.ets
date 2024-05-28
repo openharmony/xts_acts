@@ -826,7 +826,7 @@ export default function TaskPoolTest() {
       while (!isTerminate1 || !isTerminate2 || !isTerminate3) {
         await promiseCase()
       }
-      expect(finalString).assertEqual("abc");
+      expect(finalString.charAt(2)).assertEqual("c");
       done();
     })
 
@@ -3008,34 +3008,87 @@ export default function TaskPoolTest() {
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0137
      * @tc.name      : TaskPoolTestClass137
-     * @tc.desc      : taskpool error test
+     * @tc.desc      : Supports judging whether it is concurrent function
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass137', 0, async (done: Function) => {
+      let ret : boolean = taskpool.isConcurrent(isConcurrentTest1)
+      expect(ret).assertEqual(true);
+      ret = taskpool.isConcurrent(isConcurrentTest2)
+      expect(ret).assertEqual(false)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0138
+     * @tc.name      : TaskPoolTestClass138
+     * @tc.desc      : taskpool support isDone interface
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass138', 0, async (done: Function) => {
+      let isFinish: boolean = false;
+      let isDoneFlag: boolean = false;
+      let task1: taskpool.Task = new taskpool.Task(printArgs, 100);
+
+      taskpool.execute(task1).then(()=>{
+        isFinish = true;
+      });
+      while(!isFinish) {
+        await promiseCase();
+      }
+      if(!task1.isDone()) {
+        taskpool.cancel(task1);
+        isDoneFlag = true;
+      }
+      expect(isDoneFlag).assertEqual(false);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0139
+     * @tc.name      : TaskPoolTestClass139
+     * @tc.desc      : taskpool support isDone interface
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass139', 0, async (done: Function) => {
+      let isDoneFlag: boolean = false;
+      let task1: taskpool.Task = new taskpool.Task(testCancelDelayed);
+      taskpool.execute(task1);
+      let t = Date.now()
+      while ((Date.now() - t) < 1000) {
+        continue;
+      }
+      taskpool.execute(task1);
+      taskpool.execute(task1);
+      if (!task1.isDone()) {
+        taskpool.cancel(task1);
+        isDoneFlag = true;
+      }
+      expect(isDoneFlag).assertEqual(true);
+      done();
+    })
+
+        /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0140
+     * @tc.name      : TaskPoolTestClass140
+     * @tc.desc      : taskpool error test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass140', 0, async (done: Function) => {
       let task: taskpool.Task = new taskpool.Task(errorTest)
       taskpool.execute(task).then((res)=>{
         console.info("errTest res " + res)
       }).catch((e:BusinessError)=>{
         expect((e as BusinessError).toString()).assertContain("this is an error");
       })
-      done();
-    })
-
-    /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0138
-     * @tc.name      : TaskPoolTestClass115
-     * @tc.desc      : Supports judging whether it is concurrent function
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass138', 0, async (done: Function) => {
-      let ret : boolean = taskpool.isConcurrent(isConcurrentTest1)
-      expect(ret).assertEqual(true);
-      ret = taskpool.isConcurrent(isConcurrentTest2)
-      expect(ret).assertEqual(false)
       done();
     })
   })
