@@ -35,6 +35,7 @@ import webONHttpErrorReceiveIframe from './webONHttpErrorReceiveIframe.test';
 import webOnAudioStateChanged from './webOnAudioStateChanged.test';
 import webviewTerminateRenderProcess from './webviewTerminateRenderProcess.test';
 import webviewSelectionMenuOptions from './webviewSelectionMenuOptions.test';
+import DNSHostIP from './DNSHostIP.test';
 
 export default function testsuite() {
   //webOnBeforeUnload()
@@ -58,6 +59,8 @@ export default function testsuite() {
   webONHttpErrorRecvExampleIsReady();
   webONHttpErrorReceiveIframe();
   //webOnAudioStateChanged()
+  DNSHostIP();
   webviewSelectionMenuOptions();
   webviewTerminateRenderProcess();
+  
 }

@@ -33,11 +33,13 @@ import WebCameraApiNoCrash from './WebCameraApiNoCrash.test';
 import webViewOnSslErrorEvent from './webViewOnSslErrorEvent.test';
 import MetaViewport from './MetaViewport.test';
 import WebTextAutosizing from './WebTextAutosizing.test';
+import webViewGetRequestResourceType from './webViewGetRequestResourceType.test';
 
 
 export default function testsuite() {
        webJsunit()
        webTwoJsunit()
+       webViewGetRequestResourceType()
        WebTextAutosizing()
        MetaViewport()
        webViewOnSslErrorEvent()
