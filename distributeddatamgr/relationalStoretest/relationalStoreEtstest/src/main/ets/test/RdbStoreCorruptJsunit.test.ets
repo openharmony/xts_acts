@@ -161,6 +161,7 @@ export default function rdbStoreCorruptJSunitTest() {
             rdbStore = undefined;
             try {
                 rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
+                expect(rdbStore.rebuilt).assertEqual(data_relationalStore.RebuildType.NONE);
             } catch (e) {
                 console.log(TAG, `rebuiltTest001 open error ${e.code}. ${e.message}`);
                 expect(14800011).assertEqual(e.code);
