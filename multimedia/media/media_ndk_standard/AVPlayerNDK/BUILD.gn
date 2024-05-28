@@ -29,8 +29,5 @@ ohos_js_app_suite("OhAVPlayerNDK") {
   hap_name = "ActsOhAVPlayerNDK"
   subsystem_name = "multimedia"
   part_name = "player_framework"
-  deps = [
-    ":AVPlayer_ndk_main",
-    "//foundation/multimedia/audio_framework/frameworks/native/audiocapturer:audio_capturer",
-  ]
+  deps = [ ":AVPlayer_ndk_main" ]
 }
