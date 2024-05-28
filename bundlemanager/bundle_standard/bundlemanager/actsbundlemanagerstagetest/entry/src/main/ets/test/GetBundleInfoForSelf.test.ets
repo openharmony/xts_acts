@@ -1638,6 +1638,7 @@ export default function getBundleInfoForSelf() {
       expect(data.targetVersion).assertEqual(9);
       expect(data.installTime).assertLarger(0);
       expect(data.updateTime).assertLarger(0);
+      expect(data.appIndex).assertEqual(0);
       console.info("checkCommonBundleInfo end");
     }
 
@@ -1668,6 +1669,8 @@ export default function getBundleInfoForSelf() {
       expect(data.appInfo.appProvisionType).assertEqual("release");
       expect(data.appInfo.systemApp).assertFalse();
       expect(JSON.stringify(data.appInfo.metadata)).assertEqual("{}");
+      expect(data.appInfo.multiAppMode).assertEqual(data.MultiAppMode.NOT_SUPPORTED);
+      expect(data.appInfo.appIndex).assertEqual(0);
       console.info("checkCommonApplicationInfo end");
     }
 
@@ -1722,6 +1725,7 @@ export default function getBundleInfoForSelf() {
       expect(data.windowSize.minWindowWidth).assertEqual(0);
       expect(data.windowSize.maxWindowHeight).assertEqual(0);
       expect(data.windowSize.minWindowHeight).assertEqual(0);
+      expect(data.appIndex).assertEqual(0);
       console.info("checkCommonAbilityInfo end");
     }
 
