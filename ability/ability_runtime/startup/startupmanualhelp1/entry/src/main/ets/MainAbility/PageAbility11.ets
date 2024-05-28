@@ -30,18 +30,18 @@ let apiResult:Array<boolean> = [];
 let timeOutNumber = -1;
 
 export default class PageAbility11 extends UIAbility {
-  onCreate(want: Want, launchParam) {
+  onCreate(want: Want, launchParam){
     hilog.info(0x0000, 'StartupTest PageAbility11', '%{public}s', 'Ability onCreate');
 
     if (want.parameters && want.parameters.keepAlive) {
-      console.info("StartupTest PageAbility11 keepAlive = true");
+      console.info('StartupTest PageAbility11 keepAlive = true');
       keepAlive = true;
     }
     uiContext = this.context;
     apiResult = [];
   }
 
-  onForeground() {
+  onForeground(){
     hilog.info(0x0000, 'StartupTest PageAbility11', '%{public}s', 'Ability onForeground');
     startupManager.run(['Sample_019']).then(() => {
       this.pushMsg('Sample_019 加载完毕');
@@ -70,15 +70,15 @@ export default class PageAbility11 extends UIAbility {
     setTimeout(()=>{
       if (type == 0) {
         let result = startupManager.isStartupTaskInitialized('Sample_019');
-        console.info("加载完毕后查询，StartupTest PageAbility11 isStartupTaskInitialized result = " + result);
-        this.pushMsg("加载完毕后查询，StartupTest PageAbility11 isStartupTaskInitialized result = " + result);
+        console.info('加载完毕后查询,StartupTest PageAbility11 isStartupTaskInitialized result = ' + result);
+        this.pushMsg('加载完毕后查询,StartupTest PageAbility11 isStartupTaskInitialized result = ' + result);
         this.optionApi(1);
         apiResult.push(result);
       }
       if (type == 1) {
         let result = startupManager.getStartupTaskResult('Sample_019');
-        console.info("加载完毕后查询，StartupTest PageAbility11 getStartupTaskResult result = " + result);
-        this.pushMsg("加载完毕后查询，StartupTest PageAbility11 getStartupTaskResult result = " + result);
+        console.info('加载完毕后查询,StartupTest PageAbility11 getStartupTaskResult result = ' + result);
+        this.pushMsg('加载完毕后查询,StartupTest PageAbility11 getStartupTaskResult result = ' + result);
         if (result === 'Sample_019 init success') {
           apiResult.push(true);
         } else {
@@ -88,29 +88,29 @@ export default class PageAbility11 extends UIAbility {
       }
       if (type == 2) {
         startupManager.removeStartupTaskResult('Sample_019');
-        console.info("加载完毕后remove，StartupTest PageAbility11 removeStartupTaskResult ");
-        this.pushMsg("加载完毕后remove，StartupTest PageAbility11 removeStartupTaskResult");
+        console.info('加载完毕后remove,StartupTest PageAbility11 removeStartupTaskResult');
+        this.pushMsg('加载完毕后remove,StartupTest PageAbility11 removeStartupTaskResult');
         apiResult.push(true);
         this.optionApi(3);
       }
       if (type == 3) {
         let result = startupManager.isStartupTaskInitialized('Sample_019');
-        console.info("remove后第一次查询，StartupTest PageAbility11 isStartupTaskInitialized result = " + result);
-        this.pushMsg("remove后第一次查询，StartupTest PageAbility11 isStartupTaskInitialized result = " + result);
+        console.info('remove后第一次查询,StartupTest PageAbility11 isStartupTaskInitialized result = ' + result);
+        this.pushMsg('remove后第一次查询,StartupTest PageAbility11 isStartupTaskInitialized result = ' + result);
         apiResult.push(result); // false
         this.optionApi(4);
       }
       if (type == 4) {
         try {
           let result = startupManager.getStartupTaskResult('Sample_019');
-          console.info("remove后第一次查询，，StartupTest PageAbility11 getStartupTaskResult result = " + result);
-          this.pushMsg("remove后第一次查询，，StartupTest PageAbility11 getStartupTaskResult result = " + result);
+          console.info('remove后第一次查询,StartupTest PageAbility11 getStartupTaskResult result = ' + result);
+          this.pushMsg('remove后第一次查询,StartupTest PageAbility11 getStartupTaskResult result = ' + result);
           apiResult.push(true);
-        }catch (error) {
-          console.info("remove后第一次查询，，StartupTest PageAbility11 getStartupTaskResult error = "
-            + JSON.stringify(error));
-          this.pushMsg("remove后第一次查询，，StartupTest PageAbility11 getStartupTaskResult error = "
-            + JSON.stringify(error));
+        } catch(error){
+          console.info('remove后第一次查询,StartupTest PageAbility11 getStartupTaskResult error = ' +
+            JSON.stringify(error));
+          this.pushMsg('remove后第一次查询,StartupTest PageAbility11 getStartupTaskResult error = ' +
+            JSON.stringify(error));
           apiResult.push(false);
         }
         this.optionApi(5);
@@ -119,44 +119,44 @@ export default class PageAbility11 extends UIAbility {
         try {
           startupManager.removeStartupTaskResult('Sample_019');
           apiResult.push(true);
-        }catch (error) {
-          console.info("第二次remove，StartupTest PageAbility11 removeStartupTaskResult ");
-          this.pushMsg("第二次remove，StartupTest PageAbility11 removeStartupTaskResult");
+        } catch(error){
+          console.info('第二次remove,StartupTest PageAbility11 removeStartupTaskResult ');
+          this.pushMsg('第二次remove,StartupTest PageAbility11 removeStartupTaskResult');
           apiResult.push(false);
           this.optionApi(6);
         }
       }
       if (type == 6) {
         let result = startupManager.isStartupTaskInitialized('Sample_019');
-        console.info("第二次remove后查询，StartupTest PageAbility11 isStartupTaskInitialized result = " + result);
-        this.pushMsg("第二次remove后查询，StartupTest PageAbility11 isStartupTaskInitialized result = " + result);
+        console.info('第二次remove后查询,StartupTest PageAbility11 isStartupTaskInitialized result = ' + result);
+        this.pushMsg('第二次remove后查询,StartupTest PageAbility11 isStartupTaskInitialized result = ' + result);
         apiResult.push(result);
         this.optionApi(7);
       }
       if (type == 7) {
         try {
           let result = startupManager.getStartupTaskResult('Sample_019');
-          console.info("第二次remove后查询，StartupTest PageAbility11 getStartupTaskResult result = " + result);
-          this.pushMsg("第二次remove后查询，StartupTest PageAbility11 getStartupTaskResult result = " + result);
+          console.info('第二次remove后查询,StartupTest PageAbility11 getStartupTaskResult result = ' + result);
+          this.pushMsg('第二次remove后查询,StartupTest PageAbility11 getStartupTaskResult result = ' + result);
           apiResult.push(true);
-        }catch (error) {
-          console.info("第二次remove后查询，StartupTest PageAbility11 getStartupTaskResult error = "
-            + JSON.stringify(error));
-          this.pushMsg("第二次remove后查询，StartupTest PageAbility11 getStartupTaskResult error = "
-            + JSON.stringify(error));
+        } catch(error){
+          console.info('第二次remove后查询,StartupTest PageAbility11 getStartupTaskResult error = ' + 
+            JSON.stringify(error));
+          this.pushMsg('第二次remove后查询,StartupTest PageAbility11 getStartupTaskResult error = ' + 
+            JSON.stringify(error));
           apiResult.push(false);
         }
-        console.info("StartupTest PageAbility11 apiResult = " + JSON.stringify(apiResult));
-        this.pushMsg("StartupTest PageAbility11 apiResult = " + JSON.stringify(apiResult));
+        console.info('StartupTest PageAbility11 apiResult = ' + JSON.stringify(apiResult));
+        this.pushMsg('StartupTest PageAbility11 apiResult = ' + JSON.stringify(apiResult));
         this.optionApi(8);
       }
       if (type == 8) {
         try {
           startupManager.removeStartupTaskResult('Sample_019');
           apiResult.push(true);
-        }catch (error) {
-          console.info("第三次remove，StartupTest PageAbility11 removeStartupTaskResult ");
-          this.pushMsg("第三次remove，StartupTest PageAbility11 removeStartupTaskResult");
+        } catch(error){
+          console.info('第三次remove,StartupTest PageAbility11 removeStartupTaskResult ');
+          this.pushMsg('第三次remove,StartupTest PageAbility11 removeStartupTaskResult');
           apiResult.push(false);
         }
         this.optionApi(9);
@@ -166,13 +166,26 @@ export default class PageAbility11 extends UIAbility {
         try {
           startupManager.removeStartupTaskResult('Sample_019');
           apiResult.push(true);
-        }catch (error) {
-          console.info("第四次remove，StartupTest PageAbility11 removeStartupTaskResult ");
-          this.pushMsg("第四次remove，StartupTest PageAbility11 removeStartupTaskResult");
+        } catch(error){
+          console.info('第四次remove,StartupTest PageAbility11 removeStartupTaskResult ');
+          this.pushMsg('第四次remove,StartupTest PageAbility11 removeStartupTaskResult');
           apiResult.push(false);
         }
-        console.info("StartupTest PageAbility11 apiResult = " + JSON.stringify(apiResult));
-        this.pushMsg("StartupTest PageAbility11 apiResult = " + JSON.stringify(apiResult));
+        console.info('StartupTest PageAbility11 apiResult = ' + JSON.stringify(apiResult));
+        this.pushMsg('StartupTest PageAbility11 apiResult = ' + JSON.stringify(apiResult));
+        this.optionApi(10);
+      }
+      if (type == 10) {
+        try {
+          startupManager.removeAllStartupTaskResults();
+          apiResult.push(true);
+        } catch(error){
+          console.info('removeAllStartupTaskResults,StartupTest PageAbility11 removeStartupTaskResult');
+          this.pushMsg('removeAllStartupTaskResults,StartupTest PageAbility11 removeStartupTaskResult');
+          apiResult.push(false);
+        }
+        console.info('StartupTest PageAbility11 apiResult = ' + JSON.stringify(apiResult));
+        this.pushMsg('StartupTest PageAbility11 apiResult = ' + JSON.stringify(apiResult));
         if (!keepAlive) {
           clearTimeout(timeOutNumber);
           uiContext.terminateSelfWithResult({
@@ -194,19 +207,19 @@ export default class PageAbility11 extends UIAbility {
         'msg': msg
       }
     }, () => {
-      console.info("StartupTest PageAbility11 send msg");
+      console.info('StartupTest PageAbility11 send msg');
     })
   }
 
-  onDestroy() {
+  onDestroy(){
     hilog.info(0x0000, 'StartupTest', '%{public}s', 'Ability onDestroy');
     if (subscriber) {
-      console.info("StartupTest PageAbility11 unsubscribe");
+      console.info('StartupTest PageAbility11 unsubscribe');
       commonEventManager.unsubscribe(subscriber);
     }
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage){
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'StartupTest PageAbility11', '%{public}s', 'Ability onWindowStageCreate');
 
@@ -221,7 +234,7 @@ export default class PageAbility11 extends UIAbility {
     });
   }
 
-  onBackground() {
+  onBackground(){
     // Ability has back to background
     hilog.info(0x0000, 'StartupTest PageAbility11', '%{public}s', 'Ability onBackground');
   }

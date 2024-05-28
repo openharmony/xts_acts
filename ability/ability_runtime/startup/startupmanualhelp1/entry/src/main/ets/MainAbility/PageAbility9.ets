@@ -30,16 +30,16 @@ let keepAlive = false;
 let startOrder = [];
 let customConfig = false;
 
-export default class PageAbility8 extends UIAbility {
-  onCreate(want:Want, launchParam) {
-    hilog.info(0x0000, 'StartupTest PageAbility8', '%{public}s', 'Ability onCreate');
+export default class PageAbility9 extends UIAbility {
+  onCreate(want:Want, launchParam){
+    hilog.info(0x0000, 'StartupTest PageAbility9', '%{public}s', 'Ability onCreate');
 
     if (want.parameters && want.parameters.keepAlive) {
-      console.info("StartupTest PageAbility8 keepAlive = true");
+      console.info('StartupTest PageAbility9 keepAlive = true');
       keepAlive = true;
     }
     if (want.parameters && want.parameters.customConfig) {
-      console.info("StartupTest SingleStartAbility customConfig = true");
+      console.info('StartupTest PageAbility9 customConfig = true');
       customConfig = true;
     }
 
@@ -48,15 +48,16 @@ export default class PageAbility8 extends UIAbility {
     console.log('StartupTest startupManager run');
     setTimeout(()=>{
       if (!customConfig) {
-        startupManager.run(['Sample_016']).then(()=>{
-          let result = startupManager.isStartupTaskInitialized('Sample_016');
-          console.info("StartupTest PageAbility8 Sample_016 线程等待收到加载完毕，查询加载结果 result = " + result);
+        startupManager.run(['Sample_017']).then(()=>{
+          let result = startupManager.isStartupTaskInitialized('Sample_017');
+          console.info(
+            '默认配置 StartupTest PageAbility9 Sample_017 线程等待收到加载完毕，查询加载结果 result = ' + result);
           commonEventManager.publish('show_msg', {
             parameters:{
-              msg: '线程等待收到加载完毕，查询加载结果 result = ' + result + '  customConfig = false'
+              msg: '默认配置 线程等待收到加载完毕，查询加载结果 result = ' + result
             }
           },()=>{
-            console.info("StartupTest PageAbility8 send msg");
+            console.info('StartupTest PageAbility9 send msg');
           })
           if (!keepAlive) {
             setTimeout(()=>{
@@ -86,10 +87,10 @@ export default class PageAbility8 extends UIAbility {
                 'error': error
               }
             }, (err, data) => {
-              console.log("Custom StartupTest onCompletedCallback end, publish msg, err=" + JSON.stringify(err));
-              console.log("Custom StartupTest onCompletedCallback end, publish msg, data=" + JSON.stringify(data));
+              console.log('Custom StartupTest onCompletedCallback end, publish msg, err=' + JSON.stringify(err));
+              console.log('Custom StartupTest onCompletedCallback end, publish msg, data=' + JSON.stringify(data));
             })
-          }, 500)
+          }, 500);
         }
         let startupListener: StartupListener = {
           'onCompleted': onCompletedCallback
@@ -98,15 +99,15 @@ export default class PageAbility8 extends UIAbility {
           'timeoutMs': 5000,
           'startupListener': startupListener
         }
-        startupManager.run(['Sample_016'], config).then(()=>{
-          let result = startupManager.isStartupTaskInitialized('Sample_016');
-          console.info("StartupTest PageAbility8 Sample_016 线程等待收到加载完毕，查询加载结果 result = " + result);
+        startupManager.run(['Sample_017'], config).then(()=>{
+          let result = startupManager.isStartupTaskInitialized('Sample_017');
+          console.info('StartupTest PageAbility9 Sample_017 线程等待收到加载完毕，查询加载结果 result = ' + result);
           commonEventManager.publish('show_msg', {
             parameters:{
-              msg: '线程等待收到加载完毕，查询加载结果 result = ' + result + '  customConfig = true'
+              msg: '自定义配置 线程等待收到加载完毕，查询加载结果 result = ' + result
             }
           },()=>{
-            console.info("StartupTest PageAbility8 send msg");
+            console.info('StartupTest PageAbility9 send msg');
           })
           if (!keepAlive) {
             setTimeout(()=>{
@@ -118,43 +119,43 @@ export default class PageAbility8 extends UIAbility {
                   }
                 }
               })
-            }, 2000)
+            }, 2000);
           }
         })
       }
-    }, 1500)
+    }, 1500);
   }
 
-  onDestroy() {
-    hilog.info(0x0000, 'StartupTest PageAbility8', '%{public}s', 'Ability onDestroy');
+  onDestroy(){
+    hilog.info(0x0000, 'StartupTest PageAbility9', '%{public}s', 'Ability onDestroy');
     onAbiltiyDestory = true;
     if (subscriber) {
-      console.info("StartupTest PageAbility8 unsubscribe");
+      console.info('StartupTest PageAbility9 unsubscribe');
       commonEventManager.unsubscribe(subscriber);
     }
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage){
     // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'StartupTest PageAbility8', '%{public}s', 'Ability onWindowStageCreate');
+    hilog.info(0x0000, 'StartupTest PageAbility9', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/index', (err, data) => {
       if (err.code) {
-        hilog.error(0x0000, 'StartupTest PageAbility8', 'Failed to load the content. Cause: %{public}s',
+        hilog.error(0x0000, 'StartupTest PageAbility9', 'Failed to load the content. Cause: %{public}s',
           JSON.stringify(err) ?? '');
         return;
       }
-      hilog.info(0x0000, 'StartupTest PageAbility8', 'Succeeded in loading the content. Data: %{public}s',
+      hilog.info(0x0000, 'StartupTest PageAbility9', 'Succeeded in loading the content. Data: %{public}s',
         JSON.stringify(data) ?? '');
     });
   }
 
-  onForeground() {
-    hilog.info(0x0000, 'StartupTest PageAbility8', '%{public}s', 'Ability onForeground');
+  onForeground(){
+    hilog.info(0x0000, 'StartupTest PageAbility9', '%{public}s', 'Ability onForeground');
   }
 
-  onBackground() {
+  onBackground(){
     // Ability has back to background
-    hilog.info(0x0000, 'StartupTest PageAbility8', '%{public}s', 'Ability onBackground');
+    hilog.info(0x0000, 'StartupTest PageAbility9', '%{public}s', 'Ability onBackground');
   }
 }

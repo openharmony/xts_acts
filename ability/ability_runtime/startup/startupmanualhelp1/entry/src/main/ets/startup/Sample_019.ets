@@ -13,11 +13,8 @@
 * limitations under the License.
 */
 
-import StartupTask from '@ohos.app.appstartup.StartupTask'
-import hilog from '@ohos.hilog';
+import StartupTask from '@ohos.app.appstartup.StartupTask';
 import common from '@ohos.app.ability.common';
-
-const NAME = "Sample_019";
 
 @Sendable
 export default class Sample_019 extends StartupTask {
@@ -25,13 +22,11 @@ export default class Sample_019 extends StartupTask {
     super();
   }
   async init(context: common.AbilityStageContext) {
-    hilog.info(0x0000, 'StartupTest', 'Sample_019');
-    console.info("StartupTest Sample_019 init");
-    return "Sample_019 init success";
+    console.info('StartupTest Sample_019 init');
+    return 'Sample_019 init success';
   }
 
   onDependencyCompleted(dependence: string, result: Object): void {
-    hilog.info(0x0000, 'StartupTest', 'Sample_019, dependence:%{public}s, result:%{public}s', dependence,
-      JSON.stringify(result));
+
   }
 }
