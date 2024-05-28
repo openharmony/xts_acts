@@ -1,5 +1,5 @@
-/*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,15 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hilog from '@ohos.hilog';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { Hypium } from 'hypium/index'
+import testsuite from '../test/List.test'
 
-class Test {
+export default {
   onCreate() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
-  }
+    console.info('Application onCreate')
+    // var abilityDelegator: any
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    // var abilityDelegatorArguments: any
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    console.info('start run testcase!!!')
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+  },
   onDestroy() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
-  }
+    console.info('Application onDestroy')
+  },
 }
-
-export default new Test()
