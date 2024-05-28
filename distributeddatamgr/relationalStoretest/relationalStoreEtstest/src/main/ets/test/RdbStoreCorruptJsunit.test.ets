@@ -105,6 +105,7 @@ export default function rdbStoreCorruptJSunitTest() {
                 fs.closeSync(file);
             } catch (err) {
                 console.log(TAG, `CreateCorruptDb err.code ${err.code}, err.message ${err.message}`);
+                expect().assertFail();
             }
             console.log(TAG, `quit create corrupt store`);
         }
@@ -160,6 +161,7 @@ export default function rdbStoreCorruptJSunitTest() {
             rdbStore = undefined;
             try {
                 rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
+                expect(rdbStore.rebuilt).assertEqual(data_relationalStore.RebuildType.NONE);
             } catch (e) {
                 console.log(TAG, `rebuiltTest001 open error ${e.code}. ${e.message}`);
                 expect(14800011).assertEqual(e.code);
@@ -203,7 +205,7 @@ export default function rdbStoreCorruptJSunitTest() {
             }
             try {
                 await rdbStore.insert("test", valueBucket);
-                expect(null).assertFalse();
+                expect().assertFail();
             } catch (e) {
                 console.log(TAG, `rebuiltInsertTest0001 insert error ${e.code}, message ${e.message}`);
                 expect(14800011).assertEqual(e.code);
@@ -236,6 +238,7 @@ export default function rdbStoreCorruptJSunitTest() {
             }
             try {
                 await rdbStore.batchInsert("test", valueBucketArray);
+                expect().assertFail();
             } catch (e) {
                 console.log(TAG, `rebuiltBatchInsertTest0001 insert error ${e.code}`);
                 expect(14800011).assertEqual(e.code);
