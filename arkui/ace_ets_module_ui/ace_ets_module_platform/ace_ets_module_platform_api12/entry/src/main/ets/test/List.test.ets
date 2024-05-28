@@ -14,6 +14,7 @@
  */
 
 import getXComponentSurfaceRectJsunit from './XComponentTest/getXComponentSurfaceRect.test';
+import counterApi from './Counter/counterApi.test';
 import onSurfaceCreatedJsunit from './XComponentTest/onSurfaceCreated.test';
 import stopImageAnalyzerJsunit from './XComponentTest/stopImageAnalyzer.test';
 import VideoTest1 from './VideoTest/VideoTest1.test';
@@ -21,6 +22,7 @@ import VideoTest1 from './VideoTest/VideoTest1.test';
 
 export default function testsuite() {
   getXComponentSurfaceRectJsunit();
+  counterApi();
   onSurfaceCreatedJsunit();
   stopImageAnalyzerJsunit();
   VideoTest1();

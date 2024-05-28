@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+        "MainAbility/pages/Counter/counterApi",
         "MainAbility/pages/XComponent/getXComponentSurfaceRect",
         "MainAbility/pages/XComponent/onSurfaceCreated",
         "MainAbility/pages/XComponent/stopImageAnalyzer",
