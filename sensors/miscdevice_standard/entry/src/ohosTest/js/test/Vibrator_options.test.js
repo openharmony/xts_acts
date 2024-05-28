@@ -18,8 +18,8 @@ import deviceInfo from '@ohos.deviceInfo'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function VibratorJsTest_misc_7() {
-let isAvailable; 
-const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice');     
+let isAvailable;
+const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice');
 describe("VibratorJsTest_misc_7", function () {
     let EFFECT_ID = "haptic.clock.timer";
     let INVALID_EFFECT_ID = "haptic.xxx.yyy";
@@ -27,23 +27,23 @@ describe("VibratorJsTest_misc_7", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll called')   
-        console.info('VibratorJsTest_misc_7 Device type = ' + deviceInfo.deviceType);    
-        console.info('VibratorJsTest_misc_7 isAvailable = ' + isAvailable);    
+        console.info('beforeAll called')
+        console.info('VibratorJsTest_misc_7 Device type = ' + deviceInfo.deviceType);
+        console.info('VibratorJsTest_misc_7 isAvailable = ' + isAvailable);
         try {
             if (deviceInfo.deviceType === '2in1' || ABILITYJUDGMENT === false) {
                 isAvailable = false;
                 console.info('VibratorJsTest_misc_7 isAvailable ' + isAvailable);
-                done() 
+                done()
             }else {
                 isAvailable = true;
                 console.info('VibratorJsTest_misc_7 isAvailable ' + isAvailable);
-                done() 
+                done()
             }
         } catch(error) {
             console.error('VibratorJsTest_misc_7 exception :' + JSON.stringify(error))
-            done() 
-        }        
+            done()
+        }
     })
 
     afterAll(function() {
@@ -74,8 +74,9 @@ describe("VibratorJsTest_misc_7", function () {
     const OPERATION_FAIL_MSG = 'Device operation failed.'
     const PERMISSION_ERROR_MSG = 'Permission denied.'
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-    let TAG = "" 
-
+    let TAG = ""
+    let INVALID = -1;    
+    
     /*
     * @tc.name:VibratorJsTest076
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1429,4 +1430,300 @@ describe("VibratorJsTest_misc_7", function () {
             done();
         }
     })
+
+    /*
+    * @tc.name:VibratorJsTest101
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1110
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        TAG = "VibratorJsTest101"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            await vibrator.vibrate({
+                mode: 'long',
+                success: function () {
+                    console.info(TAG + " success");
+                },
+                fail: function (data, code) {
+                    console.log(TAG + " is failed, data: " + data + ", code: " + code);
+                    expect(false).assertTrue();
+                },
+                complete: function () {
+                    console.log(TAG + ' is completed');
+                }
+            });
+            await vibrator.startVibration({
+                type: "time",
+                duration: 500
+            }, {
+                usage: "alarm"
+            }, (error) => {
+                if (error) {
+                    console.info(TAG + " startVibration error: " + JSON.stringify(error));
+                    expect(false).assertTrue();
+                    done()
+                } else {
+                    console.info(TAG + " startVibration success");
+                    expect(true).assertTrue();
+                }
+            });        
+            setTimeout(() => {
+                try {
+                    vibrator.stopVibrationSync();
+                    console.info(TAG + " stopVibrationSync success");
+                    expect(true).assertTrue();
+                    done()
+                } catch (error) {
+                    console.info(TAG + " stopVibrationSync error: " + JSON.stringify(error));
+                    expect(false).assertTrue();
+                    done()
+                } 
+            }, 200);                
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
+    }) 
+    
+    /*
+    * @tc.name:VibratorJsTest102
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1120
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest102", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = "VibratorJsTest102"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            try {
+                expect(typeof(vibrator.isHdHapticSupported())).assertEqual("boolean");
+                done()
+            } catch (error) {
+                console.info(TAG + " exception in, err:" + error);
+                expect(true).assertEqual(false);
+                done()
+            }
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
+    })
+
+    /*
+    * @tc.name:VibratorJsTest103
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1130
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest103", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = "VibratorJsTest103"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            try {
+                let isSupport = vibrator.isHdHapticSupported()
+                expect(typeof(isSupport)).assertEqual("boolean");
+                done()
+            } catch (error) {
+                console.info(TAG + " exception in, err:" + error);
+                expect(true).assertEqual(false);
+                done()
+            }
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
+    })
+
+    /*
+    * @tc.name:VibratorJsTest104
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1130
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest104", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = "VibratorJsTest104"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            try {
+                let isSupport = vibrator.isHdHapticSupported(INVALID)
+                expect(isSupport).assertEqual(false);
+                done()
+            } catch (error) {
+                console.info(TAG + " exception in, error:" + error);
+                expect(false).assertTrue();
+                done()
+            }
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
+    })
+    
+    /*
+    * @tc.name:VibratorJsTest105
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1130
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest105", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = "VibratorJsTest105"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            try {
+                let isSupport = vibrator.isHdHapticSupported('xxx')
+                console.info(TAG + " isSupport:" + isSupport);
+                expect(isSupport).assertEqual(false);
+                done()
+            } catch (error) {
+                console.info(TAG + " exception in, err:" + error);
+                expect(true).assertTrue();
+                done()
+            }
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
+    })
+    
+    /*
+    * @tc.name:VibratorJsTest106
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1150
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest106", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = "VibratorJsTest106"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            try {
+                let ret = vibrator.isSupportEffectSync(INVALID_EFFECT_ID);
+                expect(ret).assertEqual(false);
+                done()
+            } catch (error) {
+                console.info(TAG + " isSupportEffectSync error: " + JSON.stringify(error));
+                expect(false).assertTrue();
+                done()
+            }
+            console.info(TAG + " end");
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
+    })
+
+    /*
+    * @tc.name:VibratorJsTest107
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1150
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest107", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = "VibratorJsTest107"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            try {
+                let ret = vibrator.isSupportEffectSync(INVALID);
+                expect(ret).assertEqual(false);
+                done()
+            } catch (error) {
+                console.info(TAG + " isSupportEffectSync error: " + JSON.stringify(error));
+                expect(true).assertTrue();
+                done()
+            }
+            console.info(TAG + " end");
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
+    })
+    
+    /*
+    * @tc.name:VibratorJsTest108
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1160
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest108", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        TAG = "VibratorJsTest108"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            try {
+                let ret = vibrator.isSupportEffectSync(EFFECT_ID);
+                console.info(TAG + " isSupportEffectSync ret: " + ret);
+                expect(true).assertTrue();
+                done()
+            } catch (error) {
+                console.info(TAG + " isSupportEffectSync error: " + JSON.stringify(error));
+                done()
+            }
+            console.info(TAG + " end");
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
+    })
+    
+    /*
+    * @tc.name:VibratorJsTest109
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1140
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest109", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = "VibratorJsTest109"
+        console.info(TAG + ' isAvailable ' + isAvailable);
+        if (isAvailable) {
+            await vibrator.startVibration({
+                type: "time",
+                duration: 500
+            }, {
+                usage: "alarm"
+            }, (error) => {
+                if (error) {
+                    console.info(TAG + " startVibration error: " + JSON.stringify(error));
+                    expect(false).assertTrue();
+                    done()
+                } else {
+                    console.info(TAG + " startVibration success");
+                    expect(true).assertTrue();
+                }
+            });
+            setTimeout(() => {
+                try {
+                    vibrator.stopVibrationSync();
+                    console.info(TAG + " stopVibrationSync success");
+                    expect(true).assertTrue();
+                    done()
+                } catch (error) {
+                    console.info(TAG + " stopVibrationSync error: " + JSON.stringify(error));
+                    expect(false).assertTrue();
+                    done()
+                } 
+            }, 200);    
+            console.info(TAG + " end");
+        } else {
+            console.log(TAG + ' is not supported on this device.');
+            done();
+        }
+    })    
 })}
