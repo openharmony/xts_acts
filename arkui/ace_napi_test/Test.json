@@ -2,10 +2,10 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
-	    "bundle-name": "com.acts.ace.napitest",
-        "package-name": "com.acts.ace.napitest",
-        "shell-timeout": "600000"
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
+        "bundle-name": "com.acts.ace.napitest",
+        "package-name": "com.acts.ace.napitest"
     },
     "kits": [
         {
@@ -14,6 +14,13 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
