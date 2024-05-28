@@ -60,6 +60,7 @@ import TextAreaApi1 from './TextArea/TextAreaApi1.test'
 import TextAreaApi2 from './TextArea/TextAreaApi2.test'
 import TextAreaApi3 from './TextArea/TextAreaApi3.test'
 import textApi1 from './Text/TextApi1.test'
+import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -108,4 +109,5 @@ export default function testsuite() {
   TextAreaApi2();
   TextAreaApi3();
   textApi1();
+  textStrategyJsunit();
 }
