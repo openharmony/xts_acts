@@ -2837,6 +2837,180 @@ export default function StreamTest() {
       let duplex = new stream.Duplex();
       expect(duplex.readableHighWatermark).assertEqual(16 * 1024);
     });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13100
+     * @tc.name: testStreamPipe005
+     * @tc.desc: Readable pipe.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamPipe005', 0, (done) => {
+      let sumData = 0;
+      const readable = new stream.Readable();
+      readable.doRead = (size)=>{
+        const onceData = 8*1024;
+        if ((sumData + onceData) <41000) {
+            sumData += onceData;
+            readable.push('a'.repeat(onceData));
+        } else if (sumData === 41000) {
+            readable.push(null);
+        } else {
+           readable.push('a'.repeat(41000-sumData));
+           sumData += (41000-sumData);
+        }
+      };
+      const writable = new stream.Writable();
+      let sum = 0;
+      let callCount = 0;
+      writable.doWrite = common.mustCall((chunk, encoding, callback)=>{
+        sum += chunk.length;
+        callCount++;
+        if (callCount === 6) {
+            expect(sum).assertEqual(41000);
+            done();
+        }
+        setTimeout(()=>{
+          callback()
+        },100)
+      },6);
+      readable.pipe(writable);
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13200
+     * @tc.name: testStreamPipe006
+     * @tc.desc: Readable pipe.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamPipe006', 0, async (done) => {
+      let a = 0;
+      const readable = new stream.Readable();
+      readable.doRead = async (size) => {
+        const s = 16 * 1024;
+        const totality = 400000;
+        if ((a + s) < totality) {
+          a += s;
+          readable.push('a'.repeat(s));
+        } else if (a === totality) {
+          readable.push(null);
+        } else {
+          readable.push('a'.repeat(totality - a));
+          a += (totality - a);
+        }
+      };
+
+      let sum = 0;
+
+      class TransformStream extends stream.Transform {
+        doWrite(chunk: any, encoding: any, callback: any) {
+          sum += chunk.length;
+          Promise.resolve().then((): void => {
+            callback();
+          });
+          callback();
+        }
+
+        doTransform(chunk: any, encoding: any, callback: any) {
+          expect(chunk.length).assertLarger(0);
+          callback();
+        }
+      }
+
+      const transformStream = new TransformStream();
+      readable.pipe(transformStream);
+      setTimeout(() => {
+        expect(sum).assertEqual(400000);
+        done();
+      }, 0)
+    });
+
+    // Check the StreamDuplexDoWritev.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13300
+     * @tc.name: testStreamDuplexDoWritev001
+     * @tc.desc: Duplex method doWritev.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamDuplexDoWritev001', 0, () => {
+      class CustomDuplex extends stream.Duplex {
+        data: string;
+
+        constructor() {
+          super();
+          this.data = '';
+        }
+
+        doWritev(chunks: string[] | Uint8Array[], callback: Function) {
+          for (const chunk of chunks) {
+            this.data += chunk
+          }
+          callback();
+        }
+      }
+
+      let duplex = new CustomDuplex();
+      duplex.write('Hello ');
+      duplex.write('World', 'utf8', common.mustCall(() => {
+        expect(duplex.data).assertEqual('Hello World');
+      }));
+    });
+
+    // Check the StreamDuplexDoWritev.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13400
+     * @tc.name: testStreamDuplexDoWritev002
+     * @tc.desc: Duplex method doWritev.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamDuplexDoWritev002', 0, () => {
+      class CustomDuplex extends stream.Duplex {
+        constructor() {
+          super();
+        }
+
+        doWritev(chunks: string[] | Uint8Array[], callback: Function) {
+          callback(new Error('dowritev error'));
+        }
+      }
+
+      let duplex = new CustomDuplex();
+      duplex.write('Hello ');
+      duplex.on('error', common.mustCall((err: emitter.EventData) => {
+        expect(err.data.message).assertEqual('dowritev error');
+      }));
+    });
+
+    // Check the StreamDuplexDoWritev.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_13500
+     * @tc.name: testStreamDuplexDoWritev003
+     * @tc.desc: Duplex method doWritev.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamDuplexDoWritev003', 0, () => {
+      let duplex = new stream.Duplex();
+      duplex.doWritev = common.mustCall(function (chunks: string[] | Uint8Array[], callback: Function) {
+        callback();
+        callback();
+      })
+      duplex.write('test', 'utf8', common.mustCall());
+      duplex.on('error', common.mustCall((error: emitter.EventData) => {
+        expect(error.data.name).assertEqual('BusinessError');
+        expect(error.data.message).assertEqual('Callback called multiple times');
+      }));
+    });
   })
 }
 
