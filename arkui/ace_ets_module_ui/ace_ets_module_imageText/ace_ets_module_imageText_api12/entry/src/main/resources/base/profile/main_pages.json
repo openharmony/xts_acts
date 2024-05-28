@@ -31,12 +31,6 @@
   "MainAbility/pages/Text/TextStyle",
   "MainAbility/pages/Marquee/MarqueeApi",
   "MainAbility/pages/Matrix/srcIndex",
-    "MainAbility/pages/Text/Context",
-    "MainAbility/pages/Text/styledStringApi",
-    "MainAbility/pages/Text/getLayout",
-    "MainAbility/pages/SymbolGlyph/SymbolGlyphApi",
-    "MainAbility/pages/RichEditor/SelectionMenuApi",
-    "MainAbility/pages/Image/imageAddApi",
     "MainAbility/pages/Matrix/dstIndex",
   "MainAbility/pages/RichEditor/RichEditorApi1",
   "MainAbility/pages/RichEditor/RichEditorApi3",
@@ -58,6 +52,12 @@
     "MainAbility/pages/TextArea/TextAreaApi2",
     "MainAbility/pages/TextArea/TextAreaApi3",
     "MainAbility/pages/Text/TextApi1",
+    "MainAbility/pages/Text/TextAPI/lineBreakStrategy",
+    "MainAbility/pages/Text/TextAPI/lineSpacing",
+    "MainAbility/pages/Text/TextAPI/marquee",
+    "MainAbility/pages/TextArea/TextAreaAPI/lineBreakStrategy",
+    "MainAbility/pages/TextArea/TextAreaAPI/lineSpacing",
+    "MainAbility/pages/TextInput/TextInputAPI/lineBreakStrategy",
   "MainAbility/pages/Text/textStrategy"
   ]
 }
