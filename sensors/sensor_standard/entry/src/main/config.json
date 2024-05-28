@@ -23,6 +23,28 @@
       "moduleType": "entry",
       "installationFree": false
     },
+    "reqPermissions": [
+      {
+          "name": "ohos.permission.ACCELEROMETER",
+          "reason": "need use ohos.permission.ACCELEROMETER"
+      },
+      {
+          "name": "ohos.permission.GYROSCOPE",
+          "reason": "need use ohos.permission.GYROSCOPE"
+      },
+      {
+          "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+          "reason": "need use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+      },
+      {
+          "name": "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
+          "reason": "need use ohos.permission.REVOKE_SENSITIVE_PERMISSIONS"
+      },			
+      {
+          "name": "ohos.permission.ACTIVITY_MOTION",
+          "reason": "need use ohos.permission.ACTIVITY_MOTION"
+      }
+    ],
     "abilities": [
       {
         "skills": [
