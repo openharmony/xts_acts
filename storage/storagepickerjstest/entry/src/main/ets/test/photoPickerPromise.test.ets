@@ -140,6 +140,36 @@ export default function photoPickerPromise(abilityContext: Context) {
     });
 
     /**
+     * @tc.number   : SUB_STORAGE_PHOTOPICKER_SELECT_PROMISE_0700
+     * @tc.name   : photopicker_select_promise_007
+     * @tc.desc   : select without option
+     * @tc.size   : MEDIUM
+     * @tc.type   : Function
+     * @tc.level   : Level 3
+     */
+    it("photopicker_select_promise_007", 0, async (done: Function) => {
+      try {
+        let photoSelectOptions = new picker.PhotoSelectOptions();
+        photoSelectOptions.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE;
+        photoSelectOptions.maxSelectNumber = 5;
+        let photoPicker = new picker.PhotoViewPicker();
+        photoPicker.select(photoSelectOptions).then((Result) => {
+          console.info('photopicker_select_promise_007 successfully, photoSelectResult uri: ' + JSON.stringify(Result));
+          console.info('isOriginalPhoto: ' + Result.isOriginalPhoto);
+          done();
+        }).catch((err) => {
+          console.error('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
+          expect(true).assertTrue();
+          done();
+        });
+      } catch (error) {
+        let err = error;
+        console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /**
      * @tc.number   : SUB_STORAGE_PHOTOPICKER_SAVE_PROMISE_0000
      * @tc.name   : photopicker_save_promise_000
      * @tc.desc   : save jpg in Pictures
