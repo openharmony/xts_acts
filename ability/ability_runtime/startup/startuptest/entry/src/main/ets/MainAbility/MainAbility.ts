@@ -16,11 +16,13 @@ import Ability from '@ohos.app.ability.UIAbility'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/List.test'
+import common from '@ohos.app.ability.common';
 
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         PersistentStorage.persistProp("testContext", this.context);
         console.log('MainAbility onCreate')
+        var abilityDelegator: any
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         var abilityDelegatorArguments: any
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
