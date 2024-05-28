@@ -92,7 +92,7 @@ export default function inputMethodEngineKeyJSUnit() {
 
       function subscriberCallback (err, data){
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -125,15 +125,24 @@ export default function inputMethodEngineKeyJSUnit() {
       }
       var subscriber;
       commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
         var commonEventPublishData = {
           code: 10
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -158,7 +167,7 @@ export default function inputMethodEngineKeyJSUnit() {
 
       function subscriberCallback (err, data){
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -191,15 +200,24 @@ export default function inputMethodEngineKeyJSUnit() {
       }
       var subscriber;
       commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
         var commonEventPublishData = {
           code: 20
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -224,7 +242,7 @@ export default function inputMethodEngineKeyJSUnit() {
 
       function subscriberCallback (err, data){
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -257,15 +275,24 @@ export default function inputMethodEngineKeyJSUnit() {
       }
       var subscriber;
       commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
         var commonEventPublishData = {
           code: 30
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -290,7 +317,7 @@ export default function inputMethodEngineKeyJSUnit() {
 
       function subscriberCallback (err, data){
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -323,15 +350,24 @@ export default function inputMethodEngineKeyJSUnit() {
       }
       var subscriber;
       commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
         var commonEventPublishData = {
           code: 40
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -356,7 +392,7 @@ export default function inputMethodEngineKeyJSUnit() {
 
       function subscriberCallback (err, data){
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -381,7 +417,7 @@ export default function inputMethodEngineKeyJSUnit() {
             await driver.triggerCombineKeys(2047, 2017);
             clearTimeout(t);
           }, 200)
-          
+
         }
       }
 
@@ -390,15 +426,24 @@ export default function inputMethodEngineKeyJSUnit() {
       }
       var subscriber;
       commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
         var commonEventPublishData = {
           code: 50
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -423,7 +468,7 @@ export default function inputMethodEngineKeyJSUnit() {
 
       function subscriberCallback (err, data){
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -456,15 +501,24 @@ export default function inputMethodEngineKeyJSUnit() {
       }
       var subscriber;
       commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
         var commonEventPublishData = {
           code: 60
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -489,7 +543,7 @@ export default function inputMethodEngineKeyJSUnit() {
 
       function subscriberCallback (err, data){
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -522,15 +576,24 @@ export default function inputMethodEngineKeyJSUnit() {
       }
       var subscriber;
       commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
         var commonEventPublishData = {
           code: 70
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
