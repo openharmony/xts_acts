@@ -6,39 +6,27 @@ import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
 
 export default class ExtensionAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  onCreate() {
+    console.log(TAG, `UIExtensionProvider onCreate`)
   }
 
-  onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  onForeground() {
+    console.log(TAG, `UIExtensionProvider onForeground`)
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
-    windowStage.loadContent('testability/pages/Index', (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
+  onBackground() {
+    console.log(TAG, `UIExtensionProvider onBackground`)
   }
 
-  onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  onDestroy() {
+    console.log(TAG, `UIExtensionProvider onDestroy`)
   }
 
-  onForeground(): void {
-    // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+
   }
 
-  onBackground(): void {
-    // Ability has back to background
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  onSessionDestroy(session: UIExtensionContentSession) {
+    console.log(TAG, `UIExtensionProvider onSessionDestroy`)
   }
 }
