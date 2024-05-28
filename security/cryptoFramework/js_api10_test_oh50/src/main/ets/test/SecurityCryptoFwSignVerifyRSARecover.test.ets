@@ -480,7 +480,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
         expect(null).assertFail();
       } catch (error) {
         console.error(`“${error}“, error code: ${error.code}`);
-        expect(error.code).assertEqual(401);
+        expect(error.code).assertEqual(17630001);
       }
       done();
     });
@@ -505,7 +505,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
         expect(null).assertFail();
       } catch (error) {
         console.error(`“${error}“, error code: ${error.code}`);
-        expect(error.code).assertEqual(401);
+        expect(error.code).assertEqual(17630001);
       }
       done();
     });

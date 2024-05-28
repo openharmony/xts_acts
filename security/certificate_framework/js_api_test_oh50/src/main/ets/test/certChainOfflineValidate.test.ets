@@ -73,6 +73,7 @@ export default function certFrameworkCertChainOfflineValidateJsAPIFunctionTestUn
           options: [
             cert.RevocationCheckOptions.REVOCATION_CHECK_OPTION_PREFER_OCSP
           ],
+          ocspDigest: "SHA1",
         }
       }
 
@@ -542,6 +543,7 @@ export default function certFrameworkCertChainOfflineValidateJsAPIFunctionTestUn
           options: [
             cert.RevocationCheckOptions.REVOCATION_CHECK_OPTION_PREFER_OCSP
           ],
+          ocspDigest: "SHA1",
         }
       }
 
