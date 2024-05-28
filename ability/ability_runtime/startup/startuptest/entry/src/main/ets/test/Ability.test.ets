@@ -12,20 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function abilityTest() {
-
+  let testContext = AppStorage.get<UIAbilityContext>("testContext");
+  console.log("du.yuan testContext:", testContext)
   let delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
   let context: common.UIAbilityContext;
   let TAG = "";
 
   describe('ActsAbilityStartUpTest', function () {
     beforeAll(async function (done) {
-      context = globalThis.context;
+      context = testContext;
       done();
     });
 
@@ -44,16 +45,17 @@ export default function abilityTest() {
      * @tc.level: Level 1
      */
     it('SUB_Ability_AbilityRuntime_StartUp_0100', 0, async function (done) {
-      TAG = "ACTS_AddAbilityMonitor_Callback_0100";
-      console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'SingleStartAbility',
+        TAG = "ACTS_AddAbilityMonitor_Callback_0100";
+        console.log(TAG + " start");
+        context.startAbilityForResult({
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'SingleStartAbility',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
         delegator.printSync(TAG + " result = " + JSON.stringify(result))
         let startResult = result.want.parameters.startResult
+        console.log(TAG + " startResult = " + startResult)
         expect(startResult).assertTrue()
         done();
       })
@@ -71,8 +73,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0200";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility2',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility2',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
@@ -96,9 +98,9 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_StartUp_0300', 0, async function (done) {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0300";
       console.log(TAG + " start");
-      context.startAbilityForResult({
-        abilityName: 'PageAbility3',
+       context.startAbilityForResult({
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility3',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
@@ -126,8 +128,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0400";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility4',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility4',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
@@ -152,8 +154,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0500";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility5',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility5',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
@@ -178,8 +180,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0600";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility6',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility6',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
@@ -204,8 +206,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0700";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility7',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility7',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
@@ -232,8 +234,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0800";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'SingleStartAbility2',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'SingleStartAbility2',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
@@ -263,8 +265,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0900";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility8',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility8',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
@@ -287,8 +289,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1000";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility9',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility9',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
@@ -311,8 +313,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1100";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'SingleStartAbility',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'SingleStartAbility',
         parameters: {
           customConfig: true
         }
@@ -338,8 +340,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1200";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility2',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility2',
         parameters: {
           customConfig: true
         }
@@ -367,8 +369,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1300";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility3',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility3',
         parameters: {
           customConfig: true
         }
@@ -399,8 +401,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1400";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility4',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility4',
         parameters: {
           customConfig: true
         }
@@ -428,8 +430,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1500";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility5',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility5',
         parameters: {
           customConfig: true
         }
@@ -457,8 +459,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1600";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility6',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility6',
         parameters: {
           customConfig: true
         }
@@ -486,8 +488,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1700";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility7',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility7',
         parameters: {
           customConfig: true
         }
@@ -517,8 +519,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1800";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'SingleStartAbility2',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'SingleStartAbility2',
         parameters: {
           customConfig: true
         }
@@ -550,8 +552,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1900";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility8',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility8',
         parameters: {
           customConfig: true
         }
@@ -577,8 +579,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2000";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility9',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility9',
         parameters: {
           customConfig: true
         }
@@ -604,8 +606,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2100";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility10',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility10',
         parameters: {
           type: 0
         }
@@ -631,8 +633,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2200";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility10',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility10',
         parameters: {
           type: 0
         }
@@ -658,8 +660,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2300";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility10',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility10',
         parameters: {
           type: 1
         }
@@ -685,8 +687,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2400";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility10',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility10',
         parameters: {
           type: 2
         }
@@ -712,8 +714,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2500";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility10',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility10',
         parameters: {
           type: 3
         }
@@ -739,8 +741,8 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2600";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility10',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility10',
         parameters: {
           type: 4
         }
@@ -766,14 +768,14 @@ export default function abilityTest() {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2700";
       console.log(TAG + " start");
       context.startAbilityForResult({
-        abilityName: 'PageAbility11',
         bundleName: 'com.acts.startupmanualhelp1',
+        abilityName: 'PageAbility11',
       }, (err, result: ability.AbilityResult) => {
         console.log(TAG + " error = " + JSON.stringify(err))
         console.log(TAG + " result = " + JSON.stringify(result))
         delegator.printSync(TAG + " result = " + JSON.stringify(result))
         let apiResult: Array<boolean> = (result.want.parameters.apiResult) as Array<boolean>
-        expect(apiResult.length == 10).assertTrue()
+        expect(apiResult.length == 11).assertTrue()
         expect(apiResult[0]).assertTrue()
         expect(apiResult[1]).assertTrue()
         expect(apiResult[2]).assertTrue()
@@ -784,6 +786,7 @@ export default function abilityTest() {
         expect(apiResult[7]).assertFalse()
         expect(apiResult[8]).assertFalse()
         expect(apiResult[9]).assertFalse()
+        expect(apiResult[10]).assertTrue()
         done();
       })
     })

@@ -33,27 +33,27 @@ let customConfig = true;
 
 export default class SingleStartAbility extends UIAbility {
 
-  onCreate(want:Want, launchParam) {
+  onCreate(want:Want, launchParam){
     hilog.info(0x0000, 'StartupTest SingleStartAbility', '%{public}s', 'Ability onCreate');
 
     if (want.parameters && want.parameters.keepAlive) {
-      console.info("StartupTest SingleStartAbility keepAlive = true");
+      console.info('StartupTest SingleStartAbility keepAlive = true');
       keepAlive = true;
     }
     if (want.parameters && want.parameters.customConfig) {
-      console.info("StartupTest SingleStartAbility customConfig = true");
+      console.info('StartupTest SingleStartAbility customConfig = true');
       customConfig = false;
     }
 
     uiContext = this.context;
-    var subscribeInfo = {
+    let subscribeInfo = {
       events: ['StartupSample_001', 'StartupTestDefaultConfig'],
     };
     commonEventManager.createSubscriber(subscribeInfo).then(data => {
-      console.info("StartupTest SingleStartAbility createSubscriber success");
+      console.info('StartupTest SingleStartAbility createSubscriber success');
       subscriber = data;
       commonEventManager.subscribe(subscriber, (err, data)=>{
-        console.info("StartupTest SingleStartAbility receive event, data = " + JSON.stringify(data));
+        console.info('StartupTest SingleStartAbility receive event, data = ' + JSON.stringify(data));
         let event = data.event;
         if (event === 'StartupSample_001') {
           startupSampleInit = true;
@@ -61,14 +61,14 @@ export default class SingleStartAbility extends UIAbility {
           if (customConfig) {
             msg = '自定义配置config StartupSample_001加载完毕';
           } else {
-            msg ='默认配置 StartupSample_001加载完毕';
+            msg = '默认配置 StartupSample_001加载完毕';
           }
           commonEventManager.publish('show_msg', {
             parameters:{
               'msg': msg
             }
           },()=>{
-            console.info("StartupTest SingleStartAbility send msg");
+            console.info('StartupTest SingleStartAbility send msg');
           })
         }
         if (event === 'StartupTestDefaultConfig') {
@@ -77,18 +77,18 @@ export default class SingleStartAbility extends UIAbility {
           if (customConfig) {
             msg = '自定义配置config 配置监听到测试框架加载完毕';
           } else {
-            msg ='默认配置监听到测试框架加载完毕';
+            msg = '默认配置监听到测试框架加载完毕';
           }
           commonEventManager.publish('show_msg', {
             parameters:{
               'msg':msg
             }
           },()=>{
-            console.info("StartupTest SingleStartAbility send msg");
+            console.info('StartupTest SingleStartAbility send msg');
           })
         }
         if (startupSampleInit && startupDefaultConfig) {
-          console.info("StartupTest SingleStartAbility terminateSelfWithResult , result = true");
+          console.info('StartupTest SingleStartAbility terminateSelfWithResult , result = true');
           if (!keepAlive) {
             setTimeout(()=>{
               uiContext.terminateSelfWithResult({
@@ -104,20 +104,20 @@ export default class SingleStartAbility extends UIAbility {
         }
       })
     }).catch(error=>{
-      console.info("StartupTest SingleStartAbility createSubscriber failed, error=" + JSON.stringify(error));
+      console.info('StartupTest SingleStartAbility createSubscriber failed, error=' + JSON.stringify(error));
     })
   }
 
-  onDestroy() {
+  onDestroy(){
     hilog.info(0x0000, 'StartupTest SingleStartAbility ', '%{public}s', 'Ability onDestroy');
     onAbiltiyDestory = true;
     if (subscriber) {
-      console.info("StartupTest SingleStartAbility unsubscribe");
+      console.info('StartupTest SingleStartAbility unsubscribe');
       commonEventManager.unsubscribe(subscriber);
     }
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage){
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'StartupTest SingleStartAbility ', '%{public}s', 'Ability onWindowStageCreate');
 
@@ -132,7 +132,7 @@ export default class SingleStartAbility extends UIAbility {
     });
   }
 
-  onForeground() {
+  onForeground(){
     // Ability has brought to foreground
     hilog.info(0x0000, 'StartupTest SingleStartAbility ', '%{public}s', 'Ability onForeground');
     console.log('StartupTest startupManager run');
@@ -143,6 +143,17 @@ export default class SingleStartAbility extends UIAbility {
       } else {
         console.log('Custom StartupTest SingleStartAbility2 startupManager run with custom Config');
         let onCompletedCallback = (error) => {
+          let initValue1 = AppStorage.get('Sample_001_init');
+          if (initValue1 == 'Sample_001_init') {
+            console.log('Custom StartupTest SingleStartAbility startupManager AppStorage.get success');
+            commonEventManager.publish('StartupSample_001', (err, data)=>{
+              console.log('StartupTest Sample_001 init, publish msg, err=' + JSON.stringify(err));
+              console.log('StartupTest Sample_001 init, publish msg, data=' + JSON.stringify(data));
+            })
+          } else {
+            console.log('Custom StartupTest SingleStartAbility startupManager AppStorage.get error');
+          }
+          
           console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
           if (error) {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ',
@@ -156,8 +167,8 @@ export default class SingleStartAbility extends UIAbility {
                 'error': error
               }
             }, (err, data) => {
-              console.log("Custom StartupTest onCompletedCallback end, publish msg, err=" + JSON.stringify(err));
-              console.log("Custom StartupTest onCompletedCallback end, publish msg, data=" + JSON.stringify(data));
+              console.log('Custom StartupTest onCompletedCallback end, publish msg, err=' + JSON.stringify(err));
+              console.log('Custom StartupTest onCompletedCallback end, publish msg, data=' + JSON.stringify(data));
             })
           }, 500)
         }
@@ -173,7 +184,7 @@ export default class SingleStartAbility extends UIAbility {
     }, 1500);
   }
 
-  onBackground() {
+  onBackground(){
     // Ability has back to background
     hilog.info(0x0000, 'StartupTest SingleStartAbility ', '%{public}s', 'Ability onBackground');
   }

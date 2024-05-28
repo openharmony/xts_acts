@@ -34,28 +34,28 @@ let type: number = 0;
 // 4 第一个参数为不存在的启动框架 Sample_100
 
 export default class PageAbility10 extends UIAbility {
-  onCreate(want: Want, launchParam) {
+  onCreate(want: Want, launchParam){
     hilog.info(0x0000, 'StartupTest PageAbility10', '%{public}s', 'Ability onCreate');
 
     if (want.parameters && want.parameters.keepAlive) {
-      console.info("StartupTest PageAbility10 keepAlive = true");
+      console.info('StartupTest PageAbility10 keepAlive = true');
       keepAlive = true;
     }
     type = want.parameters.type as number;
     uiContext = this.context;
   }
 
-  onForeground() {
+  onForeground(){
     hilog.info(0x0000, 'StartupTest PageAbility10', '%{public}s', 'Ability onForeground');
-    var subscribeInfo = {
+    let subscribeInfo = {
       events: ['StartupTestDefaultConfig'],
     };
     setTimeout(()=>{
       commonEventManager.createSubscriber(subscribeInfo).then(data => {
-        console.info("StartupTest PageAbility10 createSubscriber success");
+        console.info('StartupTest PageAbility10 createSubscriber success');
         subscriber = data;
         commonEventManager.subscribe(subscriber, (err, data) => {
-          console.info("StartupTest PageAbility10 receive event, data = " + JSON.stringify(data));
+          console.info('StartupTest PageAbility10 receive event, data = ' + JSON.stringify(data));
           let event = data.event;
         })
         console.log('StartupTest PageAbility10 startupManager run');
@@ -78,19 +78,19 @@ export default class PageAbility10 extends UIAbility {
         }
         try {
           startup.run(startParams).then(() => {
-            console.log('StartupTest PageAbility10 startupManager run then, startParams = '
-              + JSON.stringify(startParams));
+            console.log('StartupTest PageAbility10 startupManager run then, startParams = ' +
+              JSON.stringify(startParams));
             commonEventManager.publish('show_msg', {
               parameters: {
                 msg: 'StartupTest PageAbility10 run undefined then call, startParams = ' + JSON.stringify(startParams)
               }
             }, () => {
-              console.info("StartupTest PageAbility10 send msg");
+              console.info('StartupTest PageAbility10 send msg');
             })
           }).catch(error => {
-            console.info("StartupTest PageAbility10 promise catch error, error = " + JSON.stringify(error));
-            console.info("StartupTest PageAbility10 promise catch error, startParams = "
-              + JSON.stringify(startParams));
+            console.info('StartupTest PageAbility10 promise catch error, error = ' + JSON.stringify(error));
+            console.info('StartupTest PageAbility10 promise catch error, startParams = ' +
+              JSON.stringify(startParams));
           })
         } catch (error) {
           let errmsg = JSON.stringify(error)
@@ -99,11 +99,11 @@ export default class PageAbility10 extends UIAbility {
           console.log('StartupTest PageAbility10 catch error ,error= ' + errmsg);
           commonEventManager.publish('show_msg', {
             parameters: {
-              msg: 'StartupTest PageAbility10 run undefined with error, error = ' + errmsg + ', startParams = '
-                + JSON.stringify(startParams)
+              msg: 'StartupTest PageAbility10 run undefined with error, error = ' + errmsg + ', startParams = ' +
+                JSON.stringify(startParams)
             }
           }, () => {
-            console.info("StartupTest PageAbility10 send msg");
+            console.info('StartupTest PageAbility10 send msg');
           })
           if (!keepAlive) {
             setTimeout(()=>{
@@ -122,15 +122,15 @@ export default class PageAbility10 extends UIAbility {
     }, 1500)
   }
 
-  onDestroy() {
+  onDestroy(){
     hilog.info(0x0000, 'StartupTest', '%{public}s', 'Ability onDestroy');
     if (subscriber) {
-      console.info("StartupTest PageAbility10 unsubscribe");
+      console.info('StartupTest PageAbility10 unsubscribe');
       commonEventManager.unsubscribe(subscriber)
     }
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage){
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'StartupTest PageAbility10', '%{public}s', 'Ability onWindowStageCreate');
 
@@ -145,7 +145,7 @@ export default class PageAbility10 extends UIAbility {
     });
   }
 
-  onBackground() {
+  onBackground(){
     // Ability has back to background
     hilog.info(0x0000, 'StartupTest PageAbility10', '%{public}s', 'Ability onBackground');
   }

@@ -36,7 +36,7 @@
       },
       {
         "name": "SingleStartAbility",
-        "srcEntry": "./ets/MainAbility/SingleStartAbility.ts",
+        "srcEntry": "./ets/MainAbility/SingleStartAbility.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -45,7 +45,7 @@
       },
       {
         "name": "PageAbility2",
-        "srcEntry": "./ets/MainAbility/PageAbility2.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility2.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -54,7 +54,7 @@
       },
       {
         "name": "PageAbility3",
-        "srcEntry": "./ets/MainAbility/PageAbility3.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility3.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -63,7 +63,7 @@
       },
       {
         "name": "PageAbility4",
-        "srcEntry": "./ets/MainAbility/PageAbility4.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility4.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -72,7 +72,7 @@
       },
       {
         "name": "PageAbility5",
-        "srcEntry": "./ets/MainAbility/PageAbility5.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility5.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -81,7 +81,7 @@
       },
       {
         "name": "PageAbility6",
-        "srcEntry": "./ets/MainAbility/PageAbility6.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility6.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -90,7 +90,7 @@
       },
       {
         "name": "PageAbility7",
-        "srcEntry": "./ets/MainAbility/PageAbility7.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility7.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -99,7 +99,7 @@
       },
       {
         "name": "SingleStartAbility2",
-        "srcEntry": "./ets/MainAbility/SingleStartAbility2.ts",
+        "srcEntry": "./ets/MainAbility/SingleStartAbility2.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -108,7 +108,7 @@
       },
       {
         "name": "PageAbility8",
-        "srcEntry": "./ets/MainAbility/PageAbility8.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility8.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -117,7 +117,7 @@
       },
       {
         "name": "PageAbility9",
-        "srcEntry": "./ets/MainAbility/PageAbility9.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility9.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -126,7 +126,7 @@
       },
       {
         "name": "PageAbility10",
-        "srcEntry": "./ets/MainAbility/PageAbility10.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility10.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -135,7 +135,7 @@
       },
       {
         "name": "PageAbility11",
-        "srcEntry": "./ets/MainAbility/PageAbility11.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility11.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
