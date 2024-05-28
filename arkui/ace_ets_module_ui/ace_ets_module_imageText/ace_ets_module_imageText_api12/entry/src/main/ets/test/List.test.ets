@@ -73,6 +73,12 @@ import Text_lineBreakStrategyTest from './TextTest/TextAPITest/Text_lineBreakStr
 import Text_lineSpacingTest from './TextTest/TextAPITest/Text_lineSpacingTest.test'
 import marqueeOptionsTest from './TextTest/TextAPITest/marqueeOptionsTest.test'
 import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
+import Context from './TextTest/Context.test'
+import getLayout from './TextTest/getLayout.test'
+import imageAddApi from './ImageTest/imageAddApi.test'
+import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
+import styledStringApi from './TextTest/styledStringApi.test'
+import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -135,4 +141,11 @@ export default function testsuite() {
   Text_lineSpacingTest();
   marqueeOptionsTest();
   textStrategyJsunit();
+
+  Context()
+  getLayout()
+  imageAddApi()
+  SymbolGlyphApi()
+  styledStringApi()
+  SelectionMenuApi()
 }
