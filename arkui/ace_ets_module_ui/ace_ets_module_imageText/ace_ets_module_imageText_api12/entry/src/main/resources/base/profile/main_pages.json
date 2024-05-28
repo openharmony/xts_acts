@@ -29,6 +29,7 @@
   "MainAbility/pages/Text/removeStyles",
   "MainAbility/pages/Text/StyledString",
   "MainAbility/pages/Text/TextStyle",
+  "MainAbility/pages/Text/textPageWavy",
   "MainAbility/pages/Marquee/MarqueeApi",
   "MainAbility/pages/Matrix/srcIndex",
     "MainAbility/pages/Matrix/dstIndex",

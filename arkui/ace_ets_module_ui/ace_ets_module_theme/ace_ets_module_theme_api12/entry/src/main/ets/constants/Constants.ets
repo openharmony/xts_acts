@@ -13,10 +13,6 @@
  * limitations under the License.
  */
 
-import UIContextApi1 from './UIContext/UIContextApi1.test'
-import UIContextTestCase from './UIContext/UIContextTestCase.test'
-export default function testsuite() {
-  UIContextApi1();
-  UIContextTestCase();
-
+export class Constants {
+  static readonly EVENT_ID_CHANGE_DATA = 101
 }
