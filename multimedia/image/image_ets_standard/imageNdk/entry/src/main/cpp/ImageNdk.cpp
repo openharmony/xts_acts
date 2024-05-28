@@ -1982,6 +1982,51 @@ static napi_value PixelMapRelease(napi_env env, napi_callback_info info) {
     return result;
 }
 
+static napi_value CreateFromRawFile(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value thisVar = nullptr;
+    napi_value argValue[NUM_3] = {0};
+    size_t argCount = NUM_3;
+    napi_status status;
+
+    napi_get_undefined(env, &result);
+
+    OH_LOG_INFO(LOG_APP, "lhb CreateFromRawFile errCode====");
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_3) {
+        return result;
+    }
+
+    RawFileDescriptor rawDesc;
+    napi_get_value_int32(env, argValue[NUM_0], &rawDesc.fd);
+    if (rawDesc.fd < 0) {
+        napi_create_int32(env, -1, &result);
+        return result;
+    }
+    int64_t tmp;
+    napi_get_value_int64(env, argValue[NUM_1], &tmp);
+    rawDesc.start = static_cast<long>(tmp);
+    napi_get_value_int64(env, argValue[NUM_2], &tmp);
+    rawDesc.length = static_cast<long>(tmp);
+
+    OH_LOG_INFO(LOG_APP, "lhb CreateFromRawFile fd:%{public}d, start:%{public}ld, length:%{public}ld", rawDesc.fd,
+                rawDesc.start, rawDesc.length);
+
+    OH_ImageSourceNative *res = nullptr;
+    Image_ErrorCode errCode = OH_ImageSourceNative_CreateFromRawFile(&rawDesc, &res);
+    if (errCode != IMAGE_SUCCESS) {
+        napi_throw_error(env, nullptr, "Failed to OH_ImageSource2_CreateFromData create external object,");
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    status = napi_create_external(env, reinterpret_cast<void *>(res), nullptr, nullptr, &result);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create external object");
+        return nullptr;
+    }
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -2034,7 +2079,7 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"GetImageProperty", nullptr, GetImageProperty, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ModifyImageProperty", nullptr, ModifyImageProperty, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetFrameCount", nullptr, GetFrameCount, nullptr, nullptr, nullptr, napi_default, nullptr},
-
+        {"CreateFromRawFile", nullptr, CreateFromRawFile, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SourceRelease", nullptr, SourceRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"PixelMapRelease", nullptr, PixelMapRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreatePackingOptions", nullptr, CreatePackingOptions, nullptr, nullptr, nullptr, napi_default, nullptr},
