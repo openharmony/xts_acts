@@ -131,6 +131,8 @@ struct Index {
         })
 
         .onClientAuthenticationRequest((event) => {
+          console.log('onClientAuthenticationRequest' + event.keyTypes)
+          console.log('onClientAuthenticationRequest' + event.issuers)
           AlertDialog.show({
             title: 'onClientAuthenticationRequest',
             message: 'text',

@@ -22,6 +22,7 @@
         "MainAbility/pages/webONHttpErrorReceiveIframe",
         "MainAbility/pages/webOnAudioStateChanged",
         "MainAbility/pages/webviewTerminateRenderProcess",
-        "MainAbility/pages/webviewSelectionMenuOptions"
+        "MainAbility/pages/webviewSelectionMenuOptions",
+        "MainAbility/pages/DNSHostIP"
     ]
 }
