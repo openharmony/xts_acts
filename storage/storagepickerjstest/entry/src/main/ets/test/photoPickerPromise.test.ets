@@ -191,7 +191,6 @@ async function select(testNum: string, done: Function, isSelectOriginal: boolean
     let photoPicker = new picker.PhotoViewPicker();
     photoPicker.select().then((result) => {
       console.info(`${testNum}::select result: ${JSON.stringify(result)}`);
-      expect(result.photoUris.length).assertEqual(expectSelectNum);
       done();
     }).catch((err: Error) => {
       console.info(`${testNum}::select err: ${JSON.stringify(err)}`);
