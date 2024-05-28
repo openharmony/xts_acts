@@ -37,7 +37,6 @@ let module1FormInfo: formInfo.FormInfo = {
     updateDuration: 1,
     defaultDimension:2,
     supportDimensions:[2, 6],
-    supportedShapes:[2],
     customizeData: {},
     isDynamic: true,
     transparencyEnabled: false
@@ -63,7 +62,6 @@ let module2FormInfo: formInfo.FormInfo = {
     updateDuration: 1,
     defaultDimension:2,
     supportDimensions:[2],
-    supportedShapes:[1],
     customizeData: {},
     isDynamic: true,
     transparencyEnabled: false
