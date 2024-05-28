@@ -17,9 +17,9 @@ group("actsondestroytest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsondestroyentryrely:ActsOnDestroyEntryRely",
-      "actsondestroysecondrely:ActsOnDestroySecondRely",
-      "actsondestroytest:ActsOnDestroyTest",
+      "actsondestroyentryrely:ActsAbilityStageOnDestroyEntryRely",
+      "actsondestroysecondrely:ActsAbilityStageOnDestroySecondRely",
+      "actsondestroytest:ActsAbilityStageOnDestroyTest",
     ]
   }
 }

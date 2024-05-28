@@ -11,9 +11,9 @@
     "kits": [
 		{
             "test-file-name": [
-                "ActsOnDestroyTest.hap",
-                "ActsOnDestroyEntryRely.hap",
-                "ActsOnDestroySecondRely.hap"
+                "ActsAbilityStageOnDestroyTest.hap",
+                "ActsAbilityStageOnDestroyEntryRely.hap",
+                "ActsAbilityStageOnDestroySecondRely.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

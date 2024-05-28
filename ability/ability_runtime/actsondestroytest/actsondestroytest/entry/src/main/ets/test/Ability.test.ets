@@ -31,7 +31,7 @@ let ACTS_OnDestroy: commonEvent.CommonEventSubscribeInfo = {
 };
 
 export default function abilityTest() {
-  describe('ActsOnDestroyTest', () => {
+  describe('ActsAbilityStageOnDestroyTest', () => {
 
     beforeEach(async (done) => {
       setTimeout(() => {
