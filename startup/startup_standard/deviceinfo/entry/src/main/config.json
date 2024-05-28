@@ -23,6 +23,18 @@
       "moduleType": "entry",
       "installationFree": false
     },
+    "reqPermissions": [
+      {
+          "name": "ohos.permission.sec.ACCESS_UDID",
+          "reason": "need use ohos.permission.sec.ACCESS_UDID",
+          "usedScene": {
+              "ability": [
+                  "FormAbility"
+              ],
+              "when": "inuse"
+          }
+      }
+    ],
     "abilities": [
       {
         "skills": [
