@@ -172,7 +172,7 @@ export default function requestImageNativeTest() {
      * @tc.level     : Level 0
      */
     it('request_image_native_src_uri_undefined', 0, async function (done) {
-      let testNum = 'request_image_native_erc_uri_undefined';
+      let testNum = 'request_image_native_src_uri_undefined';
       let srcUri = undefined
       await requestImageSrcUriAssetError(testNum, done, srcUri)
     });
@@ -232,7 +232,7 @@ export default function requestImageNativeTest() {
      * @tc.level     : Level 0
      */
     it('request_image_native_src_uri_empty_string', 0, async function (done) {
-      let testNum = 'request_image_native_src_empty_string';
+      let testNum = 'request_image_native_src_uri_empty_string';
       let srcUri = ''
       await requestImageSrcUriAssetError(testNum, done, srcUri)
     });
@@ -474,8 +474,8 @@ export default function requestImageNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_vimage_native_error_assrt_uri', 0, async function (done) {
-      let testNum = 'request_vimage_native_error_assrt_uri';
+    it('request_image_native_error_assrt_uri', 0, async function (done) {
+      let testNum = 'request_image_native_error_assrt_uri';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "native_request_error_jpg.jpg");
         let fetchResult = await helper.getAssets(fetchOps);

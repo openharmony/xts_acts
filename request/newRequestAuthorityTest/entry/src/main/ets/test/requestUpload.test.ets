@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import Server from '../common/Server'
 import fileio from '@ohos.fileio'
 import request from "@ohos.request";
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
@@ -22,15 +23,20 @@ export default function requestUploadJSUnit() {
   describe('requestUploadJSUnit', function () {
     console.info('====>################################request upload Test start');
 
+
+
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
-    beforeAll(function (done) {
+    beforeAll(function (done) {      
       try {
+        console.info('====>beforeAll: startServer');
+        new Server().startServer();
+        console.info('====>beforeAll: startServer success!');
         let pathDir = globalThis.abilityContext.cacheDir;
         let filePath = pathDir + `/test.txt`;
         let fd = fileio.openSync(filePath, 0o100 | 0o2, 0o666);
-        let content = ''.padEnd(1 * 1024 *1024, 'h');
+        let content = ''.padEnd(1 * 1024, 'Hello world');
         fileio.writeSync(fd, content);
         fileio.closeSync(fd);
         console.info('====>beforeAll: text.txt file generate');
@@ -73,7 +79,7 @@ export default function requestUploadJSUnit() {
 
     let config = {
       action: request.agent.Action.UPLOAD,
-      url: 'http://127.0.0.1',
+      url: 'http://127.0.0.1:8080',
       title: 'uploadTest',
       description: 'Sample code for event listening',
       mode: request.agent.Mode.BACKGROUND,
@@ -106,7 +112,7 @@ export default function requestUploadJSUnit() {
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Upload_Callback_0010
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -121,20 +127,22 @@ export default function requestUploadJSUnit() {
           }
           expect(task !== undefined).assertEqual(true);
           console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0010 create success: " + task);
+          await request.agent.remove(task.tid);
+          console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Callback_0010 end-----------------------");
+          done();
         }catch(error){
           console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0010 create fail: " + JSON.stringify(error));
           await request.agent.remove(task.tid);
+          done();          
         }
-        await request.agent.remove(task.tid);
-        console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Callback_0010 end-----------------------");
-        done();
+        
       });
     });
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Upload_Promise_0010
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -145,19 +153,20 @@ export default function requestUploadJSUnit() {
         expect(task !== undefined).assertEqual(true);
         await request.agent.remove(task.tid);
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0010 create success: " + task);
+        console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Promise_0010 end-----------------------");
+        done();
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0010 catch error: " + JSON.stringify(err));
         await request.agent.remove(task.tid);
         expect().assertFail();
+        done();
       }
-      console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Promise_0010 end-----------------------");
-      done();
     });
 
     /**
      * @tc.number SUB_Misc_REQUEST_Remove_Upload_Callback_0010
      * @tc.desc Delete the upload task.
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -173,22 +182,25 @@ export default function requestUploadJSUnit() {
             }
             expect(task !== undefined).assertEqual(true);
             console.info("====>SUB_Misc_REQUEST_Remove_Upload_Callback_0010 remove success: " + task);
+            console.info("-----------------------SUB_Misc_REQUEST_Remove_Upload_Callback_0010 end-----------------------");
+            done();
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_Remove_Upload_Callback_0010 remove fail: " + JSON.stringify(err));
+            done();
           }
         });
-        done();
       } catch (error) {
         console.info("====>SUB_Misc_REQUEST_Remove_Upload_Callback_0010 catch error: " + JSON.stringify(error));
         expect().assertFail();
+        done();
       }
-      console.info("-----------------------SUB_Misc_REQUEST_Remove_Upload_Callback_0010 end-----------------------");
+      
     });
 
     /**
      * @tc.number SUB_Misc_REQUEST_Remove_Upload_Promise_0010
      * @tc.desc Delete the upload task.
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -199,18 +211,19 @@ export default function requestUploadJSUnit() {
         await request.agent.remove(task.tid);
         expect(true).assertEqual(true);
         console.info("====>SUB_Misc_REQUEST_Remove_Upload_Promise_0010 remove success: " + task);
+        console.info("-----------------------SUB_Misc_REQUEST_Remove_Upload_Promise_0010 end-----------------------");
+        done();
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Remove_Upload_Promise_0010 catch error: " + JSON.stringify(err));
         expect().assertFail();
+        done();
       }
-      console.info("-----------------------SUB_Misc_REQUEST_Remove_Upload_Promise_0010 end-----------------------");
-      done();
     });
 
     /**
      * @tc.number SUB_Misc_REQUEST_Start_Upload_Callback_0010
      * @tc.desc Suspend the upload task
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -225,13 +238,14 @@ export default function requestUploadJSUnit() {
               expect().assertFail();
             }
             expect(true).assertEqual(true);
-            console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 upload start success: " + task);
+            console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 upload start success: " + task);            
+            console.info("-----------------------SUB_Misc_REQUEST_Start_Upload_Callback_0010 end-----------------------");
+            await sleep(100);
+            done();
           }catch(err){
             console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 catch err: " + JSON.stringify(err));
+            done();
           }
-          console.info("-----------------------SUB_Misc_REQUEST_Start_Upload_Callback_0010 end-----------------------");
-          await sleep(100);
-          done();
         });
       });
     });
@@ -239,7 +253,7 @@ export default function requestUploadJSUnit() {
     /**
      * @tc.number SUB_Misc_REQUEST_Start_Upload_Promise_0010
      * @tc.desc Suspend the upload task
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -250,19 +264,20 @@ export default function requestUploadJSUnit() {
         await task.start();
         expect(true).assertEqual(true);
         console.info("====>SUB_Misc_REQUEST_Start_Upload_Promise_0010 upload start success: " + JSON.stringify(task));
+        console.info("-----------------------SUB_Misc_REQUEST_Start_Upload_Promise_0010 end-----------------------");
+        await sleep(100);
+        done();
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Start_Upload_Promise_0010 upload start err: " + JSON.stringify(err));
         expect().assertFail();
+        done();
       }
-      console.info("-----------------------SUB_Misc_REQUEST_Start_Upload_Promise_0010 end-----------------------");
-      await sleep(100);
-      done();
     });
 
     /**
      * @tc.number SUB_Misc_REQUEST_Pause_Upload_Callback_0010
      * @tc.desc Restore the upload task
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -280,21 +295,22 @@ export default function requestUploadJSUnit() {
               }
               expect(true).assertEqual(true);
               console.info("====>SUB_Misc_REQUEST_Pause_Upload_Callback_0010 upload pause success: " + task);
+              console.info("-----------------------SUB_Misc_REQUEST_Pause_Upload_Callback_0010 end-----------------------");
+              await sleep(100);
+              done();
             }catch(err){
               console.info("====>SUB_Misc_REQUEST_Pause_Upload_Callback_0010 catch err: " + JSON.stringify(err));
+              done();
             }
           });
         });
       });
-      console.info("-----------------------SUB_Misc_REQUEST_Pause_Upload_Callback_0010 end-----------------------");
-      await sleep(100);
-      done();
     });
 
     /**
      * @tc.number SUB_Misc_REQUEST_Pause_Upload_Promise_0010
      * @tc.desc Restore the upload task
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -308,21 +324,20 @@ export default function requestUploadJSUnit() {
           await task.pause();
           expect(true).assertEqual(true);
           console.info("====>SUB_Misc_REQUEST_Pause_Upload_Promise_0010 upload pause success: " + task);
+          console.info("-----------------------SUB_Misc_REQUEST_Pause_Upload_Promise_0010 end-----------------------");
           done();
         } catch (err) {
           console.info("====>SUB_Misc_REQUEST_Pause_Upload_Promise_0010 upload pause err: " + JSON.stringify(err));
           expect().assertFail();
+          done();
         }
       });
-      console.info("-----------------------SUB_Misc_REQUEST_Pause_Upload_Promise_0010 end-----------------------");
-      await sleep(100);
-      done();
     });
 
     /**
      * @tc.number SUB_Misc_REQUEST_Resume_Upload_Callback_0010
      * @tc.desc Get the upload task info
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -341,23 +356,24 @@ export default function requestUploadJSUnit() {
                   expect().assertFail();
                 }
                 expect(true).assertEqual(true);
-                console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 upload resume success: " + task);
+                console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 upload resume success: " + task);                
+                console.info("-----------------------SUB_Misc_REQUEST_Resume_Upload_Callback_0010 end-----------------------");
+                await sleep(100);
+                done();
               }catch(err){
                 console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 catch err: " + JSON.stringify(err));
+                done();
               }
             })
           })
         });
-        console.info("-----------------------SUB_Misc_REQUEST_Resume_Upload_Callback_0010 end-----------------------");
-        await sleep(100);
-        done();
       });
     });
 
     /**
      * @tc.number SUB_Misc_REQUEST_Resume_Upload_Promise_0010
      * @tc.desc Get the upload task info
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -373,22 +389,21 @@ export default function requestUploadJSUnit() {
             await task.resume();
             expect(true).assertEqual(true);
             console.info("====>SUB_Misc_REQUEST_Resume_Upload_Promise_0010 upload resume success: " + task);
+            console.info("-----------------------SUB_Misc_REQUEST_Resume_Upload_Promise_0010 end-----------------------");
             done();
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_Resume_Upload_Promise_0010 upload resume err: " + JSON.stringify(err));
             expect().assertFail();
+            done();
           }
         });
       });
-      console.info("-----------------------SUB_Misc_REQUEST_Resume_Upload_Promise_0010 end-----------------------");
-      await sleep(100);
-      done();
     });
 
     /**
      * @tc.number SUB_Misc_REQUEST_Stop_Upload_Callback_0010
      * @tc.desc Get the upload task info
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -406,21 +421,22 @@ export default function requestUploadJSUnit() {
               }
               expect(true).assertEqual(true);
               console.info("====>SUB_Misc_REQUEST_Stop_Upload_Callback_0010 upload stop success: " + task);
+              console.info("-----------------------SUB_Misc_REQUEST_Stop_Upload_Callback_0010 end-----------------------");
+              await sleep(100);
+              done();
             }catch(err){
               console.info("====>SUB_Misc_REQUEST_Stop_Upload_Callback_0010 catch err: " + JSON.stringify(err));
+              done();
             }
           });
-        });
-        console.info("-----------------------SUB_Misc_REQUEST_Stop_Upload_Callback_0010 end-----------------------");
-        await sleep(100);
-        done();
+        });        
       });
     });
 
     /**
      * @tc.number SUB_Misc_REQUEST_Stop_Upload_Promise_0010
      * @tc.desc Get the upload task info
-     * @tc.size      : MediumTest
+     * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */

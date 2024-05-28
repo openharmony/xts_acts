@@ -32,7 +32,8 @@ import rdbStoreExcuteTest from './RelationalStoreExecuteEtsunit.test';
 import RdbStoreValueTypeTest from './RelationalStoreValueTypeBigInt.test';
 import RelationalStoreSyncApiTest from './RelationalStoreSyncApiTest.test';
 import rdbStoreCorruptJSunitTest from './RdbStoreCorruptJsunit.test';
-import rdbstoreLockRowJsunitTest from './RdbstoreLockRowJsunit.test'
+import rdbstoreLockRowJsunitTest from './RdbstoreLockRowJsunit.test';
+import RdbStoreDataChangeTest from './RdbStoreDataChange.test';
 export default function testsuite() {
   relationalStoreEncryptTest()
   relationalStoreUpdateTest()
@@ -55,5 +56,6 @@ export default function testsuite() {
   RelationalStoreSyncApiTest()
   rdbStoreCorruptJSunitTest()
   rdbstoreLockRowJsunitTest()
+  RdbStoreDataChangeTest()
 }
 

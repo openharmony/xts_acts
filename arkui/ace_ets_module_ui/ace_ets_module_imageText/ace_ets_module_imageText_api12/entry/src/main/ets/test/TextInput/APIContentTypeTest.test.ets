@@ -65,5 +65,80 @@ export default function APIContentTypeTest() {
       console.info('[APIContentTypeTest_001] END');
       done();
     });
+
+    /* *
+    * @tc.number: SUB_ACE_TEXTINPUT_CONTENTTYPE_0200
+    * @tc.name  : APIContentTypeTest_002
+    * @tc.desc  : ContentType setting NICKNAME
+    * @tc.level : Level 3
+    * @tc.type :
+    * @tc.size :
+    */
+    it('APIContentTypeTest_0200', 0, async function (done) {
+      console.info('APIContentTypeTest_0200 START');
+      await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let button1 = await driver.findComponent(ON.id('TypeButton_23'));
+      await button1.click();
+      await CommonFunc.sleep(2000);
+      let strJson = getInspectorByKey('APIContentTypeText');
+      await CommonFunc.sleep(200);
+      let obj = JSON.parse(strJson);
+      console.info("[APIContentTypeTest_0200] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+      expect(obj.$attrs.content).assertEqual('TextContentType.NICKNAME');
+      console.info('[APIContentTypeTest_0200] END');
+      done();
+    });
+
+    /* *
+    * @tc.number: SUB_ACE_TEXTINPUT_CONTENTTYPE_0300
+    * @tc.name  : APIContentTypeTest_003
+    * @tc.desc  : ContentType setting DETAIL_INFO_WITHOUT_STREET
+    * @tc.level : Level 3
+    * @tc.type :
+    * @tc.size :
+    */
+    it('APIContentTypeTest_0300', 0, async function (done) {
+      console.info('APIContentTypeTest_0300 START');
+      await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let button1 = await driver.findComponent(ON.id('TypeButton_24'));
+      await button1.click();
+      await CommonFunc.sleep(2000);
+      let strJson = getInspectorByKey('APIContentTypeText');
+      await CommonFunc.sleep(200);
+      let obj = JSON.parse(strJson);
+      console.info("[APIContentTypeTest_0300] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+      expect(obj.$attrs.content).assertEqual('TextContentType.DETAIL_INFO_WITHOUT_STREET');
+      console.info('[APIContentTypeTest_0300] END');
+      done();
+    });
+
+    /* *
+    * @tc.number: SUB_ACE_TEXTINPUT_CONTENTTYPE_0400
+    * @tc.name  : APIContentTypeTest_004
+    * @tc.desc  : ContentType setting FORMAT_ADDRESS
+    * @tc.level : Level 3
+    * @tc.type :
+    * @tc.size :
+    */
+    it('APIContentTypeTest_0400', 0, async function (done) {
+      console.info('APIContentTypeTest_0400 START');
+      await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let button1 = await driver.findComponent(ON.id('TypeButton_25'));
+      await button1.click();
+      await CommonFunc.sleep(2000);
+      let strJson = getInspectorByKey('APIContentTypeText');
+      await CommonFunc.sleep(200);
+      let obj = JSON.parse(strJson);
+      console.info("[APIContentTypeTest_0400] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+      expect(obj.$attrs.content).assertEqual('TextContentType.FORMAT_ADDRESS');
+      console.info('[APIContentTypeTest_0400] END');
+      done();
+    });
   })
 }

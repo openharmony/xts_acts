@@ -478,7 +478,6 @@ HWTEST_F(BundleMgrTest, testUninstallright, Function | MediumTest | Level0)
     bool installResult = Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
     EXPECT_TRUE(installResult);
-    sleep(1);
     const char *bundleName = (char*)"com.openharmony.testnative";
     bool isUninstallSuccess = false;
     sem_init(&g_sem, 0, 0);
@@ -637,7 +636,6 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoRight, Function | MediumTest | Level1)
     const char *bundleName = (char*)"com.openharmony.testjsdemo";
     int32_t flags = 0;
     printf("bundleName is %s \n", bundleName);
-    sleep(2);
     g_errorCode = GetBundleInfo(bundleName, flags, &bundleInfo);
     printf("getBundleInfo result is %d \n", g_errorCode);
     EXPECT_STREQ(bundleInfo.bundleName, bundleName);
@@ -646,7 +644,6 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoRight, Function | MediumTest | Level1)
     flags = 1;
     printf("bundleName is %s \n", bundleName);
     g_errorCode = GetBundleInfo(bundleName, flags, &bundleInfo);
-    sleep(2);
     printf("getBundleInfo result is %d \n", g_errorCode);
     EXPECT_EQ(g_errorCode, 0);
     EXPECT_STREQ(bundleInfo.bundleName, bundleName);
@@ -689,7 +686,6 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoIllegal, Function | MediumTest | Level2
     EXPECT_EQ(g_errorCode, 2);
     // flags not exit
     g_errorCode = GetBundleInfo("com.openharmony.testjsdemo", 2, &bundleInfo);
-    sleep(2);
     printf("bundleInfo3.bundleName is %s \n", bundleInfo.bundleName);
     printf("bundleInfo3.versionCode is %d \n", bundleInfo.versionCode);
     printf("bundleInfo3.codePath is %s \n", bundleInfo.codePath);
@@ -709,7 +705,6 @@ HWTEST_F(BundleMgrTest, testGetBundleInfosRight, Function | MediumTest | Level1)
     int32_t flags = 0;
     int32_t length = 0;
     g_errorCode = GetBundleInfos(flags, &bundleInfos, &length);
-    sleep(2);
     printf("getBundleInfo result is %d \n", g_errorCode);
     EXPECT_EQ(g_errorCode, 0);
     if (g_errorCode == 0){
@@ -720,7 +715,6 @@ HWTEST_F(BundleMgrTest, testGetBundleInfosRight, Function | MediumTest | Level1)
     flags = 1;
     g_errorCode = GetBundleInfos(flags, &bundleInfos, &length);
     printf("getBundleInfo result is %d \n", g_errorCode);
-    sleep(2);
     EXPECT_EQ(g_errorCode, 0);
         if (g_errorCode == 0){
         printf("bundleInfos.codePath is %s \n", bundleInfos[0].codePath);
@@ -797,7 +791,6 @@ HWTEST_F(BundleMgrTest, testGetBundleInfosByMetaDataRight, Function | MediumTest
     int32_t length = 0;
     printf("metaDataKey is %s \n", metaDataKey);
     g_errorCode = GetBundleInfosByMetaData(metaDataKey, &bundleInfos, &length);
-    sleep(2);
     printf("GetBundleInfosByMetaData result is %d \n", g_errorCode);
     EXPECT_EQ(g_errorCode, 0);
     if (g_errorCode == 0){

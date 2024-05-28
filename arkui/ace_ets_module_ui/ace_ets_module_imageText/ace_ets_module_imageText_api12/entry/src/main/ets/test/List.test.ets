@@ -61,9 +61,21 @@ import RichEditor5 from './RichEditorEnhance/RichEditor5.test'
 import RichEditor6 from './RichEditorEnhance/RichEditor6.test'
 import RichEditor7 from './RichEditorEnhance/RichEditor7.test'
 import TextInputTextAreaSearch from './RichEditorEnhance/TextInputTextAreaSearch.test'
+import Context from './TextTest/Context.test'
+import getLayout from './TextTest/getLayout.test'
+import imageAddApi from './ImageTest/imageAddApi.test'
+import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
+import styledStringApi from './TextTest/styledStringApi.test'
+import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
+import TextAreaApi1 from './TextArea/TextAreaApi1.test'
+import TextAreaApi2 from './TextArea/TextAreaApi2.test'
+import TextAreaApi3 from './TextArea/TextAreaApi3.test'
+import textApi1 from './Text/TextApi1.test'
+import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
+
 export default function testsuite() {
-APIContentTypeTest();
-APIUnderlineColorTest();
+  APIContentTypeTest();
+  APIUnderlineColorTest();
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
@@ -84,6 +96,12 @@ APIUnderlineColorTest();
   onSelectionChange18();
   onSelectionChange19();
   MediaCachedImageTest();
+  Context()
+  getLayout()
+  imageAddApi()
+  SymbolGlyphApi()
+  styledStringApi()
+  SelectionMenuApi()
   onComplete()
   removeStyles()
   clearStyles()
@@ -110,4 +128,9 @@ APIUnderlineColorTest();
   RichEditor6();
   RichEditor7();
   TextInputTextAreaSearch();
+  TextAreaApi1();
+  TextAreaApi2();
+  TextAreaApi3();
+  textApi1();
+  textStrategyJsunit();
 }

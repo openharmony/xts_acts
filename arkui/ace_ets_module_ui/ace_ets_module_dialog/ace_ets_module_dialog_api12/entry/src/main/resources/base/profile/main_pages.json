@@ -33,6 +33,7 @@
     "MainAbility/pages/CustomDialog/UIContext/UpdateCustomDialog",
     "MainAbility/pages/CustomDialog/UIContext/OpenCustomDialog",
     "MainAbility/pages/CalendarPickerDialog/ButtonStyle",
+    "MainAbility/pages/Dialog/dialogApi",
     "MainAbility/pages/DatePickerDialog/DateButtonStyle"
   ]
 }

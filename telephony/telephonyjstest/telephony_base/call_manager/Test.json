@@ -1,19 +1,25 @@
 {
-    "description": "Function test of sim manager interface",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "900000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "com.ohos.call_manager",
-        "package-name": "com.ohos.call_manager",
-        "shell-timeout": "900000"
+        "package-name": "com.ohos.call_manager"
     },
     "kits": [
         {
             "test-file-name": [
-                "$module.hap"
+              "$module.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

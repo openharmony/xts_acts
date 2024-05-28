@@ -27,6 +27,7 @@
 #define PARAM_0 0
 #define PORT_READ 0x01
 #define PORT_WRITE 0x02
+#define PORT_ILLEGAL 0x08
 
 static napi_value DdkCreateAshmemOne(napi_env env, napi_callback_info info)
 {
@@ -100,6 +101,20 @@ static napi_value DdkMapAshmemThree(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value DdkMapAshmemFour(napi_env env, napi_callback_info info)
+{
+    DDK_Ashmem *ashmem = nullptr;
+    const uint8_t name[100] = "TestAshmem";
+    uint32_t bufferLen = BUFF_LENTH;
+    int32_t ddkCreateAshmemValue = OH_DDK_CreateAshmem(name, bufferLen, &ashmem);
+    NAPI_ASSERT(env, ddkCreateAshmemValue == DDK_SUCCESS, "OH_DDK_CreateAshmem failed");
+    const uint8_t ashmemMapType = PORT_ILLEGAL;
+    int32_t returnValue = OH_DDK_MapAshmem(ashmem, ashmemMapType);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
 static napi_value DdkUnmapAshmemOne(napi_env env, napi_callback_info info)
 {
     DDK_Ashmem *ashmem = nullptr;
@@ -158,6 +173,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"ddkMapAshmemOne", nullptr, DdkMapAshmemOne, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ddkMapAshmemTwo", nullptr, DdkMapAshmemTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ddkMapAshmemThree", nullptr, DdkMapAshmemThree, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"ddkMapAshmemFour", nullptr, DdkMapAshmemFour, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ddkUnmapAshmemOne", nullptr, DdkUnmapAshmemOne, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ddkUnmapAshmemTwo", nullptr, DdkUnmapAshmemTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ddkDestroyAshmemOne", nullptr, DdkDestroyAshmemOne, nullptr, nullptr, nullptr, napi_default, nullptr},

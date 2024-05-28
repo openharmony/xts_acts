@@ -17,7 +17,7 @@ ohos_js_app_suite("hukscipher_promise_basic_js_reformed_test") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "hukscipher_promise_basic_js_reformed_test"
+  hap_name = "ActsHuksCipherBasicPromiseJSApiReformedTest"
   part_name = "huks"
   subsystem_name = "security"
 }

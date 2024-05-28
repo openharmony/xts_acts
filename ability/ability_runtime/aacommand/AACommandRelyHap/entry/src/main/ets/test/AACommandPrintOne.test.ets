@@ -17,7 +17,7 @@
 import { describe, it } from '@ohos/hypium'
 
 export default function abilityTest() {
-    describe('AACommandPrintOneTest', function () {
+    describe('AACommandPrintOneTest', () => {
         /**
          * @tc.number: ACTS_AACommand_print_01_0100
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
@@ -25,19 +25,19 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-         it('ACTS_AACommand_print_01_0100', 0, async function (done) {
+         it('ACTS_AACommand_print_01_0100', 0, async (done: Function) => {
             console.log("ACTS_AACommand_print_01_0100 start ====> " )
             done()
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.print(msg,(err,data)=>{
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            globalThis.abilityDelegator.print(msg,()=>{
                 console.log("ACTS_AACommand_print_01_0100 print  test  end ========> callback " )
-                console.log("ACTS_AACommand_print_01_0100 print  test  end ========> callback err: "+JSON.stringify(err) )
-                console.log("ACTS_AACommand_print_01_0100 print  test  end ========> callback data: "+JSON.stringify(data))
+                //console.log("ACTS_AACommand_print_01_0100 print  test  end ========> callback err: "+JSON.stringify(err) )
+                //console.log("ACTS_AACommand_print_01_0100 print  test  end ========> callback data: "+JSON.stringify(data))
             })
-            var finishmsg = 'ACTS_AACommand_print_01_0100 end'
-            globalThis.abilityDelegator.finishTest(finishmsg, 1).then((data)=>{
+            let finishmsg = 'ACTS_AACommand_print_01_0100 end'
+            globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0100 finishTest  test  end ========> callback " )
-                console.log("ACTS_AACommand_print_01_0100 finishTest  test  end ========> callback data: "+JSON.stringify(data))
+                //console.log("ACTS_AACommand_print_01_0100 finishTest  test  end ========> callback data: "+JSON.stringify(data))
             })
         })
 
@@ -48,9 +48,9 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_01_0200', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0200', 0, async (done: Function) => {
             done()
-            var msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+            let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             'aaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -64,7 +64,7 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(msg,()=>{
                 console.log("print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_01_0200 end'
+            let finishmsg = 'ACTS_AACommand_print_01_0200 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0200 print  test  end ========> callback " )
             })
@@ -77,7 +77,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_01_0300', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0300', 0, async (done: Function) => {
             done()
             let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -99,7 +99,7 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(start + end).then(()=>{
               console.log("ACTS_AACommand_print_01_0700 print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_01_0300 end'
+            let finishmsg = 'ACTS_AACommand_print_01_0300 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0300 print  test  end ========> callback " )
             })
@@ -112,12 +112,12 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_01_0400', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0400', 0, async (done: Function) => {
             done()
             globalThis.abilityDelegator.print(null,()=>{
                 console.log("print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_01_0400 end'
+            let finishmsg = 'ACTS_AACommand_print_01_0400 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0400 print  test  end ========> callback " )
             })
@@ -130,13 +130,13 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_01_0500', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0500', 0, async (done: Function) => {
             done()
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.print(msg).then(()=>{
                 console.log("ACTS_AACommand_print_01_0500 print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_01_0500 end'
+            let finishmsg = 'ACTS_AACommand_print_01_0500 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0500 print  test  end ========> callback " )
             })
@@ -149,9 +149,9 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally
          *           through the test command.
          */
-        it('ACTS_AACommand_print_01_0600', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0600', 0, async (done: Function) => {
             done()
-            var msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+            let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -164,7 +164,7 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(msg).then(()=>{
                 console.log("ACTS_AACommand_print_01_0600 print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_01_0600 end'
+            let finishmsg = 'ACTS_AACommand_print_01_0600 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0600 2 print  test  end ========> callback " )
             })
@@ -177,7 +177,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_01_0700', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0700', 0, async (done: Function) => {
             done()
             let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -199,7 +199,7 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(start + end,()=>{
               console.log("print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_01_0700 end'
+            let finishmsg = 'ACTS_AACommand_print_01_0700 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0700 2 print  test  end ========> callback " )
             })
@@ -212,12 +212,12 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally
          *           through the test command.
          */
-        it('ACTS_AACommand_print_01_0800', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0800', 0, async (done: Function) => {
             done()
             globalThis.abilityDelegator.print("").then(()=>{
                 console.log("ACTS_AACommand_print_01_0800 print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_01_0800 end'
+            let finishmsg = 'ACTS_AACommand_print_01_0800 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0800 2 print  test  end ========> callback " )
             })

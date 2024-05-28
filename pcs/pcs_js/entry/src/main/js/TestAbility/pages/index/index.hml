@@ -1,0 +1,31 @@
+<div class="container">
+    <text class="title">
+        {{ $t('strings.hello') }} {{ title }}
+    </text>
+    <text class="title" id="fileText1">
+        {{ fileText1 }}
+    </text>
+    <text class="title" id="fileText2">
+        {{ fileText2 }}
+    </text>
+    <list style="flex-direction: row;">
+        <list-item>
+            <image id="absolutionPathImage" src="/common/test.png" oncomplete="onComplete1" style="height : 50px; width : 50px;"></image>
+        </list-item>
+        <list-item>
+            <text id="absolutionPathImageCompleted" style="font-size: 50px;">
+                {{ absolutionPathImageComplete }}
+            </text>
+        </list-item>
+    </list>
+    <list style="flex-direction: row;">
+        <list-item>
+            <image id="relativePathImage" src="./common/test.png" oncomplete="onComplete2" style="height : 50px; width : 50px;"></image>
+        </list-item>
+        <list-item>
+            <text id="relativePathImageCompleted" style="font-size: 50px;">
+                {{ relativePathImageCompleted }}
+            </text>
+        </list-item>
+    </list>
+</div>

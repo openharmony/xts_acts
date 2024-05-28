@@ -409,14 +409,14 @@ export default function SecurityCipherJsunit() {
       let encryptMode = cryptoFramework.CryptoMode.ENCRYPT_MODE;
       let keyPair = await asyGenerator.generateKeyPair();
       try {
-        await cipherGeneratorEncrypt.init(3, keyPair, null);
+        await cipherGeneratorEncrypt.init(3, keyPair.priKey, null);
         expect(null).assertFail();
       } catch (err) {
         expect(err.code).assertEqual(401);
       }
       try {
         await new Promise((resolve, reject) => {
-          cipherGeneratorEncrypt.init(null, keyPair, null, (err) => {
+          cipherGeneratorEncrypt.init(null, keyPair.priKey, null, (err) => {
             if (err) {
               reject(err);
             } else {

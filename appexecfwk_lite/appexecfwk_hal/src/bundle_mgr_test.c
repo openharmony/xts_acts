@@ -332,7 +332,6 @@ LITE_TEST_CASE(BundleMgrTestSuite, testGetBundleInfoIllegal, Function | MediumTe
     ret = GetBundleInfo("", flags, &bundleInfo);
     TEST_ASSERT_TRUE(ret == 2);
     ret = GetBundleInfo("com.openharmony.testjsdemo", 2, &bundleInfo);
-    sleep(2);
     TEST_ASSERT_TRUE(ret == 2);
     printf("------end testGetBundleInfoIllegal------\n");
 }

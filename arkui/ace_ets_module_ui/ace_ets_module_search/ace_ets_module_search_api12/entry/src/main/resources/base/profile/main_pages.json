@@ -1,0 +1,7 @@
+{
+  "src": [
+    "MainAbility/pages/index/Index",
+    "MainAbility/pages/component/searchMaxFontSize",
+    "MainAbility/pages/component/searchMinFontSize"
+  ]
+}

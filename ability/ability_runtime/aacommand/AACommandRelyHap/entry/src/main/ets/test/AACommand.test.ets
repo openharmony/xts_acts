@@ -17,7 +17,7 @@
 import { describe, it, expect } from '@ohos/hypium'
 
 export default function abilityTest() {
-    describe('AACommandTest', function () {
+    describe('AACommandTest', () => {
         /**
          * @tc.number: ACTS_AACommand_finishTest_01_0100
          * @tc.name: Each parameter of the test command is valid, and the finishTest interface is called
@@ -26,8 +26,8 @@ export default function abilityTest() {
          *           is valid (1).
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-         it('ACTS_AACommand_finish_01_0100', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146ACTS_AACommand_finish_01_0100'
+         it('ACTS_AACommand_finish_01_0100', 0, async (done: Function) => {
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146ACTS_AACommand_finish_01_0100'
             globalThis.abilityDelegator.finishTest(msg, 1,()=>{
                 console.log("ACTS_AACommand_finish_01_0100 finishTest  test  end ========> callback " )
                 done()
@@ -39,10 +39,10 @@ export default function abilityTest() {
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
          *           mode. The msg parameter is invalid (null) and the code parameter is valid (1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finish_01_0200', 0, async function (done) {
+        */
+        it('ACTS_AACommand_finish_01_0200', 0, async (done: Function) => {
             done();
-            var code = globalThis.abilityDelegator.finishTest(null, 1,()=>{
+            let code:string = globalThis.abilityDelegator.finishTest(null, 1,()=>{
                 console.log(" ACTS_AACommand_finish_01_0200 finishTest  test  end ========> callback " )
                 expect().assertFail();
             })
@@ -60,9 +60,9 @@ export default function abilityTest() {
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
          *           mode. The msg parameter is invalid (Undefined) and the code parameter is valid (1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finish_01_0300', 0, async function (done) {
-            var code = globalThis.abilityDelegator.finishTest(undefined, 1,()=>{
+        */
+        it('ACTS_AACommand_finish_01_0300', 0, async (done: Function) => {
+            let code:string = globalThis.abilityDelegator.finishTest(undefined, 1,()=>{
                 console.log(" ACTS_AACommand_finish_01_0300 finishTest  test  end ========> callback " )
                 expect().assertFail();
             })
@@ -83,8 +83,8 @@ export default function abilityTest() {
          *           is valid (Number.MAX_VALUE)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_0400', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        it('ACTS_AACommand_finish_01_0400', 0, async (done: Function) => {
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MAX_VALUE,()=>{
                 console.log("ACTS_AACommand_finish_01_0400 finishTest  test  end ========> callback " )
                 done()
@@ -98,8 +98,8 @@ export default function abilityTest() {
          *           is valid (Number.MIN_VALUE)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_0500', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        it('ACTS_AACommand_finish_01_0500', 0, async (done: Function) => {
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE,()=>{
                 console.log("ACTS_AACommand_finish_01_0500 finishTest  test  end ========> callback " )
                 done()
@@ -113,8 +113,8 @@ export default function abilityTest() {
          *           is valid (Number.MAX_VALUE+1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_0600', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        it('ACTS_AACommand_finish_01_0600', 0, async (done: Function) => {
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, (Number.MIN_VALUE+1),()=>{
                 console.log("ACTS_AACommand_finish_01_0600 finishTest  test  end ========> callback " )
                 done()
@@ -128,8 +128,8 @@ export default function abilityTest() {
          *           is valid (Number.MIN_VALUE-1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_0700', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        it('ACTS_AACommand_finish_01_0700', 0, async (done: Function) => {
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, (Number.MIN_VALUE-1),()=>{
                 console.log("ACTS_AACommand_finish_01_0700 finishTest  test  end ========> callback " )
                 done()
@@ -143,9 +143,9 @@ export default function abilityTest() {
          *           code parameter is valid (“ABCD”)
          * @tc.desc: Verify that the process of the test framework is not stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_0800', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_0800', 0, async (done: Function) => {
             done();
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, 'ABCD',()=>{
                 console.log(" ACTS_AACommand_finish_01_0800 finishTest  test  end ========> callback " )
                 expect().assertFail();
@@ -160,8 +160,8 @@ export default function abilityTest() {
          *           is valid (1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_0900', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        it('ACTS_AACommand_finish_01_0900', 0, async (done: Function) => {
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, 1).then(() => {
                 console.log("ACTS_AACommand_finish_01_0900 finishTest  test  end ========> callback " )
                 done()
@@ -174,7 +174,7 @@ export default function abilityTest() {
          *           mode. The msg parameter is invalid(null) and the code parameter is valid (1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_1000', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_1000', 0, async (done: Function) => {
             done()
             globalThis.abilityDelegator.finishTest(null, 1)
             
@@ -186,7 +186,7 @@ export default function abilityTest() {
          *           mode. The msg parameter is invalid(undefined) and the code parameter is valid (1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_1100', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_1100', 0, async (done: Function) => {
             done()
             globalThis.abilityDelegator.finishTest(undefined, 1)
             
@@ -199,8 +199,8 @@ export default function abilityTest() {
          *           is valid (Number.MAX_VALUE)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_1200', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        it('ACTS_AACommand_finish_01_1200', 0, async (done: Function) => {
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MAX_VALUE).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1200 finishTest  test  end ========> callback " )
                 done()
@@ -214,8 +214,8 @@ export default function abilityTest() {
          *           is valid (Number.MIN_VALUE)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_1300', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        it('ACTS_AACommand_finish_01_1300', 0, async (done: Function) => {
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1300 finishTest  test  end ========> callback " )
                 done()
@@ -229,8 +229,8 @@ export default function abilityTest() {
          *           is valid (Number.MAX_VALUE+1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_1400', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        it('ACTS_AACommand_finish_01_1400', 0, async (done: Function) => {
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE+1).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1400 finishTest  test  end ========> callback " )
                 done()
@@ -244,8 +244,8 @@ export default function abilityTest() {
          *           is valid (Number.MIN_VALUE-1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_1500', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        it('ACTS_AACommand_finish_01_1500', 0, async (done: Function) => {
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE-1).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1500 finishTest  test  end ========> callback " )
                 done()
@@ -259,9 +259,9 @@ export default function abilityTest() {
          *           is valid (ABCD)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_01_1600', 0, async function (done) {
-            var code = null
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+        it('ACTS_AACommand_finish_01_1600', 0, async (done: Function) => {
+            let code = null
+            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             code = globalThis.abilityDelegator.finishTest(msg, 'ABCD')
             setTimeout(() => {
                 console.log('ACTS_AACommand_finish_01_1600 code:'+JSON.stringify(code))

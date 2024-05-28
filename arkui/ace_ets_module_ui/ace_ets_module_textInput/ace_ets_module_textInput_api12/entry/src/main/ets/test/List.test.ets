@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,13 @@
  */
 
 import textInputUnderlineColorTest from "./component/textInputUnderlineColor.test.ets";
+import textInputMaxFontSize from "./component/textInputMaxFontSize.test.ets";
+import textInputMinFontSize from "./component/textInputMinFontSize.test.ets";
+import textInputHeightAdaptivePolicy from "./component/textInputHeightAdaptivePolicy.test.ets";
 
 export default function testsuite() {
   textInputUnderlineColorTest();
+  textInputMaxFontSize();
+  textInputMinFontSize();
+  textInputHeightAdaptivePolicy();
 }

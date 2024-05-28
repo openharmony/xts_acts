@@ -27,7 +27,9 @@
         {
             "type": "PushKit",
             "push": [
-                "./resource/image/test_large.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files"
+                "./resource/image/test_large.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files",
+                "./resource/image/moving_test.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files",
+                "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files"
             ]
         },
         {

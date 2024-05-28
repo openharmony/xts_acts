@@ -404,7 +404,7 @@ export default function requestVideoNativeTest() {
      * @tc.level     : Level 0
      */
     it('request_video_native_src_video_dest_image', 0, async function (done) {
-      let testNum = 'request_video_native_src_image_dest_video';
+      let testNum = 'request_video_native_src_video_dest_image';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video_native.mp4");
         let fetchResult = await helper.getAssets(fetchOps);

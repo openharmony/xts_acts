@@ -20,6 +20,7 @@ import hfp from '@ohos.bluetooth.hfp';
 import pan from '@ohos.bluetooth.pan';
 import map from '@ohos.bluetooth.map';
 import pbap from '@ohos.bluetooth.pbap';
+import bluetooth from '@ohos.bluetooth.baseProfile';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
@@ -241,9 +242,10 @@ describe('btBaseProfileTest', function() {
      */
      it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0700', 0, async function (done) {
         function onReceiveEvent(data) {
-            console.info('connection state change:'+ JSON.stringify(data));
-            console.info('connection state change:'+ data.deviceId);
-            console.info('connection state change:'+ data.state);
+            console.info('connection StateChangeParam:'+ JSON.stringify(data));
+            console.info('connection StateChangeParam deviceId:'+ data.deviceId);
+            console.info('connection StateChangeParam state:'+ data.state);
+            console.info('connection StateChangeParam cause:'+ data.cause);
         }
         try {
             HandsFreeAudioGatewayProfile.on('connectionStateChange', onReceiveEvent);
@@ -493,6 +495,35 @@ describe('btBaseProfileTest', function() {
             expect(true).assertEqual(pbapServerProfile != null);
         } catch (err) {
             console.error("bluetooth pbap pbapServerProfile errCode:" + err.code + ",errMessage:" + err.message);
+            expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHPROFILE_CONSTANT_0100
+     * @tc.name test DisconnectCause
+     * @tc.desc Test DisconnectCause api12.
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHPROFILE_CONSTANT_0100', 0, async function (done) {
+        try {
+            let userDisconnect = bluetooth.DisconnectCause.USER_DISCONNECT;
+            let connectFromKeyboard = bluetooth.DisconnectCause.CONNECT_FROM_KEYBOARD;
+            let connectFromMouse = bluetooth.DisconnectCause.CONNECT_FROM_MOUSE;
+            let connectFromCar = bluetooth.DisconnectCause.CONNECT_FROM_CAR;
+            let tooManyConnectedDevices = bluetooth.DisconnectCause.TOO_MANY_CONNECTED_DEVICES;
+            let connectFailInternal = bluetooth.DisconnectCause.CONNECT_FAIL_INTERNAL;
+
+            expect(userDisconnect).assertEqual(0);
+            expect(connectFromKeyboard).assertEqual(1);
+            expect(connectFromMouse).assertEqual(2);
+            expect(connectFromCar).assertEqual(3);
+            expect(tooManyConnectedDevices).assertEqual(4);
+            expect(connectFailInternal).assertEqual(5);
+        } catch (err) {
+            console.info("DisconnectCause errCode:" + err.code + ",errMessage:" + err.message);
             expect().assertFail();
         }
         done();

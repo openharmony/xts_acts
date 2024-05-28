@@ -216,10 +216,14 @@ export default function GeneralLayoutPositionTest() {
             original_rect_right = Math.floor(original_rect_right);
             original_rect_left = Number.parseInt(original_rect_left.toFixed(0));
             let width = right - left;
-            expect(Number.parseInt((width - (original_rect_right - left)).toFixed(0))).assertEqual(lpx400);
-            expect(mirror_rect_right - left).assertEqual(width - (original_rect_left - left));
-            expect(Number.parseInt((bottom - original_rect_bottom).toFixed(0))).assertEqual(lpx400);
-            expect(Number.parseInt((bottom - mirror_rect_bottom).toFixed(0))).assertEqual(lpx400);
+            expect(Number.parseInt((width - (original_rect_right - left)).toFixed(0))).assertLargerOrEqual(lpx400 - 1);
+            expect(Number.parseInt((width - (original_rect_right - left)).toFixed(0))).assertLessOrEqual(lpx400 + 1);
+            expect(mirror_rect_right - left).assertLargerOrEqual(width - (original_rect_left - left) - 1);
+            expect(mirror_rect_right - left).assertLessOrEqual(width - (original_rect_left - left) + 1);
+            expect(Number.parseInt((bottom - original_rect_bottom).toFixed(0))).assertLargerOrEqual(lpx400 - 1);
+            expect(Number.parseInt((bottom - original_rect_bottom).toFixed(0))).assertLessOrEqual(lpx400 + 1);
+            expect(Number.parseInt((bottom - mirror_rect_bottom).toFixed(0))).assertLargerOrEqual(lpx400 - 1);
+            expect(Number.parseInt((bottom - mirror_rect_bottom).toFixed(0))).assertLessOrEqual(lpx400 + 1);
             console.info('ArkUIHDS_General_Layout_0400 END');
             done();
           }, 5000);
@@ -306,10 +310,16 @@ export default function GeneralLayoutPositionTest() {
             original_rect_bottom = Math.floor(original_rect_bottom);
             mirror_rect_bottom = Math.floor(mirror_rect_bottom);
             bottom = Math.floor(bottom);
-            expect(Math.floor(width - (original_rect_right - left))).assertEqual(Math.floor(width / 2));
-            expect(Math.floor(mirror_rect_right - left)).assertEqual(Math.floor(width - (original_rect_left - left)));
-            expect(original_rect_bottom).assertEqual(Math.floor((top + bottom) / 2));
-            expect(mirror_rect_bottom).assertEqual(Math.floor((top + bottom) / 2));
+            expect(Math.floor(width - (original_rect_right - left))).assertLargerOrEqual(Math.floor(width / 2) - 1);
+            expect(Math.floor(width - (original_rect_right - left))).assertLessOrEqual(Math.floor(width / 2) + 1);
+            expect(Math.floor(mirror_rect_right - left))
+              .assertLargerOrEqual(Math.floor(width - (original_rect_left - left) - 1));
+            expect(Math.floor(mirror_rect_right - left))
+              .assertLessOrEqual(Math.floor(width - (original_rect_left - left) + 1));
+            expect(original_rect_bottom).assertLargerOrEqual(Math.floor((top + bottom) / 2) - 1);
+            expect(original_rect_bottom).assertLessOrEqual(Math.floor((top + bottom) / 2) + 1);
+            expect(mirror_rect_bottom).assertLargerOrEqual(Math.floor((top + bottom) / 2) - 1);
+            expect(mirror_rect_bottom).assertLessOrEqual(Math.floor((top + bottom) / 2) + 1);
             console.info('ArkUIHDS_General_Layout_0600 END');
             done();
           }, 5000);

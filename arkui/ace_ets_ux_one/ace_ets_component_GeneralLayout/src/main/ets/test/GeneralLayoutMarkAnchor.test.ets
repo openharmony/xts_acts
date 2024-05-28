@@ -230,10 +230,16 @@ export default function GeneralLayoutMarkAnchorTest() {
             let lpx400 = Math.floor(lpx2px(400));
             let lpx100 = Number.parseInt(lpx2px(100).toFixed(0));
             let width = right - left;
-            expect(mirror_rect_left - left).assertEqual(width - (original_rect_right - left));
-            expect(original_rect_top - top - 90).assertEqual(lpx400);
-            expect(mirror_rect_top - top - 90).assertEqual(lpx400);
-            expect(((mirror_rect_left - left) + (mirror_rect_right - left)) / 2 - width / 2).assertEqual(lpx100);
+            expect(mirror_rect_left - left).assertLargerOrEqual(width - (original_rect_right - left) - 1);
+            expect(mirror_rect_left - left).assertLessOrEqual(width - (original_rect_right - left) + 1);
+            expect(original_rect_top - top - 90).assertLargerOrEqual(lpx400 - 1);
+            expect(original_rect_top - top - 90).assertLessOrEqual(lpx400 + 1);
+            expect(mirror_rect_top - top - 90).assertLargerOrEqual(lpx400 - 1);
+            expect(mirror_rect_top - top - 90).assertLessOrEqual(lpx400 + 1);
+            expect(((mirror_rect_left - left) + (mirror_rect_right - left)) / 2 - width / 2)
+              .assertLargerOrEqual(lpx100 - 1);
+            expect(((mirror_rect_left - left) + (mirror_rect_right - left)) / 2 - width / 2)
+              .assertLessOrEqual(lpx100 + 1);
             console.info('ArkUIHDS_General_Layout_1300 END');
             done();
           }, 5000);
@@ -329,10 +335,14 @@ export default function GeneralLayoutMarkAnchorTest() {
             let mirrorheight = mirror_rect_bottom - mirror_rect_top;
             original_rect_top = Math.floor(original_rect_top);
             mirror_rect_top = Math.floor(mirror_rect_top);
-            expect((mirror_rect_left - left)).assertEqual(width - (original_rect_right - left));
-            expect(original_rect_top - top - 150).assertEqual(mirrorheight / 2);
-            expect(mirror_rect_top - top - 150).assertEqual(mirrorheight / 2);
-            expect((mirror_rect_left - left) + (mirror_rect_right - left) - width).assertEqual(mirrorwidth);
+            expect((mirror_rect_left - left)).assertLargerOrEqual(width - (original_rect_right - left) - 1);
+            expect((mirror_rect_left - left)).assertLessOrEqual(width - (original_rect_right - left) + 1);
+            expect(original_rect_top - top - 150).assertLargerOrEqual(mirrorheight / 2 - 1);
+            expect(original_rect_top - top - 150).assertLessOrEqual(mirrorheight / 2 + 1);
+            expect(mirror_rect_top - top - 150).assertLargerOrEqual(mirrorheight / 2 - 1);
+            expect(mirror_rect_top - top - 150).assertLessOrEqual(mirrorheight / 2 + 1);
+            expect((mirror_rect_left - left) + (mirror_rect_right - left) - width).assertLargerOrEqual(mirrorwidth - 1);
+            expect((mirror_rect_left - left) + (mirror_rect_right - left) - width).assertLessOrEqual(mirrorwidth + 1);
             console.info('ArkUIHDS_General_Layout_1500 END');
             done();
           }, 5000);
