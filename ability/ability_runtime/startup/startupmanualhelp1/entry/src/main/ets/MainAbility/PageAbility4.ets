@@ -192,7 +192,7 @@ export default class PageAbility4 extends UIAbility {
       console.log('StartupTest PageAbility4 startupManager run defaultConfig');
       try {
         startupManager.run(['Sample_009']);
-      } catch(error){
+      }catch(error){
         console.log('StartupTest PageAbility4 startupManager run error: catch error = ' + JSON.stringify(error));
       }
     } else {
@@ -256,7 +256,7 @@ export default class PageAbility4 extends UIAbility {
       }
       try {
         startupManager.run(['Sample_009'], config);
-      } catch(error){
+      }catch(error){
         console.log('StartupTest PageAbility4 startupManager run error: catch error = ' + JSON.stringify(error));
       }
     }

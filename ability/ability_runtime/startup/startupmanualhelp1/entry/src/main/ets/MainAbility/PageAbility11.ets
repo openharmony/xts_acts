@@ -106,7 +106,7 @@ export default class PageAbility11 extends UIAbility {
           console.info('remove后第一次查询,StartupTest PageAbility11 getStartupTaskResult result = ' + result);
           this.pushMsg('remove后第一次查询,StartupTest PageAbility11 getStartupTaskResult result = ' + result);
           apiResult.push(true);
-        } catch(error){
+        }catch(error){
           console.info('remove后第一次查询,StartupTest PageAbility11 getStartupTaskResult error = ' +
             JSON.stringify(error));
           this.pushMsg('remove后第一次查询,StartupTest PageAbility11 getStartupTaskResult error = ' +
@@ -119,7 +119,7 @@ export default class PageAbility11 extends UIAbility {
         try {
           startupManager.removeStartupTaskResult('Sample_019');
           apiResult.push(true);
-        } catch(error){
+        }catch(error){
           console.info('第二次remove,StartupTest PageAbility11 removeStartupTaskResult ');
           this.pushMsg('第二次remove,StartupTest PageAbility11 removeStartupTaskResult');
           apiResult.push(false);
@@ -139,7 +139,7 @@ export default class PageAbility11 extends UIAbility {
           console.info('第二次remove后查询,StartupTest PageAbility11 getStartupTaskResult result = ' + result);
           this.pushMsg('第二次remove后查询,StartupTest PageAbility11 getStartupTaskResult result = ' + result);
           apiResult.push(true);
-        } catch(error){
+        }catch(error){
           console.info('第二次remove后查询,StartupTest PageAbility11 getStartupTaskResult error = ' + 
             JSON.stringify(error));
           this.pushMsg('第二次remove后查询,StartupTest PageAbility11 getStartupTaskResult error = ' + 
@@ -154,7 +154,7 @@ export default class PageAbility11 extends UIAbility {
         try {
           startupManager.removeStartupTaskResult('Sample_019');
           apiResult.push(true);
-        } catch(error){
+        }catch(error){
           console.info('第三次remove,StartupTest PageAbility11 removeStartupTaskResult ');
           this.pushMsg('第三次remove,StartupTest PageAbility11 removeStartupTaskResult');
           apiResult.push(false);
@@ -166,7 +166,7 @@ export default class PageAbility11 extends UIAbility {
         try {
           startupManager.removeStartupTaskResult('Sample_019');
           apiResult.push(true);
-        } catch(error){
+        }catch(error){
           console.info('第四次remove,StartupTest PageAbility11 removeStartupTaskResult ');
           this.pushMsg('第四次remove,StartupTest PageAbility11 removeStartupTaskResult');
           apiResult.push(false);
@@ -179,7 +179,7 @@ export default class PageAbility11 extends UIAbility {
         try {
           startupManager.removeAllStartupTaskResults();
           apiResult.push(true);
-        } catch(error){
+        }catch(error){
           console.info('removeAllStartupTaskResults,StartupTest PageAbility11 removeStartupTaskResult');
           this.pushMsg('removeAllStartupTaskResults,StartupTest PageAbility11 removeStartupTaskResult');
           apiResult.push(false);
