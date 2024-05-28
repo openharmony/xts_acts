@@ -74,6 +74,11 @@ import Text_lineSpacingTest from './TextTest/TextAPITest/Text_lineSpacingTest.te
 import marqueeOptionsTest from './TextTest/TextAPITest/marqueeOptionsTest.test'
 import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
 
+import EffectFillStyle from './SymbolGlyphTest/EffectFillStyle.test'
+import EffectScope from './SymbolGlyphTest/EffectScope.test'
+import menuPolicyHIDE from './RichEditorTest/menuPolicyHIDE.test'
+import menuPolicySHOW from './RichEditorTest/menuPolicySHOW.test'
+
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -135,4 +140,9 @@ export default function testsuite() {
   Text_lineSpacingTest();
   marqueeOptionsTest();
   textStrategyJsunit();
+
+  EffectFillStyle()
+  EffectScope()
+  menuPolicyHIDE()
+  menuPolicySHOW()
 }
