@@ -36,7 +36,7 @@
       },
       {
         "name": "SingleStartAbility",
-        "srcEntry": "./ets/MainAbility/SingleStartAbility.ts",
+        "srcEntry": "./ets/MainAbility/SingleStartAbility.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -45,7 +45,7 @@
       },
       {
         "name": "PageAbility2",
-        "srcEntry": "./ets/MainAbility/PageAbility2.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility2.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -54,7 +54,7 @@
       },
       {
         "name": "PageAbility3",
-        "srcEntry": "./ets/MainAbility/PageAbility3.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility3.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -63,7 +63,7 @@
       },
       {
         "name": "PageAbility4",
-        "srcEntry": "./ets/MainAbility/PageAbility4.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility4.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -72,7 +72,7 @@
       },
       {
         "name": "PageAbility5",
-        "srcEntry": "./ets/MainAbility/PageAbility5.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility5.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -81,7 +81,7 @@
       },
       {
         "name": "PageAbility6",
-        "srcEntry": "./ets/MainAbility/PageAbility6.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility6.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -90,7 +90,7 @@
       },
       {
         "name": "PageAbility7",
-        "srcEntry": "./ets/MainAbility/PageAbility7.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility7.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -99,7 +99,7 @@
       },
       {
         "name": "SingleStartAbility2",
-        "srcEntry": "./ets/MainAbility/SingleStartAbility2.ts",
+        "srcEntry": "./ets/MainAbility/SingleStartAbility2.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -108,7 +108,7 @@
       },
       {
         "name": "PageAbility8",
-        "srcEntry": "./ets/MainAbility/PageAbility8.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility8.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -117,7 +117,7 @@
       },
       {
         "name": "PageAbility9",
-        "srcEntry": "./ets/MainAbility/PageAbility9.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility9.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -126,7 +126,7 @@
       },
       {
         "name": "PageAbility10",
-        "srcEntry": "./ets/MainAbility/PageAbility10.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility10.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -135,7 +135,7 @@
       },
       {
         "name": "PageAbility11",
-        "srcEntry": "./ets/MainAbility/PageAbility11.ts",
+        "srcEntry": "./ets/MainAbility/PageAbility11.ets",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -146,7 +146,7 @@
     "extensionAbilities": [
       {
         "name": "Sample_001",
-        "srcEntry": "./ets/startup/Sample_001.ts",
+        "srcEntry": "./ets/startup/Sample_001.ets",
         "description": "Sample_001",
         "type": "embeddedUI",
         "label": "Sample_001",
@@ -154,7 +154,7 @@
       },
       {
         "name": "Sample_002",
-        "srcEntry": "./ets/startup/Sample_002.ts",
+        "srcEntry": "./ets/startup/Sample_002.ets",
         "description": "Sample_002",
         "type": "embeddedUI",
         "label": "Sample_002",
@@ -162,7 +162,7 @@
       },
       {
         "name": "Sample_003",
-        "srcEntry": "./ets/startup/Sample_003.ts",
+        "srcEntry": "./ets/startup/Sample_003.ets",
         "description": "Sample_003",
         "type": "embeddedUI",
         "label": "Sample_003",
@@ -170,7 +170,7 @@
       },
       {
         "name": "Sample_004",
-        "srcEntry": "./ets/startup/Sample_004.ts",
+        "srcEntry": "./ets/startup/Sample_004.ets",
         "description": "Sample_004",
         "type": "embeddedUI",
         "label": "Sample_004",
@@ -178,7 +178,7 @@
       },
       {
         "name": "Sample_005",
-        "srcEntry": "./ets/startup/Sample_005.ts",
+        "srcEntry": "./ets/startup/Sample_005.ets",
         "description": "Sample_005",
         "type": "embeddedUI",
         "label": "Sample_005",
@@ -186,7 +186,7 @@
       },
       {
         "name": "Sample_006",
-        "srcEntry": "./ets/startup/Sample_006.ts",
+        "srcEntry": "./ets/startup/Sample_006.ets",
         "description": "Sample_006",
         "type": "embeddedUI",
         "label": "Sample_006",
@@ -194,7 +194,7 @@
       },
       {
         "name": "Sample_007",
-        "srcEntry": "./ets/startup/Sample_007.ts",
+        "srcEntry": "./ets/startup/Sample_007.ets",
         "description": "Sample_007",
         "type": "embeddedUI",
         "label": "Sample_007",
@@ -202,7 +202,7 @@
       },
       {
         "name": "Sample_008",
-        "srcEntry": "./ets/startup/Sample_008.ts",
+        "srcEntry": "./ets/startup/Sample_008.ets",
         "description": "Sample_008",
         "type": "embeddedUI",
         "label": "Sample_008",
@@ -210,7 +210,7 @@
       },
       {
         "name": "Sample_009",
-        "srcEntry": "./ets/startup/Sample_009.ts",
+        "srcEntry": "./ets/startup/Sample_009.ets",
         "description": "Sample_009",
         "type": "embeddedUI",
         "label": "Sample_009",
@@ -218,7 +218,7 @@
       },
       {
         "name": "Sample_010",
-        "srcEntry": "./ets/startup/Sample_010.ts",
+        "srcEntry": "./ets/startup/Sample_010.ets",
         "description": "Sample_010",
         "type": "embeddedUI",
         "label": "Sample_010",
@@ -226,7 +226,7 @@
       },
       {
         "name": "Sample_011",
-        "srcEntry": "./ets/startup/Sample_011.ts",
+        "srcEntry": "./ets/startup/Sample_011.ets",
         "description": "Sample_011",
         "type": "embeddedUI",
         "label": "Sample_011",
@@ -234,7 +234,7 @@
       },
       {
         "name": "Sample_012",
-        "srcEntry": "./ets/startup/Sample_012.ts",
+        "srcEntry": "./ets/startup/Sample_012.ets",
         "description": "Sample_012",
         "type": "embeddedUI",
         "label": "Sample_012",
@@ -242,7 +242,7 @@
       },
       {
         "name": "Sample_013",
-        "srcEntry": "./ets/startup/Sample_013.ts",
+        "srcEntry": "./ets/startup/Sample_013.ets",
         "description": "Sample_013",
         "type": "embeddedUI",
         "label": "Sample_013",
@@ -250,7 +250,7 @@
       },
       {
         "name": "Sample_014",
-        "srcEntry": "./ets/startup/Sample_014.ts",
+        "srcEntry": "./ets/startup/Sample_014.ets",
         "description": "Sample_014",
         "type": "embeddedUI",
         "label": "Sample_014",
@@ -258,7 +258,7 @@
       },
       {
         "name": "Sample_015",
-        "srcEntry": "./ets/startup/Sample_015.ts",
+        "srcEntry": "./ets/startup/Sample_015.ets",
         "description": "Sample_015",
         "type": "embeddedUI",
         "label": "Sample_015",
@@ -266,7 +266,7 @@
       },
       {
         "name": "Sample_016",
-        "srcEntry": "./ets/startup/Sample_016.ts",
+        "srcEntry": "./ets/startup/Sample_016.ets",
         "description": "Sample_016",
         "type": "embeddedUI",
         "label": "Sample_016",
@@ -274,7 +274,7 @@
       },
       {
         "name": "Sample_017",
-        "srcEntry": "./ets/startup/Sample_017.ts",
+        "srcEntry": "./ets/startup/Sample_017.ets",
         "description": "Sample_017",
         "type": "embeddedUI",
         "label": "Sample_017",
@@ -282,7 +282,7 @@
       },
       {
         "name": "Sample_018",
-        "srcEntry": "./ets/startup/Sample_018.ts",
+        "srcEntry": "./ets/startup/Sample_018.ets",
         "description": "Sample_018",
         "type": "embeddedUI",
         "label": "Sample_018",
@@ -290,7 +290,7 @@
       },
       {
         "name": "Sample_019",
-        "srcEntry": "./ets/startup/Sample_019.ts",
+        "srcEntry": "./ets/startup/Sample_019.ets",
         "description": "Sample_019",
         "type": "embeddedUI",
         "label": "Sample_019",
@@ -298,7 +298,7 @@
       },
       {
         "name": "StartupConfig",
-        "srcEntry": "./ets/startup/StartupConfig.ts",
+        "srcEntry": "./ets/startup/StartupConfig.ets",
         "description": "StartupConfig",
         "type": "embeddedUI",
         "label": "StartupConfig",

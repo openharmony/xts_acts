@@ -12,8 +12,21 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import abilityTest from './Ability.test';
 
-export default function testsuite() {
-  abilityTest()
+import StartupTask from '@ohos.app.appstartup.StartupTask';
+import common from '@ohos.app.ability.common';
+
+@Sendable
+export default class Sample_019 extends StartupTask {
+  constructor() {
+    super();
+  }
+  async init(context: common.AbilityStageContext) {
+    console.info('StartupTest Sample_019 init');
+    return 'Sample_019 init success';
+  }
+
+  onDependencyCompleted(dependence: string, result: Object): void {
+
+  }
 }
