@@ -71,6 +71,14 @@ export default function abilityTest() {
       // This API supports only one parameter: clear action function.
     })
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RECORD_UV_VALUE_0200
+     * @tc.name      : AudioRenderer - STATE_RUNNING - Callback
+     * @tc.desc      : AudioRenderer - STATE_RUNNING
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
     it('SUB_MULTIMEDIA_AUDIO_RECORD_UV_VALUE_0200',0, function () {
       audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo).then((data) => {
         audioVolumeGroupManager.getMaxAmplitudeForInputDevice(data[0]).then((value) => {
@@ -88,6 +96,14 @@ export default function abilityTest() {
       })
     })
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_PlAY_UV_VALUE_0200
+     * @tc.name      : AudioRenderer - STATE_RUNNING - Callback
+     * @tc.desc      : AudioRenderer - STATE_RUNNING
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
     it('SUB_MULTIMEDIA_AUDIO_PlAY_UV_VALUE_0200',0, function () {
       audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((data) => {
         audioVolumeGroupManager.getMaxAmplitudeForOutputDevice(data[0]).then((value) => {
