@@ -19,7 +19,8 @@ import { BusinessError } from '@ohos.base'
 import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, setTransferListTest,
   testString, testTime, testNumber, testTaskPool, promiseCase, printArgs, asyncSum,
   printArgsFunc, Sum, delaySum, Add, funcStrCat, arraySum, objectSum, Multi, AdditionDelay, WaitforRunner,
-  errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc } from './testFunclist'
+  errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc,
+  isConcurrentTest1, isConcurrentTest2 } from './testFunclist'
 import { A, B, StrCat} from './exportFunclist'
 
 export default function TaskPoolTest() {
@@ -3019,6 +3020,22 @@ export default function TaskPoolTest() {
       }).catch((e:BusinessError)=>{
         expect((e as BusinessError).toString()).assertContain("this is an error");
       })
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0138
+     * @tc.name      : TaskPoolTestClass115
+     * @tc.desc      : Supports judging whether it is concurrent function
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass138', 0, async (done: Function) => {
+      let ret : boolean = taskpool.isConcurrent(isConcurrentTest1)
+      expect(ret).assertEqual(true);
+      ret = taskpool.isConcurrent(isConcurrentTest2)
+      expect(ret).assertEqual(false)
       done();
     })
   })
