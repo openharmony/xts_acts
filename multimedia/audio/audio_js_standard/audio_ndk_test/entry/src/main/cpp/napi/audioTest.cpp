@@ -3098,7 +3098,7 @@ static napi_value AudioAudioInternalRecordingSuccess02(napi_env env, napi_callba
     OH_AudioStream_PrivacyType type_get;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererPrivacy(builder, type);
     OH_AudioStream_Result result1 = OH_AudioRenderer_GetRendererPrivacy(builder, &type_get);
-    if (result == AUDIOSTREAM_SUCCESS && result1 == AUDIOSTREAM_SUCCESS && type_get == AUDIO_STREAM_PRIVACY_TYPE_PRIVATE){
+    if (result == AUDIOSTREAM_SUCCESS && result1 == AUDIOSTREAM_SUCCESS && type_get == AUDIO_STREAM_PRIVACY_TYPE_PRIVATE) {
         result = AUDIOSTREAM_SUCCESS;
     } else {
         result = AUDIOSTREAM_ERROR_INVALID_PARAM;
@@ -3391,7 +3391,7 @@ static napi_value Init(napi_env env, napi_value exports)
             AudioAudioDeviceDescriptorGetDeviceEncodingTypes_003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioAudioDeviceDescriptorGetDeviceEncodingTypes_004", nullptr,
             AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"audioAudioInternalRecordingSuccess01", nullptr, 
+        {"audioAudioInternalRecordingSuccess01", nullptr,
             AudioAudioInternalRecordingSuccess01, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioAudioInternalRecordingSuccess02", nullptr,
             AudioAudioInternalRecordingSuccess02, nullptr, nullptr, nullptr, napi_default, nullptr},
