@@ -3630,5 +3630,28 @@ export default function AVSession() {
             } 
         })
 
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_0100
+         * @tc.name      : getAllCastDisplays
+         * @tc.desc      : Testing call getAllCastDisplays(6600101)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_0100', 2, async function (done) {
+            session.getAllCastDisplays().then((data) => {
+                if (Array.isArray(data)) {
+                        console.info(`getAllCastDisplays success: ${JSON.stringify(data)}`);
+                        expect(true).assertTrue();
+                } else {
+                    console.info('getAllCastDisplays failed');
+                    expect(false).assertTrue();
+                    done();
+                }
+        }).catch((err) => {
+            expect(err.code).assertEqual(6600101);
+            console.info(`getAllCastDisplays successfully: ${err.code}, message: ${err.message}`)
+        })
+
     })
 }
