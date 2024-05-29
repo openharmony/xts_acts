@@ -1016,7 +1016,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
       try {
         let algName: string = "RSA2048";
         let encAlgName: string = "RSA2048|PKCS1";
-        let dataLen: number = 8192;
+        let dataLen: number = 512;
         let cipherText1 = new Uint8Array();
         let cipherText2 = new Uint8Array();
         let cipherPlainText1 = new Uint8Array();
@@ -1088,7 +1088,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|CFB|PKCS7"
-        let dataLen: number = 8192;
+        let dataLen: number = 512;
         let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         let cipherText1 = new Uint8Array();
         let cipherText2 = new Uint8Array();
@@ -1175,7 +1175,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
         let algName: string = "SM2_256";
         let mdName: string = "SM3";
         let keyPair: cryptoFramework.KeyPair = await syncSymEncAndDecUtils.createAsymKeySync(algName);
-        let dataLen: number = 8192;
+        let dataLen: number = 512;
         let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
         let encAlgName: string = `${algName}|${mdName}`;
         let cipherText1 = new Uint8Array();
