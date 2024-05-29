@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import audio from '@ohos.multimedia.audio';
+import { BusinessError } from '@ohos.base'
 
 const defaultVolumeGroupId = audio.DEFAULT_VOLUME_GROUP_ID;
 let audioManager = audio.getAudioManager();
@@ -36,10 +37,9 @@ let rendererInfo: audio.AudioRendererInfo = {
   rendererFlags : 0
 }
 
-export default function abilityTest() {
-  describe('ActsAbilityTest', function () {
+export default function maxAmplitudeFor() {
+  describe('maxAmplitudeFor', function () {
    const prame =async ()=>{
-     // @ts-ignore
      audioVolumeManager.getVolumeGroupManager(defaultVolumeGroupId, (err: BusinessError, value: audio.AudioVolumeGroupManager) => {
        if (err) {
          console.error(`Failed to obtain the volume group infos list. ${err}`);
@@ -84,12 +84,10 @@ export default function abilityTest() {
         audioVolumeGroupManager.getMaxAmplitudeForInputDevice(data[0]).then((value) => {
           console.info(`mic volatileume amplitude is: ${value}`);
           expect(value).assertEqual(0);
-          // @ts-ignore
         }).catch((err: BusinessError) => {
           expect(false).assertTrue();
           console.error("getMaxAmplitudeForInputDevice error" + JSON.stringify(err));
         })
-      // @ts-ignore
       }).catch((err: BusinessError) => {
         expect(false).assertTrue();
         console.error("get outputDeviceId error" + JSON.stringify(err));
@@ -109,12 +107,10 @@ export default function abilityTest() {
         audioVolumeGroupManager.getMaxAmplitudeForOutputDevice(data[0]).then((value) => {
           console.info(`mic volatileume amplitude is: ${value}`);
           expect(value).assertEqual(0);
-          // @ts-ignore
         }).catch((err: BusinessError) => {
           console.error("getMaxAmplitudeForOutputDevice error" + JSON.stringify(err));
           expect(false).assertTrue();
         })
-        // @ts-ignore
       }).catch((err: BusinessError) => {
         console.error("getPreferOutputDeviceForRendererInfo error" + JSON.stringify(err));
         expect(false).assertTrue();
