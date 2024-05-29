@@ -17,32 +17,36 @@ import Ability from '@ohos.app.ability.UIAbility'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/List.test'
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import window from '@ohos.window';
+import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base';
 
-async function startAbilityTest(TAG, context) {
-    let wantInfo = {
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
+
+async function startAbilityTest(TAG:string, context:common.UIAbilityContext) {
+    let wantInfo:Want = {
         bundleName: "com.example.aacommandprintonetest",
         abilityName: "MainAbility"
     }
     await context.startAbility(wantInfo).then((data) => {
         console.log(TAG + "startAbility data : " + JSON.stringify(data));
-    }).catch((err) => {
+    }).catch((err:BusinessError) => {
         console.log(TAG + "startAbility err : " + JSON.stringify(err));
     })
 }
 
 export default class MainAbility extends Ability {
-    async onCreate(want, launchParam) {
+    async onCreate(want:Want, launchParam:AbilityConstant.LaunchParam) {
         globalThis.abilityContext = this.context;
         console.log('MainAbility onCreate')
-        let cmd: any
-        let abilityDelegatorArguments: any
-        let abilityDelegator: any
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
+        let cmd:string = ""
 
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
 
         cmd = 'aa test -b com.example.aacommandrelyhap -m entry_test  -s class AACommandPrintOneTest#ACTS_AACo' +
             'mmand_print_01_0100 -s unittest OpenHarmonyTestRunner'
@@ -155,9 +159,9 @@ export default class MainAbility extends Ability {
         console.log('MainAbility onDestroy')
     }
 
-    onWindowStageCreate(windowStage) {
+    onWindowStageCreate(windowStage:window.WindowStage) {
         console.log('MainAbility onWindowStageCreate')
-        windowStage.setUIContent(this.context, 'pages/index', null)
+        windowStage.loadContent('pages/index', null)
 
     }
 

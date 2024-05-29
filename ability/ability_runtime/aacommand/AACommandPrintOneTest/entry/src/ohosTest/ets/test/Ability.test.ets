@@ -14,26 +14,28 @@
 */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
 
-let msg: any
-let msgcopy: any
+let msg:string = ""
+let msgcopy:string = ""
 
 export default function abilityTest() {
-    describe('ActsAACommandPrinOneTest', function () {
+    describe('ActsAACommandPrinOneTest', () =>  {
 
-        afterEach(async (done) => {
+        afterEach(async (done:Function) => {
             console.log("ActsAACommandPrinOneTest afterEach called");
-            let wantInfo = {
+            let wantInfo:Want = {
                 bundleName: "com.example.aacommandprintonetest",
                 abilityName: "MainAbility"
             }
-            await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
+            await globalThis.abilityContext.startAbility(wantInfo).then((data:Object) => {
                 console.log("ActsAACommandPrinOneTest startAbility data : " + JSON.stringify(data));
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
                 console.log("ActsAACommandPrinOneTest startAbility err : " + JSON.stringify(err));
             })
 
-            setTimeout(function () {
+            setTimeout(() =>  {
                 console.log("ActsAACommandPrinOneTest afterEach end");
                 done();
             }, 1000);
@@ -46,7 +48,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-         it('ACTS_AACommand_print_0100', 0, async function (done) {
+         it('ACTS_AACommand_print_0100', 0, async (done:Function) =>  {
             console.log("ACTS_AACommand_print_0100 --- start")
             msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             expect(globalThis.stdResult3).assertContain(msg);
@@ -60,7 +62,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0200', 0, async function (done) {
+        it('ACTS_AACommand_print_0200', 0, async (done:Function) =>  {
             console.log("ACTS_AACommand_print_0200 --- start")
             msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
                 'aaaaaaaaa' +
@@ -84,7 +86,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0300', 0, async function (done) {
+        it('ACTS_AACommand_print_0300', 0, async (done:Function) =>  {
             console.log("ACTS_AACommand_print_0300 --- start")
             msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
                 'aaaaaaaaaa' +
@@ -112,7 +114,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0400', 0, async function (done) {
+        it('ACTS_AACommand_print_0400', 0, async (done:Function) =>  {
             console.log("ACTS_AACommand_print_0400 --- start")
             msg = 'start ability successfully'
             expect(globalThis.stdResult6).assertContain(msg);
@@ -126,7 +128,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0500', 0, async function (done) {
+        it('ACTS_AACommand_print_0500', 0, async (done:Function) =>  {
             console.log("ACTS_AACommand_print_0500 --- start")
             msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             expect(globalThis.stdResult7).assertContain(msg);
@@ -140,7 +142,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally
          *           through the test command.
          */
-        it('ACTS_AACommand_print_0600', 0, async function (done) {
+        it('ACTS_AACommand_print_0600', 0, async (done:Function) =>  {
             console.log("ACTS_AACommand_print_0600 --- start")
             msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
                 'aaaaaaaaaa' +
@@ -164,7 +166,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0700', 0, async function (done) {
+        it('ACTS_AACommand_print_0700', 0, async (done:Function) =>  {
             console.log("ACTS_AACommand_print_0700 --- start")
             msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
                 'aaaaaaaaaa' +
@@ -192,7 +194,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally
          *           through the test command.
          */
-        it('ACTS_AACommand_print_0800', 0, async function (done) {
+        it('ACTS_AACommand_print_0800', 0, async (done:Function) =>  {
             console.log("ACTS_AACommand_print_0800 --- start")
             msg = 'start ability successfully'
             expect(globalThis.stdResult10).assertContain(msg);
