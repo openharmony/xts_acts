@@ -79,6 +79,7 @@ import imageAddApi from './ImageTest/imageAddApi.test'
 import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
 import styledStringApi from './TextTest/styledStringApi.test'
 import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
+import StyledStringApi1 from './StyledString/StyledStringApi1.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -148,4 +149,6 @@ export default function testsuite() {
   SymbolGlyphApi()
   styledStringApi()
   SelectionMenuApi()
+  StyledStringApi1();
+
 }

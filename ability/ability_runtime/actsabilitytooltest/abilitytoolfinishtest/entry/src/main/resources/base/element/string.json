@@ -1,24 +1,16 @@
 {
   "string": [
     {
-      "name": "entry_test_desc",
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
       "value": "description"
     },
     {
-      "name": "MainAbility_desc",
-      "value": "description"
-    },
-    {
-      "name": "MainAbility_label",
+      "name": "EntryAbility_label",
       "value": "label"
-    },
-    {
-      "name": "app_name",
-      "value": "AACommandtest"
-    },
-    {
-      "name": "description_application",
-      "value": "demo for test"
-   }
+    }
   ]
 }

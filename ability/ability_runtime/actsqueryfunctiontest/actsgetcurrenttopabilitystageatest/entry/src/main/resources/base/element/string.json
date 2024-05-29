@@ -1,40 +1,16 @@
 {
   "string": [
     {
-      "name": "entry_desc",
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
       "value": "description"
     },
     {
-      "name": "MainAbility_desc",
-      "value": "description"
-    },
-    {
-      "name": "MainAbility_label",
+      "name": "EntryAbility_label",
       "value": "label"
-    },
-    {
-      "name": "Ability1_desc",
-      "value": "description"
-    },
-    {
-      "name": "Ability1_label",
-      "value": "label"
-    },
-    {
-      "name": "Ability2_desc",
-      "value": "description"
-    },
-    {
-      "name": "Ability2_label",
-      "value": "label"
-    },
-    {
-      "name": "app_name",
-      "value": "ActsGetcurrentTopAbilityStageaTest"
-    },
-    {
-      "name": "description_application",
-      "value": "demo for test"
-   }
+    }
   ]
 }

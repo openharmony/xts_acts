@@ -64,6 +64,8 @@
     "MainAbility/pages/Text/getLayout",
     "MainAbility/pages/SymbolGlyph/SymbolGlyphApi",
     "MainAbility/pages/RichEditor/SelectionMenuApi",
-    "MainAbility/pages/Image/imageAddApi"
+    "MainAbility/pages/Image/imageAddApi",
+    "MainAbility/pages/StyledString/StyledStringApi1"
+
   ]
 }
