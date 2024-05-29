@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import UIContextApi1 from './UIContext/UIContextApi1.test'
-import UIContextTestCase from './UIContext/UIContextTestCase.test'
-export default function testsuite() {
-  UIContextApi1();
-  UIContextTestCase();
+import themePageTest from "./theme/themePageTest.test.ets";
+import themePageToggleTest from "./theme/themePageToggleTest.test.ets";
+import themePageSliderTest from "./theme/themePageSliderTest.test.ets";
 
+export default function testsuite() {
+  themePageTest();
+  themePageToggleTest();
+  themePageSliderTest();
 }

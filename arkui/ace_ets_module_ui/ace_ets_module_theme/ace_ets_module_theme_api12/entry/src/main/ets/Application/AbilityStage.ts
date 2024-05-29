@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import UIContextApi1 from './UIContext/UIContextApi1.test'
-import UIContextTestCase from './UIContext/UIContextTestCase.test'
-export default function testsuite() {
-  UIContextApi1();
-  UIContextTestCase();
+import AbilityStage from '@ohos.app.ability.AbilityStage';
 
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    console.log('[Demo] MyAbilityStage onCreate');
+    globalThis.stageOnCreateRun = 1;
+    globalThis.stageContext = this.context;
+  }
 }
