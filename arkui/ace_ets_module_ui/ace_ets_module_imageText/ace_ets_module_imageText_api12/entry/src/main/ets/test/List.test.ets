@@ -44,10 +44,15 @@ import APIUnderlineColorTest from './TextInput/APIUnderlineColorTest.test';
 import srcIndexTest from './MatrixTest/srcIndexTest.test'
 import dstIndexTest from './MatrixTest/dstIndexTest.test'
 import underlineColor from './TextInput/underlineColor.test'
+
 import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
 import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
 import RichEditorApi5 from './RichEditor/RichEditorApi5.test'
 import RichEditorChangeCallback from './RichEditor/RichEditorChangeCallback.test'
+import RichEditorWordBreakJsunitTest from './RichEditorEnhance01/RichEditorWordBreakJsunitTest.test'
+import RichEditorMenuPolicyJsunit from './RichEditorEnhance01/RichEditorMenuPolicyJsunit.test'
+import RichEditorTextStyleJsunit from './RichEditorEnhance01/RichEditorTextStyleJsunit.test'
+import RichEditorFontFeatureJsunit from './RichEditorEnhance01/RichEditorFontFeatureJsunit.test'
 import RichEditor1 from './RichEditorEnhance/RichEditor1.test'
 import RichEditor2 from './RichEditorEnhance/RichEditor2.test'
 import RichEditor3 from './RichEditorEnhance/RichEditor3.test'
@@ -56,6 +61,18 @@ import RichEditor5 from './RichEditorEnhance/RichEditor5.test'
 import RichEditor6 from './RichEditorEnhance/RichEditor6.test'
 import RichEditor7 from './RichEditorEnhance/RichEditor7.test'
 import TextInputTextAreaSearch from './RichEditorEnhance/TextInputTextAreaSearch.test'
+import TextAreaApi1 from './TextArea/TextAreaApi1.test'
+import TextAreaApi2 from './TextArea/TextAreaApi2.test'
+import TextAreaApi3 from './TextArea/TextAreaApi3.test'
+import textApi1 from './Text/TextApi1.test'
+
+import TextArea_lineBreakStrategyTest from './TextAreaTest/TextAreaAPITest/TextArea_lineBreakStrategyTest.test'
+import TextArea_lineSpacingTest from './TextAreaTest/TextAreaAPITest/TextArea_lineSpacingTest.test'
+import TextInput_lineBreakStrategyTest from './TextInput/TextInputAPITest/TextInput_lineBreakStrategyTest.test'
+import Text_lineBreakStrategyTest from './TextTest/TextAPITest/Text_lineBreakStrategyTest.test'
+import Text_lineSpacingTest from './TextTest/TextAPITest/Text_lineSpacingTest.test'
+import marqueeOptionsTest from './TextTest/TextAPITest/marqueeOptionsTest.test'
+import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
 import Context from './TextTest/Context.test'
 import getLayout from './TextTest/getLayout.test'
 import imageAddApi from './ImageTest/imageAddApi.test'
@@ -96,12 +113,6 @@ export default function testsuite() {
   onSelectionChange18();
   onSelectionChange19();
   MediaCachedImageTest();
-  Context()
-  getLayout()
-  imageAddApi()
-  SymbolGlyphApi()
-  styledStringApi()
-  SelectionMenuApi()
   onComplete()
   removeStyles()
   clearStyles()
@@ -111,10 +122,15 @@ export default function testsuite() {
   underlineColor();
   srcIndexTest();
   dstIndexTest();
+  
   RichEditorApi1();
   RichEditorApi3();
   RichEditorApi5();
   RichEditorChangeCallback();
+  RichEditorWordBreakJsunitTest();
+  RichEditorMenuPolicyJsunit();
+  RichEditorTextStyleJsunit();
+  RichEditorFontFeatureJsunit();
   RichEditor1();
   RichEditor2();
   RichEditor3();
@@ -127,11 +143,25 @@ export default function testsuite() {
   TextAreaApi2();
   TextAreaApi3();
   textApi1();
+
+  TextArea_lineBreakStrategyTest();
+  TextArea_lineSpacingTest();
+  TextInput_lineBreakStrategyTest();
+  Text_lineBreakStrategyTest();
+  Text_lineSpacingTest();
+  marqueeOptionsTest();
   textStrategyJsunit();
   EffectFillStyle()
   EffectScope()
   menuPolicyHIDE()
   menuPolicySHOW()
+
+  Context()
+  getLayout()
+  imageAddApi()
+  SymbolGlyphApi()
+  styledStringApi()
+  SelectionMenuApi()
   StyledStringApi1();
 
 }
