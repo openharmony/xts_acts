@@ -39,6 +39,7 @@ group("multimedia") {
       "avsource:ActsAVCodecTest",
       "camera/camera_js_standard:camera_framework_ets_hap",
       "camera/camera_ndk_test:camera_framework_ndk_hap",
+      "camera/camera_ndk_xts/OHCameraNdk:ActsMediaCameraNDKTest",
       "camera/camera_picker_test:camera_picker_ets_hap",
       "drm/drm_js_standard/avPlayer:drm_avplayer_js_hap",
       "drm/drm_ndk_test:Drm_Framework_NDK_test",
