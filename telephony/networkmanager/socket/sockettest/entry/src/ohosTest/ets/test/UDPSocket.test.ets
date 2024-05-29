@@ -1951,5 +1951,616 @@ export default function UDPSocketTest() {
         done();
       }
     });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_SetExtraOptions_0600
+     * @tc.name  :  testNetworkMgrSocketUDPSocketSetExtraOptions0600
+     * @tc.desc  :  Set other properties of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0600', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0600';
+      console.info(`${caseName} test start`);
+      try {
+        let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp.bind(UDPAddr1);
+        udp.setExtraOptions(null, (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} err: ${JSON.stringify(err)}`);
+            expectEqual(err.code, 401);
+          } else {
+            expectFail();
+          }
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_SetExtraOptions_0700
+     * @tc.name  :  testNetworkMgrSocketUDPSocketSetExtraOptions0700
+     * @tc.desc  :  Set other properties of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0700', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0700';
+      console.info(`${caseName} test start`);
+      try {
+        let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp.bind(UDPAddr1);
+        udp.setExtraOptions(undefined, (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} err: ${JSON.stringify(err)}`);
+            expectEqual(err.code, 401);
+          } else {
+            expectFail();
+          }
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_SetExtraOptions_0800
+     * @tc.name  :  testNetworkMgrSocketUDPSocketSetExtraOptions0800
+     * @tc.desc  :  Set other properties of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0800', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0800';
+      console.info(`${caseName} test start`);
+      try {
+        let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp.bind(UDPAddr1);
+        let udpextraoptions: socket.UDPExtraOptions = {
+          receiveBufferSize: 1000,
+          sendBufferSize: 1000,
+          reuseAddress: false,
+          socketTimeout: 6000,
+          broadcast: true
+        }
+        udp.setExtraOptions(udpextraoptions).then(() => {
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} err: ${JSON.stringify(err)}`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_SetExtraOptions_0900
+     * @tc.name  :  testNetworkMgrSocketUDPSocketSetExtraOptions0900
+     * @tc.desc  :  Set other properties of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0900', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0900';
+      console.info(`${caseName} test start`);
+      try {
+        let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp.bind(UDPAddr1);
+        let udpextraoptions: socket.UDPExtraOptions = {
+          sendBufferSize: 100,
+        }
+        udp.setExtraOptions(udpextraoptions).then(() => {
+          expectTrue(true);
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} setExtraOptions err: ${JSON.stringify(err)}`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_SetExtraOptions_1000
+     * @tc.name  :  testNetworkMgrSocketUDPSocketSetExtraOptions1000
+     * @tc.desc  :  Set other properties of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions1000', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions1000';
+      console.info(`${caseName} test start`);
+      try {
+        let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp.bind(UDPAddr1);
+        let udpextraoptions: socket.UDPExtraOptions = {
+          receiveBufferSize: 0,
+          sendBufferSize: 0,
+          reuseAddress: true,
+          socketTimeout: 0,
+          broadcast: false
+        }
+        udp.setExtraOptions(udpextraoptions).then(() => {
+          expectTrue(true);
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} setExtraOptions err: ${JSON.stringify(err)}`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_SetExtraOptions_1100
+     * @tc.name  :  testNetworkMgrSocketUDPSocketSetExtraOptions1100
+     * @tc.desc  :  Set other properties of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions1100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions1100';
+      console.info(`${caseName} test start`);
+      try {
+        let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp.bind(UDPAddr1);
+        let udpextraoptions: socket.UDPExtraOptions = {
+          receiveBufferSize: -1,
+          sendBufferSize: -1,
+          reuseAddress: true,
+          socketTimeout: 0,
+          broadcast: false
+        }
+        udp.setExtraOptions(udpextraoptions).then(() => {
+          expectTrue(true);
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} setExtraOptions err: ${JSON.stringify(err)}`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_SetExtraOptions_1200
+     * @tc.name  :  testNetworkMgrSocketUDPSocketSetExtraOptions1200
+     * @tc.desc  :  Set other properties of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions1200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions1200';
+      console.info(`${caseName} test start`);
+      try {
+        let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp.bind(UDPAddr1);
+        let udpextraoptions: socket.UDPExtraOptions = {
+          receiveBufferSize: 0,
+          sendBufferSize: 0,
+          reuseAddress: true,
+          socketTimeout: -1,
+          broadcast: false
+        }
+        udp.setExtraOptions(udpextraoptions).then(() => {
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} setExtraOptions err: ${JSON.stringify(err)}`);
+          expectEqual(err.code, 2301033);
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_SetExtraOptions_1300
+     * @tc.name  :  testNetworkMgrSocketUDPSocketSetExtraOptions1300
+     * @tc.desc  :  Set other properties of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions1300', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions1300';
+      console.info(`${caseName} test start`);
+      try {
+        let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp.bind(UDPAddr1);
+        udp.setExtraOptions(null).then(() => {
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} err: ${JSON.stringify(err)}`);
+          expectEqual(err.code, 401);
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_SetExtraOptions_1400
+     * @tc.name  :  testNetworkMgrSocketUDPSocketSetExtraOptions1400
+     * @tc.desc  :  Set other properties of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions1400', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions1400';
+      console.info(`${caseName} test start`);
+      try {
+        let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp.bind(UDPAddr1);
+        udp.setExtraOptions(undefined).then(() => {
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} err: ${JSON.stringify(err)}`);
+          expectEqual(err.code, 401);
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_On_Message_0100
+     * @tc.name  :  testNetworkMgrSocketUDPSocketOnMessage0100
+     * @tc.desc  :  Subscription to receive message events for UDPSocket connections
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketOnMessage0100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketOnMessage0100';
+      console.info(`${caseName} test start`);
+      try {
+        let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
+        let udp2: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp1.bind(UDPAddr1);
+        await udp2.bind(UDPAddr2);
+        let sendOptions: socket.UDPSendOptions = {
+          data: 'Hello, server!',
+          address: UDPAddr2
+        };
+        udp2.on('message', (value: SocketInfo) => {
+          let str: string = ArrayBufferToString(value.message);
+          console.info(`${caseName} message: ${str}`);
+          console.info(`${caseName} remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
+          expectEqual(str, sendOptions.data as string);
+          console.info(`${caseName} test end`);
+          done();
+        });
+        udp1.send(sendOptions);
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_Off_Message_0100
+     * @tc.name  :  testNetworkMgrSocketUDPSocketOffMessage0100
+     * @tc.desc  :  Unsubscribe from receiving message events for UDPSocket connections
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketOffMessage0100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketOffMessage0100';
+      console.info(`${caseName} test start`);
+      try {
+        let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
+        let udp2: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp1.bind(UDPAddr1);
+        await udp2.bind(UDPAddr2);
+        let sendOptions: socket.UDPSendOptions = {
+          data: 'Hello, server!',
+          address: UDPAddr2
+        };
+        let callback: Callback<socket.SocketMessageInfo> = (value: SocketInfo) => {
+          let str: string = ArrayBufferToString(value.message);
+          console.info(`${caseName} message: ${str}`);
+          console.info(`${caseName} remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        udp2.on('message', callback);
+        udp2.off('message', callback);
+        await udp1.send(sendOptions);
+        expectTrue(true);
+        console.info(`${caseName} test end`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_Off_Message_0200
+     * @tc.name  :  testNetworkMgrSocketUDPSocketOffMessage0200
+     * @tc.desc  :  Unsubscribe from receiving message events for UDPSocket connections
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketOffMessage0200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketOffMessage0200';
+      console.info(`${caseName} test start`);
+      try {
+        let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
+        let udp2: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp1.bind(UDPAddr1);
+        await udp2.bind(UDPAddr2);
+        let sendOptions: socket.UDPSendOptions = {
+          data: 'Hello, server!',
+          address: UDPAddr2
+        };
+        let callback1: Callback<socket.SocketMessageInfo> = (value: SocketInfo) => {
+          let str: string = ArrayBufferToString(value.message);
+          console.info(`${caseName} cb1 message: ${str}`);
+          console.info(`${caseName} cb1 remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        let callback2: Callback<socket.SocketMessageInfo> = (value: SocketInfo) => {
+          let str: string = ArrayBufferToString(value.message);
+          console.info(`${caseName} cb2 message: ${str}`);
+          console.info(`${caseName} cb2 remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        udp2.on('message', callback1);
+        udp2.on('message', callback2);
+        udp2.off('message', callback2);
+        await udp1.send(sendOptions);
+        expectTrue(true);
+        console.info(`${caseName} test end`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_Off_Message_0300
+     * @tc.name  :  testNetworkMgrSocketUDPSocketOffMessage0300
+     * @tc.desc  :  Unsubscribe from receiving message events for UDPSocket connections
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketOffMessage0300', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketOffMessage0300';
+      console.info(`${caseName} test start`);
+      try {
+        let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
+        let udp2: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp1.bind(UDPAddr1);
+        await udp2.bind(UDPAddr2);
+        let sendOptions: socket.UDPSendOptions = {
+          data: 'Hello, server!',
+          address: UDPAddr2
+        };
+        let callback1: Callback<socket.SocketMessageInfo> = (value: SocketInfo) => {
+          let str: string = ArrayBufferToString(value.message);
+          console.info(`${caseName} cb1 message: ${str}`);
+          console.info(`${caseName} cb1 remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        let callback2: Callback<socket.SocketMessageInfo> = (value: SocketInfo) => {
+          let str: string = ArrayBufferToString(value.message);
+          console.info(`${caseName} cb2 message: ${str}`);
+          console.info(`${caseName} cb2 remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        udp2.on('message', callback1);
+        udp2.on('message', callback2);
+        udp2.off('message');
+        await udp1.send(sendOptions);
+        expectTrue(true);
+        console.info(`${caseName} test end`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_On_Close_0100
+     * @tc.name  :  testNetworkMgrSocketUDPSocketOnClose0100
+     * @tc.desc  :  Subscription to UDPSocket connection closure event
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketOnClose0100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketOnClose0100';
+      console.info(`${caseName} test start`);
+      try {
+        let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp1.bind(UDPAddr1);
+        let callback: Callback<void> = () => {
+          console.info(`${caseName} closed`);
+          expectTrue(true);
+          console.info(`${caseName} test end`);
+          done();
+        };
+        udp1.on('close', callback);
+        udp1.close();
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_Off_Close_0200
+     * @tc.name  :  testNetworkMgrSocketUDPSocketOffClose0200
+     * @tc.desc  :  Unsubscribe from the closing event of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketOffClose0200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketOffClose0200';
+      console.info(`${caseName} test start`);
+      try {
+        let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp1.bind(UDPAddr1);
+        let callback1: Callback<void> = () => {
+          console.info(`${caseName} cb1 closed`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        let callback2: Callback<void> = () => {
+          console.info(`${caseName} cb2 closed`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        udp1.on('close', callback1);
+        udp1.on('close', callback2);
+        udp1.off('close', callback2);
+        await udp1.close();
+        expectTrue(true);
+        console.info(`${caseName} test end`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_UDPSocket_Off_Close_0300
+     * @tc.name  :  testNetworkMgrSocketUDPSocketOffClose0300
+     * @tc.desc  :  Unsubscribe from the closing event of UDPSocket connection
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketUDPSocketOffClose0300', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketUDPSocketOffClose0300';
+      console.info(`${caseName} test start`);
+      try {
+        let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
+        await udp1.bind(UDPAddr1);
+        let callback1: Callback<void> = () => {
+          console.info(`${caseName} closed`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        let callback2: Callback<void> = () => {
+          console.info(`${caseName} closed`);
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        udp1.on('close', callback1);
+        udp1.on('close', callback2);
+        udp1.off('close');
+        await udp1.close();
+        expectTrue(true);
+        console.info(`${caseName} test end`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        console.info(`${caseName} test end`);
+        expectFail();
+        done();
+      }
+    });
   });
 }
