@@ -340,6 +340,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
         tensorDesc = createTensorDesc(operandTem.shape.data(),
                                       (uint32_t) operandTem.shape.size(),
                                       operandTem.dataType, operandTem.format);
+        tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 
@@ -376,6 +377,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
         tensorDesc = createTensorDesc(operandTem.shape.data(),
                                       (uint32_t) operandTem.shape.size(),
                                       operandTem.dataType, operandTem.format);
+        tensorDescVec.emplace_back(tensorDesc);
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
         EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_SetTensorType(model, i, operandTem.type));
 

@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 #include <string>
+#include <sys/mman.h>
 
 #include "nncore_const.h"
 #include "mock_idevice.h"
@@ -112,8 +113,7 @@ sptr<INnrtDevice> INnrtDevice::Get(const std::string &serviceName, bool isStub)
 MockIDevice::~MockIDevice()
 {
     for (auto ash : m_ashmems) {
-        ash.second->UnmapAshmem();
-        ash.second->CloseAshmem();
+        ash.second.CloseAshmem();
     }
 }
 
@@ -125,7 +125,6 @@ MockIDevice::MockIDevice()
 MockIPreparedModel::~MockIPreparedModel()
 {
     for (auto ash : m_ashmems) {
-        ash.second->UnmapAshmem();
         ash.second->CloseAshmem();
     }
 }
@@ -238,62 +237,24 @@ int32_t MockIDevice::AllocateBuffer(uint32_t length, SharedBuffer &buffer)
 {
     std::lock_guard<std::mutex> lock(m_mtx);
     for (auto ash:m_ashmems) {
-        if (ash.second->GetAshmemSize() <= 0) {
-            ash.second->CloseAshmem();
+        if (ash.second.GetAshmemSize() <= 0) {
+            ash.second.CloseAshmem();
         }
     }
-    sptr<Ashmem> ashptr = Ashmem::CreateAshmem("allocateBuffer", length);
-    if (ashptr == nullptr) {
-        LOGE("[NNRtTest] Create shared memory failed.");
-        return HDF_FAILURE;
-    }
 
-    if (!ashptr->MapReadAndWriteAshmem()) {
-        LOGE("[NNRtTest] Map allocate buffer failed.");
-        return HDF_FAILURE;
-    }
-
-    buffer.fd = ashptr->GetAshmemFd();
-    buffer.bufferSize = ashptr->GetAshmemSize();
+    buffer.fd = AshmemCreate("allocateBuffer", length);
+    buffer.bufferSize = AshmemGetSize(buffer.fd);
     buffer.offset = 0;
     buffer.dataSize = length;
 
-    m_ashmems[buffer.fd] = ashptr;
-    m_bufferFd = buffer.fd;
+    AshmemSetProt(buffer.fd, PROT_READ | PROT_WRITE);
     return HDF_SUCCESS;
 }
 
 int32_t MockIDevice::ReleaseBuffer(const SharedBuffer &buffer)
 {
-    std::lock_guard<std::mutex> lock(m_mtx);
-    if (m_ashmems.find(buffer.fd) == m_ashmems.end()) {
-        LOGE("[NNRtTest] Find fd failed.");
-        return HDF_FAILURE;
-    }
-    auto ash = m_ashmems[buffer.fd];
-    ash->UnmapAshmem();
-    return HDF_SUCCESS;
-}
-
-int32_t MockIDevice::MemoryCopy(float* data, uint32_t length)
-{
-    std::lock_guard<std::mutex> lock(m_mtx);
-    auto ashptr = m_ashmems[m_bufferFd];
-    if (ashptr == nullptr) {
-        LOGE("[NNRtTest] Read shared memory failed.");
-        return HDF_ERR_MALLOC_FAIL;
-    }
-
-    bool ret = ashptr->MapReadAndWriteAshmem();
-    if (!ret) {
-        LOGE("[NNRtTest] Map fd to write ashptr failed.");
-        return HDF_FAILURE;
-    }
-
-    ret = ashptr->WriteToAshmem(data, length, 0);
-    ashptr->UnmapAshmem();
-    if (!ret) {
-        LOGE("[NNRtTest] Write cache failed.");
+    if (close(buffer.fd) != 0) {
+        LOGE("[mock_idevice] ReleaseBuffer: Close memory fd failed. fd=%d", buffer.fd);
         return HDF_FAILURE;
     }
     return HDF_SUCCESS;
@@ -326,31 +287,34 @@ int32_t MockIPreparedModel::ExportModelCache(std::vector<SharedBuffer>& modelCac
         return HDF_ERR_INVALID_PARAM;
     }
 
-    uint8_t buffer[4] = {0, 1, 2, 3};
-    uint32_t size = sizeof(buffer);
-    sptr<Ashmem> cache = Ashmem::CreateAshmem("cache", size);
-    if (cache == nullptr) {
-        LOGE("[NNRtTest] Create shared memory failed.");
-        return HDF_ERR_MALLOC_FAIL;
-    }
+    uint8_t bufferData[4] = {0, 1, 2, 3};
+    uint32_t size = sizeof(bufferData);
+    SharedBuffer buffer;
+    buffer.fd = AshmemCreate("cache", size);
+    buffer.bufferSize = AshmemGetSize(buffer.fd);
+    buffer.offset = 0;
+    buffer.dataSize = size;
 
-    bool ret = cache->MapReadAndWriteAshmem();
-    if (!ret) {
-        LOGE("[NNRtTest] Map fd to write cache failed.");
+    AshmemSetProt(buffer.fd, PROT_READ | PROT_WRITE);
+
+    void* data = mmap(nullptr, size, PROT_READ | PROT_WRITE, MAP_SHARED, buffer.fd, 0);
+    if (data == MAP_FAILED) {
+        LOGE("[mock_idevice]::ExportModelCache failed, Map fd to address failed:%{public}s.", strerror(errno));
         return HDF_FAILURE;
     }
 
-    int fd = cache->GetAshmemFd();
-    m_ashmems[fd] = cache;
-    ret = cache->WriteToAshmem(buffer, size, 0);
-    cache->UnmapAshmem();
-    if (!ret) {
-        LOGE("[NNRtTest] Write cache failed.");
+    auto memRet = memcpy_s(data, size, bufferData, size);
+    auto unmapResult = munmap(data, size);
+    if (unmapResult != 0) {
+        LOGE("[NNRtTest] ExportModelCache failed, failed to memcpy_s data type.");
         return HDF_FAILURE;
     }
 
-    // SharedBuffer: fd, bufferSize, offset, dataSize
-    modelCache.emplace_back(SharedBuffer {cache->GetAshmemFd(), cache->GetAshmemSize(), 0, cache->GetAshmemSize()});
+    if (memRet != EOK) {
+        return HDF_FAILURE;
+    }
+
+    modelCache.emplace_back(buffer);
     return HDF_SUCCESS;
 }
 
