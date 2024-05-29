@@ -23,21 +23,10 @@
       "moduleType": "feature",
       "installationFree": false
     },
-    "defPermissions": [
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC"
-      }
-    ],
     "reqPermissions": [
       {
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
-        "reason": "ceshi"
-      },
-      {
         "name": "ohos.permission.VIBRATE",
-        "reason": "need use ohos.permission.VIBRATE"
+      	"reason": "need use ohos.permission.VIBRATE"
       }
     ],
     "abilities": [

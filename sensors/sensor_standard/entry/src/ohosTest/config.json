@@ -23,17 +23,26 @@
       "moduleType": "feature",
       "installationFree": false
     },
-    "defPermissions": [
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC"
-      }
-    ],
     "reqPermissions": [
       {
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
-        "reason": "ceshi"
+          "name": "ohos.permission.ACCELEROMETER",
+          "reason": "need use ohos.permission.ACCELEROMETER"
+      },
+      {
+          "name": "ohos.permission.GYROSCOPE",
+          "reason": "need use ohos.permission.GYROSCOPE"
+      },
+      {
+          "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+          "reason": "need use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+      },
+      {
+          "name": "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
+          "reason": "need use ohos.permission.REVOKE_SENSITIVE_PERMISSIONS"
+      },			
+      {
+          "name": "ohos.permission.ACTIVITY_MOTION",
+          "reason": "need use ohos.permission.ACTIVITY_MOTION"
       }
     ],
     "abilities": [
