@@ -1949,5 +1949,69 @@ export default function MulticastSocket() {
         done();
       }
     });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_MulticastSocket_Send_3200
+     * @tc.name  :  testNetworkMgrSocketMulticastSocketSend3200
+     * @tc.desc  :  Send data
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketMulticastSocketSend3200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketMulticastSocketSend3200';
+      console.info(`${caseName} test start`);
+      try {
+        let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+        await multicast.addMembership(addr);
+        multicast.send(null).then(() => {
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} err: ${JSON.stringify(err)}`);
+          expectEqual(err.code, 401);
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_MulticastSocket_Send_3300
+     * @tc.name  :  testNetworkMgrSocketMulticastSocketSend3300
+     * @tc.desc  :  Send data
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 3
+     */
+    it('testNetworkMgrSocketMulticastSocketSend3300', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketMulticastSocketSend3300';
+      console.info(`${caseName} test start`);
+      try {
+        let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+        await multicast.addMembership(addr);
+        multicast.send(undefined).then(() => {
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} err: ${JSON.stringify(err)}`);
+          expectEqual(err.code, 401);
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} err: ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
   });
 }
