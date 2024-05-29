@@ -58,6 +58,7 @@ struct WebViewEnumAndSetWebController {
   @State FileSelectorMode: Number = 0
   @State MediaType: Number = 0
   @State userAgentPC:string = "";
+  @State precomposedResult:boolean =  false;
   handler: FullScreenExitHandler | null = null
   dialogController: CustomDialogController | null = null
   popController: webView.WebviewController | null = null;
@@ -218,6 +219,8 @@ struct WebViewEnumAndSetWebController {
         })
         .onTouchIconUrlReceived((event) => {
           console.log('onTouchIconUrlReceived:' + event.url)
+          console.log('onTouchIconUrlReceived:' + event.precomposed)
+          this.precomposedResult = event.precomposed
           Utils.emitEvent(event.url + '', 1371)
           setTimeout(() => {
             this.controller.loadUrl("resource://rawfile/fullScreenEnter.html")
