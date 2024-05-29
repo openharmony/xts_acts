@@ -13,29 +13,13 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsNetworkMgrSocketTest") {
-  hap_profile = "entry/src/main/module.json"
+ohos_js_app_suite("ActsNetworkMgrSocketTest") {
+  test_hap = true
+  testonly = true
   js_build_mode = "debug"
-  deps = [
-    ":sockettest_demo_ets_resources",
-    ":sockettest_demo_ets_test_resources",
-  ]
-  ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsNetworkMgrSocketTest"
-
   part_name = "sms_mms"
   subsystem_name = "telephony"
 }
-ohos_app_scope("sockettest_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("sockettest_demo_ets_resources") {
-  source_dir = "entry/src/main/ets"
-}
-ohos_resources("sockettest_demo_ets_test_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":sockettest_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
-}
+
