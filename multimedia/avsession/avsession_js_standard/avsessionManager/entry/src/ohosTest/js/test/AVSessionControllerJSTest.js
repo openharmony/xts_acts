@@ -1434,7 +1434,7 @@ export default function AVSessionControllerJsTest() {
         it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300", 2, async function (done) {
             await session.setAVQueueItems(ITEMS_ARRAY).then(async () => {
                 await controller.getAVQueueItems().then((items) => {
-                    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300 data " + JSON.stringify(err));
+                    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300 data " + JSON.stringify(items));
                     if (items[0].description.drmScheme === ITEMS_ARRAY[0].description.drmScheme){
                         expect(true).assertTrue();
                     }else{
