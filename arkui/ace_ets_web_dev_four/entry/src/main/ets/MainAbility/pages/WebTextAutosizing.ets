@@ -26,7 +26,7 @@ struct WebTextAutosizing {
   @State de: number = 1
   @State qa: number = 9
   @State det: number = 13
-  @State userAgentPC:string = "";
+  @State userAgentPC:string = '';
   @State isTextAutosizing: boolean | undefined | null= false;
 
   onPageShow() {
@@ -236,7 +236,7 @@ struct WebTextAutosizing {
         .javaScriptAccess(true)
         .zoomAccess(true)
         .multiWindowAccess(true)
-        .webFixedFont("HarmonyOS-Sans-Condensed")
+        .webFixedFont('HarmonyOS-Sans-Condensed')
         .minFontSize(this.de)
         .minLogicalFontSize(this.qa)
         .defaultFixedFontSize(this.det)
@@ -247,7 +247,7 @@ struct WebTextAutosizing {
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
