@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 
-var printLog1 = "Fa:Auxiliary:MainAbility3:";
-var listPush1 = "Fa_Auxiliary_MainAbility3_";
+let printLog1 = "Fa:Auxiliary:MainAbility3:";
+let listPush1 = "Fa_Auxiliary_MainAbility3_";
+
 export default {
   onCreate() {
     console.info(printLog1 + 'onCreate');
@@ -25,12 +27,14 @@ export default {
       console.info(printLog1 + listPush1 + "onCreate");
     });
 
-    setTimeout(()=>{
-      ability_featureAbility.terminateSelf().then((data) => {
-        console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
-      }).catch((err) => {
-        console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
-      });
+    setTimeout(() => {
+      ability_featureAbility.terminateSelf()
+        .then((data) => {
+          console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
+        })
+        .catch((err) => {
+          console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
+        });
     }, 3000)
   },
   onDestroy() {

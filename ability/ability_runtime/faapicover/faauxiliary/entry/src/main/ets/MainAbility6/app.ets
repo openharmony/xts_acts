@@ -12,16 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 
-var printLog1 = "Fa:Auxiliary:MainAbility6:";
-var listPush1 = "Fa_Auxiliary_MainAbility6_";
+let printLog1 = "Fa:Auxiliary:MainAbility6:";
+let listPush1 = "Fa_Auxiliary_MainAbility6_";
+
 export default {
   onCreate() {
     console.info(printLog1 + 'onCreate');
 
-    setTimeout(()=>{
+    setTimeout(() => {
       let wantNum = {
         want: {
           bundleName: 'ohos.acts.aafwk.test.faauxiliary',
@@ -29,11 +31,13 @@ export default {
         },
         resultCode: 661
       }
-      ability_featureAbility.terminateSelfWithResult(wantNum).then((data) => {
-        console.info(printLog1 + "terminateSelfWithResult data = " + JSON.stringify(data));
-      }).catch((err) => {
-        console.info(printLog1 + "terminateSelfWithResult err = " + JSON.stringify(err));
-      });
+      ability_featureAbility.terminateSelfWithResult(wantNum)
+        .then((data) => {
+          console.info(printLog1 + "terminateSelfWithResult data = " + JSON.stringify(data));
+        })
+        .catch((err) => {
+          console.info(printLog1 + "terminateSelfWithResult err = " + JSON.stringify(err));
+        });
     }, 3000)
   },
   onDestroy() {
