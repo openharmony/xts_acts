@@ -34,30 +34,30 @@ export default class PageAbility7 extends UIAbility {
   // Sample_004 -> Sample_005 -> Sample_006
   //            -> Sample_007 -> Sample_008
   //                          -> Sample_001
-  onCreate(want:Want, launchParam) {
+  onCreate(want:Want, launchParam){
     hilog.info(0x0000, 'StartupTest PageAbility7', '%{public}s', 'Ability onCreate');
 
     if (want.parameters && want.parameters.keepAlive) {
-      console.info("StartupTest PageAbility7 keepAlive = true");
+      console.info('StartupTest PageAbility7 keepAlive = true');
       keepAlive = true;
     }
     if (want.parameters && want.parameters.customConfig) {
-      console.info("StartupTest SingleStartAbility customConfig = true");
+      console.info('StartupTest PageAbility7 customConfig = true');
       customConfig = true;
     }
 
     uiContext = this.context;
-    var subscribeInfo = {
+    let subscribeInfo = {
       events: ['StartupSample_005_onDependencyCompleted',
         'StartupSample_007_onDependencyCompleted',
         'StartupSample_004_onDependencyCompleted',
         'StartupTestDefaultConfig'],
     };
     commonEventManager.createSubscriber(subscribeInfo).then(data => {
-      console.info("StartupTest PageAbility7 createSubscriber success");
+      console.info('StartupTest PageAbility7 createSubscriber success');
       subscriber = data;
       commonEventManager.subscribe(subscriber, (err, data)=>{
-        console.info("StartupTest PageAbility7 receive event, data = " + JSON.stringify(data));
+        console.info('StartupTest PageAbility7 receive event, data = ' + JSON.stringify(data));
         let event = data.event;
         if (event === 'StartupSample_005_onDependencyCompleted') {
           if (data.parameters.name == 'Sample_006') {
@@ -66,10 +66,10 @@ export default class PageAbility7 extends UIAbility {
 
           commonEventManager.publish('show_msg', {
             parameters:{
-              msg:'StartupSample_006加载完毕 customConfig = ' + customConfig
+              msg: 'StartupSample_006加载完毕 customConfig = ' + customConfig
             }
           },()=>{
-            console.info("StartupTest PageAbility7 send msg");
+            console.info('StartupTest PageAbility7 send msg');
           })
         }
         if (event === 'StartupSample_007_onDependencyCompleted') {
@@ -80,7 +80,7 @@ export default class PageAbility7 extends UIAbility {
               msg: name + '加载完毕 customConfig = ' + customConfig
             }
           },()=>{
-            console.info("StartupTest PageAbility7 send msg");
+            console.info('StartupTest PageAbility7 send msg');
           })
         }
         if (event === 'StartupSample_004_onDependencyCompleted') {
@@ -91,11 +91,11 @@ export default class PageAbility7 extends UIAbility {
               msg: name + '加载完毕 customConfig = ' + customConfig
             }
           },()=>{
-            console.info("StartupTest PageAbility7 send msg");
+            console.info('StartupTest PageAbility7 send msg');
           })
         }
         if (event == 'StartupTestDefaultConfig') {
-          console.info("StartupTest PageAbility7 terminateSelfWithResult , result = true");
+          console.info('StartupTest PageAbility7 terminateSelfWithResult , result = true');
           if (!keepAlive) {
             setTimeout(()=>{
               uiContext.terminateSelfWithResult({
@@ -112,20 +112,20 @@ export default class PageAbility7 extends UIAbility {
         }
       })
     }).catch(error=>{
-      console.info("StartupTest PageAbility7 createSubscriber failed, error=" + JSON.stringify(error));
+      console.info('StartupTest PageAbility7 createSubscriber failed, error=' + JSON.stringify(error));
     })
   }
 
-  onDestroy() {
-    hilog.info(0x0000, 'StartupTest PageAbility7', '%{public}s', 'Ability onDestroy');;
+  onDestroy(){
+    hilog.info(0x0000, 'StartupTest PageAbility7', '%{public}s', 'Ability onDestroy');
     onAbiltiyDestory = true;
     if (subscriber) {
-      console.info("StartupTest PageAbility7 unsubscribe");
+      console.info('StartupTest PageAbility7 unsubscribe');
       commonEventManager.unsubscribe(subscriber);
     }
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage){
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'StartupTest', '%{public}s', 'Ability onWindowStageCreate');
 
@@ -140,12 +140,12 @@ export default class PageAbility7 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(){
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'StartupTest PageAbility7', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(){
     // Ability has brought to foreground
     // Sample_004 -> Sample_005 -> Sample_006
     //            -> Sample_007 -> Sample_008
@@ -153,12 +153,83 @@ export default class PageAbility7 extends UIAbility {
     hilog.info(0x0000, 'StartupTest PageAbility7', '%{public}s', 'Ability onForeground');
     console.log('StartupTest startupManager run');
     setTimeout(()=>{
-      if (!customConfig) {
+      if (customConfig) {
         console.log('StartupTest PageAbility7 startupManager run defaultConfig');
         startupManager.run(['Sample_004']);
       } else {
         console.log('StartupTest PageAbility7 startupManager run with custom Config')
         let onCompletedCallback = (error) => {
+          let initValue4 = AppStorage.get('Sample_004_onDependencyCompleted');
+          if (initValue4 == 'Sample_005' || initValue4 == 'Sample_007') {
+            console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + initValue4);
+            commonEventManager.publish('StartupSample_004_onDependencyCompleted', {
+              parameters: {
+                'name': initValue4
+              }
+            }, (err, data) => {
+              console.log('StartupTest Sample_004 onDependencyCompleted, publish msg, err=' + JSON.stringify(err));
+              console.log('StartupTest Sample_004 onDependencyCompleted, publish msg, data=' + JSON.stringify(data));
+            })
+          } else {
+            console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
+          }
+          let onCompletedCallback4 = AppStorage.get('Sample_004_onDependencyCompleted2');
+          if (onCompletedCallback4 == 'Sample_005' || onCompletedCallback4 == 'Sample_007') {
+            console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + onCompletedCallback4);
+            commonEventManager.publish('StartupSample_004_onDependencyCompleted', {
+              parameters: {
+                'name': onCompletedCallback4
+              }
+            }, (err, data) => {
+              console.log('StartupTest Sample_004 onDependencyCompleted, publish msg, err=' + JSON.stringify(err));
+              console.log('StartupTest Sample_004 onDependencyCompleted, publish msg, data=' + JSON.stringify(data));
+            })
+          } else {
+            console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
+          }
+          let initValue5 = AppStorage.get('Sample_005_onDependencyCompleted');
+          if (initValue5 == 'Sample_006') {
+            console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + initValue5);
+            commonEventManager.publish('StartupSample_005_onDependencyCompleted', {
+              parameters: {
+                'name': initValue5
+              }
+            }, (err, data) => {
+              console.log('StartupTest Sample_005 onDependencyCompleted, publish msg, err=' + JSON.stringify(err));
+              console.log('StartupTest Sample_005 onDependencyCompleted, publish msg, data=' + JSON.stringify(data));
+            })
+          } else {
+            console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
+          }
+          let initValue7 = AppStorage.get('Sample_007_onDependencyCompleted');
+          if (initValue7 == 'Sample_008' || initValue7 == 'Sample_001') {
+            console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + initValue7);
+            commonEventManager.publish('StartupSample_007_onDependencyCompleted', {
+              parameters: {
+                'name': initValue7
+              }
+            }, (err, data) => {
+              console.log('StartupTest Sample_007 onDependencyCompleted, publish msg, err=' + JSON.stringify(err));
+              console.log('StartupTest Sample_007 onDependencyCompleted, publish msg, data=' + JSON.stringify(data));
+            })
+          } else {
+            console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
+          }
+          let onCompletedCallback7 = AppStorage.get('Sample_007_onDependencyCompleted2');
+          if (onCompletedCallback7 == 'Sample_008' || onCompletedCallback7 == 'Sample_001') {
+            console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + onCompletedCallback7);
+            commonEventManager.publish('StartupSample_007_onDependencyCompleted', {
+              parameters: {
+                'name': onCompletedCallback7
+              }
+            }, (err, data) => {
+              console.log('StartupTest Sample_007 onDependencyCompleted, publish msg, err=' + JSON.stringify(err));
+              console.log('StartupTest Sample_007 onDependencyCompleted, publish msg, data=' + JSON.stringify(data));
+            })
+          } else {
+            console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
+          }
+
           console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
           if (error) {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ',
@@ -172,8 +243,8 @@ export default class PageAbility7 extends UIAbility {
                 'error': error
               }
             }, (err, data) => {
-              console.log("Custom StartupTest onCompletedCallback end, publish msg, err=" + JSON.stringify(err));
-              console.log("Custom StartupTest onCompletedCallback end, publish msg, data=" + JSON.stringify(data));
+              console.log('Custom StartupTest onCompletedCallback end, publish msg, err=' + JSON.stringify(err));
+              console.log('Custom StartupTest onCompletedCallback end, publish msg, data=' + JSON.stringify(data));
             })
           }, 500);
         }
@@ -189,7 +260,7 @@ export default class PageAbility7 extends UIAbility {
     }, 1500);
   }
 
-  onBackground() {
+  onBackground(){
     // Ability has back to background
     hilog.info(0x0000, 'StartupTest PageAbility7', '%{public}s', 'Ability onBackground');
   }

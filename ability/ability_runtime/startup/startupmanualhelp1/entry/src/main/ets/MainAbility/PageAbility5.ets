@@ -37,28 +37,28 @@ let customConfig = false;
 
 export default class PageAbility5 extends UIAbility {
 
-  onCreate(want:Want, launchParam) {
+  onCreate(want:Want, launchParam){
     hilog.info(0x0000, 'StartupTest PageAbility5', '%{public}s', 'Ability onCreate');
 
     if (want.parameters && want.parameters.keepAlive) {
-      console.info("StartupTest PageAbility5 keepAlive = true");
+      console.info('StartupTest PageAbility5 keepAlive = true');
       keepAlive = true;
     }
     if (want.parameters && want.parameters.customConfig) {
-      console.info("StartupTest SingleStartAbility customConfig = true");
+      console.info('StartupTest PageAbility5 customConfig = true');
       customConfig = true;
     }
 
     uiContext = this.context;
-    var subscribeInfo = {
+    let subscribeInfo = {
       events: ['StartupSample_012', 'StartupSample_013', 'StartupSample_014',
       'StartupSample_015', 'StartupTestDefaultConfig'],
     };
     commonEventManager.createSubscriber(subscribeInfo).then(data => {
-      console.info("StartupTest PageAbility5 createSubscriber success");
+      console.info('StartupTest PageAbility5 createSubscriber success');
       subscriber = data;
       commonEventManager.subscribe(subscriber, (err, data)=>{
-        console.info("StartupTest PageAbility5 receive event, data = " + JSON.stringify(data))
+        console.info('StartupTest PageAbility5 receive event, data = ' + JSON.stringify(data))
         let event = data.event;
         if (event === 'StartupSample_012') {
           startupSampleInit12 = true;
@@ -74,7 +74,7 @@ export default class PageAbility5 extends UIAbility {
               msg:message
             }
           },()=>{
-            console.info("StartupTest PageAbility5 send msg");
+            console.info('StartupTest PageAbility5 send msg');
           })
         }
         if (event === 'StartupSample_013') {
@@ -91,7 +91,7 @@ export default class PageAbility5 extends UIAbility {
               msg:message
             }
           },()=>{
-            console.info("StartupTest PageAbility5 send msg");
+            console.info('StartupTest PageAbility5 send msg');
           })
         }
         if (event === 'StartupSample_014') {
@@ -108,7 +108,7 @@ export default class PageAbility5 extends UIAbility {
               msg:message
             }
           },()=>{
-            console.info("StartupTest PageAbility5 send msg");
+            console.info('StartupTest PageAbility5 send msg');
           })
         }
         if (event === 'StartupSample_015') {
@@ -125,7 +125,7 @@ export default class PageAbility5 extends UIAbility {
               msg:message
             }
           },()=>{
-            console.info("StartupTest PageAbility5 send msg")
+            console.info('StartupTest PageAbility5 send msg')
           })
         }
         if (event === 'StartupTestDefaultConfig') {
@@ -141,9 +141,9 @@ export default class PageAbility5 extends UIAbility {
               msg:message
             }
           },()=>{
-            console.info("StartupTest PageAbility5 send msg");
+            console.info('StartupTest PageAbility5 send msg');
           })
-          console.info("StartupTest PageAbility5 terminateSelfWithResult , result = true");
+          console.info('StartupTest PageAbility5 terminateSelfWithResult , result = true');
           if (!keepAlive) {
             let startResult = false;
             if (startupSampleInit12 || startupSampleInit13 || startupSampleInit14 || startupSampleInit15) {
@@ -165,20 +165,20 @@ export default class PageAbility5 extends UIAbility {
         }
       })
     }).catch(error=>{
-      console.info("StartupTest PageAbility5 createSubscriber failed, error=" + JSON.stringify(error));
+      console.info('StartupTest PageAbility5 createSubscriber failed, error=' + JSON.stringify(error));
     })
   }
 
-  onDestroy() {
+  onDestroy(){
     hilog.info(0x0000, 'StartupTest PageAbility5 ', '%{public}s', 'Ability onDestroy');
     onAbiltiyDestory = true;
     if (subscriber) {
-      console.info("StartupTest PageAbility5 unsubscribe");
+      console.info('StartupTest PageAbility5 unsubscribe');
       commonEventManager.unsubscribe(subscriber);
     }
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage){
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'StartupTest PageAbility5 ', '%{public}s', 'Ability onWindowStageCreate');
 
@@ -193,29 +193,70 @@ export default class PageAbility5 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(){
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'StartupTest', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(){
     // Ability has brought to foreground
     // Sample_012 -> Sample_013 -> Sample_014 -> Sample_015
     //            -> Sample_015 -> Sample_013
     hilog.info(0x0000, 'StartupTest', '%{public}s', 'Ability onForeground');
     console.log('StartupTest startupManager run');
     setTimeout(()=>{
-      if (!customConfig) {
-        console.log('StartupTest PageAbility2 startupManager run defaultConfig');
+      if (customConfig) {
+        console.log('StartupTest PageAbility5 startupManager run defaultConfig');
         try {
           startupManager.run(['Sample_012']);
-        }catch (error){
+        }catch(error){
           console.log('StartupTest startupManager run error: catch error = ' + JSON.stringify(error));
         }
       } else {
-        console.log('StartupTest PageAbility2 startupManager run with custom Config');
+        console.log('StartupTest PageAbility5 startupManager run with custom Config');
         let onCompletedCallback = (error) => {
-          console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
+          let initValue13 = AppStorage.get('Sample_013_init');
+          if (initValue13 == 'Sample_013_init') {
+            console.log('Custom StartupTest PageAbility5 startupManager AppStorage.get success');
+            commonEventManager.publish('StartupSample_013', (err, data)=>{
+              console.log('StartupTest Sample_013 init, publish msg, err=' + JSON.stringify(err));
+              console.log('StartupTest Sample_013 init, publish msg, data=' + JSON.stringify(data));
+            })
+          } else {
+            console.log('Custom StartupTest PageAbility5 startupManager AppStorage.get error');
+          }
+          let initValue14 = AppStorage.get('Sample_014_init');
+          if (initValue14 == 'Sample_014_init') {
+            console.log('Custom StartupTest PageAbility5 startupManager AppStorage.get success');
+            commonEventManager.publish('StartupSample_014', (err, data)=>{
+              console.log('StartupTest Sample_014 init, publish msg, err=' + JSON.stringify(err));
+              console.log('StartupTest Sample_014 init, publish msg, data=' + JSON.stringify(data));
+            })
+          } else {
+            console.log('Custom StartupTest PageAbility5 startupManager AppStorage.get error');
+          }
+          let initValue15 = AppStorage.get('Sample_015_init');
+          if (initValue15 == 'Sample_015_init') {
+            console.log('Custom StartupTest PageAbility5 startupManager AppStorage.get success');
+            commonEventManager.publish('StartupSample_015', (err, data)=>{
+              console.log('StartupTest Sample_015 init, publish msg, err=' + JSON.stringify(err));
+              console.log('StartupTest Sample_015 init, publish msg, data=' + JSON.stringify(data));
+            })
+          } else {
+            console.log('Custom StartupTest PageAbility5 startupManager AppStorage.get error');
+          }
+          let initValue12 = AppStorage.get('Sample_012_init');
+          if (initValue12 == 'Sample_012_init') {
+            console.log('Custom StartupTest PageAbility5 startupManager AppStorage.get success');
+            commonEventManager.publish('StartupSample_012', (err, data)=>{
+              console.log('StartupTest Sample_012 init, publish msg, err=' + JSON.stringify(err));
+              console.log('StartupTest Sample_012 init, publish msg, data=' + JSON.stringify(data));
+            })
+          } else {
+            console.log('Custom StartupTest PageAbility5 startupManager AppStorage.get error');
+            console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
+          }
+
           if (error) {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ',
               ' onCompletedCallback: %{public}d, mssage: %{public}s', error.code, error.mssage);
@@ -228,8 +269,8 @@ export default class PageAbility5 extends UIAbility {
                 'error': error
               }
             }, (err, data) => {
-              console.log("Custom StartupTest onCompletedCallback end, publish msg, err=" + JSON.stringify(err));
-              console.log("Custom StartupTest onCompletedCallback end, publish msg, data=" + JSON.stringify(data));
+              console.log('Custom StartupTest onCompletedCallback end, publish msg, err=' + JSON.stringify(err));
+              console.log('Custom StartupTest onCompletedCallback end, publish msg, data=' + JSON.stringify(data));
             })
           }, 500)
         }
@@ -242,14 +283,14 @@ export default class PageAbility5 extends UIAbility {
         }
         try {
           startupManager.run(['Sample_012'], config);
-        }catch (error){
+        }catch(error){
           console.log('StartupTest startupManager run error: catch error = ' + JSON.stringify(error));
         }
       }
     }, 1500);
   }
 
-  onBackground() {
+  onBackground(){
     // Ability has back to background
     hilog.info(0x0000, 'StartupTest', '%{public}s', 'Ability onBackground');
   }
