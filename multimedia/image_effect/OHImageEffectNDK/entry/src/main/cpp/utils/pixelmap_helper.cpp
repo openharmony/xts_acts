@@ -21,6 +21,8 @@
 #include <unistd.h>
 #include <hilog/log.h>
 
+#define IMAGE_EFFECT_HELPER_100 100
+
 std::shared_ptr<OH_DecodingOptions> CreateDecodingOptions()
 {
     OH_DecodingOptions *options = nullptr;
@@ -54,7 +56,8 @@ std::shared_ptr<OH_PixelmapNative> PixelMapHelper::Decode(std::string &pathName)
     return pixelmapPtr;
 }
 
-std::shared_ptr<OH_PackingOptions> CreatePackingOptions() {
+std::shared_ptr<OH_PackingOptions> CreatePackingOptions()
+{
     OH_PackingOptions *options = nullptr;
     Image_ErrorCode errorCode = OH_PackingOptions_Create(&options);
 
@@ -62,7 +65,7 @@ std::shared_ptr<OH_PackingOptions> CreatePackingOptions() {
         OH_PackingOptions_Release(options);
     });
 
-    OH_PackingOptions_SetQuality(optionsPtr.get(), 100);
+    OH_PackingOptions_SetQuality(optionsPtr.get(), IMAGE_EFFECT_HELPER_100);
     Image_MimeType format = { .data = const_cast<char *>(MIME_TYPE_JPEG), .size = strlen(MIME_TYPE_JPEG) };
     OH_PackingOptions_SetMimeType(optionsPtr.get(), &format);
     return optionsPtr;

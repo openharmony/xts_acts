@@ -1052,7 +1052,8 @@ static napi_value OHEffectFilterReleaseFilterNames(napi_env env, napi_callback_i
     return ret;
 }
 
-static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info) {
+static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info)
+{
     std::shared_ptr<OH_PixelmapNative> pixelmapNativePtr = PixelMapHelper::Decode(imagePath);
     OH_PixelmapNative *inputPixelmap = pixelmapNativePtr.get();
     OH_PixelmapNative *outputPixelmap = inputPixelmap;
@@ -1061,8 +1062,8 @@ static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info) {
             [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) {
                 return true;
             },
-        .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData) {   
-                return true; 
+        .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData) {
+                return true;
             },
         .save =
             [](OH_EffectFilter *filter, char **info) {
@@ -1571,7 +1572,7 @@ static napi_value OHImageEffectSetInputPixelmap(napi_env env, napi_callback_info
     return ret;
 }
 
- ImageEffect_ErrorCode SetInputUri1(int32_t index, OH_ImageEffect *imageEffect, OH_EffectFilter *filter)
+ImageEffect_ErrorCode SetInputUri1(int32_t index, OH_ImageEffect *imageEffect, OH_EffectFilter *filter)
 {
     char *keyName;
     ImageEffect_Any value;
@@ -1668,13 +1669,13 @@ static napi_value OHImageEffectSetInputUri(napi_env env, napi_callback_info info
     case CASE_INDEX_2:
     case CASE_INDEX_3:
     case CASE_INDEX_4:
-        code = SetInputUri1(index,imageEffect,filter);
+        code = SetInputUri1(index, imageEffect, filter);
         break;
     case CASE_INDEX_5:
     case CASE_INDEX_6:
     case CASE_INDEX_7:
     case CASE_INDEX_8:
-        code = SetInputUri2(index,imageEffect,filter);
+        code = SetInputUri2(index, imageEffect, filter);
         break;
     case CASE_INDEX_9:
         code = OH_ImageEffect_SetInputUri(nullptr, nullptr);
@@ -1880,13 +1881,13 @@ static napi_value OHImageEffectSetOutputUri(napi_env env, napi_callback_info inf
     case CASE_INDEX_2:
     case CASE_INDEX_3:
     case CASE_INDEX_4:
-        code = SetInputUri3(index,imageEffect,filter);
+        code = SetInputUri3(index, imageEffect, filter);
         break;
     case CASE_INDEX_5:
     case CASE_INDEX_6:
     case CASE_INDEX_7:
     case CASE_INDEX_8:
-        code = SetInputUri4(index,imageEffect,filter);
+        code = SetInputUri4(index, imageEffect, filter);
         break;
     case CASE_INDEX_9:
         code = OH_ImageEffect_SetInputUri(nullptr, nullptr);
