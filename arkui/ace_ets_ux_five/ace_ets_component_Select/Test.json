@@ -3,19 +3,18 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "bundle-name": "com.example.Select",
-        "module-name": "phone",
         "shell-timeout": "600000",
-        "testcase-timeout": 240000
+        "bundle-name": "com.example.Select",
+        "module-name": "phone"
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsSelectTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-        },
+    "kits": [
         {
+            "test-file-name": [
+                "ActsSelectTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },{
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
