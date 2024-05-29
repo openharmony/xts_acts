@@ -102,16 +102,15 @@ MockIDevice::MockIDevice()
 
 MockIDevice::~MockIDevice()
 {
-    for (auto ash : m_ashmems) {
-        ash.second.CloseAshmem();
+    for (auto fd : m_fds) {
+        close(fd);
     }
 }
 
 MockIPreparedModel::~MockIPreparedModel()
 {
-    for (auto ash : m_ashmems) {
-        ash.second->UnmapAshmem();
-        ash.second->CloseAshmem();
+    for (auto fd : m_fds) {
+        close(fd);
     }
 }
 
@@ -221,23 +220,27 @@ int32_t MockIDevice::IsModelCacheSupported(bool& isSupported)
 int32_t MockIDevice::AllocateBuffer(uint32_t length, SharedBuffer &buffer)
 {
     std::lock_guard<std::mutex> lock(m_mtx);
-    for(auto ash:m_ashmems){
-        if (ash.second.GetAshmemSize() <= 0) {
-            ash.second.CloseAshmem();
-        }
-    }
     buffer.fd = AshmemCreate("allocateBuffer", length);
     buffer.bufferSize = AshmemGetSize(buffer.fd);
     buffer.offset = 0;
     buffer.dataSize = length;
 
     AshmemSetProt(buffer.fd, PROT_READ | PROT_WRITE);
+    m_fds.emplace(buffer.fd);
     m_bufferFd = buffer.fd;
     return HDF_SUCCESS;
 }
 
 int32_t MockIDevice::ReleaseBuffer(const SharedBuffer &buffer)
 {
+    if (m_fds.find(buffer.fd) == m_fds.end()) {
+        LOGE("ReleaseBuffer:buffer fd is invalid. fd = %d", buffer.fd);
+        return HDF_FAILURE;
+    }
+    if (close(buffer.fd) != 0) {
+        LOGE("ReleaseBuffer:Close buffer fd failed. fd = %d", buffer.fd);
+        return HDF_FAILURE;
+    }
     return HDF_SUCCESS;
 }
 
@@ -307,7 +310,7 @@ int32_t MockIPreparedModel::ExportModelCache(std::vector<SharedBuffer>& modelCac
         LOGE("[Mock_Device]ExportModelCache failed, failed to memcpy_s data type.");
         return HDF_FAILURE;
     }
-
+    m_fds.emplace(buffer.fd);
     modelCache.emplace_back(buffer);
     return HDF_SUCCESS;
 }

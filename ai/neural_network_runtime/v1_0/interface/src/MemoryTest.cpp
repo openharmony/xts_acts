@@ -47,7 +47,7 @@ void CheckCreateOutputMemory(OH_NNExecutor *executor, uint32_t outputIndex, size
 {
     OH_NN_Memory *OHNNMemory = OH_NNExecutor_AllocateOutputMemory(executor, outputIndex, length);
     ASSERT_NE(nullptr, OHNNMemory);
-    OH_NNExecutor_DestroyOutputMemory(executor, inputIndex, &OHNNMemory);
+    OH_NNExecutor_DestroyOutputMemory(executor, outputIndex, &OHNNMemory);
     ASSERT_EQ(nullptr, OHNNMemory);
 }
 
@@ -262,6 +262,10 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_CreateOutputMemory_0
     ASSERT_NE(nullptr, OHNNMemory);
     OH_NN_Memory *OHNNMemory2 = OH_NNExecutor_AllocateOutputMemory(executor, 0, graphArgs.operands[0].length);
     ASSERT_NE(nullptr, OHNNMemory2);
+    OH_NNExecutor_DestroyOutputMemory(executor, 0, &OHNNMemory);
+    ASSERT_EQ(nullptr, OHNNMemory);
+    OH_NNExecutor_DestroyOutputMemory(executor, 0, &OHNNMemory2);
+    ASSERT_EQ(nullptr, OHNNMemory2);
     Free(model, compilation, executor);
 }
 
@@ -634,8 +638,8 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_SetInputFromMemory_0
     OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
                              quantParam, operandTem.type};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetInputWithMemory(executor, 0, &operand, OHNNMemory1));
-    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory);
-    ASSERT_EQ(nullptr, OHNNMemory);
+    OH_NNExecutor_DestroyInputMemory(executor, 0, &OHNNMemory1);
+    ASSERT_EQ(nullptr, OHNNMemory1);
     Free(model, compilation, executor);
 }
 
