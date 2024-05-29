@@ -12,13 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import hilog from '@ohos.hilog';
-import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-export default class MyAbilityStage extends AbilityStage {
-    onCreate() {
-        hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-        hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage onCreate');
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+          })
+      }
+      .width('100%')
     }
+    .height('100%')
+  }
 }
