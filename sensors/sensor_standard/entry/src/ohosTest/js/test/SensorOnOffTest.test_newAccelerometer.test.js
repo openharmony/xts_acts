@@ -83,22 +83,23 @@ describe("SensorJsTest_sensor_39", function () {
 
     const PARAMETER_ERROR_CODE = 401
     const SERVICE_EXCEPTION_CODE = 14500101
+    const SENSOR_NO_SUPPORT_CODE = 14500102
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
-    let invalid  = -1;
     let TAG  = '';
+    let invalid  = -1;
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0010
-     * @tc.name: newAccelerometerSensorJsTest001
+     * @tc.name: newAccelerometer_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newAccelerometerSensorJsTest001--------------');
-        TAG = 'newAccelerometerSensorJsTest001';
+    it("newAccelerometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newAccelerometer_SensorJsTest001--------------');
+        TAG = 'newAccelerometer_SensorJsTest001';
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -113,22 +114,23 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0020
-     * @tc.name: newAccelerometerSensorJsTest002
+     * @tc.name: newAccelerometer_SensorJsTest002
      * @tc.desc: Illegal ID passed in
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAccelerometerSensorJsTest002--------------');
-        TAG = 'newAccelerometerSensorJsTest002'
+    it("newAccelerometer_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAccelerometer_SensorJsTest002--------------');
+        TAG = 'newAccelerometer_SensorJsTest002'
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
@@ -151,22 +153,23 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0030
-     * @tc.name: newAccelerometerSensorJsTest003
+     * @tc.name: newAccelerometer_SensorJsTest003
      * @tc.desc: For normal scenarios
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAccelerometerSensorJsTest003--------------');
-        TAG = 'newAccelerometerSensorJsTest003'
+    it("newAccelerometer_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAccelerometer_SensorJsTest003--------------');
+        TAG = 'newAccelerometer_SensorJsTest003'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -175,30 +178,31 @@ describe("SensorJsTest_sensor_39", function () {
                 } else {
                     sensor.on(sensor.SensorId.ACCELEROMETER, callback, {'interval': 100000000});
                     setTimeout(()=>{
-                        console.info('---------newAccelerometerSensorJsTest003 off in--------------');
+                        console.info('---------newAccelerometer_SensorJsTest003 off in--------------');
                         sensor.off(sensor.SensorId.ACCELEROMETER);
-                        console.info('---------newAccelerometerSensorJsTest003 off end--------------');
+                        console.info('---------newAccelerometer_SensorJsTest003 off end--------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0040
-     * @tc.name: newAccelerometerSensorJsTest004
+     * @tc.name: newAccelerometer_SensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAccelerometerSensorJsTest004--------------');
-        TAG = 'newAccelerometerSensorJsTest004'
+    it("newAccelerometer_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAccelerometer_SensorJsTest004--------------');
+        TAG = 'newAccelerometer_SensorJsTest004'
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
@@ -228,29 +232,30 @@ describe("SensorJsTest_sensor_39", function () {
                         done();
                     }
                     setTimeout(()=>{
-                        console.info('---------newAccelerometerSensorJsTest004 off in--------------');
+                        console.info('---------newAccelerometer_SensorJsTest004 off in--------------');
                         sensor.off(sensor.SensorId.ACCELEROMETER);
-                        console.info('---------newAccelerometerSensorJsTest004 off end--------------');
+                        console.info('---------newAccelerometer_SensorJsTest004 off end--------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0050
-     * @tc.name: newAccelerometerSensorJsTest005
+     * @tc.name: newAccelerometer_SensorJsTest005
      * @tc.desc: Once Normal Subscription Scenario Use Case
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAccelerometerSensorJsTest005'
+    it("newAccelerometer_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAccelerometer_SensorJsTest005'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -271,21 +276,22 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0060
-     * @tc.name: newAccelerometerSensorJsTest006
+     * @tc.name: newAccelerometer_SensorJsTest006
      * @tc.desc: Use case of illegal parameter passed into once interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAccelerometerSensorJsTest006'
+    it("newAccelerometer_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAccelerometer_SensorJsTest006'
         function onceSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
@@ -308,21 +314,22 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0070
-     * @tc.name: newAccelerometerSensorJsTest007
+     * @tc.name: newAccelerometer_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAccelerometerSensorJsTest007'
+    it("newAccelerometer_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAccelerometer_SensorJsTest007'
         function onceSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
@@ -355,21 +362,22 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0080
-     * @tc.name: newAccelerometerSensorJsTest008
+     * @tc.name: newAccelerometer_SensorJsTest008
      * @tc.desc: Use case of illegal parameter passed into off interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAccelerometerSensorJsTest008'
+    it("newAccelerometer_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAccelerometer_SensorJsTest008'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -387,21 +395,22 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0090
-     * @tc.name: newAccelerometerSensorJsTest009
+     * @tc.name: newAccelerometer_SensorJsTest009
      * @tc.desc: Unsubscribe directly without waiting after starting subscription
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAccelerometerSensorJsTest009'
+    it("newAccelerometer_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAccelerometer_SensorJsTest009'
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
@@ -432,21 +441,22 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0100
-     * @tc.name: newAccelerometerSensorJsTest010
+     * @tc.name: newAccelerometer_SensorJsTest010
      * @tc.desc:SensorId1000000 of incoming exception
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAccelerometerSensorJsTest010'
+    it("newAccelerometer_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAccelerometer_SensorJsTest010'
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
@@ -469,21 +479,22 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0110
-     * @tc.name: newAccelerometerSensorJsTest011
+     * @tc.name: newAccelerometer_SensorJsTest011
      * @tc.desc:Call interface multiple times
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAccelerometerSensorJsTest011'
+    it("newAccelerometer_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAccelerometer_SensorJsTest011'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -521,29 +532,30 @@ describe("SensorJsTest_sensor_39", function () {
                             expect(typeof (data.timestamp)).assertEqual("number");
                     });
                     setTimeout(()=>{
-                        console.info('---------newAccelerometerSensorJsTest011 off in--------------');
+                        console.info('---------newAccelerometer_SensorJsTest011 off in--------------');
                         sensor.off(sensor.SensorId.ACCELEROMETER);
-                        console.info('---------newAccelerometerSensorJsTest011 off end--------------');
+                        console.info('---------newAccelerometer_SensorJsTest011 off end--------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0120
-     * @tc.name: newAccelerometerSensorJsTest012
+     * @tc.name: newAccelerometer_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAccelerometerSensorJsTest012'
+    it("newAccelerometer_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAccelerometer_SensorJsTest012'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -561,22 +573,23 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0130
-     * @tc.name: newAccelerometerSensorJsTest013
+     * @tc.name: newAccelerometer_SensorJsTest013
      * @tc.desc:Call on interface and once interface respectively, and use an off interface to close
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAccelerometerSensorJsTest013--------------');
-        TAG = 'newAccelerometerSensorJsTest013'
+    it("newAccelerometer_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAccelerometer_SensorJsTest013--------------');
+        TAG = 'newAccelerometer_SensorJsTest013'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -614,30 +627,31 @@ describe("SensorJsTest_sensor_39", function () {
                         expect(typeof (data.timestamp)).assertEqual("number");
                     });
                     setTimeout(()=>{
-                        console.info('---------newAccelerometerSensorJsTest013 off in--------------');
+                        console.info('---------newAccelerometer_SensorJsTest013 off in--------------');
                         sensor.off(sensor.SensorId.ACCELEROMETER);
-                        console.info('---------newAccelerometerSensorJsTest013 off end--------------');
+                        console.info('---------newAccelerometer_SensorJsTest013 off end--------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0140
-     * @tc.name: newAccelerometerSensorJsTest014
+     * @tc.name: newAccelerometer_SensorJsTest014
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAccelerometerSensorJsTest014--------------');
-        TAG = 'newAccelerometerSensorJsTest014'
+    it("newAccelerometer_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAccelerometer_SensorJsTest014--------------');
+        TAG = 'newAccelerometer_SensorJsTest014'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -675,30 +689,31 @@ describe("SensorJsTest_sensor_39", function () {
                         expect(typeof (data.timestamp)).assertEqual("number");
                     }, {'interval': 100000000});
                     setTimeout(()=>{
-                        console.info('---------newAccelerometerSensorJsTest014 off in--------------');
+                        console.info('---------newAccelerometer_SensorJsTest014 off in--------------');
                         sensor.off(sensor.SensorId.ACCELEROMETER);
-                        console.info('---------newAccelerometerSensorJsTest014 off end--------------');
+                        console.info('---------newAccelerometer_SensorJsTest014 off end--------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0150
-     * @tc.name: newAccelerometerSensorJsTest015
+     * @tc.name: newAccelerometer_SensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAccelerometerSensorJsTest015--------------');
-        TAG = 'newAccelerometerSensorJsTest015'
+    it("newAccelerometer_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAccelerometer_SensorJsTest015--------------');
+        TAG = 'newAccelerometer_SensorJsTest015'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -732,22 +747,23 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0160
-     * @tc.name: newAccelerometerSensorJsTest016
+     * @tc.name: newAccelerometer_SensorJsTest016
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAccelerometerSensorJsTest016--------------');
-        TAG = 'newAccelerometerSensorJsTest016'
+    it("newAccelerometer_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAccelerometer_SensorJsTest016--------------');
+        TAG = 'newAccelerometer_SensorJsTest016'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -757,39 +773,40 @@ describe("SensorJsTest_sensor_39", function () {
                     sensor.on(sensor.SensorId.ACCELEROMETER, callback);
                     sensor.on(sensor.SensorId.ACCELEROMETER, callback2);
                     setTimeout(() => {
-                        console.info('----------------------newAccelerometerSensorJsTest016 off in--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest016 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.ACCELEROMETER, callback);
                         } catch (error) {
                             console.info(TAG + ' catch error:' + error);
                         }
-                        console.info('----------------------newAccelerometerSensorJsTest016 off end--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest016 off end--------------');
                     }, 1000);
                     setTimeout(() => {
-                        console.info('----------------------newAccelerometerSensorJsTest016 off in--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest016 off in--------------');
                         sensor.off(sensor.SensorId.ACCELEROMETER, callback2);
-                        console.info('----------------------newAccelerometerSensorJsTest016 off end--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest016 off end--------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0170
-     * @tc.name: newAccelerometerSensorJsTest017
+     * @tc.name: newAccelerometer_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAccelerometerSensorJsTest017--------------');
-        TAG = 'newAccelerometerSensorJsTest017'
+    it("newAccelerometer_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAccelerometer_SensorJsTest017--------------');
+        TAG = 'newAccelerometer_SensorJsTest017'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -799,38 +816,39 @@ describe("SensorJsTest_sensor_39", function () {
                     sensor.on(sensor.SensorId.ACCELEROMETER, callback, { 'interval': 100000000 });
                     sensor.on(sensor.SensorId.ACCELEROMETER, callback2, { 'interval': 100000000 });
                     setTimeout(() => {
-                        console.info('----------------------newAccelerometerSensorJsTest017 off in--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest017 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.ACCELEROMETER, callback);
                         } catch (error) {
                             console.info(TAG + ' catch error:' + error);
                         }
-                        console.info('----------------------newAccelerometerSensorJsTest017 off end--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest017 off end--------------');
                     }, 1000);
                     setTimeout(() => {
-                        console.info('----------------------newAccelerometerSensorJsTest017_2 off in--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest017_2 off in--------------');
                         sensor.off(sensor.SensorId.ACCELEROMETER, callback2);
-                        console.info('----------------------newAccelerometerSensorJsTest017_2 off end--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest017_2 off end--------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0180
-     * @tc.name: newAccelerometerSensorJsTest018
+     * @tc.name: newAccelerometer_SensorJsTest018
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newAccelerometerSensorJsTest018'
+    it("newAccelerometer_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newAccelerometer_SensorJsTest018'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -840,7 +858,7 @@ describe("SensorJsTest_sensor_39", function () {
                     sensor.on(sensor.SensorId.ACCELEROMETER, callback, { 'interval': undefined });
                     sensor.on(sensor.SensorId.ACCELEROMETER, callback2, { 'interval': undefined });
                     setTimeout(() => {
-                        console.info('----------------------newAccelerometerSensorJsTest018 off in--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest018 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.ACCELEROMETER, callback);
                             sensor.off(sensor.SensorId.ACCELEROMETER, callback2);
@@ -848,28 +866,29 @@ describe("SensorJsTest_sensor_39", function () {
                             console.info(TAG + ' catch error:' + error);
                             expect(false).assertTrue();
                         }
-                        console.info('----------------------newAccelerometerSensorJsTest018 off end--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest018 off end--------------');
                         done()
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0190
-     * @tc.name: newAccelerometerSensorJsTest019
+     * @tc.name: newAccelerometer_SensorJsTest019
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAccelerometerSensorJsTest019--------------');
-        TAG = 'newAccelerometerSensorJsTest019'
+    it("newAccelerometer_SensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAccelerometer_SensorJsTest019--------------');
+        TAG = 'newAccelerometer_SensorJsTest019'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -883,7 +902,7 @@ describe("SensorJsTest_sensor_39", function () {
                         console.info(TAG + ' catch error:' + error);
                     }
                     setTimeout(() => {
-                        console.info('----------------------newAccelerometerSensorJsTest019 off in--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest019 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.ACCELEROMETER);
                         } catch (error) {
@@ -895,22 +914,23 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0200
-     * @tc.name: newAccelerometerSensorJsTest020
+     * @tc.name: newAccelerometer_SensorJsTest020
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAccelerometerSensorJsTest020--------------');
-        TAG = 'newAccelerometerSensorJsTest020'
+    it("newAccelerometer_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAccelerometer_SensorJsTest020--------------');
+        TAG = 'newAccelerometer_SensorJsTest020'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -924,7 +944,7 @@ describe("SensorJsTest_sensor_39", function () {
                         console.info(TAG + ' catch error:' + error);
                     }
                     setTimeout(() => {
-                        console.info('----------------------newAccelerometerSensorJsTest020 off in--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest020 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.ACCELEROMETER);
                         } catch (error) {
@@ -936,22 +956,23 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0210
-     * @tc.name: newAccelerometerSensorJsTest021
+     * @tc.name: newAccelerometer_SensorJsTest021
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAccelerometerSensorJsTest021--------------');
-        TAG = 'newAccelerometerSensorJsTest021'
+    it("newAccelerometer_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAccelerometer_SensorJsTest021--------------');
+        TAG = 'newAccelerometer_SensorJsTest021'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -960,7 +981,7 @@ describe("SensorJsTest_sensor_39", function () {
                 } else {
                     sensor.on(sensor.SensorId.ACCELEROMETER, callback, { 'interval': null });
                     setTimeout(() => {
-                        console.info('----------------------newAccelerometerSensorJsTest021 off in--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest021 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.ACCELEROMETER);
                         } catch (error) {
@@ -972,22 +993,23 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0220
-     * @tc.name: newAccelerometerSensorJsTest022
+     * @tc.name: newAccelerometer_SensorJsTest022
      * @tc.desc: Functional Use Cases
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAccelerometerSensorJsTest022--------------');
-        TAG = 'newAccelerometerSensorJsTest022'
+    it("newAccelerometer_SensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAccelerometer_SensorJsTest022--------------');
+        TAG = 'newAccelerometer_SensorJsTest022'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -1007,22 +1029,23 @@ describe("SensorJsTest_sensor_39", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0230
-     * @tc.name: newAccelerometerSensorJsTest023
+     * @tc.name: newAccelerometer_SensorJsTest023
      * @tc.desc: Functional Use Cases
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometerSensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newAccelerometerSensorJsTest023--------------');
-        TAG = 'newAccelerometerSensorJsTest023'
+    it("newAccelerometer_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAccelerometer_SensorJsTest023--------------');
+        TAG = 'newAccelerometer_SensorJsTest023'
         try{
            sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER,(error, data) => {
                 if (error) {
@@ -1036,20 +1059,21 @@ describe("SensorJsTest_sensor_39", function () {
                         console.info(TAG + ' catch error:' + error);
                     }
                     setTimeout(() => {
-                        console.info('----------------------newAccelerometerSensorJsTest023 off in--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest023 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.ACCELEROMETER);
                         } catch (error) {
                             console.info(TAG + ' catch error:' + error);
                             expect(false).assertTrue();
                         }
-                        console.info('----------------------newAccelerometerSensorJsTest023 off end--------------');
+                        console.info('----------------------newAccelerometer_SensorJsTest023 off end--------------');
                         done()
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
