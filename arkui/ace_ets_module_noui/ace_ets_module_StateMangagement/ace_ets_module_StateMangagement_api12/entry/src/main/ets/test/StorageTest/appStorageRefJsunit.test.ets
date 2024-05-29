@@ -19,25 +19,25 @@ import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayR
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
-export default function scrollOffsetJsunit() {
-  describe('scrollOffsetJsunit', function () {
+export default function appStorageRefJsunit() {
+  describe('appStorageRefJsunit', function () {
     beforeEach(async function (done) {
-      console.info("scrollOffsetJsunit beforeEach start");
+      console.info("appStorageRefJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Storage/appStorageRef',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get scrollOffsetJsunit state pages: " + JSON.stringify(pages));
+        console.info("get appStorageRefJsunit state pages: " + JSON.stringify(pages));
         if (!("appStorageRef" == pages.name)) {
-          console.info("get scrollOffsetJsunit state pages.name: " + JSON.stringify(pages.name));
+          console.info("get appStorageRefJsunit state pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(1000);
-          console.info("push scrollOffsetJsunit success: " + JSON.stringify(result));
+          console.info("push appStorageRefJsunit success: " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push scrollOffsetJsunit page error: " + err);
+        console.error("push appStorageRefJsunit page error: " + err);
         expect().assertFail();
       }
       done();
