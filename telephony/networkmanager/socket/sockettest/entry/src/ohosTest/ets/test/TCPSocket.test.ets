@@ -5679,5 +5679,1808 @@ export default function TCPSocketTest() {
         done();
       }
     });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_2000
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions2000
+     * @tc.desc  : Get TCPSocket status,Input parameter socketTimeout is -1; callback
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2000', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2000';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 9014
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketTimeout: -1,
+          socketLinger: {
+            on: true, linger: 10
+          }
+        };
+        tcp.setExtraOptions(tcpExtraOptions, async (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+            expectTrue(err.code===2301033);
+          } else {
+            console.info(`${caseName} success`);
+            expectFail();
+          }
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_2100
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions2100
+     * @tc.desc  : Get TCPSocket status,Input parameter socketTimeout is 0; callback
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2100';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 9014
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketTimeout: 0,
+          socketLinger: {
+            on: true, linger: 10
+          }
+        };
+        tcp.setExtraOptions(tcpExtraOptions, async (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+            expectFail();
+          } else {
+            console.info(`${caseName} success`);
+            expectSuccess();
+          }
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_2200
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions2200
+     * @tc.desc  : Get TCPSocket status,Input parameter socketTimeout is 100; callback
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2200';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 9015
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketTimeout: 100,
+          socketLinger: {
+            on: true, linger: 10
+          }
+        };
+        tcp.setExtraOptions(tcpExtraOptions, async (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+            expectFail();
+          } else {
+            console.info(`${caseName} success`);
+            expectSuccess();
+          }
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_2300
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions2300
+     * @tc.desc  : Get TCPSocket status,Input parameter linger is -1; callback
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2300', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2300';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 9016
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketLinger: {
+            on: true, linger:-1
+          }
+        };
+        tcp.setExtraOptions(tcpExtraOptions, async (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+            expectFail();
+          } else {
+            console.info(`${caseName} success`);
+            expectSuccess();
+          }
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_2400
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions2400
+     * @tc.desc  : Get TCPSocket status,Input parameter linger is 0; callback
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2400', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2400';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 9017
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketLinger: {
+            on: true, linger:0
+          }
+        };
+        tcp.setExtraOptions(tcpExtraOptions, async (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+            expectFail();
+          } else {
+            console.info(`${caseName} success`);
+            expectSuccess();
+          }
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_2500
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions2500
+     * @tc.desc  : Get TCPSocket status,Input parameter linger is 65535; callback
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2500', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2500';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 9018
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketLinger: {
+            on: true, linger:65535
+          }
+        };
+        tcp.setExtraOptions(tcpExtraOptions, async (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+            expectFail();
+          } else {
+            console.info(`${caseName} success`);
+            expectSuccess();
+          }
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_2600
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions2600
+     * @tc.desc  : Get TCPSocket status,Input parameter linger is 65536; callback
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2600', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2600';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 9019
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketLinger: {
+            on: true, linger:65536
+          }
+        };
+        tcp.setExtraOptions(tcpExtraOptions, async (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+            expectFail();
+          } else {
+            console.info(`${caseName} success`);
+            expectSuccess();
+          }
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_2700
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions2700
+     * @tc.desc  : Get TCPSocket status,after bind; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2700', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2700';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 9004
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          keepAlive: true,
+          OOBInline: true,
+          TCPNoDelay: true,
+          socketLinger: {
+            on: true, linger: 10
+          },
+          receiveBufferSize: 1000,
+          sendBufferSize: 1000,
+          reuseAddress: true,
+          socketTimeout: 3000
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_2800
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions2800
+     * @tc.desc  : Get TCPSocket status,after bind and connect; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2800', 0, async (done: Function) => {
+      let caseName: String = 'testNetworkMgrSocketTCPSocketSetExtraOptions2800';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 4088
+        };
+        await tcp.bind(bindAddress);
+        let tcpConnectOptions: socket.TCPConnectOptions = {
+          address: bindAddress,
+        };
+        await tcp.connect(tcpConnectOptions);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          keepAlive: true,
+          OOBInline: true,
+          TCPNoDelay: true,
+          socketLinger: {
+            on: true, linger: 10
+          },
+          receiveBufferSize: 1000,
+          sendBufferSize: 1000,
+          reuseAddress: true,
+          socketTimeout: 3000
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName}_1 fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        })
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_2900
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions2900
+     * @tc.desc  : Get TCPSocket status,after listen and connect; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2900', 0, async (done: Function) => {
+      let caseName: String = 'testNetworkMgrSocketTCPSocketSetExtraOptions2900';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+        expect(tcpServer).assertInstanceOf('Object');
+        let listenAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 4089,
+          family: 1
+        };
+        await tcpServer.listen(listenAddress);
+        let tcpConnectOptions: socket.TCPConnectOptions = {
+          address: listenAddress,
+        };
+        await tcp.connect(tcpConnectOptions);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          keepAlive: true,
+          OOBInline: true,
+          TCPNoDelay: true,
+          socketLinger: {
+            on: true, linger: 10
+          },
+          receiveBufferSize: 1000,
+          sendBufferSize: 1000,
+          reuseAddress: true,
+          socketTimeout: 3000
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_3000
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions3000
+     * @tc.desc  : Get TCPSocket status,Input parameter is null; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3000', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3000';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 4090
+        };
+        await tcp.bind(bindAddress);
+        tcp.setExtraOptions(null).then(() => {
+          console.info(`${caseName} success `);
+          expectFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectEqual(err.code, 401);
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_3100
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions3100
+     * @tc.desc  : Get TCPSocket status,Input parameter is undefined; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3100';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 4091
+        };
+        await tcp.bind(bindAddress);
+        tcp.setExtraOptions(undefined).then(() => {
+          console.info(`${caseName} success `);
+          expectFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectEqual(err.code, 401);
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_3200
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions3200
+     * @tc.desc  : Get TCPSocket status,Input parameter keepAlive is false; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3200';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10001
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          keepAlive: true,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_3300
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions3300
+     * @tc.desc  : Get TCPSocket status,Input parameter keepAlive is true; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3300', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3300';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10002
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          keepAlive: false,
+          socketLinger: {
+            on: false, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_3400
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions3400
+     * @tc.desc  : Get TCPSocket status,Input parameter OOBlnLine is false; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3400', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3400';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10003
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          OOBInline: false,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_3500
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions3500
+     * @tc.desc  : Get TCPSocket status, Input parameter OOBlnLine is true; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3500', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3500';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10003
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          OOBInline: true,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_3600
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions3600
+     * @tc.desc  : Get TCPSocket status,Input parameter TCPNoDelay is false; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3600', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3600';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10004
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          TCPNoDelay: false,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_3700
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions3700
+     * @tc.desc  : Get TCPSocket status,Input parameter TCPNoDelay is true; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3700', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3700';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10004
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          TCPNoDelay: false,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_3800
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions3800
+     * @tc.desc  : Get TCPSocket status,Input parameter receiveBufferSize is -1; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3800', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3800';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10005
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          receiveBufferSize: -1,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_3900
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions3900
+     * @tc.desc  : Get TCPSocket status,Input parameter receiveBufferSize is 0; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3900', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3900';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10006
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          receiveBufferSize: 0,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_4000
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions4000
+     * @tc.desc  : Get TCPSocket status,Input parameter receiveBufferSize is 100; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4000', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4000';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10007
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          receiveBufferSize: 100,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_4100
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions4100
+     * @tc.desc  : Get TCPSocket status,Input parameter sendBufferSize is -1; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4100';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10008
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          sendBufferSize: -1,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_4200
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions4200
+     * @tc.desc  : Get TCPSocket status,Input parameter sendBufferSize is 0; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4200';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10008
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          sendBufferSize: 0,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_4300
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions4300
+     * @tc.desc  : Get TCPSocket status,Input parameter sendBufferSize is 100; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4300', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4300';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10008
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          sendBufferSize: 100,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_4400
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions4400
+     * @tc.desc  : Get TCPSocket status,Input parameter reuseAddress is true; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4400', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4400';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10009
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          reuseAddress: true,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_4500
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions4500
+     * @tc.desc  : Get TCPSocket status,Input parameter reuseAddress is false; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4500', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4500';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10010
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          reuseAddress: false,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_4600
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions4600
+     * @tc.desc  : Get TCPSocket status,Input parameter socketTimeout is -1; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4600', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4600';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10011
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketTimeout: -1,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectTrue(err.code===2301033);
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_4700
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions4700
+     * @tc.desc  : Get TCPSocket status,Input parameter socketTimeout is 0; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4700', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4700';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10012
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketTimeout: 0,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_4800
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions4800
+     * @tc.desc  : Get TCPSocket status,Input parameter socketTimeout is 100; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4800', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4800';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10013
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketTimeout: 100,
+          socketLinger: {
+            on: true, linger: 10
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_4900
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions4900
+     * @tc.desc  : Get TCPSocket status,Input parameter linger is -1; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4900', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4900';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10014
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketLinger: {
+            on: true, linger: -1
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_5000
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions5000
+     * @tc.desc  : Get TCPSocket status,Input parameter linger is 0; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions5000', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions5000';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10015
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketLinger: {
+            on: true, linger: 0
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_5100
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions5100
+     * @tc.desc  : Get TCPSocket status,Input parameter linger is 65535; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions5100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions5100';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10017
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketLinger: {
+            on: true, linger: 65535
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_SetExtraOptions_5200
+     * @tc.name  : testNetworkMgrSocketTCPSocketSetExtraOptions5200
+     * @tc.desc  : Get TCPSocket status,Input parameter linger is 65536; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions5200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions5200';
+      console.info(`${caseName} test start`);
+      try {
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object')
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 10018
+        };
+        await tcp.bind(bindAddress);
+        let tcpExtraOptions: socket.TCPExtraOptions = {
+          socketLinger: {
+            on: true, linger: 65536
+          },
+        };
+        tcp.setExtraOptions(tcpExtraOptions).then(() => {
+          console.info(`${caseName} success `);
+          expectSuccess();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail err:${JSON.stringify(err)}`);
+          expectFail();
+          done();
+        }).finally(async () => {
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_OnMessage_0100
+     * @tc.name  : testNetworkMgrSocketTCPSocketOnMessage0100
+     * @tc.desc  : Subscription to receive message events for TCPSocket connections,after bind and connect
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketOnMessage0100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketOnMessage0100';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 4092
+        };
+        await tcp.bind(bindAddress);
+        let tcpConnectOptions: socket.TCPConnectOptions = {
+          address: bindAddress,
+        };
+        await tcp.connect(tcpConnectOptions);
+        let tcpSendOptions: socket.TCPSendOptions = {
+          data: 'Hello, client!',
+          encoding: 'UTF-8'
+        };
+        class SocketInfo {
+          message: ArrayBuffer = new ArrayBuffer(1);
+          remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+        };
+        const callback: Callback<socket.SocketMessageInfo> = async (value: SocketInfo) => {
+          console.info(`${caseName} value:${ArrayBufferToString(value.message)}`);
+          expectTrue(ArrayBufferToString(value.message) === 'Hello, client!');
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        tcp.on('message', callback);
+        await tcp.send(tcpSendOptions);
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_OnMessage_0200
+     * @tc.name  : testNetworkMgrSocketTCPSocketOnMessage0200
+     * @tc.desc  : Subscription to receive message events for TCPSocket connections,after listen and connect
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketOnMessage0200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketOnMessage0200';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+        expect(tcpServer).assertInstanceOf('Object');
+        let listenAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 4093
+        };
+        await tcpServer.listen(listenAddress);
+        let tcpConnectOptions: socket.TCPConnectOptions = {
+          address: listenAddress,
+        };
+        let clientSendOptions: socket.TCPSendOptions = {
+          data: 'Hello, server!',
+          encoding: 'UTF-8'
+        };
+        tcpServer.on('connect', async (client: socket.TCPSocketConnection) => {
+          await client.send(clientSendOptions);
+        });
+        await tcp.connect(tcpConnectOptions);
+        class SocketInfo {
+          message: ArrayBuffer = new ArrayBuffer(1);
+          remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+        };
+        const callback: Callback<socket.SocketMessageInfo> = async (value: SocketInfo) => {
+          console.info(`${caseName} value:${ArrayBufferToString(value.message)}`);
+          expectTrue(ArrayBufferToString(value.message) === 'Hello, server!');
+          tcpServer.off('connect');
+          await tcp.close();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        tcp.on('message', callback);
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_OffMessage_0100
+     * @tc.name  : testNetworkMgrSocketTCPSocketOffMessage0100
+     * @tc.desc  : Unsubscribe from receiving message events for TCPSocket connections,After a subscription
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketOffMessage0100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketOffMessage0100';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 4094
+        };
+        await tcp.bind(bindAddress);
+        let tcpConnectOptions: socket.TCPConnectOptions = {
+          address: bindAddress,
+        };
+        await tcp.connect(tcpConnectOptions);
+        let tcpSendOptions: socket.TCPSendOptions = {
+          data: 'Hello, client!',
+          encoding: 'UTF-8'
+        };
+        const callback: Callback<socket.SocketMessageInfo> = () => {
+          expectFail();
+          console.info(`${caseName} test end`);
+          done();
+        };
+        tcp.on('message', callback);
+        tcp.off('message', callback);
+        await tcp.send(tcpSendOptions);
+        await tcp.close();
+        expectSuccess();
+        done();
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_OffMessage_0200
+     * @tc.name  : testNetworkMgrSocketTCPSocketOffMessage0200
+     * @tc.desc  : Unsubscribe from receiving message events for TCPSocket connections,After Subscribing multiple times
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketOffMessage0200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketOffMessage0200';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 4095
+        };
+        await tcp.bind(bindAddress);
+        let tcpConnectOptions: socket.TCPConnectOptions = {
+          address: bindAddress,
+        };
+        await tcp.connect(tcpConnectOptions);
+        let tcpSendOptions: socket.TCPSendOptions = {
+          data: 'Hello, client!',
+          encoding: 'UTF-8'
+        };
+        const callback1: Callback<socket.SocketMessageInfo> = () => {
+          expectFail();
+          console.info(`${caseName} callback1 test end`);
+          done();
+        };
+        const callback2: Callback<socket.SocketMessageInfo> = () => {
+          expectFail();
+          console.info(`${caseName} callback2 test end`);
+          done();
+        };
+        tcp.on('message', callback1);
+        tcp.on('message', callback2);
+        tcp.off('message');
+        await tcp.send(tcpSendOptions);
+        expectSuccess();
+        await tcp.close();
+        done();
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_OnConnect_0100
+     * @tc.name  : testNetworkMgrSocketTCPSocketOnConnect0100
+     * @tc.desc  : Subscription to connection events for TCPSocket after bind
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketOnConnect0100', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketOnConnect0100';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 4096
+        };
+        await tcp.bind(bindAddress);
+        let tcpConnectOptions: socket.TCPConnectOptions = {
+          address: bindAddress,
+        };
+        const callback: Callback<void> = async () => {
+          expectSuccess();
+          console.info(`${caseName} test end`);
+          await tcp.close();
+          done();
+        };
+        tcp.on('connect', callback);
+        await tcp.connect(tcpConnectOptions);
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_OnConnect_0200
+     * @tc.name  : testNetworkMgrSocketTCPSocketOnConnect0200
+     * @tc.desc  : Subscription to connection events for TCPSocket,after listen
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketOnConnect0200', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketOnConnect0200';
+      try {
+        console.info(`${caseName} test start`);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+        expect(tcpServer).assertInstanceOf('Object');
+        let listenAddress: socket.NetAddress = {
+          address: '127.0.0.1',
+          port: 4097
+        };
+        await tcpServer.listen(listenAddress);
+        let tcpConnectOptions: socket.TCPConnectOptions = {
+          address: listenAddress,
+        };
+        const callback: Callback<void> = async () => {
+          console.info(`${caseName} test end`);
+          await tcp.close();
+          expectSuccess();
+          done();
+        };
+        tcp.on('connect', callback);
+        await tcp.connect(tcpConnectOptions);
+        console.info(`${caseName} test end`);
+        done();
+      } catch (err) {
+        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    
+
+
   })
 }
