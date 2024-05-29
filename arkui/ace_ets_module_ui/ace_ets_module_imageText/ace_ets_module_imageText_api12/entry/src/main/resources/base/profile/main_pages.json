@@ -58,7 +58,13 @@
     "MainAbility/pages/TextArea/TextAreaAPI/lineBreakStrategy",
     "MainAbility/pages/TextArea/TextAreaAPI/lineSpacing",
     "MainAbility/pages/TextInput/TextInputAPI/lineBreakStrategy",
-  "MainAbility/pages/Text/textStrategy",
+    "MainAbility/pages/Text/textStrategy",
+    "MainAbility/pages/Text/Context",
+    "MainAbility/pages/Text/styledStringApi",
+    "MainAbility/pages/Text/getLayout",
+    "MainAbility/pages/SymbolGlyph/SymbolGlyphApi",
+    "MainAbility/pages/RichEditor/SelectionMenuApi",
+    "MainAbility/pages/Image/imageAddApi",
     "MainAbility/pages/StyledString/StyledStringApi1"
 
   ]
