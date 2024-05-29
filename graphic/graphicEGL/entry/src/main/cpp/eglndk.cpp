@@ -372,7 +372,6 @@ static napi_value EglGetConfigAttrib(napi_env env, napi_callback_info info)
     EGLBoolean Ret;
     for (int i = 0; i < numConfigs; ++i) {
         Ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_BUFFER_SIZE, &numConfigs);
-        Ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_ALPHA_SIZE, &numConfigs);
     }
     NAPI_ASSERT(env, Ret == TRUE, "eglGetConfigAttrib error");
     eglReleaseThread();
@@ -392,7 +391,6 @@ static napi_value EglGetConfigAttribAbnormal(napi_env env, napi_callback_info in
     EGLBoolean Ret;
     for (int i = 0; i < numConfigs; ++i) {
         Ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_BUFFER_SIZE, &numConfigs);
-        Ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_ALPHA_SIZE, &numConfigs);
     }
     NAPI_ASSERT(env, Ret == FALSE, "eglGetConfigAttrib error");
     eglReleaseThread();
