@@ -25,6 +25,7 @@ group("ActsAceEtsModuleUITest") {
     "ace_ets_module_commonEvents:ActsAceEtsModuleCommonEventsTest",
     "ace_ets_module_dialog:ActsAceEtsModuleDialogTest",
     "ace_ets_module_draw:ActsAceEtsModuleDrawTest",
+    "ace_ets_module_gauge_contentModifier:ActsAceEtsModuleGaugeContentModifierTest",
     "ace_ets_module_imageText:ActsAceEtsModuleImageTextTest",
     "ace_ets_module_information:ActsAceEtsModuleInformationTest",
     "ace_ets_module_keyboardShortcut:ActsAceEtsModuleKeyboardShortcutTest",
