@@ -3092,17 +3092,23 @@ static napi_value AudioAudioInternalRecordingSuccess01(napi_env env, napi_callba
 static napi_value AudioAudioInternalRecordingSuccess02(napi_env env, napi_callback_info info)
 {
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
-    OH_AudioRenderer *audioRenderer;
+    OH_AudioRenderer *audioRenderer = nullptr;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
     OH_AudioStream_PrivacyType type = AUDIO_STREAM_PRIVACY_TYPE_PRIVATE;
-    OH_AudioStream_PrivacyType *type_get;
+    OH_AudioStream_PrivacyType type_get = nullptr;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererPrivacy(builder, type);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        OH_AudioStreamBuilder_Destroy(builder);
+        napi_value res;
+        napi_create_int32(env, result, &res);
+        return res;
+    };
     OH_AudioStream_Result result1 = OH_AudioRenderer_GetRendererPrivacy(audioRenderer, &type_get);
-    if (result == AUDIOSTREAM_SUCCESS && result1 == AUDIOSTREAM_SUCCESS
-        && type_get == AUDIO_STREAM_PRIVACY_TYPE_PRIVATE) {
-        result = AUDIOSTREAM_SUCCESS;
-    } else {
-        result = AUDIOSTREAM_ERROR_INVALID_PARAM;
+    if (result1 != AUDIOSTREAM_SUCCESS) {
+        OH_AudioStreamBuilder_Destroy(builder);
+        napi_value res;
+        napi_create_int32(env, result1, &res);
+        return res;
     };
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
