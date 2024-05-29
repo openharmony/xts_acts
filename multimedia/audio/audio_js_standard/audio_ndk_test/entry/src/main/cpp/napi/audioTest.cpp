@@ -3077,8 +3077,8 @@ static napi_value AudioAudioDeviceDescriptorGetDeviceEncodingTypes_004(napi_env 
 
 static napi_value AudioAudioInternalRecordingSuccess01(napi_env env, napi_callback_info info)
 {
-    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
-    OH_AudioRenderer* audioRenderer;
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+    OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
     OH_AudioStream_PrivacyType type = AUDIO_STREAM_PRIVACY_TYPE_PUBLIC;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererPrivacy(builder, type);
@@ -3091,13 +3091,13 @@ static napi_value AudioAudioInternalRecordingSuccess01(napi_env env, napi_callba
 
 static napi_value AudioAudioInternalRecordingSuccess02(napi_env env, napi_callback_info info)
 {
-    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
-    OH_AudioRenderer* audioRenderer;
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+    OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
     OH_AudioStream_PrivacyType type = AUDIO_STREAM_PRIVACY_TYPE_PRIVATE;
     OH_AudioStream_PrivacyType type_get;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererPrivacy(builder, type);
-    OH_AudioStream_Result result1 = OH_AudioRenderer_GetRendererPrivacy(builder, &type_get);
+    OH_AudioStream_Result result1 = OH_AudioRenderer_GetRendererPrivacy(audioRenderer, &type_get);
     if (result == AUDIOSTREAM_SUCCESS && result1 == AUDIOSTREAM_SUCCESS
         && type_get == AUDIO_STREAM_PRIVACY_TYPE_PRIVATE) {
         result = AUDIOSTREAM_SUCCESS;
@@ -3112,8 +3112,8 @@ static napi_value AudioAudioInternalRecordingSuccess02(napi_env env, napi_callba
 
 static napi_value AudioAudioInternalRecordingFalse(napi_env env, napi_callback_info info)
 {
-    OH_AudioStreamBuilder* builder = CreateRenderBuilder();
-    OH_AudioRenderer* audioRenderer;
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+    OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
     OH_AudioStream_PrivacyType type = static_cast<OH_AudioStream_PrivacyType>(2);
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererPrivacy(builder, type);
