@@ -558,7 +558,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_getInputMethodAbility_001 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -579,7 +579,7 @@ export default function inputMethodAbility() {
         if (err){
           console.info("====>inputMethodAbility_test_getInputMethodAbility_001 publishCallback failed:" +
           JSON.stringify(err));
-        } 
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -587,15 +587,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_getInputMethodAbility_001 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_getInputMethodAbility_001 subscriber finish");
-
-        let commonEventPublishData = {
-          code: 1
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_getInputMethodAbility_001 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_getInputMethodAbility_001 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData = {
+            code: 1
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -620,7 +630,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -641,7 +651,7 @@ export default function inputMethodAbility() {
         if (err){
           console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 publishCallback failed:" +
           JSON.stringify(err));
-        } 
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -649,15 +659,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 subscriber finish");
-
-        let commonEventPublishData = {
-          code: 2
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData = {
+            code: 2
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -682,7 +702,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_028 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -702,7 +722,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_028 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_028 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -710,15 +730,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_028 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_028 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 28
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_028 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_028 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 28
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -743,7 +773,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_029 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -763,7 +793,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_029 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_029 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -771,15 +801,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_029 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_029 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 29
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_029 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_029 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback)
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 29
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback)
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -804,7 +844,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_030 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -824,7 +864,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_030 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_030 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -832,15 +872,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_030 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_030 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 30
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_030 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_030 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 30
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -865,7 +915,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_031 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -885,7 +935,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_031 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_031 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -893,15 +943,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_031 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_031 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 31
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_031 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_031 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 31
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -926,7 +986,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_032 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -946,7 +1006,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_032 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_032 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -954,15 +1014,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_032 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_032 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 32
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_032 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_032 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 32
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -987,7 +1057,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_033 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1007,7 +1077,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_033 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_033 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1015,15 +1085,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_033 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_033 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 33
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_033 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_033 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 33
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1048,7 +1128,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_034 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1068,7 +1148,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_034 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_034 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1076,15 +1156,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_034 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_034 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 34
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_034 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_034 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 34
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1109,7 +1199,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_035 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1129,7 +1219,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_035 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_035 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1137,15 +1227,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_035 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_035 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 35
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_035 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_035 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 35
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1170,7 +1270,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_036 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1190,7 +1290,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_036 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_036 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1198,15 +1298,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_036 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_036 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_036 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_036 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
-          code: 36
-        };
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 36
+          };
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1231,7 +1341,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_037 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1251,7 +1361,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_037 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_037 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1259,15 +1369,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_037 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_037 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 37
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_037 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_037 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 37
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1292,7 +1412,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_038 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1312,7 +1432,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_038 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_038 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1320,15 +1440,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_038 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_038 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 38
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_038 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_038 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 38
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1353,7 +1483,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_039 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1373,7 +1503,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_039 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_039 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1381,15 +1511,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_039 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_039 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 39
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_039 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_039 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 39
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1414,7 +1554,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_040 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1434,7 +1574,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_040 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_040 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1442,15 +1582,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_040 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_040 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 40
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_040 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_040 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 40
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1475,7 +1625,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_041 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1495,7 +1645,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_041 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_041 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1503,15 +1653,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_041 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_041 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 41
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_041 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_041 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 41
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1536,7 +1696,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_042 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1556,7 +1716,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_042 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_042 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1564,15 +1724,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_042 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_042 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 42
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_042 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_042 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 42
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1597,7 +1767,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_043 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1617,7 +1787,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_043 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_043 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1625,15 +1795,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_043 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_043 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 43
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_043 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_043 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 43
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1673,7 +1853,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_045 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1693,7 +1873,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_045 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_045 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1701,15 +1881,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_045 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_045 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 45
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_045 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_045 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 45
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1734,7 +1924,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_046 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1754,7 +1944,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_046 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_046 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1762,15 +1952,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_046 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_046 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 46
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_046 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_046 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 46
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1795,7 +1995,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_047 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1815,7 +2015,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_047 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_047 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1823,15 +2023,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_047 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_047 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 47
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_047 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_047 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 47
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1856,7 +2066,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_048 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1876,7 +2086,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_048 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_048 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1884,15 +2094,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_048 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_048 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 48
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_048 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_048 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 48
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1917,7 +2137,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_049 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1937,7 +2157,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_049 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_049 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -1945,15 +2165,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_049 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_049 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 49
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_049 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_049 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 49
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1978,7 +2208,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_050 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -1998,7 +2228,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_050 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_050 publishCallback failed:" + JSON.stringify(err));
-        } 
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -2006,15 +2236,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_050 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_050 subscriber finish")
-
-        var commonEventPublishData = {
-          code: 50
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_050 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_050 subscriber finish")
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 50
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2039,7 +2279,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_070 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2064,7 +2304,7 @@ export default function inputMethodAbility() {
             runCmd();
             clearTimeout(t)
           }, 300)
-        } 
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -2072,15 +2312,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_070 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_070 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 70
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_070 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_070 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 70
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2105,7 +2355,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_071 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2138,15 +2388,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_071 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_071 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 71
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_071 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_071 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 71
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2171,7 +2431,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_072 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2204,15 +2464,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_072 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_072 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 72
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_072 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_072 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 72
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2237,7 +2507,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_073 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2270,15 +2540,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_073 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_073 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 73
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_073 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_073 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 73
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2303,7 +2583,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_074 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2338,15 +2618,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_074 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_074 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 74
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_074 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_074 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 74
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2371,7 +2661,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_101 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2391,7 +2681,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_101 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_101 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -2399,15 +2689,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_101 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_101 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 101
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_101 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_101 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 101
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2432,7 +2732,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_102 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2452,7 +2752,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_102 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_102 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -2460,15 +2760,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_102 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_102 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 102
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_102 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_102 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 102
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2493,7 +2803,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_103 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2513,7 +2823,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_103 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_103 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -2521,15 +2831,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_103 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_103 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 103
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_103 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_103 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 103
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2554,7 +2874,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_104 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2574,7 +2894,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_104 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_104 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -2582,15 +2902,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_104 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_104 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 104
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_104 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_104 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 104
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2615,7 +2945,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_105 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2635,7 +2965,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_105 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_105 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -2643,15 +2973,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_105 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_105 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 105
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_105 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_105 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 105
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2676,7 +3016,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>inputMethodAbility_test_106 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -2696,7 +3036,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_106 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_106 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -2704,15 +3044,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_106 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_106 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 106
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_106 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_106 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 106
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -2729,7 +3079,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       inputMethodController.on("selectByRange", async (range) => {
@@ -2765,7 +3115,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       inputMethodController.on("selectByMovement", async (movement) => {
@@ -2800,7 +3150,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       let count = 0;
@@ -2844,7 +3194,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       let count = 0;
@@ -3041,15 +3391,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>inputMethodAbility_test_091 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_091 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 91
+        try{
+          subscriber = data;
+          console.info("====>inputMethodAbility_test_091 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>inputMethodAbility_test_091 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 91
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3074,7 +3434,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3094,7 +3454,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3102,15 +3462,24 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 170
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 170
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3135,7 +3504,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3155,7 +3524,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3163,15 +3532,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 180
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 180
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3196,7 +3575,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3216,7 +3595,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3224,15 +3603,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 200
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 200
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3257,7 +3646,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3277,7 +3666,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3285,15 +3674,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 201
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 201
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3318,7 +3717,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3338,7 +3737,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3346,15 +3745,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 210
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 210
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3379,7 +3788,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3399,7 +3808,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3407,15 +3816,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 211
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 211
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3440,7 +3859,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3460,7 +3879,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3468,15 +3887,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 220
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 220
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3501,7 +3930,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3521,7 +3950,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3529,15 +3958,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 221
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 221
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3562,7 +4001,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3582,7 +4021,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3590,15 +4029,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 230
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 230
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3623,7 +4072,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3643,7 +4092,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3651,15 +4100,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 231
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 231
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3684,7 +4143,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3704,7 +4163,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3712,15 +4171,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 240
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 240
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3745,7 +4214,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3765,7 +4234,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3773,15 +4242,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 241
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 241
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3806,7 +4285,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3826,7 +4305,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3834,15 +4313,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 250
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 250
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3867,7 +4356,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3887,7 +4376,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3895,15 +4384,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 251
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 251
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3928,7 +4427,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -3948,7 +4447,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -3956,15 +4455,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 260
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 260
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -3989,7 +4498,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -4009,7 +4518,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -4017,15 +4526,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 261
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 261
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4050,7 +4569,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -4070,7 +4589,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -4078,15 +4597,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 270
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);var commonEventPublishData = {
+            code: 270
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+        
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4111,7 +4640,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -4131,7 +4660,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -4139,15 +4668,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 271
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 271
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4172,7 +4711,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -4192,7 +4731,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -4200,15 +4739,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 280
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 280
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4233,7 +4782,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -4253,7 +4802,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -4261,15 +4810,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 281
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 281
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4294,7 +4853,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -4314,7 +4873,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -4322,15 +4881,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 290
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 290
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4355,7 +4924,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -4375,7 +4944,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -4383,15 +4952,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 291
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 291
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4416,7 +4995,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -4436,7 +5015,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -4444,16 +5023,28 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 300
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
 
-      var commonEventPublishData = {
-        code: 300
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
     });
 
     /*
@@ -4477,7 +5068,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -4497,7 +5088,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -4505,16 +5096,27 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 310
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);          
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
 
-      var commonEventPublishData = {
-        code: 310
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
     });
 
     /*
@@ -4538,7 +5140,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback (err, data){
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try{
@@ -4558,7 +5160,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 publishCallback failed:" + JSON.stringify(err));
-        }  
+        }
       }
 
       var commonEventSubscribeInfo = {
@@ -4566,16 +5168,28 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 subscriber data:" + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 320
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
 
-      var commonEventPublishData = {
-        code: 320
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
     });
 
     /*
@@ -4600,7 +5214,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback(err, data) {
         console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try {
@@ -4628,15 +5242,29 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 subscriber finish");
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0100 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 340
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
 
         var commonEventPublishData = {
           code: 340
         }
         commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4662,7 +5290,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback(err, data) {
         console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try {
@@ -4690,15 +5318,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 350
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0200 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 350
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4724,7 +5362,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback(err, data) {
         console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try {
@@ -4752,15 +5390,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 360
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0300 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 360
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4786,7 +5434,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback(err, data) {
         console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try {
@@ -4814,15 +5462,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 370
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0400 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 370
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+        
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4848,7 +5506,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback(err, data) {
         console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try {
@@ -4876,15 +5534,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 380
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0500 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 380
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4910,7 +5578,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback(err, data) {
         console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try {
@@ -4938,15 +5606,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 390
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_0600 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 390
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -4972,7 +5650,7 @@ export default function inputMethodAbility() {
 
       function subscriberCallback(err, data) {
         console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 subscriberCallback data:"
-        + JSON.stringify(data));
+          + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try {
@@ -5000,15 +5678,25 @@ export default function inputMethodAbility() {
       }
       var subscriber;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 subscriber data:" + JSON.stringify(data))
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 subscriber finish");
-
-        var commonEventPublishData = {
-          code: 400
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1100 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 400
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
