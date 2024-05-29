@@ -5,6 +5,10 @@
     "version": {
       "code": 1000000,
       "name": "1.0.0"
+    },
+    "apiVersion": {
+      "compatible": 4,
+      "target": 5
     }
   },
   "deviceConfig": {},
@@ -23,6 +27,12 @@
       "moduleType": "entry",
       "installationFree": false
     },
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.RUNNING_LOCK",
+        "reason": "use ohos.permission.RUNNING_LOCK"
+      }
+    ],
     "abilities": [
       {
         "skills": [

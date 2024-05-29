@@ -5,6 +5,10 @@
     "version": {
       "code": 1000000,
       "name": "1.0.0"
+    },
+    "apiVersion": {
+      "compatible": 4,
+      "target": 5
     }
   },
   "deviceConfig": {},
@@ -23,17 +27,16 @@
       "moduleType": "feature",
       "installationFree": false
     },
-    "defPermissions": [
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC"
-      }
-    ],
     "reqPermissions": [
       {
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
-        "reason": "ceshi"
+        "name": "ohos.permission.PUBLISH_AGENT_REMINDER",
+        "reason": "SYSTEM_GRANT",
+        "usedScene": {
+          "ability": [
+            ".FormAbility"
+          ],
+          "when": "inuse"
+        }
       }
     ],
     "abilities": [
