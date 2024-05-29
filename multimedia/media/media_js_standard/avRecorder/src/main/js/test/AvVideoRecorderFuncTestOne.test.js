@@ -51,6 +51,25 @@ export default function avVideoRecorderTestOne() {
             videoFrameRate : 30 // 视频帧率
         }
 
+        let metaData = {
+            genre : "{marketing-name:\"HHH XXX\"}",
+            videoOrientation : "180",
+            location : { latitude : 35, longitude : 135 },
+            customInfo : {
+                "com.hh.version" : "5",
+            }
+        }
+
+        let avmetaConfig = {
+            audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+            videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+            profile: avProfile,
+            url : 'fd://35', //  参考应用文件访问与管理开发示例新建并读写一个文件
+            rotation : 0, // 视频旋转角度，默认为0不旋转，支持的值为0、90、180、270
+            location : { latitude : 30, longitude : 130 },
+            metadata : metaData,
+        }
+
         let avConfig = {
             audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
             videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
@@ -9749,6 +9768,84 @@ export default function avVideoRecorderTestOne() {
             
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_CREATE_0200 end')
             done();
+        })
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0100
+            * @tc.name      : 09.metadata
+            * @tc.desc      : recorder (metadata)
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0100', 0, async function (done) {
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+                expect(true).assertTrue();
+                done();
+            }
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0100 start')
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avmetaConfig.url = fdPath;
+            checkDevice(avmetaConfig)
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
+                // init camera
+                GETINPUTSURFACE_CALLBACK_EVENT, INITCAMERA_EVENT,
+                // start recorder
+                STARTCAMERA_EVENT, STARTRECORDER_CALLBACK_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // resume recorder
+                STARTCAMERA_EVENT, RESUMERECORDER_CALLBACK_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT, RELEASECAMERA_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avmetaConfig, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AVMETADATA_0100 end')
+        })
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0200
+        * @tc.name      : 09.metadata customInfo(number)
+        * @tc.desc      : recorder (metadata)
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0200', 0, async function (done) {
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+                expect(true).assertTrue();
+                done();
+            }
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0200 start')
+            let customInfo = {
+                "test02": 1000,
+            }
+            avmetaConfig.metadata.customInfo = customInfo;
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avmetaConfig.url = fdPath;
+            checkDevice(avmetaConfig)
+            let mySteps = new Array(
+                // setAvRecorderCallback
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
+                // prepareErrPromise
+                PREPARE_PROMISE_EVENT,
+                // AVRecorderTestBase.releasePromise
+                RELEASECORDER_PROMISE_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avmetaConfig, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0200 end')
         })
     })
 }
