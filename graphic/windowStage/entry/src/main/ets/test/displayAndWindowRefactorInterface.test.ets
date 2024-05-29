@@ -120,7 +120,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let windowConfigTwo = {
         name: windIdTwo, windowType: tempType, ctx: context
       };
-
       function createFirstWindow() {
         return new Promise((resolve, reject) => {
           try {
@@ -140,8 +139,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
             })
           } catch (exception) {
             console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
-          }
-          ;
+          };
         })
       }
 
@@ -157,6 +155,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
               expect(err.code).assertEqual(1300002);
             } catch (error) {
               console.info(`ohosWindow.createWindow two twice catch error: ${JSON.stringify(error)}`)
+              expect().assertFail();
             }
           } else {
             console.log(msgStr + 'ohosWindow.createWindow two success twice data: ' + JSON.stringify(dataTwo));
@@ -167,8 +166,9 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         })
       } catch (exception) {
         console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      }
-      ;
+        expect(exception.code).assertEqual(1300002);
+        done();
+      };
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0160
