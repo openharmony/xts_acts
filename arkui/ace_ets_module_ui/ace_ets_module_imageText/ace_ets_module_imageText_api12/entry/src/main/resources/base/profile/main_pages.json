@@ -59,6 +59,13 @@
   "MainAbility/pages/SymbolGlyph/EffectFillStyle",
   "MainAbility/pages/SymbolGlyph/EffectScope",
   "MainAbility/pages/RichEditor/menuPolicyHIDE",
-  "MainAbility/pages/RichEditor/menuPolicySHOW"
+  "MainAbility/pages/RichEditor/menuPolicySHOW",
+    "MainAbility/pages/TextArea/TextAreaApi1",
+    "MainAbility/pages/TextArea/TextAreaApi2",
+    "MainAbility/pages/TextArea/TextAreaApi3",
+    "MainAbility/pages/Text/TextApi1",
+  "MainAbility/pages/Text/textStrategy",
+    "MainAbility/pages/StyledString/StyledStringApi1"
+
   ]
 }

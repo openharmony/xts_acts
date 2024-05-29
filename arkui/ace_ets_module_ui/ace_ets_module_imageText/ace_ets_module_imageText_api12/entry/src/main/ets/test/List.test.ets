@@ -71,6 +71,7 @@ import EffectFillStyle from './SymbolGlyph/EffectFillStyle.test'
 import EffectScope from './SymbolGlyph/EffectScope.test'
 import menuPolicyHIDE from './RichEditorTest/menuPolicyHIDE.test'
 import menuPolicySHOW from './RichEditorTest/menuPolicySHOW.test'
+import StyledStringApi1 from './StyledString/StyledStringApi1.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -131,4 +132,6 @@ export default function testsuite() {
   EffectScope()
   menuPolicyHIDE()
   menuPolicySHOW()
+  StyledStringApi1();
+
 }
