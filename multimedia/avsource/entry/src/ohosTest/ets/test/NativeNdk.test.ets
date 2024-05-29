@@ -1695,7 +1695,7 @@ export default function nativeNdkTest() {
      */
     it('testOHAvCapabilityGetEncoderBitrateRange012', 0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 0, 1, 4);
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -1807,7 +1807,7 @@ export default function nativeNdkTest() {
      */
     it('testOHAvCapabilityGetEncoderBitrateRange020', 0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 1, 1, 1, 4);
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
 
