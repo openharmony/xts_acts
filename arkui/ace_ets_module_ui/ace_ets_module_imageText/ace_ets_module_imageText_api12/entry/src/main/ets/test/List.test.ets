@@ -73,6 +73,7 @@ import Text_lineBreakStrategyTest from './TextTest/TextAPITest/Text_lineBreakStr
 import Text_lineSpacingTest from './TextTest/TextAPITest/Text_lineSpacingTest.test'
 import marqueeOptionsTest from './TextTest/TextAPITest/marqueeOptionsTest.test'
 import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
+import StyledStringApi1 from './StyledString/StyledStringApi1.test'
 
 import EffectFillStyle from './SymbolGlyphTest/EffectFillStyle.test'
 import EffectScope from './SymbolGlyphTest/EffectScope.test'
@@ -145,4 +146,6 @@ export default function testsuite() {
   EffectScope()
   menuPolicyHIDE()
   menuPolicySHOW()
+  StyledStringApi1();
+
 }

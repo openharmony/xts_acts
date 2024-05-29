@@ -618,6 +618,26 @@ export default function photoPickerTest() {
       await selectWithOptionPromise(testNum, done, option, expectSelectNum);
     });
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_PROMISE_1200
+     * @tc.name      : smart_photopicker_select_promise_012
+     * @tc.desc      : select with recommendationType = FEATURED_SINGLE_PORTRAIT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_promise_012", 1, async function (done) {
+      let testNum = "smart_photopicker_select_promise_012";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.FEATURED_SINGLE_PORTRAIT;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+    });
+
     //callback
     /**
      * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_CALLBACK_0000
@@ -857,6 +877,26 @@ export default function photoPickerTest() {
         text: '上海野生动物园的大熊猫'
       }
       recommendationOptions.textContextInfo = textContextInfo;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_CALLBACK_1200
+     * @tc.name      : smart_photopicker_select_callback_012
+     * @tc.desc      : select with recommendationType = FEATURED_SINGLE_PORTRAIT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_callback_012", 1, async function (done) {
+      let testNum = "smart_photopicker_select_callback_012";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.FEATURED_SINGLE_PORTRAIT;
       option.recommendationOptions = recommendationOptions;
       let expectSelectNum = 1;
       await selectWithOptionCallback(testNum, done, option, expectSelectNum);
