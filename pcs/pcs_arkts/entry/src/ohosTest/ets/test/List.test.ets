@@ -16,6 +16,7 @@
 import developerModeTest from './DeveloperMode.test';
 import hardwareTest from './Hardware.test';
 import performanceTest from './Performance.test';
+import securityTest from './Security.test';
 import softwareTest from './Software.test';
 
 export default function testsuite() {
@@ -23,4 +24,5 @@ export default function testsuite() {
   performanceTest()
   developerModeTest()
   softwareTest()
+  securityTest()
 }

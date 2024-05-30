@@ -36,17 +36,17 @@ let abilityContext = getContext(this) as context.UIAbilityContext;
 @Component
 struct testUninstallHap {
   @State name: string = 'UninstallHap';
-  @State StepTips: string = '操作步骤：根据操作提示操作界面卸载应用' + '\n' + '预期结果：成功卸载应用';
-  @State TestResult: boolean = false;
-  @State StartEnable: boolean = true;
-  @State Result: string = "FLASE";
+  @State stepTips: string = '操作步骤：根据操作提示操作界面卸载应用' + '\n' + '预期结果：成功卸载应用';
+  @State testResult: boolean = false;
+  @State startEnable: boolean = true;
+  @State result: string = "FLASE";
   scroller: Scroller = new Scroller();
 
   async aboutToAppear() {
-    await FirstDialog.ChooseDialog(this.StepTips, this.name);
-    this.TestResult = false;
-    this.StartEnable = true;
-    this.Result = "FLASE";
+    await FirstDialog.ChooseDialog(this.stepTips, this.name);
+    this.testResult = false;
+    this.startEnable = true;
+    this.result = "FLASE";
   }
 
   @Builder
@@ -76,10 +76,10 @@ struct testUninstallHap {
                   .backgroundColor(0x317aff)
                   .width('30%')
                   .margin('10vp')
-                  .enabled(this.StartEnable)
-                  .opacity(this.StartEnable ? 1 : 0.4)
+                  .enabled(this.startEnable)
+                  .opacity(this.startEnable ? 1 : 0.4)
                   .onClick(async () => {
-                    this.StartEnable = !this.StartEnable;
+                    this.startEnable = !this.startEnable;
                     let str: Want = {
                       bundleName: "com.ohos.launcher",
                       abilityName: "com.ohos.launcher.MainAbility",
@@ -97,10 +97,10 @@ struct testUninstallHap {
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')
-                  .enabled(!this.StartEnable)
-                  .opacity(!this.StartEnable ? 1 : 0.4)
+                  .enabled(!this.startEnable)
+                  .opacity(!this.startEnable ? 1 : 0.4)
                   .onClick(() => {
-                    this.StartEnable = !this.StartEnable;
+                    this.startEnable = !this.startEnable;
                     let bundleInfo: bundleManager.BundleInfo
                     try {
                       bundleInfo = bundleManager.getBundleInfoSync('com.pcs.software.signedhap', 0)
@@ -108,15 +108,15 @@ struct testUninstallHap {
 
                     }
                     if(bundleInfo == undefined) {
-                      this.TestResult = true
-                      this.Result = "TRUE"
+                      this.testResult = true
+                      this.result = "TRUE"
                     }
                   })
               }
             }
 
             Row() {
-              Text('\n' + '\n' + `卸载结果：` + this.Result)
+              Text('\n' + '\n' + `卸载结果：` + this.result)
                 .fontColor(Color.White)
                 .fontSize('24fp')
             }
@@ -137,13 +137,13 @@ struct testUninstallHap {
     Column() {
       CustomContainer({
         title: this.name,
-        Url: 'pages/PCS/PCS_index',
-        StepTips: this.StepTips,
+        url: 'pages/PCS/PCS_index',
+        stepTips: this.stepTips,
         content: this.specificNoParam,
         name: $name,
-        TestResult: $TestResult,
-        StartEnable: $StartEnable,
-        Result: $Result,
+        testResult: $testResult,
+        startEnable: $startEnable,
+        result: $result,
       })
     }
     .width('100%')

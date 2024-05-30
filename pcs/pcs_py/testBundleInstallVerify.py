@@ -32,7 +32,7 @@ class testBundleInstallVerify(TestCase):
         errorList = self.versionCodeVerify(errorList)
         errorList = self.multipleHapsVerify(errorList)
         if len(errorList) > 0:
-            print('errorList: [' + ', '.join(errorList) + ']')
+            self.log.info('errorList: [' + ', '.join(errorList) + ']')
             assert False
 
     def versionCodeVerify(self, errorList):
