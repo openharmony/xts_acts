@@ -1422,6 +1422,7 @@ export default function relationalStoreCustomDirTest() {
         let rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG1);
         await rdbStore.executeSql(CREATE_TABLE_TEST, null);
         await data_Rdb.deleteRdbStore(context, STORE_CONFIG1);
+        expect().assertFail();
       } catch (err) {
         console.info(TAG + "Delete RdbStore failed" + err.code + err.message);
         expect(14800030).assertEqual(err.code);
