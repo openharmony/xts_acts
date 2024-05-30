@@ -8,6 +8,7 @@
         "MainAbility/pages/Navigation/NavigationBarStyle",
         "MainAbility/pages/Navigation/NavigationOnPop",
         "MainAbility/pages/NavDestination/NavDestinationEvents",
-        "MainAbility/pages/NavDestination/NavDestinationRouterMap"
+        "MainAbility/pages/NavDestination/NavDestinationRouterMap",
+        "MainAbility/pages/Navigation/NavigationSymbolIcon"
     ]
 }
