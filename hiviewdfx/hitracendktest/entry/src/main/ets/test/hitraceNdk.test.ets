@@ -61,7 +61,7 @@ export default function hitraceNdkTest() {
     });
     
     /**
-     * @tc.number SUB_DFX_DFT_HiTraceChain_ndk_0200
+     * @tc.number SUB_DFX_DFT_HiTraceChain_C_0200
      * @tc.name testOHHiTraceChainNd001
      * @tc.desc test OH_HiTrace_BeginChain
      * @tc.size MediumTest
@@ -75,7 +75,7 @@ export default function hitraceNdkTest() {
     });
 
     /**
-     * @tc.number SUB_DFX_DFT_HiTraceChain_ndk_1000
+     * @tc.number SUB_DFX_DFT_HiTraceChain_C_1000
      * @tc.name testOHHiTraceChainNd002
      * @tc.desc test OH_HiTrace_IsFlagEnabled
      * @tc.size MediumTest
@@ -89,7 +89,7 @@ export default function hitraceNdkTest() {
     });
 
     /**
-     * @tc.number SUB_DFX_DFT_HiTraceChain_ndk_0800
+     * @tc.number SUB_DFX_DFT_HiTraceChain_C_0800
      * @tc.name testOHHiTraceChainNd003
      * @tc.desc test OH_HiTrace_Tracepoint
      * @tc.size MediumTest
