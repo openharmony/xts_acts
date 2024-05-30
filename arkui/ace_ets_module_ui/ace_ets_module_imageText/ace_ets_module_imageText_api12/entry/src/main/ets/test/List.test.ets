@@ -38,6 +38,8 @@ import removeStyles from './TextTest/removeStyles.test'
 import StyledStringTest from './TextTest/StyledStringTest.test'
 import clearStyles from './TextTest/clearStyles.test'
 import TextStyle from './TextTest/TextStyle.test';
+import TextStyleWavy from './TextTest/TextStyleWavy.test';
+
 import MarqueeApi from './Marquee/MarqueeApi.test';
 import APIContentTypeTest from './TextInput/APIContentTypeTest.test';
 import APIUnderlineColorTest from './TextInput/APIUnderlineColorTest.test';
@@ -130,6 +132,7 @@ export default function testsuite() {
   RichEditor6();
   RichEditor7();
   TextInputTextAreaSearch();
+  TextStyleWavy();
   TextAreaApi1();
   TextAreaApi2();
   TextAreaApi3();

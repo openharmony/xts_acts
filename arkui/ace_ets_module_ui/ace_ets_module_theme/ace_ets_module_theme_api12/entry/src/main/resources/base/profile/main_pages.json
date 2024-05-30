@@ -1,0 +1,8 @@
+{
+  "src": [
+    "MainAbility/pages/index/Index",
+    "MainAbility/pages/theme/themePageTest",
+    "MainAbility/pages/theme/themePageMgmtColorsTest",
+    "MainAbility/pages/theme/themePageSliderTest"
+  ]
+}
