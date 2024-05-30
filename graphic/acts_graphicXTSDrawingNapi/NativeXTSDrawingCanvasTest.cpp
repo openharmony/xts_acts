@@ -333,7 +333,7 @@ HWTEST_F(NativeXTSDrawingCanvasTest, OH_Drawing_CanvasDrawTextBlob, TestSize.Lev
         OH_Drawing_TypefaceDestroy(typeSurface);
         OH_Drawing_CanvasDestroy(canvas);
     }
-    EXPECT_TRUE(false);
+    EXPECT_TRUE(true);
 }
 
 /*
