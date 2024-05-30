@@ -19,15 +19,6 @@ import {describe, it, expect} from '@ohos/hypium';
 
 export default function HidebugCTest() {
 describe('HidebugCTest', function () {
-    function msleep(numberMillis) {
-        let now = new Date();
-        let exitTime = now.getTime() + numberMillis;
-        while (true) {
-            now = new Date();
-            if (now.getTime() > exitTime)
-                return;
-        }
-    }
 
     /**
      * @tc.number SUB_DFX_DFT_HiDebug_Mem_C_0100
@@ -148,11 +139,12 @@ describe('HidebugCTest', function () {
             let n_sysCpuUsage2 = testNapi.getSysCpuUsage();
             console.info(`SUB_DFX_DFT_HiDebug_CPU_C_0100 > c_sysCpuUsage =: ${n_sysCpuUsage2}`);
             expect(n_sysCpuUsage1 >= n_sysCpuUsage2).assertTrue();
-            msleep(2000);
-            let n_sysCpuUsage3 = testNapi.getSysCpuUsage();
-            console.info(`SUB_DFX_DFT_HiDebug_CPU_C_0100 > sysCpuUsage =: ${n_sysCpuUsage3}`);
-            expect(n_sysCpuUsage3 != n_sysCpuUsage1).assertTrue();
-            done();
+            setTimeout(() => {
+                let n_sysCpuUsage3 = testNapi.getSysCpuUsage();
+                console.info(`SUB_DFX_DFT_HiDebug_CPU_C_0100 > sysCpuUsage =: ${n_sysCpuUsage3}`);
+                expect(n_sysCpuUsage3 != n_sysCpuUsage1).assertTrue();
+                done();
+            }, 2000)
         } catch (err) {
             console.error(`SUB_DFX_DFT_HiDebug_CPU_C_0100 > error code: ${err.code}, error msg: ${err.message}`);
             expect().assertFail();
