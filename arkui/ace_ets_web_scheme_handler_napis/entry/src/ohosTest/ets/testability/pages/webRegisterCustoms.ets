@@ -646,6 +646,38 @@ struct webRegisterCustomsComponent {
                             }
                             break;
                         }
+
+                        case "emitWebResourceRequest_GetResourceType": {
+                            await Utils.sleep(1000);
+                            console.log("emitWebResourceRequest_GetResourceType ==>");
+
+                            let result:number = testNapi.getResourceType();
+                            await Utils.sleep(1000);
+                            console.log("emitWebResourceRequest_GetResourceType ==>" + result);
+
+                            if (result == 0) {
+                                Utils.emitEvent(true, 7743);
+                            } else {
+                                Utils.emitEvent(false, 7743);
+                            }
+                            break;
+                        }
+
+                        case "emitWebResourceRequest_GetFrameUrl": {
+                            await Utils.sleep(1000);
+                            console.log("emitWebResourceRequest_GetFrameUrl ==>");
+
+                            let result:number = testNapi.getFrameUrl();
+                            await Utils.sleep(1000);
+                            console.log("emitWebResourceRequest_GetFrameUrl ==>" + result);
+
+                            if (result == 0) {
+                                Utils.emitEvent(true, 7744);
+                            } else {
+                                Utils.emitEvent(false, 7744);
+                            }
+                            break;
+                        }
                         
                     }
                 })

@@ -161,6 +161,16 @@ void TestRequest::Start()
     OH_ArkWeb_ReleaseString(url);
     OH_LOG_INFO(LOG_APP, "OH_ArkWeb_ReleaseString %{public}x", *url);
     
+    rspResourceType_ = OH_ArkWebResourceRequest_GetResourceType(resourceRequest_);
+    OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetResourceType %{public}d", rspResourceType_);
+    
+    char *frameUrl;
+    OH_ArkWebResourceRequest_GetFrameUrl(resourceRequest_, &frameUrl);
+    OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetFrameUrl %{public}x", *frameUrl);
+    std::string frameUrl1(frameUrl);
+    rspFrameUrl_ = frameUrl1;
+
+    
     char *method;
     OH_ArkWebResourceRequest_GetMethod(resourceRequest_, &method);
     OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetMethod %{public}x", *method);
