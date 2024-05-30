@@ -13,16 +13,19 @@
  * limitations under the License.
  */
 
-import searchMaxFontSize from "./component/searchMaxFontSize.test.ets";
-import searchMinFontSize from "./component/serachMinFontSize.test.ets";
-import searchDecoration from "./component/searchDecoration.test.ets";
-import searchLetterSpacing from "./component/searchLetterSpacing.test.ets";
-import searchLineHeight from "./component/searchLineHeight.test.ets";
-
-export default function testsuite() {
-  searchMaxFontSize();
-  searchMinFontSize();
-  searchDecoration();
-  searchLetterSpacing();
-  searchLineHeight();
+@Entry
+@Component
+struct TextInputDecorationTest {
+  build(){
+    Row() {
+      Column() {
+        TextInput({ placeholder: 'placeholder(TextInput)' })
+          .width('100%')
+          .key('key_textInput_decoration_001')
+          .decoration({ type: TextDecorationType.Underline, color: 0xFF0000 })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }

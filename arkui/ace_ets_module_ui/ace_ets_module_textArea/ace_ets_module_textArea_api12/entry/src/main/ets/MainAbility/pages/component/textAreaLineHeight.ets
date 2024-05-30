@@ -13,16 +13,19 @@
  * limitations under the License.
  */
 
-import searchMaxFontSize from "./component/searchMaxFontSize.test.ets";
-import searchMinFontSize from "./component/serachMinFontSize.test.ets";
-import searchDecoration from "./component/searchDecoration.test.ets";
-import searchLetterSpacing from "./component/searchLetterSpacing.test.ets";
-import searchLineHeight from "./component/searchLineHeight.test.ets";
-
-export default function testsuite() {
-  searchMaxFontSize();
-  searchMinFontSize();
-  searchDecoration();
-  searchLetterSpacing();
-  searchLineHeight();
+@Entry
+@Component
+struct TextAreaLineHeightTest {
+  build(){
+    Row() {
+      Column() {
+        TextArea({ placeholder: 'placeholder(TextArea)' })
+          .width('100%')
+          .key('key_textArea_lineHeight_001')
+          .lineHeight(30)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }
