@@ -22,6 +22,9 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
+#define PARAM_3 3
+#define PARAM_5 5
+#define PARAM_10 10
 static const int32_t TASK_ID = 111;
 static const int32_t TASK_ID_TWO = 112;
 
@@ -73,8 +76,9 @@ static napi_value OHHiTraceStartAsyncTrace(napi_env env, napi_callback_info info
 }
 
 static napi_value Begin(napi_env env, napi_callback_info info)
-{   int count = PARAM_0;
-    HiTraceId hiTraceId = OH_HiTrace_BeginChain("hiTraceChainndktest" ,HITRACE_FLAG_DEFAULT);
+{   
+    int count = PARAM_0;
+    HiTraceId hiTraceId = OH_HiTrace_BeginChain("hiTraceChainndktest", HITRACE_FLAG_DEFAULT);
     count++;
     OH_HiTrace_InitId(&hiTraceId);
     OH_HiTrace_ClearId();
@@ -89,7 +93,7 @@ static napi_value Begin(napi_env env, napi_callback_info info)
     OH_HiTrace_IdToBytes(&traceId5, &pIdArray, sizeof(traceId5));
     OH_HiTrace_IdFromBytes(&traceId5, &pIdArray, sizeof(traceId5));
     int returnValue = FAIL;
-    if (count == 3) {
+    if (count == PARAM_3) {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -99,21 +103,22 @@ static napi_value Begin(napi_env env, napi_callback_info info)
 }
 
 static napi_value Beginflag(napi_env env, napi_callback_info info)
-{   int count = PARAM_0;
+{   
+    int count = PARAM_0;
     HiTrace_Flag hitraceflag = HITRACE_FLAG_INCLUDE_ASYNC;
-    HiTraceId hiTraceId = OH_HiTrace_BeginChain("hiTraceChainndktest" ,hitraceflag);
+    HiTraceId hiTraceId = OH_HiTrace_BeginChain("hiTraceChainndktest", hitraceflag);
     count++;
-    OH_HiTrace_IsFlagEnabled(&hiTraceId , HITRACE_FLAG_INCLUDE_ASYNC);
+    OH_HiTrace_IsFlagEnabled(&hiTraceId, HITRACE_FLAG_INCLUDE_ASYNC);
     count++;
-    OH_HiTrace_EnableFlag(&hiTraceId , HITRACE_FLAG_FAULT_TRIGGER);
+    OH_HiTrace_EnableFlag(&hiTraceId, HITRACE_FLAG_FAULT_TRIGGER);
     count++;
     OH_HiTrace_GetFlags(&hiTraceId);
     count++;
-    OH_HiTrace_SetFlags(&hiTraceId , HITRACE_FLAG_DEFAULT);
+    OH_HiTrace_SetFlags(&hiTraceId, HITRACE_FLAG_DEFAULT);
     OH_HiTrace_EndChain();
     count++;
     int returnValue = FAIL;
-    if (count == 5) {
+    if (count == PARAM_5) {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -122,22 +127,23 @@ static napi_value Beginflag(napi_env env, napi_callback_info info)
 }
 
 static napi_value BeginSpan(napi_env env, napi_callback_info info)
-{   int count = PARAM_0;
+{   
+    int count = PARAM_0;
     HiTrace_Flag hitraceflag = HITRACE_FLAG_INCLUDE_ASYNC;
-    HiTraceId hiTraceId = OH_HiTrace_BeginChain("hiTraceChainndktest" ,hitraceflag);
+    HiTraceId hiTraceId = OH_HiTrace_BeginChain("hiTraceChainndktest", hitraceflag);
     count++;
     uint64_t chainId = 10000;
-    OH_HiTrace_SetChainId(&hiTraceId , chainId);
+    OH_HiTrace_SetChainId(&hiTraceId, chainId);
     count++;
     OH_HiTrace_GetChainId(&hiTraceId);
     count++;
     uint64_t spanId = 12345678;
-    OH_HiTrace_SetSpanId(&hiTraceId , spanId);
+    OH_HiTrace_SetSpanId(&hiTraceId, spanId);
     count++;
     OH_HiTrace_GetSpanId(&hiTraceId);
     count++;
     uint64_t parentSpanId = 66666;
-    OH_HiTrace_SetParentSpanId(&hiTraceId , parentSpanId);
+    OH_HiTrace_SetParentSpanId(&hiTraceId, parentSpanId);
     count++;
     OH_HiTrace_GetParentSpanId(&hiTraceId);
     count++;
@@ -148,7 +154,7 @@ static napi_value BeginSpan(napi_env env, napi_callback_info info)
     OH_HiTrace_EndChain();
     count++;
     int returnValue = FAIL;
-    if (count == 10) {
+    if (count == PARAM_10) {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
