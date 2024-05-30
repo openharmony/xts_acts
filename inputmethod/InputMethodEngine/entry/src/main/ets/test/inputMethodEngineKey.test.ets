@@ -139,7 +139,7 @@ export default function inputMethodEngineKeyJSUnit() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+          commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -214,7 +214,7 @@ export default function inputMethodEngineKeyJSUnit() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+          commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -289,7 +289,7 @@ export default function inputMethodEngineKeyJSUnit() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+          commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -364,7 +364,7 @@ export default function inputMethodEngineKeyJSUnit() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+          commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -440,7 +440,7 @@ export default function inputMethodEngineKeyJSUnit() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+          commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -515,7 +515,7 @@ export default function inputMethodEngineKeyJSUnit() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+          commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -590,7 +590,7 @@ export default function inputMethodEngineKeyJSUnit() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+          commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)

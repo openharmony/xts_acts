@@ -355,7 +355,7 @@ export class KeyboardDelegate {
         }
 
         var commonEventSubscribeInfo = {
-            events: ["test"]
+            events: ["inputMethodAbilityTest"]
         };
 
         var subscriber;
