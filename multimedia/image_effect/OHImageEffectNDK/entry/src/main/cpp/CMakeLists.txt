@@ -8,8 +8,25 @@ if(DEFINED PACKAGE_FIND_FILE)
     include(${PACKAGE_FIND_FILE})
 endif()
 
-include_directories(${NATIVERENDER_ROOT_PATH}
-                    ${NATIVERENDER_ROOT_PATH}/include)
+include_directories(
+    ${NATIVERENDER_ROOT_PATH}
+    ${NATIVERENDER_ROOT_PATH}/include
+    ${NATIVERENDER_ROOT_PATH}/utils
+)
 
-add_library(imageEffect SHARED imageEffect.cpp)
-target_link_libraries(imageEffect PUBLIC libace_napi.z.so libhilog_ndk.z.so libimage_effect.so libpixelmap.so libnative_window.so libnative_buffer.so libpixelmap_ndk.z.so)
+add_library(imageEffect SHARED
+    imageEffect.cpp
+    utils/common_utils.cpp
+    utils/pixelmap_helper.cpp
+)
+target_link_libraries(imageEffect PUBLIC
+    libace_napi.z.so
+    libhilog_ndk.z.so
+    libimage_effect.so
+    libpixelmap.so
+    libnative_window.so
+    libnative_buffer.so
+    libpixelmap_ndk.z.so
+    libimage_packer.so
+    libimage_source.so
+)
