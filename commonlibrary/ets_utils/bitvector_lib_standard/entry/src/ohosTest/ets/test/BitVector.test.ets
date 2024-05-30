@@ -473,24 +473,27 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_setBitsByRange_Func_003", 0, () => {
-      let bitVector = new collections.BitVector(0);
-      bitVector.push(1);
-      bitVector.push(1);
-      bitVector.push(0);
-      bitVector.push(1);
-      bitVector.push(0);
-      bitVector.push(0);
-      bitVector.push(1);
-      bitVector.push(0);
-      try {
-        let res = bitVector.setBitsByRange(0, 0.1, 6.1);
-        expect(true).assertEqual(false);
-      } catch (err) {
-        expect(err.name).assertEqual(`BusinessError`);
-        expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual(`The type of "fromIndex" must be integer. Received value is: 0.1`);
-      }
+    it("BitVector_setBitsByRange_Func_003", 0, async () => {
+      let lock = new ArkTSUtils.locks.AsyncLock();
+      lock.lockAsync<void>(() => {
+        let bitVector = new collections.BitVector(0);
+        bitVector.push(1);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(0);
+        bitVector.push(1);
+        bitVector.push(0);
+        try {
+          let res = bitVector.setBitsByRange(0, 0.1, 6.1);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual(`BusinessError`);
+          expect(err.code).assertEqual(401);
+          expect(err.message).assertEqual(`The type of "fromIndex" must be integer. Received value is: 0.1`);
+        }
+      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_018
