@@ -13,6 +13,8 @@ include_directories(
 add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
+    button/button_onclick_test.cpp
+    checkbox/checkbox_onchange_test.cpp
     commonattrs/commonattrs_enabled_test.cpp
     commonattrs/commonattrs_focusable_test.cpp
     commonevent/commonevent_onappear_test.cpp
@@ -23,6 +25,9 @@ add_library(nativerender SHARED
     commonevent/commonevent_onclick_test.cpp
     commonattrs/commonattrs_hittestbehavior_test.cpp
     commonattrs/commonattrs_id_test.cpp
+    customcomponent/customcomponent_onmeasure_test.cpp
+    customcomponent/customcomponent_onlayout_test.cpp
+    customcomponent/customcomponent_ondraw_test.cpp
     image/image_hittestbehavior_test.cpp
     image/image_id_test.cpp
     image/image_oncomplete_test.cpp
@@ -40,10 +45,46 @@ add_library(nativerender SHARED
     scroll/scroll_onscrolledge_test.cpp
     scroll/scroll_scrolledge_test.cpp
     scroll/scroll_hittestbehavior_test.cpp
+    scroll/scroll_scrollto_test.cpp
+    scroll/scroll_currentoffset_test.cpp
     stack/stack_hittestbehavior_test.cpp
     stack/stack_onareachange_test
     stack/stack_ontouch_test.cpp
     text/text_enabled_test.cpp
+    calendarpicker/calendarpicker_onchange_test.cpp
+    textpicker/textpicker_onchange_test.cpp
+    datepicker/datepicker_ondatechange_test.cpp
+    timepicker/timepicker_onchange_test.cpp
+    customcomponent/customcomponent_enabled_test.cpp
+    customcomponent/customcomponent_focusable_test.cpp
+    customcomponent/customcomponent_onappear_test.cpp
+    customcomponent/customcomponent_onareachange_test.cpp
+    customcomponent/customcomponent_onblur_test.cpp
+    customcomponent/customcomponent_ontouch_test.cpp
+    customcomponent/customcomponent_onfocus_test.cpp
+    customcomponent/customcomponent_onclick_test.cpp
+    customcomponent/customcomponent_hittestbehavior_test.cpp
+    customcomponent/customcomponent_id_test.cpp
+    textarea/textarea_enabled_test.cpp
+    textinput/textinput_enabled_test.cpp
+    textinput/textinput_onchange_test.cpp
+    calendarpicker/calendarpicker_enabled_test.cpp
+    datepicker/datepicker_enabled_test.cpp
+    slider/slider_enabled_test.cpp
+    checkbox/checkbox_enabled_test.cpp
+    refresh/refresh_onstatechange_test.cpp
+    refresh/refresh_onrefreshing_test.cpp
+    textarea/textarea_onfocus_test.cpp
+    textarea/textarea_onblur_test.cpp
+    textarea/textarea_key_test.cpp
+    textinput/textinput_key_test.cpp
+    textarea/textarea_onchange_test.cpp
+    slider/slider_onchange_test.cpp
+    textinput/textinput_onfocus_test.cpp
+    textinput/textinput_onblur_test.cpp
+    textinput/textinput_onsubmit_test.cpp
+    textinput/textinput_oncut_test.cpp
+    textinput/textinput_onpaste_test.cpp
 )
 
 add_library(nativefunc SHARED
@@ -83,6 +124,6 @@ find_library(
 )
 
 target_link_libraries(nativerender PUBLIC
-    ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
+    libnative_drawing.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
 target_link_libraries(nativefunc PUBLIC
     ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})

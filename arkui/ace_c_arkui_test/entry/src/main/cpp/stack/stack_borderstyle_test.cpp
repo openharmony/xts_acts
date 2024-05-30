@@ -22,45 +22,57 @@ namespace ArkUICapiTest {
 static napi_value TestStackBorderStyle001(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    ArkUI_NumberValue borderStyle_value[] = {{.f32 = ARKUI_BORDER_STYLE_SOLID}};
+    ArkUI_NumberValue borderStyle_value[] = {{.i32 = ARKUI_BORDER_STYLE_SOLID}};
     ArkUI_AttributeItem borderStyle_item = {borderStyle_value, sizeof(borderStyle_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BORDER_STYLE, &borderStyle_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value->f32, ARKUI_BORDER_STYLE_SOLID);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_0].i32, ARKUI_BORDER_STYLE_SOLID);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_1].i32, ARKUI_BORDER_STYLE_SOLID);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_2].i32, ARKUI_BORDER_STYLE_SOLID);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_3].i32, ARKUI_BORDER_STYLE_SOLID);
     NAPI_END;
 }
 
 static napi_value TestStackBorderStyle002(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    ArkUI_NumberValue borderStyle_value[] = {{.f32 = ARKUI_BORDER_STYLE_DASHED}};
+    ArkUI_NumberValue borderStyle_value[] = {{.i32 = ARKUI_BORDER_STYLE_DASHED}};
     ArkUI_AttributeItem borderStyle_item = {borderStyle_value, sizeof(borderStyle_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BORDER_STYLE, &borderStyle_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value->f32, ARKUI_BORDER_STYLE_DASHED);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_0].i32, ARKUI_BORDER_STYLE_DASHED);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_1].i32, ARKUI_BORDER_STYLE_DASHED);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_2].i32, ARKUI_BORDER_STYLE_DASHED);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_3].i32, ARKUI_BORDER_STYLE_DASHED);
     NAPI_END;
 }
 
 static napi_value TestStackBorderStyle003(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    ArkUI_NumberValue borderStyle_value[] = {{.f32 = ARKUI_BORDER_STYLE_DOTTED}};
+    ArkUI_NumberValue borderStyle_value[] = {{.i32 = ARKUI_BORDER_STYLE_DOTTED}};
     ArkUI_AttributeItem borderStyle_item = {borderStyle_value, sizeof(borderStyle_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BORDER_STYLE, &borderStyle_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value->f32, ARKUI_BORDER_STYLE_DOTTED);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_0].i32, ARKUI_BORDER_STYLE_DOTTED);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_1].i32, ARKUI_BORDER_STYLE_DOTTED);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_2].i32, ARKUI_BORDER_STYLE_DOTTED);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_3].i32, ARKUI_BORDER_STYLE_DOTTED);
     NAPI_END;
 }
 
 static napi_value TestStackBorderStyle004(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    ArkUI_NumberValue borderStyle_value[] = {{.f32 = ABNORMAL_VALUE}};
+    ArkUI_NumberValue borderStyle_value[] = {{.i32 = ABNORMAL_VALUE}};
     ArkUI_AttributeItem borderStyle_item = {borderStyle_value, sizeof(borderStyle_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BORDER_STYLE, &borderStyle_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_BORDER_STYLE) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value->f32, ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_0].i32, ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_1].i32, ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_2].i32, ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_3].i32, ABNORMAL_VALUE);
     }
     NAPI_END;
 }
@@ -68,17 +80,17 @@ static napi_value TestStackBorderStyle004(napi_env env, napi_callback_info info)
 static napi_value TestStackBorderStyle005(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    ArkUI_NumberValue borderStyle_value[] = {{.f32 = ARKUI_BORDER_STYLE_SOLID},
-                                             {.f32 = ARKUI_BORDER_STYLE_DASHED},
-                                             {.f32 = ARKUI_BORDER_STYLE_DOTTED},
-                                             {.f32 = ARKUI_BORDER_STYLE_SOLID}};
+    ArkUI_NumberValue borderStyle_value[] = {{.i32 = ARKUI_BORDER_STYLE_SOLID},
+                                             {.i32 = ARKUI_BORDER_STYLE_DASHED},
+                                             {.i32 = ARKUI_BORDER_STYLE_DOTTED},
+                                             {.i32 = ARKUI_BORDER_STYLE_SOLID}};
     ArkUI_AttributeItem borderStyle_item = {borderStyle_value, sizeof(borderStyle_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BORDER_STYLE, &borderStyle_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_0].f32, ARKUI_BORDER_STYLE_SOLID);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_1].f32, ARKUI_BORDER_STYLE_DASHED);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_2].f32, ARKUI_BORDER_STYLE_DOTTED);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_3].f32, ARKUI_BORDER_STYLE_SOLID);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_0].i32, ARKUI_BORDER_STYLE_SOLID);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_1].i32, ARKUI_BORDER_STYLE_DASHED);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_2].i32, ARKUI_BORDER_STYLE_DOTTED);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_3].i32, ARKUI_BORDER_STYLE_SOLID);
     NAPI_END;
 }
 
@@ -86,26 +98,16 @@ static napi_value TestStackBorderStyle006(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     ArkUI_NumberValue borderStyle_value[] = {
-        {.f32 = ABNORMAL_VALUE}, {.f32 = ABNORMAL_VALUE}, {.f32 = ABNORMAL_VALUE}, {.f32 = ABNORMAL_VALUE}};
+        {.i32 = ABNORMAL_VALUE}, {.i32 = ABNORMAL_VALUE}, {.i32 = ABNORMAL_VALUE}, {.i32 = ABNORMAL_VALUE}};
     ArkUI_AttributeItem borderStyle_item = {borderStyle_value, sizeof(borderStyle_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BORDER_STYLE, &borderStyle_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_BORDER_STYLE) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_0].f32, ABNORMAL_VALUE);
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_1].f32, ABNORMAL_VALUE);
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_2].f32, ABNORMAL_VALUE);
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_3].f32, ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_0].i32, ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_1].i32, ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_2].i32, ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_3].i32, ABNORMAL_VALUE);
     }
-    NAPI_END;
-}
-
-static napi_value TestStackBorderStyle007(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_0].f32, ARKUI_BORDER_STYLE_SOLID);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_1].f32, ARKUI_BORDER_STYLE_SOLID);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_2].f32, ARKUI_BORDER_STYLE_SOLID);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_STYLE)->value[PARAM_3].f32, ARKUI_BORDER_STYLE_SOLID);
     NAPI_END;
 }
 

@@ -32,6 +32,9 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, bool focusable)
     nodeAPI->setAttribute(nodeHandle, NODE_WIDTH, &width_item);
     nodeAPI->setAttribute(nodeHandle, NODE_HEIGHT, &width_item);
 
+    ArkUI_AttributeItem label_item = {.string = ""};
+    nodeAPI->setAttribute(nodeHandle, NODE_BUTTON_LABEL, &label_item);
+
     ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_RED}};
     ArkUI_AttributeItem background_color_item = {background_color_value,
                                                  sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};

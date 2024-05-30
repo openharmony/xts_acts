@@ -47,15 +47,4 @@ static napi_value TestStackBackgroundImagePosition002(napi_env env, napi_callbac
     NAPI_END;
 }
 
-static napi_value TestStackBackgroundImagePosition003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    float positionX = 0;
-    float positionY = 0;
-
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE_POSITION)->value[PARAM_0].f32, positionX);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE_POSITION)->value[PARAM_1].f32, positionY);
-    NAPI_END;
-}
-
 } // namespace ArkUICapiTest

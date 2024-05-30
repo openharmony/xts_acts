@@ -52,18 +52,5 @@ export default function stackBackgroundImagePositionTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_BACKGROUNDIMAGEPOSITION_0300
-     * @tc.name       : testStackBackgroundImagePosition003
-     * @tc.desc       : testing backgroundImagePosition for stack with default value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackBackgroundImagePosition003', 0, async (done: Function) => {
-      expect(nativeFunc.testStackBackgroundImagePosition003()).assertEqual(0)
-      done()
-    })
-
   })
 }

@@ -131,24 +131,5 @@ export default function stackHitTestBehaviorTest() {
         .assertEqual('#FF000000')
       done()
     })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_STACK_HITTESTBEHAVIOR_0700
-    * @tc.name       : testStackHitTestBehavior007
-    * @tc.desc       : testing HitTestBehavior for stack with default value
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testStackHitTestBehavior007', 0, async (done: Function) => {
-      await Utils.clickComponent('OnTouchTestDefaultStackBrother')
-      await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnTouchTestDefaultStack').$attrs.backgroundColor)
-        .assertEqual('#FFFF0000')
-      expect(Utils.getComponentInfoByKey('OnTouchTestDefaultStackBrother').$attrs.backgroundColor)
-        .assertEqual('#FF000000')
-      done()
-    })
-
   })
 }

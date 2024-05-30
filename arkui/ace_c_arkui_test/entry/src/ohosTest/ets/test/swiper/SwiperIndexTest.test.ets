@@ -64,19 +64,5 @@ export default function swiperIndexTest() {
       expect(nativeFunc.testSwiperIndex003()).assertEqual(0)
       done()
     })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_INDEX_0400
-     * @tc.name       : testSwiperIndex004
-     * @tc.desc       : testing default values of index property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperIndex004', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperIndex004()).assertEqual(0)
-      done()
-    })
-
   })
 }

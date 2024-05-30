@@ -26,7 +26,7 @@ static napi_value TestImageWidth001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_WIDTH, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_WIDTH)->value->f32, width);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_WIDTH)->value[PARAM_0].f32, width);
     NAPI_END;
 }
 
@@ -40,7 +40,7 @@ static napi_value TestImageWidth002(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(image, NODE_WIDTH, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(image, NODE_WIDTH) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(image, NODE_WIDTH)->value->f32, width);
+        ASSERT_NE(nodeAPI->getAttribute(image, NODE_WIDTH)->value[PARAM_0].f32, width);
     }
     NAPI_END;
 }
@@ -54,7 +54,7 @@ static napi_value TestImageWidth003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_WIDTH, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_WIDTH)->value->f32, width);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_WIDTH)->value[PARAM_0].f32, width);
     NAPI_END;
 }
 

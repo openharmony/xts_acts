@@ -25,7 +25,7 @@ static napi_value TestListBrightness001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_BRIGHTNESS, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_BRIGHTNESS)->value->f32, brightness);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightness);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestListBrightness002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_BRIGHTNESS, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_BRIGHTNESS)->value->f32, brightness);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightness);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestListBrightness003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_BRIGHTNESS, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_BRIGHTNESS)->value->f32, brightness);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightness);
     NAPI_END;
 }
 
@@ -61,7 +61,7 @@ static napi_value TestListBrightness004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_BRIGHTNESS, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_BRIGHTNESS)->value->f32, brightness);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightness);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

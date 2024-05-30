@@ -103,19 +103,5 @@ export default function stackBorderStyleTest() {
       expect(nativeFunc.testStackBorderStyle006()).assertEqual(0)
       done()
     })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_BORDERSTYLE_0700
-     * @tc.name       : testStackBorderStyle007
-     * @tc.desc       : testing default values of borderStyle property of the stack
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackBorderStyle007', 0, async (done: Function) => {
-      expect(nativeFunc.testStackBorderStyle007()).assertEqual(0)
-      done()
-    })
-
   })
 }

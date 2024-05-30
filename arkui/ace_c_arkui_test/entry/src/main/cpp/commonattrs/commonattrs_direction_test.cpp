@@ -27,7 +27,7 @@ static napi_value TestCommonAttrsDirection001(napi_env env, napi_callback_info i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_DIRECTION, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_DIRECTION)->value->u32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_DIRECTION)->value[PARAM_0].u32, direction);
     NAPI_END;
 }
 
@@ -39,7 +39,7 @@ static napi_value TestCommonAttrsDirection002(napi_env env, napi_callback_info i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_DIRECTION, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_DIRECTION)->value->u32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_DIRECTION)->value[PARAM_0].u32, direction);
     NAPI_END;
 }
 
@@ -51,7 +51,7 @@ static napi_value TestCommonAttrsDirection003(napi_env env, napi_callback_info i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_DIRECTION, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_DIRECTION)->value->u32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_DIRECTION)->value[PARAM_0].u32, direction);
     NAPI_END;
 }
 
@@ -59,7 +59,7 @@ static napi_value TestCommonAttrsDirection004(napi_env env, napi_callback_info i
 {
     NAPI_START(row, ARKUI_NODE_ROW);
     int32_t direction = ARKUI_DIRECTION_AUTO;
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_DIRECTION)->value->u32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_DIRECTION)->value[PARAM_0].u32, direction);
     NAPI_END;
 }
 
@@ -71,7 +71,7 @@ static napi_value TestCommonAttrsDirection005(napi_env env, napi_callback_info i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_DIRECTION, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(row, NODE_DIRECTION)->value->u32, direction);
+    ASSERT_NE(nodeAPI->getAttribute(row, NODE_DIRECTION)->value[PARAM_0].u32, direction);
     NAPI_END;
 }
 

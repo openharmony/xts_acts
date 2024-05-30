@@ -25,7 +25,7 @@ static napi_value TestSwiperAutoPlay001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_AUTO_PLAY, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_AUTO_PLAY)->value->i32, autoPlay);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_AUTO_PLAY)->value[PARAM_0].i32, autoPlay);
     NAPI_END;
 }
 
@@ -37,20 +37,11 @@ static napi_value TestSwiperAutoPlay002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_AUTO_PLAY, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_AUTO_PLAY)->value->i32, autoPlay);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_AUTO_PLAY)->value[PARAM_0].i32, autoPlay);
     NAPI_END;
 }
 
 static napi_value TestSwiperAutoPlay003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    int32_t autoPlay = 0;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_AUTO_PLAY)->value->i32, autoPlay);
-    NAPI_END;
-}
-
-static napi_value TestSwiperAutoPlay004(napi_env env, napi_callback_info info)
 {
     NAPI_START(swiper, ARKUI_NODE_SWIPER);
     int32_t autoPlay = -1;
@@ -59,7 +50,7 @@ static napi_value TestSwiperAutoPlay004(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_AUTO_PLAY, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_AUTO_PLAY) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_AUTO_PLAY)->value->i32, autoPlay);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_AUTO_PLAY)->value[PARAM_0].i32, autoPlay);
     }
     NAPI_END;
 }

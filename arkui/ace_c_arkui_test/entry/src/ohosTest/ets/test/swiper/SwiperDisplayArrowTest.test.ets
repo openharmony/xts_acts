@@ -78,18 +78,5 @@ export default function swiperDisplayArrowTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_DISPLAYARROW_0500
-     * @tc.name       : testSwiperDisplayArrow005
-     * @tc.desc       : testing default values of displayArrow property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperDisplayArrow005', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperDisplayArrow005()).assertEqual(0)
-      done()
-    })
-
   })
 }

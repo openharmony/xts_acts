@@ -27,9 +27,9 @@ static ArkUI_ScrollEdge edgeValue;
 
 static void OnEventReceive(ArkUI_NodeEvent *event)
 {
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ScrollOnScrollTest", "OnEventReceive");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ScrollScrollEdgeTest", "OnEventReceive");
     if (event == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ScrollOnScrollTest", "OnEventReceive: event is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ScrollScrollEdgeTest", "OnEventReceive: event is null");
         return;
     }
 
@@ -56,7 +56,7 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
 
 napi_value ScrollScrollEdgeTest::CreateNativeNode(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ScrollOnScrollTest", "CreateNativeNode");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ScrollScrollEdgeTest", "CreateNativeNode");
 
     size_t argc = PARAM_2;
     napi_value args[PARAM_2] = {nullptr};
@@ -67,7 +67,7 @@ napi_value ScrollScrollEdgeTest::CreateNativeNode(napi_env env, napi_callback_in
     napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
 
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ScrollOnScrollTest", "GetContext env or info is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ScrollScrollEdgeTest", "GetContext env or info is null");
         return nullptr;
     }
 
@@ -105,7 +105,7 @@ napi_value ScrollScrollEdgeTest::CreateNativeNode(napi_env env, napi_callback_in
                                                  sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(scrollEdge, NODE_BACKGROUND_COLOR, &background_color_item);
 
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ScrollOnScrollTest", "GetParam value: %{public}d", value);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ScrollScrollEdgeTest", "GetParam value: %{public}d", value);
 
     if (PARAM_0 == value) {
         edgeValue = ARKUI_SCROLL_EDGE_TOP;
@@ -133,7 +133,7 @@ napi_value ScrollScrollEdgeTest::CreateNativeNode(napi_env env, napi_callback_in
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), scrollEdge) ==
         INVALID_PARAM) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ScrollOnScrollTest",
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ScrollScrollEdgeTest",
                      "OH_NativeXComponent_AttachNativeRootNode failed");
     }
 

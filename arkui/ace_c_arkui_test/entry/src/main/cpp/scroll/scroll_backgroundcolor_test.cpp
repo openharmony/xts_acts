@@ -15,22 +15,38 @@
 
 #include "common/common.h"
 
-#define SUCCESS 0
-
-#define ABNORMAL_PARAM 1000
-#define NORMAL_COLOR 0xFFFF0000
-#define ABNORMAL_COLOR 1000
-
 namespace ArkUICapiTest {
 
 static napi_value TestScrollBackgroundColor001(napi_env env, napi_callback_info info)
 {
     NAPI_START(scroll, ARKUI_NODE_SCROLL);
-    ArkUI_NumberValue value[] = {{.u32 = NORMAL_COLOR}};
+    ArkUI_NumberValue value[] = {{.u32 = COLOR_RED}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_BACKGROUND_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BACKGROUND_COLOR)->value->u32, NORMAL_COLOR);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, COLOR_RED);
+    NAPI_END;
+}
+
+static napi_value TestScrollBackgroundColor002(napi_env env, napi_callback_info info)
+{
+    NAPI_START(scroll, ARKUI_NODE_SCROLL);
+    ArkUI_NumberValue value[] = {{.u32 = COLOR_BLACK}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(scroll, NODE_BACKGROUND_COLOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, COLOR_BLACK);
+    NAPI_END;
+}
+
+static napi_value TestScrollBackgroundColor003(napi_env env, napi_callback_info info)
+{
+    NAPI_START(scroll, ARKUI_NODE_SCROLL);
+    ArkUI_NumberValue value[] = {{.u32 = COLOR_WHITE}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(scroll, NODE_BACKGROUND_COLOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, COLOR_WHITE);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

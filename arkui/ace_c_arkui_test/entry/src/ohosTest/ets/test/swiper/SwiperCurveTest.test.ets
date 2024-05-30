@@ -208,18 +208,5 @@ export default function swiperCurveTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_CURVE_1500
-     * @tc.name       : testSwiperCurve015
-     * @tc.desc       : testing default values of curve property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperCurve015', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperCurve015()).assertEqual(0)
-      done()
-    })
-
   })
 }

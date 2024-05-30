@@ -27,7 +27,7 @@ namespace ArkUICapiTest {
 static napi_value TestTextDecoration001(napi_env env, napi_callback_info info)
 {
     NAPI_START(text, ARKUI_NODE_TEXT);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value->i32, ARKUI_TEXT_DECORATION_TYPE_NONE);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32, ARKUI_TEXT_DECORATION_TYPE_NONE);
     NAPI_END;
 }
 
@@ -38,7 +38,8 @@ static napi_value TestTextDecoration002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value->i32, ARKUI_TEXT_DECORATION_TYPE_UNDERLINE);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32,
+              ARKUI_TEXT_DECORATION_TYPE_UNDERLINE);
     NAPI_END;
 }
 
@@ -49,7 +50,8 @@ static napi_value TestTextDecoration003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value->i32, ARKUI_TEXT_DECORATION_TYPE_OVERLINE);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32,
+              ARKUI_TEXT_DECORATION_TYPE_OVERLINE);
     NAPI_END;
 }
 
@@ -60,7 +62,8 @@ static napi_value TestTextDecoration004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value->i32, ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32,
+              ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -73,7 +76,7 @@ static napi_value TestTextDecoration005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
     if (nodeAPI->getAttribute(text, NODE_TEXT_DECORATION) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value->i32, exceptionValue);
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32, exceptionValue);
     };
     ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;

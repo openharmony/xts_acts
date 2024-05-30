@@ -110,9 +110,26 @@ export default class Utils {
     await component.click();
   }
 
+  static async clickLocation(X: number, Y: number) {
+    let driver = Driver.create();
+    await driver.click(X, Y);
+  }
+
   static async triggerKey(id: number) {
     let driver = Driver.create();
     await driver.triggerKey(id);
+  }
+
+  static async longClickComponent(id: string) {
+    let driver = Driver.create();
+    let component = await driver.findComponent(ON.id(id));
+    await component.longClick();
+  }
+
+  static async clickComponentByText(text: string) {
+    let driver = Driver.create();
+    let component = await driver.findComponent(ON.text(text));
+    await component.click();
   }
 
   static async fingerZoom(key: string, isOut: boolean) {

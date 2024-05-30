@@ -19,64 +19,88 @@ import Utils from '../common/Utils';
 export default function scrollHitTestBehaviorTest() {
 
   describe('ScrollHitTestBehaviorTest', () => {
-
-    let PAGE_TAG = 'ScrollHitTestBehaviorTest';
-
-    beforeAll(async (done: Function) => {
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
-    });
-
     /*
     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_HITTESTBEHAVIOR_0100
     * @tc.name       : testScrollHitTestBehavior001
-    * @tc.desc       : test image hitTestBehavior with event callback
+    * @tc.desc       : test scroll hitTestBehavior with event callback
     * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
     it('testScrollHitTestBehavior001', 0, async (done: Function) => {
-      await Utils.clickComponent('OnTouchTestStackDefault')
+      let PAGE_TAG = 'ScrollHitTestBehaviorDefaultTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('Default')
       await Utils.sleep(2000)
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollDefault').$attrs.backgroundColor).assertEqual('#FFFF0000')
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollBrotherDefault').$attrs.backgroundColor)
-        .assertEqual('#FF000000')
-
-      await Utils.clickComponent('OnTouchTestStackBlock')
-      await Utils.sleep(2000)
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollBlock').$attrs.backgroundColor).assertEqual('#FFFF0000')
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollBrotherBlock').$attrs.backgroundColor)
-        .assertEqual('#FF000000')
-
-      await Utils.clickComponent('OnTouchTestStackTransparent')
-      await Utils.sleep(2000)
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollTransparent').$attrs.backgroundColor)
-        .assertEqual('#FF0000FF')
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollBrotherTransparent').$attrs.backgroundColor)
-        .assertEqual('#FF000000')
-
-      await Utils.clickComponent('OnTouchTestStackNone')
-      await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollNone').$attrs.backgroundColor)
-        .assertEqual('#FF0000FF')
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollBrotherNone').$attrs.backgroundColor)
+      expect(Utils.getComponentInfoByKey('ScrollDefault').$attrs.backgroundColor).assertEqual('#FF0000FF')
+      expect(Utils.getComponentInfoByKey('ScrollBrotherDefault').$attrs.backgroundColor)
         .assertEqual('#FF00FF00')
-
-      await Utils.clickComponent('OnTouchTestStackExceptBelow')
-      await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollExceptBelow').$attrs.backgroundColor)
-        .assertEqual('#FFFF0000')
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollBrotherExceptBelow').$attrs.backgroundColor)
-        .assertEqual('#FF000000')
-
-      await Utils.clickComponent('OnTouchTestStackExceptAbove')
-      await Utils.sleep(2000)
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollExceptAbove').$attrs.backgroundColor)
-        .assertEqual('#FFFF0000')
-      expect(Utils.getComponentInfoByKey('OnTouchTestScrollBrotherExceptAbove').$attrs.backgroundColor)
-        .assertEqual('#FF000000')
-
-      done()
+      expect(Utils.getComponentInfoByKey('ColumnDefault').$attrs.backgroundColor)
+        .assertEqual('#FFFFFFFF')
+      done();
     })
 
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_SCROLL_HITTESTBEHAVIOR_0200
+    * @tc.name       : testScrollHitTestBehavior002
+    * @tc.desc       : test scroll hitTestBehavior with event callback
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testScrollHitTestBehavior002', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollHitTestBehaviorBlockTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('Block')
+      await Utils.sleep(2000)
+      expect(Utils.getComponentInfoByKey('ScrollBlock').$attrs.backgroundColor).assertEqual('#FF0000FF')
+      expect(Utils.getComponentInfoByKey('ScrollBrotherBlock').$attrs.backgroundColor)
+        .assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('ColumnBlock').$attrs.backgroundColor)
+        .assertEqual('#FFFF11FF')
+      done();
+    })
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_SCROLL_HITTESTBEHAVIOR_0300
+    * @tc.name       : testScrollHitTestBehavior003
+    * @tc.desc       : test scroll hitTestBehavior with event callback
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testScrollHitTestBehavior003', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollHitTestBehaviorTransparentTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('Transparent')
+      await Utils.sleep(2000)
+      expect(Utils.getComponentInfoByKey('ScrollTransparent').$attrs.backgroundColor).assertEqual('#FF0000FF')
+      expect(Utils.getComponentInfoByKey('ScrollBrotherTransparent').$attrs.backgroundColor)
+        .assertEqual('#FF00FFFF')
+      expect(Utils.getComponentInfoByKey('ColumnTransparent').$attrs.backgroundColor)
+        .assertEqual('#FFFFFFFF')
+      done();
+    })
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_SCROLL_HITTESTBEHAVIOR_0400
+    * @tc.name       : testScrollHitTestBehavior004
+    * @tc.desc       : test scroll hitTestBehavior with event callback
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testScrollHitTestBehavior004', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollHitTestBehaviorNoneTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('None')
+      await Utils.sleep(2000)
+      expect(Utils.getComponentInfoByKey('ScrollNone').$attrs.backgroundColor).assertEqual('#FFFF0000')
+      expect(Utils.getComponentInfoByKey('ScrollBrotherNone').$attrs.backgroundColor)
+        .assertEqual('#FF00FFFF')
+      expect(Utils.getComponentInfoByKey('ColumnNone').$attrs.backgroundColor)
+        .assertEqual('#FFFFFFFF')
+      done();
+    })
   })
 }
