@@ -63,7 +63,8 @@ export default function underlineColor() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('underlineColor1');
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.normalUnderlineColor).assertEqual('#FF808080');
+      let underlineColor = JSON.parse(obj.$attrs.underlineColor)
+      expect(underlineColor.normal).assertEqual('#FF808080');
       await CommonFunc.sleep(1000);
       console.info('[underlineColor_0100] END');
       done();
