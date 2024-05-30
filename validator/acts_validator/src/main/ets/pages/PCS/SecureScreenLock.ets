@@ -18,34 +18,36 @@ import FirstDialog from '../model/FirstDialog';
 import context from '@ohos.app.ability.common';
 import router from '@ohos.router';
 import { BusinessError } from '@ohos.base';
-import power from '@ohos.power';
-import CommonEventManager from '@ohos.commonEventManager';
+import screenLock from '@ohos.screenLock';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 
 /*
-* @tc.number: STD-SOFTWARE-0302
-* @tc.name: testSubscribeCommonEvent
-* @tc.desc: 【STD-SOFTWARE-0302】ohos 设备必须发送公共事件 want 以响应适当的系统事件来通知三方应用硬件或软件环境的改变。
+* @tc.number: C-STD-SECURITY-0403
+* @tc.name: testSecureScreenLock
+* @tc.desc: 【C-STD-SECURITY-0403】用户开通安全锁屏功能时，系统应提示用户设置一个口令作为主认证方式用于安全解锁；
+*             要求设置的口令应满足一定复杂度要求，至少为 6 位数字；用户删除用户口令，系统应同时关闭安全锁屏功能。
 * @tc.size: MediumTest
 * @tc.type: Function
 * @tc.level: Level 0
 */
 @Entry
 @Component
-struct testSubscribeCommonEvent {
-  @State name: string = 'SubscribeCommonEvent';
-  @State stepTips: string = '操作步骤：订阅系统公共事件' + '\n' + '根据操作提示操作界面触发系统公共事件' + '\n' + '预期结果：获取系统公共事件通知';
+struct testSecureScreenLock {
+  @State name: string = 'SecureScreenLock';
+  @State stepTips: string = '操作步骤：设置锁屏密码，开启安全锁屏' + '\n' + '查看锁屏后解锁是否需要输入密码' + '\n' +
+                            '关闭锁屏密码，查看安全锁屏是否关闭' + '\n' + 
+                            '预期结果：安全锁屏开启，解锁屏幕需输入密码；关闭锁屏密码，解锁屏幕无需输入密码';
   @State testResult: boolean = false;
-  @State startEnable: boolean = true;
-  @State result: string = "FLASE";
+  @State startEnable: boolean = false;
+  @State result: string = 'UNDEFINED';
   scroller: Scroller = new Scroller();
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.stepTips, this.name);
     this.testResult = false;
-    this.startEnable = true;
-    this.result = "FLASE";
+    this.startEnable = false;
+    this.result = 'UNDEFINED';
   }
 
   @Builder
@@ -61,16 +63,38 @@ struct testSubscribeCommonEvent {
             }
 
             Row() {
-              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.点击订阅屏幕关闭公共事件按钮` + '\n' + '\n' +
-                `2.点击息屏按钮关闭屏幕并等待5s` + '\n' + '\n' + '3.开启屏幕进入应用' + '\n' + '\n' +
-                '4.观察测试结果是否为TRUE' + '\n' + '\n')
+              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.进入设置应用，生物识别和密码页面，设置锁屏密码，锁屏密码自定义` + '\n' + '\n' +
+                `2.返回validator，点击\'设置锁屏密码完成\'按钮` + '\n' + '\n' + 
+                `3.点击\'锁屏\'按钮，屏幕锁定后，解锁屏幕：若需输入密码，且输入自定义锁屏密码后可解锁，则继续；否则测试失败` + '\n' + '\n' +
+                `4.进入设置应用，生物识别和密码页面，关闭/删除锁屏密码` + '\n' + '\n' +
+                `5.返回validator，点击\'删除锁屏密码完成\'按钮` + '\n' + '\n' +
+                `6.点击\'锁屏\'按钮，屏幕锁定后，解锁屏幕：若无需输入密码，则继续通过；否则测试失败` + '\n' + '\n')
+                
                 .fontColor(Color.White)
                 .fontSize('20fp')
             }
 
             Row() {
               Column() {
-                Button(`订阅屏幕关闭公共事件`)
+                Button(`设置锁屏密码完成`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('50%')
+                  .margin('10vp')
+                  .onClick(async () => {
+                    this.startEnable = true
+                  })
+                Blank('10%')
+                Button(`关闭锁屏密码完成`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('50%')
+                  .margin('10vp')
+                  .onClick(async () => {
+                    this.startEnable = true
+                  })
+                Blank('10%')
+                Button(`息屏`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('50%')
@@ -78,49 +102,25 @@ struct testSubscribeCommonEvent {
                   .enabled(this.startEnable)
                   .opacity(this.startEnable ? 1 : 0.4)
                   .onClick(async () => {
-                    let subscriber: CommonEventManager.CommonEventSubscriber;
-                    let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
-                      events: ["usual.event.SCREEN_OFF"]
-                    };
                     try {
-                      subscriber = CommonEventManager.createSubscriberSync(subscribeInfo);
-                      CommonEventManager.subscribe(subscriber, (err: BusinessError, data: CommonEventManager.CommonEventData) => {
-                        if (err) {
-                          console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-                        } else {
-                          this.result = "TRUE";
-                          this.testResult = true
-                          console.info(`subscribe event: ${data.event}`);
-                        }
-                      });
-                      this.startEnable = !this.startEnable;
-                    } catch (error) {
-                      let err: BusinessError = error as BusinessError;
-                      console.error(`Subscriber common event failed, code is ${err.code}, message is ${err.message}`);
-                    }
-                  })
-
-                Blank('10%')
-
-                Button(`息屏`)
-                  .borderRadius(8)
-                  .backgroundColor(0x317aff)
-                  .width('50%')
-                  .enabled(!this.startEnable)
-                  .opacity(!this.startEnable ? 1 : 0.4)
-                  .onClick(() => {
-                    try {
-                      power.suspend();
+                      let lockRes = await screenLock.lock()
+                      if(!lockRes) {
+                        this.result = 'FLASE'
+                        this.testResult = false
+                      } else {
+                        this.testResult = true
+                      }
                     } catch (err) {
-                      console.error('suspend failed, err: ' + err);
+                      console.error('lock failed, err: ' + err);
+                      this.result = 'FLASE'
+                      this.testResult = false
                     }
-                    this.startEnable = !this.startEnable;
                   })
               }
             }
 
             Row() {
-              Text('\n' + '\n' + `订阅公共事件结果：` + this.result)
+              Text('\n' + '\n' + `安全锁屏测试结果：` + this.result)
                 .fontColor(Color.White)
                 .fontSize('24fp')
             }

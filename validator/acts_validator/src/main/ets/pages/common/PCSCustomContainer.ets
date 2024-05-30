@@ -29,18 +29,18 @@ const TAG = '[Screenshot]';
 @Component
 export struct CustomContainer {
   @Link name: string;
-  @Link TestResult: boolean;
+  @Link testResult: boolean;
   @BuilderParam content: () => void;
   title: string = '';
-  StepTips: string = '';
-  Url: string = '';
-  @Link StartEnable: boolean;
-  @Link Result: string;
+  stepTips: string = '';
+  url: string = '';
+  @Link startEnable: boolean;
+  @Link result: string;
 
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
-    if (this.TestResult == false) {
-      Button({ stateEffect: this.TestResult }) {
+    if (this.testResult == false) {
+      Button({ stateEffect: this.testResult }) {
         Image($r('app.media.ic_public_pass'))
           .width('20vp')
           .height('20vp')
@@ -54,7 +54,7 @@ export struct CustomContainer {
       })
     }
     else {
-      Button({ stateEffect: this.TestResult }) {
+      Button({ stateEffect: this.testResult }) {
         Image($r('app.media.ic_public_pass'))
           .width('20vp')
           .height('20vp')
@@ -64,7 +64,7 @@ export struct CustomContainer {
       .backgroundColor(Color.Grey)
       .onClick(() => {
         router.back({
-          url: this.Url,
+          url: this.url,
           params: {
             result: 'true ', title: this.name,
           }
@@ -89,7 +89,7 @@ export struct CustomContainer {
     .backgroundColor(Color.Grey)
     .onClick(() => {
       router.back({
-        url: this.Url,
+        url: this.url,
         params: {
           result: 'false', title: this.name,
         }
@@ -114,7 +114,7 @@ export struct CustomContainer {
         .size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
-            url: this.Url,
+            url: this.url,
             params: { result: 'None', }
           })
         })
@@ -147,7 +147,7 @@ export struct CustomContainer {
         .onClick(() => {
           AlertDialog.show({
             title: '操作提示',
-            message: this.StepTips,
+            message: this.stepTips,
             confirm: {
               value: 'OK',
               action: () => {

@@ -22,7 +22,10 @@ ohos_copy("PyTestCase") {
   subsystem_name = "pcs"
   part_name = "pcs"
   sources = [
+    "./PermissionUtils.py",
     "./sysCapUtils.py",
+    "./testAppSignatureVerify.json",
+    "./testAppSignatureVerify.py",
     "./testBundleInstallVerify.json",
     "./testBundleInstallVerify.py",
     "./testCommandWukong.json",
@@ -31,8 +34,20 @@ ohos_copy("PyTestCase") {
     "./testInstallSignedHap.py",
     "./testJsConfiguration.json",
     "./testJsConfiguration.py",
+    "./testPermissionName.json",
+    "./testPermissionName.py",
+    "./testPermissionsNotMissing.json",
+    "./testPermissionsNotMissing.py",
+    "./testRealRandomGenerate.json",
+    "./testRealRandomGenerate.py",
     "./testSDCardMount.json",
     "./testSDCardMount.py",
+    "./testSelinuxFileLable.json",
+    "./testSelinuxFileLable.py",
+    "./testSystemCoreInternetPermission.json",
+    "./testSystemCoreInternetPermission.py",
+    "./testTrustedRootCaExist.json",
+    "./testTrustedRootCaExist.py",
   ]
   outputs =
       [ root_out_dir + "/suites/acts/acts/testcases/{{source_file_part}}" ]

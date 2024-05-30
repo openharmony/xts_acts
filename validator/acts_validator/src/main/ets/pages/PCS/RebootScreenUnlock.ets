@@ -18,34 +18,35 @@ import FirstDialog from '../model/FirstDialog';
 import context from '@ohos.app.ability.common';
 import router from '@ohos.router';
 import { BusinessError } from '@ohos.base';
-import systemparameter from '@ohos.systemParameterEnhance';
+import screenLock from '@ohos.screenLock';
+import power from '@ohos.power';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 
 /*
-* @tc.number: STD-TOOLS-0200
-* @tc.name: testDeveloperMode
-* @tc.desc: 【STD-TOOLS-0200】必须支持进入 OpenHarmony 调试模式。
-*           【G-TOOLS-0201】必须支持 OpenHarmony 调试配置。
+* @tc.number: C-STD-SECURITY-0409
+* @tc.name: testRebootScreenUnlock
+* @tc.desc: 【C-STD-SECURITY-0409】如果设备设置了锁屏口令，设备重启后，用户首次解锁屏幕，系统仅允许使用锁屏口令认证。
 * @tc.size: MediumTest
 * @tc.type: Function
 * @tc.level: Level 0
 */
 @Entry
 @Component
-struct testDeveloperMode {
-  @State name: string = 'DeveloperMode';
-  @State stepTips: string = '操作步骤：设置保证调试/开发者模式开启' + '\n' + '查看页面读取到的调试/开发者模式状态' + '\n' + '预期结果：页面中调试/开发者模式状态为TRUE';
+struct testRebootScreenUnlock {
+  @State name: string = 'RebootScreenUnlock';
+  @State stepTips: string = '操作步骤：设置锁屏密码，若支持其他认证方式，设置其他认证方式开启' + '\n' + '重启设备，查看首次解锁是否只可使用口令认证解锁' + '\n' +
+                            '预期结果：重启后首次解锁只可以使用口令认证，不可以使用其他认证方式，如人脸、指纹等';
   @State testResult: boolean = false;
   @State startEnable: boolean = true;
-  @State result: string = "UNDEFINED";
+  @State result: string = 'UNDEFINED';
   scroller: Scroller = new Scroller();
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.stepTips, this.name);
     this.testResult = false;
     this.startEnable = true;
-    this.result = "UNDEFINED";
+    this.result = 'UNDEFINED';
   }
 
   @Builder
@@ -54,38 +55,43 @@ struct testDeveloperMode {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         Scroll(this.scroller) {
           Column() {
+            Button(`设备不支持其他认证方式`)
+              .borderRadius(8)
+              .backgroundColor(0x317aff)
+              .width('50%')
+              .margin('10vp')
+              .onClick(async () => {
+                this.testResult = true
+              })
+
             Row() {
               Text('\n' + '\n' + `根据以下操作步骤完成测试` + '\n' + '\n')
                 .fontColor(Color.White)
                 .fontSize('24fp')
             }
 
-            Button(`获取设备调试/开发者模式状态`)
-              .borderRadius(8)
-              .backgroundColor(0x317aff)
-              .width('50%')
-              .margin('10vp')
-              .onClick(async () => {
-                if(systemparameter.getSync('const.security.developermode.state') == 'true') {
-                  this.result = "TRUE"
-                  this.testResult = true
-                } else {
-                  this.result = "FLASE"
-                }
-              })
-
             Row() {
-              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.点击按钮获取设备调试/开发者模式状态，若为TRUE则测试通过` + '\n' + '\n' +
-                `2.若为FALSE，进入设置应用，调试/开发者模式配置页面，打开调试/开发者模式并重启` + '\n' + '\n' + '3.重启后再次进入validator此页面' + '\n' + '\n' +
-                '4.点击完成设置按钮' + '\n' + '\n' +
-                '5.观察页面中调试/开发者模式状态为TRUE' + '\n' + '\n')
+              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.若设备除口令认证外，不支持其他认证方式，点击\'设备不支持其他认证方式\'按钮结束测试` + '\n' + '\n' +
+                `2.进入设置应用，生物识别和密码页面，设置锁屏密码，同时设置其他认证方式，如人脸认证、指纹认证等` + '\n' + '\n' + 
+                `3.返回validator，点击\'设置锁屏认证完成\'按钮` + '\n' + '\n' +
+                `4.自行重启设备，重启后，解锁屏幕：若可以使用除口令外的其他认证方式，则测试失败；否则测试通过。点击\'重启设备完成\'按钮` + '\n' + '\n')
+                
                 .fontColor(Color.White)
                 .fontSize('20fp')
             }
 
             Row() {
               Column() {
-                Button(`完成设置`)
+                Button(`设置锁屏认证完成`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('50%')
+                  .margin('10vp')
+                  .onClick(async () => {
+                    this.startEnable = true
+                  })
+                Blank('10%')
+                Button(`重启设备完成`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('50%')
@@ -93,18 +99,13 @@ struct testDeveloperMode {
                   .enabled(this.startEnable)
                   .opacity(this.startEnable ? 1 : 0.4)
                   .onClick(async () => {
-                    if(systemparameter.getSync('const.security.developermode.state') == 'true') {
-                      this.result = "TRUE"
-                      this.testResult = true
-                    } else {
-                      this.result = "FLASE"
-                    }
+                    this.testResult = true
                   })
               }
             }
 
             Row() {
-              Text('\n' + '\n' + `调试/开发者模式状态：` + this.result)
+              Text('\n' + '\n' + `重启口令验证测试结果：` + this.result)
                 .fontColor(Color.White)
                 .fontSize('24fp')
             }

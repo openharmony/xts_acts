@@ -14,10 +14,10 @@
 from devicetest.core.test_case import TestCase, Step
 
 # @tc.number: G-SOFTWARE-0500
-# @tc.name: testInstallSignedHap
-# @tc.desc: 【G-SOFTWARE-0500】必须能够安装由 OpenHarmony 打包工具和签名工具生成的 hap/hsp/hqf 包；
-#            禁止修改打包工具中包管理默认配置规则。
-class testInstallSignedHap(TestCase):
+# @tc.name: testAppSignatureVerify
+# @tc.desc: 【C-ALL-SOFTWARE-1700】必须对应用进行签名，用于应用完整性和来源验证。
+#           【C-ALL-SOFTWARE-1701】在安装应用时，必须对应用的签名进行校验，确保应用来源可信和未被篡改；禁止安装签名校验失败的应用。
+class testAppSignatureVerify(TestCase):
 
     def __init__(self, controllers):
         self.TAG = self.__class__.__name__
@@ -28,19 +28,14 @@ class testInstallSignedHap(TestCase):
 
     def process(self):
         Step("Process")
-        errorList = []
+        installHapResult = self.device1.execute_shell_command("bm install -p /data/local/tmp/unsigned.hap")
+        assert 'error: no signature file' in installHapResult.strip()
+        bundleNames = self.device1.execute_shell_command("bm dump -a").strip()
+        assert 'com.pcs.software.signedhap' not in bundleNames
         installHapResult = self.device1.execute_shell_command("bm install -p /data/local/tmp/signed.hap")
-        if 'install bundle successfully' not in installHapResult.strip():
-            errorList.append('install hap failed')
-        installHspResult = self.device1.execute_shell_command("bm install -p /data/local/tmp/signed.hsp")
-        if 'install bundle successfully' not in installHspResult.strip():
-            errorList.append('install hsp failed')
-        installHqfResult = self.device1.execute_shell_command("bm quickfix -a -f /data/local/tmp/signed.hqf")
-        if 'apply quickfix succeed' not in installHqfResult.strip():
-            errorList.append('install hqf failed')
-        if len(errorList) > 0:
-            self.log.info('errorList: [' + ', '.join(errorList) + ']')
-            assert False
+        assert 'install bundle successfully' in installHapResult.strip()
+        bundleNames = self.device1.execute_shell_command("bm dump -a").strip()
+        assert 'com.pcs.software.signedhap' in bundleNames
 
     def teardown(self):
         Step("Teardown")
