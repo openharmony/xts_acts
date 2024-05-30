@@ -1,6 +1,6 @@
 /*
 * Copyright (c) 2024 Huawei Device Co., Ltd.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
@@ -13,12 +13,9 @@
 * limitations under the License.
 */
 
-import StartupTask from '@ohos.app.appstartup.StartupTask'
-import hilog from '@ohos.hilog';
+import StartupTask from '@ohos.app.appstartup.StartupTask';
 import commonEventManager from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
-
-const NAME = "Sample_003";
 
 @Sendable
 export default class Sample_003 extends StartupTask {
@@ -26,15 +23,14 @@ export default class Sample_003 extends StartupTask {
     super();
   }
   async init(context: common.AbilityStageContext) {
-    hilog.info(0x0000, 'StartupTest', 'Sample_003');
-    console.info("StartupTest Sample_003 init");
+    console.info('StartupTest Sample_003 init');
+    PersistentStorage.persistProp('Sample_003_init', 'Sample_003_init');
     return 'Sample_003';
   }
 
   onDependencyCompleted(dependence: string, result: Object): void {
-    hilog.info(0x0000, 'StartupTest', 'Sample_003, dependence:%{public}s, result:%{public}s', dependence,
-      JSON.stringify(result));
-    console.info("StartupTest Sample_003 onDependencyCompleted dependence=" + dependence);
-    console.info("StartupTest Sample_003 onDependencyCompleted result=" + JSON.stringify(result));
+    console.info('StartupTest Sample_003 onDependencyCompleted dependence=' + dependence);
+    console.info('StartupTest Sample_003 onDependencyCompleted result=' + JSON.stringify(result));
+    PersistentStorage.persistProp('Sample_003_onDependencyCompleted', dependence);
   }
 }

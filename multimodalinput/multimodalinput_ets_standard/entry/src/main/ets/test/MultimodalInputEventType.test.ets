@@ -595,7 +595,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_InfradeEmirterTransmit_0100', 0, () => {
+    it('MultimodalInput_InfradeEmirterTransmit_0100', 0, async function (done) {
 
       console.info(`MultimodalInput_InfradeEmirterTransmit_0100 enter`);
       try {
@@ -623,7 +623,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_InfradeEmirterTransmit_0200', 0, () => {
+    it('MultimodalInput_InfradeEmirterTransmit_0200', 0, async function (done) {
 
       console.info(`MultimodalInput_InfradeEmirterTransmit_0200 enter`);
       try {
@@ -652,7 +652,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_InfradeEmirterTransmit_0300', 0, () => {
+    it('MultimodalInput_InfradeEmirterTransmit_0300', 0, async function (done) {
 
       console.info(`MultimodalInput_InfradeEmirterTransmit_0300 enter`);
       try {

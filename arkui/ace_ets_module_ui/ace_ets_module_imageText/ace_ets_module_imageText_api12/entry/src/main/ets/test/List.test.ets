@@ -38,6 +38,8 @@ import removeStyles from './TextTest/removeStyles.test'
 import StyledStringTest from './TextTest/StyledStringTest.test'
 import clearStyles from './TextTest/clearStyles.test'
 import TextStyle from './TextTest/TextStyle.test';
+import TextStyleWavy from './TextTest/TextStyleWavy.test';
+
 import MarqueeApi from './Marquee/MarqueeApi.test';
 import APIContentTypeTest from './TextInput/APIContentTypeTest.test';
 import APIUnderlineColorTest from './TextInput/APIUnderlineColorTest.test';
@@ -73,6 +75,13 @@ import Text_lineBreakStrategyTest from './TextTest/TextAPITest/Text_lineBreakStr
 import Text_lineSpacingTest from './TextTest/TextAPITest/Text_lineSpacingTest.test'
 import marqueeOptionsTest from './TextTest/TextAPITest/marqueeOptionsTest.test'
 import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
+import Context from './TextTest/Context.test'
+import getLayout from './TextTest/getLayout.test'
+import imageAddApi from './ImageTest/imageAddApi.test'
+import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
+import styledStringApi from './TextTest/styledStringApi.test'
+import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
+import StyledStringApi1 from './StyledString/StyledStringApi1.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -135,4 +144,13 @@ export default function testsuite() {
   Text_lineSpacingTest();
   marqueeOptionsTest();
   textStrategyJsunit();
+
+  Context()
+  getLayout()
+  imageAddApi()
+  SymbolGlyphApi()
+  styledStringApi()
+  SelectionMenuApi()
+  StyledStringApi1();
+
 }

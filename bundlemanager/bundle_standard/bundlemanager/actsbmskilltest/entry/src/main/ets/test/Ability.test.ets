@@ -34,20 +34,26 @@ export default function abilityTest() {
         | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY
         | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY);
 
+      let skill: bundle.Skill = data.hapModulesInfo[0].abilitiesInfo[0].skills[0];
+      let skillUrl: bundle.SkillUrl = skill.uris[0];
       expect(data.hapModulesInfo[0].abilitiesInfo[0].skills.length).assertEqual(1);
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].actions[0])
+      expect(skill.actions[0])
         .assertEqual('action.system.home');
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].domainVerify).assertEqual(false);
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].uris[0].scheme).assertEqual('scheme');
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].uris[0].host).assertEqual('host');
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].uris[0].port).assertEqual('port');
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].uris[0].pathStartWith).assertEqual('pathStartWith');
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].uris[0].path).assertEqual('path');
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].uris[0].pathRegex).assertEqual('pathRegex');
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].uris[0].type).assertEqual('type');
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].uris[0].utd).assertEqual('utd');
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].uris[0].linkFeature).assertEqual('linkFeature');
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].skills[0].uris[0].maxFileSupported).assertEqual(10000);
+      expect(skill.domainVerify).assertEqual(false);
+      expect(skillUrl.scheme).assertEqual('scheme');
+      expect(skillUrl.host).assertEqual('host');
+      expect(skillUrl.port).assertEqual('port');
+      expect(skillUrl.pathStartWith).assertEqual('pathStartWith');
+      expect(skillUrl.path).assertEqual('path');
+      expect(skillUrl.pathRegex).assertEqual('pathRegex');
+      expect(skillUrl.type).assertEqual('type');
+      expect(skillUrl.utd).assertEqual('utd');
+      expect(skillUrl.linkFeature).assertEqual('linkFeature');
+      expect(skillUrl.maxFileSupported).assertEqual(10000);
+      let extensionAbilitiesInfo: bundle.ExtensionAbilityInfo = data.hapModulesInfo[0].extensionAbilitiesInfo[0];
+      let skillExtensionAbilitiesInfo: bundle.Skill = extensionAbilitiesInfo.skills[0];
+      let skillUrlExtensionAbilitiesInfo: bundle.SkillUrl = skillExtensionAbilitiesInfo.uris[0];
+      expect(typeof (skillUrlExtensionAbilitiesInfo.scheme)).assertEqual('string');
       done();
     })
   })

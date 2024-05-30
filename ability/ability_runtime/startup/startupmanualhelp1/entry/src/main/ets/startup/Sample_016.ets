@@ -13,8 +13,7 @@
 * limitations under the License.
 */
 
-import StartupTask from '@ohos.app.appstartup.StartupTask'
-import hilog from '@ohos.hilog';
+import StartupTask from '@ohos.app.appstartup.StartupTask';
 import commonEventManager from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
 
@@ -23,16 +22,26 @@ export default class Sample_016 extends StartupTask {
   constructor() {
     super();
   }
+
+  sleep(time: number){
+    return new Promise<void>((resolve, reject) => {
+      setTimeout(() => {
+        resolve()
+      }, time)
+    }).then(() => {
+      console.info('sleep ${time} over...');
+    })
+  }
+
   async init(context: common.AbilityStageContext) {
-    hilog.info(0x0000, 'StartupTest', 'Sample_016');
-    console.info("StartupTest Sample_016 init");
+    console.info('StartupTest Sample_016 init');
+    await this.sleep(3000);
+    PersistentStorage.persistProp('Sample_016_init', 'Sample_016_init');
     return 'Sample_016';
   }
 
   onDependencyCompleted(dependence: string, result: Object): void {
-    hilog.info(0x0000, 'StartupTest', 'Sample_016, dependence:%{public}s, result:%{public}s', dependence,
-      JSON.stringify(result));
-    console.info("StartupTest Sample_016 onDependencyCompleted dependence=" + dependence);
-    console.info("StartupTest Sample_016 onDependencyCompleted result=" + JSON.stringify(result));
+    console.info('StartupTest Sample_016 onDependencyCompleted dependence=' + dependence);
+    console.info('StartupTest Sample_016 onDependencyCompleted result=' + JSON.stringify(result));
   }
 }

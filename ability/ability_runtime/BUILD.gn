@@ -69,6 +69,7 @@ group("ability_runtime") {
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
       "amsdisplayIdtest:amsdisplayIdtest",
       "amsgetabilityprocessinfo:amsgetabilityprocessinfo",
+      "amsuiextensionexireason:amsuiextensionexireason",
       "apicover:apicover",
       "apitest:ActsApiTest",
       "context:context",

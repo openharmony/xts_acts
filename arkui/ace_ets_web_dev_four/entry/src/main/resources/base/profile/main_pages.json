@@ -20,6 +20,7 @@
         "MainAbility/pages/WebCameraApiNoCrash",
         "MainAbility/pages/webViewOnSslErrorEvent",
         "MainAbility/pages/MetaViewport",
-        "MainAbility/pages/WebTextAutosizing"
+        "MainAbility/pages/WebTextAutosizing",
+        "MainAbility/pages/webViewGetRequestResourceType"
     ]
 }

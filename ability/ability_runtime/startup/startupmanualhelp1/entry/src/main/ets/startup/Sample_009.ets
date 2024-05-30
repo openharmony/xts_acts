@@ -13,27 +13,23 @@
 * limitations under the License.
 */
 
-import StartupTask from '@ohos.app.appstartup.StartupTask'
-import hilog from '@ohos.hilog';
+import StartupTask from '@ohos.app.appstartup.StartupTask';
 import commonEventManager from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
 
-const NAME = "Sample_009";
 @Sendable
 export default class Sample_009 extends StartupTask {
   constructor() {
     super();
   }
   async init(context: common.AbilityStageContext) {
-    hilog.info(0x0000, 'StartupTest', 'Sample_009');
-    console.info("StartupTest Sample_009 init");
+    console.info('StartupTest Sample_009 init');
+    PersistentStorage.persistProp('Sample_009_init', 'Sample_009_init');
     return 'Sample_009';
   }
 
   onDependencyCompleted(dependence: string, result: Object): void {
-    hilog.info(0x0000, 'StartupTest', 'Sample_009, dependence:%{public}s, result:%{public}s', dependence,
-      JSON.stringify(result));
-    console.info("StartupTest Sample_009 onDependencyCompleted dependence=" + dependence);
-    console.info("StartupTest Sample_009 onDependencyCompleted result=" + JSON.stringify(result));
+    console.info('StartupTest Sample_009 onDependencyCompleted dependence=' + dependence);
+    console.info('StartupTest Sample_009 onDependencyCompleted result=' + JSON.stringify(result));
   }
 }

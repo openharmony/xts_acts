@@ -12,36 +12,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 
-var printLog1 = "Fa:Auxiliary:MainAbility5:";
-var listPush1 = "Fa_Auxiliary_MainAbility5_";
+let printLog1 = "Fa:Auxiliary:MainAbility5:";
+let listPush1 = "Fa_Auxiliary_MainAbility5_";
+
 export default {
   onCreate() {
     console.info(printLog1 + 'onCreate');
 
-    ability_featureAbility.getWant().then((data) => {
-      console.info(printLog1 + "getWant data = " + JSON.stringify(data));
+    ability_featureAbility.getWant()
+      .then((data) => {
+        console.info(printLog1 + "getWant data = " + JSON.stringify(data));
 
-      var flags = {
-        parameters: {
-          flags: data.flags
+        let flags = {
+          parameters: {
+            flags: data.flags
+          }
         }
-      }
-      commonEvent.publish(listPush1 + "onCreate", flags, (err) => {
-        console.info(printLog1 + listPush1 + "onCreate");
+        commonEvent.publish(listPush1 + "onCreate", flags, (err) => {
+          console.info(printLog1 + listPush1 + "onCreate");
+        });
+      })
+      .catch((err) => {
+        console.info(printLog1 + "getWant err = " + JSON.stringify(err));
       });
-    }).catch((err) => {
-      console.info(printLog1 + "getWant err = " + JSON.stringify(err));
-    });
 
-    setTimeout(()=>{
-      ability_featureAbility.terminateSelf().then((data) => {
-        console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
-      }).catch((err) => {
-        console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
-      });
+    setTimeout(() => {
+      ability_featureAbility.terminateSelf()
+        .then((data) => {
+          console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
+        })
+        .catch((err) => {
+          console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
+        });
     }, 3000)
   },
   onDestroy() {

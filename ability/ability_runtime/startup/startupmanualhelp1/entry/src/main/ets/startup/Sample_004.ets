@@ -13,27 +13,32 @@
 * limitations under the License.
 */
 
-import StartupTask from '@ohos.app.appstartup.StartupTask'
-import hilog from '@ohos.hilog';
+import StartupTask from '@ohos.app.appstartup.StartupTask';
 import commonEventManager from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
 
-const NAME = "Sample_004";
 @Sendable
 export default class Sample_004 extends StartupTask {
   constructor() {
     super();
   }
   async init(context: common.AbilityStageContext) {
-    hilog.info(0x0000, 'StartupTest', 'Sample_004');
-    console.info("StartupTest Sample_004 init");
+    console.info('StartupTest Sample_004 init');
+    PersistentStorage.persistProp('Sample_004_init', 'Sample_004_init');
     return 'Sample_004';
   }
 
   onDependencyCompleted(dependence: string, result: Object): void {
-    hilog.info(0x0000, 'StartupTest', 'Sample_004, dependence:%{public}s, result:%{public}s', dependence,
-      JSON.stringify(result));
-    console.info("StartupTest Sample_004 onDependencyCompleted dependence=" + dependence);
-    console.info("StartupTest Sample_004 onDependencyCompleted result=" + JSON.stringify(result));
+    console.info('StartupTest Sample_004 onDependencyCompleted dependence=' + dependence);
+    console.info('StartupTest Sample_004 onDependencyCompleted result=' + JSON.stringify(result));
+    let completedValue4 = AppStorage.get('Sample_004_onDependencyCompleted');
+    if (completedValue4 == undefined) {
+      PersistentStorage.persistProp('Sample_004_onDependencyCompleted', dependence);
+      console.info('Sample_004_onDependencyCompleted completedValue4=' + completedValue4);
+    } else {
+      PersistentStorage.persistProp('Sample_004_onDependencyCompleted2', dependence);
+      console.info('Sample_004_onDependencyCompleted2 completedValue4=' + completedValue4);
+    }
+    
   }
 }
