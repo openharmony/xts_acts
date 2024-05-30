@@ -226,7 +226,7 @@ export class KeyboardDelegate {
     }
 
     let commonEventSubscribeInfo = {
-      events: ["test"]
+      events: ["inputMethodDrawnControlTest"]
     };
 
     let subscriber;

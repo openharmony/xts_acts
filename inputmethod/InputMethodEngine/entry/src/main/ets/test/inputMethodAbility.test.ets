@@ -601,7 +601,7 @@ export default function inputMethodAbility() {
           let commonEventPublishData = {
             code: 1
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -673,7 +673,7 @@ export default function inputMethodAbility() {
           let commonEventPublishData = {
             code: 2
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -744,7 +744,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 28
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -815,7 +815,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 29
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback)
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback)
         }, 500)
 
       }).catch((err) => {
@@ -886,7 +886,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 30
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -957,7 +957,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 31
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1028,7 +1028,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 32
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1099,7 +1099,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 33
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1170,7 +1170,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 34
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1241,7 +1241,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 35
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1312,7 +1312,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 36
           };
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1383,7 +1383,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 37
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1454,7 +1454,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 38
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1525,7 +1525,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 39
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1596,7 +1596,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 40
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1667,7 +1667,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 41
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1738,7 +1738,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 42
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1809,7 +1809,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 43
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1895,7 +1895,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 45
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -1966,7 +1966,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 46
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2037,7 +2037,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 47
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2108,7 +2108,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 48
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2179,7 +2179,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 49
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2250,7 +2250,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 50
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2326,7 +2326,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 70
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2402,7 +2402,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 71
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2478,7 +2478,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 72
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2554,7 +2554,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 73
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2632,7 +2632,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 74
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2703,7 +2703,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 101
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2774,7 +2774,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 102
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2845,7 +2845,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 103
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2916,7 +2916,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 104
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -2987,7 +2987,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 105
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -3058,7 +3058,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 106
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -3099,7 +3099,7 @@ export default function inputMethodAbility() {
       var commonEventPublishData = {
         code:110
       }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -3134,7 +3134,7 @@ export default function inputMethodAbility() {
       var commonEventPublishData = {
         code:120
       }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -3178,7 +3178,7 @@ export default function inputMethodAbility() {
       var commonEventPublishData = {
         code:130
       }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -3222,7 +3222,7 @@ export default function inputMethodAbility() {
       var commonEventPublishData = {
         code:140
       }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -3405,7 +3405,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 91
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -3476,7 +3476,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 170
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -3546,7 +3546,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 180
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -3617,7 +3617,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 200
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -3688,7 +3688,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 201
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -3759,7 +3759,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 210
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -3830,7 +3830,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 211
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -3901,7 +3901,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 220
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -3972,7 +3972,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 221
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4043,7 +4043,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 230
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4114,7 +4114,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 231
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4185,7 +4185,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 240
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4256,7 +4256,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 241
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4327,7 +4327,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 250
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4398,7 +4398,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 251
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4469,7 +4469,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 260
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4540,7 +4540,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 261
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4610,7 +4610,7 @@ export default function inputMethodAbility() {
           clearTimeout(t);var commonEventPublishData = {
             code: 270
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
         
@@ -4682,7 +4682,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 271
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4753,7 +4753,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 280
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4824,7 +4824,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 281
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4895,7 +4895,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 290
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -4966,7 +4966,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 291
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -5037,7 +5037,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 300
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -5110,7 +5110,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 310
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);          
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);          
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -5182,7 +5182,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 320
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -5256,13 +5256,13 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 340
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
         var commonEventPublishData = {
           code: 340
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
@@ -5332,7 +5332,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 350
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -5404,7 +5404,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 360
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -5476,7 +5476,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 370
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
         
       }).catch((err) => {
@@ -5548,7 +5548,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 380
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -5620,7 +5620,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 390
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
@@ -5629,13 +5629,13 @@ export default function inputMethodAbility() {
     });
 
     /*
-* @tc.number  SUB_InputMethod_IME_PrivateDateTransferred_1100
-* @tc.name    SUB_InputMethod_IME_PrivateDateTransferred_1100
-* @tc.desc    Function test
-* @tc.size    MediumTest
-* @tc.type    Function
-* @tc.level   Level2
-*/
+    * @tc.number  SUB_InputMethod_IME_PrivateDateTransferred_1100
+    * @tc.name    SUB_InputMethod_IME_PrivateDateTransferred_1100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_InputMethod_IME_PrivateDateTransferred_1100', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -5692,7 +5692,7 @@ export default function inputMethodAbility() {
           var commonEventPublishData = {
             code: 400
           }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
         }, 500)
 
       }).catch((err) => {
