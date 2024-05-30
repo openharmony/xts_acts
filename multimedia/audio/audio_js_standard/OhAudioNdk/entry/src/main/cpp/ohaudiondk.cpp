@@ -455,6 +455,9 @@ static napi_value CloseCapturerPCMFile(napi_env env, napi_callback_info info)
 // 输出音频流回调方法
 int32_t onRendererWriteData(OH_AudioRenderer *renderer, void *userData, void *buffer, int32_t length) 
 {
+    if (g_file == nullptr) {
+        return 0;
+    }
     size_t readCount = fread(buffer, length, 1, g_file);
     if (!readCount) {
         if (ferror(g_file)) {
