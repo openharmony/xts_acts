@@ -1,9 +1,5 @@
 {
   "src": [
-    "MainAbility/pages/index/Index",
-    "MainAbility/pages/default/DefaultFocusValuePage",
-    "MainAbility/pages/default/DefaultFlexPage",
-    "MainAbility/pages/default/DefaultFlexByGridRowPage",
-    "MainAbility/pages/default/DefaultPage"
+    "pages/Index"
   ]
 }
