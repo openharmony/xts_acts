@@ -115,7 +115,7 @@ struct setLayoutExample {
             this.nodeController?.rootNode?.setNeedsLayout();
             this.getPositionToScreen = this.nodeController?.rootNode?.getLayoutPosition().x.toString()
           })
-        Text(this.getPositionToScreen) // 0
+        Text(this.getPositionToScreen) 
           .id("setLayoutValue")
           .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           .width('100%').fontSize(16)
