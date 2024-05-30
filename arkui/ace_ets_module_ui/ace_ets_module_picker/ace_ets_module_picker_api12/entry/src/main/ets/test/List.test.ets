@@ -32,6 +32,8 @@ import ToggleSwitchStyle from './ToggleTest/ToggleSwitchStyle.test'
 import ToggleContentIsOn from './ToggleTest/ToggleIsOn.test.ets';
 import ToggleContentEnabled from './ToggleTest/ToggleEnabled.test.ets';
 import selectApi1 from './select/selectApi1.test'
+import triggerSelect from './select/triggerSelect.test'
+import slideRange from './SliderTest/slideRange.test'
 
 export default function testsuite() {
     gradientHeight()
@@ -53,5 +55,6 @@ export default function testsuite() {
     ToggleContentIsOn();
     ToggleContentEnabled();
     selectApi1();
-
+    triggerSelect()
+    slideRange()
 }
