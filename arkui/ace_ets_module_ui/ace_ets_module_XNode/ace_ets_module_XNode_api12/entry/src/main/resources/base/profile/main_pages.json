@@ -8,6 +8,7 @@
         "MainAbility/pages/Graphics/edgeWidths",
         "MainAbility/pages/renderNode/renderNodeSetGetInterface",
         "MainAbility/pages/FrameNode/dispose",
-	"MainAbility/pages/FrameNode/getAttrs"
+	"MainAbility/pages/FrameNode/getAttrs",
+        "MainAbility/pages/FrameNode/setMeasureSize"
     ]
 }
