@@ -48,9 +48,9 @@ export default class CommonFunc {
 
   static getComponentRectOnScreen(key: string) {
     let strJson: string = getInspectorByKey(key);
-    let obj: ESObject = JSON.parse(strJson);
+    let obj = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo: ESObject = JSON.parse('[' + obj.$rect + ']');
+    let rectInfo = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
     console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop );
     CommonFunc.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;
