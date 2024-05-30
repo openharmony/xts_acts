@@ -1,7 +1,5 @@
 {
   "src": [
-    "MainAbility/pages/index/Index",
-    "MainAbility/pages/stateStyles/StateStylesPage",
-    "MainAbility/pages/stateStyles/StateStylesPageTwo"
+    "pages/Index"
   ]
 }
