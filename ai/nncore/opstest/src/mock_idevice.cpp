@@ -112,8 +112,8 @@ sptr<INnrtDevice> INnrtDevice::Get(const std::string &serviceName, bool isStub)
 
 MockIDevice::~MockIDevice()
 {
-    for (auto ash : m_ashmems) {
-        ash.second.CloseAshmem();
+    for (auto fd : m_fds) {
+        close(fd);
     }
 }
 
@@ -124,8 +124,8 @@ MockIDevice::MockIDevice()
 
 MockIPreparedModel::~MockIPreparedModel()
 {
-    for (auto ash : m_ashmems) {
-        ash.second->CloseAshmem();
+    for (auto fd : m_fds) {
+        close(fd);
     }
 }
 
@@ -236,25 +236,48 @@ int32_t MockIDevice::IsModelCacheSupported(bool& isSupported)
 int32_t MockIDevice::AllocateBuffer(uint32_t length, SharedBuffer &buffer)
 {
     std::lock_guard<std::mutex> lock(m_mtx);
-    for (auto ash:m_ashmems) {
-        if (ash.second.GetAshmemSize() <= 0) {
-            ash.second.CloseAshmem();
-        }
-    }
-
     buffer.fd = AshmemCreate("allocateBuffer", length);
     buffer.bufferSize = AshmemGetSize(buffer.fd);
     buffer.offset = 0;
     buffer.dataSize = length;
 
     AshmemSetProt(buffer.fd, PROT_READ | PROT_WRITE);
+    m_fds.emplace(buffer.fd);
+    m_bufferFd = buffer.fd;
     return HDF_SUCCESS;
 }
 
 int32_t MockIDevice::ReleaseBuffer(const SharedBuffer &buffer)
 {
+    if (m_fds.find(buffer.fd) == m_fds.end()) {
+        LOGE("[mock_idevice] ReleaseBuffer: buffer fd is invalid. fd = %d.", buffer.fd);
+        return HDF_FAILURE;
+    }
     if (close(buffer.fd) != 0) {
         LOGE("[mock_idevice] ReleaseBuffer: Close memory fd failed. fd=%d", buffer.fd);
+        return HDF_FAILURE;
+    }
+    return HDF_SUCCESS;
+}
+
+int32_t MockIDevice::MemoryCopy(float* data, uint32_t length)
+{
+    std::lock_guard<std::mutex> lock(m_mtx);
+    void* mapData = mmap(nullptr, length, PROT_READ | PROT_WRITE, MAP_SHARED, m_bufferFd, 0);
+    if (mapData == MAP_FAILED) {
+        LOGE("[mock_idevice] Map fd to address failed : %{public}s.", strerror(errno));
+        return HDF_FAILURE;
+    }
+
+    auto memRet = memcpy_s(mapData, length, data, length);
+    auto unmapResult = munmap(mapData, length);
+    if (unmapResult != 0) {
+        LOGE("[mock_idevice] ExportModelCache failed, please try again.");
+        return HDF_FAILURE;
+    }
+
+    if (memRet != EOK) {
+        LOGE("[mock_idevice] ExportModelCache failed, failed to memcpy_s datat type.");
         return HDF_FAILURE;
     }
     return HDF_SUCCESS;
@@ -314,6 +337,7 @@ int32_t MockIPreparedModel::ExportModelCache(std::vector<SharedBuffer>& modelCac
         return HDF_FAILURE;
     }
 
+    m_fds.emplace(buffer.fd);
     modelCache.emplace_back(buffer);
     return HDF_SUCCESS;
 }
