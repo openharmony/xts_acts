@@ -14,9 +14,9 @@
  */
 
 import {
-  fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect, util
+  fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect, util, buffer
 } from '../Common';
-  
+
 export default function fileIORead() {
   describe('fileIO_fs_read', function () {
 
@@ -324,9 +324,8 @@ export default function fileIORead() {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
       expect(isIntNum(file.fd)).assertTrue();
       let buf = new ArrayBuffer(4096);
-      fileIO.readSync(file.fd, buf);
-      let textDecoder = new util.TextDecoder("utf-8", { ignoreBOM: true });
-      let resultPut = textDecoder.decode(new Uint8Array(buf), { stream: true });
+      let readLen = await fileIO.read(file.fd, buf);
+      let resultPut = buffer.from(new Uint8Array(buf, 0, readLen)).toString('utf-8');
       expect(resultPut == CONTENT).assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
@@ -1014,9 +1013,8 @@ export default function fileIORead() {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
       expect(isIntNum(file.fd)).assertTrue();
       let buf = new ArrayBuffer(4096);
-      await fileIO.read(file.fd, buf);
-      let textDecoder = new util.TextDecoder("utf-8", { ignoreBOM: true });
-      let resultPut = textDecoder.decodeWithStream(new Uint8Array(buf), { stream: true });
+      let readLen = await fileIO.read(file.fd, buf);
+      let resultPut = buffer.from(new Uint8Array(buf, 0, readLen)).toString('utf-8');
       expect(resultPut == CONTENT).assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
