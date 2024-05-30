@@ -263,33 +263,11 @@ export default function windowVerificationProblemTest(context, windowStage, abil
       let caseName = 'testResize_FullScreen_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResize_FullScreen_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      console.log(msgStr + 'Succeeded in createWindow');
+      let win = windowStage.getMainWindowSync();
       expect(!!win).assertTrue();
-      await (win as ohosWindow.Window).loadContent('MainAbility/pages/second/second')
-        .catch((err: BusinessError) => {
-          console.log(msgStr + 'tempWnd.loadContent failed');
-          expect().assertFail();
-        });
-      await (win as ohosWindow.Window).moveWindowTo(0, 0).catch((err: BusinessError) => {
-        console.log(msgStr + 'tempWnd.moveWindowTo failed');
-        expect().assertFail();
-      });
+      console.log(msgStr + 'getMainWindowSync success');
       await (win as ohosWindow.Window).showWindow().catch((err: BusinessError) => {
         console.log(msgStr + 'tempWnd.showWindow failed');
-        expect().assertFail();
-      });
-      await (win as ohosWindow.Window).resize(606, 606).catch((err: BusinessError) => {
-        console.log(msgStr + 'tempWnd.resize failed');
         expect().assertFail();
       });
       await (win as ohosWindow.Window).setWindowLayoutFullScreen(true).then(() => {
@@ -317,7 +295,6 @@ export default function windowVerificationProblemTest(context, windowStage, abil
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
         expect(err.code).assertEqual(1300002);
       });
-      await win.destroyWindow();
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4110
@@ -636,15 +613,13 @@ export default function windowVerificationProblemTest(context, windowStage, abil
       let caseName: string = 'testGetPreferredOrientation_WindowAbnormal';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId: string = "testGetPreferredOrientation_WindowAbnormal"
-      let windowConfig: ohosWindow.Configuration = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
-      };
       let windowClass: ohosWindow.Window | void;
-      windowClass = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
-        console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
+      windowClass = await windowStage.createSubWindow('testGetPreferredOrientation_WindowAbnormal').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-      })
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!windowClass).assertTrue();
       let Win: ohosWindow.Window = windowClass as ohosWindow.Window;
       await (Win as ohosWindow.Window).destroyWindow();

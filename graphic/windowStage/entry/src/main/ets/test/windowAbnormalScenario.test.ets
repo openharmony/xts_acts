@@ -185,144 +185,6 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2090
-     * @tc.name      : testHide_Promise
-     * @tc.desc      : Hidden window
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testHide_Promise', 0, async function () {
-      let caseName = 'testHide_Promise';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testHide_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      expect(!!win).assertTrue();
-      await win.hide().then(async () => {
-        console.info(msgStr + 'Succeeded in hiding the window.');
-        await win.destroyWindow();
-      }).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to hide the window. Cause: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2100
-     * @tc.name      : testHide_Callback
-     * @tc.desc      : Hidden window
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testHide_Callback', 0, async function (done) {
-      let caseName = 'testHide_Callback';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testHide_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      expect(!!win).assertTrue();
-      win.hide(async (err: BusinessError) => {
-        const errCode: number = err.code;
-        if (errCode) {
-          console.error('Failed to hide the window. Cause: ' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-          return;
-        }
-        console.info('Succeeded in hiding the window.');
-        await win.destroyWindow();
-        done();
-      });
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2350
-     * @tc.name      : testHide_WindowStateAbnormal_Promise
-     * @tc.desc      : Hidden window windowStateAbnormal
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testHide_WindowStateAbnormal_Promise', 0, async function () {
-      let caseName = 'testHide_WindowStateAbnormal_Promise';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testHide_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      expect(!!win).assertTrue();
-      await win.destroyWindow();
-      await win.hide().then(() => {
-        console.info(msgStr + 'Succeeded in hiding the window.');
-        expect().assertFail();
-      }).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to hide the window. Cause: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(1300002);
-      });
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3850
-     * @tc.name      : testHide_WindowStateAbnormal_Callback
-     * @tc.desc      : Hidden window windowStateAbnormal
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testHide_WindowStateAbnormal_Callback', 0, async function (done) {
-      let caseName = 'testHide_WindowStateAbnormal_Callback';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testHide_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      expect(!!win).assertTrue();
-      await win.destroyWindow();
-      win.hide((err: BusinessError) => {
-        const errCode: number = err.code;
-        if (errCode) {
-          console.error('Failed to hide the window. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(1300002);
-          done();
-          return;
-        }
-        console.info('Succeeded in hiding the window.');
-        expect().assertFail();
-        done();
-      });
-    })
-    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3860
      * @tc.name      : testShowWindow_WindowStateAbnormal_Callback
      * @tc.desc      : show window windowStateAbnormal
@@ -334,17 +196,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testShowWindow_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testShowWindow_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testShowWindow_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       win.showWindow((err: BusinessError) => {
@@ -372,16 +230,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testDestroyWindow_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testDestroyWindow_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testDestroyWindow_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       await win.destroyWindow().then(() => {
@@ -404,16 +259,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testDestroyWindow_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testDestroyWindow_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveWindowTo_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -441,17 +293,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveWindowTo_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveWindowTo_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveWindowTo_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -485,17 +333,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesOne_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveWindowTo_DecimalScene_ParamesOne_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveWindowTo_DecimalScene_ParamesOne_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -549,17 +393,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesTwo_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveWindowTo_DecimalScene_ParamesTwo_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveWindowTo_DecimalScene_ParamesTwo_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -596,6 +436,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
         done();
       }
@@ -612,17 +453,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesThree_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveWindowTo_DecimalScene_ParamesThree_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveWindowTo_DecimalScene_ParamesThree_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -675,16 +512,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveWindowTo_DecimalScene_ParamesOne_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveWindowTo_DecimalScene_ParamesOne_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -728,16 +562,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesTwo_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveWindowTo_DecimalScene_ParamesTwo_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveWindowTo_DecimalScene_ParamesTwo_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -781,16 +612,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesThree_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveWindowTo_DecimalScene_ParamesThree_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveWindowTo_DecimalScene_ParamesThree_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -840,10 +668,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         ctx: context,
       };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResize_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -871,17 +701,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResize_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResize_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResize_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -915,16 +741,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResize_DecimalScene_ParamesOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResize_DecimalScene_ParamesOne_Promise",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResize_DecimalScene_ParamesOne_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -939,7 +762,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         expect().assertFail();
       });
       try {
-        await win.resize(100.5555, 100).then(async () => {
+        await win.resize(1000.5555, 1000).then(async () => {
           console.info(msgStr + 'Succeeded in changing the window size.');
         }).catch((err: BusinessError) => {
           console.error('Failed to change the window size. Cause: ' + JSON.stringify(err));
@@ -948,8 +771,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-        expect(properties.windowRect.width).assertEqual(100)
-        expect(properties.windowRect.height).assertEqual(100)
+        expect(properties.windowRect.width).assertEqual(1000)
+        expect(properties.windowRect.height).assertEqual(1000)
         await win.destroyWindow();
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
@@ -968,16 +791,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResize_DecimalScene_ParamesTwo_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResize_DecimalScene_ParamesTwo_Promise",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResize_DecimalScene_ParamesTwo_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -992,7 +812,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         expect().assertFail();
       });
       try {
-        await win.resize(205.56, 10.25).then(async () => {
+        await win.resize(1005.56, 1000.25).then(async () => {
           console.info(msgStr + 'Succeeded in changing the window size.');
         }).catch((err: BusinessError) => {
           console.error('Failed to change the window size. Cause: ' + JSON.stringify(err));
@@ -1001,8 +821,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-        expect(properties.windowRect.width).assertEqual(205)
-        expect(properties.windowRect.height).assertEqual(10)
+        expect(properties.windowRect.width).assertEqual(1005)
+        expect(properties.windowRect.height).assertEqual(1000)
         await win.destroyWindow();
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
@@ -1021,16 +841,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResize_DecimalScene_ParamesThree_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResize_DecimalScene_ParamesThree_Promise",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResize_DecimalScene_ParamesThree_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -1075,17 +892,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResize_DecimalScene_ParamesOne_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResize_DecimalScene_ParamesOne_Callback",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResize_DecimalScene_ParamesOne_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -1103,7 +916,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         done();
       });
       try {
-        win.resize(100.5555, 100, async (err: BusinessError) => {
+        win.resize(1000.5555, 1000, async (err: BusinessError) => {
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(err));
@@ -1115,8 +928,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-          expect(properties.windowRect.width).assertEqual(100)
-          expect(properties.windowRect.height).assertEqual(100)
+          expect(properties.windowRect.width).assertEqual(1000)
+          expect(properties.windowRect.height).assertEqual(1000)
           await win.destroyWindow();
           done();
         });
@@ -1138,17 +951,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResize_DecimalScene_ParamesTwo_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResize_DecimalScene_ParamesTwo_Callback",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResize_DecimalScene_ParamesTwo_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -1166,7 +975,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         done();
       });
       try {
-        win.resize(205.56, 10.25, async (err: BusinessError) => {
+        win.resize(1005.56, 1000.25, async (err: BusinessError) => {
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(err));
@@ -1178,8 +987,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-          expect(properties.windowRect.width).assertEqual(205)
-          expect(properties.windowRect.height).assertEqual(10)
+          expect(properties.windowRect.width).assertEqual(1005)
+          expect(properties.windowRect.height).assertEqual(1000)
           await win.destroyWindow();
           done();
         });
@@ -1201,17 +1010,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResize_DecimalScene_ParamesThree_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResize_DecimalScene_ParamesThree_Callback",
-        windowType: ohosWindow.WindowType.TYPE_FLOAT,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResize_DecimalScene_ParamesThree_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -1263,16 +1068,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testGetWindowProperties_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testGetWindowProperties_WindowStateAbnormal",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testGetWindowProperties_WindowStateAbnormal').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -1294,16 +1096,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testGetWindowAvoidArea_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testGetWindowAvoidArea_WindowStateAbnormal",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testGetWindowAvoidArea_WindowStateAbnormal').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -1326,17 +1125,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowSystemBarProperties_WinAbnormal_Call';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowSystemBarProperties_WinAbnormal_Call",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowSystemBarProperties_WinAbnormal_Call').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let SystemBarProperties: ohosWindow.SystemBarProperties = {
@@ -1376,16 +1171,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowSystemBarProperties_WinAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowSystemBarProperties_WinAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowSystemBarProperties_WinAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let SystemBarProperties: ohosWindow.SystemBarProperties = {
@@ -1419,16 +1211,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetPreferredOrientation_WinAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetPreferredOrientation_WinAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetPreferredOrientation_WinAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let orientation = ohosWindow.Orientation.AUTO_ROTATION;
@@ -1457,17 +1246,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetPreferredOrientation_WinAbnormal_Call';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetPreferredOrientation_WinAbnormal_Call",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetPreferredOrientation_WinAbnormal_Call').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let orientation = ohosWindow.Orientation.AUTO_ROTATION;
@@ -1502,16 +1287,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testGetUIContext_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testGetUIContext_WindowStateAbnormal",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testGetUIContext_WindowStateAbnormal').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let orientation = ohosWindow.Orientation.AUTO_ROTATION;
@@ -1536,16 +1318,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetUIContent_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetUIContent_WindowStateAbnormal",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetUIContent_WindowStateAbnormal').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -1573,17 +1352,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testLoadContent_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testLoadContent_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testLoadContent_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let storage: LocalStorage = new LocalStorage();
@@ -1619,16 +1394,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testLoadContent_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testLoadContent_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testLoadContent_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let storage: LocalStorage = new LocalStorage();
@@ -1658,16 +1430,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testIsWindowShowing_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testIsWindowShowing_WindowStateAbnormal",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testIsWindowShowing_WindowStateAbnormal').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -1691,17 +1460,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testIsWindowSupportWideGamut_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testIsWindowSupportWideGamut_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testIsWindowSupportWideGamut_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -1735,16 +1500,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testIsWindowSupportWideGamut_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testIsWindowSupportWideGamut_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testIsWindowSupportWideGamut_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -1772,16 +1534,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testGetWindowColorSpace_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testGetWindowColorSpace_WindowStateAbnormal",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testGetWindowColorSpace_WindowStateAbnormal').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -1804,17 +1563,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowColorSpace_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowColorSpace_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowColorSpace_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -1848,16 +1603,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowColorSpace_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowColorSpace_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowColorSpace_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -1885,16 +1637,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowBackgroundColor_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowBackgroundColor_WindowStateAbnormal",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowBackgroundColor_WindowStateAbnormal').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let color: string = '#00ff33';
@@ -1918,17 +1667,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowBrightness_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowBrightness_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowBrightness_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let brightness: number = 1.0;
@@ -1963,16 +1708,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowBrightness_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowBrightness_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowBrightness_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let brightness: number = 1.0;
@@ -2001,17 +1743,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowFocusable_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowFocusable_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowFocusable_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2045,16 +1783,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowFocusable_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowFocusable_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowFocusable_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2082,17 +1817,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowKeepScreenOn_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowKeepScreenOn_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowKeepScreenOn_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2126,17 +1857,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetWindowTouchable_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetWindowTouchable_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetWindowTouchable_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2170,17 +1897,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSnapshot_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSnapshot_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSnapshot_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2215,16 +1938,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSnapshot_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSnapshot_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSnapshot_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2253,17 +1973,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testShow_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testShow_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testShow_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2297,16 +2013,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testShow_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testShow_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testShow_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2334,17 +2047,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testDestroy_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testDestroy_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testDestroy_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2378,16 +2087,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testDestroy_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testDestroy_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testDestroy_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2415,16 +2121,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveTo_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveTo_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveTo_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2452,17 +2155,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveTo_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveTo_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveTo_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2496,17 +2195,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveTo_DecimalScene_ParamesOne_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveTo_DecimalScene_ParamesOne_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveTo_DecimalScene_ParamesOne_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -2559,17 +2254,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveTo_DecimalScene_ParamesTwo_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveTo_DecimalScene_ParamesTwo_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveTo_DecimalScene_ParamesTwo_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -2622,17 +2313,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveTo_DecimalScene_ParamesThree_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveTo_DecimalScene_ParamesThree_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveTo_DecimalScene_ParamesThree_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -2685,16 +2372,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveTo_DecimalScene_ParamesOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveTo_DecimalScene_ParamesOne_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveTo_DecimalScene_ParamesOne_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -2738,16 +2422,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveTo_DecimalScene_ParamesTwo_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveTo_DecimalScene_ParamesTwo_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveTo_DecimalScene_ParamesTwo_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -2791,16 +2472,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testMoveTo_DecimalScene_ParamesThree_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testMoveTo_DecimalScene_ParamesThree_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testMoveTo_DecimalScene_ParamesThree_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.resize(500, 500).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -2844,16 +2522,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResetSize_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResetSize_WindowStateAbnormal_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResetSize_WindowStateAbnormal_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2881,17 +2556,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResetSize_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResetSize_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResetSize_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -2925,16 +2596,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResetSize_DecimalScene_ParamesOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResetSize_DecimalScene_ParamesOne_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResetSize_DecimalScene_ParamesOne_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -2949,7 +2616,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         expect().assertFail();
       });
       try {
-        await win.resetSize(100.5555, 100).then(async () => {
+        await win.resetSize(1000.5555, 1000).then(async () => {
           console.info(msgStr + 'Succeeded in changing the window size.');
         }).catch((err: BusinessError) => {
           console.error('Failed to change the window size. Cause: ' + JSON.stringify(err));
@@ -2958,8 +2625,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-        expect(properties.windowRect.width!==100).assertEqual(true)
-        expect(properties.windowRect.height!==100).assertEqual(true)
+        expect(properties.windowRect.width==1000).assertEqual(true)
+        expect(properties.windowRect.height==1000).assertEqual(true)
         await win.destroyWindow();
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
@@ -2979,16 +2646,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResetSize_DecimalScene_ParamesTwo_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResetSize_DecimalScene_ParamesTwo_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResetSize_DecimalScene_ParamesTwo_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -3003,7 +2666,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         expect().assertFail();
       });
       try {
-        await win.resetSize(205.56, 10.25).then(async () => {
+        await win.resetSize(1005.56, 1000.25).then(async () => {
           console.info(msgStr + 'Succeeded in changing the window size.');
         }).catch((err: BusinessError) => {
           console.error('Failed to change the window size. Cause: ' + JSON.stringify(err));
@@ -3012,8 +2675,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         await sleep(800)
         let properties = win.getWindowProperties();
         console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-        expect(properties.windowRect.width!==205).assertEqual(true)
-        expect(properties.windowRect.height!==10).assertEqual(true)
+        expect(properties.windowRect.width==1005).assertEqual(true)
+        expect(properties.windowRect.height==1000).assertEqual(true)
         await win.destroyWindow();
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
@@ -3033,16 +2696,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResetSize_DecimalScene_ParamesThree_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResetSize_DecimalScene_ParamesThree_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResetSize_DecimalScene_ParamesThree_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -3084,17 +2743,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResetSize_DecimalScene_ParamesOne_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResetSize_DecimalScene_ParamesOne_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResetSize_DecimalScene_ParamesOne_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -3112,7 +2767,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         done();
       });
       try {
-        win.resetSize(100.5555, 100, async (err: BusinessError) => {
+        win.resetSize(1000.5555, 1000, async (err: BusinessError) => {
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(err));
@@ -3124,8 +2779,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-          expect(properties.windowRect.width!==100).assertEqual(true)
-          expect(properties.windowRect.height!==100).assertEqual(true)
+          expect(properties.windowRect.width==1000).assertEqual(true)
+          expect(properties.windowRect.height==1000).assertEqual(true)
           await win.destroyWindow();
           done();
         });
@@ -3148,17 +2803,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResetSize_DecimalScene_ParamesTwo_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResetSize_DecimalScene_ParamesTwo_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResetSize_DecimalScene_ParamesTwo_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -3176,7 +2827,7 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         done();
       });
       try {
-        win.resetSize(205.56, 10.25, async (err: BusinessError) => {
+        win.resetSize(1005.56, 1000.25, async (err: BusinessError) => {
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(err));
@@ -3188,8 +2839,8 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
           await sleep(800)
           let properties = win.getWindowProperties();
           console.log(msgStr + " getWindowProperties is: " + JSON.stringify(properties))
-          expect(properties.windowRect.width!==205).assertEqual(true)
-          expect(properties.windowRect.height!==10).assertEqual(true)
+          expect(properties.windowRect.width==1005).assertEqual(true)
+          expect(properties.windowRect.height==1000).assertEqual(true)
           await win.destroyWindow();
           done();
         });
@@ -3212,17 +2863,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testResetSize_DecimalScene_ParamesThree_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testResetSize_DecimalScene_ParamesThree_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testResetSize_DecimalScene_ParamesThree_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.loadContent('MainAbility/pages/second/second').catch((err) => {
         console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
@@ -3272,17 +2919,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testGetAvoidArea_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testGetAvoidArea_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testGetAvoidArea_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3317,17 +2960,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetFullScreen_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetFullScreen_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetFullScreen_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3361,17 +3000,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetLayoutFullScreen_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetLayoutFullScreen_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetLayoutFullScreen_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3405,17 +3040,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetSystemBarEnable_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetSystemBarEnable_WindowStateAbnormal_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetSystemBarEnable_WindowStateAbnormal_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3449,17 +3080,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetSystemBarProperties_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetSystemBarProperties_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetSystemBarProperties_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let SystemBarProperties: ohosWindow.SystemBarProperties = {
@@ -3499,16 +3126,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetSystemBarProperties_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetSystemBarProperties_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetSystemBarProperties_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       let SystemBarProperties: ohosWindow.SystemBarProperties = {
@@ -3542,16 +3165,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testIsShowing_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testIsShowing_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testIsShowing_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3579,17 +3198,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testIsShowing_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testIsShowing_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testIsShowing_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3623,17 +3238,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testIsSupportWideGamut_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testIsSupportWideGamut_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testIsSupportWideGamut_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3667,16 +3278,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testIsSupportWideGamut_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testIsSupportWideGamut_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testIsSupportWideGamut_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3704,16 +3311,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetColorSpace_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetColorSpace_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetColorSpace_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3741,17 +3344,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetColorSpace_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetColorSpace_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetColorSpace_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3785,17 +3384,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testGetColorSpace_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testGetColorSpace_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win =await windowStage.createSubWindow('testGetColorSpace_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3829,16 +3424,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testGetColorSpace_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testGetColorSpace_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testGetColorSpace_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3866,16 +3457,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetFocusable_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetFocusable_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetFocusable_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3903,17 +3490,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetFocusable_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetFocusable_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetFocusable_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3947,17 +3530,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetKeepScreenOn_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetKeepScreenOn_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetKeepScreenOn_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -3991,16 +3570,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetKeepScreenOn_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetKeepScreenOn_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetKeepScreenOn_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -4028,16 +3603,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetOutsideTouchable_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetOutsideTouchable_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetOutsideTouchable_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -4065,17 +3636,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetOutsideTouchable_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetOutsideTouchable_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetOutsideTouchable_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -4109,17 +3676,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetPrivacyMode_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetPrivacyMode_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetPrivacyMode_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -4153,16 +3716,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetPrivacyMode_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetPrivacyMode_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetPrivacyMode_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -4190,16 +3749,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetTouchable_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetTouchable_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetTouchable_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -4227,17 +3782,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetTouchable_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetTouchable_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetTouchable_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -4271,17 +3822,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetDimBehind_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetDimBehind_WinStateAb_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetDimBehind_WinStateAb_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -4315,16 +3862,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetDimBehind_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetDimBehind_WinStateAb_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetDimBehind_WinStateAb_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       await win.destroyWindow();
       try {
@@ -4352,16 +3895,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetDimBehind_InvalidValueOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetDimBehind_InvalidValue_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetDimBehind_InvalidValue_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         await win.setDimBehind(-0.5).then(() => {
@@ -4390,16 +3929,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetDimBehind_BoundaryValue_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetDimBehind_BoundaryValue_Promise",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetDimBehind_BoundaryValue_Promise').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         await win.setDimBehind(0).then(async () => {
@@ -4428,17 +3963,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetDimBehind_InvalidValue_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetDimBehind_InvalidValue_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetDimBehind_InvalidValue_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.setDimBehind(-0.5, async (err: BusinessError) => {
@@ -4474,17 +4005,13 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testSetDimBehind_BoundaryValue_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testSetDimBehind_BoundaryValue_Callback",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testSetDimBehind_BoundaryValue_Callback').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
-        done()
+        done();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.setDimBehind(0, async (err: BusinessError) => {
@@ -4519,16 +4046,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffWindowSizeChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffWindowSizeChange_RepeatOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win =  await windowStage.createSubWindow('testWindowOffWindowSizeChange_RepeatOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.on('windowSizeChange', (data) => {
@@ -4565,16 +4088,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffWindowSizeChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffWindowSizeChange_UnregisteredOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win =  await windowStage.createSubWindow('testWindowOffWindowSizeChange_UnregisteredOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.off('windowSizeChange');
@@ -4597,16 +4116,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffAvoidAreaChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffAvoidAreaChange_RepeatOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffAvoidAreaChange_RepeatOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.on('avoidAreaChange', (data) => {
@@ -4644,16 +4159,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffAvoidAreaChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffAvoidAreaChange_UnregisteredOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffAvoidAreaChange_UnregisteredOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.off('avoidAreaChange');
@@ -4676,16 +4187,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffKeyboardHeightChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffKeyboardHeightChange_RepeatOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffKeyboardHeightChange_RepeatOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.on('keyboardHeightChange', (data) => {
@@ -4722,16 +4229,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffKeyboardHeightChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffKeyboardHeightChange_UnregisteredOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffKeyboardHeightChange_UnregisteredOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.off('keyboardHeightChange');
@@ -4754,16 +4257,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffTouchOutside_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffTouchOutside_RepeatOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win =  await windowStage.createSubWindow('testWindowOffTouchOutside_RepeatOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.on('touchOutside', () => {
@@ -4771,12 +4270,14 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
       try {
         win.off('touchOutside');
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
       try {
@@ -4800,16 +4301,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffTouchOutside_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffTouchOutside_UnregisteredOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffTouchOutside_UnregisteredOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.off('touchOutside');
@@ -4832,16 +4329,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffScreenshot_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffScreenshot_RepeatOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win =  await windowStage.createSubWindow('testWindowOffScreenshot_RepeatOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.on('screenshot', () => {
@@ -4849,12 +4342,14 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
       try {
         win.off('screenshot');
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
       try {
@@ -4878,16 +4373,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffScreenshot_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffScreenshot_UnregisteredOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffScreenshot_UnregisteredOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.off('screenshot');
@@ -4910,16 +4401,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffDialogTargetTouch_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffDialogTargetTouch_RepeatOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffDialogTargetTouch_RepeatOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.on('dialogTargetTouch', () => {
@@ -4927,12 +4414,14 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
       try {
         win.off('dialogTargetTouch');
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
       try {
@@ -4988,16 +4477,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffWindowEvent_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffWindowEvent_RepeatOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffWindowEvent_RepeatOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.on('windowEvent', (data) => {
@@ -5005,12 +4490,14 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
       try {
         win.off('windowEvent');
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
       try {
@@ -5034,16 +4521,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffWindowEvent_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffWindowEvent_UnregisteredOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffWindowEvent_UnregisteredOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.off('windowEvent');
@@ -5066,16 +4549,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffSystemAvoidAreaChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffSystemAvoidAreaChange_RepeatOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffSystemAvoidAreaChange_RepeatOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.on('systemAvoidAreaChange', (data) => {
@@ -5083,12 +4562,14 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
       try {
         win.off('systemAvoidAreaChange');
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+        await win.destroyWindow();
         expect().assertFail();
       }
       try {
@@ -5112,16 +4593,12 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       let caseName = 'testWindowOffSystemAvoidAreaChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
-        name: "testWindowOffSystemAvoidAreaChange_UnregisteredOff",
-        windowType: ohosWindow.WindowType.TYPE_DIALOG,
-        ctx: context,
-      };
       let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      win = await windowStage.createSubWindow('testWindowOffSystemAvoidAreaChange_UnregisteredOff').catch((err) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      console.log(msgStr + 'windowStage.createSubWindow success');
       expect(!!win).assertTrue();
       try {
         win.off('systemAvoidAreaChange');

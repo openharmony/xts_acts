@@ -16,7 +16,6 @@ import { describe, beforeAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
 
 
 export default function windowRecoverTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
@@ -24,14 +23,6 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
   console.log('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
   describe('windowRecover_test', () => {
     console.log('describe window_api_test start!!!')
-    let currentDeviceIsRk = false;
-    let currentDeviceIsPC = false
-    beforeAll(() => {
-      let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
-      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
-    })
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1280
