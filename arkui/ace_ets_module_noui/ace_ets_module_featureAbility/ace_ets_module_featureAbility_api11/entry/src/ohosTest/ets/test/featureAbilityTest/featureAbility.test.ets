@@ -17,11 +17,15 @@ import router from '@system.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
+interface optionsObj {
+  uri: string
+}
+
 export default function featureAbilityStartAbilityJsunit() {
   describe('featureAbilityStartAbilityTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
+      let options: optionsObj = {
         uri: 'MainAbility/pages/featureAbility/featureAbility',
       }
       try {
