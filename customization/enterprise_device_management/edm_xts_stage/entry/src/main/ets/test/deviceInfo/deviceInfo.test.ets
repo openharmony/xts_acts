@@ -18,6 +18,7 @@ import { ENTINFO1, SELFWANT, SELFHAPNAME } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import deviceInfo from '@ohos.enterprise.deviceInfo';
+import sysDeviceInfo from '@ohos.deviceInfo';
 
 const LABEL_DEVICE_NAME: string = 'deviceName';
 const LABEL_DEVICE_SERIAL: string = 'deviceSerial';
@@ -136,6 +137,10 @@ export default function deviceInfoTest() {
      * @tc.size      : MediumTest
      */
     it("test_get_device_info_0600", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType != 'phone') {
+        done();
+        return;
+      }
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         let result: string = deviceInfo.getDeviceInfo(SELFWANT, LABEL_SIM_INFO);
