@@ -59,5 +59,23 @@ export default function hitraceNdkTest() {
       expect(result).assertEqual(0);
       done();
     });
+    
+    it('testOHHiTraceChainNd001', 0, async (done: Function) => {
+        let result: number = hitracendk.begin(); 
+        expect(result).assertEqual(0);
+        done();
+    });
+    
+    it('testOHHiTraceChainNd002', 0, async (done: Function) => {
+        let result: number = hitracendk.beginflag(); 
+        expect(result).assertEqual(0);
+        done();
+    });
+    
+    it('testOHHiTraceChainNd003', 0, async (done: Function) => {
+        let result: number = hitracendk.beginSpan(); 
+        expect(result).assertEqual(0);
+        done();
+    });
   })
 }
