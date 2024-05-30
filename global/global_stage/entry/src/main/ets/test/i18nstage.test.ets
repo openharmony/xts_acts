@@ -160,7 +160,34 @@ export default function i18nStageTest() {
         console.log('i18n_test_getBestMatchLocale_0010'+e.code+e.message);
         expect(e.code == 890001).assertTrue();
       }
-      console.log('*************end i18nStageTest*************');
+    })
+
+    /**
+     *@tc.number   :testgetThreeLetterRegion_0030
+     *@tc.name     :Get a three-letter abbreviation of the specified language
+     *@tc.desc     :transfer GB and return GBR
+     */
+    it('testgetThreeLetterRegion_0030',0,()=>{
+      try{
+        let language:string = I18n.I18NUtil.getThreeLetterRegion('GB');
+        console.info('aaa+++',language);
+        expect('GBR').assertEqual(language);
+      }catch(e){
+      }
+    })
+
+    /**
+     *@tc.number   :testgetThreeLetterLanguage_0030
+     *@tc.name     :Get a three-letter abbreviation of the specified language
+     *@tc.desc     :transfer en and return eng
+     */
+    it('testgetThreeLetterLanguage_0030',0,()=>{
+      try{
+        let language:string = I18n.I18NUtil.getThreeLetterLanguage('en');
+        console.info('aaa+++',language);
+        expect('eng').assertEqual(language);
+      }catch(e){
+      }
     })
 
     console.log('*************end i18nStageTest*************');
