@@ -125,7 +125,7 @@ export default function paddingTest() {
    * @tc.level 0
    */
   describe('PaddingTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
+    CommonTest.initTest(pageConfig, supportView, testValues, () => {}, async (data: ESObject) => {
       AttrsManager.change(data.caseTag, 0);
       await Utils.sleep(1000);
       console.info('[' + data.caseTag + '] setValue : ' + JSON.stringify(data.testValue.setValue));

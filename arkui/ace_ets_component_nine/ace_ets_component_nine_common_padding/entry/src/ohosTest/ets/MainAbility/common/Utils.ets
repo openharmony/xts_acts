@@ -43,9 +43,13 @@ export default class Utils {
       globalThis.abilityContext
         .resourceManager
         .getRawFileContent(fileName)
-        .then(data => {
+        .then((data: ESObject) => {
           if (data) {
-            resolve(String.fromCharCode.apply(null, data))
+            let result = '';
+            for (let i = 0; i < data.length; i++) {
+              result += String.fromCharCode(data[i]);
+            }
+            resolve(result);
           } else {
             reject('')
           }
@@ -235,6 +239,10 @@ export default class Utils {
       timestamp: new Date().getTime(),
       stopPropagation: () => {
       },
+      getModifierKeyState:(keys: Array<string>):boolean => {
+              console.info("the key 0 is :" + keys[0]);
+              return true;
+        }
     })
     console.info('performKeyEvent result : ' + result);
     return result
@@ -290,6 +298,10 @@ export default class Utils {
       pressure: 0,
       stopPropagation: () => {
       },
+      getModifierKeyState:(keys: Array<string>):boolean => {
+              console.info("the key 0 is :" + keys[0]);
+              return true;
+        }
     })
 
     console.info('performMouseEvent result : ' + result);
