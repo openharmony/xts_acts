@@ -14,11 +14,18 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },{
+        },
+        {
             "type": "ShellKit",
             "run-command": [
-                "power-shell wakeup",
-                "power-shell setmode 602"
+                "remount",
+                "mkdir /data/test"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "teardown-command": [
+                "rm -rf data/test"
             ]
         }
     ]
