@@ -28,15 +28,15 @@ function sleep(time: number) {
 export default function nativeChildProcessTest() {
   describe('ActsCapiNativeChildProcessTest', () => {
     /**
-     * @tc.number  : SUB_Ability_AbilityRuntime_NativeStartChildProcess_0100
-     * @tc.name    : Test start native child process
-     * @tc.desc    : To verify the function of creating a subprocess by StartNativeChildProcess
-     * @tc.size    : MediumTest
-     * @tc.type    : Function
-     * @tc.level   : Level 1
+     * @tc.number SUB_Ability_AbilityRuntime_NativeStartChildProcess_0100
+     * @tc.name testStartNativeChildProcess001
+     * @tc.desc To verify the function of creating a subprocess by StartNativeChildProcess
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 1
      */
     it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0100', 0, async (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_NativeStartChildProcess_0100`;
+      let tag = `ACTS_NativeStartChildProcess_0100`;
       console.log(`${tag}, it begin`);
 
       try {
@@ -44,10 +44,12 @@ export default function nativeChildProcessTest() {
         if (!mpEnable) {
           console.info(`${tag}: multi process model disable`);
           expect(16010004).assertEqual(ret);
+          done();
           return;
         } else if (!ncpEnable) {
           console.info(`${tag}: Native child process disable`);
           expect(801).assertEqual(ret);
+          done();
           return;
         }
 
@@ -73,15 +75,15 @@ export default function nativeChildProcessTest() {
     })
 
     /**
-     * @tc.number  : SUB_Ability_AbilityRuntime_NativeStartChildProcess_0200
-     * @tc.name    : Test empty string param
-     * @tc.desc    : An error is returned when the libname of a subprocess to be created is an empty string
-     * @tc.size    : MediumTest
-     * @tc.type    : Function
-     * @tc.level   : Level 1
+     * @tc.number SUB_Ability_AbilityRuntime_NativeStartChildProcess_0200
+     * @tc.name testStartNativeChildProcess002
+     * @tc.desc An error is returned when the libname of a subprocess to be created is an empty string
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 1
      */
     it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0200', 0, () => {
-      let tag = `SUB_Ability_AbilityRuntime_NativeStartChildProcess_0200`;
+      let tag = `ACTS_NativeStartChildProcess_0200`;
       console.log(`${tag}, it begin`);
 
       try {
@@ -92,16 +94,15 @@ export default function nativeChildProcessTest() {
     })
 
     /**
-     * @tc.number  : SUB_Ability_AbilityRuntime_NativeStartChildProcess_0300
-     * @tc.name    : Test relative path param       
-     * @tc.desc    : An error is returned when the vaule of libname is a relative path during the
-     *               creation of a subprocess    
-     * @tc.size    : MediumTest
-     * @tc.type    : Function
-     * @tc.level   : Level 1
+     * @tc.number SUB_Ability_AbilityRuntime_NativeStartChildProcess_0300
+     * @tc.name testStartNativeChildProcess003
+     * @tc.desc An error is returned when the vaule of libname is a relative path during the creation of a subprocess
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 1
      */
     it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0300', 0, () => {
-      let tag = `SUB_Ability_AbilityRuntime_NativeStartChildProcess_0300`;
+      let tag = `ACTS_NativeStartChildProcess_0300`;
       console.log(`${tag}, it begin`);
 
       try {
@@ -112,15 +113,15 @@ export default function nativeChildProcessTest() {
     })
 
     /**
-     * @tc.number  : SUB_Ability_AbilityRuntime_NativeStartChildProcess_0400
-     * @tc.name    : Test lib not exist
-     * @tc.desc    : An error is returned when a subprocess whose libname does not exist is created 
-     * @tc.size    : MediumTest
-     * @tc.type    : Function
-     * @tc.level   : Level 1
+     * @tc.number SUB_Ability_AbilityRuntime_NativeStartChildProcess_0400
+     * @tc.name testStartNativeChildProcess004
+     * @tc.desc An error is returned when a subprocess whose libname does not exist is created 
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 1
      */
     it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0400', 0, () => {
-      let tag = `SUB_Ability_AbilityRuntime_NativeStartChildProcess_0400`;
+      let tag = `ACTS_NativeStartChildProcess_0400`;
       console.log(`${tag}, it begin`);
 
       if (!mpEnable || !ncpEnable) {
@@ -129,7 +130,7 @@ export default function nativeChildProcessTest() {
       }
 
       try {
-        expect(16010007).assertEqual(testNapi.startNativeChildProcess('fake.so'))
+        expect(16010007).assertEqual(testNapi.startNativeChildProcess('fake.so'));
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
       }
