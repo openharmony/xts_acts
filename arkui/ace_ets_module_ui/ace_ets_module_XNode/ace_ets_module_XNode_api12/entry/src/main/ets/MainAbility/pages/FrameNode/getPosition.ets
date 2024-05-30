@@ -203,22 +203,22 @@ struct getPositionExample {
 
       Column(){
 
-        Text(this.getPositionToScreen) // 90.66666412353516
+        Text(this.getPositionToScreen) 
           .id("getPositionToScreenValue")
           .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           .width('100%').fontSize(16)
 
-        Text(this.getPositionToParentWithTransform) //0
+        Text(this.getPositionToParentWithTransform) 
           .id("getPositionToParentWithTransformValue")
           .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           .width('100%').fontSize(16)
 
-        Text(this.getPositionToWindowWithTransform) // 90.66666412353516
+        Text(this.getPositionToWindowWithTransform) 
           .id("getPositionToWindowWithTransformValue")
           .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           .width('100%').fontSize(16)
 
-        Text(this.getPositionToScreenWithTransform) // 90.66666412353516
+        Text(this.getPositionToScreenWithTransform) 
           .id("getPositionToScreenWithTransformValue")
           .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           .width('100%').fontSize(16)
