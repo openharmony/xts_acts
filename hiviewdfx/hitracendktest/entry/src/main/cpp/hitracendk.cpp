@@ -76,7 +76,7 @@ static napi_value OHHiTraceStartAsyncTrace(napi_env env, napi_callback_info info
 }
 
 static napi_value Begin(napi_env env, napi_callback_info info)
-{   
+{
     int count = PARAM_0;
     HiTraceId hiTraceId = OH_HiTrace_BeginChain("hiTraceChainndktest", HITRACE_FLAG_DEFAULT);
     count++;
@@ -103,7 +103,7 @@ static napi_value Begin(napi_env env, napi_callback_info info)
 }
 
 static napi_value Beginflag(napi_env env, napi_callback_info info)
-{   
+{
     int count = PARAM_0;
     HiTrace_Flag hitraceflag = HITRACE_FLAG_INCLUDE_ASYNC;
     HiTraceId hiTraceId = OH_HiTrace_BeginChain("hiTraceChainndktest", hitraceflag);
@@ -127,7 +127,7 @@ static napi_value Beginflag(napi_env env, napi_callback_info info)
 }
 
 static napi_value BeginSpan(napi_env env, napi_callback_info info)
-{   
+{
     int count = PARAM_0;
     HiTrace_Flag hitraceflag = HITRACE_FLAG_INCLUDE_ASYNC;
     HiTraceId hiTraceId = OH_HiTrace_BeginChain("hiTraceChainndktest", hitraceflag);
@@ -149,7 +149,7 @@ static napi_value BeginSpan(napi_env env, napi_callback_info info)
     count++;
     OH_HiTrace_CreateSpan();
     count++;
-    OH_HiTrace_Tracepoint(HITRACE_CM_DEFAULT, HITRACE_TP_CS, &hiTraceId, "hitrace_ndk_test4");
+    OH_HiTrace_Tracepoint(HITRACE_CM_DEFAULT, HITRACE_TP_CS, &hiTraceId, "hitracetest4");
     count++;
     OH_HiTrace_EndChain();
     count++;
