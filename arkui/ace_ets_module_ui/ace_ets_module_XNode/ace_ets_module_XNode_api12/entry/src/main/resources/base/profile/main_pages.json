@@ -18,6 +18,7 @@
         "MainAbility/pages/Graphics/getBlue",
         "MainAbility/pages/Graphics/getRed",
         "MainAbility/pages/Graphics/getGreen",
-        "MainAbility/pages/FrameNode/onAppear"
+        "MainAbility/pages/FrameNode/onAppear",
+	"MainAbility/pages/FrameNode/setMeasureSize"
     ]
 }

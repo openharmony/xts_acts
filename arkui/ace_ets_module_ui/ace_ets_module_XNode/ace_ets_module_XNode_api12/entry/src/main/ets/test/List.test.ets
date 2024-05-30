@@ -30,6 +30,7 @@ import getBlue from './GraphicsTest/getBlue.test';
 import getGreen from './GraphicsTest/getGreen.test';
 import getRed from './GraphicsTest/getRed.test';
 import onAppear from './FrameNodeTest/onAppear.test';
+import setMeasureSizeTest from './FrameNodeTest/setMeasureSize.test';
 
 export default function testsuite() {
   borderRadiuses();
@@ -50,4 +51,5 @@ export default function testsuite() {
   getGreen();
   getRed();
   onAppear();
+  setMeasureSizeTest();
 }
