@@ -3648,9 +3648,10 @@ export default function AVSession() {
                     expect(false).assertTrue();
                     done();
                 }
-        }).catch((err) => {
-            expect(err.code).assertEqual(6600101);
-            console.info(`getAllCastDisplays successfully: ${err.code}, message: ${err.message}`)
+            }).catch((err) => {
+                expect(err.code).assertEqual(6600101);
+                console.info(`getAllCastDisplays successfully: ${err.code}, message: ${err.message}`)
+            })
         })
 
     })
