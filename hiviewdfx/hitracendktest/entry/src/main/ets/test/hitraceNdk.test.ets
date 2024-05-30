@@ -60,18 +60,42 @@ export default function hitraceNdkTest() {
       done();
     });
     
+    /**
+     * @tc.number     : SUB_DFX_DFT_HiTraceChain_ndk_0200
+     * @tc.name       : testOHHiTraceChainNd001
+     * @tc.desc       : test OH_HiTrace_BeginChain
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
     it('testOHHiTraceChainNd001', 0, async (done: Function) => {
         let result: number = hitracendk.begin(); 
         expect(result).assertEqual(0);
         done();
     });
-    
+
+    /**
+     * @tc.number     : SUB_DFX_DFT_HiTraceChain_ndk_1000
+     * @tc.name       : testOHHiTraceChainNd002
+     * @tc.desc       : test OH_HiTrace_IsFlagEnabled
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
     it('testOHHiTraceChainNd002', 0, async (done: Function) => {
         let result: number = hitracendk.beginflag(); 
         expect(result).assertEqual(0);
         done();
     });
-    
+
+    /**
+     * @tc.number     : SUB_DFX_DFT_HiTraceChain_ndk_0800
+     * @tc.name       : testOHHiTraceChainNd003
+     * @tc.desc       : test OH_HiTrace_Tracepoint
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
     it('testOHHiTraceChainNd003', 0, async (done: Function) => {
         let result: number = hitracendk.beginSpan(); 
         expect(result).assertEqual(0);
