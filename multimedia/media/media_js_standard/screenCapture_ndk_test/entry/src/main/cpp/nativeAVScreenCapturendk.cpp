@@ -35,7 +35,6 @@
 #include <fstream>
 #include <memory>
 #include <unistd.h>
-#include "stdio.h"
 
 using namespace std;
 static int32_t g_recordTime = 3;
@@ -297,18 +296,21 @@ private:
     FILE *vFile = nullptr;
 };
 
-ScreenCaptureNdkTestCallback::~ScreenCaptureNdkTestCallback() {
+ScreenCaptureNdkTestCallback::~ScreenCaptureNdkTestCallback() 
+{
     screenCapture_ = nullptr;
     aFile = nullptr;
     innerFile = nullptr;
     vFile = nullptr;
 }
 
-void ScreenCaptureNdkTestCallback::OnError(int32_t errorCode) {
+void ScreenCaptureNdkTestCallback::OnError(int32_t errorCode) 
+{
     (void) errorCode;
 }
 
-void ScreenCaptureNdkTestCallback::OnAudioBufferAvailable(bool isReady, OH_AudioCaptureSourceType type) {
+void ScreenCaptureNdkTestCallback::OnAudioBufferAvailable(bool isReady, OH_AudioCaptureSourceType type) 
+{
     if (isReady == true) {
         OH_AudioBuffer *audioBuffer = (OH_AudioBuffer *)malloc(sizeof(OH_AudioBuffer));
         if (audioBuffer == nullptr) {
@@ -338,7 +340,8 @@ void ScreenCaptureNdkTestCallback::OnAudioBufferAvailable(bool isReady, OH_Audio
     }
 }
 
-void ScreenCaptureNdkTestCallback::OnVideoBufferAvailable(bool isReady) {
+void ScreenCaptureNdkTestCallback::OnVideoBufferAvailable(bool isReady) 
+{
     if (isReady == true) {
         int32_t fence = 0;
         int64_t timestamp = 0;
@@ -367,13 +370,15 @@ static char g_filename[100] = {0};
 std::mutex mutex_;
 std::map<OH_AVScreenCapture *, std::shared_ptr<ScreenCaptureNdkCallBack>> mockCbMap_;
 
-FILE *OpenAFile(FILE *audioFile, string filename) {
+FILE *OpenAFile(FILE *audioFile, string filename) 
+{
     snprintf(g_filename, sizeof(g_filename), "data/storage/el2/base/files/%s.pcm", filename.c_str());
     audioFile = fopen(g_filename, "w+");
     return audioFile;
 }
 
-void CloseFile(FILE *audioFile, FILE *videoFile) {
+void CloseFile(FILE *audioFile, FILE *videoFile) 
+{
     if (audioFile != nullptr) {
         fclose(audioFile);
         audioFile = nullptr;
@@ -384,7 +389,8 @@ void CloseFile(FILE *audioFile, FILE *videoFile) {
     }
 }
 
-void DelCallback(OH_AVScreenCapture *screenCapture) {
+void DelCallback(OH_AVScreenCapture *screenCapture) 
+{
     std::lock_guard<std::mutex> lock(mutex_);
     if (mockCbMap_.empty()) {
         return;
@@ -395,7 +401,8 @@ void DelCallback(OH_AVScreenCapture *screenCapture) {
     }
 }
 
-std::shared_ptr<ScreenCaptureNdkCallBack> GetCallback(OH_AVScreenCapture *screenCapture) {
+std::shared_ptr<ScreenCaptureNdkCallBack> GetCallback(OH_AVScreenCapture *screenCapture) 
+{
     std::lock_guard<std::mutex> lock(mutex_);
     if (mockCbMap_.empty()) {
         return nullptr;
@@ -406,28 +413,32 @@ std::shared_ptr<ScreenCaptureNdkCallBack> GetCallback(OH_AVScreenCapture *screen
     return nullptr;
 }
 
-void OnError(OH_AVScreenCapture *screenCapture, int32_t errorCode) {
+void OnError(OH_AVScreenCapture *screenCapture, int32_t errorCode) 
+{
     std::shared_ptr<ScreenCaptureNdkCallBack> mockCb = GetCallback(screenCapture);
     if (mockCb != nullptr) {
         mockCb->OnError(errorCode);
     }
 }
 
-void OnAudioBufferAvailable(OH_AVScreenCapture *screenCapture, bool isReady, OH_AudioCaptureSourceType type) {
+void OnAudioBufferAvailable(OH_AVScreenCapture *screenCapture, bool isReady, OH_AudioCaptureSourceType type) 
+{
     std::shared_ptr<ScreenCaptureNdkCallBack> mockCb = GetCallback(screenCapture);
     if (mockCb != nullptr) {
         mockCb->OnAudioBufferAvailable(isReady, type);
     }
 }
 
-void OnVideoBufferAvailable(OH_AVScreenCapture *screenCapture, bool isReady) {
+void OnVideoBufferAvailable(OH_AVScreenCapture *screenCapture, bool isReady) 
+{
     std::shared_ptr<ScreenCaptureNdkCallBack> mockCb = GetCallback(screenCapture);
     if (mockCb != nullptr) {
         mockCb->OnVideoBufferAvailable(isReady);
     }
 }
 
-void SetScreenCaptureCallback(OH_AVScreenCapture *screenCapture, std::shared_ptr<ScreenCaptureNdkTestCallback> &cb) {
+void SetScreenCaptureCallback(OH_AVScreenCapture *screenCapture, std::shared_ptr<ScreenCaptureNdkTestCallback> &cb) 
+{
     if (cb != nullptr) {
         std::lock_guard<std::mutex> lock(mutex_);
         mockCbMap_[screenCapture] = cb;
@@ -440,7 +451,8 @@ void SetScreenCaptureCallback(OH_AVScreenCapture *screenCapture, std::shared_ptr
 }
 
 // SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0400
-static napi_value OriginAVScreenCaptureTest(napi_env env, napi_callback_info info) {
+static napi_value OriginAVScreenCaptureTest(napi_env env, napi_callback_info info) 
+{
     FILE *audioFile = nullptr;
     OH_AVScreenCapture *screenCapture = OH_AVScreenCapture_Create();
     OH_AVScreenCaptureConfig config_;
