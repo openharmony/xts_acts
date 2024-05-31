@@ -15,25 +15,28 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 import osaccount from '@ohos.account.osAccount'
+import commonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
+import common from '@ohos.app.ability.common';
 
-var subscriberInfo_MainAbility = {
+let subscriberInfo_MainAbility:commonEventManager.CommonEventSubscribeInfo = {
   events: [
     "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent",
     "ACTS_TerminateSelf_CommonEvent"
   ]
 };
 let TAG = ""
-let Subscriber = undefined;
+let Subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
 export default function abilityTest() {
   console.info("====>in function abilityTest====>");
 
-  function sleep(ms) {
+  let sleep = (ms:number):Promise<void> => {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  describe('ActsInterfaceMultiUsersThirdTest', function () {
+  describe('ActsInterfaceMultiUsersThirdTest', () => {
 
-    afterEach((done)=>{
+    afterEach((done:Function)=>{
       if (Subscriber) {
         commonEvent.unsubscribe(Subscriber, ()=>{
           done()
@@ -47,11 +50,11 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(promise)
      */
-    it('ACTS_ThirdPartyStartAbility_0100', 0, async function (done) {
-      var startresult = false
+    it('ACTS_ThirdPartyStartAbility_0100', 0, async (done:Function) => {
+      let startresult = false
       TAG = "ACTS_ThirdPartyStartAbility_0100";
       console.info(TAG + " start");
-      function SubscribeCallBack (err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
         console.info(TAG + " data is " + JSON.stringify(data));
         expect(data.event == "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent" || data.event == "ACTS_TerminateSelf_CommonEvent").assertTrue();
         if (data.event === "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent") {
@@ -78,14 +81,14 @@ export default function abilityTest() {
               abilityName: 'com.acts.actsinterfacemultiusersthirdtest.MainAbility2'
             }, {
             windowMode:0
-          }).then((data) => {
+          }).then((data:common.AbilityResult)=> {
             console.info(TAG + "====>startAbility end====>");
             console.info(TAG + "====>data is====>" + JSON.stringify(data));
           })
         })
       })
 
-      function UnSubscribeCallback() {
+      let UnSubscribeCallback = ():void => {
         console.info(TAG + "====>UnSubscribeCallback====>");
       }
     })
@@ -95,7 +98,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options failed.(promise)
      */
-    it('ACTS_ThirdPartyStartAbility_0200', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbility_0200', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0200";
       console.info(TAG + " start");
       await globalThis.abilityContext.startAbility(
@@ -104,9 +107,9 @@ export default function abilityTest() {
           abilityName: 'com.acts.error.MainAbility2'
         }, {
         windowMode:0
-      }).then((data) => {
+      }).then((data:common.AbilityResult)=> {
         console.info(TAG + "====>startAbility end====>");
-      }).catch((err) => {
+      }).catch((err:BusinessError) => {
         console.info(TAG + 'ACTS_ThirdPartyStartAbility_0200 - error ' + JSON.stringify(err));
         expect(err.code == 16000001).assertTrue();
         done();
@@ -118,12 +121,12 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(callback)
      */
-    it('ACTS_ThirdPartyStartAbility_0300', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbility_0300', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0300";
       console.info(TAG + " start");
-      let Subscriber;
-      var startresult = false;
-      function SubscribeCallBack (err, data) {
+      let Subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+      let startresult = false;
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent" || data.event == "ACTS_TerminateSelf_CommonEvent").assertTrue();
         console.info(TAG + "====> Subscribe CallBack data:====>" + JSON.stringify(data));
         if (data.event === "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent") {
@@ -151,14 +154,14 @@ export default function abilityTest() {
               abilityName: 'com.acts.actsinterfacemultiusersthirdtest.MainAbility2'
             }, {
             windowMode:0
-          },(err,data) => {
+          },(err:BusinessError, data:common.AbilityResult) => {
             console.info(TAG + "====>startAbility err:====>" + JSON.stringify(err));
             console.info(TAG + "====>startAbility end====>" );
           })
         })
       })
 
-      function UnSubscribeCallback() {
+      let UnSubscribeCallback = ():void => {
         console.info(TAG + "====>UnSubscribeCallback====>");
       }
     })
@@ -168,7 +171,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options failed.(callback)
      */
-    it('ACTS_ThirdPartyStartAbility_0400', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbility_0400', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0400";
       console.info(TAG + " start");
       try {
@@ -178,7 +181,7 @@ export default function abilityTest() {
             abilityName: 'com.acts.error.MainAbility2'
           }, {
           windowMode:0
-        },(err) => {
+        },(err:BusinessError) => {
           console.info(TAG + "====>startAbility end====>" );
           expect(err.code == 16000001).assertTrue();
           done();
@@ -193,12 +196,12 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability succeeded.(promise)
      */
-    it('ACTS_ThirdPartyStartAbility_0500', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbility_0500', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0500";
       console.info(TAG + " start");
-      let Subscriber;
-      var startresult = false;
-      function SubscribeCallBack (err, data) {
+      let Subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+      let startresult = false;
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent" || data.event == "ACTS_TerminateSelf_CommonEvent").assertTrue();
         console.info(TAG + "====> Subscribe CallBack data:====>" + JSON.stringify(data));
         if (data.event === "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent") {
@@ -223,14 +226,14 @@ export default function abilityTest() {
             {
               bundleName: 'com.acts.actsinterfacemultiusersthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersthirdtest.MainAbility2'
-            }).then((data) => {
+            }).then((data:common.AbilityResult)=> {
             console.info(TAG + "====>startAbility end====>");
             console.info(TAG + "====>data is====>" + JSON.stringify(data));
           })
         })
       })
 
-      function UnSubscribeCallback() {
+      let UnSubscribeCallback = ():void => {
         console.info(TAG + "====>UnSubscribeCallback====>");
       }
     })
@@ -240,7 +243,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability failed.(promise)
      */
-    it('ACTS_ThirdPartyStartAbility_0600', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbility_0600', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0600";
       console.info(TAG + " start");
       await globalThis.abilityContext.startAbility(
@@ -249,7 +252,7 @@ export default function abilityTest() {
           abilityName: 'com.acts.error.MainAbility2'
         }).then(() => {
         console.info(TAG + "====>startAbility end====>");
-      }).catch ((err) => {
+      }).catch ((err:BusinessError) => {
         console.info(TAG + 'ACTS_ThirdPartyStartAbility_0600 - error');
         expect(err.code == 16000001).assertTrue();
         done();
@@ -261,12 +264,12 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability succeeded.(callback)
      */
-    it('ACTS_ThirdPartyStartAbility_0700', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbility_0700', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0700";
       console.info(TAG + " start");
-      let Subscriber;
-      var startresult = false;
-      function SubscribeCallBack (err, data) {
+      let Subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+      let startresult = false;
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
         expect(data.event == "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent" || data.event == "ACTS_TerminateSelf_CommonEvent").assertTrue();
         console.info(TAG + "====> Subscribe CallBack data:====>" + JSON.stringify(data));
         if (data.event === "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent") {
@@ -292,14 +295,14 @@ export default function abilityTest() {
             {
               bundleName: 'com.acts.actsinterfacemultiusersthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersthirdtest.MainAbility2'
-            },(err,data) => {
+            },(err:BusinessError, data:common.AbilityResult) => {
             console.info(TAG + "====>startAbility err:====>" + JSON.stringify(err));
             console.info(TAG + "====>startAbility end====>");
           })
         })
       })
 
-      function UnSubscribeCallback() {
+      let UnSubscribeCallback = ():void => {
         console.info(TAG + "====>UnSubscribeCallback====>");
       }
     })
@@ -309,7 +312,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability failed.(callback)
      */
-    it('ACTS_ThirdPartyStartAbility_0800', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbility_0800', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0800";
       console.info(TAG + " start");
       try {
@@ -317,7 +320,7 @@ export default function abilityTest() {
           {
             bundleName: 'com.acts.error',
             abilityName: 'com.acts.error.MainAbility2'
-          },(err) => {
+          },(err:BusinessError) => {
           console.info(TAG + "====>startAbility end====>" + JSON.stringify(err));
           expect(err.code == 16000001).assertTrue();
           done();
@@ -332,7 +335,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(promise)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0100', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbilityForResult_0100', 0, async (done:Function) => {
       await sleep (2000);
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0100";
       console.info(TAG + " start");
@@ -343,10 +346,10 @@ export default function abilityTest() {
           abilityName: 'com.acts.actsinterfacemultiusersthirdtest.MainAbility3',
         }, {
         windowMode:0
-      }).then((data) => {
+      }).then((data:common.AbilityResult)=> {
         console.info(TAG + "====>startAbilityForResult end====>" + JSON.stringify(data));
         expect(data.resultCode).assertEqual(1);
-        expect(data.want.action).assertEqual('ACTION');
+        expect(data.want!.action).assertEqual('ACTION');
         done();
       })
     })
@@ -356,7 +359,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(promise)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0200', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbilityForResult_0200', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0200";
       console.info(TAG + "====>start startAbilityForResult====>");
       await globalThis.abilityContext.startAbilityForResult(
@@ -365,9 +368,9 @@ export default function abilityTest() {
           abilityName: 'com.acts.error.MainAbility3',
         }, {
         windowMode:0
-      }).then((data) => {
+      }).then((data:common.AbilityResult)=> {
         console.info(TAG + "====>startAbilityForResult end====>" + JSON.stringify(data));
-      }).catch((err) => {
+      }).catch((err:BusinessError) => {
         console.info(TAG + 'ACTS_ThirdPartyStartAbilityForResult_0200 - error' + JSON.stringify(err));
         expect(err.code == 16000001).assertTrue();
         done();
@@ -379,7 +382,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(callback)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0300', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbilityForResult_0300', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0300";
       console.info(TAG + "====>start startAbilityForResult====>");
       await sleep(2000);
@@ -390,11 +393,11 @@ export default function abilityTest() {
           abilityName: 'com.acts.actsinterfacemultiusersthirdtest.MainAbility3',
         },{
         windowMode : 0
-      },(err, data) => {
+      },(err:BusinessError, data:common.AbilityResult) => {
         console.info(TAG + "====>startAbilityForResult end====>" + JSON.stringify(err));
         console.info(TAG + "====>startAbilityForResult end====>" + JSON.stringify(data));
         expect(data.resultCode).assertEqual(1);
-        expect(data.want.action).assertEqual('ACTION');
+        expect(data.want!.action).assertEqual('ACTION');
         done();
       })
     })
@@ -404,7 +407,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(callback)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0400', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbilityForResult_0400', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0400";
       console.info(TAG + "====>start startAbilityForResult====>");
       try {
@@ -414,7 +417,7 @@ export default function abilityTest() {
             abilityName: 'com.acts.error.MainAbility3',
           }, {
           windowMode:0
-        },(err, data) => {
+        },(err:BusinessError, data:common.AbilityResult) => {
           console.info(TAG + "====>startAbilityForResult end data====>" + JSON.stringify(data));
           console.info(TAG + "====>startAbilityForResult end err====>" + JSON.stringify(err));
           expect(err.code == 16000001).assertTrue();
@@ -430,7 +433,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(promise)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0500', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbilityForResult_0500', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0500";
       console.info(TAG + "====>start startAbilityForResult====>");
       await sleep(2000);
@@ -438,11 +441,11 @@ export default function abilityTest() {
         {
           bundleName: 'com.acts.actsinterfacemultiusersthirdtest',
           abilityName: 'com.acts.actsinterfacemultiusersthirdtest.MainAbility3',
-        }).then((data) => {
+        }).then((data:common.AbilityResult)=> {
         console.info(TAG + "====>startAbilityForResult end====>");
         console.info(TAG + "====>data.result is====>" + JSON.stringify(data));
         expect(data.resultCode).assertEqual(1);
-        expect(data.want.action).assertEqual('ACTION');
+        expect(data.want!.action).assertEqual('ACTION');
         done();
       })
     })
@@ -452,16 +455,16 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(promise)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0600', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbilityForResult_0600', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0600";
       console.info(TAG + "====>start startAbilityForResult====>");
       await globalThis.abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.error',
           abilityName: 'com.acts.error.MainAbility3',
-        }).then((data) => {
+        }).then((data:common.AbilityResult)=> {
         console.info(TAG + "====>startAbilityForResult end====>");
-      }).catch((err) => {
+      }).catch((err:BusinessError) => {
         console.info(TAG + 'ACTS_ThirdPartyStartAbilityForResult_0600 - error' + JSON.stringify(err));
         expect(err.code == 16000001).assertTrue();
         done();
@@ -473,7 +476,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(callback)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0700', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbilityForResult_0700', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0700";
       console.info(TAG + "====>start startAbilityForResult====>");
       await sleep(2000);
@@ -481,11 +484,11 @@ export default function abilityTest() {
         {
           bundleName: 'com.acts.actsinterfacemultiusersthirdtest',
           abilityName: 'com.acts.actsinterfacemultiusersthirdtest.MainAbility3',
-        },(err,data) => {
+        },(err:BusinessError, data:common.AbilityResult) => {
         console.info(TAG + "====>startAbilityForResult end err====>" + JSON.stringify(err));
         console.info(TAG + "====>startAbilityForResult end data====>" + JSON.stringify(data));
         expect(data.resultCode).assertEqual(1);
-        expect(data.want.action).assertEqual('ACTION');
+        expect(data.want!.action).assertEqual('ACTION');
         done();
       })
     })
@@ -495,7 +498,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(callback)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0800', 0, async function (done) {
+    it('ACTS_ThirdPartyStartAbilityForResult_0800', 0, async (done:Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0800";
       console.info(TAG + "====>start startAbilityForResult====>");
       try {
@@ -503,7 +506,7 @@ export default function abilityTest() {
           {
             bundleName: 'com.acts.error',
             abilityName: 'com.acts.error.MainAbility3',
-          },(err, data) => {
+          },(err:BusinessError, data:common.AbilityResult) => {
           console.info(TAG + "====>startAbilityForResult end err====>" + JSON.stringify(err));
           console.info(TAG + "====>startAbilityForResult end data====>" + JSON.stringify(data));
           expect(err.code == 16000001).assertTrue();
@@ -519,12 +522,12 @@ export default function abilityTest() {
      * @tc.name    : Use terminateself to terminate ability
      * @tc.desc    : Starting mainability2 with startAbility then terminateself ability succeeded.(promise)
      */
-    it('ACTS_TerminateSelf_0100', 0, async function (done) {
+    it('ACTS_TerminateSelf_0100', 0, async (done:Function) => {
       TAG = "ACTS_TerminateSelf_0100";
       console.info(TAG + "====>start startAbilityForResult====>");
-      let Subscriber;
-      var terminateresult = false;
-      function SubscribeCallBack (err, data) {
+      let Subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+      let terminateresult = false;
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
         console.info(TAG + "====>0100 Subscribe CallBack data:====>" + JSON.stringify(data));
         expect(data.event == "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent" || data.event == "ACTS_TerminateSelf_CommonEvent").assertTrue();
         if (data.event === "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent") {
@@ -556,7 +559,7 @@ export default function abilityTest() {
         })
       })
 
-      function UnSubscribeCallback() {
+      let UnSubscribeCallback = ():void => {
         console.info(TAG + "====>UnSubscribeCallback====>");
       }
     })
@@ -566,12 +569,12 @@ export default function abilityTest() {
      * @tc.name    : Use terminateself to terminate ability
      * @tc.desc    : Starting mainability2 with startAbility then terminateself ability succeeded.(callback)
      */
-    it('ACTS_TerminateSelf_0300', 0, async function (done) {
+    it('ACTS_TerminateSelf_0300', 0, async (done:Function) => {
       TAG = "ACTS_TerminateSelf_0300";
       console.info(TAG + "====>start startAbilityForResult====>");
-      let Subscriber;
-      var terminateresult = false;
-      function SubscribeCallBack (err, data) {
+      let Subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+      let terminateresult = false;
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
         console.info("====>0300 Subscribe CallBack data:====>" + JSON.stringify(data));
         expect(data.event == "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent" || data.event == "ACTS_TerminateSelf_CommonEvent").assertTrue();
         if (data.event === "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent") {
@@ -603,7 +606,7 @@ export default function abilityTest() {
         })
       })
 
-      function UnSubscribeCallback() {
+      let UnSubscribeCallback = ():void => {
         console.info(TAG + "====>UnSubscribeCallback====>");
       }
     })
@@ -614,7 +617,7 @@ export default function abilityTest() {
      * @tc.desc    : Starting mainability3 with startAbilityforresult
      *               then terminateself ability and return result succeeded.(promise)
      */
-    it('ACTS_TerminateSelfWithResult_0100', 0, async function (done) {
+    it('ACTS_TerminateSelfWithResult_0100', 0, async (done:Function) => {
       TAG = "ACTS_TerminateSelfWithResult_0100";
       console.info(TAG + "====>start startAbilityForResult====>");
       await sleep(2000);
@@ -622,11 +625,11 @@ export default function abilityTest() {
         {
           bundleName: 'com.acts.actsinterfacemultiusersthirdtest',
           abilityName: 'com.acts.actsinterfacemultiusersthirdtest.MainAbility3',
-        }).then((data) => {
+        }).then((data:common.AbilityResult)=> {
         console.info(TAG + "====>startAbilityForResult end====>");
         console.info(TAG + "====>data.resultCode is====>" + JSON.stringify(data));
         expect(data.resultCode).assertEqual(1);
-        expect(data.want.action).assertEqual('ACTION');
+        expect(data.want!.action).assertEqual('ACTION');
         done();
       })
     })
@@ -637,7 +640,7 @@ export default function abilityTest() {
      * @tc.desc    : Starting mainability3 with startAbilityforresult
      *               then terminateself ability and return result succeeded.(callback)
      */
-    it('ACTS_TerminateSelfWithResult_0300', 0, async function (done) {
+    it('ACTS_TerminateSelfWithResult_0300', 0, async (done:Function) => {
       TAG = "ACTS_TerminateSelfWithResult_0300";
       console.info(TAG + "====>start startAbilityForResult====>");
       await sleep(2000)
@@ -645,11 +648,11 @@ export default function abilityTest() {
         {
           bundleName: 'com.acts.actsinterfacemultiusersthirdtest',
           abilityName: 'com.acts.actsinterfacemultiusersthirdtest.MainAbility3',
-        },(err, data) => {
+        },(err:BusinessError, data:common.AbilityResult) => {
           console.info(TAG + "====>startAbilityForResult end err====>" + JSON.stringify(err));
           console.info(TAG + "====>startAbilityForResult end err====>" + JSON.stringify(data));
           expect(data.resultCode).assertEqual(1);
-          expect(data.want.action).assertEqual('ACTION');
+          expect(data.want!.action).assertEqual('ACTION');
           done();
       })
     })
