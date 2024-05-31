@@ -16,13 +16,30 @@ import { describe, beforeAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 
 export default function windowRecoverTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
   console.log('windowTest context: ' + JSON.stringify(context))
   console.log('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
+  let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
   describe('windowRecover_test', () => {
-    console.log('describe window_api_test start!!!')
+    console.log('describe window_api_test start')
+    beforeAll(async () => {
+      console.log('describe screenHotTest start!!!')
+      try {
+        let cmd = "hihdumper -s WindowManagerService -a '-a'";
+        await abilityDelegator.executeShellCommand(cmd).then((result) => {
+          console.info(`executeShellCommand result: ${JSON.stringify(result.stdResult)}`);
+        }).catch(((err: BusinessError) => {
+          console.info(`executeShellCommand catch: ${JSON.stringify(err)}`);
+          expect().assertFail();
+        }))
+      } catch (err) {
+        console.info(`executeShellCommand exception: ${JSON.stringify(err)}`);
+        expect().assertFail();
+      }
+  })
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1280
@@ -35,7 +52,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     it('testRecover', 0, async (done: Function) => {
       let msgStr = 'testRecover';
       console.log(msgStr + ' begin');
-      ohosWindow.getLastWindow(context).then(wnd => {
+      windowStage.getMainWindow.then(wnd => {
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
         let promise = wnd.recover();
         promise.then(() => {
@@ -71,7 +88,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     it('testMaximize', 0, async (done: Function) => {
       let msgStr = 'testMaximize';
       console.log(msgStr + ' begin');
-      ohosWindow.getLastWindow(context).then(wnd => {
+      windowStage.getMainWindow.then(wnd => {
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
         let promise = wnd.recover();
         promise.then(() => {
@@ -121,7 +138,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     it('testMaximizeToRecover', 0, async (done: Function) => {
       let msgStr = 'testMaximizeToRecover';
       console.log(msgStr + ' begin');
-      ohosWindow.getLastWindow(context).then(wnd => {
+      windowStage.getMainWindow.then(wnd => {
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
         let promise = wnd.maximize();
         promise.then(() => {
@@ -171,7 +188,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     it('testMaximizeToMinimize', 0, async (done: Function) => {
       let msgStr = 'testMaximizeToMinimize';
       console.log(msgStr + ' begin');
-      ohosWindow.getLastWindow(context).then(wnd => {
+      windowStage.getMainWindow.then(wnd => {
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
         let promise = wnd.maximize();
         promise.then(() => {
@@ -221,7 +238,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     it('testMinimizeToMaximize', 0, async (done: Function) => {
       let msgStr = 'testMinimizeToMaximize';
       console.log(msgStr + ' begin');
-      ohosWindow.getLastWindow(context).then(wnd => {
+      windowStage.getMainWindow.then(wnd => {
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
         let promise = wnd.minimize();
         promise.then(() => {
