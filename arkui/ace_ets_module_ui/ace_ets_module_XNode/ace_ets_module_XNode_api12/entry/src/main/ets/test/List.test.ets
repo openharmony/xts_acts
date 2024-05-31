@@ -31,6 +31,18 @@ import getGreen from './GraphicsTest/getGreen.test';
 import getRed from './GraphicsTest/getRed.test';
 import onAppear from './FrameNodeTest/onAppear.test';
 import setMeasureSizeTest from './FrameNodeTest/setMeasureSize.test';
+import createNodeBlank from './FrameNodeTest/createNodeBlank.test';
+import createNodeColumn from './FrameNodeTest/createNodeColumn.test';
+import createNodeDivider from './FrameNodeTest/createNodeDivider.test';
+import createNodeFlex from './FrameNodeTest/createNodeFlex.test';
+import createNodeGrid from './FrameNodeTest/createNodeGrid.test';
+import createNodeImage from './FrameNodeTest/createNodeImage.test';
+import createNodeList from './FrameNodeTest/createNodeList.test';
+import createNodeLoad from './FrameNodeTest/createNodeLoad.test';
+import createNodeScroll from './FrameNodeTest/createNodeScroll.test';
+import createNodeSearch from './FrameNodeTest/createNodeSearch.test';
+import createNodeStack from './FrameNodeTest/createNodeStack.test';
+import createNodeText from './FrameNodeTest/createNodeText.test';
 
 export default function testsuite() {
   borderRadiuses();
@@ -52,4 +64,16 @@ export default function testsuite() {
   getRed();
   onAppear();
   setMeasureSizeTest();
+  createNodeBlank();
+  createNodeColumn();
+  createNodeDivider();
+  createNodeFlex();
+  createNodeGrid();
+  createNodeImage();
+  createNodeList();
+  createNodeLoad();
+  createNodeScroll();
+  createNodeSearch();
+  createNodeStack();
+  createNodeText();
 }
