@@ -12,7 +12,9 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
+import("//build/toolchain/toolchain.gni")
 import("//test/xts/tools/build/suite.gni")
+
 ohos_js_hap_suite("image_receiver_ndk_js_hap") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
@@ -25,7 +27,25 @@ ohos_js_hap_suite("image_receiver_ndk_js_hap") {
   hap_name = "ActsImageReceiverNdkJsTest"
   subsystem_name = "multimedia"
   part_name = "image_framework"
-  shared_libraries = [ "./entry/src/main/cpp:ImageReceiverNDKTest" ]
+  shared_libraries = [
+    "./entry/src/main/cpp:ImageReceiverNDKTest",
+    "./entry/src/main/cpp:ImageReceiverTest",
+    "./entry/src/main/cpp:ImageReceiverNativeTest",
+    ":libcppso",
+  ]
+}
+
+ohos_prebuilt_shared_library("libcppso") {
+  if (target_cpu == "arm") {
+    source = "${clang_base_path}/../llvm/lib/arm-linux-ohos/libc++.so"
+  } else if (target_cpu == "x86_64") {
+    source = "${clang_base_path}/../llvm/lib/x86_64-unknown-linux-gnu/libc++.so"
+  } else {
+    source = "${clang_base_path}/../llvm/lib/aarch64-linux-ohos/libc++.so"
+  }
+  assert(defined(source))
+  subsystem_name = "multimedia"
+  install_enable = false
 }
 
 ohos_js_assets("ace_third_ets_assets") {
