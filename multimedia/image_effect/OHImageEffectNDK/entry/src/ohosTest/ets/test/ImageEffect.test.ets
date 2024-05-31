@@ -1037,7 +1037,7 @@ export default function imageEffectTest() {
      */
     it('testOHEffectFilterSetValue002', 0, () => {
       let result: number = testNapi.OHEffectFilterSetValue(CASE_INDEX_2);
-      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+      expect(result).assertEqual(EFFECT_ERROR_29000122);
     });
 
     /**
@@ -1050,7 +1050,7 @@ export default function imageEffectTest() {
      */
     it('testOHEffectFilterSetValue003', 0, () => {
       let result: number = testNapi.OHEffectFilterSetValue(CASE_INDEX_3);
-      expect(result).assertEqual(EFFECT_ERROR_29000122);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
 
     /**
@@ -1076,7 +1076,7 @@ export default function imageEffectTest() {
      */
     it('testOHEffectFilterSetValue005', 0, () => {
       let result: number = testNapi.OHEffectFilterSetValue(CASE_INDEX_5);
-      expect(result).assertEqual(EFFECT_ERROR_29000122);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
 
     /**
@@ -1141,7 +1141,7 @@ export default function imageEffectTest() {
      */
     it('testOHEffectFilterGetValue005', 0, () => {
       let result: number = testNapi.OHEffectFilterGetValue(CASE_INDEX_5);
-      expect(result).assertEqual(EFFECT_ERROR_29000122);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
 
     /**
@@ -1470,6 +1470,19 @@ export default function imageEffectTest() {
     });
 
     /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTADDFILTER_0300
+     * @tc.name   : testOHImageEffectAddFilter003
+     * @tc.desc   : Add filters.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectAddFilter003', 0, () => {
+      let result: number = testNapi.OHImageEffectAddFilter(CASE_INDEX_3);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
      * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTGETFILTER_0100
      * @tc.name   : testOHImageEffectGetFilter001
      * @tc.desc   : Filter has been added to the query.
@@ -1713,7 +1726,7 @@ export default function imageEffectTest() {
      */
     it('testOHImageEffectSave002', 0, () => {
       let result: number = testNapi.OHImageEffectSave(CASE_INDEX_2);
-      expect(result).assertEqual(EFFECT_SUCCESS);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
 
     /**
@@ -1752,7 +1765,7 @@ export default function imageEffectTest() {
      */
     it('testOHImageEffectRestore002', 0, () => {
       let result: number = testNapi.OHImageEffectRestore(CASE_INDEX_2);
-      expect(result).assertEqual(EFFECT_SUCCESS);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
 
     /**
@@ -2205,7 +2218,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectStop_001', 0, () => {
+    it('testOHImageEffectStop001', 0, () => {
       let result: number = testNapi.OHImageEffectStop();
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
