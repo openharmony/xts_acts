@@ -824,6 +824,91 @@ export default function imageNdkTest() {
       }
     }
 
+    const CreatePixelMapByHdr = async (TAG: string, done: Function) => {
+      await getBuffer("text.jpg");
+      const imageSourceApi: image.ImageSource = ndkTest.CreateFromData(buffer);
+      if (typeof imageSourceApi === "object") {
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `create image source success:${imageSourceApi}`)
+        let options: image.DecodingOptions = ndkTest.CreateDecodingOptions();
+        ndkTest.DecodingOptionsSetDesiredDynamicRange(options, 2);
+        const pixelMap: image.PixelMap | number = ndkTest.CreatePixelMap(imageSourceApi, options)
+        if (typeof pixelMap === "object") {
+          hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `pixelMap success :${pixelMap}`)
+          let pixelmapDynamic: number = ndkTest.GetPixelMapDynamicRange(pixelMap);
+          if (pixelmapDynamic != 0) {
+            hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `CreatePixelMapByHdr pixelmapDynamic is not zero`)
+            expect(false).assertTrue();
+            done();
+          } else {
+            hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `CreatePixelMapByHdr pixelmapDynamic is zero`)
+            expect(true).assertTrue();
+            ndkTest.SourceRelease(imageSourceApi);
+            ndkTest.PixelMapRelease(pixelMap);
+            done()
+          }
+        } else {
+          hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `pixelMap failed: ${pixelMap}`)
+          ndkTest.SourceRelease(imageSourceApi);
+          expect(false).assertTrue();
+          done()
+        }
+      } else {
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `create image source failed :${imageSourceApi}`)
+        expect(false).assertTrue();
+        done();
+      }
+    }
+
+    const DecodingOptionsDesiredDynamic = async (TAG: string, desiredDynamicRange: number, done: Function) => {
+      let options: image.DecodingOptions = ndkTest.CreateDecodingOptions();
+      ndkTest.DecodingOptionsSetDesiredDynamicRange(options, desiredDynamicRange);
+
+      const targetDynamic: number = ndkTest.DecodingOptionsGetDesiredDynamicRange(options);
+      if (targetDynamic === desiredDynamicRange) {
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `Get desiredDynamicRange success:${targetDynamic}`)
+        expect(true).assertTrue();
+      } else {
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `Get desiredDynamicRange failed:${targetDynamic}`)
+        expect(false).assertTrue();
+      }
+      done();
+    }
+
+    const PackingOptionsDesiredDynamic = async (TAG: string, desiredDynamicRange: number, done: Function) => {
+      let options: image.PackingOption = ndkTest.CreatePackingOptions();
+      ndkTest.PackingOptionsSetDesiredDynamicRange(options, desiredDynamicRange);
+
+      const targetDynamic: number = ndkTest.PackingOptionsGetDesiredDynamicRange(options);
+      if (targetDynamic === desiredDynamicRange) {
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `Get desiredDynamicRange success:${targetDynamic}`)
+        expect(true).assertTrue();
+      } else {
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `Get desiredDynamicRange failed:${targetDynamic}`)
+        expect(false).assertTrue();
+      }
+      done();
+    }
+
+    const CheckImageSourceDynamicRange = async (TAG: string, done: Function) => {
+      await getBuffer("test.jpg");
+      const imageSourceApi: image.ImageSource = ndkTest.CreateFromData(buffer);
+      if (typeof imageSourceApi === "object") {
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `create image source success:${imageSourceApi}`)
+        let sourceDynamic:number = ndkTest.GetImageSourceDynamicRange(imageSourceApi);
+        if (sourceDynamic != 0) {
+          expect(true).assertTrue();
+          done();
+        } else {
+          expect(false).assertTrue();
+          done();
+        }
+      } else {
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `create image source failed :${imageSourceApi}`)
+        expect(false).assertTrue();
+        done();
+      }
+    }
+
     /*
      * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0100
      * @tc.name      : testInitializationOptions
@@ -3977,5 +4062,81 @@ export default function imageNdkTest() {
         done();
       }
     });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATE_HDR_0100
+     * @tc.name      : sub_multimedia_image_create_hdr
+     * @tc.desc      : 1.hdr pixelMap create
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_HDR_0100', 0, async (done: Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_CREATE_HDR_0100"
+      try {
+        await CreatePixelMapByHdr(testTag, done)
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_DECODINGOPTIONS_DYNAMICRANGE_0100
+     * @tc.name      : sub_multimedia_image_get_decoding_dynamicrange_options
+     * @tc.desc      : 1.decodingOptions dynamicrange
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_DECODINGOPTIONS_DYNAMICRANGE_0100', 0, async (done: Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_GET_DECODINGOPTIONS_DYNAMICRANGE_0100"
+      try {
+        await DecodingOptionsDesiredDynamic(testTag, 1, done)
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_DYNAMICRANGE_0100
+     * @tc.name      : sub_multimedia_image_get_packing_dynamicrange_options
+     * @tc.desc      : 1.packingOptions dynamicrange
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_DYNAMICRANGE_0100', 0, async (done: Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_DYNAMICRANGE_0100"
+      try {
+        await PackingOptionsDesiredDynamic(testTag, 1, done)
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CHECK_IMAGESOURCE_DYNAMICRANGE_0100
+     * @tc.name      : sub_multimedia_image_check_imagesource_dynamicrange
+     * @tc.desc      : 1.imagesource_dynamicrange
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_CHECK_IMAGESOURCE_DYNAMICRANGE_0100', 0, async (done: Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_CHECK_IMAGESOURCE_DYNAMICRANGE_0100"
+      try {
+        await CheckImageSourceDynamicRange(testTag, done)
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
