@@ -151,22 +151,19 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           console.log(msgStr + 'ohosWindow.createWindow two twice' + JSON.stringify(err));
           if (err && err.code) {
             console.log(msgStr + 'ohosWindow.createWindow two twice data: ' + JSON.stringify(dataTwo));
-            try {
-              expect(err.code).assertEqual(1300002);
-            } catch (error) {
-              console.info(`ohosWindow.createWindow two twice catch error: ${JSON.stringify(error)}`)
-              expect().assertFail();
-            }
-          } else {
-            console.log(msgStr + 'ohosWindow.createWindow two success twice data: ' + JSON.stringify(dataTwo));
+            await dataOne.destroyWindow();
             expect().assertFail();
+            done();
+            return;
           }
+          console.log(msgStr + 'ohosWindow.createWindow two success twice data: ' + JSON.stringify(dataTwo));
           await dataOne.destroyWindow();
+          await dataTwo.destroyWindow();
           done();
         })
       } catch (exception) {
         console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done();
       };
     })
