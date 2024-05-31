@@ -37,7 +37,6 @@ struct onWillApplyThemeTest {
   @State columBgColor: ResourceColor = $r('sys.color.background_primary');
   @State text: string = '';
 
-  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
   onWillApplyTheme(theme: Theme) {
     this.text = 'onWillApplyTheme'
     this.textColor = theme.colors.fontPrimary;

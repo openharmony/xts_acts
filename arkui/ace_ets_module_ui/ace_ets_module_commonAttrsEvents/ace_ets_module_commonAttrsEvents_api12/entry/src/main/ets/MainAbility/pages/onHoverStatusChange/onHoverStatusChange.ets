@@ -15,8 +15,6 @@
 @Entry
 @Component
 struct onHoverStatusChangeTest {
-  @State len_wid: number = 480
-  @State w: string = "40%"
   @State text: string = ''
   build() {
     Column() {
@@ -24,28 +22,28 @@ struct onHoverStatusChangeTest {
       FolderStack({ upperItems: ["upperitemsId"] }) {
         // 此Column会自动上移到上半屏
         Column() {
-          Text("video zone").height("100%").width("100%").textAlign(TextAlign.Center).fontSize(25)
-        }.backgroundColor(Color.Pink).width("100%").height("100%").id("upperitemsId")
+          Text("video zone").height('100%').width('100%').textAlign(TextAlign.Center).fontSize(25)
+        }.backgroundColor(Color.Pink).width('100%').height('100%').id("upperitemsId")
 
         // 下列两个Column堆叠在下半屏区域
         Column() {
           Text(this.text)
-            .width("100%")
+            .width('100%')
             .height(50)
             .textAlign(TextAlign.Center)
             .backgroundColor(Color.Red)
             .fontSize(25)
             .key('onHoverStatusChangeText')
-        }.width("100%").height("100%").justifyContent(FlexAlign.Start)
+        }.width('100%').height('100%').justifyContent(FlexAlign.Start)
 
         Column() {
           Text("video bar ")
-            .width("100%")
+            .width('100%')
             .height(50)
             .textAlign(TextAlign.Center)
             .backgroundColor(Color.Red)
             .fontSize(25)
-        }.width("100%").height("100%").justifyContent(FlexAlign.End)
+        }.width('100%').height('100%').justifyContent(FlexAlign.End)
       }
       .backgroundColor(Color.Yellow)
       // 是否启动动效
@@ -68,14 +66,14 @@ struct onHoverStatusChangeTest {
       })
       // folderStack如果不撑满页面全屏，作为普通Stack使用
       .alignContent(Alignment.Bottom)
-      .height("100%")
-      .width("100%")
+      .height('100%')
+      .width('100%')
       .borderWidth(1)
       .backgroundColor(Color.Yellow)
 
     }
-    .height("100%")
-    .width("100%")
+    .height('100%')
+    .width('100%')
     .borderWidth(1)
     .backgroundColor(Color.Pink)
     .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])

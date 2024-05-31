@@ -24,8 +24,7 @@ class MyFullDrawModifier extends DrawModifier {
   public scaleYStr: string = '1';
   public scaleZStr: string = '1';
 
-  drawBehind(context: DrawContext): void
-  {
+  drawBehind(context: DrawContext): void {
     this.scaleXStr = 'drawBehind'
     const brush = new drawing.Brush();
     brush.setColor({
@@ -45,8 +44,7 @@ class MyFullDrawModifier extends DrawModifier {
     });
   }
 
-  drawContent(context: DrawContext): void
-  {
+  drawContent(context: DrawContext): void {
     this.scaleYStr = 'drawContent'
     const brush = new drawing.Brush();
     brush.setColor({
@@ -66,8 +64,7 @@ class MyFullDrawModifier extends DrawModifier {
     });
   }
 
-  drawFront(context: DrawContext): void
-  {
+  drawFront(context: DrawContext): void {
     this.scaleZStr = 'drawFront'
     this.scaleZ = 2
     const brush = new drawing.Brush();
@@ -89,8 +86,7 @@ class MyFrontDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
 
-  drawFront(context: DrawContext): void
-  {
+  drawFront(context: DrawContext): void {
     this.scaleX = 2
     const brush = new drawing.Brush();
     brush.setColor({

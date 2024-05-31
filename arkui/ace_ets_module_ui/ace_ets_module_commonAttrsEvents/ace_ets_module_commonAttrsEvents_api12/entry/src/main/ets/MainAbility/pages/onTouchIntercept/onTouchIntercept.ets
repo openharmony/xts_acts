@@ -40,7 +40,6 @@ struct onTouchInterceptTest {
       // 调用onTouchIntercept修改该组件的HitTestMode属性
       .onTouchIntercept((event : TouchEvent) => {
         this.text = JSON.stringify(event)
-        console.log("OnTouchIntercept + " + JSON.stringify(event));
         if (this.isPolygon(event)) {
           return HitTestMode.None
         }
