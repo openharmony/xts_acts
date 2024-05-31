@@ -28,18 +28,18 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     beforeAll(async () => {
       console.log('describe screenHotTest start!!!')
       try {
-        let cmd = "hihdumper -s WindowManagerService -a '-a'";
+        let cmd = "hdc shell hihdumper -s WindowManagerService -a '-a'";
         await abilityDelegator.executeShellCommand(cmd).then((result) => {
-          console.info(`executeShellCommand result: ${JSON.stringify(result.stdResult)}`);
-        }).catch(((err: BusinessError) => {
-          console.info(`executeShellCommand catch: ${JSON.stringify(err)}`);
+          console.info(`executeShellCommand result: ` + JSON.stringify(result.stdResult));
+        }).catch(((err) => {
+          console.info(`executeShellCommand catch:` + err);
           expect().assertFail();
         }))
       } catch (err) {
         console.info(`executeShellCommand exception: ${JSON.stringify(err)}`);
         expect().assertFail();
       }
-  })
+    })
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1280
@@ -52,15 +52,16 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     it('testRecover', 0, async (done: Function) => {
       let msgStr = 'testRecover';
       console.log(msgStr + ' begin');
-      windowStage.getMainWindow.then(wnd => {
-        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+      try {
+        let wnd = await windowStage.getMainWindow();
+        console.log(msgStr + ' window.getMainWindow wnd: ' + wnd);
         let promise = wnd.recover();
         promise.then(() => {
           console.info(msgStr + 'Succeeded in recovering the window.');
           expect(true).assertTrue()
           done();
-        }).catch((err: BusinessError) => {
-          if( err.code == 801 || err.code == 1300001 ){
+        }).catch((err) => {
+          if (err.code == 801 || err.code == 1300001) {
             console.log(msgStr + ' The current device type does not support calling recover or recover not support ')
             expect(true).assertTrue()
             done();
@@ -70,11 +71,11 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             done();
           }
         });
-      }).catch(err => {
-        console.error(msgStr + ' Failed to getLastWindow. 04Cause: ' + JSON.stringify(err))
+      } catch (err) {
+        console.error(msgStr + ' Failed to testRecover. 04Cause: ' + JSON.stringify(err))
         expect().assertFail();
         done();
-      })
+      }
     })
 
     /**
@@ -88,8 +89,9 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     it('testMaximize', 0, async (done: Function) => {
       let msgStr = 'testMaximize';
       console.log(msgStr + ' begin');
-      windowStage.getMainWindow.then(wnd => {
-        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+      try {
+        let wnd = await windowStage.getMainWindow();
+        console.log(msgStr + ' window.getMainWindow wnd: ' + wnd);
         let promise = wnd.recover();
         promise.then(() => {
           console.info(msgStr + 'Succeeded in maximizing the window.');
@@ -99,7 +101,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             expect(true).assertTrue()
             done()
           }).catch((err) => {
-            if( err.code == 801 ){
+            if (err.code == 801) {
               console.log(msgStr + ' The current device type does not support calling maximize ')
               expect(true).assertTrue()
               done();
@@ -110,7 +112,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             }
           })
         }).catch((err: BusinessError) => {
-          if( err.code == 801 || err.code == 1300001   ){
+          if (err.code == 801 || err.code == 1300001) {
             console.log(msgStr + ' The current device type does not support calling recover ')
             expect(true).assertTrue()
             done();
@@ -120,11 +122,11 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             done();
           }
         });
-      }).catch(err => {
-        console.error(msgStr + ' Failed to getLastWindow. 04Cause: ' + JSON.stringify(err))
+      } catch (err) {
+        console.error(msgStr + ' Failed to testMaximize. 04Cause: ' + JSON.stringify(err))
         expect().assertFail();
         done();
-      })
+      }
     })
 
     /**
@@ -138,8 +140,9 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     it('testMaximizeToRecover', 0, async (done: Function) => {
       let msgStr = 'testMaximizeToRecover';
       console.log(msgStr + ' begin');
-      windowStage.getMainWindow.then(wnd => {
-        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+      try {
+        let wnd = await windowStage.getMainWindow();
+        console.log(msgStr + ' window.getMainWindow wnd: ' + wnd);
         let promise = wnd.maximize();
         promise.then(() => {
           console.info(msgStr + 'Succeeded in maximizing the window.');
@@ -149,7 +152,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             expect(true).assertTrue()
             done()
           }).catch((err) => {
-            if( err.code == 801 ){
+            if (err.code == 801) {
               console.log(msgStr + ' The current device type does not support calling recover ')
               expect(true).assertTrue()
               done();
@@ -160,7 +163,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             }
           })
         }).catch((err: BusinessError) => {
-          if( err.code == 801 ){
+          if (err.code == 801) {
             console.log(msgStr + ' The current device type does not support calling maximize ')
             expect(true).assertTrue()
             done();
@@ -170,11 +173,14 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             done();
           }
         });
-      }).catch(err => {
-        console.error(msgStr + ' Failed to getLastWindow. 04Cause: ' + JSON.stringify(err))
+      } catch (err) {
+        console.error(msgStr + ' Failed to testMaximizeToRecover. 04Cause: ' + JSON.stringify(err))
         expect().assertFail();
         done();
-      })
+      }
+
+
+
     })
 
     /**
@@ -188,8 +194,9 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     it('testMaximizeToMinimize', 0, async (done: Function) => {
       let msgStr = 'testMaximizeToMinimize';
       console.log(msgStr + ' begin');
-      windowStage.getMainWindow.then(wnd => {
-        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+      try {
+        let wnd = await windowStage.getMainWindow();
+        console.log(msgStr + ' window.getMainWindow wnd: ' + wnd);
         let promise = wnd.maximize();
         promise.then(() => {
           console.info(msgStr + 'Succeeded in maximizing the window.');
@@ -199,7 +206,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             expect(true).assertTrue()
             done()
           }).catch((err) => {
-            if( err.code == 801 ){
+            if (err.code == 801) {
               console.log(msgStr + ' The current device type does not support calling minimize ')
               expect(true).assertTrue()
               done();
@@ -209,8 +216,8 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
               done();
             }
           })
-        }).catch((err: BusinessError) => {
-          if( err.code == 801 ){
+        }).catch((err) => {
+          if (err.code == 801) {
             console.log(msgStr + ' The current device type does not support calling maximize ')
             expect(true).assertTrue()
             done();
@@ -220,11 +227,13 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             done();
           }
         });
-      }).catch(err => {
-        console.error(msgStr + ' Failed to getLastWindow. 04Cause: ' + JSON.stringify(err))
+      } catch (err) {
+        console.error(msgStr + ' Failed to testMaximizeToMinimize. 04Cause: ' + JSON.stringify(err))
         expect().assertFail();
         done();
-      })
+      }
+
+
     })
 
     /**
@@ -238,8 +247,9 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     it('testMinimizeToMaximize', 0, async (done: Function) => {
       let msgStr = 'testMinimizeToMaximize';
       console.log(msgStr + ' begin');
-      windowStage.getMainWindow.then(wnd => {
-        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+      try {
+        let wnd = await windowStage.getMainWindow();
+        console.log(msgStr + ' window.getMainWindow wnd: ' + wnd);
         let promise = wnd.minimize();
         promise.then(() => {
           console.info(msgStr + 'Succeeded in minimizing the window.');
@@ -249,7 +259,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             expect(true).assertTrue()
             done()
           }).catch((err) => {
-            if( err.code == 801 ){
+            if (err.code == 801) {
               console.log(msgStr + ' The current device type does not support calling maximize ')
               expect(true).assertTrue()
               done();
@@ -259,8 +269,8 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
               done();
             }
           })
-        }).catch((err: BusinessError) => {
-          if( err.code == 801 ){
+        }).catch((err) => {
+          if (err.code == 801) {
             console.log(msgStr + ' The current device type does not support calling minimize ')
             expect(true).assertTrue()
             done();
@@ -270,11 +280,13 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             done();
           }
         });
-      }).catch(err => {
-        console.error(msgStr + ' Failed to getLastWindow. 04Cause: ' + JSON.stringify(err))
+      } catch (err) {
+        console.error(msgStr + ' Failed to testMinimizeToMaximize. 04Cause: ' + JSON.stringify(err))
         expect().assertFail();
         done();
-      })
+      }
+
+
     })
   })
 }
