@@ -22,7 +22,7 @@ import business_error from '@ohos.base';
 struct webViewWebResourceTypeProps {
   controller: webview.WebviewController = new webview.WebviewController();
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler()
-  @State emitKey: string = "emitWebViewGetFrameUrlResourceType";
+  @State emitKey: string = '';
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = true;
@@ -42,7 +42,7 @@ struct webViewWebResourceTypeProps {
   
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
       if (eventData != null) {
-          console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+          console.info('valueChangeCallBack:' + JSON.stringify(eventData));
           if (eventData.data != null && eventData.data.ACTION != null) {
               this.emitKey = eventData.data.ACTION;
           }
@@ -176,7 +176,7 @@ struct webViewWebResourceTypeProps {
                         }
                         break;
                       }
-                }
+                  }
               })
           }
           Web({ src: '', controller: this.controller })
@@ -188,12 +188,14 @@ struct webViewWebResourceTypeProps {
                 .databaseAccess(this.databaseAccess)
             .onControllerAttached(() => {
               try {
-                this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
-                  console.log("[schemeHandler] onRequestStart")
-                  request.getFrameUrl()
-                  request.getRequestResourceType()
-                  return false;
-                })
+                this.schemeHandler.onRequestStart(
+                  (request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+                    console.log("[schemeHandler] onRequestStart")
+                    request.getFrameUrl()
+                    request.getRequestResourceType()
+                    return false;
+                  }
+                )
 
                 this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
                   console.log("[schemeHandler] onRequestStop")
