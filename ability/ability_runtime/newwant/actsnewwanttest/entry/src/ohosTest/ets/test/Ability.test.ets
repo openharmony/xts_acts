@@ -18,10 +18,13 @@ import commonEvent from '@ohos.commonEvent'
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import {Driver, ON} from '@ohos.UiTest';
+import commonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
+import common from '@ohos.app.ability.common';
 
 let driver = Driver.create();
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
-let subscriberInfo = {
+let subscriberInfo:commonEventManager.CommonEventSubscribeInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
     'onWindowStageCreateMain_To_Test_CommonEvent',
     'onForegroundMain_To_Test_CommonEvent',
@@ -41,15 +44,15 @@ let subscriberInfo = {
 let flagNewWant = false;
 
 export default function abilityTest() {
-  describe('ActsNewWantTest', function () {
+  describe('ActsNewWantTest', () => {
     let TAG1 = 'ACTS_NewWant_Test : '
-    let id = undefined;
+    let id:number | undefined = undefined;
 
-    beforeEach(async (done) => {
+    beforeEach(async (done:Function) => {
       setTimeout(() => { done(); }, 3000)
     })
 
-    beforeAll(async (done) => {
+    beforeAll(async (done:Function) => {
         console.log(TAG1 + "beforeAll called");
         let myReason = 'test ActsNewWantTest';
         let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
@@ -57,16 +60,16 @@ export default function abilityTest() {
         })
         id = delayInfo.requestId;
         console.log(TAG1 + "requestId is : " + id);
-        setTimeout(function () {
+        setTimeout(() => {
             console.log(TAG1 + "beforeAll end");
             done();
         }, 1000);
     })
         
-    afterAll(async (done) => {
+    afterAll(async (done:Function) => {
         console.log(TAG1 + "afterAll called");
         backgroundTaskManager.cancelSuspendDelay(id);
-        setTimeout(function () {
+        setTimeout(() => {
             console.log(TAG1 + "afterAll end");
             done();
         }, 1000);
@@ -77,39 +80,21 @@ export default function abilityTest() {
      * @tc.name: Starting standard Ability for the first time does not trigger onNewWant.
      * @tc.desc: Starting standard Ability for the first time does not trigger onNewWant.
      */
-    it('ACTS_NewWant_Test_0100', 0, async function (done) {
+    it('ACTS_NewWant_Test_0100', 0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0100 --- start")
-      let Subscriber;
+      let Subscriber:commonEventManager.CommonEventSubscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
       let flagOnForeground = 0;
       let flagOnNewWant = 0;
-
-      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0100====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-      })
-
-      await globalThis.mainAbilityContext.startAbility({
-        bundleName: "com.example.newwanthap",
-        abilityName: "com.example.newwanthapa.MainAbility"
-      }, (error, data) => {
-        console.log('ACTS_NewWant_Test_0100 - startAbility start standard: '
-          + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
       
-      function SubscribeCallBack(err, data) {
+      let UnSubscribeCallback = ():void => {
+        console.debug("ACTS_NewWant_Test_0100====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
+        done();
+      }
 
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
         console.debug("ACTS_NewWant_Test_0100====>Subscribe CallBack data:====>"
           + JSON.stringify(data));
         console.debug("ACTS_NewWant_Test_0100====>Subscribe CallBack data.event:====>"
@@ -143,10 +128,27 @@ export default function abilityTest() {
         }
       }
 
-      function UnSubscribeCallback() {
-        console.debug("ACTS_NewWant_Test_0100====>UnSubscribe CallBack====>");
-        expect(flagNewWant).assertTrue();
-        done();
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0100====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
+      await globalThis.mainAbilityContext.startAbility({
+        bundleName: "com.example.newwanthap",
+        abilityName: "com.example.newwanthapa.MainAbility"
+      }, (error:BusinessError, data:common.AbilityResult) => {
+        console.log('ACTS_NewWant_Test_0100 - startAbility start standard: '
+          + JSON.stringify(error) + ", " + JSON.stringify(data))
+      })
+
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
       }
     })
 
@@ -155,38 +157,21 @@ export default function abilityTest() {
      * @tc.name: Starting singleton Ability for the first time does not trigger onNewWant.
      * @tc.desc: Starting singleton Ability for the first time does not trigger onNewWant.
      */
-    it('ACTS_NewWant_Test_0200', 0, async function (done) {
+    it('ACTS_NewWant_Test_0200', 0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0200 --- start")
-      let Subscriber;
+      let Subscriber:commonEventManager.CommonEventSubscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
       let flagOnForeground = 0;
       let flagOnNewWant = 0;
-      
-      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0200====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-      })
 
-      await globalThis.mainAbilityContext.startAbility({
-        bundleName: "com.example.newwanthap",
-        abilityName: "com.example.newwanthapa.SecondAbility"
-      }, (error, data) => {
-        console.log('ACTS_NewWant_Test_0200 - startAbility start singleton: '
-          + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-       await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
+      let UnSubscribeCallback = ():void => {
+        console.debug("ACTS_NewWant_Test_0200====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
+        done();
       }
 
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
 
         console.debug("ACTS_NewWant_Test_0200====>Subscribe CallBack data:====>"
           + JSON.stringify(data));
@@ -220,43 +205,18 @@ export default function abilityTest() {
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
       }
-
-      function UnSubscribeCallback() {
-        console.debug("ACTS_NewWant_Test_0200====>UnSubscribe CallBack====>");
-        expect(flagNewWant).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number: ACTS_NewWant_Test_0300
-     * @tc.name: Starting standard ability the second time does not trigger onNewWant.
-     * @tc.desc: Starting standard ability the second time does not trigger onNewWant.
-     */
-    it('ACTS_NewWant_Test_0300', 0, async function (done) {
-      console.log("ACTS_NewWant_Test_0300 --- start")
-      if (deviceType === '2in1') {
-        done();
-        return;
-      }
-      let Subscriber;
-      let flagOnCreate = 0;
-      let flagOnWindowStageCreate = 0;
-      let flagOnForeground = 0;
-      let flagOnNewWant = 0;
-
+   
       await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0300====>Create Subscriber====>");
+        console.debug("ACTS_NewWant_Test_0200====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
       await globalThis.mainAbilityContext.startAbility({
         bundleName: "com.example.newwanthap",
-        abilityName: "com.example.newwanthapa.MainAbility",
-        action: "startStandard0300"
-      }, (error, data) => {
-        console.log('ACTS_NewWant_Test_0300 - startAbility start standard: '
+        abilityName: "com.example.newwanthapa.SecondAbility"
+      }, (error:BusinessError, data:common.AbilityResult) => {
+        console.log('ACTS_NewWant_Test_0200 - startAbility start singleton: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
 
@@ -268,8 +228,32 @@ export default function abilityTest() {
         console.log('point.x : ' + point.x +'point.y : '+ point.y);
         await driver.click(point.x, point.y);
       }
+    })
 
-      function SubscribeCallBack(err, data) {
+    /**
+     * @tc.number: ACTS_NewWant_Test_0300
+     * @tc.name: Starting standard ability the second time does not trigger onNewWant.
+     * @tc.desc: Starting standard ability the second time does not trigger onNewWant.
+     */
+    it('ACTS_NewWant_Test_0300', 0, async (done:Function) => {
+      console.log("ACTS_NewWant_Test_0300 --- start")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
+      let Subscriber:commonEventManager.CommonEventSubscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
+
+      let UnSubscribeCallback = ():void => {
+        console.debug("ACTS_NewWant_Test_0300====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
+        done();
+      }
+
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
 
         console.debug("ACTS_NewWant_Test_0300====>Subscribe CallBack data:====>"
           + JSON.stringify(data));
@@ -304,42 +288,19 @@ export default function abilityTest() {
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
       }
-      function UnSubscribeCallback() {
-        console.debug("ACTS_NewWant_Test_0300====>UnSubscribe CallBack====>");
-        expect(flagNewWant).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number: ACTS_NewWant_Test_0400
-     * @tc.name: Two abilities of the same hap
-     * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
-     */
-    it('ACTS_NewWant_Test_0400', 0, async function (done) {
-      console.log("ACTS_NewWant_Test_0400 --- start")
-      if (deviceType === '2in1') {
-        done();
-        return;
-      }
-      let Subscriber;
-      let flagOnCreate = 0;
-      let flagOnWindowStageCreate = 0;
-      let flagOnForeground = 0;
-      let flagOnNewWant = 0;
 
       await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0400====>Create Subscriber====>");
+        console.debug("ACTS_NewWant_Test_0300====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
       await globalThis.mainAbilityContext.startAbility({
         bundleName: "com.example.newwanthap",
-        abilityName: "com.example.newwanthapa.SecondAbility",
-        action: "startSingleton0400"
-      }, (error, data) => {
-        console.log('ACTS_NewWant_Test_0400 - startAbility start singleton: '
+        abilityName: "com.example.newwanthapa.MainAbility",
+        action: "startStandard0300"
+      }, (error:BusinessError, data:common.AbilityResult) => {
+        console.log('ACTS_NewWant_Test_0300 - startAbility start standard: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
 
@@ -351,8 +312,32 @@ export default function abilityTest() {
         console.log('point.x : ' + point.x +'point.y : '+ point.y);
         await driver.click(point.x, point.y);
       }
+    })
 
-      function SubscribeCallBack(err, data) {
+    /**
+     * @tc.number: ACTS_NewWant_Test_0400
+     * @tc.name: Two abilities of the same hap
+     * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
+     */
+    it('ACTS_NewWant_Test_0400', 0, async (done:Function) => {
+      console.log("ACTS_NewWant_Test_0400 --- start")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
+      let Subscriber:commonEventManager.CommonEventSubscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
+
+      let UnSubscribeCallback = ():void => {
+        console.debug("ACTS_NewWant_Test_0400====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
+        done();
+      }
+
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
 
         console.debug("ACTS_NewWant_Test_0400====>Subscribe CallBack data:====>"
           + JSON.stringify(data));
@@ -389,42 +374,18 @@ export default function abilityTest() {
         }
       }
 
-      function UnSubscribeCallback() {
-        console.debug("ACTS_NewWant_Test_0400====>UnSubscribe CallBack====>");
-        expect(flagNewWant).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number: ACTS_NewWant_Test_0500
-     * @tc.name: Two haps of the same app
-     * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
-     */
-    it('ACTS_NewWant_Test_0500', 0, async function (done) {
-      console.log("ACTS_NewWant_Test_0500 --- start")
-      if (deviceType === '2in1') {
-        done();
-        return;
-      }
-      let Subscriber;
-      let flagOnCreate = 0;
-      let flagOnWindowStageCreate = 0;
-      let flagOnForeground = 0;
-      let flagOnNewWant = 0;
-
       await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0500====>Create Subscriber====>");
+        console.debug("ACTS_NewWant_Test_0400====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
       await globalThis.mainAbilityContext.startAbility({
         bundleName: "com.example.newwanthap",
-        abilityName: "com.example.newwanthapb.MainAbility",
-        action: "startHapB"
-      }, (error, data) => {
-        console.log('ACTS_NewWant_Test_0500 - startAbility start HapB: '
+        abilityName: "com.example.newwanthapa.SecondAbility",
+        action: "startSingleton0400"
+      }, (error:BusinessError, data:common.AbilityResult) => {
+        console.log('ACTS_NewWant_Test_0400 - startAbility start singleton: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
 
@@ -436,8 +397,32 @@ export default function abilityTest() {
         console.log('point.x : ' + point.x +'point.y : '+ point.y);
         await driver.click(point.x, point.y);
       }
+    })
 
-      function SubscribeCallBack(err, data) {
+    /**
+     * @tc.number: ACTS_NewWant_Test_0500
+     * @tc.name: Two haps of the same app
+     * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
+     */
+    it('ACTS_NewWant_Test_0500', 0, async (done:Function) => {
+      console.log("ACTS_NewWant_Test_0500 --- start")
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
+      let Subscriber:commonEventManager.CommonEventSubscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
+
+      let UnSubscribeCallback = ():void => {
+        console.debug("ACTS_NewWant_Test_0500====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
+        done();
+      }
+      
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
 
         console.debug("ACTS_NewWant_Test_0500====>Subscribe CallBack data:====>"
           + JSON.stringify(data));
@@ -474,10 +459,28 @@ export default function abilityTest() {
         }
       }
 
-      function UnSubscribeCallback() {
-        console.debug("ACTS_NewWant_Test_0500====>UnSubscribe CallBack====>");
-        expect(flagNewWant).assertTrue();
-        done();
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0500====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
+      await globalThis.mainAbilityContext.startAbility({
+        bundleName: "com.example.newwanthap",
+        abilityName: "com.example.newwanthapb.MainAbility",
+        action: "startHapB"
+      }, (error:BusinessError, data:common.AbilityResult) => {
+        console.log('ACTS_NewWant_Test_0500 - startAbility start HapB: '
+          + JSON.stringify(error) + ", " + JSON.stringify(data))
+      })
+
+       await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
       }
     })
 
@@ -486,34 +489,25 @@ export default function abilityTest() {
      * @tc.name: Cross-application
      * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
      */
-    it('ACTS_NewWant_Test_0600', 0, async function (done) {
+    it('ACTS_NewWant_Test_0600', 0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0600 --- start")
       if (deviceType === '2in1') {
         done();
         return;
       }
-      let Subscriber;
+      let Subscriber:commonEventManager.CommonEventSubscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
       let flagOnForeground = 0;
       let flagOnNewWant = 0;
 
-      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0600====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-      })
-
-      await globalThis.mainAbilityContext.startAbility({
-        bundleName: "com.example.newwanthapa",
-        abilityName: "com.example.newwanthapc.MainAbility",
-        action: "startHapC"
-      }, (error, data) => {
-        console.log('ACTS_NewWant_Test_0600 - startAbility start HapC: '
-          + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-      function SubscribeCallBack(err, data) {
+      let UnSubscribeCallback = ():void => {
+        console.debug("ACTS_NewWant_Test_0600====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
+        done();
+      }
+      
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
 
         console.debug("ACTS_NewWant_Test_0600====>Subscribe CallBack data:====>"
           + JSON.stringify(data));
@@ -550,11 +544,20 @@ export default function abilityTest() {
         }
       }
 
-      function UnSubscribeCallback() {
-        console.debug("ACTS_NewWant_Test_0600====>UnSubscribe CallBack====>");
-        expect(flagNewWant).assertTrue();
-        done();
-      }
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0600====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
+      await globalThis.mainAbilityContext.startAbility({
+        bundleName: "com.example.newwanthapa",
+        abilityName: "com.example.newwanthapc.MainAbility",
+        action: "startHapC"
+      }, (error:BusinessError, data:common.AbilityResult) => {
+        console.log('ACTS_NewWant_Test_0600 - startAbility start HapC: '
+          + JSON.stringify(error) + ", " + JSON.stringify(data))
+      })
     })
 
     /**
@@ -562,34 +565,25 @@ export default function abilityTest() {
      * @tc.name: Service ability
      * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
      */
-    it('ACTS_NewWant_Test_0700', 0, async function (done) {
+    it('ACTS_NewWant_Test_0700', 0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0700 --- start")
       if (deviceType === '2in1') {
         done();
         return;
       }
-      let Subscriber;
+      let Subscriber:commonEventManager.CommonEventSubscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
       let flagOnForeground = 0;
       let flagOnNewWant = 0;
 
-      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0700====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-      })
+      let UnSubscribeCallback = ():void => {
+        console.debug("ACTS_NewWant_Test_0700====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
+        done();
+      }
 
-      await globalThis.mainAbilityContext.startAbility({
-        bundleName: "com.example.newwanthap",
-        abilityName: "com.example.newwanthapa.SecondAbility",
-        action: "startSecondAbility0700"
-      }, (error, data) => {
-        console.log('ACTS_NewWant_Test_0700 - startAbility start SecondAbility: '
-          + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-      function SubscribeCallBack(err, data) {
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
 
         console.debug("ACTS_NewWant_Test_0700====>Subscribe CallBack data:====>"
           + JSON.stringify(data));
@@ -624,12 +618,22 @@ export default function abilityTest() {
             flagNewWant = true;
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
-      }
-      function UnSubscribeCallback() {
-        console.debug("ACTS_NewWant_Test_0700====>UnSubscribe CallBack====>");
-        expect(flagNewWant).assertTrue();
-        done();
-      }
+      }      
+
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0700====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
+      await globalThis.mainAbilityContext.startAbility({
+        bundleName: "com.example.newwanthap",
+        abilityName: "com.example.newwanthapa.SecondAbility",
+        action: "startSecondAbility0700"
+      }, (error:BusinessError, data:common.AbilityResult) => {
+        console.log('ACTS_NewWant_Test_0700 - startAbility start SecondAbility: '
+          + JSON.stringify(error) + ", " + JSON.stringify(data))
+      })      
     })
 
     /**
@@ -637,35 +641,24 @@ export default function abilityTest() {
      * @tc.name: API8 startup API7
      * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
      */
-    it('ACTS_NewWant_Test_0800', 0, async function (done) {
+    it('ACTS_NewWant_Test_0800', 0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0800 --- start")
       if (deviceType === '2in1') {
         done();
         return;
       }
-      let Subscriber;
+      let Subscriber:commonEventManager.CommonEventSubscriber;
       let flagOnCreate = 0;
       let flagOnWindowStageCreate = 0;
       let flagOnForeground = 0;
       let flagOnNewWant = 0;
 
-      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0800====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-      })
-
-      await globalThis.mainAbilityContext.startAbility({
-        bundleName: "com.example.newwanthap",
-        abilityName: "com.example.newwanthapa.MainAbility",
-        action: "startMainAbility0800"
-      }, (error, data) => {
-        console.log('ACTS_NewWant_Test_0800 - startAbility start SecondAbility: '
-          + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-
-      function SubscribeCallBack(err, data) {
+      let UnSubscribeCallback = ():void => {
+        console.debug("ACTS_NewWant_Test_0800====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
+        done();
+      }
+      let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
 
         console.debug("ACTS_NewWant_Test_0800====>Subscribe CallBack data:====>"
           + JSON.stringify(data));
@@ -701,11 +694,21 @@ export default function abilityTest() {
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
       }
-      function UnSubscribeCallback() {
-        console.debug("ACTS_NewWant_Test_0800====>UnSubscribe CallBack====>");
-        expect(flagNewWant).assertTrue();
-        done();
-      }
+
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0800====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
+      await globalThis.mainAbilityContext.startAbility({
+        bundleName: "com.example.newwanthap",
+        abilityName: "com.example.newwanthapa.MainAbility",
+        action: "startMainAbility0800"
+      }, (error:BusinessError, data:common.AbilityResult) => {
+        console.log('ACTS_NewWant_Test_0800 - startAbility start SecondAbility: '
+          + JSON.stringify(error) + ", " + JSON.stringify(data))
+      })
     })
   })
 }
