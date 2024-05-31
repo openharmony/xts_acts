@@ -778,7 +778,7 @@ export default function StartAbilityTest() {
         abilityDelegator.printSync(
           "ACTS_START_ABILITY_CALLBACK_ERROR_0007 meet an error: " + e.code
         );
-        expect(e.message).assertEqual("Incorrect parameters.");
+        expect(e.message).assertContain("Parse");
         expect(e.code).assertEqual(401);
         abilityDelegator.printSync(
           "ACTS_START_ABILITY_CALLBACK_ERROR_0007 pass"

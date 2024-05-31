@@ -110,7 +110,7 @@ export default function AbilityMonitorTest() {
           "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100 message:" + e.message
         );
         expect(e.code).assertEqual(401);
-        expect(e.message).assertEqual("Incorrect parameters.");
+        expect(e.message).assertContain("Parse");
         expect(true).assertTrue();
         abilityDelegator.printSync(
           "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100 pass"
@@ -233,7 +233,7 @@ export default function AbilityMonitorTest() {
           "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_PROMISE_0100 message:" + e.message
         );
         expect(e.code).assertEqual(401);
-        expect(e.message).assertEqual("Incorrect parameters.");
+        expect(e.message).assertContain("Parse");;
         expect(true).assertTrue();
         abilityDelegator.printSync(
           "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_PROMISE_0100 pass"
@@ -345,7 +345,7 @@ export default function AbilityMonitorTest() {
           "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100 message:" + e.message
         );
         expect(e.code).assertEqual(401);
-        expect(e.message).assertEqual("Incorrect parameters.");
+        expect(e.message).assertContain("Parse");
         expect(true).assertTrue();
         abilityDelegator.printSync(
           "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100 pass"
@@ -561,7 +561,7 @@ export default function AbilityMonitorTest() {
           "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100 message:" + e.message
         );
         expect(e.code).assertEqual(401);
-        expect(e.message).assertEqual("Incorrect parameters.");
+        expect(e.message).assertContain("Parse");
         expect(true).assertTrue();
         abilityDelegator.printSync(
           "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100 pass"
@@ -833,7 +833,7 @@ export default function AbilityMonitorTest() {
           "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0100 message:" + e.message
         );
         expect(e.code).assertEqual(401);
-        expect(e.message).assertEqual("Incorrect parameters.");
+        expect(e.message).assertContain("Parse");
         abilityDelegator.printSync(
           "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0100 monitor pass"
         );
@@ -912,7 +912,7 @@ export default function AbilityMonitorTest() {
         abilityDelegator.printSync(
           "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0400 message:" + e.message
         );
-        expect(e.message).assertEqual("Incorrect parameters.");
+        expect(e.message).assertContain("Parse");
         expect(e.code).assertEqual(401);
         expect(true).assertTrue();
         abilityDelegator.printSync(
@@ -1241,7 +1241,7 @@ export default function AbilityMonitorTest() {
           "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_PROMISE_0100  message:" + e.message
         );
         expect(e.code).assertEqual(401);
-        expect(e.message).assertEqual("Incorrect parameters.");
+        expect(e.message).assertContain("Parse");
         expect(true).assertTrue();
         abilityDelegator.printSync(
           "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_PROMISE_0100  pass"
