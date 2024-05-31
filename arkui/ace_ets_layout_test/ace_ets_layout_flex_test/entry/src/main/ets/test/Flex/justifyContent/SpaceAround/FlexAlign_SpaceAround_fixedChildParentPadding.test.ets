@@ -130,7 +130,7 @@ export default function flexAlign_SpaceAround_fixedChildParentPadding() {
       expect(Math.abs((locationText1.left - locationFlex.left) - (locationFlex.right - locationText3.right)) <= 1)
         .assertTrue();
       expect(Math.abs((locationText1.left - locationFlex.left) - vp2px(35 / 3)) <= 1).assertTrue();
-      expect(Math.abs((Math.round((locationText2.left - locationText1.right) / 2) - Math.round((locationFlex.right - locationText3.right - Math.round(vp2px(5)))))) <= 1)
+      expect(Math.abs((Math.round((locationText2.left - locationText1.right) / 2) - Math.round((locationFlex.right - locationText3.right - vp2px(5))))) <= 1)
         .assertTrue();
       console.info('new testAlignSpaceAroundRowNoWrapPaddingInRange END');
 
