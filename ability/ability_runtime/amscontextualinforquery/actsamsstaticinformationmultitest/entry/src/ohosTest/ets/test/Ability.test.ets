@@ -12,20 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent';
 import {Driver, ON} from '@ohos.UiTest';
+import { BusinessError } from '@ohos.base';
+import common from '@ohos.app.ability.common';
+import bundleManager from '@ohos.bundle.bundleManager'
+import commonEventManager from '@ohos.commonEventManager';
 
 let driver = Driver.create();
-var subscriberInfo = {
+let subscriberInfo:commonEventManager.CommonEventSubscribeInfo  = {
     events: ['MainAbility_Start_CommonEvent_multi_hap_entry', 'MainAbility_Start_CommonEvent_multi_hap_feature'],
 };
 
 
 export default function abilityTest() {
-    describe('ActsAbilityMultiTest', function () {
-        beforeEach(async (done) => {
+    describe('ActsAbilityMultiTest', () => {
+        beforeEach(async (done:Function) => {
             setTimeout(() => { done(); }, 3000)
         })
         /**
@@ -33,17 +37,17 @@ export default function abilityTest() {
          * @tc.name: Starting singleton ability the second time does triggers onNewWant.
          * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
          */
-        it('ACTS_getAbilityInfo_0400', 0, async function (done) {
+        it('ACTS_getAbilityInfo_0400', 0, async (done:Function) => {
             console.log("ACTS_getAbilityInfo_0400 --- start")
-            var Subscriber;
-            var EntryHap = false;
-            var FeatureHap = false;
+            let Subscriber:commonEventManager.CommonEventSubscriber;
+            let EntryHap = false;
+            let FeatureHap = false;
 
             globalThis.abilityContext.startAbility({
                 bundleName: "com.acts.stinformationmulapp",
                 abilityName: "com.acts.stinformationmulapp.MainAbility",
                 action:"startHapA"
-            }, (error, data) => {
+            }, (error:BusinessError, data:common.AbilityResult) => {
                 console.log('ACTS_getAbilityInfo_0400 - startAbility start HapA: '
                 + JSON.stringify(error) + ", " + JSON.stringify(data))
             })
@@ -54,7 +58,7 @@ export default function abilityTest() {
                 await commonEvent.subscribe(Subscriber, SubscribeCallBack);
             })
 
-            function SubscribeCallBack(err, data) {
+            let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
                 console.debug("ACTS_getAbilityInfo_0400====>Subscribe CallBack data:====>"
                 + JSON.stringify(data));
                 console.debug("ACTS_getAbilityInfo_0400====>Subscribe CallBack data.event:====>"
@@ -62,9 +66,9 @@ export default function abilityTest() {
                 if (data.event == 'MainAbility_Start_CommonEvent_multi_hap_entry') {
                     EntryHap = true;
                     console.log("ACTS_getAbilityInfo_0400====> MainAbility_Start_CommonEvent_multi_hap_entry")
-                    let abilityInfo = JSON.parse(data.parameters['abilityInfo'])
-                    let hapModuleInfo = JSON.parse(data.parameters['hapModuleInfo'])
-                    let applicationInfo =JSON.parse(data.parameters['applicationInfo'])
+                    let abilityInfo:bundleManager.AbilityInfo = JSON.parse(data.parameters!['abilityInfo'])
+                    let hapModuleInfo:bundleManager.HapModuleInfo = JSON.parse(data.parameters!['hapModuleInfo'])
+                    let applicationInfo:bundleManager.ApplicationInfo =JSON.parse(data.parameters!['applicationInfo'])
                     console.log("ACTS_getAbilityInfo_0400_entry_abilityInfo" + abilityInfo.name)
                     console.log("ACTS_getAbilityInfo_0400_entry_applicationInfo" + applicationInfo.name)
                     console.log("ACTS_getAbilityInfo_0400_entry_hapModuleInfo" + hapModuleInfo.name)
@@ -74,9 +78,9 @@ export default function abilityTest() {
                 } else if (data.event == 'MainAbility_Start_CommonEvent_multi_hap_feature'){
                     FeatureHap = true;
                     console.log("ACTS_getAbilityInfo_0400====> MainAbility_Start_CommonEvent_multi_hap_feature")
-                    let abilityInfo1 = JSON.parse(data.parameters['abilityInfo'])
-                    let hapModuleInfo1 = JSON.parse(data.parameters['hapModuleInfo'])
-                    let applicationInfo1 =JSON.parse(data.parameters['applicationInfo'])
+                    let abilityInfo1:bundleManager.AbilityInfo = JSON.parse(data.parameters!['abilityInfo'])
+                    let hapModuleInfo1:bundleManager.HapModuleInfo = JSON.parse(data.parameters!['hapModuleInfo'])
+                    let applicationInfo1:bundleManager.ApplicationInfo =JSON.parse(data.parameters!['applicationInfo'])
                     console.log("ACTS_getAbilityInfo_0400_feature_abilityInfo" + abilityInfo1.name)
                     console.log("ACTS_getAbilityInfo_0400_feature_applicationInfo" + applicationInfo1.name)
                     console.log("ACTS_getAbilityInfo_0400_feature_hapModuleInfo" + hapModuleInfo1.name)
@@ -88,13 +92,13 @@ export default function abilityTest() {
                     commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
                 }
             }
-            function UnSubscribeCallback() {
+            let UnSubscribeCallback = ():void => {
                 console.debug("ACTS_getAbilityInfo_0400====>UnSubscribe CallBack====>");
                 done();
             }
 
             await driver.delayMs(2000);
-            let allowed = await driver.findComponent(ON.text("´ò¿ª"));
+            let allowed = await driver.findComponent(ON.text("ï¿½ï¿½"));
             if (allowed) {
               console.log("find button");
               let point = await allowed.getBoundsCenter();
