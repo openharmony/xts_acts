@@ -33,7 +33,7 @@ export default function certFrameworkCreateTrustAnchorJsAPIFunctionTestUnit() {
       try {
         cert.createTrustAnchorsWithKeyStore(pubKeyData, '123456').then((data) => {
           expect(data.length == 1).assertTrue();
-          expect(data[0].CACert?.getNotBeforeTime() == '240204100516Z\u0000').assertTrue();
+          expect(data[0].CACert?.getNotBeforeTime() == '240204100516Z').assertTrue();
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} failed, err: ${JSON.stringify(err)}`);
