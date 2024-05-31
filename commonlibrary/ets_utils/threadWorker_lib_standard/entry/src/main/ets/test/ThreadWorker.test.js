@@ -125,38 +125,6 @@ describe('threadWorkerTest', function () {
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
     it('threadWorker_constructor_test_005', 0, async function (done) {
-        var ss = []
-        let flag = 0
-        try {
-            let a = 0
-            while (a <= 64) {
-                ss[a] = new worker.ThreadWorker("entry/ets/workers/newworker.js")
-                ss[a].onexit = function() {
-                    flag += 1
-                }
-                a += 1
-            }
-        } catch (error) {
-            expect(error.name == "BusinessError").assertTrue()
-            let msg = "Worker initialization failure, the number of workers exceeds the maximum."
-            expect(error.message).assertEqual(msg)
-            let b = 0
-            while (b < 64) {
-                ss[b].terminate()
-                b += 1
-            }
-            while (flag != 64) {
-                await promiseCase()
-            }
-            done()
-        }
-    })
-
-    /**
-     * @tc.name: threadWorker_constructor_test_006
-     * @tc.desc: worker constructor to Creates a worker instance when throw error.
-     */
-    it('threadWorker_constructor_test_006', 0, async function (done) {
         try {
             let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js", {type:"other", name:"worker"})
         } catch (error) {
@@ -167,10 +135,10 @@ describe('threadWorkerTest', function () {
     })
 
     /**
-     * @tc.name: threadWorker_constructor_test_007
+     * @tc.name: threadWorker_constructor_test_006
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-    it('threadWorker_constructor_test_007', 0, async function (done) {
+    it('threadWorker_constructor_test_006', 0, async function (done) {
         try {
             let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js",
                                              {type:1, name:"new worker", shared: true})
@@ -182,10 +150,10 @@ describe('threadWorkerTest', function () {
     })
 
     /**
-     * @tc.name: threadWorker_constructor_test_008
+     * @tc.name: threadWorker_constructor_test_007
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-    it('threadWorker_constructor_test_008', 0, async function (done) {
+    it('threadWorker_constructor_test_007', 0, async function (done) {
         try {
             let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js", {type:"classic", name:1, shared: true})
         } catch (error) {
@@ -196,10 +164,10 @@ describe('threadWorkerTest', function () {
     })
 
     /**
-     * @tc.name: threadWorker_constructor_test_009
+     * @tc.name: threadWorker_constructor_test_008
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-     it('threadWorker_constructor_test_009', 0, async function (done) {
+     it('threadWorker_constructor_test_008', 0, async function (done) {
         try {
             let ss = new worker.ThreadWorker()
         } catch (error) {
@@ -210,10 +178,10 @@ describe('threadWorkerTest', function () {
     })
 
     /**
-     * @tc.name: threadWorker_constructor_test_010
+     * @tc.name: threadWorker_constructor_test_009
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_010', 0, async function (done) {
+    it('threadWorker_constructor_test_009', 0, async function (done) {
         let ss = new worker.ThreadWorker("/entry/ets/workers/newworker.js");
         let isTerminate = false
         ss.onexit = function () {
@@ -228,10 +196,10 @@ describe('threadWorkerTest', function () {
     })
 
     /**
-     * @tc.name: threadWorker_constructor_test_011
+     * @tc.name: threadWorker_constructor_test_010
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_011', 0, async function (done) {
+    it('threadWorker_constructor_test_010', 0, async function (done) {
         let ss = new worker.ThreadWorker("@bundle:com.example.threadWorkertest/entry/ets/workers/newworker.js");
         let isTerminate = false
         ss.onexit = function () {
@@ -3116,6 +3084,31 @@ describe('threadWorkerTest', function () {
         }
         expect(res).assertEqual("97,98,99");
         done();
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0009
+     * @tc.name: threadWorker_finally_test_001
+     * @tc.desc: worker constructor to Creates a worker instance when throw error.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_finally_test_001', 0, async function (done) {
+        var ss = []
+        let flag = 0
+        try {
+            let a = 0
+            while (a <= 64) {
+                ss[a] = new worker.ThreadWorker("entry/ets/workers/newworker.js")
+                a += 1
+            }
+        } catch (error) {
+            expect(error.name == "BusinessError").assertTrue()
+            let msg = "Worker initialization failure, the number of workers exceeds the maximum."
+            expect(error.message).assertEqual(msg)
+            done()
+        }
     })
 })
 }
