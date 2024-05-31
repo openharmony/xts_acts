@@ -89,6 +89,141 @@ export default function imageJsTest() {
                 console.info("image case open fd err " + err);
             })
         }
+
+        async function imageSourceImageInfoMimetype(done, testNum, pictureFormat, expectedMimetype, flag) {
+            try {
+                await getFd(pictureFormat);
+                const imageSourceApi = image.createImageSource(fdNumber);
+                if (imageSourceApi == undefined) {
+                    expect(false).assertTrue();
+                    console.info(testNum + ' create image source failed');
+                    done();
+                } else {
+                    globalimageSource = imageSourceApi;
+                    if (flag == 'Promise') {
+                        imageSourceApi.getImageInfo().then(imageInfo => {
+                            expect(imageInfo.mimeType == expectedMimetype).assertTrue();
+                            console.info(testNum + ' success imageinfo.encodedformat: ' + imageInfo.mimeType);
+                            done();
+                        }).catch(error => {
+                            expect().assertFail();
+                            console.log(testNum + ' getimageinfo error: ' + error);
+                            done();
+                        })
+                    } else if (flag == 'PromiseNumber') {
+                        imageSourceApi.getImageInfo(0).then(imageInfo => {
+                            expect(imageInfo.mimeType == expectedMimetype).assertTrue();
+                            console.info(testNum + ' success imageinfo.encodedformat: ' + imageInfo.mimeType);
+                            done();
+                        }).catch(error => {
+                            expect().assertFail();
+                            console.log(testNum + ' getimageinfo error: ' + error);
+                            done();
+                        })
+                    } else if (flag == 'Callback') {
+                        imageSourceApi.getImageInfo((err, imageInfo) => {
+                            if (err) {
+                                expect(false).assertTrue();
+                                console.info(testNum + ' error' + err);
+                                done();
+                            }
+                            if (imageInfo != undefined && imageInfo != null) {
+                                expect(imageInfo.mimeType == expectedMimetype).assertTrue();
+                                console.info(testNum + 'success imageInfo.mimeType:' + imageInfo.mimeType);
+                                done();
+                            } else {
+                                expect(false).assertTrue();
+                                console.info(testNum + ' failed')
+                                done();
+                            }
+                        })
+                    } else if (flag == 'CallbackNumber') {
+                        imageSourceApi.getImageInfo(0, (err, imageInfo) => {
+                            if (err) {
+                                expect(false).assertTrue();
+                                console.info(testNum + ' error' + err);
+                                done();
+                            }
+                            if (imageInfo != undefined && imageInfo != null) {
+                                expect(imageInfo.mimeType == expectedMimetype).assertTrue();
+                                console.info(testNum + 'success imageInfo.mimeType:' + imageInfo.mimeType);
+                                done();
+                            } else {
+                                expect(false).assertTrue();
+                                console.info(testNum + ' failed')
+                                done();
+                            }
+                        })
+                    }
+                    
+                }
+            } catch (error) {
+                expect(false).assertTrue();
+                console.info(testNum + ' error: ' + error);
+                done();
+            }
+        }
+
+        async function pixelMapImageInfoMimetype(done, testNum, pictureFormat, expectedMimetype, flag) {
+            try {
+                await getFd(pictureFormat);
+                const imageSourceApi = image.createImageSource(fdNumber);
+                if (imageSourceApi == undefined) {
+                    expect(false).assertTrue();
+                    console.info(testNum + ' create image source failed');
+                    done();
+                } else {
+                    globalimageSource = imageSourceApi;
+                    imageSourceApi.createPixelMap((err, pixelmap) => {
+                        if (pixelmap == undefined) {
+                            globalpixelmap = pixelmap;
+                            expect(false).assertTrue()
+                            console.info(testNum + ' create pixelmap fail');
+                            done();
+                        }
+                        if (flag == 'Promise') {
+                            pixelmap.getImageInfo().then(imageInfo => {
+                                if (imageInfo == undefined) {
+                                    expect(false).assertTrue()
+                                    console.info(testNum + ' imageInfo is empty');
+                                } else {
+                                    expect(imageInfo.mimeType == expectedMimetype).assertTrue();
+                                    console.info(testNum + ' pixelmap imageinfo.encodedformat:' + imageInfo.mimeType);
+                                }
+                                done();
+                            })
+                        } else if (flag == 'PromiseNumber') {
+                            pixelmap.getImageInfo(0).then(imageInfo => {
+                                if (imageInfo == undefined) {
+                                    expect(false).assertTrue()
+                                    console.info(testNum + ' imageInfo is empty');
+                                } else {
+                                    expect(imageInfo.mimeType == expectedMimetype).assertTrue();
+                                    console.info(testNum + ' pixelmap imageinfo.encodedformat:' + imageInfo.mimeType);
+                                }
+                                done();
+                            })
+                        } else if (flag == 'Callback') {
+                            pixelmap.getImageInfo((err, imageInfo) => {
+                                if (imageInfo == undefined) {
+                                    expect(false).assertTrue()
+                                    console.info(testNum + ' imageInfo is empty');
+                                } else {
+                                    expect(imageInfo.mimeType == expectedMimetype).assertTrue();
+                                    console.info(testNum + ' pixelmap imageinfo.encodedformat:' + imageInfo.mimeType);
+                                }
+                                done();
+                            })
+                        }
+                    })
+                }
+            } catch (error) {
+                expect(false).assertTrue();
+                console.info(testNum + ' error: ' + error);
+                done();
+            }
+        }
+        
         beforeAll(async function () {
             console.info('beforeAll case');
         })
@@ -3217,6 +3352,546 @@ export default function imageJsTest() {
             }
         })
 
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100
+         * @tc.name      : imageSource-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'test.jpg', 'image/jpeg', 'Promise');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200
+         * @tc.name      : imageSource-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'test.jpeg', 'image/jpeg', 'Promise');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300
+         * @tc.name      : imageSource-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'test.png', 'image/png', 'PromiseNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400
+         * @tc.name      : imageSource-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'test.gif', 'image/gif', 'PromiseNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500
+         * @tc.name      : imageSource-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'moving_test.webp', 'image/webp', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600
+         * @tc.name      : imageSource-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 'test.ico', 'image/x-ico', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700
+         * @tc.name      : imageSource-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'test.svg', 'image/svg+xml', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800
+         * @tc.name      : imageSource-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'test.bmp', 'image/bmp', 'CallbackNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900
+         * @tc.name      : imageSource-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'test.dng', 'image/raw', 'CallbackNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100
+         * @tc.name      : imageSource-pixelmap-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+         it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'test.jpeg', 'image/jpeg', 'Promise');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200
+         * @tc.name      : imageSource-pixelmap-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'test.png', 'image/png', 'Promise');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300
+         * @tc.name      : imageSource-pixelmap-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'test.gif', 'image/gif', 'PromiseNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400
+         * @tc.name      : imageSource-pixelmap-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'test.bmp', 'image/bmp', 'PromiseNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500
+         * @tc.name      : imageSource-pixelmap-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'moving_test.webp', 'image/webp', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0600
+         * @tc.name      : imageSource-pixelmap-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 'test.ico', 'image/x-ico', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700
+         * @tc.name      : imageSource-pixelmap-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'test.svg', 'image/svg+xml', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800
+         * @tc.name      : imageSource-pixelmap-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'test.jpg', 'image/jpeg', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900
+         * @tc.name      : imageSource-pixelmap-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'test.dng', 'image/raw', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100
+         * @tc.name      : wrongSuffixImage-imageSource-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'wrong_suffix_jpg.jpeg', 'image/jpeg', 'Promise');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200
+         * @tc.name      : wrongSuffixImage-imageSource-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'wrong_suffix_jpeg.png', 'image/jpeg', 'Promise');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300
+         * @tc.name      : wrongSuffixImage-imageSource-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'wrong_suffix_png.gif', 'image/png', 'PromiseNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400
+         * @tc.name      : wrongSuffixImage-imageSource-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'wrong_suffix_gif.tiff', 'image/gif', 'PromiseNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500
+         * @tc.name      : wrongSuffixImage-imageSource-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'wrong_suffix_webp.ico', 'image/webp', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600
+         * @tc.name      : wrongSuffixImage-imageSource-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 'wrong_suffix_ico.svg', 'image/x-ico', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700
+         * @tc.name      : wrongSuffixImage-imageSource-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'wrong_suffix_svg.bmp', 'image/svg+xml', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800
+         * @tc.name      : wrongSuffixImage-imageSource-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'wrong_suffix_bmp.dng', 'image/bmp', 'CallbackNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900
+         * @tc.name      : wrongSuffixImage-imageSource-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 0, async function (done) {
+            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'wrong_suffix_dng.jpg', 'image/raw', 'CallbackNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100
+         * @tc.name      : wrongSuffixImage-imageSource-pixelmap-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'wrong_suffix_jpeg.png', 'image/jpeg', 'Promise');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200
+         * @tc.name      : wrongSuffixImage-imageSource-pixelmap-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'wrong_suffix_png.gif', 'image/png', 'Promise');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300
+         * @tc.name      : wrongSuffixImage-imageSource-pixelmap-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'wrong_suffix_gif.tiff', 'image/gif', 'PromiseNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400
+         * @tc.name      : wrongSuffixImage-imageSource-pixelmap-getImageInfo-promise-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'wrong_suffix_bmp.dng', 'image/bmp', 'PromiseNumber');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500
+         * @tc.name      : wrongSuffixImage-imageSource-pixelmap-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'wrong_suffix_webp.ico', 'image/webp', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0600
+         * @tc.name      : wrongSuffixImage-imageSource-pixelmap-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'wrong_suffix_ico.svg', 'image/x-ico', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700
+         * @tc.name      : wrongSuffixImage-imageSource-pixelmap-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'wrong_suffix_svg.bmp', 'image/svg+xml', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800
+         * @tc.name      : wrongSuffixImage-imageSource-pixelmap-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'wrong_suffix_jpg.jpeg', 'image/jpeg', 'Callback');
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900
+         * @tc.name      : wrongSuffixImage-imageSource-pixelmap-getImageInfo-callback-mimetype
+         * @tc.desc      : 1.create ImageSource,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 0, async function (done) {
+            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'wrong_suffix_dng.jpg', 'image/raw', 'Callback');
+        })
+        
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_SUB_GRAPHIC_IMAGE_SCALESYNC_0100
          * @tc.name      : Test_ImageScaleSync
