@@ -5904,5 +5904,53 @@ instanceOf(obj, Person);
       let result = napitest.runJsVm(script);
       expect(typeof result).assertEqual('string');
     });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0434
+     * @tc.name      JsvmTest0434
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0434', 0, async function (done) {
+        let rst = napitest.testIsCallable();
+        console.info('JsvmTest0434 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0435
+     * @tc.name      JsvmTest0435
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0435', 0, async function (done) {
+        let rst = napitest.testHandleMicrotasks();
+        console.info('JsvmTest0435 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(true);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0436
+     * @tc.name      JsvmTest0436
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0436', 0, async function (done) {
+        let rst = napitest.testMultithreadFunction();
+        console.info('JsvmTest0436 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0437
+     * @tc.name      JsvmTest0437
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0437', 0, async function (done) {
+        let rst = napitest.testJswmInterface();
+        console.info('JsvmTest0437 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(true);
+      done();
+    });
   });
 }
