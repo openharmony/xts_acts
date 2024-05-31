@@ -36,7 +36,10 @@
                 "./resource/image/bluesky.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
                 "./resource/image/sunset.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
                 "./resource/image/night.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
-                "./resource/image/test_hw.jpg->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files"
+                "./resource/image/test_hw.jpg->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
+                "./resource/image/test_exif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
+                "./resource/image/test_exif.png ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
+                "./resource/image/test.tiff ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files"
             ]
         },
         {
