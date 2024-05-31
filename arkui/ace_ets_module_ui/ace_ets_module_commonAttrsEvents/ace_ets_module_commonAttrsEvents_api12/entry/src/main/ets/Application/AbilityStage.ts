@@ -12,13 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import observerScrollTest from './observerTest/observerScroll.test';
-import ObserverNavDestinationState from './observerTest/ObserverNavDestinationState.test';
-import ObserverApi1 from './observerTest/ObserverApi1.test';
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-export default function testsuite() {
-  observerScrollTest()
-  ObserverNavDestinationState();
-  ObserverApi1();
-
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("[Demo] MyAbilityStage onCreate")
+        globalThis.stageOnCreateRun = 1;
+        globalThis.stageContext = this.context;
+    }
 }
