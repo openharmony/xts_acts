@@ -21,9 +21,16 @@ import featureAbility from "@ohos.ability.featureAbility";
 export default function imageGetImageProperty() {
     describe("imageGetImageProperty", function () {
         const { ORIENTATION, IMAGE_LENGTH, IMAGE_WIDTH, DATE_TIME_ORIGINAL, EXPOSURE_TIME, SCENE_TYPE, ISO_SPEED_RATINGS,
-            F_NUMBER, DATE_TIME, GPS_DATE_STAMP, IMAGE_DESCRIPTION, SCENE_FLOWERS_CONF, SCENE_NIGHT_CONF } = image.PropertyKey;
+            F_NUMBER, DATE_TIME, GPS_DATE_STAMP, IMAGE_DESCRIPTION, SCENE_FLOWERS_CONF, SCENE_NIGHT_CONF, GIF_LOOP_COUNT 
+        } = image.PropertyKey;
         let filePath;
         let fdNumber;
+        const LOOPCASE = {
+            LOOP_FIVE: '5',
+            LOOP_ONE: '1',
+            LOOP_ZERO: '0',
+            LOOP_NO: 'no',
+        };
         let GET_PROPERTIES_ERROR_CODE = "62980096";
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
@@ -287,6 +294,73 @@ export default function imageGetImageProperty() {
                         console.log(`${testNum} error msg: ` + error);
                         done();
                     });
+                }
+            }
+        }
+
+        async function getLoopCount(done, testNum, loopCase, isBatch, args) {
+            let imageSourceApi;
+            if (loopCase == LOOPCASE.LOOP_FIVE) {
+                await getFd("moving_test_loop5.gif");
+            } else if (loopCase == LOOPCASE.LOOP_ONE) {
+                await getFd("moving_test_loop1.gif");
+            } else if (loopCase == LOOPCASE.LOOP_ZERO) {
+                await getFd("moving_test_loop0.gif"); 
+            } else {
+                await getFd("text.jpg");
+            }
+            
+            imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                if (!isBatch) {
+                    imageSourceApi
+                    .getImageProperty(args)
+                    .then((data) => {
+                        console.info(`${testNum} ${args} ` + data);
+                        if (loopCase == LOOPCASE.LOOP_FIVE) {
+                            expect(data == "5").assertTrue();
+                        } else if (loopCase == LOOPCASE.LOOP_ONE) {
+                            expect(data == "1").assertTrue();
+                        } else if (loopCase == LOOPCASE.LOOP_ZERO) {
+                            expect(data == "0").assertTrue();
+                        } else {
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    })
+                    .catch((error) => {
+                        console.log(`${testNum} error: ` + error);
+                        console.log(`${testNum} error: ` + JSON.stringify(error));
+                        expect(error.code == "62980149").assertTrue();
+                        done();
+                    });
+                } else {
+                    imageSourceApi
+                        .getImageProperties(args)
+                        .then((data) => {
+                            console.info(`${testNum} ${args} ` + JSON.stringify(data));
+                            let result = JSON.stringify(data);
+                            if (loopCase == LOOPCASE.LOOP_FIVE) {
+                                expect(data == "5").assertTrue();
+                            } else if (loopCase == LOOPCASE.LOOP_ONE) {
+                                expect(data[1]['GIFLoopCount'] == "1").assertTrue();
+                            } else if (loopCase == LOOPCASE.LOOP_ZERO) {
+                                expect(data[1]['GIFLoopCount'] == "0").assertTrue();
+                            } else {
+                                expect(!result.includes('GIFLoopCount')).assertTrue();
+                            }
+                            done();
+                        })
+                        .catch((error) => {
+                            console.log(`${testNum} error: ` + error);
+                            console.log(`${testNum} error: ` + JSON.stringify(error));
+                            expect(JSON.stringify(error).includes("62980096")).assertTrue();
+                            done();
+                        });    
                 }
             }
         }
@@ -1285,6 +1359,119 @@ export default function imageGetImageProperty() {
                 IMAGE_WIDTH
             ];
             getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0300", "test.tiff", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100
+         * @tc.name      : test getImageProperty obtains the loop count 5 of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperty()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100", 0, async function (done) {
+            let key = GIF_LOOP_COUNT;
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100", LOOPCASE.LOOP_FIVE, false, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200
+         * @tc.name      : test getImageProperty obtains the loop count 1 of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperty()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200", 0, async function (done) {
+            let key = GIF_LOOP_COUNT;
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200", LOOPCASE.LOOP_ONE, false, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300
+         * @tc.name      : test getImageProperty obtains the loop count infinite of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperty()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300", 0, async function (done) {
+            let key = GIF_LOOP_COUNT;
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300", LOOPCASE.LOOP_ZERO, false, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400
+         * @tc.name      : test getImageProperty obtains the loop count error of jpg
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperty()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400", 0, async function (done) {
+            let key = GIF_LOOP_COUNT;
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400", LOOPCASE.LOOP_NO, false, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100
+         * @tc.name      : test getImageProperties obtains the loop count 5 of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperties()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100", 0, async function (done) {
+            let key = GIF_LOOP_COUNT;
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100", LOOPCASE.LOOP_FIVE, true, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200
+         * @tc.name      : test getImageProperties obtains the loop count 1 of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperties()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200", 0, async function (done) {
+            let key = [IMAGE_WIDTH, GIF_LOOP_COUNT];
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200", LOOPCASE.LOOP_ONE, true, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300
+         * @tc.name      : test getImageProperties obtains the loop count infinite of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperties()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300", 0, async function (done) {
+            let key = [IMAGE_WIDTH, GIF_LOOP_COUNT];
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300", LOOPCASE.LOOP_ZERO, true, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400
+         * @tc.name      : test getImageProperties obtains the loop count error of jpg
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperties()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400", 0, async function (done) {
+            let key = [IMAGE_WIDTH, GIF_LOOP_COUNT];
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400", LOOPCASE.LOOP_NO, true, key);
         });
     });
 }
