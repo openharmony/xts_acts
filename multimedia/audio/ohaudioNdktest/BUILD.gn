@@ -41,7 +41,6 @@ ohos_moduletest_suite("ActsOhaudioNdkTest") {
     "-fvisibility=hidden",
     "-Wformat=2",
     "-Wdate-time",
-    "",
   ]
 
   deps = [ "$AUDIO_ROOT_DIR/frameworks/native/ohaudio:ohaudio" ]
