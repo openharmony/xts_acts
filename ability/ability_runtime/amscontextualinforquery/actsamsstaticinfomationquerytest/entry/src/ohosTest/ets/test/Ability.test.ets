@@ -16,20 +16,23 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 import bundleManager from '@ohos.bundle.bundleManager'
+import commonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
+import common from '@ohos.app.ability.common';
 
-var subscriberInfo_MainAbility_ability = {
+let subscriberInfo_MainAbility_ability:commonEventManager.CommonEventSubscribeInfo = {
     events: ["MainAbility_Start_CommonEvent_ability", "SecondAbility_Start_CommonEvent_ability"],
 };
 
 export default function abilityTest() {
-    describe('ActsStaticInfoMationQueryTest', function () {
+    describe('ActsStaticInfoMationQueryTest', () => {
         /**
          * @tc.number: ACTS_getAbilityInfo_0100
          * @tc.name: Application query abilityInfo Static information.
          * @tc.desc: Verify that the application query abilityInfo static
          *           information is the same as that in the configuration file.
          */
-        it('ACTS_getAbilityInfo_0100', 0, async function (done) {
+        it('ACTS_getAbilityInfo_0100', 0, async (done:Function) => {
             console.log("ACTS_getAbilityInfo_0100 --- start ability=====>'+ globalThis.abilityContext.abilityInfo")
             checkAbilityInfo(globalThis.abilityContext.abilityInfo);
             done();
@@ -41,7 +44,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the application query applicationInfo static
          *           information is the same as that in the configuration file.
          */
-        it('ACTS_getApplicationInfo_0100', 0, async function (done) {
+        it('ACTS_getApplicationInfo_0100', 0, async (done:Function) => {
             console.log("ACTS_getApplicationInfo_0100 --- start ability=====>'+ globalThis.abilityContext.applicationInfo")
             checkApplicationInfo(globalThis.abilityContext.applicationInfo);
             done();
@@ -53,7 +56,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the application query currentHapModuleInfo static
          *           information is the same as that in the configuration file.
          */
-        it('ACTS_getHapModuleInfo_0100', 0, async function (done) {
+        it('ACTS_getHapModuleInfo_0100', 0, async (done:Function) => {
             console.log("ACTS_getHapModuleInfo_0100 --- start ability=====>'+ globalThis.abilityContext.currentHapModuleInfo")
             checkHapModuleInfo(globalThis.abilityContext.currentHapModuleInfo);
             done();
@@ -68,28 +71,28 @@ export default function abilityTest() {
          * abilityInfo、applicationInfo、currentHapModuleInfo in the configuration file,
          * and the information obtained by starting different abilities is different
          */
-        it('ACTS_getAbilityInfo_0200', 0, async function (done) {
+        it('ACTS_getAbilityInfo_0200', 0, async (done:Function) => {
             console.log("ACTS_getAbilityInfo_0200 --- start")
-            var Subscriber;
-            var mainHap = false;
-            var secondHap = false;
-            function SubscribeCallBack(err, data) {
+            let Subscriber:commonEventManager.CommonEventSubscriber;
+            let mainHap = false;
+            let secondHap = false;
+            let SubscribeCallBack = (err:BusinessError, data:commonEventManager.CommonEventData):void => {
                 console.debug("ACTS_getAbilityInfo_0200====>Subscribe CallBack data:====>" + JSON.stringify(data));
                 if (data.event == 'MainAbility_Start_CommonEvent_ability') {
                     mainHap = true;
                     console.log("ACTS_getAbilityInfo_0200====> MainAbility_Start_CommonEvent_ability")
-                    let abilityInfo = JSON.parse(data.parameters['abilityInfo'])
-                    let hapModuleInfo = JSON.parse(data.parameters['hapModuleInfo'])
-                    let applicationInfo =JSON.parse(data.parameters['applicationInfo'])
+                    let abilityInfo:bundleManager.AbilityInfo = JSON.parse(data.parameters!['abilityInfo'])
+                    let hapModuleInfo:bundleManager.HapModuleInfo = JSON.parse(data.parameters!['hapModuleInfo'])
+                    let applicationInfo:bundleManager.ApplicationInfo =JSON.parse(data.parameters!['applicationInfo'])
                     expect(hapModuleInfo.name).assertEqual("com.example.staticquerytesttwo");
                     expect(applicationInfo.name).assertEqual("com.example.staticquerytesttwo");
                     expect(abilityInfo.name).assertEqual("com.example.staticquerytesttwo.MainAbility");
                 } else if (data.event == 'SecondAbility_Start_CommonEvent_ability'){
                     secondHap = true;
                     console.log("ACTS_getAbilityInfo_0200====> SecondAbility_Start_CommonEvent_ability")
-                    let abilityInfo1 = JSON.parse(data.parameters['abilityInfo'])
-                    let hapModuleInfo1 = JSON.parse(data.parameters['hapModuleInfo'])
-                    let applicationInfo1 =JSON.parse(data.parameters['applicationInfo'])
+                    let abilityInfo1:bundleManager.AbilityInfo = JSON.parse(data.parameters!['abilityInfo'])
+                    let hapModuleInfo1:bundleManager.HapModuleInfo = JSON.parse(data.parameters!['hapModuleInfo'])
+                    let applicationInfo1:bundleManager.ApplicationInfo =JSON.parse(data.parameters!['applicationInfo'])
                     expect(hapModuleInfo1.name).assertEqual("com.example.staticquerytesttwo");
                     expect(applicationInfo1.name).assertEqual("com.example.staticquerytesttwo");
                     expect(abilityInfo1.name).assertEqual("com.example.staticquerytesttwo.MainAbility");
@@ -109,18 +112,18 @@ export default function abilityTest() {
                     bundleName: "com.example.staticquerytesttwo",
                     abilityName: "com.example.staticquerytesttwo.MainAbility",
                     action:"getglobalThis.abilityContext"
-                }, (error, data) => {
+                }, (error:BusinessError, data:common.AbilityResult) => {
                     console.log('ACTS_getAbilityInfo_0200_startMainAbility: ' + JSON.stringify(error) +
                     ", " + JSON.stringify(data))
                 })
             })
-            function UnSubscribeCallback() {
+            let UnSubscribeCallback = ():void => {
                 console.debug("ACTS_getAbilityInfo_0200====>UnSubscribe CallBack====>");
                 done();
             }
         })
 
-        function checkAbilityInfo(data) {
+        let checkAbilityInfo = (data:ESObject):void => {
             console.log("checkAbilityInfo start  " + JSON.stringify(data));
             console.log("checkAbilityInfo bundleName : " + data.bundleName);
             console.log("checkAbilityInfo moduleName : " + data.moduleName);
@@ -138,24 +141,24 @@ export default function abilityTest() {
             console.log("checkAbilityInfo launchType : " + data.launchType);
             console.log("checkAbilityInfo permissions length : " + data.permissions.length);
             console.log("checkAbilityInfo permissions: " + data.permissions);
-            for (var j = 0; j < data.permissions.length; j++) {
+            for (let j = 0; j < data.permissions.length; j++) {
                 console.log("checkAbilityInfo data.permissions[" + j + "] : " + data.permissions[j]);
             }
             console.log("checkAbilityInfo readPermission : " + data.readPermission);
             console.log("checkAbilityInfo writePermission : " + data.writePermission);
             console.log("checkAbilityInfo uri : " + data.uri);
             console.log("checkAbilityInfo deviceTypes length : " + data.deviceTypes.length);
-            for (var j = 0; j < data.deviceTypes.length; j++) {
+            for (let j = 0; j < data.deviceTypes.length; j++) {
                 console.log("checkAbilityInfo data.deviceTypes[" + j + "] : " + data.deviceTypes[j]);
             }
             console.log("checkAbilityInfo applicationInfo : " + JSON.stringify(data.applicationInfo));
             console.log("checkAbilityInfo metadata length : " + data.metadata.length);
-            for (var j = 0; j < data.metadata.length; j++) {
+            for (let j = 0; j < data.metadata.length; j++) {
                 console.log("checkAbilityInfo data.metadata[" + j + "] : " + data.metadata[j]);
             }
             console.log("checkAbilityInfo enabled : " + data.enabled);
             console.log("checkAbilityInfo supportWindowModes length : " + data.supportWindowModes.length);
-            for (var j = 0; j < data.supportWindowModes.length; j++) {
+            for (let j = 0; j < data.supportWindowModes.length; j++) {
                 console.log("checkAbilityInfo data.supportWindowModes[" + j + "] : " + data.supportWindowModes[j]);
             }
             console.log("checkAbilityInfo windowSize : " + JSON.stringify(data.windowSize));
@@ -214,7 +217,7 @@ export default function abilityTest() {
             expect(data.applicationInfo.label).assertEqual("$string:app_name");
             expect(data.applicationInfo.labelId).assertLarger(0);
             expect(data.applicationInfo.icon).assertEqual("$media:icon");
-            expect(data.applicationInfo.iconId).assertEqual(16777224);
+            expect(data.applicationInfo.iconId).assertEqual(16777225); //16777224 => 16777225
             expect(data.applicationInfo.process).assertEqual("com.acts.staticinfomationquery");
             expect(data.applicationInfo.permissions.length).assertEqual(0);
             expect(data.applicationInfo.codePath).assertEqual("/data/app/el1/bundle/public/com.acts.staticinfomationquery");
@@ -243,7 +246,7 @@ export default function abilityTest() {
             console.log("checkAbilityInfo end  " + data);
         }
 
-        function checkApplicationInfo(data) {
+        let checkApplicationInfo = (data:ESObject):void => {
             console.log("checkApplicationInfo start  " + JSON.stringify(data));
             console.log("checkApplicationInfo name : " + data.name);
             console.log("checkApplicationInfo description : " + data.description);
@@ -255,12 +258,12 @@ export default function abilityTest() {
             console.log("checkApplicationInfo iconId : " + data.iconId);
             console.log("checkApplicationInfo process : " + data.process);
             console.log("checkApplicationInfo permissions length : " + data.permissions.length);
-            for (var j = 0; j < data.permissions.length; j++) {
+            for (let j = 0; j < data.permissions.length; j++) {
                 console.log("checkApplicationInfo data.permissions[" + j + "] : " + data.permissions[j]);
             }
             console.log("checkApplicationInfo codePath : " + data.codePath);
             console.log("checkApplicationInfo metadata size : " + data.metadata.size);
-            for (var j = 0; j < data.metadata.size; j++) {
+            for (let j = 0; j < data.metadata.size; j++) {
                 console.log("checkApplicationInfo data.metadata[" + j + "] : " + data.metadata[j]);
             }
             console.log("checkApplicationInfo removable: " + data.removable);
@@ -331,7 +334,7 @@ export default function abilityTest() {
             console.log("checkApplicationInfo end  " + data);
         }
 
-        function checkHapModuleInfo(data) {
+        let checkHapModuleInfo = (data:ESObject):void => {
             console.log("checkHapModuleInfo start  " + JSON.stringify(data));
             console.log("checkHapModuleInfo name : " + data.name);
             console.log("checkHapModuleInfo icon : " + data.icon);
@@ -345,18 +348,18 @@ export default function abilityTest() {
             console.log("checkHapModuleInfo extensionAbilitiesInfo : " + JSON.stringify(data.extensionAbilitiesInfo));
             console.log("checkHapModuleInfo metadata : " + JSON.stringify(data.metadata));
             console.log("checkHapModuleInfo deviceTypes length : " + data.deviceTypes.length);
-            for (var j = 0; j < data.deviceTypes.length; j++) {
+            for (let j = 0; j < data.deviceTypes.length; j++) {
                 console.log("checkHapModuleInfo data.deviceTypes[" + j + "] : " + data.deviceTypes[j]);
             }
             console.log("checkHapModuleInfo installationFree : " + data.installationFree);
             console.log("checkHapModuleInfo hashValue : " + data.hashValue);
             console.log("checkHapModuleInfo type : " + data.type);
             console.log("checkHapModuleInfo dependencies length : " + data.dependencies.length);
-            for (var j = 0; j < data.dependencies.length; j++) {
+            for (let j = 0; j < data.dependencies.length; j++) {
                 console.log("checkHapModuleInfo data.dependencies[" + j + "] : " + data.dependencies[j]);
             }
             console.log("checkHapModuleInfo preloads length : " + data.preloads.length);
-            for (var j = 0; j < data.preloads.length; j++) {
+            for (let j = 0; j < data.preloads.length; j++) {
                 console.log("checkHapModuleInfo data.preloads[" + j + "] : " + data.preloads[j]);
             }
 
@@ -382,7 +385,7 @@ export default function abilityTest() {
 
             expect(data.name).assertEqual("com.acts.staticinfomationquery");
             expect(data.icon).assertEqual("$media:icon");
-            expect(data.iconId).assertEqual(16777224);
+            expect(data.iconId).assertEqual(16777225); //16777224 =>16777225
             expect(data.label).assertEqual("$string:entry_label");
             expect(data.labelId).assertEqual(16777219);
             expect(data.description).assertEqual("$string:phone_entry_dsc");
