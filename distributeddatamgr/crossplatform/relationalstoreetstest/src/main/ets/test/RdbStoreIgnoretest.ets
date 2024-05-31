@@ -15,11 +15,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import curves from "@ohos.curves";
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { ValuesBucket } from '@ohos.data.ValuesBucket';
+import common from "@ohos.app.ability.common";
 
-let context: Context;
-const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+let context: common.UIAbilityContext;
 const TAG = "[RDB_JSKITS _TEST]";
 const CREATE_TABLE_ALL_DATA_TYPE_SQL =
   "CREATE TABLE IF NOT EXISTS AllDataType " +
@@ -145,8 +144,7 @@ export default function RdbStoreIgnore() {
   describe("RdbStoreIgnore", () => {
     beforeAll(async () => {
       console.info(TAG + "beforeAll");
-      let ability = await delegator.getCurrentTopAbility();
-      context = ability.context;
+      context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
       console.info(TAG + 'Get context successful. context=' + context);
     });
 

@@ -15,11 +15,10 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { ValueType } from '@ohos.data.ValuesBucket';
+import common from "@ohos.app.ability.common";
 
-let context: Context;
-const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+let context: common.UIAbilityContext;
 const USER_TABLE = "CREATE TABLE IF NOT EXISTS user " + "(userId INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT , lastName TEXT ," + "age INTEGER , balance REAL  NOT NULL)";
 
 const BOOK_TABLE = "CREATE TABLE IF NOT EXISTS Book (id INTEGER PRIMARY KEY AUTOINCREMENT," + "name TEXT, userId INTEGER , " + "FOREIGN KEY (userId) REFERENCES user (userId) ON UPDATE NO ACTION ON DELETE CASCADE)";
@@ -125,8 +124,7 @@ export default function rdbStoreQuerySqlTest() {
   describe("rdbStoreQuerySqlTest", () => {
     beforeAll(async () => {
       console.info(TAG + "beforeAll");
-      let ability = await delegator.getCurrentTopAbility();
-      context = ability.context;
+      context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
       console.info(TAG + 'Get context successful. context=' + context);
     });
 
