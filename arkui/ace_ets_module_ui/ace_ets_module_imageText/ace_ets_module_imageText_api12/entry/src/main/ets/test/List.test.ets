@@ -81,6 +81,15 @@ import imageAddApi from './ImageTest/imageAddApi.test'
 import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
 import styledStringApi from './TextTest/styledStringApi.test'
 import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
+import TextAreaApi1 from './TextArea/TextAreaApi1.test'
+import TextAreaApi2 from './TextArea/TextAreaApi2.test'
+import TextAreaApi3 from './TextArea/TextAreaApi3.test'
+import textApi1 from './Text/TextApi1.test'
+import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
+import EffectFillStyle from './SymbolGlyph/EffectFillStyle.test'
+import EffectScope from './SymbolGlyph/EffectScope.test'
+import menuPolicyHIDE from './RichEditorTest/menuPolicyHIDE.test'
+import menuPolicySHOW from './RichEditorTest/menuPolicySHOW.test'
 import StyledStringApi1 from './StyledString/StyledStringApi1.test'
 
 export default function testsuite() {
@@ -145,6 +154,10 @@ export default function testsuite() {
   Text_lineSpacingTest();
   marqueeOptionsTest();
   textStrategyJsunit();
+  EffectFillStyle()
+  EffectScope()
+  menuPolicyHIDE()
+  menuPolicySHOW()
 
   Context()
   getLayout()

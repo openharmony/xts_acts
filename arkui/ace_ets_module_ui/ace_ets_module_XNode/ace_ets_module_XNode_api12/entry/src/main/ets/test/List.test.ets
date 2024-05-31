@@ -19,9 +19,18 @@ import edgeWidths from './GraphicsTest/edgeWidths.test';
 import renderNodeGetInterfaceTest from './renderNode/renderNodeTestInterface.test';
 import disposeTest from './FrameNodeTest/dispose.test';
 import getAttrsTest from './FrameNodeTest/getAttrs.test';
-
-
 import RenderNodeAttributeTest from './renderNode/RenderNodeAttributeTest.test';
+import getPosition from './FrameNodeTest/getPosition.test';
+import setLayout from './FrameNodeTest/setLayout.test';
+import setRectShape from './GraphicsTest/setRectShape.test';
+import LengthUnitTest from './GraphicsTest/LengthUnit.test'
+import getBlendColor from './GraphicsTest/getBlendColor.test';
+import resourceColor from './GraphicsTest/resourceColor.test';
+import getNumeric from './GraphicsTest/getNumeric.test';
+import getAlpha from './GraphicsTest/getAlpha.test';
+import getBlue from './GraphicsTest/getBlue.test';
+import getGreen from './GraphicsTest/getGreen.test';
+import getRed from './GraphicsTest/getRed.test';
 
 export default function testsuite() {
   borderRadiuses();
@@ -32,4 +41,15 @@ export default function testsuite() {
   disposeTest();
   getAttrsTest();
   RenderNodeAttributeTest();
+  getPosition();
+  setLayout();
+  setRectShape();
+  LengthUnitTest();
+  getBlendColor();
+  resourceColor();
+  getNumeric();
+  getAlpha();
+  getBlue();
+  getGreen();
+  getRed();
 }
