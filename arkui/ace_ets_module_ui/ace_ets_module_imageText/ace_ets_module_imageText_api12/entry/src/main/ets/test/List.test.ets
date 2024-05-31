@@ -82,7 +82,7 @@ import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
 import styledStringApi from './TextTest/styledStringApi.test'
 import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
 import StyledStringApi1 from './StyledString/StyledStringApi1.test'
-
+import APIClipMaskShape from './ImageTest/APIClipMaskShape.test'
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -152,5 +152,6 @@ export default function testsuite() {
   styledStringApi()
   SelectionMenuApi()
   StyledStringApi1();
+  APIClipMaskShape();
 
 }
