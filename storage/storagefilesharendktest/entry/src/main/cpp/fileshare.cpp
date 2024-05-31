@@ -126,7 +126,7 @@ static napi_value FileShare_005(napi_env env, napi_callback_info info)
 static napi_value FileShare_006(napi_env env, napi_callback_info info)
 {
     char policyUriCharA[] =
-    "file://com.example.filesharea/data/storage/el2/base/CheckPersistentPermission.txt";
+    "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test6.txt";
     FileShare_PolicyInfo policyA = {.uri = policyUriCharA,
                                     .length = sizeof(policyUriCharA) - 1,
                                     .operationMode =
