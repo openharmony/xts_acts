@@ -33,11 +33,6 @@ struct ObserverApi1 {
         CustomCom({navIdValue:this.navIdValue, navDestinationParamValue:this.navDestinationParamValue})
       }
     }.title('pageOne')
-    .onReady((context: NavDestinationContext) => {
-      if(context){
-        this.str = String(context.navDestinationId)
-      }
-    })
   }
 
   @Builder
