@@ -77,6 +77,12 @@ export default function springBack() {
       console.info("[springBack_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("springBack success");
 
+      let strJson2 = getInspectorByKey('Dismiss_3');
+      let obj2 = JSON.parse(strJson2);
+      console.info("[springBack_0100] component obj2 is: " + JSON.stringify(obj2));
+      console.info("[springBack_0100] title: " + JSON.stringify(obj2.$attrs.content));
+      expect(obj2.$attrs.content).assertEqual("reason: 3");
+
       console.info('[springBack_0100] END');
       done();
     });
