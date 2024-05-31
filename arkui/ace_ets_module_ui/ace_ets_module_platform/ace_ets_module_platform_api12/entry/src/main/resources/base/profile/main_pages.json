@@ -5,6 +5,7 @@
         "MainAbility/pages/XComponent/onSurfaceCreated",
         "MainAbility/pages/XComponent/stopImageAnalyzer",
         "MainAbility/pages/Counter/counterApi",
-        "MainAbility/pages/Video/VideoTest1"
+        "MainAbility/pages/Video/VideoTest1",
+	"MainAbility/pages/XComponent/setXComponentSurfaceRotation"
     ]
 }
