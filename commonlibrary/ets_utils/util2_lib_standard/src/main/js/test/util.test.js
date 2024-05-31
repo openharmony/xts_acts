@@ -5347,7 +5347,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             var result = that.encodeSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array")
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero")
         }
     })
 
@@ -5441,7 +5441,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             var result = that.encodeToStringSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array")
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero")
         }
     })
 
@@ -5556,7 +5556,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([99,122,69,122]);
             var result = that.decodeSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array or string")
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array or string and the length greater than zero")
         }
     })
 
@@ -5756,7 +5756,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             that.encode(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array")
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero")
         }
 
     })
@@ -5856,7 +5856,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             that.encodeToString(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array")
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero")
         }
     })
 
@@ -6077,7 +6077,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint16Array([99,122,69,122]);
             that.decode(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array or string")
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array or string and the length greater than zero")
         }
     })
 
@@ -7058,6 +7058,118 @@ describe('Base64HelperTest', function () {
         } catch (e) {
             expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
                 'The target encoding type option nust be one of the Type enumerations.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_THROW_ERROR_001
+     * @tc.name: test_encodeSync_base64_throw_error_001
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeSync_base64_throw_error_001', 0, function () {
+        try {
+            var that = new util.Base64Helper();
+            var array = new Uint8Array([]);
+            var result = that.encodeSync(array);
+        } catch (e) {
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_TO_STRING_BASE64_THROW_ERROR_002
+     * @tc.name: test_encodeToStringSync_base64_throw_error_002
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToStringSync_base64_throw_error_002', 0, function () {
+        try {
+            var that = new util.Base64Helper()
+            var array = new Uint8Array([]);
+            var result = that.encodeToStringSync(array);
+        } catch (e) {
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYNC_BASE64_THROW_ERROR_003
+     * @tc.name: test_decodeSync_base64_throw_error_003
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+       array using the Base64 encoding scheme.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('test_decodeSync_base64_throw_error_003', 0, function () {
+        try {
+            var that = new util.Base64Helper()
+            var array = new Uint8Array([]);
+            var result = that.decodeSync(array);
+        } catch (e) {
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array or string and the length greater than zero");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODEASYNC_BASE64_THROW_ERROR_004
+     * @tc.name: test_encodeAsync_base64_throwError_004
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
+       array using the Base64 encoding scheme.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('test_encodeAsync_base64_throwError_004', 0, async function () {
+        try {
+            var that = new util.Base64Helper()
+            var array = new Uint8Array([]);
+            that.encode(array)
+        } catch (e) {
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_TO_STRING_BASE64_THROW_ERROR_005
+     * @tc.name: test_encodeToString_base64_throwError_005
+     * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToString_base64_throwError_005', 0, async function () {
+        try {
+            var that = new util.Base64Helper()
+            var array = new Uint8Array([]);
+            that.encodeToString(array)
+        } catch (e) {
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64_THROW_ERROR_006
+     * @tc.name: test_decode_base64_throwError_006
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+       array into a newly allocated u8 array.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('test_decode_base64_throwError_006', 0, async function () {
+        try {
+            var that = new util.Base64Helper()
+            var array = new Uint8Array([]);
+            that.decode(array)
+        } catch (e) {
+            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array or string and the length greater than zero");
         }
     })
 })

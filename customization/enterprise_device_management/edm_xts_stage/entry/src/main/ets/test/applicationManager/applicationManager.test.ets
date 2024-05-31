@@ -81,7 +81,8 @@ export default function applicationManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = applicationManager.getDisallowedRunningBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == APP_IDS_1.length).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -158,7 +159,8 @@ export default function applicationManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = applicationManager.getDisallowedRunningBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == 0).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }
@@ -234,8 +236,8 @@ export default function applicationManagerTest() {
     it("test_getDisallowedRunningBundlesSync_003", 0, async function (done) {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        applicationManager.getDisallowedRunningBundlesSync(SELFWANT, TEST_USER_ID);
-        expect(false).assertTrue();
+        let ret:Array<string> = applicationManager.getDisallowedRunningBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(ret.length == 0).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
       }

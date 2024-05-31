@@ -33,7 +33,7 @@ static napi_value TestImageBrightness001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_BRIGHTNESS, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 
@@ -45,7 +45,7 @@ static napi_value TestImageBrightness002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_BRIGHTNESS, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 
@@ -53,7 +53,7 @@ static napi_value TestImageBrightness003(napi_env env, napi_callback_info info)
 {
     NAPI_START(image, ARKUI_NODE_IMAGE);
     float brightnessValue = DEFAULT_VALUE;
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 
@@ -65,7 +65,7 @@ static napi_value TestImageBrightness004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_BRIGHTNESS, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 
@@ -77,7 +77,7 @@ static napi_value TestImageBrightness005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_BRIGHTNESS, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 

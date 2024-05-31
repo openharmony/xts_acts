@@ -16,6 +16,8 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import testNapi from 'libimageEffect.so'
+import { ImageUtils } from './ImageUtils';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 // 操作成功;
 const EFFECT_SUCCESS = 0;
@@ -44,8 +46,13 @@ const CASE_INDEX_11 = 11;
 export default function imageEffectTest() {
 
   describe('ImageEffectTest', () => {
-
-    beforeAll(() => {
+    beforeAll(async (done: Function) => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let context = abilityDelegator.getAppContext();
+      let filePath = context.filesDir + "/test.jpg";
+      await ImageUtils.getInstance().savePixelMap(filePath, $r('app.media.original'));
+      testNapi.savePixelMapForPath(filePath);
+      done();
     });
     beforeEach(() => {
     });
@@ -1333,6 +1340,19 @@ export default function imageEffectTest() {
     });
 
     /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTFILTERRENDER_0100
+     * @tc.name   : testOHEffectFilterRender001
+     * @tc.desc   : Perform image rendering.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHEffectFilterRender001', 0, () => {
+      let result: number = testNapi.OHEffectFilterRender();
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
      * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTCREATE_0100
      * @tc.name   : testOHImageEffectCreate001
      * @tc.desc   : Create an OH-Image Effect instance and call OH-Image Effect Release to release resources.
@@ -1770,7 +1790,8 @@ export default function imageEffectTest() {
      * @tc.level  : Level 1
      */
     it('testOHImageEffectSetInputPixelmap001', 0, () => {
-      expect(testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_1)).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+      let result: number = testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_1);
+      expect(result).assertEqual(EFFECT_SUCCESS);
     });
 
     /**
@@ -1782,7 +1803,8 @@ export default function imageEffectTest() {
      * @tc.level  : Level 1
      */
     it('testOHImageEffectSetInputPixelmap002', 0, () => {
-      expect(testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_2)).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+      let result: number = testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_2);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
 
     /**
@@ -1794,7 +1816,8 @@ export default function imageEffectTest() {
      * @tc.level  : Level 1
      */
     it('testOHImageEffectSetInputPixelmap003', 0, () => {
-      expect(testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_3)).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+      let result: number = testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_3);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
 
     /**
@@ -1962,7 +1985,33 @@ export default function imageEffectTest() {
      * @tc.level  : Level 1
      */
     it('testOHImageEffectSetOutputPixelmap001', 0, () => {
-      let result: number = testNapi.OHImageEffectSetOutputPixelmap();
+      let result: number = testNapi.OHImageEffectSetOutputPixelmap(CASE_INDEX_1);
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTSETOUTPUTPIXELMAP_0200
+     * @tc.name   : testOHImageEffectSetOutputPixelmap002
+     * @tc.desc   : Set the Pixelmap for output.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectSetOutputPixelmap002', 0, () => {
+      let result: number = testNapi.OHImageEffectSetOutputPixelmap(CASE_INDEX_2);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTSETOUTPUTPIXELMAP_0300
+     * @tc.name   : testOHImageEffectSetOutputPixelmap003
+     * @tc.desc   : Set the Pixelmap for output.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectSetOutputPixelmap003', 0, () => {
+      let result: number = testNapi.OHImageEffectSetOutputPixelmap(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
 
@@ -2133,6 +2182,32 @@ export default function imageEffectTest() {
     it('testOHImageEffectSetOutputUri011', 0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_11);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHImageEffectStart_0100
+     * @tc.name   : testOHImageEffectStart001
+     * @tc.desc   : Start the Effector.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectStart001', 0, () => {
+      let result: number = testNapi.OHImageEffectStart();
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHIMAGEEFFECTSTOP_0100
+     * @tc.name   : testOHImageEffectStop001
+     * @tc.desc   : Start the Effector.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectStop_001', 0, () => {
+      let result: number = testNapi.OHImageEffectStop();
+      expect(result).assertEqual(EFFECT_SUCCESS);
     });
 
   });

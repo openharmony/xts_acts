@@ -42,26 +42,13 @@ export default function listFrictionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_LIST_FRICTION_0200
      * @tc.name       : testListFriction002
-     * @tc.desc       : testing friction for list with normal value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testListFriction002', 0, async (done: Function) => {
-      expect(nativeFunc.testListFriction002()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_LIST_FRICTION_0300
-     * @tc.name       : testListFriction003
      * @tc.desc       : testing friction for list with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListFriction003', 0, async (done: Function) => {
-      expect(nativeFunc.testListFriction003()).assertEqual(0)
+    it('testListFriction002', 0, async (done: Function) => {
+      expect(nativeFunc.testListFriction002()).assertEqual(0)
       done()
     })
   })

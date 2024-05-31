@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -49,7 +49,7 @@ import SensorJsTest_sensor_18 from './SensorOnOffTest.test_oldPedometer.test.js'
 import SensorJsTest_sensor_61 from './SensorOnOffTest.test_newColor.test.js'
 import SensorJsTest_sensor_62 from './SensorOnOffTest.test_newSar.test.js'
 import SensorJsTest_sensor_63 from './SensorOnOffTest.test_SensorFrequencyTest.test.js'
-
+import SensorJsTest_sensor_64 from './SensorOnOffTest.test_newSensorSync.test.js'
 export default function testsuite() {
 		SystemParameterTest()
 		SensorJsTest_sensor_2()
@@ -88,4 +88,5 @@ export default function testsuite() {
 		SensorJsTest_sensor_61()
 		SensorJsTest_sensor_62()
 		SensorJsTest_sensor_63()
+        SensorJsTest_sensor_64()
 }                    

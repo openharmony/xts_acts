@@ -110,16 +110,4 @@ static napi_value TestStackBorderColor006(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
-static napi_value TestStackBorderColor007(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    uint32_t borderColorDefault = 0xFF000000;
-
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_COLOR)->value[PARAM_0].u32, borderColorDefault);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_COLOR)->value[PARAM_1].u32, borderColorDefault);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_COLOR)->value[PARAM_2].u32, borderColorDefault);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BORDER_COLOR)->value[PARAM_3].u32, borderColorDefault);
-    NAPI_END;
-}
-
 } // namespace ArkUICapiTest

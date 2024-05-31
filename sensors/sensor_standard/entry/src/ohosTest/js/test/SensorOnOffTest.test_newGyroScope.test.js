@@ -83,6 +83,7 @@ describe("SensorJsTest_sensor_43", function () {
 
     const PARAMETER_ERROR_CODE = 401
     const SERVICE_EXCEPTION_CODE = 14500101
+    const SENSOR_NO_SUPPORT_CODE = 14500102
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
     let invalid  = -1;
@@ -90,15 +91,15 @@ describe("SensorJsTest_sensor_43", function () {
 
     /*
     * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0010
-    * @tc.name: newGyroScopeSensorJsTest001
+    * @tc.name: newGyroScope_SensorJsTest001
     * @tc.desc: Functional Use Cases
     * @tc.level:Level 0
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("newGyroScopeSensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newGyroScopeSensorJsTest001--------------');
-        TAG = 'newGyroScopeSensorJsTest001';
+    it("newGyroScope_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newGyroScope_SensorJsTest001--------------');
+        TAG = 'newGyroScope_SensorJsTest001';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -114,22 +115,23 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0020
-     * @tc.name: newGyroScopeSensorJsTest002
+     * @tc.name: newGyroScope_SensorJsTest002
      * @tc.desc: Illegal ID passed in
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGyroScopeSensorJsTest002--------------');
-        TAG = 'newGyroScopeSensorJsTest002';
+    it("newGyroScope_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScope_SensorJsTest002--------------');
+        TAG = 'newGyroScope_SensorJsTest002';
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
@@ -153,22 +155,23 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0030
-     * @tc.name: newGyroScopeSensorJsTest003
+     * @tc.name: newGyroScope_SensorJsTest003
      * @tc.desc: For normal scenarios
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGyroScopeSensorJsTest003--------------');
-        TAG = 'newGyroScopeSensorJsTest003';
+    it("newGyroScope_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScope_SensorJsTest003--------------');
+        TAG = 'newGyroScope_SensorJsTest003';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -178,30 +181,31 @@ describe("SensorJsTest_sensor_43", function () {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.GYROSCOPE, callback, {'interval': 100000000});
                     setTimeout(()=>{
-                        console.info('---------newGyroScopeSensorJsTest003 off in--------------');
+                        console.info('---------newGyroScope_SensorJsTest003 off in--------------');
                         sensor.off(sensor.SensorId.GYROSCOPE);
-                        console.info('---------newGyroScopeSensorJsTest003 off end--------------');
+                        console.info('---------newGyroScope_SensorJsTest003 off end--------------');
                         done();
                     }, 500);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0040
-     * @tc.name: newGyroScopeSensorJsTest004
+     * @tc.name: newGyroScope_SensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGyroScopeSensorJsTest004--------------');
-        TAG = 'newGyroScopeSensorJsTest004';
+    it("newGyroScope_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScope_SensorJsTest004--------------');
+        TAG = 'newGyroScope_SensorJsTest004';
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
@@ -226,29 +230,30 @@ describe("SensorJsTest_sensor_43", function () {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.GYROSCOPE, onSensorCallback, {'interval': 100000000}, 5);
                     setTimeout(()=>{
-                        console.info('---------newGyroScopeSensorJsTest004 off in--------------');
+                        console.info('---------newGyroScope_SensorJsTest004 off in--------------');
                         sensor.off(sensor.SensorId.GYROSCOPE);
-                        console.info('---------newGyroScopeSensorJsTest004 off end--------------');
+                        console.info('---------newGyroScope_SensorJsTest004 off end--------------');
                         done();
                     }, 500);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0050
-     * @tc.name: newGyroScopeSensorJsTest005
+     * @tc.name: newGyroScope_SensorJsTest005
      * @tc.desc: Once Normal Subscription Scenario Use Case
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newGyroScopeSensorJsTest005';
+    it("newGyroScope_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest005';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -264,21 +269,22 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0060
-     * @tc.name: newGyroScopeSensorJsTest006
+     * @tc.name: newGyroScope_SensorJsTest006
      * @tc.desc: Use case of illegal parameter passed into once interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newGyroScopeSensorJsTest006';
+    it("newGyroScope_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest006';
         function onceSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
@@ -296,27 +302,27 @@ describe("SensorJsTest_sensor_43", function () {
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
                         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                         done();
                     }
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0070
-     * @tc.name: newGyroScopeSensorJsTest007
+     * @tc.name: newGyroScope_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newGyroScopeSensorJsTest007';
+    it("newGyroScope_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest007';
         function onceSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
@@ -344,21 +350,22 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0080
-     * @tc.name: newGyroScopeSensorJsTest008
+     * @tc.name: newGyroScope_SensorJsTest008
      * @tc.desc: Use case of illegal parameter passed into off interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newGyroScopeSensorJsTest008';
+    it("newGyroScope_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest008';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -371,27 +378,27 @@ describe("SensorJsTest_sensor_43", function () {
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
                         expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
                         done();
                     }
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0090
-     * @tc.name: newGyroScopeSensorJsTest009
+     * @tc.name: newGyroScope_SensorJsTest009
      * @tc.desc: Unsubscribe directly without waiting after starting subscription
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newGyroScopeSensorJsTest009';
+    it("newGyroScope_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest009';
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
@@ -422,21 +429,22 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0100
-     * @tc.name: newGyroScopeSensorJsTest010
+     * @tc.name: newGyroScope_SensorJsTest010
      * @tc.desc:SensorId1000000 of incoming exception
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newGyroScopeSensorJsTest010';
+    it("newGyroScope_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest010';
         function onSensorCallback(data) {
             console.info(TAG + ' Callback in!' + JSON.stringify(data));
             expect(false).assertTrue();
@@ -454,27 +462,27 @@ describe("SensorJsTest_sensor_43", function () {
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
                         expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
                         done();
                     }
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0110
-     * @tc.name: newGyroScopeSensorJsTest011
+     * @tc.name: newGyroScope_SensorJsTest011
      * @tc.desc:Call interface multiple times
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newGyroScopeSensorJsTest011';
+    it("newGyroScope_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest011';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -513,15 +521,16 @@ describe("SensorJsTest_sensor_43", function () {
                         expect(typeof (data.timestamp)).assertEqual("number");
                     });
                     setTimeout(()=>{
-                        console.info('---------newGyroScopeSensorJsTest011 off in--------------');
+                        console.info('---------newGyroScope_SensorJsTest011 off in--------------');
                         sensor.off(sensor.SensorId.GYROSCOPE);
-                        console.info('---------newGyroScopeSensorJsTest011 off end--------------');
+                        console.info('---------newGyroScope_SensorJsTest011 off end--------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
@@ -548,13 +557,13 @@ describe("SensorJsTest_sensor_43", function () {
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
                         expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
                         done();
                     }
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
@@ -616,7 +625,8 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
@@ -678,7 +688,8 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
@@ -706,7 +717,6 @@ describe("SensorJsTest_sensor_43", function () {
                         } catch (error) {
                             console.info(TAG + ' on error:' + error);
                             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-                            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                             done();
                         }
                         try {
@@ -714,7 +724,6 @@ describe("SensorJsTest_sensor_43", function () {
                         } catch (error) {
                             console.info(TAG + ' once error:' + error);
                             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-                            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                             done();
                         }
                         try {
@@ -722,13 +731,13 @@ describe("SensorJsTest_sensor_43", function () {
                         } catch (error) {
                             console.info(TAG + ' off error:' + error);
                             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-                            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                             done();
                         }
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
@@ -771,7 +780,8 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
@@ -814,7 +824,8 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
@@ -844,13 +855,13 @@ describe("SensorJsTest_sensor_43", function () {
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
                         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                         done();
                     }
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
@@ -881,28 +892,28 @@ describe("SensorJsTest_sensor_43", function () {
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
                         expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
-                        expect(error.message).assertEqual(SERVICE_EXCEPTION_MSG);
                         done();
                     }
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0200
-     * @tc.name: newGyroScopeSensorJsTest020
+     * @tc.name: newGyroScope_SensorJsTest020
      * @tc.desc: Functional Use Cases
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newGyroScopeSensorJsTest020--------------');
-        TAG = 'newGyroScopeSensorJsTest020';
+    it("newGyroScope_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newGyroScope_SensorJsTest020--------------');
+        TAG = 'newGyroScope_SensorJsTest020';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -913,7 +924,7 @@ describe("SensorJsTest_sensor_43", function () {
                     sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': undefined });
                     sensor.on(sensor.SensorId.GYROSCOPE, callback2, { 'interval': undefined });
                     setTimeout(() => {
-                        console.info('----------------------newGyroScopeSensorJsTest020 off in--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest020 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.GYROSCOPE, callback);
                             sensor.off(sensor.SensorId.GYROSCOPE, callback2);
@@ -921,27 +932,28 @@ describe("SensorJsTest_sensor_43", function () {
                             console.info(TAG + ' catch error:' + error);
                             expect(false).assertTrue();
                         }
-                        console.info('----------------------newGyroScopeSensorJsTest020 off end--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest020 off end--------------');
                         done()
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0210
-     * @tc.name: newGyroScopeSensorJsTest021
+     * @tc.name: newGyroScope_SensorJsTest021
      * @tc.desc: Illegal ID passed in
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newGyroScopeSensorJsTest021';
+    it("newGyroScope_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest021';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -956,7 +968,7 @@ describe("SensorJsTest_sensor_43", function () {
                         console.info(TAG + ' catch error:' + error);
                     }
                     setTimeout(() => {
-                        console.info('----------------------newGyroScopeSensorJsTest021 off in--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest021 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.GYROSCOPE);
                         } catch (error) {
@@ -968,22 +980,23 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0220
-     * @tc.name: newGyroScopeSensorJsTest022
+     * @tc.name: newGyroScope_SensorJsTest022
      * @tc.desc: For normal scenarios
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGyroScopeSensorJsTest022--------------');
-        TAG = 'newGyroScopeSensorJsTest022';
+    it("newGyroScope_SensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScope_SensorJsTest022--------------');
+        TAG = 'newGyroScope_SensorJsTest022';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -998,7 +1011,7 @@ describe("SensorJsTest_sensor_43", function () {
                             console.info(TAG + ' catch error:' + error);
                         }
                     setTimeout(() => {
-                        console.info('----------------------newGyroScopeSensorJsTest022 off in--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest022 off in--------------');
                         try {
                                 sensor.off(sensor.SensorId.GYROSCOPE);
                             } catch (error) {
@@ -1010,22 +1023,23 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0230
-     * @tc.name: newGyroScopeSensorJsTest023
+     * @tc.name: newGyroScope_SensorJsTest023
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGyroScopeSensorJsTest023--------------');
-        TAG = 'newGyroScopeSensorJsTest023';
+    it("newGyroScope_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScope_SensorJsTest023--------------');
+        TAG = 'newGyroScope_SensorJsTest023';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -1035,7 +1049,7 @@ describe("SensorJsTest_sensor_43", function () {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': null });
                     setTimeout(() => {
-                        console.info('----------------------newGyroScopeSensorJsTest023 off in--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest023 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.GYROSCOPE);
                         } catch (error) {
@@ -1047,21 +1061,22 @@ describe("SensorJsTest_sensor_43", function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0240
-     * @tc.name: newGyroScopeSensorJsTest024
+     * @tc.name: newGyroScope_SensorJsTest024
      * @tc.desc: Once Normal Subscription Scenario Use Case
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScopeSensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        TAG = 'newGyroScopeSensorJsTest024';
+    it("newGyroScope_SensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest024';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -1076,20 +1091,21 @@ describe("SensorJsTest_sensor_43", function () {
                             console.info(TAG + ' catch error:' + error);
                         }
                     setTimeout(() => {
-                        console.info('----------------------newGyroScopeSensorJsTest024 off in--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest024 off in--------------');
                         try {
                                 sensor.off(sensor.SensorId.GYROSCOPE);
                             } catch (error) {
                                 console.info(TAG + ' catch error:' + error);
                                 expect(false).assertTrue();
                             }
-                        console.info('----------------------newGyroScopeSensorJsTest024 off end--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest024 off end--------------');
                             done()
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })

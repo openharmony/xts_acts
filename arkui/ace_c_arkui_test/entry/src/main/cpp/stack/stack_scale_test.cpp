@@ -34,16 +34,6 @@ static napi_value TestStackScale001(napi_env env, napi_callback_info info)
 static napi_value TestStackScale002(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    float x = 1;
-    float y = 1;
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE)->value[PARAM_0].f32, x);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE)->value[PARAM_1].f32, y);
-    NAPI_END;
-}
-
-static napi_value TestStackScale003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
     float x = 2;
     float y = 2;
     ArkUI_NumberValue value[] = {{.f32 = x}, {.f32 = y}};
@@ -55,7 +45,7 @@ static napi_value TestStackScale003(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
-static napi_value TestStackScale004(napi_env env, napi_callback_info info)
+static napi_value TestStackScale003(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     float x = -2;

@@ -46,6 +46,7 @@ export default function hardwareTest() {
     beforeAll(async (done: Function) => {
       abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       applicationContext = abilityContext.getApplicationContext()
+      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
 
       let permissions: Array<Permissions> = ['ohos.permission.CAMERA',
         'ohos.permission.MICROPHONE'];
@@ -182,15 +183,15 @@ export default function hardwareTest() {
       if (isCameraSupported) {
         let photoSession = await getPhotoSession(abilityContext, applicationContext)
         try {
-          let supportedExposureModes = new List<camera.ExposureMode>()
+          let supportedExposureModes = new Array<camera.ExposureMode>()
           if (photoSession.isExposureModeSupported(camera.ExposureMode.EXPOSURE_MODE_LOCKED)) {
-            supportedExposureModes.add(camera.ExposureMode.EXPOSURE_MODE_LOCKED)
+            supportedExposureModes.push(camera.ExposureMode.EXPOSURE_MODE_LOCKED)
           }
           if (photoSession.isExposureModeSupported(camera.ExposureMode.EXPOSURE_MODE_AUTO)) {
-            supportedExposureModes.add(camera.ExposureMode.EXPOSURE_MODE_AUTO)
+            supportedExposureModes.push(camera.ExposureMode.EXPOSURE_MODE_AUTO)
           }
           if (photoSession.isExposureModeSupported(camera.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)) {
-            supportedExposureModes.add(camera.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
+            supportedExposureModes.push(camera.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
           }
           for (let supportedExposureMode of supportedExposureModes) {
             photoSession.setExposureMode(supportedExposureMode)
@@ -218,18 +219,18 @@ export default function hardwareTest() {
       if (isCameraSupported) {
         let photoSession = await getPhotoSession(abilityContext, applicationContext)
         try {
-          let supportedFocusModes = new List<camera.FocusMode>()
+          let supportedFocusModes = new Array<camera.FocusMode>()
           if (photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_MANUAL)) {
-            supportedFocusModes.add(camera.FocusMode.FOCUS_MODE_MANUAL)
+            supportedFocusModes.push(camera.FocusMode.FOCUS_MODE_MANUAL)
           }
           if (photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO)) {
-            supportedFocusModes.add(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO)
+            supportedFocusModes.push(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO)
           }
           if (photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_AUTO)) {
-            supportedFocusModes.add(camera.FocusMode.FOCUS_MODE_AUTO)
+            supportedFocusModes.push(camera.FocusMode.FOCUS_MODE_AUTO)
           }
           if (photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_LOCKED)) {
-            supportedFocusModes.add(camera.FocusMode.FOCUS_MODE_LOCKED)
+            supportedFocusModes.push(camera.FocusMode.FOCUS_MODE_LOCKED)
           }
           for (let supportedFocusMode of supportedFocusModes) {
             photoSession.setFocusMode(supportedFocusMode)
@@ -302,32 +303,36 @@ export default function hardwareTest() {
         let cameraManager = camera.getCameraManager(applicationContext)
         let supportedCameras = cameraManager.getSupportedCameras()
         expect(supportedCameras.length).assertLarger(0)
-        let cameraDevice = supportedCameras[0]
-        let supportedOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice)
 
-        let previewProfiles = supportedOutputCapability.previewProfiles
-        expect(previewProfiles.length).assertLarger(0)
-        let previewFormats = new List<camera.CameraFormat>()
-        for (let previewProfileInfo of previewProfiles) {
-          previewFormats.add(previewProfileInfo.format)
-        }
-        expect(previewFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP)
+        for(let cameraDevice of supportedCameras) {
+          let supportedOutputCapability: camera.CameraOutputCapability
+          supportedOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_VIDEO)
+          let previewProfiles = supportedOutputCapability.previewProfiles
+          expect(previewProfiles.length).assertLarger(0)
+          let previewFormats = new Array<camera.CameraFormat>()
+          for (let previewProfileInfo of previewProfiles) {
+            previewFormats.push(previewProfileInfo.format)
+          }
+          expect(previewFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP)
 
-        let videoProfiles = supportedOutputCapability.videoProfiles
-        expect(videoProfiles.length).assertLarger(0)
-        let videoFormats = new List<camera.CameraFormat>()
-        for (let videoProfileInfo of videoProfiles) {
-          videoFormats.add(videoProfileInfo.format)
-        }
-        expect(videoFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP)
+          supportedOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_VIDEO)
+          let videoProfiles = supportedOutputCapability.videoProfiles
+          expect(videoProfiles.length).assertLarger(0)
+          let videoFormats = new Array<camera.CameraFormat>()
+          for (let videoProfileInfo of videoProfiles) {
+            videoFormats.push(videoProfileInfo.format)
+          }
+          expect(videoFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP)
 
-        let photoProfiles = supportedOutputCapability.photoProfiles
-        expect(photoProfiles.length).assertLarger(0)
-        let photoFormats = new List<camera.CameraFormat>()
-        for (let photoProfileInfo of photoProfiles) {
-          photoFormats.add(photoProfileInfo.format)
+          supportedOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO)
+          let photoProfiles = supportedOutputCapability.photoProfiles
+          expect(photoProfiles.length).assertLarger(0)
+          let photoFormats = new Array<camera.CameraFormat>()
+          for (let photoProfileInfo of photoProfiles) {
+            photoFormats.push(photoProfileInfo.format)
+          }
+          expect(photoFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_JPEG)
         }
-        expect(photoFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_JPEG)
       }
       done()
     })
@@ -443,10 +448,10 @@ export default function hardwareTest() {
         expect(audioRenderer != null).assertTrue()
         let currentOutputDevices = await audioRenderer.getCurrentOutputDevices()
         expect(currentOutputDevices != undefined).assertTrue()
-        let supportedSamplingRates = new List<audio.AudioSamplingRate>()
+        let supportedSamplingRates = new Array<audio.AudioSamplingRate>()
         for (let currentOutputDevice of currentOutputDevices) {
           for (let samplingRate of currentOutputDevice.sampleRates) {
-            supportedSamplingRates.add(samplingRate)
+            supportedSamplingRates.push(samplingRate)
           }
         }
         try {
@@ -492,10 +497,10 @@ export default function hardwareTest() {
         expect(audioRenderer != undefined).assertTrue()
         expect(audioRenderer != null).assertTrue()
         let currentOutputDevices = await audioRenderer.getCurrentOutputDevices()
-        let supportedChannels = new List<audio.AudioChannel>()
+        let supportedChannels = new Array<number>()
         for (let currentOutputDevice of currentOutputDevices) {
           for (let channelCount of currentOutputDevice.channelCounts) {
-            supportedChannels.add(channelCount)
+            supportedChannels.push(channelCount)
           }
         }
         try {
@@ -539,11 +544,11 @@ export default function hardwareTest() {
         expect(audioRenderer != undefined).assertTrue()
         expect(audioRenderer != null).assertTrue()
         let currentOutputDevices = await audioRenderer.getCurrentOutputDevices()
-        let supportedEncodingTypes = new List<audio.AudioEncodingType>()
+        let supportedEncodingTypes = new Array<audio.AudioEncodingType>()
         for (let currentOutputDevice of currentOutputDevices) {
           if (currentOutputDevice.encodingTypes != undefined) {
             for (let encodingType of currentOutputDevice.encodingTypes) {
-              supportedEncodingTypes.add(encodingType)
+              supportedEncodingTypes.push(encodingType)
             }
           }
         }
@@ -585,22 +590,22 @@ export default function hardwareTest() {
         }
         let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(audioCapturerOptions)
         expect(audioCapturer != undefined).assertTrue()
-        let currentInputDevices = await audioCapturer.getCurrentInputDevices()
-        let supportedChannels = new List<audio.AudioChannel>()
-        let supportedEncodingTypes = new List<audio.AudioEncodingType>()
-        let supportedSamplingRates = new List<audio.AudioSamplingRate>()
+        let currentInputDevices = audioCapturer.getCurrentInputDevices()
+        let supportedChannels = new Array<audio.AudioChannel>()
+        let supportedEncodingTypes = new Array<audio.AudioEncodingType>()
+        let supportedSamplingRates = new Array<audio.AudioSamplingRate>()
         for (let currentInputDevice of currentInputDevices) {
           expect(currentInputDevice != undefined).assertTrue()
           for (let channelCount of currentInputDevice.channelCounts) {
-            supportedChannels.add(channelCount)
+            supportedChannels.push(channelCount)
           }
           if (currentInputDevice.encodingTypes != undefined) {
             for (let encodingType of currentInputDevice.encodingTypes) {
-              supportedEncodingTypes.add(encodingType)
+              supportedEncodingTypes.push(encodingType)
             }
           }
           for (let sampleRate of currentInputDevice.sampleRates) {
-            supportedSamplingRates.add(sampleRate)
+            supportedSamplingRates.push(sampleRate)
           }
         }
         try {

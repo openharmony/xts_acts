@@ -25,7 +25,7 @@ static napi_value TestScrollWidth001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem width_value_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_WIDTH, &width_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_WIDTH)->value->f32, width);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_WIDTH)->value[PARAM_0].f32, width);
     NAPI_END;
 }
 
@@ -38,7 +38,7 @@ static napi_value TestScrollWidth002(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(scroll, NODE_WIDTH, &width_value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(scroll, NODE_WIDTH) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_WIDTH)->value->f32, width);
+        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_WIDTH)->value[PARAM_0].f32, width);
     }
     NAPI_END;
 }
@@ -51,7 +51,7 @@ static napi_value TestScrollWidth003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem width_value_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_WIDTH, &width_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_WIDTH)->value->f32, width);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_WIDTH)->value[PARAM_0].f32, width);
     NAPI_END;
 }
 

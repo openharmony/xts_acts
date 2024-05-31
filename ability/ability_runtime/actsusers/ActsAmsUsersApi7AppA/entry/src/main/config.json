@@ -1,26 +1,20 @@
 {
   "app": {
     "bundleName": "com.example.userservicesystemapi7",
-    "vendor": "test",
+    "vendor": "example",
     "version": {
-      "code": 1000110,
-      "name": "1.1.1"
-    },
-    "apiVersion": {
-      "compatible": 8,
-      "target": 9
+      "code": 1000000,
+      "name": "1.0.0"
     }
   },
   "deviceConfig": {},
   "module": {
     "package": "com.example.userservicesystemapi7",
-    "name": ".MyApplication",
+    "name": ".entry",
     "mainAbility": ".MainAbility",
-    "srcPath": "",
     "deviceType": [
       "default",
-      "tablet",
-      "2in1"
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -41,25 +35,16 @@
           }
         ],
         "orientation": "unspecified",
-        "visible": true,
-        "srcPath": "MainAbility",
+        "formsEnabled": false,
         "name": ".MainAbility",
         "srcLanguage": "ets",
+        "srcPath": "MainAbility",
         "icon": "$media:icon",
-        "description": "$string:description_mainability",
-        "formsEnabled": false,
-        "label": "$string:entry_MainAbility",
+        "description": "$string:MainAbility_desc",
+        "label": "$string:MainAbility_label",
         "type": "page",
-        "launchType": "standard"
-      },
-      {
-        "srcPath": "ServiceAbility",
-        "name": ".ServiceAbility",
-        "icon": "$media:icon",
-        "srcLanguage": "ets",
-        "description": "$string:description_serviceability",
         "visible": true,
-        "type": "service"
+        "launchType": "standard"
       }
     ],
     "js": [
@@ -69,8 +54,7 @@
           "type": "pageAbility"
         },
         "pages": [
-          "pages/index",
-          "pages/second"
+          "pages/index"
         ],
         "name": ".MainAbility",
         "window": {

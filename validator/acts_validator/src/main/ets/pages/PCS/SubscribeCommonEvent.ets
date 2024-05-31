@@ -35,17 +35,17 @@ let abilityContext = getContext(this) as context.UIAbilityContext;
 @Component
 struct testSubscribeCommonEvent {
   @State name: string = 'SubscribeCommonEvent';
-  @State StepTips: string = '操作步骤：订阅系统公共事件' + '\n' + '根据操作提示操作界面触发系统公共事件' + '\n' + '预期结果：获取系统公共事件通知';
-  @State TestResult: boolean = false;
-  @State StartEnable: boolean = true;
-  @State Result: string = "FLASE";
+  @State stepTips: string = '操作步骤：订阅系统公共事件' + '\n' + '根据操作提示操作界面触发系统公共事件' + '\n' + '预期结果：获取系统公共事件通知';
+  @State testResult: boolean = false;
+  @State startEnable: boolean = true;
+  @State result: string = "FLASE";
   scroller: Scroller = new Scroller();
 
   async aboutToAppear() {
-    await FirstDialog.ChooseDialog(this.StepTips, this.name);
-    this.TestResult = false;
-    this.StartEnable = true;
-    this.Result = "FLASE";
+    await FirstDialog.ChooseDialog(this.stepTips, this.name);
+    this.testResult = false;
+    this.startEnable = true;
+    this.result = "FLASE";
   }
 
   @Builder
@@ -75,8 +75,8 @@ struct testSubscribeCommonEvent {
                   .backgroundColor(0x317aff)
                   .width('50%')
                   .margin('10vp')
-                  .enabled(this.StartEnable)
-                  .opacity(this.StartEnable ? 1 : 0.4)
+                  .enabled(this.startEnable)
+                  .opacity(this.startEnable ? 1 : 0.4)
                   .onClick(async () => {
                     let subscriber: CommonEventManager.CommonEventSubscriber;
                     let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
@@ -88,12 +88,12 @@ struct testSubscribeCommonEvent {
                         if (err) {
                           console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
                         } else {
-                          this.Result = "TRUE";
-                          this.TestResult = true
+                          this.result = "TRUE";
+                          this.testResult = true
                           console.info(`subscribe event: ${data.event}`);
                         }
                       });
-                      this.StartEnable = !this.StartEnable;
+                      this.startEnable = !this.startEnable;
                     } catch (error) {
                       let err: BusinessError = error as BusinessError;
                       console.error(`Subscriber common event failed, code is ${err.code}, message is ${err.message}`);
@@ -106,21 +106,21 @@ struct testSubscribeCommonEvent {
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('50%')
-                  .enabled(!this.StartEnable)
-                  .opacity(!this.StartEnable ? 1 : 0.4)
+                  .enabled(!this.startEnable)
+                  .opacity(!this.startEnable ? 1 : 0.4)
                   .onClick(() => {
                     try {
                       power.suspend();
                     } catch (err) {
                       console.error('suspend failed, err: ' + err);
                     }
-                    this.StartEnable = !this.StartEnable;
+                    this.startEnable = !this.startEnable;
                   })
               }
             }
 
             Row() {
-              Text('\n' + '\n' + `订阅公共事件结果：` + this.Result)
+              Text('\n' + '\n' + `订阅公共事件结果：` + this.result)
                 .fontColor(Color.White)
                 .fontSize('24fp')
             }
@@ -141,13 +141,13 @@ struct testSubscribeCommonEvent {
     Column() {
       CustomContainer({
         title: this.name,
-        Url: 'pages/PCS/PCS_index',
-        StepTips: this.StepTips,
+        url: 'pages/PCS/PCS_index',
+        stepTips: this.stepTips,
         content: this.specificNoParam,
         name: $name,
-        TestResult: $TestResult,
-        StartEnable: $StartEnable,
-        Result: $Result,
+        testResult: $testResult,
+        startEnable: $startEnable,
+        result: $result,
       })
     }
     .width('100%')

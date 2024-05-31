@@ -74,7 +74,7 @@ function createX509CertInstanceCallback(certType) {
 
 function createX509CertInstanceforCrlTestCallback(flag) {
   var certformat;
-  var encodingData;
+  var encodingData = [];
   var invalidParams = false;
 
   if (flag == "normal") {

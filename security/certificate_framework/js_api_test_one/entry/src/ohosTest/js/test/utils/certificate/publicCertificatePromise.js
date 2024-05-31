@@ -75,7 +75,7 @@ function createX509CertInstancePromise(certType) {
 
 function createX509CertInstanceforCrlTestPromise(flag) {
   var certformat;
-  var encodingData;
+  var encodingData = [];
   var invalidParams = false;
 
   if (flag == "normal") {

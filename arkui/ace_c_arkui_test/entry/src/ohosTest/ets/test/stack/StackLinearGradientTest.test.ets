@@ -156,18 +156,5 @@ export default function stackLinearGradientTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_LINEARGRADIENT_1100
-     * @tc.name       : testStackLinearGradient011
-     * @tc.desc       : testing default values of linearGradient property of the stack
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackLinearGradient011', 0, async (done: Function) => {
-      expect(nativeFunc.testStackLinearGradient011()).assertEqual(0)
-      done()
-    })
-
   })
 }

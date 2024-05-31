@@ -21,7 +21,7 @@ static napi_value TestListCachedCount001(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
     int32_t cachedCount = PARAM_1;
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_LIST_CACHED_COUNT)->value->i32, cachedCount);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_LIST_CACHED_COUNT)->value[PARAM_0].i32, cachedCount);
     NAPI_END;
 }
 
@@ -33,7 +33,7 @@ static napi_value TestListCachedCount002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_LIST_CACHED_COUNT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_LIST_CACHED_COUNT)->value->i32, cachedCount);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_LIST_CACHED_COUNT)->value[PARAM_0].i32, cachedCount);
     NAPI_END;
 }
 

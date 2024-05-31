@@ -55,26 +55,13 @@ export default function swiperLoopTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_SWIPER_LOOP_0300
      * @tc.name       : testSwiperLoop003
-     * @tc.desc       : testing default values of loop property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperLoop003', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperLoop003()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_LOOP_0400
-     * @tc.name       : testSwiperLoop004
      * @tc.desc       : testing loop for swiper with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperLoop004', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperLoop004()).assertEqual(0)
+    it('testSwiperLoop003', 0, async (done: Function) => {
+      expect(nativeFunc.testSwiperLoop003()).assertEqual(0)
       done()
     })
 

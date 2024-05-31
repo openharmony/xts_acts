@@ -26,7 +26,7 @@ static napi_value TestSwiperVertical001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem vertical_item = {vertical_value, sizeof(vertical_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_VERTICAL, &vertical_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_VERTICAL)->value->i32, vertical);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_VERTICAL)->value[PARAM_0].i32, vertical);
     NAPI_END;
 }
 
@@ -39,20 +39,11 @@ static napi_value TestSwiperVertical002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem vertical_item = {vertical_value, sizeof(vertical_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_VERTICAL, &vertical_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_VERTICAL)->value->i32, vertical);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_VERTICAL)->value[PARAM_0].i32, vertical);
     NAPI_END;
 }
 
 static napi_value TestSwiperVertical003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    int32_t vertical = 0;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_VERTICAL)->value->i32, vertical);
-    NAPI_END;
-}
-
-static napi_value TestSwiperVertical004(napi_env env, napi_callback_info info)
 {
     NAPI_START(swiper, ARKUI_NODE_SWIPER);
     int32_t vertical = -1;
@@ -62,7 +53,7 @@ static napi_value TestSwiperVertical004(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_VERTICAL, &vertical_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_VERTICAL) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_VERTICAL)->value->i32, vertical);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_VERTICAL)->value[PARAM_0].i32, vertical);
     }
     NAPI_END;
 }

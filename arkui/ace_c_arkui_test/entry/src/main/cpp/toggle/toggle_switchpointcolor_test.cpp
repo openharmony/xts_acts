@@ -25,7 +25,7 @@ static napi_value TestToggleSwitchPointColor001(napi_env env, napi_callback_info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR)->value->u32, switchPointColor);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR)->value[PARAM_0].u32, switchPointColor);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestToggleSwitchPointColor002(napi_env env, napi_callback_info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR)->value->u32, switchPointColor);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR)->value[PARAM_0].u32, switchPointColor);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestToggleSwitchPointColor003(napi_env env, napi_callback_info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR)->value->u32, switchPointColor);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR)->value[PARAM_0].u32, switchPointColor);
     NAPI_END;
 }
 

@@ -33,7 +33,7 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/audio/test_44100_2.wav ->/data/app/el2/100/base/ohos.audio.napitest/haps/entry/files/"
+                "./resource/audio/audioRenderer/test_44100_2.wav ->/data/app/el2/100/base/ohos.audio.napitest/haps/entry/files/"
             ]
         }
     ]

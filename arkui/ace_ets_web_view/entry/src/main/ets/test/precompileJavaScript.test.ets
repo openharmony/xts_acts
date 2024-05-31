@@ -300,8 +300,8 @@ export default function precompileJavaScriptTest() {
       sendEventByKey('precompileJavaScriptTestButton', 10, '');
     })
     /*
-    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_PRECOMPILEJAVASCRIPT_1800
-    * @tc.name       : testPrecompileJavaScript018
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_PRECOMPILEJAVASCRIPT_1900
+    * @tc.name       : testPrecompileJavaScript019
     * @tc.desc       : test precompileJavaScript
     * @tc.size       : MediumTest
     * @tc.type       : Function

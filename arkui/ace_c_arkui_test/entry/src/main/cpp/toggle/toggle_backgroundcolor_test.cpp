@@ -25,7 +25,7 @@ static napi_value TestToggleBackgroundColor001(napi_env env, napi_callback_info 
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(toggle, NODE_BACKGROUND_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_BACKGROUND_COLOR)->value->u32, backgroundColor);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, backgroundColor);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestToggleBackgroundColor002(napi_env env, napi_callback_info 
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(toggle, NODE_BACKGROUND_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_BACKGROUND_COLOR)->value->u32, backgroundColor);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, backgroundColor);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestToggleBackgroundColor003(napi_env env, napi_callback_info 
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(toggle, NODE_BACKGROUND_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_BACKGROUND_COLOR)->value->u32, backgroundColor);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, backgroundColor);
     NAPI_END;
 }
 

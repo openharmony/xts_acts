@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -34,18 +34,14 @@ using namespace testing::ext;
 using namespace OHOS::HiviewDFX;
 
 namespace {
-constexpr Sensor_Type SENSOR_ID { SENSOR_TYPE_GRAVITY };
+constexpr Sensor_Type SENSOR_ID { SENSOR_TYPE_AMBIENT_LIGHT };
 constexpr uint32_t SENSOR_NAME_LENGTH_MAX = 64;
 constexpr int64_t SENSOR_SAMPLE_PERIOD = 200000000;
 constexpr int32_t SLEEP_TIME_MS = 1000;
 constexpr int64_t INVALID_VALUE = -1;
 constexpr float INVALID_RESOLUTION = -1.0F;
-constexpr int32_t NUM = 0;
-constexpr int32_t NUM1 = 1;
-constexpr int32_t NUM2 = 2;
-std::atomic_bool g_existGravity = false;
-
 Sensor_Subscriber *g_user = nullptr;
+std::atomic_bool g_existAmbientLight = false;
 }  // namespace
 
 class SensorAgentTest : public testing::Test {
@@ -58,41 +54,37 @@ public:
 
 void SensorAgentTest::SetUpTestCase()
 {
-    SEN_HILOGE("SensorAgentTest SetUpTestCase in");
+    SEN_HILOGI("SensorAgentTest SetUpTestCase in");
     uint32_t count = 0;
-    int32_t ret1 = OH_Sensor_GetInfos(nullptr, &count);
-    ASSERT_EQ(ret1, SENSOR_SUCCESS);
+    int32_t ret = OH_Sensor_GetInfos(nullptr, &count);
+    ASSERT_EQ(ret, SENSOR_SUCCESS);
     Sensor_Info **sensors = OH_Sensor_CreateInfos(count);
     ASSERT_NE(sensors, nullptr);
-    ret1 = OH_Sensor_GetInfos(sensors, &count);
-    ASSERT_EQ(ret1, SENSOR_SUCCESS);
+    ret = OH_Sensor_GetInfos(sensors, &count);
+    ASSERT_EQ(ret, SENSOR_SUCCESS);
     for (uint32_t i = 0; i < count; ++i) {
         Sensor_Type sensorType;
-        ret1 = OH_SensorInfo_GetType(sensors[i], &sensorType);
-        ASSERT_EQ(ret1, SENSOR_SUCCESS);
-        if (sensorType == SENSOR_TYPE_GRAVITY) {
-            g_existGravity = true;
-            SEN_HILOGE("SensorAgentTest SetUpTestCase ,Exist head gravity sensor");
+        ret = OH_SensorInfo_GetType(sensors[i], &sensorType);
+        ASSERT_EQ(ret, SENSOR_SUCCESS);
+        if (sensorType == SENSOR_TYPE_AMBIENT_LIGHT) {
+            g_existAmbientLight = true;
+            SEN_HILOGI("SensorAgentTest SetUpTestCase ,Exist AmbientLight sensor");
             break;
         }
     }
-    if (!g_existGravity) {
-        SEN_HILOGE("SensorAgentTest SetUpTestCase ,Not exist gravity sensor");
+    if (!g_existAmbientLight) {
+        SEN_HILOGI("SensorAgentTest SetUpTestCase ,Not exist AmbientLight sensor");
     }
-    ret1 = OH_Sensor_DestroyInfos(sensors, count);
-    ASSERT_EQ(ret1, SENSOR_SUCCESS);
-    SEN_HILOGE("SensorAgentTest SetUpTestCase end");
+    ret = OH_Sensor_DestroyInfos(sensors, count);
+    ASSERT_EQ(ret, SENSOR_SUCCESS);
+    SEN_HILOGI("SensorAgentTest SetUpTestCase end");
 }
 
-void SensorAgentTest::TearDownTestCase()
-{
-}
+void SensorAgentTest::TearDownTestCase() {}
 
-void SensorAgentTest::SetUp()
-{}
+void SensorAgentTest::SetUp() {}
 
-void SensorAgentTest::TearDown()
-{}
+void SensorAgentTest::TearDown() {}
 
 void SensorDataCallbackImpl(Sensor_Event *event)
 {
@@ -113,9 +105,10 @@ void SensorDataCallbackImpl(Sensor_Event *event)
     uint32_t length = 0;
     ret = OH_SensorEvent_GetData(event, &data, &length);
     ASSERT_EQ(ret, SENSOR_SUCCESS);
-    SEN_HILOGI("sensorType:%{public}d, dataLen:%{public}d, accuracy:%{public}d"
-        "x:%{public}f, y:%{public}f, z:%{public}f", sensorType, length, accuracy,
-        data[NUM], data[NUM1], data[NUM2]);
+    SEN_HILOGI("sensorType:%{public}d, dataLen:%{public}d, accuracy:%{public}d", sensorType, length, accuracy);
+    for (uint32_t i = 0; i < length; ++i) {
+        SEN_HILOGI("data[%{public}d]:%{public}f", i, data[i]);
+    }
 }
 
 HWTEST_F(SensorAgentTest, OH_Sensor_GetInfos_001, TestSize.Level1)
@@ -169,7 +162,7 @@ HWTEST_F(SensorAgentTest, OH_Sensor_GetInfos_002, TestSize.Level1)
 HWTEST_F(SensorAgentTest, OH_Sensor_Subscribe_001, TestSize.Level1)
 {
     SEN_HILOGI("OH_Sensor_Subscribe_001 in");
-    if (g_existGravity) {
+    if (g_existAmbientLight) {
         g_user = OH_Sensor_CreateSubscriber();
         int32_t ret = OH_SensorSubscriber_SetCallback(g_user, SensorDataCallbackImpl);
         ASSERT_EQ(ret, SENSOR_SUCCESS);
@@ -199,7 +192,6 @@ HWTEST_F(SensorAgentTest, OH_Sensor_Subscribe_001, TestSize.Level1)
             g_user = nullptr;
         }
     }
-    SEN_HILOGI("OH_Sensor_Subscribe_001 end");
 }
 
 HWTEST_F(SensorAgentTest, OH_Sensor_Subscribe_002, TestSize.Level1)

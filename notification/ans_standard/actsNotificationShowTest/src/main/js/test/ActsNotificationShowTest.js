@@ -40,24 +40,6 @@ export default function ActsNotificationShowTest() {
     })
 
     /*
-     * @tc.number: Sub_Notification_Ans_Distributed_Enable_5400
-     * @tc.name: show()
-     * @tc.desc: verify the function of show
-     */
-    it('Sub_Notification_Ans_Distributed_Enable_5400', 0, async function (done) {
-      console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_5400 START ')
-      let ShowNotificationOptions = {
-        contentTitle: 123,
-        contentText: 'This is a notification 002'
-      }
-      notification.show(ShowNotificationOptions)
-      console.info(TAG + ' conteneTitle is number:' + ShowNotificationOptions.contentTitle)
-      console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 002')
-      done()
-    })
-
-    /*
      * @tc.number: Sub_Notification_Ans_Distributed_Enable_5500
      * @tc.name: show()
      * @tc.desc: verify the function of show

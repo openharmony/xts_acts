@@ -3632,6 +3632,11 @@ export default function abilityTest() {
         expect(mindSporeLite.DataType.NUMBER_TYPE_FLOAT16).assertEqual(42);
         expect(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32).assertEqual(43);
         expect(mindSporeLite.DataType.NUMBER_TYPE_FLOAT64).assertEqual(44);
+
+        expect(mindSporeLite.NNRTDeviceType.NNRTDEVICE_OTHERS).assertEqual(0);
+        expect(mindSporeLite.NNRTDeviceType.NNRTDEVICE_CPU).assertEqual(1);
+        expect(mindSporeLite.NNRTDeviceType.NNRTDEVICE_GPU).assertEqual(2);
+        expect(mindSporeLite.NNRTDeviceType.NNRTDEVICE_ACCELERATOR).assertEqual(3);
         done()
       } catch (error) {
         console.info("The enumerated are changed:" + error)

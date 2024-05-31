@@ -44,6 +44,7 @@ group("ability_runtime") {
       "actslastexitreason:actslastexitreason",
       "actsmultiplecall:actsmultiplecall",
       "actsnfcselecttypes:actsnfcselecttypes",
+      "actsondestroytest:actsondestroytest",
       "actsopenlinktest:actsopenlinktest",
       "actsparsingparameterstest:actsparsingparameterstest",
       "actsqueryfunctiontest:actsqueryfunctiontest",

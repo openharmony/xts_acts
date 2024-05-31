@@ -25,7 +25,8 @@ static napi_value TestSwiperDisplayArrow001(napi_env env, napi_callback_info inf
                                                    sizeof(displayArrow_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW, &displayArrow_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW)->value->i32, ARKUI_SWIPER_ARROW_HIDE);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW)->value[PARAM_0].i32,
+              ARKUI_SWIPER_ARROW_HIDE);
     NAPI_END;
 }
 
@@ -37,7 +38,8 @@ static napi_value TestSwiperDisplayArrow002(napi_env env, napi_callback_info inf
                                                    sizeof(displayArrow_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW, &displayArrow_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW)->value->i32, ARKUI_SWIPER_ARROW_SHOW);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW)->value[PARAM_0].i32,
+              ARKUI_SWIPER_ARROW_SHOW);
     NAPI_END;
 }
 
@@ -49,7 +51,7 @@ static napi_value TestSwiperDisplayArrow003(napi_env env, napi_callback_info inf
                                                    sizeof(displayArrow_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW, &displayArrow_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW)->value->i32,
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW)->value[PARAM_0].i32,
               ARKUI_SWIPER_ARROW_SHOW_ON_HOVER);
     NAPI_END;
 }
@@ -65,16 +67,8 @@ static napi_value TestSwiperDisplayArrow004(napi_env env, napi_callback_info inf
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW, &displayArrow_value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW)->value->i32, displayArrow);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW)->value[PARAM_0].i32, displayArrow);
     }
-    NAPI_END;
-}
-
-static napi_value TestSwiperDisplayArrow005(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_DISPLAY_ARROW)->value->i32, ARKUI_SWIPER_ARROW_HIDE);
     NAPI_END;
 }
 

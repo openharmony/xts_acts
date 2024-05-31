@@ -41,7 +41,7 @@ class testSDCardMount(TestCase):
                 assert sdCardItem not in mountResult
             rebootResult = self.device1.execute_shell_command("reboot")
             mountResult = self.device1.execute_shell_command("df -h")
-            print(mountResult)
+            self.log.info(mountResult)
             assert mountResult.count('/mnt/data/external') == len(sdCardList)
 
     def teardown(self):
