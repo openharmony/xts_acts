@@ -19,6 +19,7 @@
         "MainAbility/pages/Graphics/getRed",
         "MainAbility/pages/Graphics/getGreen",
         "MainAbility/pages/FrameNode/onAppear",
-	"MainAbility/pages/FrameNode/setMeasureSize"
+	    "MainAbility/pages/FrameNode/setMeasureSize",
+        "MainAbility/pages/FrameNode/commonEventTest1"
     ]
 }

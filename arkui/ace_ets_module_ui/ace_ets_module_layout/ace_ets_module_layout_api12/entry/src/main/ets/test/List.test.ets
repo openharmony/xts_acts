@@ -18,6 +18,8 @@ import SpaceCross5AlignItemsJsunit from './Flex/SpaceCross5AlignItems.test.ets';
 import RelativeContainerApi from './RelativeContainer/RelativeContainerApi.test'
 import ChipApi1 from './Chip/ChipApi1.test'
 import ChipGroupApi1 from './ChipGroup/ChipGroupApi1.test'
+import FlexSpaceTest from './Flex/FlexSpaceTest.test.ets';
+import FolderStackTest1 from './FolderStack/FolderStackTest1.test.ets';
 
 export default function testsuite() {
   SpaceMainNumberJsunit();
@@ -25,4 +27,6 @@ export default function testsuite() {
   SpaceCross5AlignItemsJsunit();
   RelativeContainerApi();
   ChipApi1();
+  FlexSpaceTest();
+  FolderStackTest1();
 }
