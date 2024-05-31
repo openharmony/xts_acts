@@ -19,6 +19,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <dlfcn.h>
 
 #include "napi/native_api.h"
 #include <multimedia/image_framework/image/pixelmap_native.h>
@@ -43,6 +44,7 @@
 
 OH_PixelmapNative *TEST_PIXELMAP = nullptr;
 const char *LOG_APP = "ImageNDK";
+const char* VPE_SO_NAME = "/system/lib64/libvideoprocessingengine.z.so";
 
 static void DataCopy(void *dest, int32_t dest_size, const void *src, int32_t n) {
     if (dest == nullptr || src == nullptr) {
@@ -2027,6 +2029,237 @@ static napi_value CreateFromRawFile(napi_env env, napi_callback_info info) {
     return result;
 }
 
+static bool CheckVpe()
+{
+    void* handle = dlopen(VPE_SO_NAME, RTLD_LAZY);
+    if (handle == nullptr) {
+        OH_LOG_INFO(LOG_APP, "CheckVpe failed");
+        return false;
+    }
+    dlclose(handle);
+    handle = nullptr;
+    return true;
+}
+
+static napi_value CheckHasHdr(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_get_undefined(env, &result);
+    if (CheckVpe()) {
+        napi_create_int32(env, NUM_0, &result);
+    } else {
+        napi_create_int32(env, NUM_1, &result);
+    }
+    return result;
+}
+
+static napi_value DecodingOptionsSetDesiredDynamicRange(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+        OH_LOG_ERROR(LOG_APP, "DecodingOptionsSetDesiredDynamicRange napi_get_cb_info failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_DecodingOptions *decodeOpts = reinterpret_cast<OH_DecodingOptions *>(ptr);
+
+    int32_t desiredDynamicRange;
+    napi_get_value_int32(env, argValue[NUM_1], &desiredDynamicRange);
+
+    Image_ErrorCode ret = OH_DecodingOptions_SetDesiredDynamicRange(decodeOpts, desiredDynamicRange);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value DecodingOptionsGetDesiredDynamicRange(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_1] = {0};
+    size_t argCount = NUM_1;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+        OH_LOG_ERROR(LOG_APP, "DecodingOptionsGetDesiredDynamicRange napi_get_cb_info failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_DecodingOptions *decodeOpts = reinterpret_cast<OH_DecodingOptions *>(ptr);
+
+    int32_t desiredDynamicRange;
+    Image_ErrorCode ret = OH_DecodingOptions_GetDesiredDynamicRange(decodeOpts, &desiredDynamicRange);
+    if (ret != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "DecodingOptionsGetDesiredDynamicRange failed");
+        napi_create_int32(env, ret, &result);
+        return result;
+    }
+    napi_create_int32(env, desiredDynamicRange, &result);
+    return result;
+}
+
+static napi_value GetPixelMapDynamicRange(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_1] = {0};
+    size_t argCount = NUM_1;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+        OH_LOG_ERROR(LOG_APP, "GetPixelMapDynamicRange napi_get_cb_info failed");
+        return result;
+    }
+    
+    void *ptr = nullptr;
+    napi_status status = napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_PixelmapNative *pixmap = reinterpret_cast<OH_PixelmapNative *>(ptr);
+
+    OH_Pixelmap_ImageInfo *pixelmapInfo = nullptr;
+    OH_PixelmapImageInfo_Create(&pixelmapInfo);
+    OH_PixelmapNative_GetImageInfo(pixmap, pixelmapInfo);
+    bool pixelmapIsHdr;
+    OH_PixelmapImageInfo_GetDynamicRange(pixelmapInfo, &pixelmapIsHdr);
+    if (CheckVpe()) {
+        OH_LOG_INFO(LOG_APP, "GetPixelMapDynamicRange CheckVpe is true");
+        if (pixelmapIsHdr) {
+            napi_create_int32(env, NUM_0, &result);
+        } else {
+            napi_create_int32(env, NUM_1, &result);
+        }
+    } else {
+        OH_LOG_INFO(LOG_APP, "GetPixelMapDynamicRange CheckVpe is false");
+        napi_create_int32(env, NUM_0, &result);
+    }
+
+    return result;
+}
+
+static napi_value PixelMapToSdr(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_1] = {0};
+    size_t argCount = NUM_1;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+        OH_LOG_ERROR(LOG_APP, "PixelMapToSdr napi_get_cb_info failed");
+        return result;
+    }
+    
+    void *ptr = nullptr;
+    napi_status status = napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_PixelmapNative *pixmap = reinterpret_cast<OH_PixelmapNative *>(ptr);
+    Image_ErrorCode errCode = OH_PixelmapNative_ToSdr(pixmap);
+    if (CheckVpe()) {
+        OH_LOG_INFO(LOG_APP, "PixelMapToSdr CheckVpe is true");
+        napi_create_int32(env, errCode, &result);
+    } else {
+        OH_LOG_INFO(LOG_APP, "PixelMapToSdr CheckVpe is false");
+        napi_create_int32(env, NUM_0, &result);
+    }
+    return result;
+}
+
+static napi_value GetImageSourceDynamicRange(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_1] = {0};
+    size_t argCount = NUM_1;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+        OH_LOG_ERROR(LOG_APP, "GetImageSourceDynamicRange napi_get_cb_info failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_status status = napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_ImageSourceNative *imageSource = reinterpret_cast<OH_ImageSourceNative *>(ptr);
+
+    OH_ImageSource_Info *imageInfo = nullptr;
+    OH_ImageSourceInfo_Create(&imageInfo);
+
+    Image_ErrorCode errCode = OH_ImageSourceNative_GetImageInfo(imageSource, 0, imageInfo);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "GetImageSourceDynamicRange getImageInfo failed");
+        napi_create_int32(env, NUM_1, &result);
+        return result;
+    }
+    bool isHdr = false;
+    OH_ImageSourceInfo_GetDynamicRange(imageInfo, &isHdr);
+    if (isHdr) {
+        napi_create_int32(env, NUM_0, &result);
+    } else {
+        napi_create_int32(env, NUM_1, &result);
+    }
+    return result;
+}
+
+static napi_value PackingOptionsSetDesiredDynamicRange(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+        OH_LOG_ERROR(LOG_APP, "PackingOptionsSetDesiredDynamicRange napi_get_cb_info failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_PackingOptions *packingOptions = reinterpret_cast<OH_PackingOptions *>(ptr);
+
+    int32_t desiredDynamicRange;
+    napi_get_value_int32(env, argValue[NUM_1], &desiredDynamicRange);
+
+    Image_ErrorCode errCode = OH_PackingOptions_SetDesiredDynamicRange(packingOptions, desiredDynamicRange);
+    napi_create_int32(env, errCode, &result);
+    return result;
+}
+
+static napi_value PackingOptionsGetDesiredDynamicRange(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+
+    napi_value argValue[NUM_1] = {0};
+    size_t argCount = NUM_1;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+        OH_LOG_ERROR(LOG_APP, "PackingOptionsGetDesiredDynamicRange napi_get_cb_info failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_PackingOptions *packingOptions = reinterpret_cast<OH_PackingOptions *>(ptr);
+
+    int32_t desiredDynamicRange;
+    Image_ErrorCode errCode = OH_PackingOptions_GetDesiredDynamicRange(packingOptions, &desiredDynamicRange);
+    if (errCode != IMAGE_SUCCESS) {
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    napi_create_int32(env, desiredDynamicRange, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -2100,7 +2333,21 @@ static napi_value Init(napi_env env, napi_value exports) {
          nullptr},
         {"PackToFileFromPixelMap", nullptr, PackToFileFromPixelMap, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"PackerRelease", nullptr, PackerRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"GetDelayTime", nullptr, GetDelayTime, nullptr, nullptr, nullptr, napi_default, nullptr}};
+        {"GetDelayTime", nullptr, GetDelayTime, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"DecodingOptionsSetDesiredDynamicRange", nullptr, DecodingOptionsSetDesiredDynamicRange, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"DecodingOptionsGetDesiredDynamicRange", nullptr, DecodingOptionsGetDesiredDynamicRange, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"GetImageSourceDynamicRange", nullptr, GetImageSourceDynamicRange, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"GetPixelMapDynamicRange", nullptr, GetPixelMapDynamicRange, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"PackingOptionsGetDesiredDynamicRange", nullptr, PackingOptionsGetDesiredDynamicRange, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"PackingOptionsSetDesiredDynamicRange", nullptr, PackingOptionsSetDesiredDynamicRange, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"PixelMapToSdr", nullptr, PixelMapToSdr, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"CheckHasHdr", nullptr, CheckHasHdr, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
