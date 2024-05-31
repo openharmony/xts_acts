@@ -2626,10 +2626,12 @@ export default function mathNdkTest() {
      * @tc.level      : Level 0
      */
     it('testMuslMathASinH001', 0, async (done: Function) => {
-      let resultTrue: number = 0.88;
+      let resultless: number = 0.881;
+      let resultlarger: number = 0.882;
       let Param = 1;
-      let result: number = Math.floor(math.aSinH(Param) * 100) / 100;
-      expect(result).assertEqual(resultTrue);
+      let result: number = math.aSinH(Param);
+      expect(result).assertLarger(resultless);
+      expect(result).assertLess(resultlarger);
       done()
     });
 
@@ -2688,10 +2690,12 @@ export default function mathNdkTest() {
      * @tc.level      : Level 0
      */
     it('testMuslMathASinHF001', 0, async (done: Function) => {
-      let resultTrue: number = 0.88;
+      let resultless: number = 0.881;
+      let resultlarger: number = 0.882;
       let Param = 1;
-      let result: number = Math.floor(math.aSinHF(Param) * 100) / 100;
-      expect(result).assertEqual(resultTrue);
+      let result: number = math.aSinHF(Param);
+      expect(result).assertLarger(resultless);
+      expect(result).assertLess(resultlarger);
       done()
     });
 
@@ -2750,10 +2754,12 @@ export default function mathNdkTest() {
      * @tc.level      : Level 0
      */
     it('testMuslMathASinHL001', 0, async (done: Function) => {
-      let resultTrue: number = 0.88;
+      let resultless: number = 0.881;
+      let resultlarger: number = 0.882;
       let Param = 1;
-      let result: number = Math.floor(math.aSinHL(Param) * 100) / 100;
-      expect(result).assertEqual(resultTrue);
+      let result: number = math.aSinHL(Param);
+      expect(result).assertLarger(resultless);
+      expect(result).assertLess(resultlarger);
       done()
     });
 
@@ -2905,10 +2911,12 @@ export default function mathNdkTest() {
      * @tc.level      : Level 0
      */
     it('testMuslMathACosF001', 0, async (done: Function) => {
-      let resultTrue: number = 3.14;
+      let resultless: number = 3.141;
+      let resultlarger: number = 3.142;
       let Param = -1;
-      let result: number = Math.floor(math.aCosF(Param) * 100) / 100;
-      expect(result).assertEqual(resultTrue);
+      let result: number = math.aCosF(Param);
+      expect(result).assertLarger(resultless);
+      expect(result).assertLess(resultlarger);
       done()
     });
 

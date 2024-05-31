@@ -597,6 +597,7 @@ export default function ApiCoverTest() {
       expect(4).assertEqual(formInfoNew.FormDimension.Dimension_4_4);
       expect(5).assertEqual(formInfoNew.FormDimension.Dimension_2_1);
       // expect(6).assertEqual(formInfoNew.FormDimension.DIMENSION_1_1)
+      expect(7).assertEqual(formInfoNew.FormDimension.DIMENSION_6_4);
       console.info("SUB_AA_Test_InsightIntent_0100:" + formInfoNew.FormDimension.Dimension_2_1);
       expect(1).assertEqual(formInfoNew.FormType.JS);
       expect(2).assertEqual(formInfoNew.FormType.eTS);

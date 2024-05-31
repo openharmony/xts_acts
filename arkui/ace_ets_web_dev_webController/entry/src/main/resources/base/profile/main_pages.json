@@ -20,6 +20,9 @@
         "MainAbility/pages/webONHttpErrorReceiveExample",
         "MainAbility/pages/webONHttpErrorRecvExampleIsReady",
         "MainAbility/pages/webONHttpErrorReceiveIframe",
-        "MainAbility/pages/webOnAudioStateChanged"
+        "MainAbility/pages/webOnAudioStateChanged",
+        "MainAbility/pages/webviewTerminateRenderProcess",
+        "MainAbility/pages/webviewSelectionMenuOptions",
+        "MainAbility/pages/DNSHostIP"
     ]
 }

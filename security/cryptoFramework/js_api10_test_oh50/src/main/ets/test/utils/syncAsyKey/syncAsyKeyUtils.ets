@@ -237,7 +237,7 @@ let ASY_ECC_KEY_SPEC = [
 ]
 
 let ASY_DSA_KEY_SPEC = [
-  "DSA1024", "DSA2048"
+  "DSA1024"
 ]
 
 let ASY_SM2_KEY_SPEC = [

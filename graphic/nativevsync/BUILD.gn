@@ -11,43 +11,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsNativeVsyncTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":nativeVsync_js_assets",
-    ":nativeVsync_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("nativevsync_ndk_main") {
+  testonly = true
+  certificate_profile =
+      "./signature/com_nativebuffer_napitest_openharmony_sx.p7b"
+  hap_name = "ActsNativeVsyncMainTest"
+  part_name = "graphic_2d"
+  subsystem_name = "graphic"
+}
+
+ohos_js_app_suite("ActsNativeVsyncTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile =
+      "./signature/com_nativebuffer_napitest_openharmony_sx.p7b"
   hap_name = "ActsNativeVsyncTest"
-  subsystem_name = "graphic"
   part_name = "graphic_2d"
-  shared_libraries = [
-    "./entry/src/main/cpp:vsyncndk",
-    ":libcppsharedso",
-  ]
-}
-
-ohos_prebuilt_shared_library("libcppsharedso") {
-  source = rebase_path(libcxx_ndk_shared_file)
   subsystem_name = "graphic"
-  part_name = "graphic_2d"
-}
-ohos_app_scope("nativeVsync_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("nativeVsync_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("nativeVsync_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":nativeVsync_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  deps = [ ":nativevsync_ndk_main" ]
 }

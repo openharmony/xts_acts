@@ -82,6 +82,7 @@ Note:If the text contains special characters, please escape them according to th
 				<filteritem type="filename" name="*.der" desc="all bin file have check"/>
 				<filteritem type="filename" name="*.bmp" desc="all bmp file have check"/>
 				<filteritem type="filename" name="*.ico" desc="all ico file have check"/>
+                <filteritem type="filename" name="*.mkv" desc="all bin file have check"/>
 				<filteritem type="filename" name="*.mp3" desc="all mp3 file have check"/>
             </filefilter>
             <filefilter name="defaultFilter" desc="Filters for default" >

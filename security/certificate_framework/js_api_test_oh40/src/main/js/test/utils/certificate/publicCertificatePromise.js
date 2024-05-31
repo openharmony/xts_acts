@@ -38,6 +38,11 @@ async function createX509CertInstancePromise(certType) {
     cert
       .createX509Cert(encodingBlob)
       .then((data) => {
+        try {
+          data.getCRLDistributionPoint();
+        } catch (err) {
+          console.info("[promise] create X509 Cert success! get point failed!");
+        }
         console.warn(
           "[promise] create X509 Cert success! format is: " + certformat
         );
