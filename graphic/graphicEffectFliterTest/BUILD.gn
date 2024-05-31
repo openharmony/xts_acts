@@ -37,12 +37,12 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
     "$comPath/rosen/modules/composer/vsync/include",
     "$comPath/interfaces/inner_api/common",
     "../../../../../foundation/graphic/graphic_2d/frameworks/surface/include",
+    "../../../../../foundation/multimedia/image_framework/interfaces/innerkits/include/",
     "../../../../../drivers/peripheral/display/interfaces/include",
     "$comPath/rosen/modules/effect/color_picker/include",
     "$comPath/rosen/modules/effect/effectChain/include",
     "$comPath/rosen/modules/effect/effect_ndk/include",
     "$comPath/rosen/modules/effect/egl/include",
-    "//foundation/multimedia/image_framework/interfaces/innerkits/include/",
   ]
 
   external_deps = [
@@ -71,8 +71,8 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
     "$comPath/rosen/modules/effect/skia_effectChain:skeffectchain",
     "$comPath/utils:buffer_handle",
     "$comPath/utils/sync_fence:sync_fence",
-    "//foundation/multimedia/image_framework/interfaces/innerkits:image_native",
-    "//foundation/multimedia/image_framework/interfaces/kits/js/common:image",
+    "../../../../../foundation/multimedia/image_framework/interfaces/innerkits:image_native",
+    "../../../../../foundation/multimedia/image_framework/interfaces/kits/js/common:image",
     "//third_party/googletest:gmock_main",
     "//third_party/googletest:gtest_main",
   ]
