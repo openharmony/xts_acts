@@ -43,7 +43,11 @@ export default class Utils {
       .then((data: ESObject) => {
         return new Promise<ESObject>((resolve: ESObject, reject: ESObject) => {
           if (data) {
-            resolve(String.fromCharCode.apply(null, data))
+            let result = '';
+            for (let i = 0; i < data.length; i++) {
+              result += String.fromCharCode(data[i]);
+            }
+            resolve(result);
           } else {
             reject('')
           }

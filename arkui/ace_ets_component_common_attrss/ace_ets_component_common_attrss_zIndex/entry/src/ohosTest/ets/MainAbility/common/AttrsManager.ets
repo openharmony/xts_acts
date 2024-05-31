@@ -17,7 +17,7 @@ import { Constants } from '../../constants/Constants';
 import events_emitter from '@ohos.events.emitter';
 
 export class AttrsManager {
-  callBack: (value: ESObject) => void;
+  private callBack: (value: ESObject) => void = (value: ESObject) => {};
 
   static change(caseName: string, setValue: ESObject) {
     let eventData: events_emitter.EventData = { data: { src: JSON.stringify({ value: setValue }) } }
@@ -55,8 +55,8 @@ export class AttrsManager {
     console.info('[stateChangCallBack] stateChangCallBack ');
     if (eventData != null) {
       console.info('[stateChangCallBack] state change called: ' + JSON.stringify(eventData));
-      if (eventData.data.src != null) {
-        this.callBack(JSON.parse(eventData.data.src).value);
+      if (eventData.data!.src != null) {
+        this.callBack(JSON.parse(eventData.data!.src).value);
       }
     }
   }
