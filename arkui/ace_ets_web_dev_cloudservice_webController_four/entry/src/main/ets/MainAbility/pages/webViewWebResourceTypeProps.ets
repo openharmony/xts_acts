@@ -158,7 +158,7 @@ struct webViewWebResourceTypeProps {
                           break;
                       }
 
-                      default:{
+                    default:{
                         if(webview.WebResourceType.SUB_RESOURCE.toString() === '6'){
                           Utils.emitEvent(true,1358)
                         }
@@ -198,7 +198,7 @@ struct webViewWebResourceTypeProps {
                 )
 
                 this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
-                  console.log("[schemeHandler] onRequestStop")
+                  console.log('[schemeHandler] onRequestStop')
                 });
 
                 this.controller.setWebSchemeHandler('https', this.schemeHandler);
