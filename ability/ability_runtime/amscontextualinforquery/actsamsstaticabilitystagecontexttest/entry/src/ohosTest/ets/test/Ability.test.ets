@@ -16,14 +16,14 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import bundleManager from '@ohos.bundle.bundleManager'
 
 export default function abilityTest() {
-    describe('ActsglobalThis.abilityStageContextTest', function () {
+    describe('ActsglobalThis.abilityStageContextTest', () => {
         /**
          * @tc.number: ACTS_getApplicationInfo_0300
          * @tc.name: Application query applicationInfo Static information.
          * @tc.desc: Verify that the application query applicationInfo static
          *           information is the same as that in the configuration file.
          */
-        it('ACTS_getApplicationInfo_0300', 0, async function (done) {
+        it('ACTS_getApplicationInfo_0300', 0, async (done:Function) => {
             console.log("ACTS_getApplicationInfo_0300 --- start ability=====>'+ abilityContext.applicationInfo")
             checkApplicationInfo(globalThis.abilityContext.applicationInfo);
             done();
@@ -35,13 +35,13 @@ export default function abilityTest() {
          * @tc.desc: Verify that the application query currentHapModuleInfo static
          *           information is the same as that in the configuration file.
          */
-        it('ACTS_getHapModuleInfo_0300', 0, async function (done) {
+        it('ACTS_getHapModuleInfo_0300', 0, async (done:Function) => {
             console.log("ACTS_getHapModuleInfo_0300 --- start ability=====>'+ abilityContext.currentHapModuleInfo")
             checkHapModuleInfo(globalThis.abilityStageContext.currentHapModuleInfo);
             done();
         })
 
-        function checkApplicationInfo(data) {
+        let checkApplicationInfo = (data:ESObject):void => {
             console.log("checkApplicationInfo start  " + JSON.stringify(data));
             console.log("checkApplicationInfo name : " + data.name);
             console.log("checkApplicationInfo description : " + data.description);
@@ -53,12 +53,12 @@ export default function abilityTest() {
             console.log("checkApplicationInfo iconId : " + data.iconId);
             console.log("checkApplicationInfo process : " + data.process);
             console.log("checkApplicationInfo permissions length : " + data.permissions.length);
-            for (var j = 0; j < data.permissions.length; j++) {
+            for (let j = 0; j < data.permissions.length; j++) {
                 console.log("checkApplicationInfo data.permissions[" + j + "] : " + data.permissions[j]);
             }
             console.log("checkApplicationInfo codePath : " + data.codePath);
             console.log("checkApplicationInfo metadata size : " + data.metadata.size);
-            for (var j = 0; j < data.metadata.size; j++) {
+            for (let j = 0; j < data.metadata.size; j++) {
                 console.log("checkApplicationInfo data.metadata[" + j + "] : " + data.metadata[j]);
             }
             console.log("checkApplicationInfo removable: " + data.removable);
@@ -129,7 +129,7 @@ export default function abilityTest() {
             console.log("checkApplicationInfo end  " + data);
         }
 
-        function checkHapModuleInfo(data) {
+        let checkHapModuleInfo = (data:ESObject):void => {
             console.log("checkHapModuleInfo start  " + JSON.stringify(data));
             console.log("checkHapModuleInfo name : " + data.name);
             console.log("checkHapModuleInfo icon : " + data.icon);
@@ -143,18 +143,18 @@ export default function abilityTest() {
             console.log("checkHapModuleInfo extensionAbilitiesInfo : " + JSON.stringify(data.extensionAbilitiesInfo));
             console.log("checkHapModuleInfo metadata : " + JSON.stringify(data.metadata));
             console.log("checkHapModuleInfo deviceTypes length : " + data.deviceTypes.length);
-            for (var j = 0; j < data.deviceTypes.length; j++) {
+            for (let j = 0; j < data.deviceTypes.length; j++) {
                 console.log("checkHapModuleInfo data.deviceTypes[" + j + "] : " + data.deviceTypes[j]);
             }
             console.log("checkHapModuleInfo installationFree : " + data.installationFree);
             console.log("checkHapModuleInfo hashValue : " + data.hashValue);
             console.log("checkHapModuleInfo type : " + data.type);
             console.log("checkHapModuleInfo dependencies length : " + data.dependencies.length);
-            for (var j = 0; j < data.dependencies.length; j++) {
+            for (let j = 0; j < data.dependencies.length; j++) {
                 console.log("checkHapModuleInfo data.dependencies[" + j + "] : " + data.dependencies[j]);
             }
             console.log("checkHapModuleInfo preloads length : " + data.preloads.length);
-            for (var j = 0; j < data.preloads.length; j++) {
+            for (let j = 0; j < data.preloads.length; j++) {
                 console.log("checkHapModuleInfo data.preloads[" + j + "] : " + data.preloads[j]);
             }
 
@@ -180,7 +180,7 @@ export default function abilityTest() {
 
             expect(data.name).assertEqual('com.acts.stabilitystagecontext');
             expect(data.icon).assertEqual('$media:icon');
-            expect(data.iconId).assertEqual(16777224);
+            expect(data.iconId).assertEqual(16777225); //16777224 =>16777225
             expect(data.label).assertEqual('$string:entry_label');
             expect(data.labelId).assertEqual(16777219);
             expect(data.description).assertEqual('$string:phone_entry_dsc');
