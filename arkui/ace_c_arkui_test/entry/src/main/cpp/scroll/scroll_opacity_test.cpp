@@ -31,7 +31,7 @@ static napi_value TestScrollOpacity001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_OPACITY, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_OPACITY)->value->f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_OPACITY)->value[PARAM_0].f32, PARAM_0);
     NAPI_END;
 }
 
@@ -42,7 +42,7 @@ static napi_value TestScrollOpacity002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_OPACITY, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_OPACITY)->value->f32, PARAM_MIDDLE);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_OPACITY)->value[PARAM_0].f32, PARAM_MIDDLE);
     NAPI_END;
 }
 
@@ -53,7 +53,7 @@ static napi_value TestScrollOpacity003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_OPACITY, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_OPACITY)->value->f32, PARAM_1);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_OPACITY)->value[PARAM_0].f32, PARAM_1);
     NAPI_END;
 }
 
@@ -65,7 +65,7 @@ static napi_value TestScrollOpacity004(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(scroll, NODE_OPACITY, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(scroll, NODE_OPACITY) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_OPACITY)->value->f32, PARAM_ABNORAML);
+        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_OPACITY)->value[PARAM_0].f32, PARAM_ABNORAML);
     }
     NAPI_END;
 }

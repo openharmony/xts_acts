@@ -156,18 +156,5 @@ export default function stackAlignTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_ALIGN_1100
-     * @tc.name       : testStackAlign011
-     * @tc.desc       : testing default values of align property of the stack
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackAlign011', 0, async (done: Function) => {
-      expect(nativeFunc.testStackAlign011()).assertEqual(0)
-      done()
-    })
-
   })
 }

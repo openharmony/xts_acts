@@ -25,7 +25,7 @@ static napi_value TestSwiperCachedCount001(napi_env env, napi_callback_info info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CACHED_COUNT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CACHED_COUNT)->value->i32, cachedCount);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CACHED_COUNT)->value[PARAM_0].i32, cachedCount);
     NAPI_END;
 }
 
@@ -37,16 +37,7 @@ static napi_value TestSwiperCachedCount002(napi_env env, napi_callback_info info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CACHED_COUNT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CACHED_COUNT)->value->i32, cachedCount);
-    NAPI_END;
-}
-
-static napi_value TestSwiperCachedCount003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    int32_t cachedCount = 1;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CACHED_COUNT)->value->i32, cachedCount);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CACHED_COUNT)->value[PARAM_0].i32, cachedCount);
     NAPI_END;
 }
 

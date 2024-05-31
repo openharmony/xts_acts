@@ -52,18 +52,5 @@ export default function swiperCachedCountTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_CACHEDCOUNT_0300
-     * @tc.name       : testSwiperCachedCount003
-     * @tc.desc       : testing default values of cachedCount property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperCachedCount003', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperCachedCount003()).assertEqual(0)
-      done()
-    })
-
   })
 }

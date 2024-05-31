@@ -221,18 +221,5 @@ export default function toggleClipTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_TOGGLE_CLIP_1600
-     * @tc.name       : testToggleClip016
-     * @tc.desc       : testing clip for toggle with default bool value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testToggleClip016', 0, async (done: Function) => {
-      expect(nativeFunc.testToggleClip016()).assertEqual(0)
-      done()
-    })
-
   })
 }

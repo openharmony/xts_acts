@@ -17,6 +17,7 @@
         "MainAbility/pages/Graphics/getAlpha",
         "MainAbility/pages/Graphics/getBlue",
         "MainAbility/pages/Graphics/getRed",
-        "MainAbility/pages/Graphics/getGreen"
+        "MainAbility/pages/Graphics/getGreen",
+        "MainAbility/pages/FrameNode/onAppear"
     ]
 }

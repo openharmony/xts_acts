@@ -27,7 +27,7 @@ static napi_value TestSwiperBackgroundColor001(napi_env env, napi_callback_info 
                                                 sizeof(backgroundColor_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_BACKGROUND_COLOR, &backgroundColor_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_COLOR)->value->u32, backgroundColor);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, backgroundColor);
     NAPI_END;
 }
 
@@ -41,7 +41,7 @@ static napi_value TestSwiperBackgroundColor002(napi_env env, napi_callback_info 
                                                 sizeof(backgroundColor_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_BACKGROUND_COLOR, &backgroundColor_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_COLOR)->value->u32, backgroundColor);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, backgroundColor);
     NAPI_END;
 }
 
@@ -55,7 +55,7 @@ static napi_value TestSwiperBackgroundColor003(napi_env env, napi_callback_info 
                                                 sizeof(backgroundColor_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_BACKGROUND_COLOR, &backgroundColor_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_COLOR)->value->u32, backgroundColor);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, backgroundColor);
     NAPI_END;
 }
 

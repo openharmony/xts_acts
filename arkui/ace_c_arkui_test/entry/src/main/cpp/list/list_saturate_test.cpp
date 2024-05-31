@@ -26,7 +26,7 @@ static napi_value TestListSaturate001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SATURATION)->value->f32, saturate);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SATURATION)->value[PARAM_0].f32, saturate);
     NAPI_END;
 }
 
@@ -38,19 +38,19 @@ static napi_value TestListSaturate002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SATURATION)->value->f32, saturate);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SATURATION)->value[PARAM_0].f32, saturate);
     NAPI_END;
 }
 
 static napi_value TestListSaturate003(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
-    float saturate = FLT_MAX;
+    float saturate = SIZE_50;
     ArkUI_NumberValue value[] = {{.f32 = saturate}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SATURATION)->value->f32, saturate);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SATURATION)->value[PARAM_0].f32, saturate);
     NAPI_END;
 }
 
@@ -62,7 +62,7 @@ static napi_value TestListSaturate004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SATURATION)->value->f32, saturate);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SATURATION)->value[PARAM_0].f32, saturate);
     NAPI_END;
 }
 
@@ -74,19 +74,19 @@ static napi_value TestListSaturate005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(list, NODE_SATURATION)->value->f32, saturate);
+    ASSERT_NE(nodeAPI->getAttribute(list, NODE_SATURATION)->value[PARAM_0].f32, saturate);
     NAPI_END;
 }
 
 static napi_value TestListSaturate006(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
-    float saturate = FLT_MAX + PARAM_1;
+    float saturate = SIZE_50 + PARAM_1;
     ArkUI_NumberValue value[] = {{.f32 = saturate}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SATURATION, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(list, NODE_SATURATION)->value->f32, saturate);
+    ASSERT_NE(nodeAPI->getAttribute(list, NODE_SATURATION)->value[PARAM_0].f32, saturate);
     NAPI_END;
 }
 
@@ -95,7 +95,7 @@ static napi_value TestListSaturate007(napi_env env, napi_callback_info info)
     NAPI_START(list, ARKUI_NODE_LIST);
     float saturate = PARAM_1;
     auto listDefault = nodeAPI->createNode(ARKUI_NODE_LIST);
-    ASSERT_EQ(nodeAPI->getAttribute(listDefault, NODE_SATURATION)->value->f32, saturate);
+    ASSERT_EQ(nodeAPI->getAttribute(listDefault, NODE_SATURATION)->value[PARAM_0].f32, saturate);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

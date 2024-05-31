@@ -15,7 +15,6 @@
 
 import { expect, describe, it, afterEach } from '@ohos/hypium';
 import Utils from '../common/Utils';
-import nativeFunc from 'libnativefunc.so'
 
 export default function scrollScrollToTest() {
 
@@ -35,7 +34,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo001', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo001()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToLinearTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -48,7 +49,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo002', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo002()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToEaseTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -61,7 +64,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo003', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo003()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToEaseInTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -74,7 +79,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo004', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo004()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToEaseOutTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -87,7 +94,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo005', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo005()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToEaseInOutTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -100,7 +109,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo006', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo006()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToFastOutSlowInTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -113,7 +124,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo007', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo007()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToLinearOutSlowInTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -126,7 +139,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo008', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo008()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToFastOutLinearInTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -139,7 +154,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo009', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo009()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToExtremeDecelerationTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -152,7 +169,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo010', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo010()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToSharpTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -165,7 +184,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo011', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo011()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToRhythmTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -178,7 +199,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo012', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo012()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToSmoothTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
 
@@ -191,7 +214,9 @@ export default function scrollScrollToTest() {
      * @tc.level      : Level 1
      */
     it('testScrollScrollTo013', 0, async (done: Function) => {
-      expect(nativeFunc.testScrollScrollTo013()).assertEqual(0)
+      let PAGE_TAG = 'ScrollScrollToFrictionTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
   })

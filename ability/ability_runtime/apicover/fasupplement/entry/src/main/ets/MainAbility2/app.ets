@@ -15,53 +15,57 @@
 
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
+import Base from '@ohos.base';
+import CommonEventManager from '@ohos.commonEventManager';
 
 let printLog1 = "Fa:MainAbility2:";
 let listPush1 = "Fa_MainAbility2_";
-export default {
+class Test {
   onCreate() {
     console.info(printLog1 + 'onCreate');
 
     let list = ["ohos.permission.CAMERA"]
     ability_featureAbility.getContext().requestPermissionsFromUser(list, 1).then((permissionRequestResult) => {
       console.info(printLog1 + "requestPermissionsFromUser data = " + JSON.stringify(permissionRequestResult));
-      var CommonEventPublishData = {
+      let CommonEventPublishData: CommonEventManager.CommonEventPublishData = {
         parameters: {
           permissionRequestResult: permissionRequestResult
         }
       }
-      commonEvent.publish(listPush1 + "onCreate", CommonEventPublishData, (err) => {
+      commonEvent.publish(listPush1 + "onCreate", CommonEventPublishData, (err: Base.BusinessError) => {
         console.info(printLog1 + listPush1 + "onCreate");
       });
-    }).catch((err) => {
+    }).catch((err: Base.BusinessError) => {
       console.info(printLog1 + "requestPermissionsFromUser err = " + JSON.stringify(err));
     });
 
     setTimeout(()=>{
       ability_featureAbility.terminateSelf().then((data) => {
         console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
-      }).catch((err) => {
+      }).catch((err: Base.BusinessError) => {
         console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
       });
     }, 2000)
-  },
+  }
   onDestroy() {
     console.info(printLog1 + 'onDestroy');
 
-    commonEvent.publish(listPush1 + "onDestroy", (err) => {
+    commonEvent.publish(listPush1 + "onDestroy", (err: Base.BusinessError) => {
       console.info(printLog1 + listPush1 + "onDestroy");
     });
-  },
+  }
   onActive() {
     console.info(printLog1 + 'onActive');
-  },
+  }
   onInactive() {
     console.info(printLog1 + 'onInactive');
-  },
+  }
   onShow() {
     console.info(printLog1 + 'onShow');
-  },
+  }
   onHide() {
     console.info(printLog1 + 'onHide');
   }
 }
+
+export default new Test()

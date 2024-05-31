@@ -65,6 +65,7 @@
     "MainAbility/pages/textPickerDialog/textPickerDialog2",
     "MainAbility/pages/AlertDialog/alertDialog2",
     "MainAbility/pages/Menu/responseType",
-    "MainAbility/pages/Panel/PanelUI"
+    "MainAbility/pages/Panel/PanelUI",
+    "MainAbility/pages/customDialog/CustomDialogRouter"
   ]
 }

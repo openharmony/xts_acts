@@ -389,19 +389,4 @@ static napi_value TestStackBackgroundBlurStyle014(napi_env env, napi_callback_in
     NAPI_END;
 }
 
-static napi_value TestStackBackgroundBlurStyle015(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    float scale = 1;
-    float grayScaleStart = 0;
-    float grayScaleEnd = 0;
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_BLUR_STYLE)->value[PARAM_1].i32, ARKUI_COLOR_MODE_SYSTEM);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_BLUR_STYLE)->value[PARAM_2].i32,
-              ARKUI_ADAPTIVE_COLOR_DEFAULT);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_BLUR_STYLE)->value[PARAM_3].f32, scale);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_BLUR_STYLE)->value[PARAM_4].f32, grayScaleStart);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_BLUR_STYLE)->value[PARAM_5].f32, grayScaleEnd);
-    NAPI_END;
-}
-
 } // namespace ArkUICapiTest

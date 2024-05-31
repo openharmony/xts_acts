@@ -26,7 +26,7 @@ static napi_value TestTextHeight001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_HEIGHT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_HEIGHT)->value->f32, height);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 
@@ -40,7 +40,7 @@ static napi_value TestTextHeight002(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(text, NODE_HEIGHT, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(text, NODE_HEIGHT) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_HEIGHT)->value->f32, height);
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_HEIGHT)->value[PARAM_0].f32, height);
     }
     NAPI_END;
 }
@@ -54,7 +54,7 @@ static napi_value TestTextHeight003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_HEIGHT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_HEIGHT)->value->f32, height);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 

@@ -23,17 +23,16 @@
       "moduleType": "feature",
       "installationFree": false
     },
-    "defPermissions": [
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC"
-      }
-    ],
     "reqPermissions": [
       {
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
-        "reason": "ceshi"
+          "name": "ohos.permission.sec.ACCESS_UDID",
+          "reason": "need use ohos.permission.sec.ACCESS_UDID",
+          "usedScene": {
+              "ability": [
+                  "FormAbility"
+              ],
+              "when": "inuse"
+          }
       }
     ],
     "abilities": [

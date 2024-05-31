@@ -69,6 +69,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     const PARAMETER_ERROR_CODE = 401
     const SERVICE_EXCEPTION_CODE = 14500101
+    const SENSOR_NO_SUPPORT_CODE = 14500102
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
     let errMessages = ['string is not defined','The parameter invalid'];
@@ -76,18 +77,18 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0010
-     * @tc.name: RotatingVectorSensorJsTest001
+     * @tc.name:RotatingVector_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest001---------------------------');
+    it("RotatingVector_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest001---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                 sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
@@ -98,54 +99,56 @@ describe("SensorJsTest_sensor_20", function () {
                 }
                 })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest001 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0020
-     * @tc.name: RotatingVectorSensorJsTest002
+     * @tc.name:RotatingVector_SensorJsTest002
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest002---------------------------');
+    it("RotatingVector_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest002---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                 sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': 100000000 });
                 setTimeout(() => {
-                    console.info('----------------------RotatingVectorSensorJsTest002 off in---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest002 off in---------------------------');
                     sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
-                    console.info('----------------------RotatingVectorSensorJsTest002 off end---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest002 off end---------------------------');
                     done();
                 }, 500);
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest002 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0030
-     * @tc.name: RotatingVectorSensorJsTest003
+     * @tc.name:RotatingVector_SensorJsTest003
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest003---------------------------');
+    it("RotatingVector_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest003---------------------------');
         function onSensorCallback(data) {
-            console.info('RotatingVectorSensorJsTest003  on error');
+            console.info('RotatingVector_SensorJsTest003  on error');
             expect(typeof (data.x)).assertEqual("number");
             expect(typeof (data.y)).assertEqual("number");
             expect(typeof (data.z)).assertEqual("number");
@@ -155,32 +158,33 @@ describe("SensorJsTest_sensor_20", function () {
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, onSensorCallback, { 'interval': 100000000 }, 5);
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest003 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0040
-     * @tc.name: RotatingVectorSensorJsTest004
+     * @tc.name:RotatingVector_SensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest004---------------------------');
+    it("RotatingVector_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest004---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                 sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
@@ -191,23 +195,24 @@ describe("SensorJsTest_sensor_20", function () {
                 }
                 })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest004 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0050
-     * @tc.name: RotatingVectorSensorJsTest005
+     * @tc.name:RotatingVector_SensorJsTest005
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest005---------------------------');
+    it("RotatingVector_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest005---------------------------');
         function onceSensorCallback(data) {
-            console.info('RotatingVectorSensorJsTest005  on error');
+            console.info('RotatingVector_SensorJsTest005  on error');
             expect(typeof (data.x)).assertEqual("number");
             expect(typeof (data.y)).assertEqual("number");
             expect(typeof (data.z)).assertEqual("number");
@@ -217,13 +222,13 @@ describe("SensorJsTest_sensor_20", function () {
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                 try {
                     sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, onceSensorCallback, 5);
                 } catch (error) {
-                    console.info("RotatingVectorSensorJsTest005 error:" + error);
+                    console.info("RotatingVector_SensorJsTest005 error:" + error);
                     expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
                     expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                     done();
@@ -231,31 +236,32 @@ describe("SensorJsTest_sensor_20", function () {
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest005 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
    /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0060
-     * @tc.name: RotatingVectorSensorJsTest006
+     * @tc.name:RotatingVector_SensorJsTest006
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest006---------------------------');
+    it("RotatingVector_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest006---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                    try {
                         sensor.off(string, "");
                     } catch (error) {
-                        console.info("RotatingVectorSensorJsTest006 error:" + error);
+                        console.info("RotatingVector_SensorJsTest006 error:" + error);
                         errMessage = error.toString().slice(16, 40);
                         expect(errMessage).assertEqual(errMessages[0]);
                         done();
@@ -263,23 +269,24 @@ describe("SensorJsTest_sensor_20", function () {
                     }
                 })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest006 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0070
-     * @tc.name: RotatingVectorSensorJsTest007
+     * @tc.name:RotatingVector_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest007---------------------------');
+    it("RotatingVector_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest007---------------------------');
         function onSensorCallback(data) {
-            console.info('RotatingVectorSensorJsTest007  on error');
+            console.info('RotatingVector_SensorJsTest007  on error');
             expect(typeof (data.x)).assertEqual("number");
             expect(typeof (data.y)).assertEqual("number");
             expect(typeof (data.z)).assertEqual("number");
@@ -288,7 +295,7 @@ describe("SensorJsTest_sensor_20", function () {
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                 sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, onSensorCallback);
@@ -299,36 +306,37 @@ describe("SensorJsTest_sensor_20", function () {
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest007 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0080
-     * @tc.name: RotatingVectorSensorJsTest008
+     * @tc.name:RotatingVector_SensorJsTest008
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest008---------------------------');
+    it("RotatingVector_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest008---------------------------');
         function onSensorCallback(data) {
-            console.info('RotatingVectorSensorJsTest008  on error');
+            console.info('RotatingVector_SensorJsTest008  on error');
             expect(false).assertTrue();
             done();
         }
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                 try {
                     sensor.off(1000000, onSensorCallback);
                 } catch (error) {
-                    console.info("RotatingVectorSensorJsTest008 error:" + error);
+                    console.info("RotatingVector_SensorJsTest008 error:" + error);
                     errMessage = error.toString().slice(7, 28);
                     expect(errMessage).assertEqual(errMessages[1]);
                     done();
@@ -336,241 +344,248 @@ describe("SensorJsTest_sensor_20", function () {
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest008 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0090
-     * @tc.name: RotatingVectorSensorJsTest009
+     * @tc.name:RotatingVector_SensorJsTest009
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest009---------------------------');
+    it("RotatingVector_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest009---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                 sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
                 sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2);
                 setTimeout(() => {
-                    console.info('----------------------RotatingVectorSensorJsTest009 off in---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest009 off in---------------------------');
                     sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
-                    console.info('----------------------RotatingVectorSensorJsTest009 off end---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest009 off end---------------------------');
                     done();
                 }, 1000);
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest009 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0100
-     * @tc.name: RotatingVectorSensorJsTest010
+     * @tc.name:RotatingVector_SensorJsTest010
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest010---------------------------');
+    it("RotatingVector_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest010---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                 sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
                 sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2);
                 setTimeout(() => {
-                    console.info('----------------------RotatingVectorSensorJsTest010 off in---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest010 off in---------------------------');
                     try {
                     sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
                     } catch (error) {
-                    console.info("RotatingVectorSensorJsTest010 error:" + error);
+                    console.info("RotatingVector_SensorJsTest010 error:" + error);
                     }
-                    console.info('----------------------RotatingVectorSensorJsTest010 off end---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest010 off end---------------------------');
                 }, 500);
                 setTimeout(() => {
-                    console.info('----------------------RotatingVectorSensorJsTest010 off in---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest010 off in---------------------------');
                     sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2);
-                    console.info('----------------------RotatingVectorSensorJsTest010 off end---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest010 off end---------------------------');
                     done();
                 }, 1000);
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest010 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0110
-     * @tc.name: RotatingVectorSensorJsTest011
+     * @tc.name:RotatingVector_SensorJsTest011
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest011---------------------------');
+    it("RotatingVector_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest011---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': 100000000 });
                 sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2);
                 setTimeout(() => {
-                    console.info('----------------------RotatingVectorSensorJsTest011 off in---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest011 off in---------------------------');
                     sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
-                    console.info('----------------------RotatingVectorSensorJsTest011 off end---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest011 off end---------------------------');
                     done();
                 }, 1000);
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest011 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0120
-     * @tc.name:RotatingVectorSensorJsTest012
+     * @tc.name:RotatingVector_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest012---------------------------');
+    it("RotatingVector_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest012---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                 sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': 100000000 });
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2, { 'interval': 100000000 });
                     setTimeout(() => {
-                        console.info('----------------------RotatingVectorSensorJsTest012 off in---------------------------');
+                        console.info('----------------------RotatingVector_SensorJsTest012 off in---------------------------');
                         try {
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
                         } catch (error) {
-                        console.info("RotatingVectorSensorJsTest012 error:" + error);
+                        console.info("RotatingVector_SensorJsTest012 error:" + error);
                         }
-                        console.info('----------------------RotatingVectorSensorJsTest012 off end---------------------------');
+                        console.info('----------------------RotatingVector_SensorJsTest012 off end---------------------------');
                     }, 500);
                     setTimeout(() => {
-                        console.info('----------------------RotatingVectorSensorJsTest012 off in---------------------------');
+                        console.info('----------------------RotatingVector_SensorJsTest012 off in---------------------------');
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2);
-                        console.info('----------------------RotatingVectorSensorJsTest012 off end---------------------------');
+                        console.info('----------------------RotatingVector_SensorJsTest012 off end---------------------------');
                         done();
                     }, 1000);
                 }
                 })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest012 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0130
-     * @tc.name:RotatingVectorSensorJsTest013
+     * @tc.name:RotatingVector_SensorJsTest013
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------RotatingVectorSensorJsTest013---------------------------');
+    it("RotatingVector_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------RotatingVector_SensorJsTest013---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': 100000000 });
                 sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2, { 'interval': 100000000 });
                 setTimeout(() => {
-                    console.info('----------------------RotatingVectorSensorJsTest013 off in---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest013 off in---------------------------');
                     sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
-                    console.info('----------------------RotatingVectorSensorJsTest013 off end---------------------------');
+                    console.info('----------------------RotatingVector_SensorJsTest013 off end---------------------------');
                     done();
                 }, 1000);
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest013 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0140
-     * @tc.name: RotatingVectorSensorJsTest014
+     * @tc.name:RotatingVector_SensorJsTest014
      * @tc.desc: Functional Use Cases
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------RotatingVectorSensorJsTest014--------------');
+    it("RotatingVector_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------RotatingVector_SensorJsTest014--------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest014 error');
+                    console.info('RotatingVector_SensorJsTest014 error');
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': undefined });
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2, { 'interval': undefined });
                     setTimeout(() => {
-                        console.info('----------------------RotatingVectorSensorJsTest014 off in--------------');
+                        console.info('----------------------RotatingVector_SensorJsTest014 off in--------------');
                         try {
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2);
                         } catch (error) {
-                        console.info("RotatingVectorSensorJsTest014 error:" + error);
+                        console.info("RotatingVector_SensorJsTest014 error:" + error);
                         expect(false).assertTrue();
                         }
-                        console.info('----------------------RotatingVectorSensorJsTest014 off end--------------');
+                        console.info('----------------------RotatingVector_SensorJsTest014 off end--------------');
                         done()
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest014 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0150
-     * @tc.name: RotatingVectorSensorJsTest015
+     * @tc.name:RotatingVector_SensorJsTest015
      * @tc.desc: Illegal ID passed in
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("RotatingVector_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest015 error');
+                    console.info('RotatingVector_SensorJsTest015 error');
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
@@ -578,14 +593,14 @@ describe("SensorJsTest_sensor_20", function () {
                     try{
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': undefined });
                     } catch(error){
-                        console.info('RotatingVectorSensorJsTest015 Repeat subscription'+error);
+                        console.info('RotatingVector_SensorJsTest015 Repeat subscription'+error);
                     }
                     setTimeout(() => {
-                        console.info('----------------------RotatingVectorSensorJsTest015 off in--------------');
+                        console.info('----------------------RotatingVector_SensorJsTest015 off in--------------');
                         try {
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
                         } catch (error) {
-                        console.info("RotatingVectorSensorJsTest015 error:" + error);
+                        console.info("RotatingVector_SensorJsTest015 error:" + error);
                         expect(false).assertTrue();
                         }
                         done();
@@ -593,25 +608,26 @@ describe("SensorJsTest_sensor_20", function () {
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest015 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0160
-     * @tc.name: RotatingVectorSensorJsTest016
+     * @tc.name:RotatingVector_SensorJsTest016
      * @tc.desc: For normal scenarios
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------RotatingVectorSensorJsTest016--------------');
+    it("RotatingVector_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------RotatingVector_SensorJsTest016--------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest016 error');
+                    console.info('RotatingVector_SensorJsTest016 error');
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
@@ -619,14 +635,14 @@ describe("SensorJsTest_sensor_20", function () {
                     try{
                         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': null });
                         } catch(error){
-                            console.info('RotatingVectorSensorJsTest016 Repeat subscription'+error);
+                            console.info('RotatingVector_SensorJsTest016 Repeat subscription'+error);
                         }
                     setTimeout(() => {
-                        console.info('----------------------RotatingVectorSensorJsTest016 off in--------------');
+                        console.info('----------------------RotatingVector_SensorJsTest016 off in--------------');
                         try {
                             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
                             } catch (error) {
-                        console.info("RotatingVectorSensorJsTest016 error:" + error);
+                        console.info("RotatingVector_SensorJsTest016 error:" + error);
                             expect(false).assertTrue();
                             }
                             done();
@@ -634,35 +650,36 @@ describe("SensorJsTest_sensor_20", function () {
                 }
             })
         } catch (error) {
-            console.info('RotatingVectorSensorJsTest016 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0170
-     * @tc.name: RotatingVectorSensorJsTest017
+     * @tc.name:RotatingVector_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------RotatingVectorSensorJsTest017--------------');
+    it("RotatingVector_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------RotatingVector_SensorJsTest017--------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest017 error');
+                    console.info('RotatingVector_SensorJsTest017 error');
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': null });
                     setTimeout(() => {
-                        console.info('----------------------RotatingVectorSensorJsTest017 off in--------------');
+                        console.info('----------------------RotatingVector_SensorJsTest017 off in--------------');
                         try {
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
                         } catch (error) {
-                        console.info("RotatingVectorSensorJsTest017 error:" + error);
+                        console.info("RotatingVector_SensorJsTest017 error:" + error);
                         expect(false).assertTrue();
                         }
                         done();
@@ -670,24 +687,25 @@ describe("SensorJsTest_sensor_20", function () {
                 }
             })
         } catch (error) {
-            console.info("RotatingVectorSensorJsTest017 Device does not support! ");
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0180
-     * @tc.name: RotatingVectorSensorJsTest018
+     * @tc.name:RotatingVector_SensorJsTest018
      * @tc.desc: Once Normal Subscription Scenario Use Case
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVectorSensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("RotatingVector_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
                 if (error) {
-                    console.info('RotatingVectorSensorJsTest018 error');
+                    console.info('RotatingVector_SensorJsTest018 error');
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
@@ -695,23 +713,24 @@ describe("SensorJsTest_sensor_20", function () {
                     try{
                         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': 100000000 });
                         } catch(error){
-                            console.info("RotatingVectorSensorJsTest018 catch error:" + error);
+                            console.info("RotatingVector_SensorJsTest018 catch error:" + error);
                         }
                     setTimeout(() => {
-                        console.info('----------------------RotatingVectorSensorJsTest018 off in--------------');
+                        console.info('----------------------RotatingVector_SensorJsTest018 off in--------------');
                         try {
                             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
                             } catch (error) {
-                        console.info("RotatingVectorSensorJsTest018 error:" + error);
+                        console.info("RotatingVector_SensorJsTest018 error:" + error);
                             expect(false).assertTrue();
                             }
-                        console.info('----------------------RotatingVectorSensorJsTest018 off end--------------');
+                        console.info('----------------------RotatingVector_SensorJsTest018 off end--------------');
                             done()
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info("RotatingVectorSensorJsTest018 Device does not support! ");
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })

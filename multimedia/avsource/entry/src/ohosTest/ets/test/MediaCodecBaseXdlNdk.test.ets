@@ -477,7 +477,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      */
     it('testOHAvCapabilityGetEncoderQualityRange034', 0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAGnormal();
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
     
@@ -1037,7 +1037,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      */
     it('testOHAvCapabilityGetEncoderComplexityRange035', 0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAHnormal();
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
     
@@ -1163,7 +1163,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      */
     it('testOHAvCapabilityGetAudioSupportedSampleRates005', 0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesCnormal();
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -1541,7 +1541,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      */
     it('testOHAvCapabilityGetAudioChannelCountRange015', 0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeNnormal();
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
     

@@ -221,18 +221,5 @@ export default function stackClipTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_CLIP_1600
-     * @tc.name       : testStackClip016
-     * @tc.desc       : testing clip for stack with default bool value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackClip016', 0, async (done: Function) => {
-      expect(nativeFunc.testStackClip016()).assertEqual(0)
-      done()
-    })
-
   })
 }

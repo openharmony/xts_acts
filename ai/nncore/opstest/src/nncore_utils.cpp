@@ -119,6 +119,7 @@ int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
                 return ret;
             }
         }
+        OH_NNTensorDesc_Destroy(&tensorDesc);
     }
     ret = SingleModelBuildEndStep(model, graphArgs);
     return ret;

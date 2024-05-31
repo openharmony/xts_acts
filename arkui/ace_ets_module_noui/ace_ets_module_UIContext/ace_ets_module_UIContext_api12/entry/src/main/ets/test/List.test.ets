@@ -14,8 +14,9 @@
  */
 
 import UIContextApi1 from './UIContext/UIContextApi1.test'
-
+import UIContextTestCase from './UIContext/UIContextTestCase.test'
 export default function testsuite() {
   UIContextApi1();
+  UIContextTestCase();
 
 }

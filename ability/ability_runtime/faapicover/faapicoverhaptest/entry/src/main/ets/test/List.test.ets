@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import apiCoverAbility from './ApiCoverAbility.test'
-import verificationTest from './VerificationTest'
+import apiCoverAbility from './ApiCoverAbility.test';
+import verificationTest from './VerificationTest';
 
 export default function List() {
-  apiCoverAbility()
-  verificationTest()
+  apiCoverAbility();
+  verificationTest();
 }

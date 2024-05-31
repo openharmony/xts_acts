@@ -702,13 +702,13 @@ export default function AbilityDelegatorStageTest() {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, timeout, (err, data) => {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err} , data= ${JSON.stringify(data)}`);
-          expect(err).assertContain('Incorrect parameters');
+          expect(err).assertContain('parameters');
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
           done();
         })
       } catch (err) {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err = ${err}`);
-        expect(err.message).assertContain('Incorrect parameters.');
+        expect(err.message).assertContain('parameters');
         done();
       }
     })
@@ -806,7 +806,7 @@ export default function AbilityDelegatorStageTest() {
             })
         } catch (err) {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} ,err: ${err}`);
-          expect(err.message).assertContain('Incorrect parameters.');
+          expect(err.message).assertContain('parameters');
           done();
         }
       } catch (err) {

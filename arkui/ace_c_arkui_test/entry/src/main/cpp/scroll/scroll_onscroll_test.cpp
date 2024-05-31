@@ -48,7 +48,7 @@ static ArkUI_NodeHandle CreateChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
                                                  sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(scroll, NODE_BACKGROUND_COLOR, &background_color_item);
 
-    nodeAPI->registerNodeEvent(scroll, NODE_SCROLL_EVENT_ON_SCROLL_STOP, ON_SCROLL_EVENT_ID, nullptr);
+    nodeAPI->registerNodeEvent(scroll, NODE_SCROLL_EVENT_ON_SCROLL, ON_SCROLL_EVENT_ID, nullptr);
 
     nodeAPI->addChild(scroll, column);
     nodeAPI->addChild(column, button);

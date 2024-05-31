@@ -14,18 +14,21 @@
  */
 import sensor from '@ohos.sensor'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
-
 export default function SensorJsTest_sensor_4() {
 describe("SensorJsTest_sensor_4", function () {
     function callback(data) {
         console.info("old callback" + JSON.stringify(data));
         expect(typeof (data.intensity)).assertEqual("number");
+        expect(typeof (data.colorTemperature)).assertEqual("number");
+        expect(typeof (data.infraredLuminance)).assertEqual("number");
         expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("old callback2" + JSON.stringify(data));
         expect(typeof (data.intensity)).assertEqual("number");
+        expect(typeof (data.colorTemperature)).assertEqual("number");
+        expect(typeof (data.infraredLuminance)).assertEqual("number");
         expect(typeof (data.timestamp)).assertEqual("number");
     }
 
@@ -64,24 +67,25 @@ describe("SensorJsTest_sensor_4", function () {
     const PARAMETER_ERROR_CODE = 401
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_CODE = 14500101
+    const SENSOR_NO_SUPPORT_CODE = 14500102    
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
     let errMessages = ['string is not defined','The parameter invalid'];
     let errMessage;
 
      /*
      * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0010
-     * @tc.name: AmbientLightSensorJsTest001
+     * @tc.name: AmbientLight_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest001---------------------------');
+    it("AmbientLight_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest001---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
@@ -92,87 +96,92 @@ describe("SensorJsTest_sensor_4", function () {
                 }
            })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest001 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0020
-     * @tc.name: AmbientLightSensorJsTest002
+     * @tc.name: AmbientLight_SensorJsTest002
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest002---------------------------');
+    it("AmbientLight_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest002---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': 100000000 });
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest002 off in---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest002 off in---------------------------');
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT);
-                        console.info('----------------------AmbientLightSensorJsTest002 off end---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest002 off end---------------------------');
                         done();
                     }, 500);
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest002 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0030
-     * @tc.name: AmbientLightSensorJsTest003
+     * @tc.name: AmbientLight_SensorJsTest003
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest003---------------------------');
+    it("AmbientLight_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest003---------------------------');
         function onSensorCallback(data) {
-            console.info('AmbientLightSensorJsTest003  on error');
+            console.info('AmbientLight_SensorJsTest003  on error');
             expect(typeof (data.intensity)).assertEqual("number");
+            expect(typeof (data.colorTemperature)).assertEqual("number");
+            expect(typeof (data.infraredLuminance)).assertEqual("number");
             expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, onSensorCallback, { 'interval': 100000000 }, 5);
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest003 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0040
-     * @tc.name: AmbientLightSensorJsTest004
+     * @tc.name: AmbientLight_SensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest004---------------------------');
+    it("AmbientLight_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest004---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
@@ -183,68 +192,72 @@ describe("SensorJsTest_sensor_4", function () {
                 }
            })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest004 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0050
-     * @tc.name: AmbientLightSensorJsTest005
+     * @tc.name: AmbientLight_SensorJsTest005
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest005---------------------------');
+    it("AmbientLight_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest005---------------------------');
         function onceSensorCallback(data) {
-            console.info('AmbientLightSensorJsTest005  on error');
+            console.info('AmbientLight_SensorJsTest005  on error');
             expect(typeof (data.intensity)).assertEqual("number");
+            expect(typeof (data.colorTemperature)).assertEqual("number");
+            expect(typeof (data.infraredLuminance)).assertEqual("number");
             expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     try {
                         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, onceSensorCallback, 5);
                     } catch (error) {
-                        console.info("AmbientLightSensorJsTest005 error:" + error);
+                        console.info("AmbientLight_SensorJsTest005 error:" + error);
                         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
                         expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                     }
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest005 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
    /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0060
-     * @tc.name: AmbientLightSensorJsTest006
+     * @tc.name: AmbientLight_SensorJsTest006
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest006---------------------------');
+    it("AmbientLight_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest006---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                    try {
                         sensor.off(string, "");
                     } catch (error) {
-                        console.info("AmbientLightSensorJsTest006 error:" + error);
+                        console.info("AmbientLight_SensorJsTest006 error:" + error);
                         errMessage = error.toString().slice(16, 40);
                         expect(errMessage).assertEqual(errMessages[0]);
                         done();
@@ -252,30 +265,33 @@ describe("SensorJsTest_sensor_4", function () {
                 }
           })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest006 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0070
-     * @tc.name: AmbientLightSensorJsTest007
+     * @tc.name: AmbientLight_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest007---------------------------');
+    it("AmbientLight_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest007---------------------------');
         function onSensorCallback(data) {
-            console.info('AmbientLightSensorJsTest007  on error');
+            console.info('AmbientLight_SensorJsTest007  on error');
             expect(typeof (data.intensity)).assertEqual("number");
+            expect(typeof (data.colorTemperature)).assertEqual("number");
+            expect(typeof (data.infraredLuminance)).assertEqual("number");
             expect(typeof (data.timestamp)).assertEqual("number");
         }
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, onSensorCallback);
@@ -286,36 +302,37 @@ describe("SensorJsTest_sensor_4", function () {
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest007 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0080
-     * @tc.name: AmbientLightSensorJsTest008
+     * @tc.name: AmbientLight_SensorJsTest008
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest008---------------------------');
+    it("AmbientLight_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest008---------------------------');
         function onSensorCallback(data) {
-            console.info('AmbientLightSensorJsTest008  on error');
+            console.info('AmbientLight_SensorJsTest008  on error');
             expect(false).assertTrue();
             done();
         }
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     try {
                         sensor.off(1000000, onSensorCallback);
                     } catch (error) {
-                        console.info("AmbientLightSensorJsTest008 error:" + error);
+                        console.info("AmbientLight_SensorJsTest008 error:" + error);
                         errMessage = error.toString().slice(7, 28);
                         expect(errMessage).assertEqual(errMessages[1]);
                         done();
@@ -323,241 +340,248 @@ describe("SensorJsTest_sensor_4", function () {
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest008 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0090
-     * @tc.name: AmbientLightSensorJsTest009
+     * @tc.name: AmbientLight_SensorJsTest009
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest009---------------------------');
+    it("AmbientLight_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest009---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2);
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest009 off in---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest009 off in---------------------------');
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT);
-                        console.info('----------------------AmbientLightSensorJsTest009 off end---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest009 off end---------------------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest009 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0100
-     * @tc.name: AmbientLightSensorJsTest010
+     * @tc.name: AmbientLight_SensorJsTest010
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest010---------------------------');
+    it("AmbientLight_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest010---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2);
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest010 off in---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest010 off in---------------------------');
                         try {
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
                         } catch (error) {
-                        console.info("AmbientLightSensorJsTest010 error:" + error);
+                        console.info("AmbientLight_SensorJsTest010 error:" + error);
                         }
-                        console.info('----------------------AmbientLightSensorJsTest010 off end---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest010 off end---------------------------');
                     }, 500);
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest010 off in---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest010 off in---------------------------');
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2);
-                        console.info('----------------------AmbientLightSensorJsTest010 off end---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest010 off end---------------------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest010 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0110
-     * @tc.name: AmbientLightSensorJsTest011
+     * @tc.name: AmbientLight_SensorJsTest011
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest011---------------------------');
+    it("AmbientLight_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest011---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': 100000000 });
                     sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2);
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest011 off in---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest011 off in---------------------------');
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT);
-                        console.info('----------------------AmbientLightSensorJsTest011 off end---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest011 off end---------------------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest011 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0120
-     * @tc.name:AmbientLightSensorJsTest012
+     * @tc.name:AmbientLight_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest012---------------------------');
+    it("AmbientLight_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest012---------------------------');
          try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                 sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': 100000000 });
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2, { 'interval': 100000000 });
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest012 off in---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest012 off in---------------------------');
                         try {
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
                         } catch (error) {
-                        console.info("AmbientLightSensorJsTest012 error:" + error);
+                        console.info("AmbientLight_SensorJsTest012 error:" + error);
                         }
-                        console.info('----------------------AmbientLightSensorJsTest012 off end---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest012 off end---------------------------');
                     }, 500);
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest012 off in---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest012 off in---------------------------');
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2);
-                        console.info('----------------------AmbientLightSensorJsTest012 off end---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest012 off end---------------------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest012 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Light_JSTest_0130
-     * @tc.name:AmbientLightSensorJsTest013
+     * @tc.name:AmbientLight_SensorJsTest013
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------AmbientLightSensorJsTest013---------------------------');
+    it("AmbientLight_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------AmbientLight_SensorJsTest013---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info( ' AmbientLightSensorJsTest error:' + error);
+                    console.info( ' AmbientLight_SensorJsTest error:' + error);
                     done();
                 } else {
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': 100000000 });
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2, { 'interval': 100000000 });
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest013 off in---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest013 off in---------------------------');
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT);
-                        console.info('----------------------AmbientLightSensorJsTest013 off end---------------------------');
+                        console.info('----------------------AmbientLight_SensorJsTest013 off end---------------------------');
                         done();
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest013 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0140
-     * @tc.name: AmbientLightSensorJsTest014
+     * @tc.name: AmbientLight_SensorJsTest014
      * @tc.desc: Functional Use Cases
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------AmbientLightSensorJsTest014--------------');
+    it("AmbientLight_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------AmbientLight_SensorJsTest014--------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info('AmbientLightSensorJsTest014 error');
+                    console.info('AmbientLight_SensorJsTest014 error');
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': undefined });
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2, { 'interval': undefined });
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest014 off in--------------');
+                        console.info('----------------------AmbientLight_SensorJsTest014 off in--------------');
                         try {
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2);
                         } catch (error) {
-                        console.info("AmbientLightSensorJsTest014 error:" + error);
+                        console.info("AmbientLight_SensorJsTest014 error:" + error);
                         expect(false).assertTrue();
                         }
-                        console.info('----------------------AmbientLightSensorJsTest014 off end--------------');
+                        console.info('----------------------AmbientLight_SensorJsTest014 off end--------------');
                         done()
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest014 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0150
-     * @tc.name: AmbientLightSensorJsTest015
+     * @tc.name: AmbientLight_SensorJsTest015
      * @tc.desc: Illegal ID passed in
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("AmbientLight_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info('AmbientLightSensorJsTest015 error');
+                    console.info('AmbientLight_SensorJsTest015 error');
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
@@ -565,14 +589,14 @@ describe("SensorJsTest_sensor_4", function () {
                     try{
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': undefined });
                     } catch(error){
-                        console.info('AmbientLightSensorJsTest015 Repeat subscription'+error);
+                        console.info('AmbientLight_SensorJsTest015 Repeat subscription'+error);
                     }
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest015 off in--------------');
+                        console.info('----------------------AmbientLight_SensorJsTest015 off in--------------');
                         try {
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT);
                         } catch (error) {
-                        console.info("AmbientLightSensorJsTest015 error:" + error);
+                        console.info("AmbientLight_SensorJsTest015 error:" + error);
                         expect(false).assertTrue();
                         }
                         done();
@@ -580,25 +604,26 @@ describe("SensorJsTest_sensor_4", function () {
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest015 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0160
-     * @tc.name: AmbientLightSensorJsTest016
+     * @tc.name: AmbientLight_SensorJsTest016
      * @tc.desc: For normal scenarios
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------AmbientLightSensorJsTest016--------------');
+    it("AmbientLight_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------AmbientLight_SensorJsTest016--------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info('AmbientLightSensorJsTest016 error');
+                    console.info('AmbientLight_SensorJsTest016 error');
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
@@ -606,14 +631,14 @@ describe("SensorJsTest_sensor_4", function () {
                     try{
                         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': null });
                         } catch(error){
-                            console.info('AmbientLightSensorJsTest016 Repeat subscription'+error);
+                            console.info('AmbientLight_SensorJsTest016 Repeat subscription'+error);
                         }
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest016 off in--------------');
+                        console.info('----------------------AmbientLight_SensorJsTest016 off in--------------');
                         try {
                             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT);
                             } catch (error) {
-                        console.info("AmbientLightSensorJsTest016 error:" + error);
+                        console.info("AmbientLight_SensorJsTest016 error:" + error);
                             expect(false).assertTrue();
                             }
                             done();
@@ -621,35 +646,36 @@ describe("SensorJsTest_sensor_4", function () {
                 }
             })
         } catch (error) {
-            console.info('AmbientLightSensorJsTest016 Device does not support! ');
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0170
-     * @tc.name: AmbientLightSensorJsTest017
+     * @tc.name: AmbientLight_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------AmbientLightSensorJsTest017--------------');
+    it("AmbientLight_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------AmbientLight_SensorJsTest017--------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info('AmbientLightSensorJsTest017 error');
+                    console.info('AmbientLight_SensorJsTest017 error');
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': null });
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest017 off in--------------');
+                        console.info('----------------------AmbientLight_SensorJsTest017 off in--------------');
                         try {
                         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT);
                         } catch (error) {
-                        console.info("AmbientLightSensorJsTest017 error:" + error);
+                        console.info("AmbientLight_SensorJsTest017 error:" + error);
                         expect(false).assertTrue();
                         }
                         done();
@@ -657,24 +683,25 @@ describe("SensorJsTest_sensor_4", function () {
                 }
             })
         } catch (error) {
-            console.info("AmbientLightSensorJsTest017 Device does not support! ");
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0180
-     * @tc.name: AmbientLightSensorJsTest018
+     * @tc.name: AmbientLight_SensorJsTest018
      * @tc.desc: Once Normal Subscription Scenario Use Case
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLightSensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("AmbientLight_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {
                 if (error) {
-                    console.info('AmbientLightSensorJsTest018 error');
+                    console.info('AmbientLight_SensorJsTest018 error');
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
@@ -682,23 +709,24 @@ describe("SensorJsTest_sensor_4", function () {
                     try{
                         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': 100000000 });
                         } catch(error){
-                            console.info("AmbientLightSensorJsTest018 catch error:" + error);
+                            console.info("AmbientLight_SensorJsTest018 catch error:" + error);
                         }
                     setTimeout(() => {
-                        console.info('----------------------AmbientLightSensorJsTest018 off in--------------');
+                        console.info('----------------------AmbientLight_SensorJsTest018 off in--------------');
                         try {
                             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT);
                             } catch (error) {
-                        console.info("AmbientLightSensorJsTest018 error:" + error);
+                        console.info("AmbientLight_SensorJsTest018 error:" + error);
                             expect(false).assertTrue();
                             }
-                        console.info('----------------------AmbientLightSensorJsTest018 off end--------------');
+                        console.info('----------------------AmbientLight_SensorJsTest018 off end--------------');
                             done()
                     }, 1000);
                 }
             })
         } catch (error) {
-            console.info("AmbientLightSensorJsTest018 Device does not support! ");
+            console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
     })

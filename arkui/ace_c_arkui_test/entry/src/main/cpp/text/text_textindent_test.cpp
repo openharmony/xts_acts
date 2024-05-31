@@ -23,7 +23,7 @@ static napi_value TestTextTextIndent001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = textIndentValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_INDENT, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_INDENT)->value->f32, textIndentValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_INDENT)->value[PARAM_0].f32, textIndentValue);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -35,7 +35,7 @@ static napi_value TestTextTextIndent002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = largeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_INDENT, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_INDENT)->value->f32, largeValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_INDENT)->value[PARAM_0].f32, largeValue);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }

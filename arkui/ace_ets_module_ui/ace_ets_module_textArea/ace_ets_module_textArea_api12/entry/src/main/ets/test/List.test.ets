@@ -16,9 +16,15 @@
 import textAreaHeightAdaptivePolicyTest from "./component/textAreaHeightAdaptivePolicy.test.ets";
 import textAreaMaxFontSize from "./component/textAreaMaxFontSize.test.ets";
 import textAreaMinFontSize from "./component/textAreaMinFontSize.test.ets";
+import textAreaDecoration from "./component/textAreaDecoration.test.ets";
+import textAreaLineHeight from "./component/textAreaLineHeight.test.ets";
+import textAreaLetterSpacing from "./component/textAreaLetterSpacing.test.ets";
 
 export default function testsuite() {
   textAreaHeightAdaptivePolicyTest();
   textAreaMinFontSize();
   textAreaMaxFontSize();
+  textAreaLineHeight();
+  textAreaDecoration();
+  textAreaLetterSpacing();
 }

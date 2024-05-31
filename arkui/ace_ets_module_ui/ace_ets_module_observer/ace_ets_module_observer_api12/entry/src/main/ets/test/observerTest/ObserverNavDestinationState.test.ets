@@ -55,7 +55,7 @@ export default function ObserverNavDestinationState() {
      * @tc.level:    Level 2
      */
     it('ObserverNavDestinationState_0100', 0, async function (done) {
-      console.info('[RadioContentModifier_001] START');
+      console.info('[ObserverNavDestinationState_0100] START');
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();

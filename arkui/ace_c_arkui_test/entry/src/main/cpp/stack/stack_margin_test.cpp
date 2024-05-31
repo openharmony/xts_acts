@@ -26,7 +26,7 @@ static napi_value TestStackMargin001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem margin_item = {margin_value, sizeof(margin_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_MARGIN, &margin_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_MARGIN)->value->f32, margin);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_MARGIN)->value[PARAM_0].f32, margin);
     NAPI_END;
 }
 
@@ -39,7 +39,7 @@ static napi_value TestStackMargin002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem margin_item = {margin_value, sizeof(margin_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_MARGIN, &margin_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_MARGIN)->value->f32, margin);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_MARGIN)->value[PARAM_0].f32, margin);
     NAPI_END;
 }
 

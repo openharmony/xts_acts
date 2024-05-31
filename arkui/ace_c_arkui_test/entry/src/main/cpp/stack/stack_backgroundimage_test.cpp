@@ -28,7 +28,7 @@ static napi_value TestStackBackgroundImage001(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(stack, NODE_BACKGROUND_IMAGE, &background_image_value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value->i32, ARKUI_IMAGE_REPEAT_NONE);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_NONE);
     NAPI_END;
 }
 
@@ -43,7 +43,7 @@ static napi_value TestStackBackgroundImage002(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(stack, NODE_BACKGROUND_IMAGE, &background_image_value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value->i32, ARKUI_IMAGE_REPEAT_X);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_X);
     NAPI_END;
 }
 
@@ -58,7 +58,7 @@ static napi_value TestStackBackgroundImage003(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(stack, NODE_BACKGROUND_IMAGE, &background_image_value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value->i32, ARKUI_IMAGE_REPEAT_Y);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_Y);
     NAPI_END;
 }
 
@@ -73,7 +73,7 @@ static napi_value TestStackBackgroundImage004(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(stack, NODE_BACKGROUND_IMAGE, &background_image_value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value->i32, ARKUI_IMAGE_REPEAT_XY);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_XY);
     NAPI_END;
 }
 
@@ -90,7 +90,7 @@ static napi_value TestStackBackgroundImage005(napi_env env, napi_callback_info i
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE) != nullptr) {
         ASSERT_STRNE(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value->i32, repeatValue);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, repeatValue);
     }
     NAPI_END;
 }
@@ -108,7 +108,7 @@ static napi_value TestStackBackgroundImage006(napi_env env, napi_callback_info i
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE) != nullptr) {
         ASSERT_STRNE(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value->i32, repeatValue);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, repeatValue);
     }
     NAPI_END;
 }
@@ -117,7 +117,7 @@ static napi_value TestStackBackgroundImage007(napi_env env, napi_callback_info i
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
 
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value->i32, ARKUI_IMAGE_REPEAT_NONE);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_NONE);
     NAPI_END;
 }
 

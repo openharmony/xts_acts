@@ -15,11 +15,10 @@
 import router from '@system.router';
 
 async function routePage() {
-  let options = {
-    uri: 'pages/second'
-  }
   try {
-    await router.push(options)
+    await router.push({
+      uri: 'pages/second'
+    })
   } catch (err) {
     console.error(`fail callback, code: ${err.code}, msg: ${err.msg}`)
   }

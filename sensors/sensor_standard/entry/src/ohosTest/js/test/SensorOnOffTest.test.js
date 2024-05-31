@@ -18,24 +18,27 @@ import sensor from '@ohos.sensor'
 export default function SystemParameterTest() {
 describe('SystemParameterTest', function () {
     beforeAll(function () {
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
 
     let testNullSensorId = -1;
-    let errCode = 401
-    let errMessage = 'The parameter invalid.'
+    const PARAMETER_ERROR_CODE = 401
+    const SERVICE_EXCEPTION_CODE = 14500101
+    const SENSOR_NO_SUPPORT_CODE = 14500102
+    const PARAMETER_ERROR_MSG = 'The parameter invalid.'
+    const SERVICE_EXCEPTION_MSG = 'Service exception.'
     let TAG  = '';
 
    /**
@@ -64,14 +67,15 @@ describe('SystemParameterTest', function () {
                         sensor.on(testNullSensorId, onSensorCallback);
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
-                        expect(error.code).assertEqual(errCode)
-                        expect(error.message).assertEqual(errMessage)
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
                         done();
                     }
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
         console.info(TAG + ' end');
@@ -121,7 +125,8 @@ describe('SystemParameterTest', function () {
                 }
             })
         } catch (error) {
-            console.info(TAG + ' Device does not support! ');
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
             done();
         }
         console.info(TAG + ' end');

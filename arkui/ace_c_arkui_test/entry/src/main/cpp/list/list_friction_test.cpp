@@ -20,25 +20,16 @@ namespace ArkUICapiTest {
 static napi_value TestListFriction001(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
-    float friction = PARAM_0_POINT_6;
-    auto listDefault = nodeAPI->createNode(ARKUI_NODE_LIST);
-    ASSERT_EQ(nodeAPI->getAttribute(listDefault, NODE_SCROLL_FRICTION)->value->f32, friction);
-    NAPI_END;
-}
-
-static napi_value TestListFriction002(napi_env env, napi_callback_info info)
-{
-    NAPI_START(list, ARKUI_NODE_LIST);
     float friction = PARAM_1_POINT_1;
     ArkUI_NumberValue value[] = {{.f32 = friction}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SCROLL_FRICTION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SCROLL_FRICTION)->value->f32, friction);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SCROLL_FRICTION)->value[PARAM_0].f32, friction);
     NAPI_END;
 }
 
-static napi_value TestListFriction003(napi_env env, napi_callback_info info)
+static napi_value TestListFriction002(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
     float friction = PARAM_NEGATIVE_0_POINT_1;
@@ -46,7 +37,7 @@ static napi_value TestListFriction003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SCROLL_FRICTION, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(list, NODE_SCROLL_FRICTION)->value->f32, friction);
+    ASSERT_NE(nodeAPI->getAttribute(list, NODE_SCROLL_FRICTION)->value[PARAM_0].f32, friction);
     NAPI_END;
 }
 

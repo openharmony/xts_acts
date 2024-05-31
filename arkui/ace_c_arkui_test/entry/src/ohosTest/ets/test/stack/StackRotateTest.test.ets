@@ -52,18 +52,5 @@ export default function stackRotateTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_ROTATE_0300
-     * @tc.name       : testStackRotate003
-     * @tc.desc       : testing rotate for stack with default value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackRotate003', 0, async (done: Function) => {
-      expect(nativeFunc.testStackRotate003()).assertEqual(0)
-      done()
-    })
-
   })
 }

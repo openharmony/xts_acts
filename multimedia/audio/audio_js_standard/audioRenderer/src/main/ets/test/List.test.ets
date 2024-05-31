@@ -17,6 +17,7 @@ import AudioEffectTest from './AudioEffect.test'
 import audioRendererTest from './AudioRenderer.test'    
 import audioRendererTestPc from './AudioRendererPc.test'    
 import AudioRendererInterruptUnitTest from './AudioRenderInterrupt.test'
+import maxAmplitudeFor from './MaxAmplitudeFor.test'
 import call from  '@ohos.telephony.call'
 let voice = call.hasVoiceCapability()
 export default function testsuite() {
@@ -24,6 +25,7 @@ export default function testsuite() {
         audioRendererTest()
         AudioRendererInterruptUnitTest()
         AudioEffectTest()
+        maxAmplitudeFor()
     }else{
         audioRendererTestPc();
     }

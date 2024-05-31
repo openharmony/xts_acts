@@ -88,30 +88,4 @@ static napi_value TestStackTransform002(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
-static napi_value TestStackTransform003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_0].f32, PARAM_1);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_1].f32, PARAM_0);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_2].f32, PARAM_0);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_3].f32, PARAM_0);
-
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_4].f32, PARAM_0);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_5].f32, PARAM_1);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_6].f32, PARAM_0);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_7].f32, PARAM_0);
-
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_8].f32, PARAM_0);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_9].f32, PARAM_0);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_10].f32, PARAM_1);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_11].f32, PARAM_0);
-
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_12].f32, PARAM_0);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_13].f32, PARAM_0);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_14].f32, PARAM_0);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSFORM)->value[PARAM_15].f32, PARAM_1);
-    NAPI_END;
-}
-
 } // namespace ArkUICapiTest

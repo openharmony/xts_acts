@@ -42,14 +42,14 @@ export class KeyboardController {
   private nonBarPosition: number = 0;
   private keyboardController: inputMethodEngine.KeyboardController;
   private InputClient: inputMethodEngine.InputClient;
+  private display_info = display.getDefaultDisplaySync();
 
   constructor(context) {
     this.storage = new LocalStorage();
     this.storage.setOrCreate('storageSimplePorp', 121);
     this.mContext = context;
-    let display_info = display.getDefaultDisplaySync();
-    this.windowWidth = display_info.width * 0.3;
-    this.windowHeight = display_info.height * 0.35;
+    this.windowWidth = this.display_info.width;
+    this.windowHeight = this.display_info.height * 0.45;
   }
 
   public onCreate(): void {
@@ -193,11 +193,20 @@ export class KeyboardController {
           console.debug(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 event:' + data.event);
           that.SUB_InputMethod_IME_SplitScreen_0100();
           break;
+        case 217:
+          console.debug(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0100 event:' + data.event);
+          that.Sub_InputMethod_IME_ScreenRotation_0100();
+          break;
+        case 218:
+          console.debug(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0200 event:' + data.event);
+          that.Sub_InputMethod_IME_ScreenRotation_0200();
+          break;
+        
       }
     }
 
     let commonEventSubscribeInfo = {
-      events: ['test']
+      events: ['InputMethodWindManageTest']
     };
 
     let subscriber
@@ -1202,4 +1211,46 @@ export class KeyboardController {
       commoneventmanager.publish('SUB_InputMethod_IME_SplitScreen_0100', commonEventPublishData, this.publishCallback);
     }
   }
+
+  private async Sub_InputMethod_IME_ScreenRotation_0100() {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_ScreenRotation_0100 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+        let keyboardRect: inputMethodEngine.PanelRect = {
+            landscapeRect: { left: 100, top: 100, width: this.display_info.width, height: this.display_info.height*0.4},
+            portraitRect: { left: 100, top: 100, width: this.display_info.height*0.4, height: this.display_info.width}
+        }
+        this.softKeyboardPanel.adjustPanelRect(inputMethodEngine.PanelFlag.FLG_FIXED, keyboardRect);
+        commonEventPublishData = {
+          data: "SUCCESS"
+        }
+        console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0100 startAbility success' );
+    } catch (err) {
+        console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0100 err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_InputMethod_IME_ScreenRotation_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  private async Sub_InputMethod_IME_ScreenRotation_0200() {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_ScreenRotation_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+        let keyboardRect: inputMethodEngine.PanelRect = {
+            landscapeRect: { left: 100, top: 100, width: this.display_info.width, height: this.display_info.height*0.4},
+            portraitRect: { left: 100, top: 100, width: this.display_info.height*0.4, height: this.display_info.width}
+        }
+        this.softKeyboardPanel.adjustPanelRect(inputMethodEngine.PanelFlag.FLG_FLOATING, keyboardRect);
+        commonEventPublishData = {
+          data: "SUCCESS"
+        }
+        console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0200 startAbility success' );
+    } catch (err) {
+        console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0200 err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_InputMethod_IME_ScreenRotation_0200", commonEventPublishData, this.publishCallback);
+  }  
 }

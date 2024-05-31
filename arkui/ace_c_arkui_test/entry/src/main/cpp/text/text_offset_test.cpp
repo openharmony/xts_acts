@@ -26,8 +26,8 @@ static napi_value TestTextOffset001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_OFFSET, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_0].f32, xOffsetValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_1].f32, yOffsetValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OFFSET)->value[PARAM_0].f32, xOffsetValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OFFSET)->value[PARAM_1].f32, yOffsetValue);
     NAPI_END;
 }
 
@@ -40,8 +40,8 @@ static napi_value TestTextOffset002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_OFFSET, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_0].f32, xOffsetValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_1].f32, yOffsetValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OFFSET)->value[PARAM_0].f32, xOffsetValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OFFSET)->value[PARAM_1].f32, yOffsetValue);
     NAPI_END;
 }
 
@@ -54,8 +54,8 @@ static napi_value TestTextOffset003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_OFFSET, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_0].f32, xOffsetValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_1].f32, yOffsetValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OFFSET)->value[PARAM_0].f32, xOffsetValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OFFSET)->value[PARAM_1].f32, yOffsetValue);
     NAPI_END;
 }
 

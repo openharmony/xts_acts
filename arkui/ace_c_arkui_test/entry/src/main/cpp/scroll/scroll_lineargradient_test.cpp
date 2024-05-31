@@ -33,9 +33,9 @@ static napi_value TestScrollLinearGradient001(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(scroll, NODE_LINEAR_GRADIENT, &value_item);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->i32, direction);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->i32, repeating);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
 
@@ -55,9 +55,9 @@ static napi_value TestScrollLinearGradient002(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(scroll, NODE_LINEAR_GRADIENT, &value_item);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->i32, direction);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->i32, repeating);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
 
@@ -77,9 +77,9 @@ static napi_value TestScrollLinearGradient003(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(scroll, NODE_LINEAR_GRADIENT, &value_item);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, direction);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, repeating);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
 
@@ -99,9 +99,9 @@ static napi_value TestScrollLinearGradient004(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(scroll, NODE_LINEAR_GRADIENT, &value_item);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, angle);
-    ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, direction);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, repeating);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
 
@@ -121,9 +121,9 @@ static napi_value TestScrollLinearGradient005(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(scroll, NODE_LINEAR_GRADIENT, &value_item);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, direction);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, repeating);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
 
@@ -143,9 +143,9 @@ static napi_value TestScrollLinearGradient006(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(scroll, NODE_LINEAR_GRADIENT, &value_item);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, direction);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, repeating);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
 
@@ -165,9 +165,9 @@ static napi_value TestScrollLinearGradient007(napi_env env, napi_callback_info i
     auto ret = nodeAPI->setAttribute(scroll, NODE_LINEAR_GRADIENT, &value_item);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, direction);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, repeating);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
 
@@ -186,9 +186,9 @@ static napi_value TestScrollLinearGradient008(napi_env env, napi_callback_info i
     value_item.object = &colorStop;
     auto ret = nodeAPI->setAttribute(scroll, NODE_LINEAR_GRADIENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, direction);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, repeating);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
 
@@ -206,9 +206,31 @@ static napi_value TestScrollLinearGradient009(napi_env env, napi_callback_info i
     value_item.object = &colorStop;
     auto ret = nodeAPI->setAttribute(scroll, NODE_LINEAR_GRADIENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, direction);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value->f32, repeating);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
+    NAPI_END;
+}
+
+static napi_value TestScrollLinearGradient010(napi_env env, napi_callback_info info)
+{
+    NAPI_START(scroll, ARKUI_NODE_SCROLL);
+    float angle = 90;
+    unsigned int colors[] = {0xFFFFFFFF, 0xFF0000FF};
+    float stops[] = {0.3, 1};
+    ArkUI_ColorStop colorStop = {colors, stops, PARAM_2};
+    ArkUI_NumberValue value[] = {{.f32 = angle}, {.i32 = ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM}, {.i32 = false}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    valueItem.object = &colorStop;
+    auto ret = nodeAPI->setAttribute(scroll, NODE_LINEAR_GRADIENT, &valueItem);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32,
+              ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, false);
+    ArkUI_ColorStop *arkUI_ColorStop =
+        reinterpret_cast<ArkUI_ColorStop *>(nodeAPI->getAttribute(scroll, NODE_LINEAR_GRADIENT)->object);
+    ASSERT_EQ(arkUI_ColorStop->size, PARAM_2);
+    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

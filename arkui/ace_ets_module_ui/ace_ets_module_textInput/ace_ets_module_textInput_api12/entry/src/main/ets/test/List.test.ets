@@ -17,10 +17,16 @@ import textInputUnderlineColorTest from "./component/textInputUnderlineColor.tes
 import textInputMaxFontSize from "./component/textInputMaxFontSize.test.ets";
 import textInputMinFontSize from "./component/textInputMinFontSize.test.ets";
 import textInputHeightAdaptivePolicy from "./component/textInputHeightAdaptivePolicy.test.ets";
+import textInputDecoration from "./component/textInputDecoration.test.ets";
+import textInputLetterSpacing from "./component/textInputLetterSpacing.test.ets";
+import textInputLineHeight from "./component/textInputLineHeight.test.ets";
 
 export default function testsuite() {
   textInputUnderlineColorTest();
   textInputMaxFontSize();
   textInputMinFontSize();
   textInputHeightAdaptivePolicy();
+  textInputDecoration();
+  textInputLetterSpacing();
+  textInputLineHeight();
 }

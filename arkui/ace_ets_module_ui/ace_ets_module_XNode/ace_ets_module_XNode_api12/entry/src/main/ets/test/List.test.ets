@@ -29,6 +29,7 @@ import getAlpha from './GraphicsTest/getAlpha.test';
 import getBlue from './GraphicsTest/getBlue.test';
 import getGreen from './GraphicsTest/getGreen.test';
 import getRed from './GraphicsTest/getRed.test';
+import onAppear from './FrameNodeTest/onAppear.test';
 
 export default function testsuite() {
   borderRadiuses();
@@ -48,4 +49,5 @@ export default function testsuite() {
   getBlue();
   getGreen();
   getRed();
+  onAppear();
 }

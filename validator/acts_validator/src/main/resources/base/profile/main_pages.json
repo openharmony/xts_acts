@@ -46,7 +46,6 @@
     "pages/Camera/CameraPhotoFormat",
     "pages/Camera/CameraOrientation",
     "pages/Camera/CameraSerialPhoto",
-    "pages/Camera/CameraVideo",
     "pages/Camera/CameraFlash",
     "pages/Audio/Audio_index",
     "pages/Audio/AudioInputRoutingWiredHeadset",
@@ -106,7 +105,9 @@
     "pages/PCS/DeveloperMode",
     "pages/PCS/DHCPClientAndServer",
     "pages/PCS/SubscribeCommonEvent",
-    "pages/PCS/UninstallHap"
+    "pages/PCS/UninstallHap",
+    "pages/PCS/SecureScreenLock",
+    "pages/PCS/RebootScreenUnlock"
   ]
 }
 

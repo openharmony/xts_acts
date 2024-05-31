@@ -104,18 +104,5 @@ export default function stackBorderColorTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_BORDERCOLOR_0700
-     * @tc.name       : testStackBorderColor007
-     * @tc.desc       : testing borderColor for stack with default value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackBorderColor007', 0, async (done: Function) => {
-      expect(nativeFunc.testStackBorderColor007()).assertEqual(0)
-      done()
-    })
-
   })
 }

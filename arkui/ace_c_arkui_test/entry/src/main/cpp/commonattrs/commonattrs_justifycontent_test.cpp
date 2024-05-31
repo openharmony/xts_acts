@@ -24,7 +24,7 @@ static napi_value TestCommonAttrsJustifyContent001(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_ROW_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value->i32, ARKUI_FLEX_ALIGNMENT_START);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value[PARAM_0].i32, ARKUI_FLEX_ALIGNMENT_START);
     NAPI_END;
 }
 
@@ -35,7 +35,7 @@ static napi_value TestCommonAttrsJustifyContent002(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_ROW_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value->i32, ARKUI_FLEX_ALIGNMENT_CENTER);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value[PARAM_0].i32, ARKUI_FLEX_ALIGNMENT_CENTER);
     NAPI_END;
 }
 
@@ -46,7 +46,7 @@ static napi_value TestCommonAttrsJustifyContent003(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_ROW_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value->i32, ARKUI_FLEX_ALIGNMENT_END);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value[PARAM_0].i32, ARKUI_FLEX_ALIGNMENT_END);
     NAPI_END;
 }
 
@@ -57,7 +57,8 @@ static napi_value TestCommonAttrsJustifyContent004(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_ROW_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value->i32, ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value[PARAM_0].i32,
+              ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN);
     NAPI_END;
 }
 
@@ -68,7 +69,8 @@ static napi_value TestCommonAttrsJustifyContent005(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_ROW_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value->i32, ARKUI_FLEX_ALIGNMENT_SPACE_AROUND);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value[PARAM_0].i32,
+              ARKUI_FLEX_ALIGNMENT_SPACE_AROUND);
     NAPI_END;
 }
 
@@ -79,7 +81,8 @@ static napi_value TestCommonAttrsJustifyContent006(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_ROW_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value->i32, ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_ROW_JUSTIFY_CONTENT)->value[PARAM_0].i32,
+              ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY);
     NAPI_END;
 }
 
@@ -90,7 +93,8 @@ static napi_value TestCommonAttrsJustifyContent007(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value->i32, ARKUI_FLEX_ALIGNMENT_START);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value[PARAM_0].i32,
+              ARKUI_FLEX_ALIGNMENT_START);
     NAPI_END;
 }
 
@@ -101,7 +105,8 @@ static napi_value TestCommonAttrsJustifyContent008(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value->i32, ARKUI_FLEX_ALIGNMENT_CENTER);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value[PARAM_0].i32,
+              ARKUI_FLEX_ALIGNMENT_CENTER);
     NAPI_END;
 }
 
@@ -112,7 +117,7 @@ static napi_value TestCommonAttrsJustifyContent009(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value->i32, ARKUI_FLEX_ALIGNMENT_END);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value[PARAM_0].i32, ARKUI_FLEX_ALIGNMENT_END);
     NAPI_END;
 }
 
@@ -123,7 +128,7 @@ static napi_value TestCommonAttrsJustifyContent010(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value->i32,
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value[PARAM_0].i32,
               ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN);
     NAPI_END;
 }
@@ -135,7 +140,7 @@ static napi_value TestCommonAttrsJustifyContent011(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value->i32,
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value[PARAM_0].i32,
               ARKUI_FLEX_ALIGNMENT_SPACE_AROUND);
     NAPI_END;
 }
@@ -147,7 +152,7 @@ static napi_value TestCommonAttrsJustifyContent012(napi_env env, napi_callback_i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value->i32,
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_COLUMN_JUSTIFY_CONTENT)->value[PARAM_0].i32,
               ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY);
     NAPI_END;
 }

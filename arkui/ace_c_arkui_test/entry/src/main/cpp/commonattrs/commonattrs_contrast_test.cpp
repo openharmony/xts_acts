@@ -31,14 +31,14 @@ static napi_value TestCommonAttrsContrast001(napi_env env, napi_callback_info in
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_CONTRAST, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value->f32, MIN_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value[PARAM_0].f32, MIN_VALUE);
     NAPI_END;
 }
 
 static napi_value TestCommonAttrsContrast002(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value->f32, DEFAULT_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value[PARAM_0].f32, DEFAULT_VALUE);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestCommonAttrsContrast003(napi_env env, napi_callback_info in
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_CONTRAST, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value->f32, FIRST_MIDDLE_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value[PARAM_0].f32, FIRST_MIDDLE_VALUE);
     NAPI_END;
 }
 
@@ -60,7 +60,7 @@ static napi_value TestCommonAttrsContrast004(napi_env env, napi_callback_info in
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_CONTRAST, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value->f32, MAX_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value[PARAM_0].f32, MAX_VALUE);
     NAPI_END;
 }
 
@@ -72,7 +72,7 @@ static napi_value TestCommonAttrsContrast005(napi_env env, napi_callback_info in
     auto ret = nodeAPI->setAttribute(stack, NODE_CONTRAST, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_CONTRAST) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value->f32, MIN_ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value[PARAM_0].f32, MIN_ABNORMAL_VALUE);
     }
 
     NAPI_END;
@@ -86,7 +86,7 @@ static napi_value TestCommonAttrsContrast006(napi_env env, napi_callback_info in
     auto ret = nodeAPI->setAttribute(stack, NODE_CONTRAST, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_CONTRAST) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value->f32, MAX_ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_CONTRAST)->value[PARAM_0].f32, MAX_ABNORMAL_VALUE);
     }
 
     NAPI_END;

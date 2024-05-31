@@ -47,6 +47,7 @@ import UpdateCustomDialogTest from './CustomDialogTest/UIContextTest/UpdateCusto
 import ButtonStyle from './CalendarPickerDialogTest/ButtonStyle.test'
 import DateButtonStyle from './DatePickerDialogTest/DateButtonStyle.test'
 import dialogApi from './Dialog/dialogApi.test'
+import CustomDialogRouter from './CustomDialogTest/CustomDialogRouter.test.ets'
 
 export default function testsuite() {
   dialogApi()
@@ -83,4 +84,5 @@ export default function testsuite() {
   UpdateCustomDialogTest();
   ButtonStyle()
   DateButtonStyle()
+  CustomDialogRouter()
 }
