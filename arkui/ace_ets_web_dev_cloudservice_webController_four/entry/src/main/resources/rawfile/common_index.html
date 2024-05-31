@@ -83,7 +83,7 @@
              str += Date.now()
             while (true) {
                 let collapseTime = Date.now() - startTime
-                if (isStop  || collapseTime > 20000) {
+                if (isStop  || collapseTime > 30000) {
                     break;
                 }
                if(collapseTime % 200 === 0 ){
