@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 import APICanvasSizeTest from './CanvasTest/APICanvasSizeTest.test';
+import DrawModifier from './DrawModifier/DrawModifier.test';
 
 export default function testsuite() {
   APICanvasSizeTest();
+  DrawModifier();
 
 }
