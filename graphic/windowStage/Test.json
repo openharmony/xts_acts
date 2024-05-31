@@ -6,7 +6,7 @@
         "bundle-name": "com.example.myapplication",
         "module-name": "phone",
         "shell-timeout": "600000",
-        "testcase-timeout": 70000
+        "testcase-timeout": "70000"
     },
     "kits": [
         {
