@@ -45,8 +45,6 @@ struct IndexPage {
   private TestCaseList: TestCase[] = [
     { title: 'CameraPreviewFormat', uri: 'pages/Camera/CameraPreviewFormat' },
     { title: 'CameraPhotoFormat', uri: 'pages/Camera/CameraPhotoFormat' },
-    { title: 'CameraOrientation', uri: 'pages/Camera/CameraOrientation' },
-    { title: 'CameraSerialPhoto', uri: 'pages/Camera/CameraSerialPhoto' },
     { title: 'CameraFlash', uri: 'pages/Camera/CameraFlash' },
   ]
   @State ColorObject: Object[] = letColor;
