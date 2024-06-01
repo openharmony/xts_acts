@@ -86,6 +86,8 @@ import TextClockApiTest from './TextColckTest/TextClockApiTest/TextClockApiTest.
 import TextTimerApiTest from './TextTimerTest/TextTimerApiTest/TextTimerApiTest.test'
 import AttributeUpdaterTest from './TextTest/TextAPITest/AttributeUpdaterTest.test'
 import UnitTest from './TextTest/TextAPITest/Unit.test'
+import TextInputAddApi from './TextInput/TextInputAddApi.test'.
+
 import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
 import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
 import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
@@ -93,6 +95,7 @@ import TextAreaApi4 from './TextArea/TextAreaApi4.test'
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
+  TextInputAddApi();
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
