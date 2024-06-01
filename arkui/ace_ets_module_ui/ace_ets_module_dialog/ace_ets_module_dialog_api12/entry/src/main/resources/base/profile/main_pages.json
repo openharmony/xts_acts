@@ -11,6 +11,7 @@
     "MainAbility/pages/AlertDialog/AlertDialog1",
     "MainAbility/pages/AlertDialog/AlertDialog2",
     "MainAbility/pages/AlertDialog/AlertDialog3",
+    "MainAbility/pages/Menu/menuItemGroupDivider",
     "MainAbility/pages/CustomDialog/CustomDialog1",
     "MainAbility/pages/CustomDialog/CustomDialog2",
     "MainAbility/pages/CustomDialog/CustomDialog3",
