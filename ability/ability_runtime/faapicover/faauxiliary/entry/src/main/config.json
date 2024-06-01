@@ -1,24 +1,27 @@
 {
   "app": {
-    "vendor": "example",
     "bundleName": "ohos.acts.aafwk.test.faauxiliary",
+    "vendor": "example",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
-    },
-    "apiVersion": {
-      "compatible": 8,
-      "target": 9
     }
   },
   "deviceConfig": {},
   "module": {
+    "package": "ohos.acts.aafwk.test.faauxiliary",
+    "name": ".entry",
     "mainAbility": ".MainAbility",
     "deviceType": [
       "default",
-      "tablet",
-      "2in1"
+      "tablet"
     ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry",
+      "installationFree": false
+    },
     "abilities": [
       {
         "skills": [
@@ -32,16 +35,16 @@
           }
         ],
         "orientation": "unspecified",
-        "visible": true,
-        "srcPath": "MainAbility",
+        "formsEnabled": false,
         "name": ".MainAbility",
         "srcLanguage": "ets",
+        "srcPath": "MainAbility",
         "icon": "$media:icon",
         "description": "$string:MainAbility_desc",
-        "formsEnabled": false,
         "label": "$string:MainAbility_label",
         "type": "page",
-        "launchType": "singleton"
+        "visible": true,
+        "launchType": "standard"
       },
       {
         "orientation": "unspecified",
@@ -127,15 +130,6 @@
         "visible": true
       }
     ],
-    "distro": {
-      "moduleType": "entry",
-      "installationFree": false,
-      "deliveryWithInstall": true,
-      "moduleName": "entry"
-    },
-    "package": "ohos.acts.aafwk.test.faauxiliary",
-    "srcPath": "",
-    "name": ".entry",
     "js": [
       {
         "mode": {

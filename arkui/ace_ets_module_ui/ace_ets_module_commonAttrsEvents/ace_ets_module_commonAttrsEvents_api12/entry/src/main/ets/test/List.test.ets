@@ -38,6 +38,8 @@ import requestFocus22 from './Focus/requestFocus/requestFocus22.test'
 import requestFocus23 from './Focus/requestFocus/requestFocus23.test'
 import requestFocus24 from './Focus/requestFocus/requestFocus24.test'
 import requestFocus25 from './Focus/requestFocus/requestFocus25.test'
+import FocusApi1 from './Focus/FocusApi1.test'
+
 export default function testsuite() {
   requestFocus1();
   requestFocus2();
@@ -64,4 +66,6 @@ export default function testsuite() {
   requestFocus23();
   requestFocus24();
   requestFocus25();
+  FocusApi1();
+
 }

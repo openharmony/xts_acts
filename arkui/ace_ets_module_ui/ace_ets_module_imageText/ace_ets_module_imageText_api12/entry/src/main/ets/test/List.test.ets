@@ -83,6 +83,12 @@ import styledStringApi from './TextTest/styledStringApi.test'
 import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
 import StyledStringApi1 from './StyledString/StyledStringApi1.test'
 import APIClipMaskShape from './ImageTest/APIClipMaskShape.test'
+
+import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
+import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
+import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
+import TextAreaApi4 from './TextArea/TextAreaApi4.test'
+
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -153,5 +159,10 @@ export default function testsuite() {
   SelectionMenuApi()
   StyledStringApi1();
   APIClipMaskShape();
+
+  RichEditorApi2();
+  RichEditorApi6();
+  RichEditorApi7();
+  TextAreaApi4()
 
 }
