@@ -15,8 +15,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 export default function abilityTest() {
-    describe('ActsAbilityTest', function () {
-        it('assertContain',0, function () {
+    describe('ActsAbilityTest', () => {
+        it('assertContain',0, () => {
             console.info("it begin")
             let a = 'abc'
             let b = 'b'

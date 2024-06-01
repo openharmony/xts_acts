@@ -12,60 +12,59 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
+import CommonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
 
 let printLog1 = "Fa:Auxiliary:MainAbility:";
 let listPush1 = "Fa_Auxiliary_MainAbility_";
 
-export default {
+class Test {
   onCreate() {
     console.info(printLog1 + 'onCreate');
-  },
+  }
   onDestroy() {
     console.info(printLog1 + 'onDestroy');
 
-    commonEvent.publish(listPush1 + "onDestroy", (err) => {
+    commonEvent.publish(listPush1 + "onDestroy", (err: BusinessError) => {
       console.info(printLog1 + listPush1 + "onDestroy");
     });
-  },
+  }
   onActive() {
     console.info(printLog1 + 'onActive');
 
-    ability_featureAbility.hasWindowFocus()
-      .then((data) => {
-        console.info(printLog1 + "hasWindowFocus data = " + data);
-        let CommonEventPublishData = {
-          parameters: {
-            hasWindowFocus: data
-          }
+    ability_featureAbility.hasWindowFocus().then((data) => {
+      console.info(printLog1 + "hasWindowFocus data = " + data);
+      let CommonEventPublishData: CommonEventManager.CommonEventPublishData = {
+        parameters: {
+          hasWindowFocus: data
         }
-        commonEvent.publish(listPush1 + "HasWindowFocus", CommonEventPublishData, (err) => {
-          console.info(printLog1 + listPush1 + "HasWindowFocus");
-        });
-
-        setTimeout(() => {
-          ability_featureAbility.terminateSelf()
-            .then((data) => {
-              console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
-            })
-            .catch((err) => {
-              console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
-            });
-        }, 3000)
-      })
-      .catch((err) => {
-        console.info(printLog1 + "hasWindowFocus err = " + JSON.stringify(err));
+      }
+      commonEvent.publish(listPush1 + "HasWindowFocus", CommonEventPublishData, (err) => {
+        console.info(printLog1 + listPush1 + "HasWindowFocus");
       });
-  },
+
+      setTimeout(()=>{
+        ability_featureAbility.terminateSelf().then((data) => {
+          console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+          console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
+        });
+      }, 3000)
+    }).catch((err: BusinessError) => {
+      console.info(printLog1 + "hasWindowFocus err = " + JSON.stringify(err));
+    });
+  }
   onInactive() {
     console.info(printLog1 + 'onInactive');
-  },
+  }
   onShow() {
     console.info(printLog1 + 'onShow');
-  },
+  }
   onHide() {
     console.info(printLog1 + 'onHide');
   }
 }
+
+export default new Test()

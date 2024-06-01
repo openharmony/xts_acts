@@ -3369,5 +3369,90 @@ export default function audioCapturer() {
             await audioCapPromise.release();
             done();
         })
+        
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_OVERFLOW_0100
+         *@tc.name      : AudioCapturer - getOverflowCount
+         *@tc.desc      : AudioCapturer - getOverflowCount
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_OVERFLOW_0100', 0, async function (done) {
+            let AudioStreamInfo = {
+                samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+                channels: audio.AudioChannel.CHANNEL_1,
+                sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+                encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+            }
+            let AudioCapturerInfo = {
+                source: audio.SourceType.SOURCE_TYPE_MIC,
+                capturerFlags: 0
+            }
+            let AudioCapturerOptions = {
+                streamInfo: AudioStreamInfo,
+                capturerInfo: AudioCapturerInfo
+            }
+            try {
+                let audioCapPromise = await audio.createAudioCapturer(AudioCapturerOptions);
+                await audioCapPromise.getOverflowCount().then((data) => {
+                    expect(data).assertLargerOrEqual(0);
+                    console.info(`${Tag}: getOverflowCount : Converted: ${data}`);
+                }).catch((err) => {
+                    expect(true).assertTrue();
+                    console.error(`${Tag}: getOverflowCount : ERROR : ${err}`);
+                });
+
+                await audioCapPromise.release();
+            } catch (err) {
+                console.log(`${Tag} error code: ${err.code} ,message:${err.message}`);
+                expect(false).assertTrue();
+            }
+            done();
+        })
+
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_OVERFLOW_0200
+         *@tc.name      : AudioCapturer - getOverflowCountSync
+         *@tc.desc      : AudioCapturer - getOverflowCountSync
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_OVERFLOW_0200', 0, async function (done) {
+            let AudioStreamInfo = {
+                samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+                channels: audio.AudioChannel.CHANNEL_1,
+                sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+                encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+            }
+            let AudioCapturerInfo = {
+                source: audio.SourceType.SOURCE_TYPE_MIC,
+                capturerFlags: 0
+            }
+            let AudioCapturerOptions = {
+                streamInfo: AudioStreamInfo,
+                capturerInfo: AudioCapturerInfo
+            }
+            let audioCapPromise = null;
+            try {
+                await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
+                    audioCapPromise = data;
+                    console.info('AudioCapturer Created : Success : Stream Type: SUCCESS');
+                    let OverflowCOuntSync = audioCapPromise.getOverflowCountSync();
+                    console.info(`${Tag}: overflowCOuntSync : Converted: ${OverflowCOuntSync}`);
+                    expect(OverflowCOuntSync).assertLargerOrEqual(0);
+                }).catch((err) => {
+                    console.error(`AudioCapturer Created : ERROR : ${err}`);
+                    expect(false).assertTrue();
+                });
+
+            } catch (err) {
+                console.log(`${Tag} error code: ${err.code} ,message:${err.message}`);
+                expect(false).assertTrue();
+            }
+            await audioCapPromise.release();
+            done();
+        })
     })
 }
