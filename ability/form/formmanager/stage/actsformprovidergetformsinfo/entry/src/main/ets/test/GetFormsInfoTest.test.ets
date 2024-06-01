@@ -37,6 +37,7 @@ let module1FormInfo: formInfo.FormInfo = {
     updateDuration: 1,
     defaultDimension:2,
     supportDimensions:[2, 6],
+    supportedShapes:[2],
     customizeData: {},
     isDynamic: true,
     transparencyEnabled: false
@@ -62,6 +63,7 @@ let module2FormInfo: formInfo.FormInfo = {
     updateDuration: 1,
     defaultDimension:2,
     supportDimensions:[2],
+    supportedShapes:[1],
     customizeData: {},
     isDynamic: true,
     transparencyEnabled: false
@@ -397,5 +399,7 @@ export default function abilityTest() {
         expect(JSON.stringify(expectInfo.supportDimensions)).assertEqual(JSON.stringify(result.supportDimensions));
         console.info("formProvider::GetFormsInfoTest: customizeData expect " + JSON.stringify(expectInfo.customizeData));
         expect(JSON.stringify(expectInfo.customizeData)).assertEqual(JSON.stringify(result.customizeData));
+        console.info("formProvider::GetFormsInfoTest: supportedShapes expect " + JSON.stringify(expectInfo.supportedShapes));
+        expect(JSON.stringify(expectInfo.supportedShapes)).assertEqual(JSON.stringify(result.supportedShapes));
     }
 }

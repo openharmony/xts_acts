@@ -19,6 +19,9 @@
         "MainAbility/pages/Graphics/getRed",
         "MainAbility/pages/Graphics/getGreen",
         "MainAbility/pages/FrameNode/onAppear",
-	"MainAbility/pages/FrameNode/setMeasureSize"
+	    "MainAbility/pages/FrameNode/setMeasureSize",
+	    "MainAbility/pages/Graphics/GraphicsApi/Corner",
+	    "MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
+	    "MainAbility/pages/Graphics/GraphicsApi/PercentReference"
     ]
 }
