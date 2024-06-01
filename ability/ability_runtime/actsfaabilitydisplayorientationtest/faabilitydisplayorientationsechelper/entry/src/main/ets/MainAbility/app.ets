@@ -16,19 +16,22 @@
 import hilog from '@ohos.hilog';
 import featureAbility from '@ohos.ability.featureAbility';
 import bundle from '@ohos.bundle';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
+import CommonEventManager from '@ohos.commonEventManager';
 
-export default {
+class Test {
   onCreate() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
-  },
+  }
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
-  },
+  }
   onActive() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onActive');
-    featureAbility.getWant((error, want) => {
+    featureAbility.getWant((error: BusinessError, want: Want) => {
       hilog.info(0x0000, 'testTag', '%{public}s', `get want: ${JSON.stringify(want)}`);
-      let number = want.parameters.number;
+      let number = want.parameters?.number;
       switch (number) {
         case 7:
           featureAbility.getContext().getDisplayOrientation((err, data) => {
@@ -51,7 +54,7 @@ export default {
                     ).then(data => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility data: ${data}`);
                       featureAbility.terminateSelf();
-                    }, (err => {
+                    }, ((err: BusinessError) => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility err: ${JSON.stringify(err)}`);
                     }))
                   }
@@ -81,7 +84,7 @@ export default {
                     ).then(data => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility data: ${data}`);
                       featureAbility.terminateSelf();
-                    }, (err => {
+                    }, ((err: BusinessError) => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility err: ${JSON.stringify(err)}`);
                     }))
                   }
@@ -94,3 +97,5 @@ export default {
     })
   }
 }
+
+export default new Test()

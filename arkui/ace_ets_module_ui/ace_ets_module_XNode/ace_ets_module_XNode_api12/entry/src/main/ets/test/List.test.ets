@@ -44,6 +44,10 @@ import createNodeSearch from './FrameNodeTest/createNodeSearch.test';
 import createNodeStack from './FrameNodeTest/createNodeStack.test';
 import createNodeText from './FrameNodeTest/createNodeText.test';
 
+import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
+import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
+import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
+
 export default function testsuite() {
   borderRadiuses();
   borderStyles();
@@ -76,4 +80,7 @@ export default function testsuite() {
   createNodeSearch();
   createNodeStack();
   createNodeText();
+  CornerTest();
+  LengthMetricsUnitTest();
+  PercentReferenceTest();
 }

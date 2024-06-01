@@ -31,6 +31,9 @@
         "MainAbility/pages/FrameNode/createNodeScroll",
         "MainAbility/pages/FrameNode/createNodeSearch",
         "MainAbility/pages/FrameNode/createNodeStack",
-        "MainAbility/pages/FrameNode/createNodeText"
+        "MainAbility/pages/FrameNode/createNodeText",
+	    "MainAbility/pages/Graphics/GraphicsApi/Corner",
+	    "MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
+	    "MainAbility/pages/Graphics/GraphicsApi/PercentReference"
     ]
 }

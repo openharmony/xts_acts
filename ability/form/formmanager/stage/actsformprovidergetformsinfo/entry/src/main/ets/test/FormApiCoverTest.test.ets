@@ -113,7 +113,6 @@ export default function FormApiCoverTest() {
       expect("ohos.extra.param.key.ability_name").assertEqual(formInfoNew.FormParam.ABILITY_NAME_KEY);
       expect('ohos.extra.param.key.form_customize').assertEqual(formInfoNew.FormParam.PARAM_FORM_CUSTOMIZE_KEY);
       expect('ohos.extra.param.key.form_launch_reason').assertEqual(formInfoNew.FormParam.LAUNCH_REASON_KEY);
-      // expect('ohos.extra.param.key.form_rendering_mode').assertEqual(formInfoNew.FormParam.FORM_RENDERING_MODE_KEY);
       console.info("SUB_AA_Test_InsightIntent_0100:" + formInfoNew.FormParam.FORM_RENDERING_MODE_KEY);
       expect('ohos.extra.param.key.host_bg_inverse_color').assertEqual(formInfoNew.FormParam.HOST_BG_INVERSE_COLOR_KEY)
       if (deviceType !== '2in1') {
@@ -133,13 +132,14 @@ export default function FormApiCoverTest() {
       expect(3).assertEqual(formInfoNew.FormDimension.Dimension_2_4);
       expect(4).assertEqual(formInfoNew.FormDimension.Dimension_4_4);
       expect(5).assertEqual(formInfoNew.FormDimension.Dimension_2_1);
-      // expect(6).assertEqual(formInfoNew.FormDimension.DIMENSION_1_1)
       expect(7).assertEqual(formInfoNew.FormDimension.DIMENSION_6_4);
       console.info("SUB_AA_Test_InsightIntent_0100:" + formInfoNew.FormDimension.Dimension_2_1);
       expect(1).assertEqual(formInfoNew.FormType.JS);
       expect(2).assertEqual(formInfoNew.FormType.eTS);
       expect(1).assertEqual(formInfoNew.VisibilityType.FORM_VISIBLE);
       expect(2).assertEqual(formInfoNew.VisibilityType.FORM_INVISIBLE);
+      expect(1).assertEqual(formInfoNew.FormShape.RECT);
+      expect(2).assertEqual(formInfoNew.FormShape.CIRCLE);
       let formStateInfo: formInfoNew.FormStateInfo = {
         formState: formInfoNew.FormState.READY,
         want: {
