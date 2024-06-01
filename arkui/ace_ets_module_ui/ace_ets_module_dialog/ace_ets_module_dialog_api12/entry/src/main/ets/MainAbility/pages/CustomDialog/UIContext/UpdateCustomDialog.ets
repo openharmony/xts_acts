@@ -44,6 +44,7 @@ struct updateCustomDialog {
         Text(this.change) // CenterEnd = 7
           .id('UpdateCustomDialog')
         Button("click me")
+          .id('btn')
           .onClick(() => {
             let uiContext = this.getUIContext();
             let promptAction = uiContext.getPromptAction();
