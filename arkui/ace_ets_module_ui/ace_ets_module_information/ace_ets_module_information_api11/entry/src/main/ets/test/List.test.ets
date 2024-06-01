@@ -36,7 +36,7 @@ import qrCode3Jsunit from './QrcodeTest/QrCode3Jsunit.test';
 import searchJsunit from './SearchTest/SearchJsunit.test.ets';
 import gauge3Jsunit from './gaugeTest/gauge3Jsunit.test.ets';
 import datalPanelUIJsunit from './DataPanelTest/datalPanelUIJsunit.test.ets';
-
+import CounterComponentTest from './CounterTest/CounterApiTest/CounterComponentTest.test.ets';
 
 export default function testsuite() {
   gaugeJsunit();
@@ -63,4 +63,5 @@ export default function testsuite() {
   searchJsunit();
   gauge3Jsunit();
   datalPanelUIJsunit();
+  CounterComponentTest();
 }

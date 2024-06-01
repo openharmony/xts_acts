@@ -24,6 +24,7 @@
         "MainAbility/pages/Qrcode/QrCode3",
 	"MainAbility/pages/Search/search",
         "MainAbility/pages/gauge/gauge3",
-        "MainAbility/pages/DataPanel/DatalPanelUI"
+        "MainAbility/pages/DataPanel/DatalPanelUI",
+        "MainAbility/pages/Counter/CounterApi/CounterApi"
     ]
 }
