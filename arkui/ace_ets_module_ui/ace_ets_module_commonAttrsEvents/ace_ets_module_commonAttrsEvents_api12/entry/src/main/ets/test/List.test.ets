@@ -41,6 +41,8 @@ import requestFocus25 from './Focus/requestFocus/requestFocus25.test'
 import onHoverStatusChange from './onHoverStatusChange/onHoverStatusChange.test'
 import onTouchIntercept from './onTouchIntercept/onTouchIntercept.test'
 import onWillApplyTheme from './onWillApplyTheme/onWillApplyTheme.test'
+import FocusApi1 from './Focus/FocusApi1.test'
+
 export default function testsuite() {
   requestFocus1();
   requestFocus2();
@@ -70,4 +72,6 @@ export default function testsuite() {
   onHoverStatusChange()
   onTouchIntercept()
   onWillApplyTheme()
+  FocusApi1();
+
 }

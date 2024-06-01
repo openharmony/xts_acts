@@ -30,7 +30,18 @@ struct clearPrefetchedResourceTest {
   message: webView.WebMessageExt = new webView.WebMessageExt();
   @State str: string = ""
   @State javaScriptAccess: boolean = true;
-
+  responseweb: WebResourceResponse = new WebResourceResponse()
+  scheme1: webView.WebCustomScheme = {
+    schemeName: "name1",
+    isSupportCORS: true,
+    isSupportFetch: true,
+    isStandard: false,
+    isLocal: false,
+    isDisplayIsolated: false,
+    isSecure: false,
+    isCspBypassing: false,
+    isCodeCacheSupported: false,
+  }
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
@@ -135,6 +146,16 @@ struct clearPrefetchedResourceTest {
               } catch (err) {
                 console.error(msg + "clearPrefetchedResource error: " + err.code + " Message: " + err.message);
                 Utils.emitEvent(err.code, 10116)
+              }
+              break;
+            }
+            case "testCustomizeSchemes001": {
+              let msg = "testCustomizeSchemes001"
+              try {
+                webView.WebviewController.customizeSchemes([this.scheme1])
+              } catch (err) {
+                console.error(msg + "customizeSchemes error: " + err.code + " Message: " + err.message);
+                Utils.emitEvent(err.code, 10117)
               }
               break;
             }

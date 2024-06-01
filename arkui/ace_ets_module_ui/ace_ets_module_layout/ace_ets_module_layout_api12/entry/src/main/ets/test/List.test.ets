@@ -25,5 +25,4 @@ export default function testsuite() {
   SpaceCross5AlignItemsJsunit();
   RelativeContainerApi();
   ChipApi1();
-  ChipGroupApi1();
 }

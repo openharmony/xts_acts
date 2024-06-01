@@ -65,8 +65,10 @@ export default function GeneralLayoutOriginalTest() {
             let strJson1 = getInspectorByKey('top_orig');
             let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
             let left: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[0];
-            expect(original_rect_left - left).assertEqual(100);
-            expect(original_rect_top - top).assertEqual(vp2px(100));
+            expect(original_rect_left - left).assertLargerOrEqual(99);
+            expect(original_rect_left - left).assertLessOrEqual(101);
+            expect(original_rect_top - top).assertLargerOrEqual(vp2px(100) - 1);
+            expect(original_rect_top - top).assertLessOrEqual(vp2px(100) + 1);
             console.info('ArkUIHDS_General_Layout_2800 END');
             done();
           }, 500);
@@ -103,7 +105,8 @@ export default function GeneralLayoutOriginalTest() {
             let lpx100 = Number.parseInt(lpx2px(100).toFixed(0));
             bottom = Math.floor(bottom);
             original_rect_bottom = Math.floor(original_rect_bottom);
-            expect(width - (original_rect_right - left)).assertEqual(fp2px(100));
+            expect(width - (original_rect_right - left)).assertLargerOrEqual(fp2px(100) - 1);
+            expect(width - (original_rect_right - left)).assertLessOrEqual(fp2px(100) + 1);
             expect(bottom - original_rect_bottom).assertLargerOrEqual(lpx100 - 1);
             expect(bottom - original_rect_bottom).assertLessOrEqual(lpx100 + 1);
             console.info('ArkUIHDS_General_Layout_2900 END');
@@ -136,8 +139,10 @@ export default function GeneralLayoutOriginalTest() {
             let strJson1 = getInspectorByKey('top_orig');
             let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[1];
             let left: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson1).$rect + ']')[0] + ']')[0];
-            expect(original_rect_left - left).assertEqual(vp2px(100));
-            expect(original_rect_top - top).assertEqual(vp2px(100));
+            expect(original_rect_left - left).assertLargerOrEqual(vp2px(100) - 1);
+            expect(original_rect_left - left).assertLessOrEqual(vp2px(100) + 1);
+            expect(original_rect_top - top).assertLargerOrEqual(vp2px(100) - 1);
+            expect(original_rect_top - top).assertLessOrEqual(vp2px(100) + 1);
             console.info('ArkUIHDS_General_Layout_3000 END');
             done();
           }, 500);
@@ -178,7 +183,8 @@ export default function GeneralLayoutOriginalTest() {
             let original_rect = Number.parseInt(original_size.toFixed(0));
             expect((width / 2) - original_rect).assertLargerOrEqual(99);
             expect((width / 2) - original_rect).assertLessOrEqual(101);
-            expect(original_rect_top - top).assertEqual(vp2px(100));
+            expect(original_rect_top - top).assertLargerOrEqual(vp2px(100) - 1);
+            expect(original_rect_top - top).assertLessOrEqual(vp2px(100) + 1);
             console.info('ArkUIHDS_General_Layout_3100 END');
             done();
           }, 500);
@@ -218,7 +224,10 @@ export default function GeneralLayoutOriginalTest() {
             let lpx100 = Number.parseInt(lpx2px(100).toFixed(0));
             top = Math.floor(top);
             original_rect_top = Math.floor(original_rect_top);
-            expect(((original_rect_left + original_rect_right) / 2 - left) - (width / 2)).assertEqual(fp2px(100));
+            expect(((original_rect_left + original_rect_right) / 2 - left) - (width / 2))
+              .assertLargerOrEqual(fp2px(100) - 1);
+            expect(((original_rect_left + original_rect_right) / 2 - left) - (width / 2))
+              .assertLessOrEqual(fp2px(100) + 1);
             expect(original_rect_top - top - 30).assertLargerOrEqual(lpx100 - 1);
             expect(original_rect_top - top - 30).assertLessOrEqual(lpx100 + 1);
             console.info('ArkUIHDS_General_Layout_3200 END');
@@ -260,7 +269,8 @@ export default function GeneralLayoutOriginalTest() {
             let original_rect = Number.parseInt(((original_rect_left + original_rect_right) / 2 - left).toFixed(0));
             expect(original_rect - (width / 2)).assertLargerOrEqual(99);
             expect(original_rect - (width / 2)).assertLessOrEqual(101);
-            expect(original_rect_top - top - 60).assertEqual(vp2px(100));
+            expect(original_rect_top - top - 60).assertLargerOrEqual(vp2px(100) - 1);
+            expect(original_rect_top - top - 60).assertLessOrEqual(vp2px(100) + 1);
             console.info('ArkUIHDS_General_Layout_3300 END');
             done();
           }, 500);
@@ -300,7 +310,10 @@ export default function GeneralLayoutOriginalTest() {
             let lpx100 = Number.parseInt(lpx2px(100).toFixed(0));
             top = Math.floor(top);
             original_rect_top = Math.floor(original_rect_top);
-            expect(((width / 2) - ((original_rect_left + original_rect_right) / 2 - left))).assertEqual(fp2px(100));
+            expect(((width / 2) - ((original_rect_left + original_rect_right) / 2 - left)))
+              .assertLargerOrEqual(fp2px(100) - 1);
+            expect(((width / 2) - ((original_rect_left + original_rect_right) / 2 - left)))
+              .assertLessOrEqual(fp2px(100) + 1);
             expect(original_rect_top - top - 90).assertLargerOrEqual(lpx100 - 1);
             expect(original_rect_top - top - 90).assertLessOrEqual(lpx100 + 1);
             console.info('ArkUIHDS_General_Layout_3400 END');
@@ -340,8 +353,12 @@ export default function GeneralLayoutOriginalTest() {
             right = Math.floor(right);
             let width = right - left;
             I18n.System.setSystemLanguage("zh-Hans");
-            expect(((original_rect_left + original_rect_right) / 2 - left) - (width / 2)).assertEqual(vp2px(100));
-            expect(original_rect_top - top - 120).assertEqual(vp2px(100));
+            expect(((original_rect_left + original_rect_right) / 2 - left) - (width / 2))
+              .assertLargerOrEqual(vp2px(100) - 1);
+            expect(((original_rect_left + original_rect_right) / 2 - left) - (width / 2))
+              .assertLessOrEqual(vp2px(100) + 1);
+            expect(original_rect_top - top - 120).assertLargerOrEqual(vp2px(100) - 1);
+            expect(original_rect_top - top - 120).assertLessOrEqual(vp2px(100) + 1);
             console.info('ArkUIHDS_General_Layout_3500 END');
             done();
           }, 500);

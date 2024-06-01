@@ -12,48 +12,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
+import CommonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
 
 let printLog1 = "Fa:Auxiliary:MainAbility3:";
 let listPush1 = "Fa_Auxiliary_MainAbility3_";
-
-export default {
+class Test {
   onCreate() {
     console.info(printLog1 + 'onCreate');
 
-    commonEvent.publish(listPush1 + "onCreate", (err) => {
+    commonEvent.publish(listPush1 + "onCreate", (err: BusinessError) => {
       console.info(printLog1 + listPush1 + "onCreate");
     });
 
-    setTimeout(() => {
-      ability_featureAbility.terminateSelf()
-        .then((data) => {
-          console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
-        })
-        .catch((err) => {
-          console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
-        });
+    setTimeout(()=>{
+      ability_featureAbility.terminateSelf().then((data) => {
+        console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
+      });
     }, 3000)
-  },
+  }
   onDestroy() {
     console.info(printLog1 + 'onDestroy');
 
-    commonEvent.publish(listPush1 + "onDestroy", (err) => {
+    commonEvent.publish(listPush1 + "onDestroy", (err: BusinessError) => {
       console.info(printLog1 + listPush1 + "onDestroy");
     });
-  },
+  }
   onActive() {
     console.info(printLog1 + 'onActive');
-  },
+  }
   onInactive() {
     console.info(printLog1 + 'onInactive');
-  },
+  }
   onShow() {
     console.info(printLog1 + 'onShow');
-  },
+  }
   onHide() {
     console.info(printLog1 + 'onHide');
   }
 }
+
+export default new Test()

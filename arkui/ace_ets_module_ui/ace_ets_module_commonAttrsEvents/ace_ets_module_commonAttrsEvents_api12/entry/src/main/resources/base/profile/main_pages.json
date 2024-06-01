@@ -30,6 +30,8 @@
         "MainAbility/pages/Focus/requestFocus/requestFocus22",
         "MainAbility/pages/Focus/requestFocus/requestFocus23",
         "MainAbility/pages/Focus/requestFocus/requestFocus24",
-        "MainAbility/pages/Focus/requestFocus/requestFocus25"
+        "MainAbility/pages/Focus/requestFocus/requestFocus25",
+        "MainAbility/pages/Focus/FocusApi1"
+
     ]
 }
