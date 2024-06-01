@@ -66,7 +66,11 @@
     "MainAbility/pages/SymbolGlyph/SymbolGlyphApi",
     "MainAbility/pages/RichEditor/SelectionMenuApi",
     "MainAbility/pages/Image/imageAddApi",
-    "MainAbility/pages/StyledString/StyledStringApi1"
+    "MainAbility/pages/StyledString/StyledStringApi1",
 
+    "MainAbility/pages/RichEditor/RichEditorApi2",
+    "MainAbility/pages/RichEditor/RichEditorApi6",
+    "MainAbility/pages/RichEditor/RichEditorApi7",
+    "MainAbility/pages/TextArea/TextAreaApi4"
   ]
 }
