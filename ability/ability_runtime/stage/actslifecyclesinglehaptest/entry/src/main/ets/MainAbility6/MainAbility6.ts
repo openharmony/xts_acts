@@ -12,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.app.ability.UIAbility'
+import Ability from '@ohos.app.ability.UIAbility';
+import commonEvent from '@ohos.commonEvent';
 
 export default class MainAbility6 extends Ability {
     onCreate(want, launchParam) {
@@ -128,7 +129,12 @@ export default class MainAbility6 extends Ability {
             console.log("[Demo] registerAbilityLifecycleCallback6 listKey: " + JSON.stringify(listKey6));
             globalThis.list6 = listKey6;
             globalThis.callbackid6 = lifecycleid;
-        }, 1500);
+        }, 300);
+          setTimeout(function () {
+            commonEvent.publish('MainAbility6_onForground', (err, data) => {
+              console.log('MainAbility6 onForeground publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+            })
+        }, 500);
     }
 
     onBackground() {
