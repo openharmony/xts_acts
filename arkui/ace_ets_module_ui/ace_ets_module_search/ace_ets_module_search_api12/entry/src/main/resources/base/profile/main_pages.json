@@ -5,6 +5,7 @@
     "MainAbility/pages/component/searchMinFontSize",
     "MainAbility/pages/component/searchDecoration",
     "MainAbility/pages/component/searchLetterSpacing",
-    "MainAbility/pages/component/searchLineHeight"
+    "MainAbility/pages/component/searchLineHeight",
+    "MainAbility/pages/component/APISearchExample"
   ]
 }
