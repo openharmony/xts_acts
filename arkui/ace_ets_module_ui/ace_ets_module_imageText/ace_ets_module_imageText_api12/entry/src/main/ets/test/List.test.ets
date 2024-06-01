@@ -82,6 +82,12 @@ import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
 import styledStringApi from './TextTest/styledStringApi.test'
 import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
 import StyledStringApi1 from './StyledString/StyledStringApi1.test'
+import TextClockApiTest from './TextColckTest/TextClockApiTest/TextClockApiTest.test'
+import TextTimerApiTest from './TextTimerTest/TextTimerApiTest/TextTimerApiTest.test'
+import AttributeUpdaterTest from './TextTest/TextAPITest/AttributeUpdaterTest.test'
+import UnitTest from './TextTest/TextAPITest/Unit.test'
+import APIClipMaskShape from './ImageTest/APIClipMaskShape.test'
+import TextInputAddApi from './TextInput/TextInputAddApi.test'.
 
 import RichEditorChangeValueTest1 from './RichEditor/RichEditorChangeValueTest1.test'
 import RichEditorGetLayoutManagerTest1 from './RichEditor/RichEditorGetLayoutManagerTest1.test'
@@ -91,10 +97,10 @@ import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
 import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
 import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
 import TextAreaApi4 from './TextArea/TextAreaApi4.test'
-
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
+  TextInputAddApi();
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
@@ -161,6 +167,11 @@ export default function testsuite() {
   styledStringApi()
   SelectionMenuApi()
   StyledStringApi1();
+  TextClockApiTest();
+  TextTimerApiTest();
+  AttributeUpdaterTest();
+  UnitTest();
+  APIClipMaskShape();
 
   RichEditorChangeValueTest1();
   RichEditorGetLayoutManagerTest1();
@@ -170,5 +181,4 @@ export default function testsuite() {
   RichEditorApi6();
   RichEditorApi7();
   TextAreaApi4()
-
 }

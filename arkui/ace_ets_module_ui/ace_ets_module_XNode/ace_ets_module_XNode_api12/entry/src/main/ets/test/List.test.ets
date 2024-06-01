@@ -33,6 +33,10 @@ import onAppear from './FrameNodeTest/onAppear.test';
 import setMeasureSizeTest from './FrameNodeTest/setMeasureSize.test';
 import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
 
+import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
+import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
+import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
+
 export default function testsuite() {
   borderRadiuses();
   borderStyles();
@@ -54,4 +58,7 @@ export default function testsuite() {
   onAppear();
   setMeasureSizeTest();
   commonEventTest1();
+  CornerTest();
+  LengthMetricsUnitTest();
+  PercentReferenceTest();
 }

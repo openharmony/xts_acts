@@ -1,6 +1,7 @@
 {
   "src": [
   "MainAbility/pages/index/index",
+  "MainAbility/pages/Image/APIClipMaskShape",
   "MainAbility/pages/TextInput/APIContentType",
   "MainAbility/pages/TextInput/APIUnderlineColor",
     "MainAbility/pages/TextInput/underlineColor",
@@ -24,6 +25,7 @@
   "MainAbility/pages/RichEditor/onSelectionChange18",
   "MainAbility/pages/RichEditor/onSelectionChange19",
   "MainAbility/pages/Image/MediaCachedImage",
+    "MainAbility/pages/TextInput/TextInputAddApi",
   "MainAbility/pages/Image/onComplete",
   "MainAbility/pages/Text/clearStyles",
   "MainAbility/pages/Text/removeStyles",
@@ -72,6 +74,10 @@
     "MainAbility/pages/RichEditor/RichEditorStyledStringTest1",
     "MainAbility/pages/RichEditor/RichEditorStyledStringTest2",
 
+    "MainAbility/pages/Text/TextAPI/AttributeUpdater",
+    "MainAbility/pages/Text/TextAPI/Unit",
+    "MainAbility/pages/TextClock/TextClockApi/TextClockApi",
+    "MainAbility/pages/TextTimer/TextTimerApi/TextTimerApi",
     "MainAbility/pages/RichEditor/RichEditorApi2",
     "MainAbility/pages/RichEditor/RichEditorApi6",
     "MainAbility/pages/RichEditor/RichEditorApi7",
