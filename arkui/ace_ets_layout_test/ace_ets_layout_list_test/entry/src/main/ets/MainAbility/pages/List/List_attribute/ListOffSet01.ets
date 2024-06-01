@@ -156,14 +156,14 @@ struct ListOffSet01 {
         .margin({ top: 480, left: 160 })
 
 
-      Text(`${Math.abs(Number(this.startText))}`)
+      Text(`${Math.round(Math.abs(Number(this.startText)))}`)
         .key('ListoffSet01_Text01')
         .margin({ top: 550, left: 100 })
         .fontWeight(700)
         .fontSize(24)
         .fontColor(Color.Red)
 
-      Text(`${Math.abs(Number(this.endText))}`)
+      Text(`${Math.round(Math.abs(Number(this.endText)))}`)
         .key('ListoffSet01_Textend')
         .margin({ top: 550, left: 160 })
         .fontWeight(700)
