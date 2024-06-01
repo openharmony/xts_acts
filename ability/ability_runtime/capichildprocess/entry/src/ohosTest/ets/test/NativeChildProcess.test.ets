@@ -15,11 +15,11 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import systemparameter from '@ohos.systemParameterEnhance';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import testNapi from 'libentry.so';
 
-let mpEnable : Boolean = systemparameter.getSync('persist.sys.abilityms.multi_process_model', false);
-let ncpEnable : Boolean = systemparameter.getSync('persist.sys.abilityms.start_native_child_process', false);
+let mpEnable : Boolean = systemParameterEnhance.getSync('persist.sys.abilityms.multi_process_model') === 'true';
+let ncpEnable : Boolean = systemParameterEnhance.getSync('persist.sys.abilityms.start_native_child_process') === 'true';
 
 function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time));

@@ -12,6 +12,7 @@
     "kits": [
         {
             "test-file-name": [
+                "ActsCapiChildProcessMainTest.hap",
                 "ActsCapiChildProcessTest.hap"
             ],
             "type": "AppInstallKit",

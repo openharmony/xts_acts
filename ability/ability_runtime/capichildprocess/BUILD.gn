@@ -13,30 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsCapiChildProcessTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":testcapichildprocess_js_assets",
-    ":testcapichildprocess_resources",
-  ]
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsCapiChildProcessTest"
-  subsystem_name = "ability"
+ohos_app_assist_suite("ActsCapiChildProcess_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsCapiChildProcessMainTest"
   part_name = "ability_runtime"
+  subsystem_name = "ability"
 }
 
-ohos_app_scope("testcapichildprocess_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("testcapichildprocess_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("testcapichildprocess_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":testcapichildprocess_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+ohos_js_app_suite("ActsCapiChildProcessTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsCapiChildProcessTest"
+  part_name = "ability_runtime"
+  subsystem_name = "ability"
+  deps = [ ":ActsCapiChildProcess_main" ]
 }
