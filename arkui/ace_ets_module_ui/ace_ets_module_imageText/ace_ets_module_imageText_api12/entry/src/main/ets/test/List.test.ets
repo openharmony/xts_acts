@@ -83,6 +83,7 @@ import styledStringApi from './TextTest/styledStringApi.test'
 import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
 import StyledStringApi1 from './StyledString/StyledStringApi1.test'
 import TextInputApi1 from './TextInput/TextInputApi1.test'
+import TextInputAddApi from './TextInput/TextInputAddApi.test'.
 
 import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
 import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
@@ -92,6 +93,7 @@ import TextAreaApi4 from './TextArea/TextAreaApi4.test'
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
+  TextInputAddApi();
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();

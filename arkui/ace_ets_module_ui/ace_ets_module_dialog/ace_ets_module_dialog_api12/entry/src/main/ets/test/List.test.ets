@@ -49,6 +49,7 @@ import DateButtonStyle from './DatePickerDialogTest/DateButtonStyle.test'
 import dialogApi from './Dialog/dialogApi.test'
 import CustomDialogRouter from './CustomDialogTest/CustomDialogRouter.test.ets'
 import MenuApi1 from './Menu/MenuApi1.test'
+import menuItemGroupDivider from './Menu/menuItemGroupDivider.test.ets';
 
 export default function testsuite() {
   dialogApi()
@@ -87,4 +88,5 @@ export default function testsuite() {
   DateButtonStyle()
   CustomDialogRouter()
   MenuApi1()
+  menuItemGroupDivider();
 }
