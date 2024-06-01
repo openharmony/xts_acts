@@ -38,6 +38,7 @@
     "MainAbility/pages/DatePickerDialog/DateButtonStyle",
     "MainAbility/pages/CustomDialog/CustomDialogRouter",
     "MainAbility/pages/Popup/PopupApi/PopupApi",
-    "MainAbility/pages/Menu/MenuApi/IconApi"
+    "MainAbility/pages/Menu/MenuApi/IconApi",
+    "MainAbility/pages/Popup/DismissReason"
   ]
 }

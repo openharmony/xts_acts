@@ -51,6 +51,8 @@ import CustomDialogRouter from './CustomDialogTest/CustomDialogRouter.test.ets'
 import IconApiTest from './MenuTest/MenuApiTest/IconApiTest.test'
 import PopupOptionsTest from './PopupTest/PopupApiTest/PopupApiTest.test'
 import menuItemGroupDivider from './Menu/menuItemGroupDivider.test.ets';
+import DismissReasonTest from './PopupTest/DismissReason.test'
+
 
 export default function testsuite() {
   dialogApi()
@@ -91,4 +93,5 @@ export default function testsuite() {
   IconApiTest();
   PopupOptionsTest();
   menuItemGroupDivider();
+  DismissReasonTest();
 }
