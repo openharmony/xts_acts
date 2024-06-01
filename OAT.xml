@@ -82,12 +82,11 @@ Note:If the text contains special characters, please escape them according to th
 				<filteritem type="filename" name="*.der" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.mkv" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.mp3" desc="all bin file have check"/>
-				<filteritem type="filepath" name="graphic/graphic3D/entry/src/main/resources/rawfile/gltf/BrainStem/glTF-Binary/BrainStem.glb" desc="Provided by code/BasicFeature/Graphics/Graphics3d"/>
-				<filteritem type="filepath" name="graphic/graphic3D/AppScope/resources/rawfile/shaders/custom_shader/custom_material_sample.frag.spv.lsb" desc="Provided by code/BasicFeature/Graphics/Graphics3d"/>
-				<filteritem type="filepath" name="graphic/graphic3D/entry/src/main/resources/rawfile/shaders/custom_shader/custom_material_sample.frag.spv" desc="Provided by code/BasicFeature/Graphics/Graphics3d"/>
-				<filteritem type="filepath" name="graphic/graphic3D/AppScope/resources/rawfile/gltf/BrainStem/glTF-Binary/BrainStem.glb" desc="Provided by code/BasicFeature/Graphics/Graphics3d"/>
-				<filteritem type="filepath" name="graphic/graphic3D/entry/src/main/resources/rawfile/shaders/custom_shader/custom_material_sample.frag.spv.lsb" desc="Provided by code/BasicFeature/Graphics/Graphics3d"/>
-				<filteritem type="filepath" name="graphic/graphic3D/AppScope/resources/rawfile/shaders/custom_shader/custom_material_sample.frag.spv" desc="Provided by code/BasicFeature/Graphics/Graphics3d"/>
+                <filteritem type="filename" name="*.glb" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.lsb" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.spv" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.ktx" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.gltf" desc="all bin file have check"/>
             </filefilter>
             <filefilter name="defaultFilter" desc="Filters for default" >
                 <filteritem type="filepath" name="global/global_stage/entry/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>
