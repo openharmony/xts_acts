@@ -40,13 +40,13 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (usbPortList.length > 0) {
       if (gDeviceList.length > 0) {
         if (usbPortList[0].status.currentMode == 1) {
-          await usbManager.setPortRoles(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
+          await usbManager.setPortRoleTypes(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
             portCurrentMode = 2
-            console.info('usb case setPortRolesEx return: ' + data);
+            console.info('usb case setPortRoleTypesEx return: ' + data);
           }).catch(error => {
-            console.info('usb case setPortRolesEx error : ' + error);
+            console.info('usb case setPortRoleTypesEx error : ' + error);
           });
-          CheckEmptyUtils.sleep(8000)
+          CheckEmptyUtils.sleep(4000);
           console.log('*************Usb Unit Begin switch to host*************');
         }
       } else {
@@ -90,7 +90,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_0100 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_0100 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -132,7 +131,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_0200 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_0200 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -173,7 +171,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_0300 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_0300 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -217,7 +214,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_0400 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_0400 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -257,7 +253,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_0500 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_0500 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -298,7 +293,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_0600 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_0600 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -342,7 +336,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_0700 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_0700 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -386,7 +379,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_0800 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_0800 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -430,7 +422,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_0900 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_0900 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -474,7 +465,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_1000 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_1000 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -518,7 +508,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_1100 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_1100 requestRight end');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -561,7 +550,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_HostManager_JS_Compatibility_1200 requestRight error:' + error);
       });
       console.info('usb SUB_USB_HostManager_JS_Compatibility_1200 requestRight end:');
-      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -604,7 +592,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       }).catch(error => {
         console.info('usb HostManager_JS_ErrCode_0400 requestRight error:' + error);
       });
-      CheckEmptyUtils.sleep(5000)
     }
     try {
       var maskCode = usbManager.connectDevice("invalid");
@@ -641,7 +628,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       }).catch(error => {
         console.info('usb HostManager_JS_ErrCode_1700 requestRight error:' + error);
       });
-      CheckEmptyUtils.sleep(5000)
     }
     try {
       var maskCode = usbManager.connectDevice();
@@ -795,7 +781,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         expect(error).assertFalse();
         console.info('usb SUB_USB_HostManager_JS_Compatibility_3200 error: ' + error);
       });
-      CheckEmptyUtils.sleep(5000);
     }
   })
 
@@ -828,7 +813,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         expect(error).assertFalse();
         console.info('usb SUB_USB_HostManager_JS_Compatibility_3300 error: ' + error);
       });
-      CheckEmptyUtils.sleep(5000);
     }
   })
 
@@ -858,7 +842,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_HostManager_JS_ErrCode_0300 :  PASS');
     }
-    CheckEmptyUtils.sleep(5000);
   })
 
   /**
@@ -887,7 +870,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_HostManager_JS_ErrCode_1900 :  PASS');
     }
-    CheckEmptyUtils.sleep(5000);
   })
 
   /**
@@ -1052,7 +1034,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_HostManager_JS_ErrCode_0800 :  PASS');
     }
-    CheckEmptyUtils.sleep(5000);
   })
 
   /**
@@ -1081,7 +1062,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_HostManager_JS_ErrCode_2200 :  PASS');
     }
-    CheckEmptyUtils.sleep(5000);
   })
 })
 }

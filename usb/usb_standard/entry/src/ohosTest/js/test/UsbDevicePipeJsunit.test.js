@@ -41,13 +41,13 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     if (usbPortList.length > 0) {
       if (gDeviceList.length > 0) {
         if (usbPortList[0].status.currentMode == 1) {
-          await usbManager.setPortRoles(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
+          await usbManager.setPortRoleTypes(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
             portCurrentMode = 2;
-            console.info('usb case setPortRoles return: ' + data);
+            console.info('usb case setPortRoleTypes return: ' + data);
           }).catch(error => {
-            console.info('usb case setPortRoles error : ' + error);
+            console.info('usb case setPortRoleTypes error : ' + error);
           });
-          CheckEmptyUtils.sleep(8000);
+          CheckEmptyUtils.sleep(4000);
           console.log('*************Usb Unit switch to host Begin*************');
         }
 
@@ -182,7 +182,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb case readData error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -224,7 +224,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -266,7 +266,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb HostManager_JS_TranCompatibility_0400 write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -308,7 +308,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb HostManager_JS_TranCompatibility_0500 write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -350,7 +350,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb HostManager_JS_TranCompatibility_0600 write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -731,7 +731,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb' + caseName + ':  FAILED');
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   }
 
   /**
@@ -871,7 +871,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb' + 'SUB_USB_HostManager_JS_TranCompatibility_0300 GetStatus' + ':  FAILED');
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -1066,7 +1066,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb' + caseName + ':  FAILED');
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   }
 
   /**

@@ -42,15 +42,15 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     if (usbPortList.length > 0) {
       if (gDeviceList.length > 0) {
         if (usbPortList[0].status.currentMode == 1) {
-          await usbManager.setPortRoles(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
+          await usbManager.setPortRoleTypes(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
             portCurrentMode = 2;
-            console.info('usb case setPortRoles  return: ' + data);
+            console.info('usb case setPortRoleTypesEx  return: ' + data);
           }).catch(error => {
-            console.info('usb case setPortRoles  error : ' + error);
+            console.info('usb case setPortRoleTypesEx  error : ' + error);
           });
   
           console.log('*************Usb Unit switch to host Ex Begin*************');
-          CheckEmptyUtils.sleep(8000);
+          CheckEmptyUtils.sleep(4000);
         }
 
         gPipe = usbManager.connectDevice(gDeviceList[0]);
@@ -179,7 +179,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertFalse();
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0700 :  PASS');
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -216,7 +216,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertFalse();
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0800 :  PASS');
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -253,7 +253,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertFalse();
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0900 :  PASS');
     });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -537,7 +537,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
         console.info('usb case SUB_USB_HostManager_JS_ErrCode_4100 :  FAILED');
         expect(false).assertTrue();
       });
-    CheckEmptyUtils.sleep(3000);
+    CheckEmptyUtils.sleep(2000);
   })
 
   /**

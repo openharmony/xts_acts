@@ -35,19 +35,20 @@ describe('UsbCoreJsFunctionsTest', function () {
     if (usbPortList == undefined) {
       portCurrentMode = 1;
       return
+
     }
     gDeviceList = usbManager.getDevices();
     if (usbPortList.length > 0) {
       console.info('usb case gDeviceList.length return: ' + gDeviceList.length);
       if (gDeviceList.length > 0) {
         if (usbPortList[0].status.currentMode == 1) {
-          await usbManager.setPortRoles(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
+          await usbManager.setPortRoleTypes(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
             portCurrentMode = 2
-            console.info('usb case setPortRoles return: ' + data);
+            console.info('usb case setPortRoleTypes return: ' + data);
           }).catch(error => {
-            console.info('usb case setPortRoles error : ' + error);
+            console.info('usb case setPortRoleTypes error : ' + error);
           });
-          CheckEmptyUtils.sleep(8000)
+          CheckEmptyUtils.sleep(4000);
           console.log('*************Usb Unit Begin switch to host*************');
         }
       } else {
@@ -144,7 +145,6 @@ describe('UsbCoreJsFunctionsTest', function () {
         console.info('usb case device request right failed : ' + error + ' :' + gDeviceList[i].name);
         expect(false).assertTrue();
       });
-      CheckEmptyUtils.sleep(5000);
     }
   })
 
@@ -172,7 +172,6 @@ describe('UsbCoreJsFunctionsTest', function () {
       }).catch(error => {
         console.info('usb HostManager_JS_Func_1200 requestRight error:' + error);
       });
-      CheckEmptyUtils.sleep(5000);
     }
     var remRight = usbManager.removeRight(gDeviceList[0].name);
     console.info('usb remove_right ret :' + remRight);
@@ -204,7 +203,6 @@ describe('UsbCoreJsFunctionsTest', function () {
       }).catch(error => {
         console.info('usb HostManager_JS_Func_0100 requestRight error:' + error);
       });
-      CheckEmptyUtils.sleep(5000)
     }
 
     gPipe = usbManager.connectDevice(gDeviceList[0])
