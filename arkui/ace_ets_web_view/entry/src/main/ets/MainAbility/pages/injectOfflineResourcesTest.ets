@@ -50,6 +50,26 @@ async function readRawFile(url: string) {
     return new Uint8Array(0);
   }
 }
+class TestObj {
+  constructor() {
+  }
+
+  test(data1: string, data2: string, data3: string): string {
+    console.log("data1:" + data1)
+    console.log("data2:" + data2)
+    console.log("data3:" + data3)
+    return "AceString"
+  }
+
+  asyncTest(data: string): void {
+    console.log("async data:" + data)
+  }
+
+  toString(): void {
+    console.log('toString' + "interface instead.")
+  }
+}
+
 @Entry
 @Component
 struct injectOfflineResourcesTest {
@@ -57,7 +77,7 @@ struct injectOfflineResourcesTest {
   message: webView.WebMessageExt = new webView.WebMessageExt();
   @State str: string = ""
   @State javaScriptAccess: boolean = true;
-
+  testObj = new TestObj();
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
@@ -80,18 +100,6 @@ struct injectOfflineResourcesTest {
       }
     }
   }
-  private jsObj: JsProxyObject = {
-    test: (res: object) => {
-      console.info("ets toString:" + String(res));
-    },
-    toString: (str: string) => {
-      console.info("ets toString:" + String(str));
-    },
-    register: (res: object) => {
-      return "injectOfflineResourcesTest test"
-    }
-  }
-
   build() {
     Column() {
       Row() {
@@ -135,10 +143,11 @@ struct injectOfflineResourcesTest {
       Web({ src: $rawfile('index.html'), controller: this.controller })
         .javaScriptAccess(this.javaScriptAccess)
         .javaScriptProxy({
-          object: this.jsObj,
-          name: "backToEts",
+          object: this.testObj,
+          name: "objName",
           methodList: ["test", "toString"],
-          controller: this.controller
+          asyncMethodList: ["asyncTest"],
+          controller: this.controller,
         })
 
     }

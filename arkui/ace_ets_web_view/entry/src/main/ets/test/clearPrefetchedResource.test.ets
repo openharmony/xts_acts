@@ -117,5 +117,19 @@ export default function clearPrefetchedResourceTest() {
       Utils.registerEvent("testClearPrefetchedResource005", '401', 10116, done);
       sendEventByKey('clearPrefetchedResourceTestButton', 10, '');
     })
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_CUSTOMIZESCHEMES_0600
+    * @tc.name       : testCustomizeSchemes001
+    * @tc.desc       : test customizeSchemes
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testCustomizeSchemes001', 0, async (done: Function) => {
+      Utils.emitEvent("testCustomizeSchemes001", 10)
+      await Utils.sleep(500);
+      Utils.registerEvent("testCustomizeSchemes001", '17100020', 10117, done);
+      sendEventByKey('clearPrefetchedResourceTestButton', 10, '');
+    })
   })
 }

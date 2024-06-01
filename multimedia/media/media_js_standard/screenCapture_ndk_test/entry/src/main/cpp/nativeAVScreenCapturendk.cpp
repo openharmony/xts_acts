@@ -43,6 +43,8 @@ OH_AVCodec *g_videoEnc;
 constexpr uint32_t DEFAULT_WIDTH = 720;
 constexpr uint32_t DEFAULT_HEIGHT = 1280;
 constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
+static int32_t g_aFlag = 0;
+static int32_t g_vFlag = 0;
 
 void SetConfig(OH_AVScreenCaptureConfig &config)
 {
@@ -270,6 +272,218 @@ static napi_value NormalAVScreenCaptureSurfaceTest(napi_env env, napi_callback_i
     return res;
 }
 
+class ScreenCaptureNdkCallBack {
+public:
+    virtual ~ScreenCaptureNdkCallBack() = default;
+    virtual void OnError(int32_t errorCode) = 0;
+    virtual void OnAudioBufferAvailable(bool isReady, OH_AudioCaptureSourceType type) = 0;
+    virtual void OnVideoBufferAvailable(bool isReady) = 0;
+};
+
+class ScreenCaptureNdkTestCallback : public ScreenCaptureNdkCallBack {
+public:
+    ScreenCaptureNdkTestCallback(OH_AVScreenCapture *ScreenCapture, FILE *audioFile, FILE *iFile, FILE *videoFile)
+        : screenCapture_(ScreenCapture), aFile(audioFile), innerFile(iFile), vFile(videoFile) {}
+    ~ScreenCaptureNdkTestCallback() override;
+    void OnError(int32_t errorCode) override;
+    void OnAudioBufferAvailable(bool isReady, OH_AudioCaptureSourceType type) override;
+    void OnVideoBufferAvailable(bool isReady) override;
+
+private:
+    OH_AVScreenCapture *screenCapture_;
+    FILE *aFile = nullptr;
+    FILE *innerFile = nullptr;
+    FILE *vFile = nullptr;
+};
+
+ScreenCaptureNdkTestCallback::~ScreenCaptureNdkTestCallback() 
+{
+    screenCapture_ = nullptr;
+    aFile = nullptr;
+    innerFile = nullptr;
+    vFile = nullptr;
+}
+
+void ScreenCaptureNdkTestCallback::OnError(int32_t errorCode) 
+{
+    (void) errorCode;
+}
+
+void ScreenCaptureNdkTestCallback::OnAudioBufferAvailable(bool isReady, OH_AudioCaptureSourceType type) 
+{
+    if (isReady == true) {
+        OH_AudioBuffer *audioBuffer = (OH_AudioBuffer *)malloc(sizeof(OH_AudioBuffer));
+        if (audioBuffer == nullptr) {
+            OH_LOG_INFO(LOG_APP, "audio buffer is nullptr");
+            return;
+        }
+        if (OH_AVScreenCapture_AcquireAudioBuffer(screenCapture_, &audioBuffer, type) == AV_SCREEN_CAPTURE_ERR_OK) {
+            OH_LOG_INFO(LOG_APP, "AcquireAudioBuffer, audioBufferLen: %d, timestamp: %ld, audioSourceType: %d",
+                audioBuffer->size, audioBuffer->timestamp, audioBuffer->type);
+            if ((aFile != nullptr) && (audioBuffer->buf != nullptr) && (type == OH_MIC)) {
+                int32_t ret = fwrite(audioBuffer->buf, 1, audioBuffer->size, aFile);
+                free(audioBuffer->buf);
+                audioBuffer->buf = nullptr;
+            } else if ((innerFile != nullptr) && (audioBuffer->buf != nullptr) && (type == OH_ALL_PLAYBACK)) {
+                int32_t ret = fwrite(audioBuffer->buf, 1, audioBuffer->size, innerFile);
+                free(audioBuffer->buf);
+                audioBuffer->buf = nullptr;
+            }
+            free(audioBuffer);
+            audioBuffer = nullptr;
+        }
+        if (g_aFlag == 1) {
+            OH_AVScreenCapture_ReleaseAudioBuffer(screenCapture_, type);
+        }
+    } else {
+        OH_LOG_INFO(LOG_APP, "AcquireAudioBuffer failed");
+    }
+}
+
+void ScreenCaptureNdkTestCallback::OnVideoBufferAvailable(bool isReady) 
+{
+    if (isReady == true) {
+        int32_t fence = 0;
+        int64_t timestamp = 0;
+        int32_t size = 4;
+        OH_Rect damage;
+        OH_NativeBuffer_Config config;
+        OH_NativeBuffer *nativeBuffer =
+            OH_AVScreenCapture_AcquireVideoBuffer(screenCapture_, &fence, &timestamp, &damage);
+        if (nativeBuffer != nullptr) {
+            OH_NativeBuffer_GetConfig(nativeBuffer, &config);
+            int32_t length = config.height * config.width * size;
+            OH_LOG_INFO(LOG_APP, "AcquireVideoBuffer, videoBufferLen: %d, timestamp: %ld, size: %d",
+                length, timestamp, length);
+            OH_NativeBuffer_Unreference(nativeBuffer);
+            if (g_vFlag == 1) {
+                OH_AVScreenCapture_ReleaseVideoBuffer(screenCapture_);
+            }
+        } else {
+            OH_LOG_INFO(LOG_APP, "AcquireVideoBuffer failed");
+        }
+    }
+}
+
+std::shared_ptr<ScreenCaptureNdkTestCallback> screenCaptureCb = nullptr;
+static char g_filename[100] = {0};
+std::mutex mutex_;
+std::map<OH_AVScreenCapture *, std::shared_ptr<ScreenCaptureNdkCallBack>> mockCbMap_;
+
+FILE *OpenAFile(FILE *audioFile, string filename) 
+{
+    snprintf(g_filename, sizeof(g_filename), "data/storage/el2/base/files/%s.pcm", filename.c_str());
+    audioFile = fopen(g_filename, "w+");
+    return audioFile;
+}
+
+void CloseFile(FILE *audioFile, FILE *videoFile) 
+{
+    if (audioFile != nullptr) {
+        fclose(audioFile);
+        audioFile = nullptr;
+    }
+    if (videoFile != nullptr) {
+        fclose(videoFile);
+        videoFile = nullptr;
+    }
+}
+
+void DelCallback(OH_AVScreenCapture *screenCapture) 
+{
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (mockCbMap_.empty()) {
+        return;
+    }
+    auto it = mockCbMap_.find(screenCapture);
+    if (it != mockCbMap_.end()) {
+        mockCbMap_.erase(it);
+    }
+}
+
+std::shared_ptr<ScreenCaptureNdkCallBack> GetCallback(OH_AVScreenCapture *screenCapture) 
+{
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (mockCbMap_.empty()) {
+        return nullptr;
+    }
+    if (mockCbMap_.find(screenCapture) != mockCbMap_.end()) {
+        return mockCbMap_.at(screenCapture);
+    }
+    return nullptr;
+}
+
+void OnError(OH_AVScreenCapture *screenCapture, int32_t errorCode) 
+{
+    std::shared_ptr<ScreenCaptureNdkCallBack> mockCb = GetCallback(screenCapture);
+    if (mockCb != nullptr) {
+        mockCb->OnError(errorCode);
+    }
+}
+
+void OnAudioBufferAvailable(OH_AVScreenCapture *screenCapture, bool isReady, OH_AudioCaptureSourceType type) 
+{
+    std::shared_ptr<ScreenCaptureNdkCallBack> mockCb = GetCallback(screenCapture);
+    if (mockCb != nullptr) {
+        mockCb->OnAudioBufferAvailable(isReady, type);
+    }
+}
+
+void OnVideoBufferAvailable(OH_AVScreenCapture *screenCapture, bool isReady) 
+{
+    std::shared_ptr<ScreenCaptureNdkCallBack> mockCb = GetCallback(screenCapture);
+    if (mockCb != nullptr) {
+        mockCb->OnVideoBufferAvailable(isReady);
+    }
+}
+
+void SetScreenCaptureCallback(OH_AVScreenCapture *screenCapture, std::shared_ptr<ScreenCaptureNdkTestCallback> &cb) 
+{
+    if (cb != nullptr) {
+        std::lock_guard<std::mutex> lock(mutex_);
+        mockCbMap_[screenCapture] = cb;
+        struct OH_AVScreenCaptureCallback callback;
+        callback.onError = OnError;
+        callback.onAudioBufferAvailable = OnAudioBufferAvailable;
+        callback.onVideoBufferAvailable = OnVideoBufferAvailable;
+        OH_AVScreenCapture_SetCallback(screenCapture, callback);
+    }
+}
+
+// SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0400
+static napi_value OriginAVScreenCaptureTest(napi_env env, napi_callback_info info) 
+{
+    FILE *audioFile = nullptr;
+    OH_AVScreenCapture *screenCapture = OH_AVScreenCapture_Create();
+    OH_AVScreenCaptureConfig config_;
+    SetConfig(config_);
+    config_.videoInfo.videoCapInfo.videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA;
+    audioFile = OpenAFile(audioFile, "SUB_MULTIMEDIA_SCREEN_CAPTURE_0004");
+    screenCaptureCb = std::make_shared<ScreenCaptureNdkTestCallback>(screenCapture, audioFile, nullptr, nullptr);
+
+    bool isMicrophone = true;
+    OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
+    SetScreenCaptureCallback(screenCapture, screenCaptureCb);
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCapture);
+    sleep(g_recordTime);
+    OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_StopScreenCapture(screenCapture);
+    DelCallback(screenCapture);
+    OH_AVScreenCapture_Release(screenCapture);
+    CloseFile(audioFile, nullptr);
+    screenCaptureCb = nullptr;
+    napi_value res;
+    OH_AVSCREEN_CAPTURE_ErrCode result;
+    if (result1 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        OH_LOG_INFO(LOG_APP, "init/start/stop failed, init: %d, start: %d, stop: %d", result1, result2, result3);
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -279,6 +493,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"normalAVScreenRecordTest", nullptr, NormalAVScreenRecordTest, nullptr, nullptr, nullptr, napi_default,
             nullptr},
         {"normalAVScreenCaptureSurfaceTest", nullptr, NormalAVScreenCaptureSurfaceTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"originAVScreenCaptureTest", nullptr, OriginAVScreenCaptureTest, nullptr, nullptr, nullptr,
             napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
