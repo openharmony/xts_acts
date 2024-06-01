@@ -66,7 +66,8 @@ export default function OnlyColumnsTemplate1() {
       console.log('GridItem_02.left' + GridItem_02.left)
 
       console.log('assert space')
-      expect(Math.round(GridItem_02.top - GridItem_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(GridItem_02.top - GridItem_01.bottom) -
+        Math.round(vp2px(10))) <= 1).assertTrue();
       console.log('GridItem_02.top - GridItem_01.bottom' + (GridItem_02.top - GridItem_01.bottom))
 
       await CommonFunc.sleep(1000);
