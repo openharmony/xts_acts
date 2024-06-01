@@ -116,7 +116,7 @@ describe('I18nTest', function () {
             console.log('testGetDisplayCountry004 ' + e.code);
             console.log('testGetDisplayCountry004 ' + e.message);
             expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid, the country must be a valid region.');
+            expect(e.message).assertEqual('Invalid parameter, the country must be a valid region.');
         }
     })
 
@@ -152,7 +152,7 @@ describe('I18nTest', function () {
             console.log('testGetDisplayCountry006 ' + e.code);
             console.log('testGetDisplayCountry006 ' + e.message);
             expect(e.code).assertEqual('890001');
-            expect(e.message).assertEqual('Param value not valid, the country must be a valid region.');
+            expect(e.message).assertEqual('Invalid parameter, the country must be a valid region.');
         }
     })
 

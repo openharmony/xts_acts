@@ -18,6 +18,7 @@ import searchMinFontSize from "./component/serachMinFontSize.test.ets";
 import searchDecoration from "./component/searchDecoration.test.ets";
 import searchLetterSpacing from "./component/searchLetterSpacing.test.ets";
 import searchLineHeight from "./component/searchLineHeight.test.ets";
+import APISearchExample from "./component/APISearchExample.test.ets";
 
 export default function testsuite() {
   searchMaxFontSize();
@@ -25,4 +26,5 @@ export default function testsuite() {
   searchDecoration();
   searchLetterSpacing();
   searchLineHeight();
+  APISearchExample();
 }
