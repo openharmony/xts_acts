@@ -22,7 +22,7 @@ struct TextInputTest {
     Column() {
       Text(this.insertValue).key('TextInputText')
       Text(this.insertValue2).key('TextInputText2')
-      TextInput({ text: "TextInput支持插入回调文本" })
+      TextInput({ text: 'TextInput支持插入回调文本' })
         .height(60)
         .onWillInsert(() => {
           this.insertValue = 'onWillInsert'
