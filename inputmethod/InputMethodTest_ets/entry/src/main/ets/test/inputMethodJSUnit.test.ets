@@ -130,6 +130,8 @@ export default function inputMethodJSUnit() {
      */
     it('inputmethoh_test_005', 0, async (done: Function) => {
       let inputMethodCtrl = inputMethod.getInputMethodController();
+      await inputMethod.getController().detach();
+      console.info("====>inputmethoh_test_005 detach success");
       console.info("====>inputmethoh_test_005 result:" + JSON.stringify(inputMethodCtrl));
       inputMethodCtrl.stopInput((err, res) => {
         try {
@@ -159,6 +161,8 @@ export default function inputMethodJSUnit() {
      */
     it('inputmethoh_test_006', 0, async (done: Function) => {
       let inputMethodCtrl = inputMethod.getInputMethodController();
+      await inputMethod.getController().detach();
+      console.info("====>inputmethoh_test_006 detach success");
       console.info("====>inputmethoh_test_006 result:" + JSON.stringify(inputMethodCtrl));
       inputMethodCtrl.stopInput().then(() => {
         expect().assertFail();
