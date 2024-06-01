@@ -82,10 +82,12 @@ import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
 import styledStringApi from './TextTest/styledStringApi.test'
 import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
 import StyledStringApi1 from './StyledString/StyledStringApi1.test'
+import TextInputAddApi from './TextInput/TextInputAddApi.test'.
 
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
+  TextInputAddApi();
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
