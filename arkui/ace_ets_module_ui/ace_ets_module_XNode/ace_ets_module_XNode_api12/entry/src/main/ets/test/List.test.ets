@@ -56,4 +56,7 @@ export default function testsuite() {
   getRed();
   onAppear();
   setMeasureSizeTest();
+  CornerTest();
+  LengthMetricsUnitTest();
+  PercentReferenceTest();
 }
