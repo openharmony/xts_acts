@@ -33,12 +33,12 @@ export default function RdbNdkStoreTest() {
     })
     beforeEach(function () {
       hilog.info(0x0000, TAG, 'testTag RdbstoreSetUpTestCase' , ' begin');     
-      re = testNapi.RdbstoreSetUpTestCase();
+      let re = testNapi.RdbstoreSetUpTestCase();
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
       expect(re == 0).assertTrue();
     })
     afterEach(function () {
-    let re = testNapi.RdbstoreTearDownTestCase();
+      let re = testNapi.RdbstoreTearDownTestCase();
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');     
     })
     afterAll(function () {
