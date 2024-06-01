@@ -9765,10 +9765,11 @@ export default function avVideoRecorderTestOne() {
             } catch(error) {
 
             }
-            
+
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_CREATE_0200 end')
             done();
         })
+
         /* *
             * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0100
             * @tc.name      : 09.metadata
@@ -9810,6 +9811,7 @@ export default function avVideoRecorderTestOne() {
             eventEmitter.emit(mySteps[0], avRecorder, avmetaConfig, recorderTime, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_AVMETADATA_0100 end')
         })
+
         /* *
         * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0200
         * @tc.name      : 09.metadata customInfo(number)
@@ -9829,6 +9831,42 @@ export default function avVideoRecorderTestOne() {
                 "test02": 1000,
             }
             avmetaConfig.metadata.customInfo = customInfo;
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avmetaConfig.url = fdPath;
+            checkDevice(avmetaConfig)
+            let mySteps = new Array(
+                // setAvRecorderCallback
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
+                // prepareErrPromise
+                PREPARE_PROMISE_EVENT,
+                // AVRecorderTestBase.releasePromise
+                RELEASECORDER_PROMISE_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avmetaConfig, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0200 end')
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0200
+        * @tc.name      : 09.metadata videoOrientation(99)
+        * @tc.desc      : recorder (metadata)
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0200', 0, async function (done) {
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+                expect(true).assertTrue();
+                done();
+            }
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0200 start')
+
+            avmetaConfig.metadata.videoOrientation = "99";
             let fileName = avVideoRecorderTestBase.resourceName()
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
