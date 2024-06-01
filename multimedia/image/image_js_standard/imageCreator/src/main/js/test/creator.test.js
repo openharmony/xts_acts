@@ -63,7 +63,7 @@ describe('ImageCreator', function () {
             expect(false).assertTrue();
             done();
         } catch (error) {
-            expect(error.code == 1).assertTrue();
+            expect(error.code == 401).assertTrue();
             console.info(`${testNum} err message` + error);
             done();
         }
@@ -193,7 +193,7 @@ describe('ImageCreator', function () {
     }
 
     /**
-    * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0100
+    * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0100
     * @tc.name      : createImageCreator
     * @tc.desc      : 1.set width,height,format,capacity
     *                 2.create ImageCreator
@@ -202,11 +202,11 @@ describe('ImageCreator', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 0
     */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator == undefined) {
             expect(false).assertTrue();
-            console.info('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0100 undefined')
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0100 undefined')
             done();
         } else {
             globalCreator = creator;
@@ -219,7 +219,7 @@ describe('ImageCreator', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0200
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0200
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -228,12 +228,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0200', 0, async function (done) {
-        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0200', WIDTH, HEIGHT, FORMAT, 'hd!');
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0200', 0, async function (done) {
+        createCreator(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0200', WIDTH, HEIGHT, FORMAT, 'hd!');
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0300
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0300
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -242,12 +242,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0300', 0, async function (done) {
-        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0300', WIDTH, HEIGHT, null, CAPACITY);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0300', 0, async function (done) {
+        createCreator(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0300', WIDTH, HEIGHT, null, CAPACITY);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0400
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0400
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -256,12 +256,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0400', 0, async function (done) {
-        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0400', WIDTH, null, FORMAT, CAPACITY);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0400', 0, async function (done) {
+        createCreator(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0400', WIDTH, null, FORMAT, CAPACITY);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0500
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0500
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -270,12 +270,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0500', 0, async function (done) {
-        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0500', null, HEIGHT, FORMAT, CAPACITY);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0500', 0, async function (done) {
+        createCreator(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0500', null, HEIGHT, FORMAT, CAPACITY);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0600
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0600
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -284,12 +284,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0600', 0, async function (done) {
-        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0600', WIDTH, HEIGHT, FORMAT, null);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0600', 0, async function (done) {
+        createCreator(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0600', WIDTH, HEIGHT, FORMAT, null);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0700
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0700
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -298,12 +298,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0700', 0, async function (done) {
-        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0700', false, HEIGHT, FORMAT, CAPACITY);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0700', 0, async function (done) {
+        createCreator(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0700', false, HEIGHT, FORMAT, CAPACITY);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0800
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0800
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -312,12 +312,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0800', 0, async function (done) {
-        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0800', { a: 10 }, HEIGHT, FORMAT, CAPACITY);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0800', 0, async function (done) {
+        createCreator(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0800', { a: 10 }, HEIGHT, FORMAT, CAPACITY);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0900
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0900
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -326,12 +326,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0900', 0, async function (done) {
-        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0900', WIDTH, false, FORMAT, CAPACITY);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0900', 0, async function (done) {
+        createCreator(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0900', WIDTH, false, FORMAT, CAPACITY);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_1000
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_1000
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -340,13 +340,13 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_1000', 0, async function (done) {
-        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_1000', WIDTH, HEIGHT, 'form.', CAPACITY);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_1000', 0, async function (done) {
+        createCreator(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_1000', WIDTH, HEIGHT, 'form.', CAPACITY);
     })
 
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_PROMISE_0100
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_RELEASE_PROMISE_0100
      * @tc.name      : release-promise
      * @tc.desc      : 1.create ImageCreator
      *                 2.call release
@@ -355,12 +355,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_RELEASE_PROMISE_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             globalCreator = creator;
             creator.release().then(() => {
-                console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_PROMISE_0100 release ');
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_RELEASE_PROMISE_0100 release ');
                 expect(true).assertTrue();
                 done();
             }).catch(error => {
@@ -369,13 +369,13 @@ describe('ImageCreator', function () {
             })
         } else {
             expect(false).assertTrue();
-            console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_PROMISE_0100 finished');
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_RELEASE_PROMISE_0100 finished');
             done()
         }
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_RELEASE_CALLBACK_0100
      * @tc.name      : release-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call release
@@ -384,30 +384,30 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_RELEASE_CALLBACK_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             globalCreator = creator;
             creator.release((err) => {
                 if (err) {
-                    console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100 release call back' + err);
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_RELEASE_CALLBACK_0100 release call back' + err);
                     expect(false).assertTrue();
                     done();
                     return;
                 }
-                console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100 release call back');
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_RELEASE_CALLBACK_0100 release call back');
                 expect(true).assertTrue();
                 done();
             });
         } else {
             expect(false).assertTrue();
-            console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100 finished');
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_RELEASE_CALLBACK_0100 finished');
             done()
         }
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100
      * @tc.name      : dequeueImage-promise
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -416,29 +416,29 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             globalCreator = creator;
             creator.dequeueImage().then(img => {
-                console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 dequeueImage Success');
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 dequeueImage Success');
                 expect(img != undefined).assertTrue();
                 globalImg = img;
                 done();
             }).catch(error => {
-                console.log('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 error: ' + error);
+                console.log('SUB_MULTIMEDIA_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             })
         } else {
             expect(false).assertTrue();
-            console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 finished');
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 finished');
             done();
         }
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100
      * @tc.name      : dequeueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -447,31 +447,31 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             globalCreator = creator;
             creator.dequeueImage((err, img) => {
                 if (err) {
-                    console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 err:' + err);
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 err:' + err);
                     expect(false).assertTrue();
                     done();
                     return;
                 }
                 globalImg = img;
-                console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 dequeueImage call back Success');
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 dequeueImage call back Success');
                 expect(img != undefined).assertTrue();
                 done();
             });
         } else {
             expect(false).assertTrue();
-            console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 finished');
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 finished');
             done()
         }
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200
      * @tc.name      : queueImage-promise
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -481,7 +481,7 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             globalCreator = creator;
@@ -511,12 +511,12 @@ describe('ImageCreator', function () {
                     console.info("this is img " + img);
 
                     creator.queueImage(img).then(() => {
-                        console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200 queueImage Success');
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200 queueImage Success');
                         var dummy = creator.test;
                         expect(true).assertTrue();
                         done();
                     }).catch(error => {
-                        console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200 queueImage error: ' + error);
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200 queueImage error: ' + error);
                         expect(false).assertTrue();
                         done();
                     })
@@ -524,13 +524,13 @@ describe('ImageCreator', function () {
             })
         } else {
             expect(false).assertTrue();
-            console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200 createImageCreator failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200 createImageCreator failed');
             done()
         }
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0300
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0300
      * @tc.name      : queueImage-promise-1
      * @tc.desc      : 1.create ImageCreator
      *                 2.call queueImage
@@ -538,12 +538,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0300', 0, async function (done) {
-        queueImageError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0300', 1);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0300', 0, async function (done) {
+        queueImageError(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0300', 1);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0400
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0400
      * @tc.name      : queueImage-promise-null
      * @tc.desc      : 1.create ImageCreator
      *                 2.call queueImage
@@ -551,12 +551,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0400', 0, async function (done) {
-        queueImageError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0400', null);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0400', 0, async function (done) {
+        queueImageError(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0400', null);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0500
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0500
      * @tc.name      : queueImage-promise-'a'
      * @tc.desc      : 1.create ImageCreator
      *                 2.call queueImage
@@ -564,12 +564,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0500', 0, async function (done) {
-        queueImageError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0500', 'a');
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0500', 0, async function (done) {
+        queueImageError(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0500', 'a');
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0600
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0600
      * @tc.name      : on-{a : 1}
      * @tc.desc      : 1.create ImageCreator
      *                 2.call queueImage
@@ -577,12 +577,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0600', 0, async function (done) {
-        queueImageError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0600', { a: 1 });
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0600', 0, async function (done) {
+        queueImageError(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0600', { a: 1 });
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200
      * @tc.name      : queueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -592,13 +592,13 @@ describe('ImageCreator', function () {
      * @tc.level     : Level 0
      */
 
-    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             globalCreator = creator;
             creator.dequeueImage((err, img) => {
                 if (err || img == undefined) {
-                    console.log('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 dequeueImage error:' + err);
+                    console.log('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 dequeueImage error:' + err);
                     expect(false).assertTrue();
                     done();
                     return;
@@ -607,7 +607,7 @@ describe('ImageCreator', function () {
                 img.getComponent(JPEG, (err, component) => {
                     if (err) {
                         expect(false).assertTrue();
-                        console.log('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 getComponent error:' + err);
+                        console.log('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 getComponent error:' + err);
                         done();
                         return;
                     }
@@ -624,11 +624,11 @@ describe('ImageCreator', function () {
                     console.info("this is img " + img);
                     creator.queueImage(img, (err) => {
                         if (err) {
-                            console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 queueImage err: ' + err);
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 queueImage err: ' + err);
                             expect(false).assertTrue();
                             done();
                         }
-                        console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 queueImage Success');
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 queueImage Success');
                         var dummy = creator.test;
                         expect(true).assertTrue();
                         done();
@@ -637,13 +637,13 @@ describe('ImageCreator', function () {
             })
         } else {
             expect(false).assertTrue();
-            console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 createImageCreator failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 createImageCreator failed');
             done();
         }
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0300
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0300
      * @tc.name      : queueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -653,12 +653,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0300', 0, async function (done) {
-        queueImageCbError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0300', 1);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0300', 0, async function (done) {
+        queueImageCbError(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0300', 1);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0400
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0400
      * @tc.name      : queueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -668,12 +668,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0400', 0, async function (done) {
-        queueImageCbError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0400', null);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0400', 0, async function (done) {
+        queueImageCbError(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0400', null);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0500
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0500
      * @tc.name      : queueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -683,12 +683,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0500', 0, async function (done) {
-        queueImageCbError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0500', 'a');
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0500', 0, async function (done) {
+        queueImageCbError(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0500', 'a');
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0600
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0600
      * @tc.name      : queueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -698,12 +698,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0600', 0, async function (done) {
-        queueImageCbError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0600', { a: 1 });
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0600', 0, async function (done) {
+        queueImageCbError(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0600', { a: 1 });
     })
 
     /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_ON_0100
+        * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0100
         * @tc.name      : on
         * @tc.desc      : 1.create ImageCreator
         *                 2.call on
@@ -712,7 +712,7 @@ describe('ImageCreator', function () {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY)
         expect(creator != undefined).assertTrue();
         if (creator == undefined) {
@@ -722,18 +722,18 @@ describe('ImageCreator', function () {
         globalCreator = creator;
         creator.on('imageRelease', (err) => {
             if (err) {
-                console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 on release faild' + err);
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0100 on release faild' + err);
                 expect(false).assertTrue();
                 done();
                 return;
             }
-            console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 on call back IN');
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0100 on call back IN');
             expect(true).assertTrue();
             done();
         })
         creator.dequeueImage((err, img) => {
             if (err || img == undefined) {
-                console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 dequeueImage fail: ' + err);
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0100 dequeueImage fail: ' + err);
                 expect(false).assertTrue();
                 done();
                 return;
@@ -741,7 +741,7 @@ describe('ImageCreator', function () {
             globalImg = img;
             img.getComponent(JPEG, (err, component) => {
                 if (err || component == undefined) {
-                    console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 getComponent err:' + err);
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0100 getComponent err:' + err);
                     expect(false).assertTrue();
                     done();
                     return;
@@ -757,12 +757,12 @@ describe('ImageCreator', function () {
                 }
                 creator.queueImage(img, (err) => {
                     if (err) {
-                        console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 queueImage failerr: ' + err);
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0100 queueImage failerr: ' + err);
                         expect(false).assertTrue();
                         done();
                         return;
                     }
-                    console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 queueImage Success');
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0100 queueImage Success');
                     expect(true).assertTrue();
                     var dummy = creator.test;
                 })
@@ -771,7 +771,7 @@ describe('ImageCreator', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_ON_0200
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0200
      * @tc.name      : on-1
      * @tc.desc      : 1.create ImageCreator
      *                 2.call on
@@ -779,12 +779,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_ON_0200', 0, async function (done) {
-        onErr(done, 'SUB_GRAPHIC_IMAGE_CREATOR_ON_0200', 1);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0200', 0, async function (done) {
+        onErr(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0200', 1);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_ON_0300
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0300
      * @tc.name      : on-null
      * @tc.desc      : 1.create ImageCreator
      *                 2.call on
@@ -792,12 +792,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_ON_0300', 0, async function (done) {
-        onErr(done, 'SUB_GRAPHIC_IMAGE_CREATOR_ON_0300', null);
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0300', 0, async function (done) {
+        onErr(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0300', null);
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_ON_0400
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0400
      * @tc.name      : on-{a : 1}
      * @tc.desc      : 1.create ImageCreator
      *                 2.call on
@@ -805,12 +805,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_ON_0400', 0, async function (done) {
-        onErr(done, 'SUB_GRAPHIC_IMAGE_CREATOR_ON_0400', { a: 1 });
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0400', 0, async function (done) {
+        onErr(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0400', { a: 1 });
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_ON_0500
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0500
      * @tc.name      : on-'a'
      * @tc.desc      : 1.create ImageCreator
      *                 2.call on
@@ -818,7 +818,7 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_CREATOR_ON_0500', 0, async function (done) {
-        onErr(done, 'SUB_GRAPHIC_IMAGE_CREATOR_ON_0500', 'a');
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0500', 0, async function (done) {
+        onErr(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0500', 'a');
     })
 })
