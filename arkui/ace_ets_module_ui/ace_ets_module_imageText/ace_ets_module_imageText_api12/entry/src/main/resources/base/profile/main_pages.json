@@ -69,7 +69,10 @@
     "MainAbility/pages/RichEditor/SelectionMenuApi",
     "MainAbility/pages/Image/imageAddApi",
     "MainAbility/pages/StyledString/StyledStringApi1",
-
+    "MainAbility/pages/Text/TextAPI/AttributeUpdater",
+    "MainAbility/pages/Text/TextAPI/Unit",
+    "MainAbility/pages/TextClock/TextClockApi/TextClockApi",
+    "MainAbility/pages/TextTimer/TextTimerApi/TextTimerApi",
     "MainAbility/pages/RichEditor/RichEditorApi2",
     "MainAbility/pages/RichEditor/RichEditorApi6",
     "MainAbility/pages/RichEditor/RichEditorApi7",
