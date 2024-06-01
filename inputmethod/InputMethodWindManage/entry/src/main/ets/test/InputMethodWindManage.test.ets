@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import inputMethod from '@ohos.inputMethod';
 import inputMethodEngine from '@ohos.inputMethodEngine';
 import subtype from '@ohos.InputMethodSubtype';
@@ -21,18 +21,18 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import display from '@ohos.display';
 import { PanelInfo, PanelFlag, PanelType } from '@ohos.inputMethod.Panel';
 import deviceinfo from '@ohos.deviceInfo';
-import {Driver, ON, MatchPattern, Component, UiWindow, DisplayRotation } from '@ohos.UiTest'
-import { BusinessError} from '@ohos.base'
+import { Driver, ON, MatchPattern, Component, UiWindow, DisplayRotation } from '@ohos.UiTest'
+import { BusinessError } from '@ohos.base'
 
 export default function inputMethodWindManageAbility() {
-  describe('inputMethodWindManageTest', function () {
+  describe('inputMethodWindManageTest', () => {
     let driver = Driver.create();
     let textArea: Component;
     let rectInfo;
 
-    beforeAll(async (done)=>{
+    beforeAll(async (done) => {
       console.info('====>beforeAll inputMethod_enable start!')
-      try{
+      try {
         let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
         let result: boolean = await inputMethodSetting.showOptionalInputMethods();
         console.info('====>beforeAll inputMethodSwitch showOptionalInputMethods result: ' + JSON.stringify(result));
@@ -44,11 +44,11 @@ export default function inputMethodWindManageAbility() {
           console.info('====>beforeAll inputMethodSwitch inputMethodList second: ' + JSON.stringify(inputMethodList));
         }
         await driver.delayMs(1000);
-        if(deviceinfo.deviceType === '2in1'){
+        if (deviceinfo.deviceType === '2in1') {
           let inputMethod_name: Component = await driver.waitForComponent(ON.text('widmanage', MatchPattern.CONTAINS), 2000);
           await inputMethod_name.click();
           await driver.delayMs(500);
-        }else{
+        } else {
           let inputMethod_name: Component = await inputMethodList.scrollSearch(ON.text('widmanage', MatchPattern.CONTAINS));
           console.info('====>beforeAll inputMethodSwitch inputMethod_name: ' + JSON.stringify(inputMethod_name));
           if (JSON.stringify(inputMethod_name) === 'null') {
@@ -60,7 +60,9 @@ export default function inputMethodWindManageAbility() {
         }
         console.info('====>beforeAll inputMethodSwitch done');
         await driver.delayMs(1000);
-        let testWindow: UiWindow = await driver.findWindow({bundleName: "com.acts.inputmethodwidmanage.test"});
+        let testWindow: UiWindow = await driver.findWindow({
+          bundleName: "com.acts.inputmethodwidmanage.test"
+        });
         console.info('====>beforeAll inputMethodSwitch switch window: ' + JSON.stringify(testWindow));
         await testWindow.focus();
         await driver.delayMs(1000);
@@ -72,13 +74,13 @@ export default function inputMethodWindManageAbility() {
         await runCmd();
         await driver.delayMs(1000);
         done();
-      }catch(err){
+      } catch (err) {
         console.info('====>beforeAll throw err:' + JSON.stringify(err.message))
         done();
       }
     })
 
-    afterAll(async (done) => {
+    afterAll(async (done: Function) => {
       done();
     })
 
@@ -91,7 +93,7 @@ export default function inputMethodWindManageAbility() {
       });
     };
 
-    async function runCmd(){
+    async function runCmd() {
       let cursor_x = rectInfo.left + Math.floor(Math.random() * (rectInfo.right - rectInfo.left) * 0.9);
       let cursor_y = rectInfo.top + Math.floor(Math.random() * (rectInfo.bottom - rectInfo.top) * 0.9);
       console.info(`====>start click x: ${cursor_x}  y: ${cursor_y}`)
@@ -106,8 +108,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_createPanelCallback_0010', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_createPanelCallback_0010', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -116,7 +119,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -133,28 +136,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_createPanelCallback_0010']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 10
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -166,8 +178,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_createPanelPromise_0020', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_createPanelPromise_0020', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -176,7 +189,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -193,28 +206,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_createPanelPromise_0020']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 20
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -226,8 +248,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -236,7 +259,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -253,28 +276,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 30
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -286,8 +318,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -296,7 +329,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -313,28 +346,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 40
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -346,8 +388,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0050', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0050', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -356,7 +399,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -373,28 +416,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_setUiContentCallback_0050']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 50
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -406,8 +458,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0060', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0060', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -416,7 +469,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -433,28 +486,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_setUiContentPromise_0060']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 60
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -466,8 +528,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0070', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0070', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -476,7 +539,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -493,28 +556,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_setUiContentCallback_0070']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 70
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -526,8 +598,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0080', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0080', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -536,7 +609,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -553,28 +626,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_setUiContentPromise_0080']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 80
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -586,8 +668,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_resizeCallback_0090', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_resizeCallback_0090', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -596,7 +679,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -613,28 +696,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_resizeCallback_0090']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 90
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -646,8 +738,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_resizePromise_0100', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_resizePromise_0100', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -656,7 +749,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -673,28 +766,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_resizePromise_0100']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 100
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -706,8 +808,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_moveToCallback_0110', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_moveToCallback_0110', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -716,7 +819,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -733,28 +836,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_moveToCallback_0110']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 110
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -766,8 +878,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_moveToPromise_0120', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_moveToPromise_0120', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -776,7 +889,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -793,28 +906,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_moveToPromise_0120']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 120
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -826,8 +948,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_showCallback_0130', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_showCallback_0130', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_showCallback_0130 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -836,7 +959,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -853,28 +976,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_showCallback_0130']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 130
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -886,8 +1018,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_hideCallback_0150', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_hideCallback_0150', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -896,7 +1029,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -913,28 +1046,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_hideCallback_0150']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 150
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -946,10 +1088,15 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_showPromise_0140', 0, async function (done) {
-      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+    it('Sub_Misc_inputMethod_Panel_showPromise_0140', 0, async (done: Function) => {
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        inputAttribute: {
+          textInputType: 0, enterKeyType: 0
+        }
+      }
       await inputMethod.getController().attach(false, ATTRIBUTE);
-      function unSubscriberCallback(err) {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_showPromise_0140 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_showPromise_0140 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -958,7 +1105,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_showPromise_0140 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -975,28 +1122,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_showPromise_0140 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_showPromise_0140 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_showPromise_0140 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_showPromise_0140']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_showPromise_0140 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_showPromise_0140 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_showPromise_0140 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_showPromise_0140 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 140
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1008,8 +1164,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_hidePromise_0160', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_hidePromise_0160', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1018,7 +1175,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1035,28 +1192,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_hidePromise_0160']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 160
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1068,10 +1234,15 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_onShow_0170', 0, async function (done) {
-      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+    it('Sub_Misc_inputMethod_Panel_onShow_0170', 0, async (done: Function) => {
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        inputAttribute: {
+          textInputType: 0, enterKeyType: 0
+        }
+      }
       await inputMethod.getController().attach(false, ATTRIBUTE);
-      function unSubscriberCallback(err) {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_onShow_0170 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_onShow_0170 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1080,7 +1251,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_onShow_0170 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1097,28 +1268,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_onShow_0170 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_onShow_0170 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_onShow_0170 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_onShow_0170']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_onShow_0170 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_onShow_0170 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_onShow_0170 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_onShow_0170 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 170
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1130,10 +1310,15 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_onHide_0180', 0, async function (done) {
-      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+    it('Sub_Misc_inputMethod_Panel_onHide_0180', 0, async (done: Function) => {
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        inputAttribute: {
+          textInputType: 0, enterKeyType: 0
+        }
+      }
       await inputMethod.getController().attach(false, ATTRIBUTE);
-      function unSubscriberCallback(err) {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_onHide_0180 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_onHide_0180 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1142,7 +1327,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_onHide_0180 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1159,28 +1344,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_onHide_0180 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_onHide_0180 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_onHide_0180 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_onHide_0180']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_onHide_0180 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_onHide_0180 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_onHide_0180 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_onHide_0180 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 180
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1192,10 +1386,15 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_offShow_0190', 0, async function (done) {
-      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+    it('Sub_Misc_inputMethod_Panel_offShow_0190', 0, async (done: Function) => {
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        inputAttribute: {
+          textInputType: 0, enterKeyType: 0
+        }
+      }
       await inputMethod.getController().attach(false, ATTRIBUTE);
-      function unSubscriberCallback(err) {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_offShow_0190 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_offShow_0190 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1204,7 +1403,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_offShow_0190 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1221,28 +1420,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_offShow_0190 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_offShow_0190 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_offShow_0190 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_offShow_0190']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_offShow_0190 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_offShow_0190 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_offShow_0190 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_offShow_0190 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 190
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1254,10 +1462,15 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_offHide_0200', 0, async function (done) {
-      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+    it('Sub_Misc_inputMethod_Panel_offHide_0200', 0, async (done: Function) => {
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        inputAttribute: {
+          textInputType: 0, enterKeyType: 0
+        }
+      }
       await inputMethod.getController().attach(false, ATTRIBUTE);
-      function unSubscriberCallback(err) {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_offHide_0200 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_offHide_0200 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1266,7 +1479,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_offHide_0200 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1283,28 +1496,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_offHide_0200 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_offHide_0200 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_offHide_0200 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_offHide_0200']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_offHide_0200 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_offHide_0200 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_offHide_0200 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_offHide_0200 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 200
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1316,7 +1538,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_inputWindowInfo_0201', 0, async function (done) {
+    it('Sub_Misc_inputMethod_inputWindowInfo_0201', 0, async (done: Function) => {
       let inputWindowInfo: inputMethod.InputWindowInfo = {
         name: 'inputWindowInfo_0201/99',
         left: 100,
@@ -1346,8 +1568,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_changeFlag_0210', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_changeFlag_0210', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1356,7 +1579,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1373,28 +1596,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_changeFlag_0210']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 210
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1406,8 +1638,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_changeFlag_0211', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_Misc_inputMethod_Panel_changeFlag_0211', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1416,7 +1649,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1433,28 +1666,37 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 success ====' );
+          console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_Misc_inputMethod_Panel_changeFlag_0211']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 211
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1466,9 +1708,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('SUB_InputMethod_IMF_panelInfo_0400', 0,  async function (done) {
+    it('SUB_InputMethod_IMF_panelInfo_0400', 0, async (done: Function) => {
       console.info('====>SUB_InputMethod_IMF_panelInfo_0400 start');
-      let panel:PanelInfo;
+      let panel: PanelInfo;
       panel = {
         type: 1,
         flag: 0
@@ -1495,15 +1737,16 @@ export default function inputMethodWindManageAbility() {
     });
 
     /**
-     * @tc.number   Sub_InputMethod_IMF_SecurityKeyboard_0600
-     * @tc.name     Sub_InputMethod_IMF_SecurityKeyboard_0600
-     * @tc.desc     setPrivacyMode(),parameter is true
-     * @tc.size     MediumTest
-     * @tc.type     Function
-     * @tc.level    Level 0
+     * @tc.number Sub_InputMethod_IMF_SecurityKeyboard_0600
+     * @tc.name Sub_InputMethod_IMF_SecurityKeyboard_0600
+     * @tc.desc setPrivacyMode(),parameter is true
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 0
      */
-    it('Sub_InputMethod_IMF_SecurityKeyboard_0600', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_InputMethod_IMF_SecurityKeyboard_0600', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1512,7 +1755,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1529,41 +1772,51 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 success ====' );
+          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_InputMethod_IMF_SecurityKeyboard_0600']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 212
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
     /**
-     * @tc.number   Sub_InputMethod_IMF_SecurityKeyboard_0700
-     * @tc.name     Sub_InputMethod_IMF_SecurityKeyboard_0700
-     * @tc.desc     setPrivacyMode(),parameter is false
-     * @tc.size     MediumTest
-     * @tc.type     Function
-     * @tc.level    Level 0
+     * @tc.number Sub_InputMethod_IMF_SecurityKeyboard_0700
+     * @tc.name Sub_InputMethod_IMF_SecurityKeyboard_0700
+     * @tc.desc setPrivacyMode(),parameter is false
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 0
      */
-    it('Sub_InputMethod_IMF_SecurityKeyboard_0700', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_InputMethod_IMF_SecurityKeyboard_0700', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1572,7 +1825,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1589,41 +1842,51 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 success ====' );
+          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_InputMethod_IMF_SecurityKeyboard_0700']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 213
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
     /**
-     * @tc.number   Sub_InputMethod_IMF_SecurityKeyboard_0800
-     * @tc.name     Sub_InputMethod_IMF_SecurityKeyboard_0800
-     * @tc.desc     setPrivacyMode(),parameter is undefined
-     * @tc.size     MediumTest
-     * @tc.type     Function
-     * @tc.level    Level 0
+     * @tc.number Sub_InputMethod_IMF_SecurityKeyboard_0800
+     * @tc.name Sub_InputMethod_IMF_SecurityKeyboard_0800
+     * @tc.desc setPrivacyMode(),parameter is undefined
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 0
      */
-    it('Sub_InputMethod_IMF_SecurityKeyboard_0800', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_InputMethod_IMF_SecurityKeyboard_0800', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1632,7 +1895,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1649,41 +1912,51 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 success ====' );
+          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 success ====');
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['Sub_InputMethod_IMF_SecurityKeyboard_0800']
       }
-      var subscriber;
+      let subscriber: ESObject;
       commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 subscribe finish====');
+        try{
+          subscriber = data;
+          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
           code: 214
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
     /**
-     * @tc.number   Sub_InputMethod_IMF_getSecurityMode_0100
-     * @tc.name     Sub_InputMethod_IMF_getSecurityMode_0100
-     * @tc.desc     getSecurityMode()
-     * @tc.size     MediumTest
-     * @tc.type     Function
-     * @tc.level    Level 0
+     * @tc.number Sub_InputMethod_IMF_getSecurityMode_0100
+     * @tc.name Sub_InputMethod_IMF_getSecurityMode_0100
+     * @tc.desc getSecurityMode()
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 0
      */
-    it('Sub_InputMethod_IMF_getSecurityMode_0100', 0, async function (done) {
-      function unSubscriberCallback(err) {
+    it('Sub_InputMethod_IMF_getSecurityMode_0100', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 unSubscriberCallback start');
         if (err) {
           console.error('====>Sub_InputMethod_IMF_getSecurityMode_0100 unSubscriberCallback failed: ' + JSON.stringify(err));
@@ -1692,7 +1965,7 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
-      function subscriberCallback(err, data) {
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscriberCallback data: ' + JSON.stringify(data));
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
@@ -1709,28 +1982,250 @@ export default function inputMethodWindManageAbility() {
         }, 500)
       }
 
-      async function publishCallback(err) {
+      let publishCallback = async (err: BusinessError) => {
         if (err) {
           console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 end<====' + JSON.stringify(err));
         } else {
-          console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 success ====' );
+          console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 success ====');
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ['Sub_InputMethod_IMF_getSecurityMode_0100']
+      }
+      let subscriber: ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
+        try{
+          subscriber = data;
+          console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+          code: 215
+        }
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+     * @tc.number SUB_InputMethod_IME_SplitScreen_0100
+     * @tc.name SUB_InputMethod_IME_SplitScreen_0100
+     * @tc.desc getSecurityMode()
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 0
+     */
+    it('SUB_InputMethod_IME_SplitScreen_0100', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info('====>SUB_InputMethod_IME_SplitScreen_0100 unSubscriberCallback start');
+        if (err) {
+          console.error('====>SUB_InputMethod_IME_SplitScreen_0100 unSubscriberCallback failed: ' + JSON.stringify(err));
+        } else {
+          console.info('====>SUB_InputMethod_IME_SplitScreen_0100 unSubscriberCallback finish');
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info('====>SUB_InputMethod_IME_SplitScreen_0100 subscriberCallback data: ' + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(async () => {
+          try {
+            expect(data.data).assertEqual('SUCCESS');
+            console.info('====>SUB_InputMethod_IME_SplitScreen_0100 success end<====');
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info('====>SUB_InputMethod_IME_SplitScreen_0100 catch end<====' + JSON.stringify(err));
+            clearTimeout(t)
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        runCmd();
+        if (err) {
+          console.info('====>SUB_InputMethod_IME_SplitScreen_0100 end<====' + JSON.stringify(err));
+        } else {
+          console.info('====>SUB_InputMethod_IME_SplitScreen_0100 success ====');
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ['SUB_InputMethod_IME_SplitScreen_0100']
+      }
+      let subscriber: ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
+        try{
+          subscriber = data;
+          console.info('====>SUB_InputMethod_IME_SplitScreen_0100 subscribe data: ' + JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info('====>SUB_InputMethod_IME_SplitScreen_0100 subscribe finish====');
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+          code: 216
+        }
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+      * @tc.number  Sub_InputMethod_IME_ScreenRotation_0100
+      * @tc.name    Sub_InputMethod_IME_ScreenRotation_0100
+      * @tc.desc    Function test
+      * @tc.size    MediumTest
+      * @tc.type    Function
+      * @tc.level   Level2
+      */
+    it('Sub_InputMethod_IME_ScreenRotation_0100', 0, async (done: Function) => {
+
+      function unSubscriberCallback(err) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 subscriberCallback data:"
+          + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 publishCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 publishCallback failed:" + JSON.stringify(err));
         }
       }
 
       var commonEventSubscribeInfo = {
-        events: ['Sub_InputMethod_IMF_getSecurityMode_0100']
+        events: ["Sub_InputMethod_IME_ScreenRotation_0100"]
       }
       var subscriber;
-      commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
-        subscriber = data;
-        console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscribe data: ' + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscribe finish====');
-
-        var commonEventPublishData = {
-          code: 215
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 217
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+      * @tc.number  Sub_InputMethod_IME_ScreenRotation_0200
+      * @tc.name    Sub_InputMethod_IME_ScreenRotation_0200
+      * @tc.desc    Function test
+      * @tc.size    MediumTest
+      * @tc.type    Function
+      * @tc.level   Level2
+      */
+    it('Sub_InputMethod_IME_ScreenRotation_0200', 0, async (done: Function) => {
+
+      function unSubscriberCallback(err) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 subscriberCallback data:"
+          + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 publishCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_InputMethod_IME_ScreenRotation_0200"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 218
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 

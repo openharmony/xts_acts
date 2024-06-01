@@ -13,39 +13,41 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class MainAbility extends Ability {
-    onCreate(want,launchParam){
-        // Ability is creating, initialize resources for this ability
-        console.info("ImExtAbility onCreate");
-        globalThis.abilityWant = want;
-    }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // Ability is creating, initialize resources for this ability
+    console.info("ImExtAbility onCreate");
+    globalThis.abilityWant = want;
+  }
 
-    onDestroy() {
-        // Ability is destroying, release resources for this ability
-        console.info("ImExtAbility onDestroy");
-    }
+  onDestroy() {
+    // Ability is destroying, release resources for this ability
+    console.info("ImExtAbility onDestroy");
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.info("ImExtAbility onWindowStageCreate");
-        globalThis.abilityContext = this.context;
-        windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null);
-        console.info("ImExtAbility onWindowStageCreate finish");
-    }
+  onWindowStageCreate(windowStage) {
+    // Main window is created, set main page for this ability
+    console.info("ImExtAbility onWindowStageCreate");
+    globalThis.abilityContext = this.context;
+    windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null);
+    console.info("ImExtAbility onWindowStageCreate finish");
+  }
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.info("ImExtAbility onWindowStageDestroy");
-    }
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    console.info("ImExtAbility onWindowStageDestroy");
+  }
 
-    onForeground() {
-        // Ability has brought to foreground
-        console.info("ImExtAbility onForeground");
-    }
+  onForeground() {
+    // Ability has brought to foreground
+    console.info("ImExtAbility onForeground");
+  }
 
-    onBackground() {
-        // Ability has back to background
-        console.info("ImExtAbility onBackground");
-    }
+  onBackground() {
+    // Ability has back to background
+    console.info("ImExtAbility onBackground");
+  }
 };
