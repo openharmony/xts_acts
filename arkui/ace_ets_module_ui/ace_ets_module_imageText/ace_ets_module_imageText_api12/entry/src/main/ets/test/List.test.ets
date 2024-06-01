@@ -86,6 +86,7 @@ import TextClockApiTest from './TextColckTest/TextClockApiTest/TextClockApiTest.
 import TextTimerApiTest from './TextTimerTest/TextTimerApiTest/TextTimerApiTest.test'
 import AttributeUpdaterTest from './TextTest/TextAPITest/AttributeUpdaterTest.test'
 import UnitTest from './TextTest/TextAPITest/Unit.test'
+import APIClipMaskShape from './ImageTest/APIClipMaskShape.test'
 import TextInputAddApi from './TextInput/TextInputAddApi.test'.
 
 import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
@@ -166,6 +167,8 @@ export default function testsuite() {
   TextTimerApiTest();
   AttributeUpdaterTest();
   UnitTest();
+  APIClipMaskShape();
+
   RichEditorApi2();
   RichEditorApi6();
   RichEditorApi7();
