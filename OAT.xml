@@ -99,6 +99,7 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.mov" desc="mov files do not to be added "/>
                 <filteritem type="filename" name="*.xml" desc="xml files do not to be added "/>
                 <filteritem type="filename" name="*.py" desc="py files do not to be added "/>
+                <filteritem type="filename" name="*.gltf" desc="gltf files do not to be added"/>
             </filefilter>
         </filefilterlist>
     </oatconfig>
