@@ -53,6 +53,14 @@ export default function APIScrollflingSpeedLimitJsunit() {
       }
       done();
     });
+    /**
+     * @tc.number APIScrollflingSpeedLimitJsunit_0100
+     * @tc.name testScrollFlingSpeedLimit
+     * @tc.desc set flingSpeedLimit to 10
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
     it('APIScrollflingSpeedLimitJsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('APIScrollflingSpeedLimitJsunit_0100 START');
@@ -60,7 +68,7 @@ export default function APIScrollflingSpeedLimitJsunit() {
       await CommonFunc.sleep(1000);
       console.info('APIScrollflingSpeedLimitJsunit_0100 component obj is: ' + JSON.parse(strcontent));
       console.info('APIScrollflingSpeedLimitJsunit_0100 component obj.$attrs.flingSpeedLimit is: ' + JSON.parse(strcontent).$attrs.flingSpeedLimit);
-      expect(JSON.parse(strcontent).$attrs.flingSpeedLimit).assertEqual(`${vp2px(10).toFixed(2)}px`);
+      expect(JSON.parse(strcontent).$attrs.flingSpeedLimit).assertEqual(`10.00vp`);
       console.info('APIScrollflingSpeedLimitJsunit_0100 END')
       done();
     });
