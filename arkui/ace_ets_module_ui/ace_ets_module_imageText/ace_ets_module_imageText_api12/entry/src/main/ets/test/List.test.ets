@@ -91,7 +91,7 @@ import EffectScope from './SymbolGlyph/EffectScope.test'
 import menuPolicyHIDE from './RichEditorTest/menuPolicyHIDE.test'
 import menuPolicySHOW from './RichEditorTest/menuPolicySHOW.test'
 import StyledStringApi1 from './StyledString/StyledStringApi1.test'
-
+import APIClipMaskShape from './ImageTest/APIClipMaskShape.test'
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -166,5 +166,6 @@ export default function testsuite() {
   styledStringApi()
   SelectionMenuApi()
   StyledStringApi1();
+  APIClipMaskShape();
 
 }
