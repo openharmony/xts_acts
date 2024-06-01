@@ -12,7 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import commonEvent from '@ohos.commonEvent';
+
+let event = [
+  'MainAbility1_onForground',
+  'MainAbility6_onForground',
+  'MainAbility12_onForground',
+  'MainAbility12_onDestroy',
+];
+let subscriber = undefined;
 export default function lifecycleTest() {
   describe('LifeCycleTest', function () {
 
@@ -25,8 +34,8 @@ export default function lifecycleTest() {
     afterEach(async function (done) {
       console.info('LifeCycleTest after each called');
       if ("Singlehap_LifeCycleTest_0200" === TAG || "Singlehap_LifeCycleTest_0300" === TAG
-      || "Singlehap_LifeCycleTest_0500" === TAG || "Singlehap_LifeCycleTest_0600" === TAG
-      || "Singlehap_LifeCycleTest_0800" === TAG || "Singlehap_LifeCycleTest_0900" === TAG) {
+        || "Singlehap_LifeCycleTest_0500" === TAG || "Singlehap_LifeCycleTest_0600" === TAG
+        || "Singlehap_LifeCycleTest_0800" === TAG || "Singlehap_LifeCycleTest_0900" === TAG) {
         let para = {
           resultCode: 2,
           want: {
@@ -85,8 +94,8 @@ export default function lifecycleTest() {
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
-        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-      })
+          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+        })
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid));
@@ -104,7 +113,7 @@ export default function lifecycleTest() {
         globalThis.applicationContext
           .unregisterAbilityLifecycleCallback(tempCallbackId, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
+              ",data: " + JSON.stringify(data));
             code = error.code;
           });
         setTimeout(function () {
@@ -139,8 +148,8 @@ export default function lifecycleTest() {
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
-        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-      })
+          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+        })
       setTimeout(function () {
         let str1 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -150,8 +159,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+          })
       }, 700);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
@@ -177,7 +186,7 @@ export default function lifecycleTest() {
         globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
+              ",data: " + JSON.stringify(data));
             code = error.code;
           })
         setTimeout(function () {
@@ -216,8 +225,8 @@ export default function lifecycleTest() {
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
-        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-      })
+          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+        })
       setTimeout(function () {
         let str1 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -227,8 +236,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+          })
       }, 700);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
@@ -248,7 +257,7 @@ export default function lifecycleTest() {
           globalThis.applicationContext1
             .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback_1 success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               code = error.code;
             })
         }, 500);
@@ -287,8 +296,8 @@ export default function lifecycleTest() {
         .then((data) => {
           console.info(TAG + ' start3 successful. Data: ' + data);
         }).catch((error) => {
-        console.error(TAG + ' start3 failed. Cause: ' + JSON.stringify(error));
-      })
+          console.error(TAG + ' start3 failed. Cause: ' + JSON.stringify(error));
+        })
       setTimeout(function () {
         let str1 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -298,8 +307,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start2 successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start2 failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start2 failed. Cause: ' + JSON.stringify(error));
+          })
       }, 700);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list3));
@@ -318,13 +327,13 @@ export default function lifecycleTest() {
           .then((data) => {
             console.log(TAG + " terminateSelfwithresult successful data: " + JSON.stringify(data));
           }).catch((error) => {
-          console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
-        });
+            console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
+          });
         setTimeout(function () {
           globalThis.applicationContext3
             .unregisterAbilityLifecycleCallback(globalThis.callbackid3, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback3 success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               code = error.code;
             })
         }, 500);
@@ -362,8 +371,8 @@ export default function lifecycleTest() {
         .then((data) => {
           console.info(TAG + ' start1 successful. Data: ' + data);
         }).catch((error) => {
-        console.error(TAG + ' start1 failed. Cause: ' + JSON.stringify(error));
-      })
+          console.error(TAG + ' start1 failed. Cause: ' + JSON.stringify(error));
+        })
       setTimeout(function () {
         let str1 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -373,8 +382,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start3 successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start3 failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start3 failed. Cause: ' + JSON.stringify(error));
+          })
       }, 700);
       setTimeout(function () {
         console.log(TAG + " start after callbackid3 : " + JSON.stringify(globalThis.callbackid3));
@@ -394,8 +403,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start4 successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start4 failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start4 failed. Cause: ' + JSON.stringify(error));
+          })
       }, 3300);
       setTimeout(function () {
         console.log(TAG + " listKey1 : " + JSON.stringify(globalThis.list1));
@@ -410,12 +419,12 @@ export default function lifecycleTest() {
         globalThis.applicationContext4
           .unregisterAbilityLifecycleCallback(globalThis.callbackid4, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback4 success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
+              ",data: " + JSON.stringify(data));
           })
         globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback1 success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
+              ",data: " + JSON.stringify(data));
             console.log("------------Singlehap_LifeCycleTest_0500 END-------------");
             done();
           })
@@ -439,8 +448,8 @@ export default function lifecycleTest() {
         .then((data) => {
           console.info(TAG + ' start1 successful. Data: ' + data);
         }).catch((error) => {
-        console.error(TAG + ' start1 failed. Cause: ' + JSON.stringify(error));
-      })
+          console.error(TAG + ' start1 failed. Cause: ' + JSON.stringify(error));
+        })
       setTimeout(function () {
         let str1 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -450,8 +459,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start5 successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start5 failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start5 failed. Cause: ' + JSON.stringify(error));
+          })
       }, 600);
       setTimeout(function () {
         let str2 = {
@@ -462,8 +471,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start2 successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start2 failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start2 failed. Cause: ' + JSON.stringify(error));
+          })
       }, 1200);
       setTimeout(function () {
         console.log(TAG + " listKey1 : " + JSON.stringify(globalThis.list1));
@@ -474,11 +483,11 @@ export default function lifecycleTest() {
         for (let i = 0; i < globalThis.list1.length; i++) {
           strtemp = globalThis.list1[i].substring(0, 12);
           if (strtemp == "MainAbility2") {
-              settemp.add(globalThis.list1[i]);
-              console.log(TAG + " set1 is :" + JSON.stringify(globalThis.list1[i]));
+            settemp.add(globalThis.list1[i]);
+            console.log(TAG + " set1 is :" + JSON.stringify(globalThis.list1[i]));
           } else if (strtemp == "MainAbility5") {
-              settemp2.add(globalThis.list1[i]);
-              console.log(TAG + " set2 is :" + JSON.stringify(globalThis.list1[i]));
+            settemp2.add(globalThis.list1[i]);
+            console.log(TAG + " set2 is :" + JSON.stringify(globalThis.list1[i]));
           }
         }
         expect(settemp.has("MainAbility2 onAbilityCreate")).assertTrue();
@@ -498,7 +507,7 @@ export default function lifecycleTest() {
         globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
+              ",data: " + JSON.stringify(data));
             console.log("------------Singlehap_LifeCycleTest_0600 END-------------");
             done();
           })
@@ -546,46 +555,46 @@ export default function lifecycleTest() {
         },
         onWindowStageDestroy(ability, windowStage) {
           console.log(TAG + " AbilityLifecycleCallback1 onWindowStageDestroy ability:"
-          + JSON.stringify(ability));
+            + JSON.stringify(ability));
           let abilityname = ability.context.abilityInfo.name;
           console.log(TAG + " AbilityLifecycleCallback1 onWindowStageDestroy abilityname:"
-          + JSON.stringify(abilityname));
+            + JSON.stringify(abilityname));
           console.log(TAG + " " + abilityname + " onWindowStageDestroy");
           listKey8.push(abilityname + " onWindowStageDestroy");
         },
         onAbilityDestroy(ability) {
           console.log(TAG + " AbilityLifecycleCallback1 onAbilityDestroy ability:"
-          + JSON.stringify(ability));
+            + JSON.stringify(ability));
           let abilityname = ability.context.abilityInfo.name;
           console.log(TAG + " AbilityLifecycleCallback1 onAbilityDestroy abilityname:"
-          + JSON.stringify(abilityname));
+            + JSON.stringify(abilityname));
           console.log(TAG + " " + abilityname + " onAbilityDestroy");
           listKey8.push(abilityname + " onAbilityDestroy");
         },
         onAbilityForeground(ability) {
           console.log(TAG + " AbilityLifecycleCallback1 onAbilityForeground ability:"
-          + JSON.stringify(ability));
+            + JSON.stringify(ability));
           let abilityname = ability.context.abilityInfo.name;
           console.log(TAG + " AbilityLifecycleCallback1 onAbilityForeground abilityname:"
-          + JSON.stringify(abilityname));
+            + JSON.stringify(abilityname));
           console.log(TAG + " " + abilityname + " onAbilityForeground");
           listKey8.push(abilityname + " onAbilityForeground");
         },
         onAbilityBackground(ability) {
           console.log(TAG + " AbilityLifecycleCallback1 onAbilityBackground ability:"
-          + JSON.stringify(ability));
+            + JSON.stringify(ability));
           let abilityname = ability.context.abilityInfo.name;
           console.log(TAG + " AbilityLifecycleCallback1 onAbilityBackground abilityname:"
-          + JSON.stringify(abilityname));
+            + JSON.stringify(abilityname));
           console.log(TAG + " " + abilityname + " onAbilityBackground");
           listKey8.push(abilityname + " onAbilityBackground");
         },
         onAbilityContinue(ability) {
           console.log(TAG + " AbilityLifecycleCallback1 onAbilityContinue ability:"
-          + JSON.stringify(ability));
+            + JSON.stringify(ability));
           let abilityname = ability.context.abilityInfo.name;
           console.log(TAG + " AbilityLifecycleCallback1 onAbilityContinue abilityname:"
-          + JSON.stringify(abilityname));
+            + JSON.stringify(abilityname));
           console.log(TAG + " " + abilityname + " onAbilityContinue");
           listKey8.push(abilityname + " onAbilityContinue");
         }
@@ -595,7 +604,7 @@ export default function lifecycleTest() {
       console.log(TAG + " registerAbilityLifecycleCallback1 number: " + JSON.stringify(id1));
       applicationContext.unregisterAbilityLifecycleCallback(id1, (error, data) => {
         console.log(TAG + ": unregisterAbilityLifecycleCallback1 success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
         code1 = error.code;
       })
       setTimeout(function () {
@@ -603,7 +612,7 @@ export default function lifecycleTest() {
         console.log(TAG + " registerAbilityLifecycleCallback2 number: " + JSON.stringify(id2));
         applicationContext.unregisterAbilityLifecycleCallback(id2, (error, data) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback2 success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           code2 = error.code;
         })
       }, 1000);
@@ -612,7 +621,7 @@ export default function lifecycleTest() {
         console.log(TAG + " registerAbilityLifecycleCallback3 number: " + JSON.stringify(id3));
         applicationContext.unregisterAbilityLifecycleCallback(id3, (error, data) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback3 success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           code3 = error.code;
           expect(id1 > 0).assertTrue();
           expect(id2).assertEqual(id1 + 1);
@@ -627,90 +636,76 @@ export default function lifecycleTest() {
     });
 
     /*
-     * @tc.number  Singlehap_LifeCycleTest_0800
-     * @tc.name    Maninability1 Register listening, Repeat starting and termination Ability2
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
+      * @tc.number  Singlehap_LifeCycleTest_0800
+      * @tc.name    Maninability1 Register listening, Repeat starting and termination Ability2
+      * @tc.desc    Function test
+      * @tc.level   0
+      */
     it("Singlehap_LifeCycleTest_0800", 0, async function (done) {
-      await sleep(500);
       console.log("------------Singlehap_LifeCycleTest_0800 START-------------");
       TAG = "Singlehap_LifeCycleTest_0800";
+      let count = 0;
       let str = {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility1",
-      }
-      globalThis.abilityContext.startAbility(str)
-        .then((data) => {
-          console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
-        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+      };
+      let str1 = {
+        "bundleName": "com.example.lifecycle_xts",
+        "abilityName": "MainAbility2",
+      };
+      await commonEvent.createSubscriber({ events: event }).then((data) => {
+        subscriber = data;
+        commonEvent.subscribe(data, async (err, data) => {
+          console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
+          if (data.event == 'MainAbility1_onForground') {
+            count++;
+            if (count < 4) {
+              await globalThis.abilityContext.startAbility(str1)
+                .then((data) => {
+                  console.info(TAG + ' startMainAbility2 successful. Data: ' + data);
+                }).catch((error) => {
+                  console.error(TAG + ' startMainAbility2 failed. Cause: ' + JSON.stringify(error));
+                })
+            } else {
+              console.info(TAG + ' count++ is: ' + count);
+              console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
+              console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
+              let listTemp = JSON.stringify(globalThis.list1);
+              console.log(TAG + " listTemp is :" + listTemp);
+              try {
+                expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
+                expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertLarger(1);
+                expect(listTemp.split("MainAbility1 onAbilityBackground").length - 1).assertEqual(3);
+                expect(listTemp.split("MainAbility2 onAbilityCreate").length - 1).assertEqual(3);
+                expect(listTemp.split("MainAbility2 onWindowStageCreate").length - 1).assertEqual(3);
+                expect(listTemp.split("MainAbility2 onAbilityForeground").length - 1).assertEqual(3);
+                expect(listTemp.split("MainAbility2 onAbilityBackground").length - 1).assertLarger(1);
+                expect(listTemp.split("MainAbility2 onWindowStageDestroy").length - 1).assertLarger(1);
+                expect(listTemp.split("MainAbility2 onAbilityDestroy").length - 1).assertLarger(1);
+              } catch (error) {
+                console.error(`${TAG} startRunning failed: ${JSON.stringify(error)}`);
+                done();
+              }
+              globalThis.applicationContext1
+                .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
+                  console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                    ",data: " + JSON.stringify(data));
+                  commonEvent.unsubscribe(subscriber, () => {
+                    console.log(`${TAG} UnSubscribeCallback end`);
+                    done();
+                  })
+                });
+            }
+          }
+        })
       })
-      setTimeout(function () {
-        let str1 = {
-          "bundleName": "com.example.lifecycle_xts",
-          "abilityName": "MainAbility2",
-        }
-        globalThis.abilityContext.startAbility(str1)
-          .then((data) => {
-            console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
-      }, 1500);
-      setTimeout(function () {
-        let str1 = {
-          "bundleName": "com.example.lifecycle_xts",
-          "abilityName": "MainAbility2",
-        }
-        globalThis.abilityContext.startAbility(str1)
-          .then((data) => {
-            console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
-      }, 3000);
 
-      setTimeout(function () {
-        let str1 = {
-          "bundleName": "com.example.lifecycle_xts",
-          "abilityName": "MainAbility2",
-        }
-        globalThis.abilityContext.startAbility(str1)
-          .then((data) => {
-            console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+      await globalThis.abilityContext.startAbility(str)
+        .then((data) => {
+          console.info(TAG + ' startMainAbility1 successful. Data: ' + data);
+        }).catch((error) => {
+          console.error(TAG + ' startMainAbility1 failed. Cause: ' + JSON.stringify(error));
         })
-      }, 4500);
-
-      setTimeout(function () {
-        console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
-        console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
-        let listTemp = JSON.stringify(globalThis.list1);
-        console.log(TAG + " listTemp is :" + listTemp);
-        try {
-          expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
-          expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertLarger(1);
-          expect(listTemp.split("MainAbility1 onAbilityBackground").length - 1).assertEqual(3);
-          expect(listTemp.split("MainAbility2 onAbilityCreate").length - 1).assertEqual(3);
-          expect(listTemp.split("MainAbility2 onWindowStageCreate").length - 1).assertEqual(3);
-          expect(listTemp.split("MainAbility2 onAbilityForeground").length - 1).assertEqual(3);
-          expect(listTemp.split("MainAbility2 onAbilityBackground").length - 1).assertLarger(1);
-          expect(listTemp.split("MainAbility2 onWindowStageDestroy").length - 1).assertLarger(1);
-          expect(listTemp.split("MainAbility2 onAbilityDestroy").length - 1).assertLarger(1);
-        } catch (error) {
-          console.error(`${TAG} startRunning failed: ${JSON.stringify(error)}`);
-          done();
-        }
-        globalThis.applicationContext1
-          .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
-            console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-            console.log("------------Singlehap_LifeCycleTest_0800 END-------------");
-            done();
-          });
-      }, 5950);
     });
 
     /*
@@ -722,64 +717,65 @@ export default function lifecycleTest() {
     it("Singlehap_LifeCycleTest_0900", 0, async function (done) {
       console.log("------------Singlehap_LifeCycleTest_0900 START-------------");
       TAG = "Singlehap_LifeCycleTest_0900";
+      let count = 0;
       let str = {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility1",
       }
-      globalThis.abilityContext.startAbility(str)
-        .then((data) => {
-          console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
-        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-      })
-      setTimeout(function () {
-        let str1 = {
-          "bundleName": "com.example.lifecycle_xts",
-          "abilityName": "MainAbility2",
-        }
-        globalThis.abilityContext.startAbility(str1)
-          .then((data) => {
-            console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
-      }, 700);
-      setTimeout(function () {
-        let str1 = {
-          "bundleName": "com.example.lifecycle_xts",
-          "abilityName": "MainAbility2",
-        }
-        globalThis.abilityContext.startAbility(str1)
-          .then((data) => {
-            console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
-      }, 2500);
-      setTimeout(function () {
-        console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
-        console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
-        let listTemp = JSON.stringify(globalThis.list1);
-        console.log(TAG + " listTemp is :" + listTemp);
+      let str1 = {
+        "bundleName": "com.example.lifecycle_xts",
+        "abilityName": "MainAbility2",
+      }
 
-        expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
-        expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertEqual(3);
-        expect(listTemp.split("MainAbility1 onAbilityBackground").length - 1).assertEqual(2);
-        expect(listTemp.split("MainAbility2 onAbilityCreate").length - 1).assertEqual(2);
-        expect(listTemp.split("MainAbility2 onWindowStageCreate").length - 1).assertEqual(2);
-        expect(listTemp.split("MainAbility2 onAbilityForeground").length - 1).assertEqual(2);
-        expect(listTemp.split("MainAbility2 onAbilityBackground").length - 1).assertEqual(2);
-        expect(listTemp.split("MainAbility2 onWindowStageDestroy").length - 1).assertEqual(2);
-        expect(listTemp.split("MainAbility2 onAbilityDestroy").length - 1).assertEqual(2);
-        globalThis.applicationContext1
-          .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
-            console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-            console.log("------------Singlehap_LifeCycleTest_0900 END-------------");
-            done();
-          });
-      }, 5300);
-    });
+      await commonEvent.createSubscriber({ events: event }).then((data) => {
+        subscriber = data;
+        commonEvent.subscribe(data, async (err, data) => {
+          console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
+          if (data.event == 'MainAbility1_onForground') {
+            count++;
+            if (count < 3) {
+              await globalThis.abilityContext.startAbility(str1)
+                .then((data) => {
+                  console.info(TAG + ' startMainAbility2 successful. Data: ' + data);
+                }).catch((error) => {
+                  console.error(TAG + ' startMainAbility2 failed. Cause: ' + JSON.stringify(error));
+                })
+            } else {
+              console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
+              console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
+              let listTemp = JSON.stringify(globalThis.list1);
+              console.log(TAG + " listTemp is :" + listTemp);
+
+              expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
+              expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertEqual(3);
+              expect(listTemp.split("MainAbility1 onAbilityBackground").length - 1).assertEqual(2);
+              expect(listTemp.split("MainAbility2 onAbilityCreate").length - 1).assertEqual(2);
+              expect(listTemp.split("MainAbility2 onWindowStageCreate").length - 1).assertEqual(2);
+              expect(listTemp.split("MainAbility2 onAbilityForeground").length - 1).assertEqual(2);
+              expect(listTemp.split("MainAbility2 onAbilityBackground").length - 1).assertEqual(2);
+              expect(listTemp.split("MainAbility2 onWindowStageDestroy").length - 1).assertEqual(2);
+              expect(listTemp.split("MainAbility2 onAbilityDestroy").length - 1).assertEqual(2);
+              globalThis.applicationContext1
+                .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
+                  console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                    ",data: " + JSON.stringify(data));
+                  commonEvent.unsubscribe(subscriber, () => {
+                    console.log(`${TAG} UnSubscribeCallback end`);
+                    done();
+                  })
+                });
+            }
+          }
+        })
+      })
+
+      await globalThis.abilityContext.startAbility(str)
+        .then((data) => {
+          console.info(TAG + ' startMainAbility1 successful. Data: ' + data);
+        }).catch((error) => {
+          console.error(TAG + ' startMainAbility1 failed. Cause: ' + JSON.stringify(error));
+        })
+    })
 
     /*
      * @tc.number  Singlehap_LifeCycleTest_1000
@@ -792,46 +788,59 @@ export default function lifecycleTest() {
       TAG = "Singlehap_LifeCycleTest_1000";
       let id1;
       let id2;
+      let count = 0;
       let str = {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility6",
       }
-      globalThis.abilityContext.startAbility(str)
-        .then((data) => {
-          console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
-        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-      })
-      setTimeout(function () {
-        console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list6));
-        console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid6));
-        id1 = globalThis.callbackid6;
-        console.log(TAG + " firstCallback id : " + JSON.stringify(id1));
-        let str1 = {
-          "bundleName": "com.example.lifecycle_xts",
-          "abilityName": "MainAbility2",
-        }
-        globalThis.abilityContext.startAbility(str1)
-          .then((data) => {
-            console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+      let str1 = {
+        "bundleName": "com.example.lifecycle_xts",
+        "abilityName": "MainAbility2",
+      }
+
+      await commonEvent.createSubscriber({ events: event }).then((data) => {
+        subscriber = data;
+        commonEvent.subscribe(data, async (err, data) => {
+          console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
+          if (data.event == 'MainAbility6_onForground') {
+            count++;
+            if (count < 2) {
+              console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list6));
+              console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid6));
+              id1 = globalThis.callbackid6;
+              console.log(TAG + " firstCallback id : " + JSON.stringify(id1));
+              globalThis.abilityContext.startAbility(str1)
+                .then((data) => {
+                  console.info(TAG + ' startMainAbility2 successful. Data: ' + data);
+                }).catch((error) => {
+                  console.error(TAG + ' startMainAbility2 failed. Cause: ' + JSON.stringify(error));
+                })
+            } else {
+              console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list6));
+              console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid6));
+              id2 = globalThis.callbackid6;
+              console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
+              expect(id1 + 1).assertEqual(id2);
+              globalThis.applicationContext6
+                .unregisterAbilityLifecycleCallback(globalThis.callbackid6, (error, data) => {
+                  console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                    ",data: " + JSON.stringify(data));
+                  commonEvent.unsubscribe(subscriber, () => {
+                    console.log(`${TAG} UnSubscribeCallback end`);
+                    done();
+                  })
+                });
+            }
+          }
         })
-      }, 2500);
-      setTimeout(function () {
-        console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list6));
-        console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid6));
-        id2 = globalThis.callbackid6;
-        console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
-        expect(id1 + 1).assertEqual(id2);
-        globalThis.applicationContext6
-          .unregisterAbilityLifecycleCallback(globalThis.callbackid6, (error, data) => {
-            console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-            console.log("------------Singlehap_LifeCycleTest_1000 END-------------");
-            done();
-          });
-      }, 5500);
+      })
+
+      await globalThis.abilityContext.startAbility(str)
+        .then((data) => {
+          console.info(TAG + ' startMainAbility6 successful. Data: ' + data);
+        }).catch((error) => {
+          console.error(TAG + ' startMainAbility6 failed. Cause: ' + JSON.stringify(error));
+        })
     });
 
     /*
@@ -853,8 +862,8 @@ export default function lifecycleTest() {
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
-        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-      })
+          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+        })
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list7));
         console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid7));
@@ -868,8 +877,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+          })
       }, 2500);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list7));
@@ -880,7 +889,7 @@ export default function lifecycleTest() {
         globalThis.applicationContext7
           .unregisterAbilityLifecycleCallback(globalThis.callbackid7, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
+              ",data: " + JSON.stringify(data));
           });
         let para = {
           resultCode: 1,
@@ -892,7 +901,7 @@ export default function lifecycleTest() {
         console.log(TAG + " terminateSelfwithresult para: " + JSON.stringify(para));
         globalThis.ability7.terminateSelfWithResult(para, (error, data) => {
           console.log(TAG + " terminateSelfwithresult success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           console.log("------------Singlehap_LifeCycleTest_1100 END-------------");
           done();
         });
@@ -917,8 +926,8 @@ export default function lifecycleTest() {
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
-        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-      })
+          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+        })
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list8));
         console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid8));
@@ -932,8 +941,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+          })
       }, 2500);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list8));
@@ -944,7 +953,7 @@ export default function lifecycleTest() {
         globalThis.applicationContext8
           .unregisterAbilityLifecycleCallback(globalThis.callbackid8, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
+              ",data: " + JSON.stringify(data));
           });
         let para = {
           resultCode: 1,
@@ -956,7 +965,7 @@ export default function lifecycleTest() {
         console.log(TAG + " terminateSelfwithresult para: " + JSON.stringify(para));
         globalThis.ability8.terminateSelfWithResult(para, (error, data) => {
           console.log(TAG + " terminateSelfwithresult success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           console.log("------------Singlehap_LifeCycleTest_1200 END-------------");
           done();
         });
@@ -977,7 +986,7 @@ export default function lifecycleTest() {
         abilityName: "MainAbility9"
       }, (error, data) => {
         console.log(TAG + ": MainAbility9 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
       await sleep(700);
       globalThis.abilityContext.startAbility({
@@ -985,7 +994,7 @@ export default function lifecycleTest() {
         abilityName: "Hap1MainAbility1"
       }, (error, data) => {
         console.log(TAG + ":first Hap1MainAbility1 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
       await sleep(700);
       globalThis.abilityContext.startAbility({
@@ -994,7 +1003,7 @@ export default function lifecycleTest() {
       }, (error, data) => {
         setTimeout(() => {
           console.log(TAG + ": second Hap1MainAbility1 startAbility success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           let listTemp = JSON.stringify(globalThis.mainAbility9ListKey);
           console.log(TAG + "listTemp is :" + listTemp);
           console.log(TAG + "globalThis.mainAbility9CallBackId is :" + globalThis.mainAbility9CallBackId);
@@ -1007,7 +1016,7 @@ export default function lifecycleTest() {
           globalThis.applicationContext9
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility9CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               done();
             });
         }, 3500)
@@ -1029,7 +1038,7 @@ export default function lifecycleTest() {
         abilityName: "MainAbility9"
       }, (error, data) => {
         console.log(TAG + ": MainAbility9 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
       await sleep(700);
       globalThis.abilityContext.startAbility({
@@ -1037,7 +1046,7 @@ export default function lifecycleTest() {
         abilityName: "Hap1MainAbility2"
       }, (error, data) => {
         console.log(TAG + ":first Hap1MainAbility2 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
       await sleep(700);
       globalThis.abilityContext.startAbility({
@@ -1046,7 +1055,7 @@ export default function lifecycleTest() {
       }, (error, data) => {
         setTimeout(() => {
           console.log(TAG + ": second Hap1MainAbility2 startAbility success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           let listTemp = JSON.stringify(globalThis.mainAbility9ListKey);
           console.log(TAG + "listTemp is :" + listTemp);
           console.log(TAG + "globalThis.mainAbility9CallBackId is :" + globalThis.mainAbility9CallBackId);
@@ -1059,7 +1068,7 @@ export default function lifecycleTest() {
           globalThis.applicationContext9
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility9CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               done();
             });
         }, 3500)
@@ -1085,8 +1094,8 @@ export default function lifecycleTest() {
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
-        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-      })
+          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+        })
       setTimeout(function () {
         let str1 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -1096,8 +1105,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+          })
       }, 700);
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list11));
@@ -1112,8 +1121,8 @@ export default function lifecycleTest() {
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
+            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+          })
         setTimeout(function () {
           let str1 = {
             "bundleName": "com.example.lifecycle_xts",
@@ -1123,8 +1132,8 @@ export default function lifecycleTest() {
             .then((data) => {
               console.info(TAG + ' start successful. Data: ' + data);
             }).catch((error) => {
-            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-          })
+              console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+            })
         }, 700);
       }, 3500);
       setTimeout(function () {
@@ -1144,7 +1153,7 @@ export default function lifecycleTest() {
         globalThis.applicationContext11
           .unregisterAbilityLifecycleCallback(globalThis.callbackid11, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
+              ",data: " + JSON.stringify(data));
             console.log("------------Singlehap_LifeCycleTest_1500 END-------------");
             done();
           });
@@ -1167,7 +1176,7 @@ export default function lifecycleTest() {
       globalThis.abilityContext.getApplicationContext()
         .unregisterAbilityLifecycleCallback(callbackid_NA, (error, data) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           code = error.code;
           sleep(1000);
           expect(code).assertEqual(1);
@@ -1188,7 +1197,7 @@ export default function lifecycleTest() {
       globalThis.abilityContext.getApplicationContext()
         .unregisterAbilityLifecycleCallback(callbackid_errorNum, (error, data) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           code = error.code;
           sleep(1000);
           expect(code).assertEqual(1);
@@ -1209,7 +1218,7 @@ export default function lifecycleTest() {
       globalThis.abilityContext.getApplicationContext()
         .unregisterAbilityLifecycleCallback(callbackid_errorType, (error, data) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           code = error.code;
           sleep(1000);
           expect(code).assertEqual(1);
@@ -1230,7 +1239,7 @@ export default function lifecycleTest() {
       globalThis.abilityContext.getApplicationContext()
         .unregisterAbilityLifecycleCallback(null, (error, data) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           code = error.code;
           sleep(1000);
           expect(code).assertEqual(1);
@@ -1249,94 +1258,82 @@ export default function lifecycleTest() {
       TAG = "Singlehap_LifeCycleTest_2000";
       let id1;
       let id2;
+      let count = 0;
       let str = {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility12",
       }
-      globalThis.abilityContext.startAbility(str)
-        .then((data) => {
-          console.info(TAG + ' start successful. Data: ' + data);
-        }).catch((error) => {
-        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+      let str1 = {
+        "bundleName": "com.example.lifecycle_xts",
+        "abilityName": "MainAbility2",
+      }
+
+      await commonEvent.createSubscriber({ events: event }).then((data) => {
+        subscriber = data;
+        commonEvent.subscribe(data, async (err, data) => {
+          console.info(TAG + ' subscribeCallBack. Data: ' + JSON.stringify(data));
+          if (data.event === 'MainAbility12_onForground') {
+            count++;
+            if (count === 1 || count === 3) {
+              await globalThis.abilityContext.startAbility(str1)
+                .then((data) => {
+                  console.info(TAG + ' startMainAbility2 successful. Data: ' + data);
+                }).catch((error) => {
+                  console.error(TAG + ' startMainAbility2 failed. Cause: ' + JSON.stringify(error));
+                })
+            } else if (count === 2) {
+              console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list12));
+              console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid12));
+              id1 = globalThis.callbackid12;
+              console.log(TAG + " firstCallback id : " + JSON.stringify(id1));
+              globalThis.ability12.terminateSelf(str)
+                .then((data) => {
+                  console.log(TAG + " terminateSelfwithresult successful data: " + JSON.stringify(data));
+                }).catch((error) => {
+                  console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
+                });
+            } else {
+              console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list12));
+              console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid12));
+              id2 = globalThis.callbackid12;
+              console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
+              let listTemp = JSON.stringify(globalThis.list12);
+              console.log(TAG + " listTemp is :" + listTemp);
+              expect(listTemp.indexOf("MainAbility2 onAbilityCreate") !== -1).assertTrue();
+              expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
+              expect(listTemp.indexOf("MainAbility2 onAbilityForeground") !== -1).assertTrue();
+              expect(listTemp.indexOf("MainAbility2 onAbilityBackground") !== -1).assertTrue();
+              expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
+              expect(listTemp.indexOf("MainAbility2 onAbilityDestroy") !== -1).assertTrue();
+              expect(id1 + 1).assertEqual(id2);
+              globalThis.applicationContext12
+                .unregisterAbilityLifecycleCallback(id2, (error, data) => {
+                  console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                    ",data: " + JSON.stringify(data));
+                  commonEvent.unsubscribe(subscriber, () => {
+                    console.log(`${TAG} UnSubscribeCallback end`);
+                    done();
+                  })
+                });
+            }
+          }
+          if (data.event === 'MainAbility12_onDestroy') {
+            globalThis.abilityContext.startAbility(str)
+              .then((data) => {
+                console.info(TAG + ' startMainAbility12 successful. Data: ' + data);
+              }).catch((error) => {
+                console.error(TAG + ' startMainAbility12 failed. Cause: ' + JSON.stringify(error));
+              })
+          }
+        })
       })
-      setTimeout(function () {
-        let str1 = {
-          "bundleName": "com.example.lifecycle_xts",
-          "abilityName": "MainAbility2",
-        }
-        globalThis.abilityContext.startAbility(str1)
-          .then((data) => {
-            console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+
+      await globalThis.abilityContext.startAbility(str)
+        .then((data) => {
+          console.info(TAG + ' startMainAbility12 successful. Data: ' + data);
+        }).catch((error) => {
+          console.error(TAG + ' startMainAbility12 failed. Cause: ' + JSON.stringify(error));
         })
-      }, 700);
-      setTimeout(function () {
-        console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list12));
-        console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid12));
-        id1 = globalThis.callbackid12;
-        console.log(TAG + " firstCallback id : " + JSON.stringify(id1));
-        let para = {
-          resultCode: 2000,
-          want: {
-            "abilityName": "MainAbility12",
-            "bundleName": "com.example.lifecycle_xts"
-          }
-        }
-        console.log(TAG + " terminateSelfwithresult para: " + JSON.stringify(para));
-        globalThis.ability12.terminateSelfWithResult(para)
-          .then((data) => {
-            console.log(TAG + " terminateSelfwithresult successful data: " + JSON.stringify(data));
-          }).catch((error) => {
-          console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
-        });
-      }, 3000);
-      setTimeout(function () {
-        let str = {
-          "bundleName": "com.example.lifecycle_xts",
-          "abilityName": "MainAbility12",
-        }
-        globalThis.abilityContext.startAbility(str)
-          .then((data) => {
-            console.info(TAG + ' start successful. Data: ' + data);
-          }).catch((error) => {
-          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
-        setTimeout(function () {
-          let str1 = {
-            "bundleName": "com.example.lifecycle_xts",
-            "abilityName": "MainAbility2",
-          }
-          globalThis.abilityContext.startAbility(str1)
-            .then((data) => {
-              console.info(TAG + ' start successful. Data: ' + data);
-            }).catch((error) => {
-            console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-          })
-        }, 700);
-      }, 4200);
-      setTimeout(function () {
-        console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list12));
-        console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid12));
-        id2 = globalThis.callbackid12;
-        console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
-        let listTemp = JSON.stringify(globalThis.list12);
-        console.log(TAG + " listTemp is :" + listTemp);
-        expect(listTemp.indexOf("MainAbility2 onAbilityCreate") !== -1).assertTrue();
-        expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
-        expect(listTemp.indexOf("MainAbility2 onAbilityForeground") !== -1).assertTrue();
-        expect(listTemp.indexOf("MainAbility2 onAbilityBackground") !== -1).assertTrue();
-        expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
-        expect(listTemp.indexOf("MainAbility2 onAbilityDestroy") !== -1).assertTrue();
-        expect(id1 + 1).assertEqual(id2);
-        globalThis.applicationContext12
-          .unregisterAbilityLifecycleCallback(id2, (error, data) => {
-            console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-            console.log("------------Singlehap_LifeCycleTest_2000 END-------------");
-            done();
-          });
-      }, 7500);
     });
 
     /*
@@ -1370,7 +1367,7 @@ export default function lifecycleTest() {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
-        })
+          })
       }, 700);
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey1 : " + JSON.stringify(globalThis.list1));
@@ -1405,7 +1402,7 @@ export default function lifecycleTest() {
         globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
+              ",data: " + JSON.stringify(data));
             console.log("------------Singlehap_LifeCycleTest_2100 END-------------");
             done();
           });
