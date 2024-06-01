@@ -13,8 +13,11 @@
  * limitations under the License.
  */
 import APICanvasSizeTest from './CanvasTest/APICanvasSizeTest.test';
+import RestoreLayerTest from './CanvasTest/CanvasApiTest/RestoreLayerTest.test';
+import SaveLayerTest from './CanvasTest/CanvasApiTest/SaveLayerTest.test';
 
 export default function testsuite() {
   APICanvasSizeTest();
-
+  RestoreLayerTest();
+  SaveLayerTest();
 }

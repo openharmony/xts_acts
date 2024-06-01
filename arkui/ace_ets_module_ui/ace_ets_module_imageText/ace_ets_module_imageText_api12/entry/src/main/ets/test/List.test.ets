@@ -82,12 +82,14 @@ import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
 import styledStringApi from './TextTest/styledStringApi.test'
 import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
 import StyledStringApi1 from './StyledString/StyledStringApi1.test'
-
+import TextClockApiTest from './TextColckTest/TextClockApiTest/TextClockApiTest.test'
+import TextTimerApiTest from './TextTimerTest/TextTimerApiTest/TextTimerApiTest.test'
+import AttributeUpdaterTest from './TextTest/TextAPITest/AttributeUpdaterTest.test'
+import UnitTest from './TextTest/TextAPITest/Unit.test'
 import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
 import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
 import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
 import TextAreaApi4 from './TextArea/TextAreaApi4.test'
-
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -157,10 +159,12 @@ export default function testsuite() {
   styledStringApi()
   SelectionMenuApi()
   StyledStringApi1();
-
+  TextClockApiTest();
+  TextTimerApiTest();
+  AttributeUpdaterTest();
+  UnitTest();
   RichEditorApi2();
   RichEditorApi6();
   RichEditorApi7();
   TextAreaApi4()
-
 }

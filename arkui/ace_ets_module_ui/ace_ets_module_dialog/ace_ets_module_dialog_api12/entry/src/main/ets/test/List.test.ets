@@ -48,6 +48,8 @@ import ButtonStyle from './CalendarPickerDialogTest/ButtonStyle.test'
 import DateButtonStyle from './DatePickerDialogTest/DateButtonStyle.test'
 import dialogApi from './Dialog/dialogApi.test'
 import CustomDialogRouter from './CustomDialogTest/CustomDialogRouter.test.ets'
+import IconApiTest from './MenuTest/MenuApiTest/IconApiTest.test'
+import PopupOptionsTest from './PopupTest/PopupApiTest/PopupApiTest.test'
 
 export default function testsuite() {
   dialogApi()
@@ -85,4 +87,6 @@ export default function testsuite() {
   ButtonStyle()
   DateButtonStyle()
   CustomDialogRouter()
+  IconApiTest();
+  PopupOptionsTest();
 }
