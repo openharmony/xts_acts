@@ -28,7 +28,6 @@
  * limitations under the License.
  */
 
-//import { FrameNode, UIContext } from '@kit.ArkUI';
 import { UIContext } from '@ohos.arkui.UIContext';
 import { FrameNode } from '@ohos.arkui.node';
 
@@ -42,7 +41,7 @@ struct CustomProperty111 {
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("Test_Column") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById("customProperty_colum") || null;
             if (node) {
               const property = node.getCustomProperty('customProperty1');
               console.log('customProperty1', JSON.stringify(property));
@@ -50,14 +49,15 @@ struct CustomProperty111 {
             }
           }
         })
-      }
-      .customProperty('customProperty1', {
-        'number': 10,
-        'string': 'this is a string',
-        'bool': true,
-        'object': {
-          'name': 'name',
-          'value': 100
+    }
+    .id("customProperty_colum")
+    .customProperty('customProperty1', {
+      'number': 10,
+      'string': 'this is a string',
+      'bool': true,
+      'object': {
+        'name': 'name',
+        'value': 100
       }
     })
     .customProperty('customProperty2', {})

@@ -19,9 +19,6 @@ import { KeyCode } from '@ohos.multimodalInput.keyCode';
 struct PreImeEventExample1 {
   @State buttonText: string = 'start';
   @State buttonState: boolean = true;
-  @State columnText: string = '';
-  @State columnType: string = '';
-
   build() {
     Column() {
       Button(this.buttonText).id("onKeyPreIme_button")
@@ -34,8 +31,8 @@ struct PreImeEventExample1 {
         .border({ radius:"20vp" })
         .onKeyPreIme((event:KeyEvent) => {
           this.buttonState = event.getModifierKeyState(["onKeyPreIme_id"])
-          if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {
-            this.buttonText = 'onKeyPreIme succ';
+          if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {       
+            this.buttonText = 'onKeyPreIme succ';     
             return true;
           }
           return false;

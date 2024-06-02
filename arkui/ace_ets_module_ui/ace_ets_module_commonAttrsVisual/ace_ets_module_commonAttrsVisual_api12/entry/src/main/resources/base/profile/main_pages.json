@@ -3,6 +3,7 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/backgroundImage/backgroundImageResizable",
         "MainAbility/pages/foregroundEffect",
-        "MainAbility/pages/ImageEffect/systemBarEffect"
+        "MainAbility/pages/ImageEffect/systemBarEffect",
+        "MainAbility/pages/ImageEffect/freeze"
     ]
 }

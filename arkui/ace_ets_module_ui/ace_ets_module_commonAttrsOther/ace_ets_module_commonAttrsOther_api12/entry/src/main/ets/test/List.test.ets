@@ -20,6 +20,7 @@ import OverlayManagerTest_005 from './UIContextTest/OverlayManagerTest_005.test'
 import OverlayManagerTest_006 from './UIContextTest/OverlayManagerTest_006.test'
 import getOverlayManager from './UIContextTest/getOverlayManager.test'
 import getContextMenuController from './UIContextTest/getContextMenuController.test'
+import customPropertyTest from './customPropertyTest/customProperty.test'
 
 export default function testsuite() {
   OverlayManagerTest_001()
@@ -30,4 +31,5 @@ export default function testsuite() {
   OverlayManagerTest_006()
   getOverlayManager()
   getContextMenuController()
+  customPropertyTest()
 }
