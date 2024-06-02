@@ -69,6 +69,7 @@
     "MainAbility/pages/RichEditor/SelectionMenuApi",
     "MainAbility/pages/Image/imageAddApi",
     "MainAbility/pages/StyledString/StyledStringApi1",
+    "MainAbility/pages/TextInput/TextInputApi1",
     "MainAbility/pages/RichEditor/RichEditorChangeValueTest1",
     "MainAbility/pages/RichEditor/RichEditorGetLayoutManagerTest1",
     "MainAbility/pages/RichEditor/RichEditorStyledStringTest1",
