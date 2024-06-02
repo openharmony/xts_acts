@@ -69,6 +69,11 @@
     "MainAbility/pages/RichEditor/SelectionMenuApi",
     "MainAbility/pages/Image/imageAddApi",
     "MainAbility/pages/StyledString/StyledStringApi1",
+    "MainAbility/pages/RichEditor/RichEditorChangeValueTest1",
+    "MainAbility/pages/RichEditor/RichEditorGetLayoutManagerTest1",
+    "MainAbility/pages/RichEditor/RichEditorStyledStringTest1",
+    "MainAbility/pages/RichEditor/RichEditorStyledStringTest2",
+
     "MainAbility/pages/Text/TextAPI/AttributeUpdater",
     "MainAbility/pages/Text/TextAPI/Unit",
     "MainAbility/pages/TextClock/TextClockApi/TextClockApi",

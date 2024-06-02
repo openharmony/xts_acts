@@ -31,6 +31,7 @@ import getGreen from './GraphicsTest/getGreen.test';
 import getRed from './GraphicsTest/getRed.test';
 import onAppear from './FrameNodeTest/onAppear.test';
 import setMeasureSizeTest from './FrameNodeTest/setMeasureSize.test';
+import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
 
 import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
 import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
@@ -56,6 +57,7 @@ export default function testsuite() {
   getRed();
   onAppear();
   setMeasureSizeTest();
+  commonEventTest1();
   CornerTest();
   LengthMetricsUnitTest();
   PercentReferenceTest();

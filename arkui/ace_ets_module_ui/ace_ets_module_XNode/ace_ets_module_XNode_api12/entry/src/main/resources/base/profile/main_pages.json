@@ -20,6 +20,7 @@
         "MainAbility/pages/Graphics/getGreen",
         "MainAbility/pages/FrameNode/onAppear",
 	    "MainAbility/pages/FrameNode/setMeasureSize",
+        "MainAbility/pages/FrameNode/commonEventTest1",
 	    "MainAbility/pages/Graphics/GraphicsApi/Corner",
 	    "MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
 	    "MainAbility/pages/Graphics/GraphicsApi/PercentReference"
