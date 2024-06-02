@@ -16,6 +16,7 @@ import borderRadiuses from './GraphicsTest/borderRadiuses.test';
 import borderStyles from './GraphicsTest/borderStyles.test';
 import edgeColors from './GraphicsTest/edgeColors.test';
 import edgeWidths from './GraphicsTest/edgeWidths.test';
+import graphicGetInterfaceTest from './GraphicsTest/graphicGetInterface.test';
 import renderNodeGetInterfaceTest from './renderNode/renderNodeTestInterface.test';
 import disposeTest from './FrameNodeTest/dispose.test';
 import getAttrsTest from './FrameNodeTest/getAttrs.test';
@@ -63,4 +64,5 @@ export default function testsuite() {
   LengthMetricsUnitTest();
   PercentReferenceTest();
   setCircleShapeTest();
+  graphicGetInterfaceTest();
 }
