@@ -38,6 +38,8 @@
     "MainAbility/pages/DatePickerDialog/DateButtonStyle",
     "MainAbility/pages/CustomDialog/CustomDialogRouter",
     "MainAbility/pages/Popup/PopupApi/PopupApi",
-    "MainAbility/pages/Menu/MenuApi/IconApi"
+    "MainAbility/pages/Menu/MenuApi/IconApi",
+    "MainAbility/pages/Menu/MenuApi/SubMenuExpandingMode_SIDE",
+    "MainAbility/pages/Menu/MenuApi/SubMenuExpandingMode_EMBEDDED"
   ]
 }

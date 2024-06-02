@@ -52,6 +52,9 @@ import IconApiTest from './MenuTest/MenuApiTest/IconApiTest.test'
 import PopupOptionsTest from './PopupTest/PopupApiTest/PopupApiTest.test'
 import menuItemGroupDivider from './Menu/menuItemGroupDivider.test.ets';
 
+import SubMenuExpandingModeTest_SIDE from './MenuTest/MenuApiTest/SubMenuExpandingModeTest_SIDE.test'
+import SubMenuExpandingModeTest_EMBEDDED from './MenuTest/MenuApiTest/SubMenuExpandingModeTest_EMBEDDED.test'
+
 export default function testsuite() {
   dialogApi()
   TextPickerDialog()
@@ -91,4 +94,6 @@ export default function testsuite() {
   IconApiTest();
   PopupOptionsTest();
   menuItemGroupDivider();
+  SubMenuExpandingModeTest_SIDE();
+  SubMenuExpandingModeTest_EMBEDDED();
 }
