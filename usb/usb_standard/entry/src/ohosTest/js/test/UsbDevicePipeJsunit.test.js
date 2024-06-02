@@ -182,7 +182,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb case readData error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -224,7 +223,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -266,7 +264,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb HostManager_JS_TranCompatibility_0400 write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -308,7 +305,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb HostManager_JS_TranCompatibility_0500 write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -350,7 +346,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb HostManager_JS_TranCompatibility_0600 write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -731,7 +726,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb' + caseName + ':  FAILED');
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(2000);
   }
 
   /**
@@ -871,7 +865,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb' + 'SUB_USB_HostManager_JS_TranCompatibility_0300 GetStatus' + ':  FAILED');
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -1066,7 +1059,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb' + caseName + ':  FAILED');
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(2000);
   }
 
   /**

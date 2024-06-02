@@ -179,7 +179,6 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertFalse();
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0700 :  PASS');
     });
-    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -216,7 +215,6 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertFalse();
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0800 :  PASS');
     });
-    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -253,7 +251,6 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertFalse();
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0900 :  PASS');
     });
-    CheckEmptyUtils.sleep(2000);
   })
 
   /**
@@ -537,7 +534,6 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
         console.info('usb case SUB_USB_HostManager_JS_ErrCode_4100 :  FAILED');
         expect(false).assertTrue();
       });
-    CheckEmptyUtils.sleep(2000);
   })
 
   /**

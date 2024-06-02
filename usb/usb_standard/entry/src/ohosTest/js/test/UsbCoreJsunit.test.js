@@ -35,7 +35,6 @@ describe('UsbCoreJsFunctionsTest', function () {
     if (usbPortList == undefined) {
       portCurrentMode = 1;
       return
-
     }
     gDeviceList = usbManager.getDevices();
     if (usbPortList.length > 0) {
