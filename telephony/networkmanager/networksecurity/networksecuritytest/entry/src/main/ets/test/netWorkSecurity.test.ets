@@ -100,7 +100,7 @@ export default function netWorkSecurityTest() {
           done();
         }).catch((error: BusinessError) => {
           console.error(`${caseName} Certificate verification failed:', ${JSON.stringify(error)}`);
-          expectTrue(error.code == 2305001, caseName);
+          expectTrue(error.code == 2305069, caseName);
           done();
         });
       } catch (err) {
@@ -174,7 +174,7 @@ export default function netWorkSecurityTest() {
           done();
         }).catch((error: BusinessError) => {
           console.error(`${caseName} Certificate verification failed:', ${JSON.stringify(error)}`);
-          expectTrue(error.code == 2305001, caseName);
+          expectTrue(error.code == 2305069, caseName);
           done();
         });
       } catch (err) {
@@ -434,7 +434,7 @@ export default function netWorkSecurityTest() {
         try {
           let resultSync: number = networkSecurity.certVerificationSync(cert, caCert);
           console.info(`${caseName} Synchronous Verification Result:, ${JSON.stringify(resultSync)}`);
-          expectTrue(resultSync == 2305001, caseName);
+          expectTrue(resultSync == 2305069, caseName);
           done();
         } catch (err) {
           console.info(`${caseName}  err:${err}`);
@@ -511,7 +511,7 @@ export default function netWorkSecurityTest() {
         try {
           let resultSync: number = networkSecurity.certVerificationSync(cert, caCert);
           console.info(`${caseName} Synchronous CERT_TYPE_DER Result:, ${JSON.stringify(resultSync)}`);
-          expectTrue(resultSync == 2305001, caseName);
+          expectTrue(resultSync == 2305069, caseName);
           done();
         } catch (err) {
           let e: BusinessError = err as BusinessError;
