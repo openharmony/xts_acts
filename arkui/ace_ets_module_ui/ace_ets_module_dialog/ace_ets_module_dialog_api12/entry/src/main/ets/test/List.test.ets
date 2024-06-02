@@ -52,7 +52,7 @@ import MenuApi1 from './Menu/MenuApi1.test'
 import IconApiTest from './MenuTest/MenuApiTest/IconApiTest.test'
 import PopupOptionsTest from './PopupTest/PopupApiTest/PopupApiTest.test'
 import menuItemGroupDivider from './Menu/menuItemGroupDivider.test.ets';
-
+import DismissReasonTest from './PopupTest/DismissReason.test'
 import SubMenuExpandingModeTest_SIDE from './MenuTest/MenuApiTest/SubMenuExpandingModeTest_SIDE.test'
 import SubMenuExpandingModeTest_EMBEDDED from './MenuTest/MenuApiTest/SubMenuExpandingModeTest_EMBEDDED.test'
 
@@ -96,6 +96,7 @@ export default function testsuite() {
   IconApiTest();
   PopupOptionsTest();
   menuItemGroupDivider();
+  DismissReasonTest();
   SubMenuExpandingModeTest_SIDE();
   SubMenuExpandingModeTest_EMBEDDED();
 }

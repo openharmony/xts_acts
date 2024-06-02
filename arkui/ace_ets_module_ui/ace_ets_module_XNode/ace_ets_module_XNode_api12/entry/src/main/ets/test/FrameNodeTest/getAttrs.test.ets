@@ -224,6 +224,75 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_0800] END');
       done();
     });
+
+    /**
+     * @tc.number    getAttrsTest_0900
+     * @tc.name      getAttrsTest_0900
+     * @tc.desc      frameNode: getUniqueId
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('getAttrsTest_0900', 0, async function (done) {
+      console.info('getAttrsTest_0900 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('getUniqueId'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('FrameNode_Text');
+      let obj = JSON.parse(strJson);
+      console.info("[getAttrsTest_0900] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content != "0").assertTrue();
+      console.info('[getAttrsTest_0900] END');
+      done();
+    });
+
+    /**
+     * @tc.number    getAttrsTest_1000
+     * @tc.name      getAttrsTest_1000
+     * @tc.desc      frameNode: getCustomProperty
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('getAttrsTest_1000', 0, async function (done) {
+      console.info('getAttrsTest_1000 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('getCustomProperty'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('FrameNode_Text');
+      let obj = JSON.parse(strJson);
+      console.info("[getAttrsTest_1000] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual("undefined");
+      console.info('[getAttrsTest_1000] END');
+      done();
+    });
+
+    /**
+     * @tc.number    getAttrsTest_1100
+     * @tc.name      getAttrsTest_1100
+     * @tc.desc      frameNode: get commonAttribute()
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('getAttrsTest_1100', 0, async function (done) {
+      console.info('getAttrsTest_1100 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('getCommonAttribute'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('FrameNode_Text');
+      let obj = JSON.parse(strJson);
+      console.info("[getAttrsTest_1100] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual("undefined");
+      console.info('[getAttrsTest_1100] END');
+      done();
+    });
   })
 }
 
