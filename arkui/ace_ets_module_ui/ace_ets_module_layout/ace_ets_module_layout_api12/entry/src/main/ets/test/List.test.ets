@@ -21,6 +21,9 @@ import ChipGroupApi1 from './ChipGroup/ChipGroupApi1.test'
 import FlexSpaceTest from './Flex/FlexSpaceTest.test.ets';
 import FolderStackTest1 from './FolderStack/FolderStackTest1.test.ets';
 
+import APIremoveGestureByTag from './Column/APIremoveGestureByTag.test'
+import APIaccessibilityTextHint from './Column/APIaccessibilityTextHint.test'
+
 export default function testsuite() {
   SpaceMainNumberJsunit();
   SpaceMain5JustifyContentJsunit();
@@ -29,4 +32,6 @@ export default function testsuite() {
   ChipApi1();
   FlexSpaceTest();
   FolderStackTest1();
+  APIremoveGestureByTag();
+  APIaccessibilityTextHint();
 }
