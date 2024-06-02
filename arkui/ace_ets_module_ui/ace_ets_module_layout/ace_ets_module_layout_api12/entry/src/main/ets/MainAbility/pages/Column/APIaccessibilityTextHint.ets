@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,18 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@Entry
+@Component
+struct APIaccessibilityTextHint {
+  @State text: string = 'init'
+  build() {
+    Column() {
+      Column()
+        .width(200)
+        .height(200)
+        .backgroundColor(Color.Blue)
+        .accessibilityTextHint('str')
+        .key('APIaccessibilityTextHint')
 
-import setExpectedFrameRateRangeTest from './AnimatorResultTest/setExpectedFrameRateRangeTest.test'
-import AnimatorResultTest from './AnimatorResultTest/AnimatorResultTest.test'
-import setPolyToPoly from './setPolyToPoly.test'
-import SymbolGlyphTest from './SymbolGlyphTest/SymbolGlyphTest.test'
-import ParticleTest from './ParticleTest/ParticleTest.test'
-import APIParticleEmitter from './APIParticleEmitter.test'
-export default function testsuite() {
-  AnimatorResultTest()
-  setExpectedFrameRateRangeTest()
-  setPolyToPoly();
-  SymbolGlyphTest();
-  ParticleTest();
-  APIParticleEmitter();
+    }
+  }
 }
