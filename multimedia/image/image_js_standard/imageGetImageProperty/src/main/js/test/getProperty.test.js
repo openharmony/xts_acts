@@ -20,9 +20,18 @@ import { getPropertyBuf } from "./getPropertyBuf";
 import featureAbility from "@ohos.ability.featureAbility";
 export default function imageGetImageProperty() {
     describe("imageGetImageProperty", function () {
-        const { DATE_TIME_ORIGINAL, EXPOSURE_TIME, SCENE_TYPE, ISO_SPEED_RATINGS, F_NUMBER } = image.PropertyKey;
+        const { ORIENTATION, IMAGE_LENGTH, IMAGE_WIDTH, DATE_TIME_ORIGINAL, EXPOSURE_TIME, SCENE_TYPE, ISO_SPEED_RATINGS,
+            F_NUMBER, DATE_TIME, GPS_DATE_STAMP, IMAGE_DESCRIPTION, SCENE_FLOWERS_CONF, SCENE_NIGHT_CONF, GIF_LOOP_COUNT 
+        } = image.PropertyKey;
         let filePath;
         let fdNumber;
+        const LOOPCASE = {
+            LOOP_FIVE: '5',
+            LOOP_ONE: '1',
+            LOOP_ZERO: '0',
+            LOOP_NO: 'no',
+        };
+        let GET_PROPERTIES_ERROR_CODE = "62980096";
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
             await context.getFilesDir().then((data) => {
@@ -67,6 +76,38 @@ export default function imageGetImageProperty() {
             ISOSpeedRatings: "400",
             FNumber: "f/1.8",
         };
+
+        async function getProperties(done, testNum, type, args) {
+            let imageSourceApi;
+            if (type == "buf") {
+                const data = getPropertyBuf.buffer;
+                imageSourceApi = image.createImageSource(data);
+            } else {
+                await getFd(type);
+                imageSourceApi = image.createImageSource(filePath);
+            }
+
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                imageSourceApi.getImageProperties(args)
+                    .then((data) => {
+                        console.info(`${testNum} ${args}` + JSON.stringify(data));
+                        expect(true).assertTrue();
+                        done();
+                    })
+                    .catch((error) => {
+                        const errormsg = error.toString();
+                        const errorCode = JSON.stringify(error);
+                        console.log(`${testNum} error: ` + errormsg);
+                        expect(errorCode.includes(GET_PROPERTIES_ERROR_CODE)).assertTrue();
+                        done();
+                    });
+            }
+        }
+    
         async function getPromise(done, testNum, type, args) {
             let imageSourceApi;
             if (type == "buf") {
@@ -253,6 +294,73 @@ export default function imageGetImageProperty() {
                         console.log(`${testNum} error msg: ` + error);
                         done();
                     });
+                }
+            }
+        }
+
+        async function getLoopCount(done, testNum, loopCase, isBatch, args) {
+            let imageSourceApi;
+            if (loopCase == LOOPCASE.LOOP_FIVE) {
+                await getFd("moving_test_loop5.gif");
+            } else if (loopCase == LOOPCASE.LOOP_ONE) {
+                await getFd("moving_test_loop1.gif");
+            } else if (loopCase == LOOPCASE.LOOP_ZERO) {
+                await getFd("moving_test_loop0.gif"); 
+            } else {
+                await getFd("text.jpg");
+            }
+            
+            imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                if (!isBatch) {
+                    imageSourceApi
+                    .getImageProperty(args)
+                    .then((data) => {
+                        console.info(`${testNum} ${args} ` + data);
+                        if (loopCase == LOOPCASE.LOOP_FIVE) {
+                            expect(data == "5").assertTrue();
+                        } else if (loopCase == LOOPCASE.LOOP_ONE) {
+                            expect(data == "1").assertTrue();
+                        } else if (loopCase == LOOPCASE.LOOP_ZERO) {
+                            expect(data == "0").assertTrue();
+                        } else {
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    })
+                    .catch((error) => {
+                        console.log(`${testNum} error: ` + error);
+                        console.log(`${testNum} error: ` + JSON.stringify(error));
+                        expect(error.code == "62980149").assertTrue();
+                        done();
+                    });
+                } else {
+                    imageSourceApi
+                        .getImageProperties(args)
+                        .then((data) => {
+                            console.info(`${testNum} ${args} ` + JSON.stringify(data));
+                            let result = JSON.stringify(data);
+                            if (loopCase == LOOPCASE.LOOP_FIVE) {
+                                expect(data == "5").assertTrue();
+                            } else if (loopCase == LOOPCASE.LOOP_ONE) {
+                                expect(data[1]['GIFLoopCount'] == "1").assertTrue();
+                            } else if (loopCase == LOOPCASE.LOOP_ZERO) {
+                                expect(data[1]['GIFLoopCount'] == "0").assertTrue();
+                            } else {
+                                expect(!result.includes('GIFLoopCount')).assertTrue();
+                            }
+                            done();
+                        })
+                        .catch((error) => {
+                            console.log(`${testNum} error: ` + error);
+                            console.log(`${testNum} error: ` + JSON.stringify(error));
+                            expect(JSON.stringify(error).includes("62980096")).assertTrue();
+                            done();
+                        });    
                 }
             }
         }
@@ -1030,6 +1138,340 @@ export default function imageGetImageProperty() {
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0800", 0, async function (done) {
             let key = { a: 12 };
             getCb2Err(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0800", "buf", key, true);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0100
+         * @tc.name      : test getImageProperties for jpg with multy key
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0100", 0, async function (done) {
+            let key = [
+                IMAGE_LENGTH,
+                IMAGE_WIDTH
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0100", "test_exif.jpg", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0200
+         * @tc.name      : test getImageProperties for png with multy key
+         * @tc.desc      : 1.create png imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0200", 0, async function (done) {
+            let key = [
+                ORIENTATION,
+                DATE_TIME
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0200", "test_exif.png", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0300
+         * @tc.name      : test getImageProperties for jpg with single key
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0300", 0, async function (done) {
+            let key = [
+                IMAGE_WIDTH
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0300", "test_exif.jpg", key);
+        });
+
+         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0400
+         * @tc.name      : test getImageProperties for png with single key
+         * @tc.desc      : 1.create png imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0400", 0, async function (done) {
+            let key = [
+                ORIENTATION
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0400", "test_exif.png", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0500
+         * @tc.name      : test getImageProperties for jpg with partially incorrect keys
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0500", 0, async function (done) {
+            let key = [
+                "ErrorKey",
+                IMAGE_WIDTH
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0500", "test_exif.jpg", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0600
+         * @tc.name      : test getImageProperties for png with partially incorrect keys
+         * @tc.desc      : 1.create png imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0600", 0, async function (done) {
+            let key = [
+                "ErrorKey",
+                ORIENTATION
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0600", "test_exif.png", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0700
+         * @tc.name      : test getImageProperties for jpg with partially null value
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0700", 0, async function (done) {
+            let key = [
+                GPS_DATE_STAMP,
+                IMAGE_DESCRIPTION,
+                SCENE_NIGHT_CONF
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0700", "test_exif.jpg", key);
+        });
+
+         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0800
+         * @tc.name      : test getImageProperties for png with partially null value
+         * @tc.desc      : 1.create png imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0800", 0, async function (done) {
+            let key = [
+                GPS_DATE_STAMP,
+                IMAGE_DESCRIPTION,
+                SCENE_NIGHT_CONF
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0800", "test_exif.png", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0900
+         * @tc.name      : test getImageProperties for private filed of jpg
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0900", 0, async function (done) {
+            let key = [
+                SCENE_FLOWERS_CONF,
+                SCENE_NIGHT_CONF
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0900", "test_exif.jpg", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_1000
+         * @tc.name      : test getImageProperties for private filed of png
+         * @tc.desc      : 1.create png imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_1000", 0, async function (done) {
+            let key = [
+                SCENE_FLOWERS_CONF,
+                SCENE_NIGHT_CONF
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_1000", "test_exif.png", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0100
+         * @tc.name      : test getImageProperties for jpg with all invalid keys
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0100", 0, async function (done) {
+            let key = [
+                "ErrorKey1",
+                "ErrorKey2"
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0100", "test_exif.jpg", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0200
+         * @tc.name      : test getImageProperties for png with all invalid keys
+         * @tc.desc      : 1.create png imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0200", 0, async function (done) {
+            let key = [
+                "ErrorKey1",
+                "ErrorKey2"
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0200", "test_exif.png", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0300
+         * @tc.name      : test getImageProperties for tiff with multy keys
+         * @tc.desc      : 1.create tiff imagesource
+         *                 2.call getImageProperties
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0300", 0, async function (done) {
+            let key = [
+                IMAGE_LENGTH,
+                IMAGE_WIDTH
+            ];
+            getProperties(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0300", "test.tiff", key);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100
+         * @tc.name      : test getImageProperty obtains the loop count 5 of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperty()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100", 0, async function (done) {
+            let key = GIF_LOOP_COUNT;
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100", LOOPCASE.LOOP_FIVE, false, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200
+         * @tc.name      : test getImageProperty obtains the loop count 1 of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperty()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200", 0, async function (done) {
+            let key = GIF_LOOP_COUNT;
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200", LOOPCASE.LOOP_ONE, false, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300
+         * @tc.name      : test getImageProperty obtains the loop count infinite of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperty()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300", 0, async function (done) {
+            let key = GIF_LOOP_COUNT;
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300", LOOPCASE.LOOP_ZERO, false, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400
+         * @tc.name      : test getImageProperty obtains the loop count error of jpg
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperty()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400", 0, async function (done) {
+            let key = GIF_LOOP_COUNT;
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400", LOOPCASE.LOOP_NO, false, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100
+         * @tc.name      : test getImageProperties obtains the loop count 5 of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperties()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100", 0, async function (done) {
+            let key = GIF_LOOP_COUNT;
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100", LOOPCASE.LOOP_FIVE, true, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200
+         * @tc.name      : test getImageProperties obtains the loop count 1 of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperties()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200", 0, async function (done) {
+            let key = [IMAGE_WIDTH, GIF_LOOP_COUNT];
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200", LOOPCASE.LOOP_ONE, true, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300
+         * @tc.name      : test getImageProperties obtains the loop count infinite of gif
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperties()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300", 0, async function (done) {
+            let key = [IMAGE_WIDTH, GIF_LOOP_COUNT];
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300", LOOPCASE.LOOP_ZERO, true, key);
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400
+         * @tc.name      : test getImageProperties obtains the loop count error of jpg
+         * @tc.desc      : 1.getFd()
+         *                 2.getImageProperties()
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400", 0, async function (done) {
+            let key = [IMAGE_WIDTH, GIF_LOOP_COUNT];
+            console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400 start`);
+            getLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400", LOOPCASE.LOOP_NO, true, key);
         });
     });
 }

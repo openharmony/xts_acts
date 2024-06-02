@@ -1,6 +1,7 @@
 {
   "src": [
   "MainAbility/pages/index/index",
+  "MainAbility/pages/Image/APIClipMaskShape",
   "MainAbility/pages/TextInput/APIContentType",
   "MainAbility/pages/TextInput/APIUnderlineColor",
   "MainAbility/pages/TextInput/underlineColor",

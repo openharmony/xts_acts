@@ -21,6 +21,7 @@ import resourceManager from "@ohos.resourceManager";
 import fileio from "@ohos.fileio";
 import ndkTest from 'libImageSourceNDKTest.so';
 import { testJpg } from './testImg';
+import sourceTest from 'libImageSourceTest.so';
 
 export default function ImageSourceNDKTest() {
     describe('ImageSourceNDKTest', function () {
@@ -1588,6 +1589,208 @@ export default function ImageSourceNDKTest() {
          */
         it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0300', 0, async function (done) {
             createImageSourceErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0300", "fd");
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100
+         * @tc.name      : test OH_ImageSourceNative_GetImageProperty obtains the loop count 5 of gif
+         * @tc.desc      : 1. get file description
+         *                 2. get loop count
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100");
+            mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100 start');
+            let path, fd;
+            [path, fd] = await getFd('moving_test_loop5.gif');
+            mlg.log('fd = '+ fd);
+            let loopcount = sourceTest.JsGetImageProperty(fd, 'GIFLoopCount');
+            if (loopcount == "5")
+            {
+                mlg.log('loopcount = '+ loopcount);
+                expect(true).assertTrue();
+                done();
+                return;
+            } else {
+                mlg.log('JsGetImageProperty failed');
+                expect(false).assertTrue();
+                done();
+                return;
+            }
+        })
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200
+         * @tc.name      : test OH_ImageSourceNative_GetImageProperty obtains the loop count 1 of gif
+         * @tc.desc      : 1. get file description
+         *                 2. get loop count
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200");
+            mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200 start');
+            let path, fd;
+            [path, fd] = await getFd('moving_test_loop1.gif');
+            mlg.log('fd = '+ fd);
+            let loopcount = sourceTest.JsGetImageProperty(fd, 'GIFLoopCount');
+            if (loopcount == "1")
+            {
+                mlg.log('loopcount = '+ loopcount);
+                expect(true).assertTrue();
+                done();
+                return;
+            } else {
+                mlg.log('JsGetImageProperty failed');
+                expect(false).assertTrue();
+                done();
+                return;
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300
+         * @tc.name      : test OH_ImageSourceNative_GetImageProperty obtains the loop count infinite of gif
+         * @tc.desc      : 1. get file description
+         *                 2. get loop count
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300");
+            mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300 start');
+            let path, fd;
+            [path, fd] = await getFd('moving_test_loop0.gif');
+            mlg.log('fd = '+ fd);
+            let loopcount = sourceTest.JsGetImageProperty(fd, 'GIFLoopCount');
+            if (loopcount == "0")
+            {
+                mlg.log('loopcount = '+ loopcount);
+                expect(true).assertTrue();
+                done();
+                return;
+            } else {
+                mlg.log('JsGetImageProperty failed');
+                expect(false).assertTrue();
+                done();
+                return;
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400
+         * @tc.name      : test OH_ImageSourceNative_GetImageProperty obtains the loop count error of jpg
+         * @tc.desc      : 1. get file description
+         *                 2. get loop count
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400");
+            mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400 start');
+            let path, fd;
+            [path, fd] = await getFd('text.jpg');
+            mlg.log('fd = '+ fd);
+            let loopcount = sourceTest.JsGetImageProperty(fd, 'GIFLoopCount');
+            if (loopcount == undefined)
+            {
+                mlg.log('loopcount = '+ loopcount);
+                expect(true).assertTrue();
+                done();
+                return;
+            } else {
+                mlg.log('JsGetImageProperty failed');
+                expect(false).assertTrue();
+                done();
+                return;
+            }
+        })
+
+         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100
+         * @tc.name      : test OH_ImageSourceNative_ModifyImageProperty modify the loop count 5 of gif error
+         * @tc.desc      : 1. get file description
+         *                 2. modify loop count
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100");
+            mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100 start');
+            let path, fd;
+            [path, fd] = await getFd('moving_test_loop5.gif');
+            mlg.log('fd = '+ fd);
+            let result = sourceTest.JsModifyImageProperty(fd, 'GIFLoopCount', '3');
+            expect(result == undefined).assertTrue();
+            done();
+        })
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200
+         * @tc.name      : test OH_ImageSourceNative_ModifyImageProperty modify the loop count 1 of gif error
+         * @tc.desc      : 1. get file description
+         *                 2. modify loop count
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200");
+            mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200 start');
+            let path, fd;
+            [path, fd] = await getFd('moving_test_loop1.gif');
+            mlg.log('fd = '+ fd);
+            let result = sourceTest.JsModifyImageProperty(fd, 'GIFLoopCount', '3');
+            expect(result == undefined).assertTrue();
+            done();
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300
+         * @tc.name      : test OH_ImageSourceNative_ModifyImageProperty modify the loop count infinite of gif error
+         * @tc.desc      : 1. get file description
+         *                 2. modify loop count
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300");
+            mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300 start');
+            let path, fd;
+            [path, fd] = await getFd('moving_test_loop0.gif');
+            mlg.log('fd = '+ fd);
+            let result = sourceTest.JsModifyImageProperty(fd, 'GIFLoopCount', '3');
+            expect(result == undefined).assertTrue();
+            done();
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400
+         * @tc.name      : test OH_ImageSourceNative_ModifyImageProperty modify the loop count error of jpg error
+         * @tc.desc      : 1. get file description
+         *                 2. modify loop count
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400");
+            mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400 start');
+            let path, fd;
+            [path, fd] = await getFd('text.jpg');
+            mlg.log('fd = '+ fd);
+            let result = sourceTest.JsModifyImageProperty(fd, 'GIFLoopCount', '3');
+            expect(result == undefined).assertTrue();
+            done();
         })
     })
 }

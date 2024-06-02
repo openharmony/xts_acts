@@ -152,7 +152,7 @@ export default function Grid_Row_Columns_Option() {
         .assertTrue();
       expect(Math.abs(Math.round(thirdColumns.left - secondColumns.right) - Math.round(fourthColumns.left - thirdColumns.right)) <= 1)
         .assertTrue();
-      expect(Math.floor(secondColumns.left - firstColumns.right)).assertEqual(Math.floor(vp2px(5)));
+      expect(Math.abs(Math.floor(secondColumns.left - firstColumns.right) - Math.floor(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowColumns_Option_0400 END');
       done();

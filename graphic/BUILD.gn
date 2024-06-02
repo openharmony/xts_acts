@@ -25,6 +25,7 @@ group("graphic") {
       "graphicColorSpace:ActsColorSpaceManagerTest",
       "graphicDrawing:ActsGraphicDrawingTest",
       "graphicEGL:ActsGraphicEglTest",
+      "graphicEffectFliterTest:ActsGraphicEffectFliterTest",
       "graphicGLES3:ActsGraphicGles3Test",
       "graphicGlesExtension:ActsGraphicGlesExtensionTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",

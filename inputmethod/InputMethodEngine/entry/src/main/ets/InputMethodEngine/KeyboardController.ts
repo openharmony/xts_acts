@@ -180,7 +180,7 @@ export class KeyboardController {
         }
 
         var commonEventSubscribeInfo = {
-            events: ["test1"]
+            events: ["inputMethodEngineTest"]
         };
 
         var subscriber;

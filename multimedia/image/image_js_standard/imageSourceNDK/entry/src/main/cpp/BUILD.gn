@@ -53,3 +53,28 @@ ohos_shared_library("ImageSourceNDKTest") {
   subsystem_name = "multimedia"
   part_name = "image_framework"
 }
+
+ohos_shared_library("ImageSourceTest") {
+  sources = [
+    "./napi/image_source_module_test.cpp",
+    "./napi/image_source_native_test.cpp",
+  ]
+  include_dirs = [
+    "../cpp",
+    "${resource_management_subsystem}/interfaces/native/resource/include",
+    "$image_subsystem/interfaces/kits/native/include",
+  ]
+  configs = [ ":config" ]
+
+  deps = [ "$image_subsystem/frameworks/kits/js/common/ndk:image_source" ]
+
+  external_deps = [
+    "c_utils:utils",
+    "hilog:libhilog",
+    "napi:ace_napi",
+  ]
+
+  output_extension = "so"
+  subsystem_name = "multimedia"
+  part_name = "image_framework"
+}

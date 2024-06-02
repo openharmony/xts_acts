@@ -17,323 +17,342 @@ import inputMethod from '@ohos.inputmethod';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import * as env from './lib/Const';
 
+function expectTrue(data: ESObject) {
+  try {
+    expect(data).assertTrue();
+  } catch (err) {
+    console.info('assertion failure');
+  }
+};
+
+function expectContain(a: ESObject, b: ESObject) {
+  try {
+    expect(a).assertContain(b);
+  } catch (err) {
+    console.info('assertion failure');
+  }
+};
+
+function expectFalse() {
+  try {
+    expect().assertFail();
+  } catch (err) {
+    console.info('assertion failure');
+  }
+};
+
+let st: ESObject = null;
+
+const sleep = (timeout: number): Promise<ESObject> => {
+  return new Promise(resolve => {
+    const st = setTimeout(() => {
+      resolve(null);
+    }, timeout);
+  });
+};
+
+
 export default function inputMethodTest() {
-  describe('inputMethod_updateAttribute', function () {
-    function expectTrue(data) {
-      try {
-        expect(data).assertTrue();
-      }catch (err){
-        console.info('assertion failure');
-      }
-    };
-    function expectContain(a,b) {
-      try {
-        expect(a).assertContain(b);
-      }catch (err){
-        console.info('assertion failure');
-      }
-    };
-    function expectFalse() {
-      try {
-        expect().assertFail();
-      }catch (err){
-        console.info('assertion failure');
-      }
-    };
-    let st = null as any;
-    const sleep = function (timeout) {
-      return new Promise(resolve => {
-        const st = setTimeout(() => {
-          resolve(null);
-        }, timeout);
-      });
-    };
+  describe('inputMethod_updateAttribute', () => {
+
     beforeEach(
-      async function (){
-        try{
-          let data = await inputMethod.getController().attach(true,{inputAttribute:{textInputType:1,enterKeyType:2}});
+      async () => {
+        try {
+          let data = await inputMethod.getController().attach(true, {
+            inputAttribute: {
+              textInputType: 1, enterKeyType: 2
+            }
+          });
           console.info(`attach inputMethod success, data: ${JSON.stringify(data)}`);
-        }catch(error){
+        } catch (error) {
           console.info(`attach inputMethod fail, error: [${error.code}, ${error.message}]`);
-        };
+        }
       }
     );
     afterEach(
-      async function (){
-        try{
+      async () => {
+        try {
           await inputMethod.getController().detach();
           console.info(`clsoe inputMethod success}`);
-        }catch(error){
+        } catch (error) {
           console.info(`clsoe inputMethod fial, error: [${error.code}, ${error.message}]`);
-        };
+        }
         clearTimeout(st);
       }
     );
 
 
     /**
-     * @tc.number  SUB_Misc_inputMethod_updateAttribute_Async_0100
-     * @tc.name    When calling the updateAttribute interface in Async mode, the parameter attribute=
+     * @tc.number SUB_Misc_inputMethod_updateAttribute_Async_0100
+     * @tc.name When calling the updateAttribute interface in Async mode, the parameter attribute=
      *             {textInputType: 0, enterKeyType: 0} must be passed in
-     * @tc.desc    Function test
+     * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Async_0100',0, async function (done) {
+    it('SUB_Misc_inputMethod_updateAttribute_Async_0100', 0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Async_0100';
-      const ATTRIBUTE:any = {textInputType: 0, enterKeyType: 0};
-      let CallBack:any = (error,data) => {
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        textInputType: 0, enterKeyType: 0
+      };
+      let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
           console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
           expectFalse();
           done();
           return;
-        }else{
+        } else {
           console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
           done();
           return;
         }
       };
-      try{
-        inputMethod.getController().updateAttribute(ATTRIBUTE,CallBack);
-      }catch(error){
+      try {
+        inputMethod.getController().updateAttribute(ATTRIBUTE, CallBack);
+      } catch (error) {
         console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
         expectFalse();
         done();
         return;
-      };
+      }
     });
 
     /**
-     * @tc.number  SUB_Misc_inputMethod_updateAttribute_Async_0200
-     * @tc.name    When calling the updateAttribute interface in Async mode, the parameter attribute={} must be
+     * @tc.number SUB_Misc_inputMethod_updateAttribute_Async_0200
+     * @tc.name When calling the updateAttribute interface in Async mode, the parameter attribute={} must be
      *             passed in
-     * @tc.desc    Function test
+     * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Async_0200',0, async function (done) {
+    it('SUB_Misc_inputMethod_updateAttribute_Async_0200', 0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Async_0200';
-      const ATTRIBUTE:any = {};
-      let CallBack:any = (error,data) => {
+      const ATTRIBUTE: inputMethod.TextConfig = {};
+      let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
           console.info(`${CASE_NAME} execution fail, expect error: [${error.code}, ${error.message}]`);
           expectTrue(error.code === env.INVALID_INPUT_PARAMETER);
           return;
-        }else{
+        } else {
           console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
           expectFalse();
           done();
           return;
         }
       };
-      try{
-        inputMethod.getController().updateAttribute(ATTRIBUTE,CallBack);
-      }catch(error){
+      try {
+        inputMethod.getController().updateAttribute(ATTRIBUTE, CallBack);
+      } catch (error) {
         console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
         expectTrue(error.code === env.INVALID_INPUT_PARAMETER);
         done();
         return;
-      };
+      }
     });
 
     /**
-     * @tc.number  SUB_Misc_inputMethod_updateAttribute_Async_0300
-     * @tc.name    When calling the updateAttribute interface in Async mode, the parameter attribute='aa' must be
+     * @tc.number SUB_Misc_inputMethod_updateAttribute_Async_0300
+     * @tc.name When calling the updateAttribute interface in Async mode, the parameter attribute='aa' must be
      *             passed in
-     * @tc.desc    Function test
+     * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Async_0300',0, async function (done) {
+    it('SUB_Misc_inputMethod_updateAttribute_Async_0300', 0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Async_0300';
-      const ATTRIBUTE:any = 'aa';
-      let CallBack:any = (error,data) => {
+      const ATTRIBUTE: any = 'aa';
+      let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
           console.info(`${CASE_NAME} execution fail, expect error: [${error.code}, ${error.message}]`);
           expectTrue(error.code === env.INVALID_INPUT_PARAMETER);
           done();
           return;
-        }else{
+        } else {
           console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
           expectFalse();
           done();
           return;
         }
       };
-      try{
-        inputMethod.getController().updateAttribute(ATTRIBUTE,CallBack);
-      }catch(error){
+      try {
+        inputMethod.getController().updateAttribute(ATTRIBUTE, CallBack);
+      } catch (error) {
         console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
         expectTrue(error.code === env.INVALID_INPUT_PARAMETER);
         done();
         return;
-      };
+      }
     });
 
     /**
-     * @tc.number  SUB_Misc_inputMethod_updateAttribute_Async_0700
-     * @tc.name    Async mode calls the updateAttribute interface and passes in an invalid input parameter
-     * @tc.desc    Function test
+     * @tc.number SUB_Misc_inputMethod_updateAttribute_Async_0700
+     * @tc.name Async mode calls the updateAttribute interface and passes in an invalid input parameter
+     * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Async_0700',0, async function (done) {
+    it('SUB_Misc_inputMethod_updateAttribute_Async_0700', 0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Async_0700';
-      const ATTRIBUTE:any = {textInputType: 0, enterKeyType: 0};
-      let CallBack:any = (error,data) => {
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        textInputType: 0, enterKeyType: 0
+      };
+      let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
           console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
           expectFalse();
           done();
           return;
-        }else{
+        } else {
           console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
           done();
           return;
         }
       };
-      try{
-        inputMethod.getController().updateAttribute(ATTRIBUTE,CallBack,env.INVALID_TYPE_STRING_A);
-      }catch(error){
+      try {
+        inputMethod.getController().updateAttribute(ATTRIBUTE, CallBack, env.INVALID_TYPE_STRING_A);
+      } catch (error) {
         console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
         expectFalse();
         done();
         return;
-      };
+      }
     });
 
     /**
-     * @tc.number  SUB_Misc_inputMethod_updateAttribute_Async_0800
-     * @tc.name    Async method calls the updateAttribute interface. Missing parameter attribute must be passed in
-     * @tc.desc    Function test
+     * @tc.number SUB_Misc_inputMethod_updateAttribute_Async_0800
+     * @tc.name Async method calls the updateAttribute interface. Missing parameter attribute must be passed in
+     * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Async_0800',0, async function (done) {
+    it('SUB_Misc_inputMethod_updateAttribute_Async_0800', 0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Async_0800';
-      let CallBack:any = (error,data) => {
+      let CallBack = (error: BusinessError, data: ESObject) => {
         if (error) {
           console.info(`${CASE_NAME} execution fail, expect error: [${error.code}, ${error.message}]`);
           expectTrue(error.code === env.INVALID_INPUT_PARAMETER);
           done();
           return;
-        }else{
+        } else {
           console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
           expectFalse();
           done();
           return;
         }
       };
-      try{
+      try {
         inputMethod.getController().updateAttribute(CallBack);
-      }catch(error){
+      } catch (error) {
         console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
         expectTrue(error.code === env.INVALID_INPUT_PARAMETER);
         done();
         return;
-      };
+      }
     });
 
     /**
-     * @tc.number  SUB_Misc_inputMethod_updateAttribute_Promise_0100
-     * @tc.name    When calling the updateAttribute interface in Promise mode, the parameter
+     * @tc.number SUB_Misc_inputMethod_updateAttribute_Promise_0100
+     * @tc.name When calling the updateAttribute interface in Promise mode, the parameter
      *             attribute={textInputType: 0, enterKeyType: 0} must be passed in
-     * @tc.desc    Function test
+     * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Promise_0100',0, async function (done) {
+    it('SUB_Misc_inputMethod_updateAttribute_Promise_0100', 0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Promise_0100';
-      const ATTRIBUTE:any = {textInputType: 0, enterKeyType: 0};
-      try{
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        textInputType: 0, enterKeyType: 0
+      };
+      try {
         let data = await inputMethod.getController().updateAttribute(ATTRIBUTE);
         console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
         done();
         return;
-      }catch(error){
+      } catch (error) {
         console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
         expectFalse();
         done();
         return;
-      };
+      }
     });
 
     /**
-     * @tc.number  SUB_Misc_inputMethod_updateAttribute_Promise_0200
-     * @tc.name    When calling the updateAttribute interface in Promise mode, the parameter attribute={} must be
+     * @tc.number SUB_Misc_inputMethod_updateAttribute_Promise_0200
+     * @tc.name When calling the updateAttribute interface in Promise mode, the parameter attribute={} must be
      *             passed in
-     * @tc.desc    Function test
+     * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Promise_0200',0, async function (done) {
+    it('SUB_Misc_inputMethod_updateAttribute_Promise_0200', 0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Promise_0200';
-      const ATTRIBUTE:any = {};
-      try{
+      const ATTRIBUTE: inputMethod.TextConfig = {};
+      try {
         let data = await inputMethod.getController().updateAttribute(ATTRIBUTE);
         console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
         expectFalse();
         done();
         return;
-      }catch(error){
+      } catch (error) {
         console.info(`${CASE_NAME} catch error, except error: [${error.code}, ${error.message}]`);
         expectTrue(error.code === env.INVALID_INPUT_PARAMETER);
         done();
         return;
-      };
+      }
     });
 
     /**
-     * @tc.number  SUB_Misc_inputMethod_updateAttribute_Promise_0300
-     * @tc.name    When calling the updateAttribute interface in Promise mode, the parameter attribute='aa' must be
+     * @tc.number SUB_Misc_inputMethod_updateAttribute_Promise_0300
+     * @tc.name When calling the updateAttribute interface in Promise mode, the parameter attribute='aa' must be
      *             passed in
-     * @tc.desc    Function test
+     * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Promise_0300',0, async function (done) {
+    it('SUB_Misc_inputMethod_updateAttribute_Promise_0300', 0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Promise_0300';
-      const ATTRIBUTE:any = 'aa';
-      try{
+      const ATTRIBUTE: any = 'aa';
+      try {
         let data = await inputMethod.getController().updateAttribute(ATTRIBUTE);
         console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
         expectFalse();
         done();
         return;
-      }catch(error){
+      } catch (error) {
         console.info(`${CASE_NAME} catch error, except error: [${error.code}, ${error.message}]`);
         expectTrue(error.code === env.INVALID_INPUT_PARAMETER);
         done();
         return;
-      };
+      }
     });
 
     /**
-     * @tc.number  SUB_Misc_inputMethod_updateAttribute_Promise_0700
-     * @tc.name    Call the updateAttribute interface in Promise mode, and pass in an invalid input parameter
-     * @tc.desc    Function test
+     * @tc.number SUB_Misc_inputMethod_updateAttribute_Promise_0700
+     * @tc.name Call the updateAttribute interface in Promise mode, and pass in an invalid input parameter
+     * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Promise_0700',0, async function (done) {
+    it('SUB_Misc_inputMethod_updateAttribute_Promise_0700', 0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Promise_0700';
-      const ATTRIBUTE:any = {textInputType: 0, enterKeyType: 0};
-      try{
-        let data = await inputMethod.getController().updateAttribute(ATTRIBUTE,env.INVALID_TYPE_STRING_A);
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        textInputType: 0, enterKeyType: 0
+      };
+      try {
+        let data = await inputMethod.getController().updateAttribute(ATTRIBUTE, env.INVALID_TYPE_STRING_A);
         console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
         done();
         return;
-      }catch(error){
+      } catch (error) {
         console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
         expectFalse();
         done();
         return;
-      };
+      }
     });
 
     /**
-     * @tc.number  SUB_Misc_inputMethod_updateAttribute_Promise_0800
-     * @tc.name    The updateAttribute interface is called in Promise mode. If it is missing,
+     * @tc.number SUB_Misc_inputMethod_updateAttribute_Promise_0800
+     * @tc.name The updateAttribute interface is called in Promise mode. If it is missing,
      *             the parameter attribute must be passed in
-     * @tc.desc    Function test
+     * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_updateAttribute_Promise_0800',0, async function (done) {
+    it('SUB_Misc_inputMethod_updateAttribute_Promise_0800', 0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_updateAttribute_Promise_0800';
-      try{
+      try {
         let data = await inputMethod.getController().updateAttribute();
         console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
         expectFalse();
         done();
         return;
-      }catch(error){
+      } catch (error) {
         console.info(`${CASE_NAME} catch error, except error: [${error.code}, ${error.message}]`);
         expectTrue(error.code === env.INVALID_INPUT_PARAMETER);
         done();
         return;
-      };
+      }
     });
 
   })
