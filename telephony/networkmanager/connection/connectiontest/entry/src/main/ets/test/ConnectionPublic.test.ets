@@ -284,7 +284,6 @@ export default function ConnectionPublicTest() {
       console.info(`${caseName} test start`);
       try {
         connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-          netHandle.netId = 100;
           connection.reportNetConnected(netHandle, (error: BusinessError) => {
             if (error) {
               console.info(`${caseName} reportNetConnected: BusinessError>${JSON.stringify(error)}`);
@@ -645,7 +644,6 @@ export default function ConnectionPublicTest() {
       console.info(`${caseName} test start`);
       try {
         connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-          netHandle.netId = 101;
           connection.reportNetDisconnected(netHandle, (error: BusinessError) => {
             if (error) {
               console.info(`${caseName} reportNetDisconnected: BusinessError>${JSON.stringify(error)}`);
@@ -835,7 +833,6 @@ export default function ConnectionPublicTest() {
       console.info(`${caseName} test start`);
       try {
         connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-          netHandle.netId = 100;
           connection.reportNetDisconnected(netHandle, (error: BusinessError) => {
             if (error) {
               console.info(`${caseName} reportNetDisconnected: BusinessError>${JSON.stringify(error)}`);
@@ -917,7 +914,6 @@ export default function ConnectionPublicTest() {
       console.info(`${caseName} test start`);
       try {
         connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-          netHandle.netId = 101;
           connection.reportNetDisconnected(netHandle).then(() => {
             console.info(`${caseName}: reportNetDisconnected: success`);
             ExpectTrue(true);
@@ -1092,7 +1088,6 @@ export default function ConnectionPublicTest() {
       console.info(`${caseName} test start`);
       try {
         connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-          netHandle.netId = 100;
           connection.reportNetDisconnected(netHandle).then(() => {
             console.info(`${caseName}: reportNetDisconnected: success`);
             ExpectTrue(true);
