@@ -19,6 +19,7 @@
         "MainAbility/pages/Toggle/ToggleSwitchStyle",
         "MainAbility/pages/Toggle/ToggleIsOn",
         "MainAbility/pages/Toggle/ToggleEnabled",
-        "MainAbility/pages/select/selectApi1"
+        "MainAbility/pages/select/selectApi1",
+        "MainAbility/pages/Slider/SliderAttrs2"
     ]
 }

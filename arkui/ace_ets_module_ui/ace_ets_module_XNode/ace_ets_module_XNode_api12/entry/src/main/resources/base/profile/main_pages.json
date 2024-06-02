@@ -23,6 +23,7 @@
 	"MainAbility/pages/Graphics/GraphicsApi/Corner",
 	"MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
 	"MainAbility/pages/Graphics/GraphicsApi/PercentReference",
-        "MainAbility/pages/Graphics/setCircleShape"
+        "MainAbility/pages/Graphics/setCircleShape",
+        "MainAbility/pages/FrameNode/commonEventTest1"
     ]
 }

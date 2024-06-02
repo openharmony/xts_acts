@@ -28,7 +28,7 @@ export default function TextPickerDialog_Cancel_Test() {
         router.clear();
         let pages = router.getState();
         console.info("get TextPickerDialog_Cancel_Test state pages:" + JSON.stringify(pages));
-        if (!("TextPickerDialog_Cancel_Test" == pages.name)) {
+        if (!("Text_cancel" == pages.name)) {
           console.info("get TextPickerDialog_Cancel_Test pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
@@ -61,10 +61,10 @@ export default function TextPickerDialog_Cancel_Test() {
       let btn: Component = await driver.findComponent(ON.id('btn'));
       await btn.click();
       await CommonFunc.sleep(1000);
-      let row: Component = await driver.findComponent(ON.type('row'))
+      let row: Component = await driver.findComponent(ON.id('row'))
       let rect = await row.getBoundsCenter()
-      await driver.click(rect.x - 200, rect.y - 200)
-      await CommonFunc.sleep(1000);
+      await driver.click(rect.x, rect.y/4)
+      await CommonFunc.sleep(2000);
       let cancelButtonStyle_Text = getInspectorByKey('cancelButtonStyle_Text');
       console.info('cancelButtonStyle_Text attrs-----' + JSON.parse(cancelButtonStyle_Text).$attrs);
       expect(JSON.parse(cancelButtonStyle_Text).$attrs.content).assertEqual('cancelButtonStyle_Text');

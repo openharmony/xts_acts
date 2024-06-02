@@ -17,6 +17,7 @@
         "MainAbility/pages/GestureHandler/SourceTool",
         "MainAbility/pages/DragController/DragInteractionOptions",
 	"MainAbility/pages/AttributeUpdater/initializeModifier",
-        "MainAbility/pages/GestureHandler/clearGesture"
+        "MainAbility/pages/GestureHandler/clearGesture",
+        "MainAbility/pages/GestureHandler/addParallelGestureTest1"
     ]
 }

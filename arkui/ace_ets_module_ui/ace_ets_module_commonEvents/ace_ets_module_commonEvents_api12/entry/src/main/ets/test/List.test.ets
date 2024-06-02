@@ -28,6 +28,7 @@ import LongPressGestureHandlerTest from './GestureHandler/LongPressGesture.test'
 import DragInteractionOptionsTest from './DragController/DragInteractionOptions.test';
 import SourceToolTest from './GestureHandler/SourceTool.test';
 import initializeModifierTest from './AttributeUpdater/initializeModifier.test';
+import addParallelGestureTest1 from './GestureHandler/addParallelGestureTest1.test';
 export default function testsuite() {
   APIPreDragStatusTest();
   addGestureApplyGesture();
@@ -46,4 +47,5 @@ export default function testsuite() {
   DragInteractionOptionsTest();
   SourceToolTest();
   initializeModifierTest();
+  addParallelGestureTest1();
 }

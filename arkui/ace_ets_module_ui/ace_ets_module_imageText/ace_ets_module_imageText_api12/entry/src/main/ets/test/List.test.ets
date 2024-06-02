@@ -89,10 +89,15 @@ import UnitTest from './TextTest/TextAPITest/Unit.test'
 import APIClipMaskShape from './ImageTest/APIClipMaskShape.test'
 import TextInputAddApi from './TextInput/TextInputAddApi.test'.
 
+import RichEditorChangeValueTest1 from './RichEditor/RichEditorChangeValueTest1.test'
+import RichEditorGetLayoutManagerTest1 from './RichEditor/RichEditorGetLayoutManagerTest1.test'
+import RichEditorStyledStringTest1 from './RichEditor/RichEditorStyledStringTest1.test'
+import RichEditorStyledStringTest2 from './RichEditor/RichEditorStyledStringTest2.test'
 import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
 import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
 import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
 import TextAreaApi4 from './TextArea/TextAreaApi4.test'
+import TextAreaTest from './TextAreaTest/TextAreaAPITest/TextAreaTest.test'
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -169,8 +174,13 @@ export default function testsuite() {
   UnitTest();
   APIClipMaskShape();
 
+  RichEditorChangeValueTest1();
+  RichEditorGetLayoutManagerTest1();
+  RichEditorStyledStringTest1();
+  RichEditorStyledStringTest2();
   RichEditorApi2();
   RichEditorApi6();
   RichEditorApi7();
   TextAreaApi4()
+  TextAreaTest()
 }
