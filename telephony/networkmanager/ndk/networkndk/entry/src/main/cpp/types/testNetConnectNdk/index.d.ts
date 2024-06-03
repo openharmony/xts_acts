@@ -24,3 +24,4 @@ export const OHNetConnGetNetCapabilities: (a: number) => number;
 export const OHNetConnGetDefaultHttpProxy: (a: number) => number;
 export const OHOSNetConnRegisterDnsResolver: (a: number) => number;
 export const OHOSNetConnUnregisterDnsResolver: (a: number) => number;
+export const OHNetConnBindSocket: (a: number) => number;
