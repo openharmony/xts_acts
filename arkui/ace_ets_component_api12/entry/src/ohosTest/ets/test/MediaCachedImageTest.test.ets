@@ -17,11 +17,15 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import router from '@system.router';
 import CommonFunc from '../MainAbility/utils/Common';
 
+interface optionsObj {
+  uri: string
+}
+
 export default function mediaCachedImageJsunit() {
 
-  describe('MediaCachedImageTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('MediaCachedImageTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: optionsObj = {
         uri: 'MainAbility/pages/MediaCachedImage',
       }
       try {
@@ -41,7 +45,7 @@ export default function mediaCachedImageJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("MediaCachedImage after each called");
     });
@@ -54,10 +58,10 @@ export default function mediaCachedImageJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('testGetImageAttr010', 0, async function (done) {
+    it('testGetImageAttr010', 0, async (done: Function) => {
       console.info('testGetImageAttr1 START');
       let strJson = getInspectorByKey('image1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       console.log("image1 matchTextDirection" + JSON.stringify(obj.$attrs.matchTextDirection));
       console.log("image1 objectFit" + JSON.stringify(obj.$attrs.objectFit));
@@ -89,10 +93,10 @@ export default function mediaCachedImageJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('testGetImageAttr020', 0, async function (done) {
+    it('testGetImageAttr020', 0, async (done: Function) => {
       console.info('testGetImageAttr2 START');
       let strJson = getInspectorByKey('image2');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       console.log("image2 objectFit" + JSON.stringify(obj.$attrs.objectFit));
       console.log("image2 objectRepeat" + JSON.stringify(obj.$attrs.objectRepeat));
@@ -112,10 +116,10 @@ export default function mediaCachedImageJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('testGetImageAttr030', 0, async function (done) {
+    it('testGetImageAttr030', 0, async (done: Function) => {
       console.info('testGetImageAttr3 START');
       let strJson = getInspectorByKey('image3');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       console.log("image3 objectFit" + JSON.stringify(obj.$attrs.objectFit));
       console.log("image3 objectRepeat" + JSON.stringify(obj.$attrs.objectRepeat));
@@ -134,10 +138,10 @@ export default function mediaCachedImageJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('testGetImageAttr040', 0, async function (done) {
+    it('testGetImageAttr040', 0, async (done: Function) => {
       console.info('testGetImageAttr4 START');
       let strJson = getInspectorByKey('image4');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       console.log("image4 objectFit" + JSON.stringify(obj.$attrs.objectFit));
       console.log("image4 objectRepeat" + JSON.stringify(obj.$attrs.objectRepeat));
@@ -156,10 +160,10 @@ export default function mediaCachedImageJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('testGetImageAttr050', 0, async function (done) {
+    it('testGetImageAttr050', 0, async (done: Function) => {
       console.info('testGetImageAttr5 START');
       let strJson = getInspectorByKey('image5');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       console.log("image5 objectFit" + JSON.stringify(obj.$attrs.objectFit));
       expect(obj.$attrs.objectFit).assertEqual('ImageFit.ScaleDown')

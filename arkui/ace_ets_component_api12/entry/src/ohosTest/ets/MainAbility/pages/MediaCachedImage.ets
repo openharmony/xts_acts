@@ -12,6 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+interface msgObj {
+  width: number;
+  height: number
+} 
  
 @Entry
 @Component
@@ -54,10 +59,7 @@ struct MediaCachedImage_textcase {
           .key('image2')
           .height(180)
           .width(180)
-          .onComplete((msg: {
-            width: number,
-            height: number
-          }) => {
+          .onComplete((msg: msgObj) => {
             this.myWidth = msg.width
             this.myHeight = msg.height
             console.info('Width ----' + this.myWidth)
