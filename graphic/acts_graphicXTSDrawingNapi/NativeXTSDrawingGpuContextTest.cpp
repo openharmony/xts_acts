@@ -31,51 +31,25 @@ class NativeXTSDrawingGpuContextTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_GpuContextCreateFromGL
  * @tc.desc: test for OH_Drawing_GpuContextCreateFromGL.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
 HWTEST_F(NativeXTSDrawingGpuContextTest, OH_Drawing_GpuContextCreateFromGL, TestSize.Level1) {
-    // todo cpp crash
-    if (0) {
-        OH_Drawing_GpuContextOptions options;
-        options.allowPathMaskCaching = true;
-        OH_Drawing_GpuContext *gpuContext = OH_Drawing_GpuContextCreateFromGL(options);
-        EXPECT_NE(gpuContext, nullptr);
-        OH_Drawing_GpuContextDestroy(gpuContext);
-
-        options.allowPathMaskCaching = false;
-        OH_Drawing_GpuContext *gpuContext2 = OH_Drawing_GpuContextCreateFromGL(options);
-        EXPECT_NE(gpuContext2, nullptr);
-        OH_Drawing_GpuContextDestroy(gpuContext2);
-    }
-
-    EXPECT_TRUE(true);
+    // todo cpp crash when OH_Drawing_GpuContextCreateFromGL
+    EXPECT_TRUE(false);
 }
 
 /*
  * @tc.name: OH_Drawing_GpuContextDestroy
  * @tc.desc: test for OH_Drawing_GpuContextDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
 HWTEST_F(NativeXTSDrawingGpuContextTest, OH_Drawing_GpuContextDestroy, TestSize.Level1) {
-    // todo cpp crash
-    if (0) {
-        OH_Drawing_GpuContextOptions options;
-        options.allowPathMaskCaching = true;
-        OH_Drawing_GpuContext *gpuContext = OH_Drawing_GpuContextCreateFromGL(options);
-        EXPECT_NE(gpuContext, nullptr);
-        OH_Drawing_GpuContextDestroy(gpuContext);
-
-        options.allowPathMaskCaching = false;
-        OH_Drawing_GpuContext *gpuContext2 = OH_Drawing_GpuContextCreateFromGL(options);
-        EXPECT_NE(gpuContext2, nullptr);
-        OH_Drawing_GpuContextDestroy(gpuContext2);
-    }
-
-    EXPECT_TRUE(true);
+    // todo cpp crash when OH_Drawing_GpuContextCreateFromGL
+    EXPECT_TRUE(false);
 }
 
 } // namespace Drawing

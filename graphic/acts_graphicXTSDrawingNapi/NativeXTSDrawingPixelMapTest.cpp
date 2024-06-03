@@ -28,7 +28,7 @@ class NativeXTSDrawingPixelMapTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_PixelMapGetFromNativePixelMap
  * @tc.desc: test for OH_Drawing_PixelMapGetFromNativePixelMap.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -42,7 +42,7 @@ HWTEST_F(NativeXTSDrawingPixelMapTest, OH_Drawing_PixelMapGetFromNativePixelMap,
 /*
  * @tc.name: OH_Drawing_PixelMapGetFromOhPixelMapNative
  * @tc.desc: test for OH_Drawing_PixelMapGetFromOhPixelMapNative.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -56,7 +56,7 @@ HWTEST_F(NativeXTSDrawingPixelMapTest, OH_Drawing_PixelMapGetFromOhPixelMapNativ
 /*
  * @tc.name: OH_Drawing_PixelMapDissolve
  * @tc.desc: test for OH_Drawing_PixelMapDissolve.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

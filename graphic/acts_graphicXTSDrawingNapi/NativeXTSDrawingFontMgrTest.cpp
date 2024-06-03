@@ -30,7 +30,7 @@ class NativeXTSDrawingFontMgrTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_FontMgrCreate
  * @tc.desc: test for OH_Drawing_FontMgrCreate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -43,7 +43,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrCreate, TestSize.Level1)
 /*
  * @tc.name: OH_Drawing_FontMgrDestroy
  * @tc.desc: test for OH_Drawing_FontMgrDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -56,7 +56,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrDestroy, TestSize.Level1
 /*
  * @tc.name: OH_Drawing_FontMgrGetFamilyCount
  * @tc.desc: test for OH_Drawing_FontMgrGetFamilyCount.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -71,7 +71,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrGetFamilyCount, TestSize
 /*
  * @tc.name: OH_Drawing_FontMgrGetFamilyName
  * @tc.desc: test for OH_Drawing_FontMgrGetFamilyName.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -86,7 +86,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrGetFamilyName, TestSize.
 /*
  * @tc.name: OH_Drawing_FontMgrDestroyFamilyName
  * @tc.desc: test for OH_Drawing_FontMgrDestroyFamilyName.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -101,7 +101,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrDestroyFamilyName, TestS
 /*
  * @tc.name: OH_Drawing_FontMgrCreateFontStyleSet
  * @tc.desc: test for OH_Drawing_FontMgrCreateFontStyleSet.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -118,7 +118,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrCreateFontStyleSet, Test
 /*
  * @tc.name: OH_Drawing_FontMgrDestroyFontStyleSet
  * @tc.desc: test for OH_Drawing_FontMgrDestroyFontStyleSet.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -136,7 +136,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrDestroyFontStyleSet, Tes
 /*
  * @tc.name: OH_Drawing_FontMgrMatchFamily
  * @tc.desc: test for OH_Drawing_FontMgrMatchFamily.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -153,66 +153,31 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamily, TestSize.Le
 /*
  * @tc.name: OH_Drawing_FontMgrMatchFamilyStyle
  * @tc.desc: test for OH_Drawing_FontMgrMatchFamilyStyle.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
 HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyle, TestSize.Level1) {
-    // todo cpp crash
-    if (0) {
-        OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
-        EXPECT_NE(mgr, nullptr);
-        const char *matchFamilyName = "HarmonyOS-Sans";
-        OH_Drawing_FontStyleStruct normalStyle;
-        normalStyle.weight = FONT_WEIGHT_400;
-        normalStyle.width = FONT_WIDTH_NORMAL;
-        normalStyle.slant = FONT_STYLE_NORMAL;
-        OH_Drawing_Typeface *typeface = OH_Drawing_FontMgrMatchFamilyStyle(mgr, matchFamilyName, normalStyle);
-        EXPECT_NE(typeface, nullptr);
-        OH_Drawing_TypefaceDestroy(typeface);
-
-        OH_Drawing_FontMgrDestroy(mgr);
-    }
-
-
-    EXPECT_TRUE(true);
+    // todo cpp crash when OH_Drawing_FontMgrCreate
+    EXPECT_TRUE(false);
 }
 
 /*
  * @tc.name: OH_Drawing_FontMgrMatchFamilyStyleCharacter
  * @tc.desc: test for OH_Drawing_FontMgrMatchFamilyStyleCharacter.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
 HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyleCharacter, TestSize.Level1) {
-    // todo cpp crash
-    if (0) {
-        OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
-        EXPECT_NE(mgr, nullptr);
-
-        const char *matchFamilyName = "HarmonyOS-Sans";
-        OH_Drawing_FontStyleStruct normalStyle;
-        normalStyle.weight = FONT_WEIGHT_400;
-        normalStyle.width = FONT_WIDTH_NORMAL;
-        normalStyle.slant = FONT_STYLE_NORMAL;
-
-        const char *bcp47[] = {"zh-Hans", "zh-CN"};
-        OH_Drawing_Typeface *CharTypeface =
-            OH_Drawing_FontMgrMatchFamilyStyleCharacter(mgr, matchFamilyName, normalStyle, bcp47, 1, ' ');
-        EXPECT_NE(CharTypeface, nullptr);
-        OH_Drawing_TypefaceDestroy(CharTypeface);
-
-        OH_Drawing_FontMgrDestroy(mgr);
-    }
-
-    EXPECT_TRUE(true);
+    // todo cpp crash when OH_Drawing_FontMgrCreate
+    EXPECT_TRUE(false);
 }
 
 /*
  * @tc.name: OH_Drawing_FontStyleSetCreateTypeface
  * @tc.desc: test for OH_Drawing_FontStyleSetCreateTypeface.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -231,7 +196,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetCreateTypeface, Tes
 /*
  * @tc.name: OH_Drawing_FontStyleSetGetStyle
  * @tc.desc: test for OH_Drawing_FontStyleSetGetStyle.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -250,7 +215,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetGetStyle, TestSize.
 /*
  * @tc.name: OH_Drawing_FontStyleSetFreeStyleName
  * @tc.desc: test for OH_Drawing_FontStyleSetFreeStyleName.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -269,7 +234,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetFreeStyleName, Test
 /*
  * @tc.name: OH_Drawing_FontStyleSetMatchStyle
  * @tc.desc: test for OH_Drawing_FontStyleSetMatchStyle.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -293,7 +258,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetMatchStyle, TestSiz
 /*
  * @tc.name: OH_Drawing_FontStyleSetCount
  * @tc.desc: test for OH_Drawing_FontStyleSetCount.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

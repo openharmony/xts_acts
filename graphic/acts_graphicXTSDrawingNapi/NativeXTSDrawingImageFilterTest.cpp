@@ -34,7 +34,7 @@ class NativeXTSDrawingImageTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_ImageFilterCreateBlur
  * @tc.desc: test for OH_Drawing_ImageFilterCreateBlur.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -47,7 +47,7 @@ HWTEST_F(NativeXTSDrawingImageTest, OH_Drawing_ImageFilterCreateBlur, TestSize.L
 /*
  * @tc.name: OH_Drawing_ImageFilterCreateFromColorFilter
  * @tc.desc: test for OH_Drawing_ImageFilterCreateFromColorFilter.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -63,7 +63,7 @@ HWTEST_F(NativeXTSDrawingImageTest, OH_Drawing_ImageFilterCreateFromColorFilter,
 /*
  * @tc.name: OH_Drawing_ImageFilterDestroy
  * @tc.desc: test for OH_Drawing_ImageFilterDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

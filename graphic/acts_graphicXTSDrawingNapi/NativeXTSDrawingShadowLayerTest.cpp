@@ -28,7 +28,7 @@ class NativeXTSDrawingShadowLayerTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_ShadowLayerCreate
  * @tc.desc: test for OH_Drawing_ShadowLayerCreate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -41,7 +41,7 @@ HWTEST_F(NativeXTSDrawingShadowLayerTest, OH_Drawing_ShadowLayerCreate, TestSize
 /*
  * @tc.name: OH_Drawing_ShadowLayerDestroy
  * @tc.desc: test for OH_Drawing_ShadowLayerDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

@@ -35,7 +35,7 @@ class NativeXTSDrawingMaskFilterTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_MaskFilterCreateBlur
  * @tc.desc: test for OH_Drawing_MaskFilterCreateBlur.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -48,7 +48,7 @@ HWTEST_F(NativeXTSDrawingMaskFilterTest, OH_Drawing_MaskFilterCreateBlur, TestSi
 /*
  * @tc.name: OH_Drawing_MaskFilterDestroy
  * @tc.desc: test for OH_Drawing_MaskFilterDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

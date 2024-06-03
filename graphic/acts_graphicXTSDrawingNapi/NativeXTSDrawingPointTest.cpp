@@ -28,7 +28,7 @@ class NativeXTSDrawingPointTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_PointCreate
  * @tc.desc: test for OH_Drawing_PointCreate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -41,7 +41,7 @@ HWTEST_F(NativeXTSDrawingPointTest, OH_Drawing_PointCreate, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_PointDestroy
  * @tc.desc: test for OH_Drawing_PointDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

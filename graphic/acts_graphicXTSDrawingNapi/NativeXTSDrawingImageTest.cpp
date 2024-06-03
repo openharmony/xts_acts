@@ -29,7 +29,7 @@ class NativeXTSDrawingImageTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_ImageDestroy
  * @tc.desc: test for OH_Drawing_ImageDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

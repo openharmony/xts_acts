@@ -36,7 +36,7 @@ class NativeXTSDrawingShaderEffectTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix
  * @tc.desc: test for OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -63,7 +63,7 @@ HWTEST_F(NativeXTSDrawingShaderEffectTest, OH_Drawing_ShaderEffectCreateLinearGr
 /*
  * @tc.name: OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix
  * @tc.desc: test for OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -89,7 +89,7 @@ HWTEST_F(NativeXTSDrawingShaderEffectTest, OH_Drawing_ShaderEffectCreateRadialGr
 /*
  * @tc.name: OH_Drawing_ShaderEffectCreateColorShader
  * @tc.desc: test for OH_Drawing_ShaderEffectCreateColorShader.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
