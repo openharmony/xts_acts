@@ -17,20 +17,24 @@ import { describe, it, expect, beforeAll, afterEach } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import commonEventManager from '@ohos.commonEventManager';
 import { Driver, ON } from '@ohos.UiTest';
+import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import appManager from '@ohos.app.ability.appManager';
 
 let driver = Driver.create();
-let TestUiAbility;
+let TestUiAbility:UIAbility;
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-const sleep = async delay => {
-    return new Promise((resolve, _) => {
-        setTimeout(async () => {
-            resolve(0);
-        }, delay);
-    });
-};
+function sleep(time:number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok");
+    }, time)
+  });
+}
 
-export default function stageAppContextTest(abilityContext) {
-    describe('ActsStageAppContextTest', function () {
+export default function stageAppContextTest(abilityContext:common.UIAbilityContext) {
+    describe('ActsStageAppContextTest', () => {
 
         beforeAll(async () => {
             TestUiAbility = await abilityDelegator.getCurrentTopAbility();
@@ -50,12 +54,12 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.type: Function
           * @tc.level   0
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0200', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_0200', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0200";
             console.log(TAG + " --- start");
-            let context = abilityContext.getApplicationContext();
+            let context:Context = abilityContext.getApplicationContext();
             let result = context.getApplicationContext()
-            let getCacheDir = result.cacheDir
+            let getCacheDir:string = result.cacheDir
             console.log(TAG + 'getCacheDir::' + JSON.stringify(getCacheDir));
             expect(getCacheDir).assertEqual('/data/storage/el2/base/cache')
             done();
@@ -70,10 +74,10 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0300', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_0300', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0300";
             console.log(TAG + " --- start");
-            let context = abilityContext.getApplicationContext();
+            let context:Context = abilityContext.getApplicationContext();
             let result = await context.resourceManager.getString(16777219);
             console.log(TAG + " result = " + JSON.stringify(result));
             expect(result).assertEqual("entry_MainAbility");
@@ -89,10 +93,10 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0400', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_0400', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0400";
             console.log(TAG + " --- start");
-            let context = abilityContext.getApplicationContext();
+            let context:Context = abilityContext.getApplicationContext();
             let result = context.applicationInfo.name;
             console.log(TAG + " result = " + JSON.stringify(result));
             expect(result).assertEqual("com.example.stageappcontexttest");
@@ -109,12 +113,12 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0500', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_0500', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0500";
             console.log(TAG + " --- start");
-            let context = globalThis.abilityStageContext.getApplicationContext();
-            let result = context.getApplicationContext()
-            let getCacheDir = result.cacheDir
+            let context:Context = globalThis.abilityStageContext.getApplicationContext();
+            let result:Context = context.getApplicationContext()
+            let getCacheDir:string = result.cacheDir
             console.log(TAG + 'getCacheDir::' + JSON.stringify(getCacheDir));
             expect(getCacheDir).assertEqual('/data/storage/el2/base/cache')
             done();
@@ -129,10 +133,10 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0600', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_0600', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0600";
             console.log(TAG + " --- start");
-            let context = globalThis.abilityStageContext.getApplicationContext();
+            let context:Context = globalThis.abilityStageContext.getApplicationContext();
             let result = context.applicationInfo.name;
             console.log(TAG + " result = " + JSON.stringify(result));
             expect(result).assertEqual("com.example.stageappcontexttest");
@@ -148,13 +152,13 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1200', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1200', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1200";
             console.log(TAG + " --- start");
-            let context = abilityContext.getApplicationContext();
-            let context2 = context.getApplicationContext();
+            let context:Context = abilityContext.getApplicationContext();
+            let context2:Context = context.getApplicationContext();
             let result = context2.getApplicationContext();
-            let dir = result.cacheDir;
+            let dir:string = result.cacheDir;
             console.log(TAG + " dir = " + dir);
             expect(dir).assertEqual("/data/storage/el2/base/cache");
             done();
@@ -169,12 +173,12 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1300', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1300', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1300";
             console.log(TAG + " --- start");
-            let context = abilityContext.getApplicationContext();
-            let context2 = context.getApplicationContext();
-            let result = await context2.resourceManager.getString(16777219);
+            let context:Context = abilityContext.getApplicationContext();
+            let context2:Context = context.getApplicationContext();
+            let result:string = await context2.resourceManager.getString(16777219);
             console.log(TAG + " result = " + result);
             expect(result).assertEqual("entry_MainAbility");
             done();
@@ -189,11 +193,11 @@ export default function stageAppContextTest(abilityContext) {
            * @tc.type: Function
            * @tc.level   3
            */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1400', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1400', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1400";
             console.log(TAG + " --- start");
-            let context = abilityContext.getApplicationContext();
-            let context2 = context.getApplicationContext();
+            let context:Context = abilityContext.getApplicationContext();
+            let context2:Context = context.getApplicationContext();
             let result = context2.applicationInfo.name;
             console.log(TAG + " result = " + result);
             expect(result).assertEqual("com.example.stageappcontexttest");
@@ -209,11 +213,11 @@ export default function stageAppContextTest(abilityContext) {
            * @tc.type: Function
            * @tc.level   3
            */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1500', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1500', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1500";
             console.log(TAG + " --- start");
-            let context = abilityContext.getApplicationContext();
-            let context2 = context.getApplicationContext();
+            let context:Context = abilityContext.getApplicationContext();
+            let context2:Context = context.getApplicationContext();
             let result = context2.getApplicationContext();
             console.log(TAG + " result = " + JSON.stringify(result));
             expect(result.tempDir).assertEqual("/data/storage/el2/base/temp");
@@ -234,11 +238,11 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.type: Function
          * @tc.level   3
          */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1600', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1600', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1600";
             console.log(TAG + " --- start");
-            let context = globalThis.abilityStageContext.getApplicationContext();
-            context.getProcessRunningInformation().then((data) => {
+            let context:common.ApplicationContext = globalThis.abilityStageContext.getApplicationContext();
+            context.getRunningProcessInformation().then((data:appManager.ProcessInformation[]) => {
                 console.log(TAG + " result = " + JSON.stringify(data));
                 expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
             })
@@ -254,11 +258,11 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.type: Function
          * @tc.level   3
          */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1700', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1700', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1700";
             console.log(TAG + " --- start");
-            let context = globalThis.abilityStageContext.getApplicationContext();
-            context.getProcessRunningInformation((err, data) => {
+            let context:common.ApplicationContext = globalThis.abilityStageContext.getApplicationContext();
+            context.getRunningProcessInformation((err:BusinessError, data:appManager.ProcessInformation[]) => {
                 console.log(TAG + " result = " + JSON.stringify(data));
                 expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
             })
@@ -274,11 +278,11 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.type: Function
          * @tc.level   3
          */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1800', 0, async function (done) {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1800', 0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1800";
             console.log(TAG + " --- start");
-            let context = globalThis.abilityStageContext.getApplicationContext();
-            context.getProcessRunningInformation((err, data) => {
+            let context:common.ApplicationContext = globalThis.abilityStageContext.getApplicationContext();
+            context.getRunningProcessInformation((err:BusinessError, data:appManager.ProcessInformation[]) => {
                 console.log(TAG + " result = " + JSON.stringify(data));
                 expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
                 expect(typeof data[0].state).assertEqual("number");
@@ -295,13 +299,13 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0100', 0, async (done) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0100', 0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0100';
             let startType = 'Promise';
             console.log(TAG + ' --- start');
             let createFile = true;
-            let Subscriber;
-            let subscriberInfo_startdebugapp = {
+            let Subscriber:commonEventManager.CommonEventSubscriber;
+            let subscriberInfo_startdebugapp:commonEventManager.CommonEventSubscribeInfo = {
                 events: ['clearUpApplicationDataEvent'],
             };
             let startAbility = async (notClear = false) => {
@@ -319,13 +323,13 @@ export default function stageAppContextTest(abilityContext) {
                     await sleep(3000);
                     let openBtn = await driver.findComponent(ON.text('打开'));
                     openBtn?.click();
-                }).catch((error) => {
+                }).catch((error:BusinessError) => {
                     console.log(TAG + 'start clearUpApplicationDataHelp failed:' + JSON.stringify(error));
                 });
             }
-            let SubscribeCallBack = async (err, data) => {
+            let SubscribeCallBack = async (err:BusinessError, data:commonEventManager.CommonEventData) => {
                 console.log(TAG + 'Subscriber data' + JSON.stringify(data));
-                let haveFileFlg = data.parameters?.result;
+                let haveFileFlg:boolean = data.parameters?.result;
                 try {
                     if (createFile) {
                         expect(haveFileFlg).assertTrue();
@@ -365,13 +369,13 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0200', 0, async (done) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0200', 0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0200';
             let startType = 'Callback';
             console.log(TAG + ' --- start');
             let createFile = true;
-            let Subscriber;
-            let subscriberInfo_startdebugapp = {
+            let Subscriber:commonEventManager.CommonEventSubscriber;
+            let subscriberInfo_startdebugapp:commonEventManager.CommonEventSubscribeInfo = {
                 events: ['clearUpApplicationDataEvent'],
             };
             let startAbility = async (notClear = false) => {
@@ -389,13 +393,13 @@ export default function stageAppContextTest(abilityContext) {
                     await sleep(3000);
                     let openBtn = await driver.findComponent(ON.text('打开'));
                     openBtn?.click();
-                }).catch((error) => {
+                }).catch((error:BusinessError) => {
                     console.log(TAG + 'start clearUpApplicationDataHelp failed:' + JSON.stringify(error));
                 });
             }
-            let SubscribeCallBack = async (err, data) => {
+            let SubscribeCallBack = async (err:BusinessError, data:commonEventManager.CommonEventData) => {
                 console.log(TAG + 'Subscriber data' + JSON.stringify(data));
-                let haveFileFlg = data.parameters?.result;
+                let haveFileFlg:boolean = data.parameters?.result;
                 try {
                     if (createFile) {
                         expect(haveFileFlg).assertTrue();
@@ -435,13 +439,13 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0300', 0, async (done) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0300', 0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0300';
             let startType = 'Promise';
             console.log(TAG + ' --- start');
             let createFile = true;
-            let Subscriber;
-            let subscriberInfo_startdebugapp = {
+            let Subscriber:commonEventManager.CommonEventSubscriber;
+            let subscriberInfo_startdebugapp:commonEventManager.CommonEventSubscribeInfo = {
                 events: ['clearUpApplicationDataEventFeature'],
             };
             let startAbility = async (notClear = false) => {
@@ -459,13 +463,13 @@ export default function stageAppContextTest(abilityContext) {
                     await sleep(3000);
                     let openBtn = await driver.findComponent(ON.text('打开'));
                     openBtn?.click();
-                }).catch((error) => {
+                }).catch((error:BusinessError) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpFeature failed:' + JSON.stringify(error));
                 });
             }
-            let SubscribeCallBack = async (err, data) => {
+            let SubscribeCallBack = async (err:BusinessError, data:commonEventManager.CommonEventData) => {
                 console.log(TAG + 'Subscriber data' + JSON.stringify(data));
-                let haveFileFlg = data.parameters?.result;
+                let haveFileFlg:boolean = data.parameters?.result;
                 try {
                     if (createFile) {
                         expect(haveFileFlg).assertTrue();
@@ -505,13 +509,13 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0400', 0, async (done) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0400', 0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0400';
             let startType = 'Callback';
             console.log(TAG + ' --- start');
             let createFile = true;
-            let Subscriber;
-            let subscriberInfo_startdebugapp = {
+            let Subscriber:commonEventManager.CommonEventSubscriber;
+            let subscriberInfo_startdebugapp:commonEventManager.CommonEventSubscribeInfo = {
                 events: ['clearUpApplicationDataEventFeature'],
             };
             let startAbility = async (notClear = false) => {
@@ -529,13 +533,13 @@ export default function stageAppContextTest(abilityContext) {
                     await sleep(3000);
                     let openBtn = await driver.findComponent(ON.text('打开'));
                     openBtn?.click();
-                }).catch((error) => {
+                }).catch((error:BusinessError) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpFeature failed:' + JSON.stringify(error));
                 });
             }
-            let SubscribeCallBack = async (err, data) => {
+            let SubscribeCallBack = async (err:BusinessError, data:commonEventManager.CommonEventData) => {
                 console.log(TAG + 'Subscriber data' + JSON.stringify(data));
-                let haveFileFlg = data.parameters?.result;
+                let haveFileFlg:boolean = data.parameters?.result;
                 try {
                     if (createFile) {
                         expect(haveFileFlg).assertTrue();
@@ -575,13 +579,13 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0500', 0, async (done) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0500', 0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0500';
             let startType = 'Promise';
             console.log(TAG + ' --- start');
             let createFile = true;
-            let Subscriber;
-            let subscriberInfo_startdebugapp = {
+            let Subscriber:commonEventManager.CommonEventSubscriber;
+            let subscriberInfo_startdebugapp:commonEventManager.CommonEventSubscribeInfo = {
                 events: ['clearUpApplicationDataEventSystem'],
             };
             let startAbility = async (notClear = false) => {
@@ -599,13 +603,13 @@ export default function stageAppContextTest(abilityContext) {
                     await sleep(3000);
                     let openBtn = await driver.findComponent(ON.text('打开'));
                     openBtn?.click();
-                }).catch((error) => {
+                }).catch((error:BusinessError) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpSystem failed:' + JSON.stringify(error));
                 });
             }
-            let SubscribeCallBack = async (err, data) => {
+            let SubscribeCallBack = async (err:BusinessError, data:commonEventManager.CommonEventData) => {
                 console.log(TAG + 'Subscriber data' + JSON.stringify(data));
-                let haveFileFlg = data.parameters?.result;
+                let haveFileFlg:boolean = data.parameters?.result;
                 try {
                     if (createFile) {
                         expect(haveFileFlg).assertTrue();
@@ -645,13 +649,13 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0600', 0, async (done) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0600', 0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0600';
             let startType = 'Callback';
             console.log(TAG + ' --- start');
             let createFile = true;
-            let Subscriber;
-            let subscriberInfo_startdebugapp = {
+            let Subscriber:commonEventManager.CommonEventSubscriber;
+            let subscriberInfo_startdebugapp:commonEventManager.CommonEventSubscribeInfo = {
                 events: ['clearUpApplicationDataEventSystem'],
             };
             let startAbility = async (notClear = false) => {
@@ -669,13 +673,13 @@ export default function stageAppContextTest(abilityContext) {
                     await sleep(3000);
                     let openBtn = await driver.findComponent(ON.text('打开'));
                     openBtn?.click();
-                }).catch((error) => {
+                }).catch((error:BusinessError) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpSystem failed:' + JSON.stringify(error));
                 });
             }
-            let SubscribeCallBack = async (err, data) => {
+            let SubscribeCallBack = async (err:BusinessError, data:commonEventManager.CommonEventData) => {
                 console.log(TAG + 'Subscriber data' + JSON.stringify(data));
-                let haveFileFlg = data.parameters?.result;
+                let haveFileFlg:boolean = data.parameters?.result;
                 try {
                     if (createFile) {
                         expect(haveFileFlg).assertTrue();
@@ -715,7 +719,7 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0700', 0, async (done) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0700', 0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0700';
             let startType = 'Promise';
             console.log(TAG + ' --- start');
@@ -735,16 +739,16 @@ export default function stageAppContextTest(abilityContext) {
                     await sleep(3000);
                     let openBtn = await driver.findComponent(ON.text('打开'));
                     openBtn?.click();
-                }).catch((error) => {
+                }).catch((error:BusinessError) => {
                     console.log(TAG + 'start clearUpApplicationDataHelp failed:' + JSON.stringify(error));
                 });
             }
-            let haveFileFlg = false;
-            let Subscriber;
-            let subscriberInfo_startdebugapp = {
+            let haveFileFlg:boolean = false;
+            let Subscriber:commonEventManager.CommonEventSubscriber;
+            let subscriberInfo_startdebugapp:commonEventManager.CommonEventSubscribeInfo = {
                 events: ['clearUpApplicationDataEvent'],
             };
-            let SubscribeCallBack = async (err, data) => {
+            let SubscribeCallBack = async (err:BusinessError, data:commonEventManager.CommonEventData) => {
                 console.log(TAG + 'Subscriber data entry' + JSON.stringify(data));
                 haveFileFlg = !!data.parameters?.result;
                 try {
@@ -791,16 +795,16 @@ export default function stageAppContextTest(abilityContext) {
                     await sleep(3000);
                     let openBtn = await driver.findComponent(ON.text('打开'));
                     openBtn?.click();
-                }).catch((error) => {
+                }).catch((error:BusinessError) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpSystem failed:' + JSON.stringify(error));
                 });
             }
             let haveFileFlgSys = false;
-            let SubscriberSys;
-            let subscriberInfo_startdebugappSys = {
+            let SubscriberSys:commonEventManager.CommonEventSubscriber;
+            let subscriberInfo_startdebugappSys:commonEventManager.CommonEventSubscribeInfo = {
                 events: ['clearUpApplicationDataEventSystem'],
             };
-            let SubscribeCallBackSys = async (err, data) => {
+            let SubscribeCallBackSys = async (err:BusinessError, data:commonEventManager.CommonEventData) => {
                 console.log(TAG + 'Subscriber data sys' + JSON.stringify(data));
                 haveFileFlgSys = !!data.parameters?.result;
                 try {
@@ -862,16 +866,16 @@ export default function stageAppContextTest(abilityContext) {
                     await sleep(3000);
                     let openBtn = await driver.findComponent(ON.text('打开'));
                     openBtn?.click();
-                }).catch((error) => {
+                }).catch((error:BusinessError) => {
                     console.log(TAG + 'start clearUpApplicationDataHelp failed:' + JSON.stringify(error));
                 });
             }
-            let haveFileFlg = false;
-            let Subscriber;
-            let subscriberInfo_startdebugapp = {
+            let haveFileFlg:boolean = false;
+            let Subscriber:commonEventManager.CommonEventSubscriber;
+            let subscriberInfo_startdebugapp:commonEventManager.CommonEventSubscribeInfo = {
                 events: ['clearUpApplicationDataEvent'],
             };
-            let SubscribeCallBack = async (err, data) => {
+            let SubscribeCallBack = async (err:BusinessError, data:commonEventManager.CommonEventData) => {
                 console.log(TAG + 'Subscriber data entry' + JSON.stringify(data));
                 haveFileFlg = !!data.parameters?.result;
                 try {
@@ -918,16 +922,16 @@ export default function stageAppContextTest(abilityContext) {
                     await sleep(3000);
                     let openBtn = await driver.findComponent(ON.text('打开'));
                     openBtn?.click();
-                }).catch((error) => {
+                }).catch((error:BusinessError) => {
                     console.log(TAG + 'start clearUpApplicationDataHelpSystem failed:' + JSON.stringify(error));
                 });
             }
             let haveFileFlgSys = false;
-            let SubscriberSys;
-            let subscriberInfo_startdebugappSys = {
+            let SubscriberSys:commonEventManager.CommonEventSubscriber;
+            let subscriberInfo_startdebugappSys:commonEventManager.CommonEventSubscribeInfo = {
                 events: ['clearUpApplicationDataEventSystem'],
             };
-            let SubscribeCallBackSys = async (err, data) => {
+            let SubscribeCallBackSys = async (err:BusinessError, data:commonEventManager.CommonEventData) => {
                 console.log(TAG + 'Subscriber data sys' + JSON.stringify(data));
                 haveFileFlgSys = !!data.parameters?.result;
                 try {
