@@ -25,14 +25,6 @@
 using namespace std;
 using namespace testing::ext;
 
-typedef enum {
-    SOFTWARE_RESULT_VERSIONID,
-    SOFTWARE_RESULT_PATCHLEVEL,
-    SOFTWARE_RESULT_ROOTHASH,
-    SOFTWARE_RESULT_PCID,
-    SOFTWARE_RESULT_RESERVE,
-} SOFTWARE_RESULT_DETAIL_TYPE;
-
 class DeviceAttestQuerryTest : public testing::Test {
 public:
     bool AttestStatusNumberValid(int32_t attestStatusNumber)
@@ -86,7 +78,7 @@ public:
                               + to_string(attestResultInfo.ticketLength);
                 result = false;
             }
-            if (attestResultInfo.ticket == "") {
+            if (attestResultInfo.ticket == nullptr || strcmp(attestResultInfo.ticket, "") == 0) {
                 failString += string(" ticket is empty");
                 result = false;
             }
@@ -113,7 +105,7 @@ HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0200, Function | MediumTest 
 {
     int32_t ret = DEVATTEST_SUCCESS;
     AttestResultInfo attestResultInfo = { 0 };
-    attestResultInfo.ticket = NULL;
+    attestResultInfo.ticket = nullptr;
     printf("[CLIENT MAIN] query.\n");
     ret = GetAttestStatus(&attestResultInfo);
     EXPECT_EQ(ret, DEVATTEST_SUCCESS);
@@ -133,7 +125,7 @@ HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0300, Function | MediumTest 
     printf("[CLIENT MAIN] StartDevAttestTask ret:%d.\n", ret);
     EXPECT_EQ(ret, DEVATTEST_SUCCESS);
     AttestResultInfo attestResultInfo = { 0 };
-    attestResultInfo.ticket = NULL;
+    attestResultInfo.ticket = nullptr;
     printf("[CLIENT MAIN] query.\n");
     ret = GetAttestStatus(&attestResultInfo);
     printf("[CLIENT MAIN] wrong. ret:%d\n", ret);
