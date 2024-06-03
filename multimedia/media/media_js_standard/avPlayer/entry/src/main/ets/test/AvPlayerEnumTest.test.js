@@ -133,6 +133,19 @@ export default function AvPlayerEnumTest() {
             }
             done();
         })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0700
+         * @tc.name      : AVPlayer
+         * @tc.desc      : AVPlayer Enumeration test
+         * @tc.size      : MediumTest
+         * @tc.type      : Function test
+         * @tc.level     : Level0
+         */
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0700', 0, async function (done) {
+            expect(media.PlaybackSpeed.SPEED_FORWARD_0_25_X).assertEqual(8);
+            expect(media.PlaybackSpeed.SPEED_FORWARD_0_125_X).assertEqual(9);
+        })
     })
 }
 
