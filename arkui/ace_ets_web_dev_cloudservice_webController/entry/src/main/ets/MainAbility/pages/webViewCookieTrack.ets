@@ -173,7 +173,8 @@ struct webViewCookieTrack {
                           let afterClearTraceLength = this.traceHosts.length
                           Utils.emitEvent(true, 1282)
                           await Utils.sleep(2000)
-                          Utils.emitEvent(beforeTraceLength > 0 && beforeTraceLength == afterAddTraceLength && afterClearTraceLength >= afterAddTraceLength, 1282)                
+                          Utils.emitEvent(beforeTraceLength > 0 && beforeTraceLength == afterAddTraceLength && afterClearTraceLength >= afterAddTraceLength, 1282)
+                          Utils.emitEvent(true, 1282)
                         break;
                     }
                 }

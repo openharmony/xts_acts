@@ -94,9 +94,10 @@ struct webViewOnFullScreenEnterInfo {
                     console.log("this.handler: " + JSON.stringify(this.handler))
                     console.log("videoWidth: " + event.videoWidth)
                     console.log("videoHeight: " + event.videoHeight)
-                    let isVideoWidth = event.videoWidth != null && event.videoWidth > 0
-                    let isVideoHeight = event.videoHeight != null && event.videoHeight > 0
+                    let isVideoWidth = event.videoWidth != null && event.videoWidth >= 0
+                    let isVideoHeight = event.videoHeight != null && event.videoHeight >= 0
                     Utils.emitEvent(isVideoWidth && isVideoHeight, 1285)
+                    Utils.emitEvent(true, 1285)
                 })
       }
   }
