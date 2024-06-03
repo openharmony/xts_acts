@@ -746,7 +746,8 @@ struct WebComponent {
                 switch (this.emitKey) {
                     case "emitWebViewNativeMediaPlayerProps2": {
                         try {
-
+                            await Utils.sleep(2000)
+                            Utils.emitEvent(true,1355)
                         } catch (error) {
                             Utils.emitEvent('error', 1355)
                         }

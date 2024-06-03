@@ -554,6 +554,8 @@ struct WebComponent {
                                 this.controller.runJavaScript("setVolume()", (error, result) => {
                                     console.log('The setVolume(0 return value is: ${result}');
                                 })
+                                await Utils.sleep(2000)
+                                Utils.emitEvent(true, 1290)
                             } catch (error) {
                                 Utils.emitEvent('error',1290)
                             }

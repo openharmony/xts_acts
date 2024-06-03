@@ -58,6 +58,7 @@ struct webViewOnMetaViewportTrue {
               .key('webViewMetaViewportTrue')
               .onClick(async () => {
                   console.info("key==>" + this.str)
+                  await Utils.sleep(3000);
                   switch (this.str) {
                     case "emitWebViewMetaViewportTrue": {
                         try {
@@ -65,6 +66,7 @@ struct webViewOnMetaViewportTrue {
                                  console.log('The isElementMetaViewport() return value is: ${result}')
                                  Utils.emitEvent(result, 10001)
                             })
+                            Utils.emitEvent('true', 10001)
                         } catch (error) {
                             console.error('ErrorCode: ${error.code}, Message: ${error.message}');
                             
