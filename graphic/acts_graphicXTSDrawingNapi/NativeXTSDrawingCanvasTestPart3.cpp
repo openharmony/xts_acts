@@ -1027,7 +1027,8 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     OH_Drawing_CanvasClipRoundRect(nullptr, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
     // 4. OH_Drawing_CanvasClipRoundRect with the second parameter being null
     OH_Drawing_CanvasClipRoundRect(canvas, nullptr, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    // 5. OH_Drawing_CanvasClipRoundRect with the second parameter OH_Drawing_RoundRectCreate created with rect's left, top, right, and bottom values all set to 0
+    // 5. OH_Drawing_CanvasClipRoundRect with the second parameter OH_Drawing_RoundRectCreate created with rect's left,
+    // top, right, and bottom values all set to 0
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 10, 100, 100);
     OH_Drawing_RoundRect *roundRect2 = OH_Drawing_RoundRectCreate(rect2, 10, 10);
     OH_Drawing_CanvasClipRoundRect(canvas, roundRect2, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
@@ -1040,7 +1041,8 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     rect2 = OH_Drawing_RectCreate(10, 10, 100, 0);
     roundRect2 = OH_Drawing_RoundRectCreate(rect2, 10, 10);
     OH_Drawing_CanvasClipRoundRect(canvas, roundRect2, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    // 6. OH_Drawing_CanvasClipRoundRect with the second parameter OH_Drawing_RoundRectCreate created with all rect's left, top, right, and bottom values set to 0
+    // 6. OH_Drawing_CanvasClipRoundRect with the second parameter OH_Drawing_RoundRectCreate created with all rect's
+    // left, top, right, and bottom values set to 0
     rect2 = OH_Drawing_RectCreate(0, 0, 0, 0);
     roundRect2 = OH_Drawing_RoundRectCreate(rect2, 10, 10);
     OH_Drawing_CanvasClipRoundRect(canvas, roundRect2, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
@@ -1071,7 +1073,8 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2402, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2. OH_Drawing_CanvasClipRoundRect, pass negative values for left, top, right, and bottom when creating OH_Drawing_RoundRect
+    // 2. OH_Drawing_CanvasClipRoundRect, pass negative values for left, top, right, and bottom when creating
+    // OH_Drawing_RoundRect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(-10, 10, 100, 100);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 10, 10);
     OH_Drawing_CanvasClipRoundRect(canvas, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
@@ -1085,7 +1088,8 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     roundRect = OH_Drawing_RoundRectCreate(rect, 10, 10);
     OH_Drawing_CanvasClipRoundRect(canvas, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
 
-    // 3. OH_Drawing_CanvasClipRoundRect, pass OH_Drawing_RoundRect with left-top coordinates equal to right-bottom coordinates
+    // 3. OH_Drawing_CanvasClipRoundRect, pass OH_Drawing_RoundRect with left-top coordinates equal to right-bottom
+    // coordinates
     rect = OH_Drawing_RectCreate(100, 10, 100, 100);
     roundRect = OH_Drawing_RoundRectCreate(rect, 10, 10);
     OH_Drawing_CanvasClipRoundRect(canvas, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
@@ -1093,12 +1097,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     roundRect = OH_Drawing_RoundRectCreate(rect, 10, 10);
     OH_Drawing_CanvasClipRoundRect(canvas, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
 
-    // 4. OH_Drawing_CanvasClipRoundRect, pass OH_Drawing_RoundRect with left-top coordinates equal to right-bottom coordinates
+    // 4. OH_Drawing_CanvasClipRoundRect, pass OH_Drawing_RoundRect with left-top coordinates equal to right-bottom
+    // coordinates
     rect = OH_Drawing_RectCreate(100, 100, 100, 100);
     roundRect = OH_Drawing_RoundRectCreate(rect, 10, 10);
     OH_Drawing_CanvasClipRoundRect(canvas, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
 
-    // 5. OH_Drawing_CanvasClipRoundRect, pass OH_Drawing_RoundRect with left-top coordinates greater than right-bottom coordinates
+    // 5. OH_Drawing_CanvasClipRoundRect, pass OH_Drawing_RoundRect with left-top coordinates greater than right-bottom
+    // coordinates
     rect = OH_Drawing_RectCreate(200, 200, 100, 100);
     roundRect = OH_Drawing_RoundRectCreate(rect, 10, 10);
     OH_Drawing_CanvasClipRoundRect(canvas, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
@@ -1130,7 +1136,8 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2403, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2. OH_Drawing_CanvasClipRoundRect, pass extreme values for left, top, right, and bottom when creating OH_Drawing_RoundRect
+    // 2. OH_Drawing_CanvasClipRoundRect, pass extreme values for left, top, right, and bottom when creating
+    // OH_Drawing_RoundRect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(FLT_MAX, 10, 100, 100);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 10, 10);
     OH_Drawing_CanvasClipRoundRect(canvas, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
@@ -1192,6 +1199,112 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     // 9. Free memory
     OH_Drawing_CanvasDestroy(canvas);
     OH_Drawing_RoundRectDestroy(roundRect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2500
+ * @tc.name: 00.testCanvasClipPathNormal
+ * @tc.desc: test for 00.testCanvasClipPathNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2500, TestSize.Level0) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    OH_Drawing_PathLineTo(path, 100, 0);
+    OH_Drawing_PathLineTo(path, 100, 100);
+    OH_Drawing_PathLineTo(path, 0, 100);
+    OH_Drawing_PathClose(path);
+    // 3. OH_Drawing_PathAddRect
+    OH_Drawing_PathAddRect(path, 10, 10, 100, 100, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 4. OH_Drawing_CanvasClipPath
+    OH_Drawing_CanvasClipOp clipOp[] = {OH_Drawing_CanvasClipOp::DIFFERENCE, OH_Drawing_CanvasClipOp::INTERSECT};
+    bool doAntiAlias[] = {true, false};
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            OH_Drawing_CanvasClipPath(canvas, path, clipOp[i], doAntiAlias[j]);
+        }
+    }
+    // 5. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2501
+ * @tc.name: 01.testCanvasClipPathNull
+ * @tc.desc: test for 01.testCanvasClipPathNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2501, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    OH_Drawing_PathLineTo(path, 100, 0);
+    OH_Drawing_PathLineTo(path, 100, 100);
+    OH_Drawing_PathLineTo(path, 0, 100);
+    OH_Drawing_PathClose(path);
+    // 3. OH_Drawing_PathAddRect
+    OH_Drawing_PathAddRect(path, 10, 10, 100, 100, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 4. OH_Drawing_CanvasClipPath with the first parameter being null
+    OH_Drawing_CanvasClipPath(nullptr, path, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
+    // 5. OH_Drawing_CanvasClipPath with the second parameter being null
+    OH_Drawing_CanvasClipPath(canvas, nullptr, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
+    // 6. OH_Drawing_CanvasClipPath with the second parameter being an empty path
+    OH_Drawing_Path *path2 = OH_Drawing_PathCreate();
+    OH_Drawing_CanvasClipPath(canvas, path2, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
+    // 7. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(path2);
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2502
+ * @tc.name: 02.testCanvasClipPathInputDestroyed
+ * @tc.desc: test for 02.testCanvasClipPathInputDestroyed.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2502, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    OH_Drawing_PathLineTo(path, 100, 0);
+    OH_Drawing_PathLineTo(path, 100, 100);
+    OH_Drawing_PathLineTo(path, 0, 100);
+    OH_Drawing_PathClose(path);
+    // 3. OH_Drawing_CanvasClipPath
+    OH_Drawing_CanvasClipPath(canvas, path, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
+    // 4. OH_Drawing_CanvasDestroy
+    OH_Drawing_CanvasDestroy(canvas);
+    // 5. OH_Drawing_CanvasClipPath
+    if (0) {
+        // todo cpp crash
+        OH_Drawing_CanvasClipPath(canvas, path, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
+    }
+    // 6. OH_Drawing_CanvasCreate
+    canvas = OH_Drawing_CanvasCreate();
+    // 7. OH_Drawing_PathDestroy
+    OH_Drawing_PathDestroy(path);
+    // 8. OH_Drawing_CanvasClipPath
+    if (0) {
+        // todo cpp crash
+        OH_Drawing_CanvasClipPath(canvas, path, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
+    }
+    // 9. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
 }
 
 } // namespace Drawing

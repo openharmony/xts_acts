@@ -109,9 +109,10 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
         if (bitmap == nullptr) {
             alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(bitmap);
             EXPECT_EQ(alphaFormat_, alphaFormats[0]);
+        } else {
+            alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(bitmap);
+            EXPECT_EQ(alphaFormat_, alphaFormats[i]);
         }
-        alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(bitmap);
-        EXPECT_EQ(alphaFormat_, alphaFormats[i]);
     }
 
     // step 3
