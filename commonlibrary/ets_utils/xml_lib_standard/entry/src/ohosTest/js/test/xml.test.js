@@ -1898,3 +1898,283 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_07800
      * @tc.name: testXmlBusinessError002
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError002', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            new xml.XmlSerializer(arrayBuffer,123);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_07900
+     * @tc.name: testXmlBusinessError003
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError003', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement(111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_08000
+     * @tc.name: testXmlBusinessError004
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError004', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement("note");
+            thatSer.setAttributes(111, "high1");
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_08100
+     * @tc.name: testXmlBusinessError005
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError005', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement("note");
+            thatSer.setAttributes("importance1", 111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_08200
+     * @tc.name: testXmlBusinessError006
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError006', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement("note");
+            thatSer.setAttributes("importance", "high");
+            thatSer.setText(111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_08300
+     * @tc.name: testXmlBusinessError007
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError007', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement("note");
+            thatSer.addEmptyElement(111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_08400
+     * @tc.name: testXmlBusinessError008
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError008', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.setDeclaration();
+            thatSer.setNamespace(111, "http://www.w3.org/TR/html4/");
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_08500
+     * @tc.name: testXmlBusinessError009
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError009', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.setDeclaration();
+            thatSer.setNamespace("h", 111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_08600
+     * @tc.name: testXmlBusinessError010
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError010', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement("note");
+            thatSer.setComment(111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_08700
+     * @tc.name: testXmlBusinessError011
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError011', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.setDocType(111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_08800
+     * @tc.name: testXmlBusinessError012
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError012', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.setCDATA(111)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_08900
+     * @tc.name: testXmlBusinessError013
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError013', 0, function () {
+        try {
+            new xml.XmlPullParser(111, 'UTF-8');
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be object")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_09000
+     * @tc.name: testXmlBusinessError014
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError014', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            new xml.XmlPullParser(arrayBuffer, 111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_09100
+     * @tc.name: testXmlBusinessError015
+     * @tc.desc: To XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testXmlBusinessError015', 0, function () {
+        try {
+            var strXml =
+                '<?xml version="1.0" encoding="utf-8"?>' +
+                '<!DOCTYPE note [\n<!ENTITY foo "baa">]>' +
+                '<note importance="high" logged="true">' +
+                '    <![CDATA[\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\n]]>' +
+                '    <!--Hello, World!-->' +
+                '    <company>John &amp; Hans</company>' +
+                '    <title>Happy</title>' +
+                '    <title>Happy</title>' +
+                '    <todo>Work</todo>' +
+                '    <todo>Play</todo>' +
+                '    <?go there?>' +
+                '    <a><b/></a>' +
+                '    <h:table xmlns:h="http://www.w3.org/TR/html4/">' +
+                '        <h:tr>' +
+                '            <h:td>Apples</h:td>' +
+                '            <h:td>Bananas</h:td>' +
+                '        </h:tr>' +
+                '    </h:table>' +
+                '</note>';
+            let textEncoder = new util.TextEncoder();
+            let arrbuffer = textEncoder.encodeInto(strXml);
+            let that = new xml.XmlPullParser(arrbuffer.buffer, 'UTF-8');
+            var str1 = '';
+            function func1(name, value){
+                str1 += name+':'+value;
+                return true;
+            }
+            var options = 111
+            that.parse(options);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be object")
+        }
+    })
+})}
