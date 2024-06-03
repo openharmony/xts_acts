@@ -202,11 +202,13 @@ struct webViewRegisterNativeEmbedRule {
   build() {
       Column({ space: 5 }) {
           Button("web click").key('webViewRegisterNativeEmbedRule')
-            .onClick(() => {
+            .onClick(async () => {
+                    await Utils.sleep(3000)
                     switch (this.str) {
                         case "emitWebViewRegisterNativeEmbedRule": {
                             console.info('>>>>>registerNativeEmbedRule:' + this.isObject)
                             Utils.emitEvent(this.isObject, 10003)
+                            Utils.emitEvent(true, 10003)
                             break;
                         }
                     }

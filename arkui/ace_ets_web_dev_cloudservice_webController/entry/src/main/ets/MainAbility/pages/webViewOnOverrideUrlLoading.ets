@@ -57,6 +57,7 @@ struct webViewOnMetaOnOverriderUrlLoading {
               .key('webViewOnOverrideUrlLoading')
               .onClick(async () => {
                   console.info("key==>" + this.str)
+                  await Utils.sleep(3000)
                   switch (this.str) {
                     case "emitWebViewOnOverrideUrlLoading": {
                         this.controller.runJavaScript("jump()", (error, result) => {

@@ -29,7 +29,7 @@ export default function testsuite() {
   webViewSetRenderProcessMode()
   webViewRegisterNativeEmbedRule()
   webViewOnOverrideUrlLoading()
-  webViewCookieTrack()
   webViewMetaViewportFalse()
   webViewMetaViewportTrue()
+  webViewCookieTrack()
 }
