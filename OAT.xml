@@ -82,6 +82,11 @@ Note:If the text contains special characters, please escape them according to th
 				<filteritem type="filename" name="*.der" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.mkv" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.mp3" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.ico" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.svg" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.arw" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.webp" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.bmp" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.glb" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.lsb" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.spv" desc="all bin file have check"/>

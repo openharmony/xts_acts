@@ -59,7 +59,7 @@ export const ReleaseDecodingOptions: (options: image.DecodingOptions) => Number;
 export const CreateFromUri: (uri: string) => image.ImageSource;
 export const CreateFromFd: (fd: number) => image.ImageSource;
 export const CreateFromData: (buf: ArrayBufferLike) => image.ImageSource;
-export const CreateFromRawFile: (rawfile: resourceManager.RawFileDescriptor) => image.ImageSource;
+export const CreateFromRawFile: (fd: number, offset: number, length: number) => image.ImageSource;
 export const CreatePixelMap: (source: image.ImageSource, options: image.DecodingOptions) => image.PixelMap | number;
 export const CreatePixelMapList: (source: image.ImageSource, options: image.DecodingOptions) => Array<image.PixelMap> |
 number;
