@@ -1898,3 +1898,1903 @@ describe('TextEncoderTest', function () {
       let result2 = that.encode(null)
       expect(result2).assertEqual(undefined)
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0093
+     * @tc.name: testEncodeInto001
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testEncodeInto001', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(20)
+      let dest = new Uint8Array(buffer, 0, 13)
+      let result = that.encodeInto('\uD800A\uDF06A楼HiA', dest)
+      expect(result.read).assertEqual(7)
+      expect(result.written).assertEqual(13)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0094
+     * @tc.name: testEncodeInto002
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testEncodeInto002', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(6)
+      let dest = new Uint8Array(buffer)
+      let result = that.encodeInto('abc\u2603d', dest)
+      expect(result.read).assertEqual(4)
+      expect(result.written).assertEqual(6)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0095
+     * @tc.name: testEncodeInto003
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testEncodeInto003', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(4)
+      let dest = new Uint8Array(buffer)
+      let result = that.encodeInto('abcd', dest)
+      expect(result.read).assertEqual(4)
+      expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0096
+     * @tc.name: testEncodeInto004
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testEncodeInto004', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(4)
+      let dest = new Uint8Array(buffer)
+      let result = that.encodeInto('12345', dest)
+      expect(result.read).assertEqual(4)
+      expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0097
+     * @tc.name: testEncodeInto005
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testEncodeInto005', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(4)
+      let dest = new Uint8Array(buffer)
+      let result = that.encodeInto('123 4*!@#', dest)
+      expect(result.read).assertEqual(4)
+      expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0098
+     * @tc.name: testEncodeInto006
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testEncodeInto006', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(4)
+      let dest = new Uint8Array(buffer)
+      let result = that.encodeInto('', dest)
+      expect(result.read).assertEqual(0)
+      expect(result.written).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0099
+     * @tc.name: testEncodeInto007
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testEncodeInto007', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(20)
+      let dest = new Uint8Array(buffer)
+      let result = that.encodeInto('12ab', dest)
+      expect(result.read).assertEqual(4)
+      expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0100
+     * @tc.name: testEncodeInto008
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testEncodeInto008', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(20)
+      let dest = new Uint8Array(buffer, 0, 0)
+      let result = that.encodeInto('\uD800A\uDF06A楼HiA', dest)
+      expect(result.read).assertEqual(0)
+      expect(result.written).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0101
+     * @tc.name: testEncodeInto001
+     * @tc.desc: The encodeInto parameter is undefined or null
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testEncodeInto009', 0, function () {
+      let that = new util.TextEncoder()
+      let result1 = that.encodeInto(undefined)
+      expect(result1).assertEqual(undefined)
+      let result2 = that.encodeInto(null)
+      expect(result2).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0102
+     * @tc.name: testTextDecoderCreate_Options_001
+     * @tc.desc: The source encoding's name, lowercased.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testTextDecoderCreate_Options_001', 0, function () {
+      let textDecoderOptions = util.TextDecoderOptions = {
+        fatal: false,
+        ignoreBOM : true
+      }
+      let  that = util.TextDecoder.create('utf-8', textDecoderOptions)
+      let retStr = that.encoding
+      expect(retStr).assertEqual('utf-8')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0103
+     * @tc.name: testTextDecoderCreate_Options_002
+     * @tc.desc: The source encoding's name, lowercased.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testTextDecoderCreate_Options_002', 0, function () {
+      let textDecoderOptions = util.TextDecoderOptions = {
+        fatal: false,
+        ignoreBOM : false
+      }
+      let that = util.TextDecoder.create('utf-16be', textDecoderOptions)
+      let encodingStr = that.encoding
+      expect(encodingStr).assertEqual('utf-16be')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0104
+     * @tc.name: testTextDecoderCreate_Options_003
+     * @tc.desc: The source encoding's name, lowercased.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testTextDecoderCreate_Options_003', 0, function () {
+      let textDecoderOptions = util.TextDecoderOptions = {
+        fatal: false,
+        ignoreBOM : false
+      }
+      let that = util.TextDecoder.create(undefined, textDecoderOptions)
+      let encodingStr = that.encoding
+      expect(encodingStr).assertEqual('utf-8')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0105
+     * @tc.name: testTextDecoderCreate_Options_004
+     * @tc.desc: The source encoding's name, lowercased.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testTextDecoderCreate_Options_004', 0, function () {
+      let textDecoderOptions = util.TextDecoderOptions = {
+        fatal: false,
+        ignoreBOM : true
+      }
+      let that = util.TextDecoder.create(undefined, textDecoderOptions);
+      let encodingStr = that.encoding;
+      expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0106
+     * @tc.name: decodeWithStream_Options_001
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('decodeWithStream_Options_001', 0, function () {
+      let textDecoderOptions = util.TextDecoderOptions = {
+        fatal: false,
+        ignoreBOM : false
+      }
+      let decodeWithStreamOptions = util.DecodeWithStreamOptions = {
+        stream: false
+      }
+      let that = util.TextDecoder.create('utf-16le', textDecoderOptions);
+      let arr = new Uint8Array(8)
+      arr[0] = 0xFF;
+      arr[1] = 0xFE;
+      arr[2] = 0x61;
+      arr[3] = 0x00;
+      arr[4] = 0x62;
+      arr[5] = 0x00;
+      arr[6] = 0x63;
+      arr[7] = 0x00;
+      let retStr = that.decodeWithStream(arr, decodeWithStreamOptions);
+      let BOM = '\uFEFF';
+      let rel = 'abc';
+      let re = BOM + rel;
+      expect(retStr).assertEqual(re)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0107
+     * @tc.name: decodeWithStream_Options_002
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('decodeWithStream_Options_002', 0, function () {
+      let textDecoderOptions =  util.TextDecoderOptions = {
+        fatal: false,
+        ignoreBOM : true
+      }
+      let decodeWithStreamOptions = util.DecodeWithStreamOptions = {
+        stream: true
+      }
+      let that = util.TextDecoder.create('utf-8', textDecoderOptions);
+      let arr = new Uint8Array(6)
+      arr[0] = 0xEF;
+      arr[1] = 0xBB;
+      arr[2] = 0xBF;
+      arr[3] = 0x61;
+      arr[4] = 0x62;
+      arr[5] = 0x63;
+      let retStr = that.decodeWithStream(arr, decodeWithStreamOptions)
+      let BOM = '\uFEFF'
+      let rel = 'abc'
+      let re = BOM + rel;
+      expect(retStr).assertEqual(re)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0108
+     * @tc.name: testencodeIntoUint8Array_Info_001
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_001', 0, function () {
+      let encodeIntoUint8ArrayInfo = util.EncodeIntoUint8ArrayInfo
+      encodeIntoUint8ArrayInfo = {
+        read: 0,
+        written: 0
+      }
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(6)
+      let dest = new Uint8Array(buffer)
+      encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('abc\u2603d', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(4)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(6)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_002
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_002', 0, function () {
+      let encodeIntoUint8ArrayInfo = util.EncodeIntoUint8ArrayInfo = {
+        read: 0,
+        written: 0
+      }
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(4)
+      let dest = new Uint8Array(buffer)
+      encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(0)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(0)
+    })
+  })
+
+  describe('ScopeTest', function () {
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0001
+     * @tc.name: test_getLower_001
+     * @tc.desc: Obtains the lower bound of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_getLower_001', 0, function () {
+      let result = range.getLower()
+      expect(result.toString()).assertEqual('30')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0002
+     * @tc.name: test_getLower_002
+     * @tc.desc: Obtains the lower bound of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_getLower_002', 0, function () {
+      let result = rangeFir.getLower()
+      expect(result.toString()).assertEqual('35')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0003
+     * @tc.name: test_getLower_003
+     * @tc.desc: Obtains the lower bound of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_getLower_003', 0, function () {
+      let result = rangeSec.getLower()
+      expect(result.toString()).assertEqual('20')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0004
+     * @tc.name: test_getLower_004
+     * @tc.desc: Obtains the lower bound of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_getLower_004', 0, function () {
+      let result = rangeThi.getLower()
+      expect(result.toString()).assertEqual('20')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0005
+     * @tc.name: test_getLower_005
+     * @tc.desc: Obtains the lower bound of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_getLower_005', 0, function () {
+      let result = rangeFif.getLower()
+      expect(result.toString()).assertEqual('35')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0006
+     * @tc.name: test_getUpper_001
+     * @tc.desc: Obtains the upper bound of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_getUpper_001', 0, function () {
+      let result = range.getUpper()
+      expect(result.toString()).assertEqual('40')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0007
+     * @tc.name: test_getUpper_002
+     * @tc.desc: Obtains the upper bound of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_getUpper_002', 0, function () {
+      let result = rangeFir.getUpper()
+      expect(result.toString()).assertEqual('39')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0008
+     * @tc.name: test_getUpper_003
+     * @tc.desc: Obtains the upper bound of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_getUpper_003', 0, function () {
+      let result = rangeSec.getUpper()
+      expect(result.toString()).assertEqual('45')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0009
+     * @tc.name: test_getUpper_004
+     * @tc.desc: Obtains the upper bound of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_getUpper_004', 0, function () {
+      let result = rangeThi.getUpper()
+      expect(result.toString()).assertEqual('35')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0010
+     * @tc.name: test_getUpper_005
+     * @tc.desc: Obtains the upper bound of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_getUpper_005', 0, function () {
+      let result = rangeFif.getUpper()
+      expect(result.toString()).assertEqual('45')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0011
+     * @tc.name: test_clamp_001
+     * @tc.desc: Clamps a given value to the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_clamp_001', 0, function () {
+      let result =range.clamp(tempLess)
+      expect(result.toString()).assertEqual('30')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0012
+     * @tc.name: test_clamp_002
+     * @tc.desc: Clamps a given value to the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_clamp_002', 0, function () {
+      let result =range.clamp(tempMiDF)
+      expect(result.toString()).assertEqual('35')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0013
+     * @tc.name: test_clamp_003
+     * @tc.desc: Clamps a given value to the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_clamp_003', 0, function () {
+      let result =range.clamp(tempMore)
+      expect(result.toString()).assertEqual('40')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0014
+     * @tc.name: test_clamp_004
+     * @tc.desc: Clamps a given value to the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_clamp_004', 0, function () {
+      let result =range.clamp(tempLower)
+      expect(result.toString()).assertEqual('30')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0015
+     * @tc.name: test_clamp_005
+     * @tc.desc: Clamps a given value to the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_clamp_005', 0, function () {
+      let result =range.clamp(tempUpper)
+      expect(result.toString()).assertEqual('40')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0016
+     * @tc.name: test_contains_001
+     * @tc.desc: Checks whether a given value is within the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_contains_001', 0, function () {
+      let result = range.contains(tempLess)
+      expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0017
+     * @tc.name: test_contains_002
+     * @tc.desc: Checks whether a given value is within the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_contains_002', 0, function () {
+      let result = range.contains(tempMiDF)
+      expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0018
+     * @tc.name: test_contains_003
+     * @tc.desc: Checks whether a given value is within the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_contains_003', 0, function () {
+      let result = range.contains(tempMore)
+      expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0019
+     * @tc.name: test_contains_004
+     * @tc.desc: Checks whether a given value is within the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_contains_004', 0, function () {
+      let result = range.contains(tempLower)
+      expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0020
+     * @tc.name: test_contains_005
+     * @tc.desc: Checks whether a given value is within the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_contains_005', 0, function () {
+      let result = range.contains(tempUpper)
+      expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0021
+     * @tc.name: test_contains_006
+     * @tc.desc: Checks whether a given range is within the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_contains_006', 0, function () {
+      let result = range.contains(rangeFir)
+      expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0022
+     * @tc.name: test_contains_007
+     * @tc.desc: Checks whether a given range is within the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_contains_007', 0, function () {
+      let result = range.contains(rangeSec)
+      expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0023
+     * @tc.name: test_contains_008
+     * @tc.desc: Checks whether a given range is within the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_contains_008', 0, function () {
+      let result = range.contains(rangeThi)
+      expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0024
+     * @tc.name: test_contains_009
+     * @tc.desc: Checks whether a given range is within the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_contains_009', 0, function () {
+      let result = range.contains(rangeFif)
+      expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0025
+     * @tc.name: test_contains_010
+     * @tc.desc: Checks whether a given range is within the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_contains_010', 0, function () {
+      let result = range.contains(range)
+      expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0026
+     * @tc.name: test_expand_001
+     * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_001', 0, function () {
+      let result = range.expand(tempMiDF, tempMidS)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0027
+     * @tc.name: test_expand_002
+     * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_002', 0, function () {
+      let result = range.expand(tempLess, tempMore)
+      expect(result.toString()).assertEqual('[20, 45]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0028
+     * @tc.name: test_expand_003
+     * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_003', 0, function () {
+      let result = range.expand(tempLess, tempMiDF)
+      expect(result.toString()).assertEqual('[20, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0029
+     * @tc.name: test_expand_004
+     * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_004', 0, function () {
+      let result = range.expand(tempMiDF, tempMore)
+      expect(result.toString()).assertEqual('[30, 45]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0030
+     * @tc.name: test_expand_005
+     * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_005', 0, function () {
+      let result = range.expand(tempLower, tempUpper)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0031
+     * @tc.name: test_expand_006
+     * @tc.desc: Creates the smallest range that includes the current range and a given range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_006', 0, function () {
+      let result = range.expand(rangeFir)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0032
+     * @tc.name: test_expand_007
+     * @tc.desc: Creates the smallest range that includes the current range and a given range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_007', 0, function () {
+      let result = range.expand(rangeSec)
+      expect(result.toString()).assertEqual('[20, 45]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0033
+     * @tc.name: test_expand_008
+     * @tc.desc: Creates the smallest range that includes the current range and a given range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_008', 0, function () {
+      let result = range.expand(rangeThi)
+      expect(result.toString()).assertEqual('[20, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0034
+     * @tc.name: test_expand_009
+     * @tc.desc: Creates the smallest range that includes the current range and a given range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_009', 0, function () {
+      let result = range.expand(rangeFif)
+      expect(result.toString()).assertEqual('[30, 45]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0035
+     * @tc.name: test_expand_010
+     * @tc.desc: Creates the smallest range that includes the current range and a given range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_010', 0, function () {
+      let result = range.expand(range)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0036
+     * @tc.name: test_expand_011
+     * @tc.desc: Creates the smallest range that includes the current range and a given value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_011', 0, function () {
+      let result = range.expand(tempMiDF)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0037
+     * @tc.name: test_expand_012
+     * @tc.desc: Creates the smallest range that includes the current range and a given value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_012', 0, function () {
+      let result = range.expand(tempLess)
+      expect(result.toString()).assertEqual('[20, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0038
+     * @tc.name: test_expand_013
+     * @tc.desc: Creates the smallest range that includes the current range and a given value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_013', 0, function () {
+      let result = range.expand(tempMore)
+      expect(result.toString()).assertEqual('[30, 45]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0039
+     * @tc.name: test_expand_014
+     * @tc.desc: Creates the smallest range that includes the current range and a given value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_014', 0, function () {
+      let result = range.expand(tempLower)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0040
+     * @tc.name: test_expand_015
+     * @tc.desc: Creates the smallest range that includes the current range and a given value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_expand_015', 0, function () {
+      let result = range.expand(tempUpper)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0041
+     * @tc.name: test_intersect_001
+     * @tc.desc: Returns the intersection of a given range and the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_intersect_001', 0, function () {
+      let result = range.intersect(rangeFir)
+      expect(result.toString()).assertEqual('[35, 39]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0042
+     * @tc.name: test_intersect_002
+     * @tc.desc: Returns the intersection of a given range and the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_intersect_002', 0, function () {
+      let result = range.intersect(rangeSec)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0043
+     * @tc.name: test_intersect_003
+     * @tc.desc: Returns the intersection of a given range and the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_intersect_003', 0, function () {
+      let result = range.intersect(rangeThi)
+      expect(result.toString()).assertEqual('[30, 35]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0044
+     * @tc.name: test_intersect_004
+     * @tc.desc: Returns the intersection of a given range and the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_intersect_004', 0, function () {
+      let result = range.intersect(rangeFif)
+      expect(result.toString()).assertEqual('[35, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0045
+     * @tc.name: test_intersect_005
+     * @tc.desc: Returns the intersection of a given range and the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_intersect_005', 0, function () {
+      let result = range.intersect(range)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0046
+     * @tc.name: test_intersect_006
+     * @tc.desc: Returns the intersection of the current range and the range specified by
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     the given lower and upper bounds.
+     */
+    it('test_intersect_006', 0, function () {
+      let result = range.intersect(tempMiDF, tempMidS)
+      expect(result.toString()).assertEqual('[35, 39]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0047
+     * @tc.name: test_intersect_007
+     * @tc.desc: Returns the intersection of the current range and the range specified by
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     the given lower and upper bounds.
+     */
+    it('test_intersect_007', 0, function () {
+      let result = range.intersect(tempLess, tempMore)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0048
+     * @tc.name: test_intersect_008
+     * @tc.desc: Returns the intersection of the current range and the range specified by
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     the given lower and upper bounds.
+     */
+    it('test_intersect_008', 0, function () {
+      let result = range.intersect(tempLess, tempMiDF)
+      expect(result.toString()).assertEqual('[30, 35]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0049
+     * @tc.name: test_intersect_009
+     * @tc.desc: Returns the intersection of the current range and the range specified by
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     the given lower and upper bounds.
+     */
+    it('test_intersect_009', 0, function () {
+      let result = range.intersect(tempMiDF, tempMore)
+      expect(result.toString()).assertEqual('[35, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0050
+     * @tc.name: test_intersect_010
+     * @tc.desc: Returns the intersection of the current range and the range specified by
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     the given lower and upper bounds.
+     */
+    it('test_intersect_010', 0, function () {
+      let result = range.intersect(tempLower, tempUpper)
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0051
+     * @tc.name: test_toString_001
+     * @tc.desc: Obtains a string representation of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_toString_001', 0, function () {
+      let result = range.toString()
+      expect(result.toString()).assertEqual('[30, 40]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0052
+     * @tc.name: test_toString_002
+     * @tc.desc: Obtains a string representation of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_toString_002', 0, function () {
+      let result = rangeFir.toString()
+      expect(result.toString()).assertEqual('[35, 39]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0053
+     * @tc.name: test_toString_003
+     * @tc.desc: Obtains a string representation of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_toString_003', 0, function () {
+      let result = rangeSec.toString()
+      expect(result.toString()).assertEqual('[20, 45]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0054
+     * @tc.name: test_toString_004
+     * @tc.desc: Obtains a string representation of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_toString_004', 0, function () {
+      let result = rangeThi.toString()
+      expect(result.toString()).assertEqual('[20, 35]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_SCOPE_0055
+     * @tc.name: test_toString_005
+     * @tc.desc: Obtains a string representation of the current range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_toString_005', 0, function () {
+      let result = rangeFif.toString()
+      expect(result.toString()).assertEqual('[35, 45]')
+    })
+  })
+
+  describe('Base64Test', function () {
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0001
+     * @tc.name: test_encodeSync_base64_001
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     array using the Base64 encoding scheme.
+     */
+    it('test_encodeSync_base64_001', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([115,49,51]);
+      let rarray = new Uint8Array([99,122,69,122]);
+      let result = that.encodeSync(array);
+      for (let i = 0; i < 4; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0002
+     * @tc.name: test_encodeSync_base64_002
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     array using the Base64 encoding scheme.
+     */
+    it('test_encodeSync_base64_002', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+      let rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
+      let result = that.encodeSync(array);
+      for (let i = 0; i < 20; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0003
+     * @tc.name: test_encodeSync_base64_003
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     array using the Base64 encoding scheme.
+     */
+    it('test_encodeSync_base64_003', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,
+        110,32,78,111,100,101,46,106,115]);
+      let rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,
+        73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
+      let result = that.encodeSync(array);
+      for (let i = 0; i < 36; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0004
+     * @tc.name: test_encodeSync_base64_004
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     array using the Base64 encoding scheme.
+     */
+    it('test_encodeSync_base64_004', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([168, 174, 155, 255]);
+      let rarray = new Uint8Array([113,75,54,98,47,119,61,61]);
+      let result = that.encodeSync(array);
+      for (let i = 0; i < 8; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0005
+     * @tc.name: test_encodeSync_base64_005
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     array using the Base64 encoding scheme.
+     */
+    it('test_encodeSync_base64_005', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66, 97, 115, 101, 54, 52]);
+      let rarray = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
+      let result = that.encodeSync(array);
+      for (let i = 0; i <8; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0006
+     * @tc.name: test_encodeToStringSync_base64_001
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeToStringSync_base64_001', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([115,49,51]);
+      let result = that.encodeToStringSync(array)
+      expect(result).assertEqual('czEz')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0007
+     * @tc.name: test_encodeToStringSync_base64_002
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeToStringSync_base64_002', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+      let result = that.encodeToStringSync(array);
+      expect(result).assertEqual('QmFzZTY0IE5vZGUuanM=')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0008
+     * @tc.name: test_encodeToStringSync_base64_003
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeToStringSync_base64_003', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,
+        32,78,111,100,101,46,106,115]);
+      let result = that.encodeToStringSync(array);
+      expect(result).assertEqual('QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0009
+     * @tc.name: test_encodeToStringSync_base64_004
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeToStringSync_base64_004', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([168, 174, 155, 255]);
+      let result = that.encodeToStringSync(array);
+      expect(result).assertEqual('qK6b/w==')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0010
+     * @tc.name: test_encodeToStringSync_base64_005
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeToStringSync_base64_005', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66, 97, 115, 101, 54, 52]);
+      let result = that.encodeToStringSync(array);
+      expect(result).assertEqual('QmFzZTY0')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0011
+     * @tc.name: test_decodeSync_base64_001
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decodeSync_base64_001', 0, function () {
+      let that = new util.Base64()
+      let buff = 'czEz';
+      let rarray = new Uint8Array([115,49,51]);
+      let result = that.decodeSync(buff);
+      for (let i = 0; i < 3; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0012
+     * @tc.name: test_decodeSync_base64_002
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decodeSync_base64_002', 0, function () {
+      let that = new util.Base64()
+      let buff = 'QmFzZTY0IE5vZGUuanM=';
+      let rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+      let result = that.decodeSync(buff);
+      for (let i = 0; i < 14; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0013
+     * @tc.name: test_decodeSync_base64_003
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decodeSync_base64_003', 0, function () {
+      let that = new util.Base64()
+      let buff = 'QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=';
+      let rarray = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,
+        105,110,32,78,111,100,101,46,106,115]);
+      let result = that.decodeSync(buff);
+      for (let i = 0; i < 26; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0014
+     * @tc.name: test_decodeSync_base64_004
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decodeSync_base64_004', 0, function () {
+      let that = new util.Base64()
+      let buff = 'qK6b/w==';
+      let rarray = new Uint8Array([168, 174, 155, 255]);
+      let result = that.decodeSync(buff);
+      for (let i = 0; i < 4; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0015
+     * @tc.name: test_decodeSync_base64_005
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decodeSync_base64_005', 0, function () {
+      let that = new util.Base64()
+      let buff = 'QmFzZTY0';
+      let rarray = new Uint8Array([66, 97, 115, 101, 54, 52]);
+      let result = that.decodeSync(buff);
+      for (let i = 0; i <6; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0016
+     * @tc.name: test_decodeSync_base64_006
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decodeSync_base64_006', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([99,122,69,122]);
+      let rarray = new Uint8Array([115,49,51]);
+      let result = that.decodeSync(array);
+      for (let i = 0; i < 3; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0017
+     * @tc.name: test_decodeSync_base64_007
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decodeSync_base64_007', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
+      let rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+      let result = that.decodeSync(array);
+      for (let i = 0; i < 14; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0018
+     * @tc.name: test_decodeSync_base64_008
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decodeSync_base64_008', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,
+        53,110,73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
+      let rarray = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,
+        110,32,78,111,100,101,46,106,115]);
+      let result = that.decodeSync(array);
+      for (let i = 0; i < 26; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0019
+     * @tc.name: test_decodeSync_base64_009
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decodeSync_base64_009', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([113,75,54,98,47,119,61,61]);
+      let rarray = new Uint8Array([168, 174, 155, 255]);
+      let result = that.decodeSync(array);
+      for (let i = 0; i < 4; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0020
+     * @tc.name: test_decodeSync_base64_010
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decodeSync_base64_010', 0, function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
+      let rarray = new Uint8Array([66, 97, 115, 101, 54, 52]);
+      let result = that.decodeSync(array);
+      for (let i = 0; i <6; i++) {
+        expect(result[i]).assertEqual(rarray[i]);
+      }
+    })
+
+    //base64 EncodeAsync test
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0021
+     * @tc.name: test_encodeAsync_base64_001
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly
+     allocated u8 array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeAsync_base64_001', 0, async function () {
+      let that = await new util.Base64();
+      let array = new Uint8Array([115,49,51]);
+      let rarray = new Uint8Array([99,122,69,122]);
+      that.encode(array).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0022
+     * @tc.name: test_encodeAsync_base64_002
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly
+     allocated u8 array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeAsync_base64_002', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+      let rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
+      that.encode(array).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0023
+     * @tc.name: test_encodeAsync_base64_003
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeAsync_base64_003', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,
+        78,111,100,101,46,106,115]);
+      let rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,
+        71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
+      that.encode(array).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0024
+     * @tc.name: test_encodeAsync_base64_004
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeAsync_base64_004', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([168, 174, 155, 255]);
+      let rarray = new Uint8Array([113,75,54,98,47,119,61,61]);
+      that.encode(array).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0025
+     * @tc.name: test_encodeAsync_base64_005
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
+     array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeAsync_base64_005', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66, 97, 115, 101, 54, 52]);
+      let rarray = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
+      that.encode(array).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0026
+     * @tc.name: test_encodeToString_base64_001
+     * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeToString_base64_001', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([115,49,51]);
+      that.encodeToString(array).then(val=>{
+        expect(val).assertEqual('czEz')
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0027
+     * @tc.name: test_encodeToString_base64_002
+     * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeToString_base64_002', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+      that.encodeToString(array).then(val=>{
+        expect(val).assertEqual('QmFzZTY0IE5vZGUuanM=')
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0028
+     * @tc.name: test_encodeToString_base64_003
+     * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeToString_base64_003', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,71,108,
+        117,73,69,53,118,90,71,85,117,97,110,77,61]);
+      that.encodeToString(array).then(val=>{
+        expect(val).assertEqual('QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=')
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0029
+     * @tc.name: test_encodeToString_base64_004
+     * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeToString_base64_004', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([168, 174, 155, 255]);
+      that.encodeToString(array).then(val=>{
+        expect(val).assertEqual('qK6b/w==')
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0030
+     * @tc.name: test_encodeToString_base64_005
+     * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_encodeToString_base64_005', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([66, 97, 115, 101, 54, 52]);
+      that.encodeToString(array).then(val=>{
+        expect(val).assertEqual('QmFzZTY0')
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0031
+     * @tc.name: test_decode_base64_001
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+     array into a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decode_base64_001', 0, async function () {
+      let that = new util.Base64()
+      let buff = 'czEz';
+      let array = new Uint8Array([115,49,51]);
+      that.decode(buff).then(val=>{
+        for (let i = 0; i < array.length; i++) {
+          expect(val[i]).assertEqual(array[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0032
+     * @tc.name: test_decode_base64_002
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+     array into a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decode_base64_002', 0, async function () {
+      let that = new util.Base64()
+      let buff = 'QmFzZTY0IE5vZGUuanM=';
+      let array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+      that.decode(buff).then(val=>{
+        for (let i = 0; i < array.length; i++) {
+          expect(val[i]).assertEqual(array[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0033
+     * @tc.name: test_decode_base64_003
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+     array into a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decode_base64_003', 0, async function () {
+      let that = new util.Base64()
+      let buff = 'QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=';
+      let array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,78,
+        111,100,101,46,106,115]);
+      that.decode(buff).then(val=>{
+        for (let i = 0; i < array.length; i++) {
+          expect(val[i]).assertEqual(array[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0034
+     * @tc.name: test_decode_base64_004
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+     array into a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decode_base64_004', 0, async function () {
+      let that = new util.Base64()
+      let buff = 'qK6b/w==';
+      let array = new Uint8Array([168, 174, 155, 255]);
+      that.decode(buff).then(val=>{
+        for (let i = 0; i < array.length; i++) {
+          expect(val[i]).assertEqual(array[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0035
+     * @tc.name: test_decode_base64_005
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+     array into a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decode_base64_005', 0, async function () {
+      let that = new util.Base64()
+      let buff = 'QmFzZTY0';
+      let rarray = new Uint8Array([66, 97, 115, 101, 54, 52]);
+      that.decode(buff).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0036
+     * @tc.name: test_decode_base64_006
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+     array into a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decode_base64_006', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([99,122,69,122]);
+      let rarray = new Uint8Array([115,49,51]);
+      that.decode(array).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0037
+     * @tc.name: test_decode_base64_007
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+     array into a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decode_base64_007', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
+      let rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+      that.decode(array).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0038
+     * @tc.name: test_decode_base64_008
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+     array into a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decode_base64_008', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,71,108,
+        117,73,69,53,118,90,71,85,117,97,110,77,61]);
+      let rarray = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,78,111,
+        100,101,46,106,115]);
+      that.decode(array).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0039
+     * @tc.name: test_decode_base64_009
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8 array
+     into a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decode_base64_009', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([113,75,54,98,47,119,61,61]);
+      let rarray = new Uint8Array([168, 174, 155, 255]);
+      that.decode(array).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BASE64_0040
+     * @tc.name: test_decode_base64_010
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+     array into a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_decode_base64_010', 0, async function () {
+      let that = new util.Base64()
+      let array = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
+      let rarray = new Uint8Array([66, 97, 115, 101, 54, 52]);
+      that.decode(array).then(val=>{
+        for (let i = 0; i < rarray.length; i++) {
+          expect(val[i]).assertEqual(rarray[i])
+        }
+      })
+    })
+  })
+
+  describe('RationalNumberFunTest', function () {
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0001
+     * @tc.name: test_createRationalFromString_001
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_001', 0, function () {
+      let res = util.RationalNumber.createRationalFromString('-1:2')
+      let result1 = res.valueOf()
+      expect(result1).assertEqual(-0.5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0002
+     * @tc.name: test_createRationalFromString_002
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_002', 0, function () {
+      let res = util.RationalNumber.createRationalFromString('+3/4')
+      let result1 = res.valueOf()
+      expect(result1).assertEqual(0.75)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0003
+     * @tc.name: test_createRationalFromString_003
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_003', 0, function () {
+      let res = util.RationalNumber.createRationalFromString('+3:-4')
+      let result1 = res.valueOf()
+      expect(result1).assertEqual(-0.75)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0004
+     * @tc.name: test_createRationalFromString_004
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_004', 0, function () {
+      let res = util.RationalNumber.createRationalFromString('+2:4')
+      let result1 = res.valueOf()
+      expect(result1).assertEqual(0.5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0005
+     * @tc.name: test_createRationalFromString_005
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_005', 0, function () {
+      let res = util.RationalNumber.createRationalFromString('-2:-4')
+      let result1 = res.valueOf()
+      expect(result1).assertEqual(0.5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0006
+     * @tc.name: test_compareTo_001
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_compareTo_001', 0, function () {
+      let pro = new util.RationalNumber(2, 1)
+      let proc = new util.RationalNumber(3, 4)
+      let res = pro.compareTo(proc)
+      expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0007
