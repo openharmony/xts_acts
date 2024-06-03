@@ -18,6 +18,7 @@ import asset from '@ohos.security.asset';
 
 import util from '@ohos.util';
 
+export const fakeChallenge = "0123456789123456".repeat(2);
 
 export const secLong = "0123456789123456".repeat(64);
 
