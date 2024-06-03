@@ -44,9 +44,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
     beforeAll(async function () {
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_001
      * @tc.name      : testConvertFromPixelMap
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image, and return the PixelMap result synchronously.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -75,9 +75,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_002
      * @tc.name      : testConvertToPixelmap
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under the image using the PixelMap under the senableImage, and return the PixelMap result synchronously
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -106,9 +106,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_003
      * @tc.name      : testReadPixelsSync
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Reads the image data in the area and returns the result synchronously.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -148,9 +148,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_004
      * @tc.name      : testWriteBufferToPixels
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Reads the image data in the buffer, and the result is written to PixelMap, returned as a Promise.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -186,9 +186,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_005
      * @tc.name      : testOpacitySync
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Sets the transparency ratio of the PixelMap and initializes the PixelMap.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -217,9 +217,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_006
      * @tc.name      : testCreateAlphaPixelmapSync
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Generates a PixelMap containing only alpha channel information based on the alpha channel information, which can be used for shadow effects and returned as a Promise.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -247,9 +247,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_007
      * @tc.name      : tesTtranslateSync
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. The image is transformed according to the input coordinates and the result is returned synchronously.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -279,9 +279,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_008
      * @tc.name      : testRotateSync
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Rotates the picture according to the angle entered and returns the result synchronously.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -310,9 +310,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_009
      * @tc.name      : testFlipSync
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Flips the image based on the conditions entered and returns the result synchronously.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -342,9 +342,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_010
      * @tc.name      : testCropSync
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Crops the picture to the size you enter.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -377,9 +377,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_011
      * @tc.name      : testScale
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Scales the image according to the width and height entered, and returns it as a Promise.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -413,9 +413,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_012
      * @tc.name      : testTranslate
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Change the position of the image based on the coordinates entered and return it as a Promise.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -449,9 +449,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_013
      * @tc.name      : testRotate
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Rotates the image according to the angle entered, and returns as a Promise.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -484,9 +484,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_014
      * @tc.name      : testFlip
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Flips the image based on the conditions entered, and returns it as a Promise.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -520,9 +520,9 @@ export default function graphicSendableImageInterfaceTest(context, windowStage, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_001
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_015
      * @tc.name      : testCrop
-     * @tc.desc      : To test the interface of sendableImage. Create a PixelMap under senableImage using PixelMap under image
+     * @tc.desc      : To test the interface of sendableImage. Crops the image according to the size entered, and returns it as a Promise.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
