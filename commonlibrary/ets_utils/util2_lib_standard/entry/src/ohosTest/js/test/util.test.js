@@ -7598,3 +7598,1157 @@ describe('DecodeEncodeTest', function () {
      * @tc.level: Level 1
      */
     it('testencodeIntoUint8Array003', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(4)
+        var dest = new Uint8Array(buffer)
+        var result = new Object()
+        result = that.encodeIntoUint8Array('abcd', dest)
+        expect(result.read).assertEqual(4)
+        expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_004
+     * @tc.name: testencodeIntoUint8Array004
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array004', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(4)
+        var dest = new Uint8Array(buffer)
+        var result = new Object()
+        result = that.encodeIntoUint8Array('12345', dest)
+        expect(result.read).assertEqual(4)
+        expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_005
+     * @tc.name: testencodeIntoUint8Array005
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array005', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(4)
+        var dest = new Uint8Array(buffer)
+        var result = new Object()
+        result = that.encodeIntoUint8Array('123 4*!@#', dest)
+        expect(result.read).assertEqual(4)
+        expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_006
+     * @tc.name: testencodeIntoUint8Array006
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array006', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(4)
+        var dest = new Uint8Array(buffer)
+        var result = new Object()
+        result = that.encodeIntoUint8Array('', dest)
+        expect(result.read).assertEqual(0)
+        expect(result.written).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_007
+     * @tc.name: testencodeIntoUint8Array007
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array007', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('12ab', dest)
+        expect(result.read).assertEqual(4)
+        expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_008
+     * @tc.name: testencodeIntoUint8Array008
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array008', 0, function () {
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 0)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(0)
+        expect(result.written).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_THROW_ERROR_001
+     * @tc.name: testencodeIntoUint8ArrayThrowError001
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8ArrayThrowError001', 0, function () {
+        try {
+            var that = new util.TextEncoder()
+            var buffer = new ArrayBuffer(20)
+            var dest = new Uint8Array(buffer, 0, 13)
+            var result = new Uint32Array(20)
+            result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+            expect(result.read).assertEqual(7)
+            expect(result.written).assertEqual(13)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be string.")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_THROW_ERROR_002
+     * @tc.name: testencodeIntoUint8ArrayThrowError002
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8ArrayThrowError002', 0, function () {
+        try {
+            var that = new util.TextEncoder()
+            var buffer = new ArrayBuffer(20)
+            var dest = new Uint8Array(buffer, 0, 13)
+            var result = new Uint32Array(20)
+            result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+            expect(result.read).assertEqual(7)
+            expect(result.written).assertEqual(13)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array.")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_001
+     * @tc.name: testEncoding_001
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_001', 0, function () {
+        var that = new util.TextEncoder('big5')
+        var str = that.encoding
+        expect(str).assertEqual('big5')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_002
+     * @tc.name: testEncoding_002
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_002', 0, function () {
+        var that = new util.TextEncoder('iso-8859-2')
+        var str = that.encoding
+        expect(str).assertEqual('iso-8859-2')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_003
+     * @tc.name: testEncoding_003
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_003', 0, function () {
+        var that = new util.TextEncoder('euc-kr')
+        var str = that.encoding
+        expect(str).assertEqual('euc-kr')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_004
+     * @tc.name: testEncoding_004
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_004', 0, function () {
+        var that = new util.TextEncoder('ibm866')
+        var str = that.encoding
+        expect(str).assertEqual('ibm866')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_005
+     * @tc.name: testEncoding_005
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_005', 0, function () {
+        var that = new util.TextEncoder('x-mac-cyrillic')
+        var str = that.encoding
+        expect(str).assertEqual('x-mac-cyrillic')
+    })
+	
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_CREATE_001
+     * @tc.name: testEncoding_create_001
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_create_001', 0, function () {
+        var that = util.TextEncoder.create()
+        var str = that.encoding
+        expect(str).assertEqual('utf-8')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_CREATE_002
+     * @tc.name: testEncoding_create_002
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_create_002', 0, function () {
+        var that = util.TextEncoder.create('iso-8859-2')
+        var str = that.encoding
+        expect(str).assertEqual('iso-8859-2')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_CREATE_003
+     * @tc.name: testEncoding_create_003
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_create_003', 0, function () {
+        var that = util.TextEncoder.create('euc-kr')
+        var str = that.encoding
+        expect(str).assertEqual('euc-kr')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_CREATE_004
+     * @tc.name: testEncoding_create_004
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_create_004', 0, function () {
+        var that = util.TextEncoder.create('ibm866')
+        var str = that.encoding
+        expect(str).assertEqual('ibm866')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_CREATE_005
+     * @tc.name: testEncoding_create_005
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_create_005', 0, function () {
+        var that = util.TextEncoder.create('x-mac-cyrillic')
+        var str = that.encoding
+        expect(str).assertEqual('x-mac-cyrillic')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_011
+     * @tc.name: testEncodeInto011
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto011', 0, function () {
+        let that = new util.TextEncoder('big5')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encodeInto('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(171)
+        expect(result[4]).assertEqual(162)
+        expect(result[7]).assertEqual(230)
+        expect(result[8]).assertEqual(102)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_012
+     * @tc.name: testEncodeInto012
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto012', 0, function () {
+        let that = new util.TextEncoder('shift_jis')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encodeInto('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(153)
+        expect(result[4]).assertEqual(251)
+        expect(result[7]).assertEqual(252)
+        expect(result[8]).assertEqual(252)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_013
+     * @tc.name: testEncodeInto013
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto013', 0, function () {
+        let that = new util.TextEncoder('iso-2022-jp')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encodeInto('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(27)
+        expect(result[4]).assertEqual(36)
+        expect(result[7]).assertEqual(125)
+        expect(result[8]).assertEqual(82)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_014
+     * @tc.name: testEncodeInto014
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto014', 0, function () {
+        let that = new util.TextEncoder('ibm866')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encodeInto('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(127)
+        expect(result[4]).assertEqual(127)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_015
+     * @tc.name: testEncodeInto015
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto015', 0, function () {
+        let that = new util.TextEncoder('macintosh')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encodeInto('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(63)
+        expect(result[4]).assertEqual(63)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_016
+     * @tc.name: testEncodeInto016
+     * @tc.desc: Returns the result of encoder for GBK.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto016', 0, function () {
+        let that = new util.TextEncoder('GBK');
+        let result = that.encodeInto('abc哈熠');
+        let res = new Uint8Array([97,98,99,185,254,236,218]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_017
+     * @tc.name: testEncodeInto017
+     * @tc.desc: Returns the result of encoder for GB2312.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto017', 0, function () {
+        let that = new util.TextEncoder('GB2312');
+        let result = that.encodeInto('abc哈熠');
+        let res = new Uint8Array([97,98,99,185,254,236,218]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_018
+     * @tc.name: testEncodeInto018
+     * @tc.desc: Returns the result of encoder for iso-8859-2.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto018', 0, function () {
+        let that = new util.TextEncoder('iso-8859-2');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_019
+     * @tc.name: testEncodeInto019
+     * @tc.desc: Returns the result of encoder for iso-8859-3.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto019', 0, function () {
+        let that = new util.TextEncoder('iso-8859-3');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_020
+     * @tc.name: testEncodeInto020
+     * @tc.desc: Returns the result of encoder for iso-8859-4.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto020', 0, function () {
+        let that = new util.TextEncoder('iso-8859-4');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_021
+     * @tc.name: testEncodeInto021
+     * @tc.desc: Returns the result of encoder for iso-8859-5.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto021', 0, function () {
+        let that = new util.TextEncoder('iso-8859-5');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_022
+     * @tc.name: testEncodeInto022
+     * @tc.desc: Returns the result of encoder for iso-8859-6.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto022', 0, function () {
+        let that = new util.TextEncoder('iso-8859-6');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_023
+     * @tc.name: testEncodeInto023
+     * @tc.desc: Returns the result of encoder for iso-8859-7.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto023', 0, function () {
+        let that = new util.TextEncoder('iso-8859-7');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_024
+     * @tc.name: testEncodeInto024
+     * @tc.desc: Returns the result of encoder for iso-8859-8.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto024', 0, function () {
+        let that = new util.TextEncoder('iso-8859-8');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_025
+     * @tc.name: testEncodeInto025
+     * @tc.desc: Returns the result of encoder for iso-8859-8-i.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto025', 0, function () {
+        let that = new util.TextEncoder('iso-8859-8-i');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_026
+     * @tc.name: testEncodeInto026
+     * @tc.desc: Returns the result of encoder for iso-8859-10.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto026', 0, function () {
+        let that = new util.TextEncoder('iso-8859-10');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_027
+     * @tc.name: testEncodeInto027
+     * @tc.desc: Returns the result of encoder for iso-8859-13.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto027', 0, function () {
+        let that = new util.TextEncoder('iso-8859-13');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_028
+     * @tc.name: testEncodeInto028
+     * @tc.desc: Returns the result of encoder for iso-8859-14.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto028', 0, function () {
+        let that = new util.TextEncoder('iso-8859-14');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([26,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_029
+     * @tc.name: testEncodeInto029
+     * @tc.desc: Returns the result of encoder for iso-8859-15.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto029', 0, function () {
+        let that = new util.TextEncoder('iso-8859-15');
+        let result = that.encodeInto('¡Hola, Mundo!');
+        let res = new Uint8Array([161,72,111,108,97,44,32,77,117,110,100,111,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_030
+     * @tc.name: testEncodeInto030
+     * @tc.desc: Returns the result of encoder for koi8-r.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto030', 0, function () {
+        let that = new util.TextEncoder('koi8-r');
+        let result = that.encodeInto('Привет, мир!');
+        let res = new Uint8Array([240,210,201,215,197,212,44,32,205,201,210,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_031
+     * @tc.name: testEncodeInto031
+     * @tc.desc: Returns the result of encoder for koi8-u.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto031', 0, function () {
+        let that = new util.TextEncoder('koi8-u');
+        let result = that.encodeInto('Привіт, світ');
+        let res = new Uint8Array([240,210,201,215,166,212,44,32,211,215,166,212]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_032
+     * @tc.name: testEncodeInto032
+     * @tc.desc: Returns the result of encoder for windows-874.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto032', 0, function () {
+        let that = new util.TextEncoder('windows-874');
+        let result = that.encodeInto('สวัสดี，โลก');
+        let res = new Uint8Array([202,199,209,202,180,213,63,226,197,161]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_033
+     * @tc.name: testEncodeInto033
+     * @tc.desc: Returns the result of encoder for windows-1250.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto033', 0, function () {
+        let that = new util.TextEncoder('windows-1250');
+        let result = that.encodeInto('Ahoj, svět');
+        let res = new Uint8Array([65,104,111,106,44,32,115,118,236,116]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_034
+     * @tc.name: testEncodeInto034
+     * @tc.desc: Returns the result of encoder for windows-1251.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto034', 0, function () {
+        let that = new util.TextEncoder('windows-1251');
+        let result = that.encodeInto('Привет, мир');
+        let res = new Uint8Array([207,240,232,226,229,242,44,32,236,232,240]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_035
+     * @tc.name: testEncodeInto035
+     * @tc.desc: Returns the result of encoder for windows-1252.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto035', 0, function () {
+        let that = new util.TextEncoder('windows-1252');
+        let result = that.encodeInto('Hi, World');
+        let res = new Uint8Array([72,105,44,32,87,111,114,108,100]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_036
+     * @tc.name: testEncodeInto036
+     * @tc.desc: Returns the result of encoder for windows-1253.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto036', 0, function () {
+        let that = new util.TextEncoder('windows-1253');
+        let result = that.encodeInto('Γεια σας, κόσμο');
+        let res = new Uint8Array([195,229,233,225,32,243,225,242,44,32,234,252,243,236,239]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_037
+     * @tc.name: testEncodeInto037
+     * @tc.desc: Returns the result of encoder for windows-1254.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto037', 0, function () {
+        let that = new util.TextEncoder('windows-1254');
+        let result = that.encodeInto('Merhaba, dünya');
+        let res = new Uint8Array([77,101,114,104,97,98,97,44,32,100,252,110,121,97]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_038
+     * @tc.name: testEncodeInto038
+     * @tc.desc: Returns the result of encoder for windows-1255.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto038', 0, function () {
+        let that = new util.TextEncoder('windows-1255');
+        let result = that.encodeInto('שלום, עולם');
+        let res = new Uint8Array([249,236,229,237,44,32,242,229,236,237]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_039
+     * @tc.name: testEncodeInto039
+     * @tc.desc: Returns the result of encoder for windows-1256.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto039', 0, function () {
+        let that = new util.TextEncoder('windows-1256');
+        let result = that.encodeInto('مرحبا, العالم');
+        let res = new Uint8Array([227,209,205,200,199,44,32,199,225,218,199,225,227]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_040
+     * @tc.name: testEncodeInto040
+     * @tc.desc: Returns the result of encoder for windows-1257.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto040', 0, function () {
+        let that = new util.TextEncoder('windows-1257');
+        let result = that.encodeInto('Tere, maailma');
+        let res = new Uint8Array([84,101,114,101,44,32,109,97,97,105,108,109,97]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_041
+     * @tc.name: testEncodeInto041
+     * @tc.desc: Returns the result of encoder for windows-1258.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto041', 0, function () {
+        let that = new util.TextEncoder('windows-1258');
+        let result = that.encodeInto('Chào, thế giới');
+        let res = new Uint8Array([67,104,224,111,44,32,116,104,26,32,103,105,26,105]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_042
+     * @tc.name: testEncodeInto042
+     * @tc.desc: Returns the result of encoder for euc-jp.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto042', 0, function () {
+        let that = new util.TextEncoder('euc-jp');
+        let result = that.encodeInto('こんにちは、世界!');
+        let res = new Uint8Array([164,179,164,243,164,203,164,193,164,207,161,162,192,164,179,166,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_043
+     * @tc.name: testEncodeInto043
+     * @tc.desc: Returns the result of encoder for euc-kr.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto043', 0, function () {
+        let that = new util.TextEncoder('euc-kr');
+        let result = that.encodeInto('안녕, 세상!');
+        let res = new Uint8Array([190,200,179,231,44,32,188,188,187,243,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_044
+     * @tc.name: testEncodeInto044
+     * @tc.desc: Returns the result of encoder for x-mac-cyrillic.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto044', 0, function () {
+        let that = new util.TextEncoder('x-mac-cyrillic');
+        let result = that.encodeInto('Привет, мир!');
+        let res = new Uint8Array([143,240,232,226,229,242,44,32,236,232,240,33]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_045
+     * @tc.name: testEncodeInto045
+     * @tc.desc: Returns the result of encoder for utf-16be.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto045', 0, function () {
+        let that = new util.TextEncoder('utf-16be');
+        let result = that.encodeInto('abc哈熠');
+        let res = new Uint8Array([97,0,98,0,99,0,200,84,160,113]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_046
+     * @tc.name: testEncodeInto046
+     * @tc.desc: Returns the result of encoder for utf-16le.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto046', 0, function () {
+        let that = new util.TextEncoder('utf-16le');
+        let result = that.encodeInto('abc哈熠');
+        let res = new Uint8Array([0,97,0,98,0,99,84,200,113,160]);
+        for (let i = 0; i < result.length; i++) {
+          expect(result[i]).assertEqual(res[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_009
+     * @tc.name: testencodeIntoUint8Array009
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array009', 0, function () {
+        var that = new util.TextEncoder('big5')
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 10)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(8)
+        expect(result.written).assertEqual(8)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_010
+     * @tc.name: testencodeIntoUint8Array010
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array010', 0, function () {
+        var that = new util.TextEncoder('shift_jis')
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 5)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(3)
+        expect(result.written).assertEqual(5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_011
+     * @tc.name: testencodeIntoUint8Array011
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array011', 0, function () {
+        var that = new util.TextEncoder('iso-2022-jp')
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 7)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(4)
+        expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_012
+     * @tc.name: testencodeIntoUint8Array012
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array012', 0, function () {
+        var that = new util.TextEncoder('ibm866')
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 4)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(4)
+        expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_013
+     * @tc.name: testencodeIntoUint8Array013
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array013', 0, function () {
+        var that = new util.TextEncoder('macintosh')
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 10)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(8)
+        expect(result.written).assertEqual(8)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0001
+     * @tc.name: testwrite001
+     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+
+     it("testwrite001", 0, function () {
+      let decoder = new util.StringDecoder('utf-8');
+      let input =  new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const decoded = decoder.write(input);
+      expect(decoded).assertEqual('你好');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0002
+     * @tc.name: testwrite002
+     * @tc.desc: Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testwrite002", 0, function () {
+      let decoder = new util.StringDecoder('utf-8');
+      const decoded = decoder.write("abc");
+      expect(decoded).assertEqual('abc');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00013
+     * @tc.name: testwrite003
+     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testwrite003", 0, function () {
+      let decoder = new util.StringDecoder('big5');
+      let input = new Uint8Array([167,65,166,110]);
+      const decoded = decoder.write(input);
+      expect(decoded).assertEqual('你好');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0012
+     * @tc.name: testwrite004
+     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testwrite004", 0, function () {
+      let decoder = new util.StringDecoder('iso-8859-2');
+      let input = new Uint8Array([0X61,0X62,0X63]);
+      const decoded = decoder.write(input);
+      expect(decoded).assertEqual('abc');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0010
+     * @tc.name: testwrite005
+     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testwrite005", 0, function () {
+      let decoder = new util.StringDecoder('koi8-r');
+      let input = new Uint8Array([97,98,99]);
+      const decoded = decoder.write(input);
+      expect(decoded).assertEqual('abc');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0011
+     * @tc.name: testwrite006
+     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * comitted from the returned string and stored in an internal buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testwrite006", 0, function () {
+      let decoder = new util.StringDecoder('windows-1250');
+      let input = new Uint8Array([0X61,0X62,0X63]);
+      const decoded = decoder.write(input);
+      expect(decoded).assertEqual('abc');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0003
+     * @tc.name: testend001
+     * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testend001", 0, function () {
+      let decoder = new util.StringDecoder('macintosh');
+      let input =  new Uint8Array([0X61]);
+      const decoded = decoder.end(input);
+      expect(decoded).assertEqual('a');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0004
+     * @tc.name: testend002
+     * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testend002", 0, function () {
+      let decoder = new util.StringDecoder('utf-8');
+      const decoded = decoder.end("abc");
+      expect(decoded).assertEqual('abc');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0005
+     * @tc.name: testend003
+     * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testend003", 0, function () {
+      let decoder = new util.StringDecoder('utf-8');
+      let input =  new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const decoded = decoder.end(input);
+      expect(decoded).assertEqual('你好');
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01006
+     * @tc.name: testend004
+     * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testend004", 0, function () {
+      let decoder = new util.StringDecoder('utf-8');
+      let input =  new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
+      const decoded = decoder.write(input.slice(0, 5));
+      const decodeend = decoder.end(input.slice(5));
+      expect(decoded).assertEqual('你');
+      expect(decodeend).assertEqual('好');
+    });
+})
+}
